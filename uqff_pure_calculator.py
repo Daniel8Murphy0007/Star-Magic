@@ -4809,6 +4809,110 @@ def _l95_g_uqff_compressed_master(r: float = DEFAULT_R, t: float = 0.0,
     return (grav_base * env + Ug_sum + cosm + quantum_term + fluid_term + mass_pert)
 
 
+# === MAGNETAR EVOLUTION MASTER UNIVERSAL GRAVITY (UQFF) — spec 03/08 May 2025 ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_Magnetar
+# Evolution_03May2025" + DeepSearch Hubble/Fermilab data on SGR 0501+4516.
+# Adds the 4 closed-form leaves the spec requires that are not yet primitivized:
+#   - magnetic field exponential decay  B(t) = B_0 * exp(-t/tau_B)
+#   - spin angular velocity decay       Omega(t) = (2 pi / P_0) * exp(-t/tau_spin)
+#   - analytical spin-down derivative   dOmega/dt = -(2 pi / P_0)/tau_spin * exp(...)
+#   - GW quadrupole spin term           G*M^2/(c^4*r) * (dOmega/dt)^2
+# Composer _magnetar_g_master_uqff wires the literal spec equation:
+#   g_Magnetar(r,t) = (G*M/r^2)*(1+H_0*t)*(1-B(t)/B_crit)
+#                     + (U_g1+U_g2+U_g3+U_g4) + Lambda*c^2/3
+#                     + G*M^2/(c^4*r) * (dOmega/dt)^2
+# Existing infrastructure reused (NO duplication): G_NEWTON, C_LIGHT, M_SUN,
+# _l95_g_uqff_compressed_master (sister 8-term composer that already absorbs
+# Lorentz, fluid, dark-matter perturbation, quantum-uncertainty, oscillatory
+# leaves the spec marks as negligible in the magnetar regime), _l96_ngc1316_g_master,
+# _ug1/_ug2/_ug3/_ug4 layered terms.
+
+_YEAR_S_MAGNETAR     = 365.25 * 86400.0           # s in a Julian year (=3.15576e7)
+B_CRIT_MAGNETAR_T    = 1.0e11                     # spec: B_crit = 1e15 G = 1e11 T
+TAU_B_MAGNETAR_S     = 4000.0 * _YEAR_S_MAGNETAR  # spec: 4000 yr field-decay timescale
+TAU_SPIN_MAGNETAR_S  = 10000.0 * _YEAR_S_MAGNETAR # spec: 10000 yr spin-down timescale
+B0_MAGNETAR_T        = 1.0e10                     # spec: 1e10 T initial surface field
+P0_MAGNETAR_S        = 5.0                        # spec: 5 s initial spin period
+M_MAGNETAR_KG        = 1.4 * M_SUN                # spec: 1.4 M_sun canonical
+R_MAGNETAR_M         = 2.0e4                      # spec: 20 km canonical
+H0_MAGNETAR_SI       = 67.4e3 / 3.086e22          # spec: 67.4 km/s/Mpc -> 2.184e-18 s^-1
+LAMBDA_MAGNETAR_M2   = 1.1e-52                    # spec: Lambda = 1.1e-52 m^-2
+
+def _magnetar_B_decay(t_s: float = 0.0,
+                       B_0_T: float = B0_MAGNETAR_T,
+                       tau_B_s: float = TAU_B_MAGNETAR_S) -> float:
+    """Magnetar surface magnetic field decay  B(t) = B_0 * exp(-t/tau_B). T."""
+    return B_0_T * math.exp(-t_s / max(tau_B_s, 1e-300))
+
+def _magnetar_spin_Omega(t_s: float = 0.0,
+                          P_0_s: float = P0_MAGNETAR_S,
+                          tau_spin_s: float = TAU_SPIN_MAGNETAR_S) -> float:
+    """Magnetar spin angular velocity  Omega(t) = (2 pi / P_0) * exp(-t/tau_spin). rad/s."""
+    return (2.0 * math.pi / max(P_0_s, 1e-300)) \
+            * math.exp(-t_s / max(tau_spin_s, 1e-300))
+
+def _magnetar_spin_dOmega_dt(t_s: float = 0.0,
+                              P_0_s: float = P0_MAGNETAR_S,
+                              tau_spin_s: float = TAU_SPIN_MAGNETAR_S) -> float:
+    """Analytical derivative  dOmega/dt = -(2 pi / P_0) / tau_spin * exp(-t/tau_spin).
+    rad/s^2 (negative -> spin-down)."""
+    return -(2.0 * math.pi / max(P_0_s, 1e-300)) / max(tau_spin_s, 1e-300) \
+            * math.exp(-t_s / max(tau_spin_s, 1e-300))
+
+def _gw_quadrupole_spin_term(M_kg: float = M_MAGNETAR_KG,
+                              r_m: float = R_MAGNETAR_M,
+                              dOmega_dt: float = 0.0) -> float:
+    """GW quadrupole spin term  G*M^2 / (c^4 * r) * (dOmega/dt)^2.  m/s^2."""
+    return (G_NEWTON * M_kg * M_kg) / ((C_LIGHT ** 4) * max(r_m, 1e-300)) \
+            * (dOmega_dt ** 2)
+
+def _magnetar_g_master_uqff(r_m: float = R_MAGNETAR_M,
+                             t_s: float = 10000.0 * _YEAR_S_MAGNETAR,
+                             M_kg: float = M_MAGNETAR_KG,
+                             B_0_T: float = B0_MAGNETAR_T,
+                             tau_B_s: float = TAU_B_MAGNETAR_S,
+                             B_crit_T: float = B_CRIT_MAGNETAR_T,
+                             P_0_s: float = P0_MAGNETAR_S,
+                             tau_spin_s: float = TAU_SPIN_MAGNETAR_S,
+                             H0_si: float = H0_MAGNETAR_SI,
+                             Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                             Ug2: float = 0.0,
+                             Ug3: float = 0.0) -> float:
+    """Master Universal Gravity equation for magnetar evolution (spec 03/08 May 2025).
+
+        g_Magnetar(r,t) = (G*M/r^2) * (1 + H_0 * t) * (1 - B(t)/B_crit)
+                          + (U_g1 + U_g2 + U_g3 + U_g4)
+                          + Lambda * c^2 / 3
+                          + (G * M^2) / (c^4 * r) * (dOmega(t)/dt)^2
+
+    Spec-default decomposition (spec 08May2025 Step 2):
+      U_g1 = G*M/r^2  (Newtonian)
+      U_g2 = 0  (potential evolution negligible for static field; caller may override)
+      U_g3 = 0  (no moon for magnetar; caller may override for binary partner)
+      U_g4 = U_g1 * (1 - B(t)/B_crit)  (superconductive coupling)
+
+    Spec example: at t = 10,000 yr, M = 1.4 M_sun, r = 20 km, B_0 = 1e10 T,
+    tau_B = 4000 yr, B_crit = 1e11 T, P_0 = 5 s, tau_spin = 10000 yr,
+    H0 = 67.4 km/s/Mpc, Lambda = 1.1e-52 m^-2  ->  g_Magnetar ~ 1.386e12 m/s^2
+    (dominated by U_g1 + U_g4; Lambda*c^2/3 ~ 3.3e-36 and GW term ~ 1e-11 negligible).
+
+    The Lorentz q(v x B), fluid rho*V*g, oscillatory and dark-matter perturbation
+    leaves are absorbed into the generic 8-term composer
+    _l95_g_uqff_compressed_master when the caller needs the full extended form
+    (spec author marks them negligible for global magnetar g).
+    """
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    B_t = _magnetar_B_decay(t_s, B_0_T, tau_B_s)
+    sc_factor = 1.0 - B_t / max(B_crit_T, 1e-300)
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    dOmega = _magnetar_spin_dOmega_dt(t_s, P_0_s, tau_spin_s)
+    gw_term = _gw_quadrupole_spin_term(M_kg, r_m, dOmega)
+    return grav_term + Ug_sum + cosm + gw_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
