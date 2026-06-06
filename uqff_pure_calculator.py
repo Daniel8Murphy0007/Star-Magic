@@ -5853,6 +5853,135 @@ def _antennae_g_master_uqff(r_m: float = R_ANTENNAE_M,
     return grav_term + lorentz_term
 
 
+# === Horsehead Nebula Barnard 33 (Orion Molecular Cloud, infrared Hubble view) ===
+# Spec: "Master Universal Gravity Equation_Infrared view of the Horsehead
+# Nebula Evolution_09May2025" (Hubble WFC3 2013 IR mosaic, eroded by Sigma
+# Orionis UV; 1500 ly distance; 2.5 ly span; ~5-10 Myr disintegration).
+#
+# ONE NEW primitive shape required (radiation-pressure acceleration). The
+# saturating erosion term E(t)=E_0*(1-exp(-t/tau_erode)) shares the EXACT
+# 1-exp(-t/tau) saturating shape of _merger_progress_saturating_uqff (added
+# in Antennae turn) -- reused literally (M_0 -> E_0, tau_merge -> tau_erode).
+#
+# Spec composer (4 leaves -- per 'nothing is negligible' directive, all four
+# carry full precision even though Lorentz dominates ~96% of total):
+#   g_Horsehead(r,t) = (G*M/r^2)*(1+H(z) t)*(1-E(t))*(1+f_TRZ)
+#                   + P_rad
+#                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+# where P_rad = (L_star/(4 pi r^2 c)) * (rho/m_H)  -- UQFF convention
+# (spec's exact literal closed form; dimensions are UQFF macroscopic, NOT
+# pure SI m/s^2 -- the spec author uses (Pa)*(num density) per UQFF scaling).
+#
+# Structural distinctions: (a) static M (NOT linear SF growth like Antennae,
+# NOT exp accretion); (b) z=0.0003 local (distinct from Antennae z=0.0105
+# cosmological); (c) NO Lambda*c^2/3; (d) NO Ug2/Ug3/Ug4 sum; (e) ADDS P_rad
+# as a distinct additive leaf (NOT present in any prior composer this lineage);
+# (f) reuses 1.053e-3 Lorentz family (B=1e-5, v=1e5, same as NGC 3603 /
+# Westerlund 2 / Pillars).
+#
+# Existing _horsehead_g_primitive_sat (L886, BSFG saturation triadic) and
+# horsehead_nebula catalog (L2034, M=30 M_sun -- different scale from spec's
+# 120 M_sun gas+dust+2 young stars) UNTOUCHED -- different observables.
+
+_L_SUN_W_HORSEHEAD     = 3.826e26                       # spec value (CODATA 3.828e26; spec uses 3.826e26)
+M_HORSEHEAD_KG         = 120.0 * M_SUN                  # 100 M_sun gas/dust + 2*10 M_sun young stars
+R_HORSEHEAD_M          = 1.182e16                       # half of 2.5 ly span
+L_SIGMA_ORIONIS_W      = 1.0e5 * _L_SUN_W_HORSEHEAD     # 10^5 L_sun Sigma Orionis system
+RHO_HORSEHEAD_KGM3     = 1.0e-21                        # spec nebular gas density
+_M_H_HORSEHEAD_KG      = 1.67e-27                       # spec value (hydrogen, NOT proton m_p precision)
+E_0_HORSEHEAD          = 0.2                            # 20% fractional erosion saturation amplitude
+TAU_ERODE_HORSEHEAD_S  = 5.0e6 * _YEAR_S_MAGNETAR       # 5 Myr nebula disintegration timescale
+Z_HORSEHEAD            = 0.0003                         # 1500 ly local recession
+H0_HORSEHEAD_KMSMPC    = 70.0                           # spec H_0
+B_HORSEHEAD_T          = 1.0e-5                         # 10^-5 T nebula magnetic field
+V_HORSEHEAD_MS         = 1.0e5                          # 10^5 m/s gas velocity
+T_HORSEHEAD_DEFAULT_S  = 1.0e6 * _YEAR_S_MAGNETAR       # spec example: t=1 Myr current stage
+
+def _radiation_pressure_acceleration_uqff(L_star_W: float = L_SIGMA_ORIONIS_W,
+                                             r_m: float = R_HORSEHEAD_M,
+                                             rho_kgm3: float = RHO_HORSEHEAD_KGM3,
+                                             m_particle_kg: float = _M_H_HORSEHEAD_KG,
+                                             c_ms: float = C_LIGHT) -> float:
+    """P_rad = (L_star/(4 pi r^2 c)) * (rho/m_H)  [UQFF convention].
+
+    Spec's exact literal closed form (NOT SI-pure m/s^2: dimensions are
+    UQFF macroscopic = (energy density Pa)*(number density 1/m^3) per the
+    framework's scaling convention). New primitive -- distinct from
+    _lorentz_acceleration_uqff (Lorentz q v B), _grav_potential, and all
+    prior radiation/luminosity terms which were either dimensional Pa
+    only (NGC 3603 wind cavity) or normalized fractional (Bubble Nebula).
+    Defaults reproduce spec's 4.347e-5 with Sigma Orionis L=10^5 L_sun,
+    r=1.182e16 m, rho=10^-21 kg/m^3, m_H=1.67e-27 kg.
+    """
+    import math as _math
+    rad_energy_density = L_star_W / max(4.0 * _math.pi * r_m * r_m * c_ms, 1e-300)
+    number_density = rho_kgm3 / max(m_particle_kg, 1e-300)
+    return rad_energy_density * number_density
+
+def _horsehead_g_master_uqff(r_m: float = R_HORSEHEAD_M,
+                                t_s: float = T_HORSEHEAD_DEFAULT_S,
+                                M_kg: float = M_HORSEHEAD_KG,
+                                E_0: float = E_0_HORSEHEAD,
+                                tau_erode_s: float = TAU_ERODE_HORSEHEAD_S,
+                                z_obs: float = Z_HORSEHEAD,
+                                H0_kmsMpc: float = H0_HORSEHEAD_KMSMPC,
+                                f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                                L_star_W: float = L_SIGMA_ORIONIS_W,
+                                rho_kgm3: float = RHO_HORSEHEAD_KGM3,
+                                m_particle_kg: float = _M_H_HORSEHEAD_KG,
+                                c_ms: float = C_LIGHT,
+                                B_T: float = B_HORSEHEAD_T,
+                                v_gas_ms: float = V_HORSEHEAD_MS,
+                                q_C: float = EV_J,
+                                m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                                rho_UA_val: float = None,
+                                rho_SCm_val: float = None,
+                                macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Horsehead Nebula (Barnard 33) erosion evolution master g (spec 09May2025).
+
+    g_Horsehead(r,t) = (G*M/r^2)*(1+H(z) t)*(1-E(t))*(1+f_TRZ)
+                    + P_rad
+                    + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where E(t) = E_0*(1 - exp(-t/tau_erode))  [reuses
+    _merger_progress_saturating_uqff -- exact same 1-exp(-t/tau) saturating
+    shape as Antennae M_coll(t)]
+    and P_rad = (L_star/(4 pi r^2 c))*(rho/m_H)  [NEW
+    _radiation_pressure_acceleration_uqff primitive]
+
+    Defaults reproduce spec example 1.097e-3 m/s^2 at t=1 Myr:
+    M=120 M_sun static (gas+dust+2 young stars; NO SF growth), r=1.182e16 m,
+    Sigma Orionis L=10^5 L_sun, rho=10^-21, m_H=1.67e-27, E_0=0.2,
+    tau_erode=5 Myr, z=0.0003, B=10^-5, v=10^5.
+
+    Decomposition at t=1 Myr per directive (all leaves full precision):
+      Ug1 = G*M/r^2 = 1.141e-10
+      H(z=0.0003)*t = 7.16e-5, (1+H t)=1.00007
+      E(1 Myr) = 0.2*(1-e^-0.2) = 0.03626, (1-E)=0.96374
+      grav*(1+H t)*(1-E)*(1+f_TRZ) = 1.21e-10  (carried full -- NOT negligible)
+      P_rad = (10^5*3.826e26)/(4 pi r^2 c) * (10^-21/1.67e-27) = 4.347e-5
+      Lorentz q*v*B/m_p*11*1e-12 = 1.053e-3 (dominant)
+      Total ~ 1.097e-3 m/s^2
+    """
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M
+    E_t = _merger_progress_saturating_uqff(t_s, E_0, tau_erode_s)        # saturating shape reuse
+    erosion_factor = 1.0 - E_t
+    grav_term = Ug1 * (1.0 + H_z_si * t_s) * erosion_factor * (1.0 + f_TRZ)
+    P_rad = _radiation_pressure_acceleration_uqff(L_star_W=L_star_W,
+                                                     r_m=r_m,
+                                                     rho_kgm3=rho_kgm3,
+                                                     m_particle_kg=m_particle_kg,
+                                                     c_ms=c_ms)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + P_rad + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
