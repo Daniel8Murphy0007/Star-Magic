@@ -32948,6 +32948,43 @@ def _b_j_thermal_scaled(T_s: float = T_S_SUN_K,
     (U_g3 ~ 1.8e49 vs 3.11e49 J/m^3 via _u_g3_stellar_planetary, spec eq 11)."""
     return B_j_ref * (T_s / T_s_ref)
 
+# ===== Quantum-variable bundle 9 (rho_UA, rho_Ui, v_SCm, rho_A, rho_SCm) =====
+# Already captured:
+#   rho_vac_[UA]  -> RHO_UA  = 7.09e-36 J/m^3 (L93)
+#   rho_vac_[SCm] -> RHO_SCM = 7.09e-37 J/m^3 (L80)
+# Missing named constants:
+#   rho_vac_Ui = 2.84e-36 J/m^3                (NEW value; level-13 inertial density)
+#   rho_vac_A  = 1.0e-23  J/m^3                (Aether background)
+#   v_SCm      = 1.0e8    m/s ~ c/3            (propagation velocity; distinct from
+#                                                Higgs VEV `v_SCm` proxy at L3668)
+# Missing derivation:
+#   E_react = (rho_SCm * v_SCm^2 / rho_vac_A) * exp(-kappa * t)  (SCm Velocity doc eq 7)
+RHO_VAC_UI         = 2.84e-36         # Universal Inertia vacuum energy density (J/m^3)
+RHO_VAC_AETHER     = 1.0e-23          # Aether background vacuum energy density (J/m^3)
+V_SCM_PROPAGATION  = 1.0e8            # [SCm] propagation velocity (m/s, ~c/3)
+
+def _e_react_from_scm_velocity(t_days: float = 0.0,
+                                  rho_scm: float = RHO_SCM,
+                                  v_scm: float = V_SCM_PROPAGATION,
+                                  rho_aether: float = RHO_VAC_AETHER,
+                                  kappa_per_day: float = KAPPA_REACT_PER_DAY) -> float:
+    """Reactor efficiency factor from SCm-velocity composition
+    (SCm Velocity doc eq 7):
+        E_react(t) = (rho_SCm * v_SCm^2 / rho_vac_A) * exp(-kappa * t)
+    Literal evaluation with spec defaults at t=0:
+        (7.09e-37 * (1e8)^2) / 1e-23 = 709.0
+    (Spec quotes ~1e46 for E_react amplitude; that requires the bundle-5
+    composition _e_react_full(A_0=E_REACT_AMPLITUDE). This composer
+    implements the SCm Velocity eq literally; both forms coexist.)"""
+    return (rho_scm * v_scm * v_scm / rho_aether) * math.exp(-kappa_per_day * t_days)
+
+def _aether_perturbation_eta_T(eta: float = 1.0e-22,
+                                  T_smunu: float = T_SMUNU_DIAGONAL) -> float:
+    """Perturbation magnitude eta * T_s^{mu nu} (UA / Aether doc eq 3, eq 6):
+        At eta = 1e-22, T_s = 1.123e7 -> 1.123e-15  (spec match eq 6/7).
+    Used as the diagonal correction in _aether_metric_a_munu (bundle 1)."""
+    return eta * T_smunu
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
