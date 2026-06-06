@@ -978,6 +978,24 @@ def _ngc_6302_g_primitive_sat() -> float:
     Structural: bipolar planetary nebula, BSFG·(mexican-hat + phonon)·spin."""
     return D_BSFG * (G1_K + PHI_RESONANCE) * SSQ
 
+def _spirals_sn_g_primitive_sat() -> float:
+    """Spirals and Supernovae (Doc 31) g = D_BSFG · BETA_I · (G4 + PHI_RES + SSQ)
+    Structural: spiral arm torque T_spiral + supernova feedback SN_term,
+    BSFG·beta_0·(BSFG + phonon + spin)."""
+    return D_BSFG * BETA_I * (G4_BSFG_COEF + PHI_RESONANCE + SSQ)
+
+def _outflow_g_primitive_sat() -> float:
+    """Young Stars Outflows (Doc 35) g = D_BSFG · G4 · (PHI_RES + BETA_I) · TRZ
+    Structural: protostellar outflow pressure P_outflow sculpting natal gas,
+    BSFG·BSFG·(phonon + beta_0)·leak."""
+    return D_BSFG * G4_BSFG_COEF * (PHI_RESONANCE + BETA_I) * TRZ
+
+def _big_bang_g_primitive_sat() -> float:
+    """Gravity Since the Big Bang (Doc 38) g = D_CRIT · D_BSFG · G1_K · (PHI_RES + SSQ + TRZ)
+    Structural: cosmic-evolution master (QG_term + DM_term + GW_term),
+    26·BSFG·mexican-hat·(phonon + spin + leak)."""
+    return D_CRIT * D_BSFG * G1_K * (PHI_RESONANCE + SSQ + TRZ)
+
 def _saturn_g_primitive_sat() -> float:
     """Saturn surface gravity g = G1_K · (G4 + TRZ) · D_BSFG
     Structural: gas giant with rings, mexican-hat·(BSFG + leak)·BSFG."""
@@ -1714,6 +1732,9 @@ _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     "m82_g":              _m82_g_primitive_sat,
     "lagoon_g":           _lagoon_g_primitive_sat,
     "ngc_6302_g":         _ngc_6302_g_primitive_sat,
+    "spirals_sn_g":       _spirals_sn_g_primitive_sat,
+    "outflow_g":          _outflow_g_primitive_sat,
+    "big_bang_g":         _big_bang_g_primitive_sat,
     "saturn_g":           _saturn_g_primitive_sat,
     "h_atom_g":           _h_atom_g_primitive_sat,
     "universe_diameter_g":_universe_diameter_g_primitive_sat,
@@ -1910,6 +1931,12 @@ def _master_constant_primitive(name: str):
         "m82": "m82_g", "cigar_galaxy": "m82_g",
         "lagoon": "lagoon_g", "lagoon_nebula": "lagoon_g", "m8": "lagoon_g",
         "ngc_6302": "ngc_6302_g", "butterfly_nebula": "ngc_6302_g",
+        "spirals_sn": "spirals_sn_g", "spirals_and_supernovae": "spirals_sn_g",
+        "spiral_sn": "spirals_sn_g", "spiral_supernovae": "spirals_sn_g",
+        "outflow": "outflow_g", "young_stars": "outflow_g",
+        "young_stars_outflow": "outflow_g", "protostellar_outflow": "outflow_g",
+        "big_bang": "big_bang_g", "gravity_since_big_bang": "big_bang_g",
+        "cosmic_evolution": "big_bang_g",
         "saturn": "saturn_g",
         "hydrogen_atom": "h_atom_g", "h_res": "h_atom_g", "hydrogen_resonance": "h_atom_g",
         "universe_diameter": "universe_diameter_g", "cosmogenesis": "universe_diameter_g",
@@ -5951,6 +5978,18 @@ def _f_env(name: str, **kwargs) -> float:
         return 0.1 * (kwargs.get("Z_magic", 0.0) + kwargs.get("N_magic", 0.0))
     if n in ("cosmo", "cosmological"):
         return kwargs.get("k_curv", 0.0) * kwargs.get("r_c", 0.0) ** 2
+    if n in ("torque", "spiral_torque"):
+        return kwargs.get("T_spiral", 0.0)
+    if n in ("shock", "wind_shock"):
+        return kwargs.get("W_shock", 0.0)
+    if n in ("outflow", "protostellar_outflow"):
+        return kwargs.get("P_outflow", 0.0)
+    if n in ("qg", "quantum_gravity"):
+        return kwargs.get("QG_term", 0.0)
+    if n in ("dm", "dark_matter_term"):
+        return kwargs.get("DM_term", 0.0)
+    if n in ("gw", "gravitational_wave"):
+        return kwargs.get("GW_term", 0.0)
     return 0.0
 
 def _g_compressed_cycle2(M: float = DEFAULT_M, r: float = DEFAULT_R,
