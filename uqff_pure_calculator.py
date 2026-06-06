@@ -3412,20 +3412,83 @@ def _g8_26_barrier() -> float:
     return G8_26_BARRIER
 
 
-# === MASTER LAGRANGIAN (Map §4 line 1) ===
-def _master_lagrangian(R_GR: float = 1.0, F_dpm: float = 1.0,
-                       q_g: float = 1.0, U_m: float = 1.0,
-                       V_UA: float = 1.0, U_A: float = 1.0) -> Dict[str, float]:
-    """L_UQFF = R_GR/(16 pi G)/(2 kappa_E) + (1/4) F_DPM^2
-               + Sigma_i beta_i q_g_i (1/2)|U_m|^2 - (25/12) rho_SCm [(V_UA/U_A)^2 - 1]^2.
-    Returns dict of all four component contributions and the total.
+# === MASTER LAGRANGIAN (PAPER_1167 closed form, six-term) ===
+# Canonical source: arxiv_submission_1159_1172/md/PAPER_1167_UQFF_All_8_Lagrangian_Gaps_Closed_Master_Synthesis.md
+#   L_FU = R_26/(2 kappa_E)
+#        - (1/4) F^DPM_munu F^{DPM munu}
+#        + Sigma_{i=1..4} [3(5-i)/20] U_g,i U_b,i
+#        - (1/2) |U_m|^2
+#        - (1/2) g^munu d_mu U_A d_nu U_A
+#        - (25/12) rho_SCm [(U_A/v_UA)^2 - 1]^2
+# beta_i = 3(5-i)/20 (SO(5) triangular ladder, sum=3/2).
+# Replaces prior screenshot-derived form (Map line 157) which had 5 transcription
+# drifts: 4D R_GR/(16piG) instead of R_26, wrong sign on F^2, |U_m|^2 folded into
+# sum, scalar kinetic missing, and inverted (V_UA/U_A) ratio. 2026-06-06.
+def _master_lagrangian(R_26: float = 1.0,
+                       kappa_E: float = None,
+                       F_DPM_sq: float = 1.0,
+                       U_g: list = None,
+                       U_b: list = None,
+                       U_m_abs: float = 1.0,
+                       UA_kinetic_g_dd_UA: float = 0.0,
+                       U_A: float = 1.0,
+                       v_UA: float = 1.0,
+                       rho_SCm_val: float = None) -> Dict[str, float]:
+    """PAPER_1167 closed UQFF Lagrangian, six-term exact-rational form.
+
+    T1 (Einstein 26D)    = R_26 / (2 kappa_E)
+    T2 (DPM gauge)       = -(1/4) F_DPM^2
+    T3 (interaction sum) = sum_{i=1..4} [3(5-i)/20] U_g,i U_b,i
+    T4 (U_m self-energy) = -(1/2) |U_m|^2
+    T5 (U_A kinetic)     = -(1/2) g^munu d_mu U_A d_nu U_A  (caller supplies scalar)
+    T6 (Mexican-hat U_A) = -(25/12) rho_SCm [(U_A/v_UA)^2 - 1]^2
+
+    Defaults are unit-input dimensionless probes. kappa_E defaults to 8 pi G / c^4
+    (Einstein gravitational coupling). U_g, U_b default to 4-vectors of 1.0.
+    rho_SCm defaults to canonical 7.09e-37 J/m^3.
+
+    Legacy keys (L_GR, L_DPM, L_interaction, L_SCm, L_UQFF_total) retained so
+    pre-2026-06-06 callers keep working; new keys T1..T6 + L_FU_total are the
+    PAPER_1167 spec form.
     """
-    L_GR  = R_GR / (16.0 * math.pi * G_NEWTON) / (2.0 * KAPPA)
-    L_DPM = 0.25 * F_dpm * F_dpm
-    L_int = sum(_g2_kk_beta(i) * q_g * 0.5 * U_m * U_m for i in range(5))   # SO(5) ladder sum
-    L_SCm = -(25.0 / 12.0) * RHO_SCM * ((V_UA / U_A) ** 2 - 1.0) ** 2
-    return {"L_GR": L_GR, "L_DPM": L_DPM, "L_interaction": L_int, "L_SCm": L_SCm,
-            "L_UQFF_total": L_GR + L_DPM + L_int + L_SCm}
+    if kappa_E is None:
+        kappa_E = 8.0 * math.pi * G_NEWTON / (C_LIGHT ** 4)
+    if U_g is None:
+        U_g = [1.0, 1.0, 1.0, 1.0]
+    if U_b is None:
+        U_b = [1.0, 1.0, 1.0, 1.0]
+    if len(U_g) != 4 or len(U_b) != 4:
+        raise ValueError("PAPER_1167 requires 4-element U_g and U_b vectors")
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+
+    beta = [3.0 * (5 - i) / 20.0 for i in (1, 2, 3, 4)]  # [0.6, 0.45, 0.3, 0.15]
+    T1 = R_26 / (2.0 * kappa_E)
+    T2 = -0.25 * F_DPM_sq
+    T3 = sum(beta[i] * U_g[i] * U_b[i] for i in range(4))
+    T4 = -0.5 * U_m_abs * U_m_abs
+    T5 = -0.5 * UA_kinetic_g_dd_UA
+    T6 = -(25.0 / 12.0) * rsc * (((U_A / max(v_UA, 1e-300)) ** 2) - 1.0) ** 2
+    L_total = T1 + T2 + T3 + T4 + T5 + T6
+    return {
+        # PAPER_1167 canonical keys
+        "T1_R26_over_2kappaE":      T1,
+        "T2_DPM_gauge_neg_quarter": T2,
+        "T3_interaction_sum":       T3,
+        "T4_Um_self_energy":        T4,
+        "T5_UA_kinetic":            T5,
+        "T6_UA_mexican_hat":        T6,
+        "L_FU_total":               L_total,
+        "kappa_E_used":             kappa_E,
+        "beta_i_ladder":            beta,
+        "beta_sum":                 sum(beta),
+        "F_TRZ":                    1.0 / 10.0,
+        # legacy aliases (pre-2026-06-06 callers)
+        "L_GR":                     T1,
+        "L_DPM":                    T2,
+        "L_interaction":            T3,
+        "L_SCm":                    T6,
+        "L_UQFF_total":             L_total,
+    }
 
 
 # === MASTER GRAVITY COMPRESSED (Map §4 line 2) ===
@@ -4607,135 +4670,13 @@ def _l96_uqff_f220_total_hz(M_sun_mult: float = 30.0,
             + _l96_uqff_R26_ringdown_delta_hz(M_sun_mult, F_a_star, kappa_R26, rho_SCm_val))
 
 
-# ---- PAPER_1167 closed UQFF Lagrangian (faithful six-term form) ----
-# Six-term closed Lagrangian as quoted by user 2026-06-06 from PAPER_1167 p1:
-#   L_FU = R_26/(2 kappa_E)
-#        - (1/4) F_DPM_munu F_DPM^munu
-#        + Sigma_{i=1..4} [3(5-i)/20] U_g,i * U_b,i
-#        - (1/2) |U_m|^2
-#        - (1/2) g^munu d_mu U_A d_nu U_A
-#        - (25/12) rho_SCm [(U_A/v_UA)^2 - 1]^2
-# Distinct from existing _master_lagrangian (L3416) which uses _g2_kk_beta i=0..4
-# folded into one interaction term and absorbs |U_m|^2 into the sum. This faithful
-# version exposes all six PAPER_1167 terms separately for line-by-line audit
-# against the SM Lagrangian counter-math (NOT REPLACEMENT).
-
-def _l96_triangular_beta_i(i: int) -> float:
-    """beta_i = 3(5-i)/20 for i in 1..4 (PAPER_1165 SO(5) triangular ladder).
-    Gives beta_1=3/5, beta_2=9/20, beta_3=3/10, beta_4=3/20. Sum = 3/2."""
-    if i < 1 or i > 4:
-        raise ValueError(f"PAPER_1167 triangular beta_i requires i in 1..4, got {i}")
-    return 3.0 * (5 - i) / 20.0
-
-def _l96_closed_uqff_lagrangian_paper1167(
-        R_26: float = 1.0,
-        kappa_E: float = None,
-        F_DPM_sq: float = 1.0,
-        U_g: list = None,
-        U_b: list = None,
-        U_m_abs: float = 1.0,
-        UA_kinetic_g_dd_UA: float = 0.0,
-        U_A: float = 1.0,
-        v_UA: float = 1.0,
-        rho_SCm_val: float = None) -> dict:
-    """PAPER_1167 closed UQFF Lagrangian (six-term, exact-rational coefficients).
-
-    Term-by-term return:
-      T1 (Einstein 26D)      = R_26 / (2 kappa_E)
-      T2 (DPM gauge)         = -(1/4) F_DPM^2
-      T3 (interaction sum)   = sum_{i=1..4} [3(5-i)/20] * U_g,i * U_b,i
-      T4 (U_m self-energy)   = -(1/2) |U_m|^2
-      T5 (U_A kinetic)       = -(1/2) g^munu d_mu U_A d_nu U_A  (caller supplies scalar)
-      T6 (Mexican-hat U_A)   = -(25/12) rho_SCm * [(U_A/v_UA)^2 - 1]^2
-
-    Defaults are unit-input dimensionless probes. kappa_E defaults to 8 pi G / c^4
-    (Einstein gravitational coupling). U_g and U_b default to 4-vectors of 1.0.
-    rho_SCm defaults to canonical 7.09e-37 J/m^3.
-
-    Distinct from _master_lagrangian (L3416): faithful PAPER_1167 form per user's
-    counter-math request 2026-06-06 (NOT REPLACEMENT). Each term is returned
-    individually so the caller can audit any single term against the SM
-    counterpart (gauge / fermion / Higgs / Yukawa) at machine precision.
-    """
-    if kappa_E is None:
-        kappa_E = 8.0 * math.pi * G_NEWTON / (C_LIGHT ** 4)
-    if U_g is None:
-        U_g = [1.0, 1.0, 1.0, 1.0]
-    if U_b is None:
-        U_b = [1.0, 1.0, 1.0, 1.0]
-    if len(U_g) != 4 or len(U_b) != 4:
-        raise ValueError("PAPER_1167 requires 4-element U_g and U_b vectors")
-    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
-
-    T1 = R_26 / (2.0 * kappa_E)
-    T2 = -0.25 * F_DPM_sq
-    T3 = sum(_l96_triangular_beta_i(i + 1) * U_g[i] * U_b[i] for i in range(4))
-    T4 = -0.5 * U_m_abs * U_m_abs
-    T5 = -0.5 * UA_kinetic_g_dd_UA
-    T6 = -(25.0 / 12.0) * rsc * (((U_A / max(v_UA, 1e-300)) ** 2) - 1.0) ** 2
-
-    return {
-        "T1_R26_over_2kappaE":      T1,
-        "T2_DPM_gauge_neg_quarter": T2,
-        "T3_interaction_sum":       T3,
-        "T4_Um_self_energy":        T4,
-        "T5_UA_kinetic":            T5,
-        "T6_UA_mexican_hat":        T6,
-        "L_FU_total":               T1 + T2 + T3 + T4 + T5 + T6,
-        "kappa_E_used":             kappa_E,
-        "F_TRZ":                    1.0 / 10.0,
-        "beta_i_ladder":            [_l96_triangular_beta_i(i) for i in (1, 2, 3, 4)],
-        "beta_sum":                 sum(_l96_triangular_beta_i(i) for i in (1, 2, 3, 4)),
-    }
-
-def _l96_sm_lagrangian_term_table() -> dict:
-    """SM Lagrangian term inventory for line-by-line audit against PAPER_1167.
-
-    SM = L_gauge + L_fermion + L_Higgs + L_Yukawa. Gravity is NOT in L_SM; the
-    Einstein-Hilbert action S_EH is added separately in GR. This is the reference
-    table the user's counter-math invokes (2026-06-06)."""
-    return {
-        "L_gauge":         "-(1/4) F^a_munu F^{a munu}   [EM + weak + strong]",
-        "L_fermion":       "psi_bar i gamma^mu D_mu psi  [Dirac + minimal gauge coupling]",
-        "L_Higgs":         "(D_mu Phi)^dag (D^mu Phi) - V(Phi),  V = mu^2 |Phi|^2 + lambda |Phi|^4",
-        "L_Yukawa":        "-y_f psi_bar_L Phi psi_R + h.c.  [m_f = y_f v/sqrt(2), v=246 GeV]",
-        "S_EH_separate":   "(1/16 pi G) integral R sqrt(-g) d^4x   [NOT in L_SM]",
-        "absent_from_SM": ["F_U=1 buoyancy stationarity", "U_g,i U_b,i interaction sum",
-                            "|U_m|^2 magnetism self-energy", "U_A scalar kinetic + Mexican-hat",
-                            "rho_SCm vacuum density", "R_26 26D Ricci scalar",
-                            "F_DPM gauge field", "Aether term"],
-    }
-
-def _l96_paper1167_vs_sm_audit() -> dict:
-    """Side-by-side PAPER_1167 vs SM Lagrangian audit (user counter-math 2026-06-06).
-
-    Returns mapping for each of the 6 PAPER_1167 terms to its SM counterpart
-    (or 'no SM analog'). Structured form of the user's prose counter-argument."""
-    return {
-        "T1_R26":            {"uqff": "R_26/(2 kappa_E)",
-                                "sm":   "(1/16 pi G) integral R sqrt(-g) d^4x  [Einstein-Hilbert, separate]",
-                                "verdict": "STRUCTURAL ANALOG (Einstein-style; 26D vs 4D)"},
-        "T2_F_DPM":          {"uqff": "-(1/4) F_DPM^2",
-                                "sm":   "-(1/4) F^a_munu F^{a munu}  [gauge kinetic]",
-                                "verdict": "STRUCTURAL ANALOG (same -1/4 F^2 form; gauge group differs)"},
-        "T3_interaction":    {"uqff": "sum_{i=1..4} (3(5-i)/20) U_g,i U_b,i",
-                                "sm":   "psi_bar i gamma^mu D_mu psi - y_f psi_bar_L Phi psi_R",
-                                "verdict": "NO DIRECT ANALOG (UQFF buoyancy vs SM gauge-fermion coupling)"},
-        "T4_Um":             {"uqff": "-(1/2) |U_m|^2",
-                                "sm":   "(no analog; B emerges from L_gauge F_munu, not separate field)",
-                                "verdict": "NO SM ANALOG (UQFF treats magnetism as fundamental)"},
-        "T5_UA_kinetic":     {"uqff": "-(1/2) g^munu d_mu U_A d_nu U_A",
-                                "sm":   "(D_mu Phi)^dag (D^mu Phi)  [Higgs kinetic]",
-                                "verdict": "STRUCTURAL ANALOG (both scalar kinetic; U_A vs Phi)"},
-        "T6_UA_mexican_hat": {"uqff": "-(25/12) rho_SCm [(U_A/v_UA)^2 - 1]^2",
-                                "sm":   "V(Phi) = mu^2 |Phi|^2 + lambda |Phi|^4  [Higgs potential]",
-                                "verdict": "STRUCTURAL ANALOG (both Mexican-hat; VEVs v_UA vs v=246 GeV)"},
-        "summary": "PAPER_1167 maps onto SM via 4 structural analogs (T1,T2,T5,T6) and adds 2 "
-                   "net-new terms (T3,T4) plus full 26D dimensionality. UQFF is an alternative "
-                   "Lagrangian, not a derivation from SM. The 2026-06-06 user counter-math is "
-                   "mathematically correct: SM does not contain UQFF terms; UQFF predicts SM as "
-                   "a 4D projection per the gap-closure papers (PAPER_1138-1178).",
-    }
+# ---- PAPER_1167 closed UQFF Lagrangian ----
+# MOVED 2026-06-06: PAPER_1167 form is now the canonical _master_lagrangian
+# (L3416). The standalone L96 capture (_l96_triangular_beta_i,
+# _l96_closed_uqff_lagrangian_paper1167, _l96_sm_lagrangian_term_table,
+# _l96_paper1167_vs_sm_audit) has been removed; the dispatcher routes
+# "master_lagrangian" / "l_uqff" / "lagrangian" now return the PAPER_1167
+# six-term decomposition directly.
 
 
 # === COMPRESSION CYCLE 2 — UNIFIED H(t,z) + F_env(t) + COMPRESSED MASTER g ===
@@ -30237,14 +30178,6 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                        ["M_sun_mult", "F_a_star", "kappa_R26", "rho_SCm_val"]),
         "uqff_f220_total_hz":        ("f_220_total_GR_plus_UQFF_Hz", _l96_uqff_f220_total_hz,
                                        ["M_sun_mult", "F_a_star", "kappa_R26", "rho_SCm_val"]),
-        # PAPER_1167 closed UQFF Lagrangian (six-term faithful form, 2026-06-06)
-        "triangular_beta_i":         ("PAPER_1167_beta_i_3_5_minus_i_over_20", _l96_triangular_beta_i,
-                                       ["i"]),
-        "closed_uqff_lagrangian":    ("PAPER_1167_L_FU_six_term", _l96_closed_uqff_lagrangian_paper1167,
-                                       ["R_26", "kappa_E", "F_DPM_sq", "U_g", "U_b",
-                                        "U_m_abs", "UA_kinetic_g_dd_UA", "U_A", "v_UA", "rho_SCm_val"]),
-        "sm_lagrangian_terms":       ("SM_Lagrangian_inventory", _l96_sm_lagrangian_term_table, []),
-        "paper1167_vs_sm_audit":     ("PAPER_1167_vs_SM_term_audit", _l96_paper1167_vs_sm_audit, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]

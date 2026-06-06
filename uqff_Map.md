@@ -153,8 +153,9 @@ Canonical (from Image 27 lockdown; supersedes Image 21 renames where signatures 
 
 ## 4. Master Equations to Encode (verbatim, from Image 21)
 
-- [ ] **Master Lagrangian:**
-  `L_UQFF = R_GR/(16πG)/(2κ_E) + (1/4) F_μν^{DPM} F^{DPM μν} + Σ β_i (q_g_i) U_(b_i) (1/2)|U_m|² − (25/12) ρ_SCm [(V_UA/U_A)² − 1]²`
+- [ ] **Master Lagrangian (PAPER_1167 canonical form):**
+  `L_FU = R_26/(2κ_E) − (1/4) F^DPM_μν F^{DPM μν} + Σ_{i=1..4} [3(5−i)/20] U_{g,i} U_{b,i} − (1/2)|U_m|² − (1/2) g^μν ∂_μU_A ∂_νU_A − (25/12) ρ_SCm [(U_A/v_UA)² − 1]²`
+  (β_i = 3(5−i)/20 ladder: [3/5, 9/20, 3/10, 3/20], Σ = 3/2. Supersedes Image-21 screenshot summary on 2026-06-06; calculator: `_master_lagrangian` in `uqff_pure_calculator.py`.)
 - [ ] **Master gravity (compressed):**
   `g(1,t) = Ug1 + Ug2 + Ug3 + Ug4 + ψ + φ + quantum_integral + buoyancy_fluid + system_specific_terms`
 - [ ] **Triadic:** `g(r,t) = w_C g_comp + w_R g_res + w_B g_buoy` (<1% residual)
