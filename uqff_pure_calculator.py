@@ -4081,6 +4081,211 @@ def _l95_l_horizon_bh_entropy(A_m2: float = 1.0, T_H: float = 1.0,
     ell_P_sq = hbar * G_NEWTON / (C_LIGHT ** 3)
     return A_m2 / (4.0 * ell_P_sq) * Delta_SCm / (K_B * max(T_H, 1e-300)) * S_26
 
+# ---- Universal buoyancy-sector scaffolding (16-paper batch, 2026-06-06) ----
+# All 16 papers (PAPER_503/882/886/888/894/898/907/946/957/1065/1066/1089/1090/
+# 1094/1095/1103) reduce to one template varied by Euler-Lagrange delta-S/delta-phi=0.
+# Single template implementation; thin wrappers below specialize per sector.
+
+def _l95_buoyancy_sector_template(Ug_list: List[float] = None,
+                                   Omega_g: float = 1.0,
+                                   M: float = M_SUN,
+                                   d_g: float = DEFAULT_R,
+                                   UA: float = 1.0e-4,
+                                   F_n: float = 1.0e-10,
+                                   Phi: float = PHI_RESONANCE,
+                                   beta_i: float = BETA_I,
+                                   s26_modulation: bool = False) -> dict:
+    """Universal buoyancy-sector Lagrangian template (16-paper batch core).
+
+      L_sector = -beta_i * sum_i U_g,i * Omega_g * (M/d_g) * [UA] + F_n * Phi   (* S_26 optional)
+
+    The scaffolding all 16 attached papers share. Varied via delta-S/delta-phi=0
+    (use _stationarity_residual on the returned dL_dphi field for closure).
+
+    Returns dict: {L_buoy, L_phonon, L_total, dL_dphi (= L_total at F_U=1 stationarity
+    base point), F_U_at_stationarity}. F_U = 1 holds iff L_buoy + L_phonon == 0,
+    i.e. the buoyancy term balances the phonon drive.
+    """
+    if Ug_list is None:
+        Ug_list = [1.0, 1.0, 1.0, 1.0]
+    s26_factor = S_26 if s26_modulation else 1.0
+    L_buoy   = -beta_i * sum(Ug_list) * Omega_g * (M / max(d_g, 1e-300)) * UA * s26_factor
+    L_phonon = F_n * Phi * s26_factor
+    L_total  = L_buoy + L_phonon
+    F_U_at_stationarity = 1.0 if abs(L_total) < 1e-30 * max(abs(L_buoy), abs(L_phonon), 1.0) else (
+        1.0 + L_total / max(abs(L_phonon), 1e-300))
+    return {"L_buoy": L_buoy, "L_phonon": L_phonon, "L_total": L_total,
+            "dL_dphi": L_total, "F_U_at_stationarity": F_U_at_stationarity,
+            "beta_i": beta_i, "s26_applied": s26_modulation}
+
+def _l95_l_expansion(E_plus_t: float = 1.0, V_m3: float = 1.0e48) -> float:
+    """L_expansion = E+(t) * V * S_26 (PAPER_882). Positive E+(t) -> expansion regime."""
+    return E_plus_t * V_m3 * S_26
+
+def _l95_l_erosion(E_minus_t: float = 1.0, V_m3: float = 1.0e48) -> float:
+    """L_erosion = -E-(t) * V * S_26 (PAPER_886). Negative E(t) drives erosion."""
+    return -abs(E_minus_t) * V_m3 * S_26
+
+def _l95_l_e_of_t_unified(E_plus_t: float = 1.0, E_minus_t: float = 0.0,
+                           V_m3: float = 1.0e48) -> dict:
+    """L_E(t) unified = (E+(t) - E-(t)) * V * S_26 (PAPER_888).
+    Net L = expansion - erosion in one variational principle. Returns components
+    + net L_total + regime ('expansion'|'erosion'|'balanced')."""
+    L_exp = _l95_l_expansion(E_plus_t, V_m3)
+    L_ero = _l95_l_erosion(E_minus_t, V_m3)
+    L_total = L_exp + L_ero
+    if L_total > 1e-300:
+        regime = "expansion"
+    elif L_total < -1e-300:
+        regime = "erosion"
+    else:
+        regime = "balanced"
+    return {"L_expansion": L_exp, "L_erosion": L_ero, "L_total": L_total,
+            "regime": regime}
+
+def _l95_l_scm_e_t(t: float = 0.0, Gamma: float = 1.0, R: float = 1.0,
+                    V_m3: float = 1.0e48, V_fil_m3: float = 1.0) -> float:
+    """L_SCm-E(t) = rho_SCm * V * c^2 * (2R-1) * V_fil * S_26 (PAPER_894).
+    SCm condensate carrier of the E(t) time-evolution. Reduces to L_DE form at
+    V_fil=1 (PAPER_1090 cross-link)."""
+    return RHO_SCM * V_m3 * (C_LIGHT ** 2) * (2.0 * R - 1.0) * V_fil_m3 * S_26
+
+def _l95_l_phonon(E_net: float = 1.0, V_m3: float = 1.0e-30) -> float:
+    """L_phonon = E_net * V * Phi_1.25THz * S_26 (PAPER_898).
+    Phonon-amplitude carrier at the 1.25 THz Holmlid resonance."""
+    return E_net * V_m3 * PHI_RESONANCE * S_26
+
+def _l95_l_stellar_wind(rho_w: float = 1.0e-13, v_w: float = 1.0e6,
+                         M_star: float = M_SUN, d_neb: float = 1.0e16,
+                         Ug_list: List[float] = None,
+                         Omega_g: float = 1.0e-7, UA: float = 1.0e-4,
+                         F_n: float = 1.0e-10) -> dict:
+    """L_wind = -beta_i sum_i Ug,i Omega_g (M/d_neb) [UA] + F_n Phi + rho_w v_w^2
+    PAPER_907. Wind ram-pressure term added to the buoyancy template; returns
+    template dict augmented with rho_w v_w^2 ram-pressure contribution.
+
+    Stellar-wind EOM at stationarity: m*dv_w/dt = -dL/dr (radial component).
+    Returns {L_template, ram_pressure, L_total_wind}.
+    """
+    base = _l95_buoyancy_sector_template(Ug_list, Omega_g, M_star, d_neb,
+                                          UA, F_n, PHI_RESONANCE, BETA_I, False)
+    ram = rho_w * v_w * v_w
+    return {"L_template": base["L_total"], "ram_pressure_Pa": ram,
+            "L_total_wind": base["L_total"] + ram,
+            "F_U_at_stationarity": base["F_U_at_stationarity"]}
+
+def _l95_l_merger_critical_radius(Ug_list: List[float] = None,
+                                    M: float = M_SUN,
+                                    F_n: float = 1.0e-10,
+                                    Phi: float = PHI_RESONANCE,
+                                    beta_i: float = BETA_I) -> dict:
+    """PAPER_946 merger critical radius: r_crit = 2 beta_i sum_i U_g,i M / |F_n Phi|.
+
+    Returns {r_crit_m, L_buoy_at_rcrit, L_phonon, transition} where transition
+    in {'pre_merger', 'post_merger', 'at_crit'} is judged from sign of
+    (L_buoy + L_phonon)."""
+    if Ug_list is None:
+        Ug_list = [1.0, 1.0, 1.0, 1.0]
+    sum_ug = sum(Ug_list)
+    denom = abs(F_n * Phi)
+    if denom < 1e-300:
+        r_crit = float("inf")
+    else:
+        r_crit = 2.0 * beta_i * sum_ug * M / denom
+    # Evaluate L_buoy at r=r_crit/2 (well inside) for transition flag
+    r_probe = max(r_crit * 0.5, 1.0e-30)
+    L_buoy_probe = -beta_i * sum_ug * (M / r_probe) * 1.0e-4
+    L_phon = F_n * Phi
+    L_tot = L_buoy_probe + L_phon
+    if abs(L_tot) < 1e-30 * max(abs(L_buoy_probe), abs(L_phon), 1.0):
+        transition = "at_crit"
+    elif L_tot < 0.0:
+        transition = "pre_merger"
+    else:
+        transition = "post_merger"
+    return {"r_crit_m": r_crit, "L_buoy_at_probe": L_buoy_probe,
+            "L_phonon": L_phon, "L_total_probe": L_tot,
+            "transition": transition}
+
+def _l95_l_cooper_pair_bcs_gap(Delta_eV: float = 5.17e-3,
+                                T_K: float = 300.0,
+                                V_SCm: float = 1.0,
+                                F_UBi: float = 1.0,
+                                F_U: float = 1.0) -> dict:
+    """PAPER_957 Cooper-pair Lagrangian / BCS self-consistent gap equation:
+
+      1 == (V_SCm / 2) * tanh(Delta / (2 k_B T)) * Delta * S_26 * F_UBi / F_U
+
+    Returns {lhs (always 1), rhs, gap_residual = rhs - 1, T_c_K (lambda-onset
+    estimate), holds (machine equality)}. Default gap = 5.17 meV = PAPER_1095
+    Delta_SCm (BCS analog)."""
+    Delta_J = Delta_eV * EV_J
+    if T_K <= 0.0 or F_U == 0.0:
+        return {"lhs": 1.0, "rhs": float("inf"), "gap_residual": float("inf"),
+                "T_c_K": None, "holds": False}
+    x = Delta_J / (2.0 * K_B * T_K)
+    # Cap tanh argument for numerical stability
+    x_capped = min(x, 700.0)
+    tanh_val = math.tanh(x_capped)
+    rhs = (V_SCm / 2.0) * tanh_val * Delta_J * S_26 * (F_UBi / F_U)
+    gap_residual = rhs - 1.0
+    # T_c when tanh -> 1 (low-T limit): T_c ~ Delta_J / (2 k_B * atanh(2/(V_SCm Delta_J S_26 F_UBi/F_U)))
+    target = 2.0 / max(V_SCm * Delta_J * S_26 * (F_UBi / F_U), 1e-300)
+    if 0.0 < target < 1.0:
+        T_c = Delta_J / (2.0 * K_B * math.atanh(target))
+    else:
+        T_c = None
+    return {"lhs": 1.0, "rhs": rhs, "gap_residual": gap_residual,
+            "T_c_K": T_c, "holds": abs(gap_residual) < 1e-30}
+
+def _l95_l_lqg_spin_foam(j: float = 0.5, gamma_immirzi: float = 0.2375,
+                          A_v_amplitude: float = 1.0,
+                          F_n: float = 1.0e-10,
+                          Phi: float = PHI_RESONANCE) -> dict:
+    """PAPER_1103 LQG spin-foam buoyancy-sector Lagrangian:
+
+      L_LQG = A_v(j) * [-beta_i Ug Omega (M/d) [UA] + F_n Phi]
+            + lambda_phonon * Phi^2  (self-interaction)
+
+    Returns {A_v_factor, L_template, L_phonon_selfint, L_total}.
+    A_v(j) = sqrt(2j+1) (SU(2) dimension; vertex amplitude scaling)."""
+    A_v = math.sqrt(2.0 * j + 1.0) * A_v_amplitude
+    base = _l95_buoyancy_sector_template(F_n=F_n, Phi=Phi)
+    L_self = (Phi * Phi) * gamma_immirzi   # phonon self-interaction
+    return {"A_v_factor": A_v,
+            "L_template": A_v * base["L_total"],
+            "L_phonon_selfint": L_self,
+            "L_total": A_v * base["L_total"] + L_self,
+            "gamma_immirzi": gamma_immirzi}
+
+def _l95_paper503_wolfram_lagrangian_symbolic() -> str:
+    """PAPER_503 UQFF full Lagrangian Wolfram syntax export (symbolic, not numeric).
+    Returns the canonical Wolfram-language string for L_UQFF = L_GR + L_SCm +
+    L_phonon + L_interaction + sum_sectors L_buoyancy. Use for symbolic
+    re-derivation cross-check."""
+    return ("LUQFF[t_, r_, phi_] := "
+            "R26[r]/(2 kappaE) "
+            "- (1/4) FDPM[t, r]^2 "
+            "+ Sum[(3 (5 - i)/20) Ug[i] Ub[i], {i, 1, 4}] "
+            "- (1/2) Um[t, r]^2 "
+            "- (1/2) gMuNu[r] D[UA[t, r], t] D[UA[t, r], t] "
+            "- (25/12) rhoSCm ((UA[t, r]/vUA)^2 - 1)^2 "
+            "+ Sum[Lsector[s, t, r, phi], {s, sectorList}]")
+
+def _l95_l_uqff_master_sum(L_GR: float = 0.0, L_SCm: float = 0.0,
+                            L_phonon: float = 0.0, L_interaction: float = 0.0,
+                            sector_contribs: List[float] = None) -> dict:
+    """PAPER_1066 master Lagrangian sum: L_UQFF = L_GR + L_SCm + L_phonon
+    + L_interaction + sum_s L_buoyancy_sector_s.
+    Returns {L_GR, L_SCm, L_phonon, L_interaction, L_sectors_sum, L_UQFF_total}."""
+    if sector_contribs is None:
+        sector_contribs = []
+    L_sectors = sum(float(x) for x in sector_contribs)
+    L_total = L_GR + L_SCm + L_phonon + L_interaction + L_sectors
+    return {"L_GR": L_GR, "L_SCm": L_SCm, "L_phonon": L_phonon,
+            "L_interaction": L_interaction, "L_sectors_sum": L_sectors,
+            "L_UQFF_total": L_total, "n_sectors": len(sector_contribs)}
+
 def _l95_fubi_closure_identity(F_UBi: float = 1.0, F_UBi_i: float = 1.0,
                                  F_U: float = 2.0) -> Dict[str, Any]:
     """Inside/outside closure: F_UBi + F_UBi,i == F_U (PAPER_1096)."""
@@ -29994,6 +30199,36 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         "l_de_buoyancy":        ("L_DE_buoyancy", _l95_l_de_buoyancy, ["R", "V_m3"]),
         "l_horizon_bh_entropy": ("L_horizon_BH_entropy_term", _l95_l_horizon_bh_entropy,
                                   ["A_m2", "T_H", "Delta_SCm"]),
+        # 16-paper batch: universal buoyancy-sector scaffolding + missing sector L (2026-06-06)
+        "l_buoyancy_template":  ("buoyancy_sector_template_L", _l95_buoyancy_sector_template,
+                                  ["Ug_list", "Omega_g", "M", "d_g", "UA", "F_n", "Phi",
+                                   "beta_i", "s26_modulation"]),
+        "l_expansion":          ("L_expansion_PAPER_882", _l95_l_expansion,
+                                  ["E_plus_t", "V_m3"]),
+        "l_erosion":            ("L_erosion_PAPER_886", _l95_l_erosion,
+                                  ["E_minus_t", "V_m3"]),
+        "l_e_of_t":             ("L_E_of_t_unified_PAPER_888", _l95_l_e_of_t_unified,
+                                  ["E_plus_t", "E_minus_t", "V_m3"]),
+        "l_scm_e_t":            ("L_SCm_E_of_t_PAPER_894", _l95_l_scm_e_t,
+                                  ["t", "Gamma", "R", "V_m3", "V_fil_m3"]),
+        "l_phonon":             ("L_phonon_PAPER_898", _l95_l_phonon,
+                                  ["E_net", "V_m3"]),
+        "l_stellar_wind":       ("L_stellar_wind_PAPER_907", _l95_l_stellar_wind,
+                                  ["rho_w", "v_w", "M_star", "d_neb", "Ug_list",
+                                   "Omega_g", "UA", "F_n"]),
+        "l_merger_rcrit":       ("L_merger_critical_radius_PAPER_946",
+                                  _l95_l_merger_critical_radius,
+                                  ["Ug_list", "M", "F_n", "Phi", "beta_i"]),
+        "l_cooper_bcs_gap":     ("L_Cooper_pair_BCS_gap_PAPER_957",
+                                  _l95_l_cooper_pair_bcs_gap,
+                                  ["Delta_eV", "T_K", "V_SCm", "F_UBi", "F_U"]),
+        "l_lqg_spin_foam":      ("L_LQG_spin_foam_PAPER_1103", _l95_l_lqg_spin_foam,
+                                  ["j", "gamma_immirzi", "A_v_amplitude", "F_n", "Phi"]),
+        "paper503_wolfram":     ("PAPER_503_Wolfram_syntax_export",
+                                  _l95_paper503_wolfram_lagrangian_symbolic, []),
+        "l_uqff_master_sum":    ("L_UQFF_master_sum_PAPER_1066", _l95_l_uqff_master_sum,
+                                  ["L_GR", "L_SCm", "L_phonon", "L_interaction",
+                                   "sector_contribs"]),
         "fubi_closure_identity":("F_UBi_closure_identity", _l95_fubi_closure_identity,
                                   ["F_UBi", "F_UBi_i", "F_U"]),
         "rho_vac_ladder_n":     ("rho_vac_26_level_ladder", _l95_rho_vac_ladder_n, ["n"]),
