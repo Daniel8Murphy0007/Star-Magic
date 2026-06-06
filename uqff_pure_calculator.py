@@ -3533,6 +3533,14 @@ def _rho_ua_mass_equiv() -> float:
     """UA mass-density equivalent (kg/m^3) = rho_UA_energy / c^2."""
     return RHO_UA / (C_LIGHT * C_LIGHT)
 
+# === LAYER 93 (Map §19 cluster (bx)): ORPHAN-AUDIT SHIPMENT — single-term vacuum-energy reducer ===
+# Promotes the canonical UQFF_THEORY.md per-term rho_vac,X = f_i * E_n / V definition
+# (grok_b8e305e6_1f29.md verified) to a first-class dispatcher-callable helper. Companion
+# of Step 7b (_derive_rho_scm_from_quantum_chain, 26-level sum) and Step 7c
+# (_vacuum_ledger_literal_forms, literal Plan Image 3 forms). Pairs with the L31
+# class-label table (_l31_classify_label / _l31_class_labels_table) further below.
+# Dispatcher routes: rho_vac_term, vac_energy_term, rho_vac_single, rho_vac_x,
+# vac_term_single (plus V=0 NaN edge). See _resolve_uqff_ledger Layer 93 branch.
 def _compute_rho_vac_energy(f_i: float, E_n: float, V: float) -> float:
     """Exact UQFF_THEORY.md definition (grok_b8e305e6 verified):
        rho_vac,X = sum(f_i * E_i,X) / V  (J/m^3)
@@ -8602,6 +8610,13 @@ def _l31_classify(M_kg: float) -> str:
         return "B_Transition"
     return "C_SubHorizon"
 
+# === LAYER 93 (Map §19 cluster (bx)) continued: L31 BH classification labels exposed ===
+# Human-readable label table for the L31 black-hole classification (A_Keplerian /
+# B_Transition / C_SubHorizon). Promoted from inline orphan to dispatcher-callable
+# per the 2026-06-05 orphan audit. Dispatcher routes: l31_class_labels, l31_labels,
+# bh_class_labels (input keys) + {"l31":"labels"} / {"l31":"class_labels"} /
+# {"l31":"label_table"} (spec-style). Surfaced inline as `class_label` field on
+# every _l31_catalog_evaluation row.
 def _l31_classify_label(cls: str) -> str:
     return {
         "A_Keplerian":   "A. Keplerian-testable (r_cb >> r_s; orbital tracers)",
@@ -28641,13 +28656,15 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         )
         return {"value": mv, "provenance": prov}
 
-    # Layer 93 (Map §19 cluster (bx)): single-term vacuum-energy reducer +
-    # L31 class labels exposed. Surfaces _compute_rho_vac_energy(f_i, E_n, V) --
-    # the canonical UQFF_THEORY.md per-term rho_vac,X = f_i * E_n / V definition
-    # (single-term reduction; sum over many recovers the full ledger) -- and the
-    # L31 class-label lookup table (A_Keplerian / B_Transition / C_SubHorizon).
-    # Both helpers were previously unreachable (true orphans in the calculator
-    # orphan audit 2026-06-05). Explicit-key routes only.
+    # === LAYER 93 (Map §19 cluster (bx)): ORPHAN-AUDIT dispatcher branch ===
+    # Single-term vacuum-energy reducer + L31 class labels exposed. Surfaces
+    # _compute_rho_vac_energy(f_i, E_n, V) -- the canonical UQFF_THEORY.md per-term
+    # rho_vac,X = f_i * E_n / V definition (single-term reduction; sum over many
+    # recovers the full ledger) -- and the L31 class-label lookup table
+    # (A_Keplerian / B_Transition / C_SubHorizon). Both helpers were previously
+    # unreachable (true orphans in the calculator orphan audit 2026-06-05).
+    # Explicit-key routes only. Placed AFTER Layer 92 mass_from_vacuum branch and
+    # BEFORE Millennium / cluster-registry tail per Map §19 spec.
     if key and (
         "rho_vac_term" in key
         or "vac_energy_term" in key
