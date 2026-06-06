@@ -5627,6 +5627,149 @@ def _l96_jwst_jades_z14_vs_uqff_probe(z: float = _JWST_JADES_Z14_Z,
     }
 
 
+# ---- Black-hole information paradox / Page-curve probe (PAPER_1095) ----
+# 10 M_sun Schwarzschild BH; absolute Bekenstein-Hawking entropy in units of k_B
+# computed from first principles for SM/GR baseline, then PAPER_1095 SCm-corrected
+# variational form for UQFF. HONEST DISCLOSURE: the user-spec arithmetic claims
+# (a) S_BH(10 M_sun) ~ 1.05e78 k_B  -- off by 10x, correct value is 1.05e79 k_B,
+# (b) delta_SCm/(k_B T_H) ~ 9.7e10  -- off by 10x, correct value is 9.73e9,
+# (c) "full UQFF multiplier 1.41e37" -- actual literal product is 1.41e36,
+# (d) "saturation caps UQFF at exactly the SM peak" -- this is NOT a derivation;
+#     it is a variational ansatz inserted by hand. The literal closed-form
+#     product (1 + delta_SCm/k_B T_H) * S_26 * Phi gives an entropy ~10^36 times
+#     larger than the Bekenstein-Hawking value -- not equal to it. Equality
+#     requires either a renormalization scheme or the Page-time turnover ansatz
+#     applied externally. Both literal and capped forms are returned by the probe.
+# The pre-existing module constant A_OVER_4LP2_10MSUN = 1.05e78 (L132) mirrors
+# the same off-by-10 spec error and is NOT modified here (it feeds the legacy
+# _millennium_black_hole_info_derive normalized ratio); these helpers compute
+# the corrected value 1.05e79 from primitives without depending on that constant.
+
+def _l96_bh_hawking_temperature_K(M_msun: float = 10.0) -> float:
+    """T_H = hbar c^3 / (8 pi G M k_B)  [Hawking 1975]."""
+    M_kg = float(M_msun) * M_SUN
+    hbar = PLANCK_H / (2.0 * math.pi)
+    return hbar * (C_LIGHT ** 3) / (8.0 * math.pi * G_NEWTON * M_kg * K_B)
+
+def _l96_bh_schwarzschild_area_m2(M_msun: float = 10.0) -> float:
+    """A = 4 pi R_s^2 with R_s = 2 G M / c^2."""
+    M_kg = float(M_msun) * M_SUN
+    R_s  = 2.0 * G_NEWTON * M_kg / (C_LIGHT ** 2)
+    return 4.0 * math.pi * R_s * R_s
+
+def _l96_sm_S_BH_over_kB(M_msun: float = 10.0) -> float:
+    """SM Bekenstein-Hawking entropy in units of k_B (Hawking 1975).
+        S_BH/k_B = A c^3 / (4 G hbar) = 4 pi G M^2 / (hbar c).
+    At Page time the SM picture gives radiation entropy ~ S_BH (monotonic increase,
+    no turnover); this is the paradox value for 10 M_sun = 1.0495e79 k_B."""
+    M_kg = float(M_msun) * M_SUN
+    hbar = PLANCK_H / (2.0 * math.pi)
+    return 4.0 * math.pi * G_NEWTON * M_kg * M_kg / (hbar * C_LIGHT)
+
+def _l96_uqff_paper1095_scm_multiplier(M_msun: float = 10.0,
+                                         delta_SCm_J: float = None,
+                                         phi_norm: float = 1.0) -> float:
+    """PAPER_1095 SCm + 26-level multiplier (UNCAPPED LITERAL):
+        mult = (1 + delta_SCm / (k_B T_H)) * S26_DPM * Phi
+    Uses S26_DPM = 1.4531e26 (Ramanujan amplification, dpm v3.0 immutable root),
+    per user spec PAPER_1095. For 10 M_sun this is ~ 1.413e36, ~36 orders of
+    magnitude above unity. HONEST: this is a divergence, not a 'small correction';
+    the closed-form product does NOT preserve unitarity by itself."""
+    if delta_SCm_J is None:
+        delta_SCm_J = DELTA_SCM_J
+    T_H = _l96_bh_hawking_temperature_K(M_msun)
+    correction = delta_SCm_J / (K_B * T_H)
+    return (1.0 + correction) * S26_DPM * phi_norm
+
+def _l96_uqff_S_Page_literal_over_kB(M_msun: float = 10.0,
+                                       delta_SCm_J: float = None,
+                                       phi_norm: float = 1.0) -> float:
+    """LITERAL PAPER_1095 product (no variational cap, no Page-time ansatz):
+        S_Page^UQFF_literal = (A/(4 ell_P^2)) * (1 + delta_SCm/(k_B T_H)) * S26_DPM * Phi
+    For 10 M_sun ~ 1.48e115 k_B  -- diverges from SM 1.05e79 k_B by ~36 orders."""
+    hbar = PLANCK_H / (2.0 * math.pi)
+    ell_P2 = hbar * G_NEWTON / (C_LIGHT ** 3)
+    A = _l96_bh_schwarzschild_area_m2(M_msun)
+    A_over_4lp2 = A / (4.0 * ell_P2)
+    return A_over_4lp2 * _l96_uqff_paper1095_scm_multiplier(M_msun, delta_SCm_J, phi_norm)
+
+def _l96_uqff_S_Page_capped_over_kB(M_msun: float = 10.0) -> float:
+    """PAPER_1095 form WITH variational unitarity cap (Page-time saturation ansatz):
+        S_Page^UQFF_capped == S_BH/k_B (SM)  -- enforced by F_U=1 ledger closure.
+    This is the value the spec claims equals SM. HONEST: equality is enforced by
+    the cap, not derived from the literal product."""
+    return _l96_sm_S_BH_over_kB(M_msun)
+
+def _l96_page_curve_paradox_probe(M_msun: float = 10.0,
+                                    delta_SCm_J: float = None,
+                                    phi_norm: float = 1.0) -> Dict[str, Any]:
+    """Side-by-side: SM/GR Hawking vs UQFF PAPER_1095 (both literal and capped) for
+    the Bekenstein-Hawking entropy at Page time for an M_sun-mass Schwarzschild BH.
+
+    Returns dict {M_msun, R_s_m, area_m2, T_H_K, delta_SCm_J, scm_correction_ratio,
+    scm_multiplier_uncapped, S_BH_SM_over_kB, S_Page_UQFF_literal_over_kB,
+    S_Page_UQFF_capped_over_kB, log10_ratio_literal_over_SM, capped_equals_SM,
+    sm_behavior, uqff_literal_behavior, uqff_capped_behavior, honest_disclosure,
+    paper_basis, paradox_resolution_status}.
+
+    HONEST DISCLOSURE: (a) user spec S_BH ~ 1.05e78 is off by 10x; correct is
+    1.05e79 for 10 M_sun. (b) delta_SCm/(k_B T_H) ~ 9.73e9 not 9.7e10. (c) Literal
+    PAPER_1095 product overshoots SM by ~36 orders; equality requires the
+    variational saturation cap which is an ansatz inserted by hand, not derived.
+    (d) Capped value is identical to SM by construction; it does NOT independently
+    verify the Page curve, it asserts it via the F_U=1 closure."""
+    if delta_SCm_J is None:
+        delta_SCm_J = DELTA_SCM_J
+    M_kg = float(M_msun) * M_SUN
+    R_s  = 2.0 * G_NEWTON * M_kg / (C_LIGHT ** 2)
+    A    = _l96_bh_schwarzschild_area_m2(M_msun)
+    T_H  = _l96_bh_hawking_temperature_K(M_msun)
+    scm_ratio = delta_SCm_J / (K_B * T_H)
+    scm_mult  = (1.0 + scm_ratio) * S26_DPM * phi_norm
+    S_SM      = _l96_sm_S_BH_over_kB(M_msun)
+    S_uq_lit  = _l96_uqff_S_Page_literal_over_kB(M_msun, delta_SCm_J, phi_norm)
+    S_uq_cap  = _l96_uqff_S_Page_capped_over_kB(M_msun)
+    log10_overshoot = math.log10(S_uq_lit / S_SM)
+    honest = (
+        f"User-spec arithmetic has 3 off-by-10 errors: S_BH({M_msun} M_sun) actual = "
+        f"{S_SM:.4e} k_B (spec said 1.05e78, correct = 1.05e79). "
+        f"delta_SCm/(k_B T_H) actual = {scm_ratio:.3e} (spec said 9.7e10, correct = 9.73e9). "
+        f"Literal PAPER_1095 product overshoots SM by {log10_overshoot:.2f} orders of magnitude "
+        f"(literal = {S_uq_lit:.3e} k_B vs SM = {S_SM:.3e} k_B). The 'capped = SM' equality "
+        f"is enforced by the variational F_U=1 saturation ansatz, NOT derived from the literal "
+        f"product. The Page-time turnover (radiation entropy decreasing after half-mass) is "
+        f"asserted by the ansatz, not produced by an independent unitary evolution calculation."
+    )
+    return {
+        "M_msun":                          float(M_msun),
+        "R_s_m":                           R_s,
+        "area_m2":                         A,
+        "T_H_K":                           T_H,
+        "delta_SCm_J":                     delta_SCm_J,
+        "delta_SCm_eV":                    delta_SCm_J / EV_J,
+        "scm_correction_ratio":            scm_ratio,
+        "scm_multiplier_uncapped":         scm_mult,
+        "S_BH_SM_over_kB":                 S_SM,
+        "S_Page_UQFF_literal_over_kB":     S_uq_lit,
+        "S_Page_UQFF_capped_over_kB":      S_uq_cap,
+        "log10_ratio_literal_over_SM":     log10_overshoot,
+        "capped_equals_SM":                bool(abs(S_uq_cap - S_SM) / S_SM < 1e-12),
+        "sm_behavior":                     "monotonic radiation entropy increase; information loss; "
+                                            "paradox unresolved in semiclassical GR + QFT",
+        "uqff_literal_behavior":           "diverges by ~36 orders of magnitude above SM; "
+                                            "NOT unitary; NOT a Page curve without further input",
+        "uqff_capped_behavior":            "equal to SM peak by variational ansatz (F_U=1 closure); "
+                                            "Page-time turnover ASSERTED, not derived",
+        "honest_disclosure":               honest,
+        "paper_basis":                     "PAPER_1095 horizon-buoyancy Lagrangian + SCm shell gap + "
+                                            "S_26=1.4531e26 + Phi_1.25THz + F_U=1 ledger closure",
+        "paradox_resolution_status":       "ASSERTED via saturation ansatz; not derived from literal "
+                                            "closed-form product. Standard Model remains unresolved; "
+                                            "UQFF resolution is by construction, not by independent "
+                                            "unitary evolution calculation.",
+    }
+
+
 # ---- PAPER_1167 closed UQFF Lagrangian ----
 # MOVED 2026-06-06: PAPER_1167 form is now the canonical _master_lagrangian
 # (L3416). The standalone L96 capture (_l96_triangular_beta_i,
@@ -31247,6 +31390,28 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                           "M_star_obs_hi_msun", "M_star_LCDM_baseline_msun",
                                           "power", "rho_R26_J_m3", "rho_Lambda_obs_J_m3",
                                           "v_UA", "rho_SCm_val"]),
+        # Black hole information paradox / Page curve -- 10 M_sun Schwarzschild (PAPER_1095)
+        "bh_hawking_temperature_k":    ("BH_Hawking_temperature_K",
+                                         _l96_bh_hawking_temperature_K,
+                                         ["M_msun"]),
+        "bh_schwarzschild_area_m2":    ("BH_Schwarzschild_horizon_area_m2",
+                                         _l96_bh_schwarzschild_area_m2,
+                                         ["M_msun"]),
+        "sm_s_bh_over_kb":             ("SM_Bekenstein_Hawking_entropy_over_kB",
+                                         _l96_sm_S_BH_over_kB,
+                                         ["M_msun"]),
+        "uqff_paper1095_scm_multiplier":("UQFF_PAPER1095_SCm_multiplier_uncapped",
+                                         _l96_uqff_paper1095_scm_multiplier,
+                                         ["M_msun", "delta_SCm_J", "phi_norm"]),
+        "uqff_s_page_literal_over_kb": ("UQFF_S_Page_PAPER1095_literal_over_kB",
+                                         _l96_uqff_S_Page_literal_over_kB,
+                                         ["M_msun", "delta_SCm_J", "phi_norm"]),
+        "uqff_s_page_capped_over_kb":  ("UQFF_S_Page_PAPER1095_capped_over_kB",
+                                         _l96_uqff_S_Page_capped_over_kB,
+                                         ["M_msun"]),
+        "page_curve_paradox_probe":    ("Page_curve_paradox_SM_vs_UQFF_PAPER1095_probe",
+                                         _l96_page_curve_paradox_probe,
+                                         ["M_msun", "delta_SCm_J", "phi_norm"]),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
