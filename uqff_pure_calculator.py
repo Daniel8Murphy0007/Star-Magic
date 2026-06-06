@@ -33014,6 +33014,27 @@ def _oscilloscope_power_W(V_peak_V: float = 0.8,
     spec-aligned helper for q-scope artifacts."""
     return (V_peak_V * V_peak_V) / Z_ohm
 
+# Corrected-interpretation q-scope primitives (peak-to-peak, RMS, pipeline amperage):
+QSCOPE_AMP_RANGE_A          = 3.102   # +/- pipeline current bound (q-scope set)
+QSCOPE_DIFFERENTIAL_AMP_A   = 6.205   # dA = 2 * QSCOPE_AMP_RANGE_A
+
+def _v_peak_from_pp(V_pp_V: float) -> float:
+    """Peak voltage from peak-to-peak: V_peak = V_pp / 2.
+        V_pp = 1.00 V -> V_peak = 0.50 V."""
+    return 0.5 * V_pp_V
+
+def _v_eff_sinusoid(V_pp_V: float) -> float:
+    """RMS (effective) voltage for a pure sinusoid: V_eff = V_pp / (2 sqrt(2)).
+        V_pp = 1.00 V -> V_eff = 0.353553... V (spec quotes 0.35 V, 2-decimal)."""
+    return V_pp_V / (2.0 * math.sqrt(2.0))
+
+def _oscilloscope_power_rms_W(V_eff_V: float,
+                                Z_ohm: float = Z_OSCILLOSCOPE_OHM) -> float:
+    """Average (RMS) oscilloscope-load power P = V_eff^2 / Z:
+        V_eff = 0.35 V, Z = 50 Ohm -> P = 0.00245 W (spec match).
+    Complement to _oscilloscope_power_W (peak); both exist as closed-form leaves."""
+    return (V_eff_V * V_eff_V) / Z_ohm
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
