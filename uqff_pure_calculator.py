@@ -32902,6 +32902,52 @@ def _b_j_from_surface_field(B_s: float = B_S_MAX_SUN,
     Returns B_j in Tesla."""
     return coefficient * B_s
 
+# ===== Quantum-variable bundle 8 (delta_def, f_TRZ, T_s, phi_hat_j) =====
+# Already captured:
+#   f_TRZ -> TRZ = 0.1 (L8908) + _L23_F_TRZ (L8916) + f_TRZ param in
+#            _l96_bearden_Ui_trz (L5020). Adding spec-named alias.
+# Missing derivations:
+#   delta_def(t) = 0.01 * sin(0.001 * t)   (Defect Factor doc eq 1)
+#                  period 2 pi / 0.001 ~ 6283 days ~ 17.22 yr
+#   T_s = 5778 K (Sun photosphere)         (Surface Temperature doc)
+#         hypothetical T_s = 10000 K example (Surface Temperature doc eq 11)
+#   phi_hat_j ~ 1                          (Unit Vector in Ug3 disk plane doc)
+F_TRZ_DEFAULT          = 0.1                # TRZ scaling factor (spec value, alias of TRZ)
+DELTA_DEF_AMPLITUDE    = 0.01               # Ug1 defect-factor amplitude (unitless)
+DELTA_DEF_OMEGA_PER_DAY = 0.001             # Ug1 defect-factor angular frequency (rad/day)
+T_S_SUN_K              = 5778.0             # Sun photospheric surface temperature (K)
+T_S_HOT_K              = 10000.0            # Hypothetical hot-star surface temp (K, eq 11)
+PHI_HAT_J_DEFAULT      = 1.0                # Normalized azimuthal disk unit vector
+
+def _defect_factor_ug1(t_days: float = 0.0,
+                         amplitude: float = DELTA_DEF_AMPLITUDE,
+                         omega_per_day: float = DELTA_DEF_OMEGA_PER_DAY) -> float:
+    """Ug1 internal defect factor (Defect Factor doc eq 1):
+        delta_def(t) = amplitude * sin(omega * t)
+    Defaults: 0.01 * sin(0.001 * t_days).
+    At t=0           -> 0.0           (spec match eq 2)
+    At t=pi/2 / omega = 1570.796 d   -> 0.01 (spec match eq 4)
+    Period 2 pi / omega ~ 6283 days ~ 17.22 yr."""
+    return amplitude * math.sin(omega_per_day * t_days)
+
+def _disk_unit_vector_phi_hat(j: int = 1,
+                                magnitude: float = PHI_HAT_J_DEFAULT) -> float:
+    """Azimuthal unit vector for the j-th magnetic string in the Ug3 disk plane
+    (Unit Vector in Ug3 disk plane doc): phi_hat_j is dimensionless of unit norm.
+    Returns the scalar projection (default 1.0). Used as coefficient in U_m sum
+    (eq 12 of Disk Unit Vector doc); see _l96_bearden_Um_trz / _u_m_total flows.
+    Index j is accepted for future per-string anisotropy (currently uniform)."""
+    return magnitude
+
+def _b_j_thermal_scaled(T_s: float = T_S_SUN_K,
+                          T_s_ref: float = T_S_SUN_K,
+                          B_j_ref: float = 1.0e3) -> float:
+    """Hypothetical thermal scaling of magnetic-string field
+    (Surface Temperature doc eq 10/11): B_j(T_s) = B_j_ref * (T_s / T_s_ref).
+    Spec match: T_s=5778 K -> 1e3 T, T_s=10000 K -> 1730.7 T
+    (U_g3 ~ 1.8e49 vs 3.11e49 J/m^3 via _u_g3_stellar_planetary, spec eq 11)."""
+    return B_j_ref * (T_s / T_s_ref)
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
