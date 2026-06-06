@@ -5746,6 +5746,113 @@ def _bubble_nebula_g_master_uqff(r_m: float = R_NGC7635_M,
     return grav_term + lorentz_term
 
 
+# === Antennae Galaxies NGC 4038/4039 (Corvus, starburst merger) evolution master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation_'Antennae Galaxies reloaded' Evolution_09May2025"
+# (Hubble WFC3/ACS 2013, 45 Mly merger, Fermilab starburst merger simulations).
+#
+# Two NEW primitive shapes required (not yet primitivized):
+#   (a) M(t) = M_init + SFR*t  (LINEAR star-formation mass growth -- distinct
+#       from the existing _accretion_mass_growth_uqff EXPONENTIAL form which
+#       uses M_init*(1 + M_dot_0*exp(-t/tau_acc)); spec uses cumulative linear
+#       integration of constant SFR, M_merge_frac = SFR*t/M_init).
+#   (b) M_coll(t) = M_0 * (1 - exp(-t/tau_merge))  SATURATING merger progress
+#       (distinct from _magnetar_B_decay which is X_0*exp(-t/tau) DECAYING;
+#       this is 1-exp form approaching M_0 asymptotically as t -> tau_merge).
+#
+# Spec composer (4 leaves):
+#   g_Antennae(r,t) = (G*M(t)/r^2)*(1+H(z) t)*(1-M_coll(t))*(1+f_TRZ)
+#                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+#
+# Structural distinctions: (a) f_TRZ multiplies grav-term inline (Bubble-style),
+# NOT a separate additive Ug_sum_trz block; (b) NO Lambda*c^2/3; (c) NO Ug2/Ug3/Ug4
+# sum; (d) H(z) uses z=0.0105 (NOT z=0 local) -- distinct from NGC 3603/Bubble;
+# (e) B=1e-4 T (10x stronger than NGC 3603/Westerlund, 100x stronger than Bubble)
+# and v=1e6 m/s -> NEW dominant scaling family 1.053e-1 m/s^2 (1000x prior
+# 1.053e-3 family from NGC 3603/Westerlund).
+#
+# Existing _antennae_g_primitive_sat (L891, BSFG² merger triadic) and
+# antennae_galaxies catalog (L2035, M=1.5e11 M_sun) target different observables
+# and are LEFT UNTOUCHED.
+
+M_ANTENNAE_INIT_KG    = 2.0e11 * M_SUN              # spec: 2*10^11 M_sun combined initial
+R_ANTENNAE_M          = 2.838e20                    # spec: 30 kly core separation (2.838e20 m)
+B_ANTENNAE_T          = 1.0e-4                      # spec: 1e-4 T enhanced starburst field
+SFR_ANTENNAE_KGS      = 20.0 * M_SUN / _YEAR_S_MAGNETAR  # spec: 20 M_sun/yr SFR
+TAU_MERGE_ANTENNAE_S  = 400.0e6 * _YEAR_S_MAGNETAR  # spec: 400 Myr time-to-coalescence
+M_COLL_0_ANTENNAE     = 0.5                         # spec: M_0=0.5 saturation amplitude
+Z_ANTENNAE            = 0.0105                      # spec: z~0.0105 (45 Mly)
+H0_ANTENNAE_KMSMPC    = 70.0                        # spec: H_0=70 km/s/Mpc
+V_GAS_ANTENNAE_MS     = 1.0e6                       # spec: 1e6 m/s starburst outflow velocity
+T_ANTENNAE_DEFAULT_S  = 300.0e6 * _YEAR_S_MAGNETAR  # spec example: t=300 Myr (current merger phase)
+
+def _sfr_linear_mass_growth_uqff(M_initial_kg: float = M_ANTENNAE_INIT_KG,
+                                    t_s: float = T_ANTENNAE_DEFAULT_S,
+                                    SFR_kgs: float = SFR_ANTENNAE_KGS) -> float:
+    """M(t) = M_initial * (1 + SFR*t/M_initial) = M_initial + SFR*t  [linear SF].
+
+    Cumulative linear integration of a constant star-formation rate. Distinct
+    from _accretion_mass_growth_uqff (which is exponential X_0*(1+exp(-t/tau)))
+    and from _magnetar_B_decay (which is decaying exp). New primitive shape.
+    """
+    return M_initial_kg + SFR_kgs * t_s
+
+def _merger_progress_saturating_uqff(t_s: float = T_ANTENNAE_DEFAULT_S,
+                                        M_0: float = M_COLL_0_ANTENNAE,
+                                        tau_merge_s: float = TAU_MERGE_ANTENNAE_S) -> float:
+    """M_coll(t) = M_0 * (1 - exp(-t/tau_merge))  [saturating merger progress].
+
+    Approaches M_0 asymptotically as t/tau_merge -> infinity. Distinct from
+    _magnetar_B_decay (X_0*exp(-t/tau), decaying) -- this is the complementary
+    1-exp saturating form for merger coalescence progress.
+    """
+    import math as _math
+    return M_0 * (1.0 - _math.exp(-t_s / max(tau_merge_s, 1e-300)))
+
+def _antennae_g_master_uqff(r_m: float = R_ANTENNAE_M,
+                              t_s: float = T_ANTENNAE_DEFAULT_S,
+                              M_initial_kg: float = M_ANTENNAE_INIT_KG,
+                              SFR_kgs: float = SFR_ANTENNAE_KGS,
+                              M_coll_0: float = M_COLL_0_ANTENNAE,
+                              tau_merge_s: float = TAU_MERGE_ANTENNAE_S,
+                              z_obs: float = Z_ANTENNAE,
+                              H0_kmsMpc: float = H0_ANTENNAE_KMSMPC,
+                              f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                              B_T: float = B_ANTENNAE_T,
+                              v_gas_ms: float = V_GAS_ANTENNAE_MS,
+                              q_C: float = EV_J,
+                              m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                              rho_UA_val: float = None,
+                              rho_SCm_val: float = None,
+                              macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Antennae Galaxies (NGC 4038/4039) merger evolution master g (spec 09May2025).
+
+    g_Antennae(r,t) = (G*M(t)/r^2)*(1+H(z) t)*(1-M_coll(t))*(1+f_TRZ)
+                    + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where M(t) = M_init + SFR*t  [linear SF growth]
+          M_coll(t) = M_0*(1 - exp(-t/tau_merge))  [saturating merger progress]
+
+    Defaults reproduce spec example 1.053e-1 m/s^2 at t=300 Myr (Lorentz*macro
+    dominates; M_merge_frac=0.03, M(t)=1.03*M_init=4.097e41 kg; M_coll(300Myr)
+    =0.5*(1-e^-0.75)=0.2638, (1-M_coll)=0.7362; H(z=0.0105)*t=2.158e-2;
+    grav_term*(1+f_TRZ)=2.81e-10 (carried full precision per fidelity directive);
+    Lorentz q*v*B/m_p*11*1e-12=1.053e-1 dominant).
+    """
+    M_t = _sfr_linear_mass_growth_uqff(M_initial_kg, t_s, SFR_kgs)
+    Ug1 = G_NEWTON * M_t / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M                              # km/s/Mpc -> s^-1
+    M_coll_t = _merger_progress_saturating_uqff(t_s, M_coll_0, tau_merge_s)
+    merger_factor = 1.0 - M_coll_t
+    grav_term = Ug1 * (1.0 + H_z_si * t_s) * merger_factor * (1.0 + f_TRZ)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
