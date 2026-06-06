@@ -5479,6 +5479,154 @@ def _l96_h0_time_travel_probe(year_past: float = 1999.0,
     }
 
 
+# ---- JWST "impossible early galaxies" probe: JADES-GS-z14-0 stellar mass at z=14.32 ----
+# JWST/JADES JADES-GS-z14-0 spectroscopically confirmed at z=14.32 (Helton+ 2025).
+# SED-inferred M_star ~ 5e8 M_sun (~290 Myr after Big Bang) -- 1-2 orders of magnitude
+# above standard LCDM galaxy-formation predictions at this epoch ("too big too early"
+# crisis). User-spec UQFF route uses PAPER_1176 R26 vacuum-impedance correction to
+# the linear growth factor:
+#   delta_R26       = (D_BSFG/D_crit)^4 * (rho_R26 / rho_Lambda_obs)
+#   D_UQFF/D_LCDM   = 1 - (1/2) delta_R26
+# At PAPER_1170 calibration (rho_R26 = 4.609e-13, rho_Lambda = 5.96e-10):
+#   delta_R26       = (6/26)^4 * (4.609e-13 / 5.96e-10) = (3/13)^4 * 7.733e-4
+#                   ~ 2.836e-3 * 7.733e-4 ~ 2.193e-6  (matches user spec)
+#   D_UQFF/D_LCDM  ~ 1 - 1.097e-6  (parts-per-million SUPPRESSION, NOT a boost)
+# Honest disclosure: the literal R26 correction in the user-spec form gives
+# essentially ZERO change to LCDM linear growth at z=14.32; the multiplicative
+# 1.5-3x boost claimed in the user spec is a hand-wave that does not follow from
+# (3/13)^4 * 7.733e-4. The probe surfaces both the literal correction (no help)
+# and the SM-vs-JWST observational gap (severe, 1-2 orders).
+_JWST_JADES_Z14_Z              = 14.32                # spectroscopic redshift (Helton+ 2025)
+_JWST_JADES_Z14_MSTAR_OBS_MSUN = 5.0e8                # SED central (Helton+ 2025 + NASA release)
+_JWST_JADES_Z14_MSTAR_LO_MSUN  = 5.0e8                # 10^8.7 = 5.0e8 lo
+_JWST_JADES_Z14_MSTAR_HI_MSUN  = 1.0e9                # 10^9.0 = 1.0e9 hi (1-sigma envelope)
+_JWST_JADES_Z14_AGE_MYR_AFTER_BB = 290.0              # ~290 Myr after Big Bang at z=14.32
+_LCDM_HIGH_Z_MSTAR_TYPICAL_MSUN = 10.0 ** 7.5         # ~3.2e7 M_sun (FIRE/IllustrisTNG/EAGLE central)
+_LCDM_HIGH_Z_MSTAR_OPTIMISTIC_MSUN = 10.0 ** 8.0      # 1e8 M_sun (optimistic upper SAM)
+
+def _l96_uqff_delta_R26_growth_correction(rho_R26_J_m3: float = None,
+                                            rho_Lambda_obs_J_m3: float = None,
+                                            v_UA: float = _V_UA_DEFAULT,
+                                            rho_SCm_val: float = None) -> float:
+    """delta_R26 = (D_BSFG/D_crit)^4 * (rho_R26 / rho_Lambda_obs)  (PAPER_1176).
+
+    Defaults: rho_R26 from _l96_rho_lambda_R26_curvature (4.609e-13 J/m^3 at
+    calibrated v_UA), rho_Lambda_obs from _PLANCK_RHO_LAMBDA_J_M3 (5.96e-10).
+    Returns ~2.193e-6 (matches user spec). Dimensionless."""
+    r26 = (_l96_rho_lambda_R26_curvature(v_UA, rho_SCm_val)
+           if rho_R26_J_m3 is None else rho_R26_J_m3)
+    rL  = _PLANCK_RHO_LAMBDA_J_M3 if rho_Lambda_obs_J_m3 is None else rho_Lambda_obs_J_m3
+    dim_ratio = (float(D_BSFG) / float(D_CRIT)) ** 4   # (6/26)^4 = (3/13)^4
+    density_ratio = r26 / rL
+    return dim_ratio * density_ratio
+
+def _l96_uqff_growth_ratio_D_UQFF_over_D_LCDM(rho_R26_J_m3: float = None,
+                                                rho_Lambda_obs_J_m3: float = None,
+                                                v_UA: float = _V_UA_DEFAULT,
+                                                rho_SCm_val: float = None) -> float:
+    """D_UQFF(z) / D_LCDM(z) = 1 - (1/2) delta_R26  (PAPER_1176).
+
+    Defaults give ~ 1 - 1.097e-6  (parts-per-million suppression). Ratio is
+    redshift-independent in the literal closed form; the user-spec
+    'integrated buoyancy-driven growth' is NOT derivable from this expression
+    without additional unspecified phonon/SCm resonance modulators."""
+    dR26 = _l96_uqff_delta_R26_growth_correction(rho_R26_J_m3, rho_Lambda_obs_J_m3,
+                                                   v_UA, rho_SCm_val)
+    return 1.0 - 0.5 * dR26
+
+def _l96_uqff_mstar_high_z_literal(M_star_LCDM_baseline_msun: float = _LCDM_HIGH_Z_MSTAR_TYPICAL_MSUN,
+                                     power: float = 1.0,
+                                     rho_R26_J_m3: float = None,
+                                     rho_Lambda_obs_J_m3: float = None,
+                                     v_UA: float = _V_UA_DEFAULT,
+                                     rho_SCm_val: float = None) -> float:
+    """M_star^UQFF(z) = M_star^LCDM(z) * (D_UQFF/D_LCDM)^power  (literal closed form).
+
+    power = 1.0 (default): linear-collapsed-fraction scaling.
+    power = 3.0:           volume-scaling (mass ~ D^3 for spherical collapse).
+    Default LCDM baseline = 10^7.5 M_sun (FIRE/IllustrisTNG/EAGLE high-z central).
+    At PAPER_1170 calibration the literal R26 correction is ~1 ppm, so M_star^UQFF
+    differs from LCDM by negligible amounts -- the 1-2 order JWST gap is NOT closed
+    by this formula alone. Honest disclosure surfaced in
+    _l96_jwst_jades_z14_vs_uqff_probe()."""
+    ratio = _l96_uqff_growth_ratio_D_UQFF_over_D_LCDM(rho_R26_J_m3, rho_Lambda_obs_J_m3,
+                                                       v_UA, rho_SCm_val)
+    return M_star_LCDM_baseline_msun * (ratio ** power)
+
+def _l96_jwst_jades_z14_vs_uqff_probe(z: float = _JWST_JADES_Z14_Z,
+                                        M_star_obs_msun: float = _JWST_JADES_Z14_MSTAR_OBS_MSUN,
+                                        M_star_obs_lo_msun: float = _JWST_JADES_Z14_MSTAR_LO_MSUN,
+                                        M_star_obs_hi_msun: float = _JWST_JADES_Z14_MSTAR_HI_MSUN,
+                                        M_star_LCDM_baseline_msun: float = _LCDM_HIGH_Z_MSTAR_TYPICAL_MSUN,
+                                        power: float = 1.0,
+                                        rho_R26_J_m3: float = None,
+                                        rho_Lambda_obs_J_m3: float = None,
+                                        v_UA: float = _V_UA_DEFAULT,
+                                        rho_SCm_val: float = None) -> Dict[str, Any]:
+    """Side-by-side: SM LCDM baseline vs UQFF literal R26 correction vs JWST observation.
+
+    Returns full dict {z, age_Myr_after_BB, M_star_obs/lo/hi, M_star_LCDM,
+    M_star_UQFF, delta_R26, growth_ratio, log10_M_star_obs/LCDM/UQFF,
+    decades_LCDM_vs_obs, decades_UQFF_vs_obs, lcdm_decades_low,
+    uqff_resolves_tension, honest_disclosure, sm_basis, uqff_basis,
+    jwst_basis}.
+
+    Honest disclosure: at PAPER_1170 calibration (rho_R26=4.609e-13,
+    rho_Lambda=5.96e-10) the literal R26 correction
+    delta_R26 = (3/13)^4 * 7.733e-4 ~ 2.193e-6 -> D_UQFF/D_LCDM ~ 1 - 1.1e-6,
+    a parts-per-million SUPPRESSION. The 1-2 order observational gap
+    (LCDM ~ 10^7.5 vs JWST 5e8 M_sun) is NOT closed by this formula --
+    uqff_resolves_tension = False. The user-spec '1.5-3x boost from
+    integrated buoyancy' is not derivable from (3/13)^4 * 7.733e-4
+    without additional unspecified phonon/SCm resonance modulators that
+    are NOT in the closed PAPER_1176 form."""
+    dR26  = _l96_uqff_delta_R26_growth_correction(rho_R26_J_m3, rho_Lambda_obs_J_m3,
+                                                   v_UA, rho_SCm_val)
+    ratio = 1.0 - 0.5 * dR26
+    M_uq  = M_star_LCDM_baseline_msun * (ratio ** power)
+    log_obs  = math.log10(M_star_obs_msun)
+    log_lcdm = math.log10(M_star_LCDM_baseline_msun)
+    log_uq   = math.log10(M_uq)
+    decades_lcdm = log_lcdm - log_obs
+    decades_uq   = log_uq   - log_obs
+    # Resolution criterion: UQFF prediction falls within JWST 1-sigma envelope
+    uqff_resolves = (M_star_obs_lo_msun <= M_uq <= M_star_obs_hi_msun)
+    honest = (
+        "Literal PAPER_1176 R26 correction delta_R26 ~ 2.19e-6 gives "
+        f"D_UQFF/D_LCDM ~ {ratio:.9f} (parts-per-million suppression). "
+        f"M_star^UQFF differs from M_star^LCDM by ~{abs(1.0 - ratio**power) * 1e6:.3f} ppm. "
+        f"The {abs(decades_lcdm):.2f}-decade JWST gap (LCDM {M_star_LCDM_baseline_msun:.2e} "
+        f"vs observed {M_star_obs_msun:.2e}) is NOT closed by this formula alone. "
+        "User-spec '1.5-3x integrated buoyancy boost' is not derivable from "
+        "the closed (3/13)^4 * (rho_R26/rho_Lambda) form."
+    )
+    return {
+        "z":                          z,
+        "age_Myr_after_BB":           _JWST_JADES_Z14_AGE_MYR_AFTER_BB,
+        "M_star_obs_msun":            M_star_obs_msun,
+        "M_star_obs_lo_msun":         M_star_obs_lo_msun,
+        "M_star_obs_hi_msun":         M_star_obs_hi_msun,
+        "M_star_LCDM_baseline_msun":  M_star_LCDM_baseline_msun,
+        "M_star_UQFF_literal_msun":   M_uq,
+        "delta_R26":                  dR26,
+        "D_UQFF_over_D_LCDM":         ratio,
+        "growth_power":               power,
+        "log10_M_star_obs":           log_obs,
+        "log10_M_star_LCDM":          log_lcdm,
+        "log10_M_star_UQFF":          log_uq,
+        "decades_LCDM_minus_obs":     decades_lcdm,
+        "decades_UQFF_minus_obs":     decades_uq,
+        "lcdm_decades_low":           abs(decades_lcdm),
+        "uqff_resolves_tension":      uqff_resolves,
+        "honest_disclosure":          honest,
+        "jwst_basis":                 "Helton+ 2025 JADES-GS-z14-0 spec-z=14.32, NASA/JWST 2024-2025",
+        "sm_basis":                   ("LCDM + standard galaxy formation (FIRE, IllustrisTNG, "
+                                        "EAGLE high-z extensions): M_star << 10^7.5 M_sun typical"),
+        "uqff_basis":                 "PAPER_1176 R26 vacuum-impedance growth-factor correction "
+                                       "(literal closed form; no additional phonon/SCm modulators)",
+    }
+
+
 # ---- PAPER_1167 closed UQFF Lagrangian ----
 # MOVED 2026-06-06: PAPER_1167 form is now the canonical _master_lagrangian
 # (L3416). The standalone L96 capture (_l96_triangular_beta_i,
@@ -31079,6 +31227,26 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                           "H0_past_observed", "sigma_past",
                                           "H0_present_cmb", "sigma_present_cmb",
                                           "H0_present_local", "sigma_present_local"]),
+        # JWST "impossible early galaxies" -- JADES-GS-z14-0 at z=14.32 (PAPER_1176)
+        "uqff_delta_r26_growth":       ("delta_R26_growth_correction",
+                                         _l96_uqff_delta_R26_growth_correction,
+                                         ["rho_R26_J_m3", "rho_Lambda_obs_J_m3",
+                                          "v_UA", "rho_SCm_val"]),
+        "uqff_growth_ratio_d_over_d":  ("D_UQFF_over_D_LCDM_ratio",
+                                         _l96_uqff_growth_ratio_D_UQFF_over_D_LCDM,
+                                         ["rho_R26_J_m3", "rho_Lambda_obs_J_m3",
+                                          "v_UA", "rho_SCm_val"]),
+        "uqff_mstar_high_z_literal":   ("M_star_UQFF_high_z_literal_msun",
+                                         _l96_uqff_mstar_high_z_literal,
+                                         ["M_star_LCDM_baseline_msun", "power",
+                                          "rho_R26_J_m3", "rho_Lambda_obs_J_m3",
+                                          "v_UA", "rho_SCm_val"]),
+        "jwst_jades_z14_vs_uqff_probe":("JWST_JADES_z14_vs_UQFF_R26_probe",
+                                         _l96_jwst_jades_z14_vs_uqff_probe,
+                                         ["z", "M_star_obs_msun", "M_star_obs_lo_msun",
+                                          "M_star_obs_hi_msun", "M_star_LCDM_baseline_msun",
+                                          "power", "rho_R26_J_m3", "rho_Lambda_obs_J_m3",
+                                          "v_UA", "rho_SCm_val"]),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
