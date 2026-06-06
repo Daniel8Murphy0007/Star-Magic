@@ -4913,6 +4913,97 @@ def _magnetar_g_master_uqff(r_m: float = R_MAGNETAR_M,
     return grav_term + Ug_sum + cosm + gw_term
 
 
+# === MAGNETAR EVOLUTION MASTER g — v2 (spec 08May2025 refined) ===
+# v2 differs from v1 by two explicit additive leaves the spec author adds in
+# Step 2 of the long-form derivation:
+#   (a) (U_g1 + U_g2 + U_g3 + U_g4) * (1 + f_TRZ)    -- TRZ multiplier on Ug_sum
+#   (b) q (v x B) * (1 + rho_UA / rho_SCm) * 10^-12  -- Lorentz + [UA] enhancement
+#                                                       scaled by macroscopic factor
+# The macroscopic factor 10^-12 converts the per-charged-particle acceleration into
+# a global gravitational contribution per the spec author's prescription
+# ("scale it down by a factor of 10^-12 for macroscopic effects").
+# Uses existing EV_J (elementary-charge magnitude, 2019 SI exact), _M_PROTON_KG,
+# F_TRZ_DEFAULT, RHO_UA, RHO_SCM -- NO new constants.
+
+V_MAGNETAR_SURFACE_MS = 1.0e6  # spec: 1e6 m/s typical surface rotational velocity
+MACROSCOPIC_SCALE_LORENTZ = 1.0e-12  # spec: per-charge -> global scaling factor
+# Local mirrors of constants defined further down the file (this magnetar block
+# at L4869+ runs first at import time, so default args cannot reference symbols
+# that bind later). Same CODATA-2018 / spec values.
+_M_PROTON_KG_MAGNETAR = 1.67262192369e-27
+_F_TRZ_DEFAULT_MAGNETAR = 0.1  # mirrors F_TRZ_DEFAULT (L33019) and TRZ (spec)
+
+def _lorentz_acceleration_uqff(B_T: float,
+                                v_ms: float = V_MAGNETAR_SURFACE_MS,
+                                q_C: float = EV_J,
+                                m_kg: float = _M_PROTON_KG_MAGNETAR,
+                                rho_UA_val: float = None,
+                                rho_SCm_val: float = None,
+                                macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Lorentz acceleration with UQFF [UA]/[SCm] enhancement and macroscopic scaling:
+        a_Lorentz = (q * v * B / m) * (1 + rho_UA / rho_SCm) * macro_scale.
+    Spec 08May2025 EM term for magnetar evolution. With macro_scale = 1.0
+    returns the bare per-charged-particle acceleration; with macro_scale =
+    1e-12 (default) returns the global-gravitational contribution.
+    With G-lock rho_UA/rho_SCm = 10 the enhancement factor = 11."""
+    rua = RHO_UA  if rho_UA_val  is None else rho_UA_val
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    F = q_C * v_ms * B_T                       # |q v x B|, perpendicular case
+    a = F / max(m_kg, 1e-300)
+    ua_factor = 1.0 + (rua / rsc if rsc != 0.0 else 0.0)
+    return a * ua_factor * macro_scale
+
+def _magnetar_g_master_uqff_v2(r_m: float = R_MAGNETAR_M,
+                                t_s: float = 5000.0 * _YEAR_S_MAGNETAR,
+                                M_kg: float = M_MAGNETAR_KG,
+                                B_0_T: float = B0_MAGNETAR_T,
+                                tau_B_s: float = TAU_B_MAGNETAR_S,
+                                B_crit_T: float = B_CRIT_MAGNETAR_T,
+                                P_0_s: float = P0_MAGNETAR_S,
+                                tau_spin_s: float = TAU_SPIN_MAGNETAR_S,
+                                H0_si: float = H0_MAGNETAR_SI,
+                                Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                                Ug2: float = 0.0,
+                                Ug3: float = 0.0,
+                                f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                                v_ms: float = V_MAGNETAR_SURFACE_MS,
+                                q_C: float = EV_J,
+                                m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                                macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                                rho_UA_val: float = None,
+                                rho_SCm_val: float = None) -> float:
+    """Magnetar evolution master Universal Gravity equation -- v2 (spec 08May2025).
+
+        g_Magnetar(r,t) = (G*M/r^2) * (1 + H_0*t) * (1 - B(t)/B_crit)
+                          + (U_g1+U_g2+U_g3+U_g4) * (1 + f_TRZ)
+                          + Lambda*c^2/3
+                          + q (v x B(t)) * (1 + rho_UA/rho_SCm) * macro_scale
+                          + (G*M^2) / (c^4*r) * (dOmega(t)/dt)^2
+
+    Spec example (t = 5000 yr, defaults above) -> g_Magnetar ~ 4.474e12 m/s^2:
+      grav_term      ~ 4.512e11  (=(GM/r^2)(1+H0 t)(1-B/Bcrit))
+      Ug_sum*(1+TRZ) ~ 1.007e12  (=2 Ug1 (1-B/2Bcrit)(1+0.1) ~ 0.97*2*Ug1*1.1)
+      Lorentz*macro  ~ 3.018e12  (=(q v B/m_p)*(1+rho_UA/rho_SCm)*1e-12)
+      Lambda*c^2/3   ~ 3.3e-36   (negligible)
+      GW term        ~ 9.3e-10   (negligible)
+    """
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    B_t = _magnetar_B_decay(t_s, B_0_T, tau_B_s)
+    sc_factor = 1.0 - B_t / max(B_crit_T, 1e-300)
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_t, v_ms=v_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    dOmega = _magnetar_spin_dOmega_dt(t_s, P_0_s, tau_spin_s)
+    gw_term = _gw_quadrupole_spin_term(M_kg, r_m, dOmega)
+    return grav_term + Ug_sum_trz + cosm + lorentz_term + gw_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
