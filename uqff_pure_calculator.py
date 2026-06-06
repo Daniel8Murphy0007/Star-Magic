@@ -32660,6 +32660,53 @@ def _e_sm_k_quantum_wave(k: int, t: float, n: int = 1, l: int = 0, m: int = 0,
     energy_ratio = 1.0 / (n * n)
     return P_tidal * t * energy_ratio * _y_lm_squared_peak(l, m) * math.sin(2.0 * math.pi * t / T_k)
 
+# ===== Doc 43.c LENR Primer pp.1-8 — 4 closed-form leaves not yet captured =====
+# (Bulk of 43.c — LENR Q, W_mag corona, E_field, eta production, delta_n, B_pseudo,
+#  universal magnetism U_m, Bearden U_m TRZ, Higgs mass/BR/signal/kappa — already
+#  shipped via _l96_* family L4942-5010. Pi/Phi series eq 34-57 are bare
+#  proportionalities ∝ with no constants and divergent infinite products — not
+#  derivation specs, no work possible per "fidelity of MY physics" rule.)
+
+def _l96_u_h_higgs_field(lambda_H: float = 1.0, rho_ua_scm: float = 1.0e-23,
+                          omega_H: float = 1.585e-8, t: float = 0.0,
+                          n26: int = 26, f_quasi: float = 0.01) -> float:
+    """Higgs field U_H (Doc 43.c eq 6):
+        U_H(t,n) = lambda_H * rho_vac,[UA']:[SCm](n,t) * omega_H(t)
+                   * exp(-[SSq]^n26 * exp(-pi - t)) * (1 + f_quasi).
+    Defaults: lambda_H=1, rho=1e-23 J/m^3, omega_H=omega_c=2*pi/3.96e8
+    ≈ 1.585e-8 rad/s, n26=26 (canonical SSq exponent), f_quasi=0.01 (spec)."""
+    inner = math.exp(-math.pi - t)
+    decay = math.exp(-(SSQ ** n26) * inner)
+    return lambda_H * rho_ua_scm * omega_H * decay * (1.0 + f_quasi)
+
+def _l96_rho_ua_scm_n_t(n: int = 0, t: float = 0.0, n26: int = 26,
+                         rho_0: float = 1.0e-23, decay_per_n: float = 0.1) -> float:
+    """Pseudo-monopole vacuum density (Doc 43.c eq 11):
+        rho_vac,[UA']:[SCm](n,t) = 1e-23 * (0.1)^n * exp(-[SSq]^n26 * exp(-pi - t)).
+    Defaults reproduce spec n=0 baseline = rho_0 * decay_factor."""
+    inner = math.exp(-math.pi - t)
+    decay = math.exp(-(SSQ ** n26) * inner)
+    return rho_0 * (decay_per_n ** n) * decay
+
+def _l96_v_radial_doppler(delta_lambda: float = -1.0e-11,
+                           lambda_rest: float = 1.0e-6) -> float:
+    """Radial velocity from spectral Doppler shift (Doc 43.c eq 29, NGC 346 blueshift):
+        v_radial = c * (delta_lambda / lambda_rest).
+    Defaults: delta_lambda/lambda = -1e-5 -> v_radial ≈ -3.33e-5 * c (spec match
+    -3.33e-5 in dimensionless beta form; multiply by c for m/s)."""
+    return C_LIGHT * (delta_lambda / lambda_rest)
+
+def _l96_decay_rate_ratio(t: float = 0.0, n26: int = 26,
+                           rho_scm: float = RHO_SCM,
+                           rho_ua: float = RHO_UA) -> float:
+    """Decay rate ratio (Doc 43.c eq 31, NGC 346 nebula):
+        Decay Rate ∝ rho_vac,[SCm] / rho_vac,[UA] * exp(-[SSq]^n26 * exp(-pi - t)).
+    Defaults: rho_SCm=7.09e-37, rho_UA=7.09e-36 -> ratio = 0.1 * decay; spec
+    quotes ≈ 0.0963 at t set so decay ≈ 0.963."""
+    inner = math.exp(-math.pi - t)
+    decay = math.exp(-(SSQ ** n26) * inner)
+    return (rho_scm / rho_ua) * decay
+
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy ((residuals reported via _ledger_residual_all) systems).
