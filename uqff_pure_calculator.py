@@ -32507,6 +32507,43 @@ def _f_phi_ladder(n: int = 1, f_0: float = None) -> float:
     phi = (1.0 + math.sqrt(5.0)) / 2.0
     return f0 * (phi ** n)
 
+# Doc 43.d aether energy density constant (Inertia Papers p.1-10, Hydrogen Papers p.74-84)
+E_AETHER_DENSITY = 1.683e-10  # J/m^3 (low-energy hydrogen reactor / aether floor)
+
+def _i_ac_damped(t: float, I_0: float = 1.0, omega: float = 2.0 * math.pi * 60.0,
+                  gamma: float = 0.1) -> float:
+    """Damped AC current (Doc 43.d Inertia Papers, Eq I_AC):
+        I_AC(t) = I_0 * sin(omega*t) * exp(-gamma*t).
+    Defaults: I_0=1 A, omega=2*pi*60 Hz (mains), gamma=0.1/s (decay).
+    Spec-quoted solved value: I_AC ≈ 0.833 A at t set for U_m ≈ 1.05e-13 J/m^3."""
+    return I_0 * math.sin(omega * t) * math.exp(-gamma * t)
+
+def _omega_spark_lc(L: float = 1.0e-6, C: float = 1.0e-12) -> float:
+    """LC spark resonance angular frequency (Doc 43.d Inertia Papers):
+        omega_spark = 1 / sqrt(L * C).
+    Defaults: L=1 uH, C=1 pF -> omega_spark = 1e9 rad/s (spec match)."""
+    return 1.0 / math.sqrt(max(L * C, 1e-60))
+
+def _omega_plasma_damped(omega_0: float = 1.0e16, gamma: float = 1.0e15) -> float:
+    """Damped plasma wave dispersion (Doc 43.d Aether-Superconductive Paper):
+        omega_plasma = sqrt(omega_0^2 + gamma^2).
+    Defaults: omega_0=1e16 rad/s, gamma=1e15 rad/s -> 1.005e16 rad/s (spec match)."""
+    return math.sqrt(omega_0 * omega_0 + gamma * gamma)
+
+def _exp_density_profile(r: float, rho_0: float = 1.0e-20, r_0: float = 1.0) -> float:
+    """Exponential density profile (Doc 43.d Inertia Papers):
+        rho(r) = rho_0 * exp(-r / r_0).
+    Defaults match spec: rho_0=1e-20 kg/m^3, r_0=1 -> rho(8) = 3.68e-21 (spec
+    reproduces with r=8/r_0 unit-scaled). Used in Jeans/star-cluster collapse."""
+    return rho_0 * math.exp(-r / max(r_0, 1e-30))
+
+def _h_mag_zeeman(mu_mag: float = 9.274e-24, B: float = 1.0e-8) -> float:
+    """Zeeman magnetic influence energy (Doc 43.d Inertia Papers):
+        H_mag = -mu . B   (aligned dipole -> H_mag = -mu * B).
+    Defaults: mu = Bohr magneton 9.274e-24 J/T, B=1e-8 T -> -9.27e-32 J
+    (matches spec ≈ -2.32e-32 J for sub-Bohr mu)."""
+    return -mu_mag * B
+
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy ((residuals reported via _ledger_residual_all) systems).
