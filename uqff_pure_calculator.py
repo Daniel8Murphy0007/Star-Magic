@@ -6242,6 +6242,121 @@ def _hudf_g_master_uqff(r_m: float = R_HUDF_M,
     return grav_term + lorentz_term
 
 
+# === NGC 1792 'The Stellar Forge' starburst spiral master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation for NGC 1792 Evolution_09May2025"
+# (NGC 1792 = "The Stellar Forge" starburst+spiral in Columba, 42 Mly distant,
+# 80 kly diameter, SFR ~10 M_sun/yr = 10x Milky Way, bright orange core of
+# older stars + blue spiral arms of hot young stars, large gas reservoir likely
+# tidally triggered, supernova/stellar-wind feedback regulating SF).
+#
+# ZERO NEW primitives required -- 2ND CONSECUTIVE COMPLETE REUSE WIN per
+# fidelity directive 'nothing is negligible / maintain fidelity of my physics'.
+# Structurally NEAR-IDENTICAL to HUDF (same 5-leaf clean form) but with
+# specific NGC 1792 parameters and a DISTINCT Lorentz family. All 4 evolution
+# leaves map exactly to existing primitives:
+#   (a) M_sf(t) = SFR*t/M_0 dimensionless starburst growth fraction -- same
+#       shape as HUDF M_evo, reuses _sfr_linear_mass_growth_uqff (Antennae).
+#   (b) F_sn(t) = F_0*(1-exp(-t/tau_sn)) saturating supernova feedback shape
+#       reuses _merger_progress_saturating_uqff -- 5TH consecutive use!
+#       (Antennae M_coll -> Horsehead E erosion -> NGC 1275 F_BH feedback ->
+#       HUDF M_merge -> NGC 1792 F_sn supernova/wind feedback).
+#   (c) H(z) at z=0.0095 (42 Mly nearby) uses _hubble_unified literally.
+#   (d) Lorentz reuses _lorentz_acceleration_uqff -- NEW 1.053e-2 FAMILY
+#       (B=10^-5 galactic field * v=10^6 m/s supernova wind = v*B product 10,
+#       DISTINCT from 1.053e-3 family (v*B=1), 1.053e-1 family Antennae
+#       (v*B=100), 3.160e-5 family NGC 1275 (v*B=0.03)). This is the 5th
+#       distinct Lorentz family established in the lineage.
+#
+# Spec composer (5 leaves -- per directive, all carry full precision even
+# though Lorentz dominates ~99.9999999%):
+#   g_NGC1792(r,t) = (G*M/r^2)*(1+H(z) t)*(1+M_sf(t))*(1-F_sn(t))*(1+f_TRZ)
+#                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+#
+# Structural distinctions from prior lineage composers: (a) z=0.0095 nearby
+# (smaller than NGC 1275 z=0.0176, NGC 2525 z=0.0105, but larger than
+# Horsehead z=0.0003 and Antennae z=0.0048); (b) M_sf GROWTH factor (same
+# multiplicative shape as HUDF M_evo, NOT embedded in M(t) like Antennae);
+# (c) F_sn supernova/wind feedback SUPPRESSION on grav (NOT erosion like
+# Horsehead, NOT BH feedback like NGC 1275, NOT merger like Antennae/HUDF);
+# (d) 2 additive leaves only (NO P_rad like Horsehead, NO a_fil like
+# NGC 1275, NO Ug_sum like NGC 3603); (e) tau_sn=100 Myr (starburst
+# duration, DISTINCT from NGC 1275 tau_BH=100 Myr in value but DIFFERENT
+# physics -- coincidence not reuse); (f) F_0=0.05 (5% suppression,
+# DISTINCT from all prior amplitudes 0.1 NGC 1275, 0.2 Horsehead/HUDF).
+
+M_NGC1792_KG            = 1.0e10 * M_SUN                     # 10^10 M_sun (typical starburst spiral)
+M_NGC1792_MSUN          = 1.0e10                             # for SFR/M_0 dimensionless ratio
+R_NGC1792_M             = 3.78e20                            # half 80 kly diameter (3.78e20 m)
+SFR_NGC1792_MSUN_YR     = 10.0                               # 10 M_sun/yr (10x Milky Way)
+F_SN_0_NGC1792          = 0.05                               # 5% supernova/wind feedback amplitude
+TAU_SN_NGC1792_S        = 100.0e6 * _YEAR_S_MAGNETAR         # 100 Myr starburst duration
+Z_NGC1792               = 0.0095                             # z calculated from 42 Mly
+H0_NGC1792_KMSMPC       = 70.0
+B_NGC1792_T             = 1.0e-5                             # 10^-5 T galactic ISM field
+V_NGC1792_MS            = 1.0e6                              # 10^6 m/s supernova wind speed
+T_NGC1792_DEFAULT_S     = 100.0e6 * _YEAR_S_MAGNETAR         # spec example t=100 Myr starburst midpoint
+
+def _ngc1792_g_master_uqff(r_m: float = R_NGC1792_M,
+                             t_s: float = T_NGC1792_DEFAULT_S,
+                             M_0_kg: float = M_NGC1792_KG,
+                             M_0_msun: float = M_NGC1792_MSUN,
+                             SFR_msun_yr: float = SFR_NGC1792_MSUN_YR,
+                             F_sn_0: float = F_SN_0_NGC1792,
+                             tau_sn_s: float = TAU_SN_NGC1792_S,
+                             z_obs: float = Z_NGC1792,
+                             H0_kmsMpc: float = H0_NGC1792_KMSMPC,
+                             f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                             B_T: float = B_NGC1792_T,
+                             v_wind_ms: float = V_NGC1792_MS,
+                             q_C: float = EV_J,
+                             m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                             rho_UA_val: float = None,
+                             rho_SCm_val: float = None,
+                             macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """NGC 1792 'The Stellar Forge' starburst master g (spec 09May2025).
+
+    g_NGC1792(r,t) = (G*M/r^2)*(1+H(z) t)*(1+M_sf(t))*(1-F_sn(t))*(1+f_TRZ)
+                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where M_sf(t) = SFR*t/M_0  [dimensionless cumulative starburst growth
+    fraction -- same shape as HUDF M_evo, reuses _sfr_linear_mass_growth_uqff]
+    and F_sn(t) = F_0*(1 - exp(-t/tau_sn))  [saturating supernova/wind feedback
+    suppression -- reuses _merger_progress_saturating_uqff, 5TH consecutive use]
+
+    Defaults reproduce spec example 1.053e-2 m/s^2 at t=100 Myr starburst
+    midpoint: M_0=10^10 M_sun spiral, r=3.78e20 m (half 80 kly diameter),
+    SFR=10 M_sun/yr (10x Milky Way), F_0=0.05 (5% feedback amplitude),
+    tau_sn=100 Myr starburst duration, z=0.0095 (42 Mly distance),
+    B=10^-5 T galactic ISM, v=10^6 m/s supernova wind.
+
+    Decomposition at t=100 Myr per directive (all leaves full precision):
+      Ug1 = G*M/r^2 = 9.293e-12
+      H(z=0.0095)*t = 2.278e-18 * 3.156e15 = 7.189e-3  (1+H t=1.00719)
+      M_sf(100 Myr) = 10*1e8/1e10 = 0.1  (1+M_sf=1.1 growth factor)
+      F_sn(100 Myr) = 0.05*(1-e^-1) = 0.03161  (1-F_sn=0.96840)
+      grav*1.00719*1.1*0.96840*(1+f_TRZ=1.1) = 1.097e-11 (carried per directive)
+      Lorentz q*v*B/m_p*11*1e-12 = 1.053e-2 (dominant, NEW 1.053e-2 family
+        v*B=10, distinct from prior families)
+      Total ~ 1.053e-2 m/s^2
+    """
+    Ug1 = G_NEWTON * M_0_kg / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M
+    # Dimensionless starburst growth: M_sf = SFR*t/M_0
+    t_yr = t_s / _YEAR_S_MAGNETAR
+    M_sf_frac = SFR_msun_yr * t_yr / max(M_0_msun, 1e-300)
+    growth_factor = 1.0 + M_sf_frac
+    F_sn_t = _merger_progress_saturating_uqff(t_s, F_sn_0, tau_sn_s)
+    feedback_factor = 1.0 - F_sn_t
+    grav_term = Ug1 * (1.0 + H_z_si * t_s) * growth_factor * feedback_factor * (1.0 + f_TRZ)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_wind_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
