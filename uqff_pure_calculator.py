@@ -32744,6 +32744,45 @@ def _aether_metric_a_munu(T_smunu: float = 1.123e7,
             -1.0 + perturbation,
             -1.0 + perturbation]
 
+# ===== Quantum-variable bundle 2 (r_j, d_g, F_U, f_feedback, Omega_g) =====
+# d_g=2.55e20 and f_feedback=0.1 already shipped as defaults in _l96_final_parsec_Ug4
+# (L5062) and _l96_agn_feedback_Ug4 (L5051). Named constants + composer added here.
+R_J_MAGNETIC        = 1.496e13       # magnetic string distance (100 AU, m)
+D_GALACTIC_CENTER   = 2.55e20        # Sun -> Milky Way center (m, ~27 kly)
+OMEGA_GALACTIC      = 7.3e-16        # Milky Way angular velocity (rad/s)
+F_FEEDBACK_DEFAULT  = 0.1            # AGN feedback factor for Delta M_BH = 1 dex
+
+def _galactic_rotation_period(Omega_g: float = OMEGA_GALACTIC) -> float:
+    """T = 2 pi / Omega_g. Galactic rotation period (s).
+    Default: Omega_g=7.3e-16 -> T ≈ 8.61e15 s ≈ 2.73e8 years (spec match)."""
+    return 2.0 * math.pi / max(abs(Omega_g), 1e-300)
+
+def _f_u_unified(t: float = 0.0, t_n: float = 0.0,
+                  U_g_list: list = None, k_list: tuple = K_GRAV_LADDER,
+                  beta_i: float = BETA_I, Omega_g: float = OMEGA_GALACTIC,
+                  M_bh: float = 8.15e36, d_g: float = D_GALACTIC_CENTER,
+                  E_react: float = 1.0e46,
+                  mu_over_r_sum: float = 0.0, gamma: float = 0.00005,
+                  T_smunu: float = 1.123e7, eta: float = ETA_AETHER_COUPLING,
+                  lambda_U_i_sum: float = 0.0) -> float:
+    """Unified Field Strength F_U (Doc tag 'FU' eq 11):
+        F_U = sum_i [k_i U_gi - beta_i U_gi Omega_g (M_bh/d_g) E_react]
+              + sum_j [mu_j/r_j * (1 - exp(-gamma t cos(pi t_n))) * phi_hat_j]
+              + (g_munu + eta T_s^munu) trace  -  sum_i [lambda_i U_i E_react].
+    Defaults: U_g_list = [1.39e26, 1.18e53, 1.8e49, 2.50e-20] (spec Sun example),
+    k_list = K_GRAV_LADDER -> dominant U_g2 term ~1.4e53 J/m^3 (spec match)."""
+    if U_g_list is None:
+        U_g_list = [1.39e26, 1.18e53, 1.8e49, 2.50e-20]
+    Mbh_over_dg = M_bh / max(d_g, 1e-300)
+    grav_sum = 0.0
+    for ki, Ugi in zip(k_list, U_g_list):
+        grav_sum += ki * Ugi - beta_i * Ugi * Omega_g * Mbh_over_dg * E_react
+    osc = (1.0 - math.exp(-gamma * t * math.cos(math.pi * t_n)))
+    magnetic_sum = mu_over_r_sum * osc
+    aether_trace = sum(_aether_metric_a_munu(T_smunu=T_smunu, eta=eta))
+    inertia_term = lambda_U_i_sum * E_react
+    return grav_sum + magnetic_sum + aether_trace - inertia_term
+
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy ((residuals reported via _ledger_residual_all) systems).
