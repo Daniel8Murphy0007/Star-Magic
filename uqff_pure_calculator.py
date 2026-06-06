@@ -32788,6 +32788,43 @@ KAPPA_REACT_PER_DAY    = 5.0e-4        # E_react decay rate (1/day), ~5.5-yr
 E_REACT_AMPLITUDE      = 1.0e46        # Reactor efficiency factor amplitude
 R_B_FIELD_BUBBLE       = 1.496e13      # Outer field bubble radius (m, 100 AU)
 
+# ===== Quantum-variable bundle 6 (delta_sw, kappa, P_SCm, v_sw, omega_c) =====
+# Already captured:
+#   kappa   -> KAPPA_REACT_PER_DAY (bundle 5)
+#   omega_c -> OMEGA_C_MAGNETIC_CYCLE (bundle 4)
+# Functional only (param values without named constants):
+#   delta_sw, v_sw -> defaults in _u_g2_heliosphere_uqff (bundle 3)
+#   P_SCm          -> param in _l96_bearden_Um_trz (L5008)
+# Missing derivation:
+#   B_j(t) = 1e3 + 0.4 sin(omega_c t) [T] (Solar Cycle Frequency doc eq 11);
+#   distinct dimensional form from _mu_j_time_dependent (T*m^3).
+DELTA_SW_DEFAULT       = 0.01          # Solar wind modulation factor (unitless)
+V_SW_DEFAULT           = 5.0e5         # Solar wind velocity (m/s, ~500 km/s)
+P_SCM_SUN              = 1.0           # SCm penetration factor (Sun)
+P_SCM_PLANET           = 1.0e-3        # SCm penetration factor (planets)
+B_J_DC_OFFSET_TESLA    = 1.0e3         # B_j DC component (T)
+B_J_AC_AMPLITUDE_TESLA = 0.4           # B_j AC modulation amplitude (T)
+
+def _b_j_time_dependent(t: float = 0.0,
+                          dc_offset_T: float = B_J_DC_OFFSET_TESLA,
+                          ac_amplitude_T: float = B_J_AC_AMPLITUDE_TESLA,
+                          omega_c: float = OMEGA_C_MAGNETIC_CYCLE) -> float:
+    """Time-dependent magnetic field of j-th string (Solar Cycle Frequency doc eq 11):
+        B_j(t) = dc_offset + ac_amplitude * sin(omega_c * t)   [Tesla]
+    Defaults: dc=1e3 T, ac=0.4 T, omega_c = 2 pi / 3.96e8 s.
+    At t=0     -> B_j = 1e3 T (spec match eq 14).
+    At t=T/4   -> B_j = 1000.4 T.
+    At t=3T/4  -> B_j = 999.6 T.
+    Related to _mu_j_time_dependent by mu_j = B_j * MU_J_BASE_AMPLITUDE."""
+    return dc_offset_T + ac_amplitude_T * math.sin(omega_c * t)
+
+def _solar_wind_modulation_factor(delta_sw: float = DELTA_SW_DEFAULT,
+                                    v_sw: float = V_SW_DEFAULT) -> float:
+    """Solar wind modulation multiplicative factor (Solar Wind Modulation doc eq 2):
+        factor = 1 + delta_sw * v_sw
+    Defaults: 1 + 0.01 * 5e5 = 5001 (spec match eq 2)."""
+    return 1.0 + delta_sw * v_sw
+
 def _e_react_full(t_days: float = 0.0,
                     A_0: float = E_REACT_AMPLITUDE,
                     kappa_per_day: float = KAPPA_REACT_PER_DAY) -> float:
