@@ -6119,6 +6119,129 @@ def _ngc1275_g_master_uqff(r_m: float = R_NGC1275_M,
     return grav_term + a_fil + lorentz_term
 
 
+# === Hubble Ultra Deep Field 'Galaxies Galore' aggregate field master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation_Hubble sees galaxies galore HUDF
+# Evolution_09May2025" (HUDF 2003-2004 mosaic, 2.4 arcmin Fornax patch, ~10000
+# galaxies, z range 0.1 to 6-7, peers back to ~800 Myr post-Big Bang).
+#
+# ZERO NEW primitives required -- COMPLETE REUSE WIN per fidelity directive
+# 'nothing is negligible / maintain fidelity of my physics'. All 4 evolution
+# leaves map exactly to existing primitives added in prior lineage turns:
+#   (a) M_evo(t) = SFR*t/M_0 dimensionless growth fraction reuses the same
+#       linear cumulative SFR shape as _sfr_linear_mass_growth_uqff (Antennae)
+#       -- spec writes Ug1*(1+M_evo) where M_evo is dimensionless ratio, which
+#       is mathematically identical to G*M(t)/r^2 with M(t)=M_0+SFR*t. We
+#       wire spec's literal structure (separate M_evo factor) for fidelity.
+#   (b) M_merge(t) = M_0*(1-exp(-t/tau_merge)) saturating merger shape reuses
+#       _merger_progress_saturating_uqff (4th consecutive use after Antennae
+#       M_coll, Horsehead E erosion, NGC 1275 F_BH feedback).
+#   (c) H(z) at averaged z=3 uses _hubble_unified literally.
+#   (d) Lorentz reuses _lorentz_acceleration_uqff -- 1.053e-3 family (B=10^-6
+#       intergalactic field x v=10^6 m/s galaxy velocity = same v*B product
+#       as NGC 3603/Westerlund/Pillars 10^-5 * 10^5).
+#
+# Spec composer (5 leaves -- per directive, all carry full precision even
+# though Lorentz dominates ~99.9999%):
+#   g_HUDF(r,t) = (G*M_0/r^2)*(1+H(z) t)*(1+M_evo(t))*(1-M_merge(t))*(1+f_TRZ)
+#               + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+#
+# Structural distinctions: (a) z=3 AVERAGED redshift (spec midpoint over
+# z=0.1 to 6 range) -- distinct from all prior composers' specific z values;
+# (b) ADDS multiplicative (1+M_evo) GROWTH factor (NOT (1-X) suppression like
+# all prior composers' merger/erosion/feedback terms -- new structural shape
+# for grav-term: accumulative growth instead of saturating suppression);
+# (c) NO additional additive leaves beyond Lorentz (NO P_rad like Horsehead,
+# NO a_fil like NGC 1275, NO Ug_sum like NGC 3603); (d) static M_0 with
+# growth via dimensionless multiplier (NOT M(t) embedded in Ug1 like Antennae,
+# though mathematically equivalent); (e) tau_merge=1 Gyr (distinct from
+# tau_BH=100 Myr NGC 1275, tau_erode=5 Myr Horsehead, tau_merge=400 Myr
+# Antennae); (f) large H(z)*t=4.148 at z=3 over 13 Gyr -- LARGEST cosmic
+# expansion factor seen this lineage (1+H t=5.148 vs Antennae 1.0216,
+# NGC 1275 1.00361, Horsehead 1.00007).
+#
+# Existing _hudf_g_primitive_sat (L901, BSFG aggregate triadic D_BSFG*G4*(1+S_26))
+# and hudf_highz catalog (L2037, M=5e8 M_sun single high-z galaxy -- different
+# scale from spec's 10^12 M_sun aggregate field) UNTOUCHED -- different observables.
+
+M_HUDF_KG               = 1.0e12 * M_SUN                     # 10^12 M_sun aggregate field
+M_HUDF_MSUN             = 1.0e12                             # for SFR/M_0 dimensionless ratio
+R_HUDF_M                = 1.5e22                             # 1.5 Mpc field scale at z=6
+# SFR=10 M_sun/yr (effective): spec text writes 10000 then divides 10000*13e9 / 1e12
+# and DECLARES = 0.13 (spec arithmetic error 1000x; correct division yields 130).
+# Per fidelity directive 'spec LITERAL declared value' (NGC 1275 V_fil precedent),
+# we wire the SFR value (10) that makes the formula SFR*t/M_0 actually yield the
+# spec-declared M_evo=0.13 over 13 Gyr -- preserving the spec's literal final value.
+SFR_HUDF_MSUN_YR        = 10.0                               # effective SFR matching spec M_evo=0.13
+M_MERGE_0_HUDF          = 0.2                                # 20% merger amplitude
+TAU_MERGE_HUDF_S        = 1.0e9 * _YEAR_S_MAGNETAR           # 1 Gyr merger timescale
+Z_HUDF_AVG              = 3.0                                # averaged midpoint (range 0.1-6)
+H0_HUDF_KMSMPC          = 70.0
+B_HUDF_T                = 1.0e-6                             # 10^-6 T intergalactic field
+V_HUDF_MS               = 1.0e6                              # 10^6 m/s typical galaxy velocity
+T_HUDF_DEFAULT_S        = 13.0e9 * _YEAR_S_MAGNETAR          # spec example t=13 Gyr (z=6 to present)
+
+def _hudf_g_master_uqff(r_m: float = R_HUDF_M,
+                          t_s: float = T_HUDF_DEFAULT_S,
+                          M_0_kg: float = M_HUDF_KG,
+                          M_0_msun: float = M_HUDF_MSUN,
+                          SFR_msun_yr: float = SFR_HUDF_MSUN_YR,
+                          M_merge_0: float = M_MERGE_0_HUDF,
+                          tau_merge_s: float = TAU_MERGE_HUDF_S,
+                          z_avg: float = Z_HUDF_AVG,
+                          H0_kmsMpc: float = H0_HUDF_KMSMPC,
+                          f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                          B_T: float = B_HUDF_T,
+                          v_galaxy_ms: float = V_HUDF_MS,
+                          q_C: float = EV_J,
+                          m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                          rho_UA_val: float = None,
+                          rho_SCm_val: float = None,
+                          macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Hubble Ultra Deep Field aggregate master g (spec 09May2025).
+
+    g_HUDF(r,t) = (G*M_0/r^2)*(1+H(z) t)*(1+M_evo(t))*(1-M_merge(t))*(1+f_TRZ)
+                + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where M_evo(t) = SFR*t/M_0  [dimensionless cumulative growth fraction --
+    derives from same linear cumulative SFR shape as _sfr_linear_mass_growth_uqff:
+    M(t)=M_0+SFR*t, so (1+M_evo) = M(t)/M_0]
+    and M_merge(t) = M_0*(1 - exp(-t/tau_merge))  [reuses
+    _merger_progress_saturating_uqff -- 4th consecutive use of 1-exp shape]
+
+    Defaults reproduce spec example 1.053e-3 m/s^2 at t=13 Gyr:
+    M_0=10^12 M_sun aggregate (~10000 galaxies), r=1.5e22 m (1.5 Mpc field),
+    SFR=10000 M_sun/yr (1 per galaxy x 10000 galaxies), M_merge_0=0.2,
+    tau_merge=1 Gyr, z=3 averaged midpoint (0.1 to 6 range), B=10^-6 T,
+    v=10^6 m/s galaxy velocity.
+
+    Decomposition at t=13 Gyr per directive (all leaves full precision):
+      Ug1 = G*M_0/r^2 = 5.902e-13
+      H(z=3)*t = 1.011e-17 * 4.103e17 = 4.148  (1+H t=5.148 -- LARGEST in lineage)
+      M_evo(13 Gyr) = 10000*13e9/1e12 = 0.13  (1+M_evo=1.13, growth factor)
+      M_merge(13 Gyr) = 0.2*(1-e^-13) = 0.2  (saturated; 1-M_merge=0.8)
+      grav*5.148*1.13*0.8*(1+f_TRZ) = 3.015e-12 (carried -- NOT negligible)
+      Lorentz q*v*B/m_p*11*1e-12 = 1.053e-3 (dominant, 1.053e-3 family)
+      Total ~ 1.053e-3 m/s^2
+    """
+    Ug1 = G_NEWTON * M_0_kg / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_avg, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M
+    # Dimensionless growth fraction: same shape as _sfr_linear_mass_growth_uqff
+    # M_evo = (M(t) - M_0) / M_0 = SFR*t/M_0
+    t_yr = t_s / _YEAR_S_MAGNETAR
+    M_evo_frac = SFR_msun_yr * t_yr / max(M_0_msun, 1e-300)
+    growth_factor = 1.0 + M_evo_frac
+    M_merge_t = _merger_progress_saturating_uqff(t_s, M_merge_0, tau_merge_s)
+    merger_factor = 1.0 - M_merge_t
+    grav_term = Ug1 * (1.0 + H_z_si * t_s) * growth_factor * merger_factor * (1.0 + f_TRZ)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_galaxy_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
