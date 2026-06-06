@@ -32761,6 +32761,43 @@ F_QUASI_DEFAULT     = 0.01           # Quasi-static fraction (unitless)
 H_SCM_DEFAULT       = 1.0            # Heliosphere thickness factor (unitless, ~1)
 LAMBDA_I_DEFAULT    = 1.0            # Inertia coupling constant (unitless)
 
+# ===== Quantum-variable bundle 4 (M_bh, mu_j, P_core, t_n, pi) =====
+# t_n and pi are structural / library primitives (no derivation work).
+# M_bh already used as default 8.15e36 in _l96_final_parsec_Ug4 (L5061).
+# Named constants + time-dependent mu_j(t) + Ug3 stellar vs planetary form added.
+M_BH_SGR_A             = 8.15e36       # Sgr A* mass (kg, ~4.1e6 M_sun)
+MU_J_BASE_AMPLITUDE    = 3.38e20       # Magnetic moment base (T*m^3)
+MU_J_DC_OFFSET         = 1.0e3         # DC component of mu_j (unitless multiplier)
+MU_J_AC_AMPLITUDE      = 0.4           # AC modulation amplitude (unitless multiplier)
+OMEGA_C_PERIOD_S       = 3.96e8        # Magnetic moment cycle period (s, ~12.6 yr)
+OMEGA_C_MAGNETIC_CYCLE = 2.0 * math.pi / OMEGA_C_PERIOD_S  # rad/s, ~1.585e-8
+P_CORE_SUN             = 1.0           # Core penetration factor (Sun)
+P_CORE_PLANET          = 1.0e-3        # Core penetration factor (planets)
+
+def _mu_j_time_dependent(t: float = 0.0,
+                           dc_offset: float = MU_J_DC_OFFSET,
+                           ac_amplitude: float = MU_J_AC_AMPLITUDE,
+                           omega_c: float = OMEGA_C_MAGNETIC_CYCLE,
+                           base_amplitude: float = MU_J_BASE_AMPLITUDE) -> float:
+    """Time-dependent j-th magnetic string moment (Magnetic Moment doc eq, t in s):
+        mu_j(t) = (dc_offset + ac_amplitude * sin(omega_c * t)) * base_amplitude
+    Defaults: at t=0 -> sin(0)=0 -> mu_j = 1e3 * 3.38e20 = 3.38e23 T*m^3 (spec match).
+    omega_c = 2 pi / 3.96e8 s -> cycle period ~ 12.55 years (solar-like)."""
+    return (dc_offset + ac_amplitude * math.sin(omega_c * t)) * base_amplitude
+
+def _u_g3_stellar_planetary(P_core: float = P_CORE_SUN,
+                              k_3: float = 1.8,
+                              B_j_sum: float = 1.0e3,
+                              omega_s: float = 2.5e-6,
+                              t: float = 0.0,
+                              E_react: float = 1.0e46) -> float:
+    """Universal Gravity Ug3 with explicit stellar / planetary P_core distinction
+    (Core Penetration doc eq 12, eq 14):
+        U_g3 = k_3 * B_j_sum * cos(omega_s * t * pi) * P_core * E_react.
+    Sun defaults: P_core=1.0 -> 1.8e49 J/m^3 (spec match eq 13).
+    Planet:        P_core=1e-3 -> 1.8e46 J/m^3 (spec match eq 14)."""
+    return k_3 * B_j_sum * math.cos(omega_s * t * math.pi) * P_core * E_react
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
