@@ -4404,6 +4404,39 @@ def _l95_sm_uqff_claim_disproof() -> Dict[str, Dict[str, str]]:
             "uqff_mechanism": "PAPER_1167 T1 + T2 + T3 + T4 + T5 + T6 unified in single L_FU; gravity = local F_U=1 stationarity",
             "verdict":      "SM non-unification is a known incompleteness; UQFF claims unification but at cost of new terms (T3, T4, R_26) absent in SM",
         },
+        "gravity_local_weak_from_FU1": {
+            "uqff_claim":   "Gravity is a local weak effect emerging from F_U=1 normalization (no separate force)",
+            "sm_equation":  "Newtonian limit g(r) = G M / r^2; full GR g_munu via G_munu + Lambda g_munu = (8 pi G / c^4) T_munu - gravity is geometry, not a normalization point",
+            "uqff_mechanism": "g_compressed = Ug1 + Ug2 + Ug3 + Ug4 + psi + phi + ... with Ug1 = GM/r^2 (recovers Newton) and Ug2..4 + F_U=1 closure adding local corrections",
+            "verdict":      "SM/GR has NO F_U=1 normalization; UQFF g_compressed reproduces Newton via Ug1 leading term, additional Ug_i corrections are UQFF-only and have no SM analog",
+        },
+    }
+
+
+def _l95_newton_vs_uqff_g_probe(M: float = M_SUN, r: float = 6.96e8,
+                                  t_n: float = 0.0) -> Dict[str, Any]:
+    """Numeric side-by-side: Newtonian g(r) = G M / r^2 vs UQFF g_compressed.
+    Quantifies the 'gravity is local weak F_U=1 effect' claim by evaluating both
+    on the same (M, r) and reporting the residual.
+    Defaults: solar mass at solar surface (g_Newton ~ 274 m/s^2).
+    Returns {g_newton, g_uqff_compressed, residual_abs, residual_rel,
+    Ug1_leading, dominant_term}."""
+    g_newton = G_NEWTON * M / (r * r)
+    g_uqff   = _g_compressed(M=M, r=r, t_n=t_n)
+    Ug1 = g_newton  # by construction in _g_compressed
+    residual_abs = g_uqff - g_newton
+    residual_rel = residual_abs / max(abs(g_newton), 1e-300)
+    dominant = "Ug1 (Newton recovered)" if abs(residual_rel) < 0.5 else "UQFF corrections dominate"
+    return {
+        "M_kg":               M,
+        "r_m":                r,
+        "g_newton_m_s2":      g_newton,
+        "g_uqff_compressed":  g_uqff,
+        "Ug1_leading":        Ug1,
+        "residual_abs_m_s2":  residual_abs,
+        "residual_rel":       residual_rel,
+        "dominant_term":      dominant,
+        "newton_recovered":   abs(residual_rel) < 1.0,
     }
 
 
@@ -30357,8 +30390,11 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                   _l95_paper1167_vs_sm_audit,
                                   ["R_26", "F_DPM_sq", "U_g", "U_b", "U_m_abs",
                                    "U_A", "v_UA"]),
-        "sm_uqff_claim_disproof": ("SM_vs_UQFF_5_claim_disproof",
+        "sm_uqff_claim_disproof": ("SM_vs_UQFF_6_claim_disproof",
                                     _l95_sm_uqff_claim_disproof, []),
+        "newton_vs_uqff_g":      ("Newton_vs_UQFF_g_compressed_probe",
+                                    _l95_newton_vs_uqff_g_probe,
+                                    ["M", "r", "t_n"]),
         "fubi_closure_identity":("F_UBi_closure_identity", _l95_fubi_closure_identity,
                                   ["F_UBi", "F_UBi_i", "F_U"]),
         "rho_vac_ladder_n":     ("rho_vac_26_level_ladder", _l95_rho_vac_ladder_n, ["n"]),
