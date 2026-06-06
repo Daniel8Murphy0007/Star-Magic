@@ -5941,6 +5941,16 @@ def _f_env(name: str, **kwargs) -> float:
         return kwargs.get("M_evo", 0.0) * (1.0 - math.exp(-kwargs.get("t", 0.0) / kwargs.get("tau_evo", 1.0)))
     if n in ("filament", "fil"):
         return kwargs.get("M_fil", 0.0)
+    if n in ("dust", "dust_drag"):
+        return kwargs.get("D_dust", 0.0)
+    if n in ("ring", "ring_tidal"):
+        return kwargs.get("T_ring", 0.0)
+    if n in ("tech", "tech_field"):
+        return kwargs.get("F_tech", 0.0) + kwargs.get("P_term", 0.0)
+    if n in ("shell", "shell_support"):
+        return 0.1 * (kwargs.get("Z_magic", 0.0) + kwargs.get("N_magic", 0.0))
+    if n in ("cosmo", "cosmological"):
+        return kwargs.get("k_curv", 0.0) * kwargs.get("r_c", 0.0) ** 2
     return 0.0
 
 def _g_compressed_cycle2(M: float = DEFAULT_M, r: float = DEFAULT_R,
@@ -32332,6 +32342,22 @@ def _s_shell(r: float, dataset: Optional[Dict[str, Any]] = None) -> float:
     d = dataset or {}
     R_b = float(d.get("R_b", DEFAULT_R))
     return 1.0 if r >= R_b else 0.0
+
+
+def _h_res_composite(t: float = 0.0, r: float = DEFAULT_R, n: int = 1,
+                     SC_m: float = 1.0,
+                     dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Doc 28 composite Hydrogen Resonance closed form:
+        H_res(t) = A_res * sin(2 pi f_res t) + U_dp * SC_m * k_nuc + S_shell
+    Wires the 6 existing UQFF leaves (_a_res, _f_res, _u_dp, _k_nuc, _s_shell,
+    _h_res) per the user's Document 28 spec form. SC_m defaults to 1.0 per
+    spec ("SC_m approx 1"). t in seconds, r in m, n is the PTOE level."""
+    A_res = _a_res(dataset)
+    f_res = _f_res(n, dataset)
+    U_dp  = _u_dp(dataset)
+    k_nuc = _k_nuc(dataset)
+    S_sh  = _s_shell(r, dataset)
+    return A_res * math.sin(2.0 * math.pi * f_res * t) + U_dp * SC_m * k_nuc + S_sh
 
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
