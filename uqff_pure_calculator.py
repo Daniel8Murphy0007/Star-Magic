@@ -4539,6 +4539,74 @@ def _l95_w_z_phonon_logderiv(dln_Phi_dln_a: float = 0.0) -> float:
     """w(z) = -1 + (1/3) d ln Phi(Gamma)/d ln a (PAPER_1072)."""
     return -1.0 + dln_Phi_dln_a / 3.0
 
+
+# ---- DESI Y1/Y5 CPL parametrization + UQFF strict-static comparator ----
+# PAPER_1178 second-derivative strict-static test: rho_Lambda = constant =>
+# d^n w/dz^n = 0 for all n>=1 => CPL parameters collapse to (w0, wa) = (-1, 0).
+# DESI Collaboration 2024 (arXiv:2404.03002) combined Y1 + CMB best fit:
+#   (w0, wa) = (-0.827 +/- 0.063, -0.75 +/- 0.29)
+# At z=0.5 the CPL form gives w(0.5) = -0.827 + (-0.75)*(1/3) = -1.077.
+# UQFF (PAPER_1170 ledger saturation, PAPER_1171 first-principles rho_KK,
+# PAPER_1172 Gauss-Bonnet, PAPER_1178 d^2 w/dz^2 = 0) predicts w(z) = -1
+# identically. Delta = 0.077 sits inside DESI's ~1 sigma uncertainty envelope.
+_DESI_W0_CENTRAL = -0.827
+_DESI_WA_CENTRAL = -0.75
+_DESI_W0_SIGMA   = 0.063
+_DESI_WA_SIGMA   = 0.29
+
+def _l95_w_z_cpl(z: float = 0.5,
+                  w0: float = _DESI_W0_CENTRAL,
+                  wa: float = _DESI_WA_CENTRAL) -> float:
+    """Chevallier-Polarski-Linder w(z) = w0 + wa * z/(1+z).
+    Defaults use DESI Y1+CMB combined best fit (w0=-0.827, wa=-0.75).
+    At z=0.5 returns -1.077; at z=0 returns w0; at z->inf returns w0+wa."""
+    return w0 + wa * z / (1.0 + z)
+
+def _l95_w_z_uqff_static(z: float = 0.5) -> float:
+    """UQFF strict-static dark-energy w(z). PAPER_1170/1171/1172/1178 establish
+    that rho_Lambda is time-independent (R_26 saturation + KK tower + BSFG +
+    Mexican-hat sum to a constant), so d^n w/dz^n = 0 for all n>=1, forcing
+    w(z) = -1 identically at every z. No free parameters."""
+    return -1.0
+
+def _l95_desi_vs_uqff_w_z_probe(z: float = 0.5,
+                                  w0_desi: float = _DESI_W0_CENTRAL,
+                                  wa_desi: float = _DESI_WA_CENTRAL,
+                                  sigma_w0: float = _DESI_W0_SIGMA,
+                                  sigma_wa: float = _DESI_WA_SIGMA) -> Dict[str, Any]:
+    """Side-by-side: DESI CPL best fit vs UQFF strict-static at redshift z.
+    Returns {z, w_desi, w_uqff, delta, delta_abs, sigma_w_z (CPL propagated),
+    n_sigma_containment, compatible_1sigma, compatible_2sigma}.
+
+    Sigma propagation: sigma_w(z) = sqrt(sigma_w0^2 + (z/(1+z))^2 * sigma_wa^2)
+    (independent w0, wa errors; correct only if covariance is diagonal -
+    DESI's actual covariance is slightly correlated, so this is an upper bound
+    on the symmetric containment radius).
+    Compatibility test: |w_uqff - w_desi| < n * sigma_w(z)."""
+    w_desi = _l95_w_z_cpl(z, w0_desi, wa_desi)
+    w_uqff = _l95_w_z_uqff_static(z)
+    delta  = w_uqff - w_desi
+    delta_abs = abs(delta)
+    z_factor = z / (1.0 + z)
+    sigma_w_z = math.sqrt(sigma_w0 ** 2 + (z_factor ** 2) * sigma_wa ** 2)
+    n_sigma = delta_abs / max(sigma_w_z, 1e-300)
+    return {
+        "z":                    z,
+        "w_desi_cpl":           w_desi,
+        "w_uqff_static":        w_uqff,
+        "delta_uqff_minus_desi": delta,
+        "delta_abs":            delta_abs,
+        "sigma_w_z_cpl_prop":   sigma_w_z,
+        "n_sigma_containment":  n_sigma,
+        "compatible_1sigma":    delta_abs < sigma_w_z,
+        "compatible_2sigma":    delta_abs < 2.0 * sigma_w_z,
+        "desi_inputs":          {"w0": w0_desi, "wa": wa_desi,
+                                  "sigma_w0": sigma_w0, "sigma_wa": sigma_wa,
+                                  "source": "DESI Collaboration 2024 arXiv:2404.03002"},
+        "uqff_basis":           "PAPER_1170/1171/1172/1178 strict-static rho_Lambda => w(z)=-1",
+    }
+
+
 def _l95_ramanujan_binomial(n: int = 26, D: int = 26, k: int = 3) -> float:
     """R_n^(D,k) leading term = (2 pi)^(n/6) / n! (PAPER_1080).
     Higher-order m>=1 corrections are O((D-1)!^n / n^D) which overflow for
@@ -30395,6 +30463,14 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         "newton_vs_uqff_g":      ("Newton_vs_UQFF_g_compressed_probe",
                                     _l95_newton_vs_uqff_g_probe,
                                     ["M", "r", "t_n"]),
+        # DESI Y1+CMB CPL w(z) vs UQFF strict-static (PAPER_1170/1178) - 2026-06-06
+        "w_z_cpl":              ("w(z)_CPL_DESI_central", _l95_w_z_cpl,
+                                  ["z", "w0", "wa"]),
+        "w_z_uqff_static":      ("w(z)_UQFF_strict_static_PAPER_1170",
+                                  _l95_w_z_uqff_static, ["z"]),
+        "desi_vs_uqff_w_z":     ("DESI_CPL_vs_UQFF_static_w(z)_probe",
+                                  _l95_desi_vs_uqff_w_z_probe,
+                                  ["z", "w0_desi", "wa_desi", "sigma_w0", "sigma_wa"]),
         "fubi_closure_identity":("F_UBi_closure_identity", _l95_fubi_closure_identity,
                                   ["F_UBi", "F_UBi_i", "F_U"]),
         "rho_vac_ladder_n":     ("rho_vac_26_level_ladder", _l95_rho_vac_ladder_n, ["n"]),
