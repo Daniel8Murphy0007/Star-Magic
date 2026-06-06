@@ -5123,6 +5123,94 @@ def _sgr_a_g_master_uqff(r_m: float = R_SGRA_M,
     return grav_term + Ug_sum_trz + cosm + gw_term
 
 
+# === TAPESTRY OF BLAZING STARBIRTH EVOLUTION MASTER g (UQFF) — spec 03/09May2025 ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_
+# 'Tapestry of Blazing Starbirth' Evolution_03May2025" + Hubble (NGC 2014 +
+# NGC 2020, LMC, 163 kly) + Fermilab gas/wind simulations.
+#
+# All physics leaves already primitivized (no duplication):
+#   - M(t) = M_init * (1 + M_0 * exp(-t/tau_SF))   -> _accretion_mass_growth_uqff
+#                                                     (identical functional form,
+#                                                      re-purposed for star-formation
+#                                                      mass growth; M_0 amplitude
+#                                                      is now O(40) vs O(0.01) for
+#                                                      SMBH accretion)
+#   - (1 + H_0*t), (1 - B(t)/B_crit), (Ug1+...+Ug4)*(1+f_TRZ), Lambda*c^2/3
+#                                                  -> magnetar v2 chain
+#   - q (v x B) * (1 + rho_UA/rho_SCm) * 1e-12     -> _lorentz_acceleration_uqff
+#   - DM perturbation                              -> _dm_perturbation_precession_uqff
+#                                                     (theta=0 reduces to delta_rho/rho)
+#   - ram pressure rho * v_wind^2                  -> _l95_l_stellar_wind
+# Composer _tapestry_g_master_uqff just wires the literal spec equation with
+# the Tapestry-specific defaults from Hubble+Fermilab data.
+
+M_TAPESTRY_INIT_KG     = 240.0 * M_SUN              # spec: 240 M_sun (NGC 2014 cluster mass)
+R_TAPESTRY_M           = 10.0 * 9.461e15            # spec: 10 light-years (region radius)
+B_TAPESTRY_T           = 1.0e-6                     # spec: 10^-6 T (LMC nebular field, static)
+TAU_SF_TAPESTRY_S      = 5.0e6 * _YEAR_S_MAGNETAR   # spec: 5 Myr star-formation timescale
+M_DOT0_TAPESTRY        = 1.0e4 / 240.0              # spec: M_0 = 10^4 M_sun stars / 240 = 41.67
+V_GAS_TAPESTRY_MS      = 1.0e5                      # spec: 10^5 m/s nebular gas velocity
+T_TAPESTRY_DEFAULT_S   = 2.5e6 * _YEAR_S_MAGNETAR   # spec: midpoint, t = 2.5 Myr
+
+def _tapestry_g_master_uqff(r_m: float = R_TAPESTRY_M,
+                              t_s: float = T_TAPESTRY_DEFAULT_S,
+                              M_initial_kg: float = M_TAPESTRY_INIT_KG,
+                              M_dot_0: float = M_DOT0_TAPESTRY,
+                              tau_SF_s: float = TAU_SF_TAPESTRY_S,
+                              B_T: float = B_TAPESTRY_T,
+                              B_crit_T: float = B_CRIT_MAGNETAR_T,
+                              H0_si: float = H0_MAGNETAR_SI,
+                              Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                              Ug2: float = 0.0,
+                              Ug3: float = 0.0,
+                              f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                              v_gas_ms: float = V_GAS_TAPESTRY_MS,
+                              q_C: float = EV_J,
+                              m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                              macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                              rho_UA_val: float = None,
+                              rho_SCm_val: float = None) -> float:
+    """Master Universal Gravity equation for the Tapestry of Blazing Starbirth
+    (LMC NGC 2014 + NGC 2020) evolution -- spec 03/09May2025.
+
+        g_Starbirth(r,t) = (G*M(t)/r^2) * (1 + H_0*t) * (1 - B/B_crit)
+                           + (U_g1 + U_g2 + U_g3 + U_g4) * (1 + f_TRZ)
+                           + Lambda*c^2/3
+                           + q (v x B) * (1 + rho_UA/rho_SCm) * macro_scale
+
+      where M(t) = M_initial * (1 + M_dot_0 * exp(-t/tau_SF))
+            U_g1 = G*M(t)/r^2,  U_g4 = U_g1 * (1 - B/B_crit)
+            B is static (spec models no field decay for this region).
+
+    Spec defaults (t=2.5 Myr, M_init=240 M_sun, r=10 ly, B=1e-6 T, M_0=41.67,
+    tau_SF=5 Myr, v_gas=1e5 m/s, f_TRZ=0.1, G-lock rho_UA/rho_SCm=10) ->
+        M(2.5 Myr) ~ 1.254e34 kg
+        U_g1       ~ 9.351e-11 m/s^2
+        grav_term  ~ 9.353e-11 m/s^2 (Hubble + SC factors ~ 1)
+        Ug_sum*(1+TRZ) ~ 2.057e-10 m/s^2
+        Lambda*c^2/3   ~ 3.3e-36 (negligible)
+        Lorentz*macro  ~ 1.053e-4 m/s^2  (dominant -- spec author's prescription)
+        TOTAL g_Starbirth ~ 1.053e-4 m/s^2  (matches spec)
+
+    Quantum-uncertainty, fluid V*g, oscillatory (cos*cos and exp(i...)), GW,
+    and ram-pressure rho*v_wind^2 leaves are absorbed into standalone
+    primitives (spec author drops them from the final closed equation as
+    "secondary to local effects" for this nebular regime)."""
+    M_t = _accretion_mass_growth_uqff(M_initial_kg, t_s, M_dot_0, tau_SF_s)
+    Ug1 = G_NEWTON * M_t / max(r_m * r_m, 1e-300)
+    sc_factor = 1.0 - B_T / max(B_crit_T, 1e-300)
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + Ug_sum_trz + cosm + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
