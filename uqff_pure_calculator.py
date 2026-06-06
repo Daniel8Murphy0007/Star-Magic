@@ -5770,6 +5770,182 @@ def _l96_page_curve_paradox_probe(M_msun: float = 10.0,
     }
 
 
+# ---- Poincare + Yang-Mills + Spinor-Bundle Millennium probe (PAPER_1066/1095/1170) ----
+# Audits two Millennium closures: (1) Poincare via a 1-DOF buoyancy-modified Ricci-flow
+# proxy on biaxial S^3, (2) Yang-Mills mass gap via the spec-form vs the pre-existing
+# _millennium_yang_mills_derive closure. HONEST: the pre-existing helper returns 43.30
+# GeV, NOT the 1.78 GeV claimed in its docstring -- the literal closed form
+# beta_0 * 8pi G rho_SCm S26_DPM f_THz * (D_BSFG/D_crit)^2 / (1e9 eV) does not produce
+# the lattice anchor without recalibration. The user-spec alternative
+# m_gap^2 = (8pi G rho_SCm S26_DPM Phi)/(beta_i*[UA]) * (D_crit/D_BSFG)^2 is
+# dimensionally ambiguous and gives 0.00034 GeV (if treated as energy J) or 1448 GeV
+# (if treated as J^2 -> sqrt -> J -> GeV). Neither matches 1.78 GeV literally.
+# The probe surfaces all three values + the lattice anchor + honest gap analysis.
+
+def _l96_uqff_ym_mass_gap_spec_form_gev(rho_SCm_val: float = None,
+                                          S26_amp: float = None,
+                                          phi_norm: float = 1.0,
+                                          beta_i_val: float = None,
+                                          UA_scalar: float = 1.0e-4,
+                                          dim_interpretation: str = "energy_J") -> float:
+    """User-spec PAPER_1066/1095 form:
+        m_gap^2 = (8 pi G rho_SCm S26_DPM Phi) / (beta_i * [UA]) * (D_crit/D_BSFG)^2
+    Dimensional interpretation is ambiguous in the spec; both modes are exposed:
+      'energy_J':  raw closed-form value treated directly as energy in Joules.
+      'energy_J2': raw value treated as m_gap^2 in J^2, sqrt taken, then to GeV.
+    HONEST: neither mode reproduces 1.78 GeV without recalibration.
+    Spec defaults: rho_SCm=7.09e-37, S26_DPM=1.4531e26, beta_i=0.603, [UA]=1e-4."""
+    if rho_SCm_val is None: rho_SCm_val = RHO_SCM
+    if S26_amp     is None: S26_amp     = S26_DPM
+    if beta_i_val  is None: beta_i_val  = BETA0_DPM
+    raw = ((8.0 * math.pi * G_NEWTON * rho_SCm_val * S26_amp * phi_norm)
+           / (beta_i_val * UA_scalar)) * ((D_CRIT / D_BSFG) ** 2)
+    if dim_interpretation == "energy_J":
+        return raw / (1.0e9 * EV_J)
+    if dim_interpretation == "energy_J2":
+        return math.sqrt(raw) / (1.0e9 * EV_J)
+    raise ValueError(f"dim_interpretation must be 'energy_J' or 'energy_J2', got {dim_interpretation!r}")
+
+def _l96_uqff_ricci_flow_s3_fixed_point_residual(initial_anisotropy: float = 0.5,
+                                                   n_steps: int = 1000,
+                                                   dt: float = 0.01,
+                                                   buoyancy_coeff: float = None,
+                                                   include_buoyancy: bool = True) -> Dict[str, Any]:
+    """1-DOF buoyancy-modified Ricci-flow proxy on biaxial Berger 3-sphere with metric of
+    axes (a, a, b). Defines anisotropy eps = b/a - 1; S^3 fixed point is eps = 0.
+
+    Standard normalized Ricci flow on biaxial sphere drives eps -> 0 monotonically;
+    leading-order linearization:  d eps/dt = -k_lin * eps   with k_lin = 2 (units of
+    inverse time, normalized).
+
+    UQFF horizon-buoyancy modification (PAPER_1095 ansatz) adds a cubic stabilizer:
+        d eps/dt = -k_lin * eps - beta_i * eps^3
+    where the cubic term ensures monotonic descent of a Perelman-type entropy proxy
+    F(eps) = eps^2 + (beta_i/2) * eps^4 (positive-definite, dF/dt <= 0 by construction).
+
+    Returns dict {initial_anisotropy, final_anisotropy, final_residual, n_steps, dt,
+    buoyancy_coeff, F_initial, F_final, F_monotone_descent, fixed_point_reached,
+    convergence_rate_estimate, honest_disclosure}.
+
+    HONEST: this is a 1-DOF proxy, NOT a full PDE Ricci-flow integration on a
+    triangulated 3-manifold. It demonstrates that the 1-DOF linearization converges
+    to the S^3 fixed point under the buoyancy-modified flow, but it does NOT prove
+    the Poincare conjecture; Perelman's proof requires full Ricci flow with surgery
+    on arbitrary 3-manifolds. The 'buoyancy stabilization prevents singularities'
+    claim in the spec is plausible at linear order but NOT verified here at the
+    non-linear PDE level."""
+    if buoyancy_coeff is None:
+        buoyancy_coeff = BETA0_DPM
+    k_lin = 2.0
+    eps = float(initial_anisotropy)
+    F_init = eps * eps + (buoyancy_coeff / 2.0) * (eps ** 4)
+    F_prev = F_init
+    monotone = True
+    for _ in range(int(n_steps)):
+        cubic = buoyancy_coeff * (eps ** 3) if include_buoyancy else 0.0
+        deps = -k_lin * eps - cubic
+        eps_new = eps + dt * deps
+        F_new = eps_new * eps_new + (buoyancy_coeff / 2.0) * (eps_new ** 4)
+        if F_new > F_prev + 1e-15:
+            monotone = False
+        eps = eps_new
+        F_prev = F_new
+    F_final = F_prev
+    convergence_rate = math.log(abs(F_init / max(F_final, 1.0e-300))) / (n_steps * dt) if F_final > 0 else float("inf")
+    honest = (
+        "1-DOF biaxial Berger-sphere proxy under buoyancy-modified Ricci flow "
+        f"d eps/dt = -2 eps - beta_i eps^3. Initial eps = {initial_anisotropy:.4f}; "
+        f"final eps = {eps:.6e} after {n_steps} steps of dt={dt}. F-functional descent "
+        f"from {F_init:.6e} to {F_final:.6e}; monotone decrease = {monotone}. "
+        "This is NOT a proof of Poincare; it is a 1-DOF linearization demonstrating "
+        "convergence to the S^3 fixed point. Full proof requires PDE Ricci flow with "
+        "surgery on arbitrary 3-manifolds (Perelman 2003)."
+    )
+    return {
+        "initial_anisotropy":         float(initial_anisotropy),
+        "final_anisotropy":           eps,
+        "final_residual":             abs(eps),
+        "n_steps":                    int(n_steps),
+        "dt":                         float(dt),
+        "buoyancy_coeff":             float(buoyancy_coeff),
+        "include_buoyancy":           bool(include_buoyancy),
+        "F_initial":                  F_init,
+        "F_final":                    F_final,
+        "F_monotone_descent":         monotone,
+        "fixed_point_reached":        abs(eps) < 1.0e-6,
+        "convergence_rate_estimate":  convergence_rate,
+        "honest_disclosure":          honest,
+    }
+
+def _l96_poincare_ym_spinor_bundle_probe(initial_anisotropy: float = 0.5,
+                                           n_steps: int = 1000,
+                                           dt: float = 0.01,
+                                           UA_scalar: float = 1.0e-4,
+                                           lattice_qcd_gev: float = 1.78,
+                                           lattice_window_lo: float = 1.6,
+                                           lattice_window_hi: float = 2.0) -> Dict[str, Any]:
+    """Side-by-side: Poincare (1-DOF Ricci-flow proxy) + Yang-Mills (three closure
+    forms) + spinor-bundle index, all against published anchors.
+
+    Returns dict with keys: poincare_proxy_residual, poincare_F_monotone,
+    poincare_fixed_point_reached, ym_preexisting_gev, ym_spec_energy_J_gev,
+    ym_spec_energy_J2_gev, lattice_qcd_gev, lattice_window_lo/hi,
+    preexisting_in_window, spec_energyJ_in_window, spec_energyJ2_in_window,
+    spinor_bundle_index, poincare_uqff_algebraic, paper_basis, honest_disclosure.
+
+    HONEST: (a) pre-existing _millennium_yang_mills_derive returns 43.30 GeV, NOT
+    1.78 GeV as its docstring claims -- a 24x stale label. (b) Spec formula
+    interpreted as energy_J gives 3.36e-4 GeV; as energy_J2 sqrt-mode gives 1448
+    GeV. Neither matches 1.78 GeV literally. (c) Pre-existing
+    _millennium_poincare_derive returns 1.9363... = 4/3 + beta_0, an algebraic
+    closure NOT a Ricci flow integration; only the new 1-DOF proxy actually
+    integrates. (d) All three values are returned so the user sees the gap
+    instead of just the 'preferred' closure number."""
+    poincare = _l96_uqff_ricci_flow_s3_fixed_point_residual(
+        initial_anisotropy, n_steps, dt, include_buoyancy=True
+    )
+    ym_pre  = _millennium_yang_mills_derive()
+    ym_eJ   = _l96_uqff_ym_mass_gap_spec_form_gev(UA_scalar=UA_scalar, dim_interpretation="energy_J")
+    ym_eJ2  = _l96_uqff_ym_mass_gap_spec_form_gev(UA_scalar=UA_scalar, dim_interpretation="energy_J2")
+    spinor  = _millennium_bsd_derive()
+    poin_alg = _millennium_poincare_derive()
+    in_win = lambda v: lattice_window_lo <= v <= lattice_window_hi
+    honest = (
+        f"Pre-existing _millennium_yang_mills_derive = {ym_pre:.4g} GeV (its docstring claims "
+        f"1.78 GeV -- the literal arithmetic is 24x larger). Spec formula energy_J interpretation "
+        f"= {ym_eJ:.4g} GeV (5000x too small). Spec formula energy_J2 (sqrt) interpretation "
+        f"= {ym_eJ2:.4g} GeV (~800x too large). Lattice QCD anchor = {lattice_qcd_gev} GeV "
+        f"in window [{lattice_window_lo}, {lattice_window_hi}]. None of the three UQFF closure "
+        "forms reproduces the lattice anchor literally; the '~10% match' claim in the spec is "
+        "not supported by the published constants. Poincare 1-DOF proxy converges (F-functional "
+        f"monotone decrease={poincare['F_monotone_descent']}, eps -> {poincare['final_anisotropy']:.3e}), "
+        "but this is a 1-DOF linearization, not a Perelman-level PDE proof."
+    )
+    return {
+        "poincare_proxy_residual":      poincare["final_residual"],
+        "poincare_F_initial":           poincare["F_initial"],
+        "poincare_F_final":             poincare["F_final"],
+        "poincare_F_monotone":          poincare["F_monotone_descent"],
+        "poincare_fixed_point_reached": poincare["fixed_point_reached"],
+        "poincare_uqff_algebraic":      poin_alg,
+        "ym_preexisting_gev":           ym_pre,
+        "ym_spec_energy_J_gev":         ym_eJ,
+        "ym_spec_energy_J2_gev":        ym_eJ2,
+        "lattice_qcd_gev":              lattice_qcd_gev,
+        "lattice_window_lo":            lattice_window_lo,
+        "lattice_window_hi":            lattice_window_hi,
+        "preexisting_in_window":        in_win(ym_pre),
+        "spec_energyJ_in_window":       in_win(ym_eJ),
+        "spec_energyJ2_in_window":      in_win(ym_eJ2),
+        "spinor_bundle_index":          spinor,
+        "paper_basis":                  "PAPER_1066 first-principles Lagrangian + PAPER_1095 horizon "
+                                         "buoyancy + PAPER_1170-1173 closed vacuum ledger + Star-MagicProofEngine "
+                                         "PROOF_DERIVATION_MODES['millenium_yang_mills_mass_gap_1p78gev'] / "
+                                         "['poincare_conjecture_buoyancy_ricci_flow'] / ['spinor_bundle_index']",
+        "honest_disclosure":            honest,
+    }
+
+
 # ---- PAPER_1167 closed UQFF Lagrangian ----
 # MOVED 2026-06-06: PAPER_1167 form is now the canonical _master_lagrangian
 # (L3416). The standalone L96 capture (_l96_triangular_beta_i,
@@ -31412,6 +31588,20 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         "page_curve_paradox_probe":    ("Page_curve_paradox_SM_vs_UQFF_PAPER1095_probe",
                                          _l96_page_curve_paradox_probe,
                                          ["M_msun", "delta_SCm_J", "phi_norm"]),
+        # Poincare + Yang-Mills + Spinor-Bundle Millennium probe (PAPER_1066/1095/1170)
+        "uqff_ym_mass_gap_spec_form_gev":("UQFF_YM_mass_gap_spec_form_GeV",
+                                         _l96_uqff_ym_mass_gap_spec_form_gev,
+                                         ["rho_SCm_val", "S26_amp", "phi_norm",
+                                          "beta_i_val", "UA_scalar", "dim_interpretation"]),
+        "uqff_ricci_flow_s3_residual": ("UQFF_Ricci_flow_S3_1DOF_proxy_residual",
+                                         _l96_uqff_ricci_flow_s3_fixed_point_residual,
+                                         ["initial_anisotropy", "n_steps", "dt",
+                                          "buoyancy_coeff", "include_buoyancy"]),
+        "poincare_ym_lattice_probe":   ("Poincare_YM_lattice_Millennium_probe",
+                                         _l96_poincare_ym_spinor_bundle_probe,
+                                         ["initial_anisotropy", "n_steps", "dt",
+                                          "UA_scalar", "lattice_qcd_gev",
+                                          "lattice_window_lo", "lattice_window_hi"]),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
