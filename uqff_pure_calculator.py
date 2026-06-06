@@ -5004,6 +5004,125 @@ def _magnetar_g_master_uqff_v2(r_m: float = R_MAGNETAR_M,
     return grav_term + Ug_sum_trz + cosm + lorentz_term + gw_term
 
 
+# === SGR A* (SMBH) EVOLUTION MASTER g (UQFF) — spec 03/09May2025 ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_SMBH
+# Sagittarius A* Evolution_03May2025" + DeepSearch Hubble/EHT/Fermilab data.
+# Reuses entire magnetar v2 chain (_magnetar_B_decay, Hubble factor, SC factor,
+# (1+f_TRZ) multiplier, Lambda*c^2/3, _gw_quadrupole_spin_term, _lorentz_*)
+# and _l29_r_schwarzschild for r = 2GM/c^2. Adds 4 new closed-form leaves the
+# spec requires that are NOT yet primitivized:
+#   - accretion mass growth          M(t) = M_0 * (1 + M_dot_0 * exp(-t/tau_acc))
+#   - r-dependent spin angular vel   Omega(r,t) = (eta * c / r) * exp(-t/tau_spin)
+#                                    (eta=0.3 spec prefactor; NOT a fixed period)
+#   - analytical dOmega/dt           = -(eta*c/r)/tau_spin * exp(-t/tau_spin)
+#   - DM perturbation w/ precession  (M_v+M_DM)*(delta_rho/rho + 3GM/r^3 * sin(theta))
+# Composer _sgr_a_g_master_uqff wires the literal spec equation.
+
+M_SGRA_KG               = 4.3e6 * M_SUN              # spec: 4.3M solar masses
+R_SGRA_M                = 1.27e10                    # spec: ~r_s = 2GM/c^2 = 1.27e10 m
+B0_SGRA_T               = 1.0                        # spec: 10^4 G accretion disk = 1 T
+TAU_B_SGRA_S            = 1.0e6 * _YEAR_S_MAGNETAR   # spec: 1 Myr field decay
+TAU_ACC_SGRA_S          = 9.0e9 * _YEAR_S_MAGNETAR   # spec: 9 Gyr accretion timescale
+M_DOT0_SGRA             = 0.01                       # spec: ~1% mass increase amplitude
+OMEGA_PREFACTOR_SGRA    = 0.3                        # spec: Omega_0 = 0.3 * c / r
+SGRA_PRECESSION_DEG     = 30.0                       # spec: 30 deg spin misalignment
+
+def _accretion_mass_growth_uqff(M_initial_kg: float = M_SGRA_KG,
+                                  t_s: float = 0.0,
+                                  M_dot_0: float = M_DOT0_SGRA,
+                                  tau_acc_s: float = TAU_ACC_SGRA_S) -> float:
+    """Accretion-driven SMBH mass growth (spec eq):
+        M(t) = M_initial * (1 + M_dot_0 * exp(-t/tau_acc))
+    At t=4.5 Gyr (tau_acc/2) with defaults: M(t) ~ 8.604e36 kg (spec match)."""
+    return M_initial_kg * (1.0 + M_dot_0 * math.exp(-t_s / max(tau_acc_s, 1e-300)))
+
+def _sgra_spin_Omega_uqff(r_m: float = R_SGRA_M,
+                           t_s: float = 0.0,
+                           eta: float = OMEGA_PREFACTOR_SGRA,
+                           tau_spin_s: float = TAU_ACC_SGRA_S) -> float:
+    """SMBH spin angular velocity (r-dependent prefactor, spec eq):
+        Omega(r,t) = (eta * c / r) * exp(-t/tau_spin).  rad/s.
+    Unlike _magnetar_spin_Omega (fixed P_0), here Omega_0 = eta*c/r is set by
+    the orbital ISCO scale, NOT a fixed pulse period."""
+    return (eta * C_LIGHT / max(r_m, 1e-300)) \
+            * math.exp(-t_s / max(tau_spin_s, 1e-300))
+
+def _sgra_spin_dOmega_dt_uqff(r_m: float = R_SGRA_M,
+                                t_s: float = 0.0,
+                                eta: float = OMEGA_PREFACTOR_SGRA,
+                                tau_spin_s: float = TAU_ACC_SGRA_S) -> float:
+    """Analytical derivative:
+        dOmega/dt = -(eta*c/r) / tau_spin * exp(-t/tau_spin).  rad/s^2."""
+    return -(eta * C_LIGHT / max(r_m, 1e-300)) / max(tau_spin_s, 1e-300) \
+            * math.exp(-t_s / max(tau_spin_s, 1e-300))
+
+def _dm_perturbation_precession_uqff(M_visible_kg: float,
+                                       M_DM_kg: float,
+                                       delta_rho_over_rho: float = 1.0e-5,
+                                       M_central_kg: float = 0.0,
+                                       r_m: float = 1.0,
+                                       theta_deg: float = 0.0) -> float:
+    """Dark-matter perturbation with spin-axis precession (spec eq):
+        (M_v + M_DM) * (delta_rho/rho + 3*G*M/r^3 * sin(theta)).
+    Units: kg/m  (mass per unit length; the spec author marks this term as
+    'secondary to local gravitational effects' for the magnetar/SMBH composer
+    and drops it from the final closed equation; this primitive is provided so
+    the caller can include it when modeling cosmological-scale dynamics).
+    With theta_deg=30 and Sgr A* defaults: ~4.076e33 kg/m (spec match)."""
+    theta_rad = theta_deg * math.pi / 180.0
+    tidal = (3.0 * G_NEWTON * M_central_kg / max(r_m ** 3, 1e-300)) * math.sin(theta_rad)
+    return (M_visible_kg + M_DM_kg) * (delta_rho_over_rho + tidal)
+
+def _sgr_a_g_master_uqff(r_m: float = R_SGRA_M,
+                          t_s: float = 4.5e9 * _YEAR_S_MAGNETAR,
+                          M_initial_kg: float = M_SGRA_KG,
+                          M_dot_0: float = M_DOT0_SGRA,
+                          tau_acc_s: float = TAU_ACC_SGRA_S,
+                          B_0_T: float = B0_SGRA_T,
+                          tau_B_s: float = TAU_B_SGRA_S,
+                          B_crit_T: float = B_CRIT_MAGNETAR_T,
+                          eta_spin: float = OMEGA_PREFACTOR_SGRA,
+                          tau_spin_s: float = TAU_ACC_SGRA_S,
+                          H0_si: float = H0_MAGNETAR_SI,
+                          Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                          Ug2: float = 0.0,
+                          Ug3: float = 0.0,
+                          f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR) -> float:
+    """Master Universal Gravity equation for Sgr A* (SMBH) evolution (spec 09May2025).
+
+        g_SgrA*(r,t) = (G*M(t)/r^2) * (1 + H_0*t) * (1 - B(t)/B_crit)
+                       + (U_g1 + U_g2 + U_g3 + U_g4) * (1 + f_TRZ)
+                       + Lambda*c^2/3
+                       + (G*M(t)^2) / (c^4*r) * (dOmega(t)/dt)^2
+
+      where M(t) = M_initial * (1 + M_dot_0 * exp(-t/tau_acc))
+            B(t) = B_0 * exp(-t/tau_B)
+            U_g1 = G*M(t)/r^2,  U_g4 = U_g1 * (1 - B(t)/B_crit)
+            Omega(r,t) = (eta_spin*c/r) * exp(-t/tau_spin)
+
+    Spec defaults (t=4.5 Gyr, M_0=4.3e6 M_sun, r=1.27e10 m, B_0=1 T,
+    tau_B=1 Myr, tau_acc=9 Gyr, eta=0.3) -> g_SgrA* ~ 1.250e7 m/s^2
+    (dominated by U_g1+U_g4 with (1+f_TRZ); B(t) ~ 0 after 4.5 Gyr so
+    SC factor ~ 1; Lorentz, Lambda*c^2/3, and GW terms all negligible).
+
+    The DM perturbation with sin(theta) precession factor and the Lorentz
+    q(v x B), fluid, and quantum-uncertainty leaves are absorbed into the
+    standalone primitives (_dm_perturbation_precession_uqff,
+    _lorentz_acceleration_uqff) -- spec author drops them from the final
+    closed equation for the SMBH regime."""
+    M_t = _accretion_mass_growth_uqff(M_initial_kg, t_s, M_dot_0, tau_acc_s)
+    Ug1 = G_NEWTON * M_t / max(r_m * r_m, 1e-300)
+    B_t = _magnetar_B_decay(t_s, B_0_T, tau_B_s)
+    sc_factor = 1.0 - B_t / max(B_crit_T, 1e-300)
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    dOmega = _sgra_spin_dOmega_dt_uqff(r_m, t_s, eta_spin, tau_spin_s)
+    gw_term = _gw_quadrupole_spin_term(M_t, r_m, dOmega)
+    return grav_term + Ug_sum_trz + cosm + gw_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
