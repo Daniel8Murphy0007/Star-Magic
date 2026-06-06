@@ -32985,6 +32985,35 @@ def _aether_perturbation_eta_T(eta: float = 1.0e-22,
     Used as the diagonal correction in _aether_metric_a_munu (bundle 1)."""
     return eta * T_smunu
 
+# ===== Q-scope THz oscilloscope artifact (10-image Earth-core THz hole) =====
+# Already captured (no work):
+#   OMEGA_SCM = 1.25e12 Hz primitive (L82) -- rounded q-scope center
+#   THz_low_edge / THz_high_edge = 1.20e12 / 1.30e12 Hz (L15045-46)
+#   _l24_qscope_in_band() (L9114) -- verifies primitive 1.25 THz lies in band
+# Missing leaves (additive):
+#   F_QSCOPE_MEASURED_HZ = 1.246e12   -- single measured anchor distinct from primitive
+#   _oscilloscope_power_W -- P = V_peak^2 / Z, scope V^2/R relation (Z = 50 Ohm)
+# NOT added: 10 timestamped amplitude samples (observational data, not a derivation;
+# per pure-calculator architecture rule, observational arrays belong in bodies CSV).
+F_QSCOPE_MEASURED_HZ = 1.246e12   # Earth-core THz hole anchor (Oct 3 2023 q-scope bundle)
+Z_OSCILLOSCOPE_OHM   = 50.0       # Standard scope termination impedance (Ohm)
+
+def _qscope_measured_in_band(f_hz: float = F_QSCOPE_MEASURED_HZ,
+                                f_low_hz: float = 1.20e12,
+                                f_high_hz: float = 1.30e12) -> bool:
+    """Verify a measured q-scope anchor lies inside the catalog 1.2-1.3 THz band.
+    Defaults: 1.246 THz in [1.20, 1.30] THz -> True."""
+    return f_low_hz <= f_hz <= f_high_hz
+
+def _oscilloscope_power_W(V_peak_V: float = 0.8,
+                            Z_ohm: float = Z_OSCILLOSCOPE_OHM) -> float:
+    """Instantaneous oscilloscope-load power P = V_peak^2 / Z (scope V^2/R primitive):
+        V_peak = 0.8 V, Z = 50 Ohm -> P = 0.0128 W (spec match).
+    Used to convert q-scope peak voltage into a deposited-power estimate at the
+    scope termination. Not a UQFF physics derivation; provided as a named
+    spec-aligned helper for q-scope artifacts."""
+    return (V_peak_V * V_peak_V) / Z_ohm
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
