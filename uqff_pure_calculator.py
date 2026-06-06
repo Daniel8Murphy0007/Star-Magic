@@ -32707,6 +32707,43 @@ def _l96_decay_rate_ratio(t: float = 0.0, n26: int = 26,
     decay = math.exp(-(SSQ ** n26) * inner)
     return (rho_scm / rho_ua) * decay
 
+# ===== Quantum-variable spec bundle (epsilon_sw, g_munu, eta, beta_i, k_i) =====
+# Five-document tag set: Solar Wind Buoyancy / Aether Metric / Aether Coupling /
+# Buoyancy Coupling / Gravity Coupling. beta_i = BETA_I = 0.6 already shipped L81.
+# Minkowski metric implicit in GR docstrings L4406/4436. The four missing
+# constants and two composer helpers are added below.
+EPSILON_SW          = 0.001         # solar-wind buoyancy modulation (dimensionless)
+RHO_VAC_SW          = 8.0e-21       # solar-wind vacuum energy density (J/m^3)
+ETA_AETHER_COUPLING = 1.0e-22       # aether coupling constant (dimensionless)
+K_GRAV_LADDER       = (1.5, 1.2, 1.8, 1.0)  # k_1..k_4 Universal Gravity scaling
+
+def _u_bi_solar_wind_modulated(U_gi: float = 1.0, Omega_g: float = 1.0,
+                                 M_bh: float = M_SUN, d_g: float = 1.0,
+                                 U_UA: float = 1.0, t_n: float = 0.0,
+                                 beta_i: float = BETA_I,
+                                 epsilon_sw: float = EPSILON_SW,
+                                 rho_vac_sw: float = RHO_VAC_SW) -> float:
+    """U_bi solar-wind modulated (Solar Wind Buoyancy doc eq 1):
+        U_bi = -beta_i * U_gi * Omega_g * (M_bh/d_g)
+               * (1 + epsilon_sw * rho_vac_sw) * U_UA * cos(pi*t_n).
+    Defaults: beta_i=0.6, epsilon_sw=0.001, rho_vac_sw=8e-21
+    -> modulation factor 1 + 8e-24 ≈ 1 (spec match)."""
+    modulation = 1.0 + epsilon_sw * rho_vac_sw
+    return -beta_i * U_gi * Omega_g * (M_bh / max(d_g, 1e-300)) * modulation \
+           * U_UA * math.cos(math.pi * t_n)
+
+def _aether_metric_a_munu(T_smunu: float = 1.123e7,
+                           eta: float = ETA_AETHER_COUPLING) -> list:
+    """A_munu = g_munu + eta * T_s^munu (Aether Metric / Aether Coupling docs eq 3).
+    g_munu = Minkowski diag(1,-1,-1,-1). T_smunu treated as scalar perturbation
+    magnitude applied uniformly to all 4 diagonal components (spec convention).
+    Defaults: eta=1e-22, T_s=1.123e7 -> perturbation 1.123e-15 (spec match)."""
+    perturbation = eta * T_smunu
+    return [1.0 + perturbation,
+            -1.0 + perturbation,
+            -1.0 + perturbation,
+            -1.0 + perturbation]
+
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy ((residuals reported via _ledger_residual_all) systems).
