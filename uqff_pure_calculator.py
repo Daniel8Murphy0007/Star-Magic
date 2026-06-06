@@ -5485,6 +5485,91 @@ def _rings_g_master_uqff(r_m: float = R_EINSTEIN_RINGS_M,
     return grav_term + Ug_sum_trz + cosm + lorentz_term
 
 
+# === Galaxy NGC 2525 (Puppis, SN 2018gv host) evolution master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation_'Galaxy NGC 2525' Evolution_08May2025"
+# (Hubble program 15145 SN 2018gv Type-Ia distance ladder, Fermilab barred-spiral
+# dynamics).
+#
+# All leaves already primitivized EXCEPT the closed composer:
+#   - (G*M/r^2), (1-B/B_crit), Ug1..Ug4, (1+f_TRZ), Lambda*c^2/3 -> magnetar v2 chain
+#   - H(z) = H_0*sqrt(Omega_M*(1+z)^3 + Omega_L)  -> _hubble_unified (L6481, REUSE)
+#   - q (v x B) (1 + rho_UA/rho_SCm) * 1e-12      -> _lorentz_acceleration_uqff
+#   - M_SN(t) = M_SN_0 * exp(-t/tau_SN) (Type-Ia fading) -> _magnetar_B_decay
+#     (generic X_0 * exp(-t/tau), already proven on magnetar B-decay and Pillars
+#     erosion envelope)
+#   - G*M_BH/r_BH^2 (inner SMBH point-mass term) is the same G*M/r^2 arithmetic
+#     evaluated at (M_BH, r_BH); composed inline.
+# Spec subtracts a small -G*M_SN(t)/r^2 drain term from the disk-scale total;
+# wired inside the composer with a sign flip (no new primitive needed).
+# Spec drops the quantum-uncertainty integral, fluid V*g, oscillatory, DM
+# perturbation, and ram-pressure leaves from the final closed equation as
+# "negligible / secondary to local effects" -- same convention as Rings.
+
+M_NGC2525_STAR_KG     = 1.0e10 * M_SUN              # spec: ~10^10 M_sun stellar disk
+M_NGC2525_BH_KG       = 2.25e7 * M_SUN              # spec: 2.25e7 M_sun central SMBH
+M_NGC2525_TOTAL_KG    = M_NGC2525_STAR_KG + M_NGC2525_BH_KG  # spec: ~1.993e40 kg
+R_NGC2525_DISK_M      = 2.836e20                    # spec: ~30 kly half-diameter (2.836e20 m)
+R_NGC2525_BH_M        = 1.496e11                    # spec: 1 AU (1.496e11 m) inner radius
+B_NGC2525_T           = 1.0e-5                      # spec: 10^-5 T galactic field
+Z_NGC2525             = 0.016                       # spec: z ~ 0.016 (70 Mly)
+H0_NGC2525_KMSMPC     = 70.0                        # spec: H_0 = 70 km/s/Mpc
+V_GAS_NGC2525_MS      = 1.0e5                       # spec: 10^5 m/s HII region gas velocity
+M_SN_2018GV_INIT_KG   = 1.4 * M_SUN                 # spec: 1.4 M_sun Chandrasekhar progenitor
+TAU_SN_2018GV_S       = 1.0 * _YEAR_S_MAGNETAR      # spec: 1 yr Type-Ia fading timescale
+T_NGC2525_DEFAULT_S   = 7.0 * _YEAR_S_MAGNETAR      # spec example: t = 7 yr post-SN-peak
+
+def _ngc2525_g_master_uqff(r_m: float = R_NGC2525_DISK_M,
+                              t_s: float = T_NGC2525_DEFAULT_S,
+                              M_kg: float = M_NGC2525_TOTAL_KG,
+                              M_BH_kg: float = M_NGC2525_BH_KG,
+                              r_BH_m: float = R_NGC2525_BH_M,
+                              M_SN_init_kg: float = M_SN_2018GV_INIT_KG,
+                              tau_SN_s: float = TAU_SN_2018GV_S,
+                              B_T: float = B_NGC2525_T,
+                              B_crit_T: float = B_CRIT_MAGNETAR_T,
+                              z_obs: float = Z_NGC2525,
+                              H0_kmsMpc: float = H0_NGC2525_KMSMPC,
+                              Ug2: float = 0.0,
+                              Ug3: float = 0.0,
+                              f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                              Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                              v_gas_ms: float = V_GAS_NGC2525_MS,
+                              q_C: float = EV_J,
+                              m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                              rho_UA_val: float = None,
+                              rho_SCm_val: float = None,
+                              macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """NGC 2525 evolution master g (spec 08May2025).
+
+    g_NGC2525(r,t) = (G*M/r^2)(1+H(z) t)(1-B/B_crit)
+                   + G*M_BH/r_BH^2
+                   + (Ug1+Ug2+Ug3+Ug4)(1+f_TRZ)
+                   + Lambda*c^2/3
+                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+                   - G*M_SN(t)/r^2,   M_SN(t)=M_SN_0 exp(-t/tau_SN)
+
+    Defaults reproduce spec example total ~1.335e5 m/s^2 at t=7 yr (BH term
+    1.334e5 dominates; Lorentz 1.053e-3 second; disk evolution 1.663e-11 third).
+    """
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    sc_factor = 1.0 - B_T / max(B_crit_T, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M                            # km/s/Mpc -> s^-1
+    grav_disk = Ug1 * (1.0 + H_z_si * t_s) * sc_factor
+    bh_term = G_NEWTON * M_BH_kg / max(r_BH_m * r_BH_m, 1e-300)
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    M_SN_t = _magnetar_B_decay(t_s, M_SN_init_kg, tau_SN_s)
+    sn_drain = G_NEWTON * M_SN_t / max(r_m * r_m, 1e-300)
+    return grav_disk + bh_term + Ug_sum_trz + cosm + lorentz_term - sn_drain
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
