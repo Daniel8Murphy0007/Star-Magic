@@ -33114,6 +33114,61 @@ def _qscope_cycle_summary(t_array, flow_state_array) -> Dict[str, Any]:
         "reversal_cycle_complete_mean_period_s":  _qscope_mean_period_s(rcc),
     }
 
+# ----- V838 Monocerotis light-echo master intensity composer (UQFF) -----
+# Spec primitives already present: c (C_LIGHT), M_SUN, RHO_UA, RHO_SCM,
+#   F_TRZ_DEFAULT, _defect_factor_ug1 (delta_def = 0.01 sin(0.001 t)),
+#   multiple _u_g1_* composers, _v838_mon_g_primitive_sat (SAT g, distinct).
+# Missing leaves (additive):
+L_SUN_W              = 3.826e26                 # Solar bolometric luminosity (W)
+L_OUTBURST_V838_W    = 6.0e5 * L_SUN_W          # Literal spec eq: 600k L_Sun -> 2.2956e32 W
+L_OUTBURST_V838_SPEC_QUOTE_W = 2.3e38           # Spec-quoted example (~2.3e38 W); 6-order
+                                                # arithmetic gap vs the literal equation
+                                                # 6e5 * 3.826e26 = 2.2956e32. Both anchors
+                                                # coexist (same pattern as bundles 2/3/9).
+
+def _light_echo_radius_m(t_s: float,
+                           c_m_s: float = C_LIGHT) -> float:
+    """Light-echo expanding radius: r_echo(t) = c * t.
+        t = 3 yr = 9.467e7 s -> r ~ 2.84e16 m (3 light-years)."""
+    return c_m_s * t_s
+
+def _dust_density_uqff(rho_0: float,
+                         beta: float,
+                         U_g1_value: float) -> float:
+    """UQFF dust-density modulation by Ug1: rho_dust = rho_0 * exp(-beta * U_g1).
+        rho_0 = 1e-21, beta = 0, U_g1 arbitrary -> rho_dust = 1e-21 (no modulation)."""
+    return rho_0 * math.exp(-beta * U_g1_value)
+
+def _v838_light_echo_intensity_uqff(t_s: float,
+                                       rho_0_dust: float = 1.0e-21,
+                                       sigma_scatter: float = 1.0e-22,
+                                       beta_U_g1: float = 0.0,
+                                       L_outburst_W: float = L_OUTBURST_V838_W,
+                                       f_TRZ: float = F_TRZ_DEFAULT,
+                                       rho_UA_val: float = None,
+                                       rho_SCm_val: float = None) -> float:
+    """V838 Mon master light-echo intensity (UQFF composer):
+        I_echo(t) = L_outburst / (4 pi (c t)^2)
+                    * sigma_scatter
+                    * rho_0 * exp(-beta * U_g1)
+                    * (1 + f_TRZ)
+                    * (1 + rho_UA / rho_SCm)
+    Caller supplies the scalar product beta * U_g1 (no implicit U_g1 derivation —
+    use any existing _u_g1_* composer to obtain U_g1, then multiply by beta).
+    At t = 0 the geometric flux term diverges; returns +inf as the limit.
+    With f_TRZ = 0.1 and the G-lock ratio rho_UA/rho_SCm = 10, the UQFF
+    enhancement factor = (1 + 0.1) * (1 + 10) = 12.1 over the classical
+    intensity L/(4 pi r^2) * sigma * rho."""
+    rua = RHO_UA  if rho_UA_val  is None else rho_UA_val
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    r = _light_echo_radius_m(t_s)
+    if r <= 0.0:
+        return float('inf')
+    classical = (L_outburst_W / (4.0 * math.pi * r * r)) * sigma_scatter
+    rho_dust  = rho_0_dust * math.exp(-beta_U_g1)
+    uqff_enh  = (1.0 + f_TRZ) * (1.0 + (rua / rsc if rsc != 0.0 else 0.0))
+    return classical * rho_dust * uqff_enh
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
