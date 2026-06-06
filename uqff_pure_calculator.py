@@ -32752,6 +32752,49 @@ D_GALACTIC_CENTER   = 2.55e20        # Sun -> Milky Way center (m, ~27 kly)
 OMEGA_GALACTIC      = 7.3e-16        # Milky Way angular velocity (rad/s)
 F_FEEDBACK_DEFAULT  = 0.1            # AGN feedback factor for Delta M_BH = 1 dex
 
+# ===== Quantum-variable bundle 3 (f_Heaviside, i, H_SCm, lambda_i, j) =====
+# f_heaviside / lambda_i already shipped as parameters in _l96_bearden_Um_trz (L5010)
+# and _l96_bearden_Ui_trz (L5018). Indices i and j are structural integers (no
+# derivation). Named constants + Ug2 heliospheric form + Ug3 string-sum form added.
+F_HEAVISIDE_DEFAULT = 0.01           # Heaviside component fraction (unitless)
+F_QUASI_DEFAULT     = 0.01           # Quasi-static fraction (unitless)
+H_SCM_DEFAULT       = 1.0            # Heliosphere thickness factor (unitless, ~1)
+LAMBDA_I_DEFAULT    = 1.0            # Inertia coupling constant (unitless)
+
+def _u_g2_heliosphere_uqff(k_2: float = 1.2,
+                             rho_UA_val: float = None,
+                             rho_SCm_val: float = None,
+                             M_s: float = M_SUN,
+                             r: float = R_J_MAGNETIC,
+                             R_b: float = R_J_MAGNETIC,
+                             delta_sw: float = 0.01,
+                             v_sw: float = 5.0e5,
+                             H_SCm: float = H_SCM_DEFAULT,
+                             E_react: float = 1.0e46) -> float:
+    """Universal Gravity Ug2 (heliospheric form, Heliosphere Factor doc eq 6):
+        U_g2 = k_2 * (rho_UA + rho_SCm) * M_s / r^2 * S(r-R_b)
+               * (1 + delta_sw * v_sw) * H_SCm * E_react
+    S(r-R_b) = Heaviside step: 1 if r>=R_b else 0.
+    Sun defaults at r=R_b -> S=1, yields ~1.18e53 J/m^3 (spec match)."""
+    rua = RHO_UA  if rho_UA_val  is None else rho_UA_val
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    S = 1.0 if r >= R_b else 0.0
+    return (k_2 * (rua + rsc) * M_s / max(r * r, 1e-300)
+            * S * (1.0 + delta_sw * v_sw) * H_SCm * E_react)
+
+def _u_g3_string_magnetism_uqff(k_3: float = 1.8,
+                                  B_j_sum: float = 1.0e3,
+                                  omega_s: float = 2.5e-6,
+                                  t: float = 0.0,
+                                  P_core: float = 1.0,
+                                  E_react: float = 1.0e46) -> float:
+    """Universal Gravity Ug3 (string-summed magnetic form, Magnetic String Index
+    doc eq 12):
+        U_g3 = k_3 * sum_j B_j(r,theta,t,rho_vac,[SCm]) * cos(omega_s(t)*t*pi)
+               * P_core * E_react
+    Sun defaults (B_j_sum=1e3 T, t=0 -> cos=1): yields ~1.8e49 J/m^3 (spec match)."""
+    return k_3 * B_j_sum * math.cos(omega_s * t * math.pi) * P_core * E_react
+
 def _galactic_rotation_period(Omega_g: float = OMEGA_GALACTIC) -> float:
     """T = 2 pi / Omega_g. Galactic rotation period (s).
     Default: Omega_g=7.3e-16 -> T ≈ 8.61e15 s ≈ 2.73e8 years (spec match)."""
