@@ -5211,6 +5211,78 @@ def _tapestry_g_master_uqff(r_m: float = R_TAPESTRY_M,
     return grav_term + Ug_sum_trz + cosm + lorentz_term
 
 
+# === WESTERLUND 2 SUPER-CLUSTER EVOLUTION MASTER g (UQFF) — spec 03/09May2025 ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_
+# 'Westerlund 2' Evolution_03May2025" + Hubble multi-band (F555W, F814W,
+# F125W, F160W) + Fermilab dense-cluster gas/wind simulations.
+# Structurally identical to Tapestry spec; only the cluster-specific defaults
+# change (M=30,000 M_sun, r=10 ly, B=1e-5 T, tau_SF=2 Myr, M_0=10^5/30000=3.333).
+# All physics leaves already primitivized -- composer only.
+
+M_WESTERLUND2_INIT_KG     = 3.0e4 * M_SUN              # spec: 30,000 M_sun cluster mass
+R_WESTERLUND2_M           = 9.461e16                   # spec: 10 ly cluster radius
+B_WESTERLUND2_T           = 1.0e-5                     # spec: 10^-5 T (dense-cluster field)
+TAU_SF_WESTERLUND2_S      = 2.0e6 * _YEAR_S_MAGNETAR   # spec: 2 Myr SF timescale
+M_DOT0_WESTERLUND2        = 1.0e5 / 3.0e4              # spec: M_0 = 10^5 / 30000 = 3.333
+V_GAS_WESTERLUND2_MS      = 1.0e5                      # spec: 10^5 m/s nebular gas velocity
+T_WESTERLUND2_DEFAULT_S   = 1.0e6 * _YEAR_S_MAGNETAR   # spec: midpoint, t = 1 Myr
+
+def _westerlund2_g_master_uqff(r_m: float = R_WESTERLUND2_M,
+                                t_s: float = T_WESTERLUND2_DEFAULT_S,
+                                M_initial_kg: float = M_WESTERLUND2_INIT_KG,
+                                M_dot_0: float = M_DOT0_WESTERLUND2,
+                                tau_SF_s: float = TAU_SF_WESTERLUND2_S,
+                                B_T: float = B_WESTERLUND2_T,
+                                B_crit_T: float = B_CRIT_MAGNETAR_T,
+                                H0_si: float = H0_MAGNETAR_SI,
+                                Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                                Ug2: float = 0.0,
+                                Ug3: float = 0.0,
+                                f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                                v_gas_ms: float = V_GAS_WESTERLUND2_MS,
+                                q_C: float = EV_J,
+                                m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                                macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                                rho_UA_val: float = None,
+                                rho_SCm_val: float = None) -> float:
+    """Master Universal Gravity equation for Westerlund 2 super-cluster
+    (Milky Way, Carina, 15 kly) evolution -- spec 03/09May2025.
+
+        g_Westerlund2(r,t) = (G*M(t)/r^2) * (1 + H_0*t) * (1 - B/B_crit)
+                             + (U_g1 + U_g2 + U_g3 + U_g4) * (1 + f_TRZ)
+                             + Lambda*c^2/3
+                             + q (v x B) * (1 + rho_UA/rho_SCm) * macro_scale
+
+      where M(t) = M_initial * (1 + M_dot_0 * exp(-t/tau_SF))
+            U_g1 = G*M(t)/r^2,  U_g4 = U_g1 * (1 - B/B_crit)
+
+    Spec defaults (t=1 Myr, M_init=30000 M_sun, r=10 ly, B=1e-5 T, M_0=3.333,
+    tau_SF=2 Myr, v_gas=1e5 m/s, f_TRZ=0.1, G-lock rho_UA/rho_SCm=10) ->
+        M(1 Myr) ~ 1.803e35 kg
+        U_g1     ~ 1.344e-9 m/s^2
+        grav_term ~ 1.344e-9 (Hubble + SC factors ~ 1)
+        Ug_sum*(1+TRZ) ~ 2.957e-9 m/s^2
+        Lorentz*macro  ~ 1.053e-3 m/s^2 (B 10x Tapestry; spec dominant term)
+        TOTAL g_Westerlund2 ~ 1.053e-3 m/s^2 (matches spec).
+
+    Quantum-uncertainty, fluid V*g, oscillatory, GW, and ram-pressure leaves
+    are absorbed into standalone primitives (spec author drops them from the
+    final closed equation as "secondary to local effects" for this regime)."""
+    M_t = _accretion_mass_growth_uqff(M_initial_kg, t_s, M_dot_0, tau_SF_s)
+    Ug1 = G_NEWTON * M_t / max(r_m * r_m, 1e-300)
+    sc_factor = 1.0 - B_T / max(B_crit_T, 1e-300)
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + Ug_sum_trz + cosm + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
