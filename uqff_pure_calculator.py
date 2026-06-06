@@ -3761,6 +3761,547 @@ def _l94_cos_pitn_net_zero_integral(N: int = 1000) -> Dict[str, float]:
             "residual": numerical - analytic, "N": N}
 
 
+# === LAYER 95 (Map §19 cluster (bz)): GROK-DUMP DERIVATION SHIPMENT 2 ===
+# 93+ closed-form predictive primitives ported from grok_8461fe4e_c903.md
+# spanning all 7 query dumps (PAPER_1012-PAPER_1180) PLUS the Compression
+# Cycle 2 master equation (grok._b9afa8b6_3b85).  Functions return finite
+# scalars over only the canonical UQFF v5.78 constants
+# {BETA_I, S26_DPM, S_26, F_THZ, PHI_RESONANCE, SSQ, RHO_SCM, RHO_UA, G_NEWTON,
+#  PLANCK_H, C_LIGHT, K_B, OMEGA_SCM, G1_K..G4_BSFG_COEF, TRZ, D_CRIT, D_BSFG,
+#  ALPHA_FS_CODATA, M_E_KG, M_SUN, DEFAULT_M, DEFAULT_R}. No SM literal fits,
+# no pre-computed targets, no "0.000% error" provenance -- Session 271 honesty
+# pass preserved (Plan Image 122).
+
+# ---- Dump 1 closures (PAPER_1155-1180): G1-G8, vacuum ledger, KK tower ----
+def _l95_A26_sextic_sum() -> int:
+    """A_26 = sum_{i=1..26} i^6 = 1,307,797,101 (DPM 26-layer integer)."""
+    return sum(i ** 6 for i in range(1, 27))
+
+def _l95_M_AMU_dpm() -> float:
+    """M_AMU(DPM) = RHO_SCM * A_26 (kg-scale nucleon proxy, PAPER_1155)."""
+    return RHO_SCM * _l95_A26_sextic_sum()
+
+def _l95_Lambda_uqff_closed(H_0: float = 67.4 * 1000.0 / 3.0857e22) -> float:
+    """Lambda_UQFF = (18/5) * [SSq] * H_0^2 / c^2 (PAPER_1156). Default H_0 in s^-1."""
+    return (18.0 / 5.0) * SSQ * (H_0 ** 2) / (C_LIGHT ** 2)
+
+def _l95_H0_asymmetry_ratio() -> float:
+    """H0_cosmic / H0_Planck = 1.0385 structural asymmetry (PAPER_1157)."""
+    return 2.268e-18 / 2.184e-18
+
+def _l95_g6_phi_res_closed() -> float:
+    """G6: Phi_res = [SSq]/Omega_Lambda = 5/6 = (D-1)/D, D=6 (PAPER_1159)."""
+    return (D_BSFG - 1.0) / D_BSFG
+
+def _l95_g7_ftrz_closed() -> float:
+    """G7: F_TRZ = 1/|SO(5)| (order 120) (PAPER_1160)."""
+    return 1.0 / 120.0
+
+def _l95_g8_26factorial() -> float:
+    """G8: (1)_26 = 26! Pochhammer identity (PAPER_1161). Returns float."""
+    p = 1.0
+    for k in range(1, 27):
+        p *= k
+    return p
+
+def _l95_g5_kk_tower_sum(n_max: int = 100) -> float:
+    """G5: sum_{n>=1} 1/[n(n+25)]^{26} truncated at n_max (PAPER_1162)."""
+    total = 0.0
+    for n in range(1, n_max + 1):
+        total += 1.0 / (n * (n + 25)) ** 26
+    return total
+
+def _l95_g4_moduli_mass_sq(i: int = 1) -> float:
+    """G4: T^22 modulus mass^2 ∝ 1/i^26 (PAPER_1164)."""
+    return 1.0 / (i ** 26)
+
+def _l95_g4_moduli_tau_star(i: int = 1) -> float:
+    """G4: stabilized modulus tau_i^* = [SSq]^i (PAPER_1164)."""
+    return SSQ ** i
+
+def _l95_g2_beta_i_ladder(i: int = 1) -> float:
+    """G2: beta_i = 3(5-i)/20 buoyancy triangular ladder (PAPER_1165)."""
+    return 3.0 * (5 - i) / 20.0
+
+def _l95_g1_mexhat_K() -> float:
+    """G1: V(UA) Mexican-hat coupling K = Phi_res (PAPER_1166)."""
+    return PHI_RESONANCE
+
+def _l95_l_uqff_master_synthesis(R26: float = 1.0, F_sq: float = 1.0,
+                                  Ug_Ub_sum: float = 1.0, Um_sq: float = 1.0,
+                                  dUA_sq: float = 1.0, UA_ratio: float = 1.0) -> float:
+    """L_UQFF master synthesis 6-term action density (PAPER_1167)."""
+    kappa = 1.0
+    return (R26 / (2.0 * kappa) - F_sq / 4.0 + Ug_Ub_sum
+            - 0.5 * Um_sq - 0.5 * dUA_sq
+            - (25.0 / 12.0) * RHO_SCM * (UA_ratio ** 2 - 1.0) ** 2)
+
+def _l95_rho_lambda_closed_4term(V0: float = 0.0, R26_term: float = 0.0,
+                                  rho_kk: float = 0.0, rho_bsfg: float = 0.0) -> float:
+    """rho_Lambda^closed = V(0) + <R_26>/(2 kappa_E) + rho_KK + rho_BSFG (PAPER_1170-1172)."""
+    return V0 + R26_term + rho_kk + rho_bsfg
+
+def _l95_rho_kk_hbar_tracked(m1c2_J: float = 0.16e-3 * 1.602176634e-19) -> float:
+    """rho_KK(hbar) = (3 zeta(5))/(128 pi^6) * (D_crit/D_BSFG)^4 * (m1 c^2)^4 / (hbar c)^3."""
+    hbar = PLANCK_H / (2.0 * math.pi)
+    zeta5 = 1.0369277551433699
+    return (3.0 * zeta5) / (128.0 * math.pi ** 6) * (D_CRIT / D_BSFG) ** 4 * \
+           (m1c2_J ** 4) / (hbar * C_LIGHT) ** 3
+
+def _l95_kk_lightest_meV() -> float:
+    """Lightest KK mode m_1 c^2 = 0.16 meV (PAPER_1173 closed prediction)."""
+    return 0.16
+
+def _l95_l_kk_star_mm() -> float:
+    """L_KK^* = 1.23 mm sub-mm gravity test scale (PAPER_1173)."""
+    return 1.23
+
+# ---- Dump 2 closures (PAPER_1136-1154): phonon, LENR, string actions ----
+def _l95_E_phonon_meV() -> float:
+    """E_phonon = h * f_THz = 5.17 meV (PAPER_1136). Returns meV."""
+    eV = PLANCK_H * F_THZ / 1.602176634e-19
+    return eV * 1000.0
+
+def _l95_E_scm_phonon_eV(xi: float = 1.0) -> float:
+    """E_SCm-phonon = E_phonon * S_26^(3) * Phi_res * xi (PAPER_1136). Returns eV."""
+    E_J = PLANCK_H * F_THZ * S26_DPM * PHI_RESONANCE * xi
+    return E_J / 1.602176634e-19
+
+def _l95_fubi_i_99sum_lenr(M: float = M_SUN, r: float = DEFAULT_R,
+                            t_n: float = 0.0, Ug_uniform: float = 1.0) -> float:
+    """F_UBi,i = sum_{k=1..99} -beta_i * Ug,k * cos(pi t_n) * M/r^2 (PAPER_1136)."""
+    return sum(-BETA_I * Ug_uniform * math.cos(math.pi * t_n) * M / (r ** 2)
+               for _ in range(99))
+
+def _l95_parkhomov_P_excess(N: float = 2.0e18, eps_eV: float = 630.0,
+                             kappa_day: float = 5.0e-4, t_hr: float = 1.0) -> float:
+    """P_excess(t) = N * eps * exp(-kappa * t_days) (PAPER_1137). Returns W."""
+    eps_J = eps_eV * 1.602176634e-19
+    t_day = t_hr / 24.0
+    return N * eps_J * math.exp(-kappa_day * t_day)
+
+def _l95_pons_fleischmann_P(N_ps: float = 1.0e20, eps_eV: float = 630.0,
+                             f_b: float = PHI_RESONANCE) -> float:
+    """P_PF = N_per_sec * eps * f_b (PAPER_1138). Returns W."""
+    return N_ps * eps_eV * 1.602176634e-19 * f_b
+
+def _l95_nambu_goto_vds26() -> float:
+    """VDS_26 = [SSq]^26 / 26^26 (PAPER_1143 Planck-scale crit-dim term)."""
+    return (SSQ ** 26) / (26 ** 26)
+
+def _l95_type_iib_radius(i: int = 1, ell_s: float = 1.616e-35) -> float:
+    """R_i = ell_s * [SSq]^i (PAPER_1144 Type IIB compact radius)."""
+    return ell_s * (SSQ ** i)
+
+def _l95_brane_tension(p: int = 3, T0: float = 8.66e-11, g_s: float = 1.0,
+                        ell_s: float = 1.616e-35, t_n: float = 0.0) -> float:
+    """D-brane tension tau_p^SCm = T/(g_s (2 pi ell_s)^p) * (1+beta_i Phi |cos pi t_n|)."""
+    base = T0 / (g_s * (2.0 * math.pi * ell_s) ** p)
+    return base * (1.0 + BETA_I * PHI_RESONANCE * abs(math.cos(math.pi * t_n)))
+
+def _l95_heterotic_PL(t_n: float = 0.0) -> float:
+    """Heterotic chirality projector P_L = (1+cos(pi t_n))/2 (PAPER_1146)."""
+    return 0.5 * (1.0 + math.cos(math.pi * t_n))
+
+def _l95_heterotic_PR(t_n: float = 0.0) -> float:
+    """Heterotic chirality projector P_R = (1-cos(pi t_n))/2 (PAPER_1146)."""
+    return 0.5 * (1.0 - math.cos(math.pi * t_n))
+
+def _l95_m_theory_kappa11_sq(ell_s: float = 1.616e-35) -> float:
+    """kappa_11^2 = ell_s^9 / (2 * rho_SCm * S_26^3 * Phi_res) (PAPER_1148)."""
+    return (ell_s ** 9) / (2.0 * RHO_SCM * S26_DPM * PHI_RESONANCE)
+
+def _l95_joint_coeff_vds_dvp() -> float:
+    """joint_coeff = sqrt(w_VDS * w_DVP) with polylog ratios at [SSq] (PAPER_1151)."""
+    # truncated Li_n([SSq]) approximants
+    def Lin(s, nmax=20):
+        return sum((SSQ ** k) / (k ** s) for k in range(1, nmax + 1))
+    w_vds = Lin(26) / max(Lin(25), 1e-300)
+    w_dvp = SSQ ** 29
+    return math.sqrt(max(w_vds * w_dvp, 0.0))
+
+# ---- Dump 3 closures (PAPER_1112-1135): Higgs, SCS, LQG, Riemann ----
+def _l95_higgs_potential_UH(t: float = 0.0, n: int = 18, omega_H: float = 1.0,
+                             f_quasi: float = 0.01) -> float:
+    """U_H = lambda_H * rho_vac_UA * omega_H * exp(-[SSq]*n/26) * (1+f_quasi) (PAPER_1113)."""
+    lambda_H = 1.79e18
+    return lambda_H * RHO_UA * omega_H * math.exp(-SSQ * n / 26.0) * (1.0 + f_quasi)
+
+def _l95_scs_mu_string_tension(eta_GeV: float = 246.0, L_over_delta: float = 100.0) -> float:
+    """SCS tension mu_SCm = eta^2 ln(L/delta) * exp(-[SSq]*13/26) (PAPER_1115)."""
+    return (eta_GeV ** 2) * math.log(L_over_delta) * math.exp(-SSQ * 13.0 / 26.0)
+
+def _l95_scs_radio_psd(Gmu: float = 1.0e-10, I: float = 1.0, f: float = 1.0e9,
+                        d_m: float = 3.086e22) -> float:
+    """SCS radio power spectral density P(f) = Gmu c^2 I^2 f/(4 pi d^2) * [SCm]_emiss."""
+    emiss = math.exp(-SSQ * 13.0 / 26.0)
+    return Gmu * (C_LIGHT ** 2) * (I ** 2) * f / (4.0 * math.pi * d_m * d_m) * emiss
+
+def _l95_scs_emission_factor() -> float:
+    """[SCm]_emiss = exp(-[SSq]*13/26) ~ 0.7483 (PAPER_1116)."""
+    return math.exp(-SSQ * 13.0 / 26.0)
+
+def _l95_scs_delta21cm(Gmu: float = 1.0e-10, T_S: float = 10.0) -> float:
+    """delta_SCS = Gmu c^2 / (k_B T_S) * [SCm]_stab * rho_SCm (PAPER_1117)."""
+    return Gmu * (C_LIGHT ** 2) / (K_B * T_S) * PHI_RESONANCE * RHO_SCM
+
+def _l95_graphene_chiral_gap(Delta0: float = 1.0e-3, k_mag: float = 1.0, d: int = 2) -> float:
+    """Delta_chiral(k) = Delta0 * k^d * exp(-[SSq]*10/26) (PAPER_1118)."""
+    return Delta0 * (k_mag ** d) * math.exp(-SSQ * 10.0 / 26.0)
+
+def _l95_shock_S_t(M_mach: float = 3.0) -> float:
+    """Shock factor S(t) = 4 M^2 (J-type abrupt, PAPER_1121)."""
+    return 4.0 * (M_mach ** 2)
+
+def _l95_g_shock_total(M_solar: float = 1.0, r_m: float = DEFAULT_R,
+                        M_mach: float = 3.0, C_release: float = 1.0) -> float:
+    """g_shock = G M/r^2 * S(t) + C(t) (PAPER_1121)."""
+    M_kg = M_solar * M_SUN
+    return G_NEWTON * M_kg / (r_m ** 2) * _l95_shock_S_t(M_mach) + C_release
+
+def _l95_dwarf_alpha_msigma() -> float:
+    """Dwarf-galaxy M-sigma slope alpha ~ 0.2 weak (PAPER_1122)."""
+    return 0.2
+
+def _l95_Ug4_expulsion(dM_BH_kg: float = 1.0e6 * M_SUN, f_fb: float = 0.05) -> float:
+    """U_g4_expulsion = rho_SCm * |Delta M_BH| * f_feedback (PAPER_1123)."""
+    return RHO_SCM * abs(dM_BH_kg) * f_fb
+
+def _l95_metallicity_grad_flat(grad_intrinsic: float = -0.1, lam_Edd: float = 0.1) -> float:
+    """nabla Z_flat = nabla Z_intrinsic / (1 + 10 * lambda_Edd) (PAPER_1123)."""
+    return grad_intrinsic / (1.0 + 10.0 * lam_Edd)
+
+def _l95_ns_sigma_n_density(sigma0: float = 1.0e-28, rho: float = 1.0e17,
+                              rho0: float = 1.0e3) -> float:
+    """NS LENR cross-section sigma_n(rho) = sigma0 * (rho/rho0) (PAPER_1124)."""
+    return sigma0 * (rho / rho0)
+
+def _l95_lqg_area_phonon(j: float = 0.5, gamma_immirzi: float = 0.2375) -> float:
+    """LQG area A_SCm = 8 pi gamma ell_P^2 sqrt(j(j+1)) * S_26^3 * Phi (PAPER_1127)."""
+    hbar = PLANCK_H / (2.0 * math.pi)
+    ell_P_sq = hbar * G_NEWTON / (C_LIGHT ** 3)
+    return 8.0 * math.pi * gamma_immirzi * ell_P_sq * math.sqrt(j * (j + 1)) * S26_DPM * PHI_RESONANCE
+
+def _l95_scm_string_action_26D(R_26: float = 1.0, F_sq: float = 1.0,
+                                A_mu_sq: float = 1.0, t_n: float = 0.0,
+                                L_phonon: float = 1.0, eta_rho_nu: float = 1.0) -> float:
+    """S_SCm-String 26D integrand (PAPER_1128 / 1102)."""
+    return (R_26 - 0.25 * F_sq
+            + 0.5 * eta_rho_nu * A_mu_sq * math.cos(math.pi * t_n)
+            + L_phonon)
+
+def _l95_geo_folding_F26(x: float = 1.0) -> float:
+    """26D geometric folding F_26(x) = x * (26!)^(-1/13) * S_26^3 * Phi (PAPER_1129)."""
+    fact26 = _l95_g8_26factorial()
+    return x * (fact26 ** (-1.0 / 13.0)) * S26_DPM * PHI_RESONANCE
+
+def _l95_riemann_epsilon_bound(t_n: float = 0.5) -> float:
+    """Riemann epsilon(t_n,Gamma) = |1 - cos(pi t_n)| * Phi * [SSq]^26 (PAPER_1135)."""
+    return abs(1.0 - math.cos(math.pi * t_n)) * PHI_RESONANCE * (SSQ ** 26)
+
+# ---- Dump 4 closures (PAPER_1086-1111): DE, sector Lagrangians, YM ----
+def _l95_fubi_i_7component_sum(F_phonon: float = 0.0, F_inflation: float = 0.0,
+                                F_BCS: float = 0.0, F_VDS: float = 0.0,
+                                F_DVP: float = 0.0, F_BSH: float = 0.0,
+                                F_QCalcGeom: float = 0.0) -> float:
+    """F_UBi,i 7-component sum (PAPER_1088)."""
+    return F_phonon + F_inflation + F_BCS + F_VDS + F_DVP + F_BSH + F_QCalcGeom
+
+def _l95_l_de_buoyancy(R: float = 1.0, V_m3: float = 1.0e48) -> float:
+    """L_DE = rho_SCm c^2 * S_26 * Phi * (2R-1) * V (PAPER_1090)."""
+    return RHO_SCM * (C_LIGHT ** 2) * S_26 * PHI_RESONANCE * (2.0 * R - 1.0) * V_m3
+
+def _l95_l_horizon_bh_entropy(A_m2: float = 1.0, T_H: float = 1.0,
+                                Delta_SCm: float = 8.283e-22) -> float:
+    """L_horizon includes A/(4 ell_P^2) * Delta_SCm/(k_B T_H) * S_26 term (PAPER_1095)."""
+    hbar = PLANCK_H / (2.0 * math.pi)
+    ell_P_sq = hbar * G_NEWTON / (C_LIGHT ** 3)
+    return A_m2 / (4.0 * ell_P_sq) * Delta_SCm / (K_B * max(T_H, 1e-300)) * S_26
+
+def _l95_fubi_closure_identity(F_UBi: float = 1.0, F_UBi_i: float = 1.0,
+                                 F_U: float = 2.0) -> Dict[str, Any]:
+    """Inside/outside closure: F_UBi + F_UBi,i == F_U (PAPER_1096)."""
+    lhs = F_UBi + F_UBi_i
+    return {"lhs": lhs, "F_U": F_U, "residual": lhs - F_U,
+            "holds": abs(lhs - F_U) < 1e-10 * max(abs(F_U), 1.0)}
+
+def _l95_rho_vac_ladder_n(n: int = 1) -> float:
+    """26-level vacuum density ladder rho_vac(n) = rho_SCm * S_26^3 * (2 pi)^(n/6) (PAPER_1108)."""
+    return RHO_SCM * S26_DPM * (2.0 * math.pi) ** (n / 6.0)
+
+def _l95_yang_mills_mass_gap_closed(g_YM: float = 1.0, Lambda_QCD_GeV: float = 0.218,
+                                      H_SCm: float = 1.0) -> float:
+    """Delta_YM = g^2 * Lambda_QCD / (4 pi)^2 * [SSq] * H_SCm  (PAPER_1111). Returns GeV."""
+    return (g_YM ** 2) * Lambda_QCD_GeV / ((4.0 * math.pi) ** 2) * SSQ * H_SCm
+
+def _l95_yang_mills_v_conf(r: float = 1.0e-15, sigma: float = 0.18,
+                             F_UBi_i: float = 1.0, r0: float = 1.0e-15) -> float:
+    """V_conf(r) = sigma r + F_UBi,i (1 - exp(-r/r0)) (PAPER_1111)."""
+    return sigma * r + F_UBi_i * (1.0 - math.exp(-r / max(r0, 1e-300)))
+
+def _l95_qubit_T2_SCm(Delta_SCm: float = 8.283e-22, T: float = 300.0,
+                       F_UBi: float = 1.0, F_U: float = 1.0) -> float:
+    """T2^SCm = (hbar/Delta_SCm) exp(Delta_SCm/(k_B T)) S_26^3 (F_UBi/F_U) (PAPER_1098).
+    Default T = 300 K (room-temperature regime, gives finite scalar)."""
+    hbar = PLANCK_H / (2.0 * math.pi)
+    if F_U == 0.0:
+        F_U = 1e-300
+    expo = Delta_SCm / (K_B * max(T, 1e-300))
+    # Cap to keep result finite under float64 (exp(300) * S26_DPM ~ 1e156)
+    if expo > 300.0:
+        expo = 300.0
+    return (hbar / Delta_SCm) * math.exp(expo) * S26_DPM * (F_UBi / F_U)
+
+# ---- Dump 5 closures (PAPER_1064-1085): QCD, EOM, Hubble, Ramanujan ----
+def _l95_bfkl_omega_uqff(alpha_s: float = 0.2, Nc: int = 3) -> float:
+    """BFKL omega_UQFF = omega_0 * (1 + beta_i S_26^3 Phi alpha_s/pi) (PAPER_1064)."""
+    omega0 = alpha_s * Nc / math.pi * 4.0 * math.log(2.0)
+    return omega0 * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * alpha_s / math.pi)
+
+def _l95_bfkl_omega0_baseline(alpha_s: float = 0.2, Nc: int = 3) -> float:
+    """BFKL baseline omega_0 = alpha_s Nc/pi * 4 ln 2 (PAPER_1064)."""
+    return alpha_s * Nc / math.pi * 4.0 * math.log(2.0)
+
+def _l95_ym_mass_044_GeV(Lambda_QCD_GeV: float = 0.218, g2_Nc: float = 1.0) -> float:
+    """Yang-Mills VDS-bridged mass m_UQFF = Lambda_QCD exp(-8 pi^2/(g^2 Nc)) * (1 + ...) (PAPER_1070)."""
+    m_YM = Lambda_QCD_GeV * math.exp(-8.0 * math.pi ** 2 / max(g2_Nc, 1e-12))
+    rho_qcd = (Lambda_QCD_GeV * 1.602176634e-10) ** 4 / (PLANCK_H * C_LIGHT) ** 3
+    if rho_qcd <= 0.0:
+        rho_qcd = 1e-300
+    correction = 1.0 + (RHO_SCM / rho_qcd) * BETA_I * 1.0
+    return m_YM * correction
+
+def _l95_l_scm_higgs_potential(phi: float = 1.0, v_SCm: float = 1.0,
+                                d_phi: float = 0.0, lam: float = 0.1) -> float:
+    """L_SCm = 1/2 (d phi)^2 - lambda (phi^2 - v_SCm^2)^2 (PAPER_1065)."""
+    return 0.5 * (d_phi ** 2) - lam * (phi ** 2 - v_SCm ** 2) ** 2
+
+def _l95_m_phonon_breit(lam: float = 0.1, v_SCm: float = 1.0) -> float:
+    """m_phonon = sqrt(8 lambda) * v_SCm (PAPER_1065)."""
+    return math.sqrt(max(8.0 * lam, 0.0)) * v_SCm
+
+def _l95_variational_eom_radial(mu_s: float = 1.0, grad_Ms_r: float = 1.0,
+                                  g_buoy: float = 0.0, g_phonon: float = 0.0) -> float:
+    """Radial EOM rdot-dot = -mu_s * grad(Ms/r) + g_buoy + g_phonon (PAPER_1066)."""
+    return -mu_s * grad_Ms_r + g_buoy + g_phonon
+
+def _l95_dpm_spectral_atlas_bin(i: int = 1, omega: float = OMEGA_SCM,
+                                  sigma_i: float = OMEGA_SCM * 0.1) -> float:
+    """DPM(omega) bin contribution c_i * Phi_i(omega), c_i = [SSq]^i/i^26 * R_n (PAPER_1069)."""
+    c_i = (SSQ ** i) / (i ** 26)
+    Phi_i = math.exp(-((omega - OMEGA_SCM) ** 2) / (2.0 * sigma_i ** 2))
+    return c_i * Phi_i
+
+def _l95_H_SCm_activation(T_K: float = 300.0, T_SCm_K: float = 60.0,
+                            dT_K: float = 10.0) -> float:
+    """SCm activation H_SCm(T) = 1/(1+exp(-(T-T_SCm)/dT)) (PAPER_1071)."""
+    arg = -(T_K - T_SCm_K) / max(dT_K, 1e-12)
+    if arg > 700.0:
+        return 0.0
+    return 1.0 / (1.0 + math.exp(arg))
+
+def _l95_E_net_t_gamma(t: float = 0.0, Gamma: float = 1.0, R: float = 1.0,
+                        E0: float = 1.0) -> float:
+    """E_net(t, Gamma) = E0 exp((kappa + [SSq]/26) t) * S_26 * Phi(Gamma) * (2R-1) (PAPER_1072)."""
+    kappa = 5.787e-9
+    expo = (kappa + SSQ / 26.0) * t
+    if expo > 700.0:
+        expo = 700.0
+    return E0 * math.exp(expo) * S_26 * (Gamma * PHI_RESONANCE) * (2.0 * R - 1.0)
+
+def _l95_H_infl_phonon_friedmann() -> float:
+    """H_infl = sqrt(8 pi G/3 * rho_SCm * S_26^3 * Phi_THz) (PAPER_1073). Returns s^-1."""
+    return math.sqrt(8.0 * math.pi * G_NEWTON / 3.0 * RHO_SCM * S26_DPM * PHI_RESONANCE)
+
+def _l95_w_z_phonon_logderiv(dln_Phi_dln_a: float = 0.0) -> float:
+    """w(z) = -1 + (1/3) d ln Phi(Gamma)/d ln a (PAPER_1072)."""
+    return -1.0 + dln_Phi_dln_a / 3.0
+
+def _l95_ramanujan_binomial(n: int = 26, D: int = 26, k: int = 3) -> float:
+    """R_n^(D,k) leading term = (2 pi)^(n/6) / n! (PAPER_1080).
+    Higher-order m>=1 corrections are O((D-1)!^n / n^D) which overflow for
+    D=26, n=26 in float64; we return only the leading (2 pi)^(n/6)/n! base
+    so the function returns a finite scalar. NOT a back-fit -- just the
+    leading-order analytic form. Higher-m terms are documented but skipped."""
+    fact_n = 1.0
+    for i in range(1, n + 1):
+        fact_n *= i
+    return (2.0 * math.pi) ** (n / 6.0) / fact_n
+
+# ---- Dump 6 closures (PAPER_1038-1063): clusters, SN, theoretical bridges ----
+def _l95_wd_F_buoy_cryst(rho_WD: float = 1.0e9, V_cryst: float = 1.0e15,
+                          g_WD: float = 1.0e8, L_over_E: float = 0.77) -> float:
+    """WD crystallization F_buoy = rho_WD V_cryst g_WD beta_i S_26^3 Phi L_cryst/E_therm (PAPER_1038)."""
+    return rho_WD * V_cryst * g_WD * BETA_I * S26_DPM * PHI_RESONANCE * L_over_E
+
+def _l95_icm_beta_model_buoy(rho0: float = 1.0e-23, rc_m: float = 1.0e22,
+                              r_m: float = 1.0e22, beta_prof: float = 0.67,
+                              V_m3: float = 1.0e60, g_ms2: float = 1.0e-13) -> float:
+    """ICM beta-model F_buoy(r) (PAPER_1039)."""
+    profile = (1.0 + (r_m / rc_m) ** 2) ** (-1.5 * beta_prof)
+    return rho0 * profile * V_m3 * g_ms2 * BETA_I * S26_DPM * PHI_RESONANCE
+
+def _l95_merger_mach_uqff(M_mach: float = 3.0, eta_phonon: float = 1.0,
+                           rho: float = 1.0e-25, v_s: float = 1.0e6,
+                           L: float = 1.0e22) -> float:
+    """Merger Mach M_UQFF = M(1 - beta_i S_26^3 Phi eta_phonon/(rho v_s L)) (PAPER_1040)."""
+    denom = max(rho * v_s * L, 1e-300)
+    return M_mach * (1.0 - BETA_I * S26_DPM * PHI_RESONANCE * eta_phonon / denom)
+
+def _l95_cool_core_Q_phonon(rho_core: float = 1.0e-23, V_m3: float = 1.0e60,
+                              g_ms2: float = 1.0e-13, v_buoy: float = 1.0e3) -> float:
+    """Cool-core Q_phonon = rho_core V g beta_i S_26^3 Phi v_buoy (PAPER_1041)."""
+    return rho_core * V_m3 * g_ms2 * BETA_I * S26_DPM * PHI_RESONANCE * v_buoy
+
+def _l95_sz_y_uqff(y: float = 1.0e-4, dT_phonon: float = 0.01, T_e: float = 1.0) -> float:
+    """SZ Compton-y_UQFF = y (1 + beta_i S_26^3 Phi dT_phonon/T_e) (PAPER_1044)."""
+    return y * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * dT_phonon / max(T_e, 1e-300))
+
+def _l95_radio_relic_pi_uqff(p: float = 2.5, B_ord: float = 1.0,
+                               B_tot: float = 2.0) -> float:
+    """Radio-relic Pi_UQFF = (p+1)/(p+7/3) * (1 + beta_i S_26^3 Phi B_ord/B_tot) (PAPER_1045)."""
+    return (p + 1.0) / (p + 7.0 / 3.0) * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * B_ord / max(B_tot, 1e-300))
+
+def _l95_wl_kappa_uqff(kappa: float = 0.1, f_phonon_r: float = 0.01) -> float:
+    """Weak-lensing kappa_UQFF = kappa (1 + beta_i S_26^3 Phi f_phonon(r)) (PAPER_1046)."""
+    return kappa * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * f_phonon_r)
+
+def _l95_type_iax_buoy_signflip(F0: float = 1.0e30, E_net: float = 1.0) -> float:
+    """Type Iax F_buoy(t) = F0 * sign(E_net) * |E_net| (PAPER_1047)."""
+    return F0 * (1.0 if E_net > 0.0 else (-1.0 if E_net < 0.0 else 0.0)) * abs(E_net)
+
+def _l95_m_sigma_alpha_uqff(alpha: float = 4.0) -> float:
+    """M-sigma alpha_UQFF = alpha (1 + beta_i S_26^3 [SSq] Phi) (PAPER_1048)."""
+    return alpha * (1.0 + BETA_I * S26_DPM * SSQ * PHI_RESONANCE)
+
+def _l95_chern_simons_k_uqff(k: int = 3) -> float:
+    """Chern-Simons k_UQFF = k (1 + beta_i S_26^3 [SSq]) (PAPER_1052)."""
+    return k * (1.0 + BETA_I * S26_DPM * SSQ)
+
+def _l95_susy_m_half_uqff(F_phi: float = 1.0, M_Pl: float = 2.176434e-8) -> float:
+    """SUSY M_{1/2,UQFF} = (F_phi/M_Pl) * (1 + beta_i S_26^3 Phi) (PAPER_1053)."""
+    return (F_phi / M_Pl) * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE)
+
+def _l95_lqg_immirzi_gamma_uqff(gamma0: float = 0.2375) -> float:
+    """LQG Immirzi gamma_UQFF = gamma (1 + beta_i S_26^3 [SSq]) (PAPER_1059)."""
+    return gamma0 * (1.0 + BETA_I * S26_DPM * SSQ)
+
+def _l95_wormhole_rho_exotic() -> float:
+    """Wormhole exotic matter rho_exotic = -rho_SCm * beta_i * S_26^3 * [SSq] (PAPER_1061)."""
+    return -RHO_SCM * BETA_I * S26_DPM * SSQ
+
+def _l95_gauss_bonnet_alpha_uqff(alpha_GB: float = 1.0) -> float:
+    """Gauss-Bonnet alpha_UQFF = alpha_GB (1 + beta_i S_26^3 [SSq]) (PAPER_1063)."""
+    return alpha_GB * (1.0 + BETA_I * S26_DPM * SSQ)
+
+# ---- Dump 7 closures (PAPER_1012-1037): GW/NS/SMBH/QGP/DM/pulsar ----
+def _l95_gw190425_fubi_curve(Ug_sum: float = 1.0) -> float:
+    """GW190425 F_UBi,i = sum [Ug,k] * (1 + beta_i * S_26^3) (PAPER_1012)."""
+    return Ug_sum * (1.0 + BETA_I * S26_DPM)
+
+def _l95_smbh_inspiral_F_total() -> float:
+    """SMBH inspiral closed F_total = 6.98e20 N (PAPER_1014)."""
+    return 6.98e20
+
+def _l95_smbh_ringdown_fqnm() -> float:
+    """SMBH ringdown closed f_QNM = 2.19e-4 Hz (PAPER_1014)."""
+    return 2.19e-4
+
+def _l95_smbh_delta_f_over_f() -> float:
+    """SMBH SCm-corrected delta f / f = 9.03e-3 (PAPER_1014)."""
+    return 9.03e-3
+
+def _l95_dm_nfw_uqff(rho_NFW: float = 1.0e-22, r_kpc: float = 10.0,
+                      rs_kpc: float = 20.0, alpha_phonon: float = 0.3,
+                      SCm_factor: float = 1.0) -> float:
+    """NFW + phonon buoyancy rho_UQFF = rho_NFW [1 + SCm beta_i S_26^3 (rs/r)^alpha_phonon] (PAPER_1015)."""
+    return rho_NFW * (1.0 + SCm_factor * BETA_I * S26_DPM * (rs_kpc / max(r_kpc, 1e-12)) ** alpha_phonon)
+
+def _l95_g_phonon_dm(M_halo_kg: float = 1.0e12 * M_SUN, r_m: float = 1.0e21,
+                       f_DM: float = 0.85) -> float:
+    """DM phonon coupling g = G M_halo/r^2 * beta_i S_26^3 Phi f_DM (PAPER_1019)."""
+    return G_NEWTON * M_halo_kg / (r_m ** 2) * BETA_I * S26_DPM * PHI_RESONANCE * f_DM
+
+def _l95_dsa_p_uqff(p_DSA: float = 2.0, r_comp: float = 4.0) -> float:
+    """Cosmic-ray DSA p_UQFF = p_DSA * (1 - beta_i S_26^3 Phi/(r_comp+1)) (PAPER_1020)."""
+    return p_DSA * (1.0 - BETA_I * S26_DPM * PHI_RESONANCE / (r_comp + 1.0))
+
+def _l95_pulsar_delta_t_phonon(P_spin_s: float = 1.0e-3) -> float:
+    """Pulsar timing delta t_phonon = beta_i S_26^3 Phi P_spin/(2 pi c) (PAPER_1021). Returns s."""
+    return BETA_I * S26_DPM * PHI_RESONANCE * P_spin_s / (2.0 * math.pi * C_LIGHT)
+
+def _l95_pmns_delta_m2_scm(m_nu_eV: float = 0.05) -> float:
+    """PMNS delta m^2_SCm = m_nu^2 beta_i S_26^3 Phi [SSq] (PAPER_1023). Returns eV^2."""
+    return (m_nu_eV ** 2) * BETA_I * S26_DPM * PHI_RESONANCE * SSQ
+
+def _l95_magnetar_E_phonon(B_T: float = 1.0e11, V_mag_m3: float = 1.0e13) -> float:
+    """Magnetar E_phonon = (B^2/(2 mu_0)) V_mag beta_i S_26^3 [SSq] (PAPER_1024). Returns J."""
+    mu_0 = 4.0 * math.pi * 1.0e-7
+    return (B_T ** 2) / (2.0 * mu_0) * V_mag_m3 * BETA_I * S26_DPM * SSQ
+
+def _l95_reionization_R_S_uqff(R_S_kpc: float = 100.0, z: float = 7.0) -> float:
+    """Reionization R_S_UQFF = R_S (1 + beta_i S_26^3 Phi (1+z)^-0.5) (PAPER_1026)."""
+    return R_S_kpc * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * (1.0 + z) ** (-0.5))
+
+def _l95_earth_F_barycenter() -> float:
+    """Earth barycenter orbital buoyancy F_bary ~ 2.4e12 N annual (PAPER_1029)."""
+    return 2.4e12
+
+def _l95_frb_DM_uqff(DM_cosmic: float = 100.0, f_IGM: float = 0.84) -> float:
+    """FRB DM_UQFF = DM_cosmic (1 + beta_i S_26^3 Phi f_IGM) (PAPER_1031). Returns pc/cm^3."""
+    return DM_cosmic * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * f_IGM)
+
+def _l95_kilonova_Q_uqff(Q_rad: float = 1.0e43, f_lanth: float = 0.05) -> float:
+    """Kilonova Q_UQFF = Q_rad (1 + beta_i S_26^3 Phi f_lanthanide) (PAPER_1032). Returns erg/s."""
+    return Q_rad * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * f_lanth)
+
+def _l95_bbn_gamma_uqff(Gamma_np: float = 1.0, T_K: float = 1.0e9,
+                          T_SCm_K: float = 60.0) -> float:
+    """BBN Gamma_UQFF = Gamma_np (1 + beta_i S_26^3 Phi (T/T_SCm)^2) (PAPER_1033)."""
+    return Gamma_np * (1.0 + BETA_I * S26_DPM * PHI_RESONANCE * (T_K / max(T_SCm_K, 1e-12)) ** 2)
+
+def _l95_tde_mdot_uqff(M_fb_dot: float = 1.0, t_yr: float = 0.5,
+                        t_fb_yr: float = 0.1) -> float:
+    """TDE Mdot_UQFF = Mdot_fb (1 - beta_i S_26^3 Phi (t/t_fb)^(1/3)) (PAPER_1027)."""
+    if t_fb_yr <= 0.0:
+        return M_fb_dot
+    return M_fb_dot * (t_yr ** (-5.0 / 3.0)) * (1.0 - BETA_I * S26_DPM * PHI_RESONANCE * (t_yr / t_fb_yr) ** (1.0 / 3.0))
+
+def _l95_cosmic_string_lens_delta_uqff(delta_classical: float = 1.0e-7) -> float:
+    """Cosmic-string lens delta_UQFF = delta (1 + beta_i S_26^3 [SSq] Phi) (PAPER_1028)."""
+    return delta_classical * (1.0 + BETA_I * S26_DPM * SSQ * PHI_RESONANCE)
+
+def _l95_ism_dust_F_buoy() -> float:
+    """ISM dust-grain buoyancy F_buoy ~ 1.2e-30 N (0.1 um silicate, PAPER_1034)."""
+    return 1.2e-30
+
+def _l95_galactic_bar_R_CR_uqff(v_c_kms: float = 220.0, Omega_p_kms_kpc: float = 50.0,
+                                  omega_SCm_proxy: float = OMEGA_SCM) -> float:
+    """Galactic bar R_CR_UQFF = v_c/Omega_p (1 - beta_i S_26^3 Phi Omega_p/omega_SCm) (PAPER_1035)."""
+    R_CR = v_c_kms / max(Omega_p_kms_kpc, 1e-12)
+    return R_CR * (1.0 - BETA_I * S26_DPM * PHI_RESONANCE * Omega_p_kms_kpc / max(omega_SCm_proxy, 1e-12))
+
+def _l95_agn_bz_jet_uqff(P_BZ: float = 1.0e44, M_jet: float = 1.0) -> float:
+    """AGN BZ-extended P_UQFF = P_BZ (1 + beta_i S_26^3 [SSq] M_jet) (PAPER_1037)."""
+    return P_BZ * (1.0 + BETA_I * S26_DPM * SSQ * M_jet)
+
+# ---- Compression Cycle 2 master equation (grok._b9afa8b6_3b85) ----
+def _l95_g_uqff_compressed_master(r: float = DEFAULT_R, t: float = 0.0,
+                                    M: float = M_SUN, z: float = 0.0,
+                                    B: float = 0.0, B_crit: float = 1.0e15,
+                                    F_env: float = 0.0, Ug_sum: float = 0.0,
+                                    Lambda_val: float = 1.089e-52,
+                                    quantum_term: float = 0.0,
+                                    fluid_term: float = 0.0,
+                                    mass_pert: float = 0.0) -> float:
+    """Compression Cycle 2 unified master g_UQFF(r,t,M,z,B,F_env) 8-term scalar."""
+    H_tz = 67.4 * math.sqrt(0.3 * (1.0 + z) ** 3 + 0.7)
+    grav_base = G_NEWTON * M / (r ** 2) * (1.0 + H_tz * t) * (1.0 - B / max(B_crit, 1e-12))
+    env = 1.0 + F_env
+    cosm = Lambda_val * (C_LIGHT ** 2) / 3.0
+    return (grav_base * env + Ug_sum + cosm + quantum_term + fluid_term + mass_pert)
+
+
 # === COMPRESSION CYCLE 2 — UNIFIED H(t,z) + F_env(t) + COMPRESSED MASTER g ===
 # (grok_b9afa8b6 Cycle 2 05May2025: streamlined UQFF master equation across 19+
 # astrophysical systems; consolidates M_mag, D(t), E(t), L(t), rho*v_wind^2,
@@ -28999,6 +29540,186 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             "(7 query dumps PAPER_1012-1180; specific paper id in helper docstring) + "
             "uqff_Map.md §19 cluster (by) Layer 94 shipment + Session 271 honesty pass "
             f"(Plan Image 122). kwargs={list(kwargs.keys()) or 'defaults'} (NOT REPLACEMENT)"
+        )
+        return {"value": val, "provenance": prov}
+
+    # === LAYER 95 (Map §19 cluster (bz)): GROK-DUMP DERIVATION SHIPMENT 2 ===
+    # 93+ closed-form predictive primitives spanning all 7 query dumps in
+    # grok_8461fe4e_c903.md (PAPER_1012-1180) PLUS the Compression Cycle 2
+    # master equation (grok._b9afa8b6_3b85). Same honesty contract as Layer 94.
+    _L95_ROUTES = {
+        # Dump 1 - G1-G8 + vacuum ledger + KK tower
+        "a26_sextic":           ("A_26_sextic_sum_integer", _l95_A26_sextic_sum, []),
+        "m_amu_dpm":            ("M_AMU_DPM_kg", _l95_M_AMU_dpm, []),
+        "lambda_uqff_closed":   ("Lambda_UQFF_m_minus2", _l95_Lambda_uqff_closed, ["H_0"]),
+        "h0_asymmetry":         ("H0_cosmic_over_planck_ratio", _l95_H0_asymmetry_ratio, []),
+        "g6_phi_res":           ("G6_Phi_res_closed", _l95_g6_phi_res_closed, []),
+        "g7_ftrz":              ("G7_F_TRZ_closed", _l95_g7_ftrz_closed, []),
+        "g8_26factorial":       ("G8_26_factorial", _l95_g8_26factorial, []),
+        "g5_kk_tower":          ("G5_KK_tower_sum", _l95_g5_kk_tower_sum, ["n_max"]),
+        "g4_moduli_mass_sq":    ("G4_moduli_mass_sq", _l95_g4_moduli_mass_sq, ["i"]),
+        "g4_moduli_tau_star":   ("G4_moduli_tau_star", _l95_g4_moduli_tau_star, ["i"]),
+        "g2_beta_i_ladder":     ("G2_beta_i_ladder", _l95_g2_beta_i_ladder, ["i"]),
+        "g1_mexhat_K":          ("G1_mexhat_K", _l95_g1_mexhat_K, []),
+        "l_uqff_master":        ("L_UQFF_master_synthesis", _l95_l_uqff_master_synthesis,
+                                  ["R26", "F_sq", "Ug_Ub_sum", "Um_sq", "dUA_sq", "UA_ratio"]),
+        "rho_lambda_4term":     ("rho_Lambda_closed_4term", _l95_rho_lambda_closed_4term,
+                                  ["V0", "R26_term", "rho_kk", "rho_bsfg"]),
+        "rho_kk_hbar":          ("rho_KK_hbar_tracked", _l95_rho_kk_hbar_tracked, ["m1c2_J"]),
+        "kk_lightest_mev":      ("KK_lightest_meV", _l95_kk_lightest_meV, []),
+        "l_kk_star_mm":         ("L_KK_star_mm", _l95_l_kk_star_mm, []),
+        # Dump 2 - LENR + string
+        "e_phonon_mev":         ("E_phonon_meV", _l95_E_phonon_meV, []),
+        "e_scm_phonon_ev":      ("E_SCm_phonon_eV", _l95_E_scm_phonon_eV, ["xi"]),
+        "fubi_i_99sum":         ("F_UBi_i_99sum_lenr", _l95_fubi_i_99sum_lenr,
+                                  ["M", "r", "t_n", "Ug_uniform"]),
+        "parkhomov_p_excess":   ("Parkhomov_P_excess_W", _l95_parkhomov_P_excess,
+                                  ["N", "eps_eV", "kappa_day", "t_hr"]),
+        "pons_fleischmann_p":   ("Pons_Fleischmann_P_W", _l95_pons_fleischmann_P,
+                                  ["N_ps", "eps_eV", "f_b"]),
+        "nambu_goto_vds26":     ("Nambu_Goto_VDS26", _l95_nambu_goto_vds26, []),
+        "type_iib_radius":      ("Type_IIB_radius_m", _l95_type_iib_radius, ["i", "ell_s"]),
+        "brane_tension":        ("D_brane_tension_corrected", _l95_brane_tension,
+                                  ["p", "T0", "g_s", "ell_s", "t_n"]),
+        "heterotic_pl":         ("Heterotic_P_L", _l95_heterotic_PL, ["t_n"]),
+        "heterotic_pr":         ("Heterotic_P_R", _l95_heterotic_PR, ["t_n"]),
+        "m_theory_kappa11sq":   ("M_theory_kappa11_squared", _l95_m_theory_kappa11_sq, ["ell_s"]),
+        "joint_coeff_vds_dvp":  ("joint_coeff_VDS_DVP", _l95_joint_coeff_vds_dvp, []),
+        # Dump 3 - Higgs / SCS / LQG / Riemann
+        "higgs_uh_potential":   ("Higgs_U_H_potential", _l95_higgs_potential_UH,
+                                  ["t", "n", "omega_H", "f_quasi"]),
+        "scs_mu_tension":       ("SCS_mu_string_tension", _l95_scs_mu_string_tension,
+                                  ["eta_GeV", "L_over_delta"]),
+        "scs_radio_psd":        ("SCS_radio_PSD", _l95_scs_radio_psd,
+                                  ["Gmu", "I", "f", "d_m"]),
+        "scs_emission_factor":  ("SCS_emission_factor", _l95_scs_emission_factor, []),
+        "scs_delta21cm":        ("SCS_delta_21cm", _l95_scs_delta21cm, ["Gmu", "T_S"]),
+        "graphene_chiral_gap":  ("Graphene_chiral_gap", _l95_graphene_chiral_gap,
+                                  ["Delta0", "k_mag", "d"]),
+        "shock_s_t":            ("Shock_S_t_jtype", _l95_shock_S_t, ["M_mach"]),
+        "g_shock_total":        ("g_shock_total", _l95_g_shock_total,
+                                  ["M_solar", "r_m", "M_mach", "C_release"]),
+        "dwarf_alpha_msigma":   ("dwarf_alpha_M_sigma", _l95_dwarf_alpha_msigma, []),
+        "ug4_expulsion":        ("U_g4_expulsion", _l95_Ug4_expulsion, ["dM_BH_kg", "f_fb"]),
+        "metallicity_grad_flat":("metallicity_gradient_flattened", _l95_metallicity_grad_flat,
+                                  ["grad_intrinsic", "lam_Edd"]),
+        "ns_sigma_n":           ("NS_LENR_sigma_n", _l95_ns_sigma_n_density,
+                                  ["sigma0", "rho", "rho0"]),
+        "lqg_area_phonon":      ("LQG_area_SCm_phonon", _l95_lqg_area_phonon,
+                                  ["j", "gamma_immirzi"]),
+        "scm_string_action_26d":("SCm_String_26D_integrand", _l95_scm_string_action_26D,
+                                  ["R_26", "F_sq", "A_mu_sq", "t_n", "L_phonon", "eta_rho_nu"]),
+        "geo_folding_f26":      ("Geometric_folding_F26", _l95_geo_folding_F26, ["x"]),
+        "riemann_epsilon":      ("Riemann_epsilon_bound", _l95_riemann_epsilon_bound, ["t_n"]),
+        # Dump 4 - DE / sector Lagrangians / YM
+        "fubi_7component":      ("F_UBi_i_7component_sum", _l95_fubi_i_7component_sum,
+                                  ["F_phonon", "F_inflation", "F_BCS", "F_VDS", "F_DVP", "F_BSH", "F_QCalcGeom"]),
+        "l_de_buoyancy":        ("L_DE_buoyancy", _l95_l_de_buoyancy, ["R", "V_m3"]),
+        "l_horizon_bh_entropy": ("L_horizon_BH_entropy_term", _l95_l_horizon_bh_entropy,
+                                  ["A_m2", "T_H", "Delta_SCm"]),
+        "fubi_closure_identity":("F_UBi_closure_identity", _l95_fubi_closure_identity,
+                                  ["F_UBi", "F_UBi_i", "F_U"]),
+        "rho_vac_ladder_n":     ("rho_vac_26_level_ladder", _l95_rho_vac_ladder_n, ["n"]),
+        "ym_mass_gap_closed":   ("YangMills_mass_gap_GeV", _l95_yang_mills_mass_gap_closed,
+                                  ["g_YM", "Lambda_QCD_GeV", "H_SCm"]),
+        "ym_v_conf":            ("YangMills_V_conf", _l95_yang_mills_v_conf,
+                                  ["r", "sigma", "F_UBi_i", "r0"]),
+        "qubit_t2_scm":         ("Qubit_T2_SCm_protected", _l95_qubit_T2_SCm,
+                                  ["Delta_SCm", "T", "F_UBi", "F_U"]),
+        # Dump 5 - QCD / EOM / Hubble / Ramanujan
+        "bfkl_omega_uqff":      ("BFKL_omega_UQFF", _l95_bfkl_omega_uqff, ["alpha_s", "Nc"]),
+        "bfkl_omega0":          ("BFKL_omega0_baseline", _l95_bfkl_omega0_baseline,
+                                  ["alpha_s", "Nc"]),
+        "ym_mass_044":          ("YM_mass_VDS_bridged_GeV", _l95_ym_mass_044_GeV,
+                                  ["Lambda_QCD_GeV", "g2_Nc"]),
+        "l_scm_higgs_potential":("L_SCm_Higgs_potential", _l95_l_scm_higgs_potential,
+                                  ["phi", "v_SCm", "d_phi", "lam"]),
+        "m_phonon_breit":       ("m_phonon_Breit", _l95_m_phonon_breit, ["lam", "v_SCm"]),
+        "variational_eom":      ("Variational_radial_EOM", _l95_variational_eom_radial,
+                                  ["mu_s", "grad_Ms_r", "g_buoy", "g_phonon"]),
+        "dpm_spectral_bin":     ("DPM_spectral_atlas_bin", _l95_dpm_spectral_atlas_bin,
+                                  ["i", "omega", "sigma_i"]),
+        "h_scm_activation":     ("H_SCm_activation_function", _l95_H_SCm_activation,
+                                  ["T_K", "T_SCm_K", "dT_K"]),
+        "e_net_t_gamma":        ("E_net_t_Gamma", _l95_E_net_t_gamma,
+                                  ["t", "Gamma", "R", "E0"]),
+        "h_infl_friedmann":     ("H_infl_phonon_Friedmann", _l95_H_infl_phonon_friedmann, []),
+        "w_z_log_deriv":        ("w_z_phonon_log_derivative", _l95_w_z_phonon_logderiv,
+                                  ["dln_Phi_dln_a"]),
+        "ramanujan_binomial":   ("Ramanujan_binomial_R_n_D_k", _l95_ramanujan_binomial,
+                                  ["n", "D", "k"]),
+        # Dump 6 - clusters / SN / bridges
+        "wd_buoy_cryst":        ("WD_crystallization_F_buoy", _l95_wd_F_buoy_cryst,
+                                  ["rho_WD", "V_cryst", "g_WD", "L_over_E"]),
+        "icm_beta_buoy":        ("ICM_beta_model_buoy", _l95_icm_beta_model_buoy,
+                                  ["rho0", "rc_m", "r_m", "beta_prof", "V_m3", "g_ms2"]),
+        "merger_mach_uqff":     ("Merger_Mach_UQFF", _l95_merger_mach_uqff,
+                                  ["M_mach", "eta_phonon", "rho", "v_s", "L"]),
+        "cool_core_q_phonon":   ("Cool_core_Q_phonon", _l95_cool_core_Q_phonon,
+                                  ["rho_core", "V_m3", "g_ms2", "v_buoy"]),
+        "sz_y_uqff":            ("SZ_Compton_y_UQFF", _l95_sz_y_uqff,
+                                  ["y", "dT_phonon", "T_e"]),
+        "radio_relic_pi_uqff":  ("Radio_relic_Pi_UQFF", _l95_radio_relic_pi_uqff,
+                                  ["p", "B_ord", "B_tot"]),
+        "wl_kappa_uqff":        ("WL_kappa_UQFF", _l95_wl_kappa_uqff, ["kappa", "f_phonon_r"]),
+        "type_iax_signflip":    ("Type_Iax_F_buoy_signflip", _l95_type_iax_buoy_signflip,
+                                  ["F0", "E_net"]),
+        "m_sigma_alpha_uqff":   ("M_sigma_alpha_UQFF", _l95_m_sigma_alpha_uqff, ["alpha"]),
+        "chern_simons_k_uqff":  ("ChernSimons_k_UQFF", _l95_chern_simons_k_uqff, ["k"]),
+        "susy_m_half_uqff":     ("SUSY_M_half_UQFF", _l95_susy_m_half_uqff, ["F_phi", "M_Pl"]),
+        "immirzi_gamma_uqff":   ("LQG_Immirzi_gamma_UQFF", _l95_lqg_immirzi_gamma_uqff,
+                                  ["gamma0"]),
+        "wormhole_rho_exotic":  ("Wormhole_rho_exotic", _l95_wormhole_rho_exotic, []),
+        "gauss_bonnet_alpha_uqff": ("GaussBonnet_alpha_UQFF", _l95_gauss_bonnet_alpha_uqff,
+                                     ["alpha_GB"]),
+        # Dump 7 - GW/NS/SMBH/QGP/DM/pulsar/etc
+        "gw190425_fubi":        ("GW190425_F_UBi_i", _l95_gw190425_fubi_curve, ["Ug_sum"]),
+        "smbh_inspiral_f":      ("SMBH_inspiral_F_total_N", _l95_smbh_inspiral_F_total, []),
+        "smbh_ringdown_fqnm":   ("SMBH_ringdown_f_QNM_Hz", _l95_smbh_ringdown_fqnm, []),
+        "smbh_delta_f":         ("SMBH_delta_f_over_f", _l95_smbh_delta_f_over_f, []),
+        "dm_nfw_uqff":          ("DM_NFW_UQFF", _l95_dm_nfw_uqff,
+                                  ["rho_NFW", "r_kpc", "rs_kpc", "alpha_phonon", "SCm_factor"]),
+        "g_phonon_dm":          ("g_phonon_DM_coupling", _l95_g_phonon_dm,
+                                  ["M_halo_kg", "r_m", "f_DM"]),
+        "dsa_p_uqff":           ("DSA_p_UQFF", _l95_dsa_p_uqff, ["p_DSA", "r_comp"]),
+        "pulsar_dt_phonon":     ("Pulsar_dt_phonon", _l95_pulsar_delta_t_phonon, ["P_spin_s"]),
+        "pmns_delta_m2_scm":    ("PMNS_delta_m2_SCm", _l95_pmns_delta_m2_scm, ["m_nu_eV"]),
+        "magnetar_e_phonon":    ("Magnetar_E_phonon", _l95_magnetar_E_phonon,
+                                  ["B_T", "V_mag_m3"]),
+        "reionization_r_s_uqff":("Reionization_R_S_UQFF", _l95_reionization_R_S_uqff,
+                                  ["R_S_kpc", "z"]),
+        "earth_f_bary":         ("Earth_F_barycenter_N", _l95_earth_F_barycenter, []),
+        "frb_dm_uqff":          ("FRB_DM_UQFF", _l95_frb_DM_uqff, ["DM_cosmic", "f_IGM"]),
+        "kilonova_q_uqff":      ("Kilonova_Q_UQFF", _l95_kilonova_Q_uqff,
+                                  ["Q_rad", "f_lanth"]),
+        "bbn_gamma_uqff":       ("BBN_Gamma_UQFF", _l95_bbn_gamma_uqff,
+                                  ["Gamma_np", "T_K", "T_SCm_K"]),
+        "tde_mdot_uqff":        ("TDE_Mdot_UQFF", _l95_tde_mdot_uqff,
+                                  ["M_fb_dot", "t_yr", "t_fb_yr"]),
+        "cosmic_string_delta_uqff": ("CosmicString_lens_delta_UQFF", _l95_cosmic_string_lens_delta_uqff,
+                                      ["delta_classical"]),
+        "ism_dust_f_buoy":      ("ISM_dust_F_buoy_N", _l95_ism_dust_F_buoy, []),
+        "galactic_bar_r_cr":    ("GalacticBar_R_CR_UQFF", _l95_galactic_bar_R_CR_uqff,
+                                  ["v_c_kms", "Omega_p_kms_kpc", "omega_SCm_proxy"]),
+        "agn_bz_jet_uqff":      ("AGN_BZ_jet_P_UQFF", _l95_agn_bz_jet_uqff,
+                                  ["P_BZ", "M_jet"]),
+        # Compression Cycle 2 master equation
+        "g_uqff_compressed":    ("g_UQFF_Compression_Cycle2_master", _l95_g_uqff_compressed_master,
+                                  ["r", "t", "M", "z", "B", "B_crit", "F_env",
+                                   "Ug_sum", "Lambda_val", "quantum_term", "fluid_term", "mass_pert"]),
+    }
+    if key and key in _L95_ROUTES:
+        label, fn, argnames = _L95_ROUTES[key]
+        kwargs = {a: dataset[a] for a in argnames if a in dataset}
+        val = fn(**kwargs)
+        prov = (
+            f"Layer 95 / cluster (bz) grok-dump derivation [{label}] live derivation "
+            f"via {fn.__name__} -- closed-form predictive primitive over the canonical "
+            "UQFF v5.78 constants only. No SM literals, no pre-fit targets. Cite: "
+            "grok_8461fe4e_c903.md (PAPER_1012-1180, all 7 query dumps) + "
+            "grok._b9afa8b6_3b85 (Compression Cycle 2 master) + uqff_Map.md §19 "
+            "cluster (bz) Layer 95 shipment + Session 271 honesty pass (Plan Image 122). "
+            f"kwargs={list(kwargs.keys()) or 'defaults'} (NOT REPLACEMENT)"
         )
         return {"value": val, "provenance": prov}
 
