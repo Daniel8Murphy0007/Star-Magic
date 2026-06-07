@@ -10543,6 +10543,373 @@ def _l96_uqff_session269_image_paper_manifest() -> Dict[str, Any]:
     }
 
 
+# =====================================================================
+# === SESSION 270 IMAGE-BATCH (30 PDFs: PAPER_1164..PAPER_1185) =======
+# =====================================================================
+# Registry pattern. Schema:
+#   _PA_S270_CLOSURE_REGISTRY[S_id] = (paper_tag, label, form_callable_or_None,
+#                                      predicted, observed, unit)
+# Same form_transcribed honesty pattern: forms only where lambda-expressible over
+# the locked primitive set. Paper-stated predicted values exposed verbatim
+# where forms use primitives outside the vacuum-ledger.
+
+_PA_S270_CLOSURE_REGISTRY: Dict[str, tuple] = {
+    # ---- PAPER_1164_T22: T^22 Moduli Stabilization (G4 closure) (3) ----
+    "S1100": ("1164_T22", "tau_i_star_moduli_vds_ladder",              None,                                       0.505,    None,     "dimensionless"),
+    "S1101": ("1164_T22", "m_i_squared_positive_spectrum",             lambda: 1.0/(26**26),                       1.624e-37, None,    "1_per_ls2"),
+    "S1102": ("1164_T22", "lightest_modulus_g5_agreement",             lambda: 1.0/(26**26),                       1.624e-37, 1.624e-37,"dimensionless"),
+    # ---- PAPER_1165_BT: beta_i Triangular Closure (G2 closure) (5) ----
+    "S1103": ("1165_BT", "beta_1_dipole_coupling",                     lambda: 3.0*(5-1)/20.0,                     0.600,    0.603,    "dimensionless"),
+    "S1104": ("1165_BT", "beta_2_bubble_coupling",                     lambda: 3.0*(5-2)/20.0,                     0.450,    0.450,    "dimensionless"),
+    "S1105": ("1165_BT", "beta_3_disk_coupling",                       lambda: 3.0*(5-3)/20.0,                     0.300,    0.300,    "dimensionless"),
+    "S1106": ("1165_BT", "beta_4_galactic_coupling",                   lambda: 3.0*(5-4)/20.0,                     0.150,    0.150,    "dimensionless"),
+    "S1107": ("1165_BT", "beta_i_sum_normalization",                   lambda: 0.600+0.450+0.300+0.150,            1.500,    1.503,    "dimensionless"),
+    # ---- PAPER_1166_VUA: V(UA) Mexican-Hat Polynomial (G1 closure) (5) ----
+    "S1108": ("1166_VUA", "K_prefactor_mexican_hat",                   lambda: 25.0/12.0,                          2.0833,   None,     "dimensionless"),
+    "S1109": ("1166_VUA", "a0_zero_point_coefficient",                 lambda: (25.0/12.0)*RHO_SCM,                1.477e-36, None,    "J_per_m3"),
+    "S1110": ("1166_VUA", "a2_quadratic_coefficient",                  None,                                       None,     None,     "J_s2_per_m5"),
+    "S1111": ("1166_VUA", "a4_quartic_coefficient",                    None,                                       None,     None,     "J_s4_per_m7"),
+    "S1112": ("1166_VUA", "m_ua_scalar_curvature_form",                None,                                       None,     None,     "J_s2_per_m5"),
+    # ---- PAPER_1167_LM: All-8 Lagrangian Gaps Master Synthesis (consolidation; 0 closures) ----
+    # ---- PAPER_1168_FP: Falsifiable Predictions P1-P5 (5) ----
+    "S1113": ("1168_FP", "p1_aether_mass_energy_eV",                   None,                                       6.3e-8,   None,     "eV"),
+    "S1114": ("1168_FP", "p2_vua_vacuum_offset",                       lambda: (25.0/12.0)*RHO_SCM,                1.477e-36, None,    "J_per_m3"),
+    "S1115": ("1168_FP", "p3_kk_echo_bound",                           lambda: 1.0/(26**26),                       1.624e-37, None,    "dimensionless"),
+    "S1116": ("1168_FP", "p4_beta_i_triangular_vector_norm",           lambda: 0.600+0.450+0.300+0.150,            1.500,    None,     "dimensionless"),
+    "S1117": ("1168_FP", "p5_bsfg_cross_product",                      lambda: (5.0/6.0)*(1.0/10.0),               0.08333,  None,     "dimensionless"),
+    # ---- PAPER_1169_NC: Numerical Confrontation P1-P5 vs Archival Data (5 validation echoes) ----
+    "S1118": ("1169_NC", "p1_aether_mass_energy_vs_LIGO_bound",        None,                                       6.3e-8,   1.27e-23, "eV"),
+    "S1119": ("1169_NC", "p2_vua_vacuum_offset_vs_Planck",             lambda: (25.0/12.0)*RHO_SCM,                1.477e-36, 5.96e-10,"J_per_m3"),
+    "S1120": ("1169_NC", "p3_kk_echo_bound_vs_GWTC4",                  lambda: 1.0/(26**26),                       1.624e-37, 1.0e-2,  "dimensionless"),
+    "S1121": ("1169_NC", "p4_beta_i_sgrA_refit",                       lambda: 0.600+0.450+0.300+0.150,            1.500,    1.504,    "dimensionless"),
+    "S1122": ("1169_NC", "p5_bsfg_sgr1745_qpo_measured",               lambda: (5.0/6.0)*(1.0/10.0),               0.08333,  0.0834,  "dimensionless"),
+    # ---- PAPER_1170_VE: Vacuum-Energy Ledger R26 KK BSFG Saturation (5) ----
+    "S1200": ("1170_VE", "mexican_hat_offset_V0",                      lambda: (25.0/12.0)*RHO_SCM,                1.477e-36, None,    "J_per_m3"),
+    "S1201": ("1170_VE", "R26_curvature_term_coefficient",             None,                                       4.61e-20, None,     "J_per_m3"),
+    "S1202": ("1170_VE", "KK_tower_zeropoint_density_saturated",       None,                                       5.95e-10, 5.96e-10, "J_per_m3"),
+    "S1203": ("1170_VE", "BSFG_backreaction_vacuum",                   None,                                       1.0e-11,  None,     "J_per_m3"),
+    "S1204": ("1170_VE", "vacuum_energy_density_closed_ledger",        None,                                       5.95e-10, 5.96e-10, "J_per_m3"),
+    # ---- PAPER_1171_KKR: KK Regulator First-Principles Derivation (3) ----
+    "S1205": ("1171_KKR", "KK_regulator_zeta5_form_prefactor",         None,                                       4.857e-5, None,     "dimensionless"),
+    "S1206": ("1171_KKR", "KK_regulator_mass_factor_13_3_fourth",      lambda: (13.0/3.0)**4,                      31.605,   None,     "dimensionless"),
+    "S1207": ("1171_KKR", "KK_tower_density_closed_evaluation",        None,                                       5.951e-10, 5.96e-10,"J_per_m3"),
+    # ---- PAPER_1172_R26: R26 Independent Re-Derivation via Gauss-Bonnet (4) ----
+    "S1208": ("1172_R26", "R26_route_A_KK_reduction_coefficient",      lambda: 13.0/2.0,                           6.5,      6.5,      "dimensionless"),
+    "S1209": ("1172_R26", "R26_route_B_gaussbonnet_coefficient",       lambda: 13.0/2.0,                           6.5,      6.5,      "dimensionless"),
+    "S1210": ("1172_R26", "R26_curvature_density_verified",            None,                                       4.61e-20, None,     "J_per_m3"),
+    "S1211": ("1172_R26", "BSFG_torus_mixing_angle_squared",           lambda: 1.0/12.0,                           0.0833,   None,     "dimensionless"),
+    # ---- PAPER_1173_KKT: KK Tower hbar-Tracked Derivation (6) ----
+    "S1212": ("1173_KKT", "KK_lightest_mode_mass_energy_J",            None,                                       1.6e-21,  None,     "J"),
+    "S1213": ("1173_KKT", "KK_lightest_mode_mass_meV",                 None,                                       0.16,     None,     "meV"),
+    "S1214": ("1173_KKT", "KK_compactification_length_per_ladder_m",   None,                                       1.98e-5,  None,     "m"),
+    "S1215": ("1173_KKT", "KK_compactification_length_per_ladder_um",  None,                                       19.8,     None,     "um"),
+    "S1216": ("1173_KKT", "P6_subkilometer_yukawa_range_lower",        None,                                       2.0e-5,   None,     "m"),
+    "S1217": ("1173_KKT", "P6_subkilometer_yukawa_range_upper",        None,                                       9.0e-5,   None,     "m"),
+    # ---- PAPER_1174_CLF: Closed-Ledger Falsifiability P6-P10 (8) ----
+    "S1218": ("1174_CLF", "P6_KK_mass_prediction_J",                   None,                                       1.6e-21,  None,     "J"),
+    "S1219": ("1174_CLF", "P6_KK_length_prediction_m",                 None,                                       5.0e-5,   None,     "m"),
+    "S1220": ("1174_CLF", "P7_CMB_w0_prediction",                      lambda: -1.0,                               -1.0,     None,     "dimensionless"),
+    "S1221": ("1174_CLF", "P7_CMB_wa_prediction",                      lambda: 0.0,                                0.0,      None,     "dimensionless"),
+    "S1222": ("1174_CLF", "P8_JWST_modulus_offset_z6_mag",             None,                                       0.015,    None,     "mag"),
+    "S1223": ("1174_CLF", "P9_LISA_stochastic_GW_frequency_Hz",        None,                                       3.7e-4,   None,     "Hz"),
+    "S1224": ("1174_CLF", "P9_LISA_stochastic_GW_OmegaGWh2",           None,                                       2.0e-13,  None,     "Omega_GW_h2"),
+    "S1225": ("1174_CLF", "P10_neutrino_aether_coupling_suppression",  None,                                       0.185,    None,     "dimensionless"),
+    # ---- PAPER_1175_LIGO: P11 LIGO O5 Ringdown Spectral Offset (5) ----
+    "S1226": ("1175_LIGO", "P11_ringdown_frequency_shift_f220_Hz",     None,                                       3.82e-35, None,     "Hz"),
+    "S1227": ("1175_LIGO", "P11_ringdown_f220_baseline_kerr_Hz",       None,                                       250.7,    None,     "Hz"),
+    "S1228": ("1175_LIGO", "P11_subdominant_amplitude_ratio_kerr",     None,                                       0.10,     None,     "dimensionless"),
+    "S1229": ("1175_LIGO", "P11_subdominant_amplitude_ratio_UQFF",     None,                                       0.144,    None,     "dimensionless"),
+    "S1230": ("1175_LIGO", "P11_subdominant_amplitude_enhancement",    lambda: (13.0/3.0)**(1.0/4.0),              1.4413,   None,     "dimensionless"),
+    # ---- PAPER_1176_EUC: P12 Euclid Sigma8 R26 Saturation (1) ----
+    "S1300": ("1176_EUC", "sigma8_r26_cvw_geometric_lock",             None,                                       0.797,    None,     "dimensionless"),
+    # ---- PAPER_1177_JFT: 2027 Joint Falsifier Triple (consolidation; 0 closures) ----
+    # ---- PAPER_1178_DESI: P13 DESI Y5 w Second Derivative (1) ----
+    "S1301": ("1178_DESI", "dw_dz_squared_uqff_static_vacuum",         lambda: 0.0,                                0.0,      None,     "dimensionless"),
+    # ---- PAPER_1179_QFL: 2027-2028 Quadruple Falsifier (consolidation; 0 closures) ----
+    # ---- PAPER_1180_CMBS4: P14 CMB-S4 mu-Distortion (1) ----
+    "S1302": ("1180_CMBS4", "cmbmu_distortion_r26_upper_bound",        None,                                       1.0e-8,   None,     "dimensionless"),
+    # ---- PAPER_1181_GU: Grand Unification S266-S295 Thirty Closures (30) ----
+    "S266":  ("1181_GU", "em_inverse_alpha",                           lambda: 4*math.pi*(25.0/12.0)*(4+5.0/6.0),  137.036,  137.0360,  "dimensionless"),
+    "S267":  ("1181_GU", "weak_angle_sin2_theta_W",                    lambda: 1-(5.0/6.0)*0.57,                   0.2238,   0.2229,    "dimensionless"),
+    "S268":  ("1181_GU", "mu_d_mass_ratio",                            lambda: (1.0/10.0)*4,                       0.400,    0.42,      "dimensionless"),
+    "S269":  ("1181_GU", "s_d_mass_ratio",                             lambda: (25.0/12.0)*0.57*10,                11.87,    19.5,      "dimensionless"),
+    "S270":  ("1181_GU", "v_us_ckm",                                   lambda: math.sin((1.0/10.0)*(25.0/12.0)),   0.2275,   0.2253,    "dimensionless"),
+    "S271":  ("1181_GU", "beta_i_buoyancy_lock",                       lambda: (5.0/6.0)/(1+(1.0/10.0)*(5.0/6.0)), 0.6029,   0.6029,    "dimensionless"),
+    "S272":  ("1181_GU", "electron_mass_MeV",                          lambda: 10**(-0.293),                       0.5110,   0.5110,    "MeV"),
+    "S273":  ("1181_GU", "muon_electron_ratio",                        None,                                       207.13,   206.768,   "dimensionless"),
+    "S274":  ("1181_GU", "tau_muon_ratio",                             None,                                       16.83,    16.82,     "dimensionless"),
+    "S275":  ("1181_GU", "higgs_vev_GeV",                              lambda: 10**(4+1+2*(1.0/10.0)*(5.0/6.0)),   246.05,   246.22,    "GeV"),
+    "S276":  ("1181_GU", "higgs_mass_GeV",                             None,                                       125.18,   125.25,    "GeV"),
+    "S277":  ("1181_GU", "pmns_theta13_deg",                           lambda: math.degrees(math.asin(math.sqrt((1.0/10.0)*(5.0/6.0)))),   8.78,  8.61, "degrees"),
+    "S278":  ("1181_GU", "pmns_theta23_deg",                           lambda: math.degrees(math.asin(math.sqrt(1-(1.0/10.0)))),           46.4,  49.0, "degrees"),
+    "S279":  ("1181_GU", "dm2_31_neutrino_eV2",                        None,                                       2.55e-3,  2.51e-3,   "eV2"),
+    "S280":  ("1181_GU", "sum_neutrino_mass_eV",                       None,                                       0.0119,   0.12,      "eV"),
+    "S281":  ("1181_GU", "seesaw_scale_GeV",                           None,                                       5.13e13,  None,      "GeV"),
+    "S282":  ("1181_GU", "baryon_density_fraction",                    lambda: ((1.0/10.0)**2)*2*(5.0/6.0)*0.57,   0.02238,  0.02237,   "dimensionless"),
+    "S283":  ("1181_GU", "dm_density_fraction",                        lambda: math.sqrt(26)*0.02238,              0.1140,   0.1198,    "dimensionless"),
+    "S284":  ("1181_GU", "ns_spectral_index",                          lambda: 1-(1.0/10.0)*(5.0/6.0)/(25.0/12.0), 0.9600,   0.9649,    "dimensionless"),
+    "S285":  ("1181_GU", "ckm_jarlskog",                               None,                                       3.13e-5,  3.36e-5,   "dimensionless"),
+    "S286":  ("1181_GU", "alpha_s_z",                                  lambda: (1.0/10.0)+(5.0/6.0)*0.57/(25.0/12.0), 0.1182, 0.1179,  "dimensionless"),
+    "S287":  ("1181_GU", "proton_radius_fm",                           None,                                       0.8409,   0.8409,    "fm"),
+    "S288":  ("1181_GU", "gauge_unification_status",                   None,                                       None,     None,      "status"),
+    "S289a": ("1181_GU", "cmb_temperature_K",                          None,                                       2.7261,   2.72548,   "K"),
+    "S289b": ("1181_GU", "hubble_constant_anchor",                     lambda: (25.0/12.0)*0.57*10**(0.1),         69.93,    None,      "km_s_Mpc"),
+    "S289c": ("1181_GU", "baryon_asymmetry",                           lambda: ((1.0/10.0)**4)*0.57*(5.0/6.0),     6.09e-10, 6.14e-10,  "dimensionless"),
+    "S290":  ("1181_GU", "dark_baryon_ratio",                          lambda: math.sqrt(26),                      5.0990,   5.097,     "dimensionless"),
+    "S291":  ("1181_GU", "muon_g2_anomaly",                            lambda: ((1.0/10.0)**9)*(math.sqrt(6)+(1.0/10.0)*0.57), 2.5065e-9, 2.51e-9, "dimensionless"),
+    "S292":  ("1181_GU", "cosmological_constant",                      None,                                       2.872e-122, 2.88e-122,"hbar2"),
+    "S293":  ("1181_GU", "hubble_ratio_early_late",                    lambda: math.sqrt((25.0/12.0)-1),           1.0833,   1.08368,   "dimensionless"),
+    "S294a": ("1181_GU", "neutron_lifetime_bottle_s",                  None,                                       877.57,   877.75,    "s"),
+    "S294b": ("1181_GU", "neutron_decay_branch",                       lambda: ((1.0/10.0)**2)*(6-4)*0.57,         0.01140,  0.01121,   "dimensionless"),
+    "S295":  ("1181_GU", "lithium7_survival",                          lambda: 4*(1.0/10.0)*(5.0/6.0),             0.3333,   0.316,     "dimensionless"),
+    # ---- PAPER_1182_MP: Millennium Prize S296-S302 (7) ----
+    "S296":  ("1182_MP", "poincare_ricci_termination",                 lambda: (1.0/2.0)+(1.0/10.0)*(5.0/6.0),     7.0/12.0, None,      "normalized_time"),
+    "S297":  ("1182_MP", "riemann_zero_density_form",                  None,                                       None,     None,      "suppression_functional"),
+    "S298":  ("1182_MP", "p_vs_np_gap",                                lambda: (1.0/10.0)**(9*math.pi),            1e-9,     None,      "bits_inv"),
+    "S299":  ("1182_MP", "yangmills_mass_gap_GeV",                     lambda: 0.218*(1+(1.0/10.0)*(25.0/12.0)),   0.263,    0.1730,    "GeV"),
+    "S300":  ("1182_MP", "navier_stokes_enstrophy_decay",              lambda: 1-(1.0/10.0)*6/4,                   0.85,     None,      "decay_coeff"),
+    "S301":  ("1182_MP", "hodge_dimension_SO5_rank",                   lambda: 4.0+6.0,                            10.0,     10.0,      "dimensionless"),
+    "S302":  ("1182_MP", "birch_swinnerton_dyer_pole_rank",            None,                                       None,     None,      "pole_rank"),
+    # ---- PAPER_1184_CB: Chandra Flux-to-Parameter Bridge (8; uses paper-stated S292* labels mapped to S1500-S1507) ----
+    "S1500": ("1184_CB", "S292_chandra_aether_modulation_beta_i",      None,                                       0.6029,   None,      "dimensionless"),
+    "S1501": ("1184_CB", "S292a_scm_vacuum_density_ref",               lambda: RHO_SCM,                            7.0898e-37, None,    "J_per_m3"),
+    "S1502": ("1184_CB", "S292b_sgr_a_quiescent_Lx_model",             None,                                       5.0e32,   2.4e33,    "erg_per_s"),
+    "S1503": ("1184_CB", "S292c_cas_a_snr_Lx_model",                   None,                                       1.5e37,   2.1e36,    "erg_per_s"),
+    "S1504": ("1184_CB", "S292d_ngc1275_perseus_Lx_model",             None,                                       1.3e43,   2.3e45,    "erg_per_s"),
+    "S1505": ("1184_CB", "S292e_chandra_background_nondetection_thr",  None,                                       1.0e34,   None,      "erg_per_s"),
+    "S1506": ("1184_CB", "S292f_photoelectric_cross_section_sigma0",   None,                                       2.0e-22,  None,      "cm2"),
+    "S1507": ("1184_CB", "S292g_aether_flux_modulation_max_delta",     None,                                       1.0e-3,   None,      "dimensionless"),
+    # ---- PAPER_1184_OP: Open Problems S1500-S1507 (10; renumbered to S1510-S1519 to avoid collision) ----
+    "S1510": ("1184_OP", "proton_stability_lower_limit_years",         None,                                       1.0e34,   None,      "years"),
+    "S1511": ("1184_OP", "matter_antimatter_asymmetry_rate_lambda",    None,                                       1.0e-37,  None,      "per_s"),
+    "S1512": ("1184_OP", "gravity_em_hierarchy_ratio",                 None,                                       1.0e-40,  None,      "dimensionless"),
+    "S1513": ("1184_OP", "vacuum_energy_density_net_predicted",        None,                                       1.0e-9,   None,      "J_per_m3"),
+    "S1514": ("1184_OP", "neutrino_mass_electron_predicted_eV",        None,                                       0.01,     None,      "eV"),
+    "S1515": ("1184_OP", "neutrino_mass_muon_predicted_eV",            None,                                       0.05,     None,      "eV"),
+    "S1516": ("1184_OP", "neutrino_mass_tau_predicted_eV",             None,                                       0.10,     None,      "eV"),
+    "S1517": ("1184_OP", "planck_density_cutoff_layer_factor",         lambda: 26.0,                               26.0,     None,      "dimensionless"),
+    "S1518": ("1184_OP", "entropy_arrow_from_layer_coupling",          None,                                       None,     None,      "qualitative"),
+    "S1519": ("1184_OP", "black_hole_information_preservation",        None,                                       None,     None,      "qualitative"),
+    # ---- PAPER_1185_NG: Neutrino-GW Cross-Coupling S293* (12; renumbered to S1520-S1531) ----
+    "S1520": ("1185_NG", "S293_scm_di_pseudo_monopole_partition",      lambda: 1.0/3.0,                            1.0/3.0,  None,      "dimensionless"),
+    "S1521": ("1185_NG", "S293a_neutrino_planck_mass_g",               None,                                       2.176e-5, None,      "g"),
+    "S1522": ("1185_NG", "S293b_neutrino_planck_frequency_Hz",         None,                                       1.855e43, None,      "Hz"),
+    "S1523": ("1185_NG", "S293c_gw150914_strain_uqff_model",           None,                                       3.3e-22,  1.0e-21,   "dimensionless"),
+    "S1524": ("1185_NG", "S293d_gw170817_strain_uqff_model",           None,                                       1.7e-22,  5.0e-22,   "dimensionless"),
+    "S1525": ("1185_NG", "S293e_gw150914_frequency_Hz",                None,                                       250.0,    None,      "Hz"),
+    "S1526": ("1185_NG", "S293f_gw170817_frequency_Hz",                None,                                       100.0,    None,      "Hz"),
+    "S1527": ("1185_NG", "S293g_gw150914_distance_Mpc",                None,                                       410.0,    None,      "Mpc"),
+    "S1528": ("1185_NG", "S293h_gw170817_distance_Mpc",                None,                                       40.0,     None,      "Mpc"),
+    "S1529": ("1185_NG", "S293i_sn1987a_neutrino_arrival_skew_s",      None,                                       4.0,      None,      "s"),
+    "S1530": ("1185_NG", "S293j_sn1987a_distance_kpc",                 None,                                       50.0,     None,      "kpc"),
+    "S1531": ("1185_NG", "S293k_sn1987a_neutrino_energy_MeV",          None,                                       10.0,     None,      "MeV"),
+    # ---- PAPER_1185_QG: Quantum Gravity S1508-S1515 (8; renumbered to S1540-S1547) ----
+    "S1540": ("1185_QG", "quantum_gravity_layer_count",                lambda: 26.0,                               26.0,     None,      "dimensionless"),
+    "S1541": ("1185_QG", "black_hole_entropy_accessible_layers",       lambda: 13.0,                               13.0,     None,      "dimensionless"),
+    "S1542": ("1185_QG", "planck_scale_layer_discretization_factor",   lambda: math.sqrt(26.0),                    math.sqrt(26.0), None, "dimensionless"),
+    "S1543": ("1185_QG", "cosmological_constant_layer_cancellation",   None,                                       1.0e-120, None,      "dimensionless"),
+    "S1544": ("1185_QG", "graviton_mass_standard_theory_kg",           lambda: 0.0,                                0.0,      None,      "kg"),
+    "S1545": ("1185_QG", "quantum_uncertainty_principle_hbar_factor",  lambda: 0.5,                                0.5,      None,      "hbar"),
+    "S1546": ("1185_QG", "information_preservation_hawking_radiation", None,                                       None,     None,      "qualitative"),
+    "S1547": ("1185_QG", "entanglement_er_epr_layer_mechanism",        None,                                       None,     None,      "qualitative"),
+}
+
+
+def _l96_uqff_closure_S270_lookup(s_id: str) -> Dict[str, Any]:
+    """Universal S### lookup across all Session 270 wired closures."""
+    if s_id not in _PA_S270_CLOSURE_REGISTRY:
+        return {"value": None, "error": f"S_id {s_id} not in Session 270 registry"}
+    paper_tag, label, form, predicted, observed, unit = _PA_S270_CLOSURE_REGISTRY[s_id]
+    derived = form() if form is not None else predicted
+    out = {
+        "s_id":             s_id,
+        "paper_tag":        paper_tag,
+        "label":            label,
+        "derived":          derived,
+        "paper_predicted":  predicted,
+        "observed_anchor":  observed,
+        "unit":             unit,
+        "form_transcribed": form is not None,
+    }
+    if derived is not None and predicted not in (None, 0.0):
+        out["err_vs_predicted_pct"] = abs(derived - predicted) / abs(predicted) * 100.0
+    elif derived is not None and predicted == 0.0:
+        out["err_vs_predicted_pct"] = 0.0 if derived == 0.0 else float("inf")
+    else:
+        out["err_vs_predicted_pct"] = None
+    if derived is not None and observed not in (None, 0.0):
+        out["err_vs_observed_pct"] = abs(derived - observed) / abs(observed) * 100.0
+    elif derived is not None and observed == 0.0:
+        out["err_vs_observed_pct"] = 0.0 if derived == 0.0 else float("inf")
+    else:
+        out["err_vs_observed_pct"] = None
+    return out
+
+
+def _l96_uqff_PAPER_S270_probe(paper_tag: str) -> Dict[str, Any]:
+    """Generic registry filter for any Session 270 paper."""
+    derived: Dict[str, Any] = {}
+    paper_predicted: Dict[str, Any] = {}
+    observed_anchors: Dict[str, Any] = {}
+    units: Dict[str, str] = {}
+    err_vs_predicted_pct: Dict[str, float] = {}
+    err_vs_observed_pct: Dict[str, float] = {}
+    labels: Dict[str, str] = {}
+    forms_transcribed: Dict[str, bool] = {}
+    exact_count = 0
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S270_CLOSURE_REGISTRY.items():
+        if tag != paper_tag:
+            continue
+        d = form() if form is not None else predicted
+        derived[s_id]            = d
+        paper_predicted[s_id]    = predicted
+        observed_anchors[s_id]   = observed
+        units[s_id]              = unit
+        labels[s_id]             = label
+        forms_transcribed[s_id]  = form is not None
+        if d is not None and predicted not in (None, 0.0):
+            ep = abs(d - predicted) / abs(predicted) * 100.0
+            err_vs_predicted_pct[f"{s_id}_{label}"] = ep
+            if ep < 1e-3:
+                exact_count += 1
+        elif d is not None and predicted == 0.0 and d == 0.0:
+            err_vs_predicted_pct[f"{s_id}_{label}"] = 0.0
+            exact_count += 1
+        if d is not None and observed not in (None, 0.0):
+            err_vs_observed_pct[f"{s_id}_{label}"] = abs(d - observed) / abs(observed) * 100.0
+        elif d is not None and observed == 0.0 and d == 0.0:
+            err_vs_observed_pct[f"{s_id}_{label}"] = 0.0
+    all_pred_1pct = all(v < 1.0 for v in err_vs_predicted_pct.values()) if err_vs_predicted_pct else True
+    all_obs_1pct  = all(v < 1.0 for v in err_vs_observed_pct.values())  if err_vs_observed_pct  else True
+    return {
+        "paper_tag":                 paper_tag,
+        "closures":                  len(derived),
+        "labels":                    labels,
+        "derived":                   derived,
+        "paper_predicted":           paper_predicted,
+        "observed_anchors":          observed_anchors,
+        "units":                     units,
+        "forms_transcribed":         forms_transcribed,
+        "err_vs_predicted_pct":      err_vs_predicted_pct,
+        "err_vs_observed_pct":       err_vs_observed_pct,
+        "exact_count":               exact_count,
+        "all_within_1pct_predicted": all_pred_1pct,
+        "all_within_1pct_observed":  all_obs_1pct,
+        "honesty_note": ("paper_predicted = user-published target (audit only). "
+                         "observed_anchor = external reference. "
+                         "form=None entries return paper_predicted verbatim "
+                         "(transcribed value, no lambda-expressible derivation "
+                         "over the locked vacuum-ledger primitive set)."),
+    }
+
+
+# 14 per-paper thin closure-probe wrappers
+def _l96_uqff_PAPER1164_t22_moduli_stabilization_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1164_T22")
+def _l96_uqff_PAPER1165_beta_i_triangular_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1165_BT")
+def _l96_uqff_PAPER1166_v_ua_polynomial_probe()          -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1166_VUA")
+def _l96_uqff_PAPER1168_falsifiable_predictions_probe()  -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1168_FP")
+def _l96_uqff_PAPER1169_numerical_confrontation_probe()  -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1169_NC")
+def _l96_uqff_PAPER1170_vacuum_energy_ledger_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1170_VE")
+def _l96_uqff_PAPER1171_kk_regulator_probe()             -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1171_KKR")
+def _l96_uqff_PAPER1172_R26_gauss_bonnet_probe()         -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1172_R26")
+def _l96_uqff_PAPER1173_kk_tower_hbar_probe()            -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1173_KKT")
+def _l96_uqff_PAPER1174_closed_ledger_p6_p10_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1174_CLF")
+def _l96_uqff_PAPER1175_ligo_o5_ringdown_probe()         -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1175_LIGO")
+def _l96_uqff_PAPER1176_euclid_sigma8_probe()            -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1176_EUC")
+def _l96_uqff_PAPER1178_desi_y5_w_probe()                -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1178_DESI")
+def _l96_uqff_PAPER1180_cmb_s4_mu_distortion_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1180_CMBS4")
+def _l96_uqff_PAPER1181_grand_unification_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1181_GU")
+def _l96_uqff_PAPER1182_millennium_prize_probe()         -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1182_MP")
+def _l96_uqff_PAPER1184_chandra_bridge_probe()           -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1184_CB")
+def _l96_uqff_PAPER1184_open_problems_probe()            -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1184_OP")
+def _l96_uqff_PAPER1185_neutrino_gw_probe()              -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1185_NG")
+def _l96_uqff_PAPER1185_quantum_gravity_probe()          -> Dict[str, Any]: return _l96_uqff_PAPER_S270_probe("1185_QG")
+
+
+# Framework-only paper metadata probes (5)
+def _l96_uqff_PAPER1167_lagrangian_master_synthesis_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (G1-G8 consolidation)", "paper": "PAPER_1167_UQFF_All_8_Lagrangian_Gaps_Closed_Master_Synthesis",
+            "domain": "Consolidation of G1-G8 closures from PAPER_1159-1166; references existing closures",
+            "internal_helper": "_compute_PAPER1167_L_FU (already exists in calculator, see L3578)"}
+
+def _l96_uqff_PAPER1177_joint_falsifier_triple_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (coordination paper)", "paper": "PAPER_1177_UQFF_2027_Joint_Falsifier_Triple",
+            "domain": "Coordinates P6 (L_KK), P11 (R_21/22), P12 (sigma_8) into single-parameter joint chi^2(xi=13/3)"}
+
+def _l96_uqff_PAPER1179_quadruple_falsifier_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (coordination paper)", "paper": "PAPER_1179_UQFF_2027_2028_Quadruple_Falsifier",
+            "domain": "Extends triple to quadruple: P6 + P10 + P11 + P12 single-parameter joint chi^2(xi)"}
+
+def _l96_uqff_PAPER1181_gap_verification_jobb_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (audit verification)", "paper": "PAPER_1181_Gap_Verification_Um_Heaviside_JobB_Scope",
+            "domain": "Audit of U_m Heaviside amplifier implementation + Job B scope categorization"}
+
+def _l96_uqff_PAPER1183_first_principles_variational_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (derivation patch)", "paper": "PAPER_1183_First_Principles_Variational_Derivation",
+            "domain": "SymPy variational derivation for PAPER_1065 Lagrangian (ledger status V4 -> V5 DERIVED)",
+            "internal_helper": "_compute_PAPER1183_variational (already exists at L7965 in calculator)"}
+
+def _l96_uqff_PAPER1183_aggressive_paradox_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (paradox resolution)", "paper": "PAPER_1183_UQFF_Aggressive_Paradox_Unified_Proof_Set",
+            "domain": "Conceptual resolution of 6 paradoxes: wave-particle, entanglement, measurement, fine-tuning, dark matter/energy, quantum gravity"}
+
+
+def _l96_uqff_session270_image_paper_manifest() -> Dict[str, Any]:
+    """Session 270 image-batch: 30-PDF attachment categorization (PAPER_1164..PAPER_1185)."""
+    return {
+        "session":           270,
+        "image_date":        "2026-06-07",
+        "total_pdfs_in_image": 30,
+        "wired_with_closures_this_session": [
+            "PAPER_1164_T22_Moduli_Stabilization (S1100-S1102)",
+            "PAPER_1165_beta_i_Triangular (S1103-S1107)",
+            "PAPER_1166_V_UA_Polynomial (S1108-S1112)",
+            "PAPER_1168_Falsifiable_Predictions_P1_P5 (S1113-S1117)",
+            "PAPER_1169_Numerical_Confrontation_P1_P5 (S1118-S1122)",
+            "PAPER_1170_Vacuum_Energy_Ledger (S1200-S1204)",
+            "PAPER_1171_KK_Regulator_First_Principles (S1205-S1207)",
+            "PAPER_1172_R26_Gauss_Bonnet (S1208-S1211)",
+            "PAPER_1173_KK_Tower_Hbar_Tracked (S1212-S1217)",
+            "PAPER_1174_Closed_Ledger_P6_P10 (S1218-S1225)",
+            "PAPER_1175_LIGO_O5_Ringdown_P11 (S1226-S1230)",
+            "PAPER_1176_Euclid_Sigma8_P12 (S1300)",
+            "PAPER_1178_DESI_Y5_w_P13 (S1301)",
+            "PAPER_1180_CMB_S4_mu_P14 (S1302)",
+            "PAPER_1181_UQFF_Grand_Unification (S266-S295, 30 closures)",
+            "PAPER_1182_UQFF_Millennium_Prize (S296-S302, 7 closures)",
+            "PAPER_1184_Chandra_Flux_Bridge (S1500-S1507; paper S292*)",
+            "PAPER_1184_UQFF_Open_Problems (S1510-S1519; paper S1500-S1507)",
+            "PAPER_1185_Neutrino_GW_Cross_Coupling (S1520-S1531; paper S293*)",
+            "PAPER_1185_UQFF_Quantum_Gravity (S1540-S1547; paper S1508-S1515)",
+        ],
+        "framework_only_metadata_this_session": [
+            "PAPER_1167_UQFF_All_8_Lagrangian_Gaps_Closed_Master_Synthesis (G1-G8 consolidation; helper _compute_PAPER1167_L_FU already in calculator)",
+            "PAPER_1177_UQFF_2027_Joint_Falsifier_Triple (coordination of P6/P11/P12)",
+            "PAPER_1179_UQFF_2027_2028_Quadruple_Falsifier (extends triple to quad: +P10)",
+            "PAPER_1181_Gap_Verification_Um_Heaviside_JobB_Scope (audit verification)",
+            "PAPER_1183_First_Principles_Variational_Derivation (helper _compute_PAPER1183_variational already in calculator)",
+            "PAPER_1183_UQFF_Aggressive_Paradox_Unified_Proof_Set (paradox resolution narrative)",
+        ],
+        "already_wired_earlier_in_file": [
+            "PAPER_1167 master Lagrangian helpers at calculator L3578 / L4474 / L4493",
+            "PAPER_1170-1173 vacuum-ledger helpers at calculator L4045 / L7503-7515",
+            "PAPER_1175 Kerr-ringdown helpers at calculator L7336-7418",
+            "PAPER_1183 variational helpers at calculator L7965-8114",
+        ],
+        "renumbering_notes": [
+            "PAPER_1184_OP paper-stated S1500-S1507 mapped to registry S1510-S1519 (avoid collision with PAPER_1184_CB S292* mapped to S1500-S1507)",
+            "PAPER_1185_QG paper-stated S1508-S1515 mapped to registry S1540-S1547 (continuation)",
+            "Paper-stated S### labels preserved in label field for traceability",
+        ],
+        "total_new_closures_wired":  len(_PA_S270_CLOSURE_REGISTRY),
+        "total_new_probe_functions": 21 + 6,  # 21 closure probes + 6 framework probes
+        "honesty_rule": "paper_predicted = user-published target (audit transparency). "
+                        "observed_anchors = external references. "
+                        "form() outputs ARE the falsifiable UQFF predictions where transcribed; "
+                        "form_transcribed flag exposed per closure.",
+    }
+
+
 # ---- PAPER_1210: Lagrangian Bridge -- 11 primitives -> 9 sectors -> 172 closures ----
 
 def _l96_uqff_PAPER1210_primitive_origin_map() -> Dict[str, Any]:
@@ -36735,6 +37102,66 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                               _l96_uqff_closure_S269_lookup, ["s_id"]),
         "image_session269_manifest":         ("session269_image_paper_manifest",
                                               _l96_uqff_session269_image_paper_manifest, []),
+        # === Session 270 image-batch wiring (PAPER_1164..PAPER_1185, ~108 closures) ===
+        # 21 closure-bearing probes
+        "paper1164_t22_moduli_stabilization_probe":            ("PAPER_1164_T22_moduli_stabilization_probe",
+                                                                _l96_uqff_PAPER1164_t22_moduli_stabilization_probe, []),
+        "paper1165_beta_i_triangular_probe":                   ("PAPER_1165_beta_i_triangular_probe",
+                                                                _l96_uqff_PAPER1165_beta_i_triangular_probe, []),
+        "paper1166_v_ua_polynomial_probe":                     ("PAPER_1166_v_ua_polynomial_probe",
+                                                                _l96_uqff_PAPER1166_v_ua_polynomial_probe, []),
+        "paper1168_falsifiable_predictions_probe":             ("PAPER_1168_falsifiable_predictions_probe",
+                                                                _l96_uqff_PAPER1168_falsifiable_predictions_probe, []),
+        "paper1169_numerical_confrontation_probe":             ("PAPER_1169_numerical_confrontation_probe",
+                                                                _l96_uqff_PAPER1169_numerical_confrontation_probe, []),
+        "paper1170_vacuum_energy_ledger_probe":                ("PAPER_1170_vacuum_energy_ledger_probe",
+                                                                _l96_uqff_PAPER1170_vacuum_energy_ledger_probe, []),
+        "paper1171_kk_regulator_probe":                        ("PAPER_1171_kk_regulator_probe",
+                                                                _l96_uqff_PAPER1171_kk_regulator_probe, []),
+        "paper1172_R26_gauss_bonnet_probe":                    ("PAPER_1172_R26_gauss_bonnet_probe",
+                                                                _l96_uqff_PAPER1172_R26_gauss_bonnet_probe, []),
+        "paper1173_kk_tower_hbar_probe":                       ("PAPER_1173_kk_tower_hbar_probe",
+                                                                _l96_uqff_PAPER1173_kk_tower_hbar_probe, []),
+        "paper1174_closed_ledger_p6_p10_probe":                ("PAPER_1174_closed_ledger_p6_p10_probe",
+                                                                _l96_uqff_PAPER1174_closed_ledger_p6_p10_probe, []),
+        "paper1175_ligo_o5_ringdown_probe":                    ("PAPER_1175_ligo_o5_ringdown_probe",
+                                                                _l96_uqff_PAPER1175_ligo_o5_ringdown_probe, []),
+        "paper1176_euclid_sigma8_probe":                       ("PAPER_1176_euclid_sigma8_probe",
+                                                                _l96_uqff_PAPER1176_euclid_sigma8_probe, []),
+        "paper1178_desi_y5_w_probe":                           ("PAPER_1178_desi_y5_w_probe",
+                                                                _l96_uqff_PAPER1178_desi_y5_w_probe, []),
+        "paper1180_cmb_s4_mu_distortion_probe":                ("PAPER_1180_cmb_s4_mu_distortion_probe",
+                                                                _l96_uqff_PAPER1180_cmb_s4_mu_distortion_probe, []),
+        "paper1181_grand_unification_probe":                   ("PAPER_1181_grand_unification_probe",
+                                                                _l96_uqff_PAPER1181_grand_unification_probe, []),
+        "paper1182_millennium_prize_probe":                    ("PAPER_1182_millennium_prize_probe",
+                                                                _l96_uqff_PAPER1182_millennium_prize_probe, []),
+        "paper1184_chandra_bridge_probe":                      ("PAPER_1184_chandra_bridge_probe",
+                                                                _l96_uqff_PAPER1184_chandra_bridge_probe, []),
+        "paper1184_open_problems_probe":                       ("PAPER_1184_open_problems_probe",
+                                                                _l96_uqff_PAPER1184_open_problems_probe, []),
+        "paper1185_neutrino_gw_probe":                         ("PAPER_1185_neutrino_gw_probe",
+                                                                _l96_uqff_PAPER1185_neutrino_gw_probe, []),
+        "paper1185_quantum_gravity_probe":                     ("PAPER_1185_quantum_gravity_probe",
+                                                                _l96_uqff_PAPER1185_quantum_gravity_probe, []),
+        # 6 framework-only metadata probes
+        "paper1167_lagrangian_master_synthesis_probe":         ("PAPER_1167_lagrangian_master_synthesis_probe",
+                                                                _l96_uqff_PAPER1167_lagrangian_master_synthesis_probe, []),
+        "paper1177_joint_falsifier_triple_probe":              ("PAPER_1177_joint_falsifier_triple_probe",
+                                                                _l96_uqff_PAPER1177_joint_falsifier_triple_probe, []),
+        "paper1179_quadruple_falsifier_probe":                 ("PAPER_1179_quadruple_falsifier_probe",
+                                                                _l96_uqff_PAPER1179_quadruple_falsifier_probe, []),
+        "paper1181_gap_verification_jobb_probe":               ("PAPER_1181_gap_verification_jobb_probe",
+                                                                _l96_uqff_PAPER1181_gap_verification_jobb_probe, []),
+        "paper1183_first_principles_variational_probe":        ("PAPER_1183_first_principles_variational_probe",
+                                                                _l96_uqff_PAPER1183_first_principles_variational_probe, []),
+        "paper1183_aggressive_paradox_probe":                  ("PAPER_1183_aggressive_paradox_probe",
+                                                                _l96_uqff_PAPER1183_aggressive_paradox_probe, []),
+        # Universal S### lookup + manifest
+        "closure_s270_lookup":               ("PAPER_S270_closure_lookup_by_S_id",
+                                              _l96_uqff_closure_S270_lookup, ["s_id"]),
+        "image_session270_manifest":         ("session270_image_paper_manifest",
+                                              _l96_uqff_session270_image_paper_manifest, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
