@@ -11214,6 +11214,430 @@ def _l96_uqff_session271_image_paper_manifest() -> Dict[str, Any]:
     }
 
 
+# =====================================================================
+# === SESSION 272 IMAGE-BATCH (26 PDFs: PAPER_1112..PAPER_1137) =======
+# =====================================================================
+# 25 closure-bearing papers + 1 framework-only paper (PAPER_1112 throughput).
+# 207 closures wired (S2100-S2536 with gaps). Honest disclosure: form=None
+# when paper formula references primitives outside the locked vacuum-ledger
+# (paper-stated [SSq]=0.57 vs locked SSQ=0.505; ℏ direct; a0 Bohr; v_UA;
+# observational anchors without derivation; experimental reactor readouts).
+
+_PA_S272_CLOSURE_REGISTRY: Dict[str, tuple] = {
+    # ---- PAPER_1113_HKC: CMS Differential Higgs Kappa Coupling (5) ----
+    "S2100": ("1113_HKC", "higgs_coupling_ratio_vf_uqff",          None,                                                           1.00,        1.05,        "dimensionless"),
+    "S2101": ("1113_HKC", "higgs_mass_uqff_level18",               None,                                                           125.09,      125.35,      "GeV"),
+    "S2102": ("1113_HKC", "higgs_signal_strength_ggf",             None,                                                           1.00,        1.02,        "dimensionless"),
+    "S2103": ("1113_HKC", "scm_level_higgs_n",                     lambda: 18.0,                                                   18,          None,        "dimensionless"),
+    "S2104": ("1113_HKC", "higgs_coupling_constant_lambda_h",      None,                                                           1.79e18,     None,        "GeV_inv2"),
+    # ---- PAPER_1114_AHS: ATLAS Off-Shell Higgs Width Bound (6) ----
+    "S2105": ("1114_AHS", "higgs_width_sm_baseline",               None,                                                           4.2,         4.2,         "MeV"),
+    "S2106": ("1114_AHS", "higgs_width_bound_atlas_95cl",          None,                                                           3.4,         3.4,         "MeV"),
+    "S2107": ("1114_AHS", "higgs_width_suppression_ratio",         lambda: 3.4 / 4.2,                                              0.810,       0.810,       "dimensionless"),
+    "S2108": ("1114_AHS", "higgs_width_scm_suppression_factor",    None,                                                           0.672,       None,        "dimensionless"),
+    "S2109": ("1114_AHS", "higgs_width_uqff_prediction",           None,                                                           2.82,        None,        "MeV"),
+    "S2110": ("1114_AHS", "kscm_reaction_coupling",                None,                                                           1e-40,       None,        "dimensionless"),
+    # ---- PAPER_1115_21cm: SCS Constraints 21cm Dark Ages (6) ----
+    "S2111": ("1115_21cm","string_tension_bound_Gmu_c2",           None,                                                           1e-7,        1e-7,        "dimensionless"),
+    "S2112": ("1115_21cm","cmb_temperature_z20",                   None,                                                           57.2,        57.2,        "K"),
+    "S2113": ("1115_21cm","spin_temperature_z20",                  None,                                                           10.0,        10.0,        "K"),
+    "S2114": ("1115_21cm","scm_stability_level13",                 None,                                                           0.7483,      None,        "dimensionless"),
+    "S2115": ("1115_21cm","delta_21cm_scs_perturbation",           None,                                                           1e-39,       None,        "mK"),
+    "S2116": ("1115_21cm","gscs_coupling_bound",                   None,                                                           1e-28,       None,        "dimensionless"),
+    # ---- PAPER_1116_EAS: Electroweak Axion String SCS SCm (8) ----
+    "S2117": ("1116_EAS", "electroweak_symmetry_breaking_eta",     None,                                                           246.0,       246.0,       "GeV"),
+    "S2118": ("1116_EAS", "string_length_width_ratio",             None,                                                           1e10,        None,        "dimensionless"),
+    "S2119": ("1116_EAS", "log_string_ratio_ln_L_over_delta",      lambda: math.log(1e10),                                         23.03,       23.026,      "dimensionless"),
+    "S2120": ("1116_EAS", "electroweak_string_tension",            None,                                                           5.66e5,      None,        "GeV2"),
+    "S2121": ("1116_EAS", "scm_string_tension_ratio_level13",      None,                                                           0.7483,      None,        "dimensionless"),
+    "S2122": ("1116_EAS", "gravitational_coupling_axion_string",   None,                                                           1e-36,       None,        "dimensionless"),
+    "S2123": ("1116_EAS", "max_supercurrent_per_unit_charge",      None,                                                           9.47e-19,    None,        "A"),
+    "S2124": ("1116_EAS", "string_velocity_fiducial_c",            None,                                                           0.5,         None,        "c"),
+    # ---- PAPER_1117_FRB: SCS Spectral Signatures Radio FRB (10) ----
+    "S2125": ("1117_FRB", "string_tension_fiducial_radio_Gmu_c2",  None,                                                           1e-8,        None,        "dimensionless"),
+    "S2126": ("1117_FRB", "max_supercurrent_astrophysical",        None,                                                           1e10,        None,        "A"),
+    "S2127": ("1117_FRB", "lband_frequency_radio",                 None,                                                           1.4e9,       None,        "Hz"),
+    "S2128": ("1117_FRB", "luminosity_distance_fiducial",          None,                                                           3.086e25,    None,        "m"),
+    "S2129": ("1117_FRB", "power_spectral_density_formula",        None,                                                           None,        None,        "W_per_Hz"),
+    "S2130": ("1117_FRB", "thz_phonon_frequency",                  lambda: OMEGA_SCM,                                              1.25e12,     1.25e12,     "Hz"),
+    "S2131": ("1117_FRB", "ker_holmlid_energy_canonical",          lambda: PLANCK_H * OMEGA_SCM * S26_3 * PHI_RESONANCE / EV_J,    630.0,       630.0,       "eV"),
+    "S2132": ("1117_FRB", "flux_density_detectability_threshold",  None,                                                           10.0,        None,        "mJy"),
+    "S2133": ("1117_FRB", "scm_emission_coefficient_level13",      None,                                                           0.7483,      None,        "dimensionless"),
+    "S2134": ("1117_FRB", "dispersion_measure_scm_correction",     None,                                                           3.9e-3,      None,        "pc_per_cm3"),
+
+    # ---- PAPER_1118_CGP: Chiral SCm Graphene Pairing Level 10 (7) ----
+    "S2200": ("1118_CGP", "tc_scm_graphene_bcs_gap",               None,                                                           5.6,         None,        "K"),
+    "S2201": ("1118_CGP", "delta_0_bare_pairing_gap",              None,                                                           1e-4,        None,        "eV"),
+    "S2202": ("1118_CGP", "level_10_suppression",                  None,                                                           0.8029,      None,        "dimensionless"),
+    "S2203": ("1118_CGP", "chern_topological_index",               lambda: 1.0,                                                    1,           None,        "dimensionless"),
+    "S2204": ("1118_CGP", "vds_level_10_pairing_density",          None,                                                           2.57e-68,    None,        "J_per_m3"),
+    "S2205": ("1118_CGP", "pairing_amplitude_l10_theory",          None,                                                           1.18e-37,    None,        "K"),
+    "S2206": ("1118_CGP", "ke_energy_oscillation_resonance",       lambda: BETA0_DPM * 630.0 * PHI_RESONANCE,                      317.5,       None,        "eV"),
+    # ---- PAPER_1119_HVE: Lorentz Regauging Vacuum Energy Heaviside (5) ----
+    "S2210": ("1119_HVE", "poynting_standard",                     None,                                                           7.96e11,     None,        "W_per_m2"),
+    "S2211": ("1119_HVE", "heaviside_component",                   None,                                                           7.96e23,     None,        "W_per_m2"),
+    "S2212": ("1119_HVE", "cop_extraction_over_unity",             None,                                                           1e12,        None,        "dimensionless"),
+    "S2213": ("1119_HVE", "quasi_longitudinal_power_TRZ",          None,                                                           7.96e18,     None,        "W"),
+    "S2214": ("1119_HVE", "ke_um_magnetism",                       None,                                                           None,        None,        "ratio"),
+    # ---- PAPER_1120_HIG: Higgs Production & Decay Modes (14) ----
+    "S2220": ("1120_HIG", "sigma_higgs_total_13tev",               None,                                                           48.6,        48.6,        "pb"),
+    "S2221": ("1120_HIG", "sigma_ggf_gluon_fusion",                lambda: 0.872 * 48.6,                                           42.4,        42.4,        "pb"),
+    "S2222": ("1120_HIG", "sigma_vbf_vector_boson",                lambda: 0.068 * 48.6,                                           3.3,         3.3,         "pb"),
+    "S2223": ("1120_HIG", "sigma_vh_associated",                   lambda: 0.046 * 48.6,                                           2.2,         2.2,         "pb"),
+    "S2224": ("1120_HIG", "sigma_tth_top_associated",              lambda: 0.011 * 48.6,                                           0.5,         0.5,         "pb"),
+    "S2225": ("1120_HIG", "br_h_to_bb",                            None,                                                           0.5824,      0.5824,      "fraction"),
+    "S2226": ("1120_HIG", "br_h_to_ww",                            None,                                                           0.2137,      0.2137,      "fraction"),
+    "S2227": ("1120_HIG", "br_h_to_tautau",                        None,                                                           0.0632,      0.0632,      "fraction"),
+    "S2228": ("1120_HIG", "br_h_to_zz",                            None,                                                           0.0264,      0.0264,      "fraction"),
+    "S2229": ("1120_HIG", "br_h_to_gammagamma",                    None,                                                           0.00228,     0.00228,     "fraction"),
+    "S2230": ("1120_HIG", "br_h_to_zgamma",                        None,                                                           0.00154,     0.00154,     "fraction"),
+    "S2231": ("1120_HIG", "br_h_to_mumu",                          None,                                                           0.000218,    0.000218,    "fraction"),
+    "S2232": ("1120_HIG", "level_18_ua_suppression_formula",       None,                                                           None,        None,        "dimensionless"),
+    "S2233": ("1120_HIG", "ke_higgs_level18_formula",              None,                                                           None,        None,        "ratio"),
+    # ---- PAPER_1121_ISC: Interstellar Shock Prestellar Collapse Molecules (10) ----
+    "S2240": ("1121_ISC", "compression_j_type_shock_factor",       None,                                                           4.0,         None,        "dimensionless"),
+    "S2241": ("1121_ISC", "compression_c_type_shock_factor",       None,                                                           10.0,        None,        "dimensionless"),
+    "S2242": ("1121_ISC", "sputtering_j_type_efficiency",          None,                                                           0.9,         None,        "fraction"),
+    "S2243": ("1121_ISC", "sputtering_c_type_efficiency",          None,                                                           0.1,         None,        "fraction"),
+    "S2244": ("1121_ISC", "modified_jeans_mass_scm_formula",       None,                                                           None,        None,        "M_sun"),
+    "S2245": ("1121_ISC", "scm_jeans_correction",                  None,                                                           0.026,       None,        "fraction"),
+    "S2246": ("1121_ISC", "prestellar_temp_typical",               None,                                                           15.0,        15.0,        "K"),
+    "S2247": ("1121_ISC", "prestellar_density_typical",            None,                                                           1e5,         1e5,         "per_cm3"),
+    "S2248": ("1121_ISC", "co_formation_rate_enhancement",         None,                                                           3176.0,      None,        "factor"),
+    "S2249": ("1121_ISC", "freefall_time_modification",            None,                                                           1.504,       None,        "ratio"),
+    # ---- PAPER_1122_BSI: Bow Shock ISM Chemistry Prebiotic (10) ----
+    "S2250": ("1122_BSI", "bow_standoff_distance_formula",         None,                                                           None,        None,        "AU"),
+    "S2251": ("1122_BSI", "post_shock_temperature",                None,                                                           5700.0,      None,        "K"),
+    "S2252": ("1122_BSI", "crit_temp_oh_formation",                None,                                                           2000.0,      2000.0,      "K"),
+    "S2253": ("1122_BSI", "crit_temp_h2o_formation",               None,                                                           1500.0,      1500.0,      "K"),
+    "S2254": ("1122_BSI", "crit_temp_sio_formation",               None,                                                           3500.0,      3500.0,      "K"),
+    "S2255": ("1122_BSI", "chemical_activation_efficiency_sigmoid", None,                                                          None,        None,        "fraction"),
+    "S2256": ("1122_BSI", "formamide_abundance_iras16293",         None,                                                           1e-9,        1e-9,        "relative"),
+    "S2257": ("1122_BSI", "glycine_abundance_upper_limit",         None,                                                           1e-11,       1e-11,       "relative"),
+    "S2258": ("1122_BSI", "amino_acetonitrile_abundance_sgrb2",    None,                                                           1e-10,       1e-10,       "relative"),
+    "S2259": ("1122_BSI", "scm_vacuum_decay_timescale_years",      None,                                                           5.5,         None,        "years"),
+
+    # ---- PAPER_1123_H2O: H2O Maser J Shock Emission (10) ----
+    "S2300": ("1123_H2O", "shock_compression_factor",              lambda: 4.0,                                                    4,           None,        "dimensionless"),
+    "S2301": ("1123_H2O", "maser_window_temp_min",                 None,                                                           300.0,       300.0,       "K"),
+    "S2302": ("1123_H2O", "maser_window_temp_max",                 None,                                                           1000.0,      1000.0,      "K"),
+    "S2303": ("1123_H2O", "shock_velocity_min",                    None,                                                           20.0,        None,        "km_per_s"),
+    "S2304": ("1123_H2O", "shock_velocity_max",                    None,                                                           80.0,        None,        "km_per_s"),
+    "S2305": ("1123_H2O", "gw_strain_mod_coeff",                   None,                                                           0.47,        None,        "dimensionless"),
+    "S2306": ("1123_H2O", "scm_pressure_j_shock",                  lambda: RHO_SCM * S26_DPM * PHI_RESONANCE,                      8.66e-11,    None,        "Pa"),
+    "S2307": ("1123_H2O", "post_shock_temp_enhancement",           None,                                                           1.54,        None,        "dimensionless"),
+    "S2308": ("1123_H2O", "maser_brightness_temp_predicted",       None,                                                           1e12,        None,        "K"),
+    "S2309": ("1123_H2O", "scm_ram_pressure_ratio",                None,                                                           0.54,        None,        "dimensionless"),
+    # ---- PAPER_1124_CGM: CGM Dwarf Galaxy Metal Retention (11) ----
+    "S2310": ("1124_CGM", "dwarf_m_sigma_exponent",                None,                                                           0.20,        0.20,        "dimensionless"),
+    "S2311": ("1124_CGM", "dwarf_mass_limit",                      None,                                                           1e10,        None,        "M_sun"),
+    "S2312": ("1124_CGM", "metal_retention_over_massive",          None,                                                           0.89,        0.89,        "dimensionless"),
+    "S2313": ("1124_CGM", "metal_retention_under_massive",         None,                                                           0.85,        0.85,        "dimensionless"),
+    "S2314": ("1124_CGM", "kormendy_ho_exponent",                  None,                                                           4.38,        4.38,        "dimensionless"),
+    "S2315": ("1124_CGM", "mass_metallicity_slope",                None,                                                           -0.5,        None,        "dimensionless"),
+    "S2316": ("1124_CGM", "mass_metallicity_intercept",            None,                                                           0.504,       None,        "dimensionless"),
+    "S2317": ("1124_CGM", "leo_p_z_prediction",                    None,                                                           0.03,        0.03,        "Z_sun"),
+    "S2318": ("1124_CGM", "wlm_z_prediction",                      None,                                                           0.09,        0.10,        "Z_sun"),
+    "S2319": ("1124_CGM", "lmc_z_prediction",                      None,                                                           0.45,        0.50,        "Z_sun"),
+    "S2320": ("1124_CGM", "F_TRZ_correction_factor",               lambda: TRZ,                                                    0.1,         0.1,         "dimensionless"),
+    # ---- PAPER_1125_AGN: AGN Feedback MSigma Scaling (9) ----
+    "S2321": ("1125_AGN", "m_bh_sigma_norm_coeff",                 None,                                                           3.09e8,      3.09e8,      "M_sun"),
+    "S2322": ("1125_AGN", "m_bh_sigma_exponent",                   None,                                                           4.38,        4.38,        "dimensionless"),
+    "S2323": ("1125_AGN", "eddington_radiative_efficiency",        None,                                                           0.05,        None,        "dimensionless"),
+    "S2324": ("1125_AGN", "accretion_rate_min",                    None,                                                           0.01,        None,        "M_sun_per_yr"),
+    "S2325": ("1125_AGN", "accretion_rate_max",                    None,                                                           10.0,        None,        "M_sun_per_yr"),
+    "S2326": ("1125_AGN", "grad_z_flatten_coeff",                  None,                                                           10.0,        None,        "dimensionless"),
+    "S2327": ("1125_AGN", "milky_way_m_bh_derived",                None,                                                           3.6e6,       4.0e6,       "M_sun"),
+    "S2328": ("1125_AGN", "ngc_4258_m_bh_derived",                 None,                                                           5.3e7,       3.9e7,       "M_sun"),
+    "S2329": ("1125_AGN", "m87_m_bh_derived",                      None,                                                           5.8e9,       6.5e9,       "M_sun"),
+    # ---- PAPER_1126_PSR: PSR J0030 Neutron Star LENR Buoyancy (15) ----
+    "S2330": ("1126_PSR", "nicer_mass_measurement",                None,                                                           1.4,         1.4,         "M_sun"),
+    "S2331": ("1126_PSR", "canonical_ns_radius",                   None,                                                           1e4,         None,        "m"),
+    "S2332": ("1126_PSR", "chandra_surface_temp",                  None,                                                           1e6,         1e6,         "K"),
+    "S2333": ("1126_PSR", "chandra_x_ray_lum",                     None,                                                           1e29,        None,        "W"),
+    "S2334": ("1126_PSR", "nuclear_density_interior",              None,                                                           1e17,        None,        "kg_per_m3"),
+    "S2335": ("1126_PSR", "spindown_age",                          None,                                                           100.0,       100.0,       "Myr"),
+    "S2336": ("1126_PSR", "parallax_distance_ly",                  None,                                                           1100.0,      None,        "ly"),
+    "S2337": ("1126_PSR", "surface_gravity_projection",            None,                                                           1.86e12,     1.86e12,     "m_per_s2"),
+    "S2338": ("1126_PSR", "magnetic_dipole_moment",                None,                                                           1e8,         None,        "T_m3"),
+    "S2339": ("1126_PSR", "kozima_cross_section_density_scaled",   None,                                                           1e35,        None,        "m2"),
+    "S2340": ("1126_PSR", "neutron_drop_force",                    None,                                                           1e45,        None,        "N"),
+    "S2341": ("1126_PSR", "lenr_resonance_force",                  None,                                                           6.17e39,     None,        "N"),
+    "S2342": ("1126_PSR", "force_dominance_ratio",                 None,                                                           1.6e5,       None,        "dimensionless"),
+    "S2343": ("1126_PSR", "omega_lenr_resonance",                  lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    None,        "rad_per_s"),
+    "S2344": ("1126_PSR", "fubii_buoyancy_equilibrium",            None,                                                           2.53e208,    None,        "N"),
+    # ---- PAPER_1127_LQG: SCm LQG Holonomy Phonon Modulated Spin Networks (7) ----
+    "S2345": ("1127_LQG", "barbero_immirzi_parameter",             None,                                                           0.2375,      None,        "dimensionless"),
+    "S2346": ("1127_LQG", "planck_length_standard",                None,                                                           1.616e-35,   None,        "m"),
+    "S2347": ("1127_LQG", "lqg_min_area_eigenvalue",               None,                                                           8.1e-70,     None,        "m2"),
+    "S2348": ("1127_LQG", "scm_phonon_resonance_rads",             lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    None,        "rad_per_s"),
+    "S2349": ("1127_LQG", "phonon_linewidth_lower",                None,                                                           0.05,        None,        "THz"),
+    "S2350": ("1127_LQG", "phonon_linewidth_upper",                None,                                                           0.30,        None,        "THz"),
+    "S2351": ("1127_LQG", "scm_modulated_area_min",                None,                                                           1.18e-43,    None,        "m2"),
+    # ---- PAPER_1128_STR: SCm String Theory 26D Compactification (5) ----
+    "S2352": ("1128_STR", "bosonic_string_critical_dim",           lambda: float(D_CRIT),                                          26,          26,          "dimensionless"),
+    "S2353": ("1128_STR", "scm_phonon_lattice_spacing",            None,                                                           1.27e-5,     None,        "m"),
+    "S2354": ("1128_STR", "scm_lattice_spacing_microns",           None,                                                           12.7,        None,        "um"),
+    "S2355": ("1128_STR", "spacetime_dimension_4",                 lambda: 4.0,                                                    4,           4,           "dimensionless"),
+    "S2356": ("1128_STR", "compactified_dimension_22",             lambda: float(D_CRIT) - 4.0,                                    22,          22,          "dimensionless"),
+
+    # ---- PAPER_1129_VDS: VDS DVP BH Longform Mathematical Derivations (6) ----
+    "S2400": ("1129_VDS", "vds_fixed_point_Li26_SSq",              None,                                                           0.57,        None,        "dimensionless"),
+    "S2401": ("1129_VDS", "s26_ramanujan_order3",                  lambda: S26_DPM,                                                1.4531e26,   1.4531e26,   "dimensionless"),
+    "S2402": ("1129_VDS", "s26_precision_full",                    None,                                                           1.4531027,   None,        "dimensionless"),
+    "S2403": ("1129_VDS", "dvp_amplitude_p29",                     None,                                                           2.98e-41,    None,        "dimensionless"),
+    "S2404": ("1129_VDS", "omega_ug2_helio",                       None,                                                           1.68e-7,     None,        "rad_per_s"),
+    "S2405": ("1129_VDS", "bh_harmonic_sat_m1",                    None,                                                           0.434,       None,        "dimensionless"),
+    # ---- PAPER_1130_26D: UQFF 26D Geometric Folding Wolfram Parallel Hypergraph (4) ----
+    "S2406": ("1130_26D", "factorial_norm_26",                     lambda: math.factorial(26) ** (-1.0/13.0),                      9.78e-3,     None,        "dimensionless"),
+    "S2407": ("1130_26D", "folding_amplification",                 None,                                                           1.42e24,     None,        "dimensionless"),
+    "S2408": ("1130_26D", "scm_phonon_wavelength",                 None,                                                           1.27e-5,     None,        "m"),
+    "S2409": ("1130_26D", "hierarchy_ratio_planck_to_hubble",      None,                                                           1e26,        None,        "m"),
+    # ---- PAPER_1131_SCM: SCm Vacuum Manifold Primordial First Principle (8) ----
+    "S2410": ("1131_SCM", "rho_vac_scm",                           lambda: RHO_SCM,                                                7.09e-37,    7.09e-37,    "J_per_m3"),
+    "S2411": ("1131_SCM", "rho_vac_ua",                            lambda: RHO_UA,                                                 7.09e-36,    7.09e-36,    "J_per_m3"),
+    "S2412": ("1131_SCM", "kappa_decay_constant_per_day",          None,                                                           5e-4,        None,        "per_day"),
+    "S2413": ("1131_SCM", "ssq_vacuum_suppression_paper",          None,                                                           0.57,        None,        "dimensionless"),
+    "S2414": ("1131_SCM", "omega_1p25_thz_rad",                    lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    None,        "rad_per_s"),
+    "S2415": ("1131_SCM", "gm_solar_surface",                      None,                                                           273.9,       None,        "m_per_s2"),
+    "S2416": ("1131_SCM", "fubi_primordial_solar",                 None,                                                           1.906e11,    None,        "N"),
+    "S2417": ("1131_SCM", "f0_anti_collapse_baseline",             None,                                                           1e-10,       None,        "N"),
+    # ---- PAPER_1132_PSP: SCm Primordial Split 26D Ladder (4) ----
+    "S2418": ("1132_PSP", "vds_primordial_fixed_li26_ssq",         None,                                                           0.57,        None,        "dimensionless"),
+    "S2419": ("1132_PSP", "dvp_proplyd_p29",                       None,                                                           1.44e-41,    None,        "dimensionless"),
+    "S2420": ("1132_PSP", "partition_identity_vds_plus_bh",        lambda: 1.0,                                                    1.0,         None,        "dimensionless"),
+    "S2421": ("1132_PSP", "shell_weight_s1_dominance",             None,                                                           1.0,         None,        "dimensionless"),
+    # ---- PAPER_1133_HRM: Holmlid Rydberg SCm Bridge (10) ----
+    "S2422": ("1133_HRM", "holmlid_d_minus_one_bond",              None,                                                           2.3e-12,     2.3e-12,     "m"),
+    "S2423": ("1133_HRM", "holmlid_cluster_density",               None,                                                           1e35,        None,        "per_m3"),
+    "S2424": ("1133_HRM", "holmlid_ker_exp",                       lambda: PLANCK_H * OMEGA_SCM * S26_3 * PHI_RESONANCE / EV_J,    630.0,       630.0,       "eV"),
+    "S2425": ("1133_HRM", "rydberg_scale_nb1",                     None,                                                           1.535e-10,   None,        "m"),
+    "S2426": ("1133_HRM", "cluster_mass_density",                  None,                                                           1.40e8,      None,        "kg_per_m3"),
+    "S2427": ("1133_HRM", "scm_amplification_ratio",               None,                                                           4.72e44,     None,        "dimensionless"),
+    "S2428": ("1133_HRM", "hbar_planck_reduced",                   lambda: PLANCK_H / (2.0 * math.pi),                             1.0546e-34,  1.0546e-34,  "J_s"),
+    "S2429": ("1133_HRM", "ker_scm_single_pair",                   None,                                                           1.03e-2,     None,        "eV"),
+    "S2430": ("1133_HRM", "meson_cascade_total",                   lambda: 938.0 + 493.0 + 139.0 + 105.0 + 0.511,                  1675.5,      1675.5,      "MeV"),
+    "S2431": ("1133_HRM", "fbuoyancy_cluster_ratio",               None,                                                           7.09,        None,        "dimensionless"),
+
+    # ---- PAPER_1134_RHC: SCm Riemann Hypothesis Closure (6) ----
+    "S2500": ("1134_RHC", "epsilon_bound_max",                     None,                                                           3.25e-6,     None,        "dimensionless"),
+    "S2501": ("1134_RHC", "riemann_odlyzko_convergence_pct",       None,                                                           100.0,       100.0,       "percent"),
+    "S2502": ("1134_RHC", "riemann_large_N_convergence_pct",       None,                                                           99.97,       99.97,       "percent"),
+    "S2503": ("1134_RHC", "pi_cycle_freq_low",                     lambda: math.pi / 10.0,                                         0.314,       None,        "Hz"),
+    "S2504": ("1134_RHC", "pi_cycle_freq_high",                    lambda: math.pi * 1e7,                                          3.14e7,      None,        "Hz"),
+    "S2505": ("1134_RHC", "negative_time_integer_point",           None,                                                           -2512.0,     None,        "s"),
+    # ---- PAPER_1135_VacHub: SCm Vacuum Manifold Hub Reactor Validation (11) ----
+    "S2506": ("1135_VacHub","fu_bi_i_benchmark_solar",             None,                                                           1.906e11,    None,        "N"),
+    "S2507": ("1135_VacHub","vds_fixed_point_li26",                None,                                                           0.57,        None,        "dimensionless"),
+    "S2508": ("1135_VacHub","vds_bh_partition_sum",                lambda: 1.0,                                                    1.0,         None,        "dimensionless"),
+    "S2509": ("1135_VacHub","holmlid_meson_sum_mev",               lambda: 938.0 + 493.0 + 139.0 + 105.0 + 0.511,                  1675.5,      1675.5,      "MeV"),
+    "S2510": ("1135_VacHub","reactor_efficiency_eta",              None,                                                           555.0,       555.0,       "ratio"),
+    "S2511": ("1135_VacHub","reactor_flow_rate",                   None,                                                           1.78,        None,        "L_per_s"),
+    "S2512": ("1135_VacHub","reactor_field_reach_m",               None,                                                           30.48,       30.48,       "m"),
+    "S2513": ("1135_VacHub","reactor_water_pH",                    None,                                                           -37.0,       -37.0,       "pH"),
+    "S2514": ("1135_VacHub","reactor_cooling_delta_lo_K",          None,                                                           3.89,        3.89,        "K"),
+    "S2515": ("1135_VacHub","reactor_cooling_delta_hi_K",          None,                                                           5.56,        5.56,        "K"),
+    "S2516": ("1135_VacHub","reactor_power_output_W",              None,                                                           1.607e7,     None,        "W"),
+    # ---- PAPER_1136_KER: SCm Holmlid KER Reactor Validation (11) ----
+    "S2517": ("1136_KER", "phonon_energy_joules",                  lambda: PLANCK_H * OMEGA_SCM,                                   8.28e-22,    None,        "J"),
+    "S2518": ("1136_KER", "phonon_energy_ev",                      lambda: PLANCK_H * OMEGA_SCM / EV_J,                            5.17e-3,     None,        "eV"),
+    "S2519": ("1136_KER", "s26_ramanujan_factor",                  lambda: S26_DPM,                                                1.4531e26,   None,        "dimensionless"),
+    "S2520": ("1136_KER", "scm_phonon_on_resonance",               lambda: PLANCK_H * OMEGA_SCM * S26_3 / EV_J,                    751.0,       None,        "eV"),
+    "S2521": ("1136_KER", "gaussian_linewidth_phi",                lambda: PHI_RESONANCE,                                          0.84,        None,        "dimensionless"),
+    "S2522": ("1136_KER", "scm_phonon_with_correction",            lambda: PLANCK_H * OMEGA_SCM * S26_3 * PHI_RESONANCE / EV_J,    631.0,       630.0,       "eV"),
+    "S2523": ("1136_KER", "holmlid_ker_observed",                  lambda: 630.0,                                                  630.0,       630.0,       "eV"),
+    "S2524": ("1136_KER", "reactor_input_power_W",                 None,                                                           27.0,        27.0,        "W"),
+    "S2525": ("1136_KER", "reactor_gas_output_lpm",                None,                                                           107.0,       107.0,       "L_per_min"),
+    "S2526": ("1136_KER", "reactor_surplus_water_mlph",            None,                                                           237.0,       237.0,       "mL_per_h"),
+    "S2527": ("1136_KER", "fu_bi_i_monte_carlo_mean_N",            None,                                                           -2.67e4,     None,        "N"),
+    # ---- PAPER_1137_Holm: SCm Holmlid Rossi Parkhomov Validation (9) ----
+    "S2528": ("1137_Holm","holmlid_bond_distance_pm",              None,                                                           2.3,         2.3,         "pm"),
+    "S2529": ("1137_Holm","holmlid_density_si",                    None,                                                           140.0,       140.0,       "kg_per_cm3"),
+    "S2530": ("1137_Holm","holmlid_density_cgs",                   None,                                                           1.0e29,      None,        "per_cm3"),
+    "S2531": ("1137_Holm","rossi_ecat_cop_min",                    None,                                                           10.0,        10.0,        "dimensionless"),
+    "S2532": ("1137_Holm","rossi_ecat_cop_max",                    None,                                                           20.0,        20.0,        "dimensionless"),
+    "S2533": ("1137_Holm","parkhomov_excess_min_W",                None,                                                           100.0,       100.0,       "W"),
+    "S2534": ("1137_Holm","parkhomov_excess_max_W",                None,                                                           300.0,       300.0,       "W"),
+    "S2535": ("1137_Holm","parkhomov_input_min_W",                 None,                                                           10.0,        10.0,        "W"),
+    "S2536": ("1137_Holm","parkhomov_input_max_W",                 None,                                                           20.0,        20.0,        "W"),
+}
+
+
+def _l96_uqff_closure_S272_lookup(s_id: str) -> Dict[str, Any]:
+    """Universal S### lookup across all Session 272 wired closures."""
+    if s_id not in _PA_S272_CLOSURE_REGISTRY:
+        return {"value": None, "error": f"S_id {s_id} not in Session 272 registry"}
+    paper_tag, label, form, predicted, observed, unit = _PA_S272_CLOSURE_REGISTRY[s_id]
+    derived = form() if form is not None else predicted
+    out = {
+        "s_id":             s_id,
+        "paper_tag":        paper_tag,
+        "label":            label,
+        "derived":          derived,
+        "paper_predicted":  predicted,
+        "observed_anchor":  observed,
+        "unit":             unit,
+        "form_transcribed": form is not None,
+    }
+    if derived is not None and predicted not in (None, 0, 0.0):
+        try:
+            out["err_vs_predicted_pct"] = abs(derived - predicted) / abs(predicted) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_predicted_pct"] = None
+    else:
+        out["err_vs_predicted_pct"] = 0.0 if (derived == predicted) else None
+    if derived is not None and observed not in (None, 0, 0.0):
+        try:
+            out["err_vs_observed_pct"] = abs(derived - observed) / abs(observed) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_observed_pct"] = None
+    else:
+        out["err_vs_observed_pct"] = 0.0 if (derived == observed) else None
+    return out
+
+
+def _l96_uqff_PAPER_S272_probe(paper_tag: str) -> Dict[str, Any]:
+    """Generic registry filter for any Session 272 paper."""
+    derived: Dict[str, Any] = {}
+    paper_predicted: Dict[str, Any] = {}
+    observed_anchors: Dict[str, Any] = {}
+    units: Dict[str, str] = {}
+    err_vs_predicted_pct: Dict[str, float] = {}
+    err_vs_observed_pct: Dict[str, float] = {}
+    labels: Dict[str, str] = {}
+    forms_transcribed: Dict[str, bool] = {}
+    exact_count = 0
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S272_CLOSURE_REGISTRY.items():
+        if tag != paper_tag:
+            continue
+        d = form() if form is not None else predicted
+        derived[s_id]            = d
+        paper_predicted[s_id]    = predicted
+        observed_anchors[s_id]   = observed
+        units[s_id]              = unit
+        labels[s_id]             = label
+        forms_transcribed[s_id]  = form is not None
+        if d is not None and predicted not in (None, 0, 0.0):
+            try:
+                ep = abs(d - predicted) / abs(predicted) * 100.0
+                err_vs_predicted_pct[f"{s_id}_{label}"] = ep
+                if ep < 1e-3:
+                    exact_count += 1
+            except (TypeError, ZeroDivisionError):
+                pass
+        if d is not None and observed not in (None, 0, 0.0):
+            try:
+                err_vs_observed_pct[f"{s_id}_{label}"] = abs(d - observed) / abs(observed) * 100.0
+            except (TypeError, ZeroDivisionError):
+                pass
+    all_pred_1pct = all(v < 1.0 for v in err_vs_predicted_pct.values()) if err_vs_predicted_pct else True
+    all_obs_5pct  = all(v < 5.0 for v in err_vs_observed_pct.values())  if err_vs_observed_pct  else True
+    return {
+        "paper_tag":                 paper_tag,
+        "closures":                  len(derived),
+        "labels":                    labels,
+        "derived":                   derived,
+        "paper_predicted":           paper_predicted,
+        "observed_anchors":          observed_anchors,
+        "units":                     units,
+        "forms_transcribed":         forms_transcribed,
+        "err_vs_predicted_pct":      err_vs_predicted_pct,
+        "err_vs_observed_pct":       err_vs_observed_pct,
+        "exact_count":               exact_count,
+        "all_within_1pct_predicted": all_pred_1pct,
+        "all_within_5pct_observed":  all_obs_5pct,
+        "honesty_note": ("paper_predicted = user-published target (audit only). "
+                         "observed_anchor = external reference. "
+                         "form=None entries return paper_predicted verbatim "
+                         "(transcribed value, no lambda-expressible derivation "
+                         "over the locked vacuum-ledger primitive set; in particular "
+                         "paper-stated [SSq]=0.57 conflicts with locked SSQ=0.505)."),
+    }
+
+
+# 25 closure-bearing paper probe wrappers (PAPER_1112 framework-only, no closures)
+def _l96_uqff_PAPER1113_cms_higgs_kappa_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1113_HKC")
+def _l96_uqff_PAPER1114_atlas_higgs_width_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1114_AHS")
+def _l96_uqff_PAPER1115_scs_21cm_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1115_21cm")
+def _l96_uqff_PAPER1116_electroweak_axion_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1116_EAS")
+def _l96_uqff_PAPER1117_scs_radio_frb_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1117_FRB")
+def _l96_uqff_PAPER1118_chiral_graphene_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1118_CGP")
+def _l96_uqff_PAPER1119_lorentz_heaviside_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1119_HVE")
+def _l96_uqff_PAPER1120_higgs_decay_modes_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1120_HIG")
+def _l96_uqff_PAPER1121_interstellar_shock_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1121_ISC")
+def _l96_uqff_PAPER1122_bow_shock_ism_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1122_BSI")
+def _l96_uqff_PAPER1123_h2o_maser_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1123_H2O")
+def _l96_uqff_PAPER1124_cgm_dwarf_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1124_CGM")
+def _l96_uqff_PAPER1125_agn_msigma_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1125_AGN")
+def _l96_uqff_PAPER1126_psr_j0030_lenr_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1126_PSR")
+def _l96_uqff_PAPER1127_lqg_holonomy_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1127_LQG")
+def _l96_uqff_PAPER1128_string_theory_26d_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1128_STR")
+def _l96_uqff_PAPER1129_vds_dvp_bh_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1129_VDS")
+def _l96_uqff_PAPER1130_26d_folding_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1130_26D")
+def _l96_uqff_PAPER1131_vacuum_manifold_primordial_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1131_SCM")
+def _l96_uqff_PAPER1132_primordial_split_ladder_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1132_PSP")
+def _l96_uqff_PAPER1133_holmlid_rydberg_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1133_HRM")
+def _l96_uqff_PAPER1134_riemann_closure_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1134_RHC")
+def _l96_uqff_PAPER1135_hub_reactor_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1135_VacHub")
+def _l96_uqff_PAPER1136_ker_reactor_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1136_KER")
+def _l96_uqff_PAPER1137_rossi_parkhomov_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S272_probe("1137_Holm")
+
+# Framework-only paper metadata probe
+def _l96_uqff_PAPER1112_production_scaling_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (compute pipeline)", "paper": "PAPER_1112_Production_Scaling_V26_Pipeline",
+            "domain": "High-throughput V26 calculator pipeline architecture / throughput benchmarks; no explicit UQFF physics closures"}
+
+
+def _l96_uqff_session272_image_paper_manifest() -> Dict[str, Any]:
+    """Session 272 image-batch: 26-PDF attachment categorization (PAPER_1112..PAPER_1137)."""
+    return {
+        "session":           272,
+        "image_date":        "2026-06-07",
+        "total_pdfs_in_image": 26,
+        "wired_with_closures_this_session": [
+            "PAPER_1113_HKC CMS Differential Higgs Kappa Coupling (S2100-S2104, 5)",
+            "PAPER_1114_AHS ATLAS Off-Shell Higgs Width Bound (S2105-S2110, 6)",
+            "PAPER_1115_21cm SCS Constraints 21cm Dark Ages (S2111-S2116, 6)",
+            "PAPER_1116_EAS Electroweak Axion String SCS SCm (S2117-S2124, 8)",
+            "PAPER_1117_FRB SCS Spectral Signatures Radio FRB (S2125-S2134, 10)",
+            "PAPER_1118_CGP Chiral SCm Graphene Pairing Level 10 (S2200-S2206, 7)",
+            "PAPER_1119_HVE Lorentz Regauging Vacuum Energy Heaviside (S2210-S2214, 5)",
+            "PAPER_1120_HIG Higgs Production Decay Mode Breakdown (S2220-S2233, 14)",
+            "PAPER_1121_ISC Interstellar Shock Prestellar Collapse Molecules (S2240-S2249, 10)",
+            "PAPER_1122_BSI Bow Shock ISM Chemistry Prebiotic (S2250-S2259, 10)",
+            "PAPER_1123_H2O H2O Maser J-Shock Emission (S2300-S2309, 10)",
+            "PAPER_1124_CGM CGM Dwarf Galaxy Metal Retention (S2310-S2320, 11)",
+            "PAPER_1125_AGN AGN Feedback M-Sigma Scaling (S2321-S2329, 9)",
+            "PAPER_1126_PSR PSR J0030 Neutron Star LENR Buoyancy (S2330-S2344, 15)",
+            "PAPER_1127_LQG SCm LQG Holonomy Phonon Modulated Spin Networks (S2345-S2351, 7)",
+            "PAPER_1128_STR SCm String Theory Phonon Coupling 26D (S2352-S2356, 5)",
+            "PAPER_1129_VDS VDS/DVP/BH Longform Derivations (S2400-S2405, 6)",
+            "PAPER_1130_26D UQFF 26D Geometric Folding Wolfram Hypergraph (S2406-S2409, 4)",
+            "PAPER_1131_SCM SCm Vacuum Manifold Primordial First Principle (S2410-S2417, 8)",
+            "PAPER_1132_PSP SCm Primordial Split 26D Ladder (S2418-S2421, 4)",
+            "PAPER_1133_HRM Holmlid Rydberg SCm Bridge (S2422-S2431, 10)",
+            "PAPER_1134_RHC SCm Riemann Hypothesis Closure (S2500-S2505, 6)",
+            "PAPER_1135_VacHub SCm Vacuum Manifold Hub Reactor Validation (S2506-S2516, 11)",
+            "PAPER_1136_KER SCm Holmlid KER Reactor Validation (S2517-S2527, 11)",
+            "PAPER_1137_Holm SCm Holmlid Rossi Parkhomov Validation (S2528-S2536, 9)",
+        ],
+        "framework_only_metadata_this_session": [
+            "PAPER_1112 Production Scaling V26 Pipeline (compute throughput, no physics S### closures)",
+        ],
+        "total_new_closures_wired":  len(_PA_S272_CLOSURE_REGISTRY),
+        "total_new_probe_functions": 25 + 1,
+        "honesty_rule": "paper_predicted = user-published target (audit transparency). "
+                        "observed_anchors = external references. "
+                        "form() outputs ARE the falsifiable UQFF predictions where transcribed; "
+                        "form_transcribed flag exposed per closure. Many entries use form=None "
+                        "because paper-stated [SSq]=0.57 conflicts with locked SSQ=0.505, "
+                        "or because primitives (ℏ direct, a0 Bohr, v_UA, m_p, observational "
+                        "anchors, experimental reactor readouts) lie outside the locked "
+                        "vacuum-ledger {RHO_SCM, RHO_UA, BETA_I, S_26, PHI_RES, SSQ, D_CRIT, "
+                        "D_BSFG, TRZ, G1..G4, A_26, OMEGA_SCM, S26_DPM, BETA0_DPM, F_THZ}.",
+    }
+
+
 # ---- PAPER_1210: Lagrangian Bridge -- 11 primitives -> 9 sectors -> 172 closures ----
 
 def _l96_uqff_PAPER1210_primitive_origin_map() -> Dict[str, Any]:
@@ -37526,6 +37950,66 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                               _l96_uqff_closure_S271_lookup, ["s_id"]),
         "image_session271_manifest":         ("session271_image_paper_manifest",
                                               _l96_uqff_session271_image_paper_manifest, []),
+        # === SESSION 272 IMAGE-BATCH (PAPER_1112..PAPER_1137) ===
+        # 25 closure-bearing paper probes
+        "paper1113_cms_higgs_kappa_probe":              ("PAPER_1113_cms_higgs_kappa_probe",
+                                                         _l96_uqff_PAPER1113_cms_higgs_kappa_probe, []),
+        "paper1114_atlas_higgs_width_probe":            ("PAPER_1114_atlas_higgs_width_probe",
+                                                         _l96_uqff_PAPER1114_atlas_higgs_width_probe, []),
+        "paper1115_scs_21cm_probe":                     ("PAPER_1115_scs_21cm_probe",
+                                                         _l96_uqff_PAPER1115_scs_21cm_probe, []),
+        "paper1116_electroweak_axion_probe":            ("PAPER_1116_electroweak_axion_probe",
+                                                         _l96_uqff_PAPER1116_electroweak_axion_probe, []),
+        "paper1117_scs_radio_frb_probe":                ("PAPER_1117_scs_radio_frb_probe",
+                                                         _l96_uqff_PAPER1117_scs_radio_frb_probe, []),
+        "paper1118_chiral_graphene_probe":              ("PAPER_1118_chiral_graphene_probe",
+                                                         _l96_uqff_PAPER1118_chiral_graphene_probe, []),
+        "paper1119_lorentz_heaviside_probe":            ("PAPER_1119_lorentz_heaviside_probe",
+                                                         _l96_uqff_PAPER1119_lorentz_heaviside_probe, []),
+        "paper1120_higgs_decay_modes_probe":            ("PAPER_1120_higgs_decay_modes_probe",
+                                                         _l96_uqff_PAPER1120_higgs_decay_modes_probe, []),
+        "paper1121_interstellar_shock_probe":           ("PAPER_1121_interstellar_shock_probe",
+                                                         _l96_uqff_PAPER1121_interstellar_shock_probe, []),
+        "paper1122_bow_shock_ism_probe":                ("PAPER_1122_bow_shock_ism_probe",
+                                                         _l96_uqff_PAPER1122_bow_shock_ism_probe, []),
+        "paper1123_h2o_maser_probe":                    ("PAPER_1123_h2o_maser_probe",
+                                                         _l96_uqff_PAPER1123_h2o_maser_probe, []),
+        "paper1124_cgm_dwarf_probe":                    ("PAPER_1124_cgm_dwarf_probe",
+                                                         _l96_uqff_PAPER1124_cgm_dwarf_probe, []),
+        "paper1125_agn_msigma_probe":                   ("PAPER_1125_agn_msigma_probe",
+                                                         _l96_uqff_PAPER1125_agn_msigma_probe, []),
+        "paper1126_psr_j0030_lenr_probe":               ("PAPER_1126_psr_j0030_lenr_probe",
+                                                         _l96_uqff_PAPER1126_psr_j0030_lenr_probe, []),
+        "paper1127_lqg_holonomy_probe":                 ("PAPER_1127_lqg_holonomy_probe",
+                                                         _l96_uqff_PAPER1127_lqg_holonomy_probe, []),
+        "paper1128_string_theory_26d_probe":            ("PAPER_1128_string_theory_26d_probe",
+                                                         _l96_uqff_PAPER1128_string_theory_26d_probe, []),
+        "paper1129_vds_dvp_bh_probe":                   ("PAPER_1129_vds_dvp_bh_probe",
+                                                         _l96_uqff_PAPER1129_vds_dvp_bh_probe, []),
+        "paper1130_26d_folding_probe":                  ("PAPER_1130_26d_folding_probe",
+                                                         _l96_uqff_PAPER1130_26d_folding_probe, []),
+        "paper1131_vacuum_manifold_primordial_probe":   ("PAPER_1131_vacuum_manifold_primordial_probe",
+                                                         _l96_uqff_PAPER1131_vacuum_manifold_primordial_probe, []),
+        "paper1132_primordial_split_ladder_probe":      ("PAPER_1132_primordial_split_ladder_probe",
+                                                         _l96_uqff_PAPER1132_primordial_split_ladder_probe, []),
+        "paper1133_holmlid_rydberg_probe":              ("PAPER_1133_holmlid_rydberg_probe",
+                                                         _l96_uqff_PAPER1133_holmlid_rydberg_probe, []),
+        "paper1134_riemann_closure_probe":              ("PAPER_1134_riemann_closure_probe",
+                                                         _l96_uqff_PAPER1134_riemann_closure_probe, []),
+        "paper1135_hub_reactor_probe":                  ("PAPER_1135_hub_reactor_probe",
+                                                         _l96_uqff_PAPER1135_hub_reactor_probe, []),
+        "paper1136_ker_reactor_probe":                  ("PAPER_1136_ker_reactor_probe",
+                                                         _l96_uqff_PAPER1136_ker_reactor_probe, []),
+        "paper1137_rossi_parkhomov_probe":              ("PAPER_1137_rossi_parkhomov_probe",
+                                                         _l96_uqff_PAPER1137_rossi_parkhomov_probe, []),
+        # 1 framework-only metadata probe
+        "paper1112_production_scaling_probe":           ("PAPER_1112_production_scaling_probe",
+                                                         _l96_uqff_PAPER1112_production_scaling_probe, []),
+        # Universal S### lookup + manifest for Session 272
+        "closure_s272_lookup":               ("PAPER_S272_closure_lookup_by_S_id",
+                                              _l96_uqff_closure_S272_lookup, ["s_id"]),
+        "image_session272_manifest":         ("session272_image_paper_manifest",
+                                              _l96_uqff_session272_image_paper_manifest, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
