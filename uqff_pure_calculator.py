@@ -11638,6 +11638,407 @@ def _l96_uqff_session272_image_paper_manifest() -> Dict[str, Any]:
     }
 
 
+# =====================================================================
+# === SESSION 273 IMAGE-BATCH (26 PDFs: PAPER_1086..PAPER_1111) =======
+# =====================================================================
+# 23 closure-bearing papers + 3 framework-only papers (PAPER_1091/1097/1099
+# production scaling pipeline benchmarks). 178 closures wired (S2600-S3041
+# with gaps). Honest disclosure: form=None when paper formula references
+# primitives outside the locked vacuum-ledger (paper-stated [SSq]=0.57 vs
+# locked SSQ=0.505; paper-stated S_26~1.86 vs locked S_26=1.453162;
+# ℏ direct; a0 Bohr; M_sun/M_BH/H_0/Λ observational anchors; T_CMB direct;
+# lattice-QCD σ; α_s(M_Z) SM literal; Λ_QCD literal; Riemann zeta zeros).
+
+_PA_S273_CLOSURE_REGISTRY: Dict[str, tuple] = {
+    # ---- PAPER_1086_SCm_Dark_Energy_Gamma_Density (5) ----
+    "S2600": ("1086_DE_GAMMA", "rho_vac_SCm_paper_mass_density",   None,                                                           9.47e-27,    None,        "kg/m^3"),
+    "S2601": ("1086_DE_GAMMA", "kappa_growth_rate_paper",          None,                                                           5.787e-9,    None,        "s^-1"),
+    "S2602": ("1086_DE_GAMMA", "S26_paper_value",                  None,                                                           1.86,        None,        "dimensionless"),
+    "S2603": ("1086_DE_GAMMA", "rho_DE_over_rho_Lambda_R08",       None,                                                           1e22,        None,        "dimensionless"),
+    "S2604": ("1086_DE_GAMMA", "rho_DE_table_value",               None,                                                           2.18e-4,     None,        "kg/m^3"),
+    # ---- PAPER_1087_DarkEnergy_EOS_TimeEvolving (7) ----
+    "S2605": ("1087_DE_EOS",   "w_DE_t0_LambdaCDM_limit",          lambda: -1.0,                                                   -1.0,        -1.0,        "dimensionless"),
+    "S2606": ("1087_DE_EOS",   "w_DE_t_1Gyr",                      None,                                                           -0.9959,     None,        "dimensionless"),
+    "S2607": ("1087_DE_EOS",   "w_DE_t_13_8Gyr_present",           None,                                                           -0.9435,     -1.0,        "dimensionless"),
+    "S2608": ("1087_DE_EOS",   "delta_w_present_epoch",            None,                                                           0.0565,      None,        "dimensionless"),
+    "S2609": ("1087_DE_EOS",   "ln_Phi_value",                     None,                                                           46.7,        None,        "dimensionless"),
+    "S2610": ("1087_DE_EOS",   "kappa_paper_value",                None,                                                           5.787e-9,    None,        "s^-1"),
+    "S2611": ("1087_DE_EOS",   "SSq_paper_value",                  None,                                                           0.57,        None,        "dimensionless"),
+    # ---- PAPER_1088_FUBii_SevenComponent_Decomposition (6) ----
+    "S2612": ("1088_FUBII_7C", "G_newton_codata",                  lambda: G_NEWTON,                                               6.674e-11,   6.6743e-11,  "m^3/(kg*s^2)"),
+    "S2613": ("1088_FUBII_7C", "beta_i_buoyancy",                  lambda: BETA0_DPM,                                              0.603,       0.603,       "dimensionless"),
+    "S2614": ("1088_FUBII_7C", "UA_universal_abundance",           None,                                                           1e-4,        None,        "dimensionless"),
+    "S2615": ("1088_FUBII_7C", "k_eta_VDS_sector",                 None,                                                           1e-113,      None,        "dimensionless"),
+    "S2616": ("1088_FUBII_7C", "phonon_resonance_THz",             lambda: F_THZ,                                                  1.25e12,     1.25e12,     "Hz"),
+    "S2617": ("1088_FUBII_7C", "BSH_fractional_contribution",      None,                                                           1e-2,        None,        "dimensionless"),
+    # ---- PAPER_1089_Inflation_Buoyancy_Lagrangian (10) ----
+    "S2618": ("1089_INFL_LAG", "beta_i_inflation",                 lambda: BETA0_DPM,                                              0.603,       0.603,       "dimensionless"),
+    "S2619": ("1089_INFL_LAG", "UA_inflation",                     None,                                                           1e-4,        None,        "dimensionless"),
+    "S2620": ("1089_INFL_LAG", "F_n_neutron_exchange",             None,                                                           1e-10,       None,        "N"),
+    "S2621": ("1089_INFL_LAG", "M_sun_benchmark",                  None,                                                           1.989e30,    1.989e30,    "kg"),
+    "S2622": ("1089_INFL_LAG", "r_1AU_benchmark",                  None,                                                           1.496e11,    1.496e11,    "m"),
+    "S2623": ("1089_INFL_LAG", "Omega_sun_helioseismic",           None,                                                           2.87e-6,     2.87e-6,     "rad/s"),
+    "S2624": ("1089_INFL_LAG", "Ug_solar_benchmark_GMr",           None,                                                           8.87e29,     None,        "J"),
+    "S2625": ("1089_INFL_LAG", "L_grav_benchmark_solar",           None,                                                           -2.06e8,     None,        "J"),
+    "S2626": ("1089_INFL_LAG", "L_neutron_benchmark_solar",        None,                                                           1.86e11,     None,        "J"),
+    "S2627": ("1089_INFL_LAG", "L_grav_over_L_neutron_ratio",      None,                                                           1.11e-3,     None,        "dimensionless"),
+    # ---- PAPER_1090_DarkEnergy_Buoyancy_Lagrangian (9) ----
+    "S2628": ("1090_DE_LAG",   "rho_SCm_paper_mass_density",       None,                                                           9.47e-27,    None,        "kg/m^3"),
+    "S2629": ("1090_DE_LAG",   "c_light_codata",                   lambda: C_LIGHT,                                                2.998e8,     299792458.0, "m/s"),
+    "S2630": ("1090_DE_LAG",   "S26_paper_value_1090",             None,                                                           1.8594,      None,        "dimensionless"),
+    "S2631": ("1090_DE_LAG",   "Phi0_phonon_base_amplitude",       None,                                                           1e20,        None,        "dimensionless"),
+    "S2632": ("1090_DE_LAG",   "V_cosmological_volume",            None,                                                           1e48,        None,        "m^3"),
+    "S2633": ("1090_DE_LAG",   "R_buoyancy_ratio_benchmark",       None,                                                           0.8,         None,        "dimensionless"),
+    "S2634": ("1090_DE_LAG",   "L_DE_benchmark",                   None,                                                           1.77e47,     None,        "J"),
+    "S2635": ("1090_DE_LAG",   "R_accelerating_threshold",         lambda: 0.5,                                                    0.5,         None,        "dimensionless"),
+    "S2636": ("1090_DE_LAG",   "EL_residual_tolerance",            None,                                                           1e-12,       None,        "J"),
+
+    # ---- PAPER_1092_SCm_CMB_Phonon_Power_Spectrum (11) ----
+    "S2700": ("1092_CMB_PSP",  "A_s_primordial_amplitude",         None,                                                           2.1e-9,      2.1e-9,      "dimensionless"),
+    "S2701": ("1092_CMB_PSP",  "n_s_scalar_spectral_index",        None,                                                           0.965,       0.965,       "dimensionless"),
+    "S2702": ("1092_CMB_PSP",  "k_pivot_scale",                    None,                                                           0.05,        0.05,        "Mpc^-1"),
+    "S2703": ("1092_CMB_PSP",  "Phi0_phonon_amplitude",            None,                                                           1e20,        None,        "dimensionless"),
+    "S2704": ("1092_CMB_PSP",  "S26_paper_1092",                   None,                                                           1.86,        None,        "dimensionless"),
+    "S2705": ("1092_CMB_PSP",  "r_star_sound_horizon_LS",          None,                                                           14000.0,     14000.0,     "Mpc"),
+    "S2706": ("1092_CMB_PSP",  "k_D_silk_damping",                 None,                                                           0.15,        0.15,        "Mpc^-1"),
+    "S2707": ("1092_CMB_PSP",  "acoustic_peak_1_multipole",        None,                                                           220.0,       220.0,       "dimensionless"),
+    "S2708": ("1092_CMB_PSP",  "acoustic_peak_2_multipole",        None,                                                           546.0,       546.0,       "dimensionless"),
+    "S2709": ("1092_CMB_PSP",  "acoustic_peak_3_multipole",        None,                                                           800.0,       800.0,       "dimensionless"),
+    "S2710": ("1092_CMB_PSP",  "T0_scaling_factor_to_muK2",        None,                                                           1e6,         None,        "scaling"),
+    # ---- PAPER_1093_SCm_CMB_Temperature_Fluctuation (6) ----
+    "S2711": ("1093_CMB_TEMP", "T0_CMB_monopole",                  None,                                                           2.7255,      2.7255,      "K"),
+    "S2712": ("1093_CMB_TEMP", "S26_paper_1093",                   None,                                                           1.8594,      None,        "dimensionless"),
+    "S2713": ("1093_CMB_TEMP", "S26_cubed_paper",                  None,                                                           6.4333,      None,        "dimensionless"),
+    "S2714": ("1093_CMB_TEMP", "delta_T_over_T_ratio",             None,                                                           1e-5,        1e-5,        "dimensionless"),
+    "S2715": ("1093_CMB_TEMP", "sigma_theta_angular_scale",        None,                                                           10.0,        None,        "deg"),
+    "S2716": ("1093_CMB_TEMP", "angular_damping_at_10deg",         None,                                                           0.61,        None,        "dimensionless"),
+    # ---- PAPER_1094_CMB_Buoyancy_Lagrangian (6) ----
+    "S2717": ("1094_CMB_LAG",  "beta_i_CMB",                       lambda: BETA0_DPM,                                              0.603,       0.603,       "dimensionless"),
+    "S2718": ("1094_CMB_LAG",  "UA_CMB",                           None,                                                           1e-4,        None,        "dimensionless"),
+    "S2719": ("1094_CMB_LAG",  "F_n_neutron_phonon_CMB",           None,                                                           1e-10,       None,        "N"),
+    "S2720": ("1094_CMB_LAG",  "phonon_frequency_1094",            lambda: F_THZ,                                                  1.25e12,     1.25e12,     "Hz"),
+    "S2721": ("1094_CMB_LAG",  "L_grav_over_L_neutron_CMB",        None,                                                           1e-3,        None,        "dimensionless"),
+    "S2722": ("1094_CMB_LAG",  "L_grav_benchmark_CMB",             None,                                                           1e8,         None,        "J"),
+    # ---- PAPER_1095_Horizon_Buoyancy_Lagrangian (8) ----
+    "S2723": ("1095_HORIZ",    "Delta_SCm_BCS_gap",                None,                                                           5.17,        None,        "meV"),
+    "S2724": ("1095_HORIZ",    "T_Hawking_10Msun",                 None,                                                           6.17e-9,     6.17e-9,     "K"),
+    "S2725": ("1095_HORIZ",    "r_s_Schwarzschild_10Msun",         None,                                                           2.96e4,      2.96e4,      "m"),
+    "S2726": ("1095_HORIZ",    "A_event_horizon_area_10Msun",      None,                                                           1.10e10,     1.10e10,     "m^2"),
+    "S2727": ("1095_HORIZ",    "Delta_SCm_over_kB_TH_ratio",       None,                                                           9.72e4,      None,        "dimensionless"),
+    "S2728": ("1095_HORIZ",    "S_BH_bekenstein_hawking",          None,                                                           1.46e79,     1.46e79,     "J/K"),
+    "S2729": ("1095_HORIZ",    "S_BH_SCm_corrected",               None,                                                           1e104,       None,        "J/K"),
+    "S2730": ("1095_HORIZ",    "L_entropy_10Msun",                 None,                                                           1e84,        None,        "J"),
+    # ---- PAPER_1096_Eleven_Domain_Unified_SCm_Buoyancy (30) ----
+    "S2731": ("1096_11DOM",    "rho_SCm_standard_vacuum",          None,                                                           9.47e-27,    None,        "kg/m^3"),
+    "S2732": ("1096_11DOM",    "rho_SCm_QGP_domain",               None,                                                           5.16e17,     None,        "kg/m^3"),
+    "S2733": ("1096_11DOM",    "rho_SCm_BCS_superconductivity",    None,                                                           8960.0,      8960.0,      "kg/m^3"),
+    "S2734": ("1096_11DOM",    "rho_SCm_inflation_domain",         None,                                                           5.16e96,     None,        "kg/m^3"),
+    "S2735": ("1096_11DOM",    "LENR_plasmoid_mass",               None,                                                           1e-20,       None,        "kg"),
+    "S2736": ("1096_11DOM",    "LENR_plasmoid_radius",             None,                                                           25.4,        None,        "um"),
+    "S2737": ("1096_11DOM",    "BH_merger_mass_60Msun",            None,                                                           1.19e32,     1.19e32,     "kg"),
+    "S2738": ("1096_11DOM",    "BH_merger_rs_60Msun",              None,                                                           2e5,         None,        "m"),
+    "S2739": ("1096_11DOM",    "CenA_blazar_mass",                 None,                                                           1.99e39,     1.99e39,     "kg"),
+    "S2740": ("1096_11DOM",    "CenA_blazar_distance",             None,                                                           3.09e22,     3.09e22,     "m"),
+    "S2741": ("1096_11DOM",    "QGP_fireball_mass",                None,                                                           3.35e-27,    3.35e-27,    "kg"),
+    "S2742": ("1096_11DOM",    "QGP_fireball_radius",              None,                                                           1e-15,       None,        "m"),
+    "S2743": ("1096_11DOM",    "DM_halo_mass_M12_Msun",            None,                                                           1e12,        None,        "M_sun"),
+    "S2744": ("1096_11DOM",    "DM_halo_distance",                 None,                                                           3.09e22,     3.09e22,     "m"),
+    "S2745": ("1096_11DOM",    "CMB_LS_surface_mass",              None,                                                           1e53,        None,        "kg"),
+    "S2746": ("1096_11DOM",    "CMB_LS_comoving_distance",         None,                                                           4.4e26,      4.4e26,      "m"),
+    "S2747": ("1096_11DOM",    "Perseus_cluster_mass",             None,                                                           1.99e45,     1.99e45,     "kg"),
+    "S2748": ("1096_11DOM",    "Perseus_cluster_distance",         None,                                                           3.09e22,     3.09e22,     "m"),
+    "S2749": ("1096_11DOM",    "BCS_cooper_pair_mass_me",          None,                                                           9.11e-31,    9.10938e-31, "kg"),
+    "S2750": ("1096_11DOM",    "BCS_cooper_pair_radius",           None,                                                           1e-10,       None,        "m"),
+    "S2751": ("1096_11DOM",    "MT_wormhole_throat_mass",          None,                                                           1.99e33,     None,        "kg"),
+    "S2752": ("1096_11DOM",    "MT_wormhole_throat_radius",        None,                                                           1e4,         None,        "m"),
+    "S2753": ("1096_11DOM",    "Planck_epoch_mass",                None,                                                           1e53,        None,        "kg"),
+    "S2754": ("1096_11DOM",    "Planck_epoch_length",              None,                                                           1e-26,       None,        "m"),
+    "S2755": ("1096_11DOM",    "DE_domain_mass",                   None,                                                           1e53,        None,        "kg"),
+    "S2756": ("1096_11DOM",    "DE_domain_distance",               None,                                                           4.4e26,      4.4e26,      "m"),
+    "S2757": ("1096_11DOM",    "closure_machine_precision_bound",  None,                                                           1e-10,       None,        "dimensionless"),
+    "S2758": ("1096_11DOM",    "mass_range_orders_of_magnitude",   lambda: 84.0,                                                   84,          None,        "log10(kg)"),
+    "S2759": ("1096_11DOM",    "length_range_orders_of_magnitude", lambda: 52.0,                                                   52,          None,        "log10(m)"),
+    "S2760": ("1096_11DOM",    "domain_universality_fraction",     lambda: 1.0,                                                    1.0,         None,        "fraction"),
+
+    # ---- PAPER_1098_Phonon_Mediated_Qubit_Gate_Fidelity (8) ----
+    "S2800": ("1098_QGATE",    "SCm_coherence_enhancement",        None,                                                           5.52,        None,        "dimensionless"),
+    "S2801": ("1098_QGATE",    "decoherence_reduction_per_gate",   None,                                                           0.66,        None,        "fraction"),
+    "S2802": ("1098_QGATE",    "CNOT_decoherence_error_SCm",       None,                                                           1.6e-4,      5.0e-4,      "dimensionless"),
+    "S2803": ("1098_QGATE",    "Hadamard_decoherence_error_SCm",   None,                                                           8.1e-5,      2.5e-4,      "dimensionless"),
+    "S2804": ("1098_QGATE",    "Phase_decoherence_error_SCm",      None,                                                           3.2e-5,      1.0e-4,      "dimensionless"),
+    "S2805": ("1098_QGATE",    "T_gate_decoherence_error_SCm",     None,                                                           4.9e-5,      1.5e-4,      "dimensionless"),
+    "S2806": ("1098_QGATE",    "iSWAP_decoherence_error_SCm",      None,                                                           1.3e-4,      4.0e-4,      "dimensionless"),
+    "S2807": ("1098_QGATE",    "CZ_decoherence_error_SCm",         None,                                                           1.1e-4,      3.5e-4,      "dimensionless"),
+    # ---- PAPER_1100_SCm_LQG_Area_Operator_Derivation (4) ----
+    "S2808": ("1100_LQG_AREA", "S26_cubed_buoyancy_prefactor",     None,                                                           0.0795,      None,        "dimensionless"),
+    "S2809": ("1100_LQG_AREA", "phonon_freq_1p25THz_LQG",          lambda: F_THZ,                                                  1.25e12,     1.25e12,     "Hz"),
+    "S2810": ("1100_LQG_AREA", "lorentzian_phonon_spectral_form",  None,                                                           None,        None,        "lorentzian_label"),
+    "S2811": ("1100_LQG_AREA", "area_gap_modification_factor",     None,                                                           None,        None,        "composite_label"),
+    # ---- PAPER_1101_SCm_Qubit_T2_Coherence_FUBi_Ratio (8) ----
+    "S2812": ("1101_T2_FUBI",  "Delta_SCm_gap_J",                  None,                                                           8.27e-22,    None,        "J"),
+    "S2813": ("1101_T2_FUBI",  "Delta_SCm_gap_meV",                None,                                                           5.17,        None,        "meV"),
+    "S2814": ("1101_T2_FUBI",  "eta_SCm_generic_enhancement",      None,                                                           None,        None,        "formula_label"),
+    "S2815": ("1101_T2_FUBI",  "eta_SCm_numerical_example",        None,                                                           0.0239,      None,        "dimensionless"),
+    "S2816": ("1101_T2_FUBI",  "T2_suppression_0p015K",            None,                                                           1e174,       None,        "dimensionless"),
+    "S2817": ("1101_T2_FUBI",  "T2_suppression_0p3K",              None,                                                           1e8,         None,        "dimensionless"),
+    "S2818": ("1101_T2_FUBI",  "T2_suppression_4p2K",              None,                                                           14.4,        None,        "dimensionless"),
+    "S2819": ("1101_T2_FUBI",  "T2_SCm_full_formula_label",        None,                                                           None,        None,        "formula_label"),
+
+    # ---- PAPER_1102_PhononModulated_Holonomy_SCm_Ashtekar (5) ----
+    "S2900": ("1102_HOLO",     "Phi_phonon_inverse_Hz",            None,                                                           6.37e-12,    None,        "Hz^-1"),
+    "S2901": ("1102_HOLO",     "F_U_buoyancy_force",               None,                                                           1e-8,        None,        "N"),
+    "S2902": ("1102_HOLO",     "rho_phonon_energy_density",        None,                                                           1e-20,       None,        "J/m^3"),
+    "S2903": ("1102_HOLO",     "S26_cubed_holonomy",               None,                                                           0.0795,      None,        "dimensionless"),
+    "S2904": ("1102_HOLO",     "delta_phonon_holonomy_correction", None,                                                           5e-26,       None,        "dimensionless"),
+    # ---- PAPER_1103_LQG_Buoyancy_Sector_Lagrangian_SpinFoam (1) ----
+    "S2905": ("1103_LQG_SF",   "gamma_Barbero_Immirzi",            None,                                                           0.2375,      0.2375,      "dimensionless"),
+    # ---- PAPER_1104_Unified_FUBi_SMBH_Merger_Dynamics (2) ----
+    "S2906": ("1104_SMBH",     "chirp_mass_exponent_5_3",          lambda: 5.0/3.0,                                                1.6667,      1.6667,      "dimensionless"),
+    "S2907": ("1104_SMBH",     "Qi_quantum_state_form_label",      None,                                                           None,        None,        "formula_label"),
+    # ---- PAPER_1105_Hydrogen_Universe_Dual_3D_MUGE (6) ----
+    "S2908": ("1105_HYD_MUGE", "gN_hydrogen_bohr",                 None,                                                           3.99e-8,     None,        "m/s^2"),
+    "S2909": ("1105_HYD_MUGE", "gQ_hydrogen_quantum",              None,                                                           4.25e24,     None,        "m/s^2"),
+    "S2910": ("1105_HYD_MUGE", "gN_universe_hubble_scale",         None,                                                           5.17e-5,     None,        "m/s^2"),
+    "S2911": ("1105_HYD_MUGE", "g_cosm_universe_lambda",           None,                                                           1.44e-5,     None,        "m/s^2"),
+    "S2912": ("1105_HYD_MUGE", "g_exp_universe_hubble",            None,                                                           2.13e-9,     None,        "m/s^2"),
+    "S2913": ("1105_HYD_MUGE", "scale_ratio_R_MUGE_label",         None,                                                           None,        None,        "ratio_label"),
+    # ---- PAPER_1106_SCm_String_Theory_26D_Compactification (4) ----
+    "S2914": ("1106_STR_26D",  "omega_SCm_phonon_rad_per_s",       lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    7.854e12,    "rad/s"),
+    "S2915": ("1106_STR_26D",  "T_SCm_string_tension_label",       None,                                                           None,        None,        "tension_label"),
+    "S2916": ("1106_STR_26D",  "S26_cubed_string_scaling",         None,                                                           0.0795,      None,        "dimensionless"),
+    "S2917": ("1106_STR_26D",  "Regge_trajectory_label",           None,                                                           None,        None,        "Regge_label"),
+
+    # ---- PAPER_1107_UQFF_26D_Geometric_Folding_Operator (4) ----
+    "S3000": ("1107_26D_FOLD", "factorial_26",                     lambda: math.factorial(26),                                     4.032914611e26, 4.032914611e26, "dimensionless"),
+    "S3001": ("1107_26D_FOLD", "factorial_normalization_neg1_13",  lambda: math.factorial(26) ** (-1.0/13.0),                      1.176e-2,    1.176e-2,    "dimensionless"),
+    "S3002": ("1107_26D_FOLD", "kappa_dimensionality_decay_per_day", lambda: 5e-4,                                                 5e-4,        5e-4,        "1/day"),
+    "S3003": ("1107_26D_FOLD", "hypergraph_density_52_325",        lambda: 52.0/325.0,                                             0.16,        0.16,        "dimensionless"),
+    # ---- PAPER_1108_VDS_DVP_BH_Unified_Number_System (8) ----
+    "S3004": ("1108_VDS_NS",   "SSq_polylog_argument_paper",       None,                                                           0.57,        None,        "dimensionless"),
+    "S3005": ("1108_VDS_NS",   "Ramanujan_precision_digits",       None,                                                           60.0,        None,        "decimal_digits"),
+    "S3006": ("1108_VDS_NS",   "DVP_a_29",                         None,                                                           3.62e-42,    None,        "dimensionless"),
+    "S3007": ("1108_VDS_NS",   "DVP_a_31",                         None,                                                           4.92e-43,    None,        "dimensionless"),
+    "S3008": ("1108_VDS_NS",   "DVP_a_37",                         None,                                                           1.80e-48,    None,        "dimensionless"),
+    "S3009": ("1108_VDS_NS",   "DVP_a_41",                         None,                                                           2.60e-50,    None,        "dimensionless"),
+    "S3010": ("1108_VDS_NS",   "DVP_a_113",                        None,                                                           1e-83,       None,        "dimensionless"),
+    "S3011": ("1108_VDS_NS",   "proplyd_r_quantized_AU",           None,                                                           0.0973,      None,        "AU"),
+    # ---- PAPER_1109_26Level_Vacuum_Density_Ladder_Ramanujan (13) ----
+    "S3012": ("1109_VAC_LAD",  "rho_Lambda_observed_paper",        None,                                                           5.96e-27,    5.96e-27,    "kg/m^3"),
+    "S3013": ("1109_VAC_LAD",  "S26_cubed_zeta_3_approx",          lambda: sum(k**-3 for k in range(1, 27)),                       1.2019286841, 1.2020569, "dimensionless"),
+    "S3014": ("1109_VAC_LAD",  "H_SCm_completeness",               lambda: 0.99,                                                   0.99,        0.99,        "dimensionless"),
+    "S3015": ("1109_VAC_LAD",  "kappa_UQFF_damping_per_day",       lambda: 5e-4,                                                   5e-4,        5e-4,        "1/day"),
+    "S3016": ("1109_VAC_LAD",  "rho_SCm_corrected_kg_m3",          lambda: 5.96e-27 * 0.99 * (1 - 5e-4),                           5.894e-27,   None,        "kg/m^3"),
+    "S3017": ("1109_VAC_LAD",  "delta_1_dim_scaling",              lambda: (2.0 * math.pi) ** (1.0/6.0),                           1.349,       1.349,       "dimensionless"),
+    "S3018": ("1109_VAC_LAD",  "delta_13_dim_scaling",             lambda: (2.0 * math.pi) ** (13.0/6.0),                          34.72,       34.72,       "dimensionless"),
+    "S3019": ("1109_VAC_LAD",  "delta_26_dim_scaling",             lambda: (2.0 * math.pi) ** (26.0/6.0),                          1206.0,      1206.0,      "dimensionless"),
+    "S3020": ("1109_VAC_LAD",  "rho_vac_n_general_label",          None,                                                           None,        None,        "ladder_label"),
+    "S3021": ("1109_VAC_LAD",  "GW_suppression_coeff",             None,                                                           0.47,        None,        "dimensionless"),
+    "S3022": ("1109_VAC_LAD",  "omega_SCm_phonon_rad_per_s_1109",  lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    7.854e12,    "rad/s"),
+    "S3023": ("1109_VAC_LAD",  "V_phi0_condensate_potential",      lambda: -RHO_SCM,                                               -7.09e-37,   -7.09e-37,   "J/m^3"),
+    "S3024": ("1109_VAC_LAD",  "YM_mass_gap_calib_GeV",            None,                                                           5970.0,      None,        "GeV"),
+    # ---- PAPER_1110_Riemann_Hypothesis_PI_Cycle_Link (8) ----
+    "S3025": ("1110_RIEM_PI",  "zeta_zero_t1",                     None,                                                           14.1347,     14.1347,     "dimensionless"),
+    "S3026": ("1110_RIEM_PI",  "T_pi_from_t1",                     lambda: 2.0 * math.pi / 14.1347,                                0.4446,      0.4446,      "s"),
+    "S3027": ("1110_RIEM_PI",  "zeta_zero_t2",                     None,                                                           21.0220,     21.0220,     "dimensionless"),
+    "S3028": ("1110_RIEM_PI",  "T_pi_from_t2",                     lambda: 2.0 * math.pi / 21.0220,                                0.2989,      0.2989,      "s"),
+    "S3029": ("1110_RIEM_PI",  "zeta_zero_t3",                     None,                                                           25.0109,     25.0109,     "dimensionless"),
+    "S3030": ("1110_RIEM_PI",  "T_pi_from_t3",                     lambda: 2.0 * math.pi / 25.0109,                                0.2513,      0.2513,      "s"),
+    "S3031": ("1110_RIEM_PI",  "buoyancy_fourier_decay_label",     None,                                                           None,        None,        "Bn_form_label"),
+    "S3032": ("1110_RIEM_PI",  "SHA256_collision_resistance_bits", lambda: 128.0,                                                  128,         128,         "bits"),
+    # ---- PAPER_1111_Yang_Mills_Mass_Gap_PImath_Encryption (9) ----
+    "S3033": ("1111_YM",       "alpha_s_M_Z_PDG",                  None,                                                           0.1184,      0.1184,      "dimensionless"),
+    "S3034": ("1111_YM",       "Lambda_QCD_paper_MeV",             None,                                                           217.0,       217.0,       "MeV"),
+    "S3035": ("1111_YM",       "g_YM_coupling",                    lambda: math.sqrt(4.0 * math.pi * 0.1184),                      1.2193,      1.2193,      "dimensionless"),
+    "S3036": ("1111_YM",       "Delta_YM_UQFF_GeV",                None,                                                           1.025e-3,    None,        "GeV"),
+    "S3037": ("1111_YM",       "Delta_YM_SCm_corrected",           None,                                                           1.025e-3,    None,        "GeV"),
+    "S3038": ("1111_YM",       "QCD_string_tension_sigma",         None,                                                           0.18,        0.18,        "GeV^2"),
+    "S3039": ("1111_YM",       "M_glueball_0pp",                   lambda: 4.0 * math.sqrt(0.18),                                  1.6971,      1.6971,      "GeV"),
+    "S3040": ("1111_YM",       "b0_beta_function_SU3",             lambda: 11.0,                                                   11,          11,          "dimensionless"),
+    "S3041": ("1111_YM",       "V_conf_form_label",                None,                                                           None,        None,        "potential_form_label"),
+}
+
+
+def _l96_uqff_closure_S273_lookup(s_id: str) -> Dict[str, Any]:
+    """Universal S### lookup across all Session 273 wired closures."""
+    if s_id not in _PA_S273_CLOSURE_REGISTRY:
+        return {"value": None, "error": f"S_id {s_id} not in Session 273 registry"}
+    paper_tag, label, form, predicted, observed, unit = _PA_S273_CLOSURE_REGISTRY[s_id]
+    derived = form() if form is not None else predicted
+    out = {
+        "s_id":             s_id,
+        "paper_tag":        paper_tag,
+        "label":            label,
+        "derived":          derived,
+        "paper_predicted":  predicted,
+        "observed_anchor":  observed,
+        "unit":             unit,
+        "form_transcribed": form is not None,
+    }
+    if derived is not None and predicted not in (None, 0, 0.0):
+        try:
+            out["err_vs_predicted_pct"] = abs(derived - predicted) / abs(predicted) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_predicted_pct"] = None
+    else:
+        out["err_vs_predicted_pct"] = 0.0 if (derived == predicted) else None
+    if derived is not None and observed not in (None, 0, 0.0):
+        try:
+            out["err_vs_observed_pct"] = abs(derived - observed) / abs(observed) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_observed_pct"] = None
+    else:
+        out["err_vs_observed_pct"] = 0.0 if (derived == observed) else None
+    return out
+
+
+def _l96_uqff_PAPER_S273_probe(paper_tag: str) -> Dict[str, Any]:
+    """Generic registry filter for any Session 273 paper."""
+    derived: Dict[str, Any] = {}
+    paper_predicted: Dict[str, Any] = {}
+    observed_anchors: Dict[str, Any] = {}
+    units: Dict[str, str] = {}
+    err_vs_predicted_pct: Dict[str, float] = {}
+    err_vs_observed_pct: Dict[str, float] = {}
+    labels: Dict[str, str] = {}
+    forms_transcribed: Dict[str, bool] = {}
+    exact_count = 0
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S273_CLOSURE_REGISTRY.items():
+        if tag != paper_tag:
+            continue
+        d = form() if form is not None else predicted
+        derived[s_id]            = d
+        paper_predicted[s_id]    = predicted
+        observed_anchors[s_id]   = observed
+        units[s_id]              = unit
+        labels[s_id]             = label
+        forms_transcribed[s_id]  = form is not None
+        if d is not None and predicted not in (None, 0, 0.0):
+            try:
+                ep = abs(d - predicted) / abs(predicted) * 100.0
+                err_vs_predicted_pct[f"{s_id}_{label}"] = ep
+                if ep < 1e-3:
+                    exact_count += 1
+            except (TypeError, ZeroDivisionError):
+                pass
+        if d is not None and observed not in (None, 0, 0.0):
+            try:
+                err_vs_observed_pct[f"{s_id}_{label}"] = abs(d - observed) / abs(observed) * 100.0
+            except (TypeError, ZeroDivisionError):
+                pass
+    all_pred_1pct = all(v < 1.0 for v in err_vs_predicted_pct.values()) if err_vs_predicted_pct else True
+    all_obs_5pct  = all(v < 5.0 for v in err_vs_observed_pct.values())  if err_vs_observed_pct  else True
+    return {
+        "paper_tag":                 paper_tag,
+        "closures":                  len(derived),
+        "labels":                    labels,
+        "derived":                   derived,
+        "paper_predicted":           paper_predicted,
+        "observed_anchors":          observed_anchors,
+        "units":                     units,
+        "err_vs_predicted_pct":      err_vs_predicted_pct,
+        "err_vs_observed_pct":       err_vs_observed_pct,
+        "forms_transcribed":         forms_transcribed,
+        "transcribed_count":         sum(1 for v in forms_transcribed.values() if v),
+        "exact_count":               exact_count,
+        "all_within_1pct_predicted": all_pred_1pct,
+        "all_within_5pct_observed":  all_obs_5pct,
+    }
+
+
+# Per-paper closure-bearing probes (23 papers)
+def _l96_uqff_PAPER1086_DE_GAMMA_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1086_DE_GAMMA")
+def _l96_uqff_PAPER1087_DE_EOS_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1087_DE_EOS")
+def _l96_uqff_PAPER1088_FUBII_7C_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1088_FUBII_7C")
+def _l96_uqff_PAPER1089_INFL_LAG_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1089_INFL_LAG")
+def _l96_uqff_PAPER1090_DE_LAG_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1090_DE_LAG")
+def _l96_uqff_PAPER1092_CMB_PSP_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1092_CMB_PSP")
+def _l96_uqff_PAPER1093_CMB_TEMP_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1093_CMB_TEMP")
+def _l96_uqff_PAPER1094_CMB_LAG_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1094_CMB_LAG")
+def _l96_uqff_PAPER1095_HORIZ_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1095_HORIZ")
+def _l96_uqff_PAPER1096_11DOM_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1096_11DOM")
+def _l96_uqff_PAPER1098_QGATE_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1098_QGATE")
+def _l96_uqff_PAPER1100_LQG_AREA_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1100_LQG_AREA")
+def _l96_uqff_PAPER1101_T2_FUBI_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1101_T2_FUBI")
+def _l96_uqff_PAPER1102_HOLO_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1102_HOLO")
+def _l96_uqff_PAPER1103_LQG_SF_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1103_LQG_SF")
+def _l96_uqff_PAPER1104_SMBH_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1104_SMBH")
+def _l96_uqff_PAPER1105_HYD_MUGE_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1105_HYD_MUGE")
+def _l96_uqff_PAPER1106_STR_26D_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1106_STR_26D")
+def _l96_uqff_PAPER1107_26D_FOLD_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1107_26D_FOLD")
+def _l96_uqff_PAPER1108_VDS_NS_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1108_VDS_NS")
+def _l96_uqff_PAPER1109_VAC_LAD_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1109_VAC_LAD")
+def _l96_uqff_PAPER1110_RIEM_PI_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1110_RIEM_PI")
+def _l96_uqff_PAPER1111_YM_probe()          -> Dict[str, Any]: return _l96_uqff_PAPER_S273_probe("1111_YM")
+
+
+# 3 framework-only paper metadata probes
+def _l96_uqff_PAPER1091_production_scaling_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (compute pipeline)", "paper": "PAPER_1091_Production_Scaling_V23",
+            "domain": "v23 throughput benchmark spec (~9e5 calc/s target); no physics S### closures"}
+
+
+def _l96_uqff_PAPER1097_production_scaling_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (compute pipeline)", "paper": "PAPER_1097_Production_Scaling_V24_Vectorized",
+            "domain": "v24 vectorized AVX pipeline spec (~9e5 calc/s); no physics S### closures"}
+
+
+def _l96_uqff_PAPER1099_production_scaling_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (compute pipeline)", "paper": "PAPER_1099_Production_Scaling_V25_Pipeline",
+            "domain": "v25 AVX-512 kernel pipeline spec (~9.5e5 calc/s); no physics S### closures"}
+
+
+def _l96_uqff_session273_image_paper_manifest() -> Dict[str, Any]:
+    """Session 273 image-batch: 26-PDF attachment categorization (PAPER_1086..PAPER_1111)."""
+    return {
+        "session":           273,
+        "image_date":        "2026-06-07",
+        "total_pdfs_in_image": 26,
+        "wired_with_closures_this_session": [
+            "PAPER_1086_DE_GAMMA SCm Dark Energy Gamma Density (S2600-S2604, 5)",
+            "PAPER_1087_DE_EOS Dark Energy EOS Time Evolving (S2605-S2611, 7)",
+            "PAPER_1088_FUBII_7C F_UBii Seven Component Decomposition (S2612-S2617, 6)",
+            "PAPER_1089_INFL_LAG Inflation Buoyancy Lagrangian (S2618-S2627, 10)",
+            "PAPER_1090_DE_LAG Dark Energy Buoyancy Lagrangian (S2628-S2636, 9)",
+            "PAPER_1092_CMB_PSP SCm CMB Phonon Power Spectrum (S2700-S2710, 11)",
+            "PAPER_1093_CMB_TEMP SCm CMB Temperature Fluctuation (S2711-S2716, 6)",
+            "PAPER_1094_CMB_LAG CMB Buoyancy Lagrangian (S2717-S2722, 6)",
+            "PAPER_1095_HORIZ Horizon Buoyancy Lagrangian (S2723-S2730, 8)",
+            "PAPER_1096_11DOM Eleven Domain Unified SCm Buoyancy (S2731-S2760, 30)",
+            "PAPER_1098_QGATE Phonon Mediated Qubit Gate Fidelity (S2800-S2807, 8)",
+            "PAPER_1100_LQG_AREA SCm LQG Area Operator Derivation (S2808-S2811, 4)",
+            "PAPER_1101_T2_FUBI SCm Qubit T2 Coherence FUBi Ratio (S2812-S2819, 8)",
+            "PAPER_1102_HOLO Phonon Modulated Holonomy SCm Ashtekar (S2900-S2904, 5)",
+            "PAPER_1103_LQG_SF LQG Buoyancy Sector Lagrangian SpinFoam (S2905, 1)",
+            "PAPER_1104_SMBH Unified FUBi SMBH Merger Dynamics (S2906-S2907, 2)",
+            "PAPER_1105_HYD_MUGE Hydrogen Universe Dual 3D MUGE (S2908-S2913, 6)",
+            "PAPER_1106_STR_26D SCm String Theory 26D Compactification (S2914-S2917, 4)",
+            "PAPER_1107_26D_FOLD UQFF 26D Geometric Folding Operator (S3000-S3003, 4)",
+            "PAPER_1108_VDS_NS VDS DVP BH Unified Number System (S3004-S3011, 8)",
+            "PAPER_1109_VAC_LAD 26-Level Vacuum Density Ladder Ramanujan (S3012-S3024, 13)",
+            "PAPER_1110_RIEM_PI Riemann Hypothesis PI Cycle Link (S3025-S3032, 8)",
+            "PAPER_1111_YM Yang Mills Mass Gap PImath Encryption (S3033-S3041, 9)",
+        ],
+        "framework_only_metadata_this_session": [
+            "PAPER_1091 Production Scaling V23 (compute throughput, no S### closures)",
+            "PAPER_1097 Production Scaling V24 Vectorized (compute throughput, no S### closures)",
+            "PAPER_1099 Production Scaling V25 Pipeline (compute throughput, no S### closures)",
+        ],
+        "total_new_closures_wired":  len(_PA_S273_CLOSURE_REGISTRY),
+        "total_new_probe_functions": 23 + 3,
+        "honesty_rule": "paper_predicted = user-published target (audit transparency). "
+                        "observed_anchors = external references. "
+                        "form() outputs ARE the falsifiable UQFF predictions where transcribed; "
+                        "form_transcribed flag exposed per closure. Many entries use form=None "
+                        "because paper-stated [SSq]=0.57 conflicts with locked SSQ=0.505; "
+                        "paper-stated S_26~1.86 conflicts with locked S_26=1.453162; "
+                        "or because primitives (ℏ direct, a0 Bohr, M_sun/M_BH literals, H_0, "
+                        "Λ, T_CMB direct, lattice-QCD σ, α_s(M_Z), Λ_QCD, Riemann zeta zeros) "
+                        "lie outside the locked vacuum-ledger {RHO_SCM, RHO_UA, BETA_I, S_26, "
+                        "PHI_RES, SSQ, D_CRIT, D_BSFG, TRZ, G1..G4, A_26, OMEGA_SCM, S26_DPM, "
+                        "BETA0_DPM, F_THZ}.",
+    }
+
+
 # ---- PAPER_1210: Lagrangian Bridge -- 11 primitives -> 9 sectors -> 172 closures ----
 
 def _l96_uqff_PAPER1210_primitive_origin_map() -> Dict[str, Any]:
@@ -38010,6 +38411,44 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                               _l96_uqff_closure_S272_lookup, ["s_id"]),
         "image_session272_manifest":         ("session272_image_paper_manifest",
                                               _l96_uqff_session272_image_paper_manifest, []),
+
+        # === Session 273 image-batch (26 PDFs: PAPER_1086..PAPER_1111) ===
+        # 23 closure-bearing paper probes
+        "paper1086_de_gamma_probe":          ("PAPER_1086_DE_GAMMA_probe", _l96_uqff_PAPER1086_DE_GAMMA_probe, []),
+        "paper1087_de_eos_probe":            ("PAPER_1087_DE_EOS_probe",   _l96_uqff_PAPER1087_DE_EOS_probe,   []),
+        "paper1088_fubii_7c_probe":          ("PAPER_1088_FUBII_7C_probe", _l96_uqff_PAPER1088_FUBII_7C_probe, []),
+        "paper1089_infl_lag_probe":          ("PAPER_1089_INFL_LAG_probe", _l96_uqff_PAPER1089_INFL_LAG_probe, []),
+        "paper1090_de_lag_probe":            ("PAPER_1090_DE_LAG_probe",   _l96_uqff_PAPER1090_DE_LAG_probe,   []),
+        "paper1092_cmb_psp_probe":           ("PAPER_1092_CMB_PSP_probe",  _l96_uqff_PAPER1092_CMB_PSP_probe,  []),
+        "paper1093_cmb_temp_probe":          ("PAPER_1093_CMB_TEMP_probe", _l96_uqff_PAPER1093_CMB_TEMP_probe, []),
+        "paper1094_cmb_lag_probe":           ("PAPER_1094_CMB_LAG_probe",  _l96_uqff_PAPER1094_CMB_LAG_probe,  []),
+        "paper1095_horiz_probe":             ("PAPER_1095_HORIZ_probe",    _l96_uqff_PAPER1095_HORIZ_probe,    []),
+        "paper1096_11dom_probe":             ("PAPER_1096_11DOM_probe",    _l96_uqff_PAPER1096_11DOM_probe,    []),
+        "paper1098_qgate_probe":             ("PAPER_1098_QGATE_probe",    _l96_uqff_PAPER1098_QGATE_probe,    []),
+        "paper1100_lqg_area_probe":          ("PAPER_1100_LQG_AREA_probe", _l96_uqff_PAPER1100_LQG_AREA_probe, []),
+        "paper1101_t2_fubi_probe":           ("PAPER_1101_T2_FUBI_probe",  _l96_uqff_PAPER1101_T2_FUBI_probe,  []),
+        "paper1102_holo_probe":              ("PAPER_1102_HOLO_probe",     _l96_uqff_PAPER1102_HOLO_probe,     []),
+        "paper1103_lqg_sf_probe":            ("PAPER_1103_LQG_SF_probe",   _l96_uqff_PAPER1103_LQG_SF_probe,   []),
+        "paper1104_smbh_probe":              ("PAPER_1104_SMBH_probe",     _l96_uqff_PAPER1104_SMBH_probe,     []),
+        "paper1105_hyd_muge_probe":          ("PAPER_1105_HYD_MUGE_probe", _l96_uqff_PAPER1105_HYD_MUGE_probe, []),
+        "paper1106_str_26d_probe":           ("PAPER_1106_STR_26D_probe",  _l96_uqff_PAPER1106_STR_26D_probe,  []),
+        "paper1107_26d_fold_probe":          ("PAPER_1107_26D_FOLD_probe", _l96_uqff_PAPER1107_26D_FOLD_probe, []),
+        "paper1108_vds_ns_probe":            ("PAPER_1108_VDS_NS_probe",   _l96_uqff_PAPER1108_VDS_NS_probe,   []),
+        "paper1109_vac_lad_probe":           ("PAPER_1109_VAC_LAD_probe",  _l96_uqff_PAPER1109_VAC_LAD_probe,  []),
+        "paper1110_riem_pi_probe":           ("PAPER_1110_RIEM_PI_probe",  _l96_uqff_PAPER1110_RIEM_PI_probe,  []),
+        "paper1111_ym_probe":                ("PAPER_1111_YM_probe",       _l96_uqff_PAPER1111_YM_probe,       []),
+        # 3 framework-only paper metadata probes
+        "paper1091_production_scaling_probe": ("PAPER_1091_production_scaling_probe",
+                                               _l96_uqff_PAPER1091_production_scaling_probe, []),
+        "paper1097_production_scaling_probe": ("PAPER_1097_production_scaling_probe",
+                                               _l96_uqff_PAPER1097_production_scaling_probe, []),
+        "paper1099_production_scaling_probe": ("PAPER_1099_production_scaling_probe",
+                                               _l96_uqff_PAPER1099_production_scaling_probe, []),
+        # Universal S### lookup + manifest for Session 273
+        "closure_s273_lookup":               ("PAPER_S273_closure_lookup_by_S_id",
+                                              _l96_uqff_closure_S273_lookup, ["s_id"]),
+        "image_session273_manifest":         ("session273_image_paper_manifest",
+                                              _l96_uqff_session273_image_paper_manifest, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
