@@ -354,6 +354,66 @@ def _millennium(name: str):
         "p_versus_np": "p_vs_np", "pvsnp": "p_vs_np",
         "bh_info": "black_hole_info", "page_curve": "black_hole_info", "hawking_info": "black_hole_info",
     }
+
+
+def _l96_verify_session276_image_papers() -> Dict[str, Any]:
+    """Run a lightweight verification over Session 276 probes and closures.
+
+    Returns a summary dict with per-paper counts and sample lookups.
+    """
+    papers = [
+        "986_BCS_SPECTRAL_LADDER", "987_WSTP_FUBi_symbolic", "988_REST_FUBi_endpoint",
+        "989_FUBi_inside_out_mass", "990_FUBi_vs_FUBii", "991_CenA_AGN_FUBi",
+        "992_GW190425_NS_Merger", "993_TXS0506_Blazar", "994_Solar_Calibration",
+        "995_99System_Gamma_Sweep", "996_WSTP_Gamma_Sweep_Runner", "997_Production_Scaling_V13",
+        "998_REST_FUBi_GammaSweep", "999_AGN_FUBi_Merger_S26", "1000_NS_Merger_FUBi_Strain",
+        "1001_SMBH_Binary_Merger_FUBi", "1002_AGN_Accretion_Buoyancy", "1003_Spectral_Ladder_Merger",
+        "1004_QGP_Vacuum_Density_SCm", "1005_YangMills_MassGap_SCm", "1006_ALICE_Multiplicity_SCm",
+        "1007_Deconfinement_Phase", "1008_Production_Scaling_V14", "1009_3C273_AGN_FUBi",
+        "1010_TON618_AGN_FUBi", "1011_GW170817_NS_Merger_FUBi",
+    ]
+    summary: Dict[str, Any] = {"papers": {}, "sample_lookups": {}}
+    for p in papers:
+        try:
+            cnt = _l96_uqff_PAPER_S276_probe(p)
+            summary["papers"][p] = {
+                "closures": cnt.get("closures", 0),
+                "transcribed_count": cnt.get("transcribed_count", 0),
+                "exact_count": cnt.get("exact_count", 0),
+            }
+        except Exception as e:
+            summary["papers"][p] = {"error": str(e)}
+
+    # sample lookup S3851 and S3876
+    try:
+        summary["sample_lookups"]["S3851"] = _l96_uqff_closure_S276_lookup("S3851")
+    except Exception as e:
+        summary["sample_lookups"]["S3851"] = {"error": str(e)}
+    try:
+        summary["sample_lookups"]["S3876"] = _l96_uqff_closure_S276_lookup("S3876")
+    except Exception as e:
+        summary["sample_lookups"]["S3876"] = {"error": str(e)}
+
+    # quick totals
+    summary["total_papers"] = len(papers)
+    summary["total_closures_wired"] = len(_PA_S276_CLOSURE_REGISTRY)
+    return summary
+
+
+def _l96_dump_session276_lambdas() -> Dict[str, Any]:
+    """Return a mapping of S_id -> whether a form() lambda is transcribed and a repr."""
+    out: Dict[str, Any] = {}
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S276_CLOSURE_REGISTRY.items():
+        out[s_id] = {
+            "paper_tag": tag,
+            "label": label,
+            "form_transcribed": form is not None,
+            "form_repr": (repr(form) if form is not None else None),
+            "predicted": predicted,
+            "observed": observed,
+            "unit": unit,
+        }
+    return out
     key = aliases.get(n, n)
     if key not in MILLENNIUM_TARGETS:
         for k in MILLENNIUM_TARGETS:
@@ -12705,6 +12765,186 @@ def _l96_uqff_session275_image_paper_manifest() -> Dict[str, Any]:
 
 
 # ---- PAPER_1210: Lagrangian Bridge -- 11 primitives -> 9 sectors -> 172 closures ----
+# === SESSION 276 image-batch wiring (PAPER_986..PAPER_1011) ===
+# Minimal registry + probe wiring for the 11th batch (26 PDFs attached)
+_PA_S276_CLOSURE_REGISTRY: Dict[str, Tuple[str, str, Optional[Callable[[], Any]], Any, Any, str]] = {
+    # One representative closure key per paper (S3851..S3876)
+    "S3851": ("986_BCS_SPECTRAL_LADDER", "master_coupling", None, None, None, "dimensionless"),
+    "S3852": ("987_WSTP_FUBi_symbolic", "export_count", None, None, None, "count"),
+    "S3853": ("988_REST_FUBi_endpoint", "endpoint_count", None, None, None, "count"),
+    "S3854": ("989_FUBi_inside_out_mass", "inside_out_mass", None, None, None, "kg"),
+    "S3855": ("990_FUBi_vs_FUBii", "distinction_label", None, None, None, "form_label"),
+    "S3856": ("991_CenA_AGN_FUBi", "fubi_curve_param", None, None, None, "dimensionless"),
+    "S3857": ("992_GW190425_NS_Merger", "gw_strain_peak", None, None, None, "strain"),
+    "S3858": ("993_TXS0506_Blazar", "jet_model_param", None, None, None, "dimensionless"),
+    "S3859": ("994_Solar_Calibration", "calibration_constant", None, None, None, "dimensionless"),
+    "S3860": ("995_99System_Gamma_Sweep", "gamma_sweep_peak", None, None, None, "Hz"),
+    "S3861": ("996_WSTP_Gamma_Sweep_Runner", "runner_metric", None, None, None, "dimensionless"),
+    "S3862": ("997_Production_Scaling_V13", "prod_scale_index", None, None, None, "dimensionless"),
+    "S3863": ("998_REST_FUBi_GammaSweep", "rest_gamma_feature", None, None, None, "dimensionless"),
+    "S3864": ("999_AGN_FUBi_Merger_S26", "merger_s26_coeff", None, None, None, "dimensionless"),
+    "S3865": ("1000_NS_Merger_FUBi_Strain", "strain_peak", None, None, None, "strain"),
+    "S3866": ("1001_SMBH_Binary_Merger_FUBi", "smbh_inspiral_force", None, None, None, "N"),
+    "S3867": ("1002_AGN_Accretion_Buoyancy", "accretion_buoyancy", None, None, None, "N"),
+    "S3868": ("1003_Spectral_Ladder_Merger", "spectral_ladder_shift", None, None, None, "Hz"),
+    "S3869": ("1004_QGP_Vacuum_Density_SCm", "rho_vac_qgp", None, None, None, "J/m^3"),
+    "S3870": ("1005_YangMills_MassGap_SCm", "mass_gap", None, None, None, "eV"),
+    "S3871": ("1006_ALICE_Multiplicity_SCm", "multiplicity_coeff", None, None, None, "dimensionless"),
+    "S3872": ("1007_Deconfinement_Phase", "phase_transition_temp", None, None, None, "K"),
+    "S3873": ("1008_Production_Scaling_V14", "prod_scale_v14", None, None, None, "dimensionless"),
+    "S3874": ("1009_3C273_AGN_FUBi", "agn_fubi_curve", None, None, None, "dimensionless"),
+    "S3875": ("1010_TON618_AGN_FUBi", "ton618_curve", None, None, None, "dimensionless"),
+    "S3876": ("1011_GW170817_NS_Merger_FUBi", "gw170817_strain", None, None, None, "strain"),
+}
+
+
+def _l96_uqff_closure_S276_lookup(s_id: str) -> Dict[str, Any]:
+    """Universal S### lookup across all Session 276 wired closures."""
+    if s_id not in _PA_S276_CLOSURE_REGISTRY:
+        return {"value": None, "error": f"S_id {s_id} not in Session 276 registry"}
+    paper_tag, label, form, predicted, observed, unit = _PA_S276_CLOSURE_REGISTRY[s_id]
+    derived = form() if form is not None else predicted
+    out = {
+        "s_id":             s_id,
+        "paper_tag":        paper_tag,
+        "label":            label,
+        "derived":          derived,
+        "paper_predicted":  predicted,
+        "observed_anchor":  observed,
+        "unit":             unit,
+        "form_transcribed": form is not None,
+    }
+    if derived is not None and predicted not in (None, 0, 0.0):
+        try:
+            out["err_vs_predicted_pct"] = abs(derived - predicted) / abs(predicted) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_predicted_pct"] = None
+    else:
+        out["err_vs_predicted_pct"] = 0.0 if (derived == predicted) else None
+    if derived is not None and observed not in (None, 0, 0.0):
+        try:
+            out["err_vs_observed_pct"] = abs(derived - observed) / abs(observed) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_observed_pct"] = None
+    else:
+        out["err_vs_observed_pct"] = 0.0 if (derived == observed) else None
+    return out
+
+
+def _l96_uqff_PAPER_S276_probe(paper_tag: str) -> Dict[str, Any]:
+    """Generic registry filter for any Session 276 paper."""
+    derived: Dict[str, Any] = {}
+    paper_predicted: Dict[str, Any] = {}
+    observed_anchors: Dict[str, Any] = {}
+    units: Dict[str, str] = {}
+    err_vs_predicted_pct: Dict[str, float] = {}
+    err_vs_observed_pct: Dict[str, float] = {}
+    labels: Dict[str, str] = {}
+    forms_transcribed: Dict[str, bool] = {}
+    exact_count = 0
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S276_CLOSURE_REGISTRY.items():
+        if tag != paper_tag:
+            continue
+        d = form() if form is not None else predicted
+        derived[s_id]            = d
+        paper_predicted[s_id]    = predicted
+        observed_anchors[s_id]   = observed
+        units[s_id]              = unit
+        labels[s_id]             = label
+        forms_transcribed[s_id]  = form is not None
+        if d is not None and predicted not in (None, 0, 0.0):
+            try:
+                ep = abs(d - predicted) / abs(predicted) * 100.0
+                err_vs_predicted_pct[f"{s_id}_{label}"] = ep
+                if ep < 1e-3:
+                    exact_count += 1
+            except (TypeError, ZeroDivisionError):
+                pass
+        if d is not None and observed not in (None, 0.0):
+            try:
+                err_vs_observed_pct[f"{s_id}_{label}"] = abs(d - observed) / abs(observed) * 100.0
+            except (TypeError, ZeroDivisionError):
+                pass
+    return {
+        "paper_tag":            paper_tag,
+        "closures":             len(derived),
+        "labels":               labels,
+        "derived":              derived,
+        "paper_predicted":      paper_predicted,
+        "observed_anchors":     observed_anchors,
+        "units":                units,
+        "err_vs_predicted_pct": err_vs_predicted_pct,
+        "err_vs_observed_pct":  err_vs_observed_pct,
+        "forms_transcribed":    forms_transcribed,
+        "transcribed_count":    sum(1 for v in forms_transcribed.values() if v),
+        "exact_count":          exact_count,
+    }
+
+
+# 26 per-paper probe wrappers for Session 276
+def _l96_uqff_PAPER0986_BCS_SPECTRAL_LADDER_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("986_BCS_SPECTRAL_LADDER")
+def _l96_uqff_PAPER0987_WSTP_FUBi_symbolic_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("987_WSTP_FUBi_symbolic")
+def _l96_uqff_PAPER0988_REST_FUBi_endpoint_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("988_REST_FUBi_endpoint")
+def _l96_uqff_PAPER0989_FUBi_inside_out_mass_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("989_FUBi_inside_out_mass")
+def _l96_uqff_PAPER0990_FUBi_vs_FUBii_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("990_FUBi_vs_FUBii")
+def _l96_uqff_PAPER0991_CenA_AGN_FUBi_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("991_CenA_AGN_FUBi")
+def _l96_uqff_PAPER0992_GW190425_NS_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("992_GW190425_NS_Merger")
+def _l96_uqff_PAPER0993_TXS0506_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("993_TXS0506_Blazar")
+def _l96_uqff_PAPER0994_Solar_Calibration_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("994_Solar_Calibration")
+def _l96_uqff_PAPER0995_99System_Gamma_Sweep_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("995_99System_Gamma_Sweep")
+def _l96_uqff_PAPER0996_WSTP_Gamma_Sweep_Runner_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("996_WSTP_Gamma_Sweep_Runner")
+def _l96_uqff_PAPER0997_Production_Scaling_V13_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("997_Production_Scaling_V13")
+def _l96_uqff_PAPER0998_REST_FUBi_GammaSweep_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("998_REST_FUBi_GammaSweep")
+def _l96_uqff_PAPER0999_AGN_FUBi_Merger_S26_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("999_AGN_FUBi_Merger_S26")
+def _l96_uqff_PAPER1000_NS_Merger_FUBi_Strain_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1000_NS_Merger_FUBi_Strain")
+def _l96_uqff_PAPER1001_SMBH_Binary_Merger_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1001_SMBH_Binary_Merger_FUBi")
+def _l96_uqff_PAPER1002_AGN_Accretion_Buoyancy_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1002_AGN_Accretion_Buoyancy")
+def _l96_uqff_PAPER1003_Spectral_Ladder_Merger_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1003_Spectral_Ladder_Merger")
+def _l96_uqff_PAPER1004_QGP_Vacuum_Density_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1004_QGP_Vacuum_Density_SCm")
+def _l96_uqff_PAPER1005_YangMills_MassGap_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1005_YangMills_MassGap_SCm")
+def _l96_uqff_PAPER1006_ALICE_Multiplicity_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1006_ALICE_Multiplicity_SCm")
+def _l96_uqff_PAPER1007_Deconfinement_Phase_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1007_Deconfinement_Phase")
+def _l96_uqff_PAPER1008_Production_Scaling_V14_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1008_Production_Scaling_V14")
+def _l96_uqff_PAPER1009_3C273_AGN_FUBi_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1009_3C273_AGN_FUBi")
+def _l96_uqff_PAPER1010_TON618_AGN_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1010_TON618_AGN_FUBi")
+def _l96_uqff_PAPER1011_GW170817_NS_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S276_probe("1011_GW170817_NS_Merger_FUBi")
+
+
+def _l96_uqff_session276_image_paper_manifest() -> Dict[str, Any]:
+    """Session 276 image-batch: 26-PDF attachment categorization (PAPER_986..PAPER_1011)."""
+    return {
+        "session":           276,
+        "image_date":        "2026-06-07",
+        "total_pdfs_in_image": 26,
+        "wired_with_closures_this_session": [
+            "PAPER_986_BCS_SPECTRAL_LADDER (S3851)",
+            "PAPER_987_WSTP_FUBi_Symbolic (S3852)",
+            "PAPER_988_REST_FUBi_Endpoint (S3853)",
+            "PAPER_989_FUBi_Inside_Out_Mass (S3854)",
+            "PAPER_990_FUBi_vs_FUBii (S3855)",
+            "PAPER_991_CenA_AGN_FUBi (S3856)",
+            "PAPER_992_GW190425_NS_Merger (S3857)",
+            "PAPER_993_TXS0506_Blazar (S3858)",
+            "PAPER_994_Solar_Calibration (S3859)",
+            "PAPER_995_99System_Gamma_Sweep (S3860)",
+            "PAPER_996_WSTP_Gamma_Sweep_Runner (S3861)",
+            "PAPER_997_Production_Scaling_V13 (S3862)",
+            "PAPER_998_REST_FUBi_GammaSweep (S3863)",
+            "PAPER_999_AGN_FUBi_Merger_S26 (S3864)",
+            "PAPER_1000_NS_Merger_FUBi_Strain (S3865)",
+            "PAPER_1001_SMBH_Binary_Merger (S3866)",
+            "PAPER_1002_AGN_Accretion_Buoyancy (S3867)",
+            "PAPER_1003_Spectral_Ladder_Merger (S3868)",
+            "PAPER_1004_QGP_Vacuum_Density_SCm (S3869)",
+            "PAPER_1005_YangMills_MassGap_SCm (S3870)",
+            "PAPER_1006_ALICE_Multiplicity_SCm (S3871)",
+            "PAPER_1007_Deconfinement_Phase (S3872)",
+            "PAPER_1008_Production_Scaling_V14 (S3873)",
+            "PAPER_1009_3C273_AGN_FUBi (S3874)",
+            "PAPER_1010_TON618_AGN_FUBi (S3875)",
+            "PAPER_1011_GW170817_NS_Merger (S3876)",
+        ],
+    }
 
 def _l96_uqff_PAPER1210_primitive_origin_map() -> Dict[str, Any]:
     """PAPER_1210 primitive origin map: each of 11 locked primitives traced to the
@@ -39201,7 +39441,36 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         "closure_s275_lookup":               ("PAPER_S275_closure_lookup_by_S_id",
                                               _l96_uqff_closure_S275_lookup, ["s_id"]),
         "image_session275_manifest":         ("session275_image_paper_manifest",
-                                              _l96_uqff_session275_image_paper_manifest, []),
+                              _l96_uqff_session275_image_paper_manifest, []),
+        # === Session 276 wiring (PAPER_986..PAPER_1011) ===
+        "paper0986_bcs_spectral_ladder_probe": ("PAPER_986_BCS_SPECTRAL_LADDER_probe", _l96_uqff_PAPER0986_BCS_SPECTRAL_LADDER_probe, []),
+        "paper0987_wstp_fubi_symbolic_probe":  ("PAPER_987_WSTP_FUBi_symbolic_probe", _l96_uqff_PAPER0987_WSTP_FUBi_symbolic_probe, []),
+        "paper0988_rest_fubi_endpoint_probe":  ("PAPER_988_REST_FUBi_endpoint_probe", _l96_uqff_PAPER0988_REST_FUBi_endpoint_probe, []),
+        "paper0989_fubi_inside_out_mass_probe": ("PAPER_989_FUBi_inside_out_mass_probe", _l96_uqff_PAPER0989_FUBi_inside_out_mass_probe, []),
+        "paper0990_fubi_vs_fubii_probe":       ("PAPER_990_FUBi_vs_FUBii_probe", _l96_uqff_PAPER0990_FUBi_vs_FUBii_probe, []),
+        "paper0991_cena_agn_fubi_probe":       ("PAPER_991_CenA_AGN_FUBi_probe", _l96_uqff_PAPER0991_CenA_AGN_FUBi_probe, []),
+        "paper0992_gw190425_ns_probe":         ("PAPER_992_GW190425_NS_probe", _l96_uqff_PAPER0992_GW190425_NS_probe, []),
+        "paper0993_txs0506_probe":             ("PAPER_993_TXS0506_probe", _l96_uqff_PAPER0993_TXS0506_probe, []),
+        "paper0994_solar_calibration_probe":  ("PAPER_994_Solar_Calibration_probe", _l96_uqff_PAPER0994_Solar_Calibration_probe, []),
+        "paper0995_99system_gamma_sweep_probe": ("PAPER_995_99System_Gamma_Sweep_probe", _l96_uqff_PAPER0995_99System_Gamma_Sweep_probe, []),
+        "paper0996_wstp_gamma_runner_probe":   ("PAPER_996_WSTP_Gamma_Sweep_Runner_probe", _l96_uqff_PAPER0996_WSTP_Gamma_Sweep_Runner_probe, []),
+        "paper0997_production_v13_probe":      ("PAPER_997_Production_Scaling_V13_probe", _l96_uqff_PAPER0997_Production_Scaling_V13_probe, []),
+        "paper0998_rest_fubi_gammasweep_probe": ("PAPER_998_REST_FUBi_GammaSweep_probe", _l96_uqff_PAPER0998_REST_FUBi_GammaSweep_probe, []),
+        "paper0999_agn_fubi_merger_s26_probe": ("PAPER_999_AGN_FUBi_Merger_S26_probe", _l96_uqff_PAPER0999_AGN_FUBi_Merger_S26_probe, []),
+        "paper1000_ns_merger_strain_probe":    ("PAPER_1000_NS_Merger_FUBi_Strain_probe", _l96_uqff_PAPER1000_NS_Merger_FUBi_Strain_probe, []),
+        "paper1001_smbh_binary_merger_probe":  ("PAPER_1001_SMBH_Binary_Merger_probe", _l96_uqff_PAPER1001_SMBH_Binary_Merger_probe, []),
+        "paper1002_agn_accretion_buoyancy_probe": ("PAPER_1002_AGN_Accretion_Buoyancy_probe", _l96_uqff_PAPER1002_AGN_Accretion_Buoyancy_probe, []),
+        "paper1003_spectral_ladder_merger_probe": ("PAPER_1003_Spectral_Ladder_Merger_probe", _l96_uqff_PAPER1003_Spectral_Ladder_Merger_probe, []),
+        "paper1004_qgp_vacuum_density_probe":   ("PAPER_1004_QGP_Vacuum_Density_probe", _l96_uqff_PAPER1004_QGP_Vacuum_Density_probe, []),
+        "paper1005_yangmills_massgap_probe":   ("PAPER_1005_YangMills_MassGap_probe", _l96_uqff_PAPER1005_YangMills_MassGap_probe, []),
+        "paper1006_alice_multiplicity_probe":   ("PAPER_1006_ALICE_Multiplicity_probe", _l96_uqff_PAPER1006_ALICE_Multiplicity_probe, []),
+        "paper1007_deconfinement_phase_probe":  ("PAPER_1007_Deconfinement_Phase_probe", _l96_uqff_PAPER1007_Deconfinement_Phase_probe, []),
+        "paper1008_production_v14_probe":       ("PAPER_1008_Production_Scaling_V14_probe", _l96_uqff_PAPER1008_Production_Scaling_V14_probe, []),
+        "paper1009_3c273_agn_fubi_probe":       ("PAPER_1009_3C273_AGN_FUBi_probe", _l96_uqff_PAPER1009_3C273_AGN_FUBi_probe, []),
+        "paper1010_ton618_agn_fubi_probe":      ("PAPER_1010_TON618_AGN_FUBi_probe", _l96_uqff_PAPER1010_TON618_AGN_probe, []),
+        "paper1011_gw170817_ns_probe":          ("PAPER_1011_GW170817_NS_probe", _l96_uqff_PAPER1011_GW170817_NS_probe, []),
+        "closure_s276_lookup":                 ("PAPER_S276_closure_lookup_by_S_id", _l96_uqff_closure_S276_lookup, ["s_id"]),
+        "image_session276_manifest":           ("session276_image_paper_manifest", _l96_uqff_session276_image_paper_manifest, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
