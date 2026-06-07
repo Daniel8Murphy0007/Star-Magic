@@ -10240,6 +10240,309 @@ def _l96_uqff_session268_image_paper_manifest() -> Dict[str, Any]:
     }
 
 
+# =====================================================================
+# === SESSION 269 IMAGE-BATCH (26 PDFs: PAPER_1186..PAPER_1200) =======
+# =====================================================================
+# 10 closure-bearing + 15 framework-only + 1 SCm-dupe.
+# Registry pattern (same as Session 268). Schema:
+#   _PA_S269_CLOSURE_REGISTRY[S_id] = (paper_tag, label, form_callable_or_None,
+#                                      predicted, observed, unit)
+# All 50 closures use form=None because:
+#   - 1186_QSO/1187_CF/1188_MT/1189_PE/1190_AL/1191_GW/1192_SN/1193_PN:
+#     paper bodies do not transcribe lambda-expressible closed forms over
+#     the locked primitive set (use complex unit conversions, Bayesian
+#     posteriors, observational constants like HCN-CO conversion factor).
+#   - 1196_PF/1199_IM: paper-transcribed forms use primitives (D_PHYS,
+#     KMEX=25/12, PHI=5/6, SSQ=0.57) that differ from this calculator's
+#     locked vacuum-ledger values (PHI_RESONANCE=0.84, SSQ=0.505, no
+#     D_PHYS). Paper-stated predicted values exposed verbatim.
+# Same honest pattern as S626 Faraday (Session 268).
+
+_PA_S269_CLOSURE_REGISTRY: Dict[str, tuple] = {
+    # ---- PAPER_1186_QSO: High-z Quasar Accretion Batch (1) ----
+    "S673": ("1186_QSO", "QSO_batch_DL_z7_calibration",            None, 2.13e29, 2.13e29, "cm"),
+    # ---- PAPER_1187_CF: Cooling Flow Mass Accretion (4) ----
+    "S674": ("1187_CF",  "Perseus_NGC1275_Mdot_eff",               None, 850.0,    125.0,   "M_sun/yr"),
+    "S675": ("1187_CF",  "M87_Virgo_Mdot_eff",                     None, 50.0,     0.05,    "M_sun/yr"),
+    "S676": ("1187_CF",  "Coma_Mdot_eff",                          None, 250.0,    125.0,   "M_sun/yr"),
+    "S677": ("1187_CF",  "Fornax_NGC1399_Mdot_eff",                None, 12.0,     5.5,     "M_sun/yr"),
+    # ---- PAPER_1188_MT: Magnetar Thermal Conductivity (4) ----
+    "S678": ("1188_MT",  "SGR1745_2900_kappa_perp_crust",          None, 4.5e17,   4.0e17,  "erg_s_cm_K"),
+    "S679": ("1188_MT",  "SGR1806_20_kappa_perp_surface",          None, 3.0e12,   5.0e12,  "erg_s_cm_K"),
+    "S680": ("1188_MT",  "1E1207_52_kappa_perp_core",              None, 3.0e20,   6.0e20,  "erg_s_cm_K"),
+    "S681": ("1188_MT",  "NS_ordinary_core_kappa_perp",            None, 5.0e20,   1.0e21,  "erg_s_cm_K"),
+    # ---- PAPER_1189_PE: Photoevaporation HZ Orion (5) ----
+    "S682": ("1189_PE",  "orion_uv_compression_factor",            None, 0.47,     None,    "dimensionless"),
+    "S683": ("1189_PE",  "g2v_hz_outer_compressed_orion",          None, 0.64,     None,    "AU"),
+    "S684": ("1189_PE",  "k5v_hz_outer_compressed_orion",          None, 0.26,     None,    "AU"),
+    "S685": ("1189_PE",  "m4v_hz_outer_compressed_orion",          None, 0.075,    None,    "AU"),
+    "S686": ("1189_PE",  "g2v_hz_outer_isolated_control",          None, 1.37,     None,    "AU"),
+    # ---- PAPER_1190_AL: ALMA Molecular Gas (4) ----
+    "S687": ("1190_AL",  "ngc253_dense_gas_mass",                  None, 3.0e8,    None,    "M_sun"),
+    "S688": ("1190_AL",  "arp220_dense_gas_mass",                  None, 1.4e10,   None,    "M_sun"),
+    "S689": ("1190_AL",  "m82_dense_gas_mass",                     None, 2.8e8,    None,    "M_sun"),
+    "S690": ("1190_AL",  "mw_gmc_control_mass",                    None, 0.0,      None,    "M_sun"),
+    # ---- PAPER_1191_GW: GW190425 Mass Gap Bayesian (4) ----
+    "S691": ("1191_GW",  "gw190425_mass_gap_fraction",             None, 0.05,     0.05,    "dimensionless"),
+    "S692": ("1191_GW",  "gw190814_mass_gap_fraction",             None, 0.65,     0.65,    "dimensionless"),
+    "S693": ("1191_GW",  "gw170817_mass_gap_fraction",             None, 0.0,      0.05,    "dimensionless"),
+    "S694": ("1191_GW",  "mock_bbh_mass_gap_fraction",             None, 0.0,      0.05,    "dimensionless"),
+    # ---- PAPER_1192_SN: SNR Shock Velocity (4) ----
+    "S695": ("1192_SN",  "cas_a_shock_velocity_T_method",          None, 1600.0,   2800.0,  "km/s"),
+    "S696": ("1192_SN",  "tycho_shock_velocity_T_method",          None, 1900.0,   3200.0,  "km/s"),
+    "S697": ("1192_SN",  "sn1006_shock_velocity_T_method",         None, 1100.0,   3700.0,  "km/s"),
+    "S698": ("1192_SN",  "crab_shock_velocity_T_method",           None, 700.0,    700.0,   "km/s"),
+    # ---- PAPER_1193_PN: PvsNP Conjecture (4 conjecture-tier markers, no numerical values) ----
+    "S699": ("1193_PN",  "p_not_equal_np_conjecture",              None, None,     None,    "conjecture"),
+    "S700": ("1193_PN",  "np_subseteq_am_conjecture",              None, None,     None,    "conjecture"),
+    "S701": ("1193_PN",  "np_not_equal_co_np_conjecture",          None, None,     None,    "conjecture"),
+    "S702": ("1193_PN",  "np_intermediate_exists_conjecture",      None, None,     None,    "conjecture"),
+    # ---- PAPER_1196_PF: Plasma Fusion (10, paper-stated values from S413-S422 renumbered) ----
+    "S703": ("1196_PF",  "iter_aspect_ratio",                      None, 3.1,      3.1,     "dimensionless"),
+    "S704": ("1196_PF",  "troyon_beta_normalized",                 None, 2.796,    2.8,     "m_T_per_MA"),
+    "S705": ("1196_PF",  "fusion_triple_product",                  None, 2.997,    3.0,     "1e21_keV_s_per_m3"),
+    "S706": ("1196_PF",  "coulomb_logarithm",                      None, 16.98,    17.0,    "dimensionless"),
+    "S707": ("1196_PF",  "bohm_diffusion_prefactor",               None, 1.0/16.0, 1.0/16.0,"dimensionless"),
+    "S708": ("1196_PF",  "tokamak_edge_safety_factor",             None, 2.0,      2.0,     "dimensionless"),
+    "S709": ("1196_PF",  "iter_fusion_gain_Q",                     None, 10.0,     10.0,    "dimensionless"),
+    "S710": ("1196_PF",  "dt_cross_section_peak_energy",           None, 64.0,     64.0,    "keV"),
+    "S711": ("1196_PF",  "lawson_criterion",                       None, 1.502,    1.5,     "1e20_s_per_m3"),
+    "S712": ("1196_PF",  "bohm_stangeby_sheath_potential",         None, 2.839,    2.84,    "Te_normalized"),
+    # ---- PAPER_1199_IM: Information & Mathematical Constants (10, paper-stated S443-S452 renumbered) ----
+    "S713": ("1199_IM",  "ln_2",                                   None, 0.6931,   0.6932,  "dimensionless"),
+    "S714": ("1199_IM",  "log2_e",                                 None, 1.4427,   1.4425,  "dimensionless"),
+    "S715": ("1199_IM",  "pi_half",                                None, 1.5708,   1.5715,  "dimensionless"),
+    "S716": ("1199_IM",  "surface_code_threshold",                 None, 0.01,     0.01,    "dimensionless"),
+    "S717": ("1199_IM",  "euler_mascheroni_gamma",                 None, 0.5772,   0.5773,  "dimensionless"),
+    "S718": ("1199_IM",  "catalan_G",                              None, 0.9160,   0.9152,  "dimensionless"),
+    "S719": ("1199_IM",  "ln_10",                                  None, 2.3026,   2.3048,  "dimensionless"),
+    "S720": ("1199_IM",  "omega_lambert_W",                        None, 0.5671,   0.5673,  "dimensionless"),
+    "S721": ("1199_IM",  "khinchin_K",                             None, 2.6854,   2.6852,  "dimensionless"),
+    "S722": ("1199_IM",  "sqrt_2pi",                               None, 2.5066,   2.5082,  "dimensionless"),
+}
+
+
+def _l96_uqff_closure_S269_lookup(s_id: str) -> Dict[str, Any]:
+    """Universal S### lookup across all Session 269 wired closures.
+    Returns paper_tag, label, derived (from form() or paper_predicted), predicted,
+    observed, unit, err_vs_predicted_pct, err_vs_observed_pct, form_transcribed flag."""
+    if s_id not in _PA_S269_CLOSURE_REGISTRY:
+        return {"value": None, "error": f"S_id {s_id} not in Session 269 registry"}
+    paper_tag, label, form, predicted, observed, unit = _PA_S269_CLOSURE_REGISTRY[s_id]
+    derived = form() if form is not None else predicted
+    out = {
+        "s_id":             s_id,
+        "paper_tag":        paper_tag,
+        "label":            label,
+        "derived":          derived,
+        "paper_predicted":  predicted,
+        "observed_anchor":  observed,
+        "unit":             unit,
+        "form_transcribed": form is not None,
+    }
+    if derived is not None and predicted not in (None, 0.0):
+        out["err_vs_predicted_pct"] = abs(derived - predicted) / abs(predicted) * 100.0
+    elif derived is not None and predicted == 0.0:
+        out["err_vs_predicted_pct"] = 0.0 if derived == 0.0 else float("inf")
+    else:
+        out["err_vs_predicted_pct"] = None
+    if derived is not None and observed not in (None, 0.0):
+        out["err_vs_observed_pct"] = abs(derived - observed) / abs(observed) * 100.0
+    elif derived is not None and observed == 0.0:
+        out["err_vs_observed_pct"] = 0.0 if derived == 0.0 else float("inf")
+    else:
+        out["err_vs_observed_pct"] = None
+    return out
+
+
+def _l96_uqff_PAPER_S269_probe(paper_tag: str) -> Dict[str, Any]:
+    """Generic registry filter for any Session 269 paper. Returns full probe dict
+    with derived/predicted/observed/err_pct per S_id, exact_count, all_within_1pct flags."""
+    derived: Dict[str, Any] = {}
+    paper_predicted: Dict[str, Any] = {}
+    observed_anchors: Dict[str, Any] = {}
+    units: Dict[str, str] = {}
+    err_vs_predicted_pct: Dict[str, float] = {}
+    err_vs_observed_pct: Dict[str, float] = {}
+    labels: Dict[str, str] = {}
+    forms_transcribed: Dict[str, bool] = {}
+    exact_count = 0
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S269_CLOSURE_REGISTRY.items():
+        if tag != paper_tag:
+            continue
+        d = form() if form is not None else predicted
+        derived[s_id]            = d
+        paper_predicted[s_id]    = predicted
+        observed_anchors[s_id]   = observed
+        units[s_id]              = unit
+        labels[s_id]             = label
+        forms_transcribed[s_id]  = form is not None
+        if d is not None and predicted not in (None, 0.0):
+            ep = abs(d - predicted) / abs(predicted) * 100.0
+            err_vs_predicted_pct[f"{s_id}_{label}"] = ep
+            if ep < 1e-9:
+                exact_count += 1
+        elif d is not None and predicted == 0.0 and d == 0.0:
+            err_vs_predicted_pct[f"{s_id}_{label}"] = 0.0
+            exact_count += 1
+        if d is not None and observed not in (None, 0.0):
+            err_vs_observed_pct[f"{s_id}_{label}"] = abs(d - observed) / abs(observed) * 100.0
+        elif d is not None and observed == 0.0 and d == 0.0:
+            err_vs_observed_pct[f"{s_id}_{label}"] = 0.0
+    all_pred_1pct = all(v < 1.0 for v in err_vs_predicted_pct.values()) if err_vs_predicted_pct else True
+    all_obs_1pct  = all(v < 1.0 for v in err_vs_observed_pct.values())  if err_vs_observed_pct  else True
+    return {
+        "paper_tag":               paper_tag,
+        "closures":                len(derived),
+        "labels":                  labels,
+        "derived":                 derived,
+        "paper_predicted":         paper_predicted,
+        "observed_anchors":        observed_anchors,
+        "units":                   units,
+        "forms_transcribed":       forms_transcribed,
+        "err_vs_predicted_pct":    err_vs_predicted_pct,
+        "err_vs_observed_pct":     err_vs_observed_pct,
+        "exact_count":             exact_count,
+        "all_within_1pct_predicted": all_pred_1pct,
+        "all_within_1pct_observed":  all_obs_1pct,
+        "honesty_note": ("paper_predicted = user-published target (audit only). "
+                         "observed_anchor = external reference. "
+                         "All Session 269 closures use form=None: paper bodies "
+                         "either do not transcribe lambda-expressible forms, "
+                         "or use primitives outside this calculator's locked "
+                         "vacuum-ledger set. Paper-stated values exposed verbatim."),
+    }
+
+
+# 10 per-paper thin wrappers
+def _l96_uqff_PAPER1186_high_z_quasar_accretion_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1186_QSO")
+def _l96_uqff_PAPER1187_cooling_flow_mass_accretion_probe()   -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1187_CF")
+def _l96_uqff_PAPER1188_magnetar_thermal_conductivity_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1188_MT")
+def _l96_uqff_PAPER1189_photoevaporation_hz_orion_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1189_PE")
+def _l96_uqff_PAPER1190_alma_molecular_gas_probe()            -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1190_AL")
+def _l96_uqff_PAPER1191_gw190425_mass_gap_probe()             -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1191_GW")
+def _l96_uqff_PAPER1192_snr_shock_velocity_probe()            -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1192_SN")
+def _l96_uqff_PAPER1193_pvsnp_conjecture_probe()              -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1193_PN")
+def _l96_uqff_PAPER1196_plasma_fusion_probe()                 -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1196_PF")
+def _l96_uqff_PAPER1199_information_math_constants_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S269_probe("1199_IM")
+
+
+# 15 framework-only paper metadata probes
+def _l96_uqff_PAPER1186_standard_model_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1186_UQFF_Standard_Model_Unified_Proof_Set",
+            "domain": "Standard Model unification narrative + first-principles derivation"}
+
+def _l96_uqff_PAPER1187_cosmological_tensions_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1187_UQFF_Cosmological_Tensions_Unified_Proof_Set",
+            "domain": "7 cosmological tensions (Hubble, lithium, axis of evil, cold spot, ...) via layer-dependent couplings"}
+
+def _l96_uqff_PAPER1188_number_theory_frontier_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1188_UQFF_Number_Theory_Frontier_Set",
+            "domain": "Riemann, Goldbach, Twin Primes, Collatz reinterpretations via 26D vacuum topology"}
+
+def _l96_uqff_PAPER1189_chemistry_atomic_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1189_UQFF_Chemistry_Atomic_Unified_Proof_Set",
+            "domain": "Periodic table, molecular orbital theory, chemical bonding via layer coupling"}
+
+def _l96_uqff_PAPER1190_mathematical_constants_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1190_UQFF_Mathematical_Constants_Unified_Proof_Set",
+            "domain": "pi, e, phi, alpha, hbar, G, gamma, zeta(3) derived from 26D vacuum geometry"}
+
+def _l96_uqff_PAPER1191_cosmology_deepset_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1191_UQFF_Cosmology_Deepset_Unified_Proof_Set",
+            "domain": "Layer effects on H0, Omega_m, Omega_Lambda, n_s, age; CMB peaks, BAO patterns"}
+
+def _l96_uqff_PAPER1192_standard_model_deepcuts_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1192_UQFF_StandardModel_Deepcuts_Unified_Proof_Set",
+            "domain": "Running couplings, asymptotic freedom, mixing, g-2 explanations via layer-dependent renormalization"}
+
+def _l96_uqff_PAPER1193_astrophysics_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1193_UQFF_Astrophysics_Unified_Proof_Set",
+            "domain": "Astrophysical phenomena unification via UQFF layers"}
+
+def _l96_uqff_PAPER1194_tde_rate_mass_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1194_TDE_Rate_Mass_UQFF",
+            "domain": "Tidal disruption event rate-mass relation; single application"}
+
+def _l96_uqff_PAPER1194_condensed_matter_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1194_UQFF_CondensedMatter_Unified_Proof_Set",
+            "domain": "Condensed matter phenomena unification via UQFF layers"}
+
+def _l96_uqff_PAPER1195_biology_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1195_UQFF_Biology_Unified_Proof_Set",
+            "domain": "Biological phenomena unification via UQFF layers"}
+
+def _l96_uqff_PAPER1197_universal_buoyancy_solver_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (technical solver documentation)", "paper": "PAPER_1197_Universal_Buoyancy_Simultaneous_Solver_UQFF",
+            "domain": "Universal buoyancy simultaneous solver algorithmic specification"}
+
+def _l96_uqff_PAPER1197_geophysics_atmospheric_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1197_UQFF_Geophysics_Atmospheric_Unified_Proof_Set",
+            "domain": "Geophysics and atmospheric phenomena unification via UQFF layers"}
+
+def _l96_uqff_PAPER1198_rhovacscm_derivation_probe() -> Dict[str, Any]:
+    return {"type": "derivation-pathway (single-value framework)", "paper": "PAPER_1198_RhoVacSCm_Derivation_UQFF",
+            "domain": "Derivation pathway for rho_vac^SCm = 7.09e-37 J/m^3 (locked vacuum-ledger root)",
+            "derived_value": RHO_SCM, "unit": "J/m^3"}
+
+def _l96_uqff_PAPER1198_particle_physics_unified_probe() -> Dict[str, Any]:
+    return {"type": "framework-only (no S### closures)", "paper": "PAPER_1198_UQFF_Particle_Physics_Unified_Proof_Set",
+            "domain": "Particle physics phenomena unification via UQFF layers"}
+
+
+def _l96_uqff_session269_image_paper_manifest() -> Dict[str, Any]:
+    """Session 269 image-batch: 26-PDF attachment categorization (PAPER_1186..PAPER_1200)."""
+    return {
+        "session":           269,
+        "image_date":        "2026-06-07",
+        "total_pdfs_in_image": 26,
+        "wired_with_closures_this_session": [
+            "PAPER_1186_High_z_Quasar_Accretion_Batch (S673)",
+            "PAPER_1187_Cooling_Flow_Mass_Accretion_UQFF (S674-S677)",
+            "PAPER_1188_Magnetar_Thermal_Conductivity_UQFF (S678-S681)",
+            "PAPER_1189_Photoevaporation_Compressed_HZ_Orion_UQFF (S682-S686)",
+            "PAPER_1190_ALMA_Molecular_Gas_UQFF (S687-S690)",
+            "PAPER_1191_GW190425_Mass_Gap_Bayesian_UQFF (S691-S694)",
+            "PAPER_1192_SNR_Shock_Velocity_UQFF (S695-S698)",
+            "PAPER_1193_PvsNP_Conjecture_UQFF (S699-S702 conjecture-tier)",
+            "PAPER_1196_UQFF_Plasma_Fusion_Unified_Proof_Set (S703-S712)",
+            "PAPER_1199_UQFF_Information_Math_Unified_Proof_Set (S713-S722)",
+        ],
+        "framework_only_metadata_this_session": [
+            "PAPER_1186_UQFF_Standard_Model_Unified_Proof_Set",
+            "PAPER_1187_UQFF_Cosmological_Tensions_Unified_Proof_Set",
+            "PAPER_1188_UQFF_Number_Theory_Frontier_Set",
+            "PAPER_1189_UQFF_Chemistry_Atomic_Unified_Proof_Set",
+            "PAPER_1190_UQFF_Mathematical_Constants_Unified_Proof_Set",
+            "PAPER_1191_UQFF_Cosmology_Deepset_Unified_Proof_Set",
+            "PAPER_1192_UQFF_StandardModel_Deepcuts_Unified_Proof_Set",
+            "PAPER_1193_UQFF_Astrophysics_Unified_Proof_Set",
+            "PAPER_1194_TDE_Rate_Mass_UQFF",
+            "PAPER_1194_UQFF_CondensedMatter_Unified_Proof_Set",
+            "PAPER_1195_UQFF_Biology_Unified_Proof_Set",
+            "PAPER_1197_Universal_Buoyancy_Simultaneous_Solver_UQFF",
+            "PAPER_1197_UQFF_Geophysics_Atmospheric_Unified_Proof_Set",
+            "PAPER_1198_RhoVacSCm_Derivation_UQFF (derivation pathway, RHO_SCM=7.09e-37)",
+            "PAPER_1198_UQFF_Particle_Physics_Unified_Proof_Set",
+        ],
+        "scm_dupes_of_existing_papers": [
+            "PAPER_1200_SCm_Holmlid_Upgrade -> already wired as Holmlid LENR primitive (S26_3, 630eV chain)",
+        ],
+        "total_new_closures_wired":      len(_PA_S269_CLOSURE_REGISTRY),
+        "total_new_probe_functions":     10 + 15,  # 10 closure probes + 15 framework probes
+        "all_forms_transcribed":         False,
+        "form_transcribed_count":        0,
+        "form_not_transcribed_reason":   ("paper bodies either do not transcribe lambda-expressible forms "
+                                          "over the locked primitive set, or use primitives outside this "
+                                          "calculator's vacuum-ledger (D_PHYS, KMEX=25/12, PHI=5/6, SSQ=0.57). "
+                                          "Paper-stated predicted values exposed verbatim."),
+        "honesty_rule": "paper_predicted = user's own published targets (audit transparency). "
+                        "observed_anchors = reference values from external measurements. "
+                        "form=None entries return paper_predicted verbatim. "
+                        "form_transcribed flag exposed per closure for full audit transparency.",
+    }
+
+
 # ---- PAPER_1210: Lagrangian Bridge -- 11 primitives -> 9 sectors -> 172 closures ----
 
 def _l96_uqff_PAPER1210_primitive_origin_map() -> Dict[str, Any]:
@@ -36374,6 +36677,64 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                               _l96_uqff_PAPER1203_canonical_v15_simultaneous_solver_probe, []),
         "image_session268_manifest":         ("session268_image_paper_manifest",
                                               _l96_uqff_session268_image_paper_manifest, []),
+        # === Session 269 image-batch wiring (PAPER_1186..PAPER_1200, 50 closures) ===
+        # 10 closure-bearing probes
+        "paper1186_high_z_quasar_accretion_probe":       ("PAPER_1186_high_z_quasar_accretion_probe",
+                                                          _l96_uqff_PAPER1186_high_z_quasar_accretion_probe, []),
+        "paper1187_cooling_flow_mass_accretion_probe":   ("PAPER_1187_cooling_flow_mass_accretion_probe",
+                                                          _l96_uqff_PAPER1187_cooling_flow_mass_accretion_probe, []),
+        "paper1188_magnetar_thermal_conductivity_probe": ("PAPER_1188_magnetar_thermal_conductivity_probe",
+                                                          _l96_uqff_PAPER1188_magnetar_thermal_conductivity_probe, []),
+        "paper1189_photoevaporation_hz_orion_probe":     ("PAPER_1189_photoevaporation_hz_orion_probe",
+                                                          _l96_uqff_PAPER1189_photoevaporation_hz_orion_probe, []),
+        "paper1190_alma_molecular_gas_probe":            ("PAPER_1190_alma_molecular_gas_probe",
+                                                          _l96_uqff_PAPER1190_alma_molecular_gas_probe, []),
+        "paper1191_gw190425_mass_gap_probe":             ("PAPER_1191_gw190425_mass_gap_probe",
+                                                          _l96_uqff_PAPER1191_gw190425_mass_gap_probe, []),
+        "paper1192_snr_shock_velocity_probe":            ("PAPER_1192_snr_shock_velocity_probe",
+                                                          _l96_uqff_PAPER1192_snr_shock_velocity_probe, []),
+        "paper1193_pvsnp_conjecture_probe":              ("PAPER_1193_pvsnp_conjecture_probe",
+                                                          _l96_uqff_PAPER1193_pvsnp_conjecture_probe, []),
+        "paper1196_plasma_fusion_probe":                 ("PAPER_1196_plasma_fusion_probe",
+                                                          _l96_uqff_PAPER1196_plasma_fusion_probe, []),
+        "paper1199_information_math_constants_probe":    ("PAPER_1199_information_math_constants_probe",
+                                                          _l96_uqff_PAPER1199_information_math_constants_probe, []),
+        # 15 framework-only probes
+        "paper1186_standard_model_unified_probe":              ("PAPER_1186_standard_model_unified_probe",
+                                                                _l96_uqff_PAPER1186_standard_model_unified_probe, []),
+        "paper1187_cosmological_tensions_unified_probe":       ("PAPER_1187_cosmological_tensions_unified_probe",
+                                                                _l96_uqff_PAPER1187_cosmological_tensions_unified_probe, []),
+        "paper1188_number_theory_frontier_probe":              ("PAPER_1188_number_theory_frontier_probe",
+                                                                _l96_uqff_PAPER1188_number_theory_frontier_probe, []),
+        "paper1189_chemistry_atomic_unified_probe":            ("PAPER_1189_chemistry_atomic_unified_probe",
+                                                                _l96_uqff_PAPER1189_chemistry_atomic_unified_probe, []),
+        "paper1190_mathematical_constants_unified_probe":      ("PAPER_1190_mathematical_constants_unified_probe",
+                                                                _l96_uqff_PAPER1190_mathematical_constants_unified_probe, []),
+        "paper1191_cosmology_deepset_unified_probe":           ("PAPER_1191_cosmology_deepset_unified_probe",
+                                                                _l96_uqff_PAPER1191_cosmology_deepset_unified_probe, []),
+        "paper1192_standard_model_deepcuts_unified_probe":     ("PAPER_1192_standard_model_deepcuts_unified_probe",
+                                                                _l96_uqff_PAPER1192_standard_model_deepcuts_unified_probe, []),
+        "paper1193_astrophysics_unified_probe":                ("PAPER_1193_astrophysics_unified_probe",
+                                                                _l96_uqff_PAPER1193_astrophysics_unified_probe, []),
+        "paper1194_tde_rate_mass_probe":                       ("PAPER_1194_tde_rate_mass_probe",
+                                                                _l96_uqff_PAPER1194_tde_rate_mass_probe, []),
+        "paper1194_condensed_matter_unified_probe":            ("PAPER_1194_condensed_matter_unified_probe",
+                                                                _l96_uqff_PAPER1194_condensed_matter_unified_probe, []),
+        "paper1195_biology_unified_probe":                     ("PAPER_1195_biology_unified_probe",
+                                                                _l96_uqff_PAPER1195_biology_unified_probe, []),
+        "paper1197_universal_buoyancy_solver_probe":           ("PAPER_1197_universal_buoyancy_solver_probe",
+                                                                _l96_uqff_PAPER1197_universal_buoyancy_solver_probe, []),
+        "paper1197_geophysics_atmospheric_unified_probe":      ("PAPER_1197_geophysics_atmospheric_unified_probe",
+                                                                _l96_uqff_PAPER1197_geophysics_atmospheric_unified_probe, []),
+        "paper1198_rhovacscm_derivation_probe":                ("PAPER_1198_rhovacscm_derivation_probe",
+                                                                _l96_uqff_PAPER1198_rhovacscm_derivation_probe, []),
+        "paper1198_particle_physics_unified_probe":            ("PAPER_1198_particle_physics_unified_probe",
+                                                                _l96_uqff_PAPER1198_particle_physics_unified_probe, []),
+        # Universal S### lookup + manifest
+        "closure_s269_lookup":               ("PAPER_S269_closure_lookup_by_S_id",
+                                              _l96_uqff_closure_S269_lookup, ["s_id"]),
+        "image_session269_manifest":         ("session269_image_paper_manifest",
+                                              _l96_uqff_session269_image_paper_manifest, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
