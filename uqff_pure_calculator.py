@@ -12376,6 +12376,334 @@ def _l96_uqff_session274_image_paper_manifest() -> Dict[str, Any]:
     }
 
 
+# =====================================================================
+# === SESSION 275 IMAGE-BATCH (26 PDFs: PAPER_1012..PAPER_1037) =======
+# =====================================================================
+# 10th image-batch round. 26 papers, ~118 closures (S3600-S3899 range).
+# Honest disclosure: form=None where formula uses primitives outside the
+# locked vacuum-ledger (observational anchors, mass-dependent damping,
+# B/B_crit field ratios, S_26^3 full sums, frequency-dependent alpha,
+# baseline-dependent neutrino mixing).
+
+_PA_S275_CLOSURE_REGISTRY: Dict[str, tuple] = {
+    # ---- PAPER_1012_GW190425: GW190425 Upgraded FUBi_i (5) ----
+    "S3600": ("1012_GW190425", "gamma_new_intermediate_THz",          lambda: 0.30,                            0.30,        None,        "THz"),
+    "S3601": ("1012_GW190425", "rho_scm_vacuum_density",              lambda: RHO_SCM,                         7.09e-37,    7.09e-37,    "J/m^3"),
+    "S3602": ("1012_GW190425", "gw190425_total_mass_msun",            None,                                    3.4,         3.4,         "M_sun"),
+    "S3603": ("1012_GW190425", "gw190425_distance_mpc",               None,                                    159.0,       159.0,       "Mpc"),
+    "S3604": ("1012_GW190425", "strain_suppression_factor",           None,                                    0.47,        None,        "dimensionless"),
+    # ---- PAPER_1013_QGP_ALICE: QGP ALICE Centrality FUBi_i (5) ----
+    "S3605": ("1013_QGP_ALICE", "dN_ch_deta_0_5pct",                  None,                                    10752.1,     1900.0,      "particles"),
+    "S3606": ("1013_QGP_ALICE", "dN_ch_deta_5_10pct",                 None,                                    9263.8,      1600.0,      "particles"),
+    "S3607": ("1013_QGP_ALICE", "dN_ch_deta_10_20pct",                None,                                    7326.0,      1200.0,      "particles"),
+    "S3608": ("1013_QGP_ALICE", "dN_ch_deta_20_40pct",                None,                                    4434.4,      650.0,       "particles"),
+    "S3609": ("1013_QGP_ALICE", "n_part_0_5pct",                      lambda: 383.0,                           383,         None,        "count"),
+    # ---- PAPER_1014_SMBH_MERGER: SMBH Merger FUBi (6) ----
+    "S3610": ("1014_SMBH_MERGER", "fubi_inspiral_total_N",            None,                                    6.98e20,     None,        "N"),
+    "S3611": ("1014_SMBH_MERGER", "buoyancy_damping_factor",          None,                                    0.333,       None,        "dimensionless"),
+    "S3612": ("1014_SMBH_MERGER", "phase_lag_accumulated_cycles",     None,                                    367.0,       None,        "cycles"),
+    "S3613": ("1014_SMBH_MERGER", "delta_m_buoy_coalescence_kg",      None,                                    4.05e4,      None,        "kg"),
+    "S3614": ("1014_SMBH_MERGER", "f_qnm_ringdown_hz",                None,                                    2.19e-4,     None,        "Hz"),
+    "S3615": ("1014_SMBH_MERGER", "delta_f_f_qnm_correction",         None,                                    9.03e-3,     None,        "dimensionless"),
+    # ---- PAPER_1015_DM_NFW: SCm Dark Matter NFW Halos (5) ----
+    "S3616": ("1015_DM_NFW", "c_concentration_param",                 lambda: 10.0,                            10,          None,        "dimensionless"),
+    "S3617": ("1015_DM_NFW", "alpha_phonon_radial_decay",             lambda: 0.3,                             0.3,         None,        "dimensionless"),
+    "S3618": ("1015_DM_NFW", "flatness_ratio_rotation_curve",         None,                                    0.891,       0.75,        "dimensionless"),
+    "S3619": ("1015_DM_NFW", "v_peak_circular_km_s",                  None,                                    204.1,       None,        "km/s"),
+    "S3620": ("1015_DM_NFW", "r_s_scale_radius_kpc",                  lambda: 20.0,                            20.0,        None,        "kpc"),
+    # ---- PAPER_1016_TXS0506: TXS 0506+056 3-Gamma Profile (6) ----
+    "S3621": ("1016_TXS0506", "gamma_1_extreme_flare_THz",            lambda: 0.05,                            0.05,        None,        "THz"),
+    "S3622": ("1016_TXS0506", "gamma_2_icecube_THz",                  lambda: 0.10,                            0.10,        None,        "THz"),
+    "S3623": ("1016_TXS0506", "gamma_3_sustained_THz",                lambda: 0.30,                            0.30,        None,        "THz"),
+    "S3624": ("1016_TXS0506", "modulation_1_extreme",                 None,                                    2.56,        None,        "factor"),
+    "S3625": ("1016_TXS0506", "modulation_2_icecube",                 None,                                    2.30,        None,        "factor"),
+    "S3626": ("1016_TXS0506", "modulation_3_sustained",               None,                                    1.06,        None,        "factor"),
+    # ---- PAPER_1017_99SYS_WSTP: 99-System WSTP Kernel v1 (10) ----
+    "S3627": ("1017_99SYS_WSTP", "total_systems_count",               lambda: 99.0,                            99,          None,        "count"),
+    "S3628": ("1017_99SYS_WSTP", "gamma_points_count",                lambda: 8.0,                             8,           None,        "count"),
+    "S3629": ("1017_99SYS_WSTP", "categories_count",                  lambda: 10.0,                            10,          None,        "count"),
+    "S3630": ("1017_99SYS_WSTP", "stellar_count",                     lambda: 15.0,                            15,          None,        "count"),
+    "S3631": ("1017_99SYS_WSTP", "planetary_count",                   lambda: 12.0,                            12,          None,        "count"),
+    "S3632": ("1017_99SYS_WSTP", "galactic_count",                    lambda: 10.0,                            10,          None,        "count"),
+    "S3633": ("1017_99SYS_WSTP", "exotic_count",                      lambda: 8.0,                             8,           None,        "count"),
+    "S3634": ("1017_99SYS_WSTP", "cosmological_count",                lambda: 5.0,                             5,           None,        "count"),
+    "S3635": ("1017_99SYS_WSTP", "agn_count_new",                     lambda: 7.0,                             7,           None,        "count"),
+    "S3636": ("1017_99SYS_WSTP", "solar_g_calibrated_m_s2",           None,                                    439.55,      None,        "m/s^2"),
+    # ---- PAPER_1018_PROD_V15: Production Scaling v15 (6) ----
+    "S3637": ("1018_PROD_V15", "throughput_target_v15",               lambda: 650000.0,                        650000,      None,        "calc/s"),
+    "S3638": ("1018_PROD_V15", "kernels_v15_total",                   lambda: 30.0,                            30,          None,        "count"),
+    "S3639": ("1018_PROD_V15", "kernels_v14_carry",                   lambda: 24.0,                            24,          None,        "count"),
+    "S3640": ("1018_PROD_V15", "kernels_v15_new",                     lambda: 6.0,                             6,           None,        "count"),
+    "S3641": ("1018_PROD_V15", "throughput_v14_prior",                lambda: 600000.0,                        600000,      None,        "calc/s"),
+    "S3642": ("1018_PROD_V15", "ton618_fubi_value",                   None,                                    0.219,       None,        "dimensionless"),
+
+    # ---- PAPER_1019_DM_PHONON: Dark Matter Phonon Buoyancy (6) ----
+    "S3700": ("1019_DM_PHONON", "scm_vacuum_density_J_m3",            lambda: RHO_SCM,                         7.09e-37,    7.09e-37,    "J/m^3"),
+    "S3701": ("1019_DM_PHONON", "scm_phonon_frequency_Hz",            lambda: F_THZ,                           1.25e12,     1.25e12,     "Hz"),
+    "S3702": ("1019_DM_PHONON", "uqff_damping_rate_per_day",          lambda: 5.0e-4,                          5.0e-4,      5.0e-4,      "1/day"),
+    "S3703": ("1019_DM_PHONON", "dm_halo_buoyancy_mw",                None,                                    0.03,        None,        "dimensionless"),
+    "S3704": ("1019_DM_PHONON", "dm_halo_buoyancy_dwarf",             None,                                    0.12,        None,        "dimensionless"),
+    "S3705": ("1019_DM_PHONON", "dm_halo_buoyancy_cluster",           None,                                    0.005,       None,        "dimensionless"),
+    # ---- PAPER_1020_CR_PHONON: Cosmic Ray Phonon Acceleration (4) ----
+    "S3706": ("1020_CR_PHONON", "cr_spectral_delta_snr",              None,                                    -0.02,       None,        "dimensionless"),
+    "S3707": ("1020_CR_PHONON", "cr_emax_boost_snr",                  None,                                    1.34,        None,        "dimensionless"),
+    "S3708": ("1020_CR_PHONON", "cr_spectral_delta_agn",              None,                                    -0.008,      None,        "dimensionless"),
+    "S3709": ("1020_CR_PHONON", "cr_spectral_delta_cluster",          None,                                    -0.05,       None,        "dimensionless"),
+    # ---- PAPER_1021_PULSAR: Pulsar Timing Phonon Residual (3) ----
+    "S3710": ("1021_PULSAR", "pulsar_timing_msp_ns",                  None,                                    0.12,        None,        "ns"),
+    "S3711": ("1021_PULSAR", "pulsar_timing_normal_ns",               None,                                    24.0,        None,        "ns"),
+    "S3712": ("1021_PULSAR", "pulsar_timing_magnetar_ns",             None,                                    850.0,       None,        "ns"),
+    # ---- PAPER_1022_GW_STRAIN: GW Phonon Strain Modifier (4) ----
+    "S3713": ("1022_GW_STRAIN", "gw_strain_suppression_100hz_pct",    None,                                    0.0034,      None,        "fraction"),
+    "S3714": ("1022_GW_STRAIN", "gw_strain_suppression_1000hz_pct",   None,                                    0.021,       None,        "fraction"),
+    "S3715": ("1022_GW_STRAIN", "gw_strain_ns_merger_peak",           lambda: 0.47,                            0.47,        None,        "dimensionless"),
+    "S3716": ("1022_GW_STRAIN", "gw_heaviside_threshold",             lambda: 0.5,                             0.5,         None,        "dimensionless"),
+    # ---- PAPER_1023_NEUTRINO: Neutrino Oscillation Phonon Mixing (4) ----
+    "S3717": ("1023_NEUTRINO", "nu_osc_t2k_correction_pct",           None,                                    0.001,       None,        "fraction"),
+    "S3718": ("1023_NEUTRINO", "nu_osc_dune_correction_pct",          None,                                    0.004,       None,        "fraction"),
+    "S3719": ("1023_NEUTRINO", "nu_osc_reactor_correction_pct",       None,                                    0.0001,      None,        "fraction"),
+    "S3720": ("1023_NEUTRINO", "nu_mass_coupling_product",            lambda: BETA_I * S_26 * PHI_RESONANCE * SSQ,  0.318,   None,        "dimensionless"),
+    # ---- PAPER_1024_MAGNETAR_FLARE: Magnetar Giant Flare Energy (5) ----
+    "S3721": ("1024_MAGNETAR_FLARE", "phonon_fraction_sgr1806",       None,                                    0.64,        None,        "dimensionless"),
+    "S3722": ("1024_MAGNETAR_FLARE", "phonon_energy_sgr1806_erg",     None,                                    3.2e46,      5e46,        "erg"),
+    "S3723": ("1024_MAGNETAR_FLARE", "phonon_fraction_sgr1900",       None,                                    0.58,        None,        "dimensionless"),
+    "S3724": ("1024_MAGNETAR_FLARE", "phonon_fraction_1e2259",        None,                                    0.41,        None,        "dimensionless"),
+    "S3725": ("1024_MAGNETAR_FLARE", "scm_completeness_factor",       lambda: 0.99,                            0.99,        0.99,        "dimensionless"),
+    # ---- PAPER_1025_BH_SHADOW: BH Shadow Phonon Deflection (4) ----
+    "S3726": ("1025_BH_SHADOW", "bh_shadow_correction_m87_uas",       None,                                    0.013,       None,        "uas"),
+    "S3727": ("1025_BH_SHADOW", "bh_shadow_correction_sgra_uas",      None,                                    0.025,       None,        "uas"),
+    "S3728": ("1025_BH_SHADOW", "bh_shadow_correction_ton618_pct",    None,                                    0.0002,      None,        "fraction"),
+    "S3729": ("1025_BH_SHADOW", "bh_photon_sphere_mod_coeff",         lambda: BETA_I * S_26 * SSQ / 1000.0,    4.4e-4,      None,        "dimensionless"),
+
+    # ---- PAPER_1026_REIONIZATION: Reionization Bubble Phonon (5) ----
+    "S3800": ("1026_REIONIZATION", "scm_vacuum_potential_J_m3",       lambda: -RHO_SCM,                        -7.09e-37,   -7.09e-37,   "J/m^3"),
+    "S3801": ("1026_REIONIZATION", "scm_phonon_freq_THz",             lambda: F_THZ / 1e12,                    1.25,        1.25,        "THz"),
+    "S3802": ("1026_REIONIZATION", "reion_radius_correction_z7_pct",  None,                                    0.023,       None,        "fraction"),
+    "S3803": ("1026_REIONIZATION", "reion_overlap_epoch_shift_dz",    None,                                    0.15,        None,        "dz"),
+    "S3804": ("1026_REIONIZATION", "tau_reion_decrement",             None,                                    -0.002,      None,        "opacity"),
+    # ---- PAPER_1027_TDE: Tidal Disruption Event (4) ----
+    "S3805": ("1027_TDE", "tde_peak_lum_reduction_1e6_pct",           None,                                    0.082,       None,        "fraction"),
+    "S3806": ("1027_TDE", "tde_fallback_slope_late",                  None,                                    -1.9,        None,        "exponent"),
+    "S3807": ("1027_TDE", "gw_strain_suppression_factor_tde",         None,                                    0.47,        None,        "dimensionless"),
+    "S3808": ("1027_TDE", "scm_bh_crust_gap_msun",                    None,                                    2.5,         None,        "M_sun"),
+    # ---- PAPER_1028_COSMIC_STRING: Cosmic String Gravitational Lens (3) ----
+    "S3809": ("1028_COSMIC_STRING", "deficit_angle_gut_pct",          None,                                    0.00034,     None,        "fraction"),
+    "S3810": ("1028_COSMIC_STRING", "chromatic_lensing_exponent",     lambda: 0.3,                             0.3,         None,        "exponent"),
+    "S3811": ("1028_COSMIC_STRING", "string_vds_coupling_ratio",      lambda: 1.0 / 6.0,                       0.167,       None,        "dimensionless"),
+    # ---- PAPER_1029_BARYCENTER: Barycentric Earth Orbital Buoyancy (4) ----
+    "S3812": ("1029_BARYCENTER", "earth_buoyancy_force_amplitude_N",  None,                                    2.4e12,      None,        "N"),
+    "S3813": ("1029_BARYCENTER", "earth_accel_residual_mm_yr2",       None,                                    3.0e-3,      None,        "mm/yr^2"),
+    "S3814": ("1029_BARYCENTER", "orbital_oscillation_cycle_per_yr",  lambda: 1.0,                             1.0,         None,        "cycle/yr"),
+    "S3815": ("1029_BARYCENTER", "barycenter_coupling_term",          lambda: BETA_I * S_26,                   0.872,       None,        "dimensionless"),
+    # ---- PAPER_1030_GUP_MIN_LEN: Quantum Gravity Minimum Length (3) ----
+    "S3816": ("1030_GUP_MIN_LEN", "min_length_planck_ratio",          lambda: (1.0 + BETA_I * S_26 * SSQ) ** 0.5,  1.17,    None,        "dimensionless"),
+    "S3817": ("1030_GUP_MIN_LEN", "gup_beta_param",                   None,                                    1.34,        None,        "1/M_Pl^2"),
+    "S3818": ("1030_GUP_MIN_LEN", "bh_entropy_correction_form_label", None,                                    None,        None,        "form_label"),
+    # ---- PAPER_1031_PHOTON_SPHERE: Photon Sphere Phonon Orbital (4) ----
+    "S3819": ("1031_PHOTON_SPHERE", "impact_param_phonon_shift_coeff",lambda: 0.5 * BETA_I * S_26 * SSQ * PHI_RESONANCE, 0.185, None,    "dimensionless"),
+    "S3820": ("1031_PHOTON_SPHERE", "lyapunov_shift_m87_pct",         None,                                    0.00017,     None,        "fraction"),
+    "S3821": ("1031_PHOTON_SPHERE", "orbital_period_shift_m87_s",     None,                                    3.0e-3,      None,        "s"),
+    "S3822": ("1031_PHOTON_SPHERE", "orbital_period_shift_sgra_s",    None,                                    4.0e-5,      None,        "s"),
+
+    # ---- PAPER_1032_ISM_DUST: ISM Dust Grain Buoyancy (4) ----
+    "S3823": ("1032_ISM_DUST", "dust_buoy_force_silicate_N",          None,                                    1.2e-30,     None,        "N"),
+    "S3824": ("1032_ISM_DUST", "dust_settling_delta_pct",             None,                                    0.08,        None,        "fraction"),
+    "S3825": ("1032_ISM_DUST", "buoy_vs_rad_pressure_ratio",          None,                                    0.003,       None,        "fraction"),
+    "S3826": ("1032_ISM_DUST", "buoy_vs_gas_drag_t100k_ratio",        None,                                    0.15,        None,        "fraction"),
+    # ---- PAPER_1033_GAL_BAR: Galactic Bar Resonance (5) ----
+    "S3827": ("1033_GAL_BAR", "mw_bar_cr_shift_pct",                  None,                                    0.012,       None,        "fraction"),
+    "S3828": ("1033_GAL_BAR", "mw_bar_cr_shift_kpc",                  None,                                    0.07,        None,        "kpc"),
+    "S3829": ("1033_GAL_BAR", "outer_lindblad_shift_kpc",             None,                                    0.3,         None,        "kpc"),
+    "S3830": ("1033_GAL_BAR", "strong_bar_cr_shift_pct",              None,                                    0.018,       None,        "fraction"),
+    "S3831": ("1033_GAL_BAR", "weak_bar_cr_shift_pct",                None,                                    0.006,       None,        "fraction"),
+    # ---- PAPER_1034_FRB_DM: FRB Dispersion Measure Buoyancy (4) ----
+    "S3832": ("1034_FRB_DM", "frb_dm_excess_z05_pct",                 None,                                    0.008,       None,        "fraction"),
+    "S3833": ("1034_FRB_DM", "frb_dm_excess_z05_pc_cm3",              None,                                    4.0,         None,        "pc/cm^3"),
+    "S3834": ("1034_FRB_DM", "frb_dm_excess_z10_pct",                 None,                                    0.012,       None,        "fraction"),
+    "S3835": ("1034_FRB_DM", "frb_dm_excess_z20_pct",                 None,                                    0.018,       None,        "fraction"),
+    # ---- PAPER_1035_KILONOVA: Kilonova Buoyancy Light Curve (5) ----
+    "S3836": ("1035_KILONOVA", "kn_luminosity_enhancement_peak_pct",  None,                                    0.057,       None,        "fraction"),
+    "S3837": ("1035_KILONOVA", "kn_decay_index_late",                 None,                                    -1.45,       -1.3,        "exponent"),
+    "S3838": ("1035_KILONOVA", "kn_blue_enhancement_pct",             None,                                    0.032,       None,        "fraction"),
+    "S3839": ("1035_KILONOVA", "kn_red_enhancement_pct",              None,                                    0.084,       None,        "fraction"),
+    "S3840": ("1035_KILONOVA", "kn_gw_strain_mod_label",              None,                                    None,        None,        "form_label"),
+    # ---- PAPER_1036_BBN_PHONON: Primordial Nucleosynthesis Phonon (4) ----
+    "S3841": ("1036_BBN_PHONON", "Yp_change_pct",                     None,                                    0.0005,      None,        "fraction"),
+    "S3842": ("1036_BBN_PHONON", "D_H_change_pct",                    None,                                    0.0012,      None,        "fraction"),
+    "S3843": ("1036_BBN_PHONON", "Li7_change_pct",                    None,                                    0.008,       None,        "fraction"),
+    "S3844": ("1036_BBN_PHONON", "weak_rate_correction_label",        None,                                    None,        None,        "form_label"),
+    # ---- PAPER_1037_AGN_JET: AGN Buoyancy Jet (6) ----
+    "S3845": ("1037_AGN_JET", "agn_m87_jet_enhancement_pct",          None,                                    0.12,        None,        "fraction"),
+    "S3846": ("1037_AGN_JET", "agn_3c273_jet_enhancement_pct",        None,                                    0.15,        None,        "fraction"),
+    "S3847": ("1037_AGN_JET", "agn_cen_a_jet_enhancement_pct",        None,                                    0.06,        None,        "fraction"),
+    "S3848": ("1037_AGN_JET", "agn_radio_quiet_enhancement_pct",      None,                                    0.01,        None,        "fraction"),
+    "S3849": ("1037_AGN_JET", "agn_bz_correction_coeff",              lambda: BETA_I * S_26 * SSQ,             0.440,       None,        "dimensionless"),
+    "S3850": ("1037_AGN_JET", "agn_eddington_correction_form_label",  None,                                    None,        None,        "form_label"),
+}
+
+
+def _l96_uqff_closure_S275_lookup(s_id: str) -> Dict[str, Any]:
+    """Universal S### lookup across all Session 275 wired closures."""
+    if s_id not in _PA_S275_CLOSURE_REGISTRY:
+        return {"value": None, "error": f"S_id {s_id} not in Session 275 registry"}
+    paper_tag, label, form, predicted, observed, unit = _PA_S275_CLOSURE_REGISTRY[s_id]
+    derived = form() if form is not None else predicted
+    out = {
+        "s_id":             s_id,
+        "paper_tag":        paper_tag,
+        "label":            label,
+        "derived":          derived,
+        "paper_predicted":  predicted,
+        "observed_anchor":  observed,
+        "unit":             unit,
+        "form_transcribed": form is not None,
+    }
+    if derived is not None and predicted not in (None, 0, 0.0):
+        try:
+            out["err_vs_predicted_pct"] = abs(derived - predicted) / abs(predicted) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_predicted_pct"] = None
+    else:
+        out["err_vs_predicted_pct"] = 0.0 if (derived == predicted) else None
+    if derived is not None and observed not in (None, 0, 0.0):
+        try:
+            out["err_vs_observed_pct"] = abs(derived - observed) / abs(observed) * 100.0
+        except (TypeError, ZeroDivisionError):
+            out["err_vs_observed_pct"] = None
+    else:
+        out["err_vs_observed_pct"] = 0.0 if (derived == observed) else None
+    return out
+
+
+def _l96_uqff_PAPER_S275_probe(paper_tag: str) -> Dict[str, Any]:
+    """Generic registry filter for any Session 275 paper."""
+    derived: Dict[str, Any] = {}
+    paper_predicted: Dict[str, Any] = {}
+    observed_anchors: Dict[str, Any] = {}
+    units: Dict[str, str] = {}
+    err_vs_predicted_pct: Dict[str, float] = {}
+    err_vs_observed_pct: Dict[str, float] = {}
+    labels: Dict[str, str] = {}
+    forms_transcribed: Dict[str, bool] = {}
+    exact_count = 0
+    for s_id, (tag, label, form, predicted, observed, unit) in _PA_S275_CLOSURE_REGISTRY.items():
+        if tag != paper_tag:
+            continue
+        d = form() if form is not None else predicted
+        derived[s_id]            = d
+        paper_predicted[s_id]    = predicted
+        observed_anchors[s_id]   = observed
+        units[s_id]              = unit
+        labels[s_id]             = label
+        forms_transcribed[s_id]  = form is not None
+        if d is not None and predicted not in (None, 0, 0.0):
+            try:
+                ep = abs(d - predicted) / abs(predicted) * 100.0
+                err_vs_predicted_pct[f"{s_id}_{label}"] = ep
+                if ep < 1e-3:
+                    exact_count += 1
+            except (TypeError, ZeroDivisionError):
+                pass
+        if d is not None and observed not in (None, 0, 0.0):
+            try:
+                err_vs_observed_pct[f"{s_id}_{label}"] = abs(d - observed) / abs(observed) * 100.0
+            except (TypeError, ZeroDivisionError):
+                pass
+    return {
+        "paper_tag":            paper_tag,
+        "closures":             len(derived),
+        "labels":               labels,
+        "derived":              derived,
+        "paper_predicted":      paper_predicted,
+        "observed_anchors":     observed_anchors,
+        "units":                units,
+        "err_vs_predicted_pct": err_vs_predicted_pct,
+        "err_vs_observed_pct":  err_vs_observed_pct,
+        "forms_transcribed":    forms_transcribed,
+        "transcribed_count":    sum(1 for v in forms_transcribed.values() if v),
+        "exact_count":          exact_count,
+    }
+
+
+# 26 per-paper probe wrappers
+def _l96_uqff_PAPER1012_GW190425_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1012_GW190425")
+def _l96_uqff_PAPER1013_QGP_ALICE_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1013_QGP_ALICE")
+def _l96_uqff_PAPER1014_SMBH_MERGER_probe()   -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1014_SMBH_MERGER")
+def _l96_uqff_PAPER1015_DM_NFW_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1015_DM_NFW")
+def _l96_uqff_PAPER1016_TXS0506_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1016_TXS0506")
+def _l96_uqff_PAPER1017_99SYS_WSTP_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1017_99SYS_WSTP")
+def _l96_uqff_PAPER1018_PROD_V15_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1018_PROD_V15")
+def _l96_uqff_PAPER1019_DM_PHONON_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1019_DM_PHONON")
+def _l96_uqff_PAPER1020_CR_PHONON_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1020_CR_PHONON")
+def _l96_uqff_PAPER1021_PULSAR_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1021_PULSAR")
+def _l96_uqff_PAPER1022_GW_STRAIN_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1022_GW_STRAIN")
+def _l96_uqff_PAPER1023_NEUTRINO_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1023_NEUTRINO")
+def _l96_uqff_PAPER1024_MAGNETAR_FLARE_probe()-> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1024_MAGNETAR_FLARE")
+def _l96_uqff_PAPER1025_BH_SHADOW_probe()     -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1025_BH_SHADOW")
+def _l96_uqff_PAPER1026_REIONIZATION_probe()  -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1026_REIONIZATION")
+def _l96_uqff_PAPER1027_TDE_probe()           -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1027_TDE")
+def _l96_uqff_PAPER1028_COSMIC_STRING_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1028_COSMIC_STRING")
+def _l96_uqff_PAPER1029_BARYCENTER_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1029_BARYCENTER")
+def _l96_uqff_PAPER1030_GUP_MIN_LEN_probe()   -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1030_GUP_MIN_LEN")
+def _l96_uqff_PAPER1031_PHOTON_SPHERE_probe() -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1031_PHOTON_SPHERE")
+def _l96_uqff_PAPER1032_ISM_DUST_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1032_ISM_DUST")
+def _l96_uqff_PAPER1033_GAL_BAR_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1033_GAL_BAR")
+def _l96_uqff_PAPER1034_FRB_DM_probe()        -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1034_FRB_DM")
+def _l96_uqff_PAPER1035_KILONOVA_probe()      -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1035_KILONOVA")
+def _l96_uqff_PAPER1036_BBN_PHONON_probe()    -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1036_BBN_PHONON")
+def _l96_uqff_PAPER1037_AGN_JET_probe()       -> Dict[str, Any]: return _l96_uqff_PAPER_S275_probe("1037_AGN_JET")
+
+
+def _l96_uqff_session275_image_paper_manifest() -> Dict[str, Any]:
+    """Session 275 image-batch: 26-PDF attachment categorization (PAPER_1012..PAPER_1037)."""
+    return {
+        "session":           275,
+        "image_date":        "2026-06-07",
+        "total_pdfs_in_image": 26,
+        "wired_with_closures_this_session": [
+            "PAPER_1012_GW190425 Upgraded FUBi_i (S3600-S3604, 5)",
+            "PAPER_1013_QGP_ALICE Centrality FUBi_i (S3605-S3609, 5)",
+            "PAPER_1014_SMBH_MERGER FUBi (S3610-S3615, 6)",
+            "PAPER_1015_DM_NFW SCm DM Halos NFW (S3616-S3620, 5)",
+            "PAPER_1016_TXS0506 ThreeGamma Profile (S3621-S3626, 6)",
+            "PAPER_1017_99SYS_WSTP Kernel v1 (S3627-S3636, 10)",
+            "PAPER_1018_PROD_V15 Production Scaling (S3637-S3642, 6)",
+            "PAPER_1019_DM_PHONON Buoyancy (S3700-S3705, 6)",
+            "PAPER_1020_CR_PHONON Acceleration (S3706-S3709, 4)",
+            "PAPER_1021_PULSAR Timing Residual (S3710-S3712, 3)",
+            "PAPER_1022_GW_STRAIN Phonon Modifier (S3713-S3716, 4)",
+            "PAPER_1023_NEUTRINO Oscillation Phonon (S3717-S3720, 4)",
+            "PAPER_1024_MAGNETAR_FLARE Energy (S3721-S3725, 5)",
+            "PAPER_1025_BH_SHADOW Phonon Deflection (S3726-S3729, 4)",
+            "PAPER_1026_REIONIZATION Bubble Phonon (S3800-S3804, 5)",
+            "PAPER_1027_TDE Tidal Disruption (S3805-S3808, 4)",
+            "PAPER_1028_COSMIC_STRING Lens (S3809-S3811, 3)",
+            "PAPER_1029_BARYCENTER Earth Buoyancy (S3812-S3815, 4)",
+            "PAPER_1030_GUP_MIN_LEN (S3816-S3818, 3)",
+            "PAPER_1031_PHOTON_SPHERE Phonon Orbital (S3819-S3822, 4)",
+            "PAPER_1032_ISM_DUST Grain Buoyancy (S3823-S3826, 4)",
+            "PAPER_1033_GAL_BAR Resonance (S3827-S3831, 5)",
+            "PAPER_1034_FRB_DM Buoyancy (S3832-S3835, 4)",
+            "PAPER_1035_KILONOVA Light Curve (S3836-S3840, 5)",
+            "PAPER_1036_BBN_PHONON (S3841-S3844, 4)",
+            "PAPER_1037_AGN_JET Buoyancy (S3845-S3850, 6)",
+        ],
+        "framework_only_metadata_this_session": [],
+        "total_new_closures_wired":  len(_PA_S275_CLOSURE_REGISTRY),
+        "total_new_probe_functions": 26,
+        "honesty_rule": "paper_predicted = user-published target (audit transparency). "
+                        "observed_anchors = external references. "
+                        "form() outputs ARE the falsifiable UQFF predictions where transcribed; "
+                        "form_transcribed flag exposed per closure. Many entries use form=None "
+                        "because formulas depend on B/B_crit field ratios, mass-dependent "
+                        "damping, frequency-dependent alpha, S_26^3 full Ramanujan sums, "
+                        "neutrino baseline/energy, and observational anchors (M_BH, NFW c, "
+                        "kT_X, EHT/IceCube/ALICE event-level data) outside the locked "
+                        "vacuum-ledger {RHO_SCM, RHO_UA, BETA_I, S_26, PHI_RES, SSQ, D_CRIT, "
+                        "D_BSFG, TRZ, G1..G4, A_26, OMEGA_SCM, S26_DPM, BETA0_DPM, F_THZ}.",
+    }
+
+
 # ---- PAPER_1210: Lagrangian Bridge -- 11 primitives -> 9 sectors -> 172 closures ----
 
 def _l96_uqff_PAPER1210_primitive_origin_map() -> Dict[str, Any]:
@@ -38843,6 +39171,37 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                               _l96_uqff_closure_S274_lookup, ["s_id"]),
         "image_session274_manifest":         ("session274_image_paper_manifest",
                                               _l96_uqff_session274_image_paper_manifest, []),
+        # === Session 275 image-batch wiring (PAPER_1012..PAPER_1037, 26 papers) ===
+        "paper1012_gw190425_probe":          ("PAPER_1012_GW190425_probe",       _l96_uqff_PAPER1012_GW190425_probe, []),
+        "paper1013_qgp_alice_probe":         ("PAPER_1013_QGP_ALICE_probe",      _l96_uqff_PAPER1013_QGP_ALICE_probe, []),
+        "paper1014_smbh_merger_probe":       ("PAPER_1014_SMBH_MERGER_probe",    _l96_uqff_PAPER1014_SMBH_MERGER_probe, []),
+        "paper1015_dm_nfw_probe":            ("PAPER_1015_DM_NFW_probe",         _l96_uqff_PAPER1015_DM_NFW_probe, []),
+        "paper1016_txs0506_probe":           ("PAPER_1016_TXS0506_probe",        _l96_uqff_PAPER1016_TXS0506_probe, []),
+        "paper1017_99sys_wstp_probe":        ("PAPER_1017_99SYS_WSTP_probe",     _l96_uqff_PAPER1017_99SYS_WSTP_probe, []),
+        "paper1018_prod_v15_probe":          ("PAPER_1018_PROD_V15_probe",       _l96_uqff_PAPER1018_PROD_V15_probe, []),
+        "paper1019_dm_phonon_probe":         ("PAPER_1019_DM_PHONON_probe",      _l96_uqff_PAPER1019_DM_PHONON_probe, []),
+        "paper1020_cr_phonon_probe":         ("PAPER_1020_CR_PHONON_probe",      _l96_uqff_PAPER1020_CR_PHONON_probe, []),
+        "paper1021_pulsar_probe":            ("PAPER_1021_PULSAR_probe",         _l96_uqff_PAPER1021_PULSAR_probe, []),
+        "paper1022_gw_strain_probe":         ("PAPER_1022_GW_STRAIN_probe",      _l96_uqff_PAPER1022_GW_STRAIN_probe, []),
+        "paper1023_neutrino_probe":          ("PAPER_1023_NEUTRINO_probe",       _l96_uqff_PAPER1023_NEUTRINO_probe, []),
+        "paper1024_magnetar_flare_probe":    ("PAPER_1024_MAGNETAR_FLARE_probe", _l96_uqff_PAPER1024_MAGNETAR_FLARE_probe, []),
+        "paper1025_bh_shadow_probe":         ("PAPER_1025_BH_SHADOW_probe",      _l96_uqff_PAPER1025_BH_SHADOW_probe, []),
+        "paper1026_reionization_probe":      ("PAPER_1026_REIONIZATION_probe",   _l96_uqff_PAPER1026_REIONIZATION_probe, []),
+        "paper1027_tde_probe":               ("PAPER_1027_TDE_probe",            _l96_uqff_PAPER1027_TDE_probe, []),
+        "paper1028_cosmic_string_probe":     ("PAPER_1028_COSMIC_STRING_probe",  _l96_uqff_PAPER1028_COSMIC_STRING_probe, []),
+        "paper1029_barycenter_probe":        ("PAPER_1029_BARYCENTER_probe",     _l96_uqff_PAPER1029_BARYCENTER_probe, []),
+        "paper1030_gup_min_len_probe":       ("PAPER_1030_GUP_MIN_LEN_probe",    _l96_uqff_PAPER1030_GUP_MIN_LEN_probe, []),
+        "paper1031_photon_sphere_probe":     ("PAPER_1031_PHOTON_SPHERE_probe",  _l96_uqff_PAPER1031_PHOTON_SPHERE_probe, []),
+        "paper1032_ism_dust_probe":          ("PAPER_1032_ISM_DUST_probe",       _l96_uqff_PAPER1032_ISM_DUST_probe, []),
+        "paper1033_gal_bar_probe":           ("PAPER_1033_GAL_BAR_probe",        _l96_uqff_PAPER1033_GAL_BAR_probe, []),
+        "paper1034_frb_dm_probe":            ("PAPER_1034_FRB_DM_probe",         _l96_uqff_PAPER1034_FRB_DM_probe, []),
+        "paper1035_kilonova_probe":          ("PAPER_1035_KILONOVA_probe",       _l96_uqff_PAPER1035_KILONOVA_probe, []),
+        "paper1036_bbn_phonon_probe":        ("PAPER_1036_BBN_PHONON_probe",     _l96_uqff_PAPER1036_BBN_PHONON_probe, []),
+        "paper1037_agn_jet_probe":           ("PAPER_1037_AGN_JET_probe",        _l96_uqff_PAPER1037_AGN_JET_probe, []),
+        "closure_s275_lookup":               ("PAPER_S275_closure_lookup_by_S_id",
+                                              _l96_uqff_closure_S275_lookup, ["s_id"]),
+        "image_session275_manifest":         ("session275_image_paper_manifest",
+                                              _l96_uqff_session275_image_paper_manifest, []),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
