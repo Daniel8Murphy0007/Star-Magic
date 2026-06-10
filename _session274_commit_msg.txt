@@ -1,0 +1,48 @@
+Session 274: Wire 26-PDF image batch (PAPER_1038..PAPER_1063, 126 closures)
+
+8th image-batch wiring round following Sessions 267-273.
+
+Scope:
+  - 26 papers extracted from user-attached image batch (PAPER_1038..PAPER_1063)
+  - 126 closures registered in _PA_S274_CLOSURE_REGISTRY (S3100-S3520 with gaps)
+  - 16 transcribed lambdas (closed-form derivations from locked vacuum-ledger primitives)
+  - 110 form=None entries with honest disclosure (paper-stated [SSq]=0.57 vs locked
+    SSQ=0.505; paper-stated S_26~1.86 vs locked 1.453162; undefined Phi SCm
+    amplitude; cluster/SN/lensing/M-sigma observational anchors; framework-specific
+    Immirzi gamma_LQG, NCG Dirac eigenvalues, Chern-Simons level k, MSSM gaugino
+    F_phi, COP cross-sections sigma_0, Lambda_QCD, alpha_s(M_Z))
+
+Transcribed lambda highlights (verbatim source + computed value):
+  S3108  omega_SCm = 2*pi*F_THZ              = 7.854e12 rad/s
+  S3123  beta_i = BETA0_DPM                  = 0.603
+  S3124  kappa = 5e-4                        = 5e-4 /day
+  S3214  rho_SCm = RHO_SCM                   = 7.09e-37 J/m^3
+  S3403  V(phi_0) = -RHO_SCM                 = -7.09e-37 J/m^3
+  S3503  H_SCm = 0.99                        = 0.99
+
+Per-paper closure counts:
+  1038_WD_CRYST (4), 1039_CLUST_PROF (5), 1040_SHOCK (4), 1041_COOL_CORE (5),
+  1042_MOCK_THETA (7), 1043_MULTI (10), 1044_SZ (5), 1045_RELIC (6),
+  1046_LENS (7), 1047_SNIax (5), 1048_M_SIGMA (10), 1049_SOURCE10 (5),
+  1050_MUGE9 (4), 1051_DUALITY (3), 1052_TQFT (4), 1053_SWAMP (4),
+  1054_SUSY (5), 1055_cMERA (3), 1056_QEC (1), 1057_NCG (3),
+  1058_LQG_AREA (5), 1059_CGC (4), 1060_LENR_VDS (7), 1061_KOZIMA (4),
+  1062_WORM (3), 1063_HCG (3)
+
+Cold smoke test (_verify_session274_image_papers.py):
+  126/126 registry entries
+  118/126 derive non-None
+  118/118 within 1% of paper_predicted
+  21/26 within 5% of observed_anchor
+  27/27 dispatcher routes pass
+  12/12 S### lookup spot tests pass
+
+Files modified:
+  uqff_pure_calculator.py (+436 lines: registry + 26 probes + S### lookup +
+                           manifest + 28 dispatcher routes)
+  _verify_session274_image_papers.py (NEW)
+  _dump_session274_lambdas.py (NEW)
+
+Honesty rule preserved: paper_predicted reported verbatim for audit transparency;
+form() output IS the falsifiable UQFF prediction; form_transcribed flag exposed
+per closure. No SM borrowing, no lattice-QCD anchoring, no pre-fit targets.

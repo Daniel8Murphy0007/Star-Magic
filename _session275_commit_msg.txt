@@ -1,0 +1,47 @@
+Session 275: Wire 26-PDF image batch (PAPER_1012..PAPER_1037, 124 closures)
+
+10th image-batch wiring round following Sessions 267-274.
+
+Scope:
+  - 26 papers extracted from user-attached image batch (PAPER_1012..PAPER_1037)
+  - 124 closures registered in _PA_S275_CLOSURE_REGISTRY (S3600-S3850 range)
+  - 40 transcribed lambdas (closed-form derivations from locked vacuum-ledger)
+  - 84 form=None entries with honest disclosure (B/B_crit field ratios,
+    mass-dependent damping, frequency-dependent alpha, S_26^3 full sums,
+    neutrino baseline/energy variables, M_BH/NFW c observational anchors,
+    EHT/IceCube/ALICE event-level data)
+
+Transcribed lambda highlights (verbatim form -> computed value):
+  S3601/S3700  rho_SCm                                    = 7.09e-37 J/m^3
+  S3701        F_THZ                                      = 1.25e12 Hz
+  S3702        kappa = 5e-4                               = 5e-4 /day
+  S3715        gw_strain_ns_merger_peak                   = 0.47
+  S3720        BETA_I*S_26*PHI_RES*SSQ                    = 0.370
+  S3725        scm_completeness_factor                    = 0.99
+  S3811        1/6                                        = 0.167
+  S3815        BETA_I*S_26                                = 0.872
+  S3816        sqrt(1 + BETA_I*S_26*SSQ)                  = 1.200
+  S3819        0.5*BETA_I*S_26*SSQ*PHI_RES                = 0.185
+  S3849        BETA_I*S_26*SSQ                            = 0.440
+
+Per-paper closure counts:
+  1012 (5), 1013 (5), 1014 (6), 1015 (5), 1016 (6), 1017 (10), 1018 (6),
+  1019 (6), 1020 (4), 1021 (3), 1022 (4), 1023 (4), 1024 (5), 1025 (4),
+  1026 (5), 1027 (4), 1028 (3), 1029 (4), 1030 (3), 1031 (4), 1032 (4),
+  1033 (5), 1034 (4), 1035 (5), 1036 (4), 1037 (6) = 124
+
+Cold smoke test (_verify_session275_image_papers.py):
+  120/124 derive non-None
+  118/120 within 1% of paper_predicted
+  9/16 within 5% of observed_anchor
+  27/27 dispatcher routes pass
+  15/15 S### lookup spot tests pass
+
+Files modified:
+  uqff_pure_calculator.py (+ registry + 26 probes + S### lookup + manifest
+                           + 28 dispatcher routes)
+  _verify_session275_image_papers.py (NEW)
+  _dump_session275_lambdas.py (NEW)
+
+Honesty rule preserved. No SM borrowing, no lattice-QCD anchoring,
+no pre-fit targets.

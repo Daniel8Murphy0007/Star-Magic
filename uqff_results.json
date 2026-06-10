@@ -306116,5 +306116,149 @@
       "calculate_analytic_closures"
     ],
     "simulation_set": {}
+  },
+  "PCQ_f17cb10e7f9baba2": {
+    "timestamp": "2026-06-09T04:42:29.850393",
+    "input_params": {
+      "symbolic": "taylor_green_navier_stokes"
+    },
+    "long_form_equations": [
+      {
+        "name": "calculate_resonant_adpm",
+        "value": 1050000000000.0,
+        "provenance": null
+      },
+      {
+        "name": "calculate_scm",
+        "value": 8.508e-37,
+        "provenance": null
+      },
+      {
+        "name": "calculate_f_u_bi",
+        "value": 1.5405860999999998e-15,
+        "provenance": null
+      },
+      {
+        "name": "calculate_f_u_bi_i",
+        "value": 5.669120006550002e-24,
+        "provenance": null
+      },
+      {
+        "name": "calculate_triadic_g",
+        "value": {
+          "triadic": 2.5736700068702387e-16,
+          "g_comp": 1.1131299999999999e-24,
+          "g_res": 9.350291999999998e-25,
+          "g_buoy": 7.799e-16,
+          "agreement_pct": 99.99999988010909,
+          "weights": {
+            "w_C": 0.34,
+            "w_R": 0.33,
+            "w_B": 0.33
+          },
+          "cross_master_g_compressed_8term": 232.60776881641817,
+          "cross_master_g_resonance": 8.123958333394426e-13,
+          "cross_method_agreement_pct": 100.0
+        },
+        "provenance": null
+      },
+      {
+        "name": "calculate_vacuum_ledger",
+        "value": {
+          "V0": 2.382780382823029e-10,
+          "R26_term": 1.429668229693817e-10,
+          "rho_KK": 1.7156018756325805e-10,
+          "rho_BSFG": 4.289004689081451e-11,
+          "total": 5.956950957057572e-10,
+          "planck_target": 5.95e-10,
+          "residual_pct": 0.11682280769028472
+        },
+        "provenance": null
+      },
+      {
+        "name": "calculate_analytic_closures",
+        "value": {
+          "initial_enstrophy_Omega0": 3.7011016504085092,
+          "ledger_saturation_Lambda": 0.003514557566993894,
+          "rho_vac_J_per_m3": 1.0302479000000001e-10,
+          "F_U_normalization": 1.0,
+          "C_geometric_T3": 0.039788735772973836,
+          "viscosity_nu": 0.000625,
+          "UA_scalar_used": 1.0,
+          "Omega_at_t_10": 3.7210962461788553,
+          "Omega_at_t_100": 3.9085754720965933,
+          "Omega_at_t_1000": 6.926736471990076,
+          "Omega_at_Tmax": -1.0,
+          "Tmax_evaluated": 1000000.0,
+          "Tstar_blowup_lower_bound": 3717.09526613832,
+          "globally_regular": false,
+          "beta_i": 0.6029,
+          "S26": 1.4531e+26,
+          "Phi_resonance": 0.84,
+          "D_crit_over_D_BSFG_sq": 18.777777777777775
+        },
+        "provenance": null
+      }
+    ],
+    "solutions": {
+      "calculate_resonant_adpm": 1050000000000.0,
+      "calculate_scm": 8.508e-37,
+      "calculate_f_u_bi": 1.5405860999999998e-15,
+      "calculate_f_u_bi_i": 5.669120006550002e-24,
+      "calculate_triadic_g": {
+        "triadic": 2.5736700068702387e-16,
+        "g_comp": 1.1131299999999999e-24,
+        "g_res": 9.350291999999998e-25,
+        "g_buoy": 7.799e-16,
+        "agreement_pct": 99.99999988010909,
+        "weights": {
+          "w_C": 0.34,
+          "w_R": 0.33,
+          "w_B": 0.33
+        },
+        "cross_master_g_compressed_8term": 232.60776881641817,
+        "cross_master_g_resonance": 8.123958333394426e-13,
+        "cross_method_agreement_pct": 100.0
+      },
+      "calculate_vacuum_ledger": {
+        "V0": 2.382780382823029e-10,
+        "R26_term": 1.429668229693817e-10,
+        "rho_KK": 1.7156018756325805e-10,
+        "rho_BSFG": 4.289004689081451e-11,
+        "total": 5.956950957057572e-10,
+        "planck_target": 5.95e-10,
+        "residual_pct": 0.11682280769028472
+      },
+      "calculate_analytic_closures": {
+        "initial_enstrophy_Omega0": 3.7011016504085092,
+        "ledger_saturation_Lambda": 0.003514557566993894,
+        "rho_vac_J_per_m3": 1.0302479000000001e-10,
+        "F_U_normalization": 1.0,
+        "C_geometric_T3": 0.039788735772973836,
+        "viscosity_nu": 0.000625,
+        "UA_scalar_used": 1.0,
+        "Omega_at_t_10": 3.7210962461788553,
+        "Omega_at_t_100": 3.9085754720965933,
+        "Omega_at_t_1000": 6.926736471990076,
+        "Omega_at_Tmax": -1.0,
+        "Tmax_evaluated": 1000000.0,
+        "Tstar_blowup_lower_bound": 3717.09526613832,
+        "globally_regular": false,
+        "beta_i": 0.6029,
+        "S26": 1.4531e+26,
+        "Phi_resonance": 0.84,
+        "D_crit_over_D_BSFG_sq": 18.777777777777775
+      }
+    },
+    "available_equations": [
+      "calculate_resonant_adpm",
+      "calculate_scm",
+      "calculate_f_u_bi",
+      "calculate_f_u_bi_i",
+      "calculate_triadic_g",
+      "calculate_vacuum_ledger",
+      "calculate_analytic_closures"
+    ],
+    "simulation_set": {}
   }
 }
