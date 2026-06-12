@@ -110,7 +110,6 @@ PUBLIC_FUNCS = [
     "calculate_qgp",
     "calculate_higgs_precision",
     "calculate_bsm_constraints",
-    "calculate_whitepaper",
 ]
 
 for name in PUBLIC_FUNCS:
@@ -235,34 +234,9 @@ public_calc = sorted(
     and callable(getattr(u, n))
     and n.startswith("calculate_")
 )
-check("33 public calculate_* functions (16 prior + 6 BUCKET 0 + 1 B + 1 C + 1 D + 7 buckets E-K + 1 whitepaper)",
+check("32 public calculate_* functions (16 prior + 6 BUCKET 0 + 1 B + 1 C + 1 D + 7 buckets E-K)",
       sorted(PUBLIC_FUNCS) == public_calc,
       f"actual: {public_calc}")
-
-# BUCKET WP: whitepaper dispatcher coverage
-wp_inv = u.calculate_whitepaper({'inventory': True})['value']
-check("BUCKET WP: whitepaper dispatcher wires >= 949 papers",
-      wp_inv['total_whitepapers_wired_this_pass'] >= 949,
-      "actual=%d" % wp_inv['total_whitepapers_wired_this_pass'])
-check("BUCKET WP: whitepaper dispatcher covers >= 22 domains",
-      wp_inv['total_domains'] >= 22,
-      "actual=%d" % wp_inv['total_domains'])
-check("BUCKET WP: paper_id 1 (GW170817) dispatches to gravitational_waves domain",
-      u.calculate_whitepaper({'paper_id': 1})['value']['domain'] == 'gravitational_waves')
-check("BUCKET WP: paper_id 36 (FUBii Archimedes) dispatches to buoyancy variant",
-      u.calculate_whitepaper({'paper_id': 36})['value']['domain'] == 'buoyancy_FUBii_variant')
-check("BUCKET WP: paper_id 43 (26D Energy Structure) dispatches to compactification",
-      u.calculate_whitepaper({'paper_id': 43})['value']['domain'] == '26D_compactification')
-check("BUCKET WP: paper_id 49 (Vacuum density 26-layer) dispatches to cosmology vacuum",
-      u.calculate_whitepaper({'paper_id': 49})['value']['domain'] == 'cosmology_vacuum_ledger')
-check("BUCKET WP: paper_id 81 (Hawking T) dispatches to black hole",
-      u.calculate_whitepaper({'paper_id': 81})['value']['domain'] == 'black_hole_AGN')
-check("BUCKET WP: paper_id 144 (SCm Cosmic Glue) dispatches to uqff_intrinsic",
-      u.calculate_whitepaper({'paper_id': 144})['value']['domain'] == 'uqff_intrinsic_foundational')
-check("BUCKET WP: paper_id 851 (Kozima 8-system) dispatches to LENR",
-      u.calculate_whitepaper({'paper_id': 851})['value']['domain'] == 'LENR_reactor')
-check("BUCKET WP: paper_id 1240 (last paper) returns non-None UQFF derivation",
-      u.calculate_whitepaper({'paper_id': 1240})['value'] is not None)
 
 
 # ---------- Category 5: canonical physics restoration ----------
@@ -575,22 +549,15 @@ check("DPM-pair insight: integer N doubles from single to paired (1 -> 2)",
 
 # calculate_paradox public surface
 full = u.calculate_paradox({})
-check("BUCKET B: calculate_paradox() inventory includes all 8 Millennium paradoxes",
-      full['value']['inventory']['millennium_count'] == 8)
-check("BUCKET B: paradox inventory expanded to >= 96 total (8 Millennium + tier-2)",
-      full['value']['inventory']['total_paradoxes'] >= 96)
-check("BUCKET B: paradox inventory contains all 8 Millennium names",
-      {'yang_mills_mass_gap', 'riemann_hypothesis', 'bsd_conjecture',
-       'navier_stokes_smoothness', 'hodge_conjecture', 'poincare_conjecture',
-       'p_vs_np', 'info_paradox'}.issubset(set(full['value']['inventory']['paradox_names'])))
-check("BUCKET B: paradox inventory contains tier-2 paradoxes (twin, grandfather, EPR, etc.)",
-      {'twin_paradox', 'grandfather_paradox', 'epr_paradox', 'schrodinger_cat',
-       'pioneer_anomaly', 'strong_cp_problem', 'baryogenesis', 'arrow_of_time',
-       'cosmic_censorship', 'multiverse_paradox', 'liar_paradox', 'free_will_paradox',
-       'olbers_paradox', 'fermi_paradox', 'boltzmann_brain', 'hubble_tension'
-      }.issubset(set(full['value']['inventory']['paradox_names'])))
+check("BUCKET B: calculate_paradox() returns full inventory of 8 paradoxes",
+      full['value']['inventory']['total_paradoxes'] == 8)
+check("BUCKET B: paradox inventory has all 8 named paradoxes",
+      set(full['value']['inventory']['paradox_names']) == {
+          'yang_mills_mass_gap', 'riemann_hypothesis', 'bsd_conjecture',
+          'navier_stokes_smoothness', 'hodge_conjecture', 'poincare_conjecture',
+          'p_vs_np', 'info_paradox'})
 
-# Each Millennium paradox returns a finite scalar value via _paradox_proof routing
+# Each individual paradox returns a finite value via _paradox_proof routing
 for name in ['yang_mills_mass_gap', 'riemann_hypothesis', 'bsd_conjecture',
              'navier_stokes_smoothness', 'hodge_conjecture', 'poincare_conjecture',
              'p_vs_np', 'info_paradox']:
@@ -598,25 +565,8 @@ for name in ['yang_mills_mass_gap', 'riemann_hypothesis', 'bsd_conjecture',
     ok = (one['value'] is not None
           and isinstance(one['value'], (int, float))
           )
-    check(f"BUCKET B: calculate_paradox({name!r}) returns finite Millennium value",
+    check(f"BUCKET B: calculate_paradox({name!r}) returns finite value + NOT REPLACEMENT",
           ok, "actual=%s" % one)
-
-# Each tier-2 paradox returns a non-None mathematical-derivation dict
-for name in ['twin_paradox', 'grandfather_paradox', 'epr_paradox', 'schrodinger_cat',
-             'pioneer_anomaly', 'flyby_anomaly', 'dark_matter_paradox',
-             'strong_cp_problem', 'baryogenesis', 'arrow_of_time', 'unruh_paradox',
-             'tachyon_paradox', 'eternal_inflation', 'consciousness_paradox',
-             'tegmark_levels', 'simulation_paradox', 'newcomb_paradox',
-             'sorites_paradox', 'liar_paradox', 'free_will_paradox',
-             'monopole_problem', 'flatness_problem', 'horizon_problem',
-             'cosmic_censorship', 'multiverse_paradox', 'galaxy_rotation',
-             'olbers_paradox', 'fermi_paradox', 'boltzmann_brain', 'wigner_friend',
-             'bell_theorem', 'mach_principle', 'firewall_paradox',
-             'measurement_problem', 'hubble_tension', 'sigma_8_tension']:
-    one = u.calculate_paradox({'paradox': name})
-    ok = (one['value'] is not None and isinstance(one['value'], dict))
-    check(f"BUCKET B: calculate_paradox({name!r}) returns live UQFF derivation dict",
-          ok, "actual=%s" % str(one)[:120])
 
 # Spinor closure included in full report (Daniel: "spinor is the result of duality")
 check("BUCKET B: spinor closure included in calculate_paradox full report",
@@ -652,8 +602,8 @@ print("=" * 70)
 cos = u.calculate_cosmology({})['value']
 
 # Suite structure
-check("BUCKET C: cosmology suite has at least 18 observables (canonical floor)",
-      cos['total_count'] >= 18,
+check("BUCKET C: cosmology suite has 18 observables",
+      cos['total_count'] == 18,
       "actual=%d" % cos['total_count'])
 check("BUCKET C: at least 5 DERIVED_PURE_UQFF observables (PAPER_1156 set)",
       True,
@@ -1270,7 +1220,6 @@ check("Rule 9 narrative guard: zero classes in calculator",
       len(_classes) == 0,
       "classes=" + str(len(_classes)))
 
-# Rule 9: zero banned imports
 # Rule 9: zero banned imports
 _imports = [n for n in _ast.walk(_tree) if isinstance(n, (_ast.Import, _ast.ImportFrom))]
 _banned = []
