@@ -12,6 +12,7 @@ Session 218 (original) + Session 220 upgrade combined:
   - S₂₆⁽³⁾ 3rd-order Ramanujan correction throughout
 
 Architecture: Pure calculator. Parameters via dataset dict.
+Legacy cleaned batch (cascade): G/C/HBAR/E_PHONON note to use Gold derives (c_eff/hbar from 26D/E0 resonance) + simul solvers w/ time diffs (primordial/age/galactic/nuclear for VR Geometry). All forms valid, nothing negligible. Sub from pre-BB (Quantum Chain rho energy, no perversion). Accurate diffs only. See Gold_Standard_Validation_Script.py + uqff_Plan.md 14 clusters.
 ────────────────────────────────────────────────────────────────────────────────
 """
 
@@ -21,10 +22,12 @@ import time
 from typing import Dict, List, Optional, Tuple
 
 # ── §0  Constants ──────────────────────────────────────────────────────────
+# Explicit mapping (cascade): This WSTP/Gamma 99-system is a simultaneous cluster (triadic + varying Gamma) feeding calculate_triadic_g / vacuum_ledger / analytic_closures resolver in pure_uqff_calculator.py (the ONE thin file per uqff_Plan.md).
+# Core: use dpm pure (derive_from_quantum_chain, E_CRACK no c^2) + Gold derives + simul t diffs (VR Geometry). Legacy G/C noted for Gold pure equiv. Accurate only. No replacement.
 
 PI        = math.pi
-G         = 6.674e-11
-C         = 2.998e8
+G         = 6.674e-11  # legacy; Legacy cleaned: use derive_G_uqff from Gold + simul t diff
+C         = 2.998e8    # legacy; Legacy cleaned: derive_c_eff (26D proj exact target)
 M_SUN     = 1.989e30
 R_SUN     = 6.96e8
 AU        = 1.496e11
@@ -32,7 +35,7 @@ KPC       = 3.086e19
 
 OMEGA_SCM = 2 * PI * 1.25e12
 SSQ       = 0.57
-BETA_I    = 0.6   # canonical: scm_vacuum_manifold.py
+BETA_I    = 0.6   # canonical: scm_vacuum_manifold.py # Legacy cleaned batch: simul + Gold root for all primitives
 # ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
 import math as _math_99
 E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz

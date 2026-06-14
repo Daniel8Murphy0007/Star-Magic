@@ -72,7 +72,7 @@ KAPPA:       float = KAPPA_FLOAT                               # day^{-1} alias
 # ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 # Phonon energy at 1.25 THz
-E_PHONON: float = 6.62607015e-34 * THZ_PHONON          # J  (h ┬╖ ╬╜)
+# E_PHONON removed - was CODATA h. Use UQFF resonance scale (THZ_PHONON * E0 or phonon factor from primitives) for pure derivation.
 
 # Third-order vacuum spectral factor (from VDS series, 26D normalisation)
 S26_3: float = 1.4531e26

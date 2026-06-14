@@ -28,25 +28,24 @@ LAMBDA_I    = 1.0                   # manifold coupling ╬╗_i
 OMEGA_S     = 2.5e-6                # stellar angular frequency ╧ë_s
 NEG_TIME_RANGE = sp.symbols('t_n', negative=True)  # t_n < 0
 
-_C_LIGHT = 2.99792458e8             # m/s ΓÇö speed of light (for /c┬▓ conversion only)
+# _C_LIGHT removed - was CODATA SM value. Core is energy density (J/m³) only from Quantum Chain. Mass conversion requires UQFF C_LIGHT (derived from D_CRIT etc.) and is secondary, not part of ledger creation.
 
 def derive_from_quantum_chain(n_levels=26, f_SCm=0.57, V=1.0):
-    """Core Quantum Chain derivation ΓÇö replaces all perverted RHO_VAC_* constants.
-    Derived from Quantum Chain E_n summation ΓÇö see UQFF_THEORY.md ╧ü_vac equation.
-    ╧ü_vac = Γêæ(f_i * E_n) / V   (J/m┬│) ΓÇö emergent inertial energy density from SCmΓåöUA interaction.
-    Effective inertial mass density = ╧ü_vac / c┬▓ for gravity terms ONLY.
-    This proves mass creation from 26D hydrogen geometry (creation/disintegration via donation/expulsion)."""
+    """Core Quantum Chain derivation — replaces all perverted RHO_VAC_* constants.
+    Derived from Quantum Chain E_n summation — see UQFF_THEORY.md ρ_vac equation.
+    ρ_vac = ∑(f_i * E_n) / V   (J/m³) — emergent energy density from SCm↔UA. PURE UQFF: no mass, no c, no SM units in core.
+    Mass equivalent removed (was using SM c). Core ledger is energy density only."""
     E_n = [E0 * 10**n for n in range(1, n_levels + 1)]
-    rho_vac_energy = sum(f_SCm * E for E in E_n) / V   # J/m┬│ ΓÇö exact UQFF_THEORY.md definition
-    rho_mass_eq = rho_vac_energy / (_C_LIGHT ** 2)     # kg/m┬│ equivalent ONLY when needed for gravity
-    return rho_vac_energy, rho_mass_eq
+    rho_vac_energy = sum(f_SCm * E for E in E_n) / V   # J/m³ — exact UQFF_THEORY.md definition. Pure from E0, f_SCm, V, n_levels.
+    # rho_mass_eq line removed - required SM c. Core ledger is energy density.
+    return rho_vac_energy  # Only energy now for purity.
 
-# Module-level derived values (J/m┬│ canonical; /c┬▓ only when gravity is explicit)
-RHO_VAC_SCM, _RHO_VAC_SCM_MASS = derive_from_quantum_chain(n_levels=26, f_SCm=0.57)
-RHO_VAC_UA,  _RHO_VAC_UA_MASS  = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10)
-# RHO_VAC_SCM  = ╧ü_vac,SCm  [J/m┬│] ΓÇö emergent energy density, massless substrate
-# RHO_VAC_UA   = ╧ü_vac,UA   [J/m┬│] ΓÇö emergent energy density, massless substrate (10├ù SCm scale)
-# _RHO_VAC_*_MASS = ╧ü_vac / c┬▓  [kg/m┬│] ΓÇö ONLY for gravity coupling, never vacuum identity
+# Module-level now pure from cleaned derive (energy density only).
+RHO_VAC_SCM = derive_from_quantum_chain(n_levels=26, f_SCm=0.57)  # J/m³ pure UQFF
+RHO_VAC_UA  = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10)  # 10× structural (SO5/F_TRZ)
+# RHO_VAC_SCM  = ρ_vac,SCm  [J/m³] — emergent energy density, massless substrate (pure chain)
+# RHO_VAC_UA   = ρ_vac,UA   [J/m³] — 10× (structural, no SM ratio value)
+# No _MASS in core - mass not part of vacuum ledger.
 
 # ==================== LONG-FORM DERIVATIONS ====================
 

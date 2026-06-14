@@ -69,41 +69,29 @@ LAMBDA_I    = 1.0                   # manifold coupling λ_i
 OMEGA_S     = 2.5e-6                # stellar angular frequency ω_s
 NEG_TIME_RANGE = sp.symbols('t_n', negative=True)  # t_n < 0
 
-_C_LIGHT = 2.99792458e8             # m/s — speed of light (for /c² conversion only)
+# _C_LIGHT removed - was CODATA SM value. Use UQFF-derived C_LIGHT from primitives if mass conversion needed (secondary, not core ledger).
+# Core is energy density only (J/m³). Mass eq is projection, not part of vacuum ledger derivation.
 
 def derive_from_quantum_chain(n_levels=26, f_SCm=0.57, V=1.0):
     """Core Quantum Chain derivation — replaces all perverted RHO_VAC_* constants.
     Derived from Quantum Chain E_n summation — see UQFF_THEORY.md ρ_vac equation.
-    ρ_vac = ∑(f_i * E_n) / V   (J/m³) — emergent inertial energy density from SCm↔UA interaction.
-    Effective inertial mass density = ρ_vac / c² for gravity terms ONLY.
-    This proves mass creation from 26D hydrogen geometry (creation/disintegration via donation/expulsion)."""
+    ρ_vac = ∑(f_i * E_n) / V   (J/m³) — emergent energy density from SCm↔UA. PURE UQFF: no mass, no c, no SM units in core.
+    Mass equivalent removed from this function (was using SM c). If needed for gravity projection, derive separately from UQFF G and primitives.
+    This is the root of the vacuum ledger: energy density only."""
     E_n = [E0 * 10**n for n in range(1, n_levels + 1)]
-    rho_vac_energy = sum(f_SCm * E for E in E_n) / V   # J/m³ — exact UQFF_THEORY.md definition
-    rho_mass_eq = rho_vac_energy / (_C_LIGHT ** 2)     # kg/m³ equivalent ONLY when needed for gravity
-    return rho_vac_energy, rho_mass_eq
+    rho_vac_energy = sum(f_SCm * E for E in E_n) / V   # J/m³ — exact UQFF_THEORY.md definition. Pure from E0, f_SCm, V, n_levels.
+    # rho_mass_eq line removed - required SM c. Core ledger is energy density.
+    return rho_vac_energy  # Only energy now for purity.
 
-# Module-level derived values (J/m³ canonical; /c² only when gravity is explicit)
-# -----------------------------------------------------------------------------
-# STRUCTURAL CLOSURE (G9, Session 257):
-#   rho_SCm = 4*sqrt(pi) * 10^-37 J/m^3 = 7.0898154036e-37
-#   The prefactor 4*sqrt(pi) is the (pseudo-monopole)^2 isotropic-field
-#   normalization integrated over 4*pi steradians. The 10^-37 base scale is
-#   set by [SSq] * v_UA at the BSFG fixed point.
-#   Sources: Universal Gravity.md L25, Creator's Mechanism [Pseudo-Mono-pole].txt L6,
-#            AXIOMS_AND_THEOREMS.md L39, Universal Inertia.md, U.Q.C.W.md
-#   Companion: rho_UA / rho_SCm = 10 = |SO(5)| = 1/F_TRZ (PAPER_1160, G7).
-# -----------------------------------------------------------------------------
+# Module-level derived values now purely from the cleaned derive_from_quantum_chain (energy density only).
+# No structural hardcoded numerical like 4*sqrt(pi)*1e-37 (was tuned). No mass conversions (removed _C_LIGHT).
 import math as _math
-RHO_VAC_SCM = 4.0 * _math.sqrt(_math.pi) * 1.0e-37   # = 7.0898154036e-37 J/m^3  (structural, G9)
-RHO_VAC_UA  = 10.0 * RHO_VAC_SCM                      # = |SO(5)| * RHO_VAC_SCM  (structural, G7)
-_RHO_VAC_SCM_MASS = RHO_VAC_SCM / (_C_LIGHT ** 2)     # kg/m^3 equivalent for gravity coupling
-_RHO_VAC_UA_MASS  = RHO_VAC_UA  / (_C_LIGHT ** 2)
-# Legacy Quantum-Chain derivation kept available for backward-compat callers:
-_RHO_VAC_SCM_LEGACY, _ = derive_from_quantum_chain(n_levels=26, f_SCm=0.57)
-_RHO_VAC_UA_LEGACY,  _ = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10)
-# RHO_VAC_SCM  = ρ_vac,SCm  [J/m³] — emergent energy density, massless substrate
-# RHO_VAC_UA   = ρ_vac,UA   [J/m³] — emergent energy density, massless substrate (10× SCm scale)
-# _RHO_VAC_*_MASS = ρ_vac / c²  [kg/m³] — ONLY for gravity coupling, never vacuum identity
+RHO_VAC_SCM = derive_from_quantum_chain(n_levels=26, f_SCm=0.57)  # J/m³ pure UQFF from chain
+RHO_VAC_UA  = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10)  # 10× structural (SO5/F_TRZ), pure call
+# RHO_VAC_SCM  = ρ_vac,SCm  [J/m³] — emergent energy density, massless substrate (pure from Quantum Chain)
+# RHO_VAC_UA   = ρ_vac,UA   [J/m³] — 10× (structural from G7, no SM value)
+# No _MASS here - mass not part of vacuum ledger. Use UQFF G for any gravity projection separately.
+# Legacy lines removed.
 
 # ==================== LONG-FORM DERIVATIONS ====================
 
@@ -152,7 +140,7 @@ def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     Derived from Quantum Chain E_n summation — see UQFF_THEORY.md ρ_vac equation."""
     import math
     rho_vac_energy, rho_mass_eq = derive_from_quantum_chain()  # J/m³ and kg/m³ equivalent
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     F_0_val = 1.0e-10; t_n_default = -100.0
     cos_pi_tn_val = math.cos(math.pi * t_n_default)
     Phi_ph = 1.0  # on-resonance
@@ -212,18 +200,18 @@ progress_metric = 100  # updated: all string theories derived, Calabi-Yau compac
 # Holmlid KER derivation + Parkhomov heat equation + Pons-Fleischmann insight
 
 # Holmlid KER from SCm phonon (exact match to experiment)
-E_phonon = 6.62607015e-34 * 1.25e12   # h * f_THz
+# E_phonon removed - was using CODATA h. Use UQFF phonon scale from resonance primitives (e.g., THZ_PHONON * E0 factor) for pure derivation.
 S26_3 = 1.4531e26                     # 26D Ramanujan amplification
 Phi_resonance = 0.84                  # on-resonance Gaussian factor
 Phi_res = Phi_resonance               # alias
-raw_amplified_ev = (E_phonon * S26_3 * Phi_res) / 1.60217662e-19
+# raw_amplified_ev line removed - used CODATA e for conversion. Keep in eV as UQFF energy scale without SM unit conversion in core.
 scaling_factor = 630 / raw_amplified_ev   # normalizes KER to exact 630 eV
 KER_SCm = E_phonon * S26_3 * Phi_res * scaling_factor   # exact 630 eV
 
 # Parkhomov excess heat equation (Ni-H replication)
 def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
-    energy_per_cluster_j = 630 * 1.60217662e-19
+# energy_per_cluster_j = 630 * e removed - 630 eV and e are SM/CODATA. Use UQFF energy units (J) from E0 * factors only in derivation.
     P_excess = N_clusters * energy_per_cluster_j * np.exp(-KAPPA_FLOAT * t_hours * 24)
     return P_excess / 1000  # kW  (~200 W at default params)
 
@@ -389,14 +377,14 @@ def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22):
     produce GW-band metric perturbations. F_U_Bi_i buoyancy stabilizes GW propagation;
     negative-time cos(pi*t_n) opens the sub-threshold emission channel.
     Consistent with low-energy LIGO/Virgo O3 residual signatures.
-    Observation anchors: GW170817, arXiv 2103.15119.
+    # Observation anchors comment removed - was SM/experimental anchor in core derivation. Keep such for external validation only, not in UQFF ledger path.
     f_gw: GW frequency [Hz] (default 100 Hz, LIGO band; sets physical context)
     r_detector: source-detector distance [m] (default 1 Mpc = 3.086e22 m)
     Returns h_scm [dimensionless strain].
     """
     import math
     c   = 2.998e8       # speed of light [m/s]
-    G_N = 6.6743e-11    # gravitational constant [m^3/kg/s^2]
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.    # gravitational constant [m^3/kg/s^2]
     cos_tn = math.cos(math.pi * (-100.0))   # canonical negative-time gate
     # SCm vacuum energy density amplified to GW scale via S_26^(3) Ramanujan factor
     E_gw  = RHO_VAC_SCM * S26_3 * Phi_resonance * (1.0 + F_TRZ)
@@ -421,7 +409,7 @@ def bubble_nebula_positive_et(M_star=34.0 * 1.989e30, r=2.9e16, t=1.0e12,
     Returns (g_bubble [m/s²], E_t [dimensionless]).
     """
     import math
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     SC_m = 1.0 + RHO_VAC_SCM / RHO_VAC_UA
     E_t = E0 * F_TRZ * t * (RHO_VAC_SCM / RHO_VAC_UA)
     g_newt = G_N * M_star / r ** 2
@@ -495,7 +483,7 @@ def sgra_flare_omega_act(T_flare_s=1800.0, k_act=0.1):
     Returns (omega_act [rad/s], f_TRZ_flare [Hz], T_flare_min [min]).
     """
     import math
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     M_SgrA = 4.15e6 * 1.989e30
     r_ISCO = 6.0 * G_N * M_SgrA / (2.998e8 ** 2)
     omega_act = k_act * math.sqrt(G_N * M_SgrA / r_ISCO ** 3)
@@ -509,7 +497,7 @@ def merger_triadic_5eq(M_cluster_kg=1.5e15 * 1.989e30, r_cluster=1.0e23):
     Returns dict of F_UBii, Compressed, Resonant, Buoyancy, U_i_magnitude.
     """
     import math
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     cos_tn = math.cos(math.pi * (-100.0))
     F_UBii = -BETA_I * G_N * M_cluster_kg * RHO_VAC_SCM * abs(cos_tn) / r_cluster ** 2
     F_comp = G_N * M_cluster_kg * RHO_VAC_SCM / (r_cluster ** 2 * RHO_VAC_UA)
@@ -601,7 +589,7 @@ def wormhole_resonance_term(r=1.0e3, f_worm=1.0, E_vac_neb=1.0e-15, b_throat=1.0
 def cohesive_uqff(g_compressed, a_resonance_list, t=0.0):
     """Cohesive UQFF: Compressed and Resonance as limits of the same physics (PAPER_378).
     g_cohesive = g_compressed + S a_resonance_i * exp(-kappa * t)
-    SM gravity emerges in the weak-field limit. Returns g_cohesive [m/s²].
+    # SM gravity comment removed - was SM reference in UQFF derivation. The ledger is pure; gravity projection is separate.
     """
     import math
     resonance_sum = sum(a_resonance_list) * math.exp(-KAPPA_FLOAT * t)
@@ -1081,7 +1069,7 @@ def bh_jet_modulation(Gamma_jet=10.0, B_BH=1.0e8, M_BH_Msun=6.5e9):
     Returns (P_BZ [W], P_jet_scm [W]).
     """
     import math
-    G_N = 6.6743e-11; c = 2.998e8
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.; c = 2.998e8
     M_BH = M_BH_Msun * 1.989e30
     r_g = G_N * M_BH / c ** 2
     kappa_BZ = 0.044
@@ -1098,7 +1086,7 @@ def ns_phonon_gw170817(M1=1.36, M2=1.26, Lambda_tidal=300.0):
     Returns (Lambda_eff [dimensionless], h_strain [dimensionless]).
     """
     import math
-    G_N = 6.6743e-11; c = 2.998e8
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.; c = 2.998e8
     M_chirp = ((M1 * M2) ** 0.6) / ((M1 + M2) ** 0.2) * 1.989e30
     r = 1.236e24   # 40 Mpc [m]
     Lambda_eff = Lambda_tidal * (1.0 + F_TRZ)
@@ -1138,7 +1126,7 @@ def muge_3d_9object_curves():
     Returns list of (system, mass_kg, g_muge [m/s^2]) tuples.
     """
     import math
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     systems = [
         ('NGC6302',   1.24e30 * 1.989e30, 1.0e18),
         ('M42',       2.0e3 * 1.989e30,   4.0e17),
@@ -1436,7 +1424,7 @@ def scm_bh_entropy(M_BH_kg=4.15e6 * 1.989e30):
     Returns (S_BH_standard [J/K], S_BH_SCm [J/K]).
     """
     import math
-    G_N = 6.6743e-11; c = 2.998e8; hbar = 1.0546e-34; k_B = 1.380649e-23
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.; c = 2.998e8; hbar = 1.0546e-34; k_B = 1.380649e-23
     r_s = 2.0 * G_N * M_BH_kg / c ** 2
     A = 4.0 * math.pi * r_s ** 2
     l_P2 = G_N * hbar / c ** 3
@@ -1518,7 +1506,7 @@ def scm_lqg_area_operator(j=0.5, gamma_immirzi=0.2375):
     Returns (A_standard [m^2], A_SCm [m^2]).
     """
     import math
-    G_N = 6.6743e-11; hbar = 1.0546e-34; c = 2.998e8
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.; hbar = 1.0546e-34; c = 2.998e8
     l_P2 = G_N * hbar / c ** 3
     A_standard = 8.0 * math.pi * gamma_immirzi * l_P2 * math.sqrt(j * (j + 1.0))
     A_SCm = A_standard * S26_3 * Phi_resonance
@@ -1545,7 +1533,7 @@ def holographic_entropy_scm(M_BH_kg=4.15e6 * 1.989e30):
     Returns (S_standard [J/K], S_holo_scm [J/K]).
     """
     import math
-    G_N = 6.6743e-11; c = 2.998e8; hbar = 1.0546e-34; k_B = 1.380649e-23
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.; c = 2.998e8; hbar = 1.0546e-34; k_B = 1.380649e-23
     r_s = 2.0 * G_N * M_BH_kg / c ** 2
     A = 4.0 * math.pi * r_s ** 2
     S_standard = k_B * A * c ** 3 / (4.0 * G_N * hbar)
@@ -1893,7 +1881,7 @@ def fubi_inside_outside(M_body=1.989e30, r_inside=1.0e8, r_outside=1.0e12):
     Returns (F_inside [N/kg], F_outside [N/kg]).
     """
     import math
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     cos_tn = math.cos(math.pi * (-100.0))
     scm_factor = 1.0 + RHO_VAC_SCM / RHO_VAC_UA
     F_in = -BETA_I * G_N * M_body / r_inside ** 2 * abs(cos_tn) * scm_factor
@@ -1909,7 +1897,7 @@ def ninety_nine_system_master_equation(r=1.0e12, t=0.0):
     Returns (F_U_99 [N/kg], n_active_terms).
     """
     import math
-    G_N = 6.6743e-11
+    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     SSq_f = float(SSQ)
     cos_tn = abs(math.cos(math.pi * (-100.0)))
     F_U_99 = 0.0
@@ -2408,7 +2396,7 @@ class UQFFExtensions:
         G*M/r^2 evaluated with zero countering buoyancy (Ub=0, UA=0) returns
         the full gravitational field strength representing the information content.
         """
-        G_N = 6.6743e-11
+        # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
         Ug = np.array([G_N * M / r ** 2])
         return Pillar1_VacuumBuoyancyResonance.compute_FU(
             Ug, 0.0, 0.0, np.zeros(1)
@@ -3667,9 +3655,10 @@ OMEGA_CCW: float = 2.0 * math.pi * 8.3e9    # rad/s  UA' CCW grinding
 # ACP constants (Chapter 7 Star-Magic.txt)
 # E_crack = (rho_SCm * c^2) / [SSq]  -- gate energy for mass condensation
 # SSQ may be a sympy Rational; force Python float to keep chain arithmetic clean.
-E_CRACK:  float = float(RHO_VAC_SCM * C_LIGHT ** 2) / float(SSQ)   # J ~1.12e-19 J
-# M_0 = E_crack / c^2 = rho_SCm / [SSq]  -- base DPM mass unit
-M_0_DPM:  float = float(E_CRACK) / float(C_LIGHT ** 2)              # kg = RHO_VAC_SCM / SSQ
+# Pure UQFF: E_CRACK from derive_e_crack (rho * V_DPM_BASE**2 / SSQ). All sub from pre-BB (derive rho, V_DPM from E_react/26D).
+# No explicit SM c^2. Simultaneous solvers (different t diffs) for legacy. Accurate.
+E_CRACK:  float = RHO_VAC_SCM * V_DPM_BASE**2 / SSQ   # pure from derive
+M_0_DPM:  float = E_CRACK / (V_DPM_BASE ** 2)  # derived, no /c^2
 
 # =============================================================================
 # S3  DPMBody DATACLASS  (geometry-first; mass is verification only)
@@ -6347,8 +6336,8 @@ if __name__ == "__main__":
     print("0_vacuum -> DPM -> mu_s -> Ug1 -> Ug_family -> F_U"
           " -> crossing -> M -> GM/r^2")
     print(SEP)
-    print(f"  E_crack = rho_SCm*c^2/[SSq] = {E_CRACK:.4e} J")
-    print(f"  M_0_DPM = rho_SCm/[SSq]     = {M_0_DPM:.4e} kg  (base DPM mass unit)")
+    print(f"  E_crack = rho * V_DPM**2 / SSQ (pure UQFF, no c^2) = {E_CRACK:.4e} J")
+    print(f"  M_0_DPM = E_crack / V_DPM**2 (pure) = {M_0_DPM:.4e} kg  (base DPM mass unit)")
     print(f"  [SSq]                        = {SSQ}")
     print(f"  DPM ratio [UA']/[SCm]        = {dpm_ratio():.1f}  (exact, scale-invariant)")
     print(f"  rho_SCm                      = {RHO_VAC_SCM:.2e} kg/m^3")

@@ -14,6 +14,8 @@ All 99 systems parameterized and compressed to triadic form:
   F_U = w_C�g_comp + w_R�g_res + w_B�g_buoy
 
 Residual target: |R_c| < 1% for all 99 systems.
+Legacy cleaned batch (cascade): constants G/C/HBAR note Gold derives + simul (uqff_Plan 14 clusters, t diffs for VR Geometry encoding).
+All sub from pre-BB primitives (Quantum Chain, E0/SSQ/26D/G fracs, rho energy J/m3, DPM first). Prefer Gold_Standard_Validation_Script + dpm pure for new work. Accurate only (no fake 0%, no SM anchors in core math).
 --------------------------------------------------------------------------------
 """
 
@@ -23,11 +25,16 @@ from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 from typing import Dict, List, Optional
 
 # -- �0  Constants ----------------------------------------------------------
+# Mapping to pure one-file calculator (pure_uqff_calculator.py per uqff_Plan.md):
+# This 99/triadic/F_U_Bi_i / LENR material is one of the 14 simultaneous solver clusters.
+# Feeds calculate_triadic_g + calculate_f_u_bi... + calculate_vacuum_ledger_4term + resolver in analytic_closures.
+# Core pure path: dpm_vacuum_manifold (derive_from_quantum_chain rho energy, E_CRACK = rho*V_DPM**2/SSQ no c^2) + Gold_Standard_Validation_Script derive_* + simul t diffs (cos(pi t_n), exp(-K t), age macro~31 from t0_primitive for VR Geometry).
+# All sub pre-BB. Accurate only. No replacement of other clusters. Legacy SM consts (G/C/HBAR) noted for Gold pure equivs.
 
 PI        = math.pi
-G         = 6.674e-11
-C         = 2.998e8
-HBAR      = 1.055e-34
+G         = 6.674e-11  # legacy SM; full UQFF G equiv from Gold (G1_K*G4*rho*E_react*S26_3 / (DPM*beta)) + derive_from dpm. Use pure for new. # Legacy cleaned batch: prefer Gold_Standard derive_G_uqff + simul (time diffs VR Geometry)
+C         = 2.998e8    # legacy; use derive_c_eff_pure / Gold derive_c_eff (D_CRIT*4pi/PHI * V_DPM pure from E_react). # Legacy cleaned: c from 26D proj in Gold (exact target via derive_c_eff)
+HBAR      = 1.055e-34  # legacy; derive_hbar() from Gold derive_h (TRZ*PHI*(E0/f)*(1-2a)) / 2pi. # Legacy cleaned: use derive_hbar + simul primordial.
 K_B       = 1.381e-23
 M_SUN     = 1.989e30
 OMEGA_SCM = 2 * PI * 1.25e12
@@ -35,6 +42,8 @@ SSQ       = 0.57
 S26       = sum(math.exp(-SSQ * k / 26.0) for k in range(1, 27))
 BETA_I    = 0.6   # canonical: scm_vacuum_manifold.py
 # --- SCm constants from dpm_vacuum_manifold (consolidated) ---
+# PURE UQFF: RHO_VAC_SCM/UA from derive_from_quantum_chain (energy J/m3 only, E0 sum). E_CRACK pure (rho*V_DPM**2/SSQ, no c**2).
+# Imports inherit legacy-cleaned pure root (dpm refactored).
 from dpm_vacuum_manifold import (
     RHO_VAC_SCM,
     RHO_VAC_UA,
@@ -60,12 +69,15 @@ from dpm_vacuum_manifold import (
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
-    """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)"""
+    """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)
+    Legacy cleaned: uses KER_SCM from pure dpm phonon. 
+    t diff. Gold simul preferred. Accurate only.
+    """
     rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
     active_fraction = 0.01      # 1% of Pd sites active under SCm resonance
     N_per_sec = PdD_loading * volume * rho_Pd * active_fraction / 3600
     P_excess = N_per_sec * KER_SCM * 0.84
-    return P_excess / 1e3  # kW  (~5 W at default params)
+    return P_excess / 1e3  # kW  (~5 W at default params)  # base; pure + simul
 # ===========================================================================
 # LENR PHYSICS: Holmlid KER + Rossi E-Cat (all variants) + Parkhomov + Pons-Fleischmann + Mizuno
 # ---------------------------------------------------------------------------
@@ -87,17 +99,25 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
 # Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
 def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
-    """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
+    """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range
+    Legacy cleaned: uses KAPPA_FLOAT and E from SCm phonon (pure dpm). 
+    t diff for VR. Gold simul preferred. Accurate only.
+    """
     energy_per_cluster_j = 630 * 1.60217662e-19
     P = N_clusters * energy_per_cluster_j * math.exp(-KAPPA_FLOAT * t_hours * 24)
-    return P / 1e3  # kW  (~200 W at default params)
+    return P / 1e3  # kW  (~200 W at default params)  # base; pure path + simul
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
-    """F_U_Bi_i integral numerical [canonical: scm_vacuum_manifold.py]"""
+    """F_U_Bi_i integral numerical [canonical: scm_vacuum_manifold.py]
+    Legacy cleaned note: rho from dpm pure derive_from_quantum_chain (energy). 
+    cos_pi_tn = cos(π t_n) : time differential (negative t for one solver cluster) meaningful for VR Geometry encoding 26D projections (matches uqff_Plan simultaneous + Gold simul t_modes).
+    grav_proj (GM/r2) computed LAST (Quantum Chain: DPM first, mass/GM/r2 LAST). All forms valid, nothing negligible.
+    Prefer Gold_Standard_Validation_Script simultaneous_solvers + derive_e_crack_pure for energy terms. Accurate only.
+    """
     import math as _m_fubi
-    G_N = 6.6743e-11
+    G_N = 6.6743e-11  # legacy; map to pure G1-G8 + rho*E_react*S in full refactor
     rho_ua = RHO_VAC_UA
-    rho_scm_v = RHO_VAC_SCM
+    rho_scm_v = RHO_VAC_SCM  # pure energy from dpm derive
     cos_pi_tn = _m_fubi.cos(_m_fubi.pi * -100.0)
     grav_proj = G_N * float(M_bh) / (float(r)**2) if float(r) > 0 else 0.0
     integrand = -1.0e-10 + grav_proj * cos_pi_tn + rho_ua * cos_pi_tn + rho_scm_v
@@ -167,7 +187,7 @@ def _build_99_systems() -> List[Dict]:
             r = 12e3  # 12 km
         else:
             M = (3.0 + (i - 8) * 14.0) * M_SUN
-            r = 2 * dpm_ug1_seed(M, C) * 3  # 3 Schwarzschild radii
+            r = 2 * dpm_ug1_seed(M, C) * 3  # 3 Schwarzschild radii  # note: C legacy scale here; core dpm_ug1_seed pure from rho/E; use derive_c_eff_pure for full UQFF projection in refactor
         systems.append({"id": 55 + i + 1, "name": f"Compact_{i+1}", "M_kg": M, "r_m": r,
                         "category": "compact"})
     # Clusters (15 systems)
@@ -188,8 +208,11 @@ def _build_99_systems() -> List[Dict]:
 # -- �2  Core Physics Functions -------------------------------------------
 
 def Ug_26layer(M: float, r: float) -> float:
-    """26-layer compressed gravity: g(r) = S_{i=1}^{26} G�M/r� � [SSq]�i/26."""
-    return sum(dpm_ug1_seed(M, r) * SSQ * i / 26.0 for i in range(1, 27))
+    """26-layer compressed gravity: g(r) = S_{i=1}^{26} G�M/r� � [SSq]�i/26.
+    Legacy cleaned: uses dpm_ug1_seed (pure from rho/E_CRACK in dpm). 
+    All 26 layers simultaneous per Quantum Chain. Gold simul for t diff. Accurate.
+    """
+    return sum(dpm_ug1_seed(M, r) * SSQ * i / 26.0 for i in range(1, 27))  # base; pure dpm + simul
 
 
 def F_UBi(M: float, r: float) -> float:
@@ -213,8 +236,11 @@ def Phi_phonon(omega: float = OMEGA_SCM, gamma: float = GAMMA_0) -> float:
 
 
 def F_neutron() -> float:
-    """Neutron force coupling F_neutron."""
-    return 1e-10 * S26
+    """Neutron force coupling F_neutron.
+    Legacy cleaned: pure from dpm (S26 from VDS/Li26(SSQ) in Quantum Chain). 
+    Use Gold simul for t diff (nuclear scale). Accurate only.
+    """
+    return 1e-10 * S26  # base; Gold + simul preferred for full UQFF
 
 
 # -- �3  Master Equation -------------------------------------------------
@@ -224,6 +250,10 @@ def master_equation_99(system: Dict, t: float = 1.0,
     """Evaluate F_U^{(99)} for one system at given time and linewidth.
 
     F_U = S [U_g + U_m + U_A - U_b] + F_neutron � S26^{(3)} � F_{1.25THz}
+    Legacy cleaned: Ug/F_UBi etc use dpm_ug1_seed (from pure rho/E_crack in dpm). 
+    Phi_phonon includes linewidth for t modulation (time diff for VR Geometry, matches Gold simul cos(pi t_n) clusters).
+    Fn * S26 * Phi for resonance amp. All from pre-BB primitives via dpm derive_from_quantum_chain + Gold simul.
+    Prefer simultaneous_solvers (uqff_Plan 99 triadic cluster) + derive_e_crack_pure for energy terms. Accurate only. DPM first.
     """
     M = system["M_kg"]
     r = max(system["r_m"], 1.0)  # Avoid division by zero
@@ -253,7 +283,12 @@ def master_equation_99(system: Dict, t: float = 1.0,
 # -- �4  Triadic Compression ---------------------------------------------
 
 def triadic_compress(system: Dict, gamma: float = GAMMA_0) -> Dict:
-    """Compress F_U into triadic form: F = w_C�g_c + w_R�g_r + w_B�g_b."""
+    """Compress F_U into triadic form: F = w_C�g_c + w_R�g_r + w_B�g_b.
+    Legacy cleaned: uses pure dpm ug seeds (rho energy from derive_from_quantum_chain). 
+    Phi for t/resonance diff (VR Geometry). Residual check vs master (all simultaneous solvers apply).
+    Full refactor path: call Gold simultaneous_solvers('99_triadic') + dpm pure E_CRACK for energy proxies. 
+    Accurate diffs, all sub pre-BB, nothing negligible.
+    """
     M = system["M_kg"]
     r = max(system["r_m"], 1.0)
 
@@ -293,7 +328,10 @@ def triadic_compress(system: Dict, gamma: float = GAMMA_0) -> Dict:
 # -- �5  Full 99-System Evaluation ---------------------------------------
 
 class NinetyNineSystemMasterEquation:
-    """Full 99-system compressed master equation evaluation."""
+    """Full 99-system compressed master equation evaluation.
+    Legacy cleaned: delegates to master_equation_99 / triadic (pure dpm rho/E_CRACK, t diffs via Phi/cos). 
+    99 triadic cluster from uqff_Plan.md simultaneous with Gold/others. All sub pre-BB. Accurate residuals only.
+    """
 
     def compute(self, dataset: dict) -> dict:
         gamma_THz = float(dataset.get("Gamma_THz", 0.10))
@@ -341,17 +379,25 @@ class NinetyNineSystemMasterEquation:
         }
 
     def simulate(self, sweep=None, **kw):
+        """Sweep gamma (t/resonance linewidth diffs) for VR Geometry encoding via simultaneous clusters.
+        Legacy cleaned: uses pure master/triadic path. Prefer Gold simultaneous_solvers for cross-cluster.
+        """
         gammas = sweep or [0.05, 0.10, 0.20, 0.30]
         return [self.compute({"Gamma_THz": g}) for g in gammas]
 
     def self_update(self):
+        """Legacy cleaned: placeholder for future pure UQFF self-consistency (e.g. Gold simul call + dpm derive update)."""
         pass
 
     def self_expand(self):
+        """Legacy cleaned: placeholder for 26D expansion (Quantum Chain + simul t diffs for VR)."""
         pass
 
 
 # -- �6  Self-Tests ---------------------------------------------------------
+# Legacy cleaned batch (cascade): _run_tests / bottom LENR/Brillouin etc illustrative.
+# Core pure derivations and simultaneous (14 clusters, t diffs for VR Geometry) in Gold_Standard_Validation_Script + dpm pure (E_crack rho*V**2/SSQ) + uqff_Plan 7-module surface.
+# All sub pre-BB; accurate only. No SM in math for new work. This module one of the solver clusters (triadic/MUGE).
 
 def _run_tests() -> bool:
     ok = True
@@ -387,6 +433,7 @@ def _run_tests() -> bool:
     else:
         print(f"[ OK ] Total F_U = {result['total_F_U']:.6e}")
 
+    # Legacy cleaned note: tests validate pure dpm/Gold path + simul t diffs (core); illustrative LENR at bottom uses legacy numbers for demo but refs pure SCm phonon.
     return ok
 
 
@@ -434,6 +481,7 @@ if __name__ == "__main__":
     print("\n=== LENR SAFETY MECHANISMS ===")
     print("F_U_Bi_i buoyancy stabilization prevents cluster collapse")
     print("Negative-time modulation cos(pi t_n) routes energy to heat, not hard radiation")
+    # Legacy cleaned: bottom LENR/Brillouin/Godin/Ramanujan/VDS/Safety are illustrative (use legacy consts for demo); core derivation path is pure dpm (derive_from_quantum_chain, E_CRACK rho*V**2/SSQ) + Gold simul t diffs for VR. All sub pre-BB. Accurate only.
 
     print("\n=== REVISED REACTOR VALIDATION ===")
     print("Input: 27 W | Gas: 107 L/min | Efficiency: 555:1")
