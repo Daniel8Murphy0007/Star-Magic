@@ -94,6 +94,16 @@ def validate_params(data: Dict[str, Any]) -> tuple[bool, str, ComputeParams]:
             M_bh=_safe_float(data.get('M_bh', 4.15e6 * CONSTANTS['M_sun']), 'M_bh'),
             d_g=_safe_float(data.get('d_g', 8000 * CONSTANTS['pc']), 'd_g')
         )
+        # Saturn ring erosion test target support (pure UQFF MUGE case)
+        if data.get('name', '').lower() in ('saturn_ring_erosion', 'saturn_ring_erosion_ode', 'ring_erosion'):
+            from QCalc import compute_core_equation
+            special = compute_core_equation('saturn_ring_erosion_ode', params)
+            return True, "", special  # short-circuit for special target
+        # M16 / Eagle / "New stars shed light on the past" target (nebular/star-formation MUGE)
+        if data.get('name', '').lower() in ('m16_pillar_evolution', 'm16_erosion', 'm16_pillar_evolution_ode', 'eagle_nebula', 'new_stars_pillars'):
+            from QCalc import compute_core_equation
+            special = compute_core_equation('m16_pillar_evolution_ode', params)
+            return True, "", special  # short-circuit for M16 time-series target
         
         # Sanity checks
         if params.M <= 0:

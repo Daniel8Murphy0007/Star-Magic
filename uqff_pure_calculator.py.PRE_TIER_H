@@ -34385,50 +34385,6 @@ def _l96_uqff_axiom_magnetoreception_closure() -> Dict[str, Any]:
     return {"magnetoreception_threshold_via_beta_i_x_Phi_res_pct_Earth_field": B_threshold_uqff_pct, "Earth_field_microT_typical": 50.0, "radical_pair_via_cryptochrome_SCm_coupling": True, "primary_source": "Magnetoreception_PAPER_1366_threshold_eq_beta_i_x_Phi_res"}
 
 
-
-def _l96_uqff_axiom_room_temp_superconductor_closure() -> Dict[str, Any]:
-    T_c_HTSC_base_K = PLANCK_H * OMEGA_SCM / K_B * K_MEX
-    T_c_max_UQFF_K = T_c_HTSC_base_K * float(D_PHYS)
-    T_room_K = 293.0
-    feasible = T_c_max_UQFF_K > T_room_K
-    return {"T_c_HTSC_base_K_PAPER_1347": T_c_HTSC_base_K, "T_c_max_UQFF_via_HTSC_x_D_phys_K": T_c_max_UQFF_K, "T_room_K": T_room_K, "room_temp_SC_FEASIBLE_in_UQFF": feasible, "primary_source": "Room_temp_SC_PAPER_1367_T_c_max_eq_HTSC_x_D_phys"}
-
-def _l96_uqff_axiom_fusion_ignition_lawson_closure() -> Dict[str, Any]:
-    Lawson_criterion_keV_s_per_m3_obs = 3.0e21
-    ITER_target = 5.0e21
-    Lawson_UQFF_via_SCm_phonon_boost = Lawson_criterion_keV_s_per_m3_obs / K_MEX
-    return {"Lawson_criterion_DT_fusion_keV_s_per_m3": Lawson_criterion_keV_s_per_m3_obs, "ITER_target": ITER_target, "Lawson_UQFF_reduced_via_SCm_phonon_assisted_confinement": Lawson_UQFF_via_SCm_phonon_boost, "fusion_ignition_via_SCm_phonon_x_F_U_Bi_i_compression_boost": True, "primary_source": "Fusion_PAPER_1368_Lawson_reduced_via_SCm_assist"}
-
-def _l96_uqff_axiom_tabletop_quantum_gravity_closure() -> Dict[str, Any]:
-    m_tabletop_kg = 1.0e-7
-    L_QG_uqff_m = PLANCK_H / (m_tabletop_kg * C_LIGHT)
-    L_Planck_m = 1.616e-35
-    return {"m_tabletop_kg_100_microgram": m_tabletop_kg, "L_QG_tabletop_via_h_over_m_c_meters": L_QG_uqff_m, "L_Planck_m": L_Planck_m, "tabletop_QG_detection_feasible_via_q_scope_THz_x_26D_folding_signature": True, "primary_source": "Tabletop_QG_PAPER_1369_via_h_over_m_c_q_scope"}
-
-def _l96_uqff_axiom_antimatter_production_closure() -> Dict[str, Any]:
-    efficiency_max_uqff = TRZ * BETA_I
-    return {"CERN_current_efficiency_obs": 1.0e-10, "theoretical_max_efficiency_UQFF_via_F_TRZ_x_beta_i": efficiency_max_uqff, "CW_x_CCW_DPM_grinding_provides_pair_production_mechanism": True, "primary_source": "Antimatter_PAPER_1370_max_eff_via_F_TRZ_x_beta_i"}
-
-def _l96_uqff_axiom_dm_direct_detection_closure() -> Dict[str, Any]:
-    sigma_floor_uqff_cm2 = 0.00729735 ** 4 * 1.0e-40
-    XENON_current_bound = 1.0e-48
-    return {"XENON_nT_bound_cm2": XENON_current_bound, "sigma_floor_UQFF_via_Lambda_to_4": sigma_floor_uqff_cm2, "NO_direct_detection_expected_per_PAPER_1253_DM_emergent_mode": True, "all_future_XENON_LZ_runs_predicted_NULL": True, "primary_source": "DM_detection_PAPER_1371_NULL_per_emergent_mode_PAPER_1253"}
-
-def _l96_uqff_axiom_gw_standard_siren_closure() -> Dict[str, Any]:
-    H0_UQFF_canonical_km_s_Mpc = 67.4
-    H0_GW170817_siren_km_s_Mpc = 70.0
-    return {"H0_UQFF_canonical_km_s_Mpc": H0_UQFF_canonical_km_s_Mpc, "H0_GW170817_standard_siren_obs_km_s_Mpc": H0_GW170817_siren_km_s_Mpc, "GW_siren_consistent_with_UQFF_canonical": True, "future_O5_run_will_tighten_to_UQFF_67_4": True, "primary_source": "GW_siren_H0_PAPER_1372_UQFF_eq_67_4"}
-
-def _l96_uqff_axiom_vacuum_birefringence_closure() -> Dict[str, Any]:
-    E_Schwinger_V_per_m = 1.32e18
-    threshold_UQFF_factor = 0.00729735 ** 2
-    return {"E_Schwinger_critical_V_per_m": E_Schwinger_V_per_m, "PVLAS_null_at_2024_consistent_with_UQFF": True, "vacuum_birefringence_observable_at_E_threshold_Lambda_squared_x_E_S": E_Schwinger_V_per_m * threshold_UQFF_factor, "Lambda_squared_threshold_factor": threshold_UQFF_factor, "primary_source": "Vacuum_birefringence_PAPER_1373_threshold_eq_Lambda_squared_x_E_S"}
-
-def _l96_uqff_axiom_light_by_light_scattering_closure() -> Dict[str, Any]:
-    sigma_uqff_alpha_to_4 = 0.00729735 ** 4
-    return {"ATLAS_2017_observation_confirmed": True, "sigma_light_by_light_UQFF_via_alpha_to_4_eq_Lambda_to_4_IDENTITY": sigma_uqff_alpha_to_4, "alpha_eq_Lambda_closed_ledger_identity_PAPER_1255_v2": True, "primary_source": "Light_by_light_PAPER_1374_sigma_eq_alpha_to_4_eq_Lambda_to_4_IDENTITY"}
-
-
 PARADOX_TO_MILLENNIUM: Dict[str, str] = {
     "yang_mills_mass_gap":     "yang_mills",
     "riemann_hypothesis":      "riemann",
@@ -34667,21 +34623,6 @@ PARADOX_TO_CLOSURE = {
     "photosynthesis_coherence":     _l96_uqff_axiom_quantum_biology_photosynthesis_closure,
     "olfactory_vibrational":        _l96_uqff_axiom_olfactory_vibrational_closure,
     "magnetoreception":             _l96_uqff_axiom_magnetoreception_closure,
-    "room_temp_superconductor":     _l96_uqff_axiom_room_temp_superconductor_closure,
-    "room_temp_sc":                 _l96_uqff_axiom_room_temp_superconductor_closure,
-    "fusion_ignition_lawson":       _l96_uqff_axiom_fusion_ignition_lawson_closure,
-    "fusion_lawson":                _l96_uqff_axiom_fusion_ignition_lawson_closure,
-    "tabletop_quantum_gravity":     _l96_uqff_axiom_tabletop_quantum_gravity_closure,
-    "tabletop_qg":                  _l96_uqff_axiom_tabletop_quantum_gravity_closure,
-    "antimatter_production":        _l96_uqff_axiom_antimatter_production_closure,
-    "dm_direct_detection":          _l96_uqff_axiom_dm_direct_detection_closure,
-    "dark_matter_direct_detection": _l96_uqff_axiom_dm_direct_detection_closure,
-    "gw_standard_siren":            _l96_uqff_axiom_gw_standard_siren_closure,
-    "standard_siren_h0":            _l96_uqff_axiom_gw_standard_siren_closure,
-    "vacuum_birefringence":         _l96_uqff_axiom_vacuum_birefringence_closure,
-    "schwinger_pair":               _l96_uqff_axiom_vacuum_birefringence_closure,
-    "light_by_light":               _l96_uqff_axiom_light_by_light_scattering_closure,
-    "light_light_scattering":       _l96_uqff_axiom_light_by_light_scattering_closure,
     "mu_to_e_gamma":                _l96_uqff_axiom_clfv_charged_lepton_flavor_violation_closure,
     "goldbach": _l96_uqff_axiom_goldbach_conjecture_closure,
     "twin_prime": _l96_uqff_axiom_twin_prime_conjecture_closure,
@@ -42387,14 +42328,6 @@ WHITEPAPER_TO_DOMAIN: Dict[int, str] = {
     1364: "uqff_core",
     1365: "uqff_core",
     1366: "uqff_core",
-    1367: "uqff_core",
-    1368: "uqff_core",
-    1369: "uqff_core",
-    1370: "uqff_core",
-    1371: "uqff_core",
-    1372: "uqff_core",
-    1373: "uqff_core",
-    1374: "uqff_core",
 }
 
 WHITEPAPER_DOMAIN_DISPATCH = {
