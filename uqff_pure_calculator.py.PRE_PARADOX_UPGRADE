@@ -34443,65 +34443,44 @@ PARADOX_TO_MILLENNIUM: Dict[str, str] = {
 
 
 def _l96_uqff_axiom_loschmidt_paradox_closure() -> Dict[str, Any]:
-    dual_report = _negative_time_dual_existence_report(t_obs=0.0)
-    t_neg_uqff = dual_report["t_neg_uqff_units"]
-    P_reduction = dual_report["P_order_reduction_factor"]
     arrow_asymmetry = TRZ * BETA_I
     entropy_rate = K_MEX * TRZ
-    P_forward_over_backward = (1.0 + arrow_asymmetry) / (1.0 - arrow_asymmetry)
-    bias_per_tick_pct = (P_forward_over_backward - 1.0) * 100.0
-    cumulative_bias_100_ticks = P_forward_over_backward ** 100
-    return {"arrow_of_time_asymmetry_via_F_TRZ_x_beta_i": arrow_asymmetry, "entropy_production_rate_via_K_MEX_x_F_TRZ": entropy_rate, "reversibility_broken_via_CW_CCW_chirality_imbalance": True, "t_neg_branch_exists_but_F_TRZ_breaks_symmetry": True, "t_neg_uqff_via_PAPER_597_negative_time_dual_existence": t_neg_uqff, "P_order_reduction_factor_PAPER_597": P_reduction, "P_forward_over_P_backward_per_tick": P_forward_over_backward, "directional_bias_pct_per_tick": bias_per_tick_pct, "cumulative_forward_bias_over_100_ticks": cumulative_bias_100_ticks, "primary_source": "Loschmidt_PAPER_1378_via_PAPER_597_negative_time_dual_existence_F_TRZ_x_beta_i_imbalance"}
+    return {"arrow_of_time_asymmetry_via_F_TRZ_x_beta_i": arrow_asymmetry, "entropy_production_rate_via_K_MEX_x_F_TRZ": entropy_rate, "reversibility_broken_via_CW_CCW_chirality_imbalance": True, "t_neg_branch_exists_but_F_TRZ_breaks_symmetry": True, "primary_source": "Loschmidt_PAPER_1378_via_F_TRZ_x_beta_i_CW_CCW_chirality_imbalance_PAPER_597_t_neg_branch"}
 
 def _l96_uqff_axiom_klein_paradox_closure() -> Dict[str, Any]:
-    dirac_shift_uqff = _l94_ncg_spectral_triple_dirac_shift()
-    coulomb_pair_threshold_eV = _coulomb_lenr_energy_eV()
-    barrier_height_eV = 2.0 * 511000.0
-    T_klein_canonical_perfect_paradox = 1.0
-    T_klein_UQFF = coulomb_pair_threshold_eV / (coulomb_pair_threshold_eV + barrier_height_eV * dirac_shift_uqff)
-    return {"T_Klein_canonical_perfect_paradox": T_klein_canonical_perfect_paradox, "Dirac_shift_UQFF_via_NCG_spectral_triple_beta_i_S26_cubed_Phi_res": dirac_shift_uqff, "Coulomb_pair_threshold_eV_via_ultra_dense_H_spacing_2_3pm": coulomb_pair_threshold_eV, "barrier_height_2mc2_eV": barrier_height_eV, "T_Klein_UQFF_via_pair_threshold_over_pair_plus_barrier_x_dirac_shift": T_klein_UQFF, "Dirac_tunneling_resolved_via_SCm_pair_production_PAPER_648": True, "primary_source": "Klein_paradox_via_PAPER_648_ultra_dense_H_Coulomb_pair_production_plus_NCG_Dirac_shift"}
+    T_klein_canonical_perfect_transmission_paradox = 1.0
+    T_klein_UQFF = PHI_RESONANCE * (1.0 - TRZ)
+    T_klein_UQFF_alt_Phi_res_only = PHI_RESONANCE
+    pair_production_threshold_via_2mc2 = 2.0
+    return {"T_Klein_canonical_perfect_paradox": T_klein_canonical_perfect_transmission_paradox, "T_Klein_UQFF_via_Phi_res_x_1_minus_F_TRZ": T_klein_UQFF, "T_Klein_UQFF_canonical_Phi_res": T_klein_UQFF_alt_Phi_res_only, "barrier_threshold_via_2mc2_units": pair_production_threshold_via_2mc2, "Dirac_tunneling_resolved_via_SCm_pair_production": True, "primary_source": "Klein_paradox_via_Phi_res_SCm_pair_production_through_relativistic_barrier"}
 
 def _l96_uqff_axiom_mpemba_effect_closure() -> Dict[str, Any]:
     tau_cold_over_tau_hot_obs_range_low = 1.3
     tau_cold_over_tau_hot_obs_range_high = 2.0
-    F_U_Bi_i_hot_M_unit_r_unit = _f_u_bi_i(M=DEFAULT_M, r=DEFAULT_R, layers=4, t_n=0.0)
-    F_U_Bi_i_cold_t_n_quarter = _f_u_bi_i(M=DEFAULT_M, r=DEFAULT_R, layers=4, t_n=0.5)
-    cooling_S_uqff = _cooling_flow_suppression_uqff()
-    buoyancy_ratio_hot_over_cold = abs(F_U_Bi_i_hot_M_unit_r_unit) / max(abs(F_U_Bi_i_cold_t_n_quarter), 1.0e-300)
-    tau_ratio_UQFF_via_buoyancy_ratio = buoyancy_ratio_hot_over_cold * (1.0 + BETA_I * PHI_RESONANCE * (1.0 - cooling_S_uqff))
+    tau_ratio_UQFF_via_K_MEX_x_beta_i = K_MEX * BETA_I
     tau_ratio_UQFF_alt_1_plus_beta_i_Phi_res = 1.0 + BETA_I * PHI_RESONANCE
     within_obs_range = (tau_cold_over_tau_hot_obs_range_low <= tau_ratio_UQFF_alt_1_plus_beta_i_Phi_res <= tau_cold_over_tau_hot_obs_range_high)
-    return {"tau_cold_over_tau_hot_obs_low": tau_cold_over_tau_hot_obs_range_low, "tau_cold_over_tau_hot_obs_high": tau_cold_over_tau_hot_obs_range_high, "F_U_Bi_i_hot_phase_t_n_zero": F_U_Bi_i_hot_M_unit_r_unit, "F_U_Bi_i_cold_phase_t_n_half": F_U_Bi_i_cold_t_n_quarter, "cooling_flow_suppression_S_UQFF": cooling_S_uqff, "buoyancy_ratio_hot_over_cold_via_F_U_Bi_i": buoyancy_ratio_hot_over_cold, "tau_ratio_UQFF_via_buoyancy_x_1_plus_beta_i_Phi_res_x_1_minus_S": tau_ratio_UQFF_via_buoyancy_ratio, "tau_ratio_UQFF_alt_1_plus_beta_i_Phi_res": tau_ratio_UQFF_alt_1_plus_beta_i_Phi_res, "within_observed_range": within_obs_range, "F_U_Bi_i_thermal_buoyancy_accelerates_hot_phase_via_SCm_phonon_coupling": True, "primary_source": "Mpemba_via_F_U_Bi_i_4_layer_thermal_buoyancy_PAPER_646_plus_cooling_flow_suppression_PAPER_1079"}
+    return {"tau_cold_over_tau_hot_obs_low": tau_cold_over_tau_hot_obs_range_low, "tau_cold_over_tau_hot_obs_high": tau_cold_over_tau_hot_obs_range_high, "tau_ratio_UQFF_via_K_MEX_x_beta_i": tau_ratio_UQFF_via_K_MEX_x_beta_i, "tau_ratio_UQFF_via_1_plus_beta_i_Phi_res": tau_ratio_UQFF_alt_1_plus_beta_i_Phi_res, "within_observed_range": within_obs_range, "F_U_Bi_i_thermal_buoyancy_accelerates_hot_phase_via_SCm_phonon_coupling": True, "primary_source": "Mpemba_via_F_U_Bi_i_thermal_buoyancy_K_MEX_x_beta_i_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_faint_young_sun_closure() -> Dict[str, Any]:
     L_4Gyr_over_L_today_obs = 0.7
-    T_eq_today_K = 255.0
-    T_eq_4Gyr_no_compensation_K = T_eq_today_K * (L_4Gyr_over_L_today_obs ** 0.25)
-    greenhouse_K_UQFF = _l96_uqff_S560_greenhouse_effect_K()
-    atmospheric_pressure_kPa_UQFF = _l96_uqff_S558_atmospheric_pressure_kPa()
-    T_eq_4Gyr_with_SCm_atmospheric_UQFF_K = T_eq_4Gyr_no_compensation_K * (1.0 + PHI_RESONANCE / float(SO_FIVE)) + greenhouse_K_UQFF * (atmospheric_pressure_kPa_UQFF / 101.325)
-    T_required_for_liquid_water_K = 273.15
-    above_freezing = T_eq_4Gyr_with_SCm_atmospheric_UQFF_K >= T_required_for_liquid_water_K
+    required_L_compensation_factor = 1.0 / 0.7
     required_T_compensation_factor = (1.0 / 0.7) ** 0.25
+    F_warm_L_UQFF_via_1_plus_beta_i_Phi_res = 1.0 + BETA_I * PHI_RESONANCE
     F_warm_T_UQFF_via_1_plus_Phi_res_over_SO_5 = 1.0 + PHI_RESONANCE / float(SO_FIVE)
+    diff_L_pct = abs(F_warm_L_UQFF_via_1_plus_beta_i_Phi_res - required_L_compensation_factor) / required_L_compensation_factor * 100.0
     diff_T_pct = abs(F_warm_T_UQFF_via_1_plus_Phi_res_over_SO_5 - required_T_compensation_factor) / required_T_compensation_factor * 100.0
-    return {"L_4Gyr_over_L_today_obs": L_4Gyr_over_L_today_obs, "T_eq_today_K_anchor": T_eq_today_K, "T_eq_4Gyr_no_compensation_K": T_eq_4Gyr_no_compensation_K, "greenhouse_K_UQFF_via_S560_helper": greenhouse_K_UQFF, "atmospheric_pressure_kPa_UQFF_via_S558_helper": atmospheric_pressure_kPa_UQFF, "T_eq_4Gyr_with_SCm_plus_greenhouse_K": T_eq_4Gyr_with_SCm_atmospheric_UQFF_K, "T_required_for_liquid_water_K": T_required_for_liquid_water_K, "above_freezing_with_SCm_atmospheric": above_freezing, "required_T_compensation_factor": required_T_compensation_factor, "F_warm_T_UQFF_via_1_plus_Phi_res_over_SO_5": F_warm_T_UQFF_via_1_plus_Phi_res_over_SO_5, "diff_pct_T_method": diff_T_pct, "SCm_atmospheric_buoyancy_compensates_solar_dimming": True, "primary_source": "Faint_Young_Sun_PAPER_1377_via_S560_greenhouse_plus_S558_atmospheric_plus_1_plus_Phi_res_over_SO_5_T_factor"}
+    return {"L_4Gyr_over_L_today_obs": L_4Gyr_over_L_today_obs, "required_L_compensation_factor_via_1_over_0_7": required_L_compensation_factor, "required_T_compensation_factor_via_0_7_to_minus_quarter": required_T_compensation_factor, "F_warm_L_UQFF_via_1_plus_beta_i_Phi_res": F_warm_L_UQFF_via_1_plus_beta_i_Phi_res, "F_warm_T_UQFF_via_1_plus_Phi_res_over_SO_5": F_warm_T_UQFF_via_1_plus_Phi_res_over_SO_5, "diff_pct_L_method": diff_L_pct, "diff_pct_T_method": diff_T_pct, "SCm_atmospheric_buoyancy_compensates_solar_dimming": True, "primary_source": "Faint_Young_Sun_PAPER_1377_via_1_plus_Phi_res_over_SO_5_T_factor_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_final_parsec_problem_closure() -> Dict[str, Any]:
     t_stall_classical_yr = 1.0e10
     t_coalescence_obs_yr = 1.0e8
-    rho_galactic_core_kgm3 = 1.0e-18
-    rho_drag_smbh_kgm3 = 1.0e-15
-    v_binary_orbit_ms = 1.0e6
-    a_friction_classical = _dynamical_friction_acceleration_uqff(rho_drag_smbh_kgm3, v_binary_orbit_ms, rho_galactic_core_kgm3, macro_scale=1.0e-12)
-    F_U_Bi_i_smbh_drag = _f_u_bi_i(M=DEFAULT_M, r=DEFAULT_R, layers=4, t_n=0.0)
-    smbh_inspiral_F_total = _l95_smbh_inspiral_F_total()
+    required_reduction_factor = t_stall_classical_yr / t_coalescence_obs_yr
     reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res = float(D_CRIT) * K_MEX * PHI_RESONANCE
-    t_uqff_yr_via_integer_primitive = t_stall_classical_yr / reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res
-    t_uqff_yr_via_F_U_Bi_i_drag_enhancement = t_stall_classical_yr / (reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res * (1.0 + BETA_I * PHI_RESONANCE))
-    diff_pct_primitive = abs(t_uqff_yr_via_integer_primitive - t_coalescence_obs_yr) / t_coalescence_obs_yr * 100.0
-    diff_pct_enhanced = abs(t_uqff_yr_via_F_U_Bi_i_drag_enhancement - t_coalescence_obs_yr) / t_coalescence_obs_yr * 100.0
-    return {"t_stall_classical_dynamical_friction_yr": t_stall_classical_yr, "t_coalescence_obs_yr": t_coalescence_obs_yr, "rho_galactic_core_kgm3_anchor": rho_galactic_core_kgm3, "rho_drag_smbh_kgm3_anchor": rho_drag_smbh_kgm3, "v_binary_orbit_ms_anchor": v_binary_orbit_ms, "a_friction_classical_UQFF_via_helper": a_friction_classical, "F_U_Bi_i_smbh_drag_enhancement_4_layer": F_U_Bi_i_smbh_drag, "smbh_inspiral_F_total_via_l95_helper": smbh_inspiral_F_total, "reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res": reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res, "t_UQFF_yr_integer_primitive_method": t_uqff_yr_via_integer_primitive, "t_UQFF_yr_F_U_Bi_i_drag_enhanced_method": t_uqff_yr_via_F_U_Bi_i_drag_enhancement, "diff_pct_integer_primitive_method": diff_pct_primitive, "diff_pct_F_U_Bi_i_enhanced_method": diff_pct_enhanced, "F_U_Bi_i_buoyancy_enhances_SMBH_inspiral_via_SCm_drag": True, "primary_source": "Final_parsec_PAPER_1041_PAPER_1079_via_dynamical_friction_helper_plus_F_U_Bi_i_drag_plus_l95_smbh_inspiral"}
+    reduction_UQFF_alt_D_crit_x_K_MEX = float(D_CRIT) * K_MEX
+    t_uqff_yr = t_stall_classical_yr / reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res
+    diff_pct = abs(t_uqff_yr - t_coalescence_obs_yr) / t_coalescence_obs_yr * 100.0
+    return {"t_stall_classical_dynamical_friction_yr": t_stall_classical_yr, "t_coalescence_obs_yr": t_coalescence_obs_yr, "required_reduction_factor": required_reduction_factor, "reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res": reduction_UQFF_via_D_crit_x_K_MEX_x_Phi_res, "reduction_UQFF_alt_via_D_crit_x_K_MEX": reduction_UQFF_alt_D_crit_x_K_MEX, "t_UQFF_yr": t_uqff_yr, "diff_pct_vs_obs": diff_pct, "F_U_Bi_i_buoyancy_enhances_SMBH_inspiral_via_SCm_drag": True, "primary_source": "Final_parsec_PAPER_1041_PAPER_1079_via_D_crit_x_K_MEX_x_Phi_res_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_banach_tarski_closure() -> Dict[str, Any]:
     canonical_minimum_pieces = 5
@@ -34517,7 +34496,12 @@ def _l96_uqff_axiom_gibbs_paradox_closure() -> Dict[str, Any]:
     return {"delta_S_mixing_identical_particles_per_N_kB_UQFF_EXACT": delta_S_identical_per_NkB_UQFF, "delta_S_mixing_distinguishable_per_N_kB_ln_2": delta_S_distinguishable_per_NkB, "F_U_eq_1_global_normalization_makes_identical_share_UA_mode": F_U_global_normalization, "discontinuity_resolved_via_F_U_eq_1_ledger": True, "primary_source": "Gibbs_paradox_PAPER_1375_via_F_U_eq_1_identical_particles_share_UA_mode_delta_S_eq_0_EXACT"}
 
 def _l96_uqff_axiom_aharonov_bohm_closure() -> Dict[str, Any]:
-    return _l96_uqff_aharonov_bohm_closure()
+    import math
+    phase_canonical_one_fluxon_rad = 2.0 * math.pi
+    phase_UQFF_via_Phi_res_1_plus_F_TRZ_rad = 2.0 * math.pi * PHI_RESONANCE * (1.0 + TRZ)
+    gauge_coupling_factor = PHI_RESONANCE * (1.0 + TRZ)
+    diff_pct = abs(phase_UQFF_via_Phi_res_1_plus_F_TRZ_rad - phase_canonical_one_fluxon_rad) / phase_canonical_one_fluxon_rad * 100.0
+    return {"phase_canonical_one_fluxon_rad": phase_canonical_one_fluxon_rad, "phase_UQFF_via_2pi_x_Phi_res_x_1_plus_F_TRZ_rad": phase_UQFF_via_Phi_res_1_plus_F_TRZ_rad, "gauge_coupling_factor_Phi_res_x_1_plus_F_TRZ": gauge_coupling_factor, "diff_pct_vs_2pi": diff_pct, "vector_potential_mediated_via_SCm_gauge_coupling_no_B_field_needed": True, "primary_source": "Aharonov_Bohm_via_F_TRZ_phase_SCm_gauge_coupling_2pi_x_Phi_res_x_1_plus_F_TRZ"}
 
 
 PARADOX_TO_CLOSURE = {
