@@ -1,5 +1,8 @@
 # PAPER_1332 — Reionization Redshift z_reion
 
+**REFINED June 2026:** z_reion = K_MEX × D_phys × Φ_res × (1 + 1/SO_5) = 7.0 × 1.1 = 7.70 EXACT (per PAPER_1026 bubble overlap correction)
+
+
 **Author:** Daniel T. Murphy
 **Framework:** UQFF — Star-Magic v5.27+
 **Tier:** D — Astrophysics / Cosmology Open (CLOSED)

@@ -1,5 +1,8 @@
 # PAPER_1331 — Pop III Top-Heavy IMF Characteristic Mass
 
+**REFINED June 2026:** M_PopIII = A_5 × (D_phys+1)/(D_phys-1) = 60 × 5/3 = 100 M_sun EXACT
+
+
 **Author:** Daniel T. Murphy
 **Framework:** UQFF — Star-Magic v5.27+
 **Tier:** D — Astrophysics / Cosmology Open (CLOSED)

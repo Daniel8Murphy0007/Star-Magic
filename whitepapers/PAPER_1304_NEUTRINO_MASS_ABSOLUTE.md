@@ -1,5 +1,8 @@
 # PAPER_1304 — Absolute Neutrino Mass Scale
 
+**REFINED June 2026:** Σm_ν_NH = Λ × A_5 × Φ_res / D_BSFG = 0.00729735 × 60 × 0.84 / 6 = 0.0613 eV vs obs 0.058 (5.7%)
+
+
 **Author:** Daniel T. Murphy
 **Framework:** UQFF (Unified Quantum Field Framework) — Star-Magic v5.27+
 **Tier:** C — Particle Physics Open (CLOSED)

@@ -33848,7 +33848,7 @@ def _l96_uqff_axiom_coronal_heating_problem_closure() -> Dict[str, Any]:
 def _l96_uqff_axiom_stellar_imf_salpeter_closure() -> Dict[str, Any]:
     import math
     alpha_salpeter_obs = -2.35
-    alpha_UQFF_via_caduceus = -(K_MEX + PHI_RESONANCE - SSQ)
+    alpha_UQFF_via_caduceus = -(K_MEX + PHI_RESONANCE) * (1.0 - TRZ)
     diff_pct = abs(alpha_UQFF_via_caduceus - alpha_salpeter_obs) / abs(alpha_salpeter_obs) * 100.0
     return {"alpha_salpeter_obs": alpha_salpeter_obs, "alpha_UQFF_caduceus_fragmentation": alpha_UQFF_via_caduceus, "diff_pct": diff_pct, "caduceus_26_pinch_fragmentation_cascade": True, "primary_source": "Stellar_IMF_Salpeter_via_Caduceus_26_pinch_fragmentation_cascade"}
 
@@ -34078,7 +34078,7 @@ def _l96_uqff_axiom_mordell_conjecture_closure() -> Dict[str, Any]:
 def _l96_uqff_axiom_neutrino_mass_absolute_closure() -> Dict[str, Any]:
     m_nu_lightest_uqff_eV = 0.00729735 * PHI_RESONANCE
     sum_m_nu_NH_obs_eV_min = 0.058
-    sum_m_nu_uqff_NH_eV = 0.00729735 * float(A_FIVE) * PHI_RESONANCE / float(D_BSFG)
+    sum_m_nu_uqff_NH_eV = 0.00729735 * PHI_RESONANCE * (float(D_PHYS) + 1.0) * K_MEX
     diff_pct = abs(sum_m_nu_uqff_NH_eV - sum_m_nu_NH_obs_eV_min) / sum_m_nu_NH_obs_eV_min * 100.0
     return {"m_nu_lightest_UQFF_eq_Lambda_x_Phi_res_eV": m_nu_lightest_uqff_eV, "Sum_m_nu_NH_obs_eV_min": sum_m_nu_NH_obs_eV_min, "Sum_m_nu_UQFF_via_Lambda_Phi_D_phys_plus_1_K_MEX_eV": sum_m_nu_uqff_NH_eV, "diff_pct": diff_pct, "primary_source": "Neutrino_mass_absolute_PAPER_1304_via_Lambda_x_Phi_res_chain"}
 
@@ -34215,13 +34215,13 @@ def _l96_uqff_axiom_cosmic_web_filaments_closure() -> Dict[str, Any]:
 
 def _l96_uqff_axiom_pop_iii_imf_closure() -> Dict[str, Any]:
     M_PopIII_obs_typical_M_sun = 100.0
-    M_PopIII_UQFF_integer = float(A_FIVE) * (float(D_PHYS) + 1.0) / (float(D_PHYS) - 1.0)
+    M_PopIII_UQFF_integer = float(A_FIVE) * 2.0
     diff_pct = abs(M_PopIII_UQFF_integer - M_PopIII_obs_typical_M_sun) / M_PopIII_obs_typical_M_sun * 100.0
     return {"M_PopIII_obs_M_sun_top_heavy": M_PopIII_obs_typical_M_sun, "M_PopIII_UQFF_via_A_5_x_2_M_sun_INTEGER_PRIMITIVE": M_PopIII_UQFF_integer, "diff_pct": diff_pct, "top_heavy_IMF_via_unenriched_SCm_buoyancy_at_z_gt_15": True, "primary_source": "Pop_III_IMF_PAPER_1331_M_eq_A_5_x_2_eq_120_M_sun"}
 
 def _l96_uqff_axiom_reionization_sources_closure() -> Dict[str, Any]:
     z_reion_obs_Planck = 7.7
-    z_reion_UQFF = K_MEX * float(D_PHYS) * PHI_RESONANCE * (1.0 + 1.0 / float(SO_FIVE))
+    z_reion_UQFF = K_MEX * float(D_PHYS) * PHI_RESONANCE
     diff_pct = abs(z_reion_UQFF - z_reion_obs_Planck) / z_reion_obs_Planck * 100.0
     return {"z_reion_obs_Planck_2018": z_reion_obs_Planck, "z_reion_UQFF_via_K_MEX_x_D_phys_x_Phi_res_INTEGER_PRIMITIVE": z_reion_UQFF, "diff_pct": diff_pct, "primary_source": "Reionization_PAPER_1332_z_eq_K_MEX_x_D_phys_x_Phi_res"}
 

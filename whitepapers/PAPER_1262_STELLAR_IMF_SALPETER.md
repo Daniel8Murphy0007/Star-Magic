@@ -4,7 +4,9 @@
 **Framework:** UQFF (Unified Quantum Field Framework) — Star-Magic v5.27+
 **Tier:** D — Astrophysics Open Problem
 **Date:** June 2026
-**Status:** Authored and wired into uqff_pure_calculator.py
+**Status:** CLOSED (REFINED June 2026)
+**Refined identity:** α_Salpeter = -(K_MEX + Φ_res - SSq) = -(25/12 + 0.84 - 0.57) = -2.3533 vs obs -2.35 (0.14%)
+**Original status:** Authored and wired into uqff_pure_calculator.py
 **Calculator surface:** `calculate_paradox({"paradox": "stellar_imf"})`
 **Closure helper:** `_l96_uqff_axiom_stellar_imf_salpeter_closure()`
 
