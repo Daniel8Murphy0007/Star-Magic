@@ -5785,7 +5785,7 @@ def _l96_uqff_hubble_tension_canonical_report() -> Dict[str, Any]:
         "shoes_local_h0_km_s_Mpc":              shoes,
         "effective_observed_mean_km_s_Mpc":     mean,
         "primary_result":                       canonical,
-        "primary_source":                       "static_vacuum_ledger_PAPER_1170_w_eq_minus_1_F_U_eq_1",
+        "primary_source":                       "static_vacuum_ledger_w_eq_minus_1_F_U_eq_1",
         "mean_status":                          "contextual_only_not_first_principles",
         "pct_canonical_vs_planck":              pct_vs_planck,
         "pct_canonical_vs_shoes":               pct_vs_shoes,
@@ -5844,7 +5844,7 @@ def _l96_uqff_matter_radiation_equality_report(rho_m0_kg_per_m3: float = None) -
         "pct_err_legacy_vs_observed":                pct_legacy_vs_observed,
         "pct_err_canonical_vs_observed":             pct_canon_vs_observed,
         "primary_result":                            z_eq_canon,
-        "primary_source":                            "kinematic_identity_rho_m0_over_rho_r0_minus_1_PAPER_1203_default",
+        "primary_source":                            "kinematic_identity_rho_m0_over_rho_r0_minus_1",
         "legacy_status":                             "input_approximation_not_ledger_consistent",
         "canonical_status":                          "ledger_consistent_matches_planck_observed",
         "z_eq_identity_formula":                     "rho_m0_kg_per_m3 / rho_r0_kg_per_m3 - 1",
@@ -5919,7 +5919,7 @@ def _l96_uqff_omega_matter_canonical_report(H0_km_s_Mpc: float = None) -> Dict[s
         "pct_err_legacy_vs_observed":                   pct_legacy_vs_obs,
         "pct_err_canonical_vs_observed":                pct_canon_vs_obs,
         "primary_result":                               omega_m_canon,
-        "primary_source":                               "rho_m0_over_rho_crit_at_static_ledger_H0_PAPER_1203_default",
+        "primary_source":                               "rho_m0_over_rho_crit_at_static_ledger_H0",
         "legacy_status":                                "input_approximation_not_ledger_consistent",
         "canonical_status":                             "ledger_consistent_matches_planck_observed",
         "omega_m_identity_formula":                     "rho_m0 / (3 H0^2 / (8 pi G))",
@@ -5977,7 +5977,7 @@ def _l96_uqff_riemann_factor_of_3_resolution_report(n: int = 10000) -> Dict[str,
         "reading_b_status":                             "canonical_after_Ricci_trace_projection",
         "off_line_suppression_factor_rho_SCm_over_pl_quarter": suppress,
         "primary_result":                               tn_proj,
-        "primary_source":                               "T_10000_LEGACY_base_divided_by_DphysMinus1_Ricci_trace_projection_PAPER_1203_default",
+        "primary_source":                               "T_10000_LEGACY_base_divided_by_DphysMinus1_Ricci_trace_projection",
         "projection_mechanism":                         "KK_tower_zeta_regulator_with_S26_amplification_then_4D_trace_normalization",
         "factor_of_3_origin":                           "Ricci_trace_after_dimensional_reduction_to_physical_4D_critical_line",
         "amplification_factor_full":                    S26_DPM * ((D_CRIT / D_PHYS) ** 2),
@@ -6012,7 +6012,7 @@ def _l96_uqff_spinor_bundle_report() -> Dict[str, Any]:
         "S26":                                     S26_DPM,
         "S_26_scalar":                             S_26,
         "primary_result":                          _bsd_leading_coefficient_derive(),
-        "primary_source":                          "spinor_bundle_PAPER_1183_26D_compactification_SO26_Clifford_dim_8192",
+        "primary_source":                          "spinor_bundle_on_26D_compactification_with_SO26_Clifford_module_dim_8192",
     }
 
 def _l96_uqff_black_hole_proof_report(M_msun: float = 10.0) -> Dict[str, Any]:
@@ -6059,7 +6059,7 @@ def _l96_uqff_no_hair_theorem_closure(M_msun: float = 10.0,
         "uniqueness_class":                        "Kerr_Newman_for_M_J_Q",
         "stationary_BH_state_space_dim":           3,
         "primary_result":                          3,
-        "primary_source":                          "stationary_axisymmetric_BH_PAPER_087_state_space_dim_3_horizon_buoyancy",
+        "primary_source":                          "stationary_axisymmetric_BH_state_space_dim_3_in_UQFF_horizon_buoyancy",
     }
 
 def _l96_uqff_bh_thermodynamics_four_laws_report(M_msun: float = 10.0) -> Dict[str, Any]:
@@ -6418,7 +6418,7 @@ def _l96_uqff_muon_g_minus_2_anomaly_closure() -> Dict[str, Any]:
         "current_discrepancy_sigma":               sigma_discrepancy,
         "uqff_correction_form":                    "BETA_I_times_TRZ_times_SSQ_modulation_of_anomalous_moment",
         "primary_result":                          a_mu_uqff_total,
-        "primary_source":                          "Fermilab_muon_g_minus_2_PAPER_633_combined_2023_plus_UQFF_locked_primitive_delta",
+        "primary_source":                          "Fermilab_muon_g_minus_2_run_1_run_2_run_3_combined_2023_plus_UQFF_locked_primitive_delta",
     }
 
 def _l96_uqff_higgs_self_coupling_closure() -> Dict[str, Any]:
@@ -6435,7 +6435,7 @@ def _l96_uqff_higgs_self_coupling_closure() -> Dict[str, Any]:
         "uqff_correction_form":                    "TRZ_fourth_power_SSQ_BETA_I_modulation",
         "Higgs_potential_form":                    "V_phi_eq_lambda_phi_to_4_with_Mexican_hat_minimum_at_v_UA",
         "primary_result":                          lambda_uqff,
-        "primary_source":                          "Higgs_self_coupling_PAPER_034_Mexican_hat_curvature_25_over_12_K_MEX",
+        "primary_source":                          "Higgs_self_coupling_from_Mexican_hat_potential_curvature_25_over_12_K_MEX",
     }
 
 def _l96_uqff_neutron_star_eos_closure(M_msun: float = None,
@@ -6466,7 +6466,7 @@ def _l96_uqff_neutron_star_eos_closure(M_msun: float = None,
         "uqff_R_correction_form":                  "one_plus_BETA_I_TRZ_PHI_SSQ_locked_primitive_modulation",
         "TOV_equation_form":                       "dP_dr_eq_minus_G_rho_M_over_r_sq_plus_relativistic_corrections",
         "primary_result":                          R_uqff_km,
-        "primary_source":                          "NICER_PSR_J0030_PAPER_1126_plus_LIGO_GW170817_PAPER_914_with_UQFF_SCm_correction",
+        "primary_source":                          "NICER_PSR_J0030_0451_plus_LIGO_GW170817_NS_NS_merger_constraints_with_UQFF_SCm_correction",
     }
 
 def _l96_uqff_smarr_formula_closure(M_msun: float = 10.0,
@@ -6740,7 +6740,7 @@ def _l96_uqff_hilbert_13_closure() -> Dict[str, Any]:
         "vitushkin_1954_negative_for_smoothness": True,
         "n_variables_general_solution":          2,
         "primary_result":                        2,
-        "primary_source":                        "Kolmogorov_Arnold_PAPER_1247_superposition_theorem_continuous_functions_2_vars",
+        "primary_source":                        "Kolmogorov_1957_Arnold_1959_superposition_theorem_for_continuous_functions_of_2_variables",
     }
 
 def _l96_uqff_hilbert_16_closure(degree_n: int = 2) -> Dict[str, Any]:
@@ -6818,7 +6818,7 @@ def _l96_uqff_pure_bekenstein_bound_v2_closure(E_joules: float = 1.0e-19,
         "borrowed_derivation_form":                "S_max_eq_2pi_E_R_over_hbar_c",
         "physical_interpretation":                 "Mexican_hat_K_MEX_curvature_replaces_unit_circle_2pi_geometric_factor",
         "primary_result":                          S_max_uqff_over_kB,
-        "primary_source":                          "K_MEX_25_over_12_Mexican_hat_with_D_crit_over_D_BSFG_compactification_gain_PAPER_034",
+        "primary_source":                          "K_MEX_25_over_12_Mexican_hat_with_D_crit_over_D_BSFG_compactification_gain",
     }
 
 def _l96_uqff_pure_casimir_effect_v2_closure(a_separation_m: float = 1.0e-6) -> Dict[str, Any]:
@@ -6839,7 +6839,7 @@ def _l96_uqff_pure_casimir_effect_v2_closure(a_separation_m: float = 1.0e-6) -> 
         "borrowed_derivation_form":                "F_over_A_eq_pi_sq_over_240_times_hbar_c_over_a_to_4",
         "physical_interpretation":                 "D_crit_SO_five_mode_counting_replaces_QED_zeta_4_normalization",
         "primary_result":                          F_per_A_uqff,
-        "primary_source":                          "UQFF_26_level_DPM_lattice_PAPER_062_x_SO_five_dim_replacing_pi_sq_over_240",
+        "primary_source":                          "UQFF_26_level_DPM_lattice_times_SO_five_dim_replacing_pi_sq_over_240",
     }
 
 def _l96_uqff_pure_schwinger_effect_v2_closure(E_field_V_per_m: float = 1.0e16,
@@ -6870,7 +6870,7 @@ def _l96_uqff_pure_schwinger_effect_v2_closure(E_field_V_per_m: float = 1.0e16,
         "borrowed_derivation_form":                "E_c_eq_m_e_sq_c_cubed_over_e_hbar",
         "physical_interpretation":                 "UQFF_vacuum_modulation_lowers_pair_production_threshold_via_SCm_buoyancy",
         "primary_result":                          E_critical_uqff,
-        "primary_source":                          "BETA_I_TRZ_SSQ_PHI_RES_locked_primitive_correction_to_QED_pair_threshold_PAPER_1203",
+        "primary_source":                          "BETA_I_TRZ_SSQ_PHI_RES_locked_primitive_correction_to_QED_pair_threshold",
     }
 
 def _l96_uqff_pure_unruh_effect_v2_closure(a_proper_acceleration_m_per_s2: float = 9.81) -> Dict[str, Any]:
@@ -6891,7 +6891,7 @@ def _l96_uqff_pure_unruh_effect_v2_closure(a_proper_acceleration_m_per_s2: float
         "borrowed_derivation_form":                "T_eq_hbar_a_over_2pi_k_B_c",
         "physical_interpretation":                 "K_MEX_curvature_times_Ricci_trace_D_phys_minus_1_equals_2pi_geometric",
         "primary_result":                          T_uqff_K,
-        "primary_source":                          "K_MEX_25_over_12_times_D_phys_minus_1_equals_6_25_approximates_2pi_6_28_with_0_5_pct_residual_PAPER_646",
+        "primary_source":                          "K_MEX_25_over_12_times_D_phys_minus_1_equals_6_25_approximates_2pi_6_28_with_0_5_pct_residual",
     }
 
 def _l96_uqff_pure_twin_primes_v2_closure(x_upper: float = 1.0e6) -> Dict[str, Any]:
@@ -6916,7 +6916,7 @@ def _l96_uqff_pure_twin_primes_v2_closure(x_upper: float = 1.0e6) -> Dict[str, A
         "borrowed_derivation_form":                "two_C2_eq_2_times_0_6601618_Hardy_Littlewood_constant",
         "physical_interpretation":                 "UQFF_locked_integer_primitives_reproduce_twin_prime_density",
         "primary_result":                          two_C2_uqff,
-        "primary_source":                          "TRZ_x_D_crit_x_D_phys_minus_1_over_D_BSFG_eq_0_1_x_26_x_3_over_6_eq_1_30_vs_observed_1_3203_PAPER_1160",
+        "primary_source":                          "TRZ_x_D_crit_x_D_phys_minus_1_over_D_BSFG_eq_0_1_x_26_x_3_over_6_eq_1_30_vs_observed_1_3203",
     }
 
 def _l96_uqff_pure_hilbert_16_v2_closure(degree_n: int = 2) -> Dict[str, Any]:
@@ -6937,7 +6937,7 @@ def _l96_uqff_pure_hilbert_16_v2_closure(degree_n: int = 2) -> Dict[str, Any]:
         "physical_interpretation":                 "Limit_cycle_count_equals_dimension_of_physical_spacetime",
         "elegant_match_observation":               degree_n == 2,
         "primary_result":                          H_n_uqff,
-        "primary_source":                          "D_PHYS_eq_4_canonical_UQFF_integer_primitive_equals_Bautin_quadratic_limit_cycle_bound_PAPER_1203",
+        "primary_source":                          "D_PHYS_eq_4_canonical_UQFF_integer_primitive_equals_Bautin_quadratic_limit_cycle_bound",
     }
 
 def _l96_uqff_pure_bousso_bound_v2_closure(A_lightsheet_m2: float = 1.0,
@@ -6960,7 +6960,7 @@ def _l96_uqff_pure_bousso_bound_v2_closure(A_lightsheet_m2: float = 1.0,
         "borrowed_derivation_form":                "S_max_eq_A_over_4_l_P_sq",
         "physical_interpretation":                 "Mexican_hat_curvature_times_BSFG_dim_per_physical_dim_replaces_4_prefactor",
         "primary_result":                          S_max_uqff_over_kB,
-        "primary_source":                          "K_MEX_x_D_BSFG_over_D_phys_eq_2_083_x_1_5_eq_3_125_vs_borrowed_4_22_pct_residual_PAPER_646",
+        "primary_source":                          "K_MEX_x_D_BSFG_over_D_phys_eq_2_083_x_1_5_eq_3_125_vs_borrowed_4_22_pct_residual",
     }
 
 def _l96_uqff_pure_smarr_formula_v2_closure(M_msun: float = 10.0,
@@ -6998,7 +6998,7 @@ def _l96_uqff_pure_smarr_formula_v2_closure(M_msun: float = 10.0,
         "borrowed_derivation_form":                "M_eq_kappa_A_over_4pi_plus_2_Omega_J_plus_Phi_Q",
         "elegant_identity":                        "K_MEX_25_over_12_times_D_BSFG_6_eq_12_5_approx_4pi_12_566",
         "primary_result":                          M_smarr_uqff_J,
-        "primary_source":                          "K_MEX_x_D_BSFG_eq_12_5_replaces_4pi_geometric_prefactor_with_0_53_pct_residual_PAPER_646",
+        "primary_source":                          "K_MEX_x_D_BSFG_eq_12_5_replaces_4pi_geometric_prefactor_with_0_53_pct_residual",
     }
 
 def _l96_uqff_pure_abj_chiral_anomaly_v2_closure(N_colors: int = 3,
@@ -7026,7 +7026,7 @@ def _l96_uqff_pure_abj_chiral_anomaly_v2_closure(N_colors: int = 3,
         "borrowed_derivation_form":                "anomaly_eq_N_c_Q_sq_over_16pi_sq",
         "elegant_identity":                        "D_crit_26_times_D_BSFG_6_eq_156_approx_16_pi_sq_157_91",
         "primary_result":                          anomaly_coeff_uqff,
-        "primary_source":                          "D_crit_x_D_BSFG_eq_156_replaces_16pi_sq_in_triangle_diagram_normalization_with_1_2_pct_residual_PAPER_646",
+        "primary_source":                          "D_crit_x_D_BSFG_eq_156_replaces_16pi_sq_in_triangle_diagram_normalization_with_1_2_pct_residual",
     }
 
 def _l96_uqff_pure_bh_proof_v2_closure(M_msun: float = 10.0) -> Dict[str, Any]:
@@ -7069,7 +7069,7 @@ def _l96_uqff_pure_bh_proof_v2_closure(M_msun: float = 10.0) -> Dict[str, Any]:
         "borrowed_area_form":                      "A_eq_4pi_R_s_sq",
         "elegant_identities":                      "K_MEX_x_D_BSFG_x_2_eq_25_approx_8pi_25_13_with_0_53_pct_residual",
         "primary_result":                          T_H_uqff_K,
-        "primary_source":                          "Horizon_buoyancy_with_K_MEX_x_D_BSFG_replacing_4pi_geometric_prefactor_PAPER_034",
+        "primary_source":                          "Horizon_buoyancy_with_K_MEX_x_D_BSFG_replacing_4pi_geometric_prefactor",
     }
 
 def _l96_uqff_pure_bh_four_laws_v2_closure(M_msun: float = 10.0) -> Dict[str, Any]:
@@ -7107,7 +7107,7 @@ def _l96_uqff_pure_bh_four_laws_v2_closure(M_msun: float = 10.0) -> Dict[str, An
         "uqff_derivation_form":                    "kappa_eq_c_to_4_over_K_MEX_D_BSFG_over_D_phys_G_M",
         "borrowed_derivation_form":                "kappa_eq_c_to_4_over_4_G_M",
         "primary_result":                          S_BH_uqff_over_kB,
-        "primary_source":                          "K_MEX_x_D_BSFG_over_D_phys_eq_3_125_replaces_4_in_BH_thermodynamics_PAPER_034",
+        "primary_source":                          "K_MEX_x_D_BSFG_over_D_phys_eq_3_125_replaces_4_in_BH_thermodynamics",
     }
 
 def _l96_uqff_pure_asymptotic_freedom_v2_closure(n_f: int = 6,
@@ -7141,7 +7141,7 @@ def _l96_uqff_pure_asymptotic_freedom_v2_closure(n_f: int = 6,
         "borrowed_derivation_form":                "b_0_eq_11N_over_3_minus_2n_f_over_3_one_loop",
         "elegant_identities":                      "D_PHYS_4_plus_D_BSFG_6_over_2_eq_7_EXACT_match_to_one_loop_b_0_for_n_f_6_N_3",
         "primary_result":                          b_0_uqff,
-        "primary_source":                          "D_PHYS_plus_D_BSFG_over_2_eq_7_EXACT_replacement_of_QCD_b_0_one_loop_PAPER_1203_default",
+        "primary_source":                          "D_PHYS_plus_D_BSFG_over_2_eq_7_EXACT_replacement_of_QCD_b_0_one_loop",
     }
 
 def _l96_uqff_pure_ads_cft_v2_closure(N_colors: int = 4) -> Dict[str, Any]:
@@ -7173,7 +7173,7 @@ def _l96_uqff_pure_ads_cft_v2_closure(N_colors: int = 4) -> Dict[str, Any]:
         "borrowed_derivation_form":                "c_eq_N_sq_over_4_Maldacena",
         "elegant_identity":                        "D_PHYS_4_EXACT_match_to_4_in_central_charge_denominator",
         "primary_result":                          c_central_uqff,
-        "primary_source":                          "D_PHYS_eq_4_canonical_UQFF_integer_replaces_4_in_AdS_CFT_central_charge_EXACT_PAPER_1281",
+        "primary_source":                          "D_PHYS_eq_4_canonical_UQFF_integer_replaces_4_in_AdS_CFT_central_charge_EXACT",
     }
 
 def _l96_uqff_pure_higgs_vev_v2_closure() -> Dict[str, Any]:
@@ -7195,7 +7195,7 @@ def _l96_uqff_pure_higgs_vev_v2_closure() -> Dict[str, Any]:
         "borrowed_baseline_form":                  "v_eq_2_M_W_over_g_with_SU2_gauge_coupling",
         "physical_interpretation":                 "Higgs_vev_emerges_from_full_integer_primitive_chain_with_Mexican_hat_curvature_K_MEX",
         "primary_result":                          v_uqff_GeV,
-        "primary_source":                          "D_crit_x_A_five_x_Phi_res_x_K_MEX_over_SO_five_eq_273_GeV_vs_observed_246_GeV_with_10_9_pct_residual_PAPER_646",
+        "primary_source":                          "D_crit_x_A_five_x_Phi_res_x_K_MEX_over_SO_five_eq_273_GeV_vs_observed_246_GeV_with_10_9_pct_residual",
     }
 
 def _l96_uqff_pure_hubble_v2_closure() -> Dict[str, Any]:
@@ -7214,7 +7214,7 @@ def _l96_uqff_pure_hubble_v2_closure() -> Dict[str, Any]:
         "borrowed_baseline_form":                  "H_0_eq_67_36_km_s_Mpc_Planck_2018_CMB_observed",
         "physical_interpretation":                 "L33_Friedmann_closure_rho_SCm_eq_3_over_2_G_H_0_over_c_inverted",
         "primary_result":                          H0_uqff_km_s_Mpc,
-        "primary_source":                          "Friedmann_closure_RHO_SCM_eq_3_over_2_G_H0_over_c_solved_for_H0_PAPER_1170",
+        "primary_source":                          "Friedmann_closure_RHO_SCM_eq_3_over_2_G_H0_over_c_solved_for_H0",
     }
 
 def _l96_uqff_pure_z_eq_v2_closure() -> Dict[str, Any]:
@@ -7231,7 +7231,7 @@ def _l96_uqff_pure_z_eq_v2_closure() -> Dict[str, Any]:
         "borrowed_baseline_form":                  "z_eq_eq_rho_m0_over_rho_r0_minus_1_kinematic_identity",
         "physical_interpretation":                 "Matter_radiation_equality_emerges_from_integer_primitive_chain_without_density_inputs",
         "primary_result":                          z_eq_uqff,
-        "primary_source":                          "D_crit_x_A_five_x_N_CH_over_D_phys_eq_3510_vs_observed_3400_with_3_24_pct_residual_PAPER_646",
+        "primary_source":                          "D_crit_x_A_five_x_N_CH_over_D_phys_eq_3510_vs_observed_3400_with_3_24_pct_residual",
     }
 
 def _l96_uqff_pure_omega_m_v2_closure() -> Dict[str, Any]:
@@ -7254,7 +7254,7 @@ def _l96_uqff_pure_omega_m_v2_closure() -> Dict[str, Any]:
         "borrowed_baseline_form":                  "omega_m_eq_rho_m0_over_rho_crit_with_3_H0_sq_over_8pi_G",
         "physical_interpretation":                 "Matter_fraction_emerges_from_Mexican_hat_curvature_K_MEX_times_Ricci_trace_D_phys_minus_1",
         "primary_result":                          omega_m_uqff,
-        "primary_source":                          "omega_m_eq_2_over_K_MEX_x_D_phys_minus_1_eq_0_32_vs_observed_0_315_with_1_59_pct_residual_PAPER_646",
+        "primary_source":                          "omega_m_eq_2_over_K_MEX_x_D_phys_minus_1_eq_0_32_vs_observed_0_315_with_1_59_pct_residual",
     }
 
 def _l96_uqff_pure_higgs_BR_v2_closure() -> Dict[str, Any]:
@@ -7286,7 +7286,7 @@ def _l96_uqff_pure_higgs_BR_v2_closure() -> Dict[str, Any]:
         "pct_err_tautau":                          pct_tautau,
         "uqff_derivation_forms":                   "gg_K_MEX_TRZ3_ZZ_TRZ2_Phi_SSQ_Afive_NCH_WW_TRZ_Afive_Dcrit_bb_SSQ_Phi_plus_TRZ_tautau_TRZ_Phi_SSQ_KMEX_DBSFG_NCH",
         "primary_result":                          BR_bb_uqff,
-        "primary_source":                          "Higgs_BRs_derived_from_integer_primitives_with_no_PDG_anchor_inputs_PAPER_1203",
+        "primary_source":                          "Higgs_BRs_derived_from_integer_primitives_with_no_PDG_anchor_inputs",
     }
 
 def _l96_uqff_pure_kappa_t_v2_closure() -> Dict[str, Any]:
@@ -7302,7 +7302,7 @@ def _l96_uqff_pure_kappa_t_v2_closure() -> Dict[str, Any]:
         "components":                              "D_phys=4 minus 3 gives base 1, locked primitive correction adds tiny perturbation",
         "physical_interpretation":                 "Top_Yukawa_emerges_from_dimension_arithmetic_with_locked_primitive_correction",
         "primary_result":                          kappa_t_uqff,
-        "primary_source":                          "D_PHYS_minus_3_plus_TRZ_cubed_SSQ_Phi_res_eq_1_000479_canonical_PAPER_1203",
+        "primary_source":                          "D_PHYS_minus_3_plus_TRZ_cubed_SSQ_Phi_res_eq_1_000479_canonical",
     }
 
 def _l96_uqff_pure_ligo_mode_ratios_v2_closure() -> Dict[str, Any]:
@@ -7322,7 +7322,7 @@ def _l96_uqff_pure_ligo_mode_ratios_v2_closure() -> Dict[str, Any]:
         "uqff_derivation_forms":                   "f221_eq_1_minus_TRZ_NCH_Phi_SSQ_over_Dcrit_f330_eq_KMEX_Phi_one_minus_TRZ",
         "physical_interpretation":                 "Higher_QNM_mode_ratios_emerge_from_locked_primitive_chain_no_Berti_Cardoso_fits",
         "primary_result":                          ratio_f330_over_f220_uqff,
-        "primary_source":                          "LIGO_ringdown_mode_ratios_pure_UQFF_no_numerical_relativity_fits_PAPER_914",
+        "primary_source":                          "LIGO_ringdown_mode_ratios_pure_UQFF_no_numerical_relativity_fits",
     }
 
 def _l96_uqff_pure_nanograv_a_yr_v2_closure() -> Dict[str, Any]:
@@ -7338,7 +7338,7 @@ def _l96_uqff_pure_nanograv_a_yr_v2_closure() -> Dict[str, Any]:
         "physical_interpretation":                 "SGWB_strain_amplitude_from_vacuum_ledger_with_multi_loop_suppression",
         "limitation_note":                         "many_body_SMBH_binary_population_integration_not_captured_in_primitive_chain",
         "primary_result":                          A_yr_uqff_structural,
-        "primary_source":                          "SGWB_A_yr_structural_form_from_rho_SCm_S_26_BETA_I_chain_with_acknowledged_modeling_gap_PAPER_914",
+        "primary_source":                          "SGWB_A_yr_structural_form_from_rho_SCm_S_26_BETA_I_chain_with_acknowledged_modeling_gap",
     }
 
 def _l96_uqff_pure_muon_g_minus_2_v2_closure() -> Dict[str, Any]:
@@ -7360,7 +7360,7 @@ def _l96_uqff_pure_muon_g_minus_2_v2_closure() -> Dict[str, Any]:
         "components":                             "alpha_uqff_eq_1_over_Phi_D_crit_2pi_eq_0_007287_and_D_crit_D_BSFG_eq_156_approx_16pi_sq",
         "physical_interpretation":                "Anomalous_magnetic_moment_emerges_from_alpha_cubed_one_loop_with_UQFF_geometric_normalization",
         "primary_result":                         delta_a_mu_uqff,
-        "primary_source":                         "alpha_uqff_cubed_over_D_crit_D_BSFG_pure_first_principles_no_SM_HVP_anchor_PAPER_1203",
+        "primary_source":                         "alpha_uqff_cubed_over_D_crit_D_BSFG_pure_first_principles_no_SM_HVP_anchor",
     }
 
 def _l96_uqff_coleman_mandula_closure() -> Dict[str, Any]:
@@ -7374,7 +7374,7 @@ def _l96_uqff_coleman_mandula_closure() -> Dict[str, Any]:
         "exceptions_only_via_SUSY":                 True,
         "uqff_consistent_factorization":            True,
         "primary_result":                           True,
-        "primary_source":                           "Coleman_Mandula_1967_no_go_theorem_compatible_with_UQFF_D_crit_minus_D_phys_internal_split_PAPER_1183",
+        "primary_source":                           "Coleman_Mandula_1967_no_go_theorem_compatible_with_UQFF_D_crit_minus_D_phys_internal_split",
     }
 
 def _l96_uqff_wilson_loop_confinement_closure() -> Dict[str, Any]:
@@ -7391,7 +7391,7 @@ def _l96_uqff_wilson_loop_confinement_closure() -> Dict[str, Any]:
         "deconfinement_at_high_T":                  True,
         "physical_interpretation":                  "String_tension_emerges_from_D_BSFG_dim_x_QCD_scale_squared_x_SSQ_modulation",
         "primary_result":                           sigma_string_tension_uqff_GeV_sq,
-        "primary_source":                           "Wilson_1974_loop_confinement_criterion_with_UQFF_D_BSFG_normalization_PAPER_1203",
+        "primary_source":                           "Wilson_1974_loop_confinement_criterion_with_UQFF_D_BSFG_normalization",
     }
 
 def _l96_uqff_strong_cp_closure() -> Dict[str, Any]:
@@ -7409,7 +7409,7 @@ def _l96_uqff_strong_cp_closure() -> Dict[str, Any]:
         "uqff_explanation":                         "Strong_CP_naturally_small_from_TRZ_SSQ_PHI_8th_power_suppression",
         "neutron_EDM_consistency":                  True,
         "primary_result":                           theta_QCD_uqff,
-        "primary_source":                           "Strong_CP_problem_resolved_via_locked_primitive_8th_power_suppression_no_axion_needed_PAPER_1203",
+        "primary_source":                           "Strong_CP_problem_resolved_via_locked_primitive_8th_power_suppression_no_axion_needed",
     }
 
 def _l96_uqff_hierarchy_problem_closure() -> Dict[str, Any]:
@@ -7429,7 +7429,7 @@ def _l96_uqff_hierarchy_problem_closure() -> Dict[str, Any]:
         "naturalness_uqff_explanation":             "Hierarchy_emerges_from_D_phys_over_D_crit_dimensional_suppression",
         "supersymmetry_not_required":               True,
         "primary_result":                           uqff_ratio,
-        "primary_source":                           "Hierarchy_problem_resolved_via_D_phys_over_D_crit_21st_power_dimensional_suppression_PAPER_1203_default",
+        "primary_source":                           "Hierarchy_problem_resolved_via_D_phys_over_D_crit_21st_power_dimensional_suppression",
     }
 
 def _l96_uqff_ryu_takayanagi_closure(A_minimal_surface_m2: float = 1.0,
@@ -7453,7 +7453,7 @@ def _l96_uqff_ryu_takayanagi_closure(A_minimal_surface_m2: float = 1.0,
         "AdS_bulk_to_CFT_boundary":                 True,
         "entanglement_wedge_well_defined":          True,
         "primary_result":                           S_RT_uqff,
-        "primary_source":                           "Ryu_Takayanagi_2006_minimal_surface_entanglement_entropy_with_UQFF_3_125_prefactor_PAPER_1203",
+        "primary_source":                           "Ryu_Takayanagi_2006_minimal_surface_entanglement_entropy_with_UQFF_3_125_prefactor",
     }
 
 def _l96_uqff_er_eq_epr_closure() -> Dict[str, Any]:
@@ -7468,7 +7468,7 @@ def _l96_uqff_er_eq_epr_closure() -> Dict[str, Any]:
         "supports_holographic_principle":           True,
         "physical_interpretation":                  "Geometric_connection_via_wormhole_equivalent_to_quantum_entanglement",
         "primary_result":                           True,
-        "primary_source":                           "Maldacena_Susskind_2013_ER_eq_EPR_conjecture_in_UQFF_with_spinor_bundle_compactification_PAPER_1281",
+        "primary_source":                           "Maldacena_Susskind_2013_ER_eq_EPR_conjecture_in_UQFF_with_spinor_bundle_compactification",
     }
 
 def _l96_uqff_holographic_principle_closure(V_3D_m3: float = 1.0,
@@ -7492,7 +7492,7 @@ def _l96_uqff_holographic_principle_closure(V_3D_m3: float = 1.0,
         "Bousso_covariant_bound_consistent":        True,
         "uqff_derivation_form":                     "S_boundary_eq_A_over_K_MEX_D_BSFG_over_D_phys_l_P_sq",
         "primary_result":                           S_boundary_uqff,
-        "primary_source":                           "t_Hooft_1993_Susskind_1995_holographic_principle_with_UQFF_3_125_prefactor_PAPER_1203",
+        "primary_source":                           "t_Hooft_1993_Susskind_1995_holographic_principle_with_UQFF_3_125_prefactor",
     }
 
 def _l96_uqff_generalized_second_law_closure(M_msun: float = 10.0,
@@ -7515,7 +7515,7 @@ def _l96_uqff_generalized_second_law_closure(M_msun: float = 10.0,
         "consistent_with_UQFF_Bekenstein_bound":    True,
         "consistent_with_UQFF_Bousso_bound":        True,
         "primary_result":                           True,
-        "primary_source":                           "Bekenstein_1973_Hawking_1971_GSL_with_UQFF_horizon_buoyancy_area_monotonicity_PAPER_087",
+        "primary_source":                           "Bekenstein_1973_Hawking_1971_GSL_with_UQFF_horizon_buoyancy_area_monotonicity",
     }
 
 def _l96_uqff_trace_anomaly_closure(N_colors: int = 3, n_f: int = 6) -> Dict[str, Any]:
@@ -7536,7 +7536,7 @@ def _l96_uqff_trace_anomaly_closure(N_colors: int = 3, n_f: int = 6) -> Dict[str
         "conformal_symmetry_broken_by_quantum":     True,
         "trace_anomaly_originates_in_running":      True,
         "primary_result":                           trace_anomaly_coefficient_uqff,
-        "primary_source":                           "Trace_anomaly_T_mu_mu_eq_beta_g_over_g_x_G_squared_with_UQFF_b_0_eq_7_EXACT_PAPER_1203",
+        "primary_source":                           "Trace_anomaly_T_mu_mu_eq_beta_g_over_g_x_G_squared_with_UQFF_b_0_eq_7_EXACT",
     }
 
 def _l96_uqff_hawking_effect_v2_closure(M_msun: float = 10.0) -> Dict[str, Any]:
@@ -7562,7 +7562,7 @@ def _l96_uqff_hawking_effect_v2_closure(M_msun: float = 10.0) -> Dict[str, Any]:
         "BH_evaporates_finite_time":                True,
         "complementary_to_Unruh_effect":            True,
         "primary_result":                           T_H_uqff_K,
-        "primary_source":                           "Hawking_1974_BH_evaporation_with_UQFF_K_MEX_D_BSFG_replacing_4pi_prefactor_PAPER_087",
+        "primary_source":                           "Hawking_1974_BH_evaporation_with_UQFF_K_MEX_D_BSFG_replacing_4pi_prefactor",
     }
 
 def _l96_uqff_ward_identity_closure() -> Dict[str, Any]:
@@ -7576,7 +7576,7 @@ def _l96_uqff_ward_identity_closure() -> Dict[str, Any]:
         "consistent_with_UQFF_Coleman_Mandula":     True,
         "consistent_with_UQFF_Wightman_axioms":     True,
         "primary_result":                           True,
-        "primary_source":                           "Ward_1950_Takahashi_1957_identity_gauge_current_conservation_in_UQFF_PAPER_1203",
+        "primary_source":                           "Ward_1950_Takahashi_1957_identity_gauge_current_conservation_in_UQFF",
     }
 
 def _l96_uqff_brst_symmetry_closure() -> Dict[str, Any]:
@@ -7593,7 +7593,7 @@ def _l96_uqff_brst_symmetry_closure() -> Dict[str, Any]:
         "Faddeev_Popov_ghost_compatible":           True,
         "consistent_with_UQFF_Ward_identity":       True,
         "primary_result":                           True,
-        "primary_source":                           "Becchi_Rouet_Stora_Tyutin_1974_BRST_symmetry_nilpotent_quantization_in_UQFF_PAPER_1183",
+        "primary_source":                           "Becchi_Rouet_Stora_Tyutin_1974_BRST_symmetry_nilpotent_quantization_in_UQFF",
     }
 
 GOLDBACH_VERIFIED_UPPER_BOUND = 4.0e18
@@ -7614,7 +7614,7 @@ def _l96_uqff_goldbach_closure() -> Dict[str, Any]:
         "computational_evidence_strong":            True,
         "general_proof_open":                       True,
         "primary_result":                           verified_upper_bound_uqff,
-        "primary_source":                           "Goldbach_1742_strong_conjecture_with_UQFF_D_crit_x_10_to_17_verified_bound_PAPER_1203",
+        "primary_source":                           "Goldbach_1742_strong_conjecture_with_UQFF_D_crit_x_10_to_17_verified_bound",
     }
 
 def _l96_uqff_collatz_closure() -> Dict[str, Any]:
@@ -7629,7 +7629,7 @@ def _l96_uqff_collatz_closure() -> Dict[str, Any]:
         "Tao_2019_density_proof":                   True,
         "general_proof_open":                       True,
         "primary_result":                           verified_upper_bound_uqff,
-        "primary_source":                           "Collatz_1937_conjecture_3n_plus_1_with_UQFF_2_to_68_bound_PAPER_1243",
+        "primary_source":                           "Collatz_1937_conjecture_3n_plus_1_with_UQFF_2_to_68_bound",
     }
 
 def _l96_uqff_continuum_hypothesis_closure() -> Dict[str, Any]:
@@ -7641,7 +7641,7 @@ def _l96_uqff_continuum_hypothesis_closure() -> Dict[str, Any]:
         "uqff_interpretation":                      "consistent_with_D_crit_x_aleph_0_lattice_structure",
         "set_theoretic_multiverse_view":            True,
         "primary_result":                           True,
-        "primary_source":                           "Cohen_1963_forcing_method_proving_CH_independence_in_UQFF_set_theoretic_framework_PAPER_1245",
+        "primary_source":                           "Cohen_1963_forcing_method_proving_CH_independence_in_UQFF_set_theoretic_framework",
     }
 
 def _l96_uqff_hilbert_13_general_n_closure(n_variables: int = 7) -> Dict[str, Any]:
@@ -7656,7 +7656,7 @@ def _l96_uqff_hilbert_13_general_n_closure(n_variables: int = 7) -> Dict[str, An
         "Kolmogorov_1957_resolution":               True,
         "Arnold_1959_dimension_3_extension":        True,
         "primary_result":                           n_sufficient,
-        "primary_source":                           "Kolmogorov_1957_superposition_theorem_universal_for_any_n_geq_2_in_UQFF_PAPER_1247",
+        "primary_source":                           "Kolmogorov_1957_superposition_theorem_universal_for_any_n_geq_2_in_UQFF",
     }
 
 def _l96_uqff_twin_prime_constant_C2_derivation_closure() -> Dict[str, Any]:
@@ -7671,7 +7671,7 @@ def _l96_uqff_twin_prime_constant_C2_derivation_closure() -> Dict[str, Any]:
         "uqff_numerical_chain":                     "0_1_x_26_x_3_over_12_eq_0_65",
         "Hardy_Littlewood_1923_definition":         "C_2_eq_prod_p_gt_2_one_minus_one_over_p_minus_1_sq",
         "primary_result":                           C_2_uqff,
-        "primary_source":                           "Twin_prime_constant_C_2_eq_0_65_from_UQFF_integer_primitive_chain_vs_observed_0_6602_PAPER_1242",
+        "primary_source":                           "Twin_prime_constant_C_2_eq_0_65_from_UQFF_integer_primitive_chain_vs_observed_0_6602",
     }
 
 def _l96_uqff_abc_conjecture_closure() -> Dict[str, Any]:
@@ -7683,7 +7683,7 @@ def _l96_uqff_abc_conjecture_closure() -> Dict[str, Any]:
         "implies_many_classical_results":           True,
         "uqff_compatible_with_radical_inequality":  True,
         "primary_result":                           True,
-        "primary_source":                           "Mochizuki_2012_inter_universal_Teichmuller_theory_proof_of_ABC_in_UQFF_PAPER_1203",
+        "primary_source":                           "Mochizuki_2012_inter_universal_Teichmuller_theory_proof_of_ABC_in_UQFF",
     }
 
 def _l96_uqff_brun_constant_closure() -> Dict[str, Any]:
@@ -7699,7 +7699,7 @@ def _l96_uqff_brun_constant_closure() -> Dict[str, Any]:
         "Brun_1919_theorem":                        "sum_one_over_p_over_twin_primes_converges",
         "twin_primes_sparse_enough_for_convergence": True,
         "primary_result":                           B_2_uqff,
-        "primary_source":                           "Brun_1919_constant_B_2_eq_2_minus_TRZ_x_D_phys_minus_3_eq_1_9_vs_observed_1_902_PAPER_1242",
+        "primary_source":                           "Brun_1919_constant_B_2_eq_2_minus_TRZ_x_D_phys_minus_3_eq_1_9_vs_observed_1_902",
     }
 
 def _l96_uqff_riemann_zeros_density_closure(T: float = 1.0e4) -> Dict[str, Any]:
@@ -7711,7 +7711,7 @@ def _l96_uqff_riemann_zeros_density_closure(T: float = 1.0e4) -> Dict[str, Any]:
         "Riemann_von_Mangoldt_formula":             True,
         "T_10000_height_Odlyzko":                   ODLYZKO_T_10000_REFERENCE,
         "primary_result":                           N_zeros_T_uqff,
-        "primary_source":                           "Riemann_PAPER_1182_von_Mangoldt_zero_density_with_UQFF_constants",
+        "primary_source":                           "Riemann_von_Mangoldt_zero_density_formula_with_UQFF_constants",
     }
 
 CMB_Y_DISTORTION_FIRAS_BOUND = 1.5e-5
@@ -7736,7 +7736,7 @@ def _l96_uqff_galaxy_power_spectrum_closure(k_pivot_Mpc_inv: float = None) -> Di
         "P_k_form":                                 "P_k_eq_A_s_x_k_over_k_pivot_to_n_s_minus_1_times_T_squared_k",
         "transfer_function_required":               True,
         "primary_result":                           n_s_uqff,
-        "primary_source":                           "Galaxy_P_k_with_UQFF_n_s_eq_1_minus_2_TRZ_SSQ_Phi_over_D_BSFG_PAPER_1203",
+        "primary_source":                           "Galaxy_P_k_with_UQFF_n_s_eq_1_minus_2_TRZ_SSQ_Phi_over_D_BSFG",
     }
 
 def _l96_uqff_halo_mass_function_closure(M_halo_msun: float = 1.0e13) -> Dict[str, Any]:
@@ -7752,7 +7752,7 @@ def _l96_uqff_halo_mass_function_closure(M_halo_msun: float = 1.0e13) -> Dict[st
         "press_schechter_form":                     "n_M_dM_eq_sqrt_2_over_pi_x_rho_m_over_M_sq_x_delta_c_over_sigma_x_exp_minus_delta_c_sq_over_2_sigma_sq",
         "sheth_tormen_improvement":                 True,
         "primary_result":                           nu_peak,
-        "primary_source":                           "Halo_mass_function_with_UQFF_delta_c_eq_1_686_x_1_plus_TRZ_SSQ_PAPER_1203",
+        "primary_source":                           "Halo_mass_function_with_UQFF_delta_c_eq_1_686_x_1_plus_TRZ_SSQ",
     }
 
 def _l96_uqff_21cm_signal_closure(z_redshift: float = 17.0) -> Dict[str, Any]:
@@ -7765,7 +7765,7 @@ def _l96_uqff_21cm_signal_closure(z_redshift: float = 17.0) -> Dict[str, Any]:
         "frequency_observed_MHz":                   1420.4 / (1.0 + z_redshift),
         "spin_temperature_form":                    "T_s_eq_T_g_T_CMB_plus_y_alpha_T_alpha_over_1_plus_y_alpha",
         "primary_result":                           T_b_uqff_mK,
-        "primary_source":                           "21cm_cosmic_dawn_signal_with_UQFF_TRZ_modulation_PAPER_1156",
+        "primary_source":                           "21cm_cosmic_dawn_signal_with_UQFF_TRZ_modulation",
     }
 
 def _l96_uqff_edges_21cm_closure() -> Dict[str, Any]:
@@ -7781,7 +7781,7 @@ def _l96_uqff_edges_21cm_closure() -> Dict[str, Any]:
         "anomalous_amplitude_factor_vs_LCDM":       2.0,
         "uqff_explains_via_SCm_cooling":            True,
         "primary_result":                           T_b_uqff_predicted,
-        "primary_source":                           "EDGES_2018_anomalous_21cm_absorption_at_z_17_with_UQFF_SCm_phonon_cooling_explanation_PAPER_1156",
+        "primary_source":                           "EDGES_2018_anomalous_21cm_absorption_at_z_17_with_UQFF_SCm_phonon_cooling_explanation",
     }
 
 def _l96_uqff_sz_effect_closure(y_compton: float = None) -> Dict[str, Any]:
@@ -7796,7 +7796,7 @@ def _l96_uqff_sz_effect_closure(y_compton: float = None) -> Dict[str, Any]:
         "thermal_SZ":                               True,
         "kinetic_SZ_subleading":                    True,
         "primary_result":                           delta_T_over_T_uqff,
-        "primary_source":                           "Sunyaev_Zeldovich_1972_CMB_distortion_with_UQFF_locked_primitive_correction_PAPER_1156",
+        "primary_source":                           "Sunyaev_Zeldovich_1972_CMB_distortion_with_UQFF_locked_primitive_correction",
     }
 
 def _l96_uqff_lyman_alpha_flux_power_closure(k_Mpc_inv: float = 1.0) -> Dict[str, Any]:
@@ -7809,7 +7809,7 @@ def _l96_uqff_lyman_alpha_flux_power_closure(k_Mpc_inv: float = 1.0) -> Dict[str
         "pivot_k_Mpc_inv":                          0.005,
         "BOSS_eBOSS_compatible":                    True,
         "primary_result":                           P_F_uqff,
-        "primary_source":                           "Lyman_alpha_forest_flux_power_spectrum_with_UQFF_TRZ_SSQ_correction_PAPER_1203",
+        "primary_source":                           "Lyman_alpha_forest_flux_power_spectrum_with_UQFF_TRZ_SSQ_correction",
     }
 
 def _l96_uqff_cmb_y_distortion_closure() -> Dict[str, Any]:
@@ -7823,7 +7823,7 @@ def _l96_uqff_cmb_y_distortion_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "y_eq_FIRAS_bound_x_BETA_I_x_TRZ_x_SSQ",
         "PIXIE_future_sensitivity":                 1.0e-8,
         "primary_result":                           y_distortion_uqff,
-        "primary_source":                           "CMB_y_distortion_with_UQFF_locked_primitive_suppression_well_below_FIRAS_PAPER_1156",
+        "primary_source":                           "CMB_y_distortion_with_UQFF_locked_primitive_suppression_well_below_FIRAS",
     }
 
 def _l96_uqff_cmb_lensing_A_L_closure() -> Dict[str, Any]:
@@ -7837,7 +7837,7 @@ def _l96_uqff_cmb_lensing_A_L_closure() -> Dict[str, Any]:
         "pct_diff_vs_observed":                     pct_diff,
         "uqff_derivation_form":                     "A_L_eq_1_plus_TRZ_x_Phi_res_5_6_x_SSQ",
         "primary_result":                           A_L_uqff,
-        "primary_source":                           "CMB_lensing_amplitude_with_UQFF_TRZ_Phi_5_6_SSQ_correction_PAPER_1156",
+        "primary_source":                           "CMB_lensing_amplitude_with_UQFF_TRZ_Phi_5_6_SSQ_correction",
     }
 
 def _l96_uqff_dark_matter_omega_closure() -> Dict[str, Any]:
@@ -7857,7 +7857,7 @@ def _l96_uqff_dark_matter_omega_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "Omega_DM_eq_Omega_m_minus_Omega_b_both_from_locked_primitives",
         "relic_abundance_mechanism":                "freeze_out_or_freeze_in_compatible_with_UQFF_SCm_buoyancy",
         "primary_result":                           omega_DM_uqff,
-        "primary_source":                           "Dark_matter_relic_abundance_from_UQFF_locked_primitive_chain_PAPER_1203",
+        "primary_source":                           "Dark_matter_relic_abundance_from_UQFF_locked_primitive_chain",
     }
 
 def _l96_uqff_sn_ia_distance_modulus_closure(z_redshift: float = 1.0) -> Dict[str, Any]:
@@ -7873,7 +7873,7 @@ def _l96_uqff_sn_ia_distance_modulus_closure(z_redshift: float = 1.0) -> Dict[st
         "H0_used_km_s_Mpc":                         H_0_UQFF_CANONICAL_KM_S_MPC,
         "Pantheon_compatible":                      True,
         "primary_result":                           mu_distance_modulus,
-        "primary_source":                           "SN_Ia_standard_candle_distance_modulus_with_UQFF_H0_eq_67_4_PAPER_1203",
+        "primary_source":                           "SN_Ia_standard_candle_distance_modulus_with_UQFF_H0_eq_67_4",
     }
 
 STAR_MAGIC_COP_OBSERVED = 555.0
@@ -7897,7 +7897,7 @@ def _l96_uqff_star_magic_reactor_555_closure() -> Dict[str, Any]:
         "rho_SCm_x_S_26":                           RHO_SCM * S26_DPM,
         "F_U_normalization":                        1.0,
         "primary_result":                           COP_uqff,
-        "primary_source":                           "Star_Magic_reactor_555_to_1_COP_at_27W_ambient_T_pH_minus_37_full_UQFF_horizon_buoyancy_PAPER_1203",
+        "primary_source":                           "Star_Magic_reactor_555_to_1_COP_at_27W_ambient_T_pH_minus_37_full_UQFF_horizon_buoyancy",
     }
 
 def _l96_uqff_davinci_4_layer_UA_closure() -> Dict[str, Any]:
@@ -7921,7 +7921,7 @@ def _l96_uqff_davinci_4_layer_UA_closure() -> Dict[str, Any]:
         "harmonics_34_to_40":                       True,
         "PTOE_hydrogen_resonance":                  True,
         "primary_result":                           UA_prime_prime_prime_prime_density,
-        "primary_source":                           "Davinci_Files_23April2025_4_layer_UA_DPM_grinding_with_handwritten_pseudocode_and_Research_Drawings_A_B_PAPER_062",
+        "primary_source":                           "Davinci_Files_23April2025_4_layer_UA_DPM_grinding_with_handwritten_pseudocode_and_Research_Drawings_A_B",
     }
 
 def _l96_uqff_a1a_pseudocode_pi_calculus_closure() -> Dict[str, Any]:
@@ -7942,7 +7942,7 @@ def _l96_uqff_a1a_pseudocode_pi_calculus_closure() -> Dict[str, Any]:
         "handwritten_pseudocode":                   True,
         "pi_calculus_formal":                       True,
         "primary_result":                           KE_rotor_J,
-        "primary_source":                           "A1A_Loser_File_04April2025_handwritten_Universal_Inertial_Operator_with_50g_rotor_pi_calculus_pseudocode_PAPER_646",
+        "primary_source":                           "A1A_Loser_File_04April2025_handwritten_Universal_Inertial_Operator_with_50g_rotor_pi_calculus_pseudocode",
     }
 
 def _l96_uqff_ufe_orb_exp_batch_41_closure() -> Dict[str, Any]:
@@ -7978,7 +7978,7 @@ def _l96_uqff_ufe_orb_exp_batch_41_closure() -> Dict[str, Any]:
         "Red_Dwarf_orbs_SCm_UA_analog":             True,
         "SC_m_eq_psi_squared_over_int":             True,
         "primary_result":                           total_frames * orbs_per_frame_low,
-        "primary_source":                           "UFE_ORB_EXP_batch_41_with_4965_frames_10000_to_15000_orbs_each_UFT_pulses_resonance_buoyancy_inertial_operator_PAPER_1203_default",
+        "primary_source":                           "UFE_ORB_EXP_batch_41_with_4965_frames_10000_to_15000_orbs_each_UFT_pulses_resonance_buoyancy_inertial_operator",
     }
 
 def _l96_uqff_lenr_per_reactor_summary_closure() -> Dict[str, Any]:
@@ -8006,7 +8006,7 @@ def _l96_uqff_lenr_per_reactor_summary_closure() -> Dict[str, Any]:
         "unified_mechanism":                        "ultra_dense_H_cluster_at_2_3_pm_giving_630_eV_via_SCm_phonon_at_1_25_THz_resonance",
         "Coulomb_at_2_3_pm_eq_630_eV":              True,
         "primary_result":                           reactors["Star_Magic"]["COP_observed"],
-        "primary_source":                           "8_reactor_LENR_unified_via_Holmlid_630_eV_SCm_phonon_at_1_25_THz_resonance_anchor_PAPER_1133",
+        "primary_source":                           "8_reactor_LENR_unified_via_Holmlid_630_eV_SCm_phonon_at_1_25_THz_resonance_anchor",
     }
 
 SIGMA_8_PLANCK_OBSERVED = 0.811
@@ -8037,7 +8037,7 @@ def _l96_uqff_neutrino_mass_sum_closure() -> Dict[str, Any]:
         "uqff_numerical_chain":                     "0_01_x_0_84_x_0_57_x_26_over_6_eq_0_0207_eV",
         "normal_hierarchy_consistent":              True,
         "primary_result":                           sigma_m_nu_uqff,
-        "primary_source":                           "Neutrino_mass_sum_from_UQFF_TRZ_sq_Phi_SSQ_D_crit_D_BSFG_chain_PAPER_1203",
+        "primary_source":                           "Neutrino_mass_sum_from_UQFF_TRZ_sq_Phi_SSQ_D_crit_D_BSFG_chain",
     }
 
 def _l96_uqff_sigma_8_tension_closure() -> Dict[str, Any]:
@@ -8055,7 +8055,7 @@ def _l96_uqff_sigma_8_tension_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "sigma_8_eq_Phi_res_minus_TRZ_SSQ_K_MEX_over_N_CH",
         "uqff_resolves_tension_with_intermediate":  True,
         "primary_result":                           sigma_8_uqff,
-        "primary_source":                           "sigma_8_tension_resolved_via_UQFF_intermediate_value_between_Planck_and_DES_PAPER_1156",
+        "primary_source":                           "sigma_8_tension_resolved_via_UQFF_intermediate_value_between_Planck_and_DES",
     }
 
 def _l96_uqff_S_8_closure() -> Dict[str, Any]:
@@ -8074,7 +8074,7 @@ def _l96_uqff_S_8_closure() -> Dict[str, Any]:
         "omega_m_uqff_used":                        omega_m_uqff,
         "uqff_derivation_form":                     "S_8_eq_sigma_8_uqff_x_sqrt_omega_m_uqff_over_0_3",
         "primary_result":                           S_8_uqff,
-        "primary_source":                           "S_8_derived_from_UQFF_sigma_8_and_Omega_m_no_anchor_calibration_PAPER_1203",
+        "primary_source":                           "S_8_derived_from_UQFF_sigma_8_and_Omega_m_no_anchor_calibration",
     }
 
 def _l96_uqff_N_eff_closure() -> Dict[str, Any]:
@@ -8087,7 +8087,7 @@ def _l96_uqff_N_eff_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "N_eff_eq_3_plus_TRZ_SSQ_Phi_x_D_BSFG_over_N_CH",
         "uqff_numerical_chain":                     "3_plus_0_1_x_0_57_x_0_84_x_6_over_9_eq_3_032",
         "primary_result":                           N_eff_uqff,
-        "primary_source":                           "N_eff_from_3_plus_locked_primitive_correction_matching_QED_value_3_044_PAPER_1203",
+        "primary_source":                           "N_eff_from_3_plus_locked_primitive_correction_matching_QED_value_3_044",
     }
 
 def _l96_uqff_Y_p_helium_closure() -> Dict[str, Any]:
@@ -8101,7 +8101,7 @@ def _l96_uqff_Y_p_helium_closure() -> Dict[str, Any]:
         "uqff_numerical_chain":                     "0_57_x_0_84_over_2_eq_0_2394",
         "BBN_compatible":                           True,
         "primary_result":                           Y_p_uqff,
-        "primary_source":                           "Primordial_helium_Y_p_from_pure_UQFF_SSQ_Phi_over_2_first_principles_PAPER_1203",
+        "primary_source":                           "Primordial_helium_Y_p_from_pure_UQFF_SSQ_Phi_over_2_first_principles",
     }
 
 def _l96_uqff_pp_W_cross_section_closure() -> Dict[str, Any]:
@@ -8115,7 +8115,7 @@ def _l96_uqff_pp_W_cross_section_closure() -> Dict[str, Any]:
         "uqff_correction_form":                     "anchor_x_one_plus_TRZ_SSQ_Phi",
         "LHC_13_TeV_compatible":                    True,
         "primary_result":                           sigma_pp_W_uqff_nb,
-        "primary_source":                           "Proton_proton_to_W_cross_section_at_M_W_with_UQFF_locked_primitive_correction_PAPER_1203",
+        "primary_source":                           "Proton_proton_to_W_cross_section_at_M_W_with_UQFF_locked_primitive_correction",
     }
 
 def _l96_uqff_dilepton_vs_dijet_ratio_closure() -> Dict[str, Any]:
@@ -8126,7 +8126,7 @@ def _l96_uqff_dilepton_vs_dijet_ratio_closure() -> Dict[str, Any]:
         "uqff_numerical_chain":                     "0_1_x_0_57_x_0_84_over_6_eq_0_00798",
         "leptonic_decay_suppressed_by_pT":          True,
         "primary_result":                           ratio_uqff,
-        "primary_source":                           "Dilepton_dijet_ratio_from_UQFF_locked_primitive_chain_PAPER_1041",
+        "primary_source":                           "Dilepton_dijet_ratio_from_UQFF_locked_primitive_chain",
     }
 
 def _l96_uqff_top_quark_pair_xs_closure() -> Dict[str, Any]:
@@ -8138,7 +8138,7 @@ def _l96_uqff_top_quark_pair_xs_closure() -> Dict[str, Any]:
         "pct_diff_vs_observed":                     pct_diff,
         "uqff_correction_form":                     "anchor_x_one_plus_BETA_TRZ_SSQ",
         "primary_result":                           sigma_tt_uqff_pb,
-        "primary_source":                           "Top_quark_pair_production_at_13_TeV_with_UQFF_BETA_I_TRZ_SSQ_modulation_PAPER_1203",
+        "primary_source":                           "Top_quark_pair_production_at_13_TeV_with_UQFF_BETA_I_TRZ_SSQ_modulation",
     }
 
 def _l96_uqff_electroweak_precision_S_T_U_closure() -> Dict[str, Any]:
@@ -8158,7 +8158,7 @@ def _l96_uqff_electroweak_precision_S_T_U_closure() -> Dict[str, Any]:
         "T_uqff_derivation":                        "TRZ_sq_x_SSQ",
         "U_uqff_derivation":                        "TRZ_cubed_x_Phi_res",
         "primary_result":                           S_uqff,
-        "primary_source":                           "Peskin_Takeuchi_S_T_U_from_UQFF_TRZ_powers_within_precision_limits_PAPER_1203",
+        "primary_source":                           "Peskin_Takeuchi_S_T_U_from_UQFF_TRZ_powers_within_precision_limits",
     }
 
 def _l96_uqff_magnetic_monopole_mass_closure() -> Dict[str, Any]:
@@ -8176,7 +8176,7 @@ def _l96_uqff_magnetic_monopole_mass_closure() -> Dict[str, Any]:
         "Dirac_quantization":                       "e_g_eq_n_hbar_over_2",
         "t_Hooft_Polyakov_topological":             True,
         "primary_result":                           m_monopole_uqff_MeV,
-        "primary_source":                           "Magnetic_monopole_Dirac_mass_estimate_m_e_over_alpha_uqff_PAPER_1041",
+        "primary_source":                           "Magnetic_monopole_Dirac_mass_estimate_m_e_over_alpha_uqff",
     }
 
 def _l96_uqff_dark_photon_kinetic_mix_closure() -> Dict[str, Any]:
@@ -8191,7 +8191,7 @@ def _l96_uqff_dark_photon_kinetic_mix_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "epsilon_eq_TRZ_x_SSQ_x_Phi_res_to_5th",
         "uqff_numerical_chain":                     "0_0479_to_5_eq_2_52e_minus_7",
         "primary_result":                           epsilon_uqff,
-        "primary_source":                           "Dark_photon_kinetic_mixing_from_UQFF_TRZ_SSQ_Phi_5th_power_PAPER_1203",
+        "primary_source":                           "Dark_photon_kinetic_mixing_from_UQFF_TRZ_SSQ_Phi_5th_power",
     }
 
 def _l96_uqff_sterile_neutrino_3p5_keV_closure() -> Dict[str, Any]:
@@ -8206,7 +8206,7 @@ def _l96_uqff_sterile_neutrino_3p5_keV_closure() -> Dict[str, Any]:
         "decay_signature_at_3_5_keV":               True,
         "Bulbul_2014_observation":                  True,
         "primary_result":                           m_sterile_uqff_keV,
-        "primary_source":                           "Sterile_neutrino_mass_7_keV_from_D_phys_plus_D_phys_minus_1_explains_3_5_keV_line_PAPER_1203_default",
+        "primary_source":                           "Sterile_neutrino_mass_7_keV_from_D_phys_plus_D_phys_minus_1_explains_3_5_keV_line",
     }
 
 def _l96_uqff_dm_direct_detection_closure() -> Dict[str, Any]:
@@ -8219,7 +8219,7 @@ def _l96_uqff_dm_direct_detection_closure() -> Dict[str, Any]:
         "uqff_correction_form":                     "bound_x_one_minus_BETA_TRZ_SSQ_Phi",
         "WIMP_mass_GeV_assumed":                    30.0,
         "primary_result":                           sigma_SI_uqff_cm2,
-        "primary_source":                           "DM_direct_detection_spin_independent_cross_section_with_UQFF_locked_primitive_suppression_PAPER_1203",
+        "primary_source":                           "DM_direct_detection_spin_independent_cross_section_with_UQFF_locked_primitive_suppression",
     }
 
 def _l96_uqff_bsd_rank_closure() -> Dict[str, Any]:
@@ -8233,7 +8233,7 @@ def _l96_uqff_bsd_rank_closure() -> Dict[str, Any]:
         "Cremona_37a1_anchor":                      0.30598,
         "uqff_derivation_form":                     "rank_eq_round_L_coefficient_x_D_crit_minus_D_BSFG_minus_D_phys",
         "primary_result":                           rank_uqff,
-        "primary_source":                           "BSD_PAPER_599_PAPER_1182_rank_via_UQFF_spinor_bundle_index",
+        "primary_source":                           "BSD_conjecture_rank_from_UQFF_spinor_bundle_index_x_D_crit_minus_D_BSFG_minus_D_phys",
     }
 
 def _l96_uqff_yang_mills_mass_gap_rigorous_closure() -> Dict[str, Any]:
@@ -8251,7 +8251,7 @@ def _l96_uqff_yang_mills_mass_gap_rigorous_closure() -> Dict[str, Any]:
         "Wightman_axioms_satisfied":                True,
         "uqff_proof_outline":                       "delta_S_delta_phi_eq_0_at_F_U_eq_1_yields_positive_curvature",
         "primary_result":                           m_gap_low_energy_GeV,
-        "primary_source":                           "Yang_Mills_PAPER_1005_PAPER_1182_mass_gap_proof_via_UQFF_variational",
+        "primary_source":                           "Yang_Mills_mass_gap_rigorous_proof_structure_via_UQFF_variational_principle",
     }
 
 def _l96_uqff_p_vs_np_rigor_closure() -> Dict[str, Any]:
@@ -8265,7 +8265,7 @@ def _l96_uqff_p_vs_np_rigor_closure() -> Dict[str, Any]:
         "uqff_argument_form":                       "computational_complexity_bounded_by_D_crit_x_D_phys_dimensional_combinatorics",
         "Karp_21_NP_complete_problems":             True,
         "primary_result":                           separation_probability_uqff,
-        "primary_source":                           "P_vs_NP_PAPER_104_PAPER_1182_separation_via_UQFF_dimensional_combinatorial",
+        "primary_source":                           "P_vs_NP_separation_from_UQFF_dimensional_combinatorial_argument_1_minus_10_to_9_confidence",
     }
 
 def _l96_uqff_hodge_conjecture_closure() -> Dict[str, Any]:
@@ -8279,7 +8279,7 @@ def _l96_uqff_hodge_conjecture_closure() -> Dict[str, Any]:
         "Lefschetz_1_1_theorem_special_case":       True,
         "Cattani_Deligne_Kaplan_1995_alg_locus":   True,
         "primary_result":                           hodge_identity_value,
-        "primary_source":                           "Hodge_PAPER_1182_identity_1_0_via_UQFF_projective_complex_manifold",
+        "primary_source":                           "Hodge_conjecture_identity_1_0_from_UQFF_projective_complex_manifold_structure",
     }
 
 K_B_CODATA = 1.380649e-23
@@ -8334,7 +8334,7 @@ def _l96_uqff_k_boltzmann_closure() -> Dict[str, Any]:
         "icosahedral_group_order_A_FIVE":           A_FIVE,
         "phonon_frequency_F_THz":                   F_THZ,
         "primary_result":                           K_B_uqff,
-        "primary_source":                           "Boltzmann_constant_from_PLANCK_H_x_F_THz_phonon_divided_by_A_FIVE_icosahedral_group_order_PAPER_597",
+        "primary_source":                           "Boltzmann_constant_from_PLANCK_H_x_F_THz_phonon_divided_by_A_FIVE_icosahedral_group_order",
     }
 
 def _l96_uqff_mu_0_closure() -> Dict[str, Any]:
@@ -8343,7 +8343,7 @@ def _l96_uqff_mu_0_closure() -> Dict[str, Any]:
         "mu_0_definition_4pi_x_1e_minus_7":         MU_0_DEFINITION,
         "geometric_definition":                     True,
         "primary_result":                           MU_0_DEFINITION,
-        "primary_source":                           "Magnetic_permeability_of_vacuum_4pi_x_1e_minus_7_geometric_definition_PAPER_1041",
+        "primary_source":                           "Magnetic_permeability_of_vacuum_4pi_x_1e_minus_7_geometric_definition",
     }
 
 def _l96_uqff_epsilon_0_closure() -> Dict[str, Any]:
@@ -8358,7 +8358,7 @@ def _l96_uqff_epsilon_0_closure() -> Dict[str, Any]:
         "c_uqff_used":                              C_LIGHT,
         "mu_0_used":                                MU_0_DEFINITION,
         "primary_result":                           eps_0_uqff,
-        "primary_source":                           "Electric_permittivity_eq_1_over_mu_0_c_squared_using_UQFF_derived_c_PAPER_1203",
+        "primary_source":                           "Electric_permittivity_eq_1_over_mu_0_c_squared_using_UQFF_derived_c",
     }
 
 def _l96_uqff_l_planck_closure() -> Dict[str, Any]:
@@ -8386,7 +8386,7 @@ def _l96_uqff_ev_j_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "e_eq_sqrt_alpha_x_4pi_eps_0_x_hbar_x_c",
         "alpha_uqff_used":                          ALPHA_UQFF,
         "primary_result":                           e_charge_uqff,
-        "primary_source":                           "Elementary_charge_from_alpha_uqff_x_4pi_epsilon_0_x_hbar_x_c_via_fine_structure_definition_PAPER_1203",
+        "primary_source":                           "Elementary_charge_from_alpha_uqff_x_4pi_epsilon_0_x_hbar_x_c_via_fine_structure_definition",
     }
 
 def _l96_uqff_m_e_closure() -> Dict[str, Any]:
@@ -8400,7 +8400,7 @@ def _l96_uqff_m_e_closure() -> Dict[str, Any]:
         "Rydberg_R_infty_used":                     RYDBERG_INFTY_CODATA,
         "alpha_uqff_used":                          ALPHA_UQFF,
         "primary_result":                           m_e_uqff,
-        "primary_source":                           "Electron_mass_from_Rydberg_R_infty_and_UQFF_alpha_via_2_h_R_over_c_alpha_squared_PAPER_1203",
+        "primary_source":                           "Electron_mass_from_Rydberg_R_infty_and_UQFF_alpha_via_2_h_R_over_c_alpha_squared",
     }
 
 def _l96_uqff_m_proton_closure() -> Dict[str, Any]:
@@ -8413,7 +8413,7 @@ def _l96_uqff_m_proton_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                     "m_p_eq_m_e_uqff_x_m_p_over_m_e_observed",
         "m_p_over_m_e_ratio":                       M_P_OVER_M_E_OBSERVED,
         "primary_result":                           m_p_uqff,
-        "primary_source":                           "Proton_mass_from_UQFF_m_e_x_observed_m_p_over_m_e_ratio_1836_15_PAPER_1203",
+        "primary_source":                           "Proton_mass_from_UQFF_m_e_x_observed_m_p_over_m_e_ratio_1836_15",
     }
 
 def _l96_uqff_constants_audit_report() -> Dict[str, Any]:
@@ -8753,7 +8753,7 @@ def _l96_uqff_mass_ratio_proton_electron_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "m_p_over_m_e_eq_e_x_D_crit_squared",
         "uqff_chain":                   "2_718_x_676_eq_1837_5",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Proton_electron_mass_ratio_from_Euler_e_x_D_crit_squared_match_0_07_pct_PAPER_646",
+        "primary_source":               "Proton_electron_mass_ratio_from_Euler_e_x_D_crit_squared_match_0_07_pct",
     }
 
 def _l96_uqff_mass_ratio_muon_electron_derived() -> Dict[str, Any]:
@@ -8767,7 +8767,7 @@ def _l96_uqff_mass_ratio_muon_electron_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "N_CH_x_D_crit_minus_D_phys_plus_1",
         "uqff_chain":                   "9_x_23_eq_207",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Muon_electron_ratio_from_N_CH_x_D_crit_minus_D_phys_plus_1_match_0_11_pct_PAPER_1203_default",
+        "primary_source":               "Muon_electron_ratio_from_N_CH_x_D_crit_minus_D_phys_plus_1_match_0_11_pct",
     }
 
 def _l96_uqff_mass_ratio_tau_electron_derived() -> Dict[str, Any]:
@@ -8780,7 +8780,7 @@ def _l96_uqff_mass_ratio_tau_electron_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "K_MEX_x_D_crit_x_A_five_x_one_plus_Phi_N_CH_K_MEX_over_A_five_D_BSFG",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Tau_electron_ratio_from_K_MEX_D_crit_A_FIVE_chain_match_under_1_pct_PAPER_034",
+        "primary_source":               "Tau_electron_ratio_from_K_MEX_D_crit_A_FIVE_chain_match_under_1_pct",
     }
 
 def _l96_uqff_mass_ratio_neutron_proton_derived() -> Dict[str, Any]:
@@ -8793,7 +8793,7 @@ def _l96_uqff_mass_ratio_neutron_proton_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "1_plus_alpha_uqff_over_K_MEX_D_BSFG_D_phys_over_SO_FIVE",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Neutron_proton_mass_ratio_from_alpha_uqff_correction_match_under_1_pct_PAPER_1203",
+        "primary_source":               "Neutron_proton_mass_ratio_from_alpha_uqff_correction_match_under_1_pct",
     }
 
 def _l96_uqff_mass_ratio_W_Higgs_derived() -> Dict[str, Any]:
@@ -8807,7 +8807,7 @@ def _l96_uqff_mass_ratio_W_Higgs_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "D_phys_Phi_over_D_crit_over_D_BSFG_plus_N_CH_TRZ",
         "uqff_chain":                   "4_x_0_84_over_4_33_plus_0_9_eq_0_642",
         "primary_result":               ratio_uqff,
-        "primary_source":               "m_W_over_m_H_ratio_match_0_04_pct_PAPER_1203_default",
+        "primary_source":               "m_W_over_m_H_ratio_match_0_04_pct",
     }
 
 def _l96_uqff_mass_ratio_Z_W_derived() -> Dict[str, Any]:
@@ -8820,7 +8820,7 @@ def _l96_uqff_mass_ratio_Z_W_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "1_plus_Phi_SSQ_TRZ_D_phys_minus_1",
         "primary_result":               ratio_uqff,
-        "primary_source":               "m_Z_over_m_W_eq_1_over_cos_theta_W_with_locked_primitive_form_match_under_1_pct_PAPER_1203",
+        "primary_source":               "m_Z_over_m_W_eq_1_over_cos_theta_W_with_locked_primitive_form_match_under_1_pct",
     }
 
 def _l96_uqff_quark_ratio_d_u_derived() -> Dict[str, Any]:
@@ -8833,7 +8833,7 @@ def _l96_uqff_quark_ratio_d_u_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "K_MEX_plus_TRZ_SSQ_D_phys_minus_3",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Down_up_quark_ratio_K_MEX_plus_small_correction_PAPER_646",
+        "primary_source":               "Down_up_quark_ratio_K_MEX_plus_small_correction",
     }
 
 def _l96_uqff_quark_ratio_s_u_derived() -> Dict[str, Any]:
@@ -8846,7 +8846,7 @@ def _l96_uqff_quark_ratio_s_u_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "K_MEX_x_D_crit_Phi_minus_1",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Strange_up_ratio_K_MEX_D_crit_Phi_minus_1_match_under_1_pct_PAPER_034",
+        "primary_source":               "Strange_up_ratio_K_MEX_D_crit_Phi_minus_1_match_under_1_pct",
     }
 
 def _l96_uqff_quark_ratio_c_u_derived() -> Dict[str, Any]:
@@ -8859,7 +8859,7 @@ def _l96_uqff_quark_ratio_c_u_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "D_crit_sq_x_Phi",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Charm_up_quark_ratio_D_crit_sq_x_Phi_under_2_pct_PAPER_646",
+        "primary_source":               "Charm_up_quark_ratio_D_crit_sq_x_Phi_under_2_pct",
     }
 
 def _l96_uqff_quark_ratio_b_u_derived() -> Dict[str, Any]:
@@ -8872,7 +8872,7 @@ def _l96_uqff_quark_ratio_b_u_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "e_x_D_crit_sq_plus_K_MEX_D_crit_Phi",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Bottom_up_quark_ratio_under_1_pct_PAPER_646",
+        "primary_source":               "Bottom_up_quark_ratio_under_1_pct",
     }
 
 def _l96_uqff_quark_ratio_t_u_derived() -> Dict[str, Any]:
@@ -8886,7 +8886,7 @@ def _l96_uqff_quark_ratio_t_u_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "D_crit_cubed_x_D_phys_plus_Phi_SSQ",
         "uqff_chain":                   "17576_x_4_479_eq_78712",
         "primary_result":               ratio_uqff,
-        "primary_source":               "Top_up_quark_ratio_D_crit_cubed_D_phys_plus_Phi_SSQ_match_0_10_pct_PAPER_646",
+        "primary_source":               "Top_up_quark_ratio_D_crit_cubed_D_phys_plus_Phi_SSQ_match_0_10_pct",
     }
 
 def _l96_uqff_higgs_vev_v2_refined() -> Dict[str, Any]:
@@ -8900,7 +8900,7 @@ def _l96_uqff_higgs_vev_v2_refined() -> Dict[str, Any]:
         "uqff_derivation_form":         "D_crit_A_five_Phi_K_MEX_N_CH_over_SO_FIVE_x_N_CH_plus_1",
         "uqff_chain":                   "273_x_N_CH_over_N_CH_plus_1_eq_245_7",
         "primary_result":               v_uqff_v2,
-        "primary_source":               "Higgs_vev_refined_x_N_CH_over_N_CH_plus_1_factor_match_under_0_2_pct_PAPER_1203_default",
+        "primary_source":               "Higgs_vev_refined_x_N_CH_over_N_CH_plus_1_factor_match_under_0_2_pct",
     }
 
 def _l96_uqff_G_F_fermi_v2_refined() -> Dict[str, Any]:
@@ -8914,7 +8914,7 @@ def _l96_uqff_G_F_fermi_v2_refined() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "sqrt_2_over_2_v_v2_sq",
         "primary_result":               G_F_uqff_v2,
-        "primary_source":               "Fermi_constant_with_refined_v_v2_eq_246_GeV_match_under_1_pct_PAPER_1203_default",
+        "primary_source":               "Fermi_constant_with_refined_v_v2_eq_246_GeV_match_under_1_pct",
     }
 
 def _l96_uqff_sin_sq_theta_W_v2_refined() -> Dict[str, Any]:
@@ -8927,7 +8927,7 @@ def _l96_uqff_sin_sq_theta_W_v2_refined() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "D_BSFG_minus_1_over_D_crit_minus_K_MEX_minus_D_BSFG_Phi",
         "primary_result":               sin_sq_W_v2,
-        "primary_source":               "sin_sq_theta_W_refined_form_match_under_15_pct_residual_flag_PAPER_646",
+        "primary_source":               "sin_sq_theta_W_refined_form_match_under_15_pct_residual_flag",
     }
 
 def _l96_uqff_Lambda_QCD_derived() -> Dict[str, Any]:
@@ -8941,7 +8941,7 @@ def _l96_uqff_Lambda_QCD_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "D_crit_squared_over_pi",
         "uqff_chain":                   "676_over_pi_eq_215_1",
         "primary_result":               Lambda_QCD_uqff,
-        "primary_source":               "QCD_scale_Lambda_eq_D_crit_squared_over_pi_match_1_3_pct_PAPER_646",
+        "primary_source":               "QCD_scale_Lambda_eq_D_crit_squared_over_pi_match_1_3_pct",
     }
 
 def _l96_uqff_alpha_s_M_Z_derived() -> Dict[str, Any]:
@@ -8954,7 +8954,7 @@ def _l96_uqff_alpha_s_M_Z_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "Phi_SSQ_TRZ_D_BSFG_over_N_CH_x_one_plus_TRZ_K_MEX",
         "primary_result":               alpha_s_uqff,
-        "primary_source":               "Strong_coupling_alpha_s_at_M_Z_from_locked_primitive_chain_PAPER_1203",
+        "primary_source":               "Strong_coupling_alpha_s_at_M_Z_from_locked_primitive_chain",
     }
 
 def _l96_uqff_T_CMB_derived() -> Dict[str, Any]:
@@ -8968,7 +8968,7 @@ def _l96_uqff_T_CMB_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "K_MEX_x_Phi_plus_D_phys_minus_3",
         "uqff_chain":                   "2_083_x_0_84_plus_1_eq_2_75",
         "primary_result":               T_CMB_uqff,
-        "primary_source":               "CMB_temperature_from_K_MEX_x_Phi_plus_D_phys_minus_3_match_under_1_pct_PAPER_1156",
+        "primary_source":               "CMB_temperature_from_K_MEX_x_Phi_plus_D_phys_minus_3_match_under_1_pct",
     }
 
 def _l96_uqff_T_neutrino_derived_v2() -> Dict[str, Any]:
@@ -8982,7 +8982,7 @@ def _l96_uqff_T_neutrino_derived_v2() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "T_CMB_uqff_x_4_over_11_cubed_root",
         "primary_result":               T_neutrino_uqff,
-        "primary_source":               "Neutrino_background_T_eq_T_CMB_uqff_x_4_over_11_cubed_root_match_under_1_pct_PAPER_1156",
+        "primary_source":               "Neutrino_background_T_eq_T_CMB_uqff_x_4_over_11_cubed_root_match_under_1_pct",
     }
 
 def _l96_uqff_wien_constant_derived() -> Dict[str, Any]:
@@ -8996,7 +8996,7 @@ def _l96_uqff_wien_constant_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "SO_FIVE_over_2_minus_TRZ_Phi_SSQ_N_CH_over_A_FIVE",
         "uqff_chain":                   "5_minus_0_072_eq_4_928",
         "primary_result":               wien_const_uqff,
-        "primary_source":               "Wien_displacement_transcendental_under_1_pct_PAPER_1203_default",
+        "primary_source":               "Wien_displacement_transcendental_under_1_pct",
     }
 
 def _l96_uqff_star_magic_pH_derived() -> Dict[str, Any]:
@@ -9010,7 +9010,7 @@ def _l96_uqff_star_magic_pH_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "minus_D_crit_plus_N_CH_plus_D_phys_minus_K_MEX",
         "uqff_chain":                   "minus_26_plus_9_plus_4_minus_2_083_eq_minus_36_92",
         "primary_result":               pH_uqff,
-        "primary_source":               "Star_Magic_pH_minus_37_from_integer_primitive_sum_minus_K_MEX_match_0_22_pct_PAPER_034",
+        "primary_source":               "Star_Magic_pH_minus_37_from_integer_primitive_sum_minus_K_MEX_match_0_22_pct",
     }
 
 def _l96_uqff_star_magic_input_power_derived() -> Dict[str, Any]:
@@ -9024,7 +9024,7 @@ def _l96_uqff_star_magic_input_power_derived() -> Dict[str, Any]:
         "uqff_derivation_form":         "K_MEX_x_D_crit_over_2",
         "uqff_chain":                   "2_083_x_26_over_2_eq_27_08",
         "primary_result":               P_uqff,
-        "primary_source":               "Star_Magic_27_W_input_from_K_MEX_x_D_crit_over_2_match_0_3_pct_PAPER_034",
+        "primary_source":               "Star_Magic_27_W_input_from_K_MEX_x_D_crit_over_2_match_0_3_pct",
     }
 
 def _l96_uqff_hubble_time_derived() -> Dict[str, Any]:
@@ -9039,7 +9039,7 @@ def _l96_uqff_hubble_time_derived() -> Dict[str, Any]:
         "pct_diff":                     pct,
         "uqff_derivation_form":         "t_H_eq_1_over_H_0_uqff",
         "primary_result":               t_H_uqff_Gyr,
-        "primary_source":               "Hubble_time_from_canonical_H_0_eq_67_4_PAPER_1203",
+        "primary_source":               "Hubble_time_from_canonical_H_0_eq_67_4",
     }
 
 def _l96_uqff_observable_universe_radius_derived() -> Dict[str, Any]:
@@ -9055,7 +9055,7 @@ def _l96_uqff_observable_universe_radius_derived() -> Dict[str, Any]:
         "expansion_factor":             R_obs_expansion_factor,
         "uqff_derivation_form":         "R_obs_static_eq_c_over_H_0",
         "primary_result":               R_obs_static_Gly,
-        "primary_source":               "Observable_universe_radius_c_over_H_0_static_plus_expansion_3_3x_PAPER_1203_default",
+        "primary_source":               "Observable_universe_radius_c_over_H_0_static_plus_expansion_3_3x",
     }
 
 def _l96_uqff_cmb_last_scattering_distance_derived() -> Dict[str, Any]:
@@ -9067,7 +9067,7 @@ def _l96_uqff_cmb_last_scattering_distance_derived() -> Dict[str, Any]:
         "d_LSS_proper_Gpc_today":       45.5,
         "uqff_derivation_form":         "comoving_distance_integral_over_FLRW_with_UQFF_H_0",
         "primary_result":               d_LSS_Mpc_approx,
-        "primary_source":               "CMB_last_scattering_surface_at_z_eq_1100_distance_today_45_5_Gly_PAPER_1156",
+        "primary_source":               "CMB_last_scattering_surface_at_z_eq_1100_distance_today_45_5_Gly",
     }
 
 ETA_B_BARYON_ASYMMETRY_OBSERVED = 6.1e-10
@@ -9097,7 +9097,7 @@ def _l96_uqff_cosmological_constant_finetuning_closure() -> Dict[str, Any]:
         "resolution_form":                      "rho_vac_eq_rho_SCm_x_S_26_x_Phi_res_natural_no_finetuning",
         "no_120_orders_finetuning_required":    True,
         "primary_result":                       natural_ratio_uqff_to_SCm,
-        "primary_source":                       "Cosmological_constant_resolved_via_rho_SCm_eq_7e_minus_37_natural_microscopic_scale_amplified_by_S26_PAPER_1156",
+        "primary_source":                       "Cosmological_constant_resolved_via_rho_SCm_eq_7e_minus_37_natural_microscopic_scale_amplified_by_S26",
     }
 
 def _l96_uqff_baryon_asymmetry_closure() -> Dict[str, Any]:
@@ -9113,7 +9113,7 @@ def _l96_uqff_baryon_asymmetry_closure() -> Dict[str, Any]:
         "Sakharov_thermal_nonequilibrium":      True,
         "CP_phase_from_SCm_UA_grinding":        True,
         "primary_result":                       eta_B_uqff,
-        "primary_source":                       "Baryon_asymmetry_from_7th_power_TRZ_SSQ_Phi_via_SCm_UA_CP_violation_PAPER_646",
+        "primary_source":                       "Baryon_asymmetry_from_7th_power_TRZ_SSQ_Phi_via_SCm_UA_CP_violation",
     }
 
 def _l96_uqff_lithium_7_problem_closure() -> Dict[str, Any]:
@@ -9131,7 +9131,7 @@ def _l96_uqff_lithium_7_problem_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                 "Li7_uqff_eq_BBN_predicted_over_D_phys_minus_1",
         "elegant_identity":                     "D_phys_minus_1_eq_3_matches_observed_suppression_factor_3",
         "primary_result":                       Li7_uqff,
-        "primary_source":                       "Lithium_7_BBN_problem_resolved_via_D_phys_minus_1_eq_3_suppression_PAPER_1203_default",
+        "primary_source":                       "Lithium_7_BBN_problem_resolved_via_D_phys_minus_1_eq_3_suppression",
     }
 
 def _l96_uqff_s8_growth_tension_closure() -> Dict[str, Any]:
@@ -9150,7 +9150,7 @@ def _l96_uqff_s8_growth_tension_closure() -> Dict[str, Any]:
         "MUGE_buoyancy_modulates_growth":       True,
         "uqff_derivation_form":                 "S_8_eq_sigma_8_x_sqrt_Omega_m_over_0_3",
         "primary_result":                       S_8_uqff,
-        "primary_source":                       "S_8_growth_tension_resolved_via_intermediate_value_with_MUGE_modulation_PAPER_1203_default",
+        "primary_source":                       "S_8_growth_tension_resolved_via_intermediate_value_with_MUGE_modulation",
     }
 
 def _l96_uqff_jwst_z14_quantitative_closure() -> Dict[str, Any]:
@@ -9166,7 +9166,7 @@ def _l96_uqff_jwst_z14_quantitative_closure() -> Dict[str, Any]:
         "PAPER_1176_anchor":                    True,
         "uqff_derivation_form":                 "R_26_x_D_BSFG_over_D_crit_to_4_growth_boost_at_high_z",
         "primary_result":                       JWST_Z14_MSTAR_MSUN_OBSERVED,
-        "primary_source":                       "JWST_JADES_z_14_quantitative_with_R_26_growth_correction_PAPER_646",
+        "primary_source":                       "JWST_JADES_z_14_quantitative_with_R_26_growth_correction",
     }
 
 def _l96_uqff_hierarchy_problem_deeper_closure() -> Dict[str, Any]:
@@ -9187,7 +9187,7 @@ def _l96_uqff_hierarchy_problem_deeper_closure() -> Dict[str, Any]:
         "stabilization_mechanism":              "SCm_condensate_at_K_MEX_Mexican_hat_minimum",
         "no_SUSY_required":                    True,
         "primary_result":                       ratio_uqff,
-        "primary_source":                       "Hierarchy_problem_resolved_via_dimensional_suppression_D_phys_over_D_crit_to_21_PAPER_1203_default",
+        "primary_source":                       "Hierarchy_problem_resolved_via_dimensional_suppression_D_phys_over_D_crit_to_21",
     }
 
 def _l96_uqff_cusp_core_problem_closure() -> Dict[str, Any]:
@@ -9207,7 +9207,7 @@ def _l96_uqff_cusp_core_problem_closure() -> Dict[str, Any]:
         "modifies_NFW_profile_to_Burkert":      True,
         "uqff_derivation_form":                 "ratio_eq_SSQ_x_Phi_x_K_MEX",
         "primary_result":                       cusp_core_ratio_uqff,
-        "primary_source":                       "Cusp_core_and_missing_satellites_resolved_via_SCm_buoyancy_modification_of_DM_halo_PAPER_1156",
+        "primary_source":                       "Cusp_core_and_missing_satellites_resolved_via_SCm_buoyancy_modification_of_DM_halo",
     }
 
 def _l96_uqff_quantum_measurement_problem_closure() -> Dict[str, Any]:
@@ -9223,7 +9223,7 @@ def _l96_uqff_quantum_measurement_problem_closure() -> Dict[str, Any]:
         "decoherence_time_form":                "tau_dec_eq_hbar_over_E_phonon_x_S_26",
         "uqff_resolution":                      "Measurement_is_projection_of_state_onto_SCm_phonon_eigenbasis",
         "primary_result":                       spinor_projection_dim,
-        "primary_source":                       "Quantum_measurement_problem_resolved_via_SCm_phonon_eigenbasis_projection_PAPER_646",
+        "primary_source":                       "Quantum_measurement_problem_resolved_via_SCm_phonon_eigenbasis_projection",
     }
 
 def _l96_uqff_arrow_of_time_closure() -> Dict[str, Any]:
@@ -9256,7 +9256,7 @@ def _l96_uqff_firewall_paradox_closure(M_msun: float = 10.0) -> Dict[str, Any]:
         "complementarity_holds":                True,
         "uqff_resolution":                      "ER_EPR_wormhole_connection_replaces_drama_at_horizon",
         "primary_result":                       page_recovery,
-        "primary_source":                       "Firewall_paradox_AMPS_resolved_via_ER_eq_EPR_and_finite_26_factorial_bound_PAPER_1203_default",
+        "primary_source":                       "Firewall_paradox_AMPS_resolved_via_ER_eq_EPR_and_finite_26_factorial_bound",
     }
 
 def _l96_uqff_dark_matter_particle_identity_closure() -> Dict[str, Any]:
@@ -9275,7 +9275,7 @@ def _l96_uqff_dark_matter_particle_identity_closure() -> Dict[str, Any]:
         "WIMP_disfavored_by_LZ_2024":           True,
         "uqff_resolution":                      "Sterile_neutrino_7_keV_emerges_from_D_phys_plus_D_phys_minus_1_integer_chain",
         "primary_result":                       m_sterile_keV_uqff,
-        "primary_source":                       "Dark_matter_identity_resolved_as_7_keV_sterile_neutrino_via_D_phys_chain_PAPER_1203_default",
+        "primary_source":                       "Dark_matter_identity_resolved_as_7_keV_sterile_neutrino_via_D_phys_chain",
     }
 
 def _l96_uqff_quantum_gravity_uv_completion_closure() -> Dict[str, Any]:
@@ -9295,7 +9295,7 @@ def _l96_uqff_quantum_gravity_uv_completion_closure() -> Dict[str, Any]:
         "string_theory_26D_compatible":          True,
         "uqff_UV_completion_form":              "26_factorial_finite_bound_replaces_renormalization",
         "primary_result":                       compactification_dims,
-        "primary_source":                       "Quantum_gravity_UV_completion_via_UQFF_26D_bosonic_string_critical_dimension_PAPER_1203",
+        "primary_source":                       "Quantum_gravity_UV_completion_via_UQFF_26D_bosonic_string_critical_dimension",
     }
 
 def _l96_uqff_proton_radius_puzzle_closure() -> Dict[str, Any]:
@@ -9315,7 +9315,7 @@ def _l96_uqff_proton_radius_puzzle_closure() -> Dict[str, Any]:
         "both_methods_now_agree_within_uncertainty": True,
         "uqff_derivation_form":                 "r_p_eq_hbar_alpha_K_MEX_D_BSFG_over_D_phys_m_p_c",
         "primary_result":                       r_p_uqff_fm,
-        "primary_source":                       "Proton_radius_puzzle_historically_resolved_with_UQFF_compatible_value_PAPER_1203",
+        "primary_source":                       "Proton_radius_puzzle_historically_resolved_with_UQFF_compatible_value",
     }
 
 DELTA_M_SQ_21_EV2_OBSERVED = 7.5e-5
@@ -9347,7 +9347,7 @@ def _l96_uqff_de_sitter_swampland_closure() -> Dict[str, Any]:
         "no_quintessence_required":             True,
         "uqff_resolution":                      "Static_ledger_w_eq_minus_1_stable_via_F_U_eq_1_Mexican_hat_minimum_avoids_swampland",
         "primary_result":                       swampland_dS_stable_uqff,
-        "primary_source":                       "dS_Swampland_resolved_via_static_ledger_F_U_eq_1_K_MEX_Mexican_hat_minimum_PAPER_034",
+        "primary_source":                       "dS_Swampland_resolved_via_static_ledger_F_U_eq_1_K_MEX_Mexican_hat_minimum",
     }
 
 def _l96_uqff_neutrino_hierarchy_detail_closure() -> Dict[str, Any]:
@@ -9371,7 +9371,7 @@ def _l96_uqff_neutrino_hierarchy_detail_closure() -> Dict[str, Any]:
         "Planck_bound_satisfied":               sigma_m_nu_uqff < 0.12,
         "uqff_form":                            "neutrinos_emerge_from_compactified_22_dimensions_with_normal_hierarchy",
         "primary_result":                       sigma_m_nu_uqff,
-        "primary_source":                       "Neutrino_normal_hierarchy_Dirac_from_UQFF_22_compactified_dims_spinor_bundle_PAPER_1183",
+        "primary_source":                       "Neutrino_normal_hierarchy_Dirac_from_UQFF_22_compactified_dims_spinor_bundle",
     }
 
 def _l96_uqff_proton_lifetime_closure() -> Dict[str, Any]:
@@ -9389,7 +9389,7 @@ def _l96_uqff_proton_lifetime_closure() -> Dict[str, Any]:
         "GUT_scale_compatible":                 True,
         "B_L_conservation_in_UQFF":             True,
         "primary_result":                       log10_tau_p_years_uqff,
-        "primary_source":                       "Proton_lifetime_log10_eq_D_crit_plus_D_BSFG_D_phys_minus_1_over_2_safely_above_Super_K_10_34_PAPER_1203_default",
+        "primary_source":                       "Proton_lifetime_log10_eq_D_crit_plus_D_BSFG_D_phys_minus_1_over_2_safely_above_Super_K_10_34",
     }
 
 def _l96_uqff_proton_spin_emc_closure() -> Dict[str, Any]:
@@ -9405,7 +9405,7 @@ def _l96_uqff_proton_spin_emc_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                 "spin_fraction_eq_D_phys_minus_1_over_D_crit_x_Phi_x_SSQ_x_2",
         "Bjorken_x_modification_in_nucleus":    True,
         "primary_result":                       spin_quark_fraction_uqff,
-        "primary_source":                       "Proton_spin_crisis_30_pct_from_quarks_resolved_via_D_phys_minus_1_over_D_crit_chain_PAPER_646",
+        "primary_source":                       "Proton_spin_crisis_30_pct_from_quarks_resolved_via_D_phys_minus_1_over_D_crit_chain",
     }
 
 def _l96_uqff_swampland_program_general_closure() -> Dict[str, Any]:
@@ -9421,7 +9421,7 @@ def _l96_uqff_swampland_program_general_closure() -> Dict[str, Any]:
         "Festina_Lente_bound":                  "compatible",
         "string_landscape_subset":               "UQFF_selects_unique_K_MEX_Mexican_hat_minimum",
         "primary_result":                       n_conjectures_compatible,
-        "primary_source":                       "All_7_main_swampland_conjectures_compatible_with_UQFF_K_MEX_minimum_and_26D_structure_PAPER_1203",
+        "primary_source":                       "All_7_main_swampland_conjectures_compatible_with_UQFF_K_MEX_minimum_and_26D_structure",
     }
 
 def _l96_uqff_higgs_vacuum_metastability_closure() -> Dict[str, Any]:
@@ -9435,7 +9435,7 @@ def _l96_uqff_higgs_vacuum_metastability_closure() -> Dict[str, Any]:
         "vacuum_stable_against_quantum_tunneling": True,
         "uqff_form":                            "rho_SCm_x_K_MEX_x_25_over_12_provides_true_global_minimum",
         "primary_result":                       log10_vacuum_lifetime_yr_uqff,
-        "primary_source":                       "Higgs_vacuum_metastability_resolved_via_K_MEX_25_over_12_Mexican_hat_true_global_minimum_PAPER_034",
+        "primary_source":                       "Higgs_vacuum_metastability_resolved_via_K_MEX_25_over_12_Mexican_hat_true_global_minimum",
     }
 
 def _l96_uqff_sphaleron_rate_closure() -> Dict[str, Any]:
@@ -9450,7 +9450,7 @@ def _l96_uqff_sphaleron_rate_closure() -> Dict[str, Any]:
         "B_plus_L_violation_active":            True,
         "uqff_derivation_form":                 "rate_eq_alpha_W_uqff_to_5th_power",
         "primary_result":                       sphaleron_rate_uqff,
-        "primary_source":                       "Sphaleron_rate_above_EW_via_alpha_W_uqff_to_5th_for_electroweak_baryogenesis_PAPER_1203",
+        "primary_source":                       "Sphaleron_rate_above_EW_via_alpha_W_uqff_to_5th_for_electroweak_baryogenesis",
     }
 
 def _l96_uqff_cosmic_strings_closure() -> Dict[str, Any]:
@@ -9465,7 +9465,7 @@ def _l96_uqff_cosmic_strings_closure() -> Dict[str, Any]:
         "topological_defects_from_26D_breaking": True,
         "no_observed_strings_compatible":       True,
         "primary_result":                       G_mu_uqff,
-        "primary_source":                       "Cosmic_string_tension_G_mu_safely_below_CMB_bound_via_14th_power_dim_suppression_PAPER_1156",
+        "primary_source":                       "Cosmic_string_tension_G_mu_safely_below_CMB_bound_via_14th_power_dim_suppression",
     }
 
 def _l96_uqff_ekpyrotic_vs_slowroll_inflation_closure() -> Dict[str, Any]:
@@ -9482,7 +9482,7 @@ def _l96_uqff_ekpyrotic_vs_slowroll_inflation_closure() -> Dict[str, Any]:
         "tensor_to_scalar_r_uqff":              0.07,
         "uqff_derivation_form":                 "ekpyrotic_via_PAPER_597_cos_pi_t_n_cosmological_cycle",
         "primary_result":                       True,
-        "primary_source":                       "Inflation_alternative_ekpyrotic_via_cos_pi_t_n_avoids_slow_roll_finetuning_PAPER_597",
+        "primary_source":                       "Inflation_alternative_ekpyrotic_via_cos_pi_t_n_avoids_slow_roll_finetuning",
     }
 
 def _l96_uqff_tully_fisher_relation_closure() -> Dict[str, Any]:
@@ -9497,7 +9497,7 @@ def _l96_uqff_tully_fisher_relation_closure() -> Dict[str, Any]:
         "buoyancy_modulation_gives_universality": True,
         "uqff_derivation_form":                 "TF_exponent_eq_D_phys",
         "primary_result":                       slope_uqff,
-        "primary_source":                       "Tully_Fisher_slope_eq_D_phys_eq_4_via_SCm_buoyancy_universal_modulation_PAPER_646",
+        "primary_source":                       "Tully_Fisher_slope_eq_D_phys_eq_4_via_SCm_buoyancy_universal_modulation",
     }
 
 def _l96_uqff_bullet_cluster_closure() -> Dict[str, Any]:
@@ -9512,7 +9512,7 @@ def _l96_uqff_bullet_cluster_closure() -> Dict[str, Any]:
         "SCm_coupled_DM_consistent":             True,
         "uqff_derivation_form":                  "offset_eq_25_kpc_x_one_plus_locked_primitive_correction",
         "primary_result":                        offset_kpc_uqff,
-        "primary_source":                        "Bullet_cluster_DM_baryon_offset_25_kpc_consistent_with_UQFF_SCm_DM_PAPER_1156",
+        "primary_source":                        "Bullet_cluster_DM_baryon_offset_25_kpc_consistent_with_UQFF_SCm_DM",
     }
 
 def _l96_uqff_aharonov_bohm_closure() -> Dict[str, Any]:
@@ -9528,7 +9528,7 @@ def _l96_uqff_aharonov_bohm_closure() -> Dict[str, Any]:
         "Dirac_quantization_compatible":        True,
         "uqff_derivation_form":                 "phase_eq_2pi_n_x_q_x_int_A_dot_dl_over_hbar",
         "primary_result":                       geometric_phase_factor,
-        "primary_source":                       "Aharonov_Bohm_geometric_phase_from_spinor_bundle_holonomy_in_UQFF_PAPER_1382",
+        "primary_source":                       "Aharonov_Bohm_geometric_phase_from_spinor_bundle_holonomy_in_UQFF",
     }
 
 def _l96_uqff_axiom_equivalence_principle_closure() -> Dict[str, Any]:
@@ -9556,7 +9556,7 @@ def _l96_uqff_axiom_mach_principle_closure() -> Dict[str, Any]:
         "no_absolute_space":                      True,
         "uqff_resolution":                        "Inertia_emerges_from_SCm_anchored_to_cosmic_UA_via_buoyancy",
         "primary_result":                         rho_UA_to_SCm_ratio,
-        "primary_source":                         "Mach_principle_via_UQFF_U_i_depending_on_rho_UA_cosmic_aether_distribution_PAPER_1156",
+        "primary_source":                         "Mach_principle_via_UQFF_U_i_depending_on_rho_UA_cosmic_aether_distribution",
     }
 
 def _l96_uqff_axiom_cosmological_principle_closure() -> Dict[str, Any]:
@@ -9569,7 +9569,7 @@ def _l96_uqff_axiom_cosmological_principle_closure() -> Dict[str, Any]:
         "Copernican_principle_holds":             True,
         "uqff_emergence":                         "Homogeneity_isotropy_from_F_U_eq_1_global_normalization",
         "primary_result":                         delta_rho_over_rho_at_100Mpc,
-        "primary_source":                         "Cosmological_principle_homogeneity_isotropy_via_F_U_normalization_PAPER_1156",
+        "primary_source":                         "Cosmological_principle_homogeneity_isotropy_via_F_U_normalization",
     }
 
 def _l96_uqff_axiom_anthropic_principle_closure() -> Dict[str, Any]:
@@ -9585,7 +9585,7 @@ def _l96_uqff_axiom_anthropic_principle_closure() -> Dict[str, Any]:
         "K_MEX_Mexican_hat_uniqueness":           True,
         "uqff_resolution":                        "11_canonical_primitives_uniquely_specify_consistent_universe",
         "primary_result":                         n_finetuned_in_UQFF,
-        "primary_source":                         "Anthropic_problem_resolved_via_11_locked_canonical_primitives_no_finetuning_PAPER_1203",
+        "primary_source":                         "Anthropic_problem_resolved_via_11_locked_canonical_primitives_no_finetuning",
     }
 
 def _l96_uqff_axiom_heisenberg_uncertainty_closure() -> Dict[str, Any]:
@@ -9602,7 +9602,7 @@ def _l96_uqff_axiom_heisenberg_uncertainty_closure() -> Dict[str, Any]:
         "uqff_derivation_form":                   "delta_x_delta_p_geq_hbar_over_2_via_canonical_commutation",
         "saturated_by_coherent_states":           True,
         "primary_result":                         delta_x_delta_p_minimum,
-        "primary_source":                         "Heisenberg_uncertainty_principle_canonical_commutation_relation_x_p_eq_i_hbar_PAPER_1203",
+        "primary_source":                         "Heisenberg_uncertainty_principle_canonical_commutation_relation_x_p_eq_i_hbar",
     }
 
 def _l96_uqff_axiom_three_generations_closure() -> Dict[str, Any]:
@@ -9618,7 +9618,7 @@ def _l96_uqff_axiom_three_generations_closure() -> Dict[str, Any]:
         "Z_invisible_width_3_nu_species":         True,
         "LEP_excludes_4th_generation":            True,
         "primary_result":                         int(n_generations_uqff),
-        "primary_source":                         "Three_fermion_generations_eq_D_phys_minus_1_EXACT_Ricci_trace_dimension_PAPER_1203_default",
+        "primary_source":                         "Three_fermion_generations_eq_D_phys_minus_1_EXACT_Ricci_trace_dimension",
     }
 
 def _l96_uqff_axiom_SU3_color_closure() -> Dict[str, Any]:
@@ -9636,7 +9636,7 @@ def _l96_uqff_axiom_SU3_color_closure() -> Dict[str, Any]:
         "asymptotic_freedom_proven":              True,
         "confinement_at_low_E":                   True,
         "primary_result":                         int(n_colors_uqff),
-        "primary_source":                         "SU_3_color_n_colors_eq_D_BSFG_over_2_eq_3_EXACT_PAPER_1203_default",
+        "primary_source":                         "SU_3_color_n_colors_eq_D_BSFG_over_2_eq_3_EXACT",
     }
 
 def _l96_uqff_axiom_weak_equivalence_principle_closure() -> Dict[str, Any]:
@@ -9650,7 +9650,7 @@ def _l96_uqff_axiom_weak_equivalence_principle_closure() -> Dict[str, Any]:
         "no_compositional_dependence":            True,
         "uqff_emergence":                         "free_fall_universality_from_geodesic_in_UQFF_with_U_i",
         "primary_result":                         MICROSCOPE_2017_precision,
-        "primary_source":                         "Weak_equivalence_principle_tested_to_1_5e_minus_15_MICROSCOPE_2017_PAPER_1203_default",
+        "primary_source":                         "Weak_equivalence_principle_tested_to_1_5e_minus_15_MICROSCOPE_2017",
     }
 
 def _l96_uqff_axiom_bell_theorem_closure() -> Dict[str, Any]:
@@ -9667,7 +9667,7 @@ def _l96_uqff_axiom_bell_theorem_closure() -> Dict[str, Any]:
         "loophole_free_2015":                     True,
         "uqff_resolution":                        "Non_locality_via_spinor_bundle_holonomy_across_compactified_dims",
         "primary_result":                         S_quantum_Tsirelson_bound,
-        "primary_source":                         "Bell_theorem_quantum_S_eq_2sqrt2_via_UQFF_spinor_bundle_holonomy_PAPER_1222",
+        "primary_source":                         "Bell_theorem_quantum_S_eq_2sqrt2_via_UQFF_spinor_bundle_holonomy",
     }
 
 def _l96_uqff_axiom_aspect_experiment_closure() -> Dict[str, Any]:
@@ -9678,7 +9678,7 @@ def _l96_uqff_axiom_aspect_experiment_closure() -> Dict[str, Any]:
         "Aspect_1982_2_experimental_violation":   True,
         "uqff_correlation_via_spinor_bundle":     True,
         "primary_result":                         correlation_at_45deg_quantum,
-        "primary_source":                         "Aspect_1982_photon_polarization_correlation_via_UQFF_spinor_bundle_PAPER_016",
+        "primary_source":                         "Aspect_1982_photon_polarization_correlation_via_UQFF_spinor_bundle",
     }
 
 def _l96_uqff_axiom_GHZ_paradox_closure() -> Dict[str, Any]:
@@ -9690,7 +9690,7 @@ def _l96_uqff_axiom_GHZ_paradox_closure() -> Dict[str, Any]:
         "definite_outcome_vs_correlation":        True,
         "no_locally_realistic_explanation":       True,
         "primary_result":                         n_particles_GHZ,
-        "primary_source":                         "GHZ_paradox_3_particle_entanglement_with_D_phys_minus_1_EXACT_PAPER_1203_default",
+        "primary_source":                         "GHZ_paradox_3_particle_entanglement_with_D_phys_minus_1_EXACT",
     }
 
 def _l96_uqff_axiom_hardy_paradox_closure() -> Dict[str, Any]:
@@ -9700,7 +9700,7 @@ def _l96_uqff_axiom_hardy_paradox_closure() -> Dict[str, Any]:
         "counterfactual_measurement_paradox":     True,
         "no_local_hidden_variable":               True,
         "primary_result":                         P_Hardy_max,
-        "primary_source":                         "Hardy_paradox_counterfactual_probability_9_pct_max_PAPER_1242",
+        "primary_source":                         "Hardy_paradox_counterfactual_probability_9_pct_max",
     }
 
 def _l96_uqff_axiom_kochen_specker_closure() -> Dict[str, Any]:
@@ -9711,7 +9711,7 @@ def _l96_uqff_axiom_kochen_specker_closure() -> Dict[str, Any]:
         "no_NCHV_in_dim_geq_3":                   True,
         "context_dependence_proven":              True,
         "primary_result":                         d_min_for_contextuality,
-        "primary_source":                         "Kochen_Specker_d_min_eq_D_phys_minus_1_eq_3_EXACT_PAPER_1203_default",
+        "primary_source":                         "Kochen_Specker_d_min_eq_D_phys_minus_1_eq_3_EXACT",
     }
 
 def _l96_uqff_axiom_PBR_theorem_closure() -> Dict[str, Any]:
@@ -9722,7 +9722,7 @@ def _l96_uqff_axiom_PBR_theorem_closure() -> Dict[str, Any]:
         "preparation_independence_assumed":       True,
         "uqff_interpretation":                    "Wavefunction_is_state_of_SCm_phonon_in_spinor_bundle",
         "primary_result":                         True,
-        "primary_source":                         "PBR_theorem_wavefunction_ontic_via_UQFF_SCm_phonon_state_PAPER_1203",
+        "primary_source":                         "PBR_theorem_wavefunction_ontic_via_UQFF_SCm_phonon_state",
     }
 
 def _l96_uqff_axiom_wigner_friend_closure() -> Dict[str, Any]:
@@ -9732,7 +9732,7 @@ def _l96_uqff_axiom_wigner_friend_closure() -> Dict[str, Any]:
         "Frauchiger_Renner_paradox_resolved":     True,
         "uqff_resolution":                        "All_observers_share_same_F_U_eq_1_global_normalization",
         "primary_result":                         True,
-        "primary_source":                         "Wigner_friend_paradox_resolved_via_F_U_eq_1_global_normalization_PAPER_646",
+        "primary_source":                         "Wigner_friend_paradox_resolved_via_F_U_eq_1_global_normalization",
     }
 
 def _l96_uqff_axiom_quantum_zeno_closure(delta_E_eV: float = 1.0) -> Dict[str, Any]:
@@ -9746,7 +9746,7 @@ def _l96_uqff_axiom_quantum_zeno_closure(delta_E_eV: float = 1.0) -> Dict[str, A
         "Misra_Sudarshan_1977":                   True,
         "anti_Zeno_effect_complementary":         True,
         "primary_result":                         tau_Zeno_s,
-        "primary_source":                         "Quantum_Zeno_tau_eq_hbar_over_delta_E_Misra_Sudarshan_1977_PAPER_646",
+        "primary_source":                         "Quantum_Zeno_tau_eq_hbar_over_delta_E_Misra_Sudarshan_1977",
     }
 
 def _l96_uqff_axiom_delayed_choice_eraser_closure() -> Dict[str, Any]:
@@ -9768,7 +9768,7 @@ def _l96_uqff_axiom_no_cloning_closure() -> Dict[str, Any]:
         "linearity_unitarity_required":           True,
         "approximate_cloning_allowed":            True,
         "primary_result":                         True,
-        "primary_source":                         "Quantum_no_cloning_theorem_Wootters_Zurek_1982_via_linearity_unitarity_PAPER_646",
+        "primary_source":                         "Quantum_no_cloning_theorem_Wootters_Zurek_1982_via_linearity_unitarity",
     }
 
 def _l96_uqff_axiom_holevo_bound_closure(p_distribution_entropy: float = 1.0) -> Dict[str, Any]:
@@ -9779,7 +9779,7 @@ def _l96_uqff_axiom_holevo_bound_closure(p_distribution_entropy: float = 1.0) ->
         "S_rho_bar_minus_avg_S_rho_k":            chi_Holevo_max,
         "additive_capacity":                      True,
         "primary_result":                         chi_Holevo_max,
-        "primary_source":                         "Holevo_bound_chi_eq_S_rho_bar_minus_average_S_rho_k_1973_PAPER_1203_default",
+        "primary_source":                         "Holevo_bound_chi_eq_S_rho_bar_minus_average_S_rho_k_1973",
     }
 
 def _l96_uqff_axiom_landauer_principle_closure(T_K: float = 300.0) -> Dict[str, Any]:
@@ -9793,7 +9793,7 @@ def _l96_uqff_axiom_landauer_principle_closure(T_K: float = 300.0) -> Dict[str, 
         "Maxwell_demon_resolution":               True,
         "info_to_energy_conversion":              "k_B_T_ln_2_per_bit",
         "primary_result":                         landauer_cost_J,
-        "primary_source":                         "Landauer_1961_k_B_T_ln_2_erasure_cost_with_UQFF_K_B_derivation_PAPER_1203",
+        "primary_source":                         "Landauer_1961_k_B_T_ln_2_erasure_cost_with_UQFF_K_B_derivation",
     }
 
 def _l96_uqff_axiom_big_bang_singularity_closure(M_msun: float = 1.0) -> Dict[str, Any]:
@@ -9857,7 +9857,7 @@ def _l96_uqff_axiom_boltzmann_brain_closure() -> Dict[str, Any]:
         "no_random_observer_dominance":           True,
         "uqff_resolution":                        "Big_Bang_low_entropy_excludes_Boltzmann_brain_dominance",
         "primary_result":                         True,
-        "primary_source":                         "Boltzmann_brain_paradox_resolved_via_low_entropy_SCm_UA_initial_condition_PAPER_597",
+        "primary_source":                         "Boltzmann_brain_paradox_resolved_via_low_entropy_SCm_UA_initial_condition",
     }
 
 def _l96_uqff_axiom_olbers_paradox_closure() -> Dict[str, Any]:
@@ -9872,7 +9872,7 @@ def _l96_uqff_axiom_olbers_paradox_closure() -> Dict[str, Any]:
         "night_sky_dark_explained":               True,
         "uqff_explanation":                       "Finite_age_plus_expansion_yields_dark_night_sky",
         "primary_result":                         horizon_Gly,
-        "primary_source":                         "Olbers_paradox_resolved_via_finite_age_universe_plus_cosmic_expansion_PAPER_1156",
+        "primary_source":                         "Olbers_paradox_resolved_via_finite_age_universe_plus_cosmic_expansion",
     }
 
 def _l96_uqff_axiom_fermi_paradox_closure() -> Dict[str, Any]:
@@ -9883,7 +9883,7 @@ def _l96_uqff_axiom_fermi_paradox_closure() -> Dict[str, Any]:
         "Fermi_question_where_is_everybody":      True,
         "uqff_silence_consistent":                True,
         "primary_result":                         drake_N_civilizations_estimate,
-        "primary_source":                         "Fermi_paradox_consistent_with_Drake_N_low_or_Great_Filter_PAPER_1203_default",
+        "primary_source":                         "Fermi_paradox_consistent_with_Drake_N_low_or_Great_Filter",
     }
 
 def _l96_uqff_axiom_maxwell_demon_closure(T_K: float = 300.0) -> Dict[str, Any]:
@@ -9896,7 +9896,7 @@ def _l96_uqff_axiom_maxwell_demon_closure(T_K: float = 300.0) -> Dict[str, Any]:
         "second_law_preserved":                   True,
         "uqff_resolution":                        "Landauer_cost_via_K_B_uqff_preserves_second_law",
         "primary_result":                         landauer_cost_J,
-        "primary_source":                         "Maxwell_demon_resolved_via_Landauer_K_B_T_ln_2_erasure_cost_PAPER_1203_default",
+        "primary_source":                         "Maxwell_demon_resolved_via_Landauer_K_B_T_ln_2_erasure_cost",
     }
 
 def _l96_uqff_axiom_zeno_classical_closure() -> Dict[str, Any]:
@@ -9908,7 +9908,7 @@ def _l96_uqff_axiom_zeno_classical_closure() -> Dict[str, Any]:
         "calculus_resolution":                    True,
         "uqff_resolution":                        "Geometric_series_convergence_resolves_motion",
         "primary_result":                         sum_geometric_series,
-        "primary_source":                         "Zeno_classical_paradox_resolved_via_geometric_series_convergence_PAPER_1203_default",
+        "primary_source":                         "Zeno_classical_paradox_resolved_via_geometric_series_convergence",
     }
 
 def _l96_uqff_axiom_axiom_of_choice_closure() -> Dict[str, Any]:
@@ -9919,7 +9919,7 @@ def _l96_uqff_axiom_axiom_of_choice_closure() -> Dict[str, Any]:
         "well_ordering_theorem_equivalent":       True,
         "Zorn_lemma_equivalent":                  True,
         "primary_result":                         True,
-        "primary_source":                         "Axiom_of_choice_independent_of_ZF_Cohen_1963_forcing_PAPER_1245",
+        "primary_source":                         "Axiom_of_choice_independent_of_ZF_Cohen_1963_forcing",
     }
 
 def _l96_uqff_axiom_peano_arithmetic_closure() -> Dict[str, Any]:
@@ -9933,7 +9933,7 @@ def _l96_uqff_axiom_peano_arithmetic_closure() -> Dict[str, Any]:
         "P5_induction_axiom":                     True,
         "Godel_incompleteness_applies":           True,
         "primary_result":                         n_peano_axioms,
-        "primary_source":                         "Peano_arithmetic_5_axioms_for_natural_numbers_PAPER_1203_default",
+        "primary_source":                         "Peano_arithmetic_5_axioms_for_natural_numbers",
     }
 
 def _l96_uqff_axiom_noether_theorem_closure() -> Dict[str, Any]:
@@ -9946,7 +9946,7 @@ def _l96_uqff_axiom_noether_theorem_closure() -> Dict[str, Any]:
         "F_U_eq_1_normalization_conserved":       True,
         "Noether_1918":                           True,
         "primary_result":                         True,
-        "primary_source":                         "Noether_1918_continuous_symmetry_conservation_law_correspondence_PAPER_1203_default",
+        "primary_source":                         "Noether_1918_continuous_symmetry_conservation_law_correspondence",
     }
 
 def _l96_uqff_axiom_action_principle_closure() -> Dict[str, Any]:
@@ -9970,7 +9970,7 @@ def _l96_uqff_axiom_diffeomorphism_invariance_closure() -> Dict[str, Any]:
         "26D_bosonic_string_diffeomorphism":      True,
         "GR_emerges_in_4D_limit":                  True,
         "primary_result":                         True,
-        "primary_source":                         "Diffeomorphism_invariance_general_covariance_via_UQFF_26D_compactification_PAPER_1203",
+        "primary_source":                         "Diffeomorphism_invariance_general_covariance_via_UQFF_26D_compactification",
     }
 
 def _l96_uqff_axiom_ergodic_hypothesis_closure() -> Dict[str, Any]:
@@ -9981,7 +9981,7 @@ def _l96_uqff_axiom_ergodic_hypothesis_closure() -> Dict[str, Any]:
         "mixing_implies_ergodicity":              True,
         "non_ergodic_systems_exist":              True,
         "primary_result":                         True,
-        "primary_source":                         "Ergodic_hypothesis_Birkhoff_1931_with_known_violations_PAPER_1203_default",
+        "primary_source":                         "Ergodic_hypothesis_Birkhoff_1931_with_known_violations",
     }
 
 def _l96_uqff_axiom_equipartition_theorem_closure(T_K: float = 300.0) -> Dict[str, Any]:
@@ -9995,7 +9995,7 @@ def _l96_uqff_axiom_equipartition_theorem_closure(T_K: float = 300.0) -> Dict[st
         "classical_limit_only":                   True,
         "K_B_uqff_used":                          K_B_uqff,
         "primary_result":                         energy_per_DOF_J,
-        "primary_source":                         "Equipartition_one_half_k_B_T_per_DOF_with_UQFF_K_B_PAPER_1203",
+        "primary_source":                         "Equipartition_one_half_k_B_T_per_DOF_with_UQFF_K_B",
     }
 
 def _l96_uqff_axiom_max_entropy_principle_closure() -> Dict[str, Any]:
@@ -10006,7 +10006,7 @@ def _l96_uqff_axiom_max_entropy_principle_closure() -> Dict[str, Any]:
         "Boltzmann_distribution_emergent":        True,
         "Gibbs_canonical_emergent":               True,
         "primary_result":                         True,
-        "primary_source":                         "Maximum_entropy_principle_Jaynes_1957_least_biased_inference_PAPER_1203_default",
+        "primary_source":                         "Maximum_entropy_principle_Jaynes_1957_least_biased_inference",
     }
 
 def _l96_uqff_axiom_fluctuation_dissipation_closure() -> Dict[str, Any]:
@@ -10017,7 +10017,7 @@ def _l96_uqff_axiom_fluctuation_dissipation_closure() -> Dict[str, Any]:
         "Brownian_motion_diffusion_via_FD":       True,
         "Einstein_relation_D_eq_mu_kBT":          True,
         "primary_result":                         True,
-        "primary_source":                         "Fluctuation_dissipation_theorem_Callen_Welton_1951_Kubo_formula_PAPER_646",
+        "primary_source":                         "Fluctuation_dissipation_theorem_Callen_Welton_1951_Kubo_formula",
     }
 
 _PA1209JJ_BETA = 6029.0 / 10000.0
@@ -33327,7 +33327,7 @@ def _l96_uqff_axiom_twin_paradox_closure(v_over_c: float = 0.5) -> Dict[str, Any
     gamma = 1.0 / ((1.0 - beta * beta) ** 0.5)
     phase = (1.0 + BETA_I * abs(math.cos(math.pi * 0.0))) * TRZ
     dt_ua = gamma * (1.0 + phase)
-    return {"twin_gamma_factor": gamma, "v_over_c": beta, "UA_phase_correction_F_TRZ": phase, "dilation_ratio_UQFF": dt_ua, "K_Mex_anchor": K_MEX, "primary_source": "Twin_paradox_via_UA_phase_lock_plus_gamma_factor_PAPER_646"}
+    return {"twin_gamma_factor": gamma, "v_over_c": beta, "UA_phase_correction_F_TRZ": phase, "dilation_ratio_UQFF": dt_ua, "K_Mex_anchor": K_MEX, "primary_source": "Twin_paradox_via_UA_phase_lock_plus_gamma_factor"}
 
 def _l96_uqff_axiom_grandfather_paradox_closure() -> Dict[str, Any]:
     import math
@@ -33336,7 +33336,7 @@ def _l96_uqff_axiom_grandfather_paradox_closure() -> Dict[str, Any]:
     cw_branch = 1.0
     ccw_branch = -1.0
     ctc_amp = (cw_branch + ccw_branch) * block
-    return {"t_neg_seconds": t_neg, "CW_branch": cw_branch, "CCW_branch": ccw_branch, "F_TRZ_phase_block": block, "CTC_amplitude": ctc_amp, "CTC_blocked": ctc_amp == 0.0, "primary_source": "Grandfather_paradox_via_CW_CCW_dual_existence_F_TRZ_lock_PAPER_1160"}
+    return {"t_neg_seconds": t_neg, "CW_branch": cw_branch, "CCW_branch": ccw_branch, "F_TRZ_phase_block": block, "CTC_amplitude": ctc_amp, "CTC_blocked": ctc_amp == 0.0, "primary_source": "Grandfather_paradox_via_CW_CCW_dual_existence_F_TRZ_lock"}
 
 def _l96_uqff_axiom_pioneer_anomaly_closure() -> Dict[str, Any]:
     a_obs = 8.74e-10
@@ -33355,12 +33355,12 @@ def _l96_uqff_axiom_dark_matter_paradox_closure() -> Dict[str, Any]:
     om_obs = 0.265
     om_uqff = K_MEX * (1.0 - PHI_RESONANCE) * (1.0 + BETA_I) * 0.50
     diff = abs(om_uqff - om_obs) / om_obs * 100.0
-    return {"Omega_dm_obs": om_obs, "Omega_dm_UQFF": om_uqff, "diff_pct": diff, "K_Mex": K_MEX, "Phi_res": PHI_RESONANCE, "primary_source": "Dark_matter_paradox_via_UA_double_prime_halo_modulation_PAPER_646"}
+    return {"Omega_dm_obs": om_obs, "Omega_dm_UQFF": om_uqff, "diff_pct": diff, "K_Mex": K_MEX, "Phi_res": PHI_RESONANCE, "primary_source": "Dark_matter_paradox_via_UA_double_prime_halo_modulation"}
 
 def _l96_uqff_axiom_strong_CP_problem_closure() -> Dict[str, Any]:
     bound = 1.0e-10
     theta = TRZ * (1.0 / (D_CRIT ** (D_PHYS - 1))) * (1.0 / S26_DPM)
-    return {"theta_QCD_observational_bound": bound, "theta_QCD_UQFF": theta, "axion_lock_D_phys_minus_1": D_PHYS - 1, "F_TRZ_phase": TRZ, "suppressed": theta < bound, "primary_source": "Strong_CP_via_D_phys_minus_1_axion_lock_plus_F_TRZ_PAPER_1160"}
+    return {"theta_QCD_observational_bound": bound, "theta_QCD_UQFF": theta, "axion_lock_D_phys_minus_1": D_PHYS - 1, "F_TRZ_phase": TRZ, "suppressed": theta < bound, "primary_source": "Strong_CP_via_D_phys_minus_1_axion_lock_plus_F_TRZ"}
 
 def _l96_uqff_axiom_baryogenesis_closure() -> Dict[str, Any]:
     eta_obs = 6.14e-10
@@ -33371,84 +33371,84 @@ def _l96_uqff_axiom_baryogenesis_closure() -> Dict[str, Any]:
 
 def _l96_uqff_axiom_arrow_of_time_closure() -> Dict[str, Any]:
     dS = K_MEX
-    return {"delta_S_total_per_K_MEX": dS, "omega_SCm_THz_carrier": OMEGA_SCM, "thermodynamic_arrow_positive": dS > 0.0, "second_law_emerged": True, "primary_source": "Arrow_of_time_via_K_MEX_entropy_gradient_plus_omega_SCm_carrier_PAPER_034"}
+    return {"delta_S_total_per_K_MEX": dS, "omega_SCm_THz_carrier": OMEGA_SCM, "thermodynamic_arrow_positive": dS > 0.0, "second_law_emerged": True, "primary_source": "Arrow_of_time_via_K_MEX_entropy_gradient_plus_omega_SCm_carrier"}
 
 def _l96_uqff_axiom_unruh_paradox_closure(a_m_per_s2: float = 1.0e20) -> Dict[str, Any]:
     import math
     T_canon = a_m_per_s2 * PLANCK_H / (2.0 * math.pi * K_B * C_LIGHT)
     T_uqff = T_canon * PHI_RESONANCE * (1.0 + TRZ)
-    return {"a_m_per_s2": a_m_per_s2, "T_Unruh_K_canonical": T_canon, "T_Unruh_K_UQFF": T_uqff, "omega_SCm_local_THz": OMEGA_SCM * (1.0 + TRZ), "Phi_res": PHI_RESONANCE, "primary_source": "Unruh_via_omega_SCm_phonon_plus_Phi_res_modulation_PAPER_1372"}
+    return {"a_m_per_s2": a_m_per_s2, "T_Unruh_K_canonical": T_canon, "T_Unruh_K_UQFF": T_uqff, "omega_SCm_local_THz": OMEGA_SCM * (1.0 + TRZ), "Phi_res": PHI_RESONANCE, "primary_source": "Unruh_via_omega_SCm_phonon_plus_Phi_res_modulation"}
 
 def _l96_uqff_axiom_tachyon_paradox_closure() -> Dict[str, Any]:
     m2 = -1.0
     t_neg = -2512.0
     real_branch = m2 * (-1.0)
-    return {"m_squared_input": m2, "t_neg_seconds": t_neg, "real_branch_via_negative_time": real_branch, "CCW_dual_existence": True, "primary_source": "Tachyon_via_t_neg_CCW_branch_imaginary_mass_becomes_real_PAPER_1209HH"}
+    return {"m_squared_input": m2, "t_neg_seconds": t_neg, "real_branch_via_negative_time": real_branch, "CCW_dual_existence": True, "primary_source": "Tachyon_via_t_neg_CCW_branch_imaginary_mass_becomes_real"}
 
 def _l96_uqff_axiom_eternal_inflation_closure() -> Dict[str, Any]:
     bound = 1.0
     for i in range(1, 27):
         bound *= i
-    return {"D_crit_factorial_finite_bound": bound, "eternal_volume_naive": "infinite", "bounded_by_26_factorial": True, "primary_source": "Eternal_inflation_truncated_by_26_factorial_PAPER_597"}
+    return {"D_crit_factorial_finite_bound": bound, "eternal_volume_naive": "infinite", "bounded_by_26_factorial": True, "primary_source": "Eternal_inflation_truncated_by_26_factorial"}
 
 def _l96_uqff_axiom_consciousness_paradox_closure() -> Dict[str, Any]:
     spinor_dim = 2 ** (D_CRIT // 2)
     F_U = 1.0
     norm = F_U / spinor_dim
-    return {"SO_26_Clifford_spinor_dim": spinor_dim, "F_U_global_normalization": F_U, "projection_norm_per_state": norm, "primary_source": "Consciousness_via_SO_26_Clifford_8192d_spinor_F_U_eq_1_PAPER_1183"}
+    return {"SO_26_Clifford_spinor_dim": spinor_dim, "F_U_global_normalization": F_U, "projection_norm_per_state": norm, "primary_source": "Consciousness_via_SO_26_Clifford_8192d_spinor_F_U_eq_1"}
 
 def _l96_uqff_axiom_tegmark_levels_closure() -> Dict[str, Any]:
-    return {"D_crit_bosonic_critical_dim": D_CRIT, "rho_SCm_unique_J_per_m3": RHO_SCM, "level_4_mathematical_multiverse_ruled_out": True, "primary_source": "Tegmark_level_4_ruled_out_by_D_crit_eq_26_uniqueness_PAPER_062"}
+    return {"D_crit_bosonic_critical_dim": D_CRIT, "rho_SCm_unique_J_per_m3": RHO_SCM, "level_4_mathematical_multiverse_ruled_out": True, "primary_source": "Tegmark_level_4_ruled_out_by_D_crit_eq_26_uniqueness"}
 
 def _l96_uqff_axiom_simulation_paradox_closure() -> Dict[str, Any]:
     supp = 1.0 / (D_CRIT ** D_CRIT)
-    return {"KK_suppression_1_over_26_to_26": supp, "substrate_pinned_to_rho_SCm": True, "simulator_embedding_amplitude": supp, "primary_source": "Simulation_substrate_pinned_via_1_over_26_to_26_KK_suppression_PAPER_1203"}
+    return {"KK_suppression_1_over_26_to_26": supp, "substrate_pinned_to_rho_SCm": True, "simulator_embedding_amplitude": supp, "primary_source": "Simulation_substrate_pinned_via_1_over_26_to_26_KK_suppression"}
 
 def _l96_uqff_axiom_newcomb_paradox_closure() -> Dict[str, Any]:
     p_acc = 1.0 - 1.0e-9
-    return {"predictor_accuracy": p_acc, "F_U_ledger_determinism": 1.0, "one_box_optimal": p_acc > 0.5, "primary_source": "Newcomb_via_F_U_eq_1_determinism_plus_P_NEQ_NP_PAPER_646"}
+    return {"predictor_accuracy": p_acc, "F_U_ledger_determinism": 1.0, "one_box_optimal": p_acc > 0.5, "primary_source": "Newcomb_via_F_U_eq_1_determinism_plus_P_NEQ_NP"}
 
 def _l96_uqff_axiom_sorites_paradox_closure() -> Dict[str, Any]:
-    return {"D_crit_discrete_lattice": D_CRIT, "heap_quantum_step": 1.0 / D_CRIT, "no_continuous_heap": True, "primary_source": "Sorites_via_D_crit_eq_26_discrete_lattice_quantization_PAPER_062"}
+    return {"D_crit_discrete_lattice": D_CRIT, "heap_quantum_step": 1.0 / D_CRIT, "no_continuous_heap": True, "primary_source": "Sorites_via_D_crit_eq_26_discrete_lattice_quantization"}
 
 def _l96_uqff_axiom_liar_paradox_closure() -> Dict[str, Any]:
     k_minus_2 = K_MEX - 2.0
     dpm_const = 1.0 / 12.0
-    return {"K_Mex_minus_2": k_minus_2, "DPM_duality_constant_1_over_12": dpm_const, "exact_match": abs(k_minus_2 - dpm_const) < 1.0e-12, "primary_source": "Liar_via_K_Mex_minus_2_eq_1_over_12_EXACT_DPM_pair_duality_PAPER_034"}
+    return {"K_Mex_minus_2": k_minus_2, "DPM_duality_constant_1_over_12": dpm_const, "exact_match": abs(k_minus_2 - dpm_const) < 1.0e-12, "primary_source": "Liar_via_K_Mex_minus_2_eq_1_over_12_EXACT_DPM_pair_duality"}
 
 def _l96_uqff_axiom_free_will_paradox_closure() -> Dict[str, Any]:
     import math
-    return {"F_U_eq_1_normalization": 1.0, "t_neg_dual_existence_seconds": -2512.0, "agency_via_cos_pi_t_n_phase_choice": math.cos(math.pi * 0.0), "primary_source": "Free_will_via_cos_pi_t_n_phase_choice_in_F_U_eq_1_t_neg_branches_PAPER_646"}
+    return {"F_U_eq_1_normalization": 1.0, "t_neg_dual_existence_seconds": -2512.0, "agency_via_cos_pi_t_n_phase_choice": math.cos(math.pi * 0.0), "primary_source": "Free_will_via_cos_pi_t_n_phase_choice_in_F_U_eq_1_t_neg_branches"}
 
 def _l96_uqff_axiom_monopole_problem_closure() -> Dict[str, Any]:
     import math
     inf = math.exp(60.0)
-    return {"inflation_dilution_factor": inf, "monopole_density_per_volume": 1.0 / inf, "diluted_below_obs_bound": True, "primary_source": "Monopole_problem_via_inflation_dilution_e_to_60_PAPER_597"}
+    return {"inflation_dilution_factor": inf, "monopole_density_per_volume": 1.0 / inf, "diluted_below_obs_bound": True, "primary_source": "Monopole_problem_via_inflation_dilution_e_to_60"}
 
 def _l96_uqff_axiom_flatness_problem_closure() -> Dict[str, Any]:
     import math
     Nf = 60.0
     Om_today = 1.0e-3
     Om_pre = Om_today * math.exp(2.0 * Nf)
-    return {"Omega_minus_1_today": Om_today, "Omega_minus_1_pre_inflation": Om_pre, "inflation_e_folds": Nf, "flatness_emerges": True, "primary_source": "Flatness_via_inflation_e_folds_eq_60_PAPER_597"}
+    return {"Omega_minus_1_today": Om_today, "Omega_minus_1_pre_inflation": Om_pre, "inflation_e_folds": Nf, "flatness_emerges": True, "primary_source": "Flatness_via_inflation_e_folds_eq_60"}
 
 def _l96_uqff_axiom_horizon_problem_closure() -> Dict[str, Any]:
     import math
     Nf = 60.0
     causal = math.exp(3.0 * Nf)
-    return {"inflation_e_folds": Nf, "causal_volume_expansion": causal, "CMB_uniformity_explained": causal > 1.0e26, "primary_source": "Horizon_via_inflation_causal_contact_pre_e_folds_PAPER_597"}
+    return {"inflation_e_folds": Nf, "causal_volume_expansion": causal, "CMB_uniformity_explained": causal > 1.0e26, "primary_source": "Horizon_via_inflation_causal_contact_pre_e_folds"}
 
 def _l96_uqff_axiom_cosmic_censorship_closure() -> Dict[str, Any]:
     bound = 1.0
     for i in range(1, 27):
         bound *= i
-    return {"D_crit_factorial_finite_bound": bound, "naked_singularity_excluded": True, "weak_satisfied": True, "strong_satisfied": True, "primary_source": "Cosmic_censorship_via_26_factorial_finite_bound_PAPER_597"}
+    return {"D_crit_factorial_finite_bound": bound, "naked_singularity_excluded": True, "weak_satisfied": True, "strong_satisfied": True, "primary_source": "Cosmic_censorship_via_26_factorial_finite_bound"}
 
 def _l96_uqff_axiom_multiverse_paradox_closure() -> Dict[str, Any]:
-    return {"rho_SCm_unique_J_per_m3": RHO_SCM, "D_crit_bosonic_critical": D_CRIT, "single_substrate_proven": True, "multiverse_excluded": True, "primary_source": "Multiverse_excluded_by_rho_SCm_plus_D_crit_uniqueness_PAPER_062"}
+    return {"rho_SCm_unique_J_per_m3": RHO_SCM, "D_crit_bosonic_critical": D_CRIT, "single_substrate_proven": True, "multiverse_excluded": True, "primary_source": "Multiverse_excluded_by_rho_SCm_plus_D_crit_uniqueness"}
 
 def _l96_uqff_axiom_galaxy_rotation_closure() -> Dict[str, Any]:
-    return {"beta_i_plateau": BETA_I, "F_U_Bi_i_normalized_at_kpc": 1.0, "flat_rotation_explained": True, "no_dark_matter_halo_required": True, "MOND_a0_via_F_TRZ": TRZ, "primary_source": "Galaxy_rotation_flat_via_F_U_Bi_i_beta_i_plateau_PAPER_1203"}
+    return {"beta_i_plateau": BETA_I, "F_U_Bi_i_normalized_at_kpc": 1.0, "flat_rotation_explained": True, "no_dark_matter_halo_required": True, "MOND_a0_via_F_TRZ": TRZ, "primary_source": "Galaxy_rotation_flat_via_F_U_Bi_i_beta_i_plateau"}
 
 def _l96_uqff_axiom_EPR_paradox_closure() -> Dict[str, Any]:
     bell = 2.0 * (2.0 ** 0.5)
@@ -33460,7 +33460,7 @@ def _l96_uqff_axiom_EPR_paradox_closure() -> Dict[str, Any]:
 def _l96_uqff_axiom_schrodinger_cat_closure() -> Dict[str, Any]:
     F_U = 1.0
     threshold = D_CRIT * (D_CRIT - 1)
-    return {"F_U_global_eq_1": F_U, "decoherence_threshold_atoms_D_crit_x_25": threshold, "superposition_collapses_above": True, "primary_source": "Schrodinger_cat_via_F_U_eq_1_ledger_collapse_above_D_crit_x_25_PAPER_646"}
+    return {"F_U_global_eq_1": F_U, "decoherence_threshold_atoms_D_crit_x_25": threshold, "superposition_collapses_above": True, "primary_source": "Schrodinger_cat_via_F_U_eq_1_ledger_collapse_above_D_crit_x_25"}
 
 
 
@@ -33481,21 +33481,21 @@ def _l96_uqff_axiom_proton_decay_closure() -> Dict[str, Any]:
     tau_p_uqff_seconds = hbar_over_mp_seconds * KK_inv * S26_DPM * (1.0 / PHI_RESONANCE)
     tau_p_uqff_yr = tau_p_uqff_seconds / sec_per_yr
     safe = tau_p_uqff_yr > tau_p_bound_yr
-    return {"tau_p_lower_bound_obs_yr": tau_p_bound_yr, "tau_p_UQFF_yr": tau_p_uqff_yr, "KK_inverse_26_to_26": KK_inv, "S26_DPM": S26_DPM, "baryon_protection_via_F_U_ledger": True, "consistent_with_obs_bound": safe, "primary_source": "Proton_decay_via_hbar_over_mp_x_26_to_26_x_S26_baryon_protection_PAPER_1080"}
+    return {"tau_p_lower_bound_obs_yr": tau_p_bound_yr, "tau_p_UQFF_yr": tau_p_uqff_yr, "KK_inverse_26_to_26": KK_inv, "S26_DPM": S26_DPM, "baryon_protection_via_F_U_ledger": True, "consistent_with_obs_bound": safe, "primary_source": "Proton_decay_via_hbar_over_mp_x_26_to_26_x_S26_baryon_protection"}
 
 def _l96_uqff_axiom_peto_paradox_closure() -> Dict[str, Any]:
     import math
     SCm_cellular_threshold = 1.0 / S26_DPM
     cancer_rate_scaling_via_F_TRZ = TRZ
     cell_count_bypass = True
-    return {"SCm_cellular_threshold_per_cell": SCm_cellular_threshold, "cancer_rate_scales_with_F_TRZ_not_N_cells": cancer_rate_scaling_via_F_TRZ, "F_U_eq_1_global_normalization_per_organism": 1.0, "size_independence_explained": cell_count_bypass, "primary_source": "Peto_paradox_via_SCm_cellular_threshold_plus_F_TRZ_organism_invariant_PAPER_1160"}
+    return {"SCm_cellular_threshold_per_cell": SCm_cellular_threshold, "cancer_rate_scales_with_F_TRZ_not_N_cells": cancer_rate_scaling_via_F_TRZ, "F_U_eq_1_global_normalization_per_organism": 1.0, "size_independence_explained": cell_count_bypass, "primary_source": "Peto_paradox_via_SCm_cellular_threshold_plus_F_TRZ_organism_invariant"}
 
 def _l96_uqff_axiom_wave_particle_duality_closure() -> Dict[str, Any]:
     import math
     caduceus_n_pinch_points = D_CRIT
     F_U_eq_1_collapse = 1.0
     phase_at_observation = math.cos(math.pi * 0.0)
-    return {"caduceus_n_pinch_points_eq_D_crit": caduceus_n_pinch_points, "spherical_wave_double_helix_inversion": True, "F_U_eq_1_collapse_on_observation": F_U_eq_1_collapse, "phase_cos_pi_t_n_at_measurement": phase_at_observation, "wave_branch_via_aether_coupling": True, "particle_branch_via_DPM_localization": True, "primary_source": "Wave_particle_via_Caduceus_26_pinch_topology_plus_F_U_eq_1_collapse_PAPER_646"}
+    return {"caduceus_n_pinch_points_eq_D_crit": caduceus_n_pinch_points, "spherical_wave_double_helix_inversion": True, "F_U_eq_1_collapse_on_observation": F_U_eq_1_collapse, "phase_cos_pi_t_n_at_measurement": phase_at_observation, "wave_branch_via_aether_coupling": True, "particle_branch_via_DPM_localization": True, "primary_source": "Wave_particle_via_Caduceus_26_pinch_topology_plus_F_U_eq_1_collapse"}
 
 def _l96_uqff_axiom_hilbert_hotel_closure() -> Dict[str, Any]:
     import math
@@ -33504,7 +33504,7 @@ def _l96_uqff_axiom_hilbert_hotel_closure() -> Dict[str, Any]:
         finite_bound_26_factorial *= i
     actual_infinity_rejected = True
     potential_infinity_only = True
-    return {"D_crit_factorial_finite_phase_volume": finite_bound_26_factorial, "actual_infinity_rejected": actual_infinity_rejected, "potential_infinity_admitted": potential_infinity_only, "no_unbounded_set_in_physical_substrate": True, "Cantor_bijection_admissible_only_below_26_factorial": True, "primary_source": "Hilbert_hotel_resolved_by_26_factorial_finite_substrate_bound_PAPER_1247"}
+    return {"D_crit_factorial_finite_phase_volume": finite_bound_26_factorial, "actual_infinity_rejected": actual_infinity_rejected, "potential_infinity_admitted": potential_infinity_only, "no_unbounded_set_in_physical_substrate": True, "Cantor_bijection_admissible_only_below_26_factorial": True, "primary_source": "Hilbert_hotel_resolved_by_26_factorial_finite_substrate_bound"}
 
 def _l96_uqff_axiom_bootstrap_paradox_closure() -> Dict[str, Any]:
     import math
@@ -33513,7 +33513,7 @@ def _l96_uqff_axiom_bootstrap_paradox_closure() -> Dict[str, Any]:
     CW_branch = 1.0
     CCW_branch = -1.0
     causal_loop_amplitude = (CW_branch + CCW_branch) * F_TRZ_phase_lock
-    return {"t_neg_seconds": t_neg, "F_TRZ_phase_lock": F_TRZ_phase_lock, "CW_CCW_branches_cancel": causal_loop_amplitude == 0.0, "causal_loop_amplitude": causal_loop_amplitude, "self_consistent_information_origin_excluded": True, "Novikov_self_consistency_via_F_U_eq_1_ledger": True, "primary_source": "Bootstrap_via_CW_CCW_cancellation_plus_F_U_eq_1_information_conservation_PAPER_597"}
+    return {"t_neg_seconds": t_neg, "F_TRZ_phase_lock": F_TRZ_phase_lock, "CW_CCW_branches_cancel": causal_loop_amplitude == 0.0, "causal_loop_amplitude": causal_loop_amplitude, "self_consistent_information_origin_excluded": True, "Novikov_self_consistency_via_F_U_eq_1_ledger": True, "primary_source": "Bootstrap_via_CW_CCW_cancellation_plus_F_U_eq_1_information_conservation"}
 
 def _l96_uqff_axiom_lambda_qcd_closure() -> Dict[str, Any]:
     import math
@@ -33530,14 +33530,14 @@ def _l96_uqff_axiom_goldbach_conjecture_closure(n_test: int = 100) -> Dict[str, 
     K_Mex_minus_2 = K_MEX - 2.0
     even_n = n_test if (n_test % 2 == 0) else n_test + 1
     twin_pinch_separation = 2
-    return {"DPM_pair_anchor_K_Mex_minus_2": K_Mex_minus_2, "DPM_duality_exact": abs(K_Mex_minus_2 - DPM_pair_const) < 1.0e-12, "even_n_tested": even_n, "decomposition_via_26_lattice": True, "twin_pinch_separation": twin_pinch_separation, "primary_source": "Goldbach_via_DPM_pair_K_Mex_minus_2_eq_1_over_12_on_26_prime_lattice_PAPER_034"}
+    return {"DPM_pair_anchor_K_Mex_minus_2": K_Mex_minus_2, "DPM_duality_exact": abs(K_Mex_minus_2 - DPM_pair_const) < 1.0e-12, "even_n_tested": even_n, "decomposition_via_26_lattice": True, "twin_pinch_separation": twin_pinch_separation, "primary_source": "Goldbach_via_DPM_pair_K_Mex_minus_2_eq_1_over_12_on_26_prime_lattice"}
 
 def _l96_uqff_axiom_twin_prime_conjecture_closure() -> Dict[str, Any]:
     import math
     caduceus_pinch = D_CRIT
     twin_separation = 2
     pinch_pair_density = caduceus_pinch / 13.0
-    return {"caduceus_n_pinch_points": caduceus_pinch, "twin_pinch_separation": twin_separation, "pinch_pair_density_per_period": pinch_pair_density, "infinitely_many_twin_primes_via_caduceus_topology": True, "K_Mex": K_MEX, "primary_source": "Twin_prime_via_Caduceus_26_pinch_twin_pair_separation_PAPER_1242"}
+    return {"caduceus_n_pinch_points": caduceus_pinch, "twin_pinch_separation": twin_separation, "pinch_pair_density_per_period": pinch_pair_density, "infinitely_many_twin_primes_via_caduceus_topology": True, "K_Mex": K_MEX, "primary_source": "Twin_prime_via_Caduceus_26_pinch_twin_pair_separation"}
 
 def _l96_uqff_axiom_collatz_conjecture_closure(n_seed: int = 27) -> Dict[str, Any]:
     import math
@@ -33546,7 +33546,7 @@ def _l96_uqff_axiom_collatz_conjecture_closure(n_seed: int = 27) -> Dict[str, An
     steps_bound_via_26_factorial = 1.0
     for i in range(1, 27):
         steps_bound_via_26_factorial *= i
-    return {"phase_lock_F_TRZ": phase_lock, "halving_step_via_K_Mex": halving_via_K_Mex, "3n_plus_1_anchor": 3.0, "convergence_bound_26_factorial": steps_bound_via_26_factorial, "n_seed": n_seed, "always_reaches_1_via_phase_lock": True, "primary_source": "Collatz_via_F_TRZ_phase_lock_x_K_Mex_halving_bounded_by_26_factorial_PAPER_034"}
+    return {"phase_lock_F_TRZ": phase_lock, "halving_step_via_K_Mex": halving_via_K_Mex, "3n_plus_1_anchor": 3.0, "convergence_bound_26_factorial": steps_bound_via_26_factorial, "n_seed": n_seed, "always_reaches_1_via_phase_lock": True, "primary_source": "Collatz_via_F_TRZ_phase_lock_x_K_Mex_halving_bounded_by_26_factorial"}
 
 def _l96_uqff_axiom_abc_conjecture_closure() -> Dict[str, Any]:
     import math
@@ -33554,33 +33554,33 @@ def _l96_uqff_axiom_abc_conjecture_closure() -> Dict[str, Any]:
     for i in range(1, 27):
         radical_bound_via_26_factorial *= i
     epsilon_bound = TRZ
-    return {"D_crit_factorial_radical_bound": radical_bound_via_26_factorial, "epsilon_bound_F_TRZ": epsilon_bound, "rad_abc_above_c_to_1_minus_eps": True, "primary_source": "abc_via_26_factorial_radical_bound_plus_F_TRZ_epsilon_PAPER_1160"}
+    return {"D_crit_factorial_radical_bound": radical_bound_via_26_factorial, "epsilon_bound_F_TRZ": epsilon_bound, "rad_abc_above_c_to_1_minus_eps": True, "primary_source": "abc_via_26_factorial_radical_bound_plus_F_TRZ_epsilon"}
 
 def _l96_uqff_axiom_continuum_hypothesis_closure() -> Dict[str, Any]:
     import math
     aleph_0_finite_substrate_bound = 1.0
     for i in range(1, 27):
         aleph_0_finite_substrate_bound *= i
-    return {"D_crit_factorial_substrate_bound": aleph_0_finite_substrate_bound, "actual_infinity_rejected": True, "no_intermediate_cardinality_in_physical_substrate": True, "CH_decided_by_26_factorial_quantization": True, "primary_source": "CH_decided_by_26_factorial_finite_substrate_no_intermediate_cardinality_PAPER_1245"}
+    return {"D_crit_factorial_substrate_bound": aleph_0_finite_substrate_bound, "actual_infinity_rejected": True, "no_intermediate_cardinality_in_physical_substrate": True, "CH_decided_by_26_factorial_quantization": True, "primary_source": "CH_decided_by_26_factorial_finite_substrate_no_intermediate_cardinality"}
 
 def _l96_uqff_axiom_grh_generalized_riemann_closure() -> Dict[str, Any]:
     import math
     t_10000_anchor = 9877.78265
     S_26_chain_extension = S26_DPM
-    return {"t_10000_riemann_anchor": t_10000_anchor, "S_26_Ramanujan_chain": S_26_chain_extension, "L_function_zeros_on_critical_line_via_S_26": True, "extended_via_K_Mex_phase": K_MEX, "primary_source": "GRH_PAPER_1246_via_S_26_Ramanujan_chain_extension"}
+    return {"t_10000_riemann_anchor": t_10000_anchor, "S_26_Ramanujan_chain": S_26_chain_extension, "L_function_zeros_on_critical_line_via_S_26": True, "extended_via_K_Mex_phase": K_MEX, "primary_source": "GRH_via_S_26_Ramanujan_chain_extension_of_Riemann_anchor"}
 
 def _l96_uqff_axiom_langlands_program_closure() -> Dict[str, Any]:
     import math
     n_sectors_lagrangian = 9
     SO_26_clifford_dim = 2 ** (D_CRIT // 2)
-    return {"n_sectors_uqff_lagrangian": n_sectors_lagrangian, "SO_26_clifford_dim": SO_26_clifford_dim, "number_theory_via_Riemann_anchor": 9877.78265, "representation_theory_via_SO_26_clifford": True, "bridge_via_9_sector_lagrangian": True, "primary_source": "Langlands_via_9_sector_lagrangian_x_SO_26_clifford_module_bridge_PAPER_1183"}
+    return {"n_sectors_uqff_lagrangian": n_sectors_lagrangian, "SO_26_clifford_dim": SO_26_clifford_dim, "number_theory_via_Riemann_anchor": 9877.78265, "representation_theory_via_SO_26_clifford": True, "bridge_via_9_sector_lagrangian": True, "primary_source": "Langlands_via_9_sector_lagrangian_x_SO_26_clifford_module_bridge"}
 
 def _l96_uqff_axiom_smooth_poincare_4d_closure() -> Dict[str, Any]:
     import math
     D_phys = D_PHYS
     K_Mex_x_4 = K_MEX * D_phys
     exotic_structure_ratio = K_Mex_x_4 / 3.0
-    return {"D_phys": D_phys, "K_Mex_x_D_phys": K_Mex_x_4, "exotic_R4_structure_ratio_25_over_3": exotic_structure_ratio, "smooth_4_sphere_resolved_via_K_Mex_x_D_phys": True, "primary_source": "Smooth_Poincare_4D_PAPER_1248_via_K_Mex_x_D_phys_exotic_R4"}
+    return {"D_phys": D_phys, "K_Mex_x_D_phys": K_Mex_x_4, "exotic_R4_structure_ratio_25_over_3": exotic_structure_ratio, "smooth_4_sphere_resolved_via_K_Mex_x_D_phys": True, "primary_source": "Smooth_Poincare_4D_via_K_Mex_x_D_phys_eq_25_over_3_exotic_R4"}
 
 def _l96_uqff_axiom_cmb_cold_spot_closure() -> Dict[str, Any]:
     F_TRZ_canonical = TRZ
@@ -33607,7 +33607,7 @@ def _l96_uqff_axiom_axis_of_evil_cmb_closure() -> Dict[str, Any]:
     l_2_3_alignment_deg = 13.0
     DPM_pair_axis_phase = math.cos(math.pi * 0.0)
     F_TRZ_ecliptic_lock = TRZ
-    return {"l_2_3_alignment_deg_obs": l_2_3_alignment_deg, "DPM_pair_axis_at_decoupling": DPM_pair_axis_phase, "F_TRZ_ecliptic_phase_lock": F_TRZ_ecliptic_lock, "axis_emerges_from_DPM_axis_orientation": True, "primary_source": "Axis_of_Evil_via_DPM_pair_axis_orientation_at_t_decoupling_PAPER_1250"}
+    return {"l_2_3_alignment_deg_obs": l_2_3_alignment_deg, "DPM_pair_axis_at_decoupling": DPM_pair_axis_phase, "F_TRZ_ecliptic_phase_lock": F_TRZ_ecliptic_lock, "axis_emerges_from_DPM_axis_orientation": True, "primary_source": "Axis_of_Evil_via_DPM_pair_axis_orientation_at_t_decoupling"}
 
 def _l96_uqff_axiom_dark_flow_bulk_velocity_closure() -> Dict[str, Any]:
     c_km_s = C_LIGHT * 1.0e-3
@@ -33639,7 +33639,7 @@ def _l96_uqff_axiom_late_isw_effect_closure() -> Dict[str, Any]:
     w_DE_z_0 = -1.0
     w_DE_late = -1.0 + TRZ
     ISW_amplitude = abs(w_DE_late - w_DE_z_0)
-    return {"w_DE_z_0_canonical": w_DE_z_0, "w_DE_late_with_TRZ": w_DE_late, "ISW_amplitude_via_F_TRZ": ISW_amplitude, "DE_evolution_via_4_term_ledger": True, "primary_source": "Late_ISW_via_w_z_evolution_F_TRZ_in_4_term_vacuum_ledger_PAPER_1160"}
+    return {"w_DE_z_0_canonical": w_DE_z_0, "w_DE_late_with_TRZ": w_DE_late, "ISW_amplitude_via_F_TRZ": ISW_amplitude, "DE_evolution_via_4_term_ledger": True, "primary_source": "Late_ISW_via_w_z_evolution_F_TRZ_in_4_term_vacuum_ledger"}
 
 def _l96_uqff_axiom_dark_matter_particle_candidate_closure() -> Dict[str, Any]:
     Lambda_ledger_saturation = 0.00729735
@@ -33755,21 +33755,21 @@ def _l96_uqff_axiom_tau_neutrino_mass_hierarchy_closure() -> Dict[str, Any]:
     SO_5_mixing = SO_FIVE
     sum_m_nu_eV_bound = 0.12
     m_nu_tau_via_SO_5 = sum_m_nu_eV_bound * (1.0 - PHI_RESONANCE) / SO_5_mixing
-    return {"n_generations_eq_D_phys_minus_1": n_generations, "SO_5_mixing_dim": SO_5_mixing, "sum_m_nu_obs_bound_eV": sum_m_nu_eV_bound, "m_nu_tau_UQFF_eV": m_nu_tau_via_SO_5, "normal_hierarchy_via_D_phys_minus_1": True, "primary_source": "Tau_nu_hierarchy_via_D_phys_minus_1_eq_3_x_SO_5_mixing_PAPER_1160"}
+    return {"n_generations_eq_D_phys_minus_1": n_generations, "SO_5_mixing_dim": SO_5_mixing, "sum_m_nu_obs_bound_eV": sum_m_nu_eV_bound, "m_nu_tau_UQFF_eV": m_nu_tau_via_SO_5, "normal_hierarchy_via_D_phys_minus_1": True, "primary_source": "Tau_nu_hierarchy_via_D_phys_minus_1_eq_3_x_SO_5_mixing"}
 
 def _l96_uqff_axiom_sterile_neutrino_existence_closure() -> Dict[str, Any]:
     import math
     m_sterile_eV = K_MEX * PHI_RESONANCE / 2.0
     UA_prime_decoupled = True
     sterile_oscillation_freq = OMEGA_SCM * TRZ
-    return {"m_sterile_nu_UQFF_eV": m_sterile_eV, "UA_prime_decoupled_branch": UA_prime_decoupled, "sterile_oscillation_freq_THz": sterile_oscillation_freq, "K_Mex_x_Phi_res_mass": K_MEX * PHI_RESONANCE, "primary_source": "Sterile_nu_via_UA_prime_decoupled_K_Mex_x_Phi_res_mass_PAPER_034"}
+    return {"m_sterile_nu_UQFF_eV": m_sterile_eV, "UA_prime_decoupled_branch": UA_prime_decoupled, "sterile_oscillation_freq_THz": sterile_oscillation_freq, "K_Mex_x_Phi_res_mass": K_MEX * PHI_RESONANCE, "primary_source": "Sterile_nu_via_UA_prime_decoupled_K_Mex_x_Phi_res_mass"}
 
 def _l96_uqff_axiom_grb_long_short_bimodality_closure() -> Dict[str, Any]:
     import math
     T_90_split_s = 2.0
     F_U_Bi_i_collapsar = BETA_I * (1.0 + PHI_RESONANCE)
     F_U_Bi_i_merger = BETA_I * (1.0 - PHI_RESONANCE)
-    return {"T_90_split_threshold_s": T_90_split_s, "F_U_Bi_i_collapsar_long_branch": F_U_Bi_i_collapsar, "F_U_Bi_i_merger_short_branch": F_U_Bi_i_merger, "bimodality_via_beta_i_plus_minus_Phi_res": True, "primary_source": "GRB_long_short_via_F_U_Bi_i_two_regimes_collapsar_vs_merger_PAPER_1203"}
+    return {"T_90_split_threshold_s": T_90_split_s, "F_U_Bi_i_collapsar_long_branch": F_U_Bi_i_collapsar, "F_U_Bi_i_merger_short_branch": F_U_Bi_i_merger, "bimodality_via_beta_i_plus_minus_Phi_res": True, "primary_source": "GRB_long_short_via_F_U_Bi_i_two_regimes_collapsar_vs_merger"}
 
 def _l96_uqff_axiom_frb_origin_mechanism_closure() -> Dict[str, Any]:
     Lambda_ledger_saturation = 0.00729735
@@ -33809,7 +33809,7 @@ def _l96_uqff_axiom_sgr_a_star_flares_closure() -> Dict[str, Any]:
     import math
     flare_period_days = 1.0
     DPM_grinding_cycle = (1.0 / OMEGA_SCM) / 86400.0
-    return {"flare_period_days_obs": flare_period_days, "DPM_grinding_cycle_days_UQFF": DPM_grinding_cycle, "horizon_buoyancy_via_F_U_Bi_i": True, "K_Mex_modulation": K_MEX, "primary_source": "Sgr_A_star_flares_via_DPM_grinding_cycle_on_event_horizon_PAPER_062"}
+    return {"flare_period_days_obs": flare_period_days, "DPM_grinding_cycle_days_UQFF": DPM_grinding_cycle, "horizon_buoyancy_via_F_U_Bi_i": True, "K_Mex_modulation": K_MEX, "primary_source": "Sgr_A_star_flares_via_DPM_grinding_cycle_on_event_horizon"}
 
 def _l96_uqff_axiom_coronal_heating_problem_closure() -> Dict[str, Any]:
     Lambda_ledger_saturation = 0.00729735
@@ -33851,7 +33851,7 @@ def _l96_uqff_axiom_stellar_imf_salpeter_closure() -> Dict[str, Any]:
     alpha_salpeter_obs = -2.35
     alpha_UQFF_via_caduceus = -(K_MEX + PHI_RESONANCE - SSQ)
     diff_pct = abs(alpha_UQFF_via_caduceus - alpha_salpeter_obs) / abs(alpha_salpeter_obs) * 100.0
-    return {"alpha_salpeter_obs": alpha_salpeter_obs, "alpha_UQFF_caduceus_fragmentation": alpha_UQFF_via_caduceus, "diff_pct": diff_pct, "caduceus_26_pinch_fragmentation_cascade": True, "primary_source": "Stellar_IMF_Salpeter_via_Caduceus_26_pinch_fragmentation_cascade_PAPER_646"}
+    return {"alpha_salpeter_obs": alpha_salpeter_obs, "alpha_UQFF_caduceus_fragmentation": alpha_UQFF_via_caduceus, "diff_pct": diff_pct, "caduceus_26_pinch_fragmentation_cascade": True, "primary_source": "Stellar_IMF_Salpeter_via_Caduceus_26_pinch_fragmentation_cascade"}
 
 def _l96_uqff_axiom_bh_entropy_area_law_closure(M_msun: float = 1.0) -> Dict[str, Any]:
     import math
@@ -33859,28 +33859,28 @@ def _l96_uqff_axiom_bh_entropy_area_law_closure(M_msun: float = 1.0) -> Dict[str
     area_m2 = 4.0 * math.pi * R_s_m * R_s_m
     S_BH_over_kB = area_m2 / (4.0 * 1.616e-35 * 1.616e-35)
     UQFF_K_Mex_x_D_BSFG = K_MEX * D_BSFG
-    return {"M_msun": M_msun, "R_s_m": R_s_m, "area_m2": area_m2, "S_BH_over_kB": S_BH_over_kB, "UQFF_prefactor_K_Mex_x_D_BSFG": UQFF_K_Mex_x_D_BSFG, "horizon_buoyancy_via_F_U_Bi_i": True, "primary_source": "BH_entropy_area_law_via_K_Mex_x_D_BSFG_horizon_buoyancy_F_U_Bi_i_PAPER_034_PAPER_087"}
+    return {"M_msun": M_msun, "R_s_m": R_s_m, "area_m2": area_m2, "S_BH_over_kB": S_BH_over_kB, "UQFF_prefactor_K_Mex_x_D_BSFG": UQFF_K_Mex_x_D_BSFG, "horizon_buoyancy_via_F_U_Bi_i": True, "primary_source": "BH_entropy_area_law_via_K_Mex_x_D_BSFG_horizon_buoyancy_F_U_Bi_i"}
 
 def _l96_uqff_axiom_holographic_dim_principle_closure() -> Dict[str, Any]:
     import math
     D_bulk = D_BSFG
     D_boundary = D_BSFG - 1
     D_phys_correspondence = D_PHYS
-    return {"D_bulk_BSFG": D_bulk, "D_boundary_eq_D_BSFG_minus_1": D_boundary, "D_phys_correspondence": D_phys_correspondence, "holographic_principle_via_D_phys_to_D_BSFG": True, "primary_source": "Holographic_dim_via_D_phys_to_D_BSFG_correspondence_minus_1_PAPER_062"}
+    return {"D_bulk_BSFG": D_bulk, "D_boundary_eq_D_BSFG_minus_1": D_boundary, "D_phys_correspondence": D_phys_correspondence, "holographic_principle_via_D_phys_to_D_BSFG": True, "primary_source": "Holographic_dim_via_D_phys_to_D_BSFG_correspondence_minus_1"}
 
 def _l96_uqff_axiom_ads_cft_to_ds_extension_closure() -> Dict[str, Any]:
     import math
     K_Mex_inverted = -K_MEX
     Mexican_hat_inverted_region = K_Mex_inverted < 0.0
     ds_via_inverted_Mexican_hat = True
-    return {"K_Mex_inverted_for_dS": K_Mex_inverted, "inverted_Mexican_hat_region": Mexican_hat_inverted_region, "dS_CFT_via_inverted_K_Mex": ds_via_inverted_Mexican_hat, "Lambda_positive_at_horizon": True, "primary_source": "AdS_to_dS_via_inverted_K_Mex_Mexican_hat_negative_region_PAPER_034"}
+    return {"K_Mex_inverted_for_dS": K_Mex_inverted, "inverted_Mexican_hat_region": Mexican_hat_inverted_region, "dS_CFT_via_inverted_K_Mex": ds_via_inverted_Mexican_hat, "Lambda_positive_at_horizon": True, "primary_source": "AdS_to_dS_via_inverted_K_Mex_Mexican_hat_negative_region"}
 
 def _l96_uqff_axiom_wheeler_dewitt_equation_closure() -> Dict[str, Any]:
     import math
     F_U_total_eq_zero = True
     timeless_ledger = True
     H_wave_eq_zero = True
-    return {"F_U_total_eq_zero": F_U_total_eq_zero, "timeless_ledger_via_F_U_eq_0": timeless_ledger, "H_psi_eq_0_Wheeler_DeWitt": H_wave_eq_zero, "F_U_eq_0_IS_Wheeler_DeWitt": True, "no_external_time_parameter": True, "primary_source": "Wheeler_DeWitt_via_F_U_eq_0_timeless_simultaneous_ledger_PAPER_1203"}
+    return {"F_U_total_eq_zero": F_U_total_eq_zero, "timeless_ledger_via_F_U_eq_0": timeless_ledger, "H_psi_eq_0_Wheeler_DeWitt": H_wave_eq_zero, "F_U_eq_0_IS_Wheeler_DeWitt": True, "no_external_time_parameter": True, "primary_source": "Wheeler_DeWitt_via_F_U_eq_0_timeless_simultaneous_ledger"}
 
 def _l96_uqff_axiom_pta_sgwb_spectral_index_closure() -> Dict[str, Any]:
     Lambda_ledger_saturation = 0.00729735
@@ -33943,7 +33943,7 @@ def _l96_uqff_axiom_origin_of_life_abiogenesis_closure() -> Dict[str, Any]:
     F_U_normalization = 1.0
     low_entropy_SCm_UA_seed = True
     self_replication_via_S_26 = S26_DPM
-    return {"F_U_eq_1_global_normalization_per_organism": F_U_normalization, "low_entropy_SCm_UA_initial_seed": low_entropy_SCm_UA_seed, "self_replication_via_S_26_chain": self_replication_via_S_26, "K_Mex_x_Phi_res_replication_anchor": K_MEX * PHI_RESONANCE, "primary_source": "Origin_of_life_via_F_U_eq_1_normalization_plus_low_entropy_SCm_UA_seed_x_S_26_chain_PAPER_646"}
+    return {"F_U_eq_1_global_normalization_per_organism": F_U_normalization, "low_entropy_SCm_UA_initial_seed": low_entropy_SCm_UA_seed, "self_replication_via_S_26_chain": self_replication_via_S_26, "K_Mex_x_Phi_res_replication_anchor": K_MEX * PHI_RESONANCE, "primary_source": "Origin_of_life_via_F_U_eq_1_normalization_plus_low_entropy_SCm_UA_seed_x_S_26_chain"}
 
 
 
@@ -34666,7 +34666,7 @@ def _l96_uqff_axiom_cdf_w_mass_anomaly_closure() -> Dict[str, Any]:
     delta_m_W_obs_MeV = 76.0
     delta_m_W_uqff_MeV = m_W_MeV_SM * Lambda_ledger * BETA_I * PHI_RESONANCE / float(D_PHYS)
     diff_pct = abs(delta_m_W_uqff_MeV - delta_m_W_obs_MeV) / delta_m_W_obs_MeV * 100.0
-    return {"m_W_MeV_SM_baseline": m_W_MeV_SM, "delta_m_W_obs_CDF_2022_MeV": delta_m_W_obs_MeV, "delta_m_W_UQFF_via_m_W_x_Lambda_x_beta_i_x_Phi_res_over_D_phys": delta_m_W_uqff_MeV, "diff_pct_vs_CDF_2022": diff_pct, "F_U_eq_1_sector_mixing_via_Lambda_beta_i_Phi_res": True, "primary_source": "CDF_W_mass_anomaly_via_m_W_x_Lambda_x_beta_i_x_Phi_res_over_D_phys_INTEGER_PRIMITIVE_PAPER_1203"}
+    return {"m_W_MeV_SM_baseline": m_W_MeV_SM, "delta_m_W_obs_CDF_2022_MeV": delta_m_W_obs_MeV, "delta_m_W_UQFF_via_m_W_x_Lambda_x_beta_i_x_Phi_res_over_D_phys": delta_m_W_uqff_MeV, "diff_pct_vs_CDF_2022": diff_pct, "F_U_eq_1_sector_mixing_via_Lambda_beta_i_Phi_res": True, "primary_source": "CDF_W_mass_anomaly_via_m_W_x_Lambda_x_beta_i_x_Phi_res_over_D_phys_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_lepton_universality_violation_closure() -> Dict[str, Any]:
     Lambda_ledger = 0.00729735
@@ -34676,14 +34676,14 @@ def _l96_uqff_axiom_lepton_universality_violation_closure() -> Dict[str, Any]:
     R_D_uqff = 1.0 + 2.0 * Lambda_ledger * float(A_FIVE) / 3.0
     diff_R_K_pct = abs(R_K_uqff - R_K_obs) / R_K_obs * 100.0
     diff_R_D_pct = abs(R_D_uqff - R_D_obs) / R_D_obs * 100.0
-    return {"R_K_obs_LHCb": R_K_obs, "R_K_UQFF_via_1_minus_Lambda_x_A_5_over_3": R_K_uqff, "diff_R_K_pct": diff_R_K_pct, "R_D_obs_BaBar_Belle_LHCb": R_D_obs, "R_D_UQFF_via_1_plus_2Lambda_x_A_5_over_3": R_D_uqff, "diff_R_D_pct": diff_R_D_pct, "lepton_universality_broken_via_Lambda_x_A_5_3rd_generation_coupling": True, "primary_source": "Lepton_universality_R_K_R_D_via_1_pm_Lambda_x_A_5_over_3_3rd_generation_coupling_PAPER_1198"}
+    return {"R_K_obs_LHCb": R_K_obs, "R_K_UQFF_via_1_minus_Lambda_x_A_5_over_3": R_K_uqff, "diff_R_K_pct": diff_R_K_pct, "R_D_obs_BaBar_Belle_LHCb": R_D_obs, "R_D_UQFF_via_1_plus_2Lambda_x_A_5_over_3": R_D_uqff, "diff_R_D_pct": diff_R_D_pct, "lepton_universality_broken_via_Lambda_x_A_5_3rd_generation_coupling": True, "primary_source": "Lepton_universality_R_K_R_D_via_1_pm_Lambda_x_A_5_over_3_3rd_generation_coupling"}
 
 def _l96_uqff_axiom_koto_rare_kaon_decay_closure() -> Dict[str, Any]:
     Lambda_ledger = 0.00729735
     BR_KOTO_obs = 3.0e-11
     BR_KOTO_uqff = (Lambda_ledger ** 6) * float(A_FIVE) * PHI_RESONANCE / BETA_I
     ratio_uqff_over_obs = BR_KOTO_uqff / BR_KOTO_obs
-    return {"BR_KOTO_obs_K_L_to_pi_0_nu_nu": BR_KOTO_obs, "BR_KOTO_UQFF_via_Lambda_pow_6_x_A_5_x_Phi_res_over_beta_i": BR_KOTO_uqff, "ratio_UQFF_over_obs": ratio_uqff_over_obs, "rare_kaon_decay_via_Lambda_pow_6_suppression": True, "primary_source": "KOTO_K_L_to_pi_0_nu_nu_via_Lambda_pow_6_x_A_5_x_Phi_res_over_beta_i_PAPER_1203"}
+    return {"BR_KOTO_obs_K_L_to_pi_0_nu_nu": BR_KOTO_obs, "BR_KOTO_UQFF_via_Lambda_pow_6_x_A_5_x_Phi_res_over_beta_i": BR_KOTO_uqff, "ratio_UQFF_over_obs": ratio_uqff_over_obs, "rare_kaon_decay_via_Lambda_pow_6_suppression": True, "primary_source": "KOTO_K_L_to_pi_0_nu_nu_via_Lambda_pow_6_x_A_5_x_Phi_res_over_beta_i"}
 
 def _l96_uqff_axiom_T_violation_meson_closure() -> Dict[str, Any]:
     T_asymmetry_uqff = TRZ * BETA_I
@@ -34694,14 +34694,14 @@ def _l96_uqff_axiom_higgs_invisible_decay_closure() -> Dict[str, Any]:
     BR_inv_ATLAS_bound = 0.107
     BR_inv_uqff = Lambda_ledger * float(N_CH)
     consistent_with_bound = BR_inv_uqff < BR_inv_ATLAS_bound
-    return {"BR_H_to_inv_ATLAS_upper_bound_2024": BR_inv_ATLAS_bound, "BR_H_to_inv_UQFF_via_Lambda_x_N_CH": BR_inv_uqff, "consistent_with_observational_bound": consistent_with_bound, "F_U_eq_1_normalization_constrains_invisible_decay_fraction": True, "primary_source": "Higgs_invisible_decay_BR_via_Lambda_x_N_CH_constrained_by_F_U_eq_1_normalization_PAPER_646"}
+    return {"BR_H_to_inv_ATLAS_upper_bound_2024": BR_inv_ATLAS_bound, "BR_H_to_inv_UQFF_via_Lambda_x_N_CH": BR_inv_uqff, "consistent_with_observational_bound": consistent_with_bound, "F_U_eq_1_normalization_constrains_invisible_decay_fraction": True, "primary_source": "Higgs_invisible_decay_BR_via_Lambda_x_N_CH_constrained_by_F_U_eq_1_normalization"}
 
 def _l96_uqff_axiom_FCNC_b_to_s_mumu_closure() -> Dict[str, Any]:
     Lambda_ledger = 0.00729735
     BR_obs_LHCb = 1.06e-6
     BR_uqff = (Lambda_ledger ** 3) * float(A_FIVE) / float(D_CRIT)
     diff_pct = abs(BR_uqff - BR_obs_LHCb) / BR_obs_LHCb * 100.0
-    return {"BR_b_to_s_mu_mu_obs_LHCb": BR_obs_LHCb, "BR_b_to_s_mu_mu_UQFF_via_Lambda_pow_3_x_A_5_over_D_crit": BR_uqff, "diff_pct_vs_LHCb": diff_pct, "FCNC_quark_flavor_coupling_via_SO_5_lepton_pair": True, "primary_source": "FCNC_b_to_s_mu_mu_via_Lambda_pow_3_x_A_5_over_D_crit_quark_flavor_coupling_PAPER_1198"}
+    return {"BR_b_to_s_mu_mu_obs_LHCb": BR_obs_LHCb, "BR_b_to_s_mu_mu_UQFF_via_Lambda_pow_3_x_A_5_over_D_crit": BR_uqff, "diff_pct_vs_LHCb": diff_pct, "FCNC_quark_flavor_coupling_via_SO_5_lepton_pair": True, "primary_source": "FCNC_b_to_s_mu_mu_via_Lambda_pow_3_x_A_5_over_D_crit_quark_flavor_coupling"}
 
 def _l96_uqff_axiom_proton_charge_radius_PRad_closure() -> Dict[str, Any]:
     Lambda_ledger = 0.00729735
@@ -34713,26 +34713,26 @@ def _l96_uqff_axiom_proton_charge_radius_PRad_closure() -> Dict[str, Any]:
 
 def _l96_uqff_axiom_gw_memory_effect_closure() -> Dict[str, Any]:
     h_memory_fraction_uqff = TRZ * BETA_I
-    return {"h_memory_over_h_peak_strain_fraction_UQFF_via_F_TRZ_x_beta_i": h_memory_fraction_uqff, "GW_memory_residual_after_passage_via_chirality_imbalance": True, "F_TRZ_x_beta_i_universal_residual_strain_fraction": True, "primary_source": "GW_memory_effect_residual_strain_fraction_via_F_TRZ_x_beta_i_PAPER_1203"}
+    return {"h_memory_over_h_peak_strain_fraction_UQFF_via_F_TRZ_x_beta_i": h_memory_fraction_uqff, "GW_memory_residual_after_passage_via_chirality_imbalance": True, "F_TRZ_x_beta_i_universal_residual_strain_fraction": True, "primary_source": "GW_memory_effect_residual_strain_fraction_via_F_TRZ_x_beta_i"}
 
 def _l96_uqff_axiom_schwinger_limit_closure() -> Dict[str, Any]:
     E_Schwinger_V_per_m_SM = 1.32e18
     E_Schwinger_uqff_V_per_m = E_Schwinger_V_per_m_SM * PHI_RESONANCE * (1.0 + TRZ)
     diff_pct = abs(E_Schwinger_uqff_V_per_m - E_Schwinger_V_per_m_SM) / E_Schwinger_V_per_m_SM * 100.0
-    return {"E_Schwinger_V_per_m_SM_baseline": E_Schwinger_V_per_m_SM, "E_Schwinger_UQFF_via_E_S_x_Phi_res_x_1_plus_F_TRZ_V_per_m": E_Schwinger_uqff_V_per_m, "diff_pct_vs_SM": diff_pct, "SCm_vacuum_breakdown_at_modified_threshold": True, "primary_source": "Schwinger_limit_vacuum_pair_production_threshold_via_E_S_x_Phi_res_x_1_plus_F_TRZ_PAPER_1373"}
+    return {"E_Schwinger_V_per_m_SM_baseline": E_Schwinger_V_per_m_SM, "E_Schwinger_UQFF_via_E_S_x_Phi_res_x_1_plus_F_TRZ_V_per_m": E_Schwinger_uqff_V_per_m, "diff_pct_vs_SM": diff_pct, "SCm_vacuum_breakdown_at_modified_threshold": True, "primary_source": "Schwinger_limit_vacuum_pair_production_threshold_via_E_S_x_Phi_res_x_1_plus_F_TRZ"}
 
 def _l96_uqff_axiom_qgp_jet_quenching_closure() -> Dict[str, Any]:
     R_AA_obs_PbPb_LHC = 0.20
     R_AA_uqff = TRZ * K_MEX
     diff_pct = abs(R_AA_uqff - R_AA_obs_PbPb_LHC) / R_AA_obs_PbPb_LHC * 100.0
-    return {"R_AA_obs_PbPb_LHC_high_pT": R_AA_obs_PbPb_LHC, "R_AA_UQFF_via_F_TRZ_x_K_MEX": R_AA_uqff, "diff_pct_vs_ALICE_obs": diff_pct, "jet_quenching_via_SCm_phonon_drag_at_QGP_temperature": True, "primary_source": "QGP_jet_quenching_R_AA_via_F_TRZ_x_K_MEX_INTEGER_PRIMITIVE_PAPER_034"}
+    return {"R_AA_obs_PbPb_LHC_high_pT": R_AA_obs_PbPb_LHC, "R_AA_UQFF_via_F_TRZ_x_K_MEX": R_AA_uqff, "diff_pct_vs_ALICE_obs": diff_pct, "jet_quenching_via_SCm_phonon_drag_at_QGP_temperature": True, "primary_source": "QGP_jet_quenching_R_AA_via_F_TRZ_x_K_MEX_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_pulsar_glitch_closure() -> Dict[str, Any]:
     Lambda_ledger = 0.00729735
     delta_f_over_f_obs_Crab = 1.0e-6
     delta_f_over_f_uqff = (Lambda_ledger ** 3) * PHI_RESONANCE
     ratio = delta_f_over_f_uqff / delta_f_over_f_obs_Crab
-    return {"delta_f_over_f_obs_Crab_typical": delta_f_over_f_obs_Crab, "delta_f_over_f_UQFF_via_Lambda_pow_3_x_Phi_res": delta_f_over_f_uqff, "ratio_UQFF_over_obs": ratio, "Caduceus_pinch_point_phase_discontinuity_PAPER_646": True, "primary_source": "Pulsar_glitch_delta_f_over_f_via_Lambda_pow_3_x_Phi_res_Caduceus_phase_discontinuity_PAPER_1203"}
+    return {"delta_f_over_f_obs_Crab_typical": delta_f_over_f_obs_Crab, "delta_f_over_f_UQFF_via_Lambda_pow_3_x_Phi_res": delta_f_over_f_uqff, "ratio_UQFF_over_obs": ratio, "Caduceus_pinch_point_phase_discontinuity_PAPER_646": True, "primary_source": "Pulsar_glitch_delta_f_over_f_via_Lambda_pow_3_x_Phi_res_Caduceus_phase_discontinuity"}
 
 def _l96_uqff_axiom_magnetar_giant_flare_closure() -> Dict[str, Any]:
     L_peak_obs_erg_per_s = 1.0e47
@@ -34745,20 +34745,20 @@ def _l96_uqff_axiom_crab_pulsar_tev_cutoff_closure() -> Dict[str, Any]:
     E_cutoff_uqff_GeV = m_p_GeV * float(A_FIVE) * (float(D_CRIT) ** 2) * K_MEX
     E_cutoff_uqff_TeV = E_cutoff_uqff_GeV / 1000.0
     diff_pct = abs(E_cutoff_uqff_TeV - E_cutoff_obs_TeV_HESS) / E_cutoff_obs_TeV_HESS * 100.0
-    return {"E_cutoff_obs_HESS_Crab_TeV": E_cutoff_obs_TeV_HESS, "E_cutoff_UQFF_via_m_p_x_A_5_x_D_crit_squared_x_K_MEX_TeV": E_cutoff_uqff_TeV, "diff_pct_vs_HESS": diff_pct, "spectrum_cutoff_via_SCm_integer_primitive_lattice": True, "primary_source": "Crab_TeV_cutoff_via_m_p_x_A_5_x_D_crit_squared_x_K_MEX_INTEGER_PRIMITIVE_PAPER_034"}
+    return {"E_cutoff_obs_HESS_Crab_TeV": E_cutoff_obs_TeV_HESS, "E_cutoff_UQFF_via_m_p_x_A_5_x_D_crit_squared_x_K_MEX_TeV": E_cutoff_uqff_TeV, "diff_pct_vs_HESS": diff_pct, "spectrum_cutoff_via_SCm_integer_primitive_lattice": True, "primary_source": "Crab_TeV_cutoff_via_m_p_x_A_5_x_D_crit_squared_x_K_MEX_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_cosmic_ray_ankle_closure() -> Dict[str, Any]:
     E_ankle_obs_eV_Auger = 3.0e18
     m_p_eV = 0.938 * 1.0e9
     E_ankle_uqff_eV = m_p_eV * (float(D_CRIT) ** 7) / K_MEX
     diff_pct = abs(E_ankle_uqff_eV - E_ankle_obs_eV_Auger) / E_ankle_obs_eV_Auger * 100.0
-    return {"E_ankle_obs_Auger_eV": E_ankle_obs_eV_Auger, "E_ankle_UQFF_via_m_p_x_D_crit_pow_7_over_K_MEX_eV": E_ankle_uqff_eV, "diff_pct_vs_Auger": diff_pct, "CR_ankle_via_integer_primitive_D_crit_pow_7": True, "primary_source": "CR_ankle_via_m_p_x_D_crit_pow_7_over_K_MEX_INTEGER_PRIMITIVE_PAPER_034"}
+    return {"E_ankle_obs_Auger_eV": E_ankle_obs_eV_Auger, "E_ankle_UQFF_via_m_p_x_D_crit_pow_7_over_K_MEX_eV": E_ankle_uqff_eV, "diff_pct_vs_Auger": diff_pct, "CR_ankle_via_integer_primitive_D_crit_pow_7": True, "primary_source": "CR_ankle_via_m_p_x_D_crit_pow_7_over_K_MEX_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_faber_jackson_closure() -> Dict[str, Any]:
     exponent_obs_elliptical = 4.0
     exponent_uqff_via_D_phys = float(D_PHYS)
     exponent_match_EXACT = (exponent_uqff_via_D_phys == exponent_obs_elliptical)
-    return {"sigma_to_L_exponent_obs_Faber_Jackson": exponent_obs_elliptical, "sigma_to_L_exponent_UQFF_via_D_phys_eq_4_EXACT": exponent_uqff_via_D_phys, "exponent_match_EXACT": exponent_match_EXACT, "elliptical_analog_of_Tully_Fisher_via_same_D_phys_exponent": True, "primary_source": "Faber_Jackson_sigma_to_4th_eq_L_exponent_via_D_phys_eq_4_EXACT_INTEGER_PRIMITIVE_PAPER_1203"}
+    return {"sigma_to_L_exponent_obs_Faber_Jackson": exponent_obs_elliptical, "sigma_to_L_exponent_UQFF_via_D_phys_eq_4_EXACT": exponent_uqff_via_D_phys, "exponent_match_EXACT": exponent_match_EXACT, "elliptical_analog_of_Tully_Fisher_via_same_D_phys_exponent": True, "primary_source": "Faber_Jackson_sigma_to_4th_eq_L_exponent_via_D_phys_eq_4_EXACT_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_color_superconductivity_CFL_closure() -> Dict[str, Any]:
     Lambda_QCD_MeV = 200.0
@@ -34773,7 +34773,7 @@ def _l96_uqff_axiom_nuclear_pasta_closure() -> Dict[str, Any]:
     rho_pasta_over_rho_nuc_obs_range_high = 1.0
     rho_pasta_over_rho_nuc_uqff = 1.0 / float(D_PHYS)
     within_range = rho_pasta_over_rho_nuc_obs_range_low <= rho_pasta_over_rho_nuc_uqff <= rho_pasta_over_rho_nuc_obs_range_high
-    return {"rho_pasta_over_rho_nuc_obs_low": rho_pasta_over_rho_nuc_obs_range_low, "rho_pasta_over_rho_nuc_obs_high": rho_pasta_over_rho_nuc_obs_range_high, "rho_pasta_over_rho_nuc_UQFF_via_1_over_D_phys": rho_pasta_over_rho_nuc_uqff, "within_observed_range": within_range, "neutron_pasta_phase_transition_at_1_over_D_phys_density_threshold": True, "primary_source": "Neutron_star_nuclear_pasta_density_threshold_via_1_over_D_phys_eq_0_25_INTEGER_PRIMITIVE_PAPER_1203"}
+    return {"rho_pasta_over_rho_nuc_obs_low": rho_pasta_over_rho_nuc_obs_range_low, "rho_pasta_over_rho_nuc_obs_high": rho_pasta_over_rho_nuc_obs_range_high, "rho_pasta_over_rho_nuc_UQFF_via_1_over_D_phys": rho_pasta_over_rho_nuc_uqff, "within_observed_range": within_range, "neutron_pasta_phase_transition_at_1_over_D_phys_density_threshold": True, "primary_source": "Neutron_star_nuclear_pasta_density_threshold_via_1_over_D_phys_eq_0_25_INTEGER_PRIMITIVE"}
 
 def _l96_uqff_axiom_n_body_simulation_3D_closure() -> Dict[str, Any]:
     dof_per_particle_uqff = float(D_PHYS) * float(D_BSFG)
@@ -34842,7 +34842,7 @@ def _l96_uqff_axiom_richard_paradox_closure() -> Dict[str, Any]:
     return {"self_defining_real_number_forbidden_via_rho_SCm_quantization": True, "rho_SCm_min_vacuum_cell_J_per_m3": RHO_SCM, "diagonal_construction_unphysical_at_vacuum_cell_scale": True, "primary_source": "Richard_paradox_via_rho_SCm_quantization_forbids_self_defining_real_diagonal_construction_PAPER_1393"}
 
 def _l96_uqff_axiom_yablo_paradox_closure() -> Dict[str, Any]:
-    return {"infinite_non_circular_liar_chain_truncated_at_D_crit_eq_26_steps": D_CRIT, "F_U_eq_1_normalization_breaks_infinite_chain_consistency": True, "primary_source": "Yablo_paradox_via_D_crit_eq_26_truncation_plus_F_U_eq_1_breaks_infinite_non_circular_liar_chain_PAPER_646"}
+    return {"infinite_non_circular_liar_chain_truncated_at_D_crit_eq_26_steps": D_CRIT, "F_U_eq_1_normalization_breaks_infinite_chain_consistency": True, "primary_source": "Yablo_paradox_via_D_crit_eq_26_truncation_plus_F_U_eq_1_breaks_infinite_non_circular_liar_chain"}
 
 def _l96_uqff_axiom_quantum_suicide_immortality_closure() -> Dict[str, Any]:
     F_U_per_branch_normalization_EXACT = 1.0
@@ -34861,41 +34861,41 @@ def _l96_uqff_axiom_missing_baryons_problem_closure() -> Dict[str, Any]:
     f_visible_baryon_obs = 0.5
     f_visible_baryon_uqff = 1.0 - TRZ - BETA_I * PHI_RESONANCE + TRZ * BETA_I
     diff_pct = abs(f_visible_baryon_uqff - f_visible_baryon_obs) / f_visible_baryon_obs * 100.0
-    return {"f_visible_baryon_obs": f_visible_baryon_obs, "f_visible_baryon_UQFF_via_1_minus_F_TRZ_minus_beta_i_Phi_res_plus_F_TRZ_beta_i": f_visible_baryon_uqff, "diff_pct_vs_obs": diff_pct, "WHIM_warm_hot_baryons_locked_in_SCm_vacuum_via_F_TRZ_x_beta_i_chirality": True, "primary_source": "Missing_baryons_problem_via_1_minus_F_TRZ_minus_beta_i_x_Phi_res_plus_F_TRZ_x_beta_i_locked_in_SCm_vacuum_PAPER_1203"}
+    return {"f_visible_baryon_obs": f_visible_baryon_obs, "f_visible_baryon_UQFF_via_1_minus_F_TRZ_minus_beta_i_Phi_res_plus_F_TRZ_beta_i": f_visible_baryon_uqff, "diff_pct_vs_obs": diff_pct, "WHIM_warm_hot_baryons_locked_in_SCm_vacuum_via_F_TRZ_x_beta_i_chirality": True, "primary_source": "Missing_baryons_problem_via_1_minus_F_TRZ_minus_beta_i_x_Phi_res_plus_F_TRZ_x_beta_i_locked_in_SCm_vacuum"}
 
 def _l96_uqff_axiom_rotation_curve_diversity_closure() -> Dict[str, Any]:
     rc_diversity_obs_fraction = 0.30
     rc_diversity_uqff = TRZ * K_MEX
     diff_pct = abs(rc_diversity_uqff - rc_diversity_obs_fraction) / rc_diversity_obs_fraction * 100.0
-    return {"rotation_curve_scatter_obs_fraction": rc_diversity_obs_fraction, "rc_diversity_UQFF_via_F_TRZ_x_K_MEX": rc_diversity_uqff, "diff_pct_vs_obs": diff_pct, "triadic_g_three_component_weights_produce_galaxy_to_galaxy_diversity": True, "primary_source": "Rotation_curve_diversity_via_F_TRZ_x_K_MEX_triadic_g_three_component_scatter_PAPER_034"}
+    return {"rotation_curve_scatter_obs_fraction": rc_diversity_obs_fraction, "rc_diversity_UQFF_via_F_TRZ_x_K_MEX": rc_diversity_uqff, "diff_pct_vs_obs": diff_pct, "triadic_g_three_component_weights_produce_galaxy_to_galaxy_diversity": True, "primary_source": "Rotation_curve_diversity_via_F_TRZ_x_K_MEX_triadic_g_three_component_scatter"}
 
 def _l96_uqff_axiom_solar_neutrino_problem_closure() -> Dict[str, Any]:
     f_nu_e_obs_over_expected = 1.0 / 3.0
     f_nu_e_uqff = 1.0 / (float(D_PHYS) - 1.0)
     EXACT_match = abs(f_nu_e_uqff - f_nu_e_obs_over_expected) < 1.0e-15
-    return {"f_nu_e_obs_over_expected_solar": f_nu_e_obs_over_expected, "f_nu_e_UQFF_via_1_over_D_phys_minus_1_eq_1_over_3_EXACT": f_nu_e_uqff, "EXACT_match": EXACT_match, "three_flavor_oscillation_via_D_phys_minus_1_eq_3_generation_count": True, "primary_source": "Solar_neutrino_problem_via_1_over_D_phys_minus_1_eq_1_third_EXACT_3_flavor_via_D_phys_minus_1_generation_count_PAPER_1198"}
+    return {"f_nu_e_obs_over_expected_solar": f_nu_e_obs_over_expected, "f_nu_e_UQFF_via_1_over_D_phys_minus_1_eq_1_over_3_EXACT": f_nu_e_uqff, "EXACT_match": EXACT_match, "three_flavor_oscillation_via_D_phys_minus_1_eq_3_generation_count": True, "primary_source": "Solar_neutrino_problem_via_1_over_D_phys_minus_1_eq_1_third_EXACT_3_flavor_via_D_phys_minus_1_generation_count"}
 
 def _l96_uqff_axiom_szilard_engine_closure() -> Dict[str, Any]:
     import math
     W_extracted_over_kBT_per_bit = math.log(2.0)
-    return {"W_extracted_over_kBT_per_bit_eq_ln_2_EXACT": W_extracted_over_kBT_per_bit, "Maxwell_demon_information_to_work_via_F_U_eq_1_ledger": True, "Landauer_kBT_ln_2_per_erasure_unifies_with_Szilard": True, "primary_source": "Szilard_engine_W_eq_kBT_ln_2_per_bit_EXACT_via_F_U_eq_1_ledger_unifies_with_Landauer_PAPER_646"}
+    return {"W_extracted_over_kBT_per_bit_eq_ln_2_EXACT": W_extracted_over_kBT_per_bit, "Maxwell_demon_information_to_work_via_F_U_eq_1_ledger": True, "Landauer_kBT_ln_2_per_erasure_unifies_with_Szilard": True, "primary_source": "Szilard_engine_W_eq_kBT_ln_2_per_bit_EXACT_via_F_U_eq_1_ledger_unifies_with_Landauer"}
 
 def _l96_uqff_axiom_poincare_recurrence_closure() -> Dict[str, Any]:
     D_crit_factorial_finite_recurrence_bound = 1.0
     for i in range(1, D_CRIT + 1):
         D_crit_factorial_finite_recurrence_bound *= float(i)
-    return {"D_crit_factorial_finite_recurrence_bound": D_crit_factorial_finite_recurrence_bound, "heat_death_avoided_via_D_crit_factorial_finite_recurrence_time": True, "Poincare_recurrence_theorem_with_UQFF_finite_phase_space_volume": True, "primary_source": "Poincare_recurrence_heat_death_resolved_via_D_crit_factorial_finite_recurrence_bound_PAPER_062"}
+    return {"D_crit_factorial_finite_recurrence_bound": D_crit_factorial_finite_recurrence_bound, "heat_death_avoided_via_D_crit_factorial_finite_recurrence_time": True, "Poincare_recurrence_theorem_with_UQFF_finite_phase_space_volume": True, "primary_source": "Poincare_recurrence_heat_death_resolved_via_D_crit_factorial_finite_recurrence_bound"}
 
 def _l96_uqff_axiom_bertrand_probability_closure() -> Dict[str, Any]:
     P_classical_answers_measure_dependent = [0.25, 1.0/3.0, 0.5]
     P_UQFF_via_1_over_D_phys = 1.0 / float(D_PHYS)
-    return {"P_classical_three_answers_measure_dependent": P_classical_answers_measure_dependent, "P_UQFF_selected_via_1_over_D_phys_eq_0_25_EXACT": P_UQFF_via_1_over_D_phys, "F_U_eq_1_selects_uniform_measure_via_1_over_D_phys": True, "primary_source": "Bertrand_probability_paradox_via_F_U_eq_1_selects_1_over_D_phys_eq_0_25_EXACT_uniform_measure_PAPER_646"}
+    return {"P_classical_three_answers_measure_dependent": P_classical_answers_measure_dependent, "P_UQFF_selected_via_1_over_D_phys_eq_0_25_EXACT": P_UQFF_via_1_over_D_phys, "F_U_eq_1_selects_uniform_measure_via_1_over_D_phys": True, "primary_source": "Bertrand_probability_paradox_via_F_U_eq_1_selects_1_over_D_phys_eq_0_25_EXACT_uniform_measure"}
 
 def _l96_uqff_axiom_monty_hall_closure() -> Dict[str, Any]:
     P_switch_wins_obs = 2.0 / 3.0
     P_switch_wins_uqff = 2.0 / (float(D_PHYS) - 1.0)
     EXACT_match = abs(P_switch_wins_uqff - P_switch_wins_obs) < 1.0e-15
-    return {"P_switch_wins_obs_classical": P_switch_wins_obs, "P_switch_wins_UQFF_via_2_over_D_phys_minus_1_eq_2_over_3_EXACT": P_switch_wins_uqff, "EXACT_match": EXACT_match, "Bayesian_conditional_via_F_U_eq_1_redistribution": True, "primary_source": "Monty_Hall_via_2_over_D_phys_minus_1_eq_2_over_3_EXACT_F_U_eq_1_redistribution_PAPER_646"}
+    return {"P_switch_wins_obs_classical": P_switch_wins_obs, "P_switch_wins_UQFF_via_2_over_D_phys_minus_1_eq_2_over_3_EXACT": P_switch_wins_uqff, "EXACT_match": EXACT_match, "Bayesian_conditional_via_F_U_eq_1_redistribution": True, "primary_source": "Monty_Hall_via_2_over_D_phys_minus_1_eq_2_over_3_EXACT_F_U_eq_1_redistribution"}
 
 def _l96_uqff_axiom_pascals_mugging_closure() -> Dict[str, Any]:
     D_crit_factorial_truncation = 1.0
@@ -34910,12 +34910,12 @@ def _l96_uqff_axiom_buridans_ass_closure() -> Dict[str, Any]:
 def _l96_uqff_axiom_c_value_paradox_closure() -> Dict[str, Any]:
     import math
     bits_per_ledger_position_via_log2_D_BSFG = math.log2(float(D_BSFG))
-    return {"information_per_ledger_position_via_log2_D_BSFG_eq_2_585_bits": bits_per_ledger_position_via_log2_D_BSFG, "genome_size_decoupled_from_complexity_via_SCm_information_density": True, "non_coding_DNA_carries_F_U_Bi_i_buoyancy_information": True, "primary_source": "C_value_paradox_via_log2_D_BSFG_eq_2_585_bits_per_SCm_ledger_position_information_density_PAPER_062"}
+    return {"information_per_ledger_position_via_log2_D_BSFG_eq_2_585_bits": bits_per_ledger_position_via_log2_D_BSFG, "genome_size_decoupled_from_complexity_via_SCm_information_density": True, "non_coding_DNA_carries_F_U_Bi_i_buoyancy_information": True, "primary_source": "C_value_paradox_via_log2_D_BSFG_eq_2_585_bits_per_SCm_ledger_position_information_density"}
 
 def _l96_uqff_axiom_g_value_paradox_closure() -> Dict[str, Any]:
     import math
     complexity_per_gene_via_log_ratio = math.log2(float(D_BSFG)) / math.log2(float(D_CRIT))
-    return {"complexity_per_gene_via_log2_D_BSFG_over_log2_D_crit": complexity_per_gene_via_log_ratio, "gene_count_decoupled_from_complexity_via_SCm_information_density_ratio": True, "regulatory_complexity_via_D_BSFG_to_D_crit_ratio": True, "primary_source": "G_value_paradox_via_log2_D_BSFG_over_log2_D_crit_complexity_per_gene_via_SCm_density_ratio_PAPER_062"}
+    return {"complexity_per_gene_via_log2_D_BSFG_over_log2_D_crit": complexity_per_gene_via_log_ratio, "gene_count_decoupled_from_complexity_via_SCm_information_density_ratio": True, "regulatory_complexity_via_D_BSFG_to_D_crit_ratio": True, "primary_source": "G_value_paradox_via_log2_D_BSFG_over_log2_D_crit_complexity_per_gene_via_SCm_density_ratio"}
 
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
@@ -39457,7 +39457,12 @@ G_DWARF_OBS_RATIO = 0.5
 RC_DIVERSITY_OBS_FRAC = 0.30
 
 def _dark_energy_w_de_t_present_uqff():
-    return -0.9435
+    import math
+    Phi_Gamma = PHI_0_PAPER_1087 * S_26
+    ln_Phi = math.log(Phi_Gamma)
+    t_present_s = 4.35e17
+    num = 2.0 * KAPPA_PAPER_1087_PER_SECOND * t_present_s + (SSQ / float(D_CRIT)) * t_present_s
+    return -1.0 + num / ln_Phi
 
 def _cnub_temperature_uqff_k():
     return T_CMB_K_CONST * ((4.0 / 11.0) ** (1.0 / 3.0)) * (1.0 + LAMBDA_LEDGER_UQFF * BETA_I)
@@ -39541,143 +39546,6 @@ def _bucket_antimatter_efficiency_uqff():
 def _bucket_dm_direct_sigma_floor_uqff_cm2():
     return LAMBDA_LEDGER_UQFF ** 4 * 1.0e-40
 
-def _b_cc_120_orders_uqff_J_m3():
-    return RHO_SCM * 4.033e26 * (25.0/12.0)
-
-def _b_cosmic_holography_d_boundary():
-    return float(D_BSFG) - 1.0
-
-def _b_wave_function_universe_uqff():
-    return 1.0
-
-def _b_dark_flow_v_uqff_km_s():
-    return float(A_FIVE) * float(SO_FIVE) * PHI_RESONANCE
-
-def _b_frb_origin_nu_uqff_GHz():
-    return OMEGA_SCM * 1.0e-12 + 0.0
-
-def _b_cmb_cold_spot_T_uqff_uK():
-    return -70.0
-
-def _b_mond_a0_uqff_m_s2():
-    return 1.2e-10
-
-def _b_mond_tension_a0_uqff_m_s2():
-    return 1.2e-10
-
-def _b_hubble_bubble_delta_density_uqff_pct():
-    return -TRZ * BETA_I * 5.0 * 100.0
-
-def _b_hubble_tension_delta_uqff_km_s_mpc():
-    return 73.0 - 67.4
-
-def _b_horizon_problem_e_folds_uqff():
-    return float(A_FIVE)
-
-def _b_flatness_problem_omega_minus_1_uqff():
-    return 1.0 / (float(D_CRIT) ** 7)
-
-def _b_late_isw_amplitude_uqff():
-    return TRZ
-
-def _b_smbh_seeds_M_uqff_msun():
-    return float(A_FIVE) * (float(D_BSFG) ** 2) * float(D_CRIT) + 0.0
-
-def _b_reionization_z_uqff():
-    return K_MEX * float(D_PHYS) * PHI_RESONANCE * (1.0 + 1.0 / float(SO_FIVE))
-
-def _b_sigma8_uqff():
-    return 0.8268055555555556
-
-def _b_s8_growth_uqff():
-    return 0.8539211059249167
-
-def _b_delta_cp_uqff_rad():
-    import math
-    return -math.pi / 2.0
-
-def _b_ckm_unitarity_uqff():
-    return 1.0
-
-def _b_lepton_cp_violation_uqff_rad():
-    import math
-    return -math.pi / 2.0
-
-def _b_strong_cp_theta_uqff():
-    return TRZ * (1.0 / (float(D_CRIT) ** (float(D_PHYS) - 1.0))) * (1.0 / S26_DPM)
-
-def _b_strong_cp_natural_uqff():
-    return TRZ * (1.0 / (float(D_CRIT) ** 3)) * (1.0 / S26_DPM)
-
-def _b_tau_nu_hierarchy_n_gen_uqff():
-    return float(D_PHYS) - 1.0
-
-def _b_majorana_vs_dirac_uqff():
-    return 0.5
-
-def _b_hierarchy_problem_ratio_uqff():
-    return 125.1 / 1.22e19
-
-def _b_glueball_mass_uqff_gev():
-    return 2.0 * float(D_PHYS) * 0.217
-
-def _b_lambda_qcd_uqff_gev():
-    return 0.217
-
-def _b_quark_confinement_sigma_uqff():
-    return (0.217 ** 2) * K_MEX
-
-def _b_origin_of_mass_v_higgs_uqff_gev():
-    return 246.0
-
-def _b_clfv_br_uqff():
-    return (LAMBDA_LEDGER_UQFF ** 6) * PHI_RESONANCE
-
-def _b_mu_to_e_gamma_br_uqff():
-    return (LAMBDA_LEDGER_UQFF ** 6) * PHI_RESONANCE
-
-def _b_origin_of_inertia_ratio_uqff():
-    return 10.0
-
-def _b_galaxy_rotation_beta_plateau_uqff():
-    return BETA_I
-
-def _b_sgra_flares_period_days_uqff():
-    return 1.0
-
-def _b_solar_dynamo_T_yr_uqff():
-    return float(D_CRIT - D_PHYS)
-
-def _b_stellar_convection_threshold_uqff():
-    return PHI_RESONANCE
-
-def _b_dark_matter_omega_uqff():
-    return K_MEX * (1.0 - PHI_RESONANCE) * (1.0 + BETA_I) * 0.5
-
-def _b_qcd_chiral_condensate_uqff_mev3():
-    return 225.0 ** 3
-
-def _b_non_perturbative_qcd_lambda_uqff_gev():
-    return 0.217
-
-def _b_su3_color_n_uqff():
-    return 3.0
-
-def _b_higgs_vacuum_stability_uqff():
-    return 1.0
-
-def _b_higgs_trilinear_kappa_uqff():
-    return 1.0
-
-def _b_higgs_vev_origin_uqff_gev():
-    return 246.0
-
-def _b_ew_vacuum_decay_rate_uqff():
-    return 0.0
-
-def _b_quantum_supremacy_qubits_uqff():
-    return float(A_FIVE)
-
 def _cosmological_observables_report():
     observables = [
         ('alpha (fine structure)',          _alpha_uqff_derive(),                ALPHA_CODATA,             'PAPER_1156',                  'DERIVED_PURE_UQFF'),
@@ -39685,8 +39553,8 @@ def _cosmological_observables_report():
         ('m_p / m_e',                       _m_p_over_m_e_uqff_derive(),         M_P_OVER_M_E_CODATA,      'PAPER_1156',                 'DERIVED_PURE_UQFF'),
         ('Omega_Lambda (DE fraction)',      _omega_lambda_uqff_derive(),         OMEGA_LAMBDA_PLANCK,      'PAPER_1156',                'DERIVED_PURE_UQFF'),
         ('Lambda cosmological (1/m^2)',     _lambda_uqff_derive(),               LAMBDA_PLANCK_INV_M2,     'PAPER_1156',    'DERIVED_PURE_UQFF'),
-        ('Omega_b h^2 (baryon)',            _omega_b_h2_uqff_derive(),           OMEGA_B_H2_PLANCK,        'PAPER_1036',               'DERIVED_PURE_UQFF'),
-        ('Omega_c h^2 (cold DM)',           _omega_c_h2_uqff_derive(),           OMEGA_C_H2_PLANCK,        'PAPER_106',                'DERIVED_PURE_UQFF'),
+        ('Omega_b h^2 (baryon)',            _omega_b_h2_uqff_derive(),           OMEGA_B_H2_PLANCK,        'PAPER_1036',               'PRIMITIVE_SAT_ADHOC'),
+        ('Omega_c h^2 (cold DM)',           _omega_c_h2_uqff_derive(),           OMEGA_C_H2_PLANCK,        'PAPER_106',                'PRIMITIVE_SAT_ADHOC'),
         ('Y_p (primordial He)',             _y_p_uqff_derive(),                  Y_P_PLANCK,               'PAPER_1036',                        'DERIVED_PURE_UQFF'),
         ('tau_reion (optical depth)',       _tau_reion_uqff_derive(),            TAU_REION_PLANCK,         'PAPER_1026',  'DERIVED_PURE_UQFF'),
         ('z_reion',                         _z_reion_uqff_derive(),              Z_REION_PLANCK,           'PAPER_1026',        'FALSIFIABLE_UQFF_PREDICTION'),
@@ -39719,23 +39587,6 @@ def _cosmological_observables_report():
         ('JWST z=14 SFE boost factor',      _bucket_jwst_sfe_boost_uqff(),       1.75,                     'PAPER_1240',                                      'DERIVED_PURE_UQFF'),
         ('Inflation t_neg (PAPER_597 s)',   _bucket_inflation_t_neg_uqff_s(),    -2512.0,                  'PAPER_597',                                       'DERIVED_PURE_UQFF'),
         ('Inflaton n_s scalar index',       _bucket_inflaton_n_s_uqff(),         0.9655,                   'PAPER_587',                                       'DERIVED_PURE_UQFF'),
-        ('Lambda 120-order fine tuning (J/m^3)', _b_cc_120_orders_uqff_J_m3(),      5.957e-10,                'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('Cosmic holography D_boundary',     _b_cosmic_holography_d_boundary(),   5.0,                      'PAPER_1283',                                      'DERIVED_PURE_UQFF'),
-        ('Wave function universe F_U=1',     _b_wave_function_universe_uqff(),    1.0,                      'PAPER_1284',                                      'DERIVED_PURE_UQFF'),
-        ('Dark flow v_bulk (km/s)',          _b_dark_flow_v_uqff_km_s(),          600.0,                    'PAPER_1251',                                      'DERIVED_PURE_UQFF'),
-        ('FRB origin nu peak (GHz)',         _b_frb_origin_nu_uqff_GHz(),         1.4,                      'PAPER_1259',                                      'DERIVED_PURE_UQFF'),
-        ('CMB cold spot T deviation (uK)',   _b_cmb_cold_spot_T_uqff_uK(),        -70.0,                    'PAPER_1249',                                      'DERIVED_PURE_UQFF'),
-        ('MOND a_0 (m/s^2)',                 _b_mond_a0_uqff_m_s2(),              1.2e-10,                  'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('MOND tension a_0 (m/s^2)',         _b_mond_tension_a0_uqff_m_s2(),      1.2e-10,                  'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('Hubble bubble delta density (pct)',_b_hubble_bubble_delta_density_uqff_pct(), -30.0,             'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('Hubble tension Delta H_0',         _b_hubble_tension_delta_uqff_km_s_mpc(), 5.6,                  'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('Horizon problem e-folds',          _b_horizon_problem_e_folds_uqff(),   60.0,                     'PAPER_597',                                       'DERIVED_PURE_UQFF'),
-        ('Flatness Omega - 1 today',         _b_flatness_problem_omega_minus_1_uqff(), 0.001,             'PAPER_597',                                       'DERIVED_PURE_UQFF'),
-        ('Late ISW amplitude',               _b_late_isw_amplitude_uqff(),        0.1,                      'PAPER_1252',                                      'DERIVED_PURE_UQFF'),
-        ('SMBH seed mass (M_sun)',           _b_smbh_seeds_M_uqff_msun(),         50000.0,                  'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('Reionization z_reion',             _b_reionization_z_uqff(),            7.7,                      'PAPER_1332',                                      'DERIVED_PURE_UQFF'),
-        ('Sigma_8 tension',                  _b_sigma8_uqff(),                    0.811,                    'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
-        ('S_8 growth tension',               _b_s8_growth_uqff(),                 0.811,                    'PAPER_1156',                                      'DERIVED_PURE_UQFF'),
     ]
     report = []
     n_within_1pct = 0
@@ -39960,13 +39811,13 @@ def _r_d_lepton_uni_uqff():
     return 1.0 + 2.0 * LAMBDA_LEDGER_UQFF * float(A_FIVE) / 3.0
 
 def _br_koto_uqff():
-    return (LAMBDA_LEDGER_UQFF ** 6) * float(A_FIVE) * PHI_RESONANCE / BETA_I * K_MEX
+    return (LAMBDA_LEDGER_UQFF ** 6) * float(A_FIVE) * PHI_RESONANCE / BETA_I
 
 def _t_violation_meson_uqff():
     return TRZ * BETA_I
 
 def _fcnc_b_to_s_mumu_uqff():
-    return (LAMBDA_LEDGER_UQFF ** 3) * float(A_FIVE) / float(D_CRIT) * (1.0 + BETA_I / 3.0)
+    return (LAMBDA_LEDGER_UQFF ** 3) * float(A_FIVE) / float(D_CRIT)
 
 def _proton_charge_radius_prad_uqff_fm():
     return R_P_MUONIC_FM_BASELINE * (1.0 + LAMBDA_LEDGER_UQFF * BETA_I * PHI_RESONANCE * 2.0)
@@ -39983,18 +39834,18 @@ def _particle_physics_observables_report():
         ('m_mu (muon) GeV',                 _m_muon_uqff_derive(),      M_MUON_PDG_GEV,      'PAPER_1209HH',         'DERIVED_PURE_UQFF'),
         ('m_s (strange quark) GeV',         _m_strange_uqff_derive(),   M_STRANGE_PDG_GEV,   'PAPER_1209HH',         'DERIVED_PURE_UQFF'),
         ('m_e (electron) GeV',              _m_electron_uqff_derive(),  M_ELECTRON_PDG_GEV,  'PAPER_1209HH',         'DERIVED_PURE_UQFF'),
-        ('Higgs vev v (GeV)',               _higgs_vev_uqff_derive(),   HIGGS_VEV_GEV,       'PAPER_1198',    'DERIVED_PURE_UQFF'),
+        ('Higgs vev v (GeV)',               _higgs_vev_uqff_derive(),   HIGGS_VEV_GEV,       'PAPER_1198',    'PRIMITIVE_SAT_ADHOC'),
         ('sin^2(theta_W)',                  _sin2_theta_w_uqff_derive(),SIN2_THETA_W_PDG,    'PAPER_1198',  'DERIVED_PURE_UQFF'),
-        ('alpha_s(M_Z)',                    _alpha_s_mz_uqff_derive(),  ALPHA_S_MZ_PDG,      'PAPER_1198','DERIVED_PURE_UQFF'),
-        ('Lambda_QCD (GeV)',                _lambda_qcd_uqff_derive(),  LAMBDA_QCD_GEV,      'PAPER_1198','DERIVED_PURE_UQFF'),
-        ('|V_us| CKM',                      _v_ckm_us_uqff_derive(),    V_CKM_US_PDG,        'PAPER_1198',          'DERIVED_PURE_UQFF'),
+        ('alpha_s(M_Z)',                    _alpha_s_mz_uqff_derive(),  ALPHA_S_MZ_PDG,      'PAPER_1198','PRIMITIVE_SAT_ADHOC'),
+        ('Lambda_QCD (GeV)',                _lambda_qcd_uqff_derive(),  LAMBDA_QCD_GEV,      'PAPER_1198','PRIMITIVE_SAT_ADHOC'),
+        ('|V_us| CKM',                      _v_ckm_us_uqff_derive(),    V_CKM_US_PDG,        'PAPER_1198',          'PRIMITIVE_SAT_ADHOC'),
         ('|V_ub| CKM',                      _v_ckm_ub_uqff_derive(),    V_CKM_UB_PDG,        'PAPER_1198',    'DERIVED_PURE_UQFF'),
         ('|V_ud| CKM (unitarity)',          _v_ckm_ud_uqff_derive(),    V_CKM_UD_PDG,        'PAPER_1198',   'DERIVED_PURE_UQFF'),
         ('a_e (electron g-2 anomaly)',      _a_electron_uqff_derive(),  A_E_PDG,             'PAPER_652',  'DERIVED_PURE_UQFF'),
         ('a_mu (muon g-2 anomaly)',         _a_muon_uqff_derive(),      A_MU_PDG,            'PAPER_633',     'DERIVED_PURE_UQFF'),
         ('Delta m^2_21 (eV^2) neutrino',    _dm2_21_uqff_derive(),      DM2_21_EV2,          'PAPER_1198',       'DERIVED_PURE_UQFF'),
         ('Delta m^2_31 (eV^2) neutrino',    _dm2_31_uqff_derive(),      DM2_31_EV2,          'PAPER_1198', 'DERIVED_PURE_UQFF'),
-        ('m_proton (MeV)',                  _m_proton_uqff_derive_mev(),M_PROTON_MEV,        'PAPER_1209', 'DERIVED_PURE_UQFF'),
+        ('m_proton (MeV)',                  _m_proton_uqff_derive_mev(),M_PROTON_MEV,        'PAPER_1209', 'PRIMITIVE_SAT_ADHOC'),
         ('R(K) lepton universality',          _r_k_lepton_uni_uqff(),     R_K_LHCB_OBS,        'PAPER_1198', 'DERIVED_PURE_UQFF'),
         ('R(D) lepton universality',          _r_d_lepton_uni_uqff(),     R_D_BAR_BELLE_OBS,   'PAPER_1198', 'DERIVED_PURE_UQFF'),
         ('BR(K_L -> pi0 nu nu) KOTO',         _br_koto_uqff(),            BR_KOTO_OBS,         'PAPER_1198', 'DERIVED_PURE_UQFF'),
@@ -40006,21 +39857,6 @@ def _particle_physics_observables_report():
         ('Exotic hadron N pinch points',      _bucket_exotic_hadron_n_states_uqff(), 26.0,               'PAPER_646',  'DERIVED_PURE_UQFF'),
         ('Top Yukawa y_t natural value',      _bucket_top_yukawa_uqff(),          0.994,                  'PAPER_1209HH', 'DERIVED_PURE_UQFF'),
         ('N generations (D_phys-1)',          _bucket_n_generations_uqff(),       3.0,                    'PAPER_1198', 'DERIVED_PURE_UQFF'),
-        ('delta_CP (radians)',                _b_delta_cp_uqff_rad(),             -1.5707963,             'PAPER_1308', 'DERIVED_PURE_UQFF'),
-        ('CKM unitarity',                     _b_ckm_unitarity_uqff(),            1.0,                    'PAPER_1198', 'DERIVED_PURE_UQFF'),
-        ('Lepton CP violation (rad)',         _b_lepton_cp_violation_uqff_rad(),  -1.5707963,             'PAPER_1308', 'DERIVED_PURE_UQFF'),
-        ('Strong CP theta_QCD',               _b_strong_cp_theta_uqff(),          1e-10,                  'PAPER_1315', 'DERIVED_PURE_UQFF'),
-        ('Strong CP naturalness theta_QCD',   _b_strong_cp_natural_uqff(),        1e-10,                  'PAPER_1315', 'DERIVED_PURE_UQFF'),
-        ('Tau neutrino N generations',        _b_tau_nu_hierarchy_n_gen_uqff(),   3.0,                    'PAPER_1256', 'DERIVED_PURE_UQFF'),
-        ('Majorana vs Dirac fraction',        _b_majorana_vs_dirac_uqff(),        0.5,                    'PAPER_1198', 'DERIVED_PURE_UQFF'),
-        ('Hierarchy problem M_H/M_Pl',        _b_hierarchy_problem_ratio_uqff(),  1.025e-17,              'PAPER_1198', 'DERIVED_PURE_UQFF'),
-        ('Glueball 0++ mass (GeV)',           _b_glueball_mass_uqff_gev(),        1.7,                    'PAPER_1005', 'DERIVED_PURE_UQFF'),
-        ('Lambda_QCD (GeV)',                  _b_lambda_qcd_uqff_gev(),           0.218,                  'PAPER_1004', 'DERIVED_PURE_UQFF'),
-        ('Quark confinement string sigma',    _b_quark_confinement_sigma_uqff(),  0.0982,                 'PAPER_1005', 'DERIVED_PURE_UQFF'),
-        ('Origin of mass v_Higgs (GeV)',      _b_origin_of_mass_v_higgs_uqff_gev(), 246.22,               'PAPER_1198', 'DERIVED_PURE_UQFF'),
-        ('cLFV BR mu->e gamma',               _b_clfv_br_uqff(),                  4.2e-13,                'PAPER_494',  'DERIVED_PURE_UQFF'),
-        ('mu -> e gamma BR',                  _b_mu_to_e_gamma_br_uqff(),         4.2e-13,                'PAPER_494',  'DERIVED_PURE_UQFF'),
-        ('Origin of inertia rho_UA/rho_SCm',  _b_origin_of_inertia_ratio_uqff(),  10.0,                   'PAPER_646',  'DERIVED_PURE_UQFF'),
     ]
     report = []
     n_within_01pct = 0
@@ -40488,11 +40324,6 @@ def _astrophysics_99system_report():
         ('Stellar mean B field (Gauss)',      _bucket_stellar_b_field_uqff_gauss(),1.0,                  'PAPER_162',             'DERIVED_PURE_UQFF'),
         ('Stellar IMF alpha Salpeter',        _bucket_stellar_imf_alpha_uqff(),   -2.35,                 'PAPER_1262',            'DERIVED_PURE_UQFF'),
         ('Pop III IMF top-heavy (M_sun)',     _bucket_pop3_imf_uqff_msun(),       100.0,                 'PAPER_1331',            'DERIVED_PURE_UQFF'),
-        ('Galaxy rotation beta plateau',      _b_galaxy_rotation_beta_plateau_uqff(), 0.6029,           'PAPER_1156',            'DERIVED_PURE_UQFF'),
-        ('Sgr A* flare period (days)',        _b_sgra_flares_period_days_uqff(),  1.0,                   'PAPER_1260',            'DERIVED_PURE_UQFF'),
-        ('Solar dynamo Hale cycle (yr)',      _b_solar_dynamo_T_yr_uqff(),        22.0,                  'PAPER_162',             'DERIVED_PURE_UQFF'),
-        ('Stellar convection Phi_res thr',    _b_stellar_convection_threshold_uqff(), 0.84,            'PAPER_1156',            'DERIVED_PURE_UQFF'),
-        ('Dark matter Omega_DM',              _b_dark_matter_omega_uqff(),        0.265,                 'PAPER_1156',            'DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(systems,
         'PAPER_065/PAPER_121/PAPER_122/PAPER_138/PAPER_211/PAPER_292/PAPER_305/PAPER_432/PAPER_434/PAPER_436/PAPER_447/PAPER_487/PAPER_488/PAPER_489/PAPER_512/PAPER_537/PAPER_995/PAPER_1017/PAPER_1126')
@@ -40547,7 +40378,7 @@ def _qgp_jet_quenching_R_AA_uqff():
     return TRZ * K_MEX
 
 def _qgp_cfl_gap_uqff_mev():
-    return LAMBDA_QCD_MEV_QGP * BETA_I * PHI_RESONANCE * PHI_RESONANCE
+    return LAMBDA_QCD_MEV_QGP * BETA_I * PHI_RESONANCE
 
 CRAB_TEV_CUTOFF_OBS_HESS = 80.0
 CR_ANKLE_OBS_AUGER_EV = 3.0e18
@@ -40580,9 +40411,6 @@ def _qgp_heavy_ion_report():
         ('alpha-BEC heavy-ion phonon factor',  1.0 + TRZ * SSQ,               1.0,                          'PAPER_059',                        'DERIVED_PURE_UQFF'),
         ('QGP jet quenching R_AA (PbPb)',     _qgp_jet_quenching_R_AA_uqff(),R_AA_PBPB_LHC_OBS,            'PAPER_1004',                       'DERIVED_PURE_UQFF'),
         ('CFL color SC gap (MeV)',            _qgp_cfl_gap_uqff_mev(),       0.5*(CFL_GAP_OBS_RANGE_LOW_MEV+CFL_GAP_OBS_RANGE_HIGH_MEV),'PAPER_1005',                       'DERIVED_PURE_UQFF'),
-        ('QCD chiral condensate (MeV^3)',     _b_qcd_chiral_condensate_uqff_mev3(), 11390625.0,         'PAPER_1004',                       'DERIVED_PURE_UQFF'),
-        ('Non-perturbative QCD Lambda (GeV)', _b_non_perturbative_qcd_lambda_uqff_gev(), 0.218,         'PAPER_1004',                       'DERIVED_PURE_UQFF'),
-        ('SU(3) color N',                     _b_su3_color_n_uqff(),         3.0,                          'PAPER_1198',                       'DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(obs, 'PAPER_059/PAPER_1004/PAPER_1007/PAPER_1008/PAPER_1013')
 
@@ -40639,9 +40467,6 @@ def _higgs_precision_report():
         ('Higgs emergent stratum (level 18)', float(18),           18.0,           'PAPER_396',     'DERIVED_PURE_UQFF'),
         ('CDF W mass shift Delta m_W (MeV)',  _h_w_mass_cdf_uqff_mev(),                          M_W_DELTA_CDF_OBS_MEV, 'PAPER_034',                                 'DERIVED_PURE_UQFF'),
         ('H -> invisible branching ratio',    _h_invisible_decay_br_uqff(),                      BR_H_INV_ATLAS_BOUND,  'PAPER_034',                                 'DERIVED_PURE_UQFF'),
-        ('Higgs vacuum stability F_U=1',      _b_higgs_vacuum_stability_uqff(),                  1.0,             'PAPER_034', 'DERIVED_PURE_UQFF'),
-        ('Higgs trilinear kappa_lambda',      _b_higgs_trilinear_kappa_uqff(),                   1.0,             'PAPER_034', 'DERIVED_PURE_UQFF'),
-        ('Higgs vev origin v (GeV)',          _b_higgs_vev_origin_uqff_gev(),                    246.22,          'PAPER_1198','DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(obs, 'PAPER_034/PAPER_035/PAPER_137/PAPER_396/PAPER_856/PAPER_1113/PAPER_1114/PAPER_1120')
 
@@ -40704,8 +40529,6 @@ def _bsm_constraints_report():
         ('Vacuum birefringence threshold (V/m)',     _bucket_vacuum_birefringence_threshold_uqff(), 7.03e13,         'PAPER_1373', 'DERIVED_PURE_UQFF'),
         ('Antimatter production max efficiency',     _bucket_antimatter_efficiency_uqff(), 1.0e-10,                  'PAPER_1370', 'DERIVED_PURE_UQFF'),
         ('DM direct detection sigma floor (cm^2)',   _bucket_dm_direct_sigma_floor_uqff_cm2(), 1.0e-48,              'PAPER_1371', 'DERIVED_PURE_UQFF'),
-        ('EW vacuum decay rate',                     _b_ew_vacuum_decay_rate_uqff(),     0.0,                       'PAPER_029',  'DERIVED_PURE_UQFF'),
-        ('Quantum supremacy qubits A_5',             _b_quantum_supremacy_qubits_uqff(), 53.0,                      'PAPER_1198', 'DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(obs, 'PAPER_029/PAPER_033/PAPER_046/PAPER_333/PAPER_340/PAPER_494/PAPER_1116/PAPER_1119/PAPER_1183')
 
@@ -42007,23 +41830,6 @@ def calculate_cosmology(dataset):
         'jwst_high_z':   _bucket_jwst_sfe_boost_uqff,
         'inflation_t_neg': _bucket_inflation_t_neg_uqff_s,
         'inflaton_n_s':  _bucket_inflaton_n_s_uqff,
-        'cc_120_orders': _b_cc_120_orders_uqff_J_m3,
-        'cosmic_holography_d': _b_cosmic_holography_d_boundary,
-        'wfn_universe':  _b_wave_function_universe_uqff,
-        'dark_flow_v':   _b_dark_flow_v_uqff_km_s,
-        'frb_origin_nu': _b_frb_origin_nu_uqff_GHz,
-        'cmb_cold_spot_uK': _b_cmb_cold_spot_T_uqff_uK,
-        'mond_a0':       _b_mond_a0_uqff_m_s2,
-        'mond_tension':  _b_mond_tension_a0_uqff_m_s2,
-        'hubble_bubble_delta': _b_hubble_bubble_delta_density_uqff_pct,
-        'hubble_tension_delta': _b_hubble_tension_delta_uqff_km_s_mpc,
-        'horizon_problem_efolds': _b_horizon_problem_e_folds_uqff,
-        'flatness_omega_minus_1': _b_flatness_problem_omega_minus_1_uqff,
-        'late_isw_amp':  _b_late_isw_amplitude_uqff,
-        'smbh_seeds_msun': _b_smbh_seeds_M_uqff_msun,
-        'z_reion_uqff':  _b_reionization_z_uqff,
-        'sigma_8_C':     _b_sigma8_uqff,
-        's_8_growth':    _b_s8_growth_uqff,
     }
     key = str(target).lower().replace('-', '_').replace(' ', '_')
     fn = routing.get(key)
@@ -42061,21 +41867,6 @@ def calculate_particle_physics(dataset):
         'exotic_hadrons': _bucket_exotic_hadron_n_states_uqff,
         'top_yukawa':    _bucket_top_yukawa_uqff,
         'n_generations': _bucket_n_generations_uqff,
-        'delta_cp':       _b_delta_cp_uqff_rad,
-        'ckm_unit':       _b_ckm_unitarity_uqff,
-        'lepton_cp':      _b_lepton_cp_violation_uqff_rad,
-        'strong_cp':      _b_strong_cp_theta_uqff,
-        'strong_cp_natural': _b_strong_cp_natural_uqff,
-        'tau_nu_hier':    _b_tau_nu_hierarchy_n_gen_uqff,
-        'majorana_dirac': _b_majorana_vs_dirac_uqff,
-        'hierarchy':      _b_hierarchy_problem_ratio_uqff,
-        'glueball':       _b_glueball_mass_uqff_gev,
-        'lambda_qcd_d':   _b_lambda_qcd_uqff_gev,
-        'quark_conf':     _b_quark_confinement_sigma_uqff,
-        'origin_mass':    _b_origin_of_mass_v_higgs_uqff_gev,
-        'clfv':           _b_clfv_br_uqff,
-        'mu_to_e_gamma':  _b_mu_to_e_gamma_br_uqff,
-        'origin_inertia': _b_origin_of_inertia_ratio_uqff,
         'm_tau':     _m_tau_uqff_derive,
         'm_muon':    _m_muon_uqff_derive,
         'm_mu':      _m_muon_uqff_derive,
@@ -42214,11 +42005,6 @@ def calculate_astrophysics(dataset):
         'stellar_b_field':   _bucket_stellar_b_field_uqff_gauss,
         'stellar_imf':       _bucket_stellar_imf_alpha_uqff,
         'pop3_imf':          _bucket_pop3_imf_uqff_msun,
-        'galaxy_rotation_g': _b_galaxy_rotation_beta_plateau_uqff,
-        'sgra_flares':       _b_sgra_flares_period_days_uqff,
-        'solar_dynamo':      _b_solar_dynamo_T_yr_uqff,
-        'stellar_convection': _b_stellar_convection_threshold_uqff,
-        'dark_matter_omega': _b_dark_matter_omega_uqff,
     }
     key = str(target).lower().replace('-', '_').replace(' ', '_').replace('*','')
     fn = routing.get(key)
@@ -42265,9 +42051,6 @@ def calculate_qgp(dataset):
         'jet_quenching': _qgp_jet_quenching_R_AA_uqff,
         'cfl_gap':    _qgp_cfl_gap_uqff_mev,
         'color_superconductivity': _qgp_cfl_gap_uqff_mev,
-        'qcd_chiral':    _b_qcd_chiral_condensate_uqff_mev3,
-        'np_qcd':        _b_non_perturbative_qcd_lambda_uqff_gev,
-        'su3_color':     _b_su3_color_n_uqff,
     }
     key = str(target).lower().replace('-', '_').replace(' ', '_').replace('/','_')
     fn = routing.get(key)
@@ -42295,9 +42078,6 @@ def calculate_higgs_precision(dataset):
         'm_w_cdf':    _h_w_mass_cdf_uqff_mev,
         'h_invisible': _h_invisible_decay_br_uqff,
         'h_inv':      _h_invisible_decay_br_uqff,
-        'higgs_vac_stab': _b_higgs_vacuum_stability_uqff,
-        'higgs_trilinear': _b_higgs_trilinear_kappa_uqff,
-        'higgs_vev':       _b_higgs_vev_origin_uqff_gev,
     }
     key = str(target).lower().replace('-', '_').replace(' ', '_').replace('>','').replace('->','_')
     fn = routing.get(key)
@@ -42325,8 +42105,6 @@ def calculate_bsm_constraints(dataset):
         'vacuum_birefringence_bsm': _bucket_vacuum_birefringence_threshold_uqff,
         'antimatter_production': _bucket_antimatter_efficiency_uqff,
         'dm_direct_detection': _bucket_dm_direct_sigma_floor_uqff_cm2,
-        'ew_vac_decay':  _b_ew_vacuum_decay_rate_uqff,
-        'q_supremacy':   _b_quantum_supremacy_qubits_uqff,
         'vlq_mass':      _vlq_mass_uqff_gev,
     }
     key = str(target).lower().replace('-', '_').replace(' ', '_').replace('>','').replace('->','_')
