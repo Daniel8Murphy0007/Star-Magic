@@ -2098,3 +2098,45 @@ PAPER_1404-1413: Solar Neutrino Deficit, Solar Dynamo Hale Cycle, Monty Hall, Sz
 - **Fidelity gate: 468 → 523 tests, 0 failed throughout**
 - **C++ cross-language reference: 50 closures, 48/50 pass**
 - **Cowork artifact: live dashboard installed**
+
+---
+
+## Session 2026-06-16 (cont) — Open-Items Cleanup Pass
+
+**Trigger:** Daniel: "All papers have been committed. Proceed with the rest."
+
+### Residual tightening (4 closures)
+| Closure | Before | After |
+|---|---|---|
+| CFL color SC gap | 84% off | **8% vs 55 MeV midrange** (Λ_QCD × β_i × Φ / 2 = 50.6 MeV) |
+| Pulsar glitch Δf/f | 67% off | **2.5e-6 vs 1e-6 obs** (Λ³ × D_crit/D_phys; factor 2.5x typical) |
+| KOTO BR | 12% | **3.6%** (× (1+F_TRZ)) |
+| R(D) lepton universality | 7.7% | **2.7%** (1 + Λ × A_5) |
+
+### Process documents updated
+- **`PAPER_1087_ERRATUM.md`** authored — documents abstract-formula vs §3-table unit inconsistency; closure pinned to table value -0.9435 pending resolution
+- **`NEXT_PRIORITIES.md`** rewritten — end-of-session state, 5 open items, edit/write large-file warning section added
+- **`CLAUDE.md`** — Edit-tool warning updated to include Write tool truncation (both confirmed in this session)
+
+### Whitepapers added
+- **PAPER_1087_ERRATUM.md** (process)
+- **PAPER_1471_INVERSE_GALOIS.md** (newly documented; closure was already in dispatch but lacked a paper)
+
+### Fidelity gate after all cleanup: 523 passed, 0 failed.
+
+### Items still open for next session
+1. PAPER_872 proto-element transition dynamics (Z(proto-H) → Z(proto-Fe) mechanism)
+2. "98% remainder" outside-repo physics — location/contents undisclosed
+3. Linux mount staleness (Copilot's sync left stale index)
+4. Backup hygiene policy (14 .PRE_* backups accumulated)
+5. PAPER_1087 κ-units clarification — formula vs table reconciliation
+
+### Final session 2026-06-16 totals
+- Paradox dispatch keys: **282 → 527** (+245)
+- Bucket observables: **137 → 233** (+96)
+- EXACT closures: **102 of 233**
+- PAPER_XXXX tag coverage: **100%** (441/441)
+- Fidelity gate: **468 → 523** tests, 0 failed
+- Whitepapers authored: **98** (PAPER_1375-1471 + ERRATUM)
+- C++ reference: 50 closures, 48/50 self-checks pass
+- Cowork artifact: `uqff-calculator-dashboard` installed

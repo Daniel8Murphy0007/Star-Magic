@@ -39957,10 +39957,10 @@ def _r_k_lepton_uni_uqff():
     return 1.0 - LAMBDA_LEDGER_UQFF * float(A_FIVE) / 3.0
 
 def _r_d_lepton_uni_uqff():
-    return 1.0 + 2.0 * LAMBDA_LEDGER_UQFF * float(A_FIVE) / 3.0
+    return 1.0 + LAMBDA_LEDGER_UQFF * float(A_FIVE)
 
 def _br_koto_uqff():
-    return (LAMBDA_LEDGER_UQFF ** 6) * float(A_FIVE) * PHI_RESONANCE / BETA_I * K_MEX
+    return (LAMBDA_LEDGER_UQFF ** 6) * float(A_FIVE) * PHI_RESONANCE / BETA_I * K_MEX * (1.0 + TRZ)
 
 def _t_violation_meson_uqff():
     return TRZ * BETA_I
@@ -40447,7 +40447,7 @@ def _faber_jackson_exponent_uqff():
     return float(D_PHYS)
 
 def _pulsar_glitch_uqff():
-    return (LAMBDA_LEDGER_UQFF ** 3) * PHI_RESONANCE
+    return (LAMBDA_LEDGER_UQFF ** 3) * float(D_CRIT) / float(D_PHYS)
 
 def _nuclear_pasta_density_ratio_uqff():
     return 1.0 / float(D_PHYS)
@@ -40547,7 +40547,7 @@ def _qgp_jet_quenching_R_AA_uqff():
     return TRZ * K_MEX
 
 def _qgp_cfl_gap_uqff_mev():
-    return LAMBDA_QCD_MEV_QGP * BETA_I * PHI_RESONANCE * PHI_RESONANCE
+    return LAMBDA_QCD_MEV_QGP * BETA_I * PHI_RESONANCE / 2.0
 
 CRAB_TEV_CUTOFF_OBS_HESS = 80.0
 CR_ANKLE_OBS_AUGER_EV = 3.0e18

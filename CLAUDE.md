@@ -321,9 +321,9 @@ uqff_pure_calculator.py.POST_BUCKETK_BACKUP — after BUCKETS E-K first-pass dra
 uqff_Plan.md.PRE_FIX_BACKUP                 — mojibake'd Plan before encoding restoration
 ```
 
-## Edit-tool warning (learned the hard way on 2026-06-08)
+## Edit-tool AND Write-tool warning (updated 2026-06-16)
 
-The Edit tool truncates `uqff_pure_calculator.py` mid-write on large insertions (the file is 35k+ lines, ~1.85 MB). **Two truncations during BUCKET 0 had to be repaired via Python splice from PRE_PHASE2_BACKUP.** For any future bucket: prefer bash heredoc + Python `replace()` script over the Edit tool. The pattern that works:
+BOTH the Edit tool AND the Write tool truncate `uqff_pure_calculator.py` mid-write on large insertions (the file is 35k+ lines, ~1.85 MB). **Two truncations during BUCKET 0 had to be repaired via Python splice from PRE_PHASE2_BACKUP.** For any future bucket: prefer bash heredoc + Python `replace()` script over the Edit tool. The pattern that works:
 
 ```python
 with open('uqff_pure_calculator.py','r',encoding='utf-8',newline='') as f:
