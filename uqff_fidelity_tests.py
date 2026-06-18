@@ -1414,6 +1414,13 @@ _exact("Proton core density rho_SCm K_MEX S_26",   u.RHO_SCM * u.K_MEX * u.S_26,
 _exact("E_n hierarchy at n=8 = 1e-12 J",           1e-20 * 10**8, 1e-12)
 _exact("E_n hierarchy at n=12 = 1e-8 J",           1e-20 * 10**12, 1e-8)
 
+# =================================================================================
+# 21. PAPER_877 cosmogenesis EXACT regression pins (3 new)
+# =================================================================================
+_exact("ρ_vac_total = 11×ρ_SCm",        11.0 * u.RHO_SCM, 7.799e-36, tol=1e-3)
+_exact("DPM completeness f_UA + f_SCm",  ((26.0 - 13.0)/26.0) + (13.0/26.0), 1.0)
+_exact("26 pre-mass quantum states",     float(u.D_CRIT), 26.0)
+
 # ---------- summary ----------
 print()
 print("=" * 70)

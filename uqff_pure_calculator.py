@@ -35074,6 +35074,27 @@ def _l96_uqff_axiom_reactor_harmonic_golden_series_closure() -> Dict[str, Any]:
     harmonics_uqff = [f_0_obs_Hz * (phi ** n) for n in range(10)]
     return {"f_0_fundamental_Hz_observed_reactor": f_0_obs_Hz, "phi_golden_ratio_harmonic_factor": phi, "f_n_for_n_eq_0_to_9_Hz": harmonics_uqff, "f_9_observed_match_13264_vs_13226": True, "primary_source": "Reactor_harmonic_golden_ratio_F_Aetheric_Propulsion_Aether_Superconductive_Material_20April2025_via_f_n_eq_174_x_phi_to_n_PAPER_646"}
 
+def _l96_uqff_axiom_PAPER_877_rho_vac_total_closure() -> Dict[str, Any]:
+    rho_UA = 10.0 * RHO_SCM
+    rho_vac_total_uqff = rho_UA + RHO_SCM
+    rho_vac_total_paper_877 = 7.799e-36
+    diff_pct = abs(rho_vac_total_uqff - rho_vac_total_paper_877) / rho_vac_total_paper_877 * 100.0
+    return {"rho_UA_J_per_m3": rho_UA, "rho_SCm_J_per_m3": RHO_SCM, "rho_vac_total_UQFF_eq_11_x_rho_SCm_eq_7_799e_minus_36": rho_vac_total_uqff, "rho_vac_total_PAPER_877_anchor": rho_vac_total_paper_877, "diff_pct_EXACT": diff_pct, "primary_source": "PAPER_877_three_assumption_cosmogenesis_via_rho_vac_total_eq_rho_UA_plus_rho_SCm_eq_11_x_rho_SCm_EXACT"}
+
+def _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure() -> Dict[str, Any]:
+    Z_max = float(D_CRIT)
+    Z_test = float(D_CRIT) / 2.0
+    f_UA_prime_uqff = (Z_max - Z_test) / Z_max
+    f_SCm_uqff = Z_test / Z_max
+    completeness_sum = f_UA_prime_uqff + f_SCm_uqff
+    return {"Z_max_eq_D_crit_eq_26": Z_max, "Z_test_at_midpoint_D_crit_over_2": Z_test, "f_UA_prime_at_midpoint": f_UA_prime_uqff, "f_SCm_at_midpoint": f_SCm_uqff, "completeness_axiom_f_UA_prime_plus_f_SCm_eq_1": completeness_sum, "primary_source": "PAPER_877_three_assumption_cosmogenesis_DPM_proportion_pair_f_UA_prime_plus_f_SCm_eq_1_completeness_via_Z_over_Z_max_INTEGER_PRIMITIVE"}
+
+def _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure() -> Dict[str, Any]:
+    n_pre_mass_quantum_states = D_CRIT
+    quantum_to_mass_gradient_U_mag_degrees_low = 7
+    quantum_to_mass_gradient_U_mag_degrees_high = 10
+    return {"n_pre_mass_quantum_atomic_states_eq_D_crit_eq_26_EXACT": n_pre_mass_quantum_states, "quantum_to_mass_gradient_U_mag_degrees_low": quantum_to_mass_gradient_U_mag_degrees_low, "quantum_to_mass_gradient_U_mag_degrees_high": quantum_to_mass_gradient_U_mag_degrees_high, "26_atomic_states_exist_BEFORE_mass_via_PAPER_877_axiom_3": True, "primary_source": "PAPER_877_three_assumption_cosmogenesis_26_pre_mass_quantum_states_eq_D_crit_EXACT_with_7_to_10_degree_quantum_to_mass_gradient"}
+
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35336,6 +35357,9 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_ua_prime_golden":      _l96_uqff_axiom_rho_vac_UA_prime_golden_ratio_closure,
     "vacuum_energy_gain":           _l96_uqff_axiom_vacuum_energy_gain_closure,
     "reactor_harmonic_golden":      _l96_uqff_axiom_reactor_harmonic_golden_series_closure,
+    "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
+    "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
+    "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
     "grandfather_paradox":          _l96_uqff_axiom_grandfather_paradox_closure,
     "epr_paradox":                  _l96_uqff_axiom_EPR_paradox_closure,
     "schrodinger_cat":              _l96_uqff_axiom_schrodinger_cat_closure,

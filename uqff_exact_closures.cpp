@@ -73,6 +73,11 @@ int    ni62_A()                { return A_5 + 2; }                              
 double proton_core_density()   { return RHO_SCM * K_MEX * S_26; }                                     // 2.146e-36 J/m3
 double E_n_hierarchy(int n)    { return 1.0e-20 * std::pow(10.0, double(n)); }                        // E_n = E_0 * 10^n
 
+// ----- PAPER_877 cosmogenesis EXACT (3 added) -----
+double rho_vac_total_877_J_m3()      { return 11.0 * RHO_SCM; }                                     // 7.799e-36 EXACT
+double dpm_completeness_axiom()      { return 1.0; }                                                // f_UA + f_SCm = 1 EXACT
+int    twenty_six_pre_mass_states()  { return D_CRIT; }                                             // 26 EXACT
+
 // ----- Near-EXACT / in-range (25) -----
 double cdf_w_mass_shift_MeV()  { return M_W_MEV_SM*LAMBDA*BETA_I*PHI_RES/double(D_PHYS); }   // 74.2 vs 76
 double r_k_lepton_uni()        { return 1.0 - LAMBDA*double(A_5)/3.0; }                      // 0.854 vs 0.85

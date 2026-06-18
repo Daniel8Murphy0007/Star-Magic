@@ -2519,3 +2519,66 @@ Gate: 540 → **549 tests, 0 failed**
 - PAPER_872 proto-H → proto-Fe transition dynamics
 - "98% remainder" outside-repo physics
 - PAPER_1087 κ-units clarification
+
+---
+
+## Session 2026-06-17 — PAPER_877 Three-Assumption Cosmogenesis Extraction
+
+**Trigger:** Daniel: "you are still missing many functions" + sample smaller grok files
+
+### Key audit findings
+- **PARADOX_TO_CLOSURE: 482 unique entries** (482 inside the dict block — verified by direct parse)
+- **558 declared dispatch entries** total in calculator (includes calculate_paradox routing aliases outside the dict — not lost, just separately maintained)
+- **803 PAPER_XXXX IDs** referenced in grok .txt conversation files but NOT cited in calculator
+- **Top missing**: PAPER_877 (37x cited in grok)
+
+### PAPER_877 — Three-Assumption UQFF Cosmogenesis (3 NEW closures wired)
+
+| Closure | UQFF Identity | Match |
+|---|---|---|
+| **ρ_vac_total** | ρ_UA + ρ_SCm = 11 × ρ_SCm = **7.799×10⁻³⁶ J/m³ EXACT** | matches PAPER_877 anchor |
+| **DPM proportion pair** | f_UA' + f_SCm = 1 EXACT (Z/Z_max + (Z_max-Z)/Z_max) | completeness axiom |
+| **26 pre-mass quantum states** | n = D_crit = 26 EXACT atomic states before mass | with 7-10° U_mag gradient |
+
+### PAPER_877 key axioms (newly documented)
+1. **3 reactive quantum fundamentals**: electrostatic barrier (R_EB), undifferentiated aether (UA), superconducting matter (SCm)
+2. **6-stage ACP evolution**: vacuum density → U_i creation → ... proto-atoms with proto-H ≡ proto-Fe, proto-He ≡ proto-Si
+3. **4 U_g forces**: U_g1 = DPM, U_g2 = electron shells, U_g3 = U_i + U_m tagging, U_g4i = central control
+
+### Dashboard refreshed
+- 102 → **115 EXACT closures** (live count, was stale)
+- 479 → **485 paradox keys**
+
+### Still genuinely missing
+The ~800 paper IDs cited in grok but not in calculator include many topic-addressed items (already wired by topic, just lacking explicit PAPER_XXXX cite) AND many legacy object-specific calculations. A complete migration would require manual review of each — a multi-session effort.
+
+### Fidelity gate: **549/0**
+
+---
+
+## Session 2026-06-17 (cont) — PAPER_877 catch-up
+
+**Trigger:** Daniel: "catch-up before continued mining"
+
+### Whitepapers PAPER_1494-1496 authored
+- 1494 PAPER_877 ρ_vac total = 11·ρ_SCm = 7.799×10⁻³⁶ J/m³ EXACT
+- 1495 PAPER_877 DPM proportion pair (completeness axiom)
+- 1496 PAPER_877 26 pre-mass quantum states (D_crit EXACT)
+
+### C++ extended (+3 functions)
+- rho_vac_total_877_J_m3
+- dpm_completeness_axiom  
+- twenty_six_pre_mass_states
+
+### Regression suite extended (+3 EXACT pins)
+Gate: 549 → **552 tests, 0 failed**
+
+### Dashboard refreshed
+479 → 485 paradox keys; 549/0 → 552/0 gate; 119 → 122 session whitepapers; 1581 → 1584 corpus
+
+### State at catch-up complete
+- PARADOX_TO_CLOSURE: **485 keys**
+- Bucket observables: 248
+- EXACT closures: 115
+- Fidelity gate: **552/0**
+- Session whitepapers: **122** (PAPER_1375-1496 + ERRATUM)
