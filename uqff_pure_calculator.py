@@ -35027,6 +35027,18 @@ def _l96_uqff_axiom_E_n_polynomial_hierarchy_closure() -> Dict[str, Any]:
     E_26_J_cosmic_scale = E_0_J * 10.0 ** D_CRIT
     return {"E_0_J_base_quantum": E_0_J, "E_n_polynomial_law_E_eq_E_0_x_10_pow_n": True, "E_8_J_eq_1e_minus_12_nuclear_binding_obs_1_28e_minus_12": E_8_J_nuclear_binding, "E_12_J_eq_1e_minus_8_Higgs_scale_obs_2_0e_minus_8": E_12_J_Higgs_scale, "E_n_at_D_crit_eq_26_J_cosmic_scale": E_26_J_cosmic_scale, "polynomial_fit_R_squared_low_n_eq_0_95": 0.95, "primary_source": "E_n_polynomial_hierarchy_F_Aetheric_Propulsion_Millenium_Equation_Proofs_18April2025_via_E_0_x_10_pow_n_at_E_0_eq_1e_minus_20_J_PAPER_1466_PAPER_062"}
 
+def _l96_uqff_axiom_spin_precession_30deg_closure() -> Dict[str, Any]:
+    import math
+    angle_deg = float(D_CRIT + D_PHYS)
+    sin_value = math.sin(math.radians(angle_deg))
+    return {"spin_precession_angle_deg_EXACT": angle_deg, "spin_precession_angle_eq_D_crit_plus_D_phys": True, "sin_value_EXACT": sin_value, "appears_in_Sgr_A_star_master_eq_and_other_systems": True, "primary_source": "Spin_precession_30deg_F_Aetheric_Propulsion_01May2026_grok_b9afa8b6_via_D_crit_plus_D_phys_eq_30_EXACT_PAPER_087"}
+
+def _l96_uqff_axiom_hubble_oscillation_per_Gyr_closure() -> Dict[str, Any]:
+    import math
+    t_universe_age_Gyr = 13.8
+    omega_Hubble_rad_per_Gyr = 2.0 * math.pi / t_universe_age_Gyr
+    return {"t_universe_age_anchor_Gyr": t_universe_age_Gyr, "omega_Hubble_oscillation_per_Gyr": omega_Hubble_rad_per_Gyr, "appears_in_universal_master_eq_2pi_over_13_8_factor": True, "primary_source": "Hubble_oscillation_2pi_over_13_8_F_Aetheric_Propulsion_01May2026_grok_b9afa8b6_universal_master_eq_factor_PAPER_1156"}
+
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35280,6 +35292,8 @@ PARADOX_TO_CLOSURE = {
     "pre_mass_vacuum":              _l96_uqff_axiom_zero_mass_bigbang_state_closure,
     "e_n_polynomial_hierarchy":     _l96_uqff_axiom_E_n_polynomial_hierarchy_closure,
     "26_level_energy_ladder":       _l96_uqff_axiom_E_n_polynomial_hierarchy_closure,
+    "spin_precession_30deg":        _l96_uqff_axiom_spin_precession_30deg_closure,
+    "hubble_oscillation_per_gyr":   _l96_uqff_axiom_hubble_oscillation_per_Gyr_closure,
     "grandfather_paradox":          _l96_uqff_axiom_grandfather_paradox_closure,
     "epr_paradox":                  _l96_uqff_axiom_EPR_paradox_closure,
     "schrodinger_cat":              _l96_uqff_axiom_schrodinger_cat_closure,
