@@ -63,6 +63,16 @@ double sun_quiet_B_T()         { return 1.0 / std::pow(double(SO_5), 4); }      
 double sun_peak_modulation_T() { return double(D_PHYS) / double(SO_5); }                             // 0.4 T EXACT
 double distance_spooky_m()     { return C_LIGHT_M_S * 2512.0; }                                      // 7.52e11 m EXACT
 
+// ----- F:\ second-wave + 14Sept2025 + 01May2026 EXACT (5 added) -----
+double spin_precession_30_deg(){ return double(D_CRIT + D_PHYS); }                                   // 30 deg EXACT
+double sin_spin_precession()   { return std::sin(double(D_CRIT + D_PHYS) * M_PI / 180.0); }          // 0.5 EXACT
+double hubble_omega_per_Gyr()  { return 2.0 * M_PI / 13.8; }                                          // 0.4553 rad/Gyr
+int    ni62_Z()                { return D_CRIT + 2; }                                                 // 28
+int    ni62_N()                { return D_CRIT + 2 * D_PHYS; }                                        // 34
+int    ni62_A()                { return A_5 + 2; }                                                    // 62 EXACT
+double proton_core_density()   { return RHO_SCM * K_MEX * S_26; }                                     // 2.146e-36 J/m3
+double E_n_hierarchy(int n)    { return 1.0e-20 * std::pow(10.0, double(n)); }                        // E_n = E_0 * 10^n
+
 // ----- Near-EXACT / in-range (25) -----
 double cdf_w_mass_shift_MeV()  { return M_W_MEV_SM*LAMBDA*BETA_I*PHI_RES/double(D_PHYS); }   // 74.2 vs 76
 double r_k_lepton_uni()        { return 1.0 - LAMBDA*double(A_5)/3.0; }                      // 0.854 vs 0.85

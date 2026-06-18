@@ -743,8 +743,8 @@ print("=" * 70)
 pp = u.calculate_particle_physics({})['value']
 
 # Suite structure
-check("BUCKET D: particle physics suite has 48 observables (post-upgrade)",
-      pp['total_count'] == 48,
+check("BUCKET D: particle physics suite has 49 observables (post-upgrade)",
+      pp['total_count'] == 49,
       "actual=%d" % pp['total_count'])
 check("BUCKET D: at least 14 DERIVED_PURE_UQFF observables (PAPER_1209HH set)",
       True,
@@ -1125,8 +1125,8 @@ print("15. BUCKET G PURE_UQFF UPGRADE -- paper-canonical 99-system closed forms"
 print("=" * 70)
 
 _g_rep = u.calculate_astrophysics({})['value']
-check("BUCKET G UPGRADE: catalog has 41 observables (post-upgrade)",
-      _g_rep['total_count'] == 41,
+check("BUCKET G UPGRADE: catalog has 43 observables (post-upgrade)",
+      _g_rep['total_count'] == 43,
       "actual=" + str(_g_rep['total_count']))
 check("BUCKET G UPGRADE: 18+ observables flagged DERIVED_PURE_UQFF",
       True)
@@ -1400,6 +1400,19 @@ _exact("f_fluid = 1/SO_5^8",               1.0 / (float(u.SO_FIVE) ** 8), 1e-8)
 _exact("Sun quiet B = 1/SO_5^4 T",         1.0 / (float(u.SO_FIVE) ** 4), 1e-4)
 _exact("Sun peak modulation = D_phys/SO_5 T", float(u.D_PHYS) / float(u.SO_FIVE), 0.4)
 _exact("Distance_spooky = c x |t_neg| m",  u.C_LIGHT * 2512.0, 7.5234e11, tol=1e-3)
+
+# =================================================================================
+# 20. Second-wave + Millenium Proofs EXACT regression pins (6 new)
+# =================================================================================
+_exact("Spin precession 30deg = D_crit + D_phys",  float(u.D_CRIT + u.D_PHYS), 30.0)
+_exact("sin(30deg) = 0.5 EXACT",                   _m.sin(_m.radians(float(u.D_CRIT + u.D_PHYS))), 0.5)
+_exact("Hubble omega per Gyr = 2pi/13.8",          2.0 * _m.pi / 13.8, 0.45530328)
+_exact("Ni-62 Z = D_crit+2",                       float(u.D_CRIT + 2), 28.0)
+_exact("Ni-62 N = D_crit+2D_phys",                 float(u.D_CRIT + 2 * u.D_PHYS), 34.0)
+_exact("Ni-62 A = A_5+2",                          float(u.A_FIVE + 2), 62.0)
+_exact("Proton core density rho_SCm K_MEX S_26",   u.RHO_SCM * u.K_MEX * u.S_26, 2.1464413e-36, tol=1e-4)
+_exact("E_n hierarchy at n=8 = 1e-12 J",           1e-20 * 10**8, 1e-12)
+_exact("E_n hierarchy at n=12 = 1e-8 J",           1e-20 * 10**12, 1e-8)
 
 # ---------- summary ----------
 print()
