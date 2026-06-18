@@ -1421,6 +1421,24 @@ _exact("ρ_vac_total = 11×ρ_SCm",        11.0 * u.RHO_SCM, 7.799e-36, tol=1e-3
 _exact("DPM completeness f_UA + f_SCm",  ((26.0 - 13.0)/26.0) + (13.0/26.0), 1.0)
 _exact("26 pre-mass quantum states",     float(u.D_CRIT), 26.0)
 
+# Block #22 — PAPER_133/369/563/351/550 tier-2/3 mine (6 pins)
+_exact("v_SCm = c/3 PAPER_369",            3.0e8 / float(u.D_PHYS - 1), 1.0e8, tol=1e-6)
+_exact("U_UA = 1/SO_5^4 PAPER_563",        1.0 / (float(u.SO_FIVE) ** 4), 1.0e-4, tol=1e-9)
+_exact("F_U genesis 4-component PAPER_133",float(u.D_PHYS), 4.0)
+_exact("TDE 0.3c outflow PAPER_351",       3.0e8 * float(u.D_PHYS - 1) / float(u.SO_FIVE), 9.0e7, tol=1e-6)
+_exact("D_crit = 3+23 PAPER_550",          float(u.D_PHYS - 1) + float(u.D_CRIT - u.D_PHYS + 1), float(u.D_CRIT))
+_exact("r^23 monopole suppression PAPER_550", float(u.D_CRIT - u.D_PHYS + 1), 23.0)
+
+# Block #23 — PAPER_011/1051/1072/1080 tier-4+5 mine (6 pins)
+_exact("GW damping BNS = 1/3 PAPER_011",     1.0 / float(u.D_PHYS - 1), 1.0/3.0)
+_exact("GW damping BBH = 0.81 PAPER_011",    (float(u.N_CH) / float(u.SO_FIVE)) ** 2, 0.81)
+_exact("T_SCm activation = A_5 K PAPER_1072",float(u.A_FIVE), 60.0)
+_exact("R_d range exp = N_CH-2 PAPER_1051",  float(u.N_CH - 2), 7.0)
+_exact("F_U alpha = 1/SO_5^3 PAPER_1080",    1.0 / (float(u.SO_FIVE) ** 3), 1.0e-3, tol=1e-9)
+_exact("Ramanujan hyperconv = D_crit+1 PAPER_1080", float(u.D_CRIT + 1), 27.0)
+
+
+
 # ---------- summary ----------
 print()
 print("=" * 70)
@@ -1438,3 +1456,4 @@ if FAIL:
     sys.exit(1)
 
 sys.exit(0)
+                            

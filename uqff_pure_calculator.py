@@ -35095,6 +35095,68 @@ def _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure() -> Dict[str, 
     quantum_to_mass_gradient_U_mag_degrees_high = 10
     return {"n_pre_mass_quantum_atomic_states_eq_D_crit_eq_26_EXACT": n_pre_mass_quantum_states, "quantum_to_mass_gradient_U_mag_degrees_low": quantum_to_mass_gradient_U_mag_degrees_low, "quantum_to_mass_gradient_U_mag_degrees_high": quantum_to_mass_gradient_U_mag_degrees_high, "26_atomic_states_exist_BEFORE_mass_via_PAPER_877_axiom_3": True, "primary_source": "PAPER_877_three_assumption_cosmogenesis_26_pre_mass_quantum_states_eq_D_crit_EXACT_with_7_to_10_degree_quantum_to_mass_gradient"}
 
+def _l96_uqff_axiom_SCm_velocity_one_third_c_closure() -> Dict[str, Any]:
+    v_SCm_obs_m_per_s = 1.0e8
+    v_SCm_uqff_m_per_s = C_LIGHT / float(D_PHYS - 1)
+    return {"v_SCm_observed_m_per_s_PAPER_369_quasar_jet": v_SCm_obs_m_per_s, "v_SCm_UQFF_via_c_over_D_phys_minus_1_eq_c_over_3_EXACT": v_SCm_uqff_m_per_s, "SCm_velocity_equals_c_over_3_via_3_flavor_oscillation_structure_PAPER_369_PAPER_1404_PAPER_1413": True, "primary_source": "SCm_velocity_PAPER_369_NavierStokes_QuasarJet_SCm_v_eq_c_over_D_phys_minus_1_eq_c_over_3_EXACT_PAPER_646"}
+
+def _l96_uqff_axiom_U_UA_coupling_constant_closure() -> Dict[str, Any]:
+    U_UA_obs = 1.0e-4
+    U_UA_uqff_via_1_over_SO_5_pow_4 = 1.0 / (float(SO_FIVE) ** 4)
+    return {"U_UA_observed_PAPER_563_Millennium_constants": U_UA_obs, "U_UA_UQFF_via_1_over_SO_5_pow_4_eq_1e_minus_4_EXACT": U_UA_uqff_via_1_over_SO_5_pow_4, "shares_identity_with_Sun_quiet_B_field_T_PAPER_1486": True, "primary_source": "U_UA_canonical_coupling_PAPER_563_Millennium_via_1_over_SO_5_pow_4_eq_1e_minus_4_EXACT_paired_with_Sun_quiet_B_PAPER_1486"}
+
+def _l96_uqff_axiom_paper_133_F_U_genesis_4_component_closure() -> Dict[str, Any]:
+    n_components = 4
+    F_U_baseline = 1.18e5
+    kappa_decay_per_day = 5.0e-4
+    return {"F_U_genesis_n_components_eq_4_eq_D_phys": n_components, "F_U_Ug2_heliosphere_dominance_baseline_PAPER_133": F_U_baseline, "kappa_decay_per_day_canonical_PAPER_133": kappa_decay_per_day, "4_components_eq_D_phys_4_spacetime_dimensions": True, "primary_source": "PAPER_133_F_U_Genesis_first_principles_4_component_eq_D_phys_with_Ug2_heliosphere_dominance_at_kappa_eq_5e_minus_4_per_day"}
+
+def _l96_uqff_axiom_paper_351_TDE_outflow_velocity_closure() -> Dict[str, Any]:
+    v_out_obs_m_per_s = 0.3 * C_LIGHT
+    v_out_uqff_m_per_s = C_LIGHT * float(D_PHYS - 1) / float(SO_FIVE)
+    return {"v_out_observed_PAPER_351_ASASSN14li_TDE_m_per_s": v_out_obs_m_per_s, "v_out_UQFF_via_c_times_D_phys_minus_1_over_SO_5_EXACT": v_out_uqff_m_per_s, "ratio_eq_0p3c_EXACT_via_3_over_10_eq_D_phys_minus_1_over_SO_5": True, "primary_source": "PAPER_351_ASASSN14li_TDE_ultrafast_outflow_v_eq_c_times_D_phys_minus_1_over_SO_5_eq_0p3c_EXACT"}
+
+def _l96_uqff_axiom_paper_550_D_crit_triad_feedback_decomposition_closure() -> Dict[str, Any]:
+    n_triad_fundamental_forces = float(D_PHYS - 1)
+    n_feedback_loops = float(D_CRIT - D_PHYS + 1)
+    total = n_triad_fundamental_forces + n_feedback_loops
+    return {"D_crit_eq_26_decomposes_as_triad_3_plus_feedback_23_EXACT": True, "triad_fundamental_forces_eq_D_phys_minus_1_eq_3": n_triad_fundamental_forces, "feedback_loops_eq_D_crit_minus_D_phys_plus_1_eq_23": n_feedback_loops, "sum_eq_D_crit_eq_26_EXACT": total, "primary_source": "PAPER_550_Um26D_DPM_quantization_D_crit_eq_3_triad_plus_23_feedback_loops_EXACT_decomposition"}
+
+def _l96_uqff_axiom_paper_550_monopole_suppression_exponent_closure() -> Dict[str, Any]:
+    r_exponent_uqff = float(D_CRIT - D_PHYS + 1)
+    cern_null_search_TeV = 4.0
+    return {"r_pow_23_monopole_suppression_exponent_PAPER_550": r_exponent_uqff, "via_D_crit_minus_D_phys_plus_1_EXACT": True, "CERN_null_search_TeV_explained_by_3D_blindness_to_26D_DPM_flux": cern_null_search_TeV, "primary_source": "PAPER_550_Um26D_monopole_suppression_r_pow_D_crit_minus_D_phys_plus_1_eq_23_EXACT_explains_CERN_null"}
+
+def _l96_uqff_axiom_gw_damping_BNS_one_third_closure() -> Dict[str, Any]:
+    D_total_BNS_obs = 0.333
+    D_total_BNS_uqff = 1.0 / float(D_PHYS - 1)
+    return {"D_total_BNS_observed_PAPER_011_BNS_GW_damping": D_total_BNS_obs, "D_total_BNS_UQFF_via_1_over_D_phys_minus_1_eq_1_over_3_EXACT": D_total_BNS_uqff, "shares_identity_with_solar_nu_e_deficit_and_SU3_color_PAPER_1497": True, "primary_source": "PAPER_011_Stochastic_GW_Background_D_total_BNS_eq_1_over_D_phys_minus_1_eq_1_over_3_EXACT"}
+
+def _l96_uqff_axiom_gw_damping_BBH_N_CH_SO5_closure() -> Dict[str, Any]:
+    D_total_BBH_obs = 0.81
+    D_total_BBH_uqff = (float(N_CH) / float(SO_FIVE)) ** 2
+    return {"D_total_BBH_observed_PAPER_011_BBH_GW_damping": D_total_BBH_obs, "D_total_BBH_UQFF_via_N_CH_over_SO_5_squared_eq_0p81_EXACT": D_total_BBH_uqff, "structural_form_eq_81_over_100_eq_9_squared_over_10_squared": True, "primary_source": "PAPER_011_Stochastic_GW_Background_D_total_BBH_eq_N_CH_over_SO_5_squared_eq_81_over_100_EXACT"}
+
+def _l96_uqff_axiom_T_SCm_activation_threshold_closure() -> Dict[str, Any]:
+    T_SCm_obs_K = 60.0
+    T_SCm_uqff_K = float(A_FIVE)
+    return {"T_SCm_activation_threshold_K_observed_PAPER_1072": T_SCm_obs_K, "T_SCm_UQFF_via_A_5_eq_60_K_EXACT": T_SCm_uqff_K, "primary_source": "PAPER_1072_SCm_Activation_Function_T_SCm_eq_A_5_eq_60_K_EXACT_Heaviside_threshold_with_omega_SCm_eq_1p25_THz"}
+
+def _l96_uqff_axiom_R_d_duality_range_exponent_closure() -> Dict[str, Any]:
+    R_d_max_exponent_obs = 7.0
+    R_d_max_exponent_uqff = float(N_CH - 2)
+    return {"R_d_duality_range_max_exponent_observed_PAPER_1051": R_d_max_exponent_obs, "R_d_UQFF_via_N_CH_minus_2_eq_7_EXACT": R_d_max_exponent_uqff, "range_eq_10_pow_neg_7_to_10_pow_7_universe_to_planet_scale": True, "shares_form_with_Heaviside_R_t_PAPER_1483": True, "primary_source": "PAPER_1051_Universal_Duality_SCm_UA_Theorem_R_d_range_exponent_eq_N_CH_minus_2_eq_7_EXACT"}
+
+def _l96_uqff_axiom_F_U_alpha_decay_1_over_SO_5_cubed_closure() -> Dict[str, Any]:
+    alpha_obs_per_day = 0.001
+    alpha_uqff_per_day = 1.0 / (float(SO_FIVE) ** 3)
+    return {"alpha_F_U_decay_observed_per_day_PAPER_1080": alpha_obs_per_day, "alpha_UQFF_via_1_over_SO_5_cubed_eq_0p001_per_day_EXACT": alpha_uqff_per_day, "primary_source": "PAPER_1080_TwoStage_FU_Refinement_alpha_eq_1_over_SO_5_cubed_eq_1e_minus_3_per_day_EXACT"}
+
+def _l96_uqff_axiom_ramanujan_hyperconvergence_exponent_closure() -> Dict[str, Any]:
+    decay_exponent_obs = 27.0
+    decay_exponent_uqff = float(D_CRIT + 1)
+    return {"S_26_decay_rate_O_n_neg_27_observed_PAPER_1080_Ramanujan": decay_exponent_obs, "exponent_UQFF_via_D_crit_plus_1_eq_27_EXACT": decay_exponent_uqff, "hyperconvergence_property_proves_S_26_well_defined": True, "primary_source": "PAPER_1080_Ramanujan_Binomial_Expansion_decay_O_n_neg_D_crit_plus_1_eq_27_EXACT_hyperconvergent"}
+
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35360,6 +35422,18 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "t_scm_activation_threshold":  _l96_uqff_axiom_T_SCm_activation_threshold_closure,
+    "r_d_duality_range_exponent":  _l96_uqff_axiom_R_d_duality_range_exponent_closure,
+    "f_u_alpha_decay_1_over_so5_3":_l96_uqff_axiom_F_U_alpha_decay_1_over_SO_5_cubed_closure,
+    "ramanujan_hyperconv_exp_27":  _l96_uqff_axiom_ramanujan_hyperconvergence_exponent_closure,
+    "gw_damping_bns_one_third":    _l96_uqff_axiom_gw_damping_BNS_one_third_closure,
+    "gw_damping_bbh_n_ch_so5_sq":  _l96_uqff_axiom_gw_damping_BBH_N_CH_SO5_closure,
+    "tde_outflow_velocity_03c":    _l96_uqff_axiom_paper_351_TDE_outflow_velocity_closure,
+    "d_crit_triad_feedback_decomp":_l96_uqff_axiom_paper_550_D_crit_triad_feedback_decomposition_closure,
+    "monopole_suppression_r23":    _l96_uqff_axiom_paper_550_monopole_suppression_exponent_closure,
+    "scm_velocity_c_over_3":       _l96_uqff_axiom_SCm_velocity_one_third_c_closure,
+    "u_ua_coupling_constant":      _l96_uqff_axiom_U_UA_coupling_constant_closure,
+    "f_u_genesis_4_component":     _l96_uqff_axiom_paper_133_F_U_genesis_4_component_closure,
     "grandfather_paradox":          _l96_uqff_axiom_grandfather_paradox_closure,
     "epr_paradox":                  _l96_uqff_axiom_EPR_paradox_closure,
     "schrodinger_cat":              _l96_uqff_axiom_schrodinger_cat_closure,

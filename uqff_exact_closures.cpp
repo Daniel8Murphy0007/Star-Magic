@@ -173,6 +173,22 @@ void runSelfChecks() {
     std::printf("\n%d / %d closures pass\n", passed, total);
 }
 
+
+// ----- PAPER_133/369/563/351/550 mining EXACT (6 added) -----
+double v_SCm_one_third_c_m_per_s() { return 3.0e8 / double(D_PHYS - 1); }                          // c/3 = 1e8 m/s EXACT (PAPER_369)
+double U_UA_coupling_constant()    { return 1.0 / std::pow(double(SO_5), 4); }                      // 1e-4 EXACT (PAPER_563)
+int    F_U_genesis_n_components()  { return D_PHYS; }                                               // 4 EXACT (PAPER_133)
+double tde_outflow_velocity_m_per_s() { return 3.0e8 * double(D_PHYS - 1) / double(SO_5); }         // 0.3c = 9e7 EXACT (PAPER_351)
+int    d_crit_feedback_loops()     { return D_CRIT - D_PHYS + 1; }                                  // 23 EXACT (PAPER_550)
+int    monopole_suppression_exp()  { return D_CRIT - D_PHYS + 1; }                                  // 23 EXACT (PAPER_550)
+
+// ----- PAPER_011/1051/1072/1080 tier-4+5 mining EXACT (6 added) -----
+double gw_damping_BNS()            { return 1.0 / double(D_PHYS - 1); }                            // 1/3 EXACT (PAPER_011)
+double gw_damping_BBH()            { return std::pow(double(N_CH) / double(SO_5), 2); }            // 0.81 EXACT (PAPER_011)
+int    T_SCm_activation_K()        { return A_5; }                                                 // 60 K EXACT (PAPER_1072)
+int    R_d_duality_range_exp()     { return N_CH - 2; }                                            // 7 EXACT (PAPER_1051)
+double F_U_alpha_decay_per_day()   { return 1.0 / std::pow(double(SO_5), 3); }                     // 0.001/day EXACT (PAPER_1080)
+int    ramanujan_hyperconv_exp()   { return D_CRIT + 1; }                                          // 27 EXACT (PAPER_1080)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
