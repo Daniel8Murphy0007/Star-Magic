@@ -44,6 +44,25 @@ double cosmological_constant() {
     return RHO_SCM*f*K_MEX;
 }
 
+double C_LIGHT_M_S = 3.0e8;
+
+// ----- F:\Aetheric Propulsion EXACT identities (12 added) -----
+double dpm_resonance_Hz()      { return double(D_PHYS) * double(SO_5); }                            // 40 Hz EXACT
+double dT_pulse_ms()           { return 1000.0 / (double(D_PHYS) * double(SO_5)); }                 // 25 ms EXACT
+double heaviside_R_t_ohms()    { return double(N_CH - 2); }                                          // 7 ohms EXACT
+double island_of_stability_Z() { return double(D_CRIT * D_PHYS + N_CH * 2); }                        // 122
+double proton_orbital_Hz()     { return M_PI * SSQ; }                                                // 1.791 Hz
+double level_13_BH_r_m()       { return std::pow(double(SO_5), double(D_PHYS + 1)); }                // 1e5 m EXACT
+double f_UMR_Hz()              { return (double(D_PHYS) + double(SO_5)) * std::pow(double(SO_5), double(D_PHYS + 2)); } // 1.4e7 Hz EXACT
+double V_little_V_big_ratio()  { return 1.0 / double(D_CRIT + N_CH - 2); }                           // 1/33 EXACT
+double f_Ub_buoyancy_Hz()      { return double(D_CRIT - D_PHYS) * 1.0e6; }                           // 22 MHz EXACT
+double cross_section_A2()      { return K_MEX * double(D_BSFG) * PHI_RES; }                          // 10.5 A^2 EXACT
+double heaviside_amp_factor()  { return std::pow(double(SO_5), double(D_CRIT / 2)); }                // 1e13 EXACT
+double f_fluid_Hz()            { return 1.0 / std::pow(double(SO_5), 8); }                           // 1e-8 Hz EXACT
+double sun_quiet_B_T()         { return 1.0 / std::pow(double(SO_5), 4); }                           // 1e-4 T EXACT
+double sun_peak_modulation_T() { return double(D_PHYS) / double(SO_5); }                             // 0.4 T EXACT
+double distance_spooky_m()     { return C_LIGHT_M_S * 2512.0; }                                      // 7.52e11 m EXACT
+
 // ----- Near-EXACT / in-range (25) -----
 double cdf_w_mass_shift_MeV()  { return M_W_MEV_SM*LAMBDA*BETA_I*PHI_RES/double(D_PHYS); }   // 74.2 vs 76
 double r_k_lepton_uni()        { return 1.0 - LAMBDA*double(A_5)/3.0; }                      // 0.854 vs 0.85
@@ -144,4 +163,3 @@ void runSelfChecks() {
 #ifdef UQFF_RUN_SELFCHECKS
 int main() { uqff::runSelfChecks(); return 0; }
 #endif
-

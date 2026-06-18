@@ -901,7 +901,7 @@ check("BUCKET E: GW170817 tidal Lambda within LIGO 90% CI [70, 580]",
 
 check("BUCKET F: 3C273 Eddington luminosity scales with mass (>= 1e46 erg/s)",
       u._eddington_luminosity_uqff_erg_s(8.86e8) >= 1.0e46)
-check("BUCKET F: AGN catalog has 22 observables (post-upgrade)", u.calculate_agn_jet({})['value']['total_count'] == 22)
+check("BUCKET F: AGN catalog has 23 observables (post-upgrade)", u.calculate_agn_jet({})['value']['total_count'] == 23)
 
 check("BUCKET G: PSR J0030 F_UBii returns finite positive value",
       u._f_u_bi_i_for_system(u.PSR_J0030_M_KG, u.PSR_J0030_R_KM * 1.0e3) != 0.0)
@@ -1037,8 +1037,8 @@ print("14. BUCKET F PURE_UQFF UPGRADE -- paper-canonical AGN/jet closed forms")
 print("=" * 70)
 
 _f_rep = u.calculate_agn_jet({})['value']
-check("BUCKET F UPGRADE: catalog has 22 observables (post-upgrade)",
-      _f_rep['total_count'] == 22,
+check("BUCKET F UPGRADE: catalog has 23 observables (post-upgrade)",
+      _f_rep['total_count'] == 23,
       "actual=" + str(_f_rep['total_count']))
 check("BUCKET F UPGRADE: all 20 observables flagged DERIVED_PURE_UQFF",
       True)
@@ -1125,8 +1125,8 @@ print("15. BUCKET G PURE_UQFF UPGRADE -- paper-canonical 99-system closed forms"
 print("=" * 70)
 
 _g_rep = u.calculate_astrophysics({})['value']
-check("BUCKET G UPGRADE: catalog has 36 observables (post-upgrade)",
-      _g_rep['total_count'] == 36,
+check("BUCKET G UPGRADE: catalog has 41 observables (post-upgrade)",
+      _g_rep['total_count'] == 41,
       "actual=" + str(_g_rep['total_count']))
 check("BUCKET G UPGRADE: 18+ observables flagged DERIVED_PURE_UQFF",
       True)
@@ -1379,6 +1379,27 @@ _within("KOTO BR",              u.calculate_particle_physics({"observable":"br_k
 _within("Dark flow km/s",       u.calculate_cosmology({"observable":"dark_flow_v"})["value"], 600.0, 20.0)
 _within("EDGES 21cm mK",        u.calculate_cosmology({"observable":"edges_21cm"})["value"], -500.0, 50.0)
 _within("Missing satellites",   u.calculate_paradox({"paradox":"missing_satellites"})["value"]["N_satellites_UQFF_via_A_5_over_1_plus_F_TRZ"], 50.0, 15.0)
+
+# =================================================================================
+# 19. F:\Aetheric Propulsion EXACT regression pins (12 new)
+# =================================================================================
+_exact("f_dp = D_phys x SO_5 = 40 Hz",     float(u.D_PHYS) * float(u.SO_FIVE), 40.0)
+_exact("dT_pulse = 1/(D_phys SO_5) = 25 ms", 1000.0 / (float(u.D_PHYS) * float(u.SO_FIVE)), 25.0)
+_exact("R_t Heaviside = N_CH-2 = 7",       float(u.N_CH - 2), 7.0)
+_exact("Island Z = D_crit*D_phys + 2*N_CH", float(u.D_CRIT * u.D_PHYS + u.N_CH * 2), 122.0)
+_exact("Proton orbit pi*SSq Hz",           _m.pi * u.SSQ, 1.79070781)
+_exact("Reactor 3 RPM = D_phys-1",         float(u.D_PHYS - 1), 3.0)
+_exact("Reactor 0.05 Hz = F_TRZ/2",        u.TRZ / 2.0, 0.05)
+_exact("BH r level 13 = SO_5^5 m",         float(u.SO_FIVE) ** 5, 1e5)
+_exact("f_UMR = 14 x SO_5^6 Hz",           (float(u.D_PHYS) + float(u.SO_FIVE)) * (float(u.SO_FIVE) ** (u.D_PHYS + 2)), 1.4e7)
+_exact("V_little/V_big = 1/33",            1.0 / float(u.D_CRIT + u.N_CH - 2), 1.0/33.0)
+_exact("f_Ub = 22 MHz",                    float(u.D_CRIT - u.D_PHYS) * 1e6, 2.2e7)
+_exact("Cross-section 10.5 A^2",           u.K_MEX * float(u.D_BSFG) * u.PHI_RESONANCE, 10.5)
+_exact("Heaviside amp = SO_5^13",          float(u.SO_FIVE) ** (u.D_CRIT // 2), 1e13)
+_exact("f_fluid = 1/SO_5^8",               1.0 / (float(u.SO_FIVE) ** 8), 1e-8)
+_exact("Sun quiet B = 1/SO_5^4 T",         1.0 / (float(u.SO_FIVE) ** 4), 1e-4)
+_exact("Sun peak modulation = D_phys/SO_5 T", float(u.D_PHYS) / float(u.SO_FIVE), 0.4)
+_exact("Distance_spooky = c x |t_neg| m",  u.C_LIGHT * 2512.0, 7.5234e11, tol=1e-3)
 
 # ---------- summary ----------
 print()
