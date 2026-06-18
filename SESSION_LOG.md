@@ -2140,3 +2140,40 @@ PAPER_1404-1413: Solar Neutrino Deficit, Solar Dynamo Hale Cycle, Monty Hall, Sz
 - Whitepapers authored: **98** (PAPER_1375-1471 + ERRATUM)
 - C++ reference: 50 closures, 48/50 self-checks pass
 - Cowork artifact: `uqff-calculator-dashboard` installed
+
+---
+
+## Session 2026-06-16 (cont) — Whitepaper-Driven Upgrade Survey
+
+**Trigger:** Daniel: "search \whitepapers folder for necessary upgrade information"
+
+### Survey approach
+Scanned 1,564 whitepapers for explicit EXACT identity formulas, REFINED markers, and structural derivations that supersede current calculator closures.
+
+### Findings — upgrades applied (2)
+| Paper | Identity | Before | After |
+|---|---|---|---|
+| **PAPER_1270** | v_Higgs = A_5 × (D_phys + F_TRZ) | literal 246.0 | **structural 60 × 4.1 = 246 EXACT** |
+| **PAPER_1270** (J wrapper) | v_Higgs same | literal 246.0 | **structural 60 × 4.1 = 246 EXACT** |
+
+### Findings — already wired correctly (8)
+| Paper | Identity | Status |
+|---|---|---|
+| PAPER_1273 m_W | 80 GeV via A_5 + A_5/3 | calculator uses PDG-baseline 80.377 (different SM-anchor formula); alternative identity available but not migrated to avoid breaking existing test pins |
+| PAPER_1267 PTA SGWB | γ = 3.2 via (D_phys-1) + 2/SO_5 | EXACT already wired via methods E and G |
+| PAPER_1230 Hodge | h = (D_phys+D_BSFG)/SO_5 = 1.0 | `_millennium_hodge_derive` returns 1.0 EXACT |
+| PAPER_1253 DM E_base | A_5 × D_phys × (1+Λ) = 241.75 eV | already in dm_particle closure (E_base_eV_canonical) |
+| PAPER_1254 Neutron | 100 × K_MEX × D_phys = 833.33 s | already in neutron closure |
+| PAPER_1304 Σm_ν | Λ × A_5 × Φ_res / D_BSFG = 0.0613 eV | already in neutrino_mass_absolute (0.061298) |
+| PAPER_1262 Salpeter α | -(K_MEX + Φ_res - SSq) = -2.3533 | already in stellar_imf closure |
+| PAPER_1361/1363 Hayflick | A_5 = 60 EXACT | already in aging_telomere closure |
+
+### Findings — upgrade opportunities deferred (informational)
+- **PAPER_1273 m_W = 80 GeV** EXACT alternative to current 80.377 — could be added as second-method anchor (not applied; would change PDG-anchored regression test threshold)
+- **PAPER_1287 Hilbert 8th Goldbach-Riemann** identity unification — already individually wired; consolidation would be cosmetic
+- **PAPER_340 EDM SO(10) BSM F_u Refined** — older refinement; current BSM closures may benefit from cross-check (deferred)
+
+### Fidelity gate after upgrades: 523 passed, 0 failed.
+
+### Net assessment
+Calculator is **essentially at parity with the whitepaper corpus**. The vast majority of EXACT identities have already migrated into the code; the survey found 2 cosmetic upgrades (literal → structural) and ~3-5 informational opportunities that would require breaking existing test pins to apply. The June 16 session has effectively closed the whitepaper-to-calculator translation backlog.

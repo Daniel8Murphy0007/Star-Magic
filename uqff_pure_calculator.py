@@ -39628,7 +39628,7 @@ def _b_quark_confinement_sigma_uqff():
     return (0.217 ** 2) * K_MEX
 
 def _b_origin_of_mass_v_higgs_uqff_gev():
-    return 246.0
+    return float(A_FIVE) * (float(D_PHYS) + TRZ)
 
 def _b_clfv_br_uqff():
     return (LAMBDA_LEDGER_UQFF ** 6) * PHI_RESONANCE
@@ -39670,7 +39670,7 @@ def _b_higgs_trilinear_kappa_uqff():
     return 1.0
 
 def _b_higgs_vev_origin_uqff_gev():
-    return 246.0
+    return float(A_FIVE) * (float(D_PHYS) + TRZ)
 
 def _b_ew_vacuum_decay_rate_uqff():
     return 0.0
