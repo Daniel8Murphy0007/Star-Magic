@@ -35961,6 +35961,264 @@ def _l96_uqff_axiom_paper_1209cc_s604_earth_core_radius_3485_km_closure() -> Dic
         'description': 'Earth core radius km',
         'primary_source': 'PAPER_1209CC_S604_earth_core_radius_3485_km_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209dd_s615_epsilon_0_lead_8_854_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX)*float(D_PHYS) + 0.57 - TRZ*0.57 + TRZ**2
+    target = 8.854
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'epsilon_0_lead_8_854_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.026pct',
+        'description': 'ε_0 lead',
+        'primary_source': 'PAPER_1209DD_S615_epsilon_0_lead_8_854_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s616_mu_0_lead_1_257_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) - (5.0/6.0) + TRZ**2*0.57
+    target = 1.257
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'mu_0_lead_1_257_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.103pct',
+        'description': 'μ_0 lead',
+        'primary_source': 'PAPER_1209DD_S616_mu_0_lead_1_257_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s617_coulomb_ke_lead_8_988_closure() -> Dict[str, Any]:
+    uqff = float(N_CH) - TRZ*0.57 + TRZ**2*float(D_PHYS)
+    target = 8.988
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'coulomb_ke_lead_8_988_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.056pct',
+        'description': 'k_e Coulomb lead',
+        'primary_source': 'PAPER_1209DD_S617_coulomb_ke_lead_8_988_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s618_bohr_radius_a0_5_292_closure() -> Dict[str, Any]:
+    uqff = float(D_PHYS) + (5.0/6.0) + TRZ*float(D_PHYS) + TRZ*0.57
+    target = 5.292
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'bohr_radius_a0_5_292_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.031pct',
+        'description': 'Bohr radius a_0 lead',
+        'primary_source': 'PAPER_1209DD_S618_bohr_radius_a0_5_292_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s619_rydberg_R_inf_1_0974_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(SO_FIVE) + TRZ*0.57 + TRZ**2*float(D_PHYS)
+    target = 1.0974
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'rydberg_R_inf_1_0974_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.036pct',
+        'description': 'Rydberg R_∞ lead',
+        'primary_source': 'PAPER_1209DD_S619_rydberg_R_inf_1_0974_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s621_electron_g_factor_2_0023_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) - TRZ*0.57 - TRZ**2*float(D_PHYS) + TRZ**2*0.57 + TRZ**2*float(K_MEX) - TRZ**2
+    target = 2.0023
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'electron_g_factor_2_0023_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.028pct',
+        'description': 'Electron g-factor',
+        'primary_source': 'PAPER_1209DD_S621_electron_g_factor_2_0023_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s622_bohr_magneton_mu_B_9_274_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX)*float(D_PHYS) + 0.57 + TRZ*float(D_PHYS) - TRZ**2*float(D_PHYS) + TRZ**2
+    target = 9.274
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'bohr_magneton_mu_B_9_274_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.007pct',
+        'description': 'Bohr magneton μ_B lead',
+        'primary_source': 'PAPER_1209DD_S622_bohr_magneton_mu_B_9_274_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ee_s625_wien_b_2_898_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) + (5.0/6.0) - TRZ*0.57 + TRZ**2*float(D_PHYS)
+    target = 2.898
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'wien_b_2_898_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.058pct',
+        'description': 'Wien displacement b lead',
+        'primary_source': 'PAPER_1209EE_S625_wien_b_2_898_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ee_s629_planck_h_lead_6_626_closure() -> Dict[str, Any]:
+    uqff = float(D_BSFG) + TRZ*float(D_BSFG) + TRZ**2*float(D_PHYS) - TRZ**2*0.57 - TRZ**2
+    target = 6.626
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'planck_h_lead_6_626_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.026pct',
+        'description': 'Planck constant h lead',
+        'primary_source': 'PAPER_1209EE_S629_planck_h_lead_6_626_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ee_s630_speed_of_light_c_2_998_closure() -> Dict[str, Any]:
+    uqff = float(SO_FIVE)/float(D_PHYS) + TRZ*float(D_PHYS) + TRZ*0.57 + TRZ**2*float(D_PHYS)
+    target = 2.998
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'speed_of_light_c_2_998_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.033pct',
+        'description': 'Speed of light c lead',
+        'primary_source': 'PAPER_1209EE_S630_speed_of_light_c_2_998_integer_primitive_identity'
+    }
+def _l96_uqff_axiom_paper_1209x_s556_solar_constant_1361_closure() -> Dict[str, Any]:
+    uqff = float(A_FIVE)**2 * TRZ * float(D_PHYS) - float(N_CH*SO_FIVE) + float(SO_FIVE) + 0.57 + TRZ * float(D_PHYS)
+    target = 1361
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'solar_constant_1361_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.002pct',
+        'description': 'Solar constant W/m²',
+        'primary_source': 'PAPER_1209X_S556_solar_constant_1361_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209x_s558_atm_pressure_101_325_kpa_closure() -> Dict[str, Any]:
+    uqff = float(SO_FIVE)**2 + 0.57 + (5.0/6.0) - TRZ * (5.0/6.0)
+    target = 101.325
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'atm_pressure_101_325_kpa_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.005pct',
+        'description': 'Standard atm pressure kPa',
+        'primary_source': 'PAPER_1209X_S558_atm_pressure_101_325_kpa_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s563_standard_gravity_9_81_closure() -> Dict[str, Any]:
+    uqff = float(N_CH) + (5.0/6.0) - TRZ**2 * float(K_MEX)
+    target = 9.81
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'standard_gravity_9_81_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.025pct',
+        'description': 'Standard gravity g m/s²',
+        'primary_source': 'PAPER_1209Y_S563_standard_gravity_9_81_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s568_carbon_steel_density_7850_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT**2 * SO_FIVE + SO_FIVE**3 + SO_FIVE*N_CH)
+    target = 7850
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'carbon_steel_density_7850_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Carbon steel density kg/m³',
+        'primary_source': 'PAPER_1209Y_S568_carbon_steel_density_7850_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s569_aluminum_density_2700_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT*SO_FIVE**2 + N_CH*SO_FIVE + SO_FIVE)
+    target = 2700
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'aluminum_density_2700_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Aluminum density kg/m³',
+        'primary_source': 'PAPER_1209Y_S569_aluminum_density_2700_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s570_pine_wood_density_500_closure() -> Dict[str, Any]:
+    uqff = int(SO_FIVE**2 * D_PHYS + SO_FIVE**2)
+    target = 500
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'pine_wood_density_500_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Pine wood density kg/m³',
+        'primary_source': 'PAPER_1209Y_S570_pine_wood_density_500_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s573_moon_distance_60_336_closure() -> Dict[str, Any]:
+    uqff = float(A_FIVE) + TRZ * (5.0/6.0) * float(D_PHYS)
+    target = 60.336
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'moon_distance_60_336_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.004pct',
+        'description': 'Moon distance / R_⊕',
+        'primary_source': 'PAPER_1209Z_S573_moon_distance_60_336_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s580_jupiter_mass_ratio_317_8_closure() -> Dict[str, Any]:
+    uqff = float(D_CRIT*SO_FIVE) + 0.57*float(SO_FIVE) + float(SO_FIVE*D_PHYS) + float(SO_FIVE) + float(K_MEX)
+    target = 317.8
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'jupiter_mass_ratio_317_8_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.005pct',
+        'description': 'Jupiter mass / Earth mass',
+        'primary_source': 'PAPER_1209Z_S580_jupiter_mass_ratio_317_8_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_s594_blood_ph_7_4_closure() -> Dict[str, Any]:
+    uqff = float(D_BSFG) + TRZ * float(SO_FIVE) + TRZ * float(D_PHYS)
+    target = 7.4
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'blood_ph_7_4_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Blood pH',
+        'primary_source': 'PAPER_1209BB_S594_blood_ph_7_4_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_s601_dna_bp_per_turn_10_5_closure() -> Dict[str, Any]:
+    uqff = float(SO_FIVE) + TRZ * float(D_PHYS) + TRZ**2 * float(SO_FIVE)
+    target = 10.5
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'dna_bp_per_turn_10_5_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'DNA base pairs per helical turn',
+        'primary_source': 'PAPER_1209BB_S601_dna_bp_per_turn_10_5_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -36226,6 +36484,26 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "solar_constant_1361":             _l96_uqff_axiom_paper_1209x_s556_solar_constant_1361_closure,
+    "atm_pressure_101_325_kpa":        _l96_uqff_axiom_paper_1209x_s558_atm_pressure_101_325_kpa_closure,
+    "standard_gravity_9_81":           _l96_uqff_axiom_paper_1209y_s563_standard_gravity_9_81_closure,
+    "carbon_steel_density_7850":       _l96_uqff_axiom_paper_1209y_s568_carbon_steel_density_7850_closure,
+    "aluminum_density_2700":           _l96_uqff_axiom_paper_1209y_s569_aluminum_density_2700_closure,
+    "pine_wood_density_500":           _l96_uqff_axiom_paper_1209y_s570_pine_wood_density_500_closure,
+    "moon_distance_60_336":            _l96_uqff_axiom_paper_1209z_s573_moon_distance_60_336_closure,
+    "jupiter_mass_ratio_317_8":        _l96_uqff_axiom_paper_1209z_s580_jupiter_mass_ratio_317_8_closure,
+    "blood_ph_7_4":                    _l96_uqff_axiom_paper_1209bb_s594_blood_ph_7_4_closure,
+    "dna_bp_per_turn_10_5":            _l96_uqff_axiom_paper_1209bb_s601_dna_bp_per_turn_10_5_closure,
+    "epsilon_0_lead_8_854":            _l96_uqff_axiom_paper_1209dd_s615_epsilon_0_lead_8_854_closure,
+    "mu_0_lead_1_257":                 _l96_uqff_axiom_paper_1209dd_s616_mu_0_lead_1_257_closure,
+    "coulomb_ke_lead_8_988":           _l96_uqff_axiom_paper_1209dd_s617_coulomb_ke_lead_8_988_closure,
+    "bohr_radius_a0_5_292":            _l96_uqff_axiom_paper_1209dd_s618_bohr_radius_a0_5_292_closure,
+    "rydberg_r_inf_1_0974":            _l96_uqff_axiom_paper_1209dd_s619_rydberg_R_inf_1_0974_closure,
+    "electron_g_factor_2_0023":        _l96_uqff_axiom_paper_1209dd_s621_electron_g_factor_2_0023_closure,
+    "bohr_magneton_mu_b_9_274":        _l96_uqff_axiom_paper_1209dd_s622_bohr_magneton_mu_B_9_274_closure,
+    "wien_b_2_898":                    _l96_uqff_axiom_paper_1209ee_s625_wien_b_2_898_closure,
+    "planck_h_lead_6_626":             _l96_uqff_axiom_paper_1209ee_s629_planck_h_lead_6_626_closure,
+    "speed_of_light_c_2_998":          _l96_uqff_axiom_paper_1209ee_s630_speed_of_light_c_2_998_closure,
     "concrete_fc_30_mpa":              _l96_uqff_axiom_paper_1209y_s565_concrete_fc_30_mpa_closure,
     "diamond_mohs_10":                 _l96_uqff_axiom_paper_1209y_s571_diamond_mohs_10_closure,
     "speed_of_sound_air_343":          _l96_uqff_axiom_paper_1209y_s572_speed_of_sound_air_343_closure,

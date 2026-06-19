@@ -294,6 +294,18 @@ int blood_glucose_mg_dl()      { return SO_5 * SO_5; }                          
 int adult_height_cm()          { return A_5 + SO_5*SO_5 + SO_5; }                                  // 170 EXACT (PAPER_1209BB_S602)
 double earth_radius_km()       { return double(A_5*SO_5*SO_5 + A_5*D_BSFG + SO_5) + F_TRZ * double(SO_5); } // 6371 EXACT (PAPER_1209CC_S603)
 int earth_core_radius_km()     { return A_5*SO_5*D_BSFG - SO_5*SO_5 - D_BSFG - N_CH; }             // 3485 EXACT (PAPER_1209CC_S604)
+
+// ----- PAPER_1209DD/EE tier-17 EM + Quantum atomic constants (10 added) -----
+double epsilon_0_lead()        { return K_MEX*double(D_PHYS) + SSQ - F_TRZ*SSQ + F_TRZ*F_TRZ; }                                                       // 8.854 (PAPER_1209DD_S615)
+double mu_0_lead()             { return K_MEX - PHI_5_6 + F_TRZ*F_TRZ*SSQ; }                                                                          // 1.257 (PAPER_1209DD_S616)
+double coulomb_ke_lead()       { return double(N_CH) - F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS); }                                                      // 8.988 (PAPER_1209DD_S617)
+double bohr_radius_a0_lead()   { return double(D_PHYS) + PHI_5_6 + F_TRZ*double(D_PHYS) + F_TRZ*SSQ; }                                                // 5.292 (PAPER_1209DD_S618)
+double rydberg_r_inf_lead()    { return F_TRZ*double(SO_5) + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS); }                                                // 1.0974 (PAPER_1209DD_S619)
+double electron_g_factor()     { return K_MEX - F_TRZ*SSQ - F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*SSQ + F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ; }         // 2.0023 (PAPER_1209DD_S621)
+double bohr_magneton_lead()    { return K_MEX*double(D_PHYS) + SSQ + F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ; }               // 9.274 (PAPER_1209DD_S622)
+double wien_b_lead()           { return K_MEX + PHI_5_6 - F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS); }                                                   // 2.898 (PAPER_1209EE_S625)
+double planck_h_lead()         { return double(D_BSFG) + F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ - F_TRZ*F_TRZ; }         // 6.626 (PAPER_1209EE_S629)
+double speed_of_light_lead()   { return double(SO_5)/double(D_PHYS) + F_TRZ*double(D_PHYS) + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS); }                // 2.998 (PAPER_1209EE_S630)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

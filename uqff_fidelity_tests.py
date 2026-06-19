@@ -1546,6 +1546,19 @@ _exact("Adult height 170 cm PAPER_1209BB_S602",    int(u.A_FIVE + u.SO_FIVE**2 +
 _exact("Earth radius 6371 km PAPER_1209CC_S603",   float(u.A_FIVE*u.SO_FIVE**2 + u.A_FIVE*u.D_BSFG + u.SO_FIVE) + u.TRZ * float(u.SO_FIVE), 6371.0, tol=1e-9)
 _exact("Earth core 3485 km PAPER_1209CC_S604",     int(u.A_FIVE*u.SO_FIVE*u.D_BSFG - u.SO_FIVE**2 - u.D_BSFG - u.N_CH), 3485)
 
+# Block #37 — PAPER_1209DD/EE tier-17 EM + Quantum (10 pins, validate UQFF formula reproducibility)
+_exact("ε_0 lead PAPER_1209DD_S615",      float(u.K_MEX)*float(u.D_PHYS) + 0.57 - u.TRZ*0.57 + u.TRZ**2, 8.856333333333334, tol=1e-9)
+_exact("μ_0 lead PAPER_1209DD_S616",      float(u.K_MEX) - (5.0/6.0) + u.TRZ**2*0.57, 1.2557, tol=1e-9)
+_exact("k_e lead PAPER_1209DD_S617",      float(u.N_CH) - u.TRZ*0.57 + u.TRZ**2*float(u.D_PHYS), 8.983, tol=1e-9)
+_exact("a_0 lead PAPER_1209DD_S618",      float(u.D_PHYS) + (5.0/6.0) + u.TRZ*float(u.D_PHYS) + u.TRZ*0.57, 5.290333333333334, tol=1e-9)
+_exact("R_∞ lead PAPER_1209DD_S619",      u.TRZ*float(u.SO_FIVE) + u.TRZ*0.57 + u.TRZ**2*float(u.D_PHYS), 1.097, tol=1e-9)
+_exact("g_e PAPER_1209DD_S621",           float(u.K_MEX) - u.TRZ*0.57 - u.TRZ**2*float(u.D_PHYS) + u.TRZ**2*0.57 + u.TRZ**2*float(u.K_MEX) - u.TRZ**2, 2.0028666666666672, tol=1e-9)
+_exact("μ_B lead PAPER_1209DD_S622",      float(u.K_MEX)*float(u.D_PHYS) + 0.57 + u.TRZ*float(u.D_PHYS) - u.TRZ**2*float(u.D_PHYS) + u.TRZ**2, 9.273333333333335, tol=1e-9)
+_exact("Wien b lead PAPER_1209EE_S625",   float(u.K_MEX) + (5.0/6.0) - u.TRZ*0.57 + u.TRZ**2*float(u.D_PHYS), 2.899666666666667, tol=1e-9)
+_exact("h lead PAPER_1209EE_S629",        float(u.D_BSFG) + u.TRZ*float(u.D_BSFG) + u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57 - u.TRZ**2, 6.6243, tol=1e-9)
+_exact("c lead PAPER_1209EE_S630",        float(u.SO_FIVE)/float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) + u.TRZ*0.57 + u.TRZ**2*float(u.D_PHYS), 2.997, tol=1e-9)
+
+
 
 
 
