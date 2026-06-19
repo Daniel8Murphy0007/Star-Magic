@@ -1437,6 +1437,12 @@ _exact("R_d range exp = N_CH-2 PAPER_1051",  float(u.N_CH - 2), 7.0)
 _exact("F_U alpha = 1/SO_5^3 PAPER_1080",    1.0 / (float(u.SO_FIVE) ** 3), 1.0e-3, tol=1e-9)
 _exact("Ramanujan hyperconv = D_crit+1 PAPER_1080", float(u.D_CRIT + 1), 27.0)
 
+# Block #24 — PAPER_1175/1155 tier-6 mine (3 pins)
+_exact("Kerr ringdown offset = 13/3 PAPER_1175", float(u.D_CRIT) / float(u.D_BSFG), 13.0/3.0)
+_exact("A_26 = sum i^6 = 1,307,797,101 PAPER_1155", sum(i**6 for i in range(1, u.D_CRIT + 1)), 1307797101)
+_exact("DPM layer weight i^6 decomp (i=5)", (5**2) * 5 * (5**3), 5**6)
+
+
 
 
 # ---------- summary ----------

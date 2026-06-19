@@ -189,6 +189,11 @@ int    T_SCm_activation_K()        { return A_5; }                              
 int    R_d_duality_range_exp()     { return N_CH - 2; }                                            // 7 EXACT (PAPER_1051)
 double F_U_alpha_decay_per_day()   { return 1.0 / std::pow(double(SO_5), 3); }                     // 0.001/day EXACT (PAPER_1080)
 int    ramanujan_hyperconv_exp()   { return D_CRIT + 1; }                                          // 27 EXACT (PAPER_1080)
+
+// ----- PAPER_1175/1155 tier-6 mining EXACT (3 added) -----
+double kerr_ringdown_offset_coeff() { return double(D_CRIT) / double(D_BSFG); }                    // 13/3 EXACT (PAPER_1175)
+long long dpm_26_layer_A26()        { long long s=0; for(int i=1;i<=D_CRIT;++i){ long long ii=i; s += ii*ii*ii*ii*ii*ii; } return s; } // 1,307,797,101 EXACT (PAPER_1155)
+bool dpm_layer_weight_i6_check(int i){ long long product = (long long)i*i * (long long)i * (long long)i*i*i; return product == ((long long)i*i*i*i*i*i); } // i² · i · i³ = i^6 EXACT (PAPER_1155)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

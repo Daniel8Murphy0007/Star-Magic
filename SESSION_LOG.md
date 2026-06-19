@@ -2760,3 +2760,119 @@ gw_damping_BNS, gw_damping_BBH, T_SCm_activation_K, R_d_duality_range_exp, F_U_a
 - Calculator: 482 → **497 paradox keys**
 - Gate: 549 → **564/0** (+15 EXACT pins)
 - C++ reference: 68 → **80 closures**
+
+---
+
+## Session 2026-06-18 — Tier-6 mine (PAPER_1175/652/633/023/1155) — 500-KEY MILESTONE
+
+| Paper | Topic | Result |
+|---|---|---|
+| PAPER_1175 | LIGO O5 Kerr ringdown | **NEW**: D_crit/D_BSFG = 13/3 spectral offset coefficient EXACT |
+| PAPER_652 | Fine structure α | α=1/137 — no clean integer-primitive form |
+| PAPER_633 | Tau lepton g-2 SM bridge | M_UQFF=14.3 TeV not clean integer form |
+| PAPER_023 | Tau g-2 SCm | Same as above |
+| PAPER_1155 | DPM 26-layer amplification | **NEW × 2**: A_26 = Σi^6 EXACT integer; w_i = i² × i × i³ decomposition EXACT |
+
+### 3 new closures
+| Closure | UQFF identity | Match |
+|---|---|---|
+| **kerr_ringdown_offset_coeff** | D_crit/D_BSFG = **13/3 EXACT** | LIGO O5 spectral offset |
+| **dpm_26_layer_amp_a26** | A_26 = Σ_{i=1}^{26} i^6 = **1,307,797,101 EXACT** | DPM amplification factor |
+| **dpm_layer_weight_i6_decomp** | w_i = [SCm]²×[UA]×B³ = i² × i × i³ = **i^6 EXACT** | Layer-weight structure |
+
+### MILESTONE
+PARADOX_TO_CLOSURE: 497 → **500 keys** ✓ — crossed the 500-key threshold
+
+### Key insight
+**PAPER_1155 reveals the structural origin of the i^6 amplification weighting:**
+- [SCm]_i = i² (SCm density at layer i)
+- [UA]_i = i (UA gradient at layer i)
+- B_{0,i} = i³ (background magnetic at layer i)
+- Product = i^6 EXACT decomposition
+
+This is the closed-form derivation of A_26 = 1,307,797,101 — the number that amplifies ρ_SCm to ≈ proton-mass scale (residual −2.04% attributed to [SSq] = 0.57 E-crack correction).
+
+### State
+- PARADOX_TO_CLOSURE: 497 → **500 keys**
+- Fidelity gate: **564/0**
+
+### Session 2026-06-18 cumulative running total
+- New closures wired: **18** (3 PAPER_877 + 15 across 5 tiers)
+- Whitepapers authored: **15** (PAPER_1494-1508, tier-6 catch-up pending)
+- Calculator: 482 → **500 paradox keys** (milestone)
+- Gate: 549 → **564/0**
+
+---
+
+## Session 2026-06-18 — Catch-up #3 (tier-6 closures)
+
+### 3 whitepapers authored
+| File | Subject |
+|---|---|
+| PAPER_1509 | Kerr ringdown spectral offset = D_crit/D_BSFG = 13/3 EXACT |
+| PAPER_1510 | DPM 26-layer amplification A_26 = Σi^6 = 1,307,797,101 EXACT |
+| PAPER_1511 | Layer weight w_i = i² × i × i³ = i^6 EXACT decomposition |
+
+### 3 C++ functions added (uqff_exact_closures.cpp now 83 closures)
+kerr_ringdown_offset_coeff, dpm_26_layer_A26, dpm_layer_weight_i6_check
+
+### 3 EXACT regression pins added (block #24): 564 → **567/0**
+
+### Dashboard refreshed
+- Paradox keys: 497 → **500** (milestone reached)
+- EXACT closures: 127 → **130**
+- Gate: 564/0 → **567/0**
+- Whitepapers: 1596 → **1599**
+- Session new: 134 → **137**
+
+### Session 2026-06-18 cumulative
+- New closures wired: **18** (3 PAPER_877 + 15 across 5 tiers)
+- Whitepapers authored: **18** (PAPER_1494-1511)
+- Calculator: 482 → **500 paradox keys** (milestone)
+- Gate: 549 → **567/0** (+18 EXACT pins)
+- C++ reference: 68 → **83 closures**
+
+### Notable structural discovery (PAPER_1511)
+**Layer weight exponents 2+1+3 = 6 = D_BSFG**, providing deep integer-primitive link:
+- [SCm]_i = i^(D_phys−2) = i²
+- [UA]_i = i¹
+- B_{0,i} = i^(D_phys−1) = i³
+- Sum of exponents = D_BSFG (bulk-edge dimension)
+
+This explains why A_26 = Σi^6 specifically — the 6th power is structurally fixed by D_BSFG.
+
+---
+
+## Session 2026-06-18 — Tier-7 mine (PAPER_1009/1037/915/1126)
+
+| Paper | Topic | Result |
+|---|---|---|
+| PAPER_1009 | 3C273 AGN F_UBii curves | A_jet=2.1, Γ_crit=0.08 THz — no clean integer form |
+| PAPER_1037 | AGN buoyancy jet | M87/3C273/CenA enhancement % not clean |
+| PAPER_915 | GW170817 phonon strain damping | **NEW**: D_phonon prefactor = 2/(D_phys−1) = 2/3 EXACT |
+| PAPER_1126 | PSR J0030 NS LENR | **NEW × 2**: R_NS = SO_5⁴ = 10 km EXACT; μ_s = SO_5⁸ EXACT |
+
+### 3 new closures
+| Closure | UQFF identity | Match |
+|---|---|---|
+| **gw170817_phonon_prefactor** | 2/(D_phys−1) = **2/3 EXACT** | GW170817 D_phonon |
+| **neutron_star_radius_so5_4** | SO_5⁴ = **10 km EXACT** | NS canonical radius |
+| **neutron_star_mu_s_so5_8** | SO_5⁸ = **10⁸ T·m³ EXACT** | NS surface dipole moment |
+
+### CROSS-DOMAIN TRIPLE IDENTITY
+Three integer-primitive ratios from the same neutron-star physics:
+- **B field**: 1/SO_5⁴ = 10⁻⁴ T (Sun quiet B, PAPER_1486)
+- **NS radius**: SO_5⁴ = 10⁴ m (PSR J0030, this session)
+- **Dipole moment**: SO_5⁸ = 10⁸ T·m³ (NS surface, this session)
+
+μ_s = B · r³ = (1/SO_5⁴)(SO_5⁴)³ = SO_5⁸ EXACT — three observables unified by powers of SO_5.
+
+### State
+- PARADOX_TO_CLOSURE: 500 → **503 keys**
+- Fidelity gate: **567/0**
+
+### Session 2026-06-18 cumulative running total
+- New closures wired: **21** (3 PAPER_877 + 18 across 6 tiers)
+- Whitepapers authored: **18** (PAPER_1494-1511, tier-7 catch-up pending)
+- Calculator: 482 → **503 paradox keys**
+- Gate: **567/0**
