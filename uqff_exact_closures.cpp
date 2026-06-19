@@ -205,6 +205,11 @@ const double PHI_5_6 = 5.0 / 6.0;
 double transcendental_ln_10()      { return (1.0 + F_TRZ) * (K_MEX + F_TRZ * F_TRZ); }              // 2.30267 vs 2.30259 (0.0035% PAPER_1208)
 double transcendental_ln_2()       { return 2.0*F_TRZ + PHI_5_6 - F_TRZ*K_MEX - F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*K_MEX - 2.0*F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*F_TRZ - F_TRZ*F_TRZ; } // 0.6932 vs 0.69315 (0.0028% PAPER_1208 TIGHTEST)
 double transcendental_pi_squared() { return double(SO_5) - F_TRZ - F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6; } // 9.8708 vs 9.8696 (0.0125% PAPER_1208)
+
+// ----- PAPER_512/817 tier-9 mining EXACT (3 added) -----
+double mad_efficiency_eta_EM()     { return 1.0 / (double(SO_5) * double(SO_5)); }                 // 0.01 EXACT (PAPER_817)
+int    pcr_quantum_triadic()       { return D_PHYS - 1; }                                          // 3 EXACT (PAPER_512)
+int    peters_mathews_coeff()      { return 1 << D_BSFG; }                                         // 64 EXACT (PAPER_817 / GR cross-framework)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

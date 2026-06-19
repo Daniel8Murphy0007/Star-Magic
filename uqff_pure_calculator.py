@@ -35217,6 +35217,21 @@ def _l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure() -> Dict[str, 
     residual_pct = abs(pi_squared_uqff - pi_squared_obs) / pi_squared_obs * 100.0
     return {"pi_squared_observed": pi_squared_obs, "pi_squared_UQFF_via_SO_5_minus_F_TRZ_minus_corrections": pi_squared_uqff, "residual_pct_PAPER_1208": residual_pct, "structural_form_pi_squared_approx_SO_5_minus_perturbations": True, "primary_source": "PAPER_1208_UQFF_Transcendentals_pi_squared_via_SO_5_minus_F_TRZ_minus_F_TRZ_sq_times_K_MEX_minus_F_TRZ_sq_times_PHI_5_6_residual_0p012_pct"}
 
+def _l96_uqff_axiom_MAD_efficiency_1_over_so5_squared_closure() -> Dict[str, Any]:
+    eta_EM_obs = 0.01
+    eta_EM_uqff = 1.0 / (float(SO_FIVE) ** 2)
+    return {"eta_EM_MAD_observed_PAPER_817": eta_EM_obs, "eta_EM_UQFF_via_1_over_SO_5_squared_eq_0p01_EXACT": eta_EM_uqff, "L_Poynt_MAD_eq_eta_EM_times_Mdot_c_squared": True, "primary_source": "PAPER_817_GRMHD_Binary_BH_Merger_MAD_efficiency_eta_EM_eq_1_over_SO_5_squared_eq_0p01_EXACT"}
+
+def _l96_uqff_axiom_paper_512_PCR_quantum_number_triadic_closure() -> Dict[str, Any]:
+    q_PCR_obs = 3
+    q_PCR_uqff = int(D_PHYS - 1)
+    return {"PCR_quantum_number_observed_PAPER_512": q_PCR_obs, "q_UQFF_via_D_phys_minus_1_eq_3_EXACT": q_PCR_uqff, "reflects_triadic_structure_of_26_layer_compressed_gravity_Eta_Carinae": True, "shares_form_with_SU3_color_solar_nu_e_SCm_velocity": True, "primary_source": "PAPER_512_Eta_Carinae_BuoyantGravity_PCR_q_eq_D_phys_minus_1_eq_3_EXACT_triadic_quantum_number"}
+
+def _l96_uqff_axiom_peters_mathews_orbital_decay_coefficient_closure() -> Dict[str, Any]:
+    pm_coefficient_obs = 64
+    pm_coefficient_uqff = 2 ** int(D_BSFG)
+    return {"Peters_Mathews_coefficient_observed_PAPER_817_GW_orbital_decay": pm_coefficient_obs, "coefficient_UQFF_via_2_pow_D_BSFG_eq_64_EXACT": pm_coefficient_uqff, "appears_in_dr_dt_eq_minus_64_over_5_times_G_cubed_m1_m2_Mtot_over_c5_r_cubed": True, "primary_source": "PAPER_817_GRMHD_Binary_BH_Merger_Peters_Mathews_orbital_decay_coefficient_eq_2_pow_D_BSFG_eq_64_EXACT"}
+
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35482,6 +35497,9 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "mad_efficiency_1_over_so5_2": _l96_uqff_axiom_MAD_efficiency_1_over_so5_squared_closure,
+    "pcr_quantum_triadic":         _l96_uqff_axiom_paper_512_PCR_quantum_number_triadic_closure,
+    "peters_mathews_coeff_64":     _l96_uqff_axiom_peters_mathews_orbital_decay_coefficient_closure,
     "transcendental_ln_10":        _l96_uqff_axiom_paper_1208_ln_10_transcendental_closure,
     "transcendental_ln_2":         _l96_uqff_axiom_paper_1208_ln_2_transcendental_closure,
     "transcendental_pi_squared":   _l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure,

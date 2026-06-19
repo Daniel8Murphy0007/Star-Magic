@@ -1454,6 +1454,12 @@ _exact("ln 10 UQFF = (1+TRZ)(K_MEX+TRZ²) PAPER_1208", (1.0 + u.TRZ) * (float(u.
 _exact("ln 2 UQFF = 8-term F_TRZ/K_MEX/Phi5_6 PAPER_1208", 2.0*u.TRZ + _PHI_5_6 - u.TRZ*float(u.K_MEX) - u.TRZ*_PHI_5_6 - u.TRZ**2*float(u.K_MEX) - 2.0*u.TRZ**2*_PHI_5_6 - u.TRZ**3 - u.TRZ**2, 0.6931666666666666, tol=1e-12)
 _exact("pi² UQFF = SO_5 − TRZ corrections PAPER_1208", float(u.SO_FIVE) - u.TRZ - u.TRZ**2 * float(u.K_MEX) - u.TRZ**2 * _PHI_5_6, 9.870833333333334, tol=1e-12)
 
+# Block #27 — PAPER_512/817 tier-9 mine (3 pins)
+_exact("MAD eta_EM = 1/SO_5^2 PAPER_817",   1.0 / (float(u.SO_FIVE) ** 2), 0.01)
+_exact("PCR q = D_phys-1 PAPER_512",        float(u.D_PHYS - 1), 3.0)
+_exact("Peters-Mathews 64 = 2^D_BSFG PAPER_817", 2 ** int(u.D_BSFG), 64)
+
+
 
 
 
