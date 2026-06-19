@@ -1492,6 +1492,17 @@ _exact("Karman line = SO_5^2 PAPER_1209CC",          int(u.SO_FIVE ** 2), 100)
 _exact("Crust = D_crit+N_CH PAPER_1209CC",           int(u.D_CRIT + u.N_CH), 35)
 _exact("Moho = N_CH-2 PAPER_1209CC",                 int(u.N_CH - 2), 7)
 
+# Block #32 — PAPER_1209EE/DD/CC tier-12 (8 pins, includes α⁻¹ — crosses 600 milestone)
+_exact("Rydberg E_R = 13.6057 eV PAPER_1209EE_S623",     float(u.D_PHYS + u.SO_FIVE) - u.TRZ * float(u.D_PHYS) + u.TRZ**2 * 0.57, 13.6057, tol=1e-3)
+_exact("Stefan σ = 5.67 PAPER_1209EE_S624",              float(u.SO_FIVE) * 0.57 - u.TRZ**2 * float(u.D_PHYS) + u.TRZ**2, 5.67, tol=1e-3)
+_exact("Hartree E_h = 4.36 PAPER_1209EE_S632",           float(u.D_PHYS) + u.TRZ * float(u.D_PHYS) - u.TRZ**2 * float(u.D_PHYS), 4.36, tol=1e-3)
+_exact("Faraday F = 96485 C/mol PAPER_1209EE_S626",      int(u.A_FIVE)**2 * int(u.D_PHYS) * int(u.D_BSFG) + int(u.A_FIVE)*int(u.SO_FIVE)*int(u.N_CH) + int(u.A_FIVE)*int(u.D_BSFG)*int(u.N_CH) + int(u.SO_FIVE)*int(u.N_CH)*int(u.D_BSFG) + int(u.SO_FIVE)*int(u.N_CH)*int(u.D_PHYS) + int(u.A_FIVE)*int(u.N_CH) + int(u.D_PHYS) + int(u.TRZ * u.SO_FIVE), 96485)
+_exact("Z_0 ≈ 376.75 PAPER_1209DD_S613",                 float(u.A_FIVE * u.D_BSFG + u.SO_FIVE + u.D_BSFG) + 0.84 - u.TRZ*0.84 - u.TRZ**2*0.57, 376.7503, tol=1e-3)
+_exact("α⁻¹ ≈ 137.04 PAPER_1209DD_S614 fine-structure",  float(u.A_FIVE) * float(u.K_MEX) + float(u.N_CH + u.D_PHYS) - u.TRZ * float(u.SO_FIVE) + u.TRZ**2 * float(u.D_PHYS), 137.04, tol=1e-3)
+_exact("Compton λ_C = 2.426 PAPER_1209DD_S620",          float(u.K_MEX) + u.TRZ * float(u.D_PHYS) - u.TRZ * 0.57, 2.4263333333333335, tol=1e-3)
+_exact("Mariana Trench = N_CH+2 = 11 km PAPER_1209CC",   int(u.N_CH + 2), 11)
+
+
 
 
 

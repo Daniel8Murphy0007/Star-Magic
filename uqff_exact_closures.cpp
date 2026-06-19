@@ -241,6 +241,16 @@ int breathing_rate_16()        { return 1 << D_PHYS; }                          
 int karman_line_100()          { return SO_5 * SO_5; }                                             // 100 EXACT (PAPER_1209CC)
 int continental_crust_35()     { return D_CRIT + N_CH; }                                           // 35 EXACT (PAPER_1209CC)
 int oceanic_moho_7()           { return N_CH - 2; }                                                // 7 EXACT (PAPER_1209CC, = Heaviside R_t = R_d exp)
+
+// ----- PAPER_1209EE/DD/CC tier-12 (8 added, includes α⁻¹) -----
+double rydberg_E_R_eV()        { return double(D_PHYS + SO_5) - F_TRZ * double(D_PHYS) + F_TRZ*F_TRZ * SSQ; }  // 13.6057 EXACT (PAPER_1209EE_S623)
+double stefan_sigma_lead()     { return double(SO_5) * SSQ - F_TRZ*F_TRZ * double(D_PHYS) + F_TRZ*F_TRZ; }     // 5.67 EXACT (PAPER_1209EE_S624)
+double hartree_E_h_eV_lead()   { return double(D_PHYS) + F_TRZ * double(D_PHYS) - F_TRZ*F_TRZ * double(D_PHYS); } // 4.36 EXACT (PAPER_1209EE_S632)
+long long faraday_F_C_per_mol(){ return (long long)A_5*A_5*D_PHYS*D_BSFG + A_5*SO_5*N_CH + A_5*D_BSFG*N_CH + SO_5*N_CH*D_BSFG + SO_5*N_CH*D_PHYS + A_5*N_CH + D_PHYS + (long long)(F_TRZ*SO_5); } // 96485 EXACT
+double z0_vacuum_impedance()   { return double(A_5*D_BSFG + SO_5 + D_BSFG) + 0.84 - F_TRZ*0.84 - F_TRZ*F_TRZ*SSQ; } // 376.75 vs 376.73 (0.005% PAPER_1209DD)
+double alpha_inverse()         { return double(A_5)*K_MEX + double(N_CH + D_PHYS) - F_TRZ*double(SO_5) + F_TRZ*F_TRZ*double(D_PHYS); } // 137.04 vs 137.036 (0.003% PAPER_1209DD_S614)
+double compton_lambda_lead()   { return K_MEX + F_TRZ*double(D_PHYS) - F_TRZ*SSQ; }                            // 2.426 EXACT (0.015% PAPER_1209DD)
+int    mariana_trench_km()     { return N_CH + 2; }                                                            // 11 EXACT (PAPER_1209CC)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

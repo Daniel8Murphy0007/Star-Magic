@@ -35420,6 +35420,109 @@ def _l96_uqff_axiom_paper_1209cc_oceanic_moho_7_closure() -> Dict[str, Any]:
         'description': 'Oceanic Moho km = N_CH-2 = 7',
         'primary_source': 'PAPER_1209CC_oceanic_moho_7_EXACT_integer_primitive_identity_Oceanic_Moho_km_eq_N_CHminus2_eq_7'
     }
+def _l96_uqff_axiom_paper_1209ee_s623_rydberg_E_R_13_6057_closure() -> Dict[str, Any]:
+    uqff = float(D_PHYS + SO_FIVE) - TRZ * float(D_PHYS) + TRZ ** 2 * 0.57
+    target = 13.6057
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'rydberg_E_R_13_6057_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Rydberg energy E_R eV',
+        'primary_source': 'PAPER_1209EE_S623_rydberg_E_R_13_6057_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ee_s624_stefan_sigma_5_67_closure() -> Dict[str, Any]:
+    uqff = float(SO_FIVE) * 0.57 - TRZ ** 2 * float(D_PHYS) + TRZ ** 2
+    target = 5.67
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'stefan_sigma_5_67_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Stefan-Boltzmann σ lead',
+        'primary_source': 'PAPER_1209EE_S624_stefan_sigma_5_67_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ee_s632_hartree_E_h_4_36_closure() -> Dict[str, Any]:
+    uqff = float(D_PHYS) + TRZ * float(D_PHYS) - TRZ ** 2 * float(D_PHYS)
+    target = 4.36
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'hartree_E_h_4_36_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Hartree energy E_h eV (lead)',
+        'primary_source': 'PAPER_1209EE_S632_hartree_E_h_4_36_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ee_s626_faraday_F_96485_closure() -> Dict[str, Any]:
+    uqff = int(A_FIVE)**2 * int(D_PHYS) * int(D_BSFG) + int(A_FIVE) * int(SO_FIVE) * int(N_CH) + int(A_FIVE) * int(D_BSFG) * int(N_CH) + int(SO_FIVE) * int(N_CH) * int(D_BSFG) + int(SO_FIVE) * int(N_CH) * int(D_PHYS) + int(A_FIVE) * int(N_CH) + int(D_PHYS) + int(TRZ * SO_FIVE)
+    target = 96485
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'faraday_F_96485_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Faraday constant C/mol',
+        'primary_source': 'PAPER_1209EE_S626_faraday_F_96485_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s613_z0_vacuum_impedance_closure() -> Dict[str, Any]:
+    uqff = float(A_FIVE * D_BSFG + SO_FIVE + D_BSFG) + 0.84 - TRZ * 0.84 - TRZ ** 2 * 0.57
+    target = 376.73
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'z0_vacuum_impedance_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.005pct',
+        'description': 'Vacuum impedance Z_0 Ω',
+        'primary_source': 'PAPER_1209DD_S613_z0_vacuum_impedance_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s614_alpha_inverse_137_036_closure() -> Dict[str, Any]:
+    uqff = float(A_FIVE) * float(K_MEX) + float(N_CH + D_PHYS) - TRZ * float(SO_FIVE) + TRZ ** 2 * float(D_PHYS)
+    target = 137.036
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'alpha_inverse_137_036_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.003pct',
+        'description': 'Fine structure α⁻¹',
+        'primary_source': 'PAPER_1209DD_S614_alpha_inverse_137_036_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209dd_s620_compton_lambda_2_426_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) + TRZ * float(D_PHYS) - TRZ * 0.57
+    target = 2.426
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'compton_lambda_2_426_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.015pct',
+        'description': 'Compton wavelength λ_C lead',
+        'primary_source': 'PAPER_1209DD_S620_compton_lambda_2_426_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s608_mariana_trench_11_closure() -> Dict[str, Any]:
+    uqff = int(N_CH + 2)
+    target = 11
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'mariana_trench_11_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Mariana Trench depth km',
+        'primary_source': 'PAPER_1209CC_S608_mariana_trench_11_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35685,6 +35788,14 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "rydberg_e_r_13_6057":      _l96_uqff_axiom_paper_1209ee_s623_rydberg_E_R_13_6057_closure,
+    "stefan_sigma_5_67":        _l96_uqff_axiom_paper_1209ee_s624_stefan_sigma_5_67_closure,
+    "hartree_e_h_4_36":         _l96_uqff_axiom_paper_1209ee_s632_hartree_E_h_4_36_closure,
+    "faraday_f_96485":          _l96_uqff_axiom_paper_1209ee_s626_faraday_F_96485_closure,
+    "z0_vacuum_impedance":      _l96_uqff_axiom_paper_1209dd_s613_z0_vacuum_impedance_closure,
+    "alpha_inverse_137_036":    _l96_uqff_axiom_paper_1209dd_s614_alpha_inverse_137_036_closure,
+    "compton_lambda_2_426":     _l96_uqff_axiom_paper_1209dd_s620_compton_lambda_2_426_closure,
+    "mariana_trench_11":        _l96_uqff_axiom_paper_1209cc_s608_mariana_trench_11_closure,
     "h2o_molar_mass_18":        _l96_uqff_axiom_paper_1209aa_h2o_molar_mass_18_closure,
     "c_atomic_mass_12":         _l96_uqff_axiom_paper_1209aa_c_atomic_mass_12_closure,
     "n_atomic_mass_14":         _l96_uqff_axiom_paper_1209aa_n_atomic_mass_14_closure,
