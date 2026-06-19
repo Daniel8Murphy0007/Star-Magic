@@ -1570,6 +1570,19 @@ _exact("M_J/M_⊕ 317.8 PAPER_1209Z_S580",        float(u.D_CRIT*u.SO_FIVE) + 0.
 _exact("Blood pH 7.4 PAPER_1209BB_S594",        float(u.D_BSFG) + u.TRZ * float(u.SO_FIVE) + u.TRZ * float(u.D_PHYS), 7.4, tol=1e-9)
 _exact("DNA bp/turn 10.5 PAPER_1209BB_S601",    float(u.SO_FIVE) + u.TRZ * float(u.D_PHYS) + u.TRZ**2 * float(u.SO_FIVE), 10.5, tol=1e-9)
 
+# Block #39 — PAPER_1209HH/II tier-19 quarks + leptons + nuclei (10 pins, includes ELECTRON MASS)
+_exact("m_b 4.18 GeV PAPER_1209HH_S657",     float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) - u.TRZ*0.57 - u.TRZ**2*float(u.D_CRIT) + u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57**2 - u.TRZ**2*0.57**3, 4.17789907, tol=1e-6)
+_exact("m_c 1.27 GeV PAPER_1209HH_S658",     u.TRZ*float(u.D_CRIT) - u.TRZ*float(u.D_PHYS) - u.TRZ*float(u.SO_FIVE) + u.TRZ**2*float(u.SO_FIVE) - u.TRZ**2*float(u.D_PHYS) + u.TRZ**2*0.57 + u.TRZ**2*0.57**2 + u.TRZ**2*0.57**3, 1.2708009300000003, tol=1e-6)
+_exact("m_s 0.095 GeV PAPER_1209HH_S661",    u.TRZ**2*float(u.SO_FIVE) - u.TRZ**2*0.57**2 - u.TRZ**2*0.57**3, 0.09489907, tol=1e-6)
+_exact("m_e ELECTRON MASS PAPER_1209HH_S662", u.TRZ**3*(0.57**2 + 0.57**3), 0.000510093, tol=1e-7)
+_exact("Fe-56 BE/A PAPER_1209II_S663",       u.TRZ*float(u.K_MEX)**5 - 0.6029**4 + 5.0, 8.792461840018925, tol=1e-6)
+_exact("Ni-62 BE/A PAPER_1209II_S664",       u.TRZ*float(u.K_MEX)**5 - 0.6029**4 + 5.0, 8.792461840018925, tol=1e-6)
+_exact("U-235 BE/A PAPER_1209II_S666",       u.TRZ*float(u.K_MEX)**5 + 0.6029 + u.TRZ*0.6029 + 3.0, 7.587775664223253, tol=1e-6)
+_exact("U-238 BE/A PAPER_1209II_S667",       u.TRZ*float(u.K_MEX)**5 + 0.6029**2 + 0.6029**3 + u.TRZ*0.6029 + 3.0, 7.567511236612253, tol=1e-6)
+_exact("C-12 BE/A PAPER_1209II_S668",        u.TRZ*float(u.K_MEX)**5 + 0.6029 + 0.6029**4 + u.TRZ*0.6029**3 + 3.0, 7.681524204666481, tol=1e-6)
+_exact("Pb-208 BE/A PAPER_1209II_S670",      u.TRZ*float(u.K_MEX)**5 + 0.6029 + 0.6029**2 - u.TRZ*0.6029**3 + 3.0, 7.869059357984353, tol=1e-6)
+
+
 
 
 

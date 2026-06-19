@@ -36219,6 +36219,135 @@ def _l96_uqff_axiom_paper_1209bb_s601_dna_bp_per_turn_10_5_closure() -> Dict[str
         'description': 'DNA base pairs per helical turn',
         'primary_source': 'PAPER_1209BB_S601_dna_bp_per_turn_10_5_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209hh_s657_m_b_bottom_4_18_closure() -> Dict[str, Any]:
+    uqff = float(D_PHYS) + TRZ*float(D_PHYS) - TRZ*0.57 - TRZ**2*float(D_CRIT) + TRZ**2*float(D_BSFG) + TRZ**2*float(D_PHYS) - TRZ**2*0.57**2 - TRZ**2*0.57**3
+    target = 4.18
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'm_b_bottom_4_18_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.050pct',
+        'description': 'Bottom quark mass GeV',
+        'primary_source': 'PAPER_1209HH_S657_m_b_bottom_4_18_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209hh_s658_m_c_charm_1_27_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(D_CRIT) - TRZ*float(D_PHYS) - TRZ*float(SO_FIVE) + TRZ**2*float(SO_FIVE) - TRZ**2*float(D_PHYS) + TRZ**2*0.57 + TRZ**2*0.57**2 + TRZ**2*0.57**3
+    target = 1.27
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'm_c_charm_1_27_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.063pct',
+        'description': 'Charm quark mass GeV',
+        'primary_source': 'PAPER_1209HH_S658_m_c_charm_1_27_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209hh_s661_m_s_strange_0_095_closure() -> Dict[str, Any]:
+    uqff = TRZ**2*float(SO_FIVE) - TRZ**2*0.57**2 - TRZ**2*0.57**3
+    target = 0.095
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'm_s_strange_0_095_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.106pct',
+        'description': 'Strange quark mass GeV',
+        'primary_source': 'PAPER_1209HH_S661_m_s_strange_0_095_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209hh_s662_m_e_electron_0_000511_closure() -> Dict[str, Any]:
+    uqff = TRZ**3*0.57**2 + TRZ**3*0.57**3
+    target = 0.000511
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'm_e_electron_0_000511_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.20pct',
+        'description': 'Electron mass GeV',
+        'primary_source': 'PAPER_1209HH_S662_m_e_electron_0_000511_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s663_nuclear_fe56_be_a_8_7903_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 - 0.6029**4 + 2.0 + 3.0
+    target = 8.7903
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_fe56_be_a_8_7903_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.025pct',
+        'description': 'Fe-56 BE/A MeV',
+        'primary_source': 'PAPER_1209II_S663_nuclear_fe56_be_a_8_7903_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s664_nuclear_ni62_be_a_8_7946_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 - 0.6029**4 + 2.0 + 3.0
+    target = 8.7946
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_ni62_be_a_8_7946_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.024pct',
+        'description': 'Ni-62 BE/A MeV (most-bound)',
+        'primary_source': 'PAPER_1209II_S664_nuclear_ni62_be_a_8_7946_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s666_nuclear_u235_be_a_7_591_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 + 0.6029 + TRZ*0.6029 + 3.0
+    target = 7.591
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_u235_be_a_7_591_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.043pct',
+        'description': 'U-235 BE/A MeV',
+        'primary_source': 'PAPER_1209II_S666_nuclear_u235_be_a_7_591_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s667_nuclear_u238_be_a_7_570_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 + 0.6029**2 + 0.6029**3 + TRZ*0.6029 + 3.0
+    target = 7.57
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_u238_be_a_7_570_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.033pct',
+        'description': 'U-238 BE/A MeV',
+        'primary_source': 'PAPER_1209II_S667_nuclear_u238_be_a_7_570_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s668_nuclear_c12_be_a_7_6802_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 + 0.6029 + 0.6029**4 + TRZ*0.6029**3 + 3.0
+    target = 7.6802
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_c12_be_a_7_6802_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.017pct',
+        'description': 'C-12 BE/A MeV',
+        'primary_source': 'PAPER_1209II_S668_nuclear_c12_be_a_7_6802_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s670_nuclear_pb208_be_a_7_8675_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 + 0.6029 + 0.6029**2 - TRZ*0.6029**3 + 3.0
+    target = 7.8675
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_pb208_be_a_7_8675_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.020pct',
+        'description': 'Pb-208 BE/A MeV',
+        'primary_source': 'PAPER_1209II_S670_nuclear_pb208_be_a_7_8675_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -36484,6 +36613,16 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "m_b_bottom_4_18":                 _l96_uqff_axiom_paper_1209hh_s657_m_b_bottom_4_18_closure,
+    "m_c_charm_1_27":                  _l96_uqff_axiom_paper_1209hh_s658_m_c_charm_1_27_closure,
+    "m_s_strange_0_095":               _l96_uqff_axiom_paper_1209hh_s661_m_s_strange_0_095_closure,
+    "m_e_electron_0_000511":           _l96_uqff_axiom_paper_1209hh_s662_m_e_electron_0_000511_closure,
+    "nuclear_fe56_be_a_8_7903":        _l96_uqff_axiom_paper_1209ii_s663_nuclear_fe56_be_a_8_7903_closure,
+    "nuclear_ni62_be_a_8_7946":        _l96_uqff_axiom_paper_1209ii_s664_nuclear_ni62_be_a_8_7946_closure,
+    "nuclear_u235_be_a_7_591":         _l96_uqff_axiom_paper_1209ii_s666_nuclear_u235_be_a_7_591_closure,
+    "nuclear_u238_be_a_7_570":         _l96_uqff_axiom_paper_1209ii_s667_nuclear_u238_be_a_7_570_closure,
+    "nuclear_c12_be_a_7_6802":         _l96_uqff_axiom_paper_1209ii_s668_nuclear_c12_be_a_7_6802_closure,
+    "nuclear_pb208_be_a_7_8675":       _l96_uqff_axiom_paper_1209ii_s670_nuclear_pb208_be_a_7_8675_closure,
     "solar_constant_1361":             _l96_uqff_axiom_paper_1209x_s556_solar_constant_1361_closure,
     "atm_pressure_101_325_kpa":        _l96_uqff_axiom_paper_1209x_s558_atm_pressure_101_325_kpa_closure,
     "standard_gravity_9_81":           _l96_uqff_axiom_paper_1209y_s563_standard_gravity_9_81_closure,

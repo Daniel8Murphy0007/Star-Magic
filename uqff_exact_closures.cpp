@@ -318,6 +318,18 @@ double moon_distance_ratio()   { return double(A_5) + F_TRZ*PHI_5_6*double(D_PHY
 double jupiter_mass_ratio()    { return double(D_CRIT*SO_5) + SSQ*double(SO_5) + double(SO_5*D_PHYS) + double(SO_5) + K_MEX; }                              // 317.78 (0.005% PAPER_1209Z_S580)
 double blood_ph()              { return double(D_BSFG) + F_TRZ*double(SO_5) + F_TRZ*double(D_PHYS); }                                                       // 7.4 EXACT (PAPER_1209BB_S594)
 double dna_bp_per_turn()       { return double(SO_5) + F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*double(SO_5); }                                                   // 10.5 EXACT (PAPER_1209BB_S601)
+
+// ----- PAPER_1209HH/II tier-19 quarks + leptons + nuclei (10 added) -----
+double m_b_bottom_GeV()        { return double(D_PHYS) + F_TRZ*double(D_PHYS) - F_TRZ*SSQ - F_TRZ*F_TRZ*double(D_CRIT) + F_TRZ*F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ*SSQ - F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 4.178 (PAPER_1209HH_S657)
+double m_c_charm_GeV()         { return F_TRZ*double(D_CRIT) - F_TRZ*double(D_PHYS) - F_TRZ*double(SO_5) + F_TRZ*F_TRZ*double(SO_5) - F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 1.271 (PAPER_1209HH_S658)
+double m_s_strange_GeV()       { return F_TRZ*F_TRZ*double(SO_5) - F_TRZ*F_TRZ*SSQ*SSQ - F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 0.0949 (PAPER_1209HH_S661)
+double m_e_electron_GeV()      { return F_TRZ*F_TRZ*F_TRZ * (SSQ*SSQ + SSQ*SSQ*SSQ); } // 0.000510 — ELECTRON MASS (PAPER_1209HH_S662)
+double nuclear_fe56_be_a()     { return F_TRZ*std::pow(K_MEX,5) - std::pow(beta_i_const,4) + 2.0 + 3.0; } // 8.792 (PAPER_1209II_S663)
+double nuclear_ni62_be_a()     { return F_TRZ*std::pow(K_MEX,5) - std::pow(beta_i_const,4) + 2.0 + 3.0; } // 8.792 (identical formula to Fe-56, PAPER_1209II_S664)
+double nuclear_u235_be_a()     { return F_TRZ*std::pow(K_MEX,5) + beta_i_const + F_TRZ*beta_i_const + 3.0; } // 7.588 (PAPER_1209II_S666)
+double nuclear_u238_be_a()     { return F_TRZ*std::pow(K_MEX,5) + std::pow(beta_i_const,2) + std::pow(beta_i_const,3) + F_TRZ*beta_i_const + 3.0; } // 7.568 (PAPER_1209II_S667)
+double nuclear_c12_be_a()      { return F_TRZ*std::pow(K_MEX,5) + beta_i_const + std::pow(beta_i_const,4) + F_TRZ*std::pow(beta_i_const,3) + 3.0; } // 7.682 (PAPER_1209II_S668)
+double nuclear_pb208_be_a()    { return F_TRZ*std::pow(K_MEX,5) + beta_i_const + std::pow(beta_i_const,2) - F_TRZ*std::pow(beta_i_const,3) + 3.0; } // 7.869 (PAPER_1209II_S670)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
