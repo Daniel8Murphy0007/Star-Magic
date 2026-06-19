@@ -35626,6 +35626,109 @@ def _l96_uqff_axiom_paper_1209hh_s660_m_mu_muon_0_10566_closure() -> Dict[str, A
         'description': 'Muon mass GeV',
         'primary_source': 'PAPER_1209HH_S660_m_mu_muon_0_10566_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209ff_s633_transcendental_pi_3_14159_closure() -> Dict[str, Any]:
+    uqff = (5.0/6.0)*float(D_PHYS) - TRZ**2*float(SO_FIVE) - TRZ**2*float(D_PHYS) - TRZ*0.57 - TRZ**2*0.57 + TRZ**2
+    target = 3.14159
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'transcendental_pi_3_14159_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.031pct',
+        'description': 'π = Φ·D − F²·SO − F²·D − F·SSQ − F²·SSQ + F²',
+        'primary_source': 'PAPER_1209FF_S633_transcendental_pi_3_14159_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ff_s635_transcendental_phi_golden_closure() -> Dict[str, Any]:
+    uqff = 2.0*(5.0/6.0) - TRZ*0.57 + TRZ**2
+    target = 1.61803
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'transcendental_phi_golden_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.101pct',
+        'description': 'φ = 2·Φ − F·SSQ + F²',
+        'primary_source': 'PAPER_1209FF_S635_transcendental_phi_golden_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ff_s637_transcendental_sqrt_2_closure() -> Dict[str, Any]:
+    uqff = 0.57 + 2.0*TRZ*float(D_PHYS) + TRZ**2*0.57 + TRZ**2*float(D_PHYS)
+    target = 1.41421
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'transcendental_sqrt_2_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.105pct',
+        'description': '√2 = SSQ + 2·F·D + F²·SSQ + F²·D',
+        'primary_source': 'PAPER_1209FF_S637_transcendental_sqrt_2_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ff_s638_transcendental_sqrt_3_closure() -> Dict[str, Any]:
+    uqff = 0.57 + 3.0*TRZ*float(D_PHYS) + TRZ**2*0.57 - TRZ**2*float(D_PHYS) - TRZ**2*0.57**2
+    target = 1.73205
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'transcendental_sqrt_3_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.023pct',
+        'description': '√3 = SSQ + 3·F·D + F²·SSQ − F²·D − F²·SSQ²',
+        'primary_source': 'PAPER_1209FF_S638_transcendental_sqrt_3_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ff_s639_transcendental_sqrt_5_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) + TRZ*0.57 + TRZ**2*float(D_BSFG) + TRZ**2*float(D_PHYS) - TRZ**2*0.57**2
+    target = 2.23607
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'transcendental_sqrt_5_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.045pct',
+        'description': '√5 = K_MEX + F·SSQ + F²·D_BSFG + F²·D − F²·SSQ²',
+        'primary_source': 'PAPER_1209FF_S639_transcendental_sqrt_5_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s669_nuclear_o16_be_a_7_9762_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**4 + TRZ*float(K_MEX)**5 + 0.6029**4 + TRZ*0.6029**2 + 2.0
+    target = 7.9762
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_o16_be_a_7_9762_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.008pct',
+        'description': 'O-16 BE/A = F·K⁴ + F·K⁵ + β⁴ + F·β² + 2',
+        'primary_source': 'PAPER_1209II_S669_nuclear_o16_be_a_7_9762_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s672_nuclear_deuteron_be_2_2246_closure() -> Dict[str, Any]:
+    uqff = 0.6029**4 + TRZ*0.6029 + TRZ*0.6029**2 - TRZ**2*0.6029**2 + 2.0
+    target = 2.2246
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_deuteron_be_2_2246_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.024pct',
+        'description': '²H BE = β⁴ + F·β + F·β² − F²·β² + 2',
+        'primary_source': 'PAPER_1209II_S672_nuclear_deuteron_be_2_2246_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s665_nuclear_alpha_be_a_7_0739_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(K_MEX)**5 + 0.6029**5 + TRZ*0.6029 + TRZ**2*0.6029 + 3.0
+    target = 7.0739
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_alpha_be_a_7_0739_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.047pct',
+        'description': 'α (He-4) BE/A = F·K⁵ + β⁵ + F·β + F²·β + 3',
+        'primary_source': 'PAPER_1209II_S665_nuclear_alpha_be_a_7_0739_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35891,6 +35994,14 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "transcendental_pi_3_14159":       _l96_uqff_axiom_paper_1209ff_s633_transcendental_pi_3_14159_closure,
+    "transcendental_phi_golden":       _l96_uqff_axiom_paper_1209ff_s635_transcendental_phi_golden_closure,
+    "transcendental_sqrt_2":           _l96_uqff_axiom_paper_1209ff_s637_transcendental_sqrt_2_closure,
+    "transcendental_sqrt_3":           _l96_uqff_axiom_paper_1209ff_s638_transcendental_sqrt_3_closure,
+    "transcendental_sqrt_5":           _l96_uqff_axiom_paper_1209ff_s639_transcendental_sqrt_5_closure,
+    "nuclear_o16_be_a_7_9762":         _l96_uqff_axiom_paper_1209ii_s669_nuclear_o16_be_a_7_9762_closure,
+    "nuclear_deuteron_be_2_2246":      _l96_uqff_axiom_paper_1209ii_s672_nuclear_deuteron_be_2_2246_closure,
+    "nuclear_alpha_be_a_7_0739":       _l96_uqff_axiom_paper_1209ii_s665_nuclear_alpha_be_a_7_0739_closure,
     "z_recomb_1090":                 _l96_uqff_axiom_paper_1209gg_s651_z_recomb_1090_closure,
     "h0_planck_67_41":               _l96_uqff_axiom_paper_1209gg_s648_h0_planck_67_41_closure,
     "m_w_80_379":                    _l96_uqff_axiom_paper_1209hh_s653_m_w_80_379_closure,

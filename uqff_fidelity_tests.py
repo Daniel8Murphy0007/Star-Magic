@@ -1512,6 +1512,19 @@ _exact("m_H ≈ 125.12 GeV PAPER_1209HH_S656",         2.0*float(u.A_FIVE) + flo
 _exact("m_τ ≈ 1.777 GeV PAPER_1209HH_S659",          0.57 + u.TRZ*float(u.D_PHYS) + u.TRZ*float(u.SO_FIVE) - u.TRZ**2*float(u.D_CRIT) + u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*0.57 + u.TRZ**2*0.57**2 - u.TRZ**2*0.57**3, 1.7770970700000002, tol=1e-3)
 _exact("m_μ ≈ 0.10570 GeV PAPER_1209HH_S660",        u.TRZ**2*float(u.SO_FIVE) + u.TRZ**2*0.57**2 + u.TRZ**2*0.57**3 + u.TRZ**2*0.57**5, 0.10570262205700003, tol=1e-3)
 
+# Block #34 — PAPER_1209FF/II tier-14 math + nuclear (8 pins)
+_beta_i = 0.6029
+_PHI_56 = 5.0/6.0
+_exact("π = Φ·D-...-+F² PAPER_1209FF_S633",       _PHI_56*float(u.D_PHYS) - u.TRZ**2*float(u.SO_FIVE) - u.TRZ**2*float(u.D_PHYS) - u.TRZ*0.57 - u.TRZ**2*0.57 + u.TRZ**2, 3.140633333333333, tol=1e-3)
+_exact("φ = 2Φ-F·SSQ+F² PAPER_1209FF_S635",       2.0*_PHI_56 - u.TRZ*0.57 + u.TRZ**2, 1.6196666666666668, tol=1e-3)
+_exact("√2 PAPER_1209FF_S637",                    0.57 + 2.0*u.TRZ*float(u.D_PHYS) + u.TRZ**2*0.57 + u.TRZ**2*float(u.D_PHYS), 1.4157000000000002, tol=1e-3)
+_exact("√3 PAPER_1209FF_S638",                    0.57 + 3.0*u.TRZ*float(u.D_PHYS) + u.TRZ**2*0.57 - u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57**2, 1.732451, tol=1e-3)
+_exact("√5 PAPER_1209FF_S639",                    float(u.K_MEX) + u.TRZ*0.57 + u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57**2, 2.2370843333333337, tol=1e-3)
+_exact("O-16 BE/A = 7.977 PAPER_1209II_S669",     u.TRZ*float(u.K_MEX)**4 + u.TRZ*float(u.K_MEX)**5 + _beta_i**4 + u.TRZ*_beta_i**2 + 2.0, 7.976859448254742, tol=1e-3)
+_exact("²H deuteron BE = 2.225 PAPER_1209II_S672", _beta_i**4 + u.TRZ*_beta_i + u.TRZ*_beta_i**2 - u.TRZ**2*_beta_i**2 + 2.0, 2.225127781104328, tol=1e-3)
+_exact("α He-4 BE/A = 7.071 PAPER_1209II_S665",   u.TRZ*float(u.K_MEX)**5 + _beta_i**5 + u.TRZ*_beta_i + u.TRZ**2*_beta_i + 3.0, 7.070562117836042, tol=1e-3)
+
+
 
 
 
