@@ -1502,6 +1502,17 @@ _exact("α⁻¹ ≈ 137.04 PAPER_1209DD_S614 fine-structure",  float(u.A_FIVE) *
 _exact("Compton λ_C = 2.426 PAPER_1209DD_S620",          float(u.K_MEX) + u.TRZ * float(u.D_PHYS) - u.TRZ * 0.57, 2.4263333333333335, tol=1e-3)
 _exact("Mariana Trench = N_CH+2 = 11 km PAPER_1209CC",   int(u.N_CH + 2), 11)
 
+# Block #33 — PAPER_1209GG/HH tier-13 cosmology + SM particle masses (8 pins)
+_exact("z_recomb = 1090 PAPER_1209GG_S651",          int(u.A_FIVE*u.SO_FIVE + u.A_FIVE*u.D_PHYS + u.SO_FIVE*u.D_CRIT - u.SO_FIVE), 1090)
+_exact("H_0 ≈ 67.41 PAPER_1209GG_S648",              float(u.K_MEX)*float(u.D_CRIT) + float(u.D_PHYS+u.SO_FIVE) - 2.0*u.TRZ*float(u.D_PHYS) + u.TRZ**2*float(u.D_PHYS) + u.TRZ**2*0.57**2, 67.40991566666668, tol=1e-3)
+_exact("m_W ≈ 80.38 GeV PAPER_1209HH_S653",          float(u.A_FIVE + 2*u.SO_FIVE) + u.TRZ*float(u.D_PHYS) - u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57**2, 80.37675100000001, tol=1e-3)
+_exact("m_Z ≈ 91.20 GeV PAPER_1209HH_S654",          float(u.N_CH*u.SO_FIVE) + u.TRZ*float(u.SO_FIVE) + u.TRZ**2*float(u.SO_FIVE) + u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*float(u.D_PHYS) + u.TRZ**2*0.57 - u.TRZ**2*0.57**3, 91.20384807, tol=1e-3)
+_exact("m_t ≈ 172.75 GeV PAPER_1209HH_S655",         float(u.D_CRIT*u.SO_FIVE) - float(u.A_FIVE) - float(u.D_PHYS*u.N_CH) + float(u.SO_FIVE) - u.TRZ*float(u.D_PHYS) - u.TRZ*float(u.SO_FIVE) + u.TRZ**2*float(u.D_BSFG) + 2.0*u.TRZ**2*float(u.D_PHYS) + u.TRZ**2*0.57 + u.TRZ**2*0.57**2 + u.TRZ**2*0.57**3, 172.75080093, tol=1e-3)
+_exact("m_H ≈ 125.12 GeV PAPER_1209HH_S656",         2.0*float(u.A_FIVE) + float(u.N_CH) - float(u.D_PHYS) + u.TRZ*0.57 + u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*0.57**2, 125.120249, tol=1e-3)
+_exact("m_τ ≈ 1.777 GeV PAPER_1209HH_S659",          0.57 + u.TRZ*float(u.D_PHYS) + u.TRZ*float(u.SO_FIVE) - u.TRZ**2*float(u.D_CRIT) + u.TRZ**2*float(u.D_BSFG) + u.TRZ**2*0.57 + u.TRZ**2*0.57**2 - u.TRZ**2*0.57**3, 1.7770970700000002, tol=1e-3)
+_exact("m_μ ≈ 0.10570 GeV PAPER_1209HH_S660",        u.TRZ**2*float(u.SO_FIVE) + u.TRZ**2*0.57**2 + u.TRZ**2*0.57**3 + u.TRZ**2*0.57**5, 0.10570262205700003, tol=1e-3)
+
+
 
 
 

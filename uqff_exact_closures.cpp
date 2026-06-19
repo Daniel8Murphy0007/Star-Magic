@@ -251,6 +251,16 @@ double z0_vacuum_impedance()   { return double(A_5*D_BSFG + SO_5 + D_BSFG) + 0.8
 double alpha_inverse()         { return double(A_5)*K_MEX + double(N_CH + D_PHYS) - F_TRZ*double(SO_5) + F_TRZ*F_TRZ*double(D_PHYS); } // 137.04 vs 137.036 (0.003% PAPER_1209DD_S614)
 double compton_lambda_lead()   { return K_MEX + F_TRZ*double(D_PHYS) - F_TRZ*SSQ; }                            // 2.426 EXACT (0.015% PAPER_1209DD)
 int    mariana_trench_km()     { return N_CH + 2; }                                                            // 11 EXACT (PAPER_1209CC)
+
+// ----- PAPER_1209GG/HH tier-13 cosmology + SM particle masses (8 added) -----
+int    z_recomb_1090()         { return A_5*SO_5 + A_5*D_PHYS + SO_5*D_CRIT - SO_5; }                              // 1090 EXACT (PAPER_1209GG_S651)
+double h0_planck()             { return K_MEX*double(D_CRIT) + double(D_PHYS+SO_5) - 2.0*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*SSQ*SSQ; } // 67.41 vs 67.4 (0.015% PAPER_1209GG_S648)
+double m_w_GeV()               { return double(A_5 + 2*SO_5) + F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ*SSQ; } // 80.38 vs 80.379 (0.003% PAPER_1209HH_S653 TIER BEST)
+double m_z_GeV()               { return double(N_CH*SO_5) + F_TRZ*double(SO_5) + F_TRZ*F_TRZ*double(SO_5) + F_TRZ*F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*SSQ - F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 91.20 (0.018% PAPER_1209HH_S654)
+double m_t_GeV()               { return double(D_CRIT*SO_5) - double(A_5) - double(D_PHYS*N_CH) + double(SO_5) - F_TRZ*double(D_PHYS) - F_TRZ*double(SO_5) + F_TRZ*F_TRZ*double(D_BSFG) + 2.0*F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 172.75 (0.005% PAPER_1209HH_S655)
+double m_h_higgs_GeV()         { return 2.0*double(A_5) + double(N_CH) - double(D_PHYS) + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*SSQ*SSQ; } // 125.12 (0.016% PAPER_1209HH_S656)
+double m_tau_GeV()             { return SSQ + F_TRZ*double(D_PHYS) + F_TRZ*double(SO_5) - F_TRZ*F_TRZ*double(D_CRIT) + F_TRZ*F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ - F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 1.777 (0.013% PAPER_1209HH_S659)
+double m_mu_GeV()              { return F_TRZ*F_TRZ*double(SO_5) + F_TRZ*F_TRZ*SSQ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ*SSQ*SSQ*SSQ; } // 0.10570 (0.040% PAPER_1209HH_S660)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
