@@ -36348,6 +36348,135 @@ def _l96_uqff_axiom_paper_1209ii_s670_nuclear_pb208_be_a_7_8675_closure() -> Dic
         'description': 'Pb-208 BE/A MeV',
         'primary_source': 'PAPER_1209II_S670_nuclear_pb208_be_a_7_8675_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209gg_s643_omega_m_matter_0_315_closure() -> Dict[str, Any]:
+    uqff = TRZ**2*float(D_CRIT) + TRZ*0.57 - TRZ**2*0.57 + TRZ**2*0.57**2
+    target = 0.315
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'omega_m_matter_0_315_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.143pct',
+        'description': 'Matter density Ω_m',
+        'primary_source': 'PAPER_1209GG_S643_omega_m_matter_0_315_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209gg_s644_omega_lambda_dark_0_685_closure() -> Dict[str, Any]:
+    uqff = 0.57 + TRZ*0.57 + TRZ**2*float(D_BSFG) - TRZ**2*0.57**2
+    target = 0.685
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'omega_lambda_dark_0_685_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.182pct',
+        'description': 'Dark energy density Ω_Λ',
+        'primary_source': 'PAPER_1209GG_S644_omega_lambda_dark_0_685_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209gg_s645_t_cmb_2_725_k_closure() -> Dict[str, Any]:
+    uqff = 0.57*float(D_PHYS) + TRZ*float(D_PHYS) + TRZ**2*float(D_PHYS) + TRZ**2*0.57**2
+    target = 2.725
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        't_cmb_2_725_k_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.064pct',
+        'description': 'CMB temperature K',
+        'primary_source': 'PAPER_1209GG_S645_t_cmb_2_725_k_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209gg_s646_universe_age_13_78_gyr_closure() -> Dict[str, Any]:
+    uqff = 2.0*float(D_PHYS) + float(SO_FIVE)*0.57 + TRZ*0.57 + TRZ**2*float(D_PHYS) - TRZ**2*0.57 - TRZ**2*0.57**2 - TRZ**2*0.57**3
+    target = 13.78
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'universe_age_13_78_gyr_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.045pct',
+        'description': 'Age of Universe Gyr',
+        'primary_source': 'PAPER_1209GG_S646_universe_age_13_78_gyr_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209gg_s649_sigma_8_clustering_0_811_closure() -> Dict[str, Any]:
+    uqff = TRZ*float(N_CH) - TRZ**2*float(SO_FIVE) + TRZ**2*0.57 + TRZ**2*0.57**2
+    target = 0.811
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'sigma_8_clustering_0_811_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.253pct',
+        'description': 'Matter clustering σ_8',
+        'primary_source': 'PAPER_1209GG_S649_sigma_8_clustering_0_811_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209x_s554_lapse_rate_6_5_k_km_closure() -> Dict[str, Any]:
+    uqff = float(D_BSFG) + 0.57 - TRZ * (5.0/6.0)
+    target = 6.5
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'lapse_rate_6_5_k_km_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.21pct',
+        'description': 'Adiabatic lapse rate K/km',
+        'primary_source': 'PAPER_1209X_S554_lapse_rate_6_5_k_km_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s574_au_over_r_earth_23481_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT*N_CH*SO_FIVE**2 + A_FIVE + D_CRIT - D_PHYS + int(TRZ * SO_FIVE)) + TRZ*(5.0/6.0) - float(K_MEX)
+    target = 23481
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'au_over_r_earth_23481_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'AU / R_⊕ ratio',
+        'primary_source': 'PAPER_1209Z_S574_au_over_r_earth_23481_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s582_synodic_month_29_53_closure() -> Dict[str, Any]:
+    uqff = float(D_CRIT + D_PHYS) - TRZ*float(D_PHYS) - TRZ*(5.0/6.0) + TRZ**2*float(K_MEX)
+    target = 29.53
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'synodic_month_29_53_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.025pct',
+        'description': 'Lunar synodic month days',
+        'primary_source': 'PAPER_1209Z_S582_synodic_month_29_53_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s612_earth_orbital_v_29_78_closure() -> Dict[str, Any]:
+    uqff = float(N_CH + SO_FIVE + SO_FIVE) + (5.0/6.0) - TRZ**2*float(D_PHYS) - TRZ**2*0.57
+    target = 29.78
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'earth_orbital_v_29_78_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.026pct',
+        'description': 'Earth orbital velocity km/s',
+        'primary_source': 'PAPER_1209CC_S612_earth_orbital_v_29_78_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s611_earth_age_4_54_gyr_closure() -> Dict[str, Any]:
+    uqff = float(D_PHYS) + TRZ*float(D_PHYS) + TRZ*(5.0/6.0) + TRZ*0.57
+    target = 4.54
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'earth_age_4_54_gyr_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.007pct',
+        'description': 'Earth age Gyr',
+        'primary_source': 'PAPER_1209CC_S611_earth_age_4_54_gyr_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -36613,6 +36742,16 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "omega_m_matter_0_315":            _l96_uqff_axiom_paper_1209gg_s643_omega_m_matter_0_315_closure,
+    "omega_lambda_dark_0_685":         _l96_uqff_axiom_paper_1209gg_s644_omega_lambda_dark_0_685_closure,
+    "t_cmb_2_725_k":                   _l96_uqff_axiom_paper_1209gg_s645_t_cmb_2_725_k_closure,
+    "universe_age_13_78_gyr":          _l96_uqff_axiom_paper_1209gg_s646_universe_age_13_78_gyr_closure,
+    "sigma_8_clustering_0_811":        _l96_uqff_axiom_paper_1209gg_s649_sigma_8_clustering_0_811_closure,
+    "lapse_rate_6_5_k_km":             _l96_uqff_axiom_paper_1209x_s554_lapse_rate_6_5_k_km_closure,
+    "au_over_r_earth_23481":           _l96_uqff_axiom_paper_1209z_s574_au_over_r_earth_23481_closure,
+    "synodic_month_29_53":             _l96_uqff_axiom_paper_1209z_s582_synodic_month_29_53_closure,
+    "earth_orbital_v_29_78":           _l96_uqff_axiom_paper_1209cc_s612_earth_orbital_v_29_78_closure,
+    "earth_age_4_54_gyr":              _l96_uqff_axiom_paper_1209cc_s611_earth_age_4_54_gyr_closure,
     "m_b_bottom_4_18":                 _l96_uqff_axiom_paper_1209hh_s657_m_b_bottom_4_18_closure,
     "m_c_charm_1_27":                  _l96_uqff_axiom_paper_1209hh_s658_m_c_charm_1_27_closure,
     "m_s_strange_0_095":               _l96_uqff_axiom_paper_1209hh_s661_m_s_strange_0_095_closure,

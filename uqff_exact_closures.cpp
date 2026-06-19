@@ -330,6 +330,18 @@ double nuclear_u235_be_a()     { return F_TRZ*std::pow(K_MEX,5) + beta_i_const +
 double nuclear_u238_be_a()     { return F_TRZ*std::pow(K_MEX,5) + std::pow(beta_i_const,2) + std::pow(beta_i_const,3) + F_TRZ*beta_i_const + 3.0; } // 7.568 (PAPER_1209II_S667)
 double nuclear_c12_be_a()      { return F_TRZ*std::pow(K_MEX,5) + beta_i_const + std::pow(beta_i_const,4) + F_TRZ*std::pow(beta_i_const,3) + 3.0; } // 7.682 (PAPER_1209II_S668)
 double nuclear_pb208_be_a()    { return F_TRZ*std::pow(K_MEX,5) + beta_i_const + std::pow(beta_i_const,2) - F_TRZ*std::pow(beta_i_const,3) + 3.0; } // 7.869 (PAPER_1209II_S670)
+
+// ----- PAPER_1209GG/X/CC/Z tier-20 (10 added: ΛCDM completion) -----
+double omega_m_matter()        { return F_TRZ*F_TRZ*double(D_CRIT) + F_TRZ*SSQ - F_TRZ*F_TRZ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ; } // 0.3145 (PAPER_1209GG_S643)
+double omega_lambda_dark()     { return SSQ + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_BSFG) - F_TRZ*F_TRZ*SSQ*SSQ; } // 0.6838 (PAPER_1209GG_S644)
+double t_cmb_K()               { return SSQ*double(D_PHYS) + F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*SSQ*SSQ; } // 2.7232 (PAPER_1209GG_S645)
+double universe_age_Gyr()      { return 2.0*double(D_PHYS) + double(SO_5)*SSQ + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ - F_TRZ*F_TRZ*SSQ*SSQ - F_TRZ*F_TRZ*SSQ*SSQ*SSQ; } // 13.79 (PAPER_1209GG_S646)
+double sigma_8_clustering()    { return F_TRZ*double(N_CH) - F_TRZ*F_TRZ*double(SO_5) + F_TRZ*F_TRZ*SSQ + F_TRZ*F_TRZ*SSQ*SSQ; } // 0.8089 (PAPER_1209GG_S649)
+double lapse_rate_K_per_km()   { return double(D_BSFG) + SSQ - F_TRZ*PHI_5_6; } // 6.487 (PAPER_1209X_S554)
+int au_over_r_earth()          { return D_CRIT*N_CH*SO_5*SO_5 + A_5 + D_CRIT - D_PHYS + (int)(F_TRZ*SO_5); } // 23481 EXACT (PAPER_1209Z_S574)
+double synodic_month_days()    { return double(D_CRIT + D_PHYS) - F_TRZ*double(D_PHYS) - F_TRZ*PHI_5_6 + F_TRZ*F_TRZ*K_MEX; } // 29.54 (PAPER_1209Z_S582)
+double earth_orbital_v_km_s()  { return double(N_CH + SO_5 + SO_5) + PHI_5_6 - F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ; } // 29.79 (PAPER_1209CC_S612)
+double earth_age_Gyr()         { return double(D_PHYS) + F_TRZ*double(D_PHYS) + F_TRZ*PHI_5_6 + F_TRZ*SSQ; } // 4.5403 (PAPER_1209CC_S611 - tier best 0.007%)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

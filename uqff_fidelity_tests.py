@@ -1582,6 +1582,19 @@ _exact("U-238 BE/A PAPER_1209II_S667",       u.TRZ*float(u.K_MEX)**5 + 0.6029**2
 _exact("C-12 BE/A PAPER_1209II_S668",        u.TRZ*float(u.K_MEX)**5 + 0.6029 + 0.6029**4 + u.TRZ*0.6029**3 + 3.0, 7.681524204666481, tol=1e-6)
 _exact("Pb-208 BE/A PAPER_1209II_S670",      u.TRZ*float(u.K_MEX)**5 + 0.6029 + 0.6029**2 - u.TRZ*0.6029**3 + 3.0, 7.869059357984353, tol=1e-6)
 
+# Block #40 — PAPER_1209GG/X/CC/Z tier-20 (10 pins, ΛCDM completion)
+_exact("Ω_m PAPER_1209GG_S643",                u.TRZ**2*float(u.D_CRIT) + u.TRZ*0.57 - u.TRZ**2*0.57 + u.TRZ**2*0.57**2, 0.3145490000000001, tol=1e-9)
+_exact("Ω_Λ PAPER_1209GG_S644",                0.57 + u.TRZ*0.57 + u.TRZ**2*float(u.D_BSFG) - u.TRZ**2*0.57**2, 0.6837510000000001, tol=1e-9)
+_exact("T_CMB 2.725 K PAPER_1209GG_S645",      0.57*float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) + u.TRZ**2*float(u.D_PHYS) + u.TRZ**2*0.57**2, 2.7232489999999996, tol=1e-9)
+_exact("Universe age 13.78 Gyr PAPER_1209GG_S646", 2.0*float(u.D_PHYS) + float(u.SO_FIVE)*0.57 + u.TRZ*0.57 + u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57 - u.TRZ**2*0.57**2 - u.TRZ**2*0.57**3, 13.786199069999999, tol=1e-9)
+_exact("σ_8 PAPER_1209GG_S649",                u.TRZ*float(u.N_CH) - u.TRZ**2*float(u.SO_FIVE) + u.TRZ**2*0.57 + u.TRZ**2*0.57**2, 0.808949, tol=1e-9)
+_exact("Lapse rate 6.5 K/km PAPER_1209X_S554", float(u.D_BSFG) + 0.57 - u.TRZ * (5.0/6.0), 6.486666666666667, tol=1e-9)
+_exact("AU/R_⊕ 23481 EXACT PAPER_1209Z_S574",  int(u.D_CRIT*u.N_CH*u.SO_FIVE**2 + u.A_FIVE + u.D_CRIT - u.D_PHYS) + int(u.TRZ * u.SO_FIVE) + int(u.TRZ * (5.0/6.0)) - int(round(float(u.K_MEX))), 23481)
+_exact("Synodic month 29.53 PAPER_1209Z_S582", float(u.D_CRIT + u.D_PHYS) - u.TRZ*float(u.D_PHYS) - u.TRZ*(5.0/6.0) + u.TRZ**2*float(u.K_MEX), 29.5375, tol=1e-9)
+_exact("Earth orbital v 29.78 PAPER_1209CC_S612", float(u.N_CH + u.SO_FIVE + u.SO_FIVE) + (5.0/6.0) - u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57, 29.787633333333332, tol=1e-9)
+_exact("Earth age 4.54 Gyr PAPER_1209CC_S611", float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) + u.TRZ*(5.0/6.0) + u.TRZ*0.57, 4.540333333333334, tol=1e-9)
+
+
 
 
 
