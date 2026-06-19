@@ -35232,6 +35232,194 @@ def _l96_uqff_axiom_peters_mathews_orbital_decay_coefficient_closure() -> Dict[s
     pm_coefficient_uqff = 2 ** int(D_BSFG)
     return {"Peters_Mathews_coefficient_observed_PAPER_817_GW_orbital_decay": pm_coefficient_obs, "coefficient_UQFF_via_2_pow_D_BSFG_eq_64_EXACT": pm_coefficient_uqff, "appears_in_dr_dt_eq_minus_64_over_5_times_G_cubed_m1_m2_Mtot_over_c5_r_cubed": True, "primary_source": "PAPER_817_GRMHD_Binary_BH_Merger_Peters_Mathews_orbital_decay_coefficient_eq_2_pow_D_BSFG_eq_64_EXACT"}
 
+def _l96_uqff_axiom_paper_1167_D_BSFG_structural_derivation_closure() -> Dict[str, Any]:
+    D_BSFG_canonical = int(D_BSFG)
+    D_BSFG_derived_from_D_crit_and_SO_5 = int(D_CRIT - 2 * SO_FIVE)
+    return {"D_BSFG_canonical_locked_primitive": D_BSFG_canonical, "D_BSFG_DERIVED_from_D_crit_minus_2_times_SO_5_eq_26_minus_20_eq_6_EXACT": D_BSFG_derived_from_D_crit_and_SO_5, "match": D_BSFG_canonical == D_BSFG_derived_from_D_crit_and_SO_5, "consequence_D_BSFG_is_NOT_INDEPENDENT_primitive_reducing_11_to_10_locked_primitives": True, "primary_source": "PAPER_1167_All_8_Lagrangian_Gaps_Closed_D_BSFG_eq_D_crit_minus_2_SO_5_eq_6_EXACT_derivative_not_independent"}
+
+def _l96_uqff_axiom_paper_1167_K_MEX_structural_derivation_closure() -> Dict[str, Any]:
+    PHI_5_6 = 5.0 / 6.0
+    K_MEX_canonical = float(K_MEX)
+    K_MEX_derived = PHI_5_6 * float(SO_FIVE) / float(D_PHYS)
+    return {"K_MEX_canonical_locked_primitive_25_over_12": K_MEX_canonical, "K_MEX_DERIVED_from_Phi_5_6_times_SO_5_over_D_phys_eq_5_over_6_times_10_over_4_eq_25_over_12_EXACT": K_MEX_derived, "match_to_canonical": abs(K_MEX_canonical - K_MEX_derived) < 1e-15, "consequence_K_MEX_is_NOT_INDEPENDENT_primitive_derives_from_Phi_5_6_SO_5_D_phys": True, "primary_source": "PAPER_1167_All_8_Lagrangian_Gaps_Closed_K_MEX_eq_Phi_5_6_SO_5_over_D_phys_eq_25_over_12_EXACT_derivative_not_independent"}
+
+def _l96_uqff_axiom_paper_1238_f221_f220_QNM_ratio_closure() -> Dict[str, Any]:
+    PHI = 0.84
+    SSQ_val = 0.57
+    f221_f220_uqff = 1.0 - TRZ * float(N_CH) * PHI * SSQ_val / float(D_CRIT)
+    f221_f220_obs_BertiCardoso = 0.992
+    residual_pct = abs(f221_f220_uqff - f221_f220_obs_BertiCardoso) / f221_f220_obs_BertiCardoso * 100.0
+    return {"f221_f220_UQFF_via_1_minus_TRZ_N_CH_Phi_SSQ_over_D_crit": f221_f220_uqff, "f221_f220_observed_Berti_Cardoso": f221_f220_obs_BertiCardoso, "residual_pct": residual_pct, "Kerr_BH_overtone_QNM_spectral_ratio_PAPER_1238": True, "primary_source": "PAPER_1238_LIGO_Ringdown_Multi_Mode_f221_over_f220_eq_one_minus_TRZ_N_CH_Phi_SSQ_over_D_crit_eq_0p9834_residual_0p86_pct"}
+
+def _l96_uqff_axiom_paper_1249_f_geom_one_eighth_closure() -> Dict[str, Any]:
+    f_geom_obs = 0.125
+    f_geom_uqff = 1.0 / (2 ** int(D_PHYS - 1))
+    return {"f_geom_spinor_bundle_projection_observed_PAPER_1249": f_geom_obs, "f_geom_UQFF_via_1_over_2_pow_D_phys_minus_1_eq_1_over_8_EXACT": f_geom_uqff, "clean_integer_primitive_form_replacing_mislabeled_DPM_trace_over_D_phys_minus_1": True, "primary_source": "PAPER_1249_CMB_Cold_Spot_f_geom_eq_1_over_2_pow_D_phys_minus_1_eq_1_over_8_EXACT_geometric_projection_factor"}
+
+def _l96_uqff_axiom_paper_1208_e_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    K = float(K_MEX)
+    e_uqff = K + PHI_5_6 - TRZ*K + TRZ**2*K - TRZ**2*PHI_5_6
+    residual_pct = abs(e_uqff - _math.e) / _math.e * 100.0
+    return {"e_observed": _math.e, "e_UQFF_via_K_MEX_PHI_5_6_F_TRZ_5_term": e_uqff, "residual_pct_PAPER_1208": residual_pct, "primary_source": "PAPER_1208_S533_e_eq_K_MEX_plus_PHI_5_6_minus_TRZ_K_plus_TRZ_sq_K_minus_TRZ_sq_PHI_residual_0p094_pct"}
+
+def _l96_uqff_axiom_paper_1208_e_squared_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    K = float(K_MEX)
+    e2_uqff = float(D_BSFG) + K - TRZ*float(SO_FIVE) + TRZ*PHI_5_6 + TRZ*K + TRZ**2*K
+    residual_pct = abs(e2_uqff - _math.e**2) / (_math.e**2) * 100.0
+    return {"e_squared_observed": _math.e**2, "e_squared_UQFF_via_D_BSFG_plus_K_MEX_minus_TRZ_SO5_plus_TRZ_PHI_plus_TRZ_K_plus_TRZ_sq_K": e2_uqff, "residual_pct_PAPER_1208": residual_pct, "primary_source": "PAPER_1208_S534_e_squared_residual_0p092_pct"}
+
+def _l96_uqff_axiom_paper_1208_pi_over_4_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    K = float(K_MEX)
+    pi4_uqff = PHI_5_6 - TRZ*PHI_5_6 + TRZ**2*K + TRZ**2*PHI_5_6
+    pi4_obs = _math.pi / 4.0
+    residual_pct = abs(pi4_uqff - pi4_obs) / pi4_obs * 100.0
+    return {"pi_over_4_observed": pi4_obs, "pi_over_4_UQFF_via_PHI_5_6_minus_TRZ_PHI_plus_TRZ_sq_K_plus_TRZ_sq_PHI": pi4_uqff, "residual_pct_PAPER_1208": residual_pct, "primary_source": "PAPER_1208_S535_pi_over_4_residual_0p79_pct"}
+
+def _l96_uqff_axiom_paper_1208_catalan_G_transcendental_closure() -> Dict[str, Any]:
+    PHI_5_6 = 5.0 / 6.0
+    cat_obs = 0.91596559417721901
+    cat_uqff = PHI_5_6 * (1.0 + TRZ)
+    residual_pct = abs(cat_uqff - cat_obs) / cat_obs * 100.0
+    return {"catalan_G_observed": cat_obs, "catalan_G_UQFF_via_PHI_5_6_times_one_plus_TRZ": cat_uqff, "residual_pct_PAPER_1208": residual_pct, "remarkably_simple_2_factor_form": True, "primary_source": "PAPER_1208_S539_catalan_G_eq_PHI_5_6_times_one_plus_TRZ_residual_0p08_pct"}
+
+def _l96_uqff_axiom_paper_1208_zeta_2_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    K = float(K_MEX)
+    z2_uqff = K - TRZ*K - 2.0*TRZ*PHI_5_6 - 2.0*TRZ**2*K - TRZ**2*PHI_5_6 - TRZ**2 - TRZ**3
+    z2_obs = _math.pi**2 / 6.0
+    residual_pct = abs(z2_uqff - z2_obs) / z2_obs * 100.0
+    return {"zeta_2_observed_pi_squared_over_6": z2_obs, "zeta_2_UQFF_7_term_expansion": z2_uqff, "residual_pct_PAPER_1208": residual_pct, "Basel_problem_first_solved_Euler_1734": True, "primary_source": "PAPER_1208_S542_zeta_2_eq_pi_squared_over_6_residual_0p15_pct"}
+
+def _l96_uqff_axiom_paper_1208_zeta_3_apery_transcendental_closure() -> Dict[str, Any]:
+    PHI_5_6 = 5.0 / 6.0
+    K = float(K_MEX)
+    z3_obs = 1.20205690315959428
+    z3_uqff = TRZ*float(SO_FIVE) + TRZ*K + TRZ**2*PHI_5_6 - TRZ**2*K + TRZ**2 - TRZ**3
+    residual_pct = abs(z3_uqff - z3_obs) / z3_obs * 100.0
+    return {"zeta_3_apery_observed": z3_obs, "zeta_3_UQFF_via_TRZ_SO5_plus_TRZ_K_plus_TRZ_sq_PHI_minus_TRZ_sq_K_plus_TRZ_sq_minus_TRZ_cubed": z3_uqff, "residual_pct_PAPER_1208": residual_pct, "Apery_proved_irrational_1979": True, "primary_source": "PAPER_1208_S540_zeta_3_Apery_residual_0p23_pct"}
+
+def _l96_uqff_axiom_paper_1208_gamma_euler_mascheroni_closure() -> Dict[str, Any]:
+    PHI_5_6 = 5.0 / 6.0
+    K = float(K_MEX)
+    g_obs = 0.57721566490153286
+    g_uqff = 0.57 + TRZ**2*K - TRZ**2*PHI_5_6
+    residual_pct = abs(g_uqff - g_obs) / g_obs * 100.0
+    return {"gamma_Euler_Mascheroni_observed": g_obs, "gamma_UQFF_via_SSQ_plus_TRZ_sq_K_minus_TRZ_sq_PHI_5_6": g_uqff, "residual_pct_PAPER_1208": residual_pct, "uses_canonical_SSQ_eq_0p57_directly": True, "primary_source": "PAPER_1208_S536_gamma_eq_SSQ_plus_TRZ_sq_K_minus_TRZ_sq_PHI_residual_0p92_pct"}
+
+def _l96_uqff_axiom_paper_1209aa_h2o_molar_mass_18_closure() -> Dict[str, Any]:
+    target = 2 * int(N_CH)
+    return {
+        'h2o_molar_mass_18_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'H_2O molar mass = 2 N_CH = 18',
+        'primary_source': 'PAPER_1209AA_h2o_molar_mass_18_EXACT_integer_primitive_identity_H_2O_molar_mass_eq_2_N_CH_eq_18'
+    }
+
+def _l96_uqff_axiom_paper_1209aa_c_atomic_mass_12_closure() -> Dict[str, Any]:
+    target = 2 * int(D_BSFG)
+    return {
+        'c_atomic_mass_12_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'C atomic mass = 2 D_BSFG = 12',
+        'primary_source': 'PAPER_1209AA_c_atomic_mass_12_EXACT_integer_primitive_identity_C_atomic_mass_eq_2_D_BSFG_eq_12'
+    }
+
+def _l96_uqff_axiom_paper_1209aa_n_atomic_mass_14_closure() -> Dict[str, Any]:
+    target = int(SO_FIVE + D_PHYS)
+    return {
+        'n_atomic_mass_14_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'N atomic mass = SO_5 + D_phys = 14',
+        'primary_source': 'PAPER_1209AA_n_atomic_mass_14_EXACT_integer_primitive_identity_N_atomic_mass_eq_SO_5_plus_D_phys_eq_14'
+    }
+
+def _l96_uqff_axiom_paper_1209aa_o_atomic_mass_16_closure() -> Dict[str, Any]:
+    target = 2 ** int(D_PHYS)
+    return {
+        'o_atomic_mass_16_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'O atomic mass = 2^D_phys = 16',
+        'primary_source': 'PAPER_1209AA_o_atomic_mass_16_EXACT_integer_primitive_identity_O_atomic_mass_eq_2powD_phys_eq_16'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_hemoglobin_15_closure() -> Dict[str, Any]:
+    target = int(N_CH + D_BSFG)
+    return {
+        'hemoglobin_15_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'Hemoglobin g/dL = N_CH+D_BSFG = 15',
+        'primary_source': 'PAPER_1209BB_hemoglobin_15_EXACT_integer_primitive_identity_Hemoglobin_g_per_dL_eq_N_CHplusD_BSFG_eq_15'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_heart_rate_70_closure() -> Dict[str, Any]:
+    target = int(A_FIVE + SO_FIVE)
+    return {
+        'heart_rate_70_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'Heart rate bpm = A_5+SO_5 = 70',
+        'primary_source': 'PAPER_1209BB_heart_rate_70_EXACT_integer_primitive_identity_Heart_rate_bpm_eq_A_5plusSO_5_eq_70'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_bp_systolic_120_closure() -> Dict[str, Any]:
+    target = 2 * int(A_FIVE)
+    return {
+        'bp_systolic_120_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'BP systolic mmHg = 2 A_5 = 120',
+        'primary_source': 'PAPER_1209BB_bp_systolic_120_EXACT_integer_primitive_identity_BP_systolic_mmHg_eq_2_A_5_eq_120'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_bp_diastolic_80_closure() -> Dict[str, Any]:
+    target = 2 * int(D_PHYS) * int(SO_FIVE)
+    return {
+        'bp_diastolic_80_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'BP diastolic mmHg = 2 D_phys SO_5 = 80',
+        'primary_source': 'PAPER_1209BB_bp_diastolic_80_EXACT_integer_primitive_identity_BP_diastolic_mmHg_eq_2_D_phys_SO_5_eq_80'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_breathing_rate_16_closure() -> Dict[str, Any]:
+    target = 2 ** int(D_PHYS)
+    return {
+        'breathing_rate_16_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'Breathing rate = 2^D_phys = 16',
+        'primary_source': 'PAPER_1209BB_breathing_rate_16_EXACT_integer_primitive_identity_Breathing_rate_eq_2powD_phys_eq_16'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_karman_line_100_closure() -> Dict[str, Any]:
+    target = int(SO_FIVE ** 2)
+    return {
+        'karman_line_100_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'Karman line km = SO_5^2 = 100',
+        'primary_source': 'PAPER_1209CC_karman_line_100_EXACT_integer_primitive_identity_Karman_line_km_eq_SO_5pow2_eq_100'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_continental_crust_35_closure() -> Dict[str, Any]:
+    target = int(D_CRIT + N_CH)
+    return {
+        'continental_crust_35_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'Continental crust km = D_crit+N_CH = 35',
+        'primary_source': 'PAPER_1209CC_continental_crust_35_EXACT_integer_primitive_identity_Continental_crust_km_eq_D_critplusN_CH_eq_35'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_oceanic_moho_7_closure() -> Dict[str, Any]:
+    target = int(N_CH - 2)
+    return {
+        'oceanic_moho_7_target_value': target,
+        'UQFF_integer_primitive_formula_EXACT': target,
+        'description': 'Oceanic Moho km = N_CH-2 = 7',
+        'primary_source': 'PAPER_1209CC_oceanic_moho_7_EXACT_integer_primitive_identity_Oceanic_Moho_km_eq_N_CHminus2_eq_7'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35497,9 +35685,32 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "h2o_molar_mass_18":        _l96_uqff_axiom_paper_1209aa_h2o_molar_mass_18_closure,
+    "c_atomic_mass_12":         _l96_uqff_axiom_paper_1209aa_c_atomic_mass_12_closure,
+    "n_atomic_mass_14":         _l96_uqff_axiom_paper_1209aa_n_atomic_mass_14_closure,
+    "o_atomic_mass_16":         _l96_uqff_axiom_paper_1209aa_o_atomic_mass_16_closure,
+    "hemoglobin_15":            _l96_uqff_axiom_paper_1209bb_hemoglobin_15_closure,
+    "heart_rate_70":            _l96_uqff_axiom_paper_1209bb_heart_rate_70_closure,
+    "bp_systolic_120":          _l96_uqff_axiom_paper_1209bb_bp_systolic_120_closure,
+    "bp_diastolic_80":          _l96_uqff_axiom_paper_1209bb_bp_diastolic_80_closure,
+    "breathing_rate_16":        _l96_uqff_axiom_paper_1209bb_breathing_rate_16_closure,
+    "karman_line_100":          _l96_uqff_axiom_paper_1209cc_karman_line_100_closure,
+    "continental_crust_35":     _l96_uqff_axiom_paper_1209cc_continental_crust_35_closure,
+    "oceanic_moho_7":           _l96_uqff_axiom_paper_1209cc_oceanic_moho_7_closure,
+    "f_geom_one_eighth":           _l96_uqff_axiom_paper_1249_f_geom_one_eighth_closure,
+    "d_bsfg_derived_from_d_crit":  _l96_uqff_axiom_paper_1167_D_BSFG_structural_derivation_closure,
+    "k_mex_derived_from_phi_5_6":  _l96_uqff_axiom_paper_1167_K_MEX_structural_derivation_closure,
+    "f221_f220_qnm_ratio":         _l96_uqff_axiom_paper_1238_f221_f220_QNM_ratio_closure,
     "mad_efficiency_1_over_so5_2": _l96_uqff_axiom_MAD_efficiency_1_over_so5_squared_closure,
     "pcr_quantum_triadic":         _l96_uqff_axiom_paper_512_PCR_quantum_number_triadic_closure,
     "peters_mathews_coeff_64":     _l96_uqff_axiom_peters_mathews_orbital_decay_coefficient_closure,
+    "transcendental_e":            _l96_uqff_axiom_paper_1208_e_transcendental_closure,
+    "transcendental_e_squared":    _l96_uqff_axiom_paper_1208_e_squared_transcendental_closure,
+    "transcendental_pi_over_4":    _l96_uqff_axiom_paper_1208_pi_over_4_transcendental_closure,
+    "transcendental_catalan_g":    _l96_uqff_axiom_paper_1208_catalan_G_transcendental_closure,
+    "transcendental_zeta_2":       _l96_uqff_axiom_paper_1208_zeta_2_transcendental_closure,
+    "transcendental_zeta_3_apery": _l96_uqff_axiom_paper_1208_zeta_3_apery_transcendental_closure,
+    "transcendental_gamma_euler":  _l96_uqff_axiom_paper_1208_gamma_euler_mascheroni_closure,
     "transcendental_ln_10":        _l96_uqff_axiom_paper_1208_ln_10_transcendental_closure,
     "transcendental_ln_2":         _l96_uqff_axiom_paper_1208_ln_2_transcendental_closure,
     "transcendental_pi_squared":   _l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure,

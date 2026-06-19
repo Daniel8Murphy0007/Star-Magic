@@ -210,6 +210,23 @@ double transcendental_pi_squared() { return double(SO_5) - F_TRZ - F_TRZ*F_TRZ*K
 double mad_efficiency_eta_EM()     { return 1.0 / (double(SO_5) * double(SO_5)); }                 // 0.01 EXACT (PAPER_817)
 int    pcr_quantum_triadic()       { return D_PHYS - 1; }                                          // 3 EXACT (PAPER_512)
 int    peters_mathews_coeff()      { return 1 << D_BSFG; }                                         // 64 EXACT (PAPER_817 / GR cross-framework)
+
+// ----- PAPER_1167/1238 tier-10 mining EXACT (3 added) — LANDMARK: 11 → 9 truly-independent primitives -----
+int    d_bsfg_derived_from_d_crit() { return D_CRIT - 2 * SO_5; }                                  // 6 EXACT (PAPER_1167)
+double k_mex_derived_from_phi_5_6() { return PHI_5_6 * double(SO_5) / double(D_PHYS); }            // 25/12 EXACT (PAPER_1167)
+double f221_f220_qnm_ratio()        { return 1.0 - (F_TRZ * double(N_CH) * 0.84 * SSQ) / double(D_CRIT); } // 0.9834 vs 0.992 Berti-Cardoso (0.86% PAPER_1238)
+
+// ----- PAPER_1249 tier-11 mining EXACT (1 added) -----
+double f_geom_one_eighth()         { return 1.0 / double(1 << (D_PHYS - 1)); }                    // 0.125 EXACT (PAPER_1249)
+
+// ----- PAPER_1208 transcendentals follow-up (7 added; near-EXACT) -----
+double transcendental_e()          { return K_MEX + PHI_5_6 - F_TRZ*K_MEX + F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6; } // 2.7208 vs 2.71828 (0.094% PAPER_1208 S533)
+double transcendental_e_squared()  { return double(D_BSFG) + K_MEX - F_TRZ*double(SO_5) + F_TRZ*PHI_5_6 + F_TRZ*K_MEX + F_TRZ*F_TRZ*K_MEX; } // 7.3958 vs 7.38906 (0.092% PAPER_1208 S534)
+double transcendental_pi_over_4()  { return PHI_5_6 - F_TRZ*PHI_5_6 + F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ*PHI_5_6; } // 0.7792 vs 0.78540 (0.79% PAPER_1208 S535)
+double transcendental_catalan_g()  { return PHI_5_6 * (1.0 + F_TRZ); } // 0.9167 vs 0.91597 (0.077% PAPER_1208 S539)
+double transcendental_zeta_2()     { return K_MEX - F_TRZ*K_MEX - 2.0*F_TRZ*PHI_5_6 - 2.0*F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; } // 1.6473 vs 1.64493 (0.15% PAPER_1208 S542)
+double transcendental_zeta_3()     { return F_TRZ*double(SO_5) + F_TRZ*K_MEX + F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; } // 1.2048 vs 1.20206 (0.23% PAPER_1208 S540)
+double transcendental_gamma()      { return SSQ + F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6; } // 0.5825 vs 0.57722 (0.92% PAPER_1208 S536)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

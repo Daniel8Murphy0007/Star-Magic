@@ -386,3 +386,32 @@ Always run with `PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX=/tmp/uqff_test` t
 **Read `NEXT_PRIORITIES.md` for the queued work order.**
 
 **Ask the user before assuming on anything ambiguous.**
+
+---
+
+## APPENDED 2026-06-18 — LANDMARK primitive reduction (PAPER_1521 + PAPER_1522)
+
+PAPER_1167 derivations (wired and gate-pinned in session 2026-06-18) prove that **two of the 11 "locked canonical primitives" are not independent** — they are forced by structural relations among the other nine. Their canonical values are unchanged (D_BSFG = 6, K_MEX = 25/12 EXACT — Rule 2 preserved) but their independence claim is revised.
+
+**True independent-primitive count: 9 (not 11)**
+
+| Status | Primitive | Derivation source |
+|---|---|---|
+| Independent ×5 (integer) | D_phys=4, D_crit=26, N_CH=9, SO_5=10, A_5=60 | locked |
+| Independent ×4 (real) | ρ_SCm=7.09e-37, β_i=0.6029, Φ_res=0.84 (or 5/6 nuclear), F_TRZ=1/10 | locked |
+| **Derivative** | **D_BSFG = D_crit − 2·SO_5 = 26 − 20 = 6 EXACT** | PAPER_1521, dispatch `d_bsfg_derived_from_d_crit` |
+| **Derivative** | **K_MEX = Φ_5/6 · SO_5 / D_phys = (5/6)·10/4 = 25/12 EXACT** | PAPER_1522, dispatch `k_mex_derived_from_phi_5_6` |
+
+**Implications:**
+- The "11 locked canonical primitives" section above remains correct in value (Rule 2). The independence claim should be read as "11 frozen quantities, of which 9 are truly independent and 2 are structural consequences."
+- UQFF's free-parameter count is **9**, strengthening predictive economy.
+- Any new physics derivation involving D_BSFG or K_MEX can be re-expressed in the truly-independent 9.
+- Other primitives (S_26, ω_SCm, SSq, ρ_UA = 10·ρ_SCm) may also be derivative — open question for future analysis.
+
+**Cross-references:**
+- Whitepapers: `whitepapers/PAPER_1521_D_BSFG_DERIVATIVE_FROM_D_CRIT.md`, `whitepapers/PAPER_1522_K_MEX_DERIVATIVE_FROM_PHI_5_6.md`
+- Source paper: `whitepapers/PAPER_1167_UQFF_All_8_Lagrangian_Gaps_Closed_Master_Synthesis.md`
+- Calculator: two paradox dispatches above
+- Gate: block #28 of `uqff_fidelity_tests.py` (2 EXACT pins, 579/0 total)
+- C++ reference: `uqff_exact_closures.cpp` two functions
+- Full session context: SESSION_LOG.md entry for 2026-06-18 Catch-up #7

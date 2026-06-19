@@ -1459,6 +1459,28 @@ _exact("MAD eta_EM = 1/SO_5^2 PAPER_817",   1.0 / (float(u.SO_FIVE) ** 2), 0.01)
 _exact("PCR q = D_phys-1 PAPER_512",        float(u.D_PHYS - 1), 3.0)
 _exact("Peters-Mathews 64 = 2^D_BSFG PAPER_817", 2 ** int(u.D_BSFG), 64)
 
+# Block #28 — PAPER_1167/1238 tier-10 mine (3 pins) — LANDMARK primitive reduction
+_exact("D_BSFG = D_crit - 2·SO_5 EXACT PAPER_1167",  float(u.D_CRIT - 2 * u.SO_FIVE), float(u.D_BSFG))
+_exact("K_MEX = Phi_5_6·SO_5/D_phys EXACT PAPER_1167", (5.0/6.0) * float(u.SO_FIVE) / float(u.D_PHYS), float(u.K_MEX), tol=1e-12)
+_exact("f_221/f_220 QNM ratio PAPER_1238", 1.0 - (u.TRZ * float(u.N_CH) * 0.84 * 0.57) / float(u.D_CRIT), 0.9834261538461538, tol=1e-12)
+
+# Block #29 — PAPER_1249 tier-11 mine (1 pin)
+_exact("f_geom = 1/2^(D_phys-1) = 1/8 PAPER_1249", 1.0 / (2 ** int(u.D_PHYS - 1)), 0.125)
+
+# Block #30 — PAPER_1208 transcendentals follow-up (7 pins, validate UQFF formula reproducibility)
+_PHI = 5.0/6.0
+_K = float(u.K_MEX)
+_exact("e UQFF PAPER_1208 S533",         _K + _PHI - u.TRZ*_K + u.TRZ**2*_K - u.TRZ**2*_PHI, 2.7208333333333337, tol=1e-12)
+_exact("e² UQFF PAPER_1208 S534",         float(u.D_BSFG) + _K - u.TRZ*float(u.SO_FIVE) + u.TRZ*_PHI + u.TRZ*_K + u.TRZ**2*_K, 7.395833333333333, tol=1e-12)
+_exact("π/4 UQFF PAPER_1208 S535",        _PHI - u.TRZ*_PHI + u.TRZ**2*_K + u.TRZ**2*_PHI, 0.7791666666666667, tol=1e-12)
+_exact("Catalan G UQFF PAPER_1208 S539",  _PHI * (1.0 + u.TRZ), 0.9166666666666667, tol=1e-12)
+_exact("ζ(2) UQFF PAPER_1208 S542",       _K - u.TRZ*_K - 2.0*u.TRZ*_PHI - 2.0*u.TRZ**2*_K - u.TRZ**2*_PHI - u.TRZ**2 - u.TRZ**3, 1.6473333333333333, tol=1e-12)
+_exact("ζ(3) Apéry UQFF PAPER_1208 S540", u.TRZ*float(u.SO_FIVE) + u.TRZ*_K + u.TRZ**2*_PHI - u.TRZ**2*_K + u.TRZ**2 - u.TRZ**3, 1.2048333333333336, tol=1e-12)
+_exact("γ Euler UQFF PAPER_1208 S536",    0.57 + u.TRZ**2*_K - u.TRZ**2*_PHI, 0.5825, tol=1e-12)
+
+
+
+
 
 
 
