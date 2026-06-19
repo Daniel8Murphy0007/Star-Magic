@@ -306,6 +306,18 @@ double bohr_magneton_lead()    { return K_MEX*double(D_PHYS) + SSQ + F_TRZ*doubl
 double wien_b_lead()           { return K_MEX + PHI_5_6 - F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS); }                                                   // 2.898 (PAPER_1209EE_S625)
 double planck_h_lead()         { return double(D_BSFG) + F_TRZ*double(D_BSFG) + F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ - F_TRZ*F_TRZ; }         // 6.626 (PAPER_1209EE_S629)
 double speed_of_light_lead()   { return double(SO_5)/double(D_PHYS) + F_TRZ*double(D_PHYS) + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D_PHYS); }                // 2.998 (PAPER_1209EE_S630)
+
+// ----- PAPER_1209X/Y/Z/BB tier-18 (10 added: 5 EXACT + 5 near-EXACT) -----
+double solar_constant_Wm2()    { return double(A_5)*double(A_5)*F_TRZ*double(D_PHYS) - double(N_CH*SO_5) + double(SO_5) + SSQ + F_TRZ*double(D_PHYS); }   // 1360.97 (0.002% PAPER_1209X_S556)
+double atm_pressure_kPa()      { return double(SO_5)*double(SO_5) + SSQ + PHI_5_6 - F_TRZ*PHI_5_6; }                                                       // 101.32 (0.005% PAPER_1209X_S558)
+double standard_gravity_ms2()  { return double(N_CH) + PHI_5_6 - F_TRZ*F_TRZ*K_MEX; }                                                                       // 9.8125 (0.025% PAPER_1209Y_S563)
+int carbon_steel_density()     { return D_CRIT*D_CRIT*SO_5 + SO_5*SO_5*SO_5 + SO_5*N_CH; }                                                                  // 7850 EXACT (PAPER_1209Y_S568)
+int aluminum_density()         { return D_CRIT*SO_5*SO_5 + N_CH*SO_5 + SO_5; }                                                                              // 2700 EXACT (PAPER_1209Y_S569)
+int pine_wood_density()        { return SO_5*SO_5*D_PHYS + SO_5*SO_5; }                                                                                     // 500 EXACT (PAPER_1209Y_S570)
+double moon_distance_ratio()   { return double(A_5) + F_TRZ*PHI_5_6*double(D_PHYS); }                                                                       // 60.333 (0.004% PAPER_1209Z_S573)
+double jupiter_mass_ratio()    { return double(D_CRIT*SO_5) + SSQ*double(SO_5) + double(SO_5*D_PHYS) + double(SO_5) + K_MEX; }                              // 317.78 (0.005% PAPER_1209Z_S580)
+double blood_ph()              { return double(D_BSFG) + F_TRZ*double(SO_5) + F_TRZ*double(D_PHYS); }                                                       // 7.4 EXACT (PAPER_1209BB_S594)
+double dna_bp_per_turn()       { return double(SO_5) + F_TRZ*double(D_PHYS) + F_TRZ*F_TRZ*double(SO_5); }                                                   // 10.5 EXACT (PAPER_1209BB_S601)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

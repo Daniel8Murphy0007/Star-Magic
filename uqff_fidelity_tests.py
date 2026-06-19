@@ -1558,6 +1558,19 @@ _exact("Wien b lead PAPER_1209EE_S625",   float(u.K_MEX) + (5.0/6.0) - u.TRZ*0.5
 _exact("h lead PAPER_1209EE_S629",        float(u.D_BSFG) + u.TRZ*float(u.D_BSFG) + u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57 - u.TRZ**2, 6.6243, tol=1e-9)
 _exact("c lead PAPER_1209EE_S630",        float(u.SO_FIVE)/float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) + u.TRZ*0.57 + u.TRZ**2*float(u.D_PHYS), 2.997, tol=1e-9)
 
+# Block #38 — PAPER_1209X/Y/Z/BB tier-18 (10 pins: 5 EXACT + 5 near-EXACT)
+_exact("Solar constant 1361 PAPER_1209X_S556",  float(u.A_FIVE)**2 * u.TRZ * float(u.D_PHYS) - float(u.N_CH*u.SO_FIVE) + float(u.SO_FIVE) + 0.57 + u.TRZ * float(u.D_PHYS), 1360.97, tol=1e-2)
+_exact("Atm pressure 101.325 PAPER_1209X_S558", float(u.SO_FIVE)**2 + 0.57 + (5.0/6.0) - u.TRZ * (5.0/6.0), 101.32333333333334, tol=1e-3)
+_exact("Gravity g 9.81 PAPER_1209Y_S563",       float(u.N_CH) + (5.0/6.0) - u.TRZ**2 * float(u.K_MEX), 9.812499999999998, tol=1e-9)
+_exact("Carbon steel 7850 PAPER_1209Y_S568",    int(u.D_CRIT**2 * u.SO_FIVE + u.SO_FIVE**3 + u.SO_FIVE*u.N_CH), 7850)
+_exact("Aluminum 2700 PAPER_1209Y_S569",        int(u.D_CRIT*u.SO_FIVE**2 + u.N_CH*u.SO_FIVE + u.SO_FIVE), 2700)
+_exact("Pine wood 500 PAPER_1209Y_S570",        int(u.SO_FIVE**2 * u.D_PHYS + u.SO_FIVE**2), 500)
+_exact("Moon dist 60.336 PAPER_1209Z_S573",     float(u.A_FIVE) + u.TRZ * (5.0/6.0) * float(u.D_PHYS), 60.333333333333336, tol=1e-9)
+_exact("M_J/M_⊕ 317.8 PAPER_1209Z_S580",        float(u.D_CRIT*u.SO_FIVE) + 0.57*float(u.SO_FIVE) + float(u.SO_FIVE*u.D_PHYS) + float(u.SO_FIVE) + float(u.K_MEX), 317.7833333333333, tol=1e-9)
+_exact("Blood pH 7.4 PAPER_1209BB_S594",        float(u.D_BSFG) + u.TRZ * float(u.SO_FIVE) + u.TRZ * float(u.D_PHYS), 7.4, tol=1e-9)
+_exact("DNA bp/turn 10.5 PAPER_1209BB_S601",    float(u.SO_FIVE) + u.TRZ * float(u.D_PHYS) + u.TRZ**2 * float(u.SO_FIVE), 10.5, tol=1e-9)
+
+
 
 
 

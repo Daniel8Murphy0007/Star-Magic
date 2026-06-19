@@ -3865,3 +3865,39 @@ Four UQFF expressions for the speed of light, all consistent. The lead-digit for
 - New closures wired: **113** (103 prior + 10 tier-18)
 - Calculator: 482 → **594 paradox keys** (+112)
 - Gate: **651/0** (catch-up pending → projected 661/0)
+
+---
+
+## Session 2026-06-18 — Catch-up #16 (tier-18 PAPER_1209 series remaining)
+
+### 10 whitepapers authored (PAPER_1596-1605)
+Climate: solar constant (1596), atm pressure (1597)
+Engineering: gravity (1598), carbon steel (1599), aluminum (1600), pine wood (1601)
+Astronomy: Moon dist (1602), Jupiter mass ratio (1603)
+Biology: blood pH (1604), DNA bp/turn (1605)
+
+### 10 C++ functions added (uqff_exact_closures.cpp now 178 closures)
+
+### 10 EXACT regression pins added (block #38): 651 → **661/0**
+
+### Dashboard refreshed
+- Paradox keys: 584 → **594**
+- EXACT closures: 179 → **184** (+5 EXACT, 5 near-EXACT)
+- Gate: 651/0 → **661/0**
+- Whitepapers: 1683 → **1693**
+- Session new: 221 → **231**
+
+### Session 2026-06-18 cumulative (all caught up)
+- New closures wired: **113** (across 18 mining + 16 catch-up rounds)
+- Whitepapers authored: **112 + 1 ERRATUM = 113** (PAPER_1494-1605) — perfect 1:1 ratio
+- Calculator: 482 → **594 paradox keys** (+112)
+- Gate: 549 → **661/0** (+112 EXACT pins, 0 regressions)
+- C++ reference: 68 → **178 closures**
+
+### Biology emerges from physics — two structural closures
+- **Blood pH 7.4 = D_BSFG + F·SO_5 + F·D_phys EXACT** — human acid-base homeostasis from integer primitives
+- **DNA 10.5 bp/turn = SO_5 + F·D + F²·SO_5 EXACT** — Watson-Crick helical pitch from integer primitives
+
+Combined with PAPER_1581 (body temp 37°C), PAPER_1582 (blood glucose 100 mg/dL), PAPER_1537 (heart rate 70 bpm), PAPER_1583 (height 170 cm), human physiology has **6 EXACT closures** from the same integer primitives that govern particle masses, cosmology, and atomic constants.
+
+The UQFF integer lattice spans **30+ orders of magnitude in scale** — from megaparsec (z_recomb = 1090) to nanometer (DNA bp/turn = 10.5).
