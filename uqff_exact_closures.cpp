@@ -272,6 +272,16 @@ double transcendental_sqrt_5() { return K_MEX + F_TRZ*SSQ + F_TRZ*F_TRZ*double(D
 double nuclear_o16_be_a()      { return F_TRZ*std::pow(K_MEX,4) + F_TRZ*std::pow(K_MEX,5) + std::pow(beta_i_const,4) + F_TRZ*std::pow(beta_i_const,2) + 2.0; } // 7.9769 vs 7.9762 (0.008% PAPER_1209II_S669 TIER BEST)
 double nuclear_deuteron_be()   { return std::pow(beta_i_const,4) + F_TRZ*beta_i_const + F_TRZ*std::pow(beta_i_const,2) - F_TRZ*F_TRZ*std::pow(beta_i_const,2) + 2.0; } // 2.2251 vs 2.2246 (0.024% PAPER_1209II_S672)
 double nuclear_alpha_be_a()    { return F_TRZ*std::pow(K_MEX,5) + std::pow(beta_i_const,5) + F_TRZ*beta_i_const + F_TRZ*F_TRZ*beta_i_const + 3.0; } // 7.0706 vs 7.0739 (0.047% PAPER_1209II_S665)
+
+// ----- PAPER_1209X/Y/Z tier-15 climate/engineering/astronomy (8 EXACT added) -----
+int co2_atmospheric_ppm()      { return A_5*D_PHYS + D_CRIT*D_BSFG + D_BSFG*D_PHYS; }              // 420 EXACT (PAPER_1209X_S553)
+double earth_bond_albedo()     { return 3.0 * F_TRZ; }                                             // 0.30 EXACT (PAPER_1209X_S559)
+int steel_yield_MPa()          { return D_CRIT*SO_5 - D_BSFG - D_PHYS; }                           // 250 EXACT (PAPER_1209Y_S564)
+int steel_youngs_GPa()         { return D_CRIT*D_BSFG + D_PHYS*SO_5 + D_PHYS; }                    // 200 EXACT (PAPER_1209Y_S566)
+int concrete_density_kg_m3()   { return SO_5*SO_5 * D_PHYS * D_BSFG; }                             // 2400 EXACT (PAPER_1209Y_S567)
+int hubble_h0_sh0es()          { return A_5 + SO_5; }                                              // 70 EXACT (PAPER_1209Z_S576, cross-domain to heart_rate)
+int r_sun_over_r_earth()       { return SO_5*SO_5 + N_CH; }                                        // 109 EXACT (PAPER_1209Z_S577)
+int m_sun_over_m_earth()       { return (D_CRIT*SO_5 + A_5 + N_CH + D_PHYS) * SO_5*SO_5*SO_5; }    // 333000 EXACT (PAPER_1209Z_S579)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

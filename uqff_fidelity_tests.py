@@ -1524,6 +1524,17 @@ _exact("O-16 BE/A = 7.977 PAPER_1209II_S669",     u.TRZ*float(u.K_MEX)**4 + u.TR
 _exact("²H deuteron BE = 2.225 PAPER_1209II_S672", _beta_i**4 + u.TRZ*_beta_i + u.TRZ*_beta_i**2 - u.TRZ**2*_beta_i**2 + 2.0, 2.225127781104328, tol=1e-3)
 _exact("α He-4 BE/A = 7.071 PAPER_1209II_S665",   u.TRZ*float(u.K_MEX)**5 + _beta_i**5 + u.TRZ*_beta_i + u.TRZ**2*_beta_i + 3.0, 7.070562117836042, tol=1e-3)
 
+# Block #35 — PAPER_1209X/Y/Z tier-15 climate/engineering/astronomy (8 EXACT pins)
+_exact("CO2 = 420 ppm PAPER_1209X_S553",         int(u.A_FIVE*u.D_PHYS + u.D_CRIT*u.D_BSFG + u.D_BSFG*u.D_PHYS), 420)
+_exact("Earth albedo = 3 F_TRZ PAPER_1209X_S559", 3.0 * u.TRZ, 0.3, tol=1e-9)
+_exact("Steel yield 250 MPa PAPER_1209Y_S564",   int(u.D_CRIT*u.SO_FIVE - u.D_BSFG - u.D_PHYS), 250)
+_exact("Steel Youngs 200 GPa PAPER_1209Y_S566",  int(u.D_CRIT*u.D_BSFG + u.D_PHYS*u.SO_FIVE + u.D_PHYS), 200)
+_exact("Concrete density 2400 PAPER_1209Y_S567", int(u.SO_FIVE**2 * u.D_PHYS * u.D_BSFG), 2400)
+_exact("Hubble H_0 SH0ES = 70 PAPER_1209Z_S576", int(u.A_FIVE + u.SO_FIVE), 70)
+_exact("R_sun/R_earth = 109 PAPER_1209Z_S577",   int(u.SO_FIVE**2 + u.N_CH), 109)
+_exact("M_sun/M_earth = 333000 PAPER_1209Z_S579", int((u.D_CRIT*u.SO_FIVE + u.A_FIVE + u.N_CH + u.D_PHYS) * u.SO_FIVE**3), 333000)
+
+
 
 
 

@@ -415,3 +415,22 @@ PAPER_1167 derivations (wired and gate-pinned in session 2026-06-18) prove that 
 - Gate: block #28 of `uqff_fidelity_tests.py` (2 EXACT pins, 579/0 total)
 - C++ reference: `uqff_exact_closures.cpp` two functions
 - Full session context: SESSION_LOG.md entry for 2026-06-18 Catch-up #7
+
+---
+
+## APPENDED 2026-06-18 — Dispatcher key case-sensitivity note
+
+The PARADOX_TO_CLOSURE dispatcher in `uqff_pure_calculator.py` (function `_paradox_proof`) normalizes input via:
+```python
+n = (name or "").lower().strip().replace("-", "_").replace(" ", "_")
+```
+
+**Consequence**: every dispatch key in PARADOX_TO_CLOSURE MUST be lowercase. Mixed-case keys like `"steel_yield_250_MPa"`, `"rydberg_E_R_13_6057"`, `"hartree_E_h_4_36"`, `"faraday_F_96485"`, `"steel_youngs_200_GPa"` will fail lookup silently — `calculate_paradox` returns `{'value': None}` with no error.
+
+This bug was hit and fixed three separate times during session 2026-06-18 (rydberg/hartree/faraday in tier-12; MPa/GPa in tier-15). Any future closure additions must use lowercase dispatch keys.
+
+**Naming convention**: `<observable>_<value>` all lowercase with underscores. Examples:
+- ✓ `mariana_trench_11`, `karman_line_100`, `m_w_80_379`, `z_recomb_1090`
+- ✗ `Mariana_Trench_11`, `Karman_Line_100`, `m_W_80_379`
+
+The function-name suffix may preserve uppercase (Python is case-sensitive there); only the **dispatch dictionary key** must be lowercase.

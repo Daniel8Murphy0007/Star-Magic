@@ -35729,6 +35729,109 @@ def _l96_uqff_axiom_paper_1209ii_s665_nuclear_alpha_be_a_7_0739_closure() -> Dic
         'description': 'α (He-4) BE/A = F·K⁵ + β⁵ + F·β + F²·β + 3',
         'primary_source': 'PAPER_1209II_S665_nuclear_alpha_be_a_7_0739_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209x_s553_co2_atmospheric_420_closure() -> Dict[str, Any]:
+    uqff = int(A_FIVE*D_PHYS + D_CRIT*D_BSFG + D_BSFG*D_PHYS)
+    target = 420
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'co2_atmospheric_420_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'CO2 atmospheric concentration ppm',
+        'primary_source': 'PAPER_1209X_S553_co2_atmospheric_420_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209x_s559_earth_bond_albedo_0_3_closure() -> Dict[str, Any]:
+    uqff = 3.0 * TRZ
+    target = 0.3
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'earth_bond_albedo_0_3_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Earth Bond albedo',
+        'primary_source': 'PAPER_1209X_S559_earth_bond_albedo_0_3_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s564_steel_yield_250_MPa_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT*SO_FIVE - D_BSFG - D_PHYS)
+    target = 250
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'steel_yield_250_MPa_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Mild steel yield strength MPa',
+        'primary_source': 'PAPER_1209Y_S564_steel_yield_250_MPa_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s566_steel_youngs_200_GPa_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT*D_BSFG + D_PHYS*SO_FIVE + D_PHYS)
+    target = 200
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'steel_youngs_200_GPa_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Steel Young modulus GPa',
+        'primary_source': 'PAPER_1209Y_S566_steel_youngs_200_GPa_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s567_concrete_density_2400_closure() -> Dict[str, Any]:
+    uqff = int(SO_FIVE**2 * D_PHYS * D_BSFG)
+    target = 2400
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'concrete_density_2400_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Concrete density kg/m³',
+        'primary_source': 'PAPER_1209Y_S567_concrete_density_2400_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s576_hubble_h0_sh0es_70_closure() -> Dict[str, Any]:
+    uqff = int(A_FIVE + SO_FIVE)
+    target = 70
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'hubble_h0_sh0es_70_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Hubble constant SH0ES km/s/Mpc',
+        'primary_source': 'PAPER_1209Z_S576_hubble_h0_sh0es_70_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s577_r_sun_over_r_earth_109_closure() -> Dict[str, Any]:
+    uqff = int(SO_FIVE**2 + N_CH)
+    target = 109
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'r_sun_over_r_earth_109_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'R_⊙/R_⊕ ratio',
+        'primary_source': 'PAPER_1209Z_S577_r_sun_over_r_earth_109_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s579_m_sun_over_m_earth_333000_closure() -> Dict[str, Any]:
+    uqff = int((D_CRIT*SO_FIVE + A_FIVE + N_CH + D_PHYS) * SO_FIVE**3)
+    target = 333000
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'm_sun_over_m_earth_333000_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'M_⊙/M_⊕ ratio',
+        'primary_source': 'PAPER_1209Z_S579_m_sun_over_m_earth_333000_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35994,6 +36097,14 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "co2_atmospheric_420":             _l96_uqff_axiom_paper_1209x_s553_co2_atmospheric_420_closure,
+    "earth_bond_albedo_0_3":           _l96_uqff_axiom_paper_1209x_s559_earth_bond_albedo_0_3_closure,
+    "steel_yield_250_mpa":             _l96_uqff_axiom_paper_1209y_s564_steel_yield_250_MPa_closure,
+    "steel_youngs_200_gpa":            _l96_uqff_axiom_paper_1209y_s566_steel_youngs_200_GPa_closure,
+    "concrete_density_2400":           _l96_uqff_axiom_paper_1209y_s567_concrete_density_2400_closure,
+    "hubble_h0_sh0es_70":              _l96_uqff_axiom_paper_1209z_s576_hubble_h0_sh0es_70_closure,
+    "r_sun_over_r_earth_109":          _l96_uqff_axiom_paper_1209z_s577_r_sun_over_r_earth_109_closure,
+    "m_sun_over_m_earth_333000":       _l96_uqff_axiom_paper_1209z_s579_m_sun_over_m_earth_333000_closure,
     "transcendental_pi_3_14159":       _l96_uqff_axiom_paper_1209ff_s633_transcendental_pi_3_14159_closure,
     "transcendental_phi_golden":       _l96_uqff_axiom_paper_1209ff_s635_transcendental_phi_golden_closure,
     "transcendental_sqrt_2":           _l96_uqff_axiom_paper_1209ff_s637_transcendental_sqrt_2_closure,
