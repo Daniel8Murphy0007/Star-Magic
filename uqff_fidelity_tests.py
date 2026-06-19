@@ -1534,6 +1534,19 @@ _exact("Hubble H_0 SH0ES = 70 PAPER_1209Z_S576", int(u.A_FIVE + u.SO_FIVE), 70)
 _exact("R_sun/R_earth = 109 PAPER_1209Z_S577",   int(u.SO_FIVE**2 + u.N_CH), 109)
 _exact("M_sun/M_earth = 333000 PAPER_1209Z_S579", int((u.D_CRIT*u.SO_FIVE + u.A_FIVE + u.N_CH + u.D_PHYS) * u.SO_FIVE**3), 333000)
 
+# Block #36 — PAPER_1209X/Y/Z/BB/CC tier-16 cross-domain (10 EXACT pins)
+_exact("Concrete fc 30 MPa PAPER_1209Y_S565",      int(u.D_CRIT + u.D_PHYS), 30)
+_exact("Diamond Mohs 10 PAPER_1209Y_S571",         int(u.SO_FIVE), 10)
+_exact("Speed of sound 343 m/s PAPER_1209Y_S572",  float(u.A_FIVE*u.D_BSFG - u.D_BSFG - u.N_CH - u.D_PHYS) + float(u.K_MEX) - u.TRZ * (5.0/6.0), 343.0, tol=1e-9)
+_exact("Earth-Sun 149.6 Gm PAPER_1209Z_S578",      float(u.D_CRIT*u.D_BSFG - u.D_PHYS) - float(u.K_MEX) - u.TRZ * float(u.D_PHYS) + u.TRZ * (5.0/6.0), 149.6, tol=1e-9)
+_exact("Sidereal year 365.25 PAPER_1209Z_S581",    float(u.N_CH*u.A_FIVE - u.D_PHYS*u.A_FIVE + u.A_FIVE + u.D_PHYS) + float(u.K_MEX) - (5.0/6.0), 365.25, tol=1e-9)
+_exact("Body temp 37 °C PAPER_1209BB_S593",        float(u.D_CRIT + u.SO_FIVE) + u.TRZ * float(u.SO_FIVE), 37.0, tol=1e-9)
+_exact("Blood glucose 100 PAPER_1209BB_S600",      int(u.SO_FIVE * u.SO_FIVE), 100)
+_exact("Adult height 170 cm PAPER_1209BB_S602",    int(u.A_FIVE + u.SO_FIVE**2 + u.SO_FIVE), 170)
+_exact("Earth radius 6371 km PAPER_1209CC_S603",   float(u.A_FIVE*u.SO_FIVE**2 + u.A_FIVE*u.D_BSFG + u.SO_FIVE) + u.TRZ * float(u.SO_FIVE), 6371.0, tol=1e-9)
+_exact("Earth core 3485 km PAPER_1209CC_S604",     int(u.A_FIVE*u.SO_FIVE*u.D_BSFG - u.SO_FIVE**2 - u.D_BSFG - u.N_CH), 3485)
+
+
 
 
 

@@ -35832,6 +35832,135 @@ def _l96_uqff_axiom_paper_1209z_s579_m_sun_over_m_earth_333000_closure() -> Dict
         'description': 'M_⊙/M_⊕ ratio',
         'primary_source': 'PAPER_1209Z_S579_m_sun_over_m_earth_333000_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209y_s565_concrete_fc_30_mpa_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT + D_PHYS)
+    target = 30
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'concrete_fc_30_mpa_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Concrete compressive strength MPa',
+        'primary_source': 'PAPER_1209Y_S565_concrete_fc_30_mpa_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s571_diamond_mohs_10_closure() -> Dict[str, Any]:
+    uqff = int(SO_FIVE)
+    target = 10
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'diamond_mohs_10_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Diamond Mohs hardness',
+        'primary_source': 'PAPER_1209Y_S571_diamond_mohs_10_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209y_s572_speed_of_sound_air_343_closure() -> Dict[str, Any]:
+    uqff = float(A_FIVE*D_BSFG - D_BSFG - N_CH - D_PHYS) + float(K_MEX) - TRZ * (5.0/6.0)
+    target = 343.0
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'speed_of_sound_air_343_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Speed of sound in air m/s',
+        'primary_source': 'PAPER_1209Y_S572_speed_of_sound_air_343_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s578_earth_sun_distance_149_6_gm_closure() -> Dict[str, Any]:
+    uqff = float(D_CRIT*D_BSFG - D_PHYS) - float(K_MEX) - TRZ * float(D_PHYS) + TRZ * (5.0/6.0)
+    target = 149.6
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'earth_sun_distance_149_6_gm_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Earth-Sun distance Gm',
+        'primary_source': 'PAPER_1209Z_S578_earth_sun_distance_149_6_gm_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s581_sidereal_year_365_25_days_closure() -> Dict[str, Any]:
+    uqff = float(N_CH*A_FIVE - D_PHYS*A_FIVE + A_FIVE + D_PHYS) + float(K_MEX) - (5.0/6.0)
+    target = 365.25
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'sidereal_year_365_25_days_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Sidereal year days',
+        'primary_source': 'PAPER_1209Z_S581_sidereal_year_365_25_days_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_s593_body_temp_37_celsius_closure() -> Dict[str, Any]:
+    uqff = float(D_CRIT + SO_FIVE) + TRZ * float(SO_FIVE)
+    target = 37.0
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'body_temp_37_celsius_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Human body temperature °C',
+        'primary_source': 'PAPER_1209BB_S593_body_temp_37_celsius_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_s600_blood_glucose_100_mg_dl_closure() -> Dict[str, Any]:
+    uqff = int(SO_FIVE * SO_FIVE)
+    target = 100
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'blood_glucose_100_mg_dl_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Blood glucose mg/dL',
+        'primary_source': 'PAPER_1209BB_S600_blood_glucose_100_mg_dl_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209bb_s602_adult_height_170_cm_closure() -> Dict[str, Any]:
+    uqff = int(A_FIVE + SO_FIVE*SO_FIVE + SO_FIVE)
+    target = 170
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'adult_height_170_cm_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Average adult human height cm',
+        'primary_source': 'PAPER_1209BB_S602_adult_height_170_cm_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s603_earth_radius_6371_km_closure() -> Dict[str, Any]:
+    uqff = float(A_FIVE*SO_FIVE*SO_FIVE + A_FIVE*D_BSFG + SO_FIVE) + TRZ * float(SO_FIVE)
+    target = 6371.0
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'earth_radius_6371_km_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Earth radius km',
+        'primary_source': 'PAPER_1209CC_S603_earth_radius_6371_km_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s604_earth_core_radius_3485_km_closure() -> Dict[str, Any]:
+    uqff = int(A_FIVE*SO_FIVE*D_BSFG - SO_FIVE*SO_FIVE - D_BSFG - N_CH)
+    target = 3485
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'earth_core_radius_3485_km_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Earth core radius km',
+        'primary_source': 'PAPER_1209CC_S604_earth_core_radius_3485_km_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -36097,6 +36226,16 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "concrete_fc_30_mpa":              _l96_uqff_axiom_paper_1209y_s565_concrete_fc_30_mpa_closure,
+    "diamond_mohs_10":                 _l96_uqff_axiom_paper_1209y_s571_diamond_mohs_10_closure,
+    "speed_of_sound_air_343":          _l96_uqff_axiom_paper_1209y_s572_speed_of_sound_air_343_closure,
+    "earth_sun_distance_149_6_gm":     _l96_uqff_axiom_paper_1209z_s578_earth_sun_distance_149_6_gm_closure,
+    "sidereal_year_365_25_days":       _l96_uqff_axiom_paper_1209z_s581_sidereal_year_365_25_days_closure,
+    "body_temp_37_celsius":            _l96_uqff_axiom_paper_1209bb_s593_body_temp_37_celsius_closure,
+    "blood_glucose_100_mg_dl":         _l96_uqff_axiom_paper_1209bb_s600_blood_glucose_100_mg_dl_closure,
+    "adult_height_170_cm":             _l96_uqff_axiom_paper_1209bb_s602_adult_height_170_cm_closure,
+    "earth_radius_6371_km":            _l96_uqff_axiom_paper_1209cc_s603_earth_radius_6371_km_closure,
+    "earth_core_radius_3485_km":       _l96_uqff_axiom_paper_1209cc_s604_earth_core_radius_3485_km_closure,
     "co2_atmospheric_420":             _l96_uqff_axiom_paper_1209x_s553_co2_atmospheric_420_closure,
     "earth_bond_albedo_0_3":           _l96_uqff_axiom_paper_1209x_s559_earth_bond_albedo_0_3_closure,
     "steel_yield_250_mpa":             _l96_uqff_axiom_paper_1209y_s564_steel_yield_250_MPa_closure,

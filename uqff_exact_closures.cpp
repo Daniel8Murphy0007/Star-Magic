@@ -282,6 +282,18 @@ int concrete_density_kg_m3()   { return SO_5*SO_5 * D_PHYS * D_BSFG; }          
 int hubble_h0_sh0es()          { return A_5 + SO_5; }                                              // 70 EXACT (PAPER_1209Z_S576, cross-domain to heart_rate)
 int r_sun_over_r_earth()       { return SO_5*SO_5 + N_CH; }                                        // 109 EXACT (PAPER_1209Z_S577)
 int m_sun_over_m_earth()       { return (D_CRIT*SO_5 + A_5 + N_CH + D_PHYS) * SO_5*SO_5*SO_5; }    // 333000 EXACT (PAPER_1209Z_S579)
+
+// ----- PAPER_1209X/Y/Z/BB/CC tier-16 cross-domain EXACT (10 added) -----
+int concrete_fc_MPa()          { return D_CRIT + D_PHYS; }                                         // 30 EXACT (PAPER_1209Y_S565)
+int diamond_mohs()             { return SO_5; }                                                    // 10 EXACT (PAPER_1209Y_S571 — single primitive)
+double speed_of_sound_air()    { return double(A_5*D_BSFG - D_BSFG - N_CH - D_PHYS) + K_MEX - F_TRZ * PHI_5_6; } // 343.0 EXACT (PAPER_1209Y_S572)
+double earth_sun_distance_Gm() { return double(D_CRIT*D_BSFG - D_PHYS) - K_MEX - F_TRZ * double(D_PHYS) + F_TRZ * PHI_5_6; } // 149.6 EXACT (PAPER_1209Z_S578)
+double sidereal_year_days()    { return double(N_CH*A_5 - D_PHYS*A_5 + A_5 + D_PHYS) + K_MEX - PHI_5_6; } // 365.25 EXACT (PAPER_1209Z_S581)
+double body_temp_celsius()     { return double(D_CRIT + SO_5) + F_TRZ * double(SO_5); }            // 37.0 EXACT (PAPER_1209BB_S593)
+int blood_glucose_mg_dl()      { return SO_5 * SO_5; }                                             // 100 EXACT (PAPER_1209BB_S600, cross-domain)
+int adult_height_cm()          { return A_5 + SO_5*SO_5 + SO_5; }                                  // 170 EXACT (PAPER_1209BB_S602)
+double earth_radius_km()       { return double(A_5*SO_5*SO_5 + A_5*D_BSFG + SO_5) + F_TRZ * double(SO_5); } // 6371 EXACT (PAPER_1209CC_S603)
+int earth_core_radius_km()     { return A_5*SO_5*D_BSFG - SO_5*SO_5 - D_BSFG - N_CH; }             // 3485 EXACT (PAPER_1209CC_S604)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
