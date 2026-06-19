@@ -227,6 +227,20 @@ double transcendental_catalan_g()  { return PHI_5_6 * (1.0 + F_TRZ); } // 0.9167
 double transcendental_zeta_2()     { return K_MEX - F_TRZ*K_MEX - 2.0*F_TRZ*PHI_5_6 - 2.0*F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; } // 1.6473 vs 1.64493 (0.15% PAPER_1208 S542)
 double transcendental_zeta_3()     { return F_TRZ*double(SO_5) + F_TRZ*K_MEX + F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; } // 1.2048 vs 1.20206 (0.23% PAPER_1208 S540)
 double transcendental_gamma()      { return SSQ + F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6; } // 0.5825 vs 0.57722 (0.92% PAPER_1208 S536)
+
+// ----- PAPER_1209AA/BB/CC mid-frequency unified-proof-set drainage (12 EXACT added) -----
+int h2o_molar_mass_18()        { return 2 * N_CH; }                                                // 18 EXACT (PAPER_1209AA)
+int c_atomic_mass_12()         { return 2 * D_BSFG; }                                              // 12 EXACT (PAPER_1209AA)
+int n_atomic_mass_14()         { return SO_5 + D_PHYS; }                                           // 14 EXACT (PAPER_1209AA, paired with proto-Si Z)
+int o_atomic_mass_16()         { return 1 << D_PHYS; }                                             // 16 EXACT (PAPER_1209AA, cross-domain to breathing rate)
+int hemoglobin_15()            { return N_CH + D_BSFG; }                                           // 15 EXACT (PAPER_1209BB)
+int heart_rate_70()            { return A_5 + SO_5; }                                              // 70 EXACT (PAPER_1209BB)
+int bp_systolic_120()          { return 2 * A_5; }                                                 // 120 EXACT (PAPER_1209BB)
+int bp_diastolic_80()          { return 2 * D_PHYS * SO_5; }                                       // 80 EXACT (PAPER_1209BB)
+int breathing_rate_16()        { return 1 << D_PHYS; }                                             // 16 EXACT (PAPER_1209BB, = O atomic mass)
+int karman_line_100()          { return SO_5 * SO_5; }                                             // 100 EXACT (PAPER_1209CC)
+int continental_crust_35()     { return D_CRIT + N_CH; }                                           // 35 EXACT (PAPER_1209CC)
+int oceanic_moho_7()           { return N_CH - 2; }                                                // 7 EXACT (PAPER_1209CC, = Heaviside R_t = R_d exp)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

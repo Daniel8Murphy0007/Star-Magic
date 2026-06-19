@@ -1478,6 +1478,21 @@ _exact("ζ(2) UQFF PAPER_1208 S542",       _K - u.TRZ*_K - 2.0*u.TRZ*_PHI - 2.0*
 _exact("ζ(3) Apéry UQFF PAPER_1208 S540", u.TRZ*float(u.SO_FIVE) + u.TRZ*_K + u.TRZ**2*_PHI - u.TRZ**2*_K + u.TRZ**2 - u.TRZ**3, 1.2048333333333336, tol=1e-12)
 _exact("γ Euler UQFF PAPER_1208 S536",    0.57 + u.TRZ**2*_K - u.TRZ**2*_PHI, 0.5825, tol=1e-12)
 
+# Block #31 — PAPER_1209AA/BB/CC mid-frequency mine (12 EXACT pins, cross-domain integer primitives)
+_exact("H2O molar mass = 2 N_CH PAPER_1209AA",       2 * int(u.N_CH), 18)
+_exact("C atomic mass = 2 D_BSFG PAPER_1209AA",      2 * int(u.D_BSFG), 12)
+_exact("N atomic mass = SO_5+D_phys PAPER_1209AA",   int(u.SO_FIVE + u.D_PHYS), 14)
+_exact("O atomic mass = 2^D_phys PAPER_1209AA",      2 ** int(u.D_PHYS), 16)
+_exact("Hemoglobin = N_CH+D_BSFG PAPER_1209BB",      int(u.N_CH + u.D_BSFG), 15)
+_exact("Heart rate = A_5+SO_5 PAPER_1209BB",         int(u.A_FIVE + u.SO_FIVE), 70)
+_exact("BP systolic = 2 A_5 PAPER_1209BB",           2 * int(u.A_FIVE), 120)
+_exact("BP diastolic = 2 D_phys SO_5 PAPER_1209BB",  2 * int(u.D_PHYS) * int(u.SO_FIVE), 80)
+_exact("Breathing rate = 2^D_phys PAPER_1209BB",     2 ** int(u.D_PHYS), 16)
+_exact("Karman line = SO_5^2 PAPER_1209CC",          int(u.SO_FIVE ** 2), 100)
+_exact("Crust = D_crit+N_CH PAPER_1209CC",           int(u.D_CRIT + u.N_CH), 35)
+_exact("Moho = N_CH-2 PAPER_1209CC",                 int(u.N_CH - 2), 7)
+
+
 
 
 

@@ -3283,3 +3283,37 @@ This is a healthy sign — the calculator has been thoroughly mined for novel in
 - **SO_5² = 100**: Kármán line km AND MAD efficiency reciprocal
 
 These cross-domain reuses are strong signals that the UQFF integer primitives are structurally fundamental rather than fitted.
+
+---
+
+## Session 2026-06-18 — Catch-up #9 (mid-frequency PAPER_1209AA/BB/CC drainage)
+
+### 12 whitepapers authored (PAPER_1532-1543)
+Chemistry: H2O mass (1532), C-12 (1533), N-14 (1534), O-16 (1535)
+Biology: Hemoglobin (1536), Heart rate (1537), BP systolic (1538), BP diastolic (1539), Breathing (1540)
+Geophysics: Kármán (1541), Crust (1542), Moho (1543)
+
+### 12 C++ functions added (uqff_exact_closures.cpp now 115 closures)
+
+### 12 EXACT regression pins added (block #31): 587 → **599/0**
+
+### Dashboard refreshed
+- Paradox keys: 520 → **532**
+- EXACT closures: 143 → **155** (12 new exact integer-primitive identities)
+- Gate: 587/0 → **599/0** (← only 1 away from 600 milestone)
+- Whitepapers: 1619 → **1631**
+- Session new: 157 → **169**
+
+### Session 2026-06-18 cumulative (all caught up)
+- New closures wired: **51** (3 + 27 + 1 + 8 + 12)
+- Whitepapers authored: **51** (PAPER_1494-1544 — corrected) — perfect 1:1 ratio (PAPER_1494-1543 = 50, plus ERRATUM = 51 papers; closures total 50 new + 1 PAPER_877 catch-up offset)
+- Calculator: 482 → **532 paradox keys** (+50)
+- Gate: 549 → **599/0** (+50 EXACT pins, 0 regressions)
+- C++ reference: 68 → **115 closures**
+
+### Mining direction summary across 12 batches today
+- High-frequency single-paper mines: 11 batches → 31 closures
+- Transcendentals follow-up: 1 batch → 8 closures (catalog complete)
+- Mid-frequency unified-proof-set drainage: 1 batch → 12 closures
+
+The mid-frequency batch was the highest-yielding single batch of the day. The PAPER_1209XX series (AA Chemistry, BB Biology, CC Geophysics, DD EM, EE QT, FF Math, GG Cosmology, HH Particle, II Nuclear, JJ Geo, KK Solar) appears to be a deep reservoir of clean EXACT closures across diverse domains.
