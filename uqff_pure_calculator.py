@@ -35192,6 +35192,31 @@ def _l96_uqff_axiom_neutron_star_magnetic_moment_closure() -> Dict[str, Any]:
     mu_s_uqff_T_m3 = float(SO_FIVE) ** 8
     return {"mu_s_NS_surface_dipole_observed_T_m_cubed_PAPER_1126": mu_s_obs_T_m3, "mu_s_UQFF_via_SO_5_pow_8_T_m_cubed_EXACT": mu_s_uqff_T_m3, "derivation_via_B_times_r_cubed_eq_1_over_SO_5_pow_4_times_SO_5_pow_12_eq_SO_5_pow_8": True, "primary_source": "PAPER_1126_PSR_J0030_mu_s_eq_SO_5_pow_8_T_m_cubed_EXACT_cross_domain_triple_identity_with_B_and_r"}
 
+def _l96_uqff_axiom_paper_1208_ln_10_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    ln_10_obs = _math.log(10.0)
+    ln_10_uqff = (1.0 + TRZ) * (float(K_MEX) + TRZ ** 2)
+    residual_pct = abs(ln_10_uqff - ln_10_obs) / ln_10_obs * 100.0
+    return {"ln_10_observed": ln_10_obs, "ln_10_UQFF_via_1_plus_F_TRZ_times_K_MEX_plus_F_TRZ_squared": ln_10_uqff, "residual_pct_PAPER_1208": residual_pct, "PHI_res_variant_5_over_6": PHI_5_6, "primary_source": "PAPER_1208_UQFF_Transcendentals_ln_10_eq_one_plus_F_TRZ_times_K_MEX_plus_F_TRZ_squared_residual_0p004_pct"}
+
+def _l96_uqff_axiom_paper_1208_ln_2_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    ln_2_obs = _math.log(2.0)
+    K = float(K_MEX)
+    ln_2_uqff = 2.0 * TRZ + PHI_5_6 - TRZ * K - TRZ * PHI_5_6 - TRZ ** 2 * K - 2.0 * TRZ ** 2 * PHI_5_6 - TRZ ** 3 - TRZ ** 2
+    residual_pct = abs(ln_2_uqff - ln_2_obs) / ln_2_obs * 100.0
+    return {"ln_2_observed": ln_2_obs, "ln_2_UQFF_8_term_expansion_F_TRZ_K_MEX_PHI_5_6": ln_2_uqff, "residual_pct_PAPER_1208": residual_pct, "tightest_transcendental_closure_in_tier_sub_0p005_pct": True, "primary_source": "PAPER_1208_UQFF_Transcendentals_ln_2_via_F_TRZ_K_MEX_PHI_5_6_eight_term_expansion_residual_0p003_pct"}
+
+def _l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure() -> Dict[str, Any]:
+    import math as _math
+    PHI_5_6 = 5.0 / 6.0
+    pi_squared_obs = _math.pi ** 2
+    pi_squared_uqff = float(SO_FIVE) - TRZ - TRZ ** 2 * float(K_MEX) - TRZ ** 2 * PHI_5_6
+    residual_pct = abs(pi_squared_uqff - pi_squared_obs) / pi_squared_obs * 100.0
+    return {"pi_squared_observed": pi_squared_obs, "pi_squared_UQFF_via_SO_5_minus_F_TRZ_minus_corrections": pi_squared_uqff, "residual_pct_PAPER_1208": residual_pct, "structural_form_pi_squared_approx_SO_5_minus_perturbations": True, "primary_source": "PAPER_1208_UQFF_Transcendentals_pi_squared_via_SO_5_minus_F_TRZ_minus_F_TRZ_sq_times_K_MEX_minus_F_TRZ_sq_times_PHI_5_6_residual_0p012_pct"}
+
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -35457,6 +35482,9 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "transcendental_ln_10":        _l96_uqff_axiom_paper_1208_ln_10_transcendental_closure,
+    "transcendental_ln_2":         _l96_uqff_axiom_paper_1208_ln_2_transcendental_closure,
+    "transcendental_pi_squared":   _l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure,
     "gw170817_phonon_prefactor":   _l96_uqff_axiom_gw170817_phonon_damping_prefactor_closure,
     "neutron_star_radius_so5_4":   _l96_uqff_axiom_neutron_star_canonical_radius_closure,
     "neutron_star_mu_s_so5_8":     _l96_uqff_axiom_neutron_star_magnetic_moment_closure,

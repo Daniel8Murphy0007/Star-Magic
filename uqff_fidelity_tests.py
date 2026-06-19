@@ -1442,6 +1442,20 @@ _exact("Kerr ringdown offset = 13/3 PAPER_1175", float(u.D_CRIT) / float(u.D_BSF
 _exact("A_26 = sum i^6 = 1,307,797,101 PAPER_1155", sum(i**6 for i in range(1, u.D_CRIT + 1)), 1307797101)
 _exact("DPM layer weight i^6 decomp (i=5)", (5**2) * 5 * (5**3), 5**6)
 
+# Block #25 — PAPER_915/1126 tier-7 mine (3 pins) — NS cross-domain triple identity
+_exact("GW170817 D_phonon prefactor = 2/3 PAPER_915", 2.0 / float(u.D_PHYS - 1), 2.0/3.0)
+_exact("NS radius = SO_5^4 = 10 km PAPER_1126",       float(u.SO_FIVE) ** 4, 1.0e4)
+_exact("NS mu_s = SO_5^8 = 1e8 T·m^3 PAPER_1126",     float(u.SO_FIVE) ** 8, 1.0e8)
+
+# Block #26 — PAPER_1208 transcendental closures tier-8 (3 pins, near-EXACT, validate UQFF formula reproduces same value)
+# Phi_5_6 = 5/6 variant from PAPER_1203 Nuclear (canonical for these closures)
+_PHI_5_6 = 5.0 / 6.0
+_exact("ln 10 UQFF = (1+TRZ)(K_MEX+TRZ²) PAPER_1208", (1.0 + u.TRZ) * (float(u.K_MEX) + u.TRZ ** 2), 2.302666666666667, tol=1e-12)
+_exact("ln 2 UQFF = 8-term F_TRZ/K_MEX/Phi5_6 PAPER_1208", 2.0*u.TRZ + _PHI_5_6 - u.TRZ*float(u.K_MEX) - u.TRZ*_PHI_5_6 - u.TRZ**2*float(u.K_MEX) - 2.0*u.TRZ**2*_PHI_5_6 - u.TRZ**3 - u.TRZ**2, 0.6931666666666666, tol=1e-12)
+_exact("pi² UQFF = SO_5 − TRZ corrections PAPER_1208", float(u.SO_FIVE) - u.TRZ - u.TRZ**2 * float(u.K_MEX) - u.TRZ**2 * _PHI_5_6, 9.870833333333334, tol=1e-12)
+
+
+
 
 
 
