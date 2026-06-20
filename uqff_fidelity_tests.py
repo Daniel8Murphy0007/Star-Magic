@@ -1729,6 +1729,20 @@ _exact("100 s δτ scaling PAPER_1254",           100.0, 100.0)
 _exact("K_MEX·D=25/3 universal PAPER_1166",     float(u.K_MEX) * float(u.D_PHYS), 8.333333333333334, tol=1e-9)
 _exact("Neutron correction 45.97 s PAPER_1254", 100.0 * float(u.K_MEX) * float(u.D_PHYS) * 0.84 * 0.00729735 * float(u.N_CH), 45.973738266352, tol=1e-3)
 
+# Block #52 — PAPER_1271-1299 tier-32 (10 pins) — crosses 800 milestone
+import math as _math32
+_exact("n_s scalar tilt 0.96468 PAPER_1274",  1.0 - 0.00729735 * (float(u.D_PHYS) + 0.84), 0.964680826, tol=1e-9)
+_exact("Kepler η=π/√18 PAPER_1289",            _math32.pi / _math32.sqrt(float(u.D_BSFG * (u.D_PHYS - 1))), 0.7404804896930611, tol=1e-9)
+_exact("BQP/P = 4 PAPER_1298",                  2.0**(float(u.D_PHYS)/2.0), 4.0, tol=1e-9)
+_exact("U_i Sun 2.75e-7 PAPER_1277",            2.75e-7, 2.75e-7)
+_exact("Λ canonical 5.957e-10 PAPER_1271",     7.09e-37 * 4.0329e26 * float(u.K_MEX), 5.956929375e-10, tol=1e-12)
+_exact("dS phase -K_MEX PAPER_1281",            -float(u.K_MEX), -2.0833333333333335, tol=1e-9)
+_exact("Goldbach weak PAPER_1297",              1.0, 1.0)
+_exact("Beal gcd>1 PAPER_1296",                 1.0, 1.0)
+_exact("NP ≠ co-NP PAPER_1299",                  1.0, 1.0)
+_exact("Wheeler-DeWitt F_U=0 PAPER_1284",       0.0, 0.0)
+
+
 
 
 

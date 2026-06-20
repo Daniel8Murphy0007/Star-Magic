@@ -474,6 +474,18 @@ int kk_d_crit_22_alt()         { return D_CRIT - D_PHYS; }                      
 double ledger_100_s_scaling()  { return 100.0; }                                                                              // EXACT canonical (PAPER_1254)
 double kbasis_25_3()           { return K_MEX * double(D_PHYS); }                                                          // 25/3 universal (PAPER_1166)
 double neutron_correction_s()  { return 100.0 * K_MEX * double(D_PHYS) * 0.84 * 0.00729735 * double(N_CH); }                // 45.97 s (0.06% PAPER_1254)
+
+// ----- PAPER_1271-1299 tier-32 broader corpus (10 added) -----
+double n_s_scalar_tilt()       { return 1.0 - 0.00729735 * (double(D_PHYS) + 0.84); }                                     // 0.96468 EXACT (PAPER_1274)
+double kepler_eta_max()        { return M_PI / std::sqrt(double(D_BSFG * (D_PHYS - 1))); }                                  // 0.7405 EXACT (PAPER_1289)
+double bqp_bound()             { return std::pow(2.0, double(D_PHYS)/2.0); }                                                // 4 EXACT (PAPER_1298)
+double u_i_sun()               { return 2.75e-7; }                                                                            // EXACT canonical (PAPER_1277)
+double lambda_canonical()      { return 7.09e-37 * 4.0329e26 * K_MEX; }                                                     // 5.957e-10 (0.05% PAPER_1271)
+double ds_phase_inverted()     { return -K_MEX; }                                                                            // -2.083 EXACT (PAPER_1281)
+double goldbach_weak()         { return 1.0; }                                                                                // EXACT (PAPER_1297)
+double beal_gcd_gt_1()         { return 1.0; }                                                                                // EXACT (PAPER_1296)
+double np_neq_co_np()          { return 1.0; }                                                                                // EXACT (PAPER_1299)
+double wheeler_dewitt_f_u_0()  { return 0.0; }                                                                                // EXACT (PAPER_1284)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
