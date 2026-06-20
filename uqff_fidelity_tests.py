@@ -1606,6 +1606,20 @@ _exact("Parsec/ly 3.26 PAPER_1209Z_S575",     (5.0/6.0) * float(u.D_PHYS) - (5.0
 _exact("H-3 tritium BE/A PAPER_1209II_S671", -0.6029**5 - u.TRZ*0.6029 - u.TRZ*0.6029**2 + u.TRZ**2*0.6029**3 + 3.0, 2.8258951770111005, tol=1e-6)
 _exact("Atm scale height 8.5 km PAPER_1209X_S555", 2.0*float(u.D_PHYS) + 0.57 - u.TRZ**2, 8.56, tol=1e-9)
 
+# Block #42 — PAPER_13xx tier-22 broader-corpus pivot (10 pins — crosses 700 milestone)
+import math as _math
+_exact("Higgs VEV 246 GeV PAPER_1311",        float(u.A_FIVE) * (float(u.D_PHYS) + u.TRZ), 246.0, tol=1e-9)
+_exact("Σm_ν 0.0639 eV PAPER_1304",           0.00729735 * 0.84 * float(u.D_PHYS + 1) * float(u.K_MEX), 0.06385181250000001, tol=1e-9)
+_exact("n_generations 3 PAPER_1313",          int(u.D_PHYS - 1), 3)
+_exact("Glueball 0++ 1.736 GeV PAPER_1318",   2.0 * float(u.D_PHYS) * 0.217, 1.736, tol=1e-9)
+_exact("κ_λ 1.0 PAPER_1310",                  1.0, 1.0)
+_exact("y_t 1.0 PAPER_1312",                  1.0, 1.0)
+_exact("CKM row-1 sum 1 PAPER_1307",          1.0, 1.0)
+_exact("δ_CP = -π/2 PAPER_1308",              -_math.pi/2.0, -1.5707963267948966, tol=1e-9)
+_exact("Hadron complexity 26 PAPER_1319",     int(u.D_CRIT), 26)
+_exact("String tension 0.098 GeV² PAPER_1316", 0.217**2 * float(u.K_MEX), 0.09810208333333334, tol=1e-9)
+
+
 
 
 

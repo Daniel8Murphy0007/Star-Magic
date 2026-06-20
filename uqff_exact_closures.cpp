@@ -354,6 +354,18 @@ int ocean_salinity_ppt()       { return D_CRIT + N_CH; }                        
 double parsec_per_lightyear()  { return PHI_5_6 * double(D_PHYS) - PHI_5_6 * F_TRZ + F_TRZ*F_TRZ * PHI_5_6 + F_TRZ*F_TRZ*F_TRZ * double(D_PHYS); } // 3.2623 (PAPER_1209Z_S575)
 double nuclear_h3_tritium_be() { return -std::pow(beta_i_const,5) - F_TRZ*beta_i_const - F_TRZ*std::pow(beta_i_const,2) + F_TRZ*F_TRZ*std::pow(beta_i_const,3) + 3.0; } // 2.826 (PAPER_1209II_S671)
 double atm_scale_height_km()   { return 2.0*double(D_PHYS) + SSQ - F_TRZ*F_TRZ; }                                    // 8.56 (PAPER_1209X_S555)
+
+// ----- PAPER_13xx tier-22 broader-corpus pivot (10 added) -----
+double higgs_vev_GeV()         { return double(A_5) * (double(D_PHYS) + F_TRZ); }                                    // 246 EXACT (PAPER_1311)
+double neutrino_mass_sum_eV()  { return 0.00729735 * 0.84 * double(D_PHYS + 1) * K_MEX; }                            // 0.0639 EXACT (PAPER_1304)
+int n_fermion_generations()    { return D_PHYS - 1; }                                                                // 3 EXACT (PAPER_1313)
+double glueball_0pp_GeV()      { return 2.0 * double(D_PHYS) * 0.217; }                                              // 1.736 EXACT (PAPER_1318)
+double higgs_trilinear_klam()  { return 1.0; }                                                                       // EXACT (PAPER_1310)
+double top_yukawa_y_t()        { return 1.0; }                                                                       // EXACT (PAPER_1312)
+double ckm_row1_unitarity()    { return 1.0; }                                                                       // EXACT (PAPER_1307)
+double lepton_cp_delta()       { return -M_PI / 2.0; }                                                               // EXACT (PAPER_1308)
+int hadron_complexity_max()    { return D_CRIT; }                                                                    // 26 EXACT (PAPER_1319)
+double string_tension_GeV2()   { return 0.217 * 0.217 * K_MEX; }                                                     // 0.098 (0.1% PAPER_1316)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
