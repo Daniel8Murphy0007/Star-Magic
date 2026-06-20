@@ -1594,6 +1594,19 @@ _exact("Synodic month 29.53 PAPER_1209Z_S582", float(u.D_CRIT + u.D_PHYS) - u.TR
 _exact("Earth orbital v 29.78 PAPER_1209CC_S612", float(u.N_CH + u.SO_FIVE + u.SO_FIVE) + (5.0/6.0) - u.TRZ**2*float(u.D_PHYS) - u.TRZ**2*0.57, 29.787633333333332, tol=1e-9)
 _exact("Earth age 4.54 Gyr PAPER_1209CC_S611", float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) + u.TRZ*(5.0/6.0) + u.TRZ*0.57, 4.540333333333334, tol=1e-9)
 
+# Block #41 — PAPER_1209AA/CC/X/Z/II tier-21 final sweep (10 pins)
+_exact("N_A lead PAPER_1209AA_S583",          float(u.D_BSFG) + u.TRZ**2 * 0.57 * float(u.D_PHYS), 6.0228, tol=1e-9)
+_exact("R gas const PAPER_1209AA_S584",       float(u.K_MEX) * (float(u.D_PHYS) - u.TRZ**2), 8.312500000000002, tol=1e-9)
+_exact("H atomic mass PAPER_1209AA_S585",     u.TRZ * float(u.SO_FIVE) + u.TRZ * 0.57 * (5.0/6.0) / float(u.D_BSFG), 1.0079166666666666, tol=1e-9)
+_exact("eV lead PAPER_1209AA_S591",           float(u.K_MEX) - 0.57 + u.TRZ**2 * 0.57 * float(u.D_PHYS) + u.TRZ * 0.57 + u.TRZ**2, 1.6031333333333335, tol=1e-9)
+_exact("Ocean depth 3.7 km PAPER_1209CC_S606", float(u.D_PHYS) - u.TRZ * float(u.D_PHYS) + u.TRZ, 3.7, tol=1e-9)
+_exact("Mt Everest 8.848 km PAPER_1209CC_S609", float(u.K_MEX) * float(u.D_PHYS) + 0.57 - u.TRZ * 0.57, 8.846333333333334, tol=1e-9)
+_exact("Ocean salinity 35 ppt PAPER_1209X_S557", int(u.D_CRIT + u.N_CH), 35)
+_exact("Parsec/ly 3.26 PAPER_1209Z_S575",     (5.0/6.0) * float(u.D_PHYS) - (5.0/6.0) * u.TRZ + u.TRZ**2 * (5.0/6.0) + u.TRZ**3 * float(u.D_PHYS), 3.2623333333333333, tol=1e-9)
+_exact("H-3 tritium BE/A PAPER_1209II_S671", -0.6029**5 - u.TRZ*0.6029 - u.TRZ*0.6029**2 + u.TRZ**2*0.6029**3 + 3.0, 2.8258951770111005, tol=1e-6)
+_exact("Atm scale height 8.5 km PAPER_1209X_S555", 2.0*float(u.D_PHYS) + 0.57 - u.TRZ**2, 8.56, tol=1e-9)
+
+
 
 
 

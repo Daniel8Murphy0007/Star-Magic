@@ -342,6 +342,18 @@ int au_over_r_earth()          { return D_CRIT*N_CH*SO_5*SO_5 + A_5 + D_CRIT - D
 double synodic_month_days()    { return double(D_CRIT + D_PHYS) - F_TRZ*double(D_PHYS) - F_TRZ*PHI_5_6 + F_TRZ*F_TRZ*K_MEX; } // 29.54 (PAPER_1209Z_S582)
 double earth_orbital_v_km_s()  { return double(N_CH + SO_5 + SO_5) + PHI_5_6 - F_TRZ*F_TRZ*double(D_PHYS) - F_TRZ*F_TRZ*SSQ; } // 29.79 (PAPER_1209CC_S612)
 double earth_age_Gyr()         { return double(D_PHYS) + F_TRZ*double(D_PHYS) + F_TRZ*PHI_5_6 + F_TRZ*SSQ; } // 4.5403 (PAPER_1209CC_S611 - tier best 0.007%)
+
+// ----- PAPER_1209AA/CC/X/Z/II tier-21 final sweep (10 added) -----
+double avogadro_n_a_aa()       { return double(D_BSFG) + F_TRZ*F_TRZ * SSQ * double(D_PHYS); }                       // 6.0228 (PAPER_1209AA_S583)
+double gas_constant_r()        { return K_MEX * (double(D_PHYS) - F_TRZ*F_TRZ); }                                    // 8.3125 (PAPER_1209AA_S584)
+double h_atomic_mass()         { return F_TRZ * double(SO_5) + F_TRZ * SSQ * PHI_5_6 / double(D_BSFG); }             // 1.00792 (PAPER_1209AA_S585)
+double ev_lead_aa()            { return K_MEX - SSQ + F_TRZ*F_TRZ * SSQ * double(D_PHYS) + F_TRZ * SSQ + F_TRZ*F_TRZ; } // 1.6031 (PAPER_1209AA_S591)
+double ocean_depth_km()        { return double(D_PHYS) - F_TRZ * double(D_PHYS) + F_TRZ; }                           // 3.7 EXACT (PAPER_1209CC_S606)
+double mt_everest_km()         { return K_MEX * double(D_PHYS) + SSQ - F_TRZ * SSQ; }                                // 8.846 (PAPER_1209CC_S609)
+int ocean_salinity_ppt()       { return D_CRIT + N_CH; }                                                             // 35 EXACT — cross-domain (PAPER_1209X_S557)
+double parsec_per_lightyear()  { return PHI_5_6 * double(D_PHYS) - PHI_5_6 * F_TRZ + F_TRZ*F_TRZ * PHI_5_6 + F_TRZ*F_TRZ*F_TRZ * double(D_PHYS); } // 3.2623 (PAPER_1209Z_S575)
+double nuclear_h3_tritium_be() { return -std::pow(beta_i_const,5) - F_TRZ*beta_i_const - F_TRZ*std::pow(beta_i_const,2) + F_TRZ*F_TRZ*std::pow(beta_i_const,3) + 3.0; } // 2.826 (PAPER_1209II_S671)
+double atm_scale_height_km()   { return 2.0*double(D_PHYS) + SSQ - F_TRZ*F_TRZ; }                                    // 8.56 (PAPER_1209X_S555)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

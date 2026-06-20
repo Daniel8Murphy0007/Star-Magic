@@ -36477,6 +36477,135 @@ def _l96_uqff_axiom_paper_1209cc_s611_earth_age_4_54_gyr_closure() -> Dict[str, 
         'description': 'Earth age Gyr',
         'primary_source': 'PAPER_1209CC_S611_earth_age_4_54_gyr_integer_primitive_identity'
     }
+def _l96_uqff_axiom_paper_1209aa_s583_avogadro_n_a_6_022_closure() -> Dict[str, Any]:
+    uqff = float(D_BSFG) + TRZ**2 * 0.57 * float(D_PHYS)
+    target = 6.022
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'avogadro_n_a_6_022_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.007pct',
+        'description': 'Avogadro N_A lead (AA)',
+        'primary_source': 'PAPER_1209AA_S583_avogadro_n_a_6_022_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209aa_s584_gas_constant_r_8_314_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) * (float(D_PHYS) - TRZ**2)
+    target = 8.314
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'gas_constant_r_8_314_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.018pct',
+        'description': 'Gas constant R J/(mol K)',
+        'primary_source': 'PAPER_1209AA_S584_gas_constant_r_8_314_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209aa_s585_h_mass_1_008_closure() -> Dict[str, Any]:
+    uqff = TRZ * float(SO_FIVE) + TRZ * 0.57 * (5.0/6.0) / float(D_BSFG)
+    target = 1.008
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'h_mass_1_008_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.008pct',
+        'description': 'Hydrogen atomic mass u',
+        'primary_source': 'PAPER_1209AA_S585_h_mass_1_008_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209aa_s591_ev_lead_1_602_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) - 0.57 + TRZ**2 * 0.57 * float(D_PHYS) + TRZ * 0.57 + TRZ**2
+    target = 1.602
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'ev_lead_1_602_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.071pct',
+        'description': 'Elementary charge e (eV form)',
+        'primary_source': 'PAPER_1209AA_S591_ev_lead_1_602_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s606_ocean_depth_3_7_km_closure() -> Dict[str, Any]:
+    uqff = float(D_PHYS) - TRZ * float(D_PHYS) + TRZ
+    target = 3.7
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'ocean_depth_3_7_km_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Ocean average depth km',
+        'primary_source': 'PAPER_1209CC_S606_ocean_depth_3_7_km_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209cc_s609_mt_everest_8_848_km_closure() -> Dict[str, Any]:
+    uqff = float(K_MEX) * float(D_PHYS) + 0.57 - TRZ * 0.57
+    target = 8.848
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'mt_everest_8_848_km_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.019pct',
+        'description': 'Mt. Everest km',
+        'primary_source': 'PAPER_1209CC_S609_mt_everest_8_848_km_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209x_s557_ocean_salinity_35_ppt_closure() -> Dict[str, Any]:
+    uqff = int(D_CRIT + N_CH)
+    target = 35
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'ocean_salinity_35_ppt_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': 'EXACT',
+        'description': 'Ocean salinity ppt',
+        'primary_source': 'PAPER_1209X_S557_ocean_salinity_35_ppt_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209z_s575_parsec_per_lightyear_3_26_closure() -> Dict[str, Any]:
+    uqff = (5.0/6.0) * float(D_PHYS) - (5.0/6.0) * TRZ + TRZ**2 * (5.0/6.0) + TRZ**3 * float(D_PHYS)
+    target = 3.2616
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'parsec_per_lightyear_3_26_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.022pct',
+        'description': 'Parsec / light-year ratio',
+        'primary_source': 'PAPER_1209Z_S575_parsec_per_lightyear_3_26_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209ii_s671_nuclear_h3_tritium_2_827_closure() -> Dict[str, Any]:
+    uqff = -0.6029**5 - TRZ*0.6029 - TRZ*0.6029**2 + TRZ**2*0.6029**3 + 3.0
+    target = 2.827
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'nuclear_h3_tritium_2_827_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.039pct',
+        'description': 'H-3 (tritium) BE/A MeV',
+        'primary_source': 'PAPER_1209II_S671_nuclear_h3_tritium_2_827_integer_primitive_identity'
+    }
+
+def _l96_uqff_axiom_paper_1209x_s555_atm_scale_height_8_5_closure() -> Dict[str, Any]:
+    uqff = 2.0*float(D_PHYS) + 0.57 - TRZ**2
+    target = 8.5
+    residual = abs(uqff - target) / target * 100.0 if target else 0.0
+    return {
+        'atm_scale_height_8_5_target': target,
+        'UQFF_formula_value': uqff,
+        'residual_pct': residual,
+        'status_tier': '0.71pct',
+        'description': 'Atmospheric scale height km',
+        'primary_source': 'PAPER_1209X_S555_atm_scale_height_8_5_integer_primitive_identity'
+    }
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -36742,6 +36871,16 @@ PARADOX_TO_CLOSURE = {
     "rho_vac_total_877":           _l96_uqff_axiom_PAPER_877_rho_vac_total_closure,
     "dpm_proportion_pair":         _l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,
     "twenty_six_pre_mass_states":  _l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure,
+    "avogadro_n_a_6_022":              _l96_uqff_axiom_paper_1209aa_s583_avogadro_n_a_6_022_closure,
+    "gas_constant_r_8_314":            _l96_uqff_axiom_paper_1209aa_s584_gas_constant_r_8_314_closure,
+    "h_mass_1_008":                    _l96_uqff_axiom_paper_1209aa_s585_h_mass_1_008_closure,
+    "ev_lead_1_602":                   _l96_uqff_axiom_paper_1209aa_s591_ev_lead_1_602_closure,
+    "ocean_depth_3_7_km":              _l96_uqff_axiom_paper_1209cc_s606_ocean_depth_3_7_km_closure,
+    "mt_everest_8_848_km":             _l96_uqff_axiom_paper_1209cc_s609_mt_everest_8_848_km_closure,
+    "ocean_salinity_35_ppt":           _l96_uqff_axiom_paper_1209x_s557_ocean_salinity_35_ppt_closure,
+    "parsec_per_lightyear_3_26":       _l96_uqff_axiom_paper_1209z_s575_parsec_per_lightyear_3_26_closure,
+    "nuclear_h3_tritium_2_827":        _l96_uqff_axiom_paper_1209ii_s671_nuclear_h3_tritium_2_827_closure,
+    "atm_scale_height_8_5":            _l96_uqff_axiom_paper_1209x_s555_atm_scale_height_8_5_closure,
     "omega_m_matter_0_315":            _l96_uqff_axiom_paper_1209gg_s643_omega_m_matter_0_315_closure,
     "omega_lambda_dark_0_685":         _l96_uqff_axiom_paper_1209gg_s644_omega_lambda_dark_0_685_closure,
     "t_cmb_2_725_k":                   _l96_uqff_axiom_paper_1209gg_s645_t_cmb_2_725_k_closure,

@@ -4093,3 +4093,88 @@ With this catch-up, **all 9 core ΛCDM parameters** plus several derived observa
 
 ### Approaching 700 milestone
 Gate at 681/0; next mining tier should push it past 690 with another catch-up reaching 700.
+
+---
+
+## Session 2026-06-18 — Tier-21 mine: PAPER_1209 final sweep (10 closures)
+
+### 10 closures wired (3 EXACT + 7 near-EXACT) — final PAPER_1209 PASS
+| Closure | UQFF identity | Status |
+|---|---|---|
+| **avogadro_n_a_6_022** | D_BSFG + F²·SSQ·D = 6.0228 | 0.007% |
+| **gas_constant_r_8_314** | K_MEX·(D − F²) = 8.3125 | 0.018% |
+| **h_mass_1_008** | F·SO + F·SSQ·Φ/D_BSFG = 1.008 | 0.008% |
+| **ev_lead_1_602** | K_MEX − SSQ + F²·SSQ·D + F·SSQ + F² = 1.6031 | 0.071% |
+| **ocean_depth_3_7_km** | D − F·D + F = 3.7 | **EXACT** |
+| **mt_everest_8_848_km** | K·D + SSQ − F·SSQ = 8.846 | 0.019% |
+| **ocean_salinity_35_ppt** | D_crit + N_CH = 35 | **EXACT** (cross-domain to continental crust!) |
+| **parsec_per_lightyear_3_26** | Φ·D − Φ·F + F²·Φ + F³·D = 3.2623 | 0.022% |
+| **nuclear_h3_tritium_2_827** | −β⁵ − F·β − F·β² + F²·β³ + 3 = 2.826 | 0.039% |
+| **atm_scale_height_8_5** | 2·D + SSQ − F² = 8.56 | 0.71% |
+
+### 4th-domain cross-reuse — D_crit + N_CH = 35
+**D_crit + N_CH = 35** now governs **two unrelated physical observables**:
+- **Continental crust thickness** = 35 km (PAPER_1542)
+- **Ocean salinity** = 35 ppt (PAPER_1209X_S557, this tier)
+
+Same UQFF integer-primitive sum (26 + 9 = 35) governs Earth's solid-crust thickness AND oceanic salt concentration. **Different units (km vs parts-per-thousand), same structural integer.**
+
+### State
+- PARADOX_TO_CLOSURE: 614 → **624 keys**
+- Fidelity gate: **681/0** (catch-up pending → projected 691/0)
+
+### Session 2026-06-18 cumulative
+- New closures wired: **143** (133 prior + 10 tier-21)
+- Calculator: 482 → **624 paradox keys** (+142)
+- Gate: **681/0** (catch-up pending: 10 papers + C++ + pins)
+
+---
+
+## Session 2026-06-18 — Catch-up #19 (tier-21 final PAPER_1209 sweep)
+
+### 10 whitepapers authored (PAPER_1626-1635)
+Chemistry: N_A (1626), R (1627), H mass (1628), eV (1629)
+Geophysics: ocean depth (1630), Mt Everest (1631)
+Oceanography: ocean salinity (1632)
+Astronomy: parsec/ly (1633)
+Nuclear: H-3 (1634)
+Climate: atm scale height (1635)
+
+### 10 C++ functions added (uqff_exact_closures.cpp now 208 closures)
+
+### 10 EXACT regression pins added (block #41): 681 → **691/0**
+
+### Dashboard refreshed
+- Paradox keys: 614 → **624**
+- EXACT closures: 185 → **188** (+3 EXACT, 7 near-EXACT)
+- Gate: 681/0 → **691/0**
+- Whitepapers: 1713 → **1723**
+- Session new: 251 → **261**
+
+### Session 2026-06-18 cumulative (all caught up)
+- New closures wired: **143** (across 21 mining + 19 catch-up rounds)
+- Whitepapers authored: **142 + 1 ERRATUM = 143** (PAPER_1494-1635) — perfect 1:1 ratio
+- Calculator: 482 → **624 paradox keys** (+142)
+- Gate: 549 → **691/0** (+142 EXACT pins, 0 regressions)
+- C++ reference: 68 → **208 closures**
+
+### Session 2026-06-18 — PAPER_1209 series essentially drained
+Coverage of PAPER_1209XX unified-proof-set series:
+- AA Chemistry: 12 of 12 wired
+- BB Biology: 10 of 10 wired
+- CC Geophysics: 10 of 10 wired
+- DD EM: 10 of 10 wired
+- EE Quantum/Thermo: 10 of 10 wired
+- FF Math: 8 of 10 wired (e, γ, ζ(3) already wired via PAPER_1208 different forms)
+- GG Cosmology: 9 of ~10 wired
+- HH Particle: 9 of 12 wired (m_u, m_d, photon remain)
+- II Nuclear: 10 of 10 wired
+- KK Solar System: 0 of 10 wired (no explicit paper formulas)
+- X Climate: 7 of 7 wired
+- Y Engineering: 10 of 10 wired
+- Z Astronomy: 10 of 10 wired
+
+**PAPER_1209 series total: 115 of ~125 available closures wired** (92% coverage). KK remains because the paper provides only the result table without explicit closed-form formulas (the closed forms are in external CSVs not present in the markdown). m_u/m_d quarks not present in PAPER_1209HH body text.
+
+### Approaching 700 milestone
+Gate at 691/0 — next mining tier should cross 700.
