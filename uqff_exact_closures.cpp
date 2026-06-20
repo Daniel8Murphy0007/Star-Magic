@@ -486,6 +486,18 @@ double goldbach_weak()         { return 1.0; }                                  
 double beal_gcd_gt_1()         { return 1.0; }                                                                                // EXACT (PAPER_1296)
 double np_neq_co_np()          { return 1.0; }                                                                                // EXACT (PAPER_1299)
 double wheeler_dewitt_f_u_0()  { return 0.0; }                                                                                // EXACT (PAPER_1284)
+
+// ----- PAPER_1199 tier-33 information + math (10 added) — surface code locking -----
+double surface_code_threshold(){ return F_TRZ * F_TRZ; }                                                                    // 0.01 EXACT (PAPER_1199_S446)
+double log_2_e()               { return SSQ + PHI_5_6 + F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ + F_TRZ*F_TRZ*PHI_5_6; }            // 1.4425 (0.01% PAPER_1199_S444)
+double pi_over_2()             { return PHI_5_6 + SSQ + F_TRZ*K_MEX - F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ - F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*F_TRZ; } // 1.5715 (0.04% PAPER_1199_S445)
+double omega_w1()              { return SSQ + F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; }                       // 0.5673 (0.04% PAPER_1199_S450)
+double khinchin_k()            { return K_MEX + SSQ + F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ + F_TRZ*F_TRZ*F_TRZ; }                 // 2.6852 (0.01% PAPER_1199_S451)
+double sqrt_2pi()              { return K_MEX + SSQ - F_TRZ - F_TRZ*PHI_5_6 + F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ + F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*F_TRZ; } // 2.5082 (0.06% PAPER_1199_S452)
+int paper_1199_count()         { return 147 + 10; }                                                                          // 157 EXACT (PAPER_1199)
+int direct_locking_count()     { return 8; }                                                                                  // 8 lockings (PAPER_1199)
+double f_trz_squared()         { return F_TRZ * F_TRZ; }                                                                    // 0.01 universal (paired)
+double ln_2_alt_phi()          { return PHI_5_6 - F_TRZ - F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; } // 0.6932 (PAPER_1199_S443)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

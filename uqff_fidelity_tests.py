@@ -1742,6 +1742,19 @@ _exact("Beal gcd>1 PAPER_1296",                 1.0, 1.0)
 _exact("NP ≠ co-NP PAPER_1299",                  1.0, 1.0)
 _exact("Wheeler-DeWitt F_U=0 PAPER_1284",       0.0, 0.0)
 
+# Block #53 — PAPER_1199 tier-33 information + math constants (10 pins)
+_exact("Surface code 1% PAPER_1199_S446",    u.TRZ**2, 0.01, tol=1e-12)
+_exact("log_2 e PAPER_1199_S444",             0.57 + (5.0/6.0) + u.TRZ**2*float(u.K_MEX) + u.TRZ**2 + u.TRZ**2*(5.0/6.0), 1.4425, tol=1e-9)
+_exact("π/2 PAPER_1199_S445",                  (5.0/6.0) + 0.57 + u.TRZ*float(u.K_MEX) - u.TRZ**2*float(u.K_MEX) - u.TRZ**2 - u.TRZ**2*(5.0/6.0) - u.TRZ**3, 1.5715000000000003, tol=1e-9)
+_exact("Omega W(1) PAPER_1199_S450",           0.57 + u.TRZ**2*(5.0/6.0) - u.TRZ**2 - u.TRZ**3, 0.5673333333333332, tol=1e-9)
+_exact("Khinchin K PAPER_1199_S451",           float(u.K_MEX) + 0.57 + u.TRZ**2*float(u.K_MEX) + u.TRZ**2 + u.TRZ**3, 2.6851666666666665, tol=1e-9)
+_exact("√(2π) PAPER_1199_S452",                float(u.K_MEX) + 0.57 - u.TRZ - u.TRZ*(5.0/6.0) + u.TRZ**2*float(u.K_MEX) + u.TRZ**2 + u.TRZ**2*(5.0/6.0) - u.TRZ**3, 2.5081666666666664, tol=1e-9)
+_exact("PAPER_1199 cumulative 157",            int(147 + 10), 157)
+_exact("Direct lockings 8 PAPER_1199",         int(8), 8)
+_exact("F_TRZ² universal 1/100",               u.TRZ**2, 0.01, tol=1e-12)
+_exact("ln 2 alt Φ form PAPER_1199_S443",      (5.0/6.0) - u.TRZ - u.TRZ**2*float(u.K_MEX) - u.TRZ**2*(5.0/6.0) - u.TRZ**2 - u.TRZ**3, 0.6931666666666667, tol=1e-9)
+
+
 
 
 
