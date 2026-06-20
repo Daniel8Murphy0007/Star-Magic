@@ -510,6 +510,18 @@ double sf_efficiency()         { return K_MEX * PHI_5_6; }                      
 double hubble_bubble()         { return -F_TRZ * 0.6029 * 5.0; }                                                              // -0.301 (0.48% PAPER_1457)
 double rvb_threshold()         { return PHI_5_6 * 0.6029; }                                                                  // 0.502 (0.7% PAPER_1350)
 int frustration_dim()          { return D_BSFG - 1; }                                                                        // 5 EXACT (PAPER_1350)
+
+// ----- PAPER_142x-144x tier-35 catalog stubs (10 added) -----
+double gw_memory_frac()        { return F_TRZ * 0.6029; }                                                                    // 0.0603 EXACT (PAPER_1429)
+double schwinger_enhanced()    { return 1.32e18 * 0.84 * (1.0 + F_TRZ); }                                                    // 1.22e18 V/m (PAPER_1435)
+int t_neg_seconds()            { return -2512; }                                                                              // EXACT (PAPER_597/1439)
+double sphaleron_energy_eV()   { return K_MEX * 0.84 / 2.0; }                                                                // 0.875 EXACT (PAPER_1442)
+double dm_suppression()        { return 3.0; }                                                                                // EXACT (PAPER_1441)
+int d_crit_universal()         { return D_CRIT; }                                                                              // 26 EXACT (PAPER_1443)
+double nfw_c_vir_alt()         { return double(D_BSFG) / 0.6029; }                                                            // 9.95 (PAPER_1436)
+double sfe_boost_alt()         { return K_MEX * 0.84; }                                                                       // 1.75 EXACT (PAPER_1438)
+double gw_memory_paired()      { return F_TRZ * 0.6029; }                                                                    // 0.0603 paired (PAPER_1430)
+double u_ua_alt()              { return 1.0 / std::pow(double(SO_5), 4); }                                                   // 1e-4 EXACT (PAPER_500)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

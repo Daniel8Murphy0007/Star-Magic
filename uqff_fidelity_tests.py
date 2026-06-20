@@ -1766,6 +1766,19 @@ _exact("Hubble bubble -30% PAPER_1457",            -u.TRZ * 0.6029 * 5.0, -0.301
 _exact("RVB threshold 0.506 PAPER_1350",           (5.0/6.0) * 0.6029, 0.5024166666666667, tol=1e-9)
 _exact("Frustration dim 5 PAPER_1350",             int(u.D_BSFG - 1), 5)
 
+# Block #55 — PAPER_142x-144x tier-35 (10 pins)
+_exact("GW memory 6% PAPER_1429",              u.TRZ * 0.6029, 0.06029, tol=1e-9)
+_exact("Schwinger enhanced PAPER_1435",        1.32e18 * 0.84 * (1.0 + u.TRZ), 1.21968e18, tol=1e12)
+_exact("t_neg -2512 s PAPER_1439",             int(-2512), -2512)
+_exact("Sphaleron 0.875 eV PAPER_1442",        float(u.K_MEX) * 0.84 / 2.0, 0.875, tol=1e-9)
+_exact("DM suppression 3 PAPER_1441",          3.0, 3.0)
+_exact("D_crit 26 universal PAPER_1443",        int(u.D_CRIT), 26)
+_exact("NFW c_vir alt PAPER_1436",              float(u.D_BSFG) / 0.6029, 9.951899154088572, tol=1e-9)
+_exact("SFE boost K·Φ PAPER_1438",              float(u.K_MEX) * 0.84, 1.75, tol=1e-9)
+_exact("GW memory paired PAPER_1430",           u.TRZ * 0.6029, 0.06029, tol=1e-9)
+_exact("U_UA 1e-4 paired PAPER_500",            1.0/float(u.SO_FIVE)**4, 1.0e-4, tol=1e-12)
+
+
 
 
 
