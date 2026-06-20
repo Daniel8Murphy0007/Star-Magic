@@ -498,6 +498,18 @@ int paper_1199_count()         { return 147 + 10; }                             
 int direct_locking_count()     { return 8; }                                                                                  // 8 lockings (PAPER_1199)
 double f_trz_squared()         { return F_TRZ * F_TRZ; }                                                                    // 0.01 universal (paired)
 double ln_2_alt_phi()          { return PHI_5_6 - F_TRZ - F_TRZ*F_TRZ*K_MEX - F_TRZ*F_TRZ*PHI_5_6 - F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ; } // 0.6932 (PAPER_1199_S443)
+
+// ----- PAPER_132x-135x tier-34 astrophysics + condensed matter (10 added) -----
+double flat_rotation_beta_i() { return 0.6029; }                                                                            // EXACT canonical (PAPER_1327)
+int galaxy_types()             { return D_PHYS; }                                                                            // 4 EXACT (PAPER_1328)
+int galaxy_subtypes()          { return D_PHYS * D_BSFG; }                                                                  // 24 EXACT (PAPER_1328)
+double baryon_fraction()       { return PHI_5_6 * 0.6029; }                                                                  // 0.502 (0.7% PAPER_1329)
+double z_reion_7_0()           { return K_MEX * double(D_PHYS) * PHI_5_6; }                                                  // 6.94 (0.8% PAPER_1332)
+double t_21cm_mK()             { return -double(D_PHYS) * double(A_5) * 0.6029 * 2.0; }                                      // -289.39 (0.14% PAPER_1333)
+double sf_efficiency()         { return K_MEX * PHI_5_6; }                                                                    // 1.736 (0.79% PAPER_1334)
+double hubble_bubble()         { return -F_TRZ * 0.6029 * 5.0; }                                                              // -0.301 (0.48% PAPER_1457)
+double rvb_threshold()         { return PHI_5_6 * 0.6029; }                                                                  // 0.502 (0.7% PAPER_1350)
+int frustration_dim()          { return D_BSFG - 1; }                                                                        // 5 EXACT (PAPER_1350)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

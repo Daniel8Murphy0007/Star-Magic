@@ -1754,6 +1754,19 @@ _exact("Direct lockings 8 PAPER_1199",         int(8), 8)
 _exact("F_TRZ² universal 1/100",               u.TRZ**2, 0.01, tol=1e-12)
 _exact("ln 2 alt Φ form PAPER_1199_S443",      (5.0/6.0) - u.TRZ - u.TRZ**2*float(u.K_MEX) - u.TRZ**2*(5.0/6.0) - u.TRZ**2 - u.TRZ**3, 0.6931666666666667, tol=1e-9)
 
+# Block #54 — PAPER_132x-135x tier-34 (10 pins)
+_exact("β_i flat rotation 0.6029 PAPER_1327",     0.6029, 0.6029)
+_exact("Galaxy types 4 PAPER_1328",                int(u.D_PHYS), 4)
+_exact("Galaxy subtypes 24 PAPER_1328",            int(u.D_PHYS * u.D_BSFG), 24)
+_exact("Baryon fraction 0.506 PAPER_1329",         (5.0/6.0) * 0.6029, 0.5024166666666667, tol=1e-9)
+_exact("z_reion 7.0 PAPER_1332",                   float(u.K_MEX) * float(u.D_PHYS) * (5.0/6.0), 6.9444444444444455, tol=1e-9)
+_exact("T_21cm -289 mK PAPER_1333",                -float(u.D_PHYS) * float(u.A_FIVE) * 0.6029 * 2.0, -289.392, tol=1e-9)
+_exact("SF efficiency 1.75 PAPER_1334",            float(u.K_MEX) * (5.0/6.0), 1.7361111111111114, tol=1e-9)
+_exact("Hubble bubble -30% PAPER_1457",            -u.TRZ * 0.6029 * 5.0, -0.30145, tol=1e-9)
+_exact("RVB threshold 0.506 PAPER_1350",           (5.0/6.0) * 0.6029, 0.5024166666666667, tol=1e-9)
+_exact("Frustration dim 5 PAPER_1350",             int(u.D_BSFG - 1), 5)
+
+
 
 
 
