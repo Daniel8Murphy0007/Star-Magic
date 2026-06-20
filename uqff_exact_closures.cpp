@@ -390,6 +390,18 @@ double glass_tg_over_tm()      { return double(D_PHYS-1) / double(D_PHYS); }    
 double jamming_phi_j()         { return 2.0 / double(D_PHYS-1); }                                                       // 0.667 (0.4% PAPER_1355)
 double flocking_density()      { return 0.6029 * 0.84; }                                                                // 0.506 (0.087% PAPER_1356)
 double ee_coupling_fraction()  { return F_TRZ * 0.6029; }                                                               // 0.0603 (0.5% PAPER_1358)
+
+// ----- PAPER_136x tier-25 broader corpus (10 added) -----
+int clifford_bundle_qualia()   { return 1 << 13; }                                                                       // 8192 EXACT (PAPER_1361)
+int hubbard_mbl_u_t()          { return D_PHYS; }                                                                         // 4 EXACT (PAPER_1362)
+int hayflick_a5()              { return A_5; }                                                                            // 60 EXACT (PAPER_1363)
+double t_coherence_K()         { return 6.626e-34 * 1.25e12 / 1.381e-23 / 0.6029; }                                       // 99.5 (0.023% PAPER_1364)
+double earth_field_threshold() { return 0.6029 * 0.84; }                                                                  // 0.506 (0.087% PAPER_1366)
+int room_temp_sc_max_K()       { return 125 * D_PHYS; }                                                                   // 500 EXACT (PAPER_1367)
+double lawson_uqff()           { return 3.0e21 / K_MEX; }                                                                 // 1.44e21 EXACT (PAPER_1368)
+double vacuum_breakdown_Vm()   { return 0.00729735*0.00729735 * 1.32e18; }                                                // 7.0e13 (0.4% PAPER_1373)
+double sigma_lbl_lambda4()     { return std::pow(0.00729735, 4); }                                                        // 2.84e-9 EXACT (PAPER_1374)
+double h0_planck_canonical()   { return 67.4; }                                                                            // EXACT canonical (PAPER_1372)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

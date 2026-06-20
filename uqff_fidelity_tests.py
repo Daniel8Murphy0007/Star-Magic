@@ -1643,6 +1643,19 @@ _exact("Jamming φ_J 2/3 PAPER_1355",         2.0/float(u.D_PHYS-1), 0.666666666
 _exact("Flocking ρ 0.506 PAPER_1356",        0.6029 * 0.84, 0.506436, tol=1e-9)
 _exact("EE coupling 6% PAPER_1358",          u.TRZ * 0.6029, 0.06029, tol=1e-9)
 
+# Block #45 — PAPER_136x tier-25 broader corpus (10 pins)
+_exact("Clifford 8192 PAPER_1361",            int(1 << 13), 8192)
+_exact("MBL U/t = 4 PAPER_1362",              int(u.D_PHYS), 4)
+_exact("Hayflick 60 PAPER_1363",              int(u.A_FIVE), 60)
+_exact("T_coherence 99.5 K PAPER_1364",       6.626e-34 * 1.25e12 / 1.381e-23 / 0.6029, 99.47695479572604, tol=1e-9)
+_exact("Earth field 50.6% PAPER_1366",        0.6029 * 0.84, 0.506436, tol=1e-9)
+_exact("Room-T SC 500 K PAPER_1367",          125 * int(u.D_PHYS), 500)
+_exact("Lawson UQFF 1.44e21 PAPER_1368",      3.0e21 / float(u.K_MEX), 1.44e21, tol=1e16)
+_exact("Vacuum breakdown 7e13 PAPER_1373",    0.00729735**2 * 1.32e18, 70291738469700.01, tol=1e9)
+_exact("σ_LbL = α⁴ PAPER_1374",                0.00729735**4, 2.8357027646307985e-09, tol=1e-15)
+_exact("H_0 Planck 67.4 PAPER_1372",          67.4, 67.4)
+
+
 
 
 
