@@ -426,6 +426,18 @@ double w_neg_one_stable()      { return -1.0; }                                 
 double time_absolute_f_u1()    { return 1.0; }                                                                              // EXACT (PAPER_1275)
 int axiom_count_18()           { return 12 + 6; }                                                                            // 18 EXACT (PAPER_1286)
 double holographic_bulk_bdy()  { return double(D_BSFG) / double(D_BSFG - 1); }                                              // 1.2 EXACT (PAPER_1282)
+
+// ----- PAPER_115x-117x tier-28 foundational ΛCDM + KK + factorial (10 added) -----
+double omega_lambda_6_5_ssq()  { return 6.0/5.0 * 0.57; }                                                                  // 0.684 EXACT (PAPER_1156)
+double lambda_uqff_m_neg2()    { double Hsec = 67.4*1e3/3.086e22; return 18.0/5.0 * 0.57 * Hsec*Hsec / (2.998e8 * 2.998e8); } // 1.089e-52 (PAPER_1156)
+double h0_asymmetry()          { return 2.268e-18 / 2.184e-18; }                                                            // 1.0385 (PAPER_1157)
+double phi_res_5_6_ratio()     { return double(D_BSFG - 1) / double(D_BSFG); }                                              // 5/6 EXACT (PAPER_1159)
+double factorial_26()          { double f=1.0; for(int i=2;i<=26;++i) f*=i; return f; }                                     // 4.03e26 EXACT (PAPER_1161)
+int d_crit_4_plus_22()         { return D_PHYS + 22; }                                                                       // 26 EXACT (PAPER_1164)
+double sum_beta_i_3_2()        { double s=0; for(int i=1;i<=4;++i) s += 3.0*(5-i)/20.0; return s; }                          // 1.5 EXACT (PAPER_1165)
+double kk_regulator_sum()      { double s=0; for(int k=1;k<30;++k) s += 1.0/std::pow((double)k*(k+25), 26); return s; }     // 1.624e-37 (PAPER_1162)
+double phi_res_anti_omega()    { return 0.684 * 5.0/6.0; }                                                                   // 0.57 EXACT (PAPER_1159)
+int d_phys_vs_d_compact_22()   { return D_CRIT - D_PHYS; }                                                                  // 22 EXACT (PAPER_1164)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

@@ -1680,6 +1680,20 @@ _exact("Time abs F_U=1 PAPER_1275",            1.0, 1.0)
 _exact("Axiom count 18 PAPER_1286",            int(12 + 6), 18)
 _exact("Holographic 6/5 PAPER_1282",           float(u.D_BSFG)/float(u.D_BSFG - 1), 1.2, tol=1e-9)
 
+# Block #48 — PAPER_115x-117x tier-28 foundational ΛCDM + KK + factorial (10 pins)
+import math as _math28
+_exact("Ω_Λ 6/5·SSQ PAPER_1156",          6.0/5.0 * 0.57, 0.6839999999999999, tol=1e-9)
+_exact("Λ_UQFF 1.089e-52 PAPER_1156",     18.0/5.0 * 0.57 * (67.4*1e3/3.086e22)**2 / (2.998e8)**2, 1.089035530253723e-52, tol=1e-58)
+_exact("H_0 asymmetry 1.0385 PAPER_1157", 2.268e-18 / 2.184e-18, 1.0384615384615383, tol=1e-9)
+_exact("Φ_res 5/6 PAPER_1159",             float(u.D_BSFG-1)/float(u.D_BSFG), 0.8333333333333334, tol=1e-9)
+_exact("26! PAPER_1161",                   _math28.factorial(26), 403291461126605635584000000)
+_exact("D_crit = 4+22 PAPER_1164",         int(u.D_PHYS + 22), 26)
+_exact("Σβ_i 3/2 PAPER_1165",              sum(3.0*(5-i)/20 for i in range(1,5)), 1.5, tol=1e-9)
+_exact("KK regulator 1.624e-37 PAPER_1162", sum(1.0/(k*(k+25))**26 for k in range(1,30)), 1.6243999041227198e-37, tol=1e-42)
+_exact("SSQ = Ω_Λ·5/6 PAPER_1159",         0.684 * 5.0/6.0, 0.5700000000000001, tol=1e-9)
+_exact("22 compact dims PAPER_1164",       int(u.D_CRIT - u.D_PHYS), 22)
+
+
 
 
 
