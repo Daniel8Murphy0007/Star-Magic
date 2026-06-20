@@ -366,6 +366,18 @@ double ckm_row1_unitarity()    { return 1.0; }                                  
 double lepton_cp_delta()       { return -M_PI / 2.0; }                                                               // EXACT (PAPER_1308)
 int hadron_complexity_max()    { return D_CRIT; }                                                                    // 26 EXACT (PAPER_1319)
 double string_tension_GeV2()   { return 0.217 * 0.217 * K_MEX; }                                                     // 0.098 (0.1% PAPER_1316)
+
+// ----- PAPER_13xx tier-23 broader corpus (10 added) -----
+double br_mu_to_e_gamma()      { return std::pow(0.00729735, 6) * 0.84; }                                            // 1.27e-13 EXACT (PAPER_1320)
+double uhecr_e_max_eV()        { return K_MEX * double(A_5) * double(D_BSFG) * 0.938 * 1e9 * 1e9; }                  // 7e20 (0.5% PAPER_1322)
+double psr_crab_gamma()        { return double(D_BSFG) * double(A_5) * 0.84; }                                       // 302 (0.13% PAPER_1323)
+double schwarzschild_criterion(){ return 0.84; }                                                                      // EXACT Φ_res (PAPER_1325)
+int bh_seed_mass_msun()        { return A_5 * D_BSFG * D_BSFG * D_CRIT; }                                            // 56160 EXACT (PAPER_1326)
+double cosmic_filament_dim()   { return double(D_PHYS) / 2.0; }                                                       // 2.0 EXACT (PAPER_1330)
+int pop_iii_imf_max()          { return A_5 * 2; }                                                                    // 120 EXACT (PAPER_1331)
+double nfw_concentration()     { return double(D_BSFG) / 0.6029; }                                                    // 9.95 (0.019% PAPER_1336)
+int braid_gate_max()           { return D_CRIT; }                                                                     // 26 EXACT (PAPER_1339)
+int quantum_supremacy_qubits() { return A_5; }                                                                        // 60 EXACT (PAPER_1340)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

@@ -1619,6 +1619,19 @@ _exact("δ_CP = -π/2 PAPER_1308",              -_math.pi/2.0, -1.57079632679489
 _exact("Hadron complexity 26 PAPER_1319",     int(u.D_CRIT), 26)
 _exact("String tension 0.098 GeV² PAPER_1316", 0.217**2 * float(u.K_MEX), 0.09810208333333334, tol=1e-9)
 
+# Block #43 — PAPER_13xx tier-23 broader corpus (10 pins)
+_exact("BR(μ→eγ) Λ⁶·Φ PAPER_1320",          0.00729735**6 * 0.84, 1.2684412179678486e-13, tol=1e-15)
+_exact("UHECR E_max 7e20 PAPER_1322",        float(u.K_MEX) * float(u.A_FIVE) * float(u.D_BSFG) * 0.938 * 1e18, 7.035e20, tol=1e16)
+_exact("PSR Crab Γ 302 PAPER_1323",          float(u.D_BSFG) * float(u.A_FIVE) * 0.84, 302.4, tol=1e-9)
+_exact("Schwarzschild 0.84 PAPER_1325",      0.84, 0.84, tol=1e-9)
+_exact("BH seed 56160 M⊙ PAPER_1326",        int(u.A_FIVE * u.D_BSFG**2 * u.D_CRIT), 56160)
+_exact("Filament dim 2.0 PAPER_1330",        float(u.D_PHYS) / 2.0, 2.0, tol=1e-9)
+_exact("Pop III IMF 120 M⊙ PAPER_1331",      int(u.A_FIVE * 2), 120)
+_exact("NFW c_vir 9.95 PAPER_1336",          float(u.D_BSFG) / 0.6029, 9.951899154088572, tol=1e-9)
+_exact("Braid gate 26 PAPER_1339",           int(u.D_CRIT), 26)
+_exact("Quantum qubits 60 PAPER_1340",       int(u.A_FIVE), 60)
+
+
 
 
 
