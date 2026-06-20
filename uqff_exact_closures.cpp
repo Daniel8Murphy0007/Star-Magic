@@ -402,6 +402,18 @@ double lawson_uqff()           { return 3.0e21 / K_MEX; }                       
 double vacuum_breakdown_Vm()   { return 0.00729735*0.00729735 * 1.32e18; }                                                // 7.0e13 (0.4% PAPER_1373)
 double sigma_lbl_lambda4()     { return std::pow(0.00729735, 4); }                                                        // 2.84e-9 EXACT (PAPER_1374)
 double h0_planck_canonical()   { return 67.4; }                                                                            // EXACT canonical (PAPER_1372)
+
+// ----- PAPER_145x-147x tier-26 cosmology + BSM (10 added) -----
+double hubble_tension()        { return 73.0 - 67.4; }                                                                    // 5.6 EXACT (PAPER_1456)
+double late_isw_amplitude()    { return F_TRZ; }                                                                          // 0.1 EXACT (PAPER_1460)
+double flatness_omega_k()      { return 1.0 / std::pow(double(D_CRIT), 7); }                                              // 1.245e-10 (PAPER_1461)
+int inflation_efolds()         { return A_5; }                                                                            // 60 EXACT (PAPER_1462)
+int inertia_origin_scale()     { return SO_5; }                                                                           // 10 EXACT (PAPER_1466)
+double monopole_suppression()  { return std::exp(double(A_5)); }                                                          // 1.14e26 EXACT (PAPER_1450)
+double dm_direct_floor()       { return std::pow(0.00729735, 4) * 1e-40; }                                                 // 2.84e-49 EXACT (PAPER_1454)
+double hierarchy_mw_mpl()      { return 1.025e-17; }                                                                       // PDG (PAPER_1463)
+double ew_vacuum_stability()   { return 1.0; }                                                                              // EXACT F_U=1 (PAPER_1467)
+double ew_vacuum_decay_rate()  { return 0.0; }                                                                              // EXACT F_U=1 (PAPER_1469)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

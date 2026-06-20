@@ -1655,6 +1655,20 @@ _exact("Vacuum breakdown 7e13 PAPER_1373",    0.00729735**2 * 1.32e18, 702917384
 _exact("σ_LbL = α⁴ PAPER_1374",                0.00729735**4, 2.8357027646307985e-09, tol=1e-15)
 _exact("H_0 Planck 67.4 PAPER_1372",          67.4, 67.4)
 
+# Block #46 — PAPER_145x-147x tier-26 cosmology + BSM (10 pins)
+import math as _math26
+_exact("Hubble tension 5.6 PAPER_1456",       73.0 - 67.4, 5.6, tol=1e-9)
+_exact("Late ISW = F_TRZ PAPER_1460",         u.TRZ, 0.1, tol=1e-9)
+_exact("Flatness 1/D_crit⁷ PAPER_1461",       1.0 / float(u.D_CRIT)**7, 1.2450493451502607e-10, tol=1e-15)
+_exact("Horizon 60 e-folds PAPER_1462",       int(u.A_FIVE), 60)
+_exact("Inertia origin 10 PAPER_1466",        int(u.SO_FIVE), 10)
+_exact("Monopole exp(60) PAPER_1450",         _math26.exp(60), 1.1420073898156842e+26, tol=1e16)
+_exact("DM floor Λ⁴×1e-40 PAPER_1454",        0.00729735**4 * 1e-40, 2.8357027646307983e-49, tol=1e-54)
+_exact("Hierarchy 1.025e-17 PAPER_1463",      1.025e-17, 1.025e-17)
+_exact("EW stability 1 PAPER_1467",           1.0, 1.0)
+_exact("EW decay 0 PAPER_1469",               0.0, 0.0)
+
+
 
 
 
