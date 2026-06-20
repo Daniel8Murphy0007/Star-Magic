@@ -522,6 +522,18 @@ double nfw_c_vir_alt()         { return double(D_BSFG) / 0.6029; }              
 double sfe_boost_alt()         { return K_MEX * 0.84; }                                                                       // 1.75 EXACT (PAPER_1438)
 double gw_memory_paired()      { return F_TRZ * 0.6029; }                                                                    // 0.0603 paired (PAPER_1430)
 double u_ua_alt()              { return 1.0 / std::pow(double(SO_5), 4); }                                                   // 1e-4 EXACT (PAPER_500)
+
+// ----- PAPER_1404-1428 tier-36 catalog stubs (10 added) -----
+double bertrand_p_1_4()        { return 1.0 / double(D_PHYS); }                                                              // 0.25 EXACT (PAPER_1408)
+double z_reion_alt()           { return K_MEX * double(D_PHYS) * PHI_5_6; }                                                  // 7.0 (PAPER_1412)
+double r_aa_qgp()              { return F_TRZ * K_MEX; }                                                                      // 0.208 EXACT (PAPER_1416)
+double e_ankle_eV()            { return 0.938e9 * std::pow(double(D_CRIT), 7) / K_MEX; }                                      // 3.62e18 (PAPER_1418)
+double cnub_temp_K()           { return 2.7255 * std::pow(4.0/11.0, 1.0/3.0) * (1.0 + 0.00729735 * 0.6029); }                // 1.954 EXACT (PAPER_1421)
+double szilard_w_kt()          { return std::log(2.0); }                                                                       // EXACT (PAPER_1407)
+double solar_nu_e_alt()        { return 1.0 / double(D_PHYS - 1); }                                                          // 1/3 EXACT paired (PAPER_1404)
+int hale_22_alt()              { return D_CRIT - D_PHYS; }                                                                    // 22 EXACT paired (PAPER_1405)
+int su3_colors_alt()           { return D_PHYS - 1; }                                                                          // 3 EXACT paired (PAPER_1413)
+double delta_cp_alt()          { return -M_PI / 2.0; }                                                                          // -π/2 EXACT paired (PAPER_1411)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

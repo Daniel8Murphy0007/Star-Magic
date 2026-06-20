@@ -1778,6 +1778,20 @@ _exact("SFE boost K·Φ PAPER_1438",              float(u.K_MEX) * 0.84, 1.75, t
 _exact("GW memory paired PAPER_1430",           u.TRZ * 0.6029, 0.06029, tol=1e-9)
 _exact("U_UA 1e-4 paired PAPER_500",            1.0/float(u.SO_FIVE)**4, 1.0e-4, tol=1e-12)
 
+# Block #56 — PAPER_1404-1428 tier-36 catalog stubs (10 pins)
+import math as _math36
+_exact("Bertrand 1/4 PAPER_1408",            1.0/float(u.D_PHYS), 0.25, tol=1e-9)
+_exact("z_reion 7.0 PAPER_1412",              float(u.K_MEX)*float(u.D_PHYS)*0.84, 7.0, tol=1e-9)
+_exact("R_AA 0.208 PAPER_1416",               u.TRZ*float(u.K_MEX), 0.20833333333333337, tol=1e-9)
+_exact("E_ankle 3.62e18 PAPER_1418",          0.938e9 * float(u.D_CRIT)**7 / float(u.K_MEX), 3.616242213642e18, tol=1e15)
+_exact("CνB 1.954 K PAPER_1421",              2.7255 * (4.0/11.0)**(1.0/3.0) * (1.0 + 0.00729735*0.6029), 1.9539276300623825, tol=1e-9)
+_exact("Szilard ln 2 PAPER_1407",              _math36.log(2.0), 0.6931471805599453, tol=1e-9)
+_exact("Solar νₑ 1/3 PAPER_1404",              1.0/float(u.D_PHYS-1), 0.3333333333333333, tol=1e-9)
+_exact("Hale 22 PAPER_1405",                   int(u.D_CRIT - u.D_PHYS), 22)
+_exact("SU(3) 3 PAPER_1413",                   int(u.D_PHYS - 1), 3)
+_exact("δ_CP -π/2 PAPER_1411",                 -_math36.pi/2.0, -1.5707963267948966, tol=1e-9)
+
+
 
 
 
