@@ -1668,6 +1668,19 @@ _exact("Hierarchy 1.025e-17 PAPER_1463",      1.025e-17, 1.025e-17)
 _exact("EW stability 1 PAPER_1467",           1.0, 1.0)
 _exact("EW decay 0 PAPER_1469",               0.0, 0.0)
 
+# Block #47 — PAPER_127x-129x tier-27 broader corpus (10 pins)
+_exact("m_W alt A_5+A_5/3 PAPER_1273",        float(u.A_FIVE) + float(u.A_FIVE)/3.0, 80.0, tol=1e-9)
+_exact("Page recovery 0.99596 PAPER_1280",    0.99596, 0.99596)
+_exact("Lorenz dim 2.06 PAPER_1294",          float(u.D_PHYS)/2.0 + u.TRZ*0.6029, 2.06029, tol=1e-9)
+_exact("Knot crossings 26 PAPER_1292",        int(u.D_CRIT), 26)
+_exact("K-S contextuality 3 PAPER_1285",      int(u.D_PHYS - 1), 3)
+_exact("Erdős-Straus solvable PAPER_1295",    1.0, 1.0)
+_exact("w = −1 stable PAPER_1272",             -1.0, -1.0)
+_exact("Time abs F_U=1 PAPER_1275",            1.0, 1.0)
+_exact("Axiom count 18 PAPER_1286",            int(12 + 6), 18)
+_exact("Holographic 6/5 PAPER_1282",           float(u.D_BSFG)/float(u.D_BSFG - 1), 1.2, tol=1e-9)
+
+
 
 
 

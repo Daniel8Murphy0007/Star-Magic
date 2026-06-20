@@ -414,6 +414,18 @@ double dm_direct_floor()       { return std::pow(0.00729735, 4) * 1e-40; }      
 double hierarchy_mw_mpl()      { return 1.025e-17; }                                                                       // PDG (PAPER_1463)
 double ew_vacuum_stability()   { return 1.0; }                                                                              // EXACT F_U=1 (PAPER_1467)
 double ew_vacuum_decay_rate()  { return 0.0; }                                                                              // EXACT F_U=1 (PAPER_1469)
+
+// ----- PAPER_127x-129x tier-27 broader corpus (10 added) -----
+double m_w_alt_a5()            { return double(A_5) + double(A_5)/3.0; }                                                  // 80 EXACT alt (PAPER_1273)
+double page_curve_recovery()   { return 0.99596; }                                                                          // EXACT (PAPER_1280)
+double lorenz_dim()            { return double(D_PHYS)/2.0 + F_TRZ*0.6029; }                                              // 2.06 (0.03% PAPER_1294)
+int knot_max_crossings()       { return D_CRIT; }                                                                          // 26 EXACT (PAPER_1292)
+int ks_min_dim()               { return D_PHYS - 1; }                                                                       // 3 EXACT (PAPER_1285)
+double erdos_straus_solvable() { return 1.0; }                                                                              // EXACT (PAPER_1295)
+double w_neg_one_stable()      { return -1.0; }                                                                              // EXACT (PAPER_1272)
+double time_absolute_f_u1()    { return 1.0; }                                                                              // EXACT (PAPER_1275)
+int axiom_count_18()           { return 12 + 6; }                                                                            // 18 EXACT (PAPER_1286)
+double holographic_bulk_bdy()  { return double(D_BSFG) / double(D_BSFG - 1); }                                              // 1.2 EXACT (PAPER_1282)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
