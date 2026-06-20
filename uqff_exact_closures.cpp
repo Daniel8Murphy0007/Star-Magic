@@ -438,6 +438,18 @@ double sum_beta_i_3_2()        { double s=0; for(int i=1;i<=4;++i) s += 3.0*(5-i
 double kk_regulator_sum()      { double s=0; for(int k=1;k<30;++k) s += 1.0/std::pow((double)k*(k+25), 26); return s; }     // 1.624e-37 (PAPER_1162)
 double phi_res_anti_omega()    { return 0.684 * 5.0/6.0; }                                                                   // 0.57 EXACT (PAPER_1159)
 int d_phys_vs_d_compact_22()   { return D_CRIT - D_PHYS; }                                                                  // 22 EXACT (PAPER_1164)
+
+// ----- PAPER_1196 tier-29 ITER plasma fusion (10 added) -----
+double iter_r_a()              { return double(D_BSFG)/2.0 + F_TRZ; }                                                       // 3.1 EXACT (S413)
+double bohm_prefactor()        { return F_TRZ * PHI_5_6 - F_TRZ*F_TRZ * K_MEX; }                                            // 0.0625 EXACT (S417)
+double q_edge_iter()           { return K_MEX - F_TRZ * PHI_5_6; }                                                          // 2 EXACT (S418)
+int iter_fusion_gain_q()       { return SO_5; }                                                                              // 10 EXACT (S419)
+int dt_e_sigma_keV()           { return A_5 + D_PHYS; }                                                                      // 64 EXACT (S420)
+double troyon_beta_n()         { return double(SO_5)/double(D_PHYS) + F_TRZ*double(D_PHYS) - F_TRZ*PHI_5_6 - F_TRZ*F_TRZ*K_MEX; } // 2.80 (0.15% S414)
+double triple_product_nTtau()  { return PHI_5_6 + K_MEX + F_TRZ - F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ*F_TRZ; }                  // 3.00 (0.11% S415)
+double coulomb_log_lnL()       { return double(SO_5 + D_PHYS) + K_MEX + SSQ + F_TRZ*double(D_PHYS) - F_TRZ*PHI_5_6 + F_TRZ*F_TRZ; } // 17.0 (0.12% S416)
+double lawson_n_tau()          { return PHI_5_6 + SSQ + F_TRZ - F_TRZ*F_TRZ*F_TRZ; }                                          // 1.50 (0.16% S421)
+double sheath_phi_te()         { return K_MEX + PHI_5_6 - F_TRZ + F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ*F_TRZ; }                  // 2.84 (0.05% S422)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

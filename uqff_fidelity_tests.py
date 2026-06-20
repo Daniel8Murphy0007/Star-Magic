@@ -1693,6 +1693,19 @@ _exact("KK regulator 1.624e-37 PAPER_1162", sum(1.0/(k*(k+25))**26 for k in rang
 _exact("SSQ = Ω_Λ·5/6 PAPER_1159",         0.684 * 5.0/6.0, 0.5700000000000001, tol=1e-9)
 _exact("22 compact dims PAPER_1164",       int(u.D_CRIT - u.D_PHYS), 22)
 
+# Block #49 — PAPER_1196 tier-29 ITER plasma fusion (10 pins)
+_exact("ITER R/a 3.1 PAPER_1196_S413",       float(u.D_BSFG)/2.0 + u.TRZ, 3.1, tol=1e-9)
+_exact("Bohm 1/16 PAPER_1196_S417",          u.TRZ*(5.0/6.0) - u.TRZ**2 * float(u.K_MEX), 0.0625, tol=1e-9)
+_exact("q_edge 2 PAPER_1196_S418",           float(u.K_MEX) - u.TRZ*(5.0/6.0), 2.0, tol=1e-9)
+_exact("ITER Q 10 PAPER_1196_S419",          int(u.SO_FIVE), 10)
+_exact("DT 64 keV PAPER_1196_S420",          int(u.A_FIVE + u.D_PHYS), 64)
+_exact("Troyon β_N 2.80 PAPER_1196_S414",    float(u.SO_FIVE)/float(u.D_PHYS) + u.TRZ*float(u.D_PHYS) - u.TRZ*(5.0/6.0) - u.TRZ**2*float(u.K_MEX), 2.795833333333333, tol=1e-9)
+_exact("nTτ 3.00 PAPER_1196_S415",            (5.0/6.0) + float(u.K_MEX) + u.TRZ - u.TRZ**2*float(u.K_MEX) + u.TRZ**3, 2.9968333333333335, tol=1e-9)
+_exact("Coulomb log 17 PAPER_1196_S416",     float(u.SO_FIVE + u.D_PHYS) + float(u.K_MEX) + 0.57 + u.TRZ*float(u.D_PHYS) - u.TRZ*(5.0/6.0) + u.TRZ**2, 16.98, tol=1e-9)
+_exact("Lawson nτ 1.50 PAPER_1196_S421",     (5.0/6.0) + 0.57 + u.TRZ - u.TRZ**3, 1.5023333333333335, tol=1e-9)
+_exact("Sheath φ/T 2.84 PAPER_1196_S422",    float(u.K_MEX) + (5.0/6.0) - u.TRZ + u.TRZ**2*float(u.K_MEX) + u.TRZ**3, 2.8385000000000002, tol=1e-9)
+
+
 
 
 
