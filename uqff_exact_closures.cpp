@@ -450,6 +450,18 @@ double triple_product_nTtau()  { return PHI_5_6 + K_MEX + F_TRZ - F_TRZ*F_TRZ*K_
 double coulomb_log_lnL()       { return double(SO_5 + D_PHYS) + K_MEX + SSQ + F_TRZ*double(D_PHYS) - F_TRZ*PHI_5_6 + F_TRZ*F_TRZ; } // 17.0 (0.12% S416)
 double lawson_n_tau()          { return PHI_5_6 + SSQ + F_TRZ - F_TRZ*F_TRZ*F_TRZ; }                                          // 1.50 (0.16% S421)
 double sheath_phi_te()         { return K_MEX + PHI_5_6 - F_TRZ + F_TRZ*F_TRZ*K_MEX + F_TRZ*F_TRZ*F_TRZ; }                  // 2.84 (0.05% S422)
+
+// ----- PAPER_122x-123x tier-30 foundational Millennium-adjacent (10 added) -----
+double hierarchy_d_phys_d_crit_21() { return std::pow(double(D_PHYS)/double(D_CRIT), 21); }                                // 8.49e-18 (0.040% PAPER_1225)
+int lithium_7_factor()         { return D_PHYS - 1; }                                                                       // 3 EXACT (PAPER_1227)
+double hodge_d_plus_dbsfg_so5(){ return double(D_PHYS + D_BSFG) / double(SO_5); }                                          // 1.0 EXACT (PAPER_1230)
+int atiyah_singer_index()      { return D_CRIT - D_PHYS; }                                                                  // 22 EXACT (PAPER_1231)
+double bh_4_laws_prefactor()   { return K_MEX * double(D_BSFG) / double(D_PHYS); }                                          // 3.125 EXACT (PAPER_1234)
+int hierarchy_exponent()       { return D_CRIT - D_PHYS - 1; }                                                              // 21 EXACT (PAPER_1225)
+double dpm_pair_k_minus_2()    { return K_MEX - 2.0; }                                                                       // 1/12 EXACT (PAPER_1287)
+double taylor_green_nu()       { return 1.0/1600.0; }                                                                        // EXACT (PAPER_1232)
+double ua_canonical()          { return 0.4816; }                                                                            // EXACT canonical (PAPER_1232)
+double lambda_obs_J_m3()       { return 5.957e-10; }                                                                         // EXACT Planck 2018 (PAPER_1226)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

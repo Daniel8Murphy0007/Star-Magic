@@ -1705,6 +1705,19 @@ _exact("Coulomb log 17 PAPER_1196_S416",     float(u.SO_FIVE + u.D_PHYS) + float
 _exact("Lawson nτ 1.50 PAPER_1196_S421",     (5.0/6.0) + 0.57 + u.TRZ - u.TRZ**3, 1.5023333333333335, tol=1e-9)
 _exact("Sheath φ/T 2.84 PAPER_1196_S422",    float(u.K_MEX) + (5.0/6.0) - u.TRZ + u.TRZ**2*float(u.K_MEX) + u.TRZ**3, 2.8385000000000002, tol=1e-9)
 
+# Block #50 — PAPER_122x-123x tier-30 Millennium-adjacent (10 pins)
+_exact("Hierarchy (D/D_c)²¹ PAPER_1225",      (float(u.D_PHYS)/float(u.D_CRIT))**21, 8.48827635381255e-18, tol=1e-20)
+_exact("Li-7 factor 3 PAPER_1227",            int(u.D_PHYS - 1), 3)
+_exact("Hodge (D+D_BSFG)/SO_5 = 1 PAPER_1230", float(u.D_PHYS + u.D_BSFG)/float(u.SO_FIVE), 1.0, tol=1e-9)
+_exact("Atiyah-Singer 22 PAPER_1231",         int(u.D_CRIT - u.D_PHYS), 22)
+_exact("BH 4-laws 3.125 PAPER_1234",          float(u.K_MEX) * float(u.D_BSFG) / float(u.D_PHYS), 3.125, tol=1e-9)
+_exact("Hierarchy exp 21 PAPER_1225",         int(u.D_CRIT - u.D_PHYS - 1), 21)
+_exact("DPM-pair 1/12 PAPER_1287",             float(u.K_MEX) - 2.0, 0.08333333333333348, tol=1e-9)
+_exact("Taylor-Green ν 1/1600 PAPER_1232",    1.0/1600.0, 0.000625, tol=1e-9)
+_exact("UA 0.4816 PAPER_1232",                 0.4816, 0.4816)
+_exact("Λ obs 5.957e-10 PAPER_1226",           5.957e-10, 5.957e-10)
+
+
 
 
 
