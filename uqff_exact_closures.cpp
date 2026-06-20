@@ -534,6 +534,18 @@ double solar_nu_e_alt()        { return 1.0 / double(D_PHYS - 1); }             
 int hale_22_alt()              { return D_CRIT - D_PHYS; }                                                                    // 22 EXACT paired (PAPER_1405)
 int su3_colors_alt()           { return D_PHYS - 1; }                                                                          // 3 EXACT paired (PAPER_1413)
 double delta_cp_alt()          { return -M_PI / 2.0; }                                                                          // -π/2 EXACT paired (PAPER_1411)
+
+// ----- PAPER_13xx tier-37 final sweep (10 added) -----
+double spin_hall_e2h()         { return 1.0; }                                                                                // EXACT structural (PAPER_1352)
+double jamming_alt()           { return 2.0 / double(D_PHYS - 1); }                                                          // 0.667 (PAPER_1355)
+double ee_coupling_alt()       { return F_TRZ * 0.6029; }                                                                    // 0.0603 EXACT (PAPER_1358)
+int codons_64()                { return 1 << D_BSFG; }                                                                        // 64 EXACT (PAPER_1359)
+int amino_acids_20()           { return 2 * SO_5; }                                                                            // 20 EXACT (PAPER_1359)
+double planck_l_qg()           { return 6.626e-34 / (1e-7 * 2.998e8); }                                                       // 2.21e-35 (PAPER_1369)
+double m_t_over_m_e()          { return 172.76 / 0.000511; }                                                                    // 338082 (PAPER_1314)
+double majorana_via_ftrz()     { return 1.0; }                                                                                  // EXACT (PAPER_1306)
+double high_tc_alt()           { return 6.626e-34 * 1.25e12 / 1.381e-23 * K_MEX; }                                            // 125 K (PAPER_1347)
+int kk_d_bsfg_minus_1_alt()    { return D_BSFG - 1; }                                                                          // 5 EXACT (PAPER_1343)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

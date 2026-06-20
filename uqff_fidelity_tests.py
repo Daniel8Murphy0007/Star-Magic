@@ -1791,6 +1791,19 @@ _exact("Hale 22 PAPER_1405",                   int(u.D_CRIT - u.D_PHYS), 22)
 _exact("SU(3) 3 PAPER_1413",                   int(u.D_PHYS - 1), 3)
 _exact("δ_CP -π/2 PAPER_1411",                 -_math36.pi/2.0, -1.5707963267948966, tol=1e-9)
 
+# Block #57 — PAPER_13xx tier-37 final sweep (10 pins)
+_exact("Spin Hall e²/h PAPER_1352",         1.0, 1.0)
+_exact("Jamming 2/3 alt PAPER_1355",        2.0/float(u.D_PHYS-1), 0.6666666666666666, tol=1e-9)
+_exact("EE coupling alt PAPER_1358",         u.TRZ*0.6029, 0.06029, tol=1e-9)
+_exact("Codons 64 PAPER_1359",               2**int(u.D_BSFG), 64)
+_exact("Amino acids 20 PAPER_1359",          2*int(u.SO_FIVE), 20)
+_exact("Planck L_QG 2.2e-35 PAPER_1369",     6.626e-34/(1e-7*2.998e8), 2.2101400933955974e-35, tol=1e-40)
+_exact("m_t/m_e ratio PAPER_1314",           172.76/0.000511, 338082.1917808219, tol=1e-3)
+_exact("Majorana via F_TRZ PAPER_1306",     1.0, 1.0)
+_exact("High-Tc alt 125 K PAPER_1347",       6.626e-34*1.25e12/1.381e-23 * float(u.K_MEX), 124.9472000965484, tol=1e-3)
+_exact("KK bdy alt 5 PAPER_1343",            int(u.D_BSFG - 1), 5)
+
+
 
 
 

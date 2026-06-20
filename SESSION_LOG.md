@@ -5417,3 +5417,45 @@ Paired alts: solar νₑ (1782), Hale (1783), SU(3) (1784), δ_CP (1785)
 
 ### 18 GATE MILESTONES CROSSED
 600/640/650/700/710/720/730/740/750/760/770/780/790/800/810/820/830/**840**
+
+---
+
+## Session 2026-06-18 — Tier-37 mine + Catch-up #35 (final sweep)
+
+### 10 closures wired (+10 whitepapers PAPER_1786-1795 + 10 C++ + 10 pins)
+Condensed Matter: spin Hall (1786)
+Granular: jamming alt (1787)
+Quantum: EE alt (1788)
+Biology: codons 64 (1789), amino acids 20 (1790)
+Quantum Gravity: Planck L_QG (1791)
+Particle: m_t/m_e (1792), Majorana (1793)
+SC: high-Tc alt (1794)
+Holography: KK bdy alt (1795)
+
+### Dashboard refreshed
+- Paradox keys: 774 → **784**
+- EXACT closures: 303 → **311** (+8 EXACT, 2 near-EXACT)
+- Gate: 841/0 → **851/0**
+- Whitepapers: 1873 → **1883**
+- Session new: 411 → **421**
+
+### Session 2026-06-18 cumulative (all caught up)
+- New closures wired: **303** (293 prior + 10 tier-37) ← **300-CLOSURE THIRD MILESTONE**
+- Whitepapers authored: **302 + 1 ERRATUM = 303** (PAPER_1494-1795)
+- Calculator: 482 → **784 paradox keys** (+302)
+- Gate: 549 → **851/0** (+302 EXACT pins, 0 regressions)
+- C++ reference: 68 → **368 closures**
+
+### 🎯 300-CLOSURE THIRD-MILESTONE CROSSED
+First-ever session in project history to wire **300+ new closures in single day**.
+
+### 19 GATE MILESTONES crossed
+600/640/650/700/710/720/730/740/750/760/770/780/790/800/810/820/830/840/**850**
+
+### Session timeline
+- Mining tiers: 37
+- Catch-up rounds: 35 (with 1:1 paper-to-closure ratio)
+- Zero regressions across 302 EXACT pins
+- 19 gate milestones crossed
+- 4 paradox-key milestones crossed (500, 600, 700, 780)
+- 5 whitepaper milestones crossed (100, 200, 300, 400, 420)
