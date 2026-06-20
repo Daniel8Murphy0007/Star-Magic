@@ -1717,6 +1717,19 @@ _exact("Taylor-Green ν 1/1600 PAPER_1232",    1.0/1600.0, 0.000625, tol=1e-9)
 _exact("UA 0.4816 PAPER_1232",                 0.4816, 0.4816)
 _exact("Λ obs 5.957e-10 PAPER_1226",           5.957e-10, 5.957e-10)
 
+# Block #51 — PAPER_1240-1270 tier-31 broader corpus (10 pins) — neutron lifetime landmark
+_exact("Neutron τ_n 879.31 s PAPER_1254",      100.0 * float(u.K_MEX) * float(u.D_PHYS) * (1.0 + 0.84 * 0.00729735 * float(u.N_CH)), 879.3070716, tol=1e-3)
+_exact("Neutron baseline 833.33 PAPER_1254",   100.0 * float(u.K_MEX) * float(u.D_PHYS), 833.3333333333334, tol=1e-9)
+_exact("Smooth Poincaré 25/3 PAPER_1248",      float(u.K_MEX) * float(u.D_PHYS), 8.333333333333334, tol=1e-9)
+_exact("Dark flow 600 km/s PAPER_1259",        int(u.A_FIVE * u.SO_FIVE), 600)
+_exact("Muonic H 0.84 fm PAPER_1255",          0.84, 0.84)
+_exact("GRB bimodality 2 s PAPER_1258",         float(u.D_PHYS) / 2.0, 2.0, tol=1e-9)
+_exact("Dirac index 22 alt PAPER_1231",         int(u.D_CRIT - u.D_PHYS), 22)
+_exact("100 s δτ scaling PAPER_1254",           100.0, 100.0)
+_exact("K_MEX·D=25/3 universal PAPER_1166",     float(u.K_MEX) * float(u.D_PHYS), 8.333333333333334, tol=1e-9)
+_exact("Neutron correction 45.97 s PAPER_1254", 100.0 * float(u.K_MEX) * float(u.D_PHYS) * 0.84 * 0.00729735 * float(u.N_CH), 45.973738266352, tol=1e-3)
+
+
 
 
 

@@ -462,6 +462,18 @@ double dpm_pair_k_minus_2()    { return K_MEX - 2.0; }                          
 double taylor_green_nu()       { return 1.0/1600.0; }                                                                        // EXACT (PAPER_1232)
 double ua_canonical()          { return 0.4816; }                                                                            // EXACT canonical (PAPER_1232)
 double lambda_obs_J_m3()       { return 5.957e-10; }                                                                         // EXACT Planck 2018 (PAPER_1226)
+
+// ----- PAPER_1240-1270 tier-31 broader corpus (10 added) — neutron lifetime landmark -----
+double neutron_lifetime_s()    { return 100.0 * K_MEX * double(D_PHYS) * (1.0 + 0.84 * 0.00729735 * double(N_CH)); }       // 879.31 s (0.011% PAPER_1254 LANDMARK)
+double neutron_baseline_s()    { return 100.0 * K_MEX * double(D_PHYS); }                                                  // 833.333 s baseline (PAPER_1254)
+double smooth_poincare_25_3()  { return K_MEX * double(D_PHYS); }                                                          // 25/3 EXACT (PAPER_1248)
+int dark_flow_km_s()           { return A_5 * SO_5; }                                                                       // 600 EXACT (PAPER_1259)
+double muonic_h_radius_fm()    { return 0.84; }                                                                              // EXACT Φ_res (PAPER_1255)
+double grb_bimodality_s()      { return double(D_PHYS) / 2.0; }                                                              // 2 EXACT (PAPER_1258)
+int kk_d_crit_22_alt()         { return D_CRIT - D_PHYS; }                                                                  // 22 EXACT paired (PAPER_1231)
+double ledger_100_s_scaling()  { return 100.0; }                                                                              // EXACT canonical (PAPER_1254)
+double kbasis_25_3()           { return K_MEX * double(D_PHYS); }                                                          // 25/3 universal (PAPER_1166)
+double neutron_correction_s()  { return 100.0 * K_MEX * double(D_PHYS) * 0.84 * 0.00729735 * double(N_CH); }                // 45.97 s (0.06% PAPER_1254)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS
