@@ -378,6 +378,18 @@ int pop_iii_imf_max()          { return A_5 * 2; }                              
 double nfw_concentration()     { return double(D_BSFG) / 0.6029; }                                                    // 9.95 (0.019% PAPER_1336)
 int braid_gate_max()           { return D_CRIT; }                                                                     // 26 EXACT (PAPER_1339)
 int quantum_supremacy_qubits() { return A_5; }                                                                        // 60 EXACT (PAPER_1340)
+
+// ----- PAPER_134x tier-24 condensed matter + quantum (10 added) -----
+double tau_entangle_ps()       { return 1.0/(1.25e12 * 0.00729735) * 1e12; }                                          // 109.6 (0.026% PAPER_1341)
+int holographic_bdy_dim()      { return D_BSFG - 1; }                                                                  // 5 EXACT (PAPER_1343)
+int wc_over_j_phase()          { return D_PHYS; }                                                                       // 4 EXACT (PAPER_1344)
+double high_tc_sc_K()          { return 6.626e-34 * 1.25e12 / 1.381e-23 * K_MEX; }                                     // 125 (0.042% PAPER_1347)
+int hubbard_u_over_t()         { return D_PHYS; }                                                                       // 4 EXACT (PAPER_1348)
+int ising_universality()       { return SO_5; }                                                                         // 10 EXACT (PAPER_1351)
+double glass_tg_over_tm()      { return double(D_PHYS-1) / double(D_PHYS); }                                            // 0.75 EXACT (PAPER_1354)
+double jamming_phi_j()         { return 2.0 / double(D_PHYS-1); }                                                       // 0.667 (0.4% PAPER_1355)
+double flocking_density()      { return 0.6029 * 0.84; }                                                                // 0.506 (0.087% PAPER_1356)
+double ee_coupling_fraction()  { return F_TRZ * 0.6029; }                                                               // 0.0603 (0.5% PAPER_1358)
 } // namespace uqff
 
 #ifdef UQFF_RUN_SELFCHECKS

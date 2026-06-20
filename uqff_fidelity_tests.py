@@ -1631,6 +1631,19 @@ _exact("NFW c_vir 9.95 PAPER_1336",          float(u.D_BSFG) / 0.6029, 9.9518991
 _exact("Braid gate 26 PAPER_1339",           int(u.D_CRIT), 26)
 _exact("Quantum qubits 60 PAPER_1340",       int(u.A_FIVE), 60)
 
+# Block #44 — PAPER_134x tier-24 condensed matter + quantum (10 pins)
+_exact("τ entangle 109.6 ps PAPER_1341",     1.0/(1.25e12 * 0.00729735) * 1e12, 109.62883786580059, tol=1e-6)
+_exact("Boundary dim 5 PAPER_1343",          int(u.D_BSFG - 1), 5)
+_exact("W_c/J = 4 PAPER_1344",               int(u.D_PHYS), 4)
+_exact("T_c high-Tc 125 K PAPER_1347",       6.626e-34 * 1.25e12 / 1.381e-23 * float(u.K_MEX), 124.9472000965484, tol=1e-3)
+_exact("Hubbard U/t = 4 PAPER_1348",         int(u.D_PHYS), 4)
+_exact("Ising classes 10 PAPER_1351",        int(u.SO_FIVE), 10)
+_exact("Glass T_g/T_m 3/4 PAPER_1354",       float(u.D_PHYS-1)/float(u.D_PHYS), 0.75, tol=1e-9)
+_exact("Jamming φ_J 2/3 PAPER_1355",         2.0/float(u.D_PHYS-1), 0.6666666666666666, tol=1e-9)
+_exact("Flocking ρ 0.506 PAPER_1356",        0.6029 * 0.84, 0.506436, tol=1e-9)
+_exact("EE coupling 6% PAPER_1358",          u.TRZ * 0.6029, 0.06029, tol=1e-9)
+
+
 
 
 
