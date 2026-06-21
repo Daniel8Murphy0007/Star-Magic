@@ -109,6 +109,31 @@ def build_ext_module():
     )
 
 
+
+def _safe_ext_modules():
+    """Return [Extension(...)] if pybind11 is available, else []. Lets
+    `python -m build` produce the pure-Python wheel on CI runners without
+    pybind11 installed. To force C++ build, install pybind11 first:
+        pip install pybind11
+        python setup.py build_ext --inplace
+    Or set UQFF_SKIP_CPP=1 to skip even when pybind11 is present.
+    """
+    import os as _os
+    if _os.environ.get('UQFF_SKIP_CPP') == '1':
+        print("UQFF_SKIP_CPP=1 set, skipping C++ extension build")
+        return []
+    try:
+        import pybind11  # noqa: F401
+    except ImportError:
+        print("pybind11 not installed, skipping C++ extension build "
+              "(set up CI/build environment with `pip install pybind11` to enable)")
+        return []
+    if not _os.path.isfile('uqff_pybind.cpp'):
+        print("uqff_pybind.cpp not found, skipping C++ extension build")
+        return []
+    return [build_ext_module()]
+
+
 def read_readme():
     """Read README.md with fallback for encoding issues"""
     if not os.path.exists('README.md'):
@@ -128,7 +153,7 @@ setup(
     long_description=read_readme(),
     long_description_content_type='text/markdown',
     url='https://github.com/Daniel8Murphy0007/Star-Magic',
-    ext_modules=[build_ext_module()],
+    ext_modules=_safe_ext_modules(),
     python_requires='>=3.8',
     install_requires=[
         'pybind11>=2.10.0',
