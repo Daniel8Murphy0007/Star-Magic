@@ -1,0 +1,159 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  fidelity-gate:
+    name: Fidelity gate (${{ matrix.os }}, py${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.10', '3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Strip null bytes from test file (cross-platform safety)
+        shell: python
+        run: |
+          import pathlib
+          p = pathlib.Path('uqff_fidelity_tests.py')
+          data = p.read_bytes()
+          if b'\x00' in data:
+              p.write_bytes(data.replace(b'\x00', b''))
+              print(f'Stripped {data.count(chr(0).encode())} null bytes.')
+          else:
+              print('No null bytes present.')
+
+      - name: Run UQFF fidelity gate (854 tests, 0 failures expected)
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python uqff_fidelity_tests.py
+
+  coverage:
+    name: Coverage measurement
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install coverage.py
+        run: pip install coverage>=7.0
+
+      - name: Strip null bytes from test file
+        run: python -c "import pathlib; p=pathlib.Path('uqff_fidelity_tests.py'); d=p.read_bytes(); p.write_bytes(d.replace(b'\x00',b''))"
+
+      - name: Run coverage
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -m coverage run --source=uqff_pure_calculator uqff_fidelity_tests.py
+          python -m coverage report --include='*uqff_pure_calculator*'
+          python -m coverage xml --include='*uqff_pure_calculator*' -o coverage.xml
+
+      - name: Upload coverage to Codecov
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: codecov/codecov-action@v4
+        continue-on-error: true
+        with:
+          files: coverage.xml
+          fail_ci_if_error: false
+
+      - name: Coverage summary in PR
+        run: |
+          python -m coverage report --include='*uqff_pure_calculator*' >> $GITHUB_STEP_SUMMARY
+
+  build-package:
+    name: Build sdist + wheel
+    runs-on: ubuntu-latest
+    needs: fidelity-gate
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build twine
+
+      - name: Build sdist + wheel
+        run: python -m build
+
+      - name: Validate distribution metadata
+        run: python -m twine check dist/*
+
+      - name: Show built artifacts
+        run: ls -la dist/
+
+      - name: Upload sdist + wheel as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: uqff-distribution
+          path: dist/*
+          retention-days: 90
+
+  smoke-test-install:
+    name: Smoke-test pip install in fresh venv
+    runs-on: ${{ matrix.os }}
+    needs: build-package
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Download built artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: uqff-distribution
+          path: dist/
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install wheel
+        shell: bash
+        run: pip install dist/uqff-*.whl
+
+      - name: Smoke test
+        shell: python
+        run: |
+          import uqff_pure_calculator as u
+          publics = [n for n in dir(u) if n.startswith('calculate_')]
+          assert len(publics) == 34, f'Expected 34 public surfaces, got {len(publics)}'
+
+          result = u.calculate_status_report({})
+          s = result['value']['summary']
+          assert s['total_closures'] == 794
+          assert s['truly_independent_primitives'] == 9
+          assert s['derivative_primitives'] == 2
+          assert sum(s['cosmic_milestones'].values()) == 5
+
+          ker = u.calculate_lenr({})['value']['ker_chain']['E_phonon_eV']
+          assert 0.005 < ker < 0.006, f'Holmlid E_phonon outside expected range: {ker}'
+
+          ui = u.calculate_universal_inertial_operator({})['value']['U_i_dimensionless']
+          assert abs(ui - 2.75e-7) < 1e-9, f'U_i = {ui} != 2.75e-7'
+
+          print('All smoke-test assertions PASSED.')
