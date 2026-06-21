@@ -1,0 +1,121 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uqff"
+version = "5.27.0"
+description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, ΔBIC = 94.1 vs SM+ΛCDM)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "AGPL-3.0-or-later OR LicenseRef-StarMagic-Commercial" }
+authors = [
+    { name = "Daniel T. Murphy", email = "daniel.murphy00@enrgyone.com" },
+]
+maintainers = [
+    { name = "Daniel T. Murphy", email = "daniel.murphy00@enrgyone.com" },
+]
+keywords = [
+    "physics",
+    "unified field theory",
+    "vacuum physics",
+    "LENR",
+    "low energy nuclear reactions",
+    "cosmological constant",
+    "Holmlid",
+    "Star-Magic reactor",
+    "Di-Pseudo-Monopole",
+    "DPM",
+    "nuclear shell model",
+    "Yang-Mills mass gap",
+    "Millennium prize problems",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = [
+    "coverage>=7.0",
+    "pytest>=7.0",
+]
+docs = [
+    "sphinx>=6.0",
+    "sphinx-rtd-theme>=1.2",
+]
+all = [
+    "coverage>=7.0",
+    "pytest>=7.0",
+    "sphinx>=6.0",
+    "sphinx-rtd-theme>=1.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/Daniel8Murphy0007/Star-Magic"
+Documentation = "https://github.com/Daniel8Murphy0007/Star-Magic#readme"
+Repository = "https://github.com/Daniel8Murphy0007/Star-Magic"
+Issues = "https://github.com/Daniel8Murphy0007/Star-Magic/issues"
+Changelog = "https://github.com/Daniel8Murphy0007/Star-Magic/blob/main/SESSION_LOG.md"
+"Commercial License" = "https://github.com/Daniel8Murphy0007/Star-Magic/blob/main/COMMERCIAL.md"
+
+[tool.setuptools]
+py-modules = ["uqff_pure_calculator"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = [
+    "LICENSE",
+    "LICENSE-AGPL-3.0.txt",
+    "LICENSE-MIT-PREVIOUS.txt",
+    "NOTICE",
+    "COMMERCIAL.md",
+    "CITATION.cff",
+    "README.md",
+    "CLAUDE.md",
+    "SESSION_LOG.md",
+    "PRODUCTION_ROADMAP.md",
+    "PREDICTION_LABELS.md",
+    "STATISTICAL_HYGIENE.md",
+    "PROVENANCE_AUDIT.md",
+    "COVERAGE.md",
+    "INPUT_DOMAINS.md",
+    "forward_predictions.md",
+    "verification_log.csv",
+]
+
+[tool.coverage.run]
+source = ["uqff_pure_calculator"]
+omit = [
+    "*/tests/*",
+    "*/whitepapers/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra"
+testpaths = ["."]
+python_files = ["uqff_fidelity_tests.py"]

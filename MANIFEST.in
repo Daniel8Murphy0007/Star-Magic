@@ -1,0 +1,55 @@
+# UQFF Star-Magic — sdist manifest
+# Files to include in the source distribution beyond the default
+
+# License files (REQUIRED — dual license)
+include LICENSE
+include LICENSE-AGPL-3.0.txt
+include LICENSE-MIT-PREVIOUS.txt
+include NOTICE
+include COMMERCIAL.md
+include CITATION.cff
+
+# Documentation
+include README.md
+include CLAUDE.md
+include SESSION_LOG.md
+include PRODUCTION_ROADMAP.md
+include PREDICTION_LABELS.md
+include STATISTICAL_HYGIENE.md
+include PROVENANCE_AUDIT.md
+include COVERAGE.md
+include INPUT_DOMAINS.md
+include NEXT_PRIORITIES.md
+
+# Data files
+include forward_predictions.md
+include verification_log.csv
+
+# Core module
+include uqff_pure_calculator.py
+include uqff_fidelity_tests.py
+
+# C++ reference (optional, not built)
+include uqff_exact_closures.cpp
+
+# Dashboard (HTML)
+include uqff_dashboard.html
+
+# Whitepapers (large — opt-in via sdist)
+recursive-include whitepapers *.md
+
+# Exclude backups, caches, build artifacts
+exclude *.PRE_*_BACKUP
+exclude *.POST_*_BACKUP
+recursive-exclude * __pycache__
+recursive-exclude * *.py[cod]
+recursive-exclude * .DS_Store
+recursive-exclude * *.swp
+recursive-exclude * .coverage
+recursive-exclude * htmlcov
+recursive-exclude * .pytest_cache
+recursive-exclude * .tox
+recursive-exclude * .mypy_cache
+recursive-exclude * *.egg-info
+recursive-exclude * dist
+recursive-exclude * build

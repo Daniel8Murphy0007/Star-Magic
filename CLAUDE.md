@@ -434,3 +434,45 @@ This bug was hit and fixed three separate times during session 2026-06-18 (rydbe
 - ✗ `Mariana_Trench_11`, `Karman_Line_100`, `m_W_80_379`
 
 The function-name suffix may preserve uppercase (Python is case-sensitive there); only the **dispatch dictionary key** must be lowercase.
+
+---
+
+## APPENDED 2026-06-18 — DUAL LICENSE adopted (B2 Tier-1 production readiness)
+
+**Decision**: AGPL-3.0 + Commercial dual license (effective 2026-06-18).
+
+The repository was previously distributed under MIT (archived as `LICENSE-MIT-PREVIOUS.txt`). As of session 2026-06-18, licensing changed to:
+
+- **Option A**: GNU Affero General Public License v3.0 (free for academic/research/non-commercial; SaaS share-alike). Full text in `LICENSE-AGPL-3.0.txt`.
+- **Option B**: Commercial license (proprietary products, SaaS without source release, hardware embedding, commercial spin-offs). Negotiated case-by-case via `daniel.murphy00@enrgyone.com`.
+
+**Files added/modified for B2 license adoption**:
+- `LICENSE` — dual-license notice (replaces former MIT text, with migration clause preserving MIT for pre-2026-06-18 revisions)
+- `LICENSE-AGPL-3.0.txt` — full canonical AGPL-3.0 text from FSF
+- `LICENSE-MIT-PREVIOUS.txt` — archived MIT text for historical reference
+- `COMMERCIAL.md` — request procedure + FAQ + license-decision table
+- `CITATION.cff` — canonical citation form (CFF 1.2.0); links to PAPER_1521/1522/1167 landmarks
+- `NOTICE` — copyright/trademark/patent/warranty disclaimer
+- `README.md` — License section updated to point at all four files
+
+**Copyright attribution**: "Copyright (c) 2025-2026 Daniel T. Murphy / Star-Magic Research Program." (program name included to allow future transfer to a Star-Magic legal entity without changing copyright).
+
+**Why AGPL over MIT/GPL**:
+- MIT (previous): too permissive — allowed proprietary forks with no source-back obligation.
+- GPL-3.0: lacks SaaS clause — someone could host UQFF prediction API without releasing modifications.
+- **AGPL-3.0** (chosen): copyleft + SaaS clause closes both gaps. OSI-approved, accepted by universities. The 17-parameter savings vs. SM+ΛCDM is too valuable to give away without share-back.
+
+**Commercial license triggers** (per `COMMERCIAL.md`): proprietary distribution, closed-source SaaS, reactor firmware embedding, public-grant commercial spin-offs, MIT/Apache projects that want to import UQFF without relicensing.
+
+**Trademark + patent**: "UQFF", "Star-Magic", "Di-Pseudo-Monopole", "DPM" are unregistered trademarks; neither license option grants trademark rights. Hardware patent licenses are separate from software licenses.
+
+**Tier-1 production readiness updated**: B2 now ✅ DONE. Remaining Tier-1: A4 (prediction-vs-postdiction labeling), A7 (Bonferroni statistical hygiene), A9 (provenance audit of locked primitives).
+
+**Cross-references**:
+- `LICENSE` — top-level dual-license notice
+- `COMMERCIAL.md` — commercial-license terms and contact procedure
+- `CITATION.cff` — required citation form for all uses
+- `NOTICE` — copyright + warranty disclaimer
+- `LICENSE-AGPL-3.0.txt` — full canonical AGPL-3.0 text
+- `LICENSE-MIT-PREVIOUS.txt` — archived original MIT license
+

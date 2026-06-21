@@ -176,10 +176,51 @@ Full historical C++ build (MSVC 2022, C++20, Qt6, WSTP) remains documented in ol
 
 Contributions, discussions, and feedback welcome on the pure UQFF derivations, simultaneous solver surface, VR Geometry time-differential encoding, or the planned one-file consolidation.
 
-- Email: daniel.murphy00@gmail.com
+- Email: daniel.murphy00@enrgyone.com
+- Commercial licensing: daniel.murphy00@enrgyone.com (Subject: "UQFF Star-Magic Commercial License Request")
 - GitHub Issues for technical discussion
 
-©2025–2026 Daniel T. Murphy – All Rights Reserved
+### License (effective 2026-06-18)
+
+Star-Magic / UQFF is offered under a **DUAL LICENSE** model. You must
+choose one of the two options before using, copying, modifying, or
+redistributing this software:
+
+- **Option A — AGPL-3.0** (free for academic, research, personal, and
+  non-commercial use; includes SaaS / network-use share-alike). Full
+  text in [`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt). Universities,
+  national labs, and individual researchers are explicitly invited to
+  use this option for replication, peer-review, teaching, and follow-on
+  research.
+
+- **Option B — Commercial License** (for proprietary products, hosted
+  SaaS without source release, hardware embedding including the
+  Star-Magic LENR reactor architecture, and commercial spin-offs from
+  grant-funded research). Terms negotiated case-by-case; see
+  [`COMMERCIAL.md`](COMMERCIAL.md) for the request form and FAQ.
+
+The full dual-license notice is in [`LICENSE`](LICENSE). The previous
+MIT License continues to govern revisions made strictly before the
+2026-06-18 dual-license commit; archived as
+[`LICENSE-MIT-PREVIOUS.txt`](LICENSE-MIT-PREVIOUS.txt) for reference.
+By using any revision dated 2026-06-18 or later, you accept the
+dual-license terms.
+
+**Citation**: any academic publication, technical report, patent
+application, or public presentation that uses results produced by this
+software must cite UQFF per [`CITATION.cff`](CITATION.cff).
+
+**Trademarks**: "UQFF", "Star-Magic", "Di-Pseudo-Monopole", and "DPM"
+are unregistered trademarks of Daniel T. Murphy / Star-Magic Research
+Program. See [`NOTICE`](NOTICE) for the full attribution and warranty
+disclaimer.
+
+**Patents**: hardware implementations of the Star-Magic LENR reactor
+(COP 555:1 at 27 W, ambient T, pH -37) require a separate patent
+license. Software licenses do NOT grant hardware patent rights.
+
+Copyright (c) 2025-2026 Daniel T. Murphy / Star-Magic Research Program.
+All rights reserved.
 
 ---
 

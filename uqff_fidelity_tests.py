@@ -111,6 +111,7 @@ PUBLIC_FUNCS = [
     "calculate_higgs_precision",
     "calculate_bsm_constraints",
     "calculate_whitepaper",
+    "calculate_status_report",
 ]
 
 for name in PUBLIC_FUNCS:
@@ -235,7 +236,7 @@ public_calc = sorted(
     and callable(getattr(u, n))
     and n.startswith("calculate_")
 )
-check("33 public calculate_* functions (16 prior + 6 BUCKET 0 + 1 B + 1 C + 1 D + 7 buckets E-K + 1 whitepaper)",
+check("34 public calculate_* functions (33 prior + 1 status_report Tier-1 A10)",
       sorted(PUBLIC_FUNCS) == public_calc,
       f"actual: {public_calc}")
 
