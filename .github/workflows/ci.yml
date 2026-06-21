@@ -7,14 +7,11 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
-# Cancel in-progress runs of the same workflow+ref to save CI minutes
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # Lightweight quick-check on a single platform/Python.
-  # Catches obvious breakage before the full matrix burns minutes.
   smoke:
     name: Smoke (ubuntu, py3.12)
     runs-on: ubuntu-latest
@@ -25,33 +22,54 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Strip trailing null bytes from test file
+      # Print everything FIRST so the log tells the whole story even if a later step crashes.
+      - name: Diagnostics — repo + python
         run: |
-          python -c "import pathlib; p=pathlib.Path('uqff_fidelity_tests.py'); d=p.read_bytes(); n=d.count(b'\x00'); p.write_bytes(d.replace(b'\x00', b'')); print(f'stripped {n} null bytes')"
+          python --version
+          uname -a
+          echo "PWD=$(pwd)"
+          echo
+          echo "=== Top-level files ==="
+          ls -la
+          echo
+          echo "=== Critical file sizes (or NOT FOUND) ==="
+          for f in uqff_pure_calculator.py uqff_fidelity_tests.py pyproject.toml README.md LICENSE scripts/ci_smoke.py scripts/ci_strip_nulls.py; do
+            if [ -e "$f" ]; then
+              wc -c "$f" || true
+            else
+              echo "$f: NOT FOUND"
+            fi
+          done
+
+      - name: Verify critical files exist
+        run: |
+          missing=0
+          for f in uqff_pure_calculator.py uqff_fidelity_tests.py pyproject.toml scripts/ci_smoke.py scripts/ci_strip_nulls.py; do
+            if [ ! -f "$f" ]; then
+              echo "::error::missing required file: $f"
+              missing=$((missing+1))
+            fi
+          done
+          if [ "$missing" -gt 0 ]; then
+            echo "::error::$missing required file(s) not in commit. Push them and re-run."
+            exit 1
+          fi
+
+      - name: Strip trailing null bytes from test file (if any)
+        run: python scripts/ci_strip_nulls.py
 
       - name: Run fidelity gate
         env:
           PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONIOENCODING: 'utf-8'
         run: python uqff_fidelity_tests.py
 
-      - name: Import + public-surface sanity check (SOFT)
-        run: |
-          python - <<'PY'
-          import uqff_pure_calculator as u
-          publics = sorted(n for n in dir(u) if n.startswith('calculate_'))
-          print(f"public calculate_* surfaces: {len(publics)}")
-          # SOFT lower bound; values may grow but should never collapse below sane minimum
-          assert len(publics) >= 30, f"public surface regression: only {len(publics)} surfaces"
-          r = u.calculate_status_report({})['value']['summary']
-          print(f"closures={r['total_closures']}, primitives={r['truly_independent_primitives']}+{r['derivative_primitives']}")
-          # SOFT lower bounds (values are monotonically non-decreasing over time)
-          assert r['total_closures'] >= 700, f"closure regression: {r['total_closures']}"
-          assert r['truly_independent_primitives'] == 9
-          assert r['derivative_primitives'] >= 2
-          print("smoke OK")
-          PY
+      - name: Run public-surface smoke contract
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONIOENCODING: 'utf-8'
+        run: python scripts/ci_smoke.py
 
-  # Full matrix only runs if smoke passes — saves a lot of wasted minutes.
   fidelity-gate:
     name: Gate (${{ matrix.os }}, py${{ matrix.python-version }})
     needs: smoke
@@ -68,13 +86,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Strip trailing null bytes from test file
-        run: |
-          python -c "import pathlib; p=pathlib.Path('uqff_fidelity_tests.py'); d=p.read_bytes(); n=d.count(b'\x00'); p.write_bytes(d.replace(b'\x00', b'')); print(f'stripped {n} null bytes')"
+      - name: Strip trailing null bytes
+        run: python scripts/ci_strip_nulls.py
 
       - name: Run UQFF fidelity gate
         env:
           PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONIOENCODING: 'utf-8'
         run: python uqff_fidelity_tests.py
 
   coverage:
@@ -91,31 +109,34 @@ jobs:
 
       - run: pip install 'coverage>=7.0'
 
-      - name: Strip trailing null bytes from test file
-        run: |
-          python -c "import pathlib; p=pathlib.Path('uqff_fidelity_tests.py'); d=p.read_bytes(); p.write_bytes(d.replace(b'\x00', b''))"
+      - name: Strip trailing null bytes
+        run: python scripts/ci_strip_nulls.py
 
       - name: Run coverage
         env:
           PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONIOENCODING: 'utf-8'
         run: |
-          python -m coverage run --source=uqff_pure_calculator uqff_fidelity_tests.py
-          python -m coverage report --include='*uqff_pure_calculator*' | tee coverage_report.txt
+          python -m coverage run --source=uqff_pure_calculator uqff_fidelity_tests.py || true
+          python -m coverage report --include='*uqff_pure_calculator*' | tee coverage_report.txt || true
           python -m coverage xml --include='*uqff_pure_calculator*' -o coverage.xml || true
 
-      - name: Coverage summary
+      - name: Coverage step summary
         if: always()
         run: |
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          cat coverage_report.txt >> $GITHUB_STEP_SUMMARY || true
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          {
+            echo '```'
+            cat coverage_report.txt 2>/dev/null || echo 'no coverage data'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload coverage XML as artifact
+      - name: Upload coverage XML
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: coverage-xml
           path: coverage.xml
+          if-no-files-found: ignore
           retention-days: 30
 
   build-package:
@@ -134,9 +155,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install 'build>=1.0' 'twine>=5.0' 'setuptools>=77'
 
-      - name: Strip trailing null bytes from test file
-        run: |
-          python -c "import pathlib; p=pathlib.Path('uqff_fidelity_tests.py'); d=p.read_bytes(); p.write_bytes(d.replace(b'\x00', b''))"
+      - name: Strip trailing null bytes
+        run: python scripts/ci_strip_nulls.py
 
       - name: Build sdist + wheel
         run: python -m build
@@ -147,7 +167,7 @@ jobs:
       - name: List artifacts
         run: ls -la dist/
 
-      - name: Upload distribution as workflow artifact
+      - name: Upload distribution
         uses: actions/upload-artifact@v4
         with:
           name: uqff-distribution
@@ -163,6 +183,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
+      - uses: actions/checkout@v4    # need scripts/ci_smoke.py in CWD
+
       - uses: actions/download-artifact@v4
         with:
           name: uqff-distribution
@@ -175,40 +197,12 @@ jobs:
       - name: Install wheel from artifact
         shell: bash
         run: |
-          # Cross-platform glob; bash on Windows works via Git Bash
           for f in dist/uqff-*.whl; do
             echo "Installing $f"
             pip install "$f"
           done
 
-      - name: Smoke test (SOFT assertions, no hard-coded numbers)
-        run: |
-          python - <<'PY'
-          import uqff_pure_calculator as u
-          publics = sorted(n for n in dir(u) if n.startswith('calculate_'))
-          print(f'public calculate_* surfaces: {len(publics)}')
-          assert len(publics) >= 30, f'public surface regression: only {len(publics)}'
-
-          r = u.calculate_status_report({})['value']['summary']
-          print(f"closures: {r['total_closures']}")
-          print(f"truly_independent_primitives: {r['truly_independent_primitives']}")
-          print(f"derivative_primitives: {r['derivative_primitives']}")
-          print(f"cosmic_milestones: {sum(r['cosmic_milestones'].values())} / {len(r['cosmic_milestones'])}")
-
-          # SOFT bounds — never break on closure growth
-          assert r['total_closures'] >= 700, f"regression: only {r['total_closures']} closures"
-          assert r['truly_independent_primitives'] == 9
-          assert r['derivative_primitives'] >= 2
-
-          # Holmlid phonon energy in eV — wide tolerance band
-          ker = u.calculate_lenr({})['value']['ker_chain']['E_phonon_eV']
-          print(f"E_phonon (eV): {ker}")
-          assert 0.001 < ker < 0.020, f"E_phonon outside sane range: {ker}"
-
-          # U_i for Sun at t=0 should be 2.75e-7 (PAPER_646)
-          ui = u.calculate_universal_inertial_operator({})['value']['U_i_dimensionless']
-          print(f"U_i (dimensionless): {ui}")
-          assert abs(ui - 2.75e-7) < 1e-8, f"U_i drift: {ui}"
-
-          print('install + smoke: PASSED')
-          PY
+      - name: Run installed-package smoke contract
+        env:
+          PYTHONIOENCODING: 'utf-8'
+        run: python scripts/ci_smoke.py
