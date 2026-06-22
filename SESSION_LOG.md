@@ -6053,3 +6053,29 @@ While fixing the pyproject.toml license format, the Edit tool truncated the file
 5. **Tier-3 entry**: peer-review submission targets, external replication outreach
 6. **Audit other regression suites** for `tol < 1e-15` (the 5 we found may not be exhaustive)
 
+
+---
+
+## Session 2026-06-21 — CI 18/18 GREEN on commit `110aa1a0` ✅
+
+Confirmed by Daniel: every check passes.
+
+**Pipeline now validates on every push:**
+- Smoke (ubuntu × py3.12)
+- Gate matrix (3 OS × 4 Python = 12 combos)
+- Coverage measurement (artifact + step summary)
+- Build sdist + wheel
+- Install + smoke (3 OS)
+- Skipped (correctly): publish-testpypi, publish-pypi, github-release (trigger only on tag push)
+
+**Tier-2 status: 100% on the CI/CD infrastructure axis.** Remaining Tier-2 items are owner-action (PyPI Trusted Publishing setup, tag push, RTD connect) or optional polish (backup cleanup, more regression pins).
+
+**Cumulative session 2026-06 totals:**
+- Tier-1: 13/13 ✅
+- Tier-2 CI: 18/18 green
+- Calculator: 2.66 MB, 48,405 lines, 794 paradox keys, 857/857 gate
+- Whitepapers: 1,795
+- License: AGPL-3.0 + commercial dual
+- Sphinx docs: 17 HTML pages built locally
+- PyPI wheel: built + smoke-tested + validated by twine
+
