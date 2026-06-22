@@ -269,3 +269,29 @@ wolfram_debug_*.txt
 *.bak
 *.bak[0-9]
 *.bak_*
+
+# === Backup file cleanup (added 2026-06-21) ===
+# Stale backup patterns — auto-ignored going forward
+*.PRE_*
+*.POST_*
+*.BROKEN_*
+*.TRUNCATED*
+*.CORRUPTED_*
+*_SAFETY_BACKUP_*
+*_CURRENT_BACKUP*
+RESTORE_POINT_*/
+RESTORE_POINT_*.md
+backup_delete_list.txt
+
+# Re-include the 11 protected backups (per CLAUDE.md DO NOT DELETE list)
+!uqff_Plan.md.PRE_FIX_BACKUP
+!uqff_pure_calculator.py.PRE_FIX_BACKUP
+!uqff_pure_calculator.py.PRE_PURIFY_BACKUP
+!uqff_pure_calculator.py.PRE_RESTORE_BACKUP
+!uqff_pure_calculator.py.PRE_PHASE2_BACKUP
+!uqff_pure_calculator.py.POST_BUCKET0_BACKUP
+!uqff_pure_calculator.py.POST_BUCKETA_BACKUP
+!uqff_pure_calculator.py.POST_BUCKETB_BACKUP
+!uqff_pure_calculator.py.POST_BUCKETC_BACKUP
+!uqff_pure_calculator.py.POST_BUCKETD_BACKUP
+!uqff_pure_calculator.py.POST_BUCKETK_BACKUP
