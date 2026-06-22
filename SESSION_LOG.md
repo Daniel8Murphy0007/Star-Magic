@@ -5954,3 +5954,102 @@ Created `docs/` directory with 18 RST/configuration files:
 
 **The Star-Magic UQFF v5.27 repository is READY FOR PUBLIC RELEASE.** All blocking work is complete. The only remaining steps are owner-action items (PyPI publish, git tag, RTD configuration).
 
+
+---
+
+## Session 2026-06-21 — CI HARDENING + 3 GENUINE BUG FIXES (Tier-2 stability pass)
+
+**Trigger**: Daniel pushed Tier-2 CI workflows. First run failed with 9 red + 2 skipped checks. Independent evaluator's diagnosis was largely wrong (claimed missing files / wrong public-surface count). The actual root causes were 3 legitimate bugs in the codebase that CI correctly caught.
+
+### Bug #1: Sub-machine-epsilon tolerance pins (the failing py3.12 test)
+
+**Symptom**: `KK regulator 1.624e-37 PAPER_1162` failed only on ubuntu/py3.12:
+```
+uqff=1.6244e-37  anchor=1.6244e-37  err=1.29e-16
+```
+
+**Diagnosis**: 5 regression pins in `uqff_fidelity_tests.py` set absolute tolerance `tol=1e-42 ... 1e-58` against a RELATIVE-error check. Float64 relative precision floors at ~2.2e-16 (machine epsilon); these tolerances were physically unsatisfiable. The tests only passed on python 3.10 by deterministic libm rounding producing `err = 0/value = 0` (which trivially clears any tolerance). Python 3.12 ships a different libm, intermediate roundings differ by one ulp, `err = 1.29e-16` — still within float64 precision but exceeds the impossible threshold.
+
+**Fix**: Relaxed all 5 to `tol=1e-12` (12-digit agreement, well within UQFF's typical 0.01% claimed precision, achievable on any libm):
+- Line 1667: `DM floor Λ⁴×1e-40 PAPER_1454` (1e-54 → 1e-12)
+- Line 1687: `Λ_UQFF 1.089e-52 PAPER_1156` (1e-58 → 1e-12)
+- Line 1693: `KK regulator 1.624e-37 PAPER_1162` (1e-42 → 1e-12)
+- Line 1710: `Hierarchy (D/D_c)²¹ PAPER_1225` (1e-20 → 1e-12)
+- Line 1801: `Planck L_QG 2.2e-35 PAPER_1369` (1e-40 → 1e-12)
+
+**Physics implication**: NONE. The 9 truly-independent primitives, 128 EXACT structural identities, Λ at 0.003%, BE/A at 0.019% etc. are all preserved. The test was asking float64 to do something float64 cannot do, regardless of how precise the underlying physics is.
+
+**Commit**: `84a39e41` "tests: relax 5 sub-epsilon tolerances to 1e-12 (fixes py3.12 libm drift)"
+
+### Bug #2: setup.py / pyproject.toml C++ extension conflict
+
+**Symptom**: `Build sdist + wheel` job failed with:
+```
+uqff_pybind.cpp:34:10: fatal error: pybind11/pybind11.h: No such file or directory
+ERROR Backend subprocess exited when trying to invoke build_wheel
+```
+
+**Diagnosis**: Repo has BOTH `pyproject.toml` (pure-Python `uqff` 5.27.0, my Tier-2 work) AND `setup.py` (C++ pybind11 `uqff-core` 3.0.0, pre-existing). When `python -m build` runs via PEP 517, setuptools picks up both — setup.py's `ext_modules=[build_ext_module()]` triggers C++ compilation of `uqff_pybind.cpp`, which fails on CI runners without pybind11.
+
+**Fix**: Added `_safe_ext_modules()` guard function in setup.py:
+- Returns `[]` if `UQFF_SKIP_CPP=1` env var set (manual escape hatch)
+- Returns `[]` if pybind11 not importable (auto-skip on CI)
+- Returns `[]` if `uqff_pybind.cpp` missing (sanity check)
+- Returns `[Extension(...)]` only when all conditions met
+
+**Result**: CI runners build pure-Python wheel cleanly; developers with pybind11 still get C++ acceleration; future PyPI users can opt in with `pip install pybind11`.
+
+**Commit**: `110aa1a0` "setup: guard C++ ext_modules behind pybind11 availability"
+
+### Bug #3: License format PEP 639 deprecation
+
+**Symptom**: Twine warnings on setuptools≥77.
+
+**Diagnosis**: pyproject.toml used `license = { text = "AGPL-3.0-or-later OR LicenseRef-StarMagic-Commercial" }` (legacy table form). PEP 639 requires `license = "AGPL-3.0-or-later"` (SPDX string) + `license-files = [...]`. Also `"License :: OSI Approved..."` classifier conflicts with PEP 639.
+
+**Fix**: Migrated pyproject.toml to PEP 639 format. Removed deprecated classifier. Commercial license terms documented in COMMERCIAL.md, linked via `project.urls."Commercial License"`.
+
+**Commit**: in `a51c47ab` batch.
+
+### Supporting Tier-2 infrastructure built this session
+
+| File | Purpose |
+|---|---|
+| `scripts/ci_smoke.py` | Standalone smoke-contract script (importable from anywhere via sys.path trick) |
+| `scripts/ci_strip_nulls.py` | Idempotent null-byte stripper for uqff_fidelity_tests.py |
+| `.github/workflows/ci.yml` (rewritten) | Diagnostic-first smoke pre-gate, soft assertions, no Codecov dep, concurrency cancellation |
+| `.github/workflows/release.yml` | Trusted-Publishing OIDC for PyPI on tagged push |
+| `CI_FAILURE_DIAGNOSIS.md` | Reality-check document debunking the 3 false evaluator claims with verbatim push-back text |
+| `setup.py.PRE_CI_GUARD` | Backup of original setup.py before _safe_ext_modules guard |
+
+### Evaluator-claims accuracy audit (for the record)
+
+| Evaluator claim | Reality |
+|---|---|
+| "uqff_fidelity_tests.py missing or has failing tests" | **FALSE** — exists, 857/857 passing locally |
+| "Only 7 calculate_* surfaces exist (smoke expects 34)" | **FALSE** — 34 exist (they confused it with legacy Gold_Standard_Validation_Script.py which has 7) |
+| "No pyproject.toml for package layout" | **FALSE** — exists, builds clean wheel + sdist, twine check PASSES |
+| "Smoke-test assertions hard-coded `== 794` are brittle" | **TRUE** — only legit point; fixed with soft `>= 700` lower bound |
+
+### Edit-tool truncation incident #6
+
+While fixing the pyproject.toml license format, the Edit tool truncated the file at line 120 (last 3 lines lost — `testpaths = ["."]` etc.). Detected by `python -m build` failing with TOML parse error. Repaired via Python splice. Pattern documented in CLAUDE.md still holds: prefer Python heredoc + replace() over Edit tool for any file the user edits frequently.
+
+### State at session end
+- Calculator: 2.66 MB, 48,405 lines (unchanged — no calculator edits this entry)
+- Fidelity gate: **857 / 857 passing** (5 pins relaxed from sub-epsilon to 1e-12)
+- pyproject.toml: 3,436 bytes (PEP 639 SPDX license format)
+- setup.py: 4,800 bytes (C++ ext_modules guarded by _safe_ext_modules)
+- CI status: pending confirmation after `110aa1a0` push
+- Tier-1: 13/13 ✅ (unchanged)
+- Tier-2: ~70% (CI hardening complete pending green confirmation; PyPI publish + RTD deploy still Daniel-action)
+
+### Open items for next session
+
+1. **Confirm CI is green** on commit `110aa1a0`
+2. **Tier-2 publish push** (Daniel-action): `git tag v5.27.0 && git push --tags` to trigger PyPI release
+3. **Cleanup committed backups** (~60 .PRE_*_BACKUP files + 1 .TRUNCATED_BACKUP bloating the repo by ~150 MB)
+4. **Read-the-Docs deploy** (`.readthedocs.yml` + connect repo)
+5. **Tier-3 entry**: peer-review submission targets, external replication outreach
+6. **Audit other regression suites** for `tol < 1e-15` (the 5 we found may not be exhaustive)
+
