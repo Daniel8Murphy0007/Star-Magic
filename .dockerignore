@@ -1,0 +1,55 @@
+# UQFF Docker build context exclusions
+# Keep the image lean by excluding everything not needed at runtime
+
+# Git / version control
+.git/
+.gitignore
+.gitattributes
+
+# CI / dev infrastructure
+.github/
+.readthedocs.yaml
+scripts/
+tests/
+*.PRE_*
+*.POST_*
+*.BROKEN_*
+*.TRUNCATED*
+backup_delete_list.txt
+
+# Large reference materials
+whitepapers/
+docs/_build/
+*.cpp
+*.cmake
+CMakeLists.txt
+CMakeFiles/
+build/
+build_msvc/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.venv*/
+venv/
+
+# Other
+*.log
+*.tmp
+node_modules/
