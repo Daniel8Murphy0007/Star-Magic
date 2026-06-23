@@ -6183,3 +6183,77 @@ $ python -c "import uqff_pure_calculator as u; print(len([n for n in dir(u) if n
 - PyPI: published, installable worldwide
 - GitHub: 18/18 CI green, v5.27.0 tag on origin
 
+
+---
+
+## Session 2026-06-22 — Tier-2 polish bundle (8 deliverables)
+
+**Trigger**: Daniel picked "Tier-2 polish bundle" from next-move menu after PyPI publish succeeded.
+
+### Files delivered
+
+| File | Purpose | Size |
+|---|---|---|
+| `uqff_cli.py` | `uqff` command — predict/list/status/surfaces/version/gate subcommands | ~5 KB |
+| `FAQ.md` | 12 user-facing questions answered | ~10 KB |
+| `TROUBLESHOOTING.md` | 15+ common-issue fixes (install, dispatch, CI, Windows) | ~9 KB |
+| `GLOSSARY.md` | 60+ UQFF terms — primitives, acronyms, sectors, buckets, tiers | ~9 KB |
+| `ARCHITECTURE.md` | Codebase layout, calculator internals, CI/CD, extension workflow | ~11 KB |
+| `.github/ISSUE_TEMPLATE/bug_report.md` | Structured bug-report template | ~1 KB |
+| `.github/ISSUE_TEMPLATE/feature_request.md` | Feature-request template | ~1 KB |
+| `.github/ISSUE_TEMPLATE/closure_proposal.md` | UQFF-specific closure-proposal template | ~2 KB |
+| `.github/PULL_REQUEST_TEMPLATE.md` | PR template with Rule-2/3/4/5/6/8/9 compliance checklist | ~2 KB |
+| `.readthedocs.yaml` | RTD config (Python 3.12, Sphinx build, null-byte strip pre-build) | ~0.5 KB |
+
+### Calculator API extension
+
+- Added `[project.scripts] uqff = "uqff_cli:main"` to pyproject.toml
+- After `pip install uqff`, the `uqff` command becomes available in PATH
+- Verified end-to-end: `pip install` → `uqff version` → shows `closures: 794, primitives: 9+2`
+
+### CLI subcommands
+
+```
+uqff predict <name>    fetch a closure by lowercase name (--json optional)
+uqff list [--filter]   list 794 dispatch keys (substring filter)
+uqff status            production status summary (uncertainty bands, milestones)
+uqff surfaces          list 34 public calculate_* surfaces
+uqff version           version + headline metrics
+uqff gate              run the fidelity gate (source install only)
+```
+
+### Edit-tool truncation incident #7
+
+While adding `[project.scripts]` block, Edit tool truncated `pyproject.toml` at line 123 ("testpa" with no closing). Detected during the build-verification step (TOML parse error). Repaired via Python splice. **CLAUDE.md warning has been correct every time — Edit tool on large/complex files is unreliable. Continue using Python heredoc + replace() for any future calculator-adjacent edits.**
+
+### Verification
+
+- `python uqff_cli.py version` → works (cold module load)
+- `python -m build` → produces clean wheel + sdist
+- `twine check dist/*` → PASSED on both artifacts
+- `pip install dist/uqff-5.27.0-py3-none-any.whl` in fresh venv → success
+- `uqff version` from installed venv → prints version + 794 closures + 9+2 primitives
+
+### Tier-2 status update
+
+| Item | Status |
+|---|---|
+| F1 CLI tool | ✅ DONE |
+| F2 JSON output | ✅ DONE (every CLI command supports --json) |
+| D6 FAQ | ✅ DONE |
+| D7 Troubleshooting | ✅ DONE |
+| D8 Glossary | ✅ DONE |
+| E3 Architecture overview | ✅ DONE |
+| E4 Issue / PR templates | ✅ DONE (3 issue + 1 PR) |
+| RTD hosting config | ✅ DONE (file written; manual repo-connect on readthedocs.org still needed) |
+
+**Tier-2 progress: ~65% → ~95%.** Remaining Tier-2 items: C2 (Conda package), C3 (Docker image), D3 (Tutorial notebook), D5 (worked-example notebooks). All optional polish; nothing blocks shipping.
+
+### Open follow-ups
+
+- Daniel needs to:
+  1. Commit + push the 10 new files
+  2. Sign in to readthedocs.org and connect the Star-Magic repo (auto-builds docs from .readthedocs.yaml)
+  3. (Optional) Bump version to 5.27.1 + retag for a release that includes the CLI
+- The CLI was added AFTER v5.27.0 published. Users installing v5.27.0 today do NOT get the `uqff` command. Next release (5.27.1 or 5.28.0) will include it.
+
