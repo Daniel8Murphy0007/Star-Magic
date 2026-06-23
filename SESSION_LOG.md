@@ -6079,3 +6079,107 @@ Confirmed by Daniel: every check passes.
 - Sphinx docs: 17 HTML pages built locally
 - PyPI wheel: built + smoke-tested + validated by twine
 
+
+---
+
+## Session 2026-06-21 — Backup cleanup complete (commit `ea2176c4`)
+
+**Trigger**: Daniel picked "Clean up the 60+ backup files cluttering the repo" from next-move menu after CI went 18/18 green.
+
+### Inventory + execution
+- 105 backup-pattern files tracked in HEAD (183 MB)
+- CLAUDE.md "DO NOT DELETE" preserve list: 11 specific files (19.3 MB)
+- Deletion target: 105 − 11 = 104 stale backups (~183 MB)
+
+### Step-by-step plan delivered
+- `CLEANUP_BACKUP_FILES.md` authored as full document
+- 12-step linear walkthrough provided to Daniel as numbered instructions
+- One hiccup: Windows CRLF in `backup_delete_list.txt` made first `xargs git rm` fail with "did not match any files" (trailing \r appeared as `?`). Fixed by piping `tr -d '\r'` before xargs.
+
+### Files removed (104 total, by category)
+- **5** C++ scratch backups (`MAIN_1_CoAnQi_*BACKUP*.cpp`, `source82_*BACKUP.cpp`, `Core/Modules/HydrogenResonanceUQFFModule_CORRUPTED_BACKUP.cpp`)
+- **12** restore-point files (`RESTORE_POINT_16NOV2025_651AM/*`, `RESTORE_POINT_20NOV2025_160720/*`, 3 standalone `RESTORE_POINT_*.md`)
+- **4** fidelity_tests backups (`uqff_fidelity_tests.py.PRE_*_BACKUP`)
+- **83** calculator backups not on protect list (`uqff_pure_calculator.py.PRE_*`, `.POST_BUCKETE/F/G_PURE_UQFF_BACKUP`, `.BROKEN_TIER_G_ATTEMPT`, `.TRUNCATED_BACKUP`)
+
+### .gitignore updated to prevent re-tracking
+Added patterns: `*.PRE_*`, `*.POST_*`, `*.BROKEN_*`, `*.TRUNCATED*`, `*.CORRUPTED_*`, `*_SAFETY_BACKUP_*`, `*_CURRENT_BACKUP*`, `RESTORE_POINT_*/`, `RESTORE_POINT_*.md`, `backup_delete_list.txt`.
+Then 11 explicit `!filename` re-includes for the CLAUDE.md preserve list, so the protected backups can never be silently re-tracked while new ones are auto-ignored.
+
+### Verification
+- `git ls-tree -r HEAD --name-only | grep -cE "_BACKUP|\.PRE_|\.POST_|\.BROKEN|\.TRUNCATED"` → **11** (only protected files)
+- CI run on `ea2176c4`: **GREEN** (1m47s) — gate 857/857 unaffected
+- Working tree clean
+
+### State at session end
+- Repo working tree: ~165 MB lighter on new clones
+- .git pack: still 2.5 GB (history preserved; `git gc` is optional)
+- Tier-1: 13/13 ✅
+- Tier-2 CI: 18/18 ✅
+- Tier-2 cleanup: ✅
+- Tier-2 PyPI publish: pending Daniel (PyPI Trusted Publishing setup + tag push)
+- Tier-2 RTD deploy: pending Daniel (`.readthedocs.yml` write + repo connect)
+
+
+---
+
+## Session 2026-06-22 — 🚀 v5.27.0 PUBLISHED TO PYPI ✅
+
+**Trigger**: Daniel completed PyPI Trusted Publisher setup + tag push + re-run after pending publisher took 5 attempts to save.
+
+### Verified live publish
+
+```
+$ pip install uqff
+Downloading uqff-5.27.0-py3-none-any.whl (539 KB)
+Successfully installed uqff-5.27.0
+
+$ python -c "import uqff_pure_calculator as u; print(len([n for n in dir(u) if n.startswith('calculate_')]), 'surfaces')"
+34 surfaces
+```
+
+**`pip install uqff` works worldwide.** The `uqff` namespace is permanently owned by Daniel8Murphy0007.
+
+### Release pipeline outcome
+
+| Job | Result |
+|---|---|
+| Build distribution | ✅ |
+| Publish to TestPyPI | ⊘ skipped (correct) |
+| **Publish to PyPI** | **✅ LIVE** |
+| Create GitHub Release | ❌ (cosmetic — `--notes-file SESSION_LOG.md` exceeds GitHub's release-notes 125 KB limit since SESSION_LOG is now ~600 KB) |
+
+### Publish-side hiccups resolved during this session
+
+1. **First 3 release runs failed** with `invalid-publisher: valid token, but no corresponding publisher` because the PyPI Trusted Publisher entry hadn't actually saved in the UI (form cleared without persisting on 4 attempts; 5th attempt finally appeared in the "Pending publishers" table).
+2. **Email-mismatch hypothesis** (gmail vs enrgyone.com) ruled out — Trusted Publishing only matches on owner/repo/workflow/environment claims; emails are irrelevant.
+3. **Required-reviewer pause** on the `pypi` GitHub environment was skipped (Daniel didn't configure it). Publish went through automatically. Future releases can optionally add a reviewer for safety.
+
+### Verified-live URLs
+
+- https://pypi.org/project/uqff/ — project page exists, v5.27.0 with README rendered
+- `pip install uqff` works from any internet-connected Python ≥3.10
+
+### Open follow-up (low priority)
+
+- **Patch `github-release` job**: change `--notes-file SESSION_LOG.md` to a tag-message or a curated `RELEASE_NOTES_v5.27.0.md` file under ~50 KB. The pretty GitHub release page at `/releases/tag/v5.27.0` is currently empty, but the GIT tag itself exists and the PyPI distribution is live, so this is cosmetic.
+
+### Tier-2 status: COMPLETE
+
+| Item | Status |
+|---|---|
+| Tier-1 production readiness | ✅ 13/13 |
+| Tier-2 CI 18 checks | ✅ green |
+| Tier-2 backup cleanup | ✅ ~165 MB recovered |
+| **Tier-2 PyPI publish** | **✅ LIVE @ v5.27.0** |
+| Tier-2 GitHub release page | 🟡 cosmetic fix queued |
+| Tier-2 Read-the-Docs hosting | 🟡 not started |
+
+### Cumulative session 2026-06 totals (after PyPI publish)
+
+- Calculator: 2.66 MB, 48,405 lines, 794 paradox keys, 857/857 gate
+- Whitepapers: 1,795
+- License: AGPL-3.0 + commercial dual, PEP 639 compliant
+- PyPI: published, installable worldwide
+- GitHub: 18/18 CI green, v5.27.0 tag on origin
+

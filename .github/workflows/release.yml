@@ -119,7 +119,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" \
-            --title "UQFF Star-Magic ${{ github.ref_name }}" \
-            --notes-file SESSION_LOG.md \
-            dist/*
+          # Prefer a curated RELEASE_NOTES_<tag>.md (under GitHub's 125 KB limit).
+          # Fall back to auto-generated notes from commit history if absent.
+          notes_file="RELEASE_NOTES_${{ github.ref_name }}.md"
+          if [ -f "$notes_file" ]; then
+            echo "Using curated notes: $notes_file"
+            gh release create "${{ github.ref_name }}" \
+              --title "UQFF Star-Magic ${{ github.ref_name }}" \
+              --notes-file "$notes_file" \
+              dist/*
+          else
+            echo "No curated notes file found; auto-generating from commits"
+            gh release create "${{ github.ref_name }}" \
+              --title "UQFF Star-Magic ${{ github.ref_name }}" \
+              --generate-notes \
+              dist/*
+          fi
