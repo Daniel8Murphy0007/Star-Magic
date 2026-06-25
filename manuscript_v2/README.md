@@ -39,10 +39,10 @@ uqff_manuscript_v2.tex                ← main document (knits sections)
 - [x] Skeleton + project scaffold
 - [x] Section 4.1 Cosmological constant Λ
 - [x] Section 4.2 Magic numbers
-- [ ] Section 4.3 Holmlid 630 eV LENR
-- [ ] Section 4.4 Yang-Mills mass gap
-- [ ] Section 4.5 SM spectrum
-- [ ] Section 4.6 Forward predictions
+- [x] Section 4.3 Holmlid 630 eV LENR
+- [x] Section 4.4 Yang-Mills mass gap
+- [x] Section 4.5 SM spectrum
+- [x] Section 4.6 Forward predictions
 - [ ] Sections 5-9
 - [ ] Section 1 (intro)
 - [ ] Abstract

@@ -1,4 +1,44 @@
 ---
+
+## ERRATUM (Session 2026-06-25)
+
+**Status:** This paper was historically cited as the source of the
+"Yang-Mills mass gap = 5970 GeV" value that propagated through the
+9-sector Lagrangian summary table appearing in approximately 610
+locations across the corpus (PAPER\_001 through PAPER\_010 family,
+plus auxiliary tables). That value was a stale magic-number hardcode
+in the calculator's `_millennium_yang_mills_derive()` dispatch
+function with NO matching derivation chain in this paper.
+
+**Correction:** The current best UQFF closure for the SU(3) Yang-Mills
+mass gap is given by PAPER\_1318:
+
+```
+m_0^{++} = 2 × D_phys × Λ_QCD = 2 × 4 × 0.217 GeV = 1.736 GeV
+```
+
+agreeing with the lattice QCD central value (~1.7 GeV) to within 2.1%
+and with the independent grok 31May2026 long-form DPM-buoyancy
+variational derivation (~1.78 GeV).
+
+**The formula in §1 of this paper (Δ_YM = Λ_QCD · exp(-1/(α_s · N_c)) · S26(3))
+evaluates to ~10^24 GeV** at PDG values for α_s = 0.118, Λ_QCD = 0.217 GeV
+(numerator only; the S26(3) ≈ 1.45e26 factor amplifies catastrophically
+without a [UA]-suppression term to bring it back down). The original
+intent appears to have been to derive a mass gap via the BCS-phonon
+mechanism but the closure was not completed; this paper should be
+considered a draft scaffold rather than a working derivation. The
+working integer-primitive closure is PAPER\_1318.
+
+**Action required for downstream papers:** None. The 610 citations of
+"5970 GeV (PAPER_1005)" across the GW-bucket whitepapers have been
+updated in-place (Session 2026-06-25) to cite PAPER\_1318 with the
+1.736 GeV value and an explicit note that the prior value was a
+registry-bug artifact.
+
+---
+
+---
 paper_id: PAPER_1005
 title: "Yang-Mills Mass Gap via SCm BCS Phonon Coupling"
 session: 219
@@ -68,8 +108,7 @@ $$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}
 **Physical mechanism:** The SCm phonon field ($\omega_{\text{SCm}} = 1.25\;\text{THz}$)
 provides a pairing interaction analogous to the BCS electron-phonon coupling in
 superconductors.  Gluons acquire an effective mass through condensate formation
-in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}}
-\approx 5970\;\text{GeV}$ at the 9-sector Lagrangian closure (PAPER_1066, §2).
+in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}} \approx 1.736\;\text{GeV}$ (PAPER_1318 integer-primitive closure; lattice QCD anchor 1.7 GeV; supersedes 5970 GeV registry-bug value).
 
 **VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
 26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$
@@ -101,7 +140,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | Sector | Domain | Late-Corpus Result |
 |--------|--------|-------------------|
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
-| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
+| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 1.736\;\text{GeV}$ (PAPER_1318) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |

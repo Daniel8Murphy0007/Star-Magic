@@ -107,7 +107,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | Sector | Domain | Late-Corpus Result |
 |--------|--------|-------------------|
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
-| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
+| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 1.736\;\text{GeV}$ (PAPER_1318) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |

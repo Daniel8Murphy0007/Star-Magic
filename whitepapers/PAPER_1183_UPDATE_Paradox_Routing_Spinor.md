@@ -7,7 +7,7 @@
 ## Session Extensions
 
 8 paradox dispatch wired in calculator via `PARADOX_TO_MILLENNIUM` table:
-- yang_mills_mass_gap → yang_mills (5970 GeV)
+- yang_mills_mass_gap → yang_mills (1.736 GeV, PAPER_1318)
 - riemann_hypothesis → riemann (9877.78265)
 - bsd_conjecture → bsd (0.30600)
 - navier_stokes_smoothness → navier_stokes (0.85)

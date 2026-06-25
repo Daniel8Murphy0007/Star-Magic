@@ -257,8 +257,7 @@ $$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}
 **Physical mechanism:** The SCm phonon field ($\omega_{\text{SCm}} = 1.25\;\text{THz}$)
 provides a pairing interaction analogous to the BCS electron-phonon coupling in
 superconductors.  Gluons acquire an effective mass through condensate formation
-in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}}
-\approx 5970\;\text{GeV}$ at the 9-sector Lagrangian closure (PAPER_1066, §2).
+in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}} \approx 1.736\;\text{GeV}$ (PAPER_1318 integer-primitive closure; lattice QCD anchor 1.7 GeV; supersedes 5970 GeV registry-bug value).
 
 **VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
 26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$
