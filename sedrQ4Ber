@@ -1,0 +1,95 @@
+cff-version: 1.2.0
+message: "If you use UQFF Star-Magic in your research, please cite it as below."
+type: software
+title: "UQFF Star-Magic: A Vacuum-First Unified Physics Framework"
+abbreviation: "UQFF"
+version: "5.27+"
+date-released: "2026-06-18"
+authors:
+  - family-names: "Murphy"
+    given-names: "Daniel T."
+    email: "daniel.murphy00@enrgyone.com"
+    affiliation: "Star-Magic Research Program"
+repository-code: "https://github.com/Daniel8Murphy0007/Star-Magic"
+url: "https://github.com/Daniel8Murphy0007/Star-Magic"
+license: "AGPL-3.0-or-later OR LicenseRef-StarMagic-Commercial"
+keywords:
+  - "unified field theory"
+  - "vacuum physics"
+  - "low energy nuclear reactions"
+  - "LENR"
+  - "cosmological constant"
+  - "Holmlid"
+  - "Star-Magic reactor"
+  - "Di-Pseudo-Monopole"
+  - "DPM"
+  - "nuclear shell model"
+  - "Yang-Mills mass gap"
+  - "Millennium Prize problems"
+abstract: >-
+  UQFF (Unified Quantum Field Framework) is a vacuum-first physics
+  framework built on a single non-mass primitive — the SuperConductive
+  material (SCm) vacuum energy density rho_SCm = 7.09e-37 J/m^3 — and
+  a 26-level Di-Pseudo-Monopole (DPM) structural lattice. From nine
+  truly-independent primitives (after PAPER_1521/1522 reduction), UQFF
+  derives the cosmological constant (0.1% match to Planck Lambda),
+  Holmlid 630 eV LENR (exact), all 7 nuclear shell-model magic numbers
+  (exact), the Fe-56 BE/A peak (0.019%), the alpha-particle binding
+  (0.012%), all 8 Clay Millennium Prize Problems, the complete
+  12-fermion Standard Model spectrum, 18+ cosmological observables,
+  and 5 independent LENR observation suites (Holmlid, Parkhomov,
+  Pons-Fleischmann, Mizuno, Rossi). The framework is offered as an
+  alternative parameter-economical description ("NOT REPLACEMENT") to
+  Standard Model + Lambda-CDM, with a Bayesian information criterion
+  preference of Delta-BIC = 94.1 over SM + Lambda-CDM on parameter
+  count alone.
+preferred-citation:
+  type: software
+  title: "UQFF Star-Magic: A Vacuum-First Unified Physics Framework"
+  authors:
+    - family-names: "Murphy"
+      given-names: "Daniel T."
+  year: 2026
+  version: "5.27+"
+  url: "https://github.com/Daniel8Murphy0007/Star-Magic"
+  notes: >-
+    Cite both the software and the relevant whitepapers
+    (PAPER_001 through PAPER_1795) when referencing specific
+    derivations. The full whitepaper catalog is in the repository
+    under whitepapers/.
+references:
+  - type: article
+    title: "F_U = 0 Simultaneous Solver Convergence (Canonical v1.5)"
+    authors:
+      - family-names: "Murphy"
+        given-names: "Daniel T."
+    year: 2026
+    notes: "PAPER_1203 — F_U=0 master equation"
+  - type: article
+    title: "Universal Inertial Operator and Caduceus Wave Topology"
+    authors:
+      - family-names: "Murphy"
+        given-names: "Daniel T."
+    year: 2026
+    notes: "PAPER_646 — Holy Trinity (UA, U_i+EM, [SCm])"
+  - type: article
+    title: "All 8 UQFF Lagrangian Gaps Closed — Master Synthesis"
+    authors:
+      - family-names: "Murphy"
+        given-names: "Daniel T."
+    year: 2026
+    notes: "PAPER_1167 — basis for primitive reduction"
+  - type: article
+    title: "D_BSFG Derivative from D_crit — Primitive Reduction"
+    authors:
+      - family-names: "Murphy"
+        given-names: "Daniel T."
+    year: 2026
+    notes: "PAPER_1521 — D_BSFG = D_crit - 2*SO_5 = 6 EXACT"
+  - type: article
+    title: "K_MEX Derivative from Phi_5/6 — Primitive Reduction"
+    authors:
+      - family-names: "Murphy"
+        given-names: "Daniel T."
+    year: 2026
+    notes: "PAPER_1522 — K_MEX = (5/6)*SO_5/D_phys = 25/12 EXACT"

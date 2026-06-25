@@ -6423,3 +6423,83 @@ git push origin v5.27.2
 
 After release.yml publishes (~3-5 min): `pip install --upgrade uqff && uqff search holmlid` → confirmed.
 
+
+---
+
+## Session 2026-06-22 — v5.28.0 Tier-3 entry: REST API + Jupyter integration
+
+**Trigger**: Daniel picked "REST API + Jupyter integration" from Tier-3 menu after CLOSURE_ATLAS+WHITEPAPER_INDEX+COVERAGE_GAPS were authored.
+
+### Deliverables
+
+| File | Size | Purpose |
+|---|---|---|
+| `uqff_api.py` | 7 KB | FastAPI REST server (9 endpoints incl. /predict /search /atlas /docs) |
+| `uqff_jupyter.py` | 9 KB | IPython rich-display hook + `%uqff` line magic |
+| `uqff_cli.py` | 15 KB | Added `uqff serve` subcommand (launches REST API) |
+| `pyproject.toml` | 3.7 KB | Version 5.27.2 → **5.28.0**; new optional extras [api], [jupyter]; new console script `uqff-api` |
+| `RELEASE_NOTES_v5.28.0.md` | 3 KB | Curated minor-release notes |
+| `notebooks/04_repl_jupyter_demo.ipynb` | — | Demo notebook for the rich-display + %uqff magic |
+
+### Verified end-to-end
+
+- `uqff_api.app` loads correctly with all 9 routes registered
+- `pip install 'uqff[api]'` succeeds in fresh venv
+- `uqff version` prints 5.28.0
+- TestClient calls:
+  - `GET /version` → returns version + metrics
+  - `GET /predict/yang_mills` → `{"source": "PARADOX_TO_CLOSURE", "value": 5970.0}`
+  - `GET /predict/holmlid_D_minus_1` → full chain with KER_eV: 630.0, PAPER_1133 reference
+  - `GET /search?q=holmlid` → 1 hit in calculate_lenr_full
+  - `GET /atlas` → all the closure counts from CLOSURE_ATLAS
+- Build + twine check both PASSED for v5.28.0 wheel + sdist
+
+### Version bump rationale (semver)
+
+- v5.27.0 → v5.27.1: patch (CLI added)
+- v5.27.1 → v5.27.2: patch (multi-namespace search added)
+- **v5.27.2 → v5.28.0: minor** (REST API + Jupyter — new user-facing features)
+
+No breaking changes. All v5.27.x scripts continue to work identically.
+
+### Edit-tool truncation incidents this entry: 2 (10th and 11th of project)
+
+Both repaired via Python splice. CLAUDE.md warning continues to be 100% correct: complex multi-edit operations on uqff_cli.py and pyproject.toml are unreliable. The Python `read → manipulate → write` pattern is the only safe alternative.
+
+### Tier-3 status update
+
+| Item (Tier-3) | Status |
+|---|---|
+| I2 REST API | ✅ DONE this entry |
+| I3 Jupyter integration | ✅ DONE this entry |
+| F2 JSON output (extended) | ✅ DONE (all CLI commands + all REST endpoints emit JSON) |
+| G6 Static analysis (ruff/mypy) | 🟡 not started |
+| G7 Type hints | 🟡 partial (CLI surfaces have them) |
+| G10 Performance profiling | 🟡 not started |
+| H1 Modular refactor (48k → ~50 sub-modules) | 🟡 not started (multi-week effort) |
+| K1 Extend C++ port (368 → 794) | 🟡 not started |
+| I4 VS Code extension | 🟡 not started |
+| J1-J7 Operational (logging/monitoring/hosting) | 🟡 not started |
+
+**Tier-3: ~20% complete.** Two high-visibility items done (REST API, Jupyter). The remaining items are either large refactors (H1), domain-specific (K1), or operational (J*).
+
+### Ship checklist for v5.28.0
+
+```bash
+cd /c/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
+git add uqff_api.py uqff_jupyter.py uqff_cli.py pyproject.toml \
+        RELEASE_NOTES_v5.28.0.md notebooks/04_repl_jupyter_demo.ipynb \
+        && git commit -m "release: v5.28.0 - REST API + Jupyter integration" && git push
+git tag -a v5.28.0 -m "v5.28.0" && git push origin v5.28.0
+```
+
+After release.yml publishes (~3-5 min):
+
+```bash
+pip install --upgrade 'uqff[api]'
+uqff version           # → uqff 5.28.0
+uqff serve             # starts REST API at http://localhost:8000
+```
+
+Open http://localhost:8000/docs in browser to see auto-generated Swagger UI.
+
