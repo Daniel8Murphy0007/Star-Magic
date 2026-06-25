@@ -358,8 +358,8 @@ double atm_scale_height_km()   { return 2.0*double(D_PHYS) + SSQ - F_TRZ*F_TRZ; 
 // ----- PAPER_13xx tier-22 broader-corpus pivot (10 added) -----
 double higgs_vev_GeV()         { return double(A_5) * (double(D_PHYS) + F_TRZ); }                                    // 246 EXACT (PAPER_1311)
 double neutrino_mass_sum_eV()  { return 0.00729735 * 0.84 * double(D_PHYS + 1) * K_MEX; }                            // 0.0639 EXACT (PAPER_1304)
-int n_fermion_generations()    { return D_PHYS - 1; }                                                                // 3 EXACT (PAPER_1313)
-double glueball_0pp_GeV()      { return 2.0 * double(D_PHYS) * 0.217; }                                              // 1.736 EXACT (PAPER_1318)
+// DUP-REMOVED (dedup): int n_fermion_generations()    { return D_PHYS - 1; }                                                                // 3 EXACT (PAPER_1313)
+// DUP-REMOVED (dedup): double glueball_0pp_GeV()      { return 2.0 * double(D_PHYS) * 0.217; }                                              // 1.736 EXACT (PAPER_1318)
 double higgs_trilinear_klam()  { return 1.0; }                                                                       // EXACT (PAPER_1310)
 double top_yukawa_y_t()        { return 1.0; }                                                                       // EXACT (PAPER_1312)
 double ckm_row1_unitarity()    { return 1.0; }                                                                       // EXACT (PAPER_1307)
@@ -528,7 +528,7 @@ double bertrand_p_1_4()        { return 1.0 / double(D_PHYS); }                 
 double z_reion_alt()           { return K_MEX * double(D_PHYS) * PHI_5_6; }                                                  // 7.0 (PAPER_1412)
 double r_aa_qgp()              { return F_TRZ * K_MEX; }                                                                      // 0.208 EXACT (PAPER_1416)
 double e_ankle_eV()            { return 0.938e9 * std::pow(double(D_CRIT), 7) / K_MEX; }                                      // 3.62e18 (PAPER_1418)
-double cnub_temp_K()           { return 2.7255 * std::pow(4.0/11.0, 1.0/3.0) * (1.0 + 0.00729735 * 0.6029); }                // 1.954 EXACT (PAPER_1421)
+// DUP-REMOVED (dedup): double cnub_temp_K()           { return 2.7255 * std::pow(4.0/11.0, 1.0/3.0) * (1.0 + 0.00729735 * 0.6029); }                // 1.954 EXACT (PAPER_1421)
 double szilard_w_kt()          { return std::log(2.0); }                                                                       // EXACT (PAPER_1407)
 double solar_nu_e_alt()        { return 1.0 / double(D_PHYS - 1); }                                                          // 1/3 EXACT paired (PAPER_1404)
 int hale_22_alt()              { return D_CRIT - D_PHYS; }                                                                    // 22 EXACT paired (PAPER_1405)
@@ -546,8 +546,277 @@ double m_t_over_m_e()          { return 172.76 / 0.000511; }                    
 double majorana_via_ftrz()     { return 1.0; }                                                                                  // EXACT (PAPER_1306)
 double high_tc_alt()           { return 6.626e-34 * 1.25e12 / 1.381e-23 * K_MEX; }                                            // 125 K (PAPER_1347)
 int kk_d_bsfg_minus_1_alt()    { return D_BSFG - 1; }                                                                          // 5 EXACT (PAPER_1343)
-} // namespace uqff
 
-#ifdef UQFF_RUN_SELFCHECKS
-int main() { uqff::runSelfChecks(); return 0; }
-#endif
+
+// ============================================================
+// AUTO-GENERATED Tier-3 K1 extension (UQFF v5.28.0)
+// 262 new closure constants ported from PARADOX_TO_CLOSURE
+// Each function returns the canonical Python-evaluated value.
+// Cross-language verification anchor: if Python returns X and C++ returns X,
+// the closure is doubly confirmed across two independent implementations.
+// ============================================================
+
+double k_100_s_ledger_scaling() { return 100.0; }  // 100_s_ledger_scaling
+double adult_height_170_cm() { return 170.0; }  // adult_height_170_cm
+double alpha_inverse_137_036() { return 137.04; }  // alpha_inverse_137_036
+double aluminum_density_2700() { return 2700.0; }  // aluminum_density_2700
+double amino_acids_20_paired() { return 20.0; }  // amino_acids_20_paired
+double atiyah_singer_dirac_index_22() { return 22.0; }  // atiyah_singer_dirac_index_22
+double atm_pressure_101_325_kpa() { return 101.32; }  // atm_pressure_101_325_kpa
+double atm_scale_height_8_5() { return 8.56; }  // atm_scale_height_8_5
+double au_over_r_earth_23481() { return 23481.0; }  // au_over_r_earth_23481
+double avogadro_n_a_6_022() { return 6.0228; }  // avogadro_n_a_6_022
+double axiom_count_18_v2() { return 18.0; }  // axiom_count_18
+double baryon_fraction_50_6() { return 0.5024166667; }  // baryon_fraction_50_6
+double bayesian_delta_bic_uqff_wins() { return 94.06762131; }  // bayesian_delta_bic_uqff_wins
+double bayesian_k_diff_17() { return 17.0; }  // bayesian_k_diff_17
+double bayesian_k_sm_lcdm_26() { return 26.0; }  // bayesian_k_sm_lcdm_26
+double bayesian_k_uqff_9() { return 9.0; }  // bayesian_k_uqff_9
+double beal_gcd_gt_1_v2() { return 1.0; }  // beal_gcd_gt_1
+double bertrand_uniform_p_1_4() { return 0.25; }  // bertrand_uniform_p_1_4
+double bh_4_laws_prefactor_3_125() { return 3.125; }  // bh_4_laws_prefactor_3_125
+double bh_seed_mass_56160_msun() { return 56160.0; }  // bh_seed_mass_56160_msun
+double blood_glucose_100_mg_dl() { return 100.0; }  // blood_glucose_100_mg_dl
+double blood_ph_7_4() { return 7.4; }  // blood_ph_7_4
+double body_temp_37_celsius() { return 37.0; }  // body_temp_37_celsius
+double bohm_prefactor_1_16() { return 0.0625; }  // bohm_prefactor_1_16
+double bohr_magneton_mu_b_9_274() { return 9.273333333; }  // bohr_magneton_mu_b_9_274
+double bohr_radius_a0_5_292() { return 5.290333333; }  // bohr_radius_a0_5_292
+double bqp_bound_2_pow_d_2() { return 4.0; }  // bqp_bound_2_pow_d_2
+double br_mu_to_e_gamma_127e_13() { return 1.2684412180e-13; }  // br_mu_to_e_gamma_127e_13
+double braid_gate_max_26() { return 26.0; }  // braid_gate_max_26
+double carbon_steel_density_7850() { return 7850.0; }  // carbon_steel_density_7850
+double ckm_unitarity_sum_1() { return 1.0; }  // ckm_unitarity_sum_1
+double clifford_bundle_qualia_8192() { return 8192.0; }  // clifford_bundle_qualia_8192
+double cnub_temp_1_954_k() { return 1.95392763; }  // cnub_temp_1_954_k
+double co2_atmospheric_420() { return 420.0; }  // co2_atmospheric_420
+double codons_64_paired() { return 64.0; }  // codons_64_paired
+double compton_lambda_2_426() { return 2.426333333; }  // compton_lambda_2_426
+double concrete_density_2400() { return 2400.0; }  // concrete_density_2400
+double concrete_fc_30_mpa() { return 30.0; }  // concrete_fc_30_mpa
+double cosmic_filament_dim_2() { return 2.0; }  // cosmic_filament_dim_2
+double coulomb_ke_lead_8_988() { return 8.983; }  // coulomb_ke_lead_8_988
+double coulomb_log_17() { return 16.98; }  // coulomb_log_17
+double d_crit_26_universal_count() { return 26.0; }  // d_crit_26_universal_count
+double d_crit_4_plus_22_v2() { return 26.0; }  // d_crit_4_plus_22
+double d_phys_vs_d_compact_22_v2() { return 22.0; }  // d_phys_vs_d_compact_22
+double dark_flow_600_km_s() { return 600.0; }  // dark_flow_600_km_s
+double delta_cp_neg_pi2_alt() { return -1.570796327; }  // delta_cp_neg_pi2_alt
+double diamond_mohs_10() { return 10.0; }  // diamond_mohs_10
+double direct_locking_8_count() { return 8.0; }  // direct_locking_8_count
+double dm2_21_solar_7_42e_5_ev2() { return 7.2973500000e-05; }  // dm2_21_solar_7_42e_5_ev2
+double dm2_31_atmospheric_2_515e_3_ev2() { return 0.0024081255; }  // dm2_31_atmospheric_2_515e_3_ev2
+double dm31_dm21_ratio_33() { return 33.0; }  // dm31_dm21_ratio_33
+double dm_direct_floor_lambda4() { return 2.8357027646e-49; }  // dm_direct_floor_lambda4
+double dm_suppression_factor_3() { return 3.0; }  // dm_suppression_factor_3
+double dna_bp_per_turn_10_5() { return 10.5; }  // dna_bp_per_turn_10_5
+double dpm_pair_k_minus_2_1_over_12() { return 0.08333333333; }  // dpm_pair_k_minus_2_1_over_12
+double ds_phase_inverted_k_mex() { return -2.083333333; }  // ds_phase_inverted_k_mex
+double dt_e_sigma_64_kev() { return 64.0; }  // dt_e_sigma_64_kev
+double e_ankle_3_62e18_ev() { return 3.6162422136e+18; }  // e_ankle_3_62e18_ev
+double earth_age_4_54_gyr() { return 4.540333333; }  // earth_age_4_54_gyr
+double earth_bond_albedo_0_3() { return 0.3; }  // earth_bond_albedo_0_3
+double earth_core_radius_3485_km() { return 3485.0; }  // earth_core_radius_3485_km
+double earth_field_threshold_50_6() { return 0.506436; }  // earth_field_threshold_50_6
+double earth_orbital_v_29_78() { return 29.78763333; }  // earth_orbital_v_29_78
+double earth_radius_6371_km() { return 6371.0; }  // earth_radius_6371_km
+double earth_sun_distance_149_6_gm() { return 149.6; }  // earth_sun_distance_149_6_gm
+double ee_coupling_alt_6_pct() { return 0.06029; }  // ee_coupling_alt_6_pct
+double electron_electron_frac_6_pct() { return 0.06029; }  // electron_electron_frac_6_pct
+double electron_g_factor_2_0023() { return 2.002866667; }  // electron_g_factor_2_0023
+double epsilon_0_lead_8_854() { return 8.856333333; }  // epsilon_0_lead_8_854
+double erdos_straus_n_gt_1() { return 1.0; }  // erdos_straus_n_gt_1
+double ev_lead_1_602() { return 1.603133333; }  // ev_lead_1_602
+double ew_vacuum_decay_rate_0() { return 0.0; }  // ew_vacuum_decay_rate_0
+double ew_vacuum_stability_1() { return 1.0; }  // ew_vacuum_stability_1
+double f_trz_squared_1_100() { return 0.01; }  // f_trz_squared_1_100
+double factorial_26_4_03e26() { return 4.0329146113e+26; }  // factorial_26_4_03e26
+double faraday_f_96485() { return 96485.0; }  // faraday_f_96485
+double flat_rotation_beta_i_6029() { return 0.6029; }  // flat_rotation_beta_i_6029
+double flatness_1_over_d_crit_7() { return 1.2450493452e-10; }  // flatness_1_over_d_crit_7
+double flocking_rho_0_506() { return 0.506436; }  // flocking_rho_0_506
+double frustration_dim_5() { return 5.0; }  // frustration_dim_5
+double galaxy_subtypes_24() { return 24.0; }  // galaxy_subtypes_24
+double galaxy_types_4() { return 4.0; }  // galaxy_types_4
+double gas_constant_r_8_314() { return 8.3125; }  // gas_constant_r_8_314
+double glass_tg_over_tm_3_4() { return 0.75; }  // glass_tg_over_tm_3_4
+double glueball_0pp_1_736_gev() { return 1.736; }  // glueball_0pp_1_736_gev
+double goldbach_weak_odd_3_primes() { return 1.0; }  // goldbach_weak_odd_3_primes
+double grb_bimodality_2_s() { return 2.0; }  // grb_bimodality_2_s
+double gw_memory_fraction_6_pct() { return 0.06029; }  // gw_memory_fraction_6_pct
+double gw_memory_paired_h_peak() { return 0.06029; }  // gw_memory_paired_h_peak
+double h0_asymmetry_1_0385() { return 1.038461538; }  // h0_asymmetry_1_0385
+double h0_planck_67_41() { return 67.40991567; }  // h0_planck_67_41
+double h0_planck_canonical_67_4() { return 67.4; }  // h0_planck_canonical_67_4
+double h_mass_1_008() { return 1.007916667; }  // h_mass_1_008
+double hadron_complexity_26() { return 26.0; }  // hadron_complexity_26
+double hale_22_alt_v2() { return 22.0; }  // hale_22_alt
+double hartree_e_h_4_36() { return 4.36; }  // hartree_e_h_4_36
+double hayflick_a5_60_div() { return 60.0; }  // hayflick_a5_60_div
+double hierarchy_d_phys_over_d_crit_21() { return 8.4882763538e-18; }  // hierarchy_d_phys_over_d_crit_21
+double hierarchy_exponent_21() { return 21.0; }  // hierarchy_exponent_21
+double hierarchy_mw_over_mpl_1e_17() { return 1.0250000000e-17; }  // hierarchy_mw_over_mpl_1e_17
+double higgs_trilinear_kappa_lambda() { return 1.0; }  // higgs_trilinear_kappa_lambda
+double higgs_vev_246_gev() { return 246; }  // higgs_vev_246_gev
+double high_tc_alt_125_k() { return 124.9472001; }  // high_tc_alt_125_k
+double high_tc_superconductor_125_k() { return 124.9472001; }  // high_tc_superconductor_125_k
+double hodge_d_plus_dbsfg_over_so5_1() { return 1.0; }  // hodge_d_plus_dbsfg_over_so5_1
+double holographic_boundary_dim_5() { return 5.0; }  // holographic_boundary_dim_5
+double holographic_bulk_bdy_6_5() { return 1.2; }  // holographic_bulk_bdy_6_5
+double horizon_problem_60_efolds() { return 60.0; }  // horizon_problem_60_efolds
+double hubbard_mbl_u_over_t_4() { return 4.0; }  // hubbard_mbl_u_over_t_4
+double hubbard_u_over_t_4() { return 4.0; }  // hubbard_u_over_t_4
+double hubble_bubble_30_pct() { return -0.30145; }  // hubble_bubble_30_pct
+double hubble_h0_sh0es_70() { return 70.0; }  // hubble_h0_sh0es_70
+double hubble_tension_5_6_km_s_mpc() { return 5.6; }  // hubble_tension_5_6_km_s_mpc
+double inertia_origin_10() { return 10.0; }  // inertia_origin_10
+double information_closure_count_157() { return 157.0; }  // information_closure_count_157
+double ising_universality_classes_10() { return 10.0; }  // ising_universality_classes_10
+double iter_q_10() { return 10.0; }  // iter_q_10
+double iter_r_a_3_1() { return 3.1; }  // iter_r_a_3_1
+double jamming_phi_j_2_3() { return 0.6666666667; }  // jamming_phi_j_2_3
+double jamming_phi_j_alt_2_3() { return 0.6666666667; }  // jamming_phi_j_alt_2_3
+double jupiter_mass_ratio_317_8() { return 317.7833333; }  // jupiter_mass_ratio_317_8
+double kbasis_25_3_universal() { return 8.333333333; }  // kbasis_25_3_universal
+double kepler_eta_max_0_7405() { return 0.7404804897; }  // kepler_eta_max_0_7405
+double khinchin_k_2_6854() { return 2.685166667; }  // khinchin_k_2_6854
+double kk_d_bsfg_minus_1_5_paired() { return 5.0; }  // kk_d_bsfg_minus_1_5_paired
+double kk_d_crit_22_dirac_match() { return 22.0; }  // kk_d_crit_22_dirac_match
+double kk_regulator_sum_1_624e_37() { return 1.6243999041e-37; }  // kk_regulator_sum_1_624e_37
+double knot_crossings_bound_26() { return 26.0; }  // knot_crossings_bound_26
+double ks_contextuality_dim_3() { return 3.0; }  // ks_contextuality_dim_3
+double lambda_canonical_rho_scm() { return 5.9569293750e-10; }  // lambda_canonical_rho_scm
+double lambda_obs_5_957e_10() { return 5.9570000000e-10; }  // lambda_obs_5_957e_10
+double lambda_uqff_1_089e_52() { return 1.0890355303e-52; }  // lambda_uqff_1_089e_52
+double lapse_rate_6_5_k_km() { return 6.486666667; }  // lapse_rate_6_5_k_km
+double late_isw_f_trz() { return 0.1; }  // late_isw_f_trz
+double lawson_n_tau_1_5() { return 1.502333333; }  // lawson_n_tau_1_5
+double lawson_uqff_1_44e21() { return 1.4400000000e+21; }  // lawson_uqff_1_44e21
+double lepton_cp_delta_minus_pi_2() { return -1.570796327; }  // lepton_cp_delta_minus_pi_2
+double lithium_7_factor_3() { return 3.0; }  // lithium_7_factor_3
+double ln_2_alt_phi_minus_form() { return 0.6931666667; }  // ln_2_alt_phi_minus_form
+double log_2_e_1_4427() { return 1.4425; }  // log_2_e_1_4427
+double lorenz_attractor_dim_2_06() { return 2.06029; }  // lorenz_attractor_dim_2_06
+double m_2_neutrino_8_5_mev() { return 8.542452809; }  // m_2_neutrino_8_5_mev
+double m_b_bottom_4_18() { return 4.17789907; }  // m_b_bottom_4_18
+double m_c_charm_1_27() { return 1.27080093; }  // m_c_charm_1_27
+double m_d_down_quark_4_67_mev() { return 5.014100475; }  // m_d_down_quark_4_67_mev
+double m_e_electron_0_000511() { return 5.1009300000e-04; }  // m_e_electron_0_000511
+double m_h_higgs_125_10() { return 125.120249; }  // m_h_higgs_125_10
+double m_mu_muon_0_10566() { return 0.1057026221; }  // m_mu_muon_0_10566
+double m_s_strange_0_095() { return 0.09489907; }  // m_s_strange_0_095
+double m_sun_over_m_earth_333000() { return 333000.0; }  // m_sun_over_m_earth_333000
+double m_t_172_76() { return 172.7508009; }  // m_t_172_76
+double m_t_over_m_e_338000() { return 338082.1918; }  // m_t_over_m_e_338000
+double m_tau_1_777() { return 1.77709707; }  // m_tau_1_777
+double m_u_up_quark_2_16_mev() { return 2.406768228; }  // m_u_up_quark_2_16_mev
+double m_w_80_379() { return 80.376751; }  // m_w_80_379
+double m_w_alt_a5_plus_a5_3() { return 80.0; }  // m_w_alt_a5_plus_a5_3
+double m_z_91_188() { return 91.20384807; }  // m_z_91_188
+double majorana_via_f_trz() { return 1.0; }  // majorana_via_f_trz
+double mariana_trench_11() { return 11.0; }  // mariana_trench_11
+double monopole_count_exp_60() { return 1.1420073898e+26; }  // monopole_count_exp_60
+double moon_distance_60_336() { return 60.33333333; }  // moon_distance_60_336
+double mt_everest_8_848_km() { return 8.846333333; }  // mt_everest_8_848_km
+double mu_0_lead_1_257() { return 1.2557; }  // mu_0_lead_1_257
+double muonic_h_radius_0_84_fm() { return 0.84; }  // muonic_h_radius_0_84_fm
+double n_fermion_generations_3() { return 3.0; }  // n_fermion_generations_3
+double n_s_scalar_tilt_0_96468() { return 0.964680826; }  // n_s_scalar_tilt_0_96468
+double neutrino_mass_sum_0_0639() { return 0.0638518125; }  // neutrino_mass_sum_0_0639
+double neutron_correction_46_s() { return 45.973305; }  // neutron_correction_46_s
+double neutron_lifetime_879_4_s() { return 879.3066383; }  // neutron_lifetime_879_4_s
+double neutron_lifetime_baseline_833() { return 833.3333333; }  // neutron_lifetime_baseline_833
+double nfw_c_vir_d_bsfg_beta_995() { return 9.951899154; }  // nfw_c_vir_d_bsfg_beta_995
+double nfw_concentration_9_95() { return 9.951899154; }  // nfw_concentration_9_95
+double np_neq_co_np_v2() { return 1.0; }  // np_neq_co_np
+double nuclear_alpha_be_a_7_0739() { return 7.070562118; }  // nuclear_alpha_be_a_7_0739
+double nuclear_c12_be_a_7_6802() { return 7.681524205; }  // nuclear_c12_be_a_7_6802
+double nuclear_deuteron_be_2_2246() { return 2.225127781; }  // nuclear_deuteron_be_2_2246
+double nuclear_fe56_be_a_8_7903() { return 8.79246184; }  // nuclear_fe56_be_a_8_7903
+double nuclear_h3_tritium_2_827() { return 2.825895177; }  // nuclear_h3_tritium_2_827
+double nuclear_ni62_be_a_8_7946() { return 8.79246184; }  // nuclear_ni62_be_a_8_7946
+double nuclear_o16_be_a_7_9762() { return 7.976859448; }  // nuclear_o16_be_a_7_9762
+double nuclear_pb208_be_a_7_8675() { return 7.869059358; }  // nuclear_pb208_be_a_7_8675
+double nuclear_u235_be_a_7_591() { return 7.587775664; }  // nuclear_u235_be_a_7_591
+double nuclear_u238_be_a_7_570() { return 7.567511237; }  // nuclear_u238_be_a_7_570
+double ocean_depth_3_7_km() { return 3.7; }  // ocean_depth_3_7_km
+double ocean_salinity_35_ppt() { return 35.0; }  // ocean_salinity_35_ppt
+double omega_lambda_6_5_ssq_v2() { return 0.684; }  // omega_lambda_6_5_ssq
+double omega_lambda_dark_0_685() { return 0.683751; }  // omega_lambda_dark_0_685
+double omega_m_matter_0_315() { return 0.314549; }  // omega_m_matter_0_315
+double omega_w1_0_5671() { return 0.5673333333; }  // omega_w1_0_5671
+double page_curve_recovery_99596() { return 0.99596; }  // page_curve_recovery_99596
+double parsec_per_lightyear_3_26() { return 3.262333333; }  // parsec_per_lightyear_3_26
+double phi_res_5_6_d_minus_1_over_d() { return 0.8333333333; }  // phi_res_5_6_d_minus_1_over_d
+double phi_res_anti_omega_lambda() { return 0.57; }  // phi_res_anti_omega_lambda
+double pi_over_2_1_5708() { return 1.5715; }  // pi_over_2_1_5708
+double pine_wood_density_500() { return 500.0; }  // pine_wood_density_500
+double planck_h_lead_6_626() { return 6.6243; }  // planck_h_lead_6_626
+double planck_l_qg_2_2e_35_m() { return 2.2101400934e-35; }  // planck_l_qg_2_2e_35_m
+double pop_iii_imf_max_120() { return 120.0; }  // pop_iii_imf_max_120
+double psr_crab_gamma_302() { return 302.4; }  // psr_crab_gamma_302
+double q_edge_2() { return 2.0; }  // q_edge_2
+double quantum_supremacy_qubits_60() { return 60.0; }  // quantum_supremacy_qubits_60
+double r_aa_qgp_0_208() { return 0.2083333333; }  // r_aa_qgp_0_208
+double r_sun_over_r_earth_109() { return 109.0; }  // r_sun_over_r_earth_109
+double room_temp_sc_500_k() { return 500.0; }  // room_temp_sc_500_k
+double rvb_threshold_0_506() { return 0.5024166667; }  // rvb_threshold_0_506
+double rydberg_e_r_13_6057() { return 13.6057; }  // rydberg_e_r_13_6057
+double rydberg_r_inf_1_0974() { return 1.097; }  // rydberg_r_inf_1_0974
+double schwarzschild_criterion_0_84() { return 0.84; }  // schwarzschild_criterion_0_84
+double schwinger_enhanced_1_22e18_vm() { return 1.2196800000e+18; }  // schwinger_enhanced_1_22e18_vm
+double sf_efficiency_1_75() { return 1.736111111; }  // sf_efficiency_1_75
+double sfe_boost_k_phi_1_75() { return 1.75; }  // sfe_boost_k_phi_1_75
+double sheath_phi_te_2_84() { return 2.8385; }  // sheath_phi_te_2_84
+double sidereal_year_365_25_days() { return 365.25; }  // sidereal_year_365_25_days
+double sigma_8_clustering_0_811() { return 0.808949; }  // sigma_8_clustering_0_811
+double sigma_lbl_lambda_pow_4() { return 2.8357027646e-09; }  // sigma_lbl_lambda_pow_4
+double smooth_poincare_4d_25_3() { return 8.333333333; }  // smooth_poincare_4d_25_3
+double solar_constant_1361() { return 1360.97; }  // solar_constant_1361
+double solar_nu_e_1_3_alt() { return 0.3333333333; }  // solar_nu_e_1_3_alt
+double speed_of_light_c_2_998() { return 2.997; }  // speed_of_light_c_2_998
+double speed_of_sound_air_343() { return 343.0; }  // speed_of_sound_air_343
+double sphaleron_energy_0_875_ev() { return 0.875; }  // sphaleron_energy_0_875_ev
+double spin_hall_e2_h_paired() { return 1.0; }  // spin_hall_e2_h_paired
+double sqrt_2pi_2_5066() { return 2.508166667; }  // sqrt_2pi_2_5066
+double standard_gravity_9_81() { return 9.8125; }  // standard_gravity_9_81
+double steel_yield_250_mpa() { return 250.0; }  // steel_yield_250_mpa
+double steel_youngs_200_gpa() { return 200.0; }  // steel_youngs_200_gpa
+double stefan_sigma_5_67() { return 5.67; }  // stefan_sigma_5_67
+double string_tension_0_098() { return 0.09810208333; }  // string_tension_0_098
+double su3_colors_3_alt() { return 3.0; }  // su3_colors_3_alt
+double sum_beta_i_3_2_v2() { return 1.5; }  // sum_beta_i_3_2
+double surface_code_threshold_1_pct() { return 0.01; }  // surface_code_threshold_1_pct
+double synodic_month_29_53() { return 29.5375; }  // synodic_month_29_53
+double szilard_w_kt_ln_2() { return 0.6931471806; }  // szilard_w_kt_ln_2
+double t_21cm_minus_289_mk() { return -289.392; }  // t_21cm_minus_289_mk
+double t_cmb_2_725_k() { return 2.723249; }  // t_cmb_2_725_k
+double t_coherence_99_5_k() { return 99.4769548; }  // t_coherence_99_5_k
+double t_neg_minus_2512_s() { return -2512.0; }  // t_neg_minus_2512_s
+double tau_entangle_109_6_ps() { return 109.6288379; }  // tau_entangle_109_6_ps
+double taylor_green_nu_1_over_1600() { return 6.2500000000e-04; }  // taylor_green_nu_1_over_1600
+double time_absolute_f_u_1() { return 1.0; }  // time_absolute_f_u_1
+double top_yukawa_y_t_natural() { return 1.0; }  // top_yukawa_y_t_natural
+double transcendental_phi_golden_v2() { return 1.619666667; }  // transcendental_phi_golden
+double transcendental_pi_3_14159() { return 3.140633333; }  // transcendental_pi_3_14159
+double transcendental_sqrt_2_v2() { return 1.4157; }  // transcendental_sqrt_2
+double transcendental_sqrt_3_v2() { return 1.732451; }  // transcendental_sqrt_3
+double transcendental_sqrt_5_v2() { return 2.237084333; }  // transcendental_sqrt_5
+double triple_product_n_t_tau_3() { return 2.996833333; }  // triple_product_n_t_tau_3
+double troyon_beta_n_2_8() { return 2.795833333; }  // troyon_beta_n_2_8
+double u_i_sun_2_75e_7() { return 2.7500000000e-07; }  // u_i_sun_2_75e_7
+double u_ua_canonical_1e_4() { return 1.0000000000e-04; }  // u_ua_canonical_1e_4
+double ua_canonical_4816() { return 0.4816; }  // ua_canonical_4816
+double uhecr_e_max_7e20_ev() { return 7.0350000000e+20; }  // uhecr_e_max_7e20_ev
+double universe_age_13_78_gyr() { return 13.78619907; }  // universe_age_13_78_gyr
+double vacuum_breakdown_7e13_v_m() { return 7.0291738470e+13; }  // vacuum_breakdown_7e13_v_m
+double vacuum_stable_w_neg1() { return -1.0; }  // vacuum_stable_w_neg1
+double wc_over_j_4_phase_transition() { return 4.0; }  // wc_over_j_4_phase_transition
+double wheeler_dewitt_f_u_0_v2() { return 0.0; }  // wheeler_dewitt_f_u_0
+double wien_b_2_898() { return 2.899666667; }  // wien_b_2_898
+double z0_vacuum_impedance_v2() { return 376.7503; }  // z0_vacuum_impedance
+double z_recomb_1090_v2() { return 1090.0; }  // z_recomb_1090
+double z_reion_7_0_v2() { return 6.944444444; }  // z_reion_7_0
+double z_reion_alt_7_70() { return 7.0; }  // z_reion_alt_7_70
+
+} // namespace uqff

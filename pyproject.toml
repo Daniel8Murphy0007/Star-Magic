@@ -136,3 +136,39 @@ minversion = "7.0"
 addopts = "-ra"
 testpaths = ["."]
 python_files = ["uqff_fidelity_tests.py"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+exclude = [
+    "whitepapers",
+    "uqff_pure_calculator.py.PRE_*",
+    "uqff_pure_calculator.py.POST_*",
+    "Gold_Standard_*.py",
+    "99system_*.py",
+    "build", "dist", ".venv", ".git",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = [
+    "E501",
+    "E701",
+    "E731",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"uqff_pure_calculator.py" = ["E", "F", "W"]
+"uqff_jupyter.py" = ["F401"]
+"uqff_api.py" = ["F401"]
+"uqff_cli.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+exclude = [
+    "uqff_pure_calculator.py",
+    "Gold_Standard_.*",
+    "99system_.*",
+    "whitepapers",
+]

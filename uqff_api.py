@@ -23,9 +23,8 @@ Endpoints (auto-documented at http://localhost:8000/docs):
     GET  /atlas                         return CLOSURE_ATLAS overview
     GET  /healthz                       health check (always 200 if running)
 """
-import os
 import sys
-from typing import Any, Optional
+from typing import Optional
 
 try:
     from fastapi import FastAPI, HTTPException, Query
@@ -256,7 +255,7 @@ def run(host: str = "127.0.0.1", port: int = 8000, reload: bool = False):
     print(f"  Listening on http://{host}:{port}")
     print(f"  Swagger UI:  http://{host}:{port}/docs")
     print(f"  OpenAPI:     http://{host}:{port}/openapi.json")
-    print(f"  Stop:        Ctrl+C")
+    print("  Stop:        Ctrl+C")
     print()
     uvicorn.run("uqff_api:app", host=host, port=port, reload=reload)
 

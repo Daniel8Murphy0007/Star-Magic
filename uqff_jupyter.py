@@ -178,8 +178,8 @@ def enable():
 
     html_formatter.for_type(dict, _uqff_dict_formatter)
     print(f"UQFF Jupyter rich display ENABLED (v{_VERSION}).")
-    print(f"  Any calculate_*({{}}) result will now render as a styled HTML table.")
-    print(f"  Use `%load_ext uqff_jupyter` to enable the `%uqff` line magic.")
+    print("  Any calculate_*({}) result will now render as a styled HTML table.")
+    print("  Use `%load_ext uqff_jupyter` to enable the `%uqff` line magic.")
 
 
 # ---------------------------------------------------------------------------
@@ -259,7 +259,7 @@ def load_ipython_extension(ipython):
                     flt = args[i+1].lower()
             if flt:
                 keys = [k for k in keys if flt in k.lower()]
-            display(HTML(render_uqff_result({f"count": len(keys), "first_50": keys[:50]}, name="list")))
+            display(HTML(render_uqff_result({"count": len(keys), "first_50": keys[:50]}, name="list")))
         else:
             display(HTML(render_uqff_result(
                 {"usage": "%uqff <predict|search|list|status|version> [args]"})))

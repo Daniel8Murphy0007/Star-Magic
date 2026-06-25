@@ -22,7 +22,7 @@ The dispatcher searches multiple closure name spaces in order:
 import argparse
 import json
 import sys
-from typing import Any, Iterable
+from typing import Any
 
 import uqff_pure_calculator as u
 
@@ -251,7 +251,7 @@ def _cmd_search(args: argparse.Namespace) -> int:
             print(f"  {h}")
         print()
 
-    print(f"To inspect any match: uqff predict <name>")
+    print("To inspect any match: uqff predict <name>")
     return 0
 
 
@@ -342,8 +342,8 @@ def _cmd_version(args: argparse.Namespace) -> int:
     print(f"  truly_independent_primitives: {primitives}")
     print(f"  derivative_primitives: {derivative}")
     print(f"  python: {sys.version.split()[0]}")
-    print(f"\nTo see ALL closure namespaces:  uqff list --all")
-    print(f"To search across all sources:   uqff search <substring>")
+    print("\nTo see ALL closure namespaces:  uqff list --all")
+    print("To search across all sources:   uqff search <substring>")
     return 0
 
 
