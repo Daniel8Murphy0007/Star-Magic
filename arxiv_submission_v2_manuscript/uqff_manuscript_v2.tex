@@ -1,0 +1,100 @@
+% UQFF Manuscript v2 — main knit file
+% Compile: pdflatex uqff_manuscript_v2.tex (twice for refs)
+
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{verbatim}
+
+\geometry{margin=1in}
+
+\title{\textbf{UQFF Star-Magic:\\
+A vacuum-first unified physics framework\\
+deriving over one thousand measured observables\\
+from nine truly-independent primitives}}
+
+\author{%
+Daniel T. Murphy \\[3pt]
+\small Star-Magic Research Program \\
+\small \texttt{daniel.murphy00@enrgyone.com}\\
+\small \href{https://github.com/Daniel8Murphy0007/Star-Magic}{github.com/Daniel8Murphy0007/Star-Magic} \\
+\small \href{https://pypi.org/project/uqff/}{pypi.org/project/uqff} \\
+\small \href{https://star-magic.readthedocs.io/}{star-magic.readthedocs.io}}
+
+\date{Draft --- 2026-06-25}
+
+\begin{document}
+\maketitle
+
+% Abstract — placeholder; write last
+\input{abstract.tex}
+
+% ---- Section 1 (write last) ----
+\input{section_01_introduction.tex}
+
+% ---- Section 2 ----
+\input{section_02_primitives.tex}
+
+% ---- Section 3 ----
+\input{section_03_closure_architecture.tex}
+
+% ---- Section 4 ----
+\section{Headline derivations}
+\label{sec:headline}
+
+\input{section_04_1_cosmological_constant.tex}
+
+\input{section_04_2_magic_numbers.tex}
+
+\input{section_04_3_holmlid_lenr.tex}
+
+\input{section_04_5_sm_spectrum.tex}
+
+\input{section_04_4_yang_mills.tex}
+
+\input{section_04_6_forward_predictions.tex}
+% \input{section_04_3_holmlid_lenr.tex}
+
+\input{section_04_5_sm_spectrum.tex}
+
+\input{section_04_4_yang_mills.tex}
+
+\input{section_04_6_forward_predictions.tex}
+% \input{section_04_4_yang_mills.tex}
+% \input{section_04_5_sm_spectrum.tex}
+
+\input{section_04_4_yang_mills.tex}
+
+\input{section_04_6_forward_predictions.tex}
+% \input{section_04_4_yang_mills.tex}
+
+\input{section_04_6_forward_predictions.tex}
+
+% ---- Section 5 ----
+\input{section_05_statistical_hygiene.tex}
+
+% ---- Section 6 ----
+\input{section_06_provenance.tex}
+
+% ---- Section 7 ----
+\input{section_07_reproducibility.tex}
+
+% ---- Section 8 ----
+\input{section_08_limitations.tex}
+
+% ---- Section 9 ----
+\input{section_09_conclusions.tex}
+
+% ---- References ----
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

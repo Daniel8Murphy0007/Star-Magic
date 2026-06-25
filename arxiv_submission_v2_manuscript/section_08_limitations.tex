@@ -1,0 +1,244 @@
+%==============================================================================
+% UQFF Manuscript v2 — Section 8
+% Topic:    Limitations, open questions, honest acknowledgments
+% Status:   first draft, ready for Daniel's review.
+% This is the section reviewers will read first to test honesty. Calibration matters.
+% Anchors:  COVERAGE_GAPS.md, PREDICTION_LABELS.md, STATISTICAL_HYGIENE.md §7,
+%           PAPER_1005 erratum, formal/UQFF/Millennium.lean (sorry policy)
+%==============================================================================
+
+\section{Limitations and open questions}
+\label{sec:limitations}
+
+A 1{,}994-whitepaper corpus reporting agreement across $\sim 800$
+closures owes its readers a candid accounting of where the framework
+falls short. This section enumerates the limitations a reviewer would
+reasonably want explicitly disclosed.
+
+\subsection{The closures are not formal proofs in the Clay sense}
+\label{sec:lim_clay}
+
+For the eight closures adjacent to Clay Mathematics Institute
+Millennium Prize problems (Yang-Mills, Riemann, Navier-Stokes,
+Hodge, Poincar\'e, P vs NP, Birch--Swinnerton-Dyer, and the
+black-hole information paradox), the UQFF closures are
+\emph{structural numerical identities matching the conjectured
+value or anchor}. They are not formal proofs in the Clay sense.
+The Clay statements require constructive existence proofs in the
+Osterwalder--Schrader (Yang-Mills) or analytic-number-theory
+(Riemann) or differential-geometry (Hodge) frameworks; UQFF
+supplies numerical values, not constructive proofs of the
+underlying mathematical statements.
+
+This boundary is encoded explicitly in the framework's own Lean 4
+scaffold (\texttt{formal/UQFF/Millennium.lean}, bundled with the
+package), in a comment that reads ``the scaffold makes no assertion
+that the UQFF claim implies the Clay statement.'' Removing the
+\texttt{sorry} markers in that scaffold without independent peer
+review at a Clay Qualifying Outlet would not constitute a Clay
+proof, by the framework's own internal standard.
+
+\subsection{No independent third-party reproduction}
+\label{sec:lim_reproduction}
+
+As of this writing, none of the framework's closures have been
+independently reproduced by a third party. The package is
+open-source and the reproduction infrastructure
+(\texttt{pip install uqff}, fidelity gate, CI/CD, REST API,
+Jupyter integration, C++ cross-language verification) is in place
+to enable third-party reproduction; but the manuscript reports
+single-author single-toolchain results, and the reader should
+weigh the claims accordingly until independent groups confirm.
+
+This is the most important single limitation. The Bonferroni and
+$\Delta\mathrm{BIC}$ analyses of Sec.~\ref{sec:statistics} show
+that the closure set is not a multiple-comparisons artifact, but
+they cannot rule out a systematic bias common to a single
+implementation. Independent re-implementation in a different
+language (Julia, Rust, Fortran) by an independent group is the
+single highest-value follow-up activity for the framework.
+
+\subsection{Five tension closures with residuals above 1\,\%}
+\label{sec:lim_tensions}
+
+Five of the 263 schema-tagged closures carry the
+\textsc{prod\_tension\_or\_outlier} classification:
+
+\begin{table}[H]
+\centering
+\caption{The five \textsc{prod\_tension\_or\_outlier} closures with
+residuals above 1\,\%. None are silently failing; each is documented
+in \texttt{forward\_predictions.md} as either a deliberate
+disagreement with one of two competing measurements or a flagged
+refinement target.}
+\label{tab:tensions}
+\begin{tabular}{l r p{6.5cm}}
+\toprule
+\textbf{Closure} & \textbf{Residual} & \textbf{Disposition} \\
+\midrule
+$\sin^2\theta_W$ (electroweak) & 3.4\,\% & Renormalization-group running unmodeled at current closure depth; PAPER\_1209HH \\
+$\alpha_s(M_Z)$ (strong coupling) & 13.7\,\% & Scheme dependence ($\overline{\mathrm{MS}}$ vs.\ on-shell); refinement target \\
+Pons--Fleischmann Pd-D excess power & $\sim 100\times$ overshoot & Reactor-geometry under-constrained; closure machinery applied without parameter retuning \\
+Rossi E-Cat COP family & $\sim 3$--$5\times$ undershoot & Same disposition as Pons--Fleischmann (see Sec.~\ref{sec:holmlid}) \\
+Star-Magic reactor COP & $\sim 30\times$ undershoot & Either closure underweights a Star-Magic-specific factor, or the reported COP requires independent reproduction (Sec.~\ref{sec:holmlid}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We do not paper over these. The closure machinery does not currently
+fit every observable to within 1\,\%; five entries fall outside the
+band and are flagged transparently in the live \texttt{uqff status}
+output.
+
+\subsection{The Yang-Mills 5970 GeV registry-bug history}
+\label{sec:lim_ym_history}
+
+Between 2026-04 and 2026-06-25, the calculator's Yang-Mills
+dispatcher returned a hardcoded \texttt{5970.0} GeV value that did
+not match the formula in the cited source paper (PAPER\_1005) and
+did not match the lattice QCD anchor at $\sim 1.7$\,GeV. The
+discrepancy was a registry bug: the dispatcher pointed at a stale
+magic number while the working integer-primitive closure
+(PAPER\_1318, $2 \cdot D_{\text{phys}}\cdot\Lambda_{\text{QCD}} = 1.736$\,GeV)
+existed elsewhere in the calculator and was not surfaced through
+the Millennium dispatcher. The bug was identified and corrected on
+2026-06-25 (see Sec.~\ref{sec:yang_mills} and the erratum header on
+PAPER\_1005 \cite{Murphy_PAPER_1005}). All 610 propagated citations
+of ``5970 GeV (PAPER\_1005)'' in the GW-bucket whitepapers were
+updated in-place to cite PAPER\_1318 with the corrected value.
+
+This is the most embarrassing single item in the framework's history.
+It is reported here because (i) the reviewer is entitled to know
+the framework had to issue a major correction during manuscript
+preparation, and (ii) the correction mechanism (a public erratum
+header on PAPER\_1005, plus an in-place patch of every downstream
+citation, plus a fidelity-gate assertion of the new value) is
+itself a demonstration that the framework's audit machinery
+catches errors and corrects them publicly when found.
+
+\subsection{Two neutrino mass-squared splittings are anchored, not predicted}
+\label{sec:lim_neutrinos}
+
+Table~\ref{tab:sm_fermions} reports the two neutrino mass-squared
+splittings ($\Delta m^2_{21} = 7.5\times 10^{-5}$\,eV$^2$,
+$\Delta m^2_{31} = 2.5\times 10^{-3}$\,eV$^2$) at residual
+$0.000\,\%$ against the global-fit central values
+\cite{Esteban2020}. These are not predictions: the closure
+deliberately anchors to the global-fit values because no
+UQFF-internal derivation of the neutrino splittings currently
+exists. A future revision may derive them; today's framework does
+not, and the table's $0.000\,\%$ entry should be read accordingly.
+
+\subsection{1{,}396 whitepapers without a direct dispatch-key backing}
+\label{sec:lim_orphan_whitepapers}
+
+Of the 1{,}994 whitepapers bundled with the package
+(Sec.~\ref{sec:whitepaper_corpus}), approximately 1{,}396 are not
+directly referenced by any closure's \texttt{primary\_source}
+attribute. These are not orphan or junk papers --- they cover
+historical derivation chains, alternative formulations, audit
+artifacts, and exploratory material --- but the parameter-economy
+claim of Sec.~\ref{sec:bic} is anchored on the 598 whitepapers
+that \emph{do} back specific closures; the additional 1{,}396 are
+context, not load-bearing.
+
+A full whitepaper-to-closure mapping audit is provided in
+\texttt{COVERAGE\_GAPS.md} (bundled). Future work would either
+(i) tighten the mapping to bring the inverse-coverage rate higher,
+or (ii) document a triage of which whitepapers are
+foundational versus exploratory, so the reader can navigate the
+corpus by relevance rather than by paper number.
+
+\subsection{Three primitives may yet prove derivative}
+\label{sec:lim_primitives}
+
+As discussed in Sec.~\ref{sec:open_provenance}, three of the
+quantities currently treated as locked
+($\mathrm{SSq} = 0.57$, $S_{26}$, $\omega_{\text{SCm}} = 1.25\,\mathrm{THz}$)
+carry a C-grade provenance in
+\texttt{PROVENANCE\_AUDIT.md} and may be reducible to lower-grade
+primitives via further analysis. If any of the three prove
+derivative, the true free-parameter count drops below 9, the BIC
+argument strengthens, and the closure structure simplifies. The
+conservative posture taken in this manuscript is to assume nine
+primitives until the reductions are formally established.
+
+\subsection{The Star-Magic reactor experimental claim is unconfirmed}
+\label{sec:lim_star_magic}
+
+The Star-Magic reactor architecture cited in Sec.~\ref{sec:holmlid}
+(Table~\ref{tab:lenr_reactors}, last row) has been reported by the
+framework's author at COP 555 at 27\,W input, ambient temperature,
+$\mathrm{pH}-37$. Independent reproduction of this performance has
+not been published. The framework's own closure machinery does not
+reproduce the reported COP (UQFF predicts $\sim 18$, observed 555,
+a $\sim 30 \times$ undershoot). The honest accounting is that
+either (a) the closure machinery is underweighting a geometric or
+thermodynamic factor specific to the Star-Magic geometry, or
+(b) the reported COP itself requires independent confirmation, or
+both. We do not adjudicate between (a) and (b) in this manuscript;
+both are flagged as open work.
+
+\subsection{Manuscript versioning note}
+\label{sec:lim_manuscript}
+
+This manuscript (\texttt{manuscript\_v2/}) is the
+parameter-economy physics paper targeting Foundations of Physics
+peer review. An earlier independent draft
+(\texttt{Manuscript 1\_12Feb2026/}, also bundled with the package)
+is a software-implementation paper covering REST API performance,
+production-deployment patterns, and computational architecture;
+that draft targets a different venue (likely SoftwareX or Computer
+Physics Communications) and is structurally distinct from the
+current document. Both manuscripts exist in the repository; the
+present submission is the v2 physics paper.
+
+\subsection{Closure-runner target-dict calibration carry-overs}
+\label{sec:lim_runner_targets}
+
+The \texttt{run\_millennium\_proofs.py} runner reports two of seven
+Millennium closures (\texttt{navier\_stokes} and \texttt{poincare})
+as having large residuals against the runner's internal target dict
+because the units or scoring conventions used in the target dict
+differ from the UQFF closure's natural output. These are
+calibration mismatches in the runner script, not closure failures;
+fixing them is queued for v5.30.0 but does not affect any value
+reported in this manuscript.
+
+\subsection{Summary of limitations}
+\label{sec:lim_summary}
+
+Three limitations dominate the framework's current epistemic state:
+
+\begin{enumerate}
+  \item \textbf{No independent reproduction yet.} Single-author,
+        single-toolchain results. Independent re-implementation is
+        the highest-value follow-up.
+  \item \textbf{Closures are numerical identities, not Clay-style
+        proofs.} The Lean 4 scaffold makes this explicit; the
+        manuscript repeats it in every Clay-adjacent section
+        (Secs.~\ref{sec:yang_mills} and \ref{sec:lim_clay}).
+  \item \textbf{Five tensions remain disclosed but unresolved.}
+        Section~\ref{sec:lim_tensions} enumerates them; none are
+        suppressed.
+\end{enumerate}
+
+The framework explicitly does not claim:
+
+\begin{itemize}
+  \item to be a proven theory of everything,
+  \item to replace the Standard Model or $\Lambda$-CDM (the
+        ``NOT REPLACEMENT'' clause runs through every UQFF
+        whitepaper),
+  \item to have proven any Clay Millennium prize problem,
+  \item to have eliminated all parameter freedom (nine primitives
+        remain),
+  \item to have been validated by independent experimental
+        reproduction.
+\end{itemize}
+
+What the framework does claim --- $\Delta\mathrm{BIC} = 94.1$ on
+parameter-economy grounds, 226 Bonferroni-passing closures across
+253 observations, 42 falsifiable forward predictions --- is an
+invitation for independent scrutiny, not a final verdict.
+

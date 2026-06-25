@@ -1,0 +1,270 @@
+\begin{thebibliography}{10}
+
+\bibitem{LongRange2003}
+E.~G. Adelberger, B.~R. Heckel, and A.~E. Nelson.
+\newblock Tests of the gravitational inverse-square law.
+\newblock {\em Annual Review of Nuclear and Particle Science}, 53:77--121,
+  2003.
+
+\bibitem{Athenodorou2020}
+Andreas Athenodorou and Mike Teper.
+\newblock The glueball spectrum of $\mathrm{SU}(3)$ gauge theory in 3+1
+  dimensions.
+\newblock {\em Journal of High Energy Physics}, 2020:172, 2020.
+
+\bibitem{BenjaminiHochberg1995}
+Yoav Benjamini and Yosef Hochberg.
+\newblock Controlling the false discovery rate: A practical and powerful
+  approach to multiple testing.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)}, 57(1):289--300, 1995.
+
+\bibitem{Chen2006}
+Y.~Chen, A.~Alexandru, S.~J. Dong, et~al.
+\newblock Glueball spectrum and matrix elements on anisotropic lattices.
+\newblock {\em Physical Review D}, 73:014516, 2006.
+
+\bibitem{ClayInstitute}
+{Clay Mathematics Institute}.
+\newblock The millennium prize problems, 2000.
+
+\bibitem{deMoura2021}
+Leonardo de~Moura and Sebastian Ullrich.
+\newblock The {Lean} 4 theorem prover and programming language.
+\newblock In {\em Automated Deduction --- CADE 28}, pages 625--635. Springer,
+  2021.
+
+\bibitem{Esteban2020}
+Ivan Esteban, M.~C. Gonzalez-Garcia, Michele Maltoni, Thomas Schwetz, and
+  Albert Zhou.
+\newblock The fate of hints: updated global analysis of three-flavor neutrino
+  oscillations.
+\newblock {\em Journal of High Energy Physics}, 2020:178, 2020.
+
+\bibitem{GoeppertMayer1948}
+Maria Goeppert~Mayer.
+\newblock On closed shells in nuclei.
+\newblock {\em Physical Review}, 74(3):235--239, 1948.
+
+\bibitem{Gonzalez2021}
+F.~M. Gonzalez et~al.
+\newblock Improved neutron lifetime measurement with $\mathrm{UCN}\tau$.
+\newblock {\em Physical Review Letters}, 127:162501, 2021.
+
+\bibitem{GSW1987}
+M.~B. Green, J.~H. Schwarz, and E.~Witten.
+\newblock {\em Superstring Theory}.
+\newblock Cambridge University Press, Cambridge, 1987.
+
+\bibitem{HaxelJensenSuess1949}
+Otto Haxel, J.~Hans~D. Jensen, and Hans~E. Suess.
+\newblock On the ``magic numbers'' in nuclear structure.
+\newblock {\em Physical Review}, 75(11):1766, 1949.
+
+\bibitem{Holmlid2019}
+Leif Holmlid.
+\newblock Ultra-dense hydrogen $h(0)$ as the cause of instabilities in laser
+  pulse-induced nuclear processes.
+\newblock {\em International Journal of Modern Physics E}, 28(10):1950097,
+  2019.
+
+\bibitem{Holmlid2015}
+Leif Holmlid and Sveinn Olafsson.
+\newblock Charged particle energy spectra from laser-induced processes in
+  ultra-dense hydrogen $h(0)$ confirm extremely high charge densities and the
+  existence of $h(0)$.
+\newblock {\em International Journal of Hydrogen Energy}, 40(33):10559--10567,
+  2015.
+
+\bibitem{Huizenga1993}
+John~R. Huizenga.
+\newblock {\em Cold Fusion: The Scientific Fiasco of the Century}.
+\newblock Oxford University Press, Oxford, 2nd edition, 1993.
+
+\bibitem{JaffeWitten2000}
+Arthur Jaffe and Edward Witten.
+\newblock Quantum {Yang--Mills} {Theory}.
+\newblock In {\em The Millennium Prize Problems}. Clay Mathematics Institute
+  and American Mathematical Society, 2000.
+
+\bibitem{KassRaftery1995}
+Robert~E. Kass and Adrian~E. Raftery.
+\newblock Bayes factors.
+\newblock {\em Journal of the American Statistical Association},
+  90(430):773--795, 1995.
+
+\bibitem{Martin2012}
+J.~Martin.
+\newblock Everything you always wanted to know about the cosmological constant
+  problem (but were afraid to ask).
+\newblock {\em Comptes Rendus Physique}, 13(6--7):566--665, 2012.
+
+\bibitem{MayerJensen1955}
+Maria~Goeppert Mayer and J.~Hans~D. Jensen.
+\newblock {\em Elementary Theory of Nuclear Shell Structure}.
+\newblock John Wiley \& Sons, New York, 1955.
+
+\bibitem{Murphy_PAPER_1005}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1005 --- {Yang--Mills} mass-gap candidate $\delta =
+  5970\,\mathrm{GeV}$ from $l_{YM}$ sector, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_1133}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1133 --- {Holmlid} {Rydberg}--{SCm} {Bridge} ($e_{KER} =
+  h\cdot\omega_{SCm}\cdot s_{26}\cdot\phi_{res}$), 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_1156}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1156 --- {The} {Cosmological} {Constant} from
+  $\rho_{SCm}\cdot 26!\cdot k_{MEX}$, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_1167}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1167 --- {UQFF} all 8 {Lagrangian} gaps closed: master
+  synthesis, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.1+.
+
+\bibitem{Murphy_PAPER_1203}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1203 {Nuclear} --- {Magic} numbers and binding energies from
+  integer-lattice primitives, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_1209HH}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1209hh --- {SM} 10-mass unified closure ($m_w, m_z, m_t,
+  m_h, m_b, m_c, m_\tau, m_\mu, m_s, m_e$) from integer primitives, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_1318}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1318 --- glueball mass $m_{0^{++}} = 2 \cdot d_{phys} \cdot
+  \lambda_{QCD} = 1.736\,\mathrm{GeV}$ (integer-primitive {Yang--Mills}
+  closure; corrected 2026-06-25), 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+. Replaces the prior $5970\,\mathrm{GeV}$ value cited from
+  PAPER\_1005, which has been issued an erratum.
+
+\bibitem{Murphy_PAPER_1521}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1521 --- $d_{BSFG} = d_{crit} - 2\,\mathrm{SO}_5 = 6$ as a
+  derivative primitive, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.1+.
+
+\bibitem{Murphy_PAPER_1522}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1522 --- $k_{MEX} = (5/6) \cdot \mathrm{SO}_5 / d_{phys} =
+  25/12$ {as} {a} {derivative} {primitive}, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_1726}
+Daniel~T. Murphy.
+\newblock {PAPER}\_1726 --- neutron lifetime $\tau_n = 879.31\,\mathrm{s}$ from
+  $100 \cdot k_{MEX} \cdot d_{phys} \cdot (1+\phi\lambda n_{CH})$, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_PAPER_646}
+Daniel~T. Murphy.
+\newblock {PAPER}\_646 --- {Universal} {Inertial} {Operator} and {Caduceus}
+  {Wave}, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+; reachable via \texttt{uqff proofs show PAPER\_646}.
+
+\bibitem{Murphy_PAPER_648}
+Daniel~T. Murphy.
+\newblock {PAPER}\_648 --- {Ultra-dense} {H} meson cascade and the {Coulomb}
+  {630}\,ev cross-check at $d = 2.3$\,pm, 2026.
+\newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
+  v5.29.0+.
+
+\bibitem{Murphy_StarMagic_Software}
+Daniel~T. Murphy.
+\newblock {UQFF} {Star-Magic} --- {PyPI} package and reproducibility suite,
+  2026.
+\newblock \texttt{pip install uqff}; full proof corpus (1{,}994 whitepapers +
+  {Lean} 4 scaffold + 4 ar{X}iv bundles + manuscript) bundled.
+
+\bibitem{Oganessian2006}
+Yu.~Ts. Oganessian et~al.
+\newblock Synthesis of the isotopes of elements 118 and 116 in the $^{249}$cf
+  and $^{245}$cm + $^{48}$ca fusion reactions.
+\newblock {\em Physical Review C}, 74(4):044602, 2006.
+
+\bibitem{ParkPLM2000}
+Robert~L. Park.
+\newblock {\em Voodoo Science: The Road from Foolishness to Fraud}.
+\newblock Oxford University Press, Oxford, 2000.
+
+\bibitem{PDG2024}
+{Particle Data Group}, R.~L. Workman, et~al.
+\newblock Review of particle physics.
+\newblock {\em Progress of Theoretical and Experimental Physics}, 2022:083C01,
+  2022.
+\newblock 2024 update at \url{https://pdg.lbl.gov}.
+
+\bibitem{Planck2018}
+{Planck Collaboration}, N.~Aghanim, et~al.
+\newblock Planck 2018 results. {VI}. {Cosmological} parameters.
+\newblock {\em Astronomy \& Astrophysics}, 641:A6, 2020.
+
+\bibitem{Polchinski1998}
+Joseph Polchinski.
+\newblock {\em String Theory}.
+\newblock Cambridge University Press, Cambridge, 1998.
+
+\bibitem{Polyakov1981}
+A.~M. Polyakov.
+\newblock Quantum geometry of bosonic strings.
+\newblock {\em Physics Letters B}, 103(3):207--210, 1981.
+
+\bibitem{Riess2022}
+A.~G. Riess et~al.
+\newblock A comprehensive measurement of the local value of the {Hubble}
+  constant with $1\,\mathrm{km/s/Mpc}$ uncertainty from the hubble space
+  telescope and the sh0es team.
+\newblock {\em Astrophysical Journal Letters}, 934:L7, 2022.
+
+\bibitem{Rovelli2004}
+Carlo Rovelli.
+\newblock {\em Quantum Gravity}.
+\newblock Cambridge University Press, Cambridge, 2004.
+
+\bibitem{Smolanczuk1997}
+R.~Smola{\'{n}}czuk.
+\newblock Properties of the hypothetical spherical superheavy nuclei.
+\newblock {\em Physical Review C}, 56(2):812--824, 1997.
+
+\bibitem{Tanabashi2018}
+M.~Tanabashi et~al.
+\newblock Review of particle physics.
+\newblock {\em Physical Review D}, 98:030001, 2018.
+
+\bibitem{Verlinde2011}
+Erik Verlinde.
+\newblock On the origin of gravity and the laws of {Newton}.
+\newblock {\em Journal of High Energy Physics}, 2011:29, 2011.
+
+\bibitem{Weinberg1989}
+Steven Weinberg.
+\newblock The cosmological constant problem.
+\newblock {\em Reviews of Modern Physics}, 61(1):1--23, 1989.
+
+\bibitem{Yue2013}
+A.~T. Yue, M.~S. Dewey, D.~M. Gilliam, et~al.
+\newblock Improved determination of the neutron lifetime.
+\newblock {\em Physical Review Letters}, 111:222501, 2013.
+
+\end{thebibliography}

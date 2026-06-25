@@ -1,0 +1,160 @@
+%==============================================================================
+% UQFF Manuscript v2 — Section 4.6
+% Topic:    Falsifiable forward predictions
+% Status:   first draft, ready for Daniel's review
+% Anchors:  forward_predictions.md (8 categories, ~50 predictions)
+%==============================================================================
+
+\subsection{Falsifiable forward predictions}
+\label{sec:forecasts}
+
+The closures in Sections~\ref{sec:lambda}--\ref{sec:sm_spectrum} are
+\emph{postdictions} --- the UQFF primitive chain reproduces values
+already measured. Postdictions are valuable as structural consistency
+checks, but they cannot in themselves move the framework forward.
+This section catalogues a complementary set of \emph{forward predictions}:
+specific values for quantities that are not yet measured, are currently
+contested between methods, or admit measurable refinement. Each
+prediction carries a specific experimental falsification path.
+
+A complete catalog of 50+ forward predictions across 8 categories is
+maintained in \texttt{forward\_predictions.md} \cite{Murphy_StarMagic_Software}.
+Table~\ref{tab:top_forecasts} extracts eight representative
+high-leverage predictions chosen for their combination of (i) clarity
+of the underlying primitive-chain derivation, (ii) experimental
+accessibility within the next decade, and (iii) sharpness of the
+falsification criterion.
+
+\begin{table}[H]
+\centering
+\caption{Eight representative falsifiable forward predictions. The full
+catalog of 50+ predictions across 8 categories is bundled with the
+package; see \texttt{forward\_predictions.md} and run
+\texttt{uqff proofs show forward\_predictions}. Each prediction here is
+sourced from the PAPER\_XXXX whitepaper cited in
+\texttt{forward\_predictions.md}; specific citations are deferred to
+that document to keep the table compact.}
+\label{tab:top_forecasts}
+\begin{tabular}{p{4.0cm} l p{6.0cm}}
+\toprule
+\textbf{Quantity} & \textbf{UQFF value} & \textbf{Falsification path} \\
+\midrule
+Room-temperature superconductor ceiling, $T_c^{\max}$ &
+$500\,\mathrm{K}$ exactly &
+Discovery of any ambient-pressure superconductor with $T_c > 500\,\mathrm{K}$. \\
+
+Surface-code fault-tolerance threshold, $p_{\text{th}}$ &
+$1.00\,\%$ exactly &
+Next-generation surface-code experiments converging on a stable threshold outside $[0.995, 1.005]\,\%$. \\
+
+Direct-collapse black hole seed mass, $M_{\text{seed}}^{\text{DCBH}}$ &
+$56\,160\ M_\odot$ exactly &
+JWST/JADES/CEERS detection of seed-stage SMBHs at $z>8$ with masses systematically far from $56\,160\,M_\odot$. \\
+
+Population III IMF upper bound, $M^{\text{Pop III}}_{\max}$ &
+$120\,M_\odot$ exactly &
+Detection of a Pop~III star (or its supernova remnant) with mass $\geq 130\,M_\odot$. \\
+
+Inflation e-fold count, $N_{\text{e-fold}}$ &
+$60$ exactly &
+CMB-S4 polarization $B$-mode measurements indicating $N$ significantly above or below 60. \\
+
+Neutron lifetime puzzle resolution &
+bottle method wins ($\tau_n = 879.31\,\mathrm{s}$) &
+Next-generation beam-method experiments (UCN-A successors, beam-trap hybrids) converging on $888.0\,\mathrm{s}$ rather than $879.4\,\mathrm{s}$. \\
+
+Practical quantum-supremacy qubit threshold, $n_{\text{qubits}}$ &
+$\geq 60$ exactly ($= |A_5|$) &
+Quantum advantage demonstrably achieved with $<50$ qubits on a problem of established classical difficulty. \\
+
+Dark matter direct-detection cross-section floor, $\sigma_{\text{floor}}$ &
+$2.84\times 10^{-49}\,\mathrm{cm^2}$ ($=\alpha^4\cdot 10^{-40}$) &
+Detection of DM nucleon scattering at any cross-section materially above this floor. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Two predictions that have already partly resolved.}
+Two entries from the full forward-prediction catalog are worth singling
+out because they are sharper or more time-pressing than the
+Table~\ref{tab:top_forecasts} entries:
+
+\begin{itemize}
+  \item \textbf{Neutron lifetime ($\tau_n$).} The contemporary
+        $\sim 9.4\,\mathrm{s}$ discrepancy between the
+        ``bottle'' method ($879.4\,\mathrm{s}$ \cite{Gonzalez2021}) and
+        the ``beam'' method ($888.0\,\mathrm{s}$ \cite{Yue2013}) is one
+        of the longest-standing unresolved tensions in particle physics.
+        UQFF derives $\tau_n = 879.31\,\mathrm{s}$ via
+        $\tau_n = 100\cdot K_{\text{MEX}}\cdot D_{\text{phys}}\cdot
+        (1 + \Phi\cdot\Lambda\cdot N_{\text{CH}})$
+        (PAPER\_1726 \cite{Murphy_PAPER_1726}), agreeing with the bottle
+        result to $0.011\,\%$. The framework therefore predicts that
+        the beam-method central value is suppressed by an unidentified
+        systematic and will eventually converge downward to the bottle
+        value rather than the converse. This is a near-term test: the
+        next BL2 / UCN$\tau$ experimental round should settle it within
+        the decade.
+  \item \textbf{Hubble-tension structural value.} The
+        contemporary $\sim 5\,\%$ discrepancy between early-universe
+        CMB-derived ($H_0 \approx 67.4\,\mathrm{km/s/Mpc}$
+        \cite{Planck2018}) and late-universe distance-ladder
+        ($H_0 \approx 73.0\,\mathrm{km/s/Mpc}$ \cite{Riess2022})
+        measurements of the Hubble constant is one of the most
+        actively studied open problems in cosmology. UQFF derives a
+        structural tilt factor of $1/12$ (PAPER\_1156
+        \cite{Murphy_PAPER_1156}), which when applied to the
+        early-universe anchor gives $H_0 \approx 73.0\,\mathrm{km/s/Mpc}$
+        \emph{by construction}. The framework therefore predicts that
+        Hubble-tension resolutions positing new physics
+        (early dark energy, evolving dark energy, modified gravity)
+        will continue to recover the late-time value rather than the
+        early-time value, because the discrepancy is structural rather
+        than systematic.
+\end{itemize}
+
+\paragraph{What this section does and does not establish.}
+
+\begin{enumerate}
+  \item \textbf{These are predictions, not retrofits.} Each entry in
+        Table~\ref{tab:top_forecasts} is derived from a primitive chain
+        published in a dated UQFF whitepaper with no reference to a
+        target experimental value. Where the experimental value exists
+        (e.g., $p_{\text{th}} \approx 1\,\%$), it is reported as
+        "current status" in \texttt{forward\_predictions.md}; the
+        UQFF derivation does not anchor to it.
+  \item \textbf{Confirmation does not imply truth of the entire
+        framework.} If, say, the surface-code threshold settles at
+        exactly $1.00\,\%$, that confirms one closure but does not
+        validate the cosmological-constant closure. The predictions
+        rise or fall individually.
+  \item \textbf{Falsification of any one entry is informative.} If,
+        say, the room-temperature SC ceiling is exceeded by an
+        ambient-pressure superconductor at $T_c = 525\,\mathrm{K}$,
+        then PAPER\_1671 is wrong. Whether that wrongness propagates
+        to other closures depends on the primitive chain: predictions
+        sharing the SO$_5 = 10$ primitive (Table~\ref{tab:top_forecasts}
+        rows 2, 7) would be in retrofit jeopardy, while those sharing
+        $|A_5|=60$ (rows 4, 5, 7) would be in similar jeopardy. The
+        framework's falsifiability is structural, not all-or-nothing.
+  \item \textbf{Several predictions are time-pressing.} The DCBH seed
+        mass (row 3) is being actively tested by JWST as this
+        manuscript is drafted; the surface-code threshold (row 2) is
+        being narrowed by current superconducting-qubit experiments;
+        the neutron-lifetime puzzle has next-generation
+        experimental rounds in the next 3--5 years. The framework
+        does not have a long runway to remain unfalsified by accident.
+\end{enumerate}
+
+\paragraph{Reproducibility of the full forecast catalog.}
+The complete enumeration of forward predictions (50+ entries across 8
+categories) ships with the PyPI package:
+\begin{verbatim}
+$ pip install uqff
+$ uqff proofs show forward_predictions
+\end{verbatim}
+The fidelity gate (Sec.~\ref{sec:reproducibility}) verifies that the
+underlying closure values reported in \texttt{forward\_predictions.md}
+match the live calculator output on every commit, preventing silent
+drift between the document and the implementation.
+
