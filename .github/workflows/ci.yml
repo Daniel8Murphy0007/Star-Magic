@@ -139,6 +139,91 @@ jobs:
           if-no-files-found: ignore
           retention-days: 30
 
+  lint:
+    name: Lint (ruff)
+    needs: smoke
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install ruff
+      - name: Ruff check supporting modules (calculator excluded by per-file-ignores)
+        run: |
+          ruff check uqff_cli.py uqff_api.py uqff_jupyter.py scripts/ | tee ruff_report.txt || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          head -50 ruff_report.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload ruff report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ruff-report
+          path: ruff_report.txt
+          if-no-files-found: ignore
+          retention-days: 30
+
+  cpp-crosscheck:
+    name: C++ ↔ Python cross-check (K1b)
+    needs: smoke
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install g++ + verify
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y g++ >/dev/null
+          g++ --version
+      - name: Run scripts/cpp_python_crosscheck.py
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python scripts/cpp_python_crosscheck.py --out crosscheck.md | tee crosscheck_console.txt
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          tail -40 crosscheck_console.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload cross-check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpp-crosscheck-report
+          path: crosscheck.md
+          if-no-files-found: ignore
+          retention-days: 30
+
+  perf-smoke:
+    name: Performance smoke (G10)
+    needs: smoke
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run scripts/perf_profile.py (quick, n=10)
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python scripts/perf_profile.py --n 10 --out perf.md | tee perf_console.txt
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          tail -20 perf_console.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload performance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-report
+          path: perf.md
+          if-no-files-found: ignore
+          retention-days: 30
+
   build-package:
     name: Build sdist + wheel
     needs: smoke

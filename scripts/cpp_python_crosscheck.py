@@ -153,7 +153,7 @@ def main() -> int:
     with open(harness_path, "w", encoding="utf-8") as f:
         f.write(generate_harness(fn_names, cpp_basename))
 
-    print(f"Compiling ...")
+    print("Compiling ...")
     compile_cmd = ["g++", "-std=c++17", "-O0", "-w", harness_path, "-o", binary_path]
     cp = subprocess.run(compile_cmd, capture_output=True, text=True)
     if cp.returncode != 0:
@@ -175,7 +175,7 @@ def main() -> int:
     print(f"  Captured {len(cpp_values)} numeric values from C++")
 
     # Now compare each to Python
-    print(f"Comparing to Python closures ...")
+    print("Comparing to Python closures ...")
     results = {"MATCH": [], "DRIFT": [], "MISSING": [], "UNCALLABLE": []}
     for name in fn_names:
         if name not in cpp_values:
@@ -203,13 +203,13 @@ def main() -> int:
     # Write report
     print(f"Writing {args.out} ...")
     with open(args.out, "w", encoding="utf-8") as f:
-        f.write(f"# C++ vs Python cross-check report\n\n")
+        f.write("# C++ vs Python cross-check report\n\n")
         f.write(f"**C++ source:** `{args.cpp}`\n")
         f.write(f"**Tolerance:** relative={args.tol}, absolute floor={args.abs_tol}\n")
         f.write(f"**Total C++ functions:** {len(fn_names)}\n")
         f.write(f"**Captured numeric values:** {len(cpp_values)}\n\n")
-        f.write(f"## Summary\n\n")
-        f.write(f"| Category | Count | Meaning |\n|---|---:|---|\n")
+        f.write("## Summary\n\n")
+        f.write("| Category | Count | Meaning |\n|---|---:|---|\n")
         f.write(f"| MATCH      | {len(results['MATCH']):>5} | Python and C++ agree within tolerance |\n")
         f.write(f"| DRIFT      | {len(results['DRIFT']):>5} | Both return scalars but they differ |\n")
         f.write(f"| MISSING    | {len(results['MISSING']):>5} | C++ function has no matching Python closure key |\n")
@@ -217,8 +217,8 @@ def main() -> int:
 
         if results["DRIFT"]:
             f.write(f"## DRIFT — {len(results['DRIFT'])} value mismatches\n\n")
-            f.write(f"These need investigation. C++ and Python disagree for the same name.\n\n")
-            f.write(f"| Function | C++ value | Python value | Relative error |\n|---|---|---|---:|\n")
+            f.write("These need investigation. C++ and Python disagree for the same name.\n\n")
+            f.write("| Function | C++ value | Python value | Relative error |\n|---|---|---|---:|\n")
             for name, cv, pv, err in sorted(results["DRIFT"], key=lambda x: -x[3])[:50]:
                 f.write(f"| `{name}` | {cv:.6g} | {pv:.6g} | {err:.3e} |\n")
             if len(results["DRIFT"]) > 50:
@@ -226,36 +226,36 @@ def main() -> int:
 
         if results["MISSING"]:
             f.write(f"\n## MISSING — {len(results['MISSING'])} C++ functions with no Python counterpart\n\n")
-            f.write(f"These are C++-only functions; no PARADOX_TO_CLOSURE key matches.\n\n")
-            f.write(f"```\n")
+            f.write("These are C++-only functions; no PARADOX_TO_CLOSURE key matches.\n\n")
+            f.write("```\n")
             for name, cv in sorted(results["MISSING"])[:50]:
                 f.write(f"  {name:50s}  = {cv:.6g}\n")
             if len(results["MISSING"]) > 50:
                 f.write(f"  ... and {len(results['MISSING']) - 50} more\n")
-            f.write(f"```\n")
+            f.write("```\n")
 
         if results["UNCALLABLE"]:
-            f.write(f"\n## UNCALLABLE — Python closure exists but isn't a scalar\n\n")
+            f.write("\n## UNCALLABLE — Python closure exists but isn't a scalar\n\n")
             f.write(f"{len(results['UNCALLABLE'])} entries. Python closures returning dicts/None/structured data don't have a single number to compare.\n\n")
-            f.write(f"_First 20:_\n\n```\n")
+            f.write("_First 20:_\n\n```\n")
             for entry in results["UNCALLABLE"][:20]:
                 name, cv = entry[0], entry[1]
                 kind = entry[2] if len(entry) > 2 else "?"
                 f.write(f"  {name:40s}  C++={cv:<12.6g}  python={kind}\n")
-            f.write(f"```\n")
+            f.write("```\n")
 
-        f.write(f"\n## Verdict\n\n")
+        f.write("\n## Verdict\n\n")
         n_compared = len(results["MATCH"]) + len(results["DRIFT"])
         if n_compared:
             match_pct = 100.0 * len(results["MATCH"]) / n_compared
             f.write(f"Of {n_compared} comparable entries, **{match_pct:.1f}% match** within "
                     f"relative tolerance {args.tol}.\n\n")
-        f.write(f"DRIFT entries are the high-priority audit targets. Each represents a "
-                f"case where the C++ value encoded does not match the current Python closure "
-                f"value. Likely causes: (a) the Python closure formula changed after the C++ "
-                f"port was authored; (b) the C++ value was a target rather than a derived "
-                f"value; (c) a typo. Verify each manually and either update the C++ value or "
-                f"flag the closure as deprecated.\n")
+        f.write("DRIFT entries are the high-priority audit targets. Each represents a "
+                "case where the C++ value encoded does not match the current Python closure "
+                "value. Likely causes: (a) the Python closure formula changed after the C++ "
+                "port was authored; (b) the C++ value was a target rather than a derived "
+                "value; (c) a typo. Verify each manually and either update the C++ value or "
+                "flag the closure as deprecated.\n")
 
     # Console summary
     print()

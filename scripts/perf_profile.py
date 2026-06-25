@@ -157,7 +157,7 @@ def main() -> int:
                 f"{len(u.PARADOX_TO_CLOSURE)} dispatch keys)\n\n")
 
         f.write("## Headline numbers\n\n")
-        f.write(f"| Metric | Value |\n|---|---|\n")
+        f.write("| Metric | Value |\n|---|---|\n")
         f.write(f"| Cold import (median of 3 subprocesses) | **{cold_sec:.2f} s** |\n")
         f.write(f"| Warm import (already-loaded module) | **{warm_sec * 1000:.2f} ms** |\n")
         f.write(f"| Module memory footprint (allocated) | **{mem_bytes / 1024:.0f} KB** |\n")
@@ -167,16 +167,16 @@ def main() -> int:
                 f"(`{slowest[0][0]}`) |\n\n")
 
         f.write("## Per-surface latency (slowest first)\n\n")
-        f.write(f"| Surface | Median | p95 | Min | Max |\n")
-        f.write(f"|---|---:|---:|---:|---:|\n")
+        f.write("| Surface | Median | p95 | Min | Max |\n")
+        f.write("|---|---:|---:|---:|---:|\n")
         for s, stats in surfaces_sorted:
             f.write(f"| `{s}` | {fmt_time(stats['median_us'])} "
                     f"| {fmt_time(stats['p95_us'])} "
                     f"| {fmt_time(stats['min_us'])} "
                     f"| {fmt_time(stats['max_us'])} |\n")
 
-        f.write(f"\n## 10 slowest dispatched closures (50 sampled at random)\n\n")
-        f.write(f"| Paradox key | Median per call |\n|---|---:|\n")
+        f.write("\n## 10 slowest dispatched closures (50 sampled at random)\n\n")
+        f.write("| Paradox key | Median per call |\n|---|---:|\n")
         for k, us in slowest:
             f.write(f"| `{k}` | {fmt_time(us)} |\n")
 
@@ -206,14 +206,14 @@ def main() -> int:
 
     # Console summary
     print()
-    print(f"=== Summary ===")
+    print("=== Summary ===")
     print(f"  cold import:                  {cold_sec:.3f} s")
     print(f"  warm import:                  {warm_sec * 1000:.2f} ms")
     print(f"  memory footprint:             {mem_bytes / 1024:.0f} KB")
     print(f"  median per-dispatch call:     {fmt_time(median_dispatch)}")
     print(f"  p95 per-dispatch call:        {fmt_time(p95_dispatch)}")
     print(f"\n  Report written to:           {args.out}")
-    print(f"  Top-3 slowest surfaces:")
+    print("  Top-3 slowest surfaces:")
     for s, stats in surfaces_sorted[:3]:
         print(f"    {s:42s} median {fmt_time(stats['median_us'])}")
     return 0

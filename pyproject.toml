@@ -142,11 +142,21 @@ line-length = 120
 target-version = "py310"
 exclude = [
     "whitepapers",
-    "uqff_pure_calculator.py.PRE_*",
-    "uqff_pure_calculator.py.POST_*",
-    "Gold_Standard_*.py",
-    "99system_*.py",
-    "build", "dist", ".venv", ".git",
+    "*.PRE_*",
+    "*.POST_*",
+    "*.BROKEN_*",
+    "*.TRUNCATED*",
+    "*.CORRUPTED_*",
+    "Gold_Standard_*",
+    "99system_*",
+    "Core",
+    "uqff_pure_calculator_Test.py",
+    "*_backup*",
+    "*_BACKUP*",
+    "RESTORE_POINT_*",
+    "build", "dist", ".venv", ".git", "__pycache__",
+    "_crosscheck_harness.cpp",
+    "notebooks",
 ]
 
 [tool.ruff.lint]
