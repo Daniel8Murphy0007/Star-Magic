@@ -1952,6 +1952,36 @@ except Exception as _e:
     print(f"  FAIL  bucket observable exercise setup error: {_e}")
 
 
+# ---------- BLOCK 29 (v5.29.0): proof corpus completeness ----------
+print("--- BLOCK 29 (v5.29.0): proof corpus completeness ---")
+try:
+    _r = u.calculate_status_report({})
+    _s = _r["value"]["summary"]
+    _checks = [
+        ("v5.29.0 shipped_in_pypi_wheel flag", _s.get("shipped_in_pypi_wheel") is True),
+        ("v5.29.0 pypi_wheel_version == 5.29.0", _s.get("pypi_wheel_version") == "5.29.0"),
+        ("v5.29.0 whitepapers_bundled >= 1990", isinstance(_s.get("whitepapers_bundled"), int) and _s["whitepapers_bundled"] >= 1990),
+        ("v5.29.0 lean4_scaffold_files == 6", _s.get("lean4_scaffold_files") == 6),
+        ("v5.29.0 arxiv_bundles == 4", _s.get("arxiv_bundles") == 4),
+        ("v5.29.0 manuscript_pdf_bundled True", _s.get("manuscript_pdf_bundled") is True),
+        ("v5.29.0 grok_proof_archives == 3", _s.get("grok_proof_archives") == 3),
+        ("v5.29.0 proof_corpus_total_artifacts >= 4000", isinstance(_s.get("proof_corpus_total_artifacts"), int) and _s["proof_corpus_total_artifacts"] >= 4000),
+        ("v5.29.0 formal_verification_status mentions sorry policy", "sorry" in str(_s.get("formal_verification_status", "")).lower()),
+    ]
+    for _label, _ok in _checks:
+        if _ok:
+            PASS += 1
+            print(f"  PASS  {_label}")
+        else:
+            FAIL += 1
+            FAILURES.append(("BLOCK_29 v5.29.0 corpus completeness", _label))
+            print(f"  FAIL  {_label}")
+except Exception as _e:
+    FAIL += 1
+    FAILURES.append(("BLOCK_29 v5.29.0 corpus completeness setup", str(_e)))
+    print(f"  FAIL  BLOCK 29 setup error: {_e}")
+
+
 # ---------- summary ----------
 print()
 print("=" * 70)

@@ -48035,6 +48035,18 @@ def calculate_status_report(dataset):
         'truly_independent_primitives': 9,
         'derivative_primitives': 2,
         'cross_domain_integer_reuses_documented': 6,
+        'whitepapers_bundled': 1994,
+        'arxiv_bundles': 4,
+        'arxiv_papers_total': 31,
+        'audit_chain_trace_files': 608,
+        'lean4_scaffold_files': 6,
+        'manuscript_pdf_bundled': True,
+        'grok_proof_archives': 3,
+        'root_proof_documents': 33,
+        'formal_verification_status': 'scaffolded (every theorem marked sorry per epistemic policy in formal/UQFF/Millennium.lean)',
+        'proof_corpus_total_artifacts': 4164,
+        'shipped_in_pypi_wheel': True,
+        'pypi_wheel_version': '5.29.0',
     }
     return {
         'value': {

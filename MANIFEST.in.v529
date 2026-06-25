@@ -1,0 +1,161 @@
+# UQFF Star-Magic — sdist manifest (v5.29.0)
+# Bundles FULL proof corpus.
+
+include LICENSE
+include LICENSE-AGPL-3.0.txt
+include LICENSE-MIT-PREVIOUS.txt
+include NOTICE
+include COMMERCIAL.md
+include CITATION.cff
+include README.md
+include CLAUDE.md
+include SESSION_LOG.md
+include PRODUCTION_ROADMAP.md
+include PREDICTION_LABELS.md
+include STATISTICAL_HYGIENE.md
+include PROVENANCE_AUDIT.md
+include COVERAGE.md
+include INPUT_DOMAINS.md
+include NEXT_PRIORITIES.md
+include FAQ.md
+include TROUBLESHOOTING.md
+include GLOSSARY.md
+include ARCHITECTURE.md
+include INSTALL.md
+include RELEASE_PROCESS.md
+include CODE_OF_CONDUCT.md
+include CLOSURE_ATLAS.md
+include WHITEPAPER_INDEX.md
+include COVERAGE_GAPS.md
+include ZENODO_DOI_SETUP.md
+include forward_predictions.md
+include verification_log.csv
+include uqff_pure_calculator.py
+include uqff_fidelity_tests.py
+include uqff_cli.py
+include uqff_api.py
+include uqff_jupyter.py
+include uqff_exact_closures.cpp
+include uqff_dashboard.html
+
+include AXIOMS_AND_THEOREMS.md
+include ADDITIONAL_UQFF_CLOSURE_EQUATIONS_BEYOND_30.md
+include ALL_EQUATIONS_FROM_SESSION_AND_AUDIT_FILES.md
+include ALL_EQUATIONS_FROM_WORKSPACES_22MAY_25MAY2026.md
+include ALL_EQUATIONS_SINCE_THREAD_CREATED.md
+include ALL_EQUATIONS_WITH_COMPLETE_DERIVATIONS.md
+include CLOSED_CONSTANTS_INVENTORY.md
+include COMPLETE_UQFF_30_CLOSURE_EQUATIONS_S266_S295.md
+include COMPLETE_UQFF_EQUATIONS_REFERENCE.md
+include COMPLETE_UQFF_INTEGRATION_PLAN_FEB15_2026.md
+include COMPLETE_UQFF_UNIFIED_FRAMEWORK.md
+include FIVE_IMMUTABLE_CONSTANTS_DERIVED_EQUATIONS.md
+include PAPER_1080_Ramanujan_Binomial_Expansion_Proof.md
+include PRIMORDIAL_BBN_PROTO_HYDROGEN_HELIUM_CLOSURE_DERIVATIONS.md
+include Star-Magic_closure_review_12June2026.md
+include UM_HEAVISIDE_GAP_CLOSURE_COMPLETION_REPORT.md
+include UQFF_BBN_CLOSURE_EQUATIONS_COMPLETE.md
+include UQFF_CALIBRATION_AUDIT.md
+include UQFF_CALIBRATION_GAP_ANALYSIS.md
+include UQFF_CLOSURE_EQUATIONS_FULL_DERIVATIONS.md
+include UQFF_CONSTANTS_VARIABLES_REFERENCE.md
+include UQFF_INTEGRATION_COMPLETE.md
+include UQFF_INTEGRATION_GUIDE.md
+include UQFF_LOCKED_PRIMITIVES_COMPLETE_CLOSURE_EQUATION_SYSTEM.md
+include UQFF_MODULE_CATALOG.md
+include UQFF_PURE_DERIVATIONS_NO_OBSERVATIONS.md
+include UQFF_SM_ANCHOR_REQUIREMENTS.md
+include UQFF_THEORY.md
+include UQFF_UM_HEAVISIDE_GAP.md
+include UQFF_VALIDATION_CONVERSATION_CAPTURE.md
+include UQFF_VALIDATION_SYNC_AUDIT.md
+include VERIFICATION_REPORT_2026-05-26.md
+include VERIFICATION_REPORT_DERIVED_VS_FITTED.md
+
+include Gold_Standard_Pure_UQFF.md
+include Gold_Standard_Full_LaTeX_Dump.tex
+include Gold_Standard_Full_Sympy_LaTeX_Dump.tex
+include Gold_Standard_Validation_Script.py
+
+include run_millennium_proofs.py
+include BuoyancyProofVariants.py
+include first_principles_derivation.py
+include FirstPrinciplesCompressor.py
+
+include grok._b9afa8b6_3b85_31May2026.md
+include grok_8461fe4e_c903.md
+include grok_b8e305e6_1f29.md
+
+include MANUSCRIPT_OUTLINE.md
+include COVER_LETTER_TEMPLATE.md
+include PEER_REVIEW_SUBMISSION_PLAN.md
+include REPLICATION_PACKAGE.md
+include REVIEWER_OUTREACH_LIST.md
+
+include K1_CPP_EXTENSION_REPORT.md
+include CPP_PYTHON_CROSSCHECK_REPORT.md
+include PERFORMANCE_PROFILE.md
+include SECURITY_AND_MEMORY_AUDIT.md
+include LINT_BASELINE.md
+
+recursive-include whitepapers *.md
+recursive-include whitepapers *.tex
+
+recursive-include formal *.lean
+recursive-include formal *.toml
+recursive-include formal README.md
+include formal/lean-toolchain
+
+recursive-include arxiv_submission_1159_1172 *
+recursive-include arxiv_submission_1173_1176 *
+recursive-include arxiv_submission_1177_1180 *
+recursive-include arxiv_submission_1181_1189 *
+
+graft "Manuscript 1_12Feb2026"
+
+recursive-include _audit_outputs *.txt
+recursive-include scripts *.py
+recursive-include docs *.rst
+recursive-include docs *.py
+recursive-include docs *.md
+recursive-include docs Makefile
+recursive-include notebooks *.ipynb
+recursive-include .github *.yml
+recursive-include .github *.md
+
+exclude *.PRE_*_BACKUP
+exclude *.POST_*_BACKUP
+exclude *.BROKEN_*
+exclude *.TRUNCATED*
+exclude *.CORRUPTED_*
+exclude RESTORE_POINT_*
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[cod]
+recursive-exclude * .DS_Store
+recursive-exclude * *.swp
+recursive-exclude * .coverage
+recursive-exclude * htmlcov
+recursive-exclude * .pytest_cache
+recursive-exclude * .tox
+recursive-exclude * .mypy_cache
+recursive-exclude * *.egg-info
+recursive-exclude * dist
+recursive-exclude * build
+
+prune build
+prune build_check
+prune build_debug
+prune build_msvc
+prune build_py314
+prune build_source2_restore
+prune build_test_no_wolfram
+prune build_wolfram
+prune CMakeFiles
+prune Debug
+prune Release
+prune x64
+prune node_modules
+prune .venv
+prune venv
+prune calculator_advanced
