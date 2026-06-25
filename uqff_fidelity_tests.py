@@ -1963,7 +1963,7 @@ try:
     _s = _r["value"]["summary"]
     _checks = [
         ("v5.29.0 shipped_in_pypi_wheel flag", _s.get("shipped_in_pypi_wheel") is True),
-        ("v5.29.0 pypi_wheel_version == 5.29.0", _s.get("pypi_wheel_version") == "5.29.0"),
+        ("v5.29.x pypi_wheel_version family", str(_s.get("pypi_wheel_version", "")).startswith("5.29.")),
         ("v5.29.0 whitepapers_bundled >= 1990", isinstance(_s.get("whitepapers_bundled"), int) and _s["whitepapers_bundled"] >= 1990),
         ("v5.29.0 lean4_scaffold_files == 6", _s.get("lean4_scaffold_files") == 6),
         ("v5.29.0 arxiv_bundles == 4", _s.get("arxiv_bundles") == 4),

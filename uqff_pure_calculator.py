@@ -48047,7 +48047,7 @@ def calculate_status_report(dataset):
         'formal_verification_status': 'scaffolded (every theorem marked sorry per epistemic policy in formal/UQFF/Millennium.lean)',
         'proof_corpus_total_artifacts': 4164,
         'shipped_in_pypi_wheel': True,
-        'pypi_wheel_version': '5.29.0',
+        'pypi_wheel_version': '5.29.1',
     }
     return {
         'value': {
