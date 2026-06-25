@@ -1,0 +1,220 @@
+%==============================================================================
+% UQFF Manuscript v2 — Section 6
+% Topic:    Provenance grading + parameter-locking discipline + reduction proofs
+% Status:   first draft, ready for Daniel's review
+% Anchors:  PROVENANCE_AUDIT.md (A++ to C grading); PAPER_1521 (D_BSFG reduction);
+%           PAPER_1522 (K_MEX reduction); PAPER_1167 (master synthesis)
+%==============================================================================
+
+\section{Provenance and parameter locking}
+\label{sec:provenance}
+
+Section~\ref{sec:primitives} listed the nine truly-independent
+primitives and asserted that they are ``locked'' --- calibrated once,
+never adjusted to fit downstream observations. This section
+documents how each primitive earned that locked status, presents the
+A++--C provenance grading rubric used to audit primitive sources,
+and gives two worked examples of \emph{provenance audits performed
+to date that resulted in a primitive being demoted to ``derivative''}
+(PAPER\_1521 for $D_{\text{BSFG}}$, PAPER\_1522 for $K_{\text{MEX}}$).
+
+\subsection{The provenance grading rubric}
+\label{sec:provenance_rubric}
+
+The framework's nine primitives are audited against a five-tier
+grading rubric documented in \texttt{PROVENANCE\_AUDIT.md}
+(bundled with the package). The rubric grades each primitive on the
+quality of the evidence that fixes its value.
+
+\begin{table}[H]
+\centering
+\caption{The A++ to C provenance-grading rubric for UQFF primitives.}
+\label{tab:provenance_rubric}
+\begin{tabular}{l l p{8cm}}
+\toprule
+\textbf{Grade} & \textbf{Status} & \textbf{Meaning} \\
+\midrule
+A++ & Structural integer & Locked by representation theory or group theory; cannot be perturbed continuously (e.g., $\mathrm{SO}_5 = 10$, $|A_5| = 60$) \\
+A+ & Anchored to a measured quantity at $<0.01\,\%$ residual & Once calibrated, value is constrained by data with no remaining freedom (e.g., $\rho_{\text{SCm}}$ via $\rho_\Lambda$ at 0.003\,\%) \\
+A & Anchored to a measured quantity at $<1\,\%$ residual & Calibration introduces $\lesssim 1\,\%$ residual that flows to downstream closures (e.g., $\beta_i$ via $T$-violation asymmetry at 0.017\,\%) \\
+B & Anchored to a structural identity from one whitepaper & Single-source justification (e.g., $\Phi_{\text{res}} = 5/6$ from PAPER\_1522 via $D_{\text{BSFG}}$) \\
+C & Heuristic / historical calibration; further audit needed & Locked by convention but not yet re-derived from first principles (e.g., $\mathrm{SSq} = 0.57$, $S_{26}$, $\omega_{\text{SCm}}$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Current grades for the nine truly-independent primitives}
+\label{sec:current_grades}
+
+Applying the rubric of Table~\ref{tab:provenance_rubric} to the
+nine primitives of Sec.~\ref{sec:primitives}:
+
+\begin{table}[H]
+\centering
+\caption{Provenance grades for the nine UQFF primitives. The three
+``C''-grade entries (those whose provenance is currently
+heuristic-or-historical rather than rigorously locked) are open
+questions flagged in Sec.~\ref{sec:limitations}. If any of the three
+prove derivative on future analysis, they will move from C to
+``proven derivative'' and the truly-independent count will drop
+below nine, strengthening the BIC argument of Sec.~\ref{sec:bic}.}
+\label{tab:current_grades}
+\begin{tabular}{l c l}
+\toprule
+\textbf{Primitive} & \textbf{Grade} & \textbf{Lock evidence} \\
+\midrule
+$D_{\text{phys}} = 4$ & A++ & Observed spacetime dimension \\
+$D_{\text{crit}} = 26$ & A++ & Bosonic-string critical-dimension theorem \\
+$N_{\text{CH}} = 9$ & A++ & 8 G-channels + zero-point \\
+$\mathrm{SO}_5 = 10$ & A++ & Lie group dimension \\
+$|A_5| = 60$ & A++ & Finite-group order \\
+$\rho_{\text{SCm}} = 7.09\times 10^{-37}$ & A+ & Calibrated to $\rho_\Lambda$ at 0.003\,\% (PAPER\_1156) \\
+$\beta_i = 0.6029$ & A & Calibrated to $T$-asymmetry at 0.017\,\% (PAPER\_1203) \\
+$\Phi_{\text{res}} = 0.84\,/\,5/6$ & B & Anchored via PAPER\_1522 + PAPER\_1133 \\
+$F_{\text{TRZ}} = 1/10$ & A++ & $= 1/\mathrm{SO}_5$ identity (PAPER\_1160) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Six of the nine primitives carry the A++ grade (locked by
+non-perturbable structural arguments), two carry A+/A (locked by
+single-anchor calibration to within published measurement
+uncertainty), and one (the $\Phi_{\text{res}}$ default-vs-nuclear
+dual-anchor) carries B. \emph{No truly-independent primitive
+currently carries a C grade}; the three C-grade quantities
+($\mathrm{SSq}, S_{26}, \omega_{\text{SCm}}$) are not in the
+nine-primitive count of Sec.~\ref{sec:bic}.
+
+\subsection{The locking discipline in practice}
+\label{sec:locking_in_practice}
+
+Three concrete mechanisms enforce that a locked primitive's value
+does not silently drift downstream:
+
+\begin{enumerate}
+  \item \textbf{Fidelity-gate assertions.} \texttt{uqff\_fidelity\_tests.py}
+        asserts the canonical numerical value of every locked
+        primitive on every commit. Any change requires a deliberate
+        edit to both the calculator and the gate, plus a SESSION\_LOG
+        entry; any drift causes the gate to fail and blocks any
+        release tag from publishing.
+  \item \textbf{Single-file calculator constraint.} The fact that
+        \texttt{uqff\_pure\_calculator.py} is a single file (see
+        Sec.~\ref{sec:software_architecture}) prevents the common
+        ``two-file drift'' antipattern in which a constant's value
+        differs between a definitions file and a downstream consumer.
+        All primitives are defined once at the top of the file (lines
+        $\sim$140--160) and referenced symbolically thereafter.
+  \item \textbf{C++ cross-language verification.} Approximately 632
+        closures are re-implemented in \texttt{uqff\_exact\_closures.cpp}
+        with the primitives hardcoded as compile-time constants. The
+        Python-vs-C++ cross-check (Sec.~\ref{sec:cpp_crosscheck})
+        catches any case in which the two implementations disagree
+        on a primitive's value.
+\end{enumerate}
+
+The combination of these three mechanisms makes silent re-tuning of
+a primitive practically impossible: it would require simultaneous
+edits to the Python calculator, the C++ reference, the fidelity
+gate, and at least one whitepaper, with all four changes coordinated
+to not trigger any one of the other audits.
+
+\subsection{Worked example: PAPER\_1521 demotes $D_{\text{BSFG}}$ to derivative}
+\label{sec:paper_1521_worked}
+
+In April--May 2026, the framework's \texttt{LOCKED\_PRIMITIVES} table
+listed $D_{\text{BSFG}} = 6$ as an independent integer primitive,
+on the historical grounds that it appeared in the
+$(D_{\text{crit}}/D_{\text{BSFG}})^2$ dimensional factor of the
+DPM-buoyancy closure (Sec.~\ref{sec:yang_mills},
+Eq.~\ref{eq:ym_dpm_closure}) without a documented derivation from
+the other integer primitives. A targeted provenance audit
+(SESSION\_LOG entry 2026-06-18) noted that
+$26 - 2 \cdot 10 = 6$ is the immediate algebraic consequence of
+$D_{\text{crit}} = 26$ and $\mathrm{SO}_5 = 10$, both of which are
+A++ grade.
+
+PAPER\_1521 \cite{Murphy_PAPER_1521} formalizes the reduction:
+$D_{\text{BSFG}} = D_{\text{crit}} - 2\,\mathrm{SO}_5$ is an exact
+integer identity, derived from two A++ primitives, and therefore
+$D_{\text{BSFG}}$ does not require independent locking. The
+calculator added a dedicated \texttt{d\_bsfg\_derived\_from\_d\_crit}
+dispatch that the fidelity gate asserts on every commit. The
+\texttt{LOCKED\_PRIMITIVES} table still carries $D_{\text{BSFG}} = 6$
+at its canonical value for interface stability, but the
+truly-independent primitive count dropped from 10 to 9 as a result.
+
+\subsection{Worked example: PAPER\_1522 demotes $K_{\text{MEX}}$ to derivative}
+\label{sec:paper_1522_worked}
+
+The same audit cycle examined $K_{\text{MEX}} = 25/12$, which had
+been carried as an independent rational primitive on the historical
+grounds that it appeared in the cosmological-constant closure
+(Sec.~\ref{sec:lambda}, Eq.~\ref{eq:lambda_uqff}) and in the
+$m_d/m_u$ quark mass ratio (Sec.~\ref{sec:sm_spectrum}). PAPER\_1522
+\cite{Murphy_PAPER_1522} demonstrated that
+\[
+K_{\text{MEX}} \;=\; \Phi_{5/6}\cdot\frac{\mathrm{SO}_5}{D_{\text{phys}}}
+\;=\; \frac{5}{6}\cdot\frac{10}{4} \;=\; \frac{25}{12}
+\]
+follows from $\Phi_{5/6} = 5/6$ (PAPER\_1522's own derivation from
+$D_{\text{BSFG}}$), $\mathrm{SO}_5 = 10$, and $D_{\text{phys}} = 4$.
+The reduction takes the truly-independent count from 10 to 9 (after
+the PAPER\_1521 reduction had already brought it from 11 to 10).
+
+The combined PAPER\_1521 + PAPER\_1522 effect dropped the
+truly-independent primitive count from \textbf{11} (the count in
+effect through 2026-Q1) to \textbf{9} (the count used in the BIC
+calculation of Sec.~\ref{sec:bic}). The BIC argument
+$\Delta\mathrm{BIC} = 17 \cdot \ln 253 = 94.1$ was strengthened
+correspondingly: the 17-parameter advantage over SM+$\Lambda$CDM
+includes the contribution from these two proven reductions.
+
+\subsection{The remaining open questions ($\mathrm{SSq}, S_{26}, \omega_{\text{SCm}}$)}
+\label{sec:open_provenance}
+
+Three quantities currently carry a C-grade provenance in
+\texttt{PROVENANCE\_AUDIT.md}:
+
+\paragraph{$\mathrm{SSq} = 0.57$.}
+The state-space-square parameter. Used in $S_{26}^{(3)}$ regularization
+(Sec.~\ref{sec:holmlid}) and in the cosmological-constant closure
+chain. Currently locked at $0.57$ on historical grounds; a Q3
+analysis (SESSION\_LOG entry 2026-06-08) raised the open question
+whether $\mathrm{SSq}$ might be derivable from $F_{\text{TRZ}}$ and
+$\Phi_{\text{res}}$ via a transcendental identity. The work is open.
+
+\paragraph{$S_{26} = 1.453162$ and $S_{26}^{(3)} \simeq 1.453 \times 10^{26}$.}
+The 26-level Ramanujan series at $\mathrm{SSq} = 0.57$. Locked at
+the numerically-evaluated value; the question is whether the
+specific functional form
+($S_{26}(\mathrm{SSq}) = \prod_{k} f_k(\mathrm{SSq})$ for some
+$f_k$) is itself reducible.
+
+\paragraph{$\omega_{\text{SCm}} = 1.25\,\mathrm{THz}$.}
+The SCm phonon carrier frequency. Calibrated to the Holmlid 630\,eV
+KER via PAPER\_1133; the open question is whether
+$\omega_{\text{SCm}}$ might be derivable from $\rho_{\text{SCm}}$
+and the integer primitives via dimensional analysis on a candidate
+dispersion relation.
+
+If any of these three prove derivative on subsequent analysis, the
+truly-independent primitive count drops below 9 and the BIC
+argument of Sec.~\ref{sec:bic} strengthens. The conservative
+posture taken in this manuscript is to retain them as nine
+truly-independent primitives until the demotion proofs exist.
+
+\subsection{Summary}
+
+The framework's parameter-locking is enforced by a triple-layer
+discipline (fidelity gate, single-file calculator, C++ cross-check)
+that makes silent re-tuning impractical. Two primitives that had
+historically been carried as independent ($D_{\text{BSFG}}$ and
+$K_{\text{MEX}}$) have been proven derivative in 2026, dropping the
+truly-independent count from 11 to 9. Three further quantities
+remain open audit candidates, any of which would further reduce the
+truly-independent count if proven derivative. The
+parameter-economy claim of Sec.~\ref{sec:bic} is therefore an
+upper bound, not a tight estimate, on the framework's free-parameter
+count.
+

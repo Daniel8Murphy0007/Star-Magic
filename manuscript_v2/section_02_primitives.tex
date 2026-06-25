@@ -1,0 +1,244 @@
+%==============================================================================
+% UQFF Manuscript v2 — Section 2
+% Topic:    The nine truly-independent primitives
+% Status:   first draft, ready for Daniel's review
+% Anchors:  PROVENANCE_AUDIT.md, CLAUDE.md "locked canonical primitives" table,
+%           PAPER_1521 (D_BSFG derivative), PAPER_1522 (K_MEX derivative),
+%           PAPER_1167 (8 Lagrangian gaps closed master synthesis)
+%==============================================================================
+
+\section{The nine truly-independent primitives}
+\label{sec:primitives}
+
+UQFF's parameter-economy claim
+(Sec.~\ref{sec:bic}: $\Delta\mathrm{BIC} = 94.1$) rests on a count of
+nine free real-valued or integer parameters that, together, generate
+all of the closures reported in Sec.~\ref{sec:headline}. This
+section lists those nine primitives, explains why each is treated as
+``locked'' (not adjustable to fit observations), and identifies
+two additional quantities that the corpus had historically counted
+as primitives until they were proven derivative
+(PAPER\_1521 \cite{Murphy_PAPER_1521} and PAPER\_1522
+\cite{Murphy_PAPER_1522}, both 2026).
+
+Table~\ref{tab:primitives_master} is the master inventory.
+
+\begin{table}[H]
+\centering
+\caption{The nine truly-independent UQFF primitives, with values,
+brief structural origin, and the dimensional or empirical anchor
+that fixes each. Two additional quantities ($D_{\text{BSFG}}$ and
+$K_{\text{MEX}}$) are shown for historical reference: both are
+algebraically derivative from the nine but are kept in the
+calculator's locked-constants table at their canonical values to
+preserve interface stability.}
+\label{tab:primitives_master}
+\begin{tabular}{l l p{6.0cm}}
+\toprule
+\textbf{Primitive} & \textbf{Value} & \textbf{Structural origin / anchor} \\
+\midrule
+\multicolumn{3}{l}{\emph{Integer lattice primitives (5)}} \\
+$D_{\text{phys}}$ & $4$ & Spacetime dimension of the observable universe \\
+$D_{\text{crit}}$ & $26$ & Bosonic-string critical dimension \cite{Polyakov1981} \\
+$N_{\text{CH}}$ & $9$ & Channel multiplicity (G1--G8 + zero-point) \\
+$\mathrm{SO}_5$ & $10$ & Dimension of the Lie group $\mathrm{SO}(5)$ \\
+$|A_5|$ & $60$ & Order of the icosahedral alternating group $A_5$ \\
+\midrule
+\multicolumn{3}{l}{\emph{Real-valued primitives (4)}} \\
+$\rho_{\text{SCm}}$ & $7.09 \times 10^{-37}\,\mathrm{J\,m^{-3}}$ & SuperConductive material substrate energy density; anchors $\rho_\Lambda$ (Sec.~\ref{sec:lambda}), $U_i$, Holmlid 630\,eV (Sec.~\ref{sec:holmlid}), and the four-layer DPM hierarchy \\
+$\beta_i$ & $0.6029$ & Buoyancy coupling; anchors PAPER\_1203 nuclear closures, F\_U=1 normalization \\
+$\Phi_{\text{res}}$ & $0.84$ (canonical) / $5/6$ (nuclear) & Resonance fraction; anchors LENR phonon ladder (Sec.~\ref{sec:holmlid}) and the magic-number derivation chain \\
+$F_{\text{TRZ}}$ & $1/10$ & Time-reversal-zone fraction; anchors $F_{\text{TRZ}} = 1/\mathrm{SO}_5$ identity (PAPER\_1160) \\
+\midrule
+\multicolumn{3}{l}{\emph{Proven derivative (kept locked for interface stability)}} \\
+$D_{\text{BSFG}}$ & $6$ & $= D_{\text{crit}} - 2\,\mathrm{SO}_5 = 26 - 20$, PAPER\_1521 \\
+$K_{\text{MEX}}$ & $25/12$ & $= \Phi_{5/6}\cdot\mathrm{SO}_5/D_{\text{phys}} = (5/6)\cdot 10/4$, PAPER\_1522 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Integer lattice primitives}
+\label{sec:integer_primitives}
+
+The five integer primitives are forced by structural arguments that
+do not admit continuous adjustment.
+
+\paragraph{$D_{\text{phys}} = 4$.} The physical spacetime dimension.
+Set by observation: gravity, electromagnetism, and all known
+phenomenology are consistent with $3+1$ spacetime dimensions to the
+limits of every test conducted to date \cite{LongRange2003}.
+The framework's closures consistently treat $D_{\text{phys}}$ as the
+dimension at which the projection from the 26-level bulk descends
+to observed phenomenology.
+
+\paragraph{$D_{\text{crit}} = 26$.} The bosonic-string critical
+dimension, where the conformal anomaly vanishes and a Lorentz-invariant
+quantum theory of strings exists
+\cite{Polyakov1981, GSW1987}. UQFF uses the same integer because the
+framework's Lagrangian decomposition (the nine-sector form
+$L_{\text{UQFF}} = L_{\text{EH}}+L_{\text{YM}}+\ldots+L_{\text{KK}}$)
+is constructed on a 26-level bulk that compactifies to the observed
+4-dimensional spacetime via the $S_{26}^{(3)}$ Ramanujan series.
+
+\paragraph{$N_{\text{CH}} = 9$.} The channel multiplicity, equal to
+the eight G-channels (G1 through G8, the eight Lagrangian sectors
+that PAPER\_1167 \cite{Murphy_PAPER_1167} demonstrates are closeable)
+plus a zero-point sector. Locked by the demonstrated count of
+Lagrangian gaps closed in the framework's master synthesis paper.
+
+\paragraph{$\mathrm{SO}_5 = 10$.} The dimension of the Lie group
+$\mathrm{SO}(5)$. Locked by representation theory of the orthogonal
+group; not adjustable. Appears in the framework as the natural
+gauge group for the DPM spinor bundle decomposition.
+
+\paragraph{$|A_5| = 60$.} The order of the icosahedral alternating
+group $A_5$. Locked by finite-group theory. Appears across the
+corpus as the integer factor controlling several magic-number
+identities (Table~\ref{tab:magic_numbers} rows 5--7) and the
+inflation e-fold count (Sec.~\ref{sec:forecasts}, $N_{\text{e-fold}} = |A_5|$).
+
+The five integers above are not measured quantities. They are
+structural inputs. Their ``locking'' is automatic in the sense that
+they cannot be adjusted continuously to fit observations: changing
+$\mathrm{SO}_5$ from 10 to 11 is not a small perturbation but a
+categorical change to a different group entirely.
+
+\subsection{Real-valued primitives}
+\label{sec:real_primitives}
+
+The four real-valued primitives carry the entire continuous-degree-of-freedom
+budget of the framework. The locking discipline for these is enforced
+by project rule (CLAUDE.md Rules 2, 8, and 10 in the project source):
+they are calibrated against one anchor each, and once set, they are
+not adjusted to improve secondary closures.
+
+\paragraph{$\rho_{\text{SCm}} = 7.09 \times 10^{-37}\,\mathrm{J\,m^{-3}}$.}
+The SuperConductive material substrate energy density.
+Calibrated against $\rho_\Lambda$ via Eq.~\ref{eq:lambda_uqff} in
+PAPER\_1156. Once locked at this value, it reappears unchanged in:
+\begin{itemize}
+  \item The Universal Inertial Operator $U_i$ (PAPER\_646
+        \cite{Murphy_PAPER_646}).
+  \item The Holmlid 630\,eV closure (Sec.~\ref{sec:holmlid}).
+  \item The DPM-buoyancy Yang-Mills closure
+        (Sec.~\ref{sec:yang_mills}, Eq.~\ref{eq:ym_dpm_closure}).
+  \item The four-layer UA hierarchy (PAPER\_646).
+  \item Approximately 70\,\% of the bucket observables across the
+        nine bucket surfaces.
+\end{itemize}
+The numerical-precision-test value of $\rho_{\text{SCm}}$ has not
+been adjusted in any subsequent closure; downstream agreement is
+therefore evidence of the primitive's correct calibration, not
+evidence of refit.
+
+\paragraph{$\beta_i = 0.6029$.}
+The buoyancy coupling constant. Calibrated against the F\_U=1
+normalization condition (PAPER\_1167) plus the $T$-violation $B/K$
+asymmetry observable (Table~\ref{tab:sm_couplings}, row 7, residual
+$0.017\,\%$). Used in the buoyancy Lagrangian sector $L_{\text{buoy}}$
+and in PAPER\_1203's nuclear closures.
+
+\paragraph{$\Phi_{\text{res}} = 0.84$ (default) and $5/6$ (nuclear).}
+The resonance fraction. Two anchors coexist: the canonical default
+value $\Phi_{\text{res}} = 0.84$ used in PAPER\_1156 and the
+Holmlid LENR closure, and the nuclear-physics value
+$\Phi_{\text{res}} = 5/6$ used in PAPER\_1522's derivation of
+$K_{\text{MEX}}$ and in PAPER\_1203's nuclear physics closures.
+The relationship $\Phi_{5/6} = (D_{\text{BSFG}}-1)/D_{\text{BSFG}}$
+follows from $D_{\text{BSFG}} = 6$ (PAPER\_1159) and is the
+mechanism by which $K_{\text{MEX}}$ acquires the rational form
+$25/12$ (PAPER\_1522).
+
+\paragraph{$F_{\text{TRZ}} = 1/10$.}
+The time-reversal-zone fraction. Calibrated against the identity
+$F_{\text{TRZ}} = 1/\mathrm{SO}_5$ (PAPER\_1160). Used in the
+surface-code fault-tolerance forecast
+(Sec.~\ref{sec:forecasts}, $p_{\text{th}} = F_{\text{TRZ}}^2 = 1.00\,\%$)
+and in approximately one-third of the bucket observables.
+
+\subsection{The two proven-derivative quantities ($D_{\text{BSFG}}$, $K_{\text{MEX}}$)}
+\label{sec:derivative_primitives}
+
+Two quantities that had historically been carried in the framework's
+locked-constants table as if they were independent primitives have
+been proven, in 2026, to be algebraic consequences of the other
+nine:
+
+\paragraph{$D_{\text{BSFG}} = 6 = D_{\text{crit}} - 2\,\mathrm{SO}_5$
+(PAPER\_1521).}
+The bulk-edge-string-frequency-grid dimension. Once $D_{\text{crit}}=26$
+and $\mathrm{SO}_5=10$ are locked, $D_{\text{BSFG}} = 26 - 20 = 6$
+is forced as the residual dimension after the two $\mathrm{SO}(5)$
+sectors are subtracted from the bosonic-string critical dimension.
+PAPER\_1521 documents the derivation and the calculator now carries
+a dedicated dispatch \texttt{d\_bsfg\_derived\_from\_d\_crit} that
+asserts the identity at gate time.
+
+\paragraph{$K_{\text{MEX}} = 25/12 = \Phi_{5/6}\cdot \mathrm{SO}_5/D_{\text{phys}}$
+(PAPER\_1522).}
+The Mexican-hat coefficient. Combining
+$\Phi_{5/6} = 5/6$ (the nuclear-sector resonance fraction),
+$\mathrm{SO}_5 = 10$, and $D_{\text{phys}} = 4$:
+$K_{\text{MEX}} = (5/6)\cdot 10/4 = 25/12$ exactly. Eliminating
+$K_{\text{MEX}}$ from the truly-independent count is what brought
+the total down from 11 to 9. Like $D_{\text{BSFG}}$, $K_{\text{MEX}}$
+is kept in the locked-constants table at its canonical value for
+interface stability; the calculator has a dedicated dispatch
+\texttt{k\_mex\_derived\_from\_phi\_5\_6} that asserts the
+identity at gate time.
+
+\subsection{Open questions on the remaining primitives}
+\label{sec:open_primitives}
+
+Three further quantities currently treated as independent
+($\mathrm{SSq} = 0.57$, $S_{26}$, $\omega_{\text{SCm}} = 1.25\,\mathrm{THz}$)
+may yet prove derivative on careful analysis. These open questions are
+flagged explicitly in Sec.~\ref{sec:limitations}; the conservative
+position taken in this manuscript is to retain them as nine
+independent primitives until they are formally reduced. The
+parameter-economy claim in Sec.~\ref{sec:bic} is therefore an
+\emph{upper bound} on the true free-parameter count: any further
+proven reductions would strengthen the BIC argument, not weaken it.
+
+\subsection{The locking discipline}
+\label{sec:locking_discipline}
+
+Three rules in the project's source documentation (CLAUDE.md Rules 2,
+8, and 10) constrain how the nine primitives may be used:
+
+\begin{enumerate}
+  \item \textbf{No primitive value may be changed to improve any
+        secondary closure.} If $\rho_\Lambda$ (Sec.~\ref{sec:lambda})
+        agrees with Planck at 0.003\,\%, and a later closure for some
+        other observable would agree better if $\rho_{\text{SCm}}$
+        were 1\,\% larger, $\rho_{\text{SCm}}$ is not changed.
+  \item \textbf{Every closure must trace back to the locked
+        primitives.} No additional fit constants may be introduced
+        per-closure. A closure that cannot be expressed in terms of
+        the nine primitives plus structural integers is not a
+        UQFF closure.
+  \item \textbf{The fidelity gate enforces (1) and (2)} by asserting
+        the canonical primitive values on every commit; any drift
+        causes the gate to fail and blocks any release tag.
+\end{enumerate}
+
+The locking discipline is what makes the BIC argument in
+Sec.~\ref{sec:bic} epistemically defensible: a framework with nine
+locked parameters that reproduces 253 observations is genuinely
+different from a framework with nine continuously-adjustable
+parameters that happens to score 253 agreements on a particular
+choice of values.
+
+\subsection{Summary}
+
+Nine primitives --- five integers, four real numbers --- generate
+the closures reported in Sec.~\ref{sec:headline}, with the locking
+discipline of Sec.~\ref{sec:locking_discipline} enforcing that the
+nine are not silently re-fit. Two additional quantities
+($D_{\text{BSFG}}$, $K_{\text{MEX}}$) are kept in the
+locked-constants table at canonical values but are algebraically
+derivative from the nine and do not add to the BIC parameter count.
+Three further quantities ($\mathrm{SSq}, S_{26}, \omega_{\text{SCm}}$)
+remain open questions; if any of them prove derivative, the
+parameter-economy argument strengthens.
+

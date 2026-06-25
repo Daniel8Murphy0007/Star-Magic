@@ -43,7 +43,14 @@ uqff_manuscript_v2.tex                ← main document (knits sections)
 - [x] Section 4.4 Yang-Mills mass gap
 - [x] Section 4.5 SM spectrum
 - [x] Section 4.6 Forward predictions
-- [ ] Sections 5-9
+- [x] Section 5  Statistical hygiene
+- [ ] Section 7  Reproducibility
+- [ ] Section 2  Primitives
+- [ ] Section 3  Closure architecture
+- [ ] Section 6  Provenance + locking
+- [ ] Section 8  Limitations + open questions
+- [ ] Section 1  Introduction (LAST)
+- [ ] Section 9  Conclusions (LAST)
 - [ ] Section 1 (intro)
 - [ ] Abstract
 - [ ] BibTeX

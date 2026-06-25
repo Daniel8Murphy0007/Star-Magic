@@ -1,0 +1,154 @@
+%==============================================================================
+% UQFF Manuscript v2 — Section 3
+% Topic:    Closure architecture (5 namespaces, ~1080 named closures, software shape)
+% Status:   first draft, ready for Daniel's review
+% Anchors:  CLOSURE_ATLAS.md, ARCHITECTURE.md, calculate_status_report()
+%==============================================================================
+
+\section{Closure architecture}
+\label{sec:architecture}
+
+A \emph{closure} in this framework is a named numerical identity
+derived from the nine primitives of Sec.~\ref{sec:primitives} and
+yielding a value comparable to a measured physical quantity. This
+section describes how the closures are organized in the
+implementation, so that a reader who wants to inspect any
+particular closure cited elsewhere in this manuscript can locate
+the underlying code quickly.
+
+\subsection{The five closure namespaces}
+\label{sec:five_namespaces}
+
+The calculator's closures are distributed across five
+distinct dispatch namespaces. The split reflects the developmental
+history of the framework rather than any conceptual hierarchy; all
+five draw on the same nine primitives.
+
+\begin{table}[H]
+\centering
+\caption{The five closure namespaces, with current dispatch-key
+counts and the corresponding canonical access pattern. Counts are
+the live values reported by the calculator at the time of this
+writing; the fidelity gate of Sec.~\ref{sec:fidelity_gate} asserts
+the structural integrity of each on every commit.}
+\label{tab:five_namespaces}
+\begin{tabular}{l r p{6.5cm}}
+\toprule
+\textbf{Namespace} & \textbf{Count} & \textbf{Access pattern + use} \\
+\midrule
+\texttt{PARADOX\_TO\_CLOSURE} & 794 & \texttt{calculate\_paradox(\{"paradox":NAME\})}; the broadest dispatch, covers most named identities (Yang-Mills, magic numbers, Holmlid, etc.) \\
+\texttt{PARADOX\_TO\_MILLENNIUM} & 8 & \texttt{calculate\_paradox} aliases for the seven Clay Millennium prize problems plus the black-hole information paradox \\
+\texttt{calculate\_lenr\_full} sub-keys & 10 & Holmlid, Parkhomov, Mizuno, Pons-Fleischmann, Rossi Early/X/SK, Star-Magic reactor, Widom-Larsen, Kozima TNCF, meson cascade \\
+\texttt{calculate\_nuclear\_magic} sub-keys & 7 & Magic numbers + BE/$A$ peak + $\alpha$-particle binding + deuteron binding + Coulomb 626\,eV cross-check + Mayer-Jensen comparison \\
+Bucket observables (9 surfaces) & 248 & Cosmology, particle physics, GW events, AGN jets, astrophysics, high-energy astro, QGP, Higgs precision, BSM constraints --- each surface returns an \texttt{observables} list \\
+\midrule
+\textbf{Total named closures} & \textbf{$\sim 1{,}067$} & Plus 530 legacy-freeform entries; gross 793 schema-tagged after deduplication \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The bucket-observable count (248) is itself the sum of nine bucket
+surfaces returning lists of observables (cosmology 18, particle
+physics 49, GW events 20, AGN jets 20, astrophysics 20, high-energy
+astro 7, QGP 4, Higgs precision 8, BSM constraints 9, plus a few
+additional rows in each). The five-namespace decomposition is
+canonicalized by the \texttt{uqff\_cli.py} dispatcher, which walks
+all five in order during \texttt{uqff predict NAME} and
+\texttt{uqff search SUBSTR} queries.
+
+\subsection{Backing whitepaper corpus}
+\label{sec:whitepaper_corpus}
+
+Every closure in the namespaces of Table~\ref{tab:five_namespaces}
+has a \texttt{primary\_source} attribute pointing at a backing
+whitepaper (PAPER\_XXXX), with current corpus size 1,994 papers
+covering both schema-tagged and legacy-freeform closures. The
+package's \texttt{uqff proofs} subcommand exposes the entire corpus:
+
+\begin{verbatim}
+$ uqff proofs list --filter holmlid
+PAPER_1133_Holmlid_Rydberg_SCm_Bridge.md
+PAPER_1136_Holmlid_KER_Reactor_Validation.md
+PAPER_1137_Holmlid_Rossi_Parkhomov_Validation.md
+PAPER_1138_Holmlid_Parkhomov_Pons_Fleischmann_Upgrade.md
+... (additional matches)
+$ uqff proofs show PAPER_1133
+[full whitepaper contents]
+\end{verbatim}
+
+The whitepaper-to-closure mapping is audited in
+\texttt{COVERAGE\_GAPS.md} (bundled), which reports both
+the wired-coverage rate (closures with a backing whitepaper) and
+the inverse-coverage rate (whitepapers referenced by at least one
+closure). These two rates do not have to be 100\,\% --- some
+whitepapers are historical scaffolding; some closures span multiple
+papers --- but both are monitored for drift on every commit.
+
+\subsection{Master inventory document}
+\label{sec:master_inventory}
+
+The master inventory of all closures, observables, and their
+canonical sources is \texttt{CLOSURE\_ATLAS.md}, generated and
+maintained by the package's own dispatch-introspection machinery.
+At the time of this writing, the atlas reports approximately
+4{,}164 distinct closure-related artifacts (named closures, backing
+whitepapers, chain-trace audit files, arXiv-bundle papers, and
+Lean 4 formal-scaffold theorems). Readers who want to confirm any
+specific claim in the manuscript can locate the underlying code,
+the backing whitepaper, the chain-trace audit log, and the
+formal-scaffold theorem statement from a single document.
+
+\subsection{Software architecture brief}
+\label{sec:software_architecture}
+
+The framework's runtime architecture is intentionally minimal:
+
+\begin{itemize}
+  \item One file (\texttt{uqff\_pure\_calculator.py}, $\sim$2.7\,MB,
+        $\sim$48\,000 lines) holds the entire calculator.
+  \item Thirty-four public surfaces (\texttt{calculate\_*} functions)
+        return uniformly-shaped \texttt{\{'value': X\}} dicts.
+  \item Zero runtime dependencies (the calculator imports only the
+        Python standard library).
+  \item Five auxiliary files provide CLI (\texttt{uqff\_cli.py}),
+        REST API (\texttt{uqff\_api.py}), Jupyter integration
+        (\texttt{uqff\_jupyter.py}), test gate
+        (\texttt{uqff\_fidelity\_tests.py}), and the C++ reference
+        (\texttt{uqff\_exact\_closures.cpp}).
+\end{itemize}
+
+The single-file calculator design is deliberate. The framework's
+audit history (Tier-3 G8/G9/G10/G11 audits, documented in
+\texttt{SECURITY\_AND\_MEMORY\_AUDIT.md} and
+\texttt{PERFORMANCE\_PROFILE.md}) shows the design trade-off as net
+favorable: cold-import time is 537\,ms (modest), per-dispatch latency
+is 3.4\,$\mu$s (290{,}000 calls per second on a single thread),
+memory footprint is 6.8\,MB module + 224\,MB process RSS, and the
+single-file structure simplifies the cross-language verification
+(Sec.~\ref{sec:cpp_crosscheck}).
+
+\subsection{Reader's how-to-locate guide}
+\label{sec:how_to_locate}
+
+For any closure value cited elsewhere in this manuscript:
+
+\begin{enumerate}
+  \item Open a Python shell after \texttt{pip install uqff}.
+  \item Run \texttt{uqff search NAME} to find the closure across
+        all five namespaces.
+  \item Run \texttt{uqff predict NAME} to retrieve the value plus
+        the canonical-source whitepaper attribution.
+  \item Run \texttt{uqff proofs show PAPER\_XXXX} to read the
+        backing whitepaper.
+  \item For the calculator source, the function name is the
+        closure name prefixed with \texttt{\_paradox\_proof} or
+        appears as a key in the dispatch dict; the file is
+        \texttt{uqff\_pure\_calculator.py}, line $\sim$200 (the
+        \texttt{PARADOX\_TO\_CLOSURE} dict starts here) onwards.
+\end{enumerate}
+
+There is no closure in this manuscript whose underlying code,
+backing whitepaper, and cross-language C++ counterpart cannot be
+located within five minutes by a reviewer using only the
+\texttt{uqff} CLI and a text editor.
+

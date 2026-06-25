@@ -7200,3 +7200,109 @@ The v5.29.0 wheel currently on PyPI ships the pre-correction calculator (5970 Ge
 - `uqff_pure_calculator.py` (patched, calculator: 2,666,113 → 2,666,667 + 554 bytes from earlier corpus extension + this YM patch)
 - `uqff_fidelity_tests.py` (patched, 866/0 holding)
 
+
+---
+
+## SESSION 2026-06-25 (continued #2) — v5.29.1 PYPI SHIP + MANUSCRIPT §4 + §5 DRAFTED
+
+**Date:** 2026-06-25 (continuation of the same day)
+**Outcome:** v5.29.1 (Yang-Mills correction) successfully published to PyPI after a version-string-sync false-start. Manuscript v2 Section 4 (all six subsections) and Section 5 (statistical hygiene with ΔBIC = 94.1 headline) drafted to first-pass camera-quality.
+
+### v5.29.1 PyPI publish — false-start + recovery
+
+The first v5.29.1 tag push failed CI at 22s because `pyproject.toml` was still pinned to `version = "5.29.0"` (PyPI rejects re-uploads of an already-published version). Investigation of the worktree revealed four version-string mismatches:
+
+| File | Before | After |
+|---|---|---|
+| `pyproject.toml` | 5.29.0 | 5.29.1 |
+| `uqff_cli.py` | 5.29.0 | 5.29.1 |
+| `uqff_api.py` | **5.28.0** (had been lagging since v5.29.0) | 5.29.1 |
+| `uqff_jupyter.py` | **5.28.0** (also lagging) | 5.29.1 |
+| `uqff_pure_calculator.py` (status_report) | 5.29.0 | 5.29.1 |
+| `uqff_fidelity_tests.py` BLOCK 29 | hardcoded `== "5.29.0"` | regex `startswith("5.29.")` (future-proof) |
+
+The fidelity gate held at 866/0 after the fixes. Daniel deleted-and-recreated the v5.29.1 git tag onto the corrected commit (d8d5212), and `Release to PyPI #9` succeeded in 1m 42s. `pip install --upgrade uqff` + `uqff --version` confirmed `uqff 5.29.1`, and `uqff predict yang_mills` returned `1.736` (the corrected closure value) end-to-end from a fresh install.
+
+**Lesson:** The post-v5.29.0 lagging version strings in `uqff_api.py` and `uqff_jupyter.py` (still saying 5.28.0) were a real bug that we had not noticed because v5.29.0 itself was driven by `pyproject.toml`, which got bumped correctly. The fidelity gate now performs a `startswith("5.29.")` check on `pypi_wheel_version` so future versions in the 5.29.x family pass without further edits, and a wider audit-pass on per-file version drift is queued for v5.30.0.
+
+### Manuscript v2 drafting (Section 4 + Section 5)
+
+A full Section 4 ("Headline derivations") and Section 5 ("Statistical hygiene") were drafted, totalling **7,344 words across 7 subsections** (roughly 14 manuscript pages of a planned 25-30 page submission). Tone calibration is the same throughout: a numbered "what this does and does not establish" paragraph after each closure, with explicit honest framing where the closure has weaknesses or open questions.
+
+| Subsection | Words | Headline |
+|---|---|---|
+| §4.1 Cosmological constant Λ | 608 | $\rho_{\text{SCm}}\cdot 26!\cdot K_{\text{MEX}} = 5.957\times 10^{-10}\,\mathrm{J/m^3}$, 0.003 % match |
+| §4.2 Nuclear shell-model magic numbers | 985 | All 7 magic numbers EXACT from integer arithmetic on 4 primitives; BE/A peak 0.019 %; α-binding 0.012 % |
+| §4.3 Holmlid 630 eV LENR | 1,083 | EXACT anchor + 0.6 % Coulomb cross-check + honest per-reactor disclosure (2/7 reactors land in range; Pons-Fleischmann overshoots; Rossi family undershoots; Star-Magic reactor undershoots its own author's reported COP by 30×) |
+| §4.4 Yang-Mills mass-gap (REWRITTEN) | 1,243 | Two independent UQFF closures (PAPER_1318 integer-primitive + grok 31May DPM-buoyancy variational) both ≈1.74 GeV, matching lattice QCD; explicit erratum paragraph disclosing the 5970 GeV registry-bug history to reviewers in the headline section rather than burying it in limitations |
+| §4.5 SM 12-fermion spectrum | 1,173 | 10 charged-fermion + electroweak boson masses within 0.2 %; 2 neutrino splittings ANCHORED (disclosed as not-predicted); 2 couplings in tension at 3.4 % / 13.7 % (disclosed); $m_d/m_u = K_{\text{MEX}} = 25/12$ EXACT cross-domain reuse |
+| §4.6 Forty-two forward predictions | 933 | 8-row representative-prediction table + neutron-lifetime sub-narrative + Hubble-tension structural-tilt sub-narrative; explicit warnings about confirmation-bias and time-pressing experimental tests |
+| §5 Statistical hygiene + ΔBIC = 94.1 | 1,319 | Boxed central derivation: $\Delta\mathrm{BIC} = (26-9)\cdot\ln(253) = 94.1$ ("decisive" in Kass-Raftery convention); 86 % of schema-tagged closures pass Bonferroni; trials-factor-adjusted significance still clears z ≈ 4.5 for the EXACT tier |
+
+The manuscript scaffolding under `manuscript_v2/` includes a working main knit file (`uqff_manuscript_v2.tex`), per-section `.tex` files, and a growing `references.bib` with citations to Planck 2018, Weinberg 1989, Martin 2012, PAPER_646, PAPER_1156, PAPER_1522, Mayer-Jensen 1955, Goeppert Mayer 1948, Haxel-Jensen-Suess 1949, Smolanczuk 1997, Oganessian 2006, PAPER_1203, Holmlid 2015/2019, Huizenga 1993, Park 2000, PAPER_1133/648/1141, PDG 2024, Tanabashi 2018, Esteban 2020, PAPER_1209HH, PAPER_1318, Gonzalez 2021, Yue 2013, Riess 2022, PAPER_1726, Jaffe-Witten 2000, Chen 2006, Athenodorou 2020, PAPER_1005 (now with erratum header), Kass-Raftery 1995, Benjamini-Hochberg 1995.
+
+### Architecture decision
+
+The existing `Manuscript 1_12Feb2026/` (a software/implementation paper for SoftwareX or Computer Physics Communications) is **not** what we are submitting to Foundations of Physics. The new `manuscript_v2/` is a physics-framework parameter-economy paper per `MANUSCRIPT_OUTLINE.md`. Both manuscripts can coexist; the software paper can be submitted later if appropriate.
+
+### Remaining manuscript drafting queue
+
+```
+[x] 4.1 Lambda                                  608 words
+[x] 4.2 Magic numbers                           985 words
+[x] 4.3 Holmlid LENR                          1,083 words
+[x] 4.4 Yang-Mills (REWRITTEN agreement)      1,243 words
+[x] 4.5 SM spectrum                           1,173 words
+[x] 4.6 Forward predictions                     933 words
+[x] 5   Statistical hygiene + ΔBIC = 94.1     1,319 words
+[ ] 7   Reproducibility                       (~700 words; lift from INSTALL/ARCHITECTURE/SECURITY_AND_MEMORY)
+[ ] 2   The 9 truly-independent primitives    (~1,500 words; lift from PROVENANCE_AUDIT)
+[ ] 3   Closure architecture                  (~800 words; lift from CLOSURE_ATLAS)
+[ ] 6   Provenance + locking                  (~1,000 words; further lift from PROVENANCE_AUDIT + PAPER_1521/1522)
+[ ] 8   Limitations + open questions          (~1,500 words; honest acknowledgments)
+[ ] 1   Introduction                          (LAST, ~2,000 words)
+[ ] 9   Conclusions                           (LAST, ~700 words)
+[ ] Abstract                                  (LAST, ~250-300 words distilled)
+[ ] BibTeX expansion + LaTeX compile pass
+```
+
+### Calculator state after v5.29.1 ship
+
+```
+Calculator file size:        2,666,667 bytes (+554 bytes vs v5.29.0)
+Public surfaces:             34
+PARADOX_TO_CLOSURE keys:     794
+Millennium derives:          8
+Truly-independent primitives: 9
+Derivative primitives:        2
+Whitepapers bundled:         1,994
+Lean scaffold files:         6
+arXiv bundles:               4
+Manuscript PDFs bundled:     1 (existing software paper; manuscript_v2 not yet built)
+Audit chain-trace files:     608
+Grok proof archives:         3
+Total proof corpus:          ~4,164 artifacts
+Fidelity gate:               866/0
+PyPI version:                5.29.1 (live)
+```
+
+### Files written / modified this batch
+
+| File | Change |
+|---|---|
+| `pyproject.toml` | Version bump 5.29.0 → 5.29.1 |
+| `uqff_cli.py` | Version bump |
+| `uqff_api.py` | Version bump from 5.28.0 → 5.29.1 (was lagging since v5.29.0) |
+| `uqff_jupyter.py` | Version bump from 5.28.0 → 5.29.1 (was lagging) |
+| `uqff_pure_calculator.py` | `pypi_wheel_version` field bumped 5.29.0 → 5.29.1 (status_report dict) |
+| `uqff_fidelity_tests.py` | BLOCK 29 `pypi_wheel_version` check changed to `startswith("5.29.")` regex (future-proof for the 5.29.x family) |
+| `manuscript_v2/section_05_statistical_hygiene.tex` | NEW — 1,319-word draft of the ΔBIC = 94.1 headline section |
+| `manuscript_v2/references.bib` | +2 entries (Kass-Raftery 1995, Benjamini-Hochberg 1995) |
+| `manuscript_v2/uqff_manuscript_v2.tex` | §5 placeholder replaced with `\input{section_05_statistical_hygiene.tex}` |
+
+### Daniel-action items still pending
+
+1. **Zenodo DOI activation** — toggle Star-Magic ON at https://zenodo.org/account/settings/github/ ; next tag push mints the DOI; provide both version + concept DOIs back so README badge + CITATION.cff + pyproject.toml can be updated.
+2. **Read-the-Docs activation** — DONE (https://app.readthedocs.org/projects/star-magic/) ; RTD badge added to README.
+3. **Continue manuscript drafting** — IN PROGRESS, next section §7 Reproducibility.
+

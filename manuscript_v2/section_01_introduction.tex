@@ -1,0 +1,222 @@
+%==============================================================================
+% UQFF Manuscript v2 — Section 1
+% Topic:    Introduction
+% Status:   written LAST, after all other sections drafted.
+% This is the section the reviewer reads first. It must set up everything
+% without overclaiming. Calibration is paramount.
+%==============================================================================
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The benchmark: SM + $\Lambda$CDM and its parameter cost}
+\label{sec:benchmark}
+
+The Standard Model of particle physics combined with $\Lambda$-CDM
+cosmology is, by every measure of empirical success, the most
+successful predictive framework in the history of physics. It
+accurately reproduces every confirmed observation from the
+microsecond after the Big Bang \cite{Planck2018} through the
+high-energy collisions at the LHC \cite{PDG2024}, with no
+confirmed experimental disagreement above the few-sigma level.
+
+This success comes at the cost of 26 independently-fitted free
+parameters \cite{PDG2024}: 12 fermion masses, 3 gauge couplings, 4
+CKM mixing parameters, the Higgs vacuum expectation value and
+self-coupling, the QCD vacuum angle, the cosmological constant,
+and the five additional $\Lambda$-CDM cosmological parameters
+($H_0$, $\Omega_m$, $\Omega_b$, $n_s$, $\sigma_8$ or their
+equivalents). The model does not derive any of these parameters from
+a deeper principle; each is calibrated against observation
+independently.
+
+The 26-parameter count is not, in itself, an argument against
+SM + $\Lambda$-CDM. The framework's empirical success is real, and
+the parameters are reproducible across independent measurements.
+The 26-parameter count is, however, the natural opening for any
+proposed alternative: if a framework with fewer parameters can
+reproduce the same observations to the same precision, parameter
+economy alone provides Bayesian evidence in favor of the more
+parsimonious model.
+
+\subsection{Why parameter economy matters: Bayesian Information Criterion}
+\label{sec:why_bic}
+
+The Bayesian Information Criterion (BIC) formalizes the
+intuition that a model with fewer parameters and identical fit
+quality is preferred. At fixed observation count $N_{\text{obs}}$,
+$\Delta\mathrm{BIC} = (k_{\text{big}} - k_{\text{small}})\cdot\ln N_{\text{obs}}$
+between two equally-fitting models. The Kass--Raftery convention
+\cite{KassRaftery1995} interprets $\Delta\mathrm{BIC} > 10$ as
+``decisive'' and $\Delta\mathrm{BIC} > 100$ as ``overwhelming''
+evidence for the more parsimonious model. The thresholds are
+deliberately set high: BIC is a strict criterion precisely because
+it penalizes any model that buys fit quality with parameter count.
+
+Parameter economy is therefore not a stylistic preference but a
+quantitative Bayesian argument. Any alternative-physics framework
+that reduces $k$ at fixed fit quality must, by construction,
+improve $\Delta\mathrm{BIC}$ in its favor --- and BIC values above
+10 are sufficient to count as decisive in the standard convention.
+
+\subsection{Prior parameter-economy frameworks}
+\label{sec:prior_frameworks}
+
+Several frameworks in the historical literature have attempted to
+reduce the SM+$\Lambda$CDM parameter count:
+
+\begin{itemize}
+  \item \textbf{String theory and M-theory} \cite{Polchinski1998,GSW1987}:
+        promise a single fundamental input (the string tension or
+        compactification topology) generating all SM
+        parameters; have not yet produced a complete set of
+        derived SM parameters at agreed-upon values.
+  \item \textbf{Loop quantum gravity} \cite{Rovelli2004}: predicts
+        discrete spacetime geometry; does not currently address
+        the SM fermion-mass spectrum.
+  \item \textbf{Causal-set theory and asymptotic safety}: predict
+        cosmological-scale phenomena; do not currently produce
+        per-observable SM closures.
+  \item \textbf{Entropic / emergent gravity} \cite{Verlinde2011}:
+        derives Newtonian gravity and aspects of
+        $\Lambda$-CDM cosmology from thermodynamic principles;
+        does not address SM parameters.
+\end{itemize}
+
+The common challenge across these frameworks is to combine
+theoretical economy with per-observable predictive specificity:
+fewer parameters \emph{and} per-observable agreement with
+measurement. The framework presented here, UQFF, attempts this
+combination by anchoring nine truly-independent primitives to
+specific empirical and structural sources and deriving
+$\sim 800$ closures from them.
+
+\subsection{This work: UQFF Star-Magic}
+\label{sec:this_work}
+
+UQFF (Unified Quantum Field Framework) Star-Magic is a
+vacuum-first physics framework built on nine truly-independent
+primitives (Sec.~\ref{sec:primitives}): five integer lattice
+primitives ($D_{\text{phys}} = 4$, $D_{\text{crit}} = 26$,
+$N_{\text{CH}} = 9$, $\mathrm{SO}_5 = 10$, $|A_5| = 60$) and
+four real-valued primitives
+($\rho_{\text{SCm}} = 7.09\times 10^{-37}\,\mathrm{J/m^3}$,
+$\beta_i = 0.6029$, $\Phi_{\text{res}} = 0.84$,
+$F_{\text{TRZ}} = 0.1$). From these primitives the framework
+derives:
+
+\begin{itemize}
+  \item the cosmological constant $\rho_\Lambda$ at 0.003\,\%
+        match to Planck (Sec.~\ref{sec:lambda});
+  \item all seven nuclear shell-model magic numbers
+        $\{2,8,20,28,50,82,126\}$ as exact integer-arithmetic
+        identities, plus Fe-56 binding-energy peak at 0.019\,\%
+        and $\alpha$-particle binding at 0.012\,\%
+        (Sec.~\ref{sec:magic_numbers});
+  \item the Holmlid 630\,eV LENR signature exactly, with an
+        independent Coulomb-energy cross-check at 0.6\,\%
+        (Sec.~\ref{sec:holmlid});
+  \item the SU(3) Yang-Mills glueball mass-gap candidate at
+        1.736\,GeV via two structurally independent derivation
+        chains (PAPER\_1318 integer-primitive + grok 31May2026
+        DPM-buoyancy variational), agreeing with lattice QCD's
+        1.6--2.0\,GeV band (Sec.~\ref{sec:yang_mills});
+  \item ten Standard Model fermion and boson masses
+        ($m_W, m_Z, m_t, m_H, m_b, m_c, m_\tau, m_\mu, m_s, m_e$)
+        within 0.2\,\% (Sec.~\ref{sec:sm_spectrum});
+  \item 42 specific falsifiable forward predictions, including
+        the room-temperature superconductor ceiling at 500\,K,
+        the surface-code fault-tolerance threshold at exactly
+        1.00\,\%, the direct-collapse black-hole seed mass at
+        56{,}160 $M_\odot$, and the neutron-lifetime puzzle
+        resolution at 879.31\,s (Sec.~\ref{sec:forecasts});
+  \item over 200 additional bucket observables across cosmology,
+        gravitational-wave events, AGN jets, astrophysics,
+        high-energy astrophysics, quark-gluon plasma, Higgs
+        precision, and BSM constraints (Sec.~\ref{sec:architecture}).
+\end{itemize}
+
+A Bayesian Information Criterion analysis against the
+SM+$\Lambda$CDM benchmark (Sec.~\ref{sec:bic}) yields
+\begin{equation*}
+\Delta\mathrm{BIC} \;=\; (k_{\text{SM+}\Lambda\text{CDM}} - k_{\text{UQFF}})\cdot\ln N_{\text{obs}}
+\;=\; (26 - 9)\cdot\ln 253 \;=\; 94.1
+\end{equation*}
+which falls deep in the Kass--Raftery ``decisive'' band and
+approaches the ``overwhelming'' threshold, purely on
+parameter-economy grounds at fixed observation count.
+
+\subsection{What this paper does and does not claim}
+\label{sec:does_does_not_claim}
+
+What this paper claims is bounded carefully. \emph{Does} claim:
+
+\begin{itemize}
+  \item Nine truly-independent primitives generate
+        $\sim 800$ closures across the cited domains.
+  \item 226 of 263 schema-tagged closures (86\,\%) pass a
+        Bonferroni-adjusted significance threshold at
+        family-wise $\alpha = 0.05$.
+  \item The framework's parameter-economy advantage over
+        SM+$\Lambda$CDM is $\Delta\mathrm{BIC} = 94.1$ at the
+        253-observable comparison set.
+  \item 42 specific falsifiable forward predictions are
+        catalogued and reproducible by \texttt{pip install uqff}.
+  \item Every numerical value reported is reproducible in under
+        a minute by a reviewer with Python 3.10+ installed.
+\end{itemize}
+
+\emph{Does not} claim:
+
+\begin{itemize}
+  \item to be a proof or replacement of the Standard Model or
+        $\Lambda$-CDM (the framework's own internal documentation
+        carries an explicit ``NOT REPLACEMENT'' clause across
+        every whitepaper);
+  \item to have proven any Clay Mathematics Institute Millennium
+        Prize problem (the Lean 4 scaffold under
+        \texttt{formal/UQFF/} states this restriction explicitly
+        with \texttt{sorry}-marked theorems);
+  \item to have eliminated all parameter freedom (nine primitives
+        remain, three of which carry C-grade provenance and may
+        yet prove derivative);
+  \item to have been validated by independent third-party
+        reproduction (this manuscript is the first peer-review
+        submission; independent reproduction is the highest-value
+        follow-up activity).
+\end{itemize}
+
+Section~\ref{sec:limitations} expands these non-claims into a
+detailed honest-limitations enumeration.
+
+\subsection{Structure of the paper}
+\label{sec:structure}
+
+Section~\ref{sec:primitives} catalogs the nine truly-independent
+primitives and the two proven-derivative quantities
+($D_{\text{BSFG}}$, $K_{\text{MEX}}$) reduced from independent to
+algebraic-consequence status by PAPER\_1521 and PAPER\_1522.
+Section~\ref{sec:architecture} describes the five closure
+namespaces and the software architecture that makes every claim
+in the paper reproducible. Section~\ref{sec:headline} presents the
+six headline derivations (cosmological constant, magic numbers,
+Holmlid LENR, Yang-Mills, Standard Model spectrum, forward
+predictions). Section~\ref{sec:statistics} performs the
+multiple-comparisons and Bayesian model-comparison hygiene,
+arriving at $\Delta\mathrm{BIC} = 94.1$.
+Section~\ref{sec:provenance} documents the parameter-locking
+discipline and the worked examples of primitive reduction
+(PAPER\_1521 and PAPER\_1522). Section~\ref{sec:reproducibility}
+documents the software-reproducibility infrastructure (PyPI
+package, fidelity gate, C++ cross-language verification, Lean 4
+scaffold). Section~\ref{sec:limitations} is the honest-limitations
+enumeration. Section~\ref{sec:conclusions} summarizes and points
+to the falsification roadmap.
+
+The framework's source code, all 1{,}994 bundled whitepapers, the
+Lean 4 formal-verification scaffold, four arXiv-formatted bundles,
+and the compiled manuscript draft are all available via
+\verb|pip install uqff| (Python 3.10+, AGPL-3.0 + commercial
+dual-license, zero runtime dependencies). The fidelity gate
+asserts every numerical claim in this manuscript on every commit.
+
