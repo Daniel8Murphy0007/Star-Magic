@@ -9,11 +9,32 @@
 
 | Category | Count | Meaning |
 |---|---:|---|
-| MATCH      |   277 | Python and C++ agree within tolerance |
-| DRIFT      |     0 | Both return scalars but they differ |
+| MATCH      |   303 | Python and C++ agree within tolerance |
+| DRIFT      |    15 | Both return scalars but they differ |
 | MISSING    |   312 | C++ function has no matching Python closure key |
-| UNCALLABLE |    41 | Python closure exists but doesn't return a comparable scalar |
+| UNCALLABLE |     0 | Python closure exists but doesn't return a comparable scalar |
 
+## DRIFT — 15 value mismatches
+
+These need investigation. C++ and Python disagree for the same name.
+
+| Function | C++ value | Python value | Relative error |
+|---|---|---|---:|
+| `hubble_bubble` | -0.30145 | -30 | 9.900e-01 |
+| `F_TRZ_identity` | 0.1 | 6 | 9.833e-01 |
+| `hubble_tension` | 5.6 | 67.4 | 9.169e-01 |
+| `pulsar_glitch` | 3.26419e-07 | 1e-06 | 6.736e-01 |
+| `goldbach_weak` | 1 | 3 | 6.667e-01 |
+| `crab_TeV_cutoff` | 79.261 | 80 | 9.238e-03 |
+| `transcendental_pi_over_4` | 0.779167 | 0.785398 | 7.934e-03 |
+| `transcendental_zeta_2` | 1.64733 | 1.64493 | 1.459e-03 |
+| `transcendental_e` | 2.72083 | 2.71828 | 9.386e-04 |
+| `transcendental_e_squared` | 7.39583 | 7.38906 | 9.172e-04 |
+| `inflaton_n_s` | 0.964681 | 0.9655 | 8.484e-04 |
+| `transcendental_catalan_g` | 0.916667 | 0.915966 | 7.654e-04 |
+| `transcendental_pi_squared` | 9.87083 | 9.8696 | 1.245e-04 |
+| `transcendental_ln_10` | 2.30267 | 2.30259 | 3.543e-05 |
+| `transcendental_ln_2` | 0.693167 | 0.693147 | 2.811e-05 |
 
 ## MISSING — 312 C++ functions with no Python counterpart
 
@@ -73,37 +94,8 @@ These are C++-only functions; no PARADOX_TO_CLOSURE key matches.
   ... and 262 more
 ```
 
-## UNCALLABLE — Python closure exists but isn't a scalar
-
-41 entries. Python closures returning dicts/None/structured data don't have a single number to compare.
-
-_First 20:_
-
-```
-  F_TRZ_identity                            C++=0.1           python=dict
-  tsirelson_bound                           C++=2.82843       python=dict
-  hayflick_limit                            C++=60            python=dict
-  V_little_V_big_ratio                      C++=0.030303      python=dict
-  proton_core_density                       C++=2.14644e-36   python=dict
-  twenty_six_pre_mass_states                C++=26            python=dict
-  t_violation_meson                         C++=0.06029       python=dict
-  pulsar_glitch                             C++=3.26419e-07   python=dict
-  crab_TeV_cutoff                           C++=79.261        python=dict
-  inflaton_n_s                              C++=0.964681      python=dict
-  U_UA_coupling_constant                    C++=0.0001        python=dict
-  kerr_ringdown_offset_coeff                C++=4.33333       python=dict
-  gw170817_phonon_prefactor                 C++=0.666667      python=dict
-  transcendental_ln_10                      C++=2.30267       python=dict
-  transcendental_ln_2                       C++=0.693167      python=dict
-  transcendental_pi_squared                 C++=9.87083       python=dict
-  pcr_quantum_triadic                       C++=3             python=dict
-  d_bsfg_derived_from_d_crit                C++=6             python=dict
-  k_mex_derived_from_phi_5_6                C++=2.08333       python=dict
-  f221_f220_qnm_ratio                       C++=0.983426      python=dict
-```
-
 ## Verdict
 
-Of 277 comparable entries, **100.0% match** within relative tolerance 1e-06.
+Of 318 comparable entries, **95.3% match** within relative tolerance 1e-06.
 
 DRIFT entries are the high-priority audit targets. Each represents a case where the C++ value encoded does not match the current Python closure value. Likely causes: (a) the Python closure formula changed after the C++ port was authored; (b) the C++ value was a target rather than a derived value; (c) a typo. Verify each manually and either update the C++ value or flag the closure as deprecated.

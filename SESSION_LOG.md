@@ -6890,3 +6890,82 @@ All 5 new docs interlink, plus reference existing audit docs:
 - COVER_LETTER_TEMPLATE points to REVIEWER_OUTREACH_LIST
 - REPLICATION_PACKAGE references all the audit docs reviewers will read
 
+
+---
+
+## Session 2026-06-25 — Quick-wins bundle (K1c + G7 + M5 + O3 + I5)
+
+**Trigger**: Daniel: "Quick-wins bundle (Recommended)"
+
+### Deliverables
+
+| Item | File | Status |
+|---|---|---|
+| K1c Nested-dict cross-check | `scripts/cpp_python_crosscheck.py` (enhanced) | ✅ DONE — coverage 277 → 318 entries; 95.3% match; 15 legitimate legacy-data DRIFTs surfaced |
+| M5 Code of Conduct | `CODE_OF_CONDUCT.md` | ✅ DONE — Contributor Covenant 2.1 + UQFF-specific clauses (no formal-proof overclaim) |
+| O3 Zenodo DOI guide | `ZENODO_DOI_SETUP.md` | ✅ DONE — 15-min one-time setup procedure documented |
+| I5 Multi-format export | `scripts/export_closures.py` | ✅ DONE — exports closures as CSV, LaTeX, BibTeX, HTML, Markdown |
+| G7 Type hints (lite) | (deferred — supporting modules already have hints) | 🟡 partial |
+
+### K1c result detail
+
+```
+Before K1c:  MATCH=277, DRIFT=0,  UNCALLABLE=41   (100% match across 277 comparable)
+After K1c:   MATCH=303, DRIFT=15, UNCALLABLE=0    (95.3% match across 318 comparable)
+```
+
+The 15 DRIFT entries are LEGITIMATE FINDINGS:
+- Pre-existing legacy C++ values that don't match current Python dict primary fields
+- Each is a real audit target — either the C++ value is stale, or the field-mapping needs adjustment
+- Documented in `CPP_PYTHON_CROSSCHECK_REPORT.md` for follow-up
+
+### I5 (export_closures.py) usage
+
+```bash
+python scripts/export_closures.py --format latex   --out closures.tex --only-schema
+python scripts/export_closures.py --format bibtex  --out closures.bib --filter hubble
+python scripts/export_closures.py --format csv     --out closures.csv
+python scripts/export_closures.py --format html    --out closures.html
+python scripts/export_closures.py --format markdown --out closures.md
+```
+
+- 5 formats supported
+- `--filter` substring narrows the set
+- `--only-schema` includes only schema-tagged closures (with target + residual + paper)
+- `--limit N` caps row count
+
+Useful for manuscript figure preparation (latex), bibliography building (bibtex), spreadsheet analysis (csv), or web display (html).
+
+### M5 Code of Conduct highlights
+
+Standard Contributor Covenant 2.1 PLUS two UQFF-specific clauses:
+1. Engaging in good-faith scientific debate (welcome rigorous critique, not ad hominem)
+2. Not misrepresenting UQFF claims (Clay Millennium = structural CLOSURES, not formal PROOFS)
+
+Enforcement contact: daniel.murphy00@enrgyone.com
+
+### O3 Zenodo DOI procedure
+
+15-min one-time browser setup:
+1. Zenodo account via GitHub OAuth
+2. Toggle Star-Magic repo ON at https://zenodo.org/account/settings/github/
+3. Cut a new tag (v5.28.1) to trigger first DOI mint
+4. Concept DOI + version-specific DOI both auto-generated
+
+Then update CITATION.cff, README.md, pyproject.toml with the DOI. Every future release gets a new DOI automatically.
+
+**Why important**: peer-review submission cover letters benefit enormously from including a DOI. Free, no maintenance, CERN-backed permanence.
+
+### Tier scorecard update
+
+| Tier | Status |
+|---|---|
+| Tier 1 | 13/13 ✅ |
+| Tier 2 | ~92% ✅ (incl. CoC, I5 multi-format) |
+| Tier 3 | ~55% ✅ (incl. K1c) |
+| Tier 4 | ~12% (Zenodo procedural doc done; actual DOI mint awaits Daniel browser action) |
+
+### Edit-tool truncation count this session: 1 (12th of project)
+
+cpp_python_crosscheck.py truncated mid-string during the K1c edit; repaired via Python splice. Pattern continues — CLAUDE.md warning remains correct.
+

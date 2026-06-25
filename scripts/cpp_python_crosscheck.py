@@ -86,10 +86,40 @@ int main() {{
 """
 
 
+# Dict field-paths the cross-check will try (in order) when a Python closure
+# returns a dict instead of a scalar. K1c extension: lets us compare to the
+# "primary" scalar field of dict-returning closures.
+_DICT_PRIMARY_FIELDS = (
+    "UQFF_formula_value",
+    "primary_result",
+    "uqff_canonical_h0_km_s_Mpc",
+    "value",
+    "uqff_value",
+    "uqff_derived",
+    "computed",
+    "result",
+)
+
+
+def _extract_dict_scalar(d: dict) -> tuple[str, float] | tuple[None, None]:
+    """Walk known field-paths to find the primary scalar in a dict result."""
+    for field in _DICT_PRIMARY_FIELDS:
+        if field in d:
+            v = d[field]
+            if isinstance(v, (int, float)) and not isinstance(v, bool):
+                return (field, float(v))
+    # No primary scalar field; look for the FIRST scalar value in the dict
+    for k, v in d.items():
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            return (k, float(v))
+    return (None, None)
+
+
 def call_python_closure(name: str) -> tuple[str, Any]:
     """Try to call the matching Python closure for a C++ function name.
 
     Returns ('match-type', value-or-explanation).
+    K1c: now also extracts primary scalar from dict returns.
     """
     if not hasattr(u, "PARADOX_TO_CLOSURE"):
         return ("no-dispatch", None)
@@ -109,11 +139,11 @@ def call_python_closure(name: str) -> tuple[str, Any]:
                 return ("scalar", float(v))
             if isinstance(v, tuple) and v and isinstance(v[0], (int, float)):
                 return ("scalar", float(v[0]))
-            if isinstance(v, dict) and "UQFF_formula_value" in v:
-                try:
-                    return ("scalar", float(v["UQFF_formula_value"]))
-                except (TypeError, ValueError):
-                    pass
+            if isinstance(v, dict):
+                field, scalar = _extract_dict_scalar(v)
+                if scalar is not None:
+                    return (f"dict.{field}", scalar)
+                return ("dict-no-scalar", str(v)[:80])
             return ("dict", str(v)[:80])
     return ("not-found", None)
 
@@ -174,7 +204,7 @@ def main() -> int:
                 pass
     print(f"  Captured {len(cpp_values)} numeric values from C++")
 
-    # Now compare each to Python
+    # Now compare each to Python (K1c: also handles dict.field_path comparisons)
     print("Comparing to Python closures ...")
     results = {"MATCH": [], "DRIFT": [], "MISSING": [], "UNCALLABLE": []}
     for name in fn_names:
@@ -182,9 +212,15 @@ def main() -> int:
             continue
         cv = cpp_values[name]
         kind, pv = call_python_closure(name)
-        if kind == "scalar":
-            denom = max(abs(pv), args.abs_tol)
-            rel_err = abs(cv - pv) / denom
+        # 'kind' can be 'scalar', 'dict.field_name', 'not-found',
+        # 'dict-no-scalar', 'python-error', etc.
+        if kind == "scalar" or (isinstance(kind, str) and kind.startswith("dict.")):
+            denom = max(abs(pv), args.abs_tol) if isinstance(pv, (int, float)) else args.abs_tol
+            try:
+                rel_err = abs(cv - pv) / denom
+            except (TypeError, ValueError):
+                results["UNCALLABLE"].append((name, cv, kind, pv))
+                continue
             if rel_err <= args.tol:
                 results["MATCH"].append((name, cv, pv, rel_err))
             else:
