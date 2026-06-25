@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.27.2"
+version = "5.28.0"
 description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, ΔBIC = 94.1 vs SM+ΛCDM)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -60,11 +60,23 @@ docs = [
     "sphinx>=6.0",
     "sphinx-rtd-theme>=1.2",
 ]
+api = [
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+]
+jupyter = [
+    "ipython>=8.0",
+    "jupyter>=1.0",
+]
 all = [
     "coverage>=7.0",
     "pytest>=7.0",
     "sphinx>=6.0",
     "sphinx-rtd-theme>=1.2",
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+    "ipython>=8.0",
+    "jupyter>=1.0",
 ]
 
 [project.urls]
@@ -77,9 +89,10 @@ Changelog = "https://github.com/Daniel8Murphy0007/Star-Magic/blob/main/SESSION_L
 
 [project.scripts]
 uqff = "uqff_cli:main"
+uqff-api = "uqff_api:run"
 
 [tool.setuptools]
-py-modules = ["uqff_pure_calculator", "uqff_cli"]
+py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter"]
 include-package-data = true
 
 [tool.setuptools.package-data]

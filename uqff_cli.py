@@ -27,7 +27,7 @@ from typing import Any, Iterable
 import uqff_pure_calculator as u
 
 
-_VERSION = "5.27.2"
+_VERSION = "5.28.0"
 
 
 # ---------------------------------------------------------------------------
@@ -357,6 +357,18 @@ def _cmd_gate(args: argparse.Namespace) -> int:
     return subprocess.call([sys.executable, spec.origin])
 
 
+def _cmd_serve(args):
+    """Launch the REST API server (requires uqff[api] extras)."""
+    try:
+        import uqff_api
+    except ImportError:
+        print("ERROR: uqff_api requires FastAPI. Install with:", file=sys.stderr)
+        print("  pip install 'uqff[api]'", file=sys.stderr)
+        return 1
+    uqff_api.run(host=args.host, port=args.port, reload=args.reload)
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(
         prog="uqff",
@@ -394,6 +406,14 @@ def main(argv=None):
 
     p_gate = sub.add_parser("gate", help="run the fidelity gate")
     p_gate.set_defaults(func=_cmd_gate)
+
+    p_serve = sub.add_parser("serve",
+        help="launch the REST API server (requires `pip install \'uqff[api]\'`)")
+    p_serve.add_argument("--host", default="127.0.0.1")
+    p_serve.add_argument("--port", type=int, default=8000)
+    p_serve.add_argument("--reload", action="store_true",
+        help="auto-reload on code change")
+    p_serve.set_defaults(func=_cmd_serve)
 
     args = parser.parse_args(argv)
     return args.func(args)
