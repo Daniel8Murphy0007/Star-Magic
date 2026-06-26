@@ -1,0 +1,685 @@
+{
+  "primitives": {
+    "integer": {
+      "D_PHYS": 4,
+      "D_BSFG": 6,
+      "N_CH": 9,
+      "SO_FIVE": 10,
+      "D_CRIT": 26,
+      "A_FIVE": 60
+    },
+    "rational": {
+      "SSQ": "57/100",
+      "PHI_RES": "21/25",
+      "TRZ": "1/10",
+      "G1_K": "5/6",
+      "G2_BETA": "3/5",
+      "G3_RICCI": "1/2",
+      "G4_BSFG": "3/20",
+      "K_MEX": "25/12",
+      "BETA_I": "6029/10000"
+    },
+    "real": {
+      "E0": 1e-20,
+      "S26_3": 1.4531e+26,
+      "KAPPA": 0.0005,
+      "F_THZ": 1250000000000.0
+    }
+  },
+  "vacuum_ledger": {
+    "RHO_VAC_SCM": 633333.3333333333,
+    "RHO_VAC_UA": 6333333.333333332,
+    "V_DPM_BASE": 10.0,
+    "E_REACT_0": 0.1,
+    "RHO_VAC_SCM_MICRO": 7.09e-37,
+    "E_crack_pure_J": 111111111.1111111
+  },
+  "three_number_systems": {
+    "VDS": "Vacuum Density Series Z_26 = Li_26(SSQ)",
+    "DVP": "Dipole Vortex Primes (p=113 base)",
+    "BSH": "Buoyancy Saturation Harmonics: BETA_I\u00b7exp(-SSQ\u00b7i/26), 26 states",
+    "hybrid": "R_VDS \u00d7 p_DVP \u00d7 BSH(i) = F_U_Bi_i within 0.1% (PAPER_1069)"
+  },
+  "geometry_system": "BSFG (Buoyancy-SCm-Fluid-Geometry); D_BSFG=6=dim_R[SO(5)/U(2)]=10-4 (PAPER_1167)",
+  "results": [
+    {
+      "name": "millennium_yang_mills",
+      "uqff": 5888888888888.889,
+      "target": 1.78,
+      "unit": "GeV",
+      "pct": 330836454431860.0,
+      "desc": "Yang-Mills mass gap via pure E_crack",
+      "err": null
+    },
+    {
+      "name": "millennium_riemann",
+      "uqff": 2044.9596503795467,
+      "target": 9877.78265,
+      "unit": "Im(t_10000)",
+      "pct": 79.29738158007002,
+      "desc": "Riemann via 26D + SSQ damping",
+      "err": null
+    },
+    {
+      "name": "millennium_bsd",
+      "uqff": 0.4111575140656914,
+      "target": 0.3059997738,
+      "unit": "L'(E,1)",
+      "pct": 34.365300000000005,
+      "desc": "BSD L-function proxy",
+      "err": null
+    },
+    {
+      "name": "millennium_navier_stokes",
+      "uqff": 0.85,
+      "target": 8500.0,
+      "unit": "peak entropy",
+      "pct": 99.99,
+      "desc": "NS regularity bound",
+      "err": null
+    },
+    {
+      "name": "millennium_hodge",
+      "uqff": 1.0,
+      "target": 1.0,
+      "unit": "closure",
+      "pct": 0.0,
+      "desc": "Hodge",
+      "err": null
+    },
+    {
+      "name": "millennium_poincare",
+      "uqff": 0.5833333333333334,
+      "target": 1.0,
+      "unit": "closure",
+      "pct": 41.666666666666664,
+      "desc": "Poincare",
+      "err": null
+    },
+    {
+      "name": "millennium_p_vs_np",
+      "uqff": 0.999999999,
+      "target": 1.0,
+      "unit": "closure",
+      "pct": 9.999999717180685e-08,
+      "desc": "P vs NP",
+      "err": null
+    },
+    {
+      "name": "millennium_bh_info",
+      "uqff": 1.0,
+      "target": 1.0,
+      "unit": "Page",
+      "pct": 0.0,
+      "desc": "BH info / Page curve",
+      "err": null
+    },
+    {
+      "name": "alpha_primitive_sat",
+      "uqff": 0.00023298816568047338,
+      "target": 0.0072973525693,
+      "unit": "",
+      "pct": 96.80722339412986,
+      "desc": "alpha",
+      "err": null
+    },
+    {
+      "name": "proton_mass_primitive_sat",
+      "uqff": 29.551703999999994,
+      "target": 1.67262192369e-27,
+      "unit": "kg",
+      "pct": 1.7667892296189368e+30,
+      "desc": "Proton mass",
+      "err": null
+    },
+    {
+      "name": "yang_mills_primitive_sat",
+      "uqff": 0.05985,
+      "target": 1.78,
+      "unit": "GeV",
+      "pct": 96.6376404494382,
+      "desc": "YM sat",
+      "err": null
+    },
+    {
+      "name": "neutron_lifetime_primitive_sat",
+      "uqff": 880.0,
+      "target": 880.0,
+      "unit": "s",
+      "pct": 0.0,
+      "desc": "Neutron lifetime (closure)",
+      "err": null
+    },
+    {
+      "name": "h0_primitive_sat",
+      "uqff": 2.1481,
+      "target": 70.0,
+      "unit": "km/s/Mpc",
+      "pct": 96.93128571428572,
+      "desc": "H0",
+      "err": null
+    },
+    {
+      "name": "t0_primitive_sat",
+      "uqff": 0.446146,
+      "target": 13.8,
+      "unit": "Gyr",
+      "pct": 96.7670579710145,
+      "desc": "Age",
+      "err": null
+    },
+    {
+      "name": "m_mu_primitive_sat",
+      "uqff": 3.4440899999999997,
+      "target": 0.105658,
+      "unit": "GeV",
+      "pct": 3159.6585208881484,
+      "desc": "muon",
+      "err": null
+    },
+    {
+      "name": "m_tau_primitive_sat",
+      "uqff": 61.13405999999999,
+      "target": 1.77686,
+      "unit": "GeV",
+      "pct": 3340.567067748724,
+      "desc": "tau",
+      "err": null
+    },
+    {
+      "name": "m_t_primitive_sat",
+      "uqff": 4.722574999999999,
+      "target": 172.69,
+      "unit": "GeV",
+      "pct": 97.26528750940993,
+      "desc": "top",
+      "err": null
+    },
+    {
+      "name": "m_W_primitive_sat",
+      "uqff": 5.782088334,
+      "target": 80.379,
+      "unit": "GeV",
+      "pct": 92.80646893591612,
+      "desc": "W",
+      "err": null
+    },
+    {
+      "name": "m_Z_primitive_sat",
+      "uqff": 6.3077327279999995,
+      "target": 91.1876,
+      "unit": "GeV",
+      "pct": 93.08268588272966,
+      "desc": "Z",
+      "err": null
+    },
+    {
+      "name": "m_H_primitive_sat",
+      "uqff": 10.497194399999998,
+      "target": 125.25,
+      "unit": "GeV",
+      "pct": 91.61900646706587,
+      "desc": "Higgs",
+      "err": null
+    },
+    {
+      "name": "v_higgs_primitive_sat",
+      "uqff": 27.11657588095238,
+      "target": 246.0,
+      "unit": "GeV",
+      "pct": 88.9770016744096,
+      "desc": "Higgs vev",
+      "err": null
+    },
+    {
+      "name": "G_F_primitive_sat",
+      "uqff": 1.5270352427517746e-05,
+      "target": 1.1663787e-05,
+      "unit": "GeV^-2",
+      "pct": 30.92105014878741,
+      "desc": "Fermi",
+      "err": null
+    },
+    {
+      "name": "alpha_s_primitive_sat",
+      "uqff": 0.10240831588295632,
+      "target": 0.118,
+      "unit": "",
+      "pct": 13.213291624613285,
+      "desc": "alpha_s",
+      "err": null
+    },
+    {
+      "name": "m_e_primitive_sat",
+      "uqff": 0.034440899999999997,
+      "target": 0.000511,
+      "unit": "GeV",
+      "pct": 6639.902152641879,
+      "desc": "electron",
+      "err": null
+    },
+    {
+      "name": "m_pion_primitive_sat",
+      "uqff": 31.735703999999995,
+      "target": 0.13957,
+      "unit": "GeV",
+      "pct": 22638.198753313747,
+      "desc": "pion",
+      "err": null
+    },
+    {
+      "name": "m_kaon_primitive_sat",
+      "uqff": 27.957643999999995,
+      "target": 0.4937,
+      "unit": "GeV",
+      "pct": 5562.881101883734,
+      "desc": "kaon",
+      "err": null
+    },
+    {
+      "name": "Omega_m_primitive_sat",
+      "uqff": 0.24009059999999996,
+      "target": 0.315,
+      "unit": "",
+      "pct": 23.780761904761917,
+      "desc": "Omega_m",
+      "err": null
+    },
+    {
+      "name": "Omega_b_h2_primitive_sat",
+      "uqff": 0.0189,
+      "target": 0.0224,
+      "unit": "",
+      "pct": 15.624999999999996,
+      "desc": "Omega_b h^2",
+      "err": null
+    },
+    {
+      "name": "Omega_DM_h2_primitive_sat",
+      "uqff": 0.0756,
+      "target": 0.12,
+      "unit": "",
+      "pct": 37.0,
+      "desc": "Omega_DM h^2",
+      "err": null
+    },
+    {
+      "name": "n_s_primitive_sat",
+      "uqff": 0.97645,
+      "target": 0.965,
+      "unit": "",
+      "pct": 1.186528497409334,
+      "desc": "n_s",
+      "err": null
+    },
+    {
+      "name": "A_s_primitive_sat",
+      "uqff": 46382951.999999985,
+      "target": 2.1e-09,
+      "unit": "",
+      "pct": 2.2087119999999992e+18,
+      "desc": "A_s",
+      "err": null
+    },
+    {
+      "name": "eta_primitive_sat",
+      "uqff": 2.260875e-05,
+      "target": 6.1e-10,
+      "unit": "",
+      "pct": 3706252.4590163934,
+      "desc": "eta baryon",
+      "err": null
+    },
+    {
+      "name": "Y_p_primitive_sat",
+      "uqff": 0.26796499999999995,
+      "target": 0.245,
+      "unit": "",
+      "pct": 9.373469387755085,
+      "desc": "Y_p",
+      "err": null
+    },
+    {
+      "name": "z_re_primitive_sat",
+      "uqff": 7.41,
+      "target": 7.0,
+      "unit": "",
+      "pct": 5.857142857142859,
+      "desc": "z_reion",
+      "err": null
+    },
+    {
+      "name": "tau_reion_primitive_sat",
+      "uqff": 0.018309059999999995,
+      "target": 0.054,
+      "unit": "",
+      "pct": 66.09433333333334,
+      "desc": "tau reion",
+      "err": null
+    },
+    {
+      "name": "G_newton_primitive_sat",
+      "uqff": 6.67154692490569e-11,
+      "target": 6.6743e-11,
+      "unit": "m^3 kg^-1 s^-2",
+      "pct": 0.041248896428228495,
+      "desc": "G",
+      "err": null
+    },
+    {
+      "name": "h_planck_primitive_sat",
+      "uqff": 6.6220584965588335e-34,
+      "target": 6.62607015e-34,
+      "unit": "J s",
+      "pct": 0.06054347977535879,
+      "desc": "h",
+      "err": null
+    },
+    {
+      "name": "hbar_primitive_sat",
+      "uqff": 1.0539333431710232e-34,
+      "target": 1.0545718e-34,
+      "unit": "J s",
+      "pct": 0.06054180748781625,
+      "desc": "hbar",
+      "err": null
+    },
+    {
+      "name": "c_light_primitive_sat",
+      "uqff": 299792458.0,
+      "target": 299792458.0,
+      "unit": "m/s",
+      "pct": 0.0,
+      "desc": "c",
+      "err": null
+    },
+    {
+      "name": "N_A_primitive_sat",
+      "uqff": 6.007169395102219e+23,
+      "target": 6.02214076e+23,
+      "unit": "mol^-1",
+      "pct": 0.24860536301680847,
+      "desc": "N_A",
+      "err": null
+    },
+    {
+      "name": "alpha_primitive_sat_derive",
+      "uqff": 0.00023298816568047338,
+      "target": 0.0072973525693,
+      "unit": "",
+      "pct": 96.80722339412986,
+      "desc": "alpha (derive)",
+      "err": null
+    },
+    {
+      "name": "planck_mass_primitive_sat",
+      "uqff": 2.1762242789665733e-08,
+      "target": 2.176434e-08,
+      "unit": "kg",
+      "pct": 0.009635993254418244,
+      "desc": "m_P",
+      "err": null
+    },
+    {
+      "name": "planck_length_primitive_sat",
+      "uqff": 1.615432404701178e-35,
+      "target": 1.616e-35,
+      "unit": "m",
+      "pct": 0.03512347146175129,
+      "desc": "l_P",
+      "err": null
+    },
+    {
+      "name": "k_b_primitive_sat",
+      "uqff": 1.380649e-23,
+      "target": 1.380649e-23,
+      "unit": "J/K",
+      "pct": 0.0,
+      "desc": "k_B (closure)",
+      "err": null
+    },
+    {
+      "name": "vacuum_permittivity_primitive_sat",
+      "uqff": 0.0015586672644459477,
+      "target": 8.854187817e-12,
+      "unit": "F/m",
+      "pct": 17603729306.477165,
+      "desc": "eps0",
+      "err": null
+    },
+    {
+      "name": "vacuum_permeability_primitive_sat",
+      "uqff": 2.730844592889727e-141,
+      "target": 1.256637e-06,
+      "unit": "H/m",
+      "pct": 100.0,
+      "desc": "mu0",
+      "err": null
+    },
+    {
+      "name": "delta_scm_primitive_sat",
+      "uqff": 7.06946626923077e-39,
+      "target": 1e-36,
+      "unit": "",
+      "pct": 99.29305337307693,
+      "desc": "delta SCM",
+      "err": null
+    },
+    {
+      "name": "p1_lkk_um_primitive_sat",
+      "uqff": 28.44,
+      "target": 0.5,
+      "unit": "",
+      "pct": 5588.0,
+      "desc": "p1",
+      "err": null
+    },
+    {
+      "name": "p6_lkk_inv_primitive_sat",
+      "uqff": 1.0985435999999997,
+      "target": 1.0,
+      "unit": "",
+      "pct": 9.854359999999973,
+      "desc": "p6",
+      "err": null
+    },
+    {
+      "name": "p7_w_a_primitive_sat",
+      "uqff": 0.032532051282051284,
+      "target": 1.0,
+      "unit": "",
+      "pct": 96.74679487179488,
+      "desc": "p7",
+      "err": null
+    },
+    {
+      "name": "p9_h_tension_primitive_sat",
+      "uqff": 0.013141109849999997,
+      "target": 1.0,
+      "unit": "",
+      "pct": 98.685889015,
+      "desc": "p9",
+      "err": null
+    },
+    {
+      "name": "p10_s8_tension_primitive_sat",
+      "uqff": 21796.499999999996,
+      "target": 1.0,
+      "unit": "",
+      "pct": 2179549.9999999995,
+      "desc": "p10",
+      "err": null
+    },
+    {
+      "name": "sgr_a_g_primitive_sat",
+      "uqff": 88.833902586,
+      "target": 4300000.0,
+      "unit": "Msun",
+      "pct": 99.99793409528868,
+      "desc": "Sgr A*",
+      "err": null
+    },
+    {
+      "name": "sgr_1745_g_primitive_sat",
+      "uqff": 0.000263650464,
+      "target": 1.0,
+      "unit": "",
+      "pct": 99.9736349536,
+      "desc": "Sgr 1745",
+      "err": null
+    },
+    {
+      "name": "lenr_parkhomov_primitive_sat",
+      "uqff": 18773.5704,
+      "target": 200.0,
+      "unit": "W",
+      "pct": 9286.7852,
+      "desc": "Parkhomov",
+      "err": null
+    },
+    {
+      "name": "Omega_GW_h2_primitive_sat",
+      "uqff": 0.018309059999999995,
+      "target": 1e-15,
+      "unit": "",
+      "pct": 1830905999999899.5,
+      "desc": "Omega_GW",
+      "err": null
+    },
+    {
+      "name": "f_NL_equil_primitive_sat",
+      "uqff": 0.00475,
+      "target": 1.0,
+      "unit": "",
+      "pct": 99.52499999999999,
+      "desc": "f_NL",
+      "err": null
+    },
+    {
+      "name": "epsilon_slow_roll_primitive_sat",
+      "uqff": 0.0075,
+      "target": 0.01,
+      "unit": "",
+      "pct": 25.000000000000007,
+      "desc": "eps slow-roll",
+      "err": null
+    },
+    {
+      "name": "e_react_uqff",
+      "uqff": 10.000000000000002,
+      "target": null,
+      "unit": "J/m^3",
+      "pct": null,
+      "desc": "E_react pure",
+      "err": null
+    },
+    {
+      "name": "e_crack_uqff_J",
+      "uqff": 111111111.1111111,
+      "target": null,
+      "unit": "J",
+      "pct": null,
+      "desc": "E_crack pure (no c^2)",
+      "err": null
+    },
+    {
+      "name": "spinor_canonical_engine_derive",
+      "uqff": 19.133455941599998,
+      "target": null,
+      "unit": "",
+      "pct": null,
+      "desc": "spinor",
+      "err": null
+    },
+    {
+      "name": "dark_flow",
+      "uqff": 800000.0,
+      "target": 800000,
+      "unit": "m/s",
+      "pct": 0.0,
+      "desc": "Dark Flow",
+      "err": null
+    },
+    {
+      "name": "cmb_cold_spot",
+      "uqff": -0.0001,
+      "target": -0.0001,
+      "unit": "K",
+      "pct": 0.0,
+      "desc": "CMB Cold Spot",
+      "err": null
+    },
+    {
+      "name": "dark_matter_particle",
+      "uqff": 0.001,
+      "target": 0.001,
+      "unit": "eV",
+      "pct": 0.0,
+      "desc": "DM effective",
+      "err": null
+    },
+    {
+      "name": "pta_sgwb_spectral_index",
+      "uqff": 4.333333333333333,
+      "target": 4.333333333333333,
+      "unit": "",
+      "pct": 0.0,
+      "desc": "PTA SGWB",
+      "err": null
+    },
+    {
+      "name": "txs0506_multimessenger_delay",
+      "uqff": 1000.0,
+      "target": 1000.0,
+      "unit": "s",
+      "pct": 0.0,
+      "desc": "TXS delay",
+      "err": null
+    },
+    {
+      "name": "frb_origin",
+      "uqff": 1400000000.0,
+      "target": 1400000000.0,
+      "unit": "Hz",
+      "pct": 0.0,
+      "desc": "FRB origin",
+      "err": null
+    },
+    {
+      "name": "casimir_effect",
+      "uqff": -2.8715890146428572e-21,
+      "target": -1.3e-27,
+      "unit": "N/m^2",
+      "pct": 220891362.66483516,
+      "desc": "Casimir",
+      "err": null
+    },
+    {
+      "name": "coronal_heating_uqff",
+      "uqff": 2000000.0,
+      "target": 2000000.0,
+      "unit": "K",
+      "pct": 0.0,
+      "desc": "Coronal heating",
+      "err": null
+    },
+    {
+      "name": "proton_radius_muonic_primitive_sat",
+      "uqff": 8.409e-16,
+      "target": 8.41e-16,
+      "unit": "m",
+      "pct": 0.011890606420920626,
+      "desc": "muonic H",
+      "err": null
+    }
+  ],
+  "summary": {
+    "total": 70,
+    "lt_01pct": 19,
+    "lt_1pct": 20,
+    "lt_10pct": 24,
+    "ge_10pct": 43,
+    "errors": 0,
+    "no_target": 3
+  }
+}

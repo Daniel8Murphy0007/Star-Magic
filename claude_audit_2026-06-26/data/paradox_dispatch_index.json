@@ -1,0 +1,3855 @@
+{
+  "paradox_dispatch_entries": [
+    {
+      "key": "olbers_paradox",
+      "fn": "_l96_uqff_axiom_olbers_paradox_closure"
+    },
+    {
+      "key": "alders_olbers",
+      "fn": "_l96_uqff_axiom_olbers_paradox_closure"
+    },
+    {
+      "key": "aldors_paradox",
+      "fn": "_l96_uqff_axiom_olbers_paradox_closure"
+    },
+    {
+      "key": "fermi_paradox",
+      "fn": "_l96_uqff_axiom_fermi_paradox_closure"
+    },
+    {
+      "key": "boltzmann_brain",
+      "fn": "_l96_uqff_axiom_boltzmann_brain_closure"
+    },
+    {
+      "key": "wigner_friend",
+      "fn": "_l96_uqff_axiom_wigner_friend_closure"
+    },
+    {
+      "key": "frauchiger_renner",
+      "fn": "_l96_uqff_axiom_wigner_friend_closure"
+    },
+    {
+      "key": "ghz_paradox",
+      "fn": "_l96_uqff_axiom_GHZ_paradox_closure"
+    },
+    {
+      "key": "hardy_paradox",
+      "fn": "_l96_uqff_axiom_hardy_paradox_closure"
+    },
+    {
+      "key": "kochen_specker",
+      "fn": "_l96_uqff_axiom_kochen_specker_closure"
+    },
+    {
+      "key": "pbr_theorem",
+      "fn": "_l96_uqff_axiom_PBR_theorem_closure"
+    },
+    {
+      "key": "bell_paradox",
+      "fn": "_l96_uqff_axiom_bell_theorem_closure"
+    },
+    {
+      "key": "bell_theorem",
+      "fn": "_l96_uqff_axiom_bell_theorem_closure"
+    },
+    {
+      "key": "aspect_experiment",
+      "fn": "_l96_uqff_axiom_aspect_experiment_closure"
+    },
+    {
+      "key": "spooky_action",
+      "fn": "_l96_uqff_axiom_bell_theorem_closure"
+    },
+    {
+      "key": "mach_principle",
+      "fn": "_l96_uqff_axiom_mach_principle_closure"
+    },
+    {
+      "key": "equivalence_principle",
+      "fn": "_l96_uqff_axiom_equivalence_principle_closure"
+    },
+    {
+      "key": "weak_equivalence_principle",
+      "fn": "_l96_uqff_axiom_weak_equivalence_principle_closure"
+    },
+    {
+      "key": "anthropic_principle",
+      "fn": "_l96_uqff_axiom_anthropic_principle_closure"
+    },
+    {
+      "key": "cosmological_principle",
+      "fn": "_l96_uqff_axiom_cosmological_principle_closure"
+    },
+    {
+      "key": "heisenberg_uncertainty",
+      "fn": "_l96_uqff_axiom_heisenberg_uncertainty_closure"
+    },
+    {
+      "key": "three_generations",
+      "fn": "_l96_uqff_axiom_three_generations_closure"
+    },
+    {
+      "key": "su3_color",
+      "fn": "_l96_uqff_axiom_SU3_color_closure"
+    },
+    {
+      "key": "quantum_zeno",
+      "fn": "_l96_uqff_axiom_quantum_zeno_closure"
+    },
+    {
+      "key": "delayed_choice",
+      "fn": "_l96_uqff_axiom_delayed_choice_eraser_closure"
+    },
+    {
+      "key": "quantum_eraser",
+      "fn": "_l96_uqff_axiom_delayed_choice_eraser_closure"
+    },
+    {
+      "key": "delayed_choice_eraser",
+      "fn": "_l96_uqff_axiom_delayed_choice_eraser_closure"
+    },
+    {
+      "key": "no_cloning",
+      "fn": "_l96_uqff_axiom_no_cloning_closure"
+    },
+    {
+      "key": "holevo_bound",
+      "fn": "_l96_uqff_axiom_holevo_bound_closure"
+    },
+    {
+      "key": "landauer_principle",
+      "fn": "_l96_uqff_axiom_landauer_principle_closure"
+    },
+    {
+      "key": "big_bang_singularity",
+      "fn": "_l96_uqff_axiom_big_bang_singularity_closure"
+    },
+    {
+      "key": "singularity_problem",
+      "fn": "_l96_uqff_axiom_big_bang_singularity_closure"
+    },
+    {
+      "key": "inflation_epoch",
+      "fn": "_l96_uqff_axiom_inflation_epoch_closure"
+    },
+    {
+      "key": "no_boundary",
+      "fn": "_l96_uqff_axiom_no_boundary_proposal_closure"
+    },
+    {
+      "key": "no_boundary_proposal",
+      "fn": "_l96_uqff_axiom_no_boundary_proposal_closure"
+    },
+    {
+      "key": "cyclic_cosmology",
+      "fn": "_l96_uqff_axiom_cyclic_cosmology_closure"
+    },
+    {
+      "key": "maxwell_demon",
+      "fn": "_l96_uqff_axiom_maxwell_demon_closure"
+    },
+    {
+      "key": "zeno_classical",
+      "fn": "_l96_uqff_axiom_zeno_classical_closure"
+    },
+    {
+      "key": "achilles_tortoise",
+      "fn": "_l96_uqff_axiom_zeno_classical_closure"
+    },
+    {
+      "key": "axiom_of_choice",
+      "fn": "_l96_uqff_axiom_axiom_of_choice_closure"
+    },
+    {
+      "key": "peano_arithmetic",
+      "fn": "_l96_uqff_axiom_peano_arithmetic_closure"
+    },
+    {
+      "key": "noether_theorem",
+      "fn": "_l96_uqff_axiom_noether_theorem_closure"
+    },
+    {
+      "key": "action_principle",
+      "fn": "_l96_uqff_axiom_action_principle_closure"
+    },
+    {
+      "key": "diffeomorphism_invariance",
+      "fn": "_l96_uqff_axiom_diffeomorphism_invariance_closure"
+    },
+    {
+      "key": "ergodic_hypothesis",
+      "fn": "_l96_uqff_axiom_ergodic_hypothesis_closure"
+    },
+    {
+      "key": "equipartition_theorem",
+      "fn": "_l96_uqff_axiom_equipartition_theorem_closure"
+    },
+    {
+      "key": "max_entropy_principle",
+      "fn": "_l96_uqff_axiom_max_entropy_principle_closure"
+    },
+    {
+      "key": "fluctuation_dissipation",
+      "fn": "_l96_uqff_axiom_fluctuation_dissipation_closure"
+    },
+    {
+      "key": "firewall_paradox",
+      "fn": "_l96_uqff_firewall_paradox_closure"
+    },
+    {
+      "key": "amps_paradox",
+      "fn": "_l96_uqff_firewall_paradox_closure"
+    },
+    {
+      "key": "quantum_measurement_problem",
+      "fn": "_l96_uqff_quantum_measurement_problem_closure"
+    },
+    {
+      "key": "measurement_problem",
+      "fn": "_l96_uqff_quantum_measurement_problem_closure"
+    },
+    {
+      "key": "hierarchy_problem",
+      "fn": "_l96_uqff_hierarchy_problem_closure"
+    },
+    {
+      "key": "lithium_problem",
+      "fn": "_l96_uqff_lithium_7_problem_closure"
+    },
+    {
+      "key": "lithium_7_problem",
+      "fn": "_l96_uqff_lithium_7_problem_closure"
+    },
+    {
+      "key": "hubble_tension",
+      "fn": "_l96_uqff_hubble_tension_canonical_report"
+    },
+    {
+      "key": "sigma_8_tension",
+      "fn": "_l96_uqff_sigma_8_tension_closure"
+    },
+    {
+      "key": "sigma8_tension",
+      "fn": "_l96_uqff_sigma_8_tension_closure"
+    },
+    {
+      "key": "s8_growth_tension",
+      "fn": "_l96_uqff_s8_growth_tension_closure"
+    },
+    {
+      "key": "cusp_core",
+      "fn": "_l96_uqff_cusp_core_problem_closure"
+    },
+    {
+      "key": "twin_paradox",
+      "fn": "_l96_uqff_axiom_twin_paradox_closure"
+    },
+    {
+      "key": "loschmidt_paradox",
+      "fn": "_l96_uqff_axiom_loschmidt_paradox_closure"
+    },
+    {
+      "key": "loschmidt",
+      "fn": "_l96_uqff_axiom_loschmidt_paradox_closure"
+    },
+    {
+      "key": "reversibility_paradox",
+      "fn": "_l96_uqff_axiom_loschmidt_paradox_closure"
+    },
+    {
+      "key": "klein_paradox",
+      "fn": "_l96_uqff_axiom_klein_paradox_closure"
+    },
+    {
+      "key": "klein_tunneling",
+      "fn": "_l96_uqff_axiom_klein_paradox_closure"
+    },
+    {
+      "key": "mpemba_effect",
+      "fn": "_l96_uqff_axiom_mpemba_effect_closure"
+    },
+    {
+      "key": "mpemba",
+      "fn": "_l96_uqff_axiom_mpemba_effect_closure"
+    },
+    {
+      "key": "faint_young_sun",
+      "fn": "_l96_uqff_axiom_faint_young_sun_closure"
+    },
+    {
+      "key": "faint_young_sun_paradox",
+      "fn": "_l96_uqff_axiom_faint_young_sun_closure"
+    },
+    {
+      "key": "final_parsec_problem",
+      "fn": "_l96_uqff_axiom_final_parsec_problem_closure"
+    },
+    {
+      "key": "final_parsec",
+      "fn": "_l96_uqff_axiom_final_parsec_problem_closure"
+    },
+    {
+      "key": "smbh_binary_stall",
+      "fn": "_l96_uqff_axiom_final_parsec_problem_closure"
+    },
+    {
+      "key": "banach_tarski",
+      "fn": "_l96_uqff_axiom_banach_tarski_closure"
+    },
+    {
+      "key": "banach_tarski_paradox",
+      "fn": "_l96_uqff_axiom_banach_tarski_closure"
+    },
+    {
+      "key": "gibbs_paradox",
+      "fn": "_l96_uqff_axiom_gibbs_paradox_closure"
+    },
+    {
+      "key": "gibbs_mixing",
+      "fn": "_l96_uqff_axiom_gibbs_paradox_closure"
+    },
+    {
+      "key": "aharonov_bohm",
+      "fn": "_l96_uqff_axiom_aharonov_bohm_closure"
+    },
+    {
+      "key": "aharonov_bohm_paradox",
+      "fn": "_l96_uqff_axiom_aharonov_bohm_closure"
+    },
+    {
+      "key": "aharonov_bohm_effect",
+      "fn": "_l96_uqff_axiom_aharonov_bohm_closure"
+    },
+    {
+      "key": "trans_planckian",
+      "fn": "_l96_uqff_axiom_trans_planckian_closure"
+    },
+    {
+      "key": "trans_planckian_problem",
+      "fn": "_l96_uqff_axiom_trans_planckian_closure"
+    },
+    {
+      "key": "aharonov_casher",
+      "fn": "_l96_uqff_axiom_aharonov_casher_closure"
+    },
+    {
+      "key": "aharonov_casher_effect",
+      "fn": "_l96_uqff_axiom_aharonov_casher_closure"
+    },
+    {
+      "key": "ehrenfest_paradox",
+      "fn": "_l96_uqff_axiom_ehrenfest_paradox_closure"
+    },
+    {
+      "key": "ehrenfest",
+      "fn": "_l96_uqff_axiom_ehrenfest_paradox_closure"
+    },
+    {
+      "key": "rotating_disk_paradox",
+      "fn": "_l96_uqff_axiom_ehrenfest_paradox_closure"
+    },
+    {
+      "key": "bell_spaceship",
+      "fn": "_l96_uqff_axiom_bell_spaceship_closure"
+    },
+    {
+      "key": "bell_spaceship_paradox",
+      "fn": "_l96_uqff_axiom_bell_spaceship_closure"
+    },
+    {
+      "key": "klein_gordon_negative_energy",
+      "fn": "_l96_uqff_axiom_klein_gordon_negative_energy_closure"
+    },
+    {
+      "key": "klein_gordon",
+      "fn": "_l96_uqff_axiom_klein_gordon_negative_energy_closure"
+    },
+    {
+      "key": "negative_energy_paradox",
+      "fn": "_l96_uqff_axiom_klein_gordon_negative_energy_closure"
+    },
+    {
+      "key": "supplee_submarine",
+      "fn": "_l96_uqff_axiom_supplee_submarine_closure"
+    },
+    {
+      "key": "submarine_paradox",
+      "fn": "_l96_uqff_axiom_supplee_submarine_closure"
+    },
+    {
+      "key": "ladder_paradox",
+      "fn": "_l96_uqff_axiom_ladder_paradox_closure"
+    },
+    {
+      "key": "pole_and_barn",
+      "fn": "_l96_uqff_axiom_ladder_paradox_closure"
+    },
+    {
+      "key": "trouton_noble",
+      "fn": "_l96_uqff_axiom_trouton_noble_closure"
+    },
+    {
+      "key": "trouton_noble_paradox",
+      "fn": "_l96_uqff_axiom_trouton_noble_closure"
+    },
+    {
+      "key": "hanbury_brown_twiss",
+      "fn": "_l96_uqff_axiom_hanbury_brown_twiss_closure"
+    },
+    {
+      "key": "hbt",
+      "fn": "_l96_uqff_axiom_hanbury_brown_twiss_closure"
+    },
+    {
+      "key": "renninger_negative_result",
+      "fn": "_l96_uqff_axiom_renninger_negative_result_closure"
+    },
+    {
+      "key": "renninger",
+      "fn": "_l96_uqff_axiom_renninger_negative_result_closure"
+    },
+    {
+      "key": "russells_paradox",
+      "fn": "_l96_uqff_axiom_russells_paradox_closure"
+    },
+    {
+      "key": "russell_paradox",
+      "fn": "_l96_uqff_axiom_russells_paradox_closure"
+    },
+    {
+      "key": "galileo_paradox",
+      "fn": "_l96_uqff_axiom_galileo_bijection_closure"
+    },
+    {
+      "key": "galileo_bijection",
+      "fn": "_l96_uqff_axiom_galileo_bijection_closure"
+    },
+    {
+      "key": "burali_forti",
+      "fn": "_l96_uqff_axiom_burali_forti_closure"
+    },
+    {
+      "key": "burali_forti_paradox",
+      "fn": "_l96_uqff_axiom_burali_forti_closure"
+    },
+    {
+      "key": "st_petersburg",
+      "fn": "_l96_uqff_axiom_st_petersburg_closure"
+    },
+    {
+      "key": "st_petersburg_paradox",
+      "fn": "_l96_uqff_axiom_st_petersburg_closure"
+    },
+    {
+      "key": "two_envelopes",
+      "fn": "_l96_uqff_axiom_two_envelopes_closure"
+    },
+    {
+      "key": "two_envelopes_paradox",
+      "fn": "_l96_uqff_axiom_two_envelopes_closure"
+    },
+    {
+      "key": "sleeping_beauty",
+      "fn": "_l96_uqff_axiom_sleeping_beauty_closure"
+    },
+    {
+      "key": "sleeping_beauty_problem",
+      "fn": "_l96_uqff_axiom_sleeping_beauty_closure"
+    },
+    {
+      "key": "doomsday_argument",
+      "fn": "_l96_uqff_axiom_doomsday_argument_closure"
+    },
+    {
+      "key": "doomsday",
+      "fn": "_l96_uqff_axiom_doomsday_argument_closure"
+    },
+    {
+      "key": "theseus_ship",
+      "fn": "_l96_uqff_axiom_theseus_ship_closure"
+    },
+    {
+      "key": "ship_of_theseus",
+      "fn": "_l96_uqff_axiom_theseus_ship_closure"
+    },
+    {
+      "key": "missing_satellites",
+      "fn": "_l96_uqff_axiom_missing_satellites_closure"
+    },
+    {
+      "key": "missing_satellites_problem",
+      "fn": "_l96_uqff_axiom_missing_satellites_closure"
+    },
+    {
+      "key": "too_big_to_fail",
+      "fn": "_l96_uqff_axiom_too_big_to_fail_closure"
+    },
+    {
+      "key": "too_big_to_fail_problem",
+      "fn": "_l96_uqff_axiom_too_big_to_fail_closure"
+    },
+    {
+      "key": "dark_energy_eos_time_evolving",
+      "fn": "_l96_uqff_axiom_dark_energy_eos_time_evolving_closure"
+    },
+    {
+      "key": "dark_energy_w_de",
+      "fn": "_l96_uqff_axiom_dark_energy_eos_time_evolving_closure"
+    },
+    {
+      "key": "w_de_time_evolving",
+      "fn": "_l96_uqff_axiom_dark_energy_eos_time_evolving_closure"
+    },
+    {
+      "key": "f_trz_so5_identity",
+      "fn": "_l96_uqff_axiom_F_TRZ_SO5_identity_closure"
+    },
+    {
+      "key": "f_trz_identity",
+      "fn": "_l96_uqff_axiom_F_TRZ_SO5_identity_closure"
+    },
+    {
+      "key": "g7_lagrangian_closure",
+      "fn": "_l96_uqff_axiom_F_TRZ_SO5_identity_closure"
+    },
+    {
+      "key": "proto_element_nuclear_identity",
+      "fn": "_l96_uqff_axiom_proto_element_nuclear_identity_closure"
+    },
+    {
+      "key": "proto_iron_proto_silicon",
+      "fn": "_l96_uqff_axiom_proto_element_nuclear_identity_closure"
+    },
+    {
+      "key": "proto_element_identity",
+      "fn": "_l96_uqff_axiom_proto_element_nuclear_identity_closure"
+    },
+    {
+      "key": "cdf_w_mass_anomaly",
+      "fn": "_l96_uqff_axiom_cdf_w_mass_anomaly_closure"
+    },
+    {
+      "key": "w_boson_mass_cdf",
+      "fn": "_l96_uqff_axiom_cdf_w_mass_anomaly_closure"
+    },
+    {
+      "key": "w_mass_anomaly",
+      "fn": "_l96_uqff_axiom_cdf_w_mass_anomaly_closure"
+    },
+    {
+      "key": "lepton_universality_violation",
+      "fn": "_l96_uqff_axiom_lepton_universality_violation_closure"
+    },
+    {
+      "key": "r_k_anomaly",
+      "fn": "_l96_uqff_axiom_lepton_universality_violation_closure"
+    },
+    {
+      "key": "r_d_anomaly",
+      "fn": "_l96_uqff_axiom_lepton_universality_violation_closure"
+    },
+    {
+      "key": "b_meson_anomaly",
+      "fn": "_l96_uqff_axiom_lepton_universality_violation_closure"
+    },
+    {
+      "key": "koto_rare_kaon_decay",
+      "fn": "_l96_uqff_axiom_koto_rare_kaon_decay_closure"
+    },
+    {
+      "key": "koto",
+      "fn": "_l96_uqff_axiom_koto_rare_kaon_decay_closure"
+    },
+    {
+      "key": "k_to_pi_nu_nu",
+      "fn": "_l96_uqff_axiom_koto_rare_kaon_decay_closure"
+    },
+    {
+      "key": "kaon_rare_decay",
+      "fn": "_l96_uqff_axiom_koto_rare_kaon_decay_closure"
+    },
+    {
+      "key": "t_violation_meson",
+      "fn": "_l96_uqff_axiom_T_violation_meson_closure"
+    },
+    {
+      "key": "t_violation",
+      "fn": "_l96_uqff_axiom_T_violation_meson_closure"
+    },
+    {
+      "key": "cp_t_violation",
+      "fn": "_l96_uqff_axiom_T_violation_meson_closure"
+    },
+    {
+      "key": "higgs_invisible_decay",
+      "fn": "_l96_uqff_axiom_higgs_invisible_decay_closure"
+    },
+    {
+      "key": "higgs_invisible",
+      "fn": "_l96_uqff_axiom_higgs_invisible_decay_closure"
+    },
+    {
+      "key": "fcnc_b_to_s_mumu",
+      "fn": "_l96_uqff_axiom_FCNC_b_to_s_mumu_closure"
+    },
+    {
+      "key": "fcnc",
+      "fn": "_l96_uqff_axiom_FCNC_b_to_s_mumu_closure"
+    },
+    {
+      "key": "b_to_s_mu_mu",
+      "fn": "_l96_uqff_axiom_FCNC_b_to_s_mumu_closure"
+    },
+    {
+      "key": "proton_charge_radius_prad",
+      "fn": "_l96_uqff_axiom_proton_charge_radius_PRad_closure"
+    },
+    {
+      "key": "prad_proton_radius",
+      "fn": "_l96_uqff_axiom_proton_charge_radius_PRad_closure"
+    },
+    {
+      "key": "gw_memory_effect",
+      "fn": "_l96_uqff_axiom_gw_memory_effect_closure"
+    },
+    {
+      "key": "schwinger_limit",
+      "fn": "_l96_uqff_axiom_schwinger_limit_closure"
+    },
+    {
+      "key": "vacuum_pair_production_threshold",
+      "fn": "_l96_uqff_axiom_schwinger_limit_closure"
+    },
+    {
+      "key": "qgp_jet_quenching",
+      "fn": "_l96_uqff_axiom_qgp_jet_quenching_closure"
+    },
+    {
+      "key": "jet_quenching",
+      "fn": "_l96_uqff_axiom_qgp_jet_quenching_closure"
+    },
+    {
+      "key": "r_aa_nuclear_modification",
+      "fn": "_l96_uqff_axiom_qgp_jet_quenching_closure"
+    },
+    {
+      "key": "pulsar_glitch",
+      "fn": "_l96_uqff_axiom_pulsar_glitch_closure"
+    },
+    {
+      "key": "pulsar_timing_glitch",
+      "fn": "_l96_uqff_axiom_pulsar_glitch_closure"
+    },
+    {
+      "key": "magnetar_giant_flare",
+      "fn": "_l96_uqff_axiom_magnetar_giant_flare_closure"
+    },
+    {
+      "key": "magnetar_flare",
+      "fn": "_l96_uqff_axiom_magnetar_giant_flare_closure"
+    },
+    {
+      "key": "crab_tev_cutoff",
+      "fn": "_l96_uqff_axiom_crab_pulsar_tev_cutoff_closure"
+    },
+    {
+      "key": "crab_pulsar_spectrum",
+      "fn": "_l96_uqff_axiom_crab_pulsar_tev_cutoff_closure"
+    },
+    {
+      "key": "cosmic_ray_ankle",
+      "fn": "_l96_uqff_axiom_cosmic_ray_ankle_closure"
+    },
+    {
+      "key": "cr_ankle",
+      "fn": "_l96_uqff_axiom_cosmic_ray_ankle_closure"
+    },
+    {
+      "key": "cr_second_knee",
+      "fn": "_l96_uqff_axiom_cosmic_ray_ankle_closure"
+    },
+    {
+      "key": "faber_jackson",
+      "fn": "_l96_uqff_axiom_faber_jackson_closure"
+    },
+    {
+      "key": "faber_jackson_relation",
+      "fn": "_l96_uqff_axiom_faber_jackson_closure"
+    },
+    {
+      "key": "color_superconductivity",
+      "fn": "_l96_uqff_axiom_color_superconductivity_CFL_closure"
+    },
+    {
+      "key": "color_superconductor",
+      "fn": "_l96_uqff_axiom_color_superconductivity_CFL_closure"
+    },
+    {
+      "key": "cfl_phase",
+      "fn": "_l96_uqff_axiom_color_superconductivity_CFL_closure"
+    },
+    {
+      "key": "nuclear_pasta",
+      "fn": "_l96_uqff_axiom_nuclear_pasta_closure"
+    },
+    {
+      "key": "neutron_pasta",
+      "fn": "_l96_uqff_axiom_nuclear_pasta_closure"
+    },
+    {
+      "key": "neutron_star_pasta_phase",
+      "fn": "_l96_uqff_axiom_nuclear_pasta_closure"
+    },
+    {
+      "key": "n_body_simulation_3d",
+      "fn": "_l96_uqff_axiom_n_body_simulation_3D_closure"
+    },
+    {
+      "key": "n_body_3d",
+      "fn": "_l96_uqff_axiom_n_body_simulation_3D_closure"
+    },
+    {
+      "key": "vortex_quantization",
+      "fn": "_l96_uqff_axiom_vortex_quantization_closure"
+    },
+    {
+      "key": "superfluid_vortex",
+      "fn": "_l96_uqff_axiom_vortex_quantization_closure"
+    },
+    {
+      "key": "gross_pitaevskii_vortex",
+      "fn": "_l96_uqff_axiom_vortex_quantization_closure"
+    },
+    {
+      "key": "aether_superfluid",
+      "fn": "_l96_uqff_axiom_aether_superfluid_closure"
+    },
+    {
+      "key": "aether_superfluid_dynamics",
+      "fn": "_l96_uqff_axiom_aether_superfluid_closure"
+    },
+    {
+      "key": "cosmic_neutrino_background",
+      "fn": "_l96_uqff_axiom_cosmic_neutrino_background_closure"
+    },
+    {
+      "key": "cnub",
+      "fn": "_l96_uqff_axiom_cosmic_neutrino_background_closure"
+    },
+    {
+      "key": "c_nu_b",
+      "fn": "_l96_uqff_axiom_cosmic_neutrino_background_closure"
+    },
+    {
+      "key": "mass_without_weight",
+      "fn": "_l96_uqff_axiom_mass_without_weight_F_Ub_closure"
+    },
+    {
+      "key": "f_ub_calibration",
+      "fn": "_l96_uqff_axiom_mass_without_weight_F_Ub_closure"
+    },
+    {
+      "key": "proto_nucleus_atomic_creation",
+      "fn": "_l96_uqff_axiom_proto_nucleus_atomic_creation_closure"
+    },
+    {
+      "key": "proto_nucleus_creation",
+      "fn": "_l96_uqff_axiom_proto_nucleus_atomic_creation_closure"
+    },
+    {
+      "key": "dpm_atomic_creation",
+      "fn": "_l96_uqff_axiom_proto_nucleus_atomic_creation_closure"
+    },
+    {
+      "key": "tde_wandering_mbh",
+      "fn": "_l96_uqff_axiom_tde_wandering_mbh_closure"
+    },
+    {
+      "key": "tidal_disruption_wandering",
+      "fn": "_l96_uqff_axiom_tde_wandering_mbh_closure"
+    },
+    {
+      "key": "at2024tvd",
+      "fn": "_l96_uqff_axiom_tde_wandering_mbh_closure"
+    },
+    {
+      "key": "at2019qiz",
+      "fn": "_l96_uqff_axiom_tde_wandering_mbh_closure"
+    },
+    {
+      "key": "cantor_paradox",
+      "fn": "_l96_uqff_axiom_cantor_paradox_closure"
+    },
+    {
+      "key": "cantors_paradox",
+      "fn": "_l96_uqff_axiom_cantor_paradox_closure"
+    },
+    {
+      "key": "curry_paradox",
+      "fn": "_l96_uqff_axiom_curry_paradox_closure"
+    },
+    {
+      "key": "currys_paradox",
+      "fn": "_l96_uqff_axiom_curry_paradox_closure"
+    },
+    {
+      "key": "skolem_paradox",
+      "fn": "_l96_uqff_axiom_skolem_paradox_closure"
+    },
+    {
+      "key": "berry_paradox",
+      "fn": "_l96_uqff_axiom_berry_paradox_closure"
+    },
+    {
+      "key": "richard_paradox",
+      "fn": "_l96_uqff_axiom_richard_paradox_closure"
+    },
+    {
+      "key": "yablo_paradox",
+      "fn": "_l96_uqff_axiom_yablo_paradox_closure"
+    },
+    {
+      "key": "quantum_suicide",
+      "fn": "_l96_uqff_axiom_quantum_suicide_immortality_closure"
+    },
+    {
+      "key": "quantum_immortality",
+      "fn": "_l96_uqff_axiom_quantum_suicide_immortality_closure"
+    },
+    {
+      "key": "reichenbach",
+      "fn": "_l96_uqff_axiom_reichenbach_common_cause_closure"
+    },
+    {
+      "key": "reichenbach_common_cause",
+      "fn": "_l96_uqff_axiom_reichenbach_common_cause_closure"
+    },
+    {
+      "key": "g_dwarf_problem",
+      "fn": "_l96_uqff_axiom_g_dwarf_problem_closure"
+    },
+    {
+      "key": "g_dwarf",
+      "fn": "_l96_uqff_axiom_g_dwarf_problem_closure"
+    },
+    {
+      "key": "missing_baryons_problem",
+      "fn": "_l96_uqff_axiom_missing_baryons_problem_closure"
+    },
+    {
+      "key": "missing_baryons",
+      "fn": "_l96_uqff_axiom_missing_baryons_problem_closure"
+    },
+    {
+      "key": "diversity_rotation_curves",
+      "fn": "_l96_uqff_axiom_rotation_curve_diversity_closure"
+    },
+    {
+      "key": "rotation_curve_diversity",
+      "fn": "_l96_uqff_axiom_rotation_curve_diversity_closure"
+    },
+    {
+      "key": "solar_neutrino_problem",
+      "fn": "_l96_uqff_axiom_solar_neutrino_problem_closure"
+    },
+    {
+      "key": "solar_neutrino",
+      "fn": "_l96_uqff_axiom_solar_neutrino_problem_closure"
+    },
+    {
+      "key": "szilard_engine",
+      "fn": "_l96_uqff_axiom_szilard_engine_closure"
+    },
+    {
+      "key": "szilard",
+      "fn": "_l96_uqff_axiom_szilard_engine_closure"
+    },
+    {
+      "key": "poincare_recurrence",
+      "fn": "_l96_uqff_axiom_poincare_recurrence_closure"
+    },
+    {
+      "key": "heat_death_recurrence",
+      "fn": "_l96_uqff_axiom_poincare_recurrence_closure"
+    },
+    {
+      "key": "bertrand_paradox",
+      "fn": "_l96_uqff_axiom_bertrand_probability_closure"
+    },
+    {
+      "key": "bertrand_probability",
+      "fn": "_l96_uqff_axiom_bertrand_probability_closure"
+    },
+    {
+      "key": "monty_hall",
+      "fn": "_l96_uqff_axiom_monty_hall_closure"
+    },
+    {
+      "key": "pascals_mugging",
+      "fn": "_l96_uqff_axiom_pascals_mugging_closure"
+    },
+    {
+      "key": "pascal_mugging",
+      "fn": "_l96_uqff_axiom_pascals_mugging_closure"
+    },
+    {
+      "key": "buridans_ass",
+      "fn": "_l96_uqff_axiom_buridans_ass_closure"
+    },
+    {
+      "key": "buridan_ass",
+      "fn": "_l96_uqff_axiom_buridans_ass_closure"
+    },
+    {
+      "key": "c_value_paradox",
+      "fn": "_l96_uqff_axiom_c_value_paradox_closure"
+    },
+    {
+      "key": "c_value",
+      "fn": "_l96_uqff_axiom_c_value_paradox_closure"
+    },
+    {
+      "key": "g_value_paradox",
+      "fn": "_l96_uqff_axiom_g_value_paradox_closure"
+    },
+    {
+      "key": "g_value",
+      "fn": "_l96_uqff_axiom_g_value_paradox_closure"
+    },
+    {
+      "key": "dpm_resonance_40hz",
+      "fn": "_l96_uqff_axiom_dpm_resonance_40Hz_closure"
+    },
+    {
+      "key": "star_magic_reactor_resonance",
+      "fn": "_l96_uqff_axiom_dpm_resonance_40Hz_closure"
+    },
+    {
+      "key": "heaviside_resistance",
+      "fn": "_l96_uqff_axiom_heaviside_resistance_closure"
+    },
+    {
+      "key": "island_of_stability",
+      "fn": "_l96_uqff_axiom_island_of_stability_closure"
+    },
+    {
+      "key": "qscope_pi_amplitude",
+      "fn": "_l96_uqff_axiom_qscope_amplitude_pi_closure"
+    },
+    {
+      "key": "pi_zero_density",
+      "fn": "_l96_uqff_axiom_pi_zero_density_closure"
+    },
+    {
+      "key": "proton_orbital_178hz",
+      "fn": "_l96_uqff_axiom_proton_orbital_178Hz_closure"
+    },
+    {
+      "key": "reactor_3rpm_minimum",
+      "fn": "_l96_uqff_axiom_reactor_3rpm_minimum_closure"
+    },
+    {
+      "key": "level_13_blackhole_radius",
+      "fn": "_l96_uqff_axiom_level_13_blackhole_radius_closure"
+    },
+    {
+      "key": "f_umr_magnetic_resonance",
+      "fn": "_l96_uqff_axiom_f_UMR_universal_magnetic_resonance_closure"
+    },
+    {
+      "key": "v_little_v_big_ratio",
+      "fn": "_l96_uqff_axiom_v_little_v_big_ratio_closure"
+    },
+    {
+      "key": "f_ub_buoyancy_frequency",
+      "fn": "_l96_uqff_axiom_f_Ub_buoyancy_frequency_closure"
+    },
+    {
+      "key": "cross_section_10_5_a2",
+      "fn": "_l96_uqff_axiom_cross_section_10_5A2_closure"
+    },
+    {
+      "key": "heaviside_amplifier_1e13",
+      "fn": "_l96_uqff_axiom_heaviside_amplifier_1e13_closure"
+    },
+    {
+      "key": "f_fluid_collapse",
+      "fn": "_l96_uqff_axiom_f_fluid_collapse_closure"
+    },
+    {
+      "key": "sun_quiet_field",
+      "fn": "_l96_uqff_axiom_sun_quiet_field_closure"
+    },
+    {
+      "key": "sun_peak_field_modulation",
+      "fn": "_l96_uqff_axiom_sun_quiet_field_closure"
+    },
+    {
+      "key": "distance_spooky",
+      "fn": "_l96_uqff_axiom_distance_spooky_closure"
+    },
+    {
+      "key": "spooky_action_distance",
+      "fn": "_l96_uqff_axiom_distance_spooky_closure"
+    },
+    {
+      "key": "zero_mass_bigbang_state",
+      "fn": "_l96_uqff_axiom_zero_mass_bigbang_state_closure"
+    },
+    {
+      "key": "pre_mass_vacuum",
+      "fn": "_l96_uqff_axiom_zero_mass_bigbang_state_closure"
+    },
+    {
+      "key": "e_n_polynomial_hierarchy",
+      "fn": "_l96_uqff_axiom_E_n_polynomial_hierarchy_closure"
+    },
+    {
+      "key": "26_level_energy_ladder",
+      "fn": "_l96_uqff_axiom_E_n_polynomial_hierarchy_closure"
+    },
+    {
+      "key": "spin_precession_30deg",
+      "fn": "_l96_uqff_axiom_spin_precession_30deg_closure"
+    },
+    {
+      "key": "hubble_oscillation_per_gyr",
+      "fn": "_l96_uqff_axiom_hubble_oscillation_per_Gyr_closure"
+    },
+    {
+      "key": "ni62_peak_binding",
+      "fn": "_l96_uqff_axiom_ni62_peak_binding_closure"
+    },
+    {
+      "key": "nickel_62",
+      "fn": "_l96_uqff_axiom_ni62_peak_binding_closure"
+    },
+    {
+      "key": "proton_core_density",
+      "fn": "_l96_uqff_axiom_proton_core_density_closure"
+    },
+    {
+      "key": "rho_p_core",
+      "fn": "_l96_uqff_axiom_proton_core_density_closure"
+    },
+    {
+      "key": "rho_vac_ua_prime_golden",
+      "fn": "_l96_uqff_axiom_rho_vac_UA_prime_golden_ratio_closure"
+    },
+    {
+      "key": "vacuum_energy_gain",
+      "fn": "_l96_uqff_axiom_vacuum_energy_gain_closure"
+    },
+    {
+      "key": "reactor_harmonic_golden",
+      "fn": "_l96_uqff_axiom_reactor_harmonic_golden_series_closure"
+    },
+    {
+      "key": "rho_vac_total_877",
+      "fn": "_l96_uqff_axiom_PAPER_877_rho_vac_total_closure"
+    },
+    {
+      "key": "dpm_proportion_pair",
+      "fn": "_l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure"
+    },
+    {
+      "key": "twenty_six_pre_mass_states",
+      "fn": "_l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure"
+    },
+    {
+      "key": "m_u_up_quark_2_16_mev",
+      "fn": "_l96_uqff_axiom_paper_a5_m_u_up_quark_2_16_mev_closure"
+    },
+    {
+      "key": "m_d_down_quark_4_67_mev",
+      "fn": "_l96_uqff_axiom_paper_a5_m_d_down_quark_4_67_mev_closure"
+    },
+    {
+      "key": "dm2_21_solar_7_42e_5_ev2",
+      "fn": "_l96_uqff_axiom_paper_a6_dm2_21_solar_7_42e_5_ev2_closure"
+    },
+    {
+      "key": "dm2_31_atmospheric_2_515e_3_ev2",
+      "fn": "_l96_uqff_axiom_paper_a6_dm2_31_atmospheric_2_515e_3_ev2_closure"
+    },
+    {
+      "key": "dm31_dm21_ratio_33",
+      "fn": "_l96_uqff_axiom_paper_a6_dm31_dm21_ratio_33_closure"
+    },
+    {
+      "key": "m_2_neutrino_8_5_mev",
+      "fn": "_l96_uqff_axiom_paper_a6_m_2_neutrino_8_5_meV_closure"
+    },
+    {
+      "key": "bayesian_k_uqff_9",
+      "fn": "_l96_uqff_axiom_paper_a8_paper_1521_1522_bayesian_k_uqff_9_closure"
+    },
+    {
+      "key": "bayesian_k_sm_lcdm_26",
+      "fn": "_l96_uqff_axiom_paper_a8_bayesian_k_sm_lcdm_26_closure"
+    },
+    {
+      "key": "bayesian_delta_bic_uqff_wins",
+      "fn": "_l96_uqff_axiom_paper_a8_bayesian_delta_bic_uqff_wins_closure"
+    },
+    {
+      "key": "bayesian_k_diff_17",
+      "fn": "_l96_uqff_axiom_paper_a8_bayesian_k_diff_17_closure"
+    },
+    {
+      "key": "spin_hall_e2_h_paired",
+      "fn": "_l96_uqff_axiom_paper_1352_spin_hall_e2_h_paired_closure"
+    },
+    {
+      "key": "jamming_phi_j_alt_2_3",
+      "fn": "_l96_uqff_axiom_paper_1355_jamming_phi_j_alt_2_3_closure"
+    },
+    {
+      "key": "ee_coupling_alt_6_pct",
+      "fn": "_l96_uqff_axiom_paper_1358_ee_coupling_alt_6_pct_closure"
+    },
+    {
+      "key": "codons_64_paired",
+      "fn": "_l96_uqff_axiom_paper_1359_codons_64_paired_closure"
+    },
+    {
+      "key": "amino_acids_20_paired",
+      "fn": "_l96_uqff_axiom_paper_1359_amino_acids_20_paired_closure"
+    },
+    {
+      "key": "planck_l_qg_2_2e_35_m",
+      "fn": "_l96_uqff_axiom_paper_1369_planck_l_qg_2_2e_35_m_closure"
+    },
+    {
+      "key": "m_t_over_m_e_338000",
+      "fn": "_l96_uqff_axiom_paper_1314_m_t_over_m_e_338000_closure"
+    },
+    {
+      "key": "majorana_via_f_trz",
+      "fn": "_l96_uqff_axiom_paper_1306_majorana_via_f_trz_closure"
+    },
+    {
+      "key": "high_tc_alt_125_k",
+      "fn": "_l96_uqff_axiom_paper_1347_high_tc_alt_125_k_closure"
+    },
+    {
+      "key": "kk_d_bsfg_minus_1_5_paired",
+      "fn": "_l96_uqff_axiom_paper_1343_kk_d_bsfg_minus_1_5_paired_closure"
+    },
+    {
+      "key": "bertrand_uniform_p_1_4",
+      "fn": "_l96_uqff_axiom_paper_1408_bertrand_uniform_p_1_4_closure"
+    },
+    {
+      "key": "z_reion_alt_7_70",
+      "fn": "_l96_uqff_axiom_paper_1412_z_reion_alt_7_70_closure"
+    },
+    {
+      "key": "r_aa_qgp_0_208",
+      "fn": "_l96_uqff_axiom_paper_1416_r_aa_qgp_0_208_closure"
+    },
+    {
+      "key": "e_ankle_3_62e18_ev",
+      "fn": "_l96_uqff_axiom_paper_1418_e_ankle_3_62e18_ev_closure"
+    },
+    {
+      "key": "cnub_temp_1_954_k",
+      "fn": "_l96_uqff_axiom_paper_1421_cnub_temp_1_954_k_closure"
+    },
+    {
+      "key": "szilard_w_kt_ln_2",
+      "fn": "_l96_uqff_axiom_paper_1407_szilard_w_kt_ln_2_closure"
+    },
+    {
+      "key": "solar_nu_e_1_3_alt",
+      "fn": "_l96_uqff_axiom_paper_1404_solar_nu_e_1_3_alt_closure"
+    },
+    {
+      "key": "hale_22_alt",
+      "fn": "_l96_uqff_axiom_paper_1405_hale_22_alt_closure"
+    },
+    {
+      "key": "su3_colors_3_alt",
+      "fn": "_l96_uqff_axiom_paper_1413_su3_colors_3_alt_closure"
+    },
+    {
+      "key": "delta_cp_neg_pi2_alt",
+      "fn": "_l96_uqff_axiom_paper_1411_delta_cp_neg_pi2_alt_closure"
+    },
+    {
+      "key": "gw_memory_fraction_6_pct",
+      "fn": "_l96_uqff_axiom_paper_1429_gw_memory_fraction_6_pct_closure"
+    },
+    {
+      "key": "schwinger_enhanced_1_22e18_vm",
+      "fn": "_l96_uqff_axiom_paper_1435_schwinger_enhanced_1_22e18_vm_closure"
+    },
+    {
+      "key": "t_neg_minus_2512_s",
+      "fn": "_l96_uqff_axiom_paper_1439_t_neg_minus_2512_s_closure"
+    },
+    {
+      "key": "sphaleron_energy_0_875_ev",
+      "fn": "_l96_uqff_axiom_paper_1442_sphaleron_energy_0_875_ev_closure"
+    },
+    {
+      "key": "dm_suppression_factor_3",
+      "fn": "_l96_uqff_axiom_paper_1441_dm_suppression_factor_3_closure"
+    },
+    {
+      "key": "d_crit_26_universal_count",
+      "fn": "_l96_uqff_axiom_paper_1443_d_crit_26_universal_count_closure"
+    },
+    {
+      "key": "nfw_c_vir_d_bsfg_beta_995",
+      "fn": "_l96_uqff_axiom_paper_1436_nfw_c_vir_d_bsfg_beta_995_closure"
+    },
+    {
+      "key": "sfe_boost_k_phi_1_75",
+      "fn": "_l96_uqff_axiom_paper_1438_sfe_boost_k_phi_1_75_closure"
+    },
+    {
+      "key": "gw_memory_paired_h_peak",
+      "fn": "_l96_uqff_axiom_paper_1430_gw_memory_paired_h_peak_closure"
+    },
+    {
+      "key": "u_ua_canonical_1e_4",
+      "fn": "_l96_uqff_axiom_paper_500_u_ua_canonical_1e_4_closure"
+    },
+    {
+      "key": "flat_rotation_beta_i_6029",
+      "fn": "_l96_uqff_axiom_paper_1327_flat_rotation_beta_i_6029_closure"
+    },
+    {
+      "key": "galaxy_types_4",
+      "fn": "_l96_uqff_axiom_paper_1328_galaxy_types_4_closure"
+    },
+    {
+      "key": "galaxy_subtypes_24",
+      "fn": "_l96_uqff_axiom_paper_1328_galaxy_subtypes_24_closure"
+    },
+    {
+      "key": "baryon_fraction_50_6",
+      "fn": "_l96_uqff_axiom_paper_1329_baryon_fraction_50_6_closure"
+    },
+    {
+      "key": "z_reion_7_0",
+      "fn": "_l96_uqff_axiom_paper_1332_z_reion_7_0_closure"
+    },
+    {
+      "key": "t_21cm_minus_289_mk",
+      "fn": "_l96_uqff_axiom_paper_1333_t_21cm_minus_289_mk_closure"
+    },
+    {
+      "key": "sf_efficiency_1_75",
+      "fn": "_l96_uqff_axiom_paper_1334_sf_efficiency_1_75_closure"
+    },
+    {
+      "key": "hubble_bubble_30_pct",
+      "fn": "_l96_uqff_axiom_paper_1457_hubble_bubble_30_pct_closure"
+    },
+    {
+      "key": "rvb_threshold_0_506",
+      "fn": "_l96_uqff_axiom_paper_1350_rvb_threshold_0_506_closure"
+    },
+    {
+      "key": "frustration_dim_5",
+      "fn": "_l96_uqff_axiom_paper_1350_frustration_dim_5_closure"
+    },
+    {
+      "key": "surface_code_threshold_1_pct",
+      "fn": "_l96_uqff_axiom_paper_1199_s446_surface_code_threshold_1_pct_closure"
+    },
+    {
+      "key": "log_2_e_1_4427",
+      "fn": "_l96_uqff_axiom_paper_1199_s444_log_2_e_1_4427_closure"
+    },
+    {
+      "key": "pi_over_2_1_5708",
+      "fn": "_l96_uqff_axiom_paper_1199_s445_pi_over_2_1_5708_closure"
+    },
+    {
+      "key": "omega_w1_0_5671",
+      "fn": "_l96_uqff_axiom_paper_1199_s450_omega_w1_0_5671_closure"
+    },
+    {
+      "key": "khinchin_k_2_6854",
+      "fn": "_l96_uqff_axiom_paper_1199_s451_khinchin_k_2_6854_closure"
+    },
+    {
+      "key": "sqrt_2pi_2_5066",
+      "fn": "_l96_uqff_axiom_paper_1199_s452_sqrt_2pi_2_5066_closure"
+    },
+    {
+      "key": "information_closure_count_157",
+      "fn": "_l96_uqff_axiom_paper_1199_information_closure_count_157_closure"
+    },
+    {
+      "key": "direct_locking_8_count",
+      "fn": "_l96_uqff_axiom_paper_1199_direct_locking_8_count_closure"
+    },
+    {
+      "key": "f_trz_squared_1_100",
+      "fn": "_l96_uqff_axiom_paper_1518_F_TRZ_squared_1_100_closure"
+    },
+    {
+      "key": "ln_2_alt_phi_minus_form",
+      "fn": "_l96_uqff_axiom_paper_1199_s443_ln_2_alt_phi_minus_form_closure"
+    },
+    {
+      "key": "n_s_scalar_tilt_0_96468",
+      "fn": "_l96_uqff_axiom_paper_1274_n_s_scalar_tilt_0_96468_closure"
+    },
+    {
+      "key": "kepler_eta_max_0_7405",
+      "fn": "_l96_uqff_axiom_paper_1289_kepler_eta_max_0_7405_closure"
+    },
+    {
+      "key": "bqp_bound_2_pow_d_2",
+      "fn": "_l96_uqff_axiom_paper_1298_bqp_bound_2_pow_d_2_closure"
+    },
+    {
+      "key": "u_i_sun_2_75e_7",
+      "fn": "_l96_uqff_axiom_paper_1277_u_i_sun_2_75e_7_closure"
+    },
+    {
+      "key": "lambda_canonical_rho_scm",
+      "fn": "_l96_uqff_axiom_paper_1271_lambda_canonical_rho_scm_closure"
+    },
+    {
+      "key": "ds_phase_inverted_k_mex",
+      "fn": "_l96_uqff_axiom_paper_1281_ds_phase_inverted_k_mex_closure"
+    },
+    {
+      "key": "goldbach_weak_odd_3_primes",
+      "fn": "_l96_uqff_axiom_paper_1297_goldbach_weak_odd_3_primes_closure"
+    },
+    {
+      "key": "beal_gcd_gt_1",
+      "fn": "_l96_uqff_axiom_paper_1296_beal_gcd_gt_1_closure"
+    },
+    {
+      "key": "np_neq_co_np",
+      "fn": "_l96_uqff_axiom_paper_1299_np_neq_co_np_closure"
+    },
+    {
+      "key": "wheeler_dewitt_f_u_0",
+      "fn": "_l96_uqff_axiom_paper_1284_wheeler_dewitt_f_u_0_closure"
+    },
+    {
+      "key": "neutron_lifetime_879_4_s",
+      "fn": "_l96_uqff_axiom_paper_1254_neutron_lifetime_879_4_s_closure"
+    },
+    {
+      "key": "neutron_lifetime_baseline_833",
+      "fn": "_l96_uqff_axiom_paper_1254_neutron_lifetime_baseline_833_closure"
+    },
+    {
+      "key": "smooth_poincare_4d_25_3",
+      "fn": "_l96_uqff_axiom_paper_1248_smooth_poincare_4d_25_3_closure"
+    },
+    {
+      "key": "dark_flow_600_km_s",
+      "fn": "_l96_uqff_axiom_paper_1259_dark_flow_600_km_s_closure"
+    },
+    {
+      "key": "muonic_h_radius_0_84_fm",
+      "fn": "_l96_uqff_axiom_paper_1255_muonic_h_radius_0_84_fm_closure"
+    },
+    {
+      "key": "grb_bimodality_2_s",
+      "fn": "_l96_uqff_axiom_paper_1258_grb_bimodality_2_s_closure"
+    },
+    {
+      "key": "kk_d_crit_22_dirac_match",
+      "fn": "_l96_uqff_axiom_paper_1231_kk_d_crit_22_dirac_match_closure"
+    },
+    {
+      "key": "100_s_ledger_scaling",
+      "fn": "_l96_uqff_axiom_paper_1254_100_s_ledger_scaling_closure"
+    },
+    {
+      "key": "kbasis_25_3_universal",
+      "fn": "_l96_uqff_axiom_paper_1166_kbasis_25_3_universal_closure"
+    },
+    {
+      "key": "neutron_correction_46_s",
+      "fn": "_l96_uqff_axiom_paper_1254_neutron_correction_46_s_closure"
+    },
+    {
+      "key": "hierarchy_d_phys_over_d_crit_21",
+      "fn": "_l96_uqff_axiom_paper_1225_hierarchy_d_phys_over_d_crit_21_closure"
+    },
+    {
+      "key": "lithium_7_factor_3",
+      "fn": "_l96_uqff_axiom_paper_1227_lithium_7_factor_3_closure"
+    },
+    {
+      "key": "hodge_d_plus_dbsfg_over_so5_1",
+      "fn": "_l96_uqff_axiom_paper_1230_hodge_d_plus_dbsfg_over_so5_1_closure"
+    },
+    {
+      "key": "atiyah_singer_dirac_index_22",
+      "fn": "_l96_uqff_axiom_paper_1231_atiyah_singer_dirac_index_22_closure"
+    },
+    {
+      "key": "bh_4_laws_prefactor_3_125",
+      "fn": "_l96_uqff_axiom_paper_1234_bh_4_laws_prefactor_3_125_closure"
+    },
+    {
+      "key": "hierarchy_exponent_21",
+      "fn": "_l96_uqff_axiom_paper_1225_hierarchy_exponent_21_closure"
+    },
+    {
+      "key": "dpm_pair_k_minus_2_1_over_12",
+      "fn": "_l96_uqff_axiom_paper_1287_dpm_pair_k_minus_2_1_over_12_closure"
+    },
+    {
+      "key": "taylor_green_nu_1_over_1600",
+      "fn": "_l96_uqff_axiom_paper_1232_taylor_green_nu_1_over_1600_closure"
+    },
+    {
+      "key": "ua_canonical_4816",
+      "fn": "_l96_uqff_axiom_paper_1232_UA_canonical_4816_closure"
+    },
+    {
+      "key": "lambda_obs_5_957e_10",
+      "fn": "_l96_uqff_axiom_paper_1226_lambda_obs_5_957e_10_closure"
+    },
+    {
+      "key": "iter_r_a_3_1",
+      "fn": "_l96_uqff_axiom_paper_1196_s413_iter_r_a_3_1_closure"
+    },
+    {
+      "key": "bohm_prefactor_1_16",
+      "fn": "_l96_uqff_axiom_paper_1196_s417_bohm_prefactor_1_16_closure"
+    },
+    {
+      "key": "q_edge_2",
+      "fn": "_l96_uqff_axiom_paper_1196_s418_q_edge_2_closure"
+    },
+    {
+      "key": "iter_q_10",
+      "fn": "_l96_uqff_axiom_paper_1196_s419_iter_Q_10_closure"
+    },
+    {
+      "key": "dt_e_sigma_64_kev",
+      "fn": "_l96_uqff_axiom_paper_1196_s420_dt_e_sigma_64_kev_closure"
+    },
+    {
+      "key": "troyon_beta_n_2_8",
+      "fn": "_l96_uqff_axiom_paper_1196_s414_troyon_beta_n_2_8_closure"
+    },
+    {
+      "key": "triple_product_n_t_tau_3",
+      "fn": "_l96_uqff_axiom_paper_1196_s415_triple_product_n_t_tau_3_closure"
+    },
+    {
+      "key": "coulomb_log_17",
+      "fn": "_l96_uqff_axiom_paper_1196_s416_coulomb_log_17_closure"
+    },
+    {
+      "key": "lawson_n_tau_1_5",
+      "fn": "_l96_uqff_axiom_paper_1196_s421_lawson_n_tau_1_5_closure"
+    },
+    {
+      "key": "sheath_phi_te_2_84",
+      "fn": "_l96_uqff_axiom_paper_1196_s422_sheath_phi_te_2_84_closure"
+    },
+    {
+      "key": "omega_lambda_6_5_ssq",
+      "fn": "_l96_uqff_axiom_paper_1156_omega_lambda_6_5_ssq_closure"
+    },
+    {
+      "key": "lambda_uqff_1_089e_52",
+      "fn": "_l96_uqff_axiom_paper_1156_lambda_uqff_1_089e_52_closure"
+    },
+    {
+      "key": "h0_asymmetry_1_0385",
+      "fn": "_l96_uqff_axiom_paper_1157_h0_asymmetry_1_0385_closure"
+    },
+    {
+      "key": "phi_res_5_6_d_minus_1_over_d",
+      "fn": "_l96_uqff_axiom_paper_1159_phi_res_5_6_d_minus_1_over_d_closure"
+    },
+    {
+      "key": "factorial_26_4_03e26",
+      "fn": "_l96_uqff_axiom_paper_1161_factorial_26_4_03e26_closure"
+    },
+    {
+      "key": "d_crit_4_plus_22",
+      "fn": "_l96_uqff_axiom_paper_1164_d_crit_4_plus_22_closure"
+    },
+    {
+      "key": "sum_beta_i_3_2",
+      "fn": "_l96_uqff_axiom_paper_1165_sum_beta_i_3_2_closure"
+    },
+    {
+      "key": "kk_regulator_sum_1_624e_37",
+      "fn": "_l96_uqff_axiom_paper_1162_kk_regulator_sum_1_624e_37_closure"
+    },
+    {
+      "key": "phi_res_anti_omega_lambda",
+      "fn": "_l96_uqff_axiom_paper_1159_phi_res_anti_omega_lambda_closure"
+    },
+    {
+      "key": "d_phys_vs_d_compact_22",
+      "fn": "_l96_uqff_axiom_paper_1164_d_phys_vs_d_compact_22_closure"
+    },
+    {
+      "key": "m_w_alt_a5_plus_a5_3",
+      "fn": "_l96_uqff_axiom_paper_1273_m_w_alt_a5_plus_a5_3_closure"
+    },
+    {
+      "key": "page_curve_recovery_99596",
+      "fn": "_l96_uqff_axiom_paper_1280_page_curve_recovery_99596_closure"
+    },
+    {
+      "key": "lorenz_attractor_dim_2_06",
+      "fn": "_l96_uqff_axiom_paper_1294_lorenz_attractor_dim_2_06_closure"
+    },
+    {
+      "key": "knot_crossings_bound_26",
+      "fn": "_l96_uqff_axiom_paper_1292_knot_crossings_bound_26_closure"
+    },
+    {
+      "key": "ks_contextuality_dim_3",
+      "fn": "_l96_uqff_axiom_paper_1285_ks_contextuality_dim_3_closure"
+    },
+    {
+      "key": "erdos_straus_n_gt_1",
+      "fn": "_l96_uqff_axiom_paper_1295_erdos_straus_n_gt_1_closure"
+    },
+    {
+      "key": "vacuum_stable_w_neg1",
+      "fn": "_l96_uqff_axiom_paper_1272_vacuum_stable_w_neg1_closure"
+    },
+    {
+      "key": "time_absolute_f_u_1",
+      "fn": "_l96_uqff_axiom_paper_1275_time_absolute_f_u_1_closure"
+    },
+    {
+      "key": "axiom_count_18",
+      "fn": "_l96_uqff_axiom_paper_1286_axiom_count_18_closure"
+    },
+    {
+      "key": "holographic_bulk_bdy_6_5",
+      "fn": "_l96_uqff_axiom_paper_1282_holographic_bulk_bdy_6_5_closure"
+    },
+    {
+      "key": "hubble_tension_5_6_km_s_mpc",
+      "fn": "_l96_uqff_axiom_paper_1456_hubble_tension_5_6_km_s_mpc_closure"
+    },
+    {
+      "key": "late_isw_f_trz",
+      "fn": "_l96_uqff_axiom_paper_1460_late_isw_f_trz_closure"
+    },
+    {
+      "key": "flatness_1_over_d_crit_7",
+      "fn": "_l96_uqff_axiom_paper_1461_flatness_1_over_d_crit_7_closure"
+    },
+    {
+      "key": "horizon_problem_60_efolds",
+      "fn": "_l96_uqff_axiom_paper_1462_horizon_problem_60_efolds_closure"
+    },
+    {
+      "key": "inertia_origin_10",
+      "fn": "_l96_uqff_axiom_paper_1466_inertia_origin_10_closure"
+    },
+    {
+      "key": "monopole_count_exp_60",
+      "fn": "_l96_uqff_axiom_paper_1450_monopole_count_exp_60_closure"
+    },
+    {
+      "key": "dm_direct_floor_lambda4",
+      "fn": "_l96_uqff_axiom_paper_1454_dm_direct_floor_lambda4_closure"
+    },
+    {
+      "key": "hierarchy_mw_over_mpl_1e_17",
+      "fn": "_l96_uqff_axiom_paper_1463_hierarchy_mw_over_mpl_1e_17_closure"
+    },
+    {
+      "key": "ew_vacuum_stability_1",
+      "fn": "_l96_uqff_axiom_paper_1467_ew_vacuum_stability_1_closure"
+    },
+    {
+      "key": "ew_vacuum_decay_rate_0",
+      "fn": "_l96_uqff_axiom_paper_1469_ew_vacuum_decay_rate_0_closure"
+    },
+    {
+      "key": "clifford_bundle_qualia_8192",
+      "fn": "_l96_uqff_axiom_paper_1361_clifford_bundle_qualia_8192_closure"
+    },
+    {
+      "key": "hubbard_mbl_u_over_t_4",
+      "fn": "_l96_uqff_axiom_paper_1362_hubbard_mbl_u_over_t_4_closure"
+    },
+    {
+      "key": "hayflick_a5_60_div",
+      "fn": "_l96_uqff_axiom_paper_1363_hayflick_a5_60_div_closure"
+    },
+    {
+      "key": "t_coherence_99_5_k",
+      "fn": "_l96_uqff_axiom_paper_1364_t_coherence_99_5_k_closure"
+    },
+    {
+      "key": "earth_field_threshold_50_6",
+      "fn": "_l96_uqff_axiom_paper_1366_earth_field_threshold_50_6_closure"
+    },
+    {
+      "key": "room_temp_sc_500_k",
+      "fn": "_l96_uqff_axiom_paper_1367_room_temp_sc_500_k_closure"
+    },
+    {
+      "key": "lawson_uqff_1_44e21",
+      "fn": "_l96_uqff_axiom_paper_1368_lawson_uqff_1_44e21_closure"
+    },
+    {
+      "key": "vacuum_breakdown_7e13_v_m",
+      "fn": "_l96_uqff_axiom_paper_1373_vacuum_breakdown_7e13_v_m_closure"
+    },
+    {
+      "key": "sigma_lbl_lambda_pow_4",
+      "fn": "_l96_uqff_axiom_paper_1374_sigma_lbl_lambda_pow_4_closure"
+    },
+    {
+      "key": "h0_planck_canonical_67_4",
+      "fn": "_l96_uqff_axiom_paper_1372_h0_planck_canonical_67_4_closure"
+    },
+    {
+      "key": "tau_entangle_109_6_ps",
+      "fn": "_l96_uqff_axiom_paper_1341_tau_entangle_109_6_ps_closure"
+    },
+    {
+      "key": "holographic_boundary_dim_5",
+      "fn": "_l96_uqff_axiom_paper_1343_holographic_boundary_dim_5_closure"
+    },
+    {
+      "key": "wc_over_j_4_phase_transition",
+      "fn": "_l96_uqff_axiom_paper_1344_wc_over_j_4_phase_transition_closure"
+    },
+    {
+      "key": "high_tc_superconductor_125_k",
+      "fn": "_l96_uqff_axiom_paper_1347_high_tc_superconductor_125_k_closure"
+    },
+    {
+      "key": "hubbard_u_over_t_4",
+      "fn": "_l96_uqff_axiom_paper_1348_hubbard_u_over_t_4_closure"
+    },
+    {
+      "key": "ising_universality_classes_10",
+      "fn": "_l96_uqff_axiom_paper_1351_ising_universality_classes_10_closure"
+    },
+    {
+      "key": "glass_tg_over_tm_3_4",
+      "fn": "_l96_uqff_axiom_paper_1354_glass_tg_over_tm_3_4_closure"
+    },
+    {
+      "key": "jamming_phi_j_2_3",
+      "fn": "_l96_uqff_axiom_paper_1355_jamming_phi_j_2_3_closure"
+    },
+    {
+      "key": "flocking_rho_0_506",
+      "fn": "_l96_uqff_axiom_paper_1356_flocking_rho_0_506_closure"
+    },
+    {
+      "key": "electron_electron_frac_6_pct",
+      "fn": "_l96_uqff_axiom_paper_1358_electron_electron_frac_6_pct_closure"
+    },
+    {
+      "key": "br_mu_to_e_gamma_127e_13",
+      "fn": "_l96_uqff_axiom_paper_1320_br_mu_to_e_gamma_127e_13_closure"
+    },
+    {
+      "key": "uhecr_e_max_7e20_ev",
+      "fn": "_l96_uqff_axiom_paper_1322_uhecr_e_max_7e20_ev_closure"
+    },
+    {
+      "key": "psr_crab_gamma_302",
+      "fn": "_l96_uqff_axiom_paper_1323_psr_crab_gamma_302_closure"
+    },
+    {
+      "key": "schwarzschild_criterion_0_84",
+      "fn": "_l96_uqff_axiom_paper_1325_schwarzschild_criterion_0_84_closure"
+    },
+    {
+      "key": "bh_seed_mass_56160_msun",
+      "fn": "_l96_uqff_axiom_paper_1326_bh_seed_mass_56160_msun_closure"
+    },
+    {
+      "key": "cosmic_filament_dim_2",
+      "fn": "_l96_uqff_axiom_paper_1330_cosmic_filament_dim_2_closure"
+    },
+    {
+      "key": "pop_iii_imf_max_120",
+      "fn": "_l96_uqff_axiom_paper_1331_pop_iii_imf_max_120_closure"
+    },
+    {
+      "key": "nfw_concentration_9_95",
+      "fn": "_l96_uqff_axiom_paper_1336_nfw_concentration_9_95_closure"
+    },
+    {
+      "key": "braid_gate_max_26",
+      "fn": "_l96_uqff_axiom_paper_1339_braid_gate_max_26_closure"
+    },
+    {
+      "key": "quantum_supremacy_qubits_60",
+      "fn": "_l96_uqff_axiom_paper_1340_quantum_supremacy_qubits_60_closure"
+    },
+    {
+      "key": "higgs_vev_246_gev",
+      "fn": "_l96_uqff_axiom_paper_1311_higgs_vev_246_gev_closure"
+    },
+    {
+      "key": "neutrino_mass_sum_0_0639",
+      "fn": "_l96_uqff_axiom_paper_1304_neutrino_mass_sum_0_0639_closure"
+    },
+    {
+      "key": "n_fermion_generations_3",
+      "fn": "_l96_uqff_axiom_paper_1313_n_fermion_generations_3_closure"
+    },
+    {
+      "key": "glueball_0pp_1_736_gev",
+      "fn": "_l96_uqff_axiom_paper_1318_glueball_0pp_1_736_gev_closure"
+    },
+    {
+      "key": "higgs_trilinear_kappa_lambda",
+      "fn": "_l96_uqff_axiom_paper_1310_higgs_trilinear_kappa_lambda_closure"
+    },
+    {
+      "key": "top_yukawa_y_t_natural",
+      "fn": "_l96_uqff_axiom_paper_1312_top_yukawa_y_t_natural_closure"
+    },
+    {
+      "key": "ckm_unitarity_sum_1",
+      "fn": "_l96_uqff_axiom_paper_1307_ckm_unitarity_sum_1_closure"
+    },
+    {
+      "key": "lepton_cp_delta_minus_pi_2",
+      "fn": "_l96_uqff_axiom_paper_1308_lepton_cp_delta_minus_pi_2_closure"
+    },
+    {
+      "key": "hadron_complexity_26",
+      "fn": "_l96_uqff_axiom_paper_1319_hadron_complexity_26_closure"
+    },
+    {
+      "key": "string_tension_0_098",
+      "fn": "_l96_uqff_axiom_paper_1316_string_tension_0_098_closure"
+    },
+    {
+      "key": "avogadro_n_a_6_022",
+      "fn": "_l96_uqff_axiom_paper_1209aa_s583_avogadro_n_a_6_022_closure"
+    },
+    {
+      "key": "gas_constant_r_8_314",
+      "fn": "_l96_uqff_axiom_paper_1209aa_s584_gas_constant_r_8_314_closure"
+    },
+    {
+      "key": "h_mass_1_008",
+      "fn": "_l96_uqff_axiom_paper_1209aa_s585_h_mass_1_008_closure"
+    },
+    {
+      "key": "ev_lead_1_602",
+      "fn": "_l96_uqff_axiom_paper_1209aa_s591_ev_lead_1_602_closure"
+    },
+    {
+      "key": "ocean_depth_3_7_km",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s606_ocean_depth_3_7_km_closure"
+    },
+    {
+      "key": "mt_everest_8_848_km",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s609_mt_everest_8_848_km_closure"
+    },
+    {
+      "key": "ocean_salinity_35_ppt",
+      "fn": "_l96_uqff_axiom_paper_1209x_s557_ocean_salinity_35_ppt_closure"
+    },
+    {
+      "key": "parsec_per_lightyear_3_26",
+      "fn": "_l96_uqff_axiom_paper_1209z_s575_parsec_per_lightyear_3_26_closure"
+    },
+    {
+      "key": "nuclear_h3_tritium_2_827",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s671_nuclear_h3_tritium_2_827_closure"
+    },
+    {
+      "key": "atm_scale_height_8_5",
+      "fn": "_l96_uqff_axiom_paper_1209x_s555_atm_scale_height_8_5_closure"
+    },
+    {
+      "key": "omega_m_matter_0_315",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s643_omega_m_matter_0_315_closure"
+    },
+    {
+      "key": "omega_lambda_dark_0_685",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s644_omega_lambda_dark_0_685_closure"
+    },
+    {
+      "key": "t_cmb_2_725_k",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s645_t_cmb_2_725_k_closure"
+    },
+    {
+      "key": "universe_age_13_78_gyr",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s646_universe_age_13_78_gyr_closure"
+    },
+    {
+      "key": "sigma_8_clustering_0_811",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s649_sigma_8_clustering_0_811_closure"
+    },
+    {
+      "key": "lapse_rate_6_5_k_km",
+      "fn": "_l96_uqff_axiom_paper_1209x_s554_lapse_rate_6_5_k_km_closure"
+    },
+    {
+      "key": "au_over_r_earth_23481",
+      "fn": "_l96_uqff_axiom_paper_1209z_s574_au_over_r_earth_23481_closure"
+    },
+    {
+      "key": "synodic_month_29_53",
+      "fn": "_l96_uqff_axiom_paper_1209z_s582_synodic_month_29_53_closure"
+    },
+    {
+      "key": "earth_orbital_v_29_78",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s612_earth_orbital_v_29_78_closure"
+    },
+    {
+      "key": "earth_age_4_54_gyr",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s611_earth_age_4_54_gyr_closure"
+    },
+    {
+      "key": "m_b_bottom_4_18",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s657_m_b_bottom_4_18_closure"
+    },
+    {
+      "key": "m_c_charm_1_27",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s658_m_c_charm_1_27_closure"
+    },
+    {
+      "key": "m_s_strange_0_095",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s661_m_s_strange_0_095_closure"
+    },
+    {
+      "key": "m_e_electron_0_000511",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s662_m_e_electron_0_000511_closure"
+    },
+    {
+      "key": "nuclear_fe56_be_a_8_7903",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s663_nuclear_fe56_be_a_8_7903_closure"
+    },
+    {
+      "key": "nuclear_ni62_be_a_8_7946",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s664_nuclear_ni62_be_a_8_7946_closure"
+    },
+    {
+      "key": "nuclear_u235_be_a_7_591",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s666_nuclear_u235_be_a_7_591_closure"
+    },
+    {
+      "key": "nuclear_u238_be_a_7_570",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s667_nuclear_u238_be_a_7_570_closure"
+    },
+    {
+      "key": "nuclear_c12_be_a_7_6802",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s668_nuclear_c12_be_a_7_6802_closure"
+    },
+    {
+      "key": "nuclear_pb208_be_a_7_8675",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s670_nuclear_pb208_be_a_7_8675_closure"
+    },
+    {
+      "key": "solar_constant_1361",
+      "fn": "_l96_uqff_axiom_paper_1209x_s556_solar_constant_1361_closure"
+    },
+    {
+      "key": "atm_pressure_101_325_kpa",
+      "fn": "_l96_uqff_axiom_paper_1209x_s558_atm_pressure_101_325_kpa_closure"
+    },
+    {
+      "key": "standard_gravity_9_81",
+      "fn": "_l96_uqff_axiom_paper_1209y_s563_standard_gravity_9_81_closure"
+    },
+    {
+      "key": "carbon_steel_density_7850",
+      "fn": "_l96_uqff_axiom_paper_1209y_s568_carbon_steel_density_7850_closure"
+    },
+    {
+      "key": "aluminum_density_2700",
+      "fn": "_l96_uqff_axiom_paper_1209y_s569_aluminum_density_2700_closure"
+    },
+    {
+      "key": "pine_wood_density_500",
+      "fn": "_l96_uqff_axiom_paper_1209y_s570_pine_wood_density_500_closure"
+    },
+    {
+      "key": "moon_distance_60_336",
+      "fn": "_l96_uqff_axiom_paper_1209z_s573_moon_distance_60_336_closure"
+    },
+    {
+      "key": "jupiter_mass_ratio_317_8",
+      "fn": "_l96_uqff_axiom_paper_1209z_s580_jupiter_mass_ratio_317_8_closure"
+    },
+    {
+      "key": "blood_ph_7_4",
+      "fn": "_l96_uqff_axiom_paper_1209bb_s594_blood_ph_7_4_closure"
+    },
+    {
+      "key": "dna_bp_per_turn_10_5",
+      "fn": "_l96_uqff_axiom_paper_1209bb_s601_dna_bp_per_turn_10_5_closure"
+    },
+    {
+      "key": "epsilon_0_lead_8_854",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s615_epsilon_0_lead_8_854_closure"
+    },
+    {
+      "key": "mu_0_lead_1_257",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s616_mu_0_lead_1_257_closure"
+    },
+    {
+      "key": "coulomb_ke_lead_8_988",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s617_coulomb_ke_lead_8_988_closure"
+    },
+    {
+      "key": "bohr_radius_a0_5_292",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s618_bohr_radius_a0_5_292_closure"
+    },
+    {
+      "key": "rydberg_r_inf_1_0974",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s619_rydberg_R_inf_1_0974_closure"
+    },
+    {
+      "key": "electron_g_factor_2_0023",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s621_electron_g_factor_2_0023_closure"
+    },
+    {
+      "key": "bohr_magneton_mu_b_9_274",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s622_bohr_magneton_mu_B_9_274_closure"
+    },
+    {
+      "key": "wien_b_2_898",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s625_wien_b_2_898_closure"
+    },
+    {
+      "key": "planck_h_lead_6_626",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s629_planck_h_lead_6_626_closure"
+    },
+    {
+      "key": "speed_of_light_c_2_998",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s630_speed_of_light_c_2_998_closure"
+    },
+    {
+      "key": "concrete_fc_30_mpa",
+      "fn": "_l96_uqff_axiom_paper_1209y_s565_concrete_fc_30_mpa_closure"
+    },
+    {
+      "key": "diamond_mohs_10",
+      "fn": "_l96_uqff_axiom_paper_1209y_s571_diamond_mohs_10_closure"
+    },
+    {
+      "key": "speed_of_sound_air_343",
+      "fn": "_l96_uqff_axiom_paper_1209y_s572_speed_of_sound_air_343_closure"
+    },
+    {
+      "key": "earth_sun_distance_149_6_gm",
+      "fn": "_l96_uqff_axiom_paper_1209z_s578_earth_sun_distance_149_6_gm_closure"
+    },
+    {
+      "key": "sidereal_year_365_25_days",
+      "fn": "_l96_uqff_axiom_paper_1209z_s581_sidereal_year_365_25_days_closure"
+    },
+    {
+      "key": "body_temp_37_celsius",
+      "fn": "_l96_uqff_axiom_paper_1209bb_s593_body_temp_37_celsius_closure"
+    },
+    {
+      "key": "blood_glucose_100_mg_dl",
+      "fn": "_l96_uqff_axiom_paper_1209bb_s600_blood_glucose_100_mg_dl_closure"
+    },
+    {
+      "key": "adult_height_170_cm",
+      "fn": "_l96_uqff_axiom_paper_1209bb_s602_adult_height_170_cm_closure"
+    },
+    {
+      "key": "earth_radius_6371_km",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s603_earth_radius_6371_km_closure"
+    },
+    {
+      "key": "earth_core_radius_3485_km",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s604_earth_core_radius_3485_km_closure"
+    },
+    {
+      "key": "co2_atmospheric_420",
+      "fn": "_l96_uqff_axiom_paper_1209x_s553_co2_atmospheric_420_closure"
+    },
+    {
+      "key": "earth_bond_albedo_0_3",
+      "fn": "_l96_uqff_axiom_paper_1209x_s559_earth_bond_albedo_0_3_closure"
+    },
+    {
+      "key": "steel_yield_250_mpa",
+      "fn": "_l96_uqff_axiom_paper_1209y_s564_steel_yield_250_MPa_closure"
+    },
+    {
+      "key": "steel_youngs_200_gpa",
+      "fn": "_l96_uqff_axiom_paper_1209y_s566_steel_youngs_200_GPa_closure"
+    },
+    {
+      "key": "concrete_density_2400",
+      "fn": "_l96_uqff_axiom_paper_1209y_s567_concrete_density_2400_closure"
+    },
+    {
+      "key": "hubble_h0_sh0es_70",
+      "fn": "_l96_uqff_axiom_paper_1209z_s576_hubble_h0_sh0es_70_closure"
+    },
+    {
+      "key": "r_sun_over_r_earth_109",
+      "fn": "_l96_uqff_axiom_paper_1209z_s577_r_sun_over_r_earth_109_closure"
+    },
+    {
+      "key": "m_sun_over_m_earth_333000",
+      "fn": "_l96_uqff_axiom_paper_1209z_s579_m_sun_over_m_earth_333000_closure"
+    },
+    {
+      "key": "transcendental_pi_3_14159",
+      "fn": "_l96_uqff_axiom_paper_1209ff_s633_transcendental_pi_3_14159_closure"
+    },
+    {
+      "key": "transcendental_phi_golden",
+      "fn": "_l96_uqff_axiom_paper_1209ff_s635_transcendental_phi_golden_closure"
+    },
+    {
+      "key": "transcendental_sqrt_2",
+      "fn": "_l96_uqff_axiom_paper_1209ff_s637_transcendental_sqrt_2_closure"
+    },
+    {
+      "key": "transcendental_sqrt_3",
+      "fn": "_l96_uqff_axiom_paper_1209ff_s638_transcendental_sqrt_3_closure"
+    },
+    {
+      "key": "transcendental_sqrt_5",
+      "fn": "_l96_uqff_axiom_paper_1209ff_s639_transcendental_sqrt_5_closure"
+    },
+    {
+      "key": "nuclear_o16_be_a_7_9762",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s669_nuclear_o16_be_a_7_9762_closure"
+    },
+    {
+      "key": "nuclear_deuteron_be_2_2246",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s672_nuclear_deuteron_be_2_2246_closure"
+    },
+    {
+      "key": "nuclear_alpha_be_a_7_0739",
+      "fn": "_l96_uqff_axiom_paper_1209ii_s665_nuclear_alpha_be_a_7_0739_closure"
+    },
+    {
+      "key": "z_recomb_1090",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s651_z_recomb_1090_closure"
+    },
+    {
+      "key": "h0_planck_67_41",
+      "fn": "_l96_uqff_axiom_paper_1209gg_s648_h0_planck_67_41_closure"
+    },
+    {
+      "key": "m_w_80_379",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s653_m_w_80_379_closure"
+    },
+    {
+      "key": "m_z_91_188",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s654_m_z_91_188_closure"
+    },
+    {
+      "key": "m_t_172_76",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s655_m_t_172_76_closure"
+    },
+    {
+      "key": "m_h_higgs_125_10",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s656_m_h_higgs_125_10_closure"
+    },
+    {
+      "key": "m_tau_1_777",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s659_m_tau_1_777_closure"
+    },
+    {
+      "key": "m_mu_muon_0_10566",
+      "fn": "_l96_uqff_axiom_paper_1209hh_s660_m_mu_muon_0_10566_closure"
+    },
+    {
+      "key": "rydberg_e_r_13_6057",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s623_rydberg_E_R_13_6057_closure"
+    },
+    {
+      "key": "stefan_sigma_5_67",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s624_stefan_sigma_5_67_closure"
+    },
+    {
+      "key": "hartree_e_h_4_36",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s632_hartree_E_h_4_36_closure"
+    },
+    {
+      "key": "faraday_f_96485",
+      "fn": "_l96_uqff_axiom_paper_1209ee_s626_faraday_F_96485_closure"
+    },
+    {
+      "key": "z0_vacuum_impedance",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s613_z0_vacuum_impedance_closure"
+    },
+    {
+      "key": "alpha_inverse_137_036",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s614_alpha_inverse_137_036_closure"
+    },
+    {
+      "key": "compton_lambda_2_426",
+      "fn": "_l96_uqff_axiom_paper_1209dd_s620_compton_lambda_2_426_closure"
+    },
+    {
+      "key": "mariana_trench_11",
+      "fn": "_l96_uqff_axiom_paper_1209cc_s608_mariana_trench_11_closure"
+    },
+    {
+      "key": "h2o_molar_mass_18",
+      "fn": "_l96_uqff_axiom_paper_1209aa_h2o_molar_mass_18_closure"
+    },
+    {
+      "key": "c_atomic_mass_12",
+      "fn": "_l96_uqff_axiom_paper_1209aa_c_atomic_mass_12_closure"
+    },
+    {
+      "key": "n_atomic_mass_14",
+      "fn": "_l96_uqff_axiom_paper_1209aa_n_atomic_mass_14_closure"
+    },
+    {
+      "key": "o_atomic_mass_16",
+      "fn": "_l96_uqff_axiom_paper_1209aa_o_atomic_mass_16_closure"
+    },
+    {
+      "key": "hemoglobin_15",
+      "fn": "_l96_uqff_axiom_paper_1209bb_hemoglobin_15_closure"
+    },
+    {
+      "key": "heart_rate_70",
+      "fn": "_l96_uqff_axiom_paper_1209bb_heart_rate_70_closure"
+    },
+    {
+      "key": "bp_systolic_120",
+      "fn": "_l96_uqff_axiom_paper_1209bb_bp_systolic_120_closure"
+    },
+    {
+      "key": "bp_diastolic_80",
+      "fn": "_l96_uqff_axiom_paper_1209bb_bp_diastolic_80_closure"
+    },
+    {
+      "key": "breathing_rate_16",
+      "fn": "_l96_uqff_axiom_paper_1209bb_breathing_rate_16_closure"
+    },
+    {
+      "key": "karman_line_100",
+      "fn": "_l96_uqff_axiom_paper_1209cc_karman_line_100_closure"
+    },
+    {
+      "key": "continental_crust_35",
+      "fn": "_l96_uqff_axiom_paper_1209cc_continental_crust_35_closure"
+    },
+    {
+      "key": "oceanic_moho_7",
+      "fn": "_l96_uqff_axiom_paper_1209cc_oceanic_moho_7_closure"
+    },
+    {
+      "key": "f_geom_one_eighth",
+      "fn": "_l96_uqff_axiom_paper_1249_f_geom_one_eighth_closure"
+    },
+    {
+      "key": "d_bsfg_derived_from_d_crit",
+      "fn": "_l96_uqff_axiom_paper_1167_D_BSFG_structural_derivation_closure"
+    },
+    {
+      "key": "k_mex_derived_from_phi_5_6",
+      "fn": "_l96_uqff_axiom_paper_1167_K_MEX_structural_derivation_closure"
+    },
+    {
+      "key": "f221_f220_qnm_ratio",
+      "fn": "_l96_uqff_axiom_paper_1238_f221_f220_QNM_ratio_closure"
+    },
+    {
+      "key": "mad_efficiency_1_over_so5_2",
+      "fn": "_l96_uqff_axiom_MAD_efficiency_1_over_so5_squared_closure"
+    },
+    {
+      "key": "pcr_quantum_triadic",
+      "fn": "_l96_uqff_axiom_paper_512_PCR_quantum_number_triadic_closure"
+    },
+    {
+      "key": "peters_mathews_coeff_64",
+      "fn": "_l96_uqff_axiom_peters_mathews_orbital_decay_coefficient_closure"
+    },
+    {
+      "key": "transcendental_e",
+      "fn": "_l96_uqff_axiom_paper_1208_e_transcendental_closure"
+    },
+    {
+      "key": "transcendental_e_squared",
+      "fn": "_l96_uqff_axiom_paper_1208_e_squared_transcendental_closure"
+    },
+    {
+      "key": "transcendental_pi_over_4",
+      "fn": "_l96_uqff_axiom_paper_1208_pi_over_4_transcendental_closure"
+    },
+    {
+      "key": "transcendental_catalan_g",
+      "fn": "_l96_uqff_axiom_paper_1208_catalan_G_transcendental_closure"
+    },
+    {
+      "key": "transcendental_zeta_2",
+      "fn": "_l96_uqff_axiom_paper_1208_zeta_2_transcendental_closure"
+    },
+    {
+      "key": "transcendental_zeta_3_apery",
+      "fn": "_l96_uqff_axiom_paper_1208_zeta_3_apery_transcendental_closure"
+    },
+    {
+      "key": "transcendental_gamma_euler",
+      "fn": "_l96_uqff_axiom_paper_1208_gamma_euler_mascheroni_closure"
+    },
+    {
+      "key": "transcendental_ln_10",
+      "fn": "_l96_uqff_axiom_paper_1208_ln_10_transcendental_closure"
+    },
+    {
+      "key": "transcendental_ln_2",
+      "fn": "_l96_uqff_axiom_paper_1208_ln_2_transcendental_closure"
+    },
+    {
+      "key": "transcendental_pi_squared",
+      "fn": "_l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure"
+    },
+    {
+      "key": "gw170817_phonon_prefactor",
+      "fn": "_l96_uqff_axiom_gw170817_phonon_damping_prefactor_closure"
+    },
+    {
+      "key": "neutron_star_radius_so5_4",
+      "fn": "_l96_uqff_axiom_neutron_star_canonical_radius_closure"
+    },
+    {
+      "key": "neutron_star_mu_s_so5_8",
+      "fn": "_l96_uqff_axiom_neutron_star_magnetic_moment_closure"
+    },
+    {
+      "key": "kerr_ringdown_offset_coeff",
+      "fn": "_l96_uqff_axiom_kerr_ringdown_spectral_offset_coefficient_closure"
+    },
+    {
+      "key": "dpm_26_layer_amp_a26",
+      "fn": "_l96_uqff_axiom_DPM_26_layer_amplification_A26_closure"
+    },
+    {
+      "key": "dpm_layer_weight_i6_decomp",
+      "fn": "_l96_uqff_axiom_DPM_layer_weight_i_pow_6_decomposition_closure"
+    },
+    {
+      "key": "t_scm_activation_threshold",
+      "fn": "_l96_uqff_axiom_T_SCm_activation_threshold_closure"
+    },
+    {
+      "key": "r_d_duality_range_exponent",
+      "fn": "_l96_uqff_axiom_R_d_duality_range_exponent_closure"
+    },
+    {
+      "key": "f_u_alpha_decay_1_over_so5_3",
+      "fn": "_l96_uqff_axiom_F_U_alpha_decay_1_over_SO_5_cubed_closure"
+    },
+    {
+      "key": "ramanujan_hyperconv_exp_27",
+      "fn": "_l96_uqff_axiom_ramanujan_hyperconvergence_exponent_closure"
+    },
+    {
+      "key": "gw_damping_bns_one_third",
+      "fn": "_l96_uqff_axiom_gw_damping_BNS_one_third_closure"
+    },
+    {
+      "key": "gw_damping_bbh_n_ch_so5_sq",
+      "fn": "_l96_uqff_axiom_gw_damping_BBH_N_CH_SO5_closure"
+    },
+    {
+      "key": "tde_outflow_velocity_03c",
+      "fn": "_l96_uqff_axiom_paper_351_TDE_outflow_velocity_closure"
+    },
+    {
+      "key": "d_crit_triad_feedback_decomp",
+      "fn": "_l96_uqff_axiom_paper_550_D_crit_triad_feedback_decomposition_closure"
+    },
+    {
+      "key": "monopole_suppression_r23",
+      "fn": "_l96_uqff_axiom_paper_550_monopole_suppression_exponent_closure"
+    },
+    {
+      "key": "scm_velocity_c_over_3",
+      "fn": "_l96_uqff_axiom_SCm_velocity_one_third_c_closure"
+    },
+    {
+      "key": "u_ua_coupling_constant",
+      "fn": "_l96_uqff_axiom_U_UA_coupling_constant_closure"
+    },
+    {
+      "key": "f_u_genesis_4_component",
+      "fn": "_l96_uqff_axiom_paper_133_F_U_genesis_4_component_closure"
+    },
+    {
+      "key": "grandfather_paradox",
+      "fn": "_l96_uqff_axiom_grandfather_paradox_closure"
+    },
+    {
+      "key": "epr_paradox",
+      "fn": "_l96_uqff_axiom_EPR_paradox_closure"
+    },
+    {
+      "key": "schrodinger_cat",
+      "fn": "_l96_uqff_axiom_schrodinger_cat_closure"
+    },
+    {
+      "key": "pioneer_anomaly",
+      "fn": "_l96_uqff_axiom_pioneer_anomaly_closure"
+    },
+    {
+      "key": "flyby_anomaly",
+      "fn": "_l96_uqff_axiom_flyby_anomaly_closure"
+    },
+    {
+      "key": "dark_matter_paradox",
+      "fn": "_l96_uqff_axiom_dark_matter_paradox_closure"
+    },
+    {
+      "key": "strong_cp_problem",
+      "fn": "_l96_uqff_axiom_strong_CP_problem_closure"
+    },
+    {
+      "key": "baryogenesis",
+      "fn": "_l96_uqff_axiom_baryogenesis_closure"
+    },
+    {
+      "key": "arrow_of_time",
+      "fn": "_l96_uqff_axiom_arrow_of_time_closure"
+    },
+    {
+      "key": "unruh_paradox",
+      "fn": "_l96_uqff_axiom_unruh_paradox_closure"
+    },
+    {
+      "key": "tachyon_paradox",
+      "fn": "_l96_uqff_axiom_tachyon_paradox_closure"
+    },
+    {
+      "key": "eternal_inflation",
+      "fn": "_l96_uqff_axiom_eternal_inflation_closure"
+    },
+    {
+      "key": "consciousness_paradox",
+      "fn": "_l96_uqff_axiom_consciousness_paradox_closure"
+    },
+    {
+      "key": "tegmark_levels",
+      "fn": "_l96_uqff_axiom_tegmark_levels_closure"
+    },
+    {
+      "key": "simulation_paradox",
+      "fn": "_l96_uqff_axiom_simulation_paradox_closure"
+    },
+    {
+      "key": "newcomb_paradox",
+      "fn": "_l96_uqff_axiom_newcomb_paradox_closure"
+    },
+    {
+      "key": "sorites_paradox",
+      "fn": "_l96_uqff_axiom_sorites_paradox_closure"
+    },
+    {
+      "key": "liar_paradox",
+      "fn": "_l96_uqff_axiom_liar_paradox_closure"
+    },
+    {
+      "key": "free_will_paradox",
+      "fn": "_l96_uqff_axiom_free_will_paradox_closure"
+    },
+    {
+      "key": "monopole_problem",
+      "fn": "_l96_uqff_axiom_monopole_problem_closure"
+    },
+    {
+      "key": "flatness_problem",
+      "fn": "_l96_uqff_axiom_flatness_problem_closure"
+    },
+    {
+      "key": "horizon_problem",
+      "fn": "_l96_uqff_axiom_horizon_problem_closure"
+    },
+    {
+      "key": "cosmic_censorship",
+      "fn": "_l96_uqff_axiom_cosmic_censorship_closure"
+    },
+    {
+      "key": "multiverse_paradox",
+      "fn": "_l96_uqff_axiom_multiverse_paradox_closure"
+    },
+    {
+      "key": "galaxy_rotation",
+      "fn": "_l96_uqff_axiom_galaxy_rotation_closure"
+    },
+    {
+      "key": "rotation_curve",
+      "fn": "_l96_uqff_axiom_galaxy_rotation_closure"
+    },
+    {
+      "key": "mond_paradox",
+      "fn": "_l96_uqff_axiom_galaxy_rotation_closure"
+    },
+    {
+      "key": "origin_of_mass",
+      "fn": "_l96_uqff_axiom_origin_of_mass_higgs_vev_closure"
+    },
+    {
+      "key": "higgs_vev_origin",
+      "fn": "_l96_uqff_axiom_origin_of_mass_higgs_vev_closure"
+    },
+    {
+      "key": "origin_of_inertia",
+      "fn": "_l96_uqff_axiom_mach_principle_closure"
+    },
+    {
+      "key": "cc_fine_tuning_120_orders",
+      "fn": "_l96_uqff_axiom_cc_fine_tuning_120_orders_closure"
+    },
+    {
+      "key": "cosmological_constant_120_orders",
+      "fn": "_l96_uqff_axiom_cc_fine_tuning_120_orders_closure"
+    },
+    {
+      "key": "vacuum_stability",
+      "fn": "_l96_uqff_axiom_vacuum_stability_closure"
+    },
+    {
+      "key": "higgs_vacuum_stability",
+      "fn": "_l96_uqff_axiom_vacuum_stability_closure"
+    },
+    {
+      "key": "hierarchy_problem_full",
+      "fn": "_l96_uqff_axiom_hierarchy_problem_full_closure"
+    },
+    {
+      "key": "inflaton_potential",
+      "fn": "_l96_uqff_axiom_inflaton_potential_n_s_closure"
+    },
+    {
+      "key": "inflaton_n_s",
+      "fn": "_l96_uqff_axiom_inflaton_potential_n_s_closure"
+    },
+    {
+      "key": "pre_big_bang",
+      "fn": "_l96_uqff_axiom_cyclic_cosmology_closure"
+    },
+    {
+      "key": "penrose_hawking_singularity",
+      "fn": "_l96_uqff_axiom_cosmic_censorship_closure"
+    },
+    {
+      "key": "info_paradox_full_qg",
+      "fn": "_l96_uqff_firewall_paradox_closure"
+    },
+    {
+      "key": "ads_cft_extension",
+      "fn": "_l96_uqff_axiom_ads_cft_to_ds_extension_closure"
+    },
+    {
+      "key": "gauge_gravity_general",
+      "fn": "_l96_uqff_axiom_holographic_dim_principle_closure"
+    },
+    {
+      "key": "cosmic_holography",
+      "fn": "_l96_uqff_axiom_holographic_dim_principle_closure"
+    },
+    {
+      "key": "wave_function_universe",
+      "fn": "_l96_uqff_axiom_wheeler_dewitt_equation_closure"
+    },
+    {
+      "key": "quantum_reference_frame",
+      "fn": "_l96_uqff_axiom_quantum_reference_frame_closure"
+    },
+    {
+      "key": "tsirelson_bound",
+      "fn": "_l96_uqff_axiom_tsirelson_bound_saturation_closure"
+    },
+    {
+      "key": "tsirelson_saturation",
+      "fn": "_l96_uqff_axiom_tsirelson_bound_saturation_closure"
+    },
+    {
+      "key": "quantum_contextuality",
+      "fn": "_l96_uqff_axiom_kochen_specker_closure"
+    },
+    {
+      "key": "hilbert_6th",
+      "fn": "_l96_uqff_axiom_hilbert_6th_axiomatize_physics_closure"
+    },
+    {
+      "key": "axiomatize_physics",
+      "fn": "_l96_uqff_axiom_hilbert_6th_axiomatize_physics_closure"
+    },
+    {
+      "key": "hilbert_8th_part2",
+      "fn": "_l96_uqff_axiom_hilbert_8th_part2_goldbach_riemann_unified_closure"
+    },
+    {
+      "key": "hilbert_16th",
+      "fn": "_l96_uqff_axiom_hilbert_16th_limit_cycles_closure"
+    },
+    {
+      "key": "limit_cycles",
+      "fn": "_l96_uqff_axiom_hilbert_16th_limit_cycles_closure"
+    },
+    {
+      "key": "hilbert_18th",
+      "fn": "_l96_uqff_axiom_hilbert_18th_sphere_packing_kepler_closure"
+    },
+    {
+      "key": "kepler_sphere_packing",
+      "fn": "_l96_uqff_axiom_hilbert_18th_sphere_packing_kepler_closure"
+    },
+    {
+      "key": "smale_1st",
+      "fn": "_l96_uqff_axiom_smale_1st_riemann_closure"
+    },
+    {
+      "key": "jacobian_conjecture",
+      "fn": "_l96_uqff_axiom_smale_2nd_jacobian_conjecture_closure"
+    },
+    {
+      "key": "smale_2nd",
+      "fn": "_l96_uqff_axiom_smale_2nd_jacobian_conjecture_closure"
+    },
+    {
+      "key": "knot_recognition",
+      "fn": "_l96_uqff_axiom_smale_11th_knot_recognition_closure"
+    },
+    {
+      "key": "smale_11th",
+      "fn": "_l96_uqff_axiom_smale_11th_knot_recognition_closure"
+    },
+    {
+      "key": "smale_13th",
+      "fn": "_l96_uqff_axiom_smale_13th_hilbert_16th_simplified_closure"
+    },
+    {
+      "key": "lorenz_attractor",
+      "fn": "_l96_uqff_axiom_smale_14th_lorenz_attractor_closure"
+    },
+    {
+      "key": "smale_14th",
+      "fn": "_l96_uqff_axiom_smale_14th_lorenz_attractor_closure"
+    },
+    {
+      "key": "erdos_straus",
+      "fn": "_l96_uqff_axiom_erdos_straus_4_over_n_closure"
+    },
+    {
+      "key": "beal_conjecture",
+      "fn": "_l96_uqff_axiom_beal_conjecture_closure"
+    },
+    {
+      "key": "goldbach_weak",
+      "fn": "_l96_uqff_axiom_goldbach_weak_closure"
+    },
+    {
+      "key": "p_vs_bqp",
+      "fn": "_l96_uqff_axiom_p_vs_bqp_closure"
+    },
+    {
+      "key": "np_vs_co_np",
+      "fn": "_l96_uqff_axiom_np_vs_co_np_closure"
+    },
+    {
+      "key": "schanuel",
+      "fn": "_l96_uqff_axiom_schanuel_conjecture_closure"
+    },
+    {
+      "key": "lehmer_mahler",
+      "fn": "_l96_uqff_axiom_lehmer_mahler_measure_closure"
+    },
+    {
+      "key": "inverse_galois",
+      "fn": "_l96_uqff_axiom_inverse_galois_closure"
+    },
+    {
+      "key": "mordell_conjecture",
+      "fn": "_l96_uqff_axiom_mordell_conjecture_closure"
+    },
+    {
+      "key": "neutrino_mass_absolute",
+      "fn": "_l96_uqff_axiom_neutrino_mass_absolute_closure"
+    },
+    {
+      "key": "neutrino_mass_ordering",
+      "fn": "_l96_uqff_axiom_neutrino_mass_ordering_closure"
+    },
+    {
+      "key": "majorana_vs_dirac",
+      "fn": "_l96_uqff_axiom_majorana_vs_dirac_closure"
+    },
+    {
+      "key": "ckm_unitarity",
+      "fn": "_l96_uqff_axiom_ckm_unitarity_closure"
+    },
+    {
+      "key": "lepton_cp_violation",
+      "fn": "_l96_uqff_axiom_lepton_cp_delta_closure"
+    },
+    {
+      "key": "delta_cp",
+      "fn": "_l96_uqff_axiom_lepton_cp_delta_closure"
+    },
+    {
+      "key": "electroweak_vacuum_decay",
+      "fn": "_l96_uqff_axiom_electroweak_vacuum_decay_closure"
+    },
+    {
+      "key": "higgs_trilinear",
+      "fn": "_l96_uqff_axiom_higgs_trilinear_lambda_HHH_closure"
+    },
+    {
+      "key": "lambda_HHH",
+      "fn": "_l96_uqff_axiom_higgs_trilinear_lambda_HHH_closure"
+    },
+    {
+      "key": "higgs_vev_origin_c",
+      "fn": "_l96_uqff_axiom_higgs_vev_origin_closure"
+    },
+    {
+      "key": "top_yukawa",
+      "fn": "_l96_uqff_axiom_top_yukawa_naturalness_closure"
+    },
+    {
+      "key": "three_generations_why",
+      "fn": "_l96_uqff_axiom_three_generations_puzzle_closure"
+    },
+    {
+      "key": "mass_hierarchy_full",
+      "fn": "_l96_uqff_axiom_mass_spectrum_hierarchy_closure"
+    },
+    {
+      "key": "strong_cp_naturalness",
+      "fn": "_l96_uqff_axiom_strong_cp_naturalness_closure"
+    },
+    {
+      "key": "quark_confinement",
+      "fn": "_l96_uqff_axiom_quark_confinement_closure"
+    },
+    {
+      "key": "qcd_chiral",
+      "fn": "_l96_uqff_axiom_qcd_chiral_breaking_closure"
+    },
+    {
+      "key": "glueball_mass",
+      "fn": "_l96_uqff_axiom_glueball_mass_closure"
+    },
+    {
+      "key": "exotic_hadrons",
+      "fn": "_l96_uqff_axiom_exotic_hadrons_closure"
+    },
+    {
+      "key": "clfv",
+      "fn": "_l96_uqff_axiom_clfv_charged_lepton_flavor_violation_closure"
+    },
+    {
+      "key": "stellar_magnetism_origin",
+      "fn": "_l96_uqff_axiom_stellar_magnetism_origin_closure"
+    },
+    {
+      "key": "stellar_magnetic_fields",
+      "fn": "_l96_uqff_axiom_stellar_magnetism_origin_closure"
+    },
+    {
+      "key": "uhecr_acceleration",
+      "fn": "_l96_uqff_axiom_uhecr_acceleration_closure"
+    },
+    {
+      "key": "ultra_high_energy_cosmic_rays",
+      "fn": "_l96_uqff_axiom_uhecr_acceleration_closure"
+    },
+    {
+      "key": "grb_jet",
+      "fn": "_l96_uqff_axiom_grb_jet_formation_closure"
+    },
+    {
+      "key": "grb_jet_formation",
+      "fn": "_l96_uqff_axiom_grb_jet_formation_closure"
+    },
+    {
+      "key": "solar_dynamo",
+      "fn": "_l96_uqff_axiom_solar_dynamo_closure"
+    },
+    {
+      "key": "stellar_convection",
+      "fn": "_l96_uqff_axiom_stellar_convection_closure"
+    },
+    {
+      "key": "smbh_seeds",
+      "fn": "_l96_uqff_axiom_smbh_seeds_closure"
+    },
+    {
+      "key": "galaxy_rotation_full",
+      "fn": "_l96_uqff_axiom_galaxy_rotation_full_closure"
+    },
+    {
+      "key": "mond_tension",
+      "fn": "_l96_uqff_axiom_galaxy_rotation_full_closure"
+    },
+    {
+      "key": "galaxy_morphology",
+      "fn": "_l96_uqff_axiom_galaxy_morphology_closure"
+    },
+    {
+      "key": "galaxy_bars",
+      "fn": "_l96_uqff_axiom_galaxy_bar_fraction_closure"
+    },
+    {
+      "key": "galaxy_bar_fraction",
+      "fn": "_l96_uqff_axiom_galaxy_bar_fraction_closure"
+    },
+    {
+      "key": "cosmic_web_filaments",
+      "fn": "_l96_uqff_axiom_cosmic_web_filaments_closure"
+    },
+    {
+      "key": "pop_iii_imf",
+      "fn": "_l96_uqff_axiom_pop_iii_imf_closure"
+    },
+    {
+      "key": "pop3_imf",
+      "fn": "_l96_uqff_axiom_pop_iii_imf_closure"
+    },
+    {
+      "key": "reionization_sources",
+      "fn": "_l96_uqff_axiom_reionization_sources_closure"
+    },
+    {
+      "key": "dark_age_21cm",
+      "fn": "_l96_uqff_axiom_dark_age_21cm_closure"
+    },
+    {
+      "key": "edges_21cm",
+      "fn": "_l96_uqff_axiom_dark_age_21cm_closure"
+    },
+    {
+      "key": "jwst_high_z_excess",
+      "fn": "_l96_uqff_axiom_jwst_high_z_excess_closure"
+    },
+    {
+      "key": "hubble_bubble",
+      "fn": "_l96_uqff_axiom_hubble_bubble_closure"
+    },
+    {
+      "key": "local_void",
+      "fn": "_l96_uqff_axiom_hubble_bubble_closure"
+    },
+    {
+      "key": "halo_concentration",
+      "fn": "_l96_uqff_axiom_halo_concentration_closure"
+    },
+    {
+      "key": "quantum_hall_topological",
+      "fn": "_l96_uqff_axiom_quantum_hall_topological_closure"
+    },
+    {
+      "key": "qhe",
+      "fn": "_l96_uqff_axiom_quantum_hall_topological_closure"
+    },
+    {
+      "key": "non_abelian_anyons",
+      "fn": "_l96_uqff_axiom_non_abelian_anyons_closure"
+    },
+    {
+      "key": "anyons",
+      "fn": "_l96_uqff_axiom_non_abelian_anyons_closure"
+    },
+    {
+      "key": "top_quantum_computation",
+      "fn": "_l96_uqff_axiom_topological_quantum_computation_closure"
+    },
+    {
+      "key": "topological_qc",
+      "fn": "_l96_uqff_axiom_topological_quantum_computation_closure"
+    },
+    {
+      "key": "quantum_supremacy_full",
+      "fn": "_l96_uqff_axiom_quantum_supremacy_closure"
+    },
+    {
+      "key": "quantum_supremacy",
+      "fn": "_l96_uqff_axiom_quantum_supremacy_closure"
+    },
+    {
+      "key": "decoherence_fundamental",
+      "fn": "_l96_uqff_axiom_decoherence_fundamental_limit_closure"
+    },
+    {
+      "key": "decoherence_limit",
+      "fn": "_l96_uqff_axiom_decoherence_fundamental_limit_closure"
+    },
+    {
+      "key": "quantum_thermodynamics",
+      "fn": "_l96_uqff_axiom_quantum_thermodynamics_closure"
+    },
+    {
+      "key": "entanglement_entropy_law",
+      "fn": "_l96_uqff_axiom_entanglement_area_law_closure"
+    },
+    {
+      "key": "area_law_entanglement",
+      "fn": "_l96_uqff_axiom_entanglement_area_law_closure"
+    },
+    {
+      "key": "mbl",
+      "fn": "_l96_uqff_axiom_mbl_phase_closure"
+    },
+    {
+      "key": "many_body_localization",
+      "fn": "_l96_uqff_axiom_mbl_phase_closure"
+    },
+    {
+      "key": "eth",
+      "fn": "_l96_uqff_axiom_eth_closure"
+    },
+    {
+      "key": "eigenstate_thermalization",
+      "fn": "_l96_uqff_axiom_eth_closure"
+    },
+    {
+      "key": "otoc_scrambling",
+      "fn": "_l96_uqff_axiom_otoc_scrambling_closure"
+    },
+    {
+      "key": "scrambling_time",
+      "fn": "_l96_uqff_axiom_otoc_scrambling_closure"
+    },
+    {
+      "key": "high_tc_superconductivity",
+      "fn": "_l96_uqff_axiom_high_tc_superconductivity_closure"
+    },
+    {
+      "key": "htsc",
+      "fn": "_l96_uqff_axiom_high_tc_superconductivity_closure"
+    },
+    {
+      "key": "hubbard_phase_diagram",
+      "fn": "_l96_uqff_axiom_hubbard_model_closure"
+    },
+    {
+      "key": "hubbard_model",
+      "fn": "_l96_uqff_axiom_hubbard_model_closure"
+    },
+    {
+      "key": "fqh_states",
+      "fn": "_l96_uqff_axiom_fqh_states_closure"
+    },
+    {
+      "key": "fractional_quantum_hall",
+      "fn": "_l96_uqff_axiom_fqh_states_closure"
+    },
+    {
+      "key": "spin_liquid",
+      "fn": "_l96_uqff_axiom_spin_liquid_closure"
+    },
+    {
+      "key": "top_insulators",
+      "fn": "_l96_uqff_axiom_topological_insulators_closure"
+    },
+    {
+      "key": "topological_insulators",
+      "fn": "_l96_uqff_axiom_topological_insulators_closure"
+    },
+    {
+      "key": "qsh_effect",
+      "fn": "_l96_uqff_axiom_quantum_spin_hall_closure"
+    },
+    {
+      "key": "quantum_spin_hall",
+      "fn": "_l96_uqff_axiom_quantum_spin_hall_closure"
+    },
+    {
+      "key": "strange_metal",
+      "fn": "_l96_uqff_axiom_strange_metal_closure"
+    },
+    {
+      "key": "glass_transition",
+      "fn": "_l96_uqff_axiom_glass_transition_closure"
+    },
+    {
+      "key": "jamming_transition",
+      "fn": "_l96_uqff_axiom_jamming_transition_closure"
+    },
+    {
+      "key": "active_matter",
+      "fn": "_l96_uqff_axiom_active_matter_closure"
+    },
+    {
+      "key": "protein_folding",
+      "fn": "_l96_uqff_axiom_protein_folding_levinthal_closure"
+    },
+    {
+      "key": "levinthal_protein",
+      "fn": "_l96_uqff_axiom_protein_folding_levinthal_closure"
+    },
+    {
+      "key": "homochirality",
+      "fn": "_l96_uqff_axiom_homochirality_origin_closure"
+    },
+    {
+      "key": "genetic_code_optimal",
+      "fn": "_l96_uqff_axiom_genetic_code_optimality_closure"
+    },
+    {
+      "key": "genetic_code",
+      "fn": "_l96_uqff_axiom_genetic_code_optimality_closure"
+    },
+    {
+      "key": "cancer_growth_law",
+      "fn": "_l96_uqff_axiom_cancer_growth_law_closure"
+    },
+    {
+      "key": "binding_problem",
+      "fn": "_l96_uqff_axiom_consciousness_binding_problem_closure"
+    },
+    {
+      "key": "consciousness_binding",
+      "fn": "_l96_uqff_axiom_consciousness_binding_problem_closure"
+    },
+    {
+      "key": "neural_phase_transitions",
+      "fn": "_l96_uqff_axiom_neural_phase_transitions_closure"
+    },
+    {
+      "key": "aging_clock",
+      "fn": "_l96_uqff_axiom_aging_telomere_clock_closure"
+    },
+    {
+      "key": "hayflick_limit",
+      "fn": "_l96_uqff_axiom_aging_telomere_clock_closure"
+    },
+    {
+      "key": "quantum_biology",
+      "fn": "_l96_uqff_axiom_quantum_biology_photosynthesis_closure"
+    },
+    {
+      "key": "photosynthesis_coherence",
+      "fn": "_l96_uqff_axiom_quantum_biology_photosynthesis_closure"
+    },
+    {
+      "key": "olfactory_vibrational",
+      "fn": "_l96_uqff_axiom_olfactory_vibrational_closure"
+    },
+    {
+      "key": "magnetoreception",
+      "fn": "_l96_uqff_axiom_magnetoreception_closure"
+    },
+    {
+      "key": "room_temp_superconductor",
+      "fn": "_l96_uqff_axiom_room_temp_superconductor_closure"
+    },
+    {
+      "key": "room_temp_sc",
+      "fn": "_l96_uqff_axiom_room_temp_superconductor_closure"
+    },
+    {
+      "key": "fusion_ignition_lawson",
+      "fn": "_l96_uqff_axiom_fusion_ignition_lawson_closure"
+    },
+    {
+      "key": "fusion_lawson",
+      "fn": "_l96_uqff_axiom_fusion_ignition_lawson_closure"
+    },
+    {
+      "key": "tabletop_quantum_gravity",
+      "fn": "_l96_uqff_axiom_tabletop_quantum_gravity_closure"
+    },
+    {
+      "key": "tabletop_qg",
+      "fn": "_l96_uqff_axiom_tabletop_quantum_gravity_closure"
+    },
+    {
+      "key": "antimatter_production",
+      "fn": "_l96_uqff_axiom_antimatter_production_closure"
+    },
+    {
+      "key": "dm_direct_detection",
+      "fn": "_l96_uqff_axiom_dm_direct_detection_closure"
+    },
+    {
+      "key": "dark_matter_direct_detection",
+      "fn": "_l96_uqff_axiom_dm_direct_detection_closure"
+    },
+    {
+      "key": "gw_standard_siren",
+      "fn": "_l96_uqff_axiom_gw_standard_siren_closure"
+    },
+    {
+      "key": "standard_siren_h0",
+      "fn": "_l96_uqff_axiom_gw_standard_siren_closure"
+    },
+    {
+      "key": "vacuum_birefringence",
+      "fn": "_l96_uqff_axiom_vacuum_birefringence_closure"
+    },
+    {
+      "key": "schwinger_pair",
+      "fn": "_l96_uqff_axiom_vacuum_birefringence_closure"
+    },
+    {
+      "key": "light_by_light",
+      "fn": "_l96_uqff_axiom_light_by_light_scattering_closure"
+    },
+    {
+      "key": "light_light_scattering",
+      "fn": "_l96_uqff_axiom_light_by_light_scattering_closure"
+    },
+    {
+      "key": "mu_to_e_gamma",
+      "fn": "_l96_uqff_axiom_clfv_charged_lepton_flavor_violation_closure"
+    },
+    {
+      "key": "goldbach",
+      "fn": "_l96_uqff_axiom_goldbach_conjecture_closure"
+    },
+    {
+      "key": "twin_prime",
+      "fn": "_l96_uqff_axiom_twin_prime_conjecture_closure"
+    },
+    {
+      "key": "collatz",
+      "fn": "_l96_uqff_axiom_collatz_conjecture_closure"
+    },
+    {
+      "key": "abc",
+      "fn": "_l96_uqff_axiom_abc_conjecture_closure"
+    },
+    {
+      "key": "continuum_hypothesis",
+      "fn": "_l96_uqff_axiom_continuum_hypothesis_closure"
+    },
+    {
+      "key": "grh",
+      "fn": "_l96_uqff_axiom_grh_generalized_riemann_closure"
+    },
+    {
+      "key": "langlands",
+      "fn": "_l96_uqff_axiom_langlands_program_closure"
+    },
+    {
+      "key": "smooth_poincare_4d",
+      "fn": "_l96_uqff_axiom_smooth_poincare_4d_closure"
+    },
+    {
+      "key": "cmb_cold_spot",
+      "fn": "_l96_uqff_axiom_cmb_cold_spot_closure"
+    },
+    {
+      "key": "axis_of_evil_cmb",
+      "fn": "_l96_uqff_axiom_axis_of_evil_cmb_closure"
+    },
+    {
+      "key": "dark_flow",
+      "fn": "_l96_uqff_axiom_dark_flow_bulk_velocity_closure"
+    },
+    {
+      "key": "late_isw",
+      "fn": "_l96_uqff_axiom_late_isw_effect_closure"
+    },
+    {
+      "key": "dm_particle",
+      "fn": "_l96_uqff_axiom_dark_matter_particle_candidate_closure"
+    },
+    {
+      "key": "neutron_lifetime_puzzle",
+      "fn": "_l96_uqff_axiom_neutron_lifetime_puzzle_closure"
+    },
+    {
+      "key": "muonic_hydrogen_radius",
+      "fn": "_l96_uqff_axiom_muonic_hydrogen_radius_closure"
+    },
+    {
+      "key": "tau_neutrino_hierarchy",
+      "fn": "_l96_uqff_axiom_tau_neutrino_mass_hierarchy_closure"
+    },
+    {
+      "key": "sterile_neutrino",
+      "fn": "_l96_uqff_axiom_sterile_neutrino_existence_closure"
+    },
+    {
+      "key": "grb_bimodality",
+      "fn": "_l96_uqff_axiom_grb_long_short_bimodality_closure"
+    },
+    {
+      "key": "frb_origin",
+      "fn": "_l96_uqff_axiom_frb_origin_mechanism_closure"
+    },
+    {
+      "key": "sgra_flares",
+      "fn": "_l96_uqff_axiom_sgr_a_star_flares_closure"
+    },
+    {
+      "key": "coronal_heating",
+      "fn": "_l96_uqff_axiom_coronal_heating_problem_closure"
+    },
+    {
+      "key": "stellar_imf",
+      "fn": "_l96_uqff_axiom_stellar_imf_salpeter_closure"
+    },
+    {
+      "key": "bh_entropy_area_law",
+      "fn": "_l96_uqff_axiom_bh_entropy_area_law_closure"
+    },
+    {
+      "key": "holographic_dim",
+      "fn": "_l96_uqff_axiom_holographic_dim_principle_closure"
+    },
+    {
+      "key": "ads_to_ds",
+      "fn": "_l96_uqff_axiom_ads_cft_to_ds_extension_closure"
+    },
+    {
+      "key": "wheeler_dewitt",
+      "fn": "_l96_uqff_axiom_wheeler_dewitt_equation_closure"
+    },
+    {
+      "key": "pta_sgwb",
+      "fn": "_l96_uqff_axiom_pta_sgwb_spectral_index_closure"
+    },
+    {
+      "key": "multimessenger_delay",
+      "fn": "_l96_uqff_axiom_multimessenger_nu_photon_delay_closure"
+    },
+    {
+      "key": "abiogenesis",
+      "fn": "_l96_uqff_axiom_origin_of_life_abiogenesis_closure"
+    },
+    {
+      "key": "nbody_problem",
+      "fn": "_l96_uqff_axiom_nbody_problem_closure"
+    },
+    {
+      "key": "n_body",
+      "fn": "_l96_uqff_axiom_nbody_problem_closure"
+    },
+    {
+      "key": "three_body_problem",
+      "fn": "_l96_uqff_axiom_nbody_problem_closure"
+    },
+    {
+      "key": "proton_decay",
+      "fn": "_l96_uqff_axiom_proton_decay_closure"
+    },
+    {
+      "key": "peto_paradox",
+      "fn": "_l96_uqff_axiom_peto_paradox_closure"
+    },
+    {
+      "key": "wave_particle_duality",
+      "fn": "_l96_uqff_axiom_wave_particle_duality_closure"
+    },
+    {
+      "key": "double_slit",
+      "fn": "_l96_uqff_axiom_wave_particle_duality_closure"
+    },
+    {
+      "key": "hilbert_hotel",
+      "fn": "_l96_uqff_axiom_hilbert_hotel_closure"
+    },
+    {
+      "key": "infinity_paradox",
+      "fn": "_l96_uqff_axiom_hilbert_hotel_closure"
+    },
+    {
+      "key": "bootstrap_paradox",
+      "fn": "_l96_uqff_axiom_bootstrap_paradox_closure"
+    },
+    {
+      "key": "lambda_qcd_problem",
+      "fn": "_l96_uqff_axiom_lambda_qcd_closure"
+    },
+    {
+      "key": "non_perturbative_qcd",
+      "fn": "_l96_uqff_axiom_lambda_qcd_closure"
+    }
+  ],
+  "paradox_categories": {
+    "other": 589,
+    "statistical_info": 7,
+    "quantum_mechanics": 32,
+    "relativity_blackhole": 17,
+    "cosmology": 44,
+    "math": 13,
+    "sm_identities": 44,
+    "nuclear_atomic": 5,
+    "astro": 17,
+    "lenr_fusion": 4,
+    "biology_other": 8,
+    "engineering": 8,
+    "qft": 6
+  },
+  "millennium_derive_entries": [],
+  "l96_closure_functions": [
+    "_l96_uqff_axiom_equivalence_principle_closure",
+    "_l96_uqff_axiom_mach_principle_closure",
+    "_l96_uqff_axiom_cosmological_principle_closure",
+    "_l96_uqff_axiom_anthropic_principle_closure",
+    "_l96_uqff_axiom_heisenberg_uncertainty_closure",
+    "_l96_uqff_axiom_three_generations_closure",
+    "_l96_uqff_axiom_SU3_color_closure",
+    "_l96_uqff_axiom_weak_equivalence_principle_closure",
+    "_l96_uqff_axiom_bell_theorem_closure",
+    "_l96_uqff_axiom_aspect_experiment_closure",
+    "_l96_uqff_axiom_GHZ_paradox_closure",
+    "_l96_uqff_axiom_hardy_paradox_closure",
+    "_l96_uqff_axiom_kochen_specker_closure",
+    "_l96_uqff_axiom_PBR_theorem_closure",
+    "_l96_uqff_axiom_wigner_friend_closure",
+    "_l96_uqff_axiom_quantum_zeno_closure",
+    "_l96_uqff_axiom_delayed_choice_eraser_closure",
+    "_l96_uqff_axiom_no_cloning_closure",
+    "_l96_uqff_axiom_holevo_bound_closure",
+    "_l96_uqff_axiom_landauer_principle_closure",
+    "_l96_uqff_axiom_big_bang_singularity_closure",
+    "_l96_uqff_axiom_inflation_epoch_closure",
+    "_l96_uqff_axiom_no_boundary_proposal_closure",
+    "_l96_uqff_axiom_cyclic_cosmology_closure",
+    "_l96_uqff_axiom_boltzmann_brain_closure",
+    "_l96_uqff_axiom_olbers_paradox_closure",
+    "_l96_uqff_axiom_fermi_paradox_closure",
+    "_l96_uqff_axiom_maxwell_demon_closure",
+    "_l96_uqff_axiom_zeno_classical_closure",
+    "_l96_uqff_axiom_axiom_of_choice_closure",
+    "_l96_uqff_axiom_peano_arithmetic_closure",
+    "_l96_uqff_axiom_noether_theorem_closure",
+    "_l96_uqff_axiom_action_principle_closure",
+    "_l96_uqff_axiom_diffeomorphism_invariance_closure",
+    "_l96_uqff_axiom_ergodic_hypothesis_closure",
+    "_l96_uqff_axiom_equipartition_theorem_closure",
+    "_l96_uqff_axiom_max_entropy_principle_closure",
+    "_l96_uqff_axiom_fluctuation_dissipation_closure",
+    "_l96_uqff_axiom_twin_paradox_closure",
+    "_l96_uqff_axiom_grandfather_paradox_closure",
+    "_l96_uqff_axiom_pioneer_anomaly_closure",
+    "_l96_uqff_axiom_flyby_anomaly_closure",
+    "_l96_uqff_axiom_dark_matter_paradox_closure",
+    "_l96_uqff_axiom_strong_CP_problem_closure",
+    "_l96_uqff_axiom_baryogenesis_closure",
+    "_l96_uqff_axiom_arrow_of_time_closure",
+    "_l96_uqff_axiom_unruh_paradox_closure",
+    "_l96_uqff_axiom_tachyon_paradox_closure",
+    "_l96_uqff_axiom_eternal_inflation_closure",
+    "_l96_uqff_axiom_consciousness_paradox_closure",
+    "_l96_uqff_axiom_tegmark_levels_closure",
+    "_l96_uqff_axiom_simulation_paradox_closure",
+    "_l96_uqff_axiom_newcomb_paradox_closure",
+    "_l96_uqff_axiom_sorites_paradox_closure",
+    "_l96_uqff_axiom_liar_paradox_closure",
+    "_l96_uqff_axiom_free_will_paradox_closure",
+    "_l96_uqff_axiom_monopole_problem_closure",
+    "_l96_uqff_axiom_flatness_problem_closure",
+    "_l96_uqff_axiom_horizon_problem_closure",
+    "_l96_uqff_axiom_cosmic_censorship_closure",
+    "_l96_uqff_axiom_multiverse_paradox_closure",
+    "_l96_uqff_axiom_galaxy_rotation_closure",
+    "_l96_uqff_axiom_EPR_paradox_closure",
+    "_l96_uqff_axiom_schrodinger_cat_closure",
+    "_l96_uqff_axiom_nbody_problem_closure",
+    "_l96_uqff_axiom_proton_decay_closure",
+    "_l96_uqff_axiom_peto_paradox_closure",
+    "_l96_uqff_axiom_wave_particle_duality_closure",
+    "_l96_uqff_axiom_hilbert_hotel_closure",
+    "_l96_uqff_axiom_bootstrap_paradox_closure",
+    "_l96_uqff_axiom_lambda_qcd_closure",
+    "_l96_uqff_axiom_goldbach_conjecture_closure",
+    "_l96_uqff_axiom_twin_prime_conjecture_closure",
+    "_l96_uqff_axiom_collatz_conjecture_closure",
+    "_l96_uqff_axiom_abc_conjecture_closure",
+    "_l96_uqff_axiom_continuum_hypothesis_closure",
+    "_l96_uqff_axiom_grh_generalized_riemann_closure",
+    "_l96_uqff_axiom_langlands_program_closure",
+    "_l96_uqff_axiom_smooth_poincare_4d_closure",
+    "_l96_uqff_axiom_cmb_cold_spot_closure",
+    "_l96_uqff_axiom_axis_of_evil_cmb_closure",
+    "_l96_uqff_axiom_dark_flow_bulk_velocity_closure",
+    "_l96_uqff_axiom_late_isw_effect_closure",
+    "_l96_uqff_axiom_dark_matter_particle_candidate_closure",
+    "_l96_uqff_axiom_neutron_lifetime_puzzle_closure",
+    "_l96_uqff_axiom_muonic_hydrogen_radius_closure",
+    "_l96_uqff_axiom_tau_neutrino_mass_hierarchy_closure",
+    "_l96_uqff_axiom_sterile_neutrino_existence_closure",
+    "_l96_uqff_axiom_grb_long_short_bimodality_closure",
+    "_l96_uqff_axiom_frb_origin_mechanism_closure",
+    "_l96_uqff_axiom_sgr_a_star_flares_closure",
+    "_l96_uqff_axiom_coronal_heating_problem_closure",
+    "_l96_uqff_axiom_stellar_imf_salpeter_closure",
+    "_l96_uqff_axiom_bh_entropy_area_law_closure",
+    "_l96_uqff_axiom_holographic_dim_principle_closure",
+    "_l96_uqff_axiom_ads_cft_to_ds_extension_closure",
+    "_l96_uqff_axiom_wheeler_dewitt_equation_closure",
+    "_l96_uqff_axiom_pta_sgwb_spectral_index_closure",
+    "_l96_uqff_axiom_multimessenger_nu_photon_delay_closure",
+    "_l96_uqff_axiom_origin_of_life_abiogenesis_closure",
+    "_l96_uqff_axiom_origin_of_mass_higgs_vev_closure",
+    "_l96_uqff_axiom_cc_fine_tuning_120_orders_closure",
+    "_l96_uqff_axiom_vacuum_stability_closure",
+    "_l96_uqff_axiom_hierarchy_problem_full_closure",
+    "_l96_uqff_axiom_inflaton_potential_n_s_closure",
+    "_l96_uqff_axiom_quantum_reference_frame_closure",
+    "_l96_uqff_axiom_tsirelson_bound_saturation_closure",
+    "_l96_uqff_axiom_hilbert_6th_axiomatize_physics_closure",
+    "_l96_uqff_axiom_hilbert_8th_part2_goldbach_riemann_unified_closure",
+    "_l96_uqff_axiom_hilbert_16th_limit_cycles_closure",
+    "_l96_uqff_axiom_hilbert_18th_sphere_packing_kepler_closure",
+    "_l96_uqff_axiom_smale_1st_riemann_closure",
+    "_l96_uqff_axiom_smale_2nd_jacobian_conjecture_closure",
+    "_l96_uqff_axiom_smale_11th_knot_recognition_closure",
+    "_l96_uqff_axiom_smale_13th_hilbert_16th_simplified_closure",
+    "_l96_uqff_axiom_smale_14th_lorenz_attractor_closure",
+    "_l96_uqff_axiom_erdos_straus_4_over_n_closure",
+    "_l96_uqff_axiom_beal_conjecture_closure",
+    "_l96_uqff_axiom_goldbach_weak_closure",
+    "_l96_uqff_axiom_p_vs_bqp_closure",
+    "_l96_uqff_axiom_np_vs_co_np_closure",
+    "_l96_uqff_axiom_schanuel_conjecture_closure",
+    "_l96_uqff_axiom_lehmer_mahler_measure_closure",
+    "_l96_uqff_axiom_inverse_galois_closure",
+    "_l96_uqff_axiom_mordell_conjecture_closure",
+    "_l96_uqff_axiom_neutrino_mass_absolute_closure",
+    "_l96_uqff_axiom_neutrino_mass_ordering_closure",
+    "_l96_uqff_axiom_majorana_vs_dirac_closure",
+    "_l96_uqff_axiom_ckm_unitarity_closure",
+    "_l96_uqff_axiom_lepton_cp_delta_closure",
+    "_l96_uqff_axiom_electroweak_vacuum_decay_closure",
+    "_l96_uqff_axiom_higgs_trilinear_lambda_HHH_closure",
+    "_l96_uqff_axiom_higgs_vev_origin_closure",
+    "_l96_uqff_axiom_top_yukawa_naturalness_closure",
+    "_l96_uqff_axiom_three_generations_puzzle_closure",
+    "_l96_uqff_axiom_mass_spectrum_hierarchy_closure",
+    "_l96_uqff_axiom_strong_cp_naturalness_closure",
+    "_l96_uqff_axiom_quark_confinement_closure",
+    "_l96_uqff_axiom_qcd_chiral_breaking_closure",
+    "_l96_uqff_axiom_glueball_mass_closure",
+    "_l96_uqff_axiom_exotic_hadrons_closure",
+    "_l96_uqff_axiom_clfv_charged_lepton_flavor_violation_closure",
+    "_l96_uqff_axiom_stellar_magnetism_origin_closure",
+    "_l96_uqff_axiom_uhecr_acceleration_closure",
+    "_l96_uqff_axiom_grb_jet_formation_closure",
+    "_l96_uqff_axiom_solar_dynamo_closure",
+    "_l96_uqff_axiom_stellar_convection_closure",
+    "_l96_uqff_axiom_smbh_seeds_closure",
+    "_l96_uqff_axiom_galaxy_rotation_full_closure",
+    "_l96_uqff_axiom_galaxy_morphology_closure",
+    "_l96_uqff_axiom_galaxy_bar_fraction_closure",
+    "_l96_uqff_axiom_cosmic_web_filaments_closure",
+    "_l96_uqff_axiom_pop_iii_imf_closure",
+    "_l96_uqff_axiom_reionization_sources_closure",
+    "_l96_uqff_axiom_dark_age_21cm_closure",
+    "_l96_uqff_axiom_jwst_high_z_excess_closure",
+    "_l96_uqff_axiom_hubble_bubble_closure",
+    "_l96_uqff_axiom_halo_concentration_closure",
+    "_l96_uqff_axiom_quantum_hall_topological_closure",
+    "_l96_uqff_axiom_non_abelian_anyons_closure",
+    "_l96_uqff_axiom_topological_quantum_computation_closure",
+    "_l96_uqff_axiom_quantum_supremacy_closure",
+    "_l96_uqff_axiom_decoherence_fundamental_limit_closure",
+    "_l96_uqff_axiom_quantum_thermodynamics_closure",
+    "_l96_uqff_axiom_entanglement_area_law_closure",
+    "_l96_uqff_axiom_mbl_phase_closure",
+    "_l96_uqff_axiom_eth_closure",
+    "_l96_uqff_axiom_otoc_scrambling_closure",
+    "_l96_uqff_axiom_high_tc_superconductivity_closure",
+    "_l96_uqff_axiom_hubbard_model_closure",
+    "_l96_uqff_axiom_fqh_states_closure",
+    "_l96_uqff_axiom_spin_liquid_closure",
+    "_l96_uqff_axiom_topological_insulators_closure",
+    "_l96_uqff_axiom_quantum_spin_hall_closure",
+    "_l96_uqff_axiom_strange_metal_closure",
+    "_l96_uqff_axiom_glass_transition_closure",
+    "_l96_uqff_axiom_jamming_transition_closure",
+    "_l96_uqff_axiom_active_matter_closure",
+    "_l96_uqff_axiom_protein_folding_levinthal_closure",
+    "_l96_uqff_axiom_homochirality_origin_closure",
+    "_l96_uqff_axiom_genetic_code_optimality_closure",
+    "_l96_uqff_axiom_cancer_growth_law_closure",
+    "_l96_uqff_axiom_consciousness_binding_problem_closure",
+    "_l96_uqff_axiom_neural_phase_transitions_closure",
+    "_l96_uqff_axiom_aging_telomere_clock_closure",
+    "_l96_uqff_axiom_quantum_biology_photosynthesis_closure",
+    "_l96_uqff_axiom_olfactory_vibrational_closure",
+    "_l96_uqff_axiom_magnetoreception_closure",
+    "_l96_uqff_axiom_room_temp_superconductor_closure",
+    "_l96_uqff_axiom_fusion_ignition_lawson_closure",
+    "_l96_uqff_axiom_tabletop_quantum_gravity_closure",
+    "_l96_uqff_axiom_antimatter_production_closure",
+    "_l96_uqff_axiom_dm_direct_detection_closure",
+    "_l96_uqff_axiom_gw_standard_siren_closure",
+    "_l96_uqff_axiom_vacuum_birefringence_closure",
+    "_l96_uqff_axiom_light_by_light_scattering_closure",
+    "_l96_uqff_axiom_loschmidt_paradox_closure",
+    "_l96_uqff_axiom_klein_paradox_closure",
+    "_l96_uqff_axiom_mpemba_effect_closure",
+    "_l96_uqff_axiom_faint_young_sun_closure",
+    "_l96_uqff_axiom_final_parsec_problem_closure",
+    "_l96_uqff_axiom_banach_tarski_closure",
+    "_l96_uqff_axiom_gibbs_paradox_closure",
+    "_l96_uqff_axiom_aharonov_bohm_closure",
+    "_l96_uqff_axiom_trans_planckian_closure",
+    "_l96_uqff_axiom_aharonov_casher_closure",
+    "_l96_uqff_axiom_ehrenfest_paradox_closure",
+    "_l96_uqff_axiom_bell_spaceship_closure",
+    "_l96_uqff_axiom_klein_gordon_negative_energy_closure",
+    "_l96_uqff_axiom_supplee_submarine_closure",
+    "_l96_uqff_axiom_ladder_paradox_closure",
+    "_l96_uqff_axiom_trouton_noble_closure",
+    "_l96_uqff_axiom_hanbury_brown_twiss_closure",
+    "_l96_uqff_axiom_renninger_negative_result_closure",
+    "_l96_uqff_axiom_russells_paradox_closure",
+    "_l96_uqff_axiom_galileo_bijection_closure",
+    "_l96_uqff_axiom_burali_forti_closure",
+    "_l96_uqff_axiom_st_petersburg_closure",
+    "_l96_uqff_axiom_two_envelopes_closure",
+    "_l96_uqff_axiom_sleeping_beauty_closure",
+    "_l96_uqff_axiom_doomsday_argument_closure",
+    "_l96_uqff_axiom_theseus_ship_closure",
+    "_l96_uqff_axiom_missing_satellites_closure",
+    "_l96_uqff_axiom_too_big_to_fail_closure",
+    "_l96_uqff_axiom_dark_energy_eos_time_evolving_closure",
+    "_l96_uqff_axiom_F_TRZ_SO5_identity_closure",
+    "_l96_uqff_axiom_proto_element_nuclear_identity_closure",
+    "_l96_uqff_axiom_cdf_w_mass_anomaly_closure",
+    "_l96_uqff_axiom_lepton_universality_violation_closure",
+    "_l96_uqff_axiom_koto_rare_kaon_decay_closure",
+    "_l96_uqff_axiom_T_violation_meson_closure",
+    "_l96_uqff_axiom_higgs_invisible_decay_closure",
+    "_l96_uqff_axiom_FCNC_b_to_s_mumu_closure",
+    "_l96_uqff_axiom_proton_charge_radius_PRad_closure",
+    "_l96_uqff_axiom_gw_memory_effect_closure",
+    "_l96_uqff_axiom_schwinger_limit_closure",
+    "_l96_uqff_axiom_qgp_jet_quenching_closure",
+    "_l96_uqff_axiom_pulsar_glitch_closure",
+    "_l96_uqff_axiom_magnetar_giant_flare_closure",
+    "_l96_uqff_axiom_crab_pulsar_tev_cutoff_closure",
+    "_l96_uqff_axiom_cosmic_ray_ankle_closure",
+    "_l96_uqff_axiom_faber_jackson_closure",
+    "_l96_uqff_axiom_color_superconductivity_CFL_closure",
+    "_l96_uqff_axiom_nuclear_pasta_closure",
+    "_l96_uqff_axiom_n_body_simulation_3D_closure",
+    "_l96_uqff_axiom_vortex_quantization_closure",
+    "_l96_uqff_axiom_aether_superfluid_closure",
+    "_l96_uqff_axiom_cosmic_neutrino_background_closure",
+    "_l96_uqff_axiom_mass_without_weight_F_Ub_closure",
+    "_l96_uqff_axiom_proto_nucleus_atomic_creation_closure",
+    "_l96_uqff_axiom_tde_wandering_mbh_closure",
+    "_l96_uqff_axiom_cantor_paradox_closure",
+    "_l96_uqff_axiom_curry_paradox_closure",
+    "_l96_uqff_axiom_skolem_paradox_closure",
+    "_l96_uqff_axiom_berry_paradox_closure",
+    "_l96_uqff_axiom_richard_paradox_closure",
+    "_l96_uqff_axiom_yablo_paradox_closure",
+    "_l96_uqff_axiom_quantum_suicide_immortality_closure",
+    "_l96_uqff_axiom_reichenbach_common_cause_closure",
+    "_l96_uqff_axiom_g_dwarf_problem_closure",
+    "_l96_uqff_axiom_missing_baryons_problem_closure",
+    "_l96_uqff_axiom_rotation_curve_diversity_closure",
+    "_l96_uqff_axiom_solar_neutrino_problem_closure",
+    "_l96_uqff_axiom_szilard_engine_closure",
+    "_l96_uqff_axiom_poincare_recurrence_closure",
+    "_l96_uqff_axiom_bertrand_probability_closure",
+    "_l96_uqff_axiom_monty_hall_closure",
+    "_l96_uqff_axiom_pascals_mugging_closure",
+    "_l96_uqff_axiom_buridans_ass_closure",
+    "_l96_uqff_axiom_c_value_paradox_closure",
+    "_l96_uqff_axiom_g_value_paradox_closure",
+    "_l96_uqff_axiom_dpm_resonance_40Hz_closure",
+    "_l96_uqff_axiom_heaviside_resistance_closure",
+    "_l96_uqff_axiom_island_of_stability_closure",
+    "_l96_uqff_axiom_qscope_amplitude_pi_closure",
+    "_l96_uqff_axiom_pi_zero_density_closure",
+    "_l96_uqff_axiom_proton_orbital_178Hz_closure",
+    "_l96_uqff_axiom_reactor_3rpm_minimum_closure",
+    "_l96_uqff_axiom_level_13_blackhole_radius_closure",
+    "_l96_uqff_axiom_f_UMR_universal_magnetic_resonance_closure",
+    "_l96_uqff_axiom_v_little_v_big_ratio_closure",
+    "_l96_uqff_axiom_f_Ub_buoyancy_frequency_closure",
+    "_l96_uqff_axiom_cross_section_10_5A2_closure",
+    "_l96_uqff_axiom_heaviside_amplifier_1e13_closure",
+    "_l96_uqff_axiom_f_fluid_collapse_closure",
+    "_l96_uqff_axiom_sun_quiet_field_closure",
+    "_l96_uqff_axiom_distance_spooky_closure",
+    "_l96_uqff_axiom_zero_mass_bigbang_state_closure",
+    "_l96_uqff_axiom_E_n_polynomial_hierarchy_closure",
+    "_l96_uqff_axiom_spin_precession_30deg_closure",
+    "_l96_uqff_axiom_hubble_oscillation_per_Gyr_closure",
+    "_l96_uqff_axiom_ni62_peak_binding_closure",
+    "_l96_uqff_axiom_proton_core_density_closure",
+    "_l96_uqff_axiom_rho_vac_UA_prime_golden_ratio_closure",
+    "_l96_uqff_axiom_vacuum_energy_gain_closure",
+    "_l96_uqff_axiom_reactor_harmonic_golden_series_closure",
+    "_l96_uqff_axiom_PAPER_877_rho_vac_total_closure",
+    "_l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure",
+    "_l96_uqff_axiom_PAPER_877_26_pre_mass_quantum_states_closure",
+    "_l96_uqff_axiom_SCm_velocity_one_third_c_closure",
+    "_l96_uqff_axiom_U_UA_coupling_constant_closure",
+    "_l96_uqff_axiom_paper_133_F_U_genesis_4_component_closure",
+    "_l96_uqff_axiom_paper_351_TDE_outflow_velocity_closure",
+    "_l96_uqff_axiom_paper_550_D_crit_triad_feedback_decomposition_closure",
+    "_l96_uqff_axiom_paper_550_monopole_suppression_exponent_closure",
+    "_l96_uqff_axiom_gw_damping_BNS_one_third_closure",
+    "_l96_uqff_axiom_gw_damping_BBH_N_CH_SO5_closure",
+    "_l96_uqff_axiom_T_SCm_activation_threshold_closure",
+    "_l96_uqff_axiom_R_d_duality_range_exponent_closure",
+    "_l96_uqff_axiom_F_U_alpha_decay_1_over_SO_5_cubed_closure",
+    "_l96_uqff_axiom_ramanujan_hyperconvergence_exponent_closure",
+    "_l96_uqff_axiom_kerr_ringdown_spectral_offset_coefficient_closure",
+    "_l96_uqff_axiom_DPM_26_layer_amplification_A26_closure",
+    "_l96_uqff_axiom_DPM_layer_weight_i_pow_6_decomposition_closure",
+    "_l96_uqff_axiom_gw170817_phonon_damping_prefactor_closure",
+    "_l96_uqff_axiom_neutron_star_canonical_radius_closure",
+    "_l96_uqff_axiom_neutron_star_magnetic_moment_closure",
+    "_l96_uqff_axiom_paper_1208_ln_10_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_ln_2_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_pi_squared_transcendental_closure",
+    "_l96_uqff_axiom_MAD_efficiency_1_over_so5_squared_closure",
+    "_l96_uqff_axiom_paper_512_PCR_quantum_number_triadic_closure",
+    "_l96_uqff_axiom_peters_mathews_orbital_decay_coefficient_closure",
+    "_l96_uqff_axiom_paper_1167_D_BSFG_structural_derivation_closure",
+    "_l96_uqff_axiom_paper_1167_K_MEX_structural_derivation_closure",
+    "_l96_uqff_axiom_paper_1238_f221_f220_QNM_ratio_closure",
+    "_l96_uqff_axiom_paper_1249_f_geom_one_eighth_closure",
+    "_l96_uqff_axiom_paper_1208_e_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_e_squared_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_pi_over_4_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_catalan_G_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_zeta_2_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_zeta_3_apery_transcendental_closure",
+    "_l96_uqff_axiom_paper_1208_gamma_euler_mascheroni_closure",
+    "_l96_uqff_axiom_paper_1209aa_h2o_molar_mass_18_closure",
+    "_l96_uqff_axiom_paper_1209aa_c_atomic_mass_12_closure",
+    "_l96_uqff_axiom_paper_1209aa_n_atomic_mass_14_closure",
+    "_l96_uqff_axiom_paper_1209aa_o_atomic_mass_16_closure",
+    "_l96_uqff_axiom_paper_1209bb_hemoglobin_15_closure",
+    "_l96_uqff_axiom_paper_1209bb_heart_rate_70_closure",
+    "_l96_uqff_axiom_paper_1209bb_bp_systolic_120_closure",
+    "_l96_uqff_axiom_paper_1209bb_bp_diastolic_80_closure",
+    "_l96_uqff_axiom_paper_1209bb_breathing_rate_16_closure",
+    "_l96_uqff_axiom_paper_1209cc_karman_line_100_closure",
+    "_l96_uqff_axiom_paper_1209cc_continental_crust_35_closure",
+    "_l96_uqff_axiom_paper_1209cc_oceanic_moho_7_closure",
+    "_l96_uqff_axiom_paper_1209ee_s623_rydberg_E_R_13_6057_closure",
+    "_l96_uqff_axiom_paper_1209ee_s624_stefan_sigma_5_67_closure",
+    "_l96_uqff_axiom_paper_1209ee_s632_hartree_E_h_4_36_closure",
+    "_l96_uqff_axiom_paper_1209ee_s626_faraday_F_96485_closure",
+    "_l96_uqff_axiom_paper_1209dd_s613_z0_vacuum_impedance_closure",
+    "_l96_uqff_axiom_paper_1209dd_s614_alpha_inverse_137_036_closure",
+    "_l96_uqff_axiom_paper_1209dd_s620_compton_lambda_2_426_closure",
+    "_l96_uqff_axiom_paper_1209cc_s608_mariana_trench_11_closure",
+    "_l96_uqff_axiom_paper_1209gg_s651_z_recomb_1090_closure",
+    "_l96_uqff_axiom_paper_1209gg_s648_h0_planck_67_41_closure",
+    "_l96_uqff_axiom_paper_1209hh_s653_m_w_80_379_closure",
+    "_l96_uqff_axiom_paper_1209hh_s654_m_z_91_188_closure",
+    "_l96_uqff_axiom_paper_1209hh_s655_m_t_172_76_closure",
+    "_l96_uqff_axiom_paper_1209hh_s656_m_h_higgs_125_10_closure",
+    "_l96_uqff_axiom_paper_1209hh_s659_m_tau_1_777_closure",
+    "_l96_uqff_axiom_paper_1209hh_s660_m_mu_muon_0_10566_closure",
+    "_l96_uqff_axiom_paper_1209ff_s633_transcendental_pi_3_14159_closure",
+    "_l96_uqff_axiom_paper_1209ff_s635_transcendental_phi_golden_closure",
+    "_l96_uqff_axiom_paper_1209ff_s637_transcendental_sqrt_2_closure",
+    "_l96_uqff_axiom_paper_1209ff_s638_transcendental_sqrt_3_closure",
+    "_l96_uqff_axiom_paper_1209ff_s639_transcendental_sqrt_5_closure",
+    "_l96_uqff_axiom_paper_1209ii_s669_nuclear_o16_be_a_7_9762_closure",
+    "_l96_uqff_axiom_paper_1209ii_s672_nuclear_deuteron_be_2_2246_closure",
+    "_l96_uqff_axiom_paper_1209ii_s665_nuclear_alpha_be_a_7_0739_closure",
+    "_l96_uqff_axiom_paper_1209x_s553_co2_atmospheric_420_closure",
+    "_l96_uqff_axiom_paper_1209x_s559_earth_bond_albedo_0_3_closure",
+    "_l96_uqff_axiom_paper_1209y_s564_steel_yield_250_MPa_closure",
+    "_l96_uqff_axiom_paper_1209y_s566_steel_youngs_200_GPa_closure",
+    "_l96_uqff_axiom_paper_1209y_s567_concrete_density_2400_closure",
+    "_l96_uqff_axiom_paper_1209z_s576_hubble_h0_sh0es_70_closure",
+    "_l96_uqff_axiom_paper_1209z_s577_r_sun_over_r_earth_109_closure",
+    "_l96_uqff_axiom_paper_1209z_s579_m_sun_over_m_earth_333000_closure",
+    "_l96_uqff_axiom_paper_1209y_s565_concrete_fc_30_mpa_closure",
+    "_l96_uqff_axiom_paper_1209y_s571_diamond_mohs_10_closure",
+    "_l96_uqff_axiom_paper_1209y_s572_speed_of_sound_air_343_closure",
+    "_l96_uqff_axiom_paper_1209z_s578_earth_sun_distance_149_6_gm_closure",
+    "_l96_uqff_axiom_paper_1209z_s581_sidereal_year_365_25_days_closure",
+    "_l96_uqff_axiom_paper_1209bb_s593_body_temp_37_celsius_closure",
+    "_l96_uqff_axiom_paper_1209bb_s600_blood_glucose_100_mg_dl_closure",
+    "_l96_uqff_axiom_paper_1209bb_s602_adult_height_170_cm_closure",
+    "_l96_uqff_axiom_paper_1209cc_s603_earth_radius_6371_km_closure",
+    "_l96_uqff_axiom_paper_1209cc_s604_earth_core_radius_3485_km_closure",
+    "_l96_uqff_axiom_paper_1209dd_s615_epsilon_0_lead_8_854_closure",
+    "_l96_uqff_axiom_paper_1209dd_s616_mu_0_lead_1_257_closure",
+    "_l96_uqff_axiom_paper_1209dd_s617_coulomb_ke_lead_8_988_closure",
+    "_l96_uqff_axiom_paper_1209dd_s618_bohr_radius_a0_5_292_closure",
+    "_l96_uqff_axiom_paper_1209dd_s619_rydberg_R_inf_1_0974_closure",
+    "_l96_uqff_axiom_paper_1209dd_s621_electron_g_factor_2_0023_closure",
+    "_l96_uqff_axiom_paper_1209dd_s622_bohr_magneton_mu_B_9_274_closure",
+    "_l96_uqff_axiom_paper_1209ee_s625_wien_b_2_898_closure",
+    "_l96_uqff_axiom_paper_1209ee_s629_planck_h_lead_6_626_closure",
+    "_l96_uqff_axiom_paper_1209ee_s630_speed_of_light_c_2_998_closure",
+    "_l96_uqff_axiom_paper_1209x_s556_solar_constant_1361_closure",
+    "_l96_uqff_axiom_paper_1209x_s558_atm_pressure_101_325_kpa_closure",
+    "_l96_uqff_axiom_paper_1209y_s563_standard_gravity_9_81_closure",
+    "_l96_uqff_axiom_paper_1209y_s568_carbon_steel_density_7850_closure",
+    "_l96_uqff_axiom_paper_1209y_s569_aluminum_density_2700_closure",
+    "_l96_uqff_axiom_paper_1209y_s570_pine_wood_density_500_closure",
+    "_l96_uqff_axiom_paper_1209z_s573_moon_distance_60_336_closure",
+    "_l96_uqff_axiom_paper_1209z_s580_jupiter_mass_ratio_317_8_closure",
+    "_l96_uqff_axiom_paper_1209bb_s594_blood_ph_7_4_closure",
+    "_l96_uqff_axiom_paper_1209bb_s601_dna_bp_per_turn_10_5_closure",
+    "_l96_uqff_axiom_paper_1209hh_s657_m_b_bottom_4_18_closure",
+    "_l96_uqff_axiom_paper_1209hh_s658_m_c_charm_1_27_closure",
+    "_l96_uqff_axiom_paper_1209hh_s661_m_s_strange_0_095_closure",
+    "_l96_uqff_axiom_paper_1209hh_s662_m_e_electron_0_000511_closure",
+    "_l96_uqff_axiom_paper_1209ii_s663_nuclear_fe56_be_a_8_7903_closure",
+    "_l96_uqff_axiom_paper_1209ii_s664_nuclear_ni62_be_a_8_7946_closure",
+    "_l96_uqff_axiom_paper_1209ii_s666_nuclear_u235_be_a_7_591_closure",
+    "_l96_uqff_axiom_paper_1209ii_s667_nuclear_u238_be_a_7_570_closure",
+    "_l96_uqff_axiom_paper_1209ii_s668_nuclear_c12_be_a_7_6802_closure",
+    "_l96_uqff_axiom_paper_1209ii_s670_nuclear_pb208_be_a_7_8675_closure",
+    "_l96_uqff_axiom_paper_1209gg_s643_omega_m_matter_0_315_closure",
+    "_l96_uqff_axiom_paper_1209gg_s644_omega_lambda_dark_0_685_closure",
+    "_l96_uqff_axiom_paper_1209gg_s645_t_cmb_2_725_k_closure",
+    "_l96_uqff_axiom_paper_1209gg_s646_universe_age_13_78_gyr_closure",
+    "_l96_uqff_axiom_paper_1209gg_s649_sigma_8_clustering_0_811_closure",
+    "_l96_uqff_axiom_paper_1209x_s554_lapse_rate_6_5_k_km_closure",
+    "_l96_uqff_axiom_paper_1209z_s574_au_over_r_earth_23481_closure",
+    "_l96_uqff_axiom_paper_1209z_s582_synodic_month_29_53_closure",
+    "_l96_uqff_axiom_paper_1209cc_s612_earth_orbital_v_29_78_closure",
+    "_l96_uqff_axiom_paper_1209cc_s611_earth_age_4_54_gyr_closure",
+    "_l96_uqff_axiom_paper_1209aa_s583_avogadro_n_a_6_022_closure",
+    "_l96_uqff_axiom_paper_1209aa_s584_gas_constant_r_8_314_closure",
+    "_l96_uqff_axiom_paper_1209aa_s585_h_mass_1_008_closure",
+    "_l96_uqff_axiom_paper_1209aa_s591_ev_lead_1_602_closure",
+    "_l96_uqff_axiom_paper_1209cc_s606_ocean_depth_3_7_km_closure",
+    "_l96_uqff_axiom_paper_1209cc_s609_mt_everest_8_848_km_closure",
+    "_l96_uqff_axiom_paper_1209x_s557_ocean_salinity_35_ppt_closure",
+    "_l96_uqff_axiom_paper_1209z_s575_parsec_per_lightyear_3_26_closure",
+    "_l96_uqff_axiom_paper_1209ii_s671_nuclear_h3_tritium_2_827_closure",
+    "_l96_uqff_axiom_paper_1209x_s555_atm_scale_height_8_5_closure",
+    "_l96_uqff_axiom_paper_1311_higgs_vev_246_gev_closure",
+    "_l96_uqff_axiom_paper_1304_neutrino_mass_sum_0_0639_closure",
+    "_l96_uqff_axiom_paper_1313_n_fermion_generations_3_closure",
+    "_l96_uqff_axiom_paper_1318_glueball_0pp_1_736_gev_closure",
+    "_l96_uqff_axiom_paper_1310_higgs_trilinear_kappa_lambda_closure",
+    "_l96_uqff_axiom_paper_1312_top_yukawa_y_t_natural_closure",
+    "_l96_uqff_axiom_paper_1307_ckm_unitarity_sum_1_closure",
+    "_l96_uqff_axiom_paper_1308_lepton_cp_delta_minus_pi_2_closure",
+    "_l96_uqff_axiom_paper_1319_hadron_complexity_26_closure",
+    "_l96_uqff_axiom_paper_1316_string_tension_0_098_closure",
+    "_l96_uqff_axiom_paper_1320_br_mu_to_e_gamma_127e_13_closure",
+    "_l96_uqff_axiom_paper_1322_uhecr_e_max_7e20_ev_closure",
+    "_l96_uqff_axiom_paper_1323_psr_crab_gamma_302_closure",
+    "_l96_uqff_axiom_paper_1325_schwarzschild_criterion_0_84_closure",
+    "_l96_uqff_axiom_paper_1326_bh_seed_mass_56160_msun_closure",
+    "_l96_uqff_axiom_paper_1330_cosmic_filament_dim_2_closure",
+    "_l96_uqff_axiom_paper_1331_pop_iii_imf_max_120_closure",
+    "_l96_uqff_axiom_paper_1336_nfw_concentration_9_95_closure",
+    "_l96_uqff_axiom_paper_1339_braid_gate_max_26_closure",
+    "_l96_uqff_axiom_paper_1340_quantum_supremacy_qubits_60_closure",
+    "_l96_uqff_axiom_paper_1341_tau_entangle_109_6_ps_closure",
+    "_l96_uqff_axiom_paper_1343_holographic_boundary_dim_5_closure",
+    "_l96_uqff_axiom_paper_1344_wc_over_j_4_phase_transition_closure",
+    "_l96_uqff_axiom_paper_1347_high_tc_superconductor_125_k_closure",
+    "_l96_uqff_axiom_paper_1348_hubbard_u_over_t_4_closure",
+    "_l96_uqff_axiom_paper_1351_ising_universality_classes_10_closure",
+    "_l96_uqff_axiom_paper_1354_glass_tg_over_tm_3_4_closure",
+    "_l96_uqff_axiom_paper_1355_jamming_phi_j_2_3_closure",
+    "_l96_uqff_axiom_paper_1356_flocking_rho_0_506_closure",
+    "_l96_uqff_axiom_paper_1358_electron_electron_frac_6_pct_closure",
+    "_l96_uqff_axiom_paper_1361_clifford_bundle_qualia_8192_closure",
+    "_l96_uqff_axiom_paper_1362_hubbard_mbl_u_over_t_4_closure",
+    "_l96_uqff_axiom_paper_1363_hayflick_a5_60_div_closure",
+    "_l96_uqff_axiom_paper_1364_t_coherence_99_5_k_closure",
+    "_l96_uqff_axiom_paper_1366_earth_field_threshold_50_6_closure",
+    "_l96_uqff_axiom_paper_1367_room_temp_sc_500_k_closure",
+    "_l96_uqff_axiom_paper_1368_lawson_uqff_1_44e21_closure",
+    "_l96_uqff_axiom_paper_1373_vacuum_breakdown_7e13_v_m_closure",
+    "_l96_uqff_axiom_paper_1374_sigma_lbl_lambda_pow_4_closure",
+    "_l96_uqff_axiom_paper_1372_h0_planck_canonical_67_4_closure",
+    "_l96_uqff_axiom_paper_1456_hubble_tension_5_6_km_s_mpc_closure",
+    "_l96_uqff_axiom_paper_1460_late_isw_f_trz_closure",
+    "_l96_uqff_axiom_paper_1461_flatness_1_over_d_crit_7_closure",
+    "_l96_uqff_axiom_paper_1462_horizon_problem_60_efolds_closure",
+    "_l96_uqff_axiom_paper_1466_inertia_origin_10_closure",
+    "_l96_uqff_axiom_paper_1450_monopole_count_exp_60_closure",
+    "_l96_uqff_axiom_paper_1454_dm_direct_floor_lambda4_closure",
+    "_l96_uqff_axiom_paper_1463_hierarchy_mw_over_mpl_1e_17_closure",
+    "_l96_uqff_axiom_paper_1467_ew_vacuum_stability_1_closure",
+    "_l96_uqff_axiom_paper_1469_ew_vacuum_decay_rate_0_closure",
+    "_l96_uqff_axiom_paper_1273_m_w_alt_a5_plus_a5_3_closure",
+    "_l96_uqff_axiom_paper_1280_page_curve_recovery_99596_closure",
+    "_l96_uqff_axiom_paper_1294_lorenz_attractor_dim_2_06_closure",
+    "_l96_uqff_axiom_paper_1292_knot_crossings_bound_26_closure",
+    "_l96_uqff_axiom_paper_1285_ks_contextuality_dim_3_closure",
+    "_l96_uqff_axiom_paper_1295_erdos_straus_n_gt_1_closure",
+    "_l96_uqff_axiom_paper_1272_vacuum_stable_w_neg1_closure",
+    "_l96_uqff_axiom_paper_1275_time_absolute_f_u_1_closure",
+    "_l96_uqff_axiom_paper_1286_axiom_count_18_closure",
+    "_l96_uqff_axiom_paper_1282_holographic_bulk_bdy_6_5_closure",
+    "_l96_uqff_axiom_paper_1156_omega_lambda_6_5_ssq_closure",
+    "_l96_uqff_axiom_paper_1156_lambda_uqff_1_089e_52_closure",
+    "_l96_uqff_axiom_paper_1157_h0_asymmetry_1_0385_closure",
+    "_l96_uqff_axiom_paper_1159_phi_res_5_6_d_minus_1_over_d_closure",
+    "_l96_uqff_axiom_paper_1161_factorial_26_4_03e26_closure",
+    "_l96_uqff_axiom_paper_1164_d_crit_4_plus_22_closure",
+    "_l96_uqff_axiom_paper_1165_sum_beta_i_3_2_closure",
+    "_l96_uqff_axiom_paper_1162_kk_regulator_sum_1_624e_37_closure",
+    "_l96_uqff_axiom_paper_1159_phi_res_anti_omega_lambda_closure",
+    "_l96_uqff_axiom_paper_1164_d_phys_vs_d_compact_22_closure",
+    "_l96_uqff_axiom_paper_1196_s413_iter_r_a_3_1_closure",
+    "_l96_uqff_axiom_paper_1196_s417_bohm_prefactor_1_16_closure",
+    "_l96_uqff_axiom_paper_1196_s418_q_edge_2_closure",
+    "_l96_uqff_axiom_paper_1196_s419_iter_Q_10_closure",
+    "_l96_uqff_axiom_paper_1196_s420_dt_e_sigma_64_kev_closure",
+    "_l96_uqff_axiom_paper_1196_s414_troyon_beta_n_2_8_closure",
+    "_l96_uqff_axiom_paper_1196_s415_triple_product_n_t_tau_3_closure",
+    "_l96_uqff_axiom_paper_1196_s416_coulomb_log_17_closure",
+    "_l96_uqff_axiom_paper_1196_s421_lawson_n_tau_1_5_closure",
+    "_l96_uqff_axiom_paper_1196_s422_sheath_phi_te_2_84_closure",
+    "_l96_uqff_axiom_paper_1225_hierarchy_d_phys_over_d_crit_21_closure",
+    "_l96_uqff_axiom_paper_1227_lithium_7_factor_3_closure",
+    "_l96_uqff_axiom_paper_1230_hodge_d_plus_dbsfg_over_so5_1_closure",
+    "_l96_uqff_axiom_paper_1231_atiyah_singer_dirac_index_22_closure",
+    "_l96_uqff_axiom_paper_1234_bh_4_laws_prefactor_3_125_closure",
+    "_l96_uqff_axiom_paper_1225_hierarchy_exponent_21_closure",
+    "_l96_uqff_axiom_paper_1287_dpm_pair_k_minus_2_1_over_12_closure",
+    "_l96_uqff_axiom_paper_1232_taylor_green_nu_1_over_1600_closure",
+    "_l96_uqff_axiom_paper_1232_UA_canonical_4816_closure",
+    "_l96_uqff_axiom_paper_1226_lambda_obs_5_957e_10_closure",
+    "_l96_uqff_axiom_paper_1254_neutron_lifetime_879_4_s_closure",
+    "_l96_uqff_axiom_paper_1254_neutron_lifetime_baseline_833_closure",
+    "_l96_uqff_axiom_paper_1248_smooth_poincare_4d_25_3_closure",
+    "_l96_uqff_axiom_paper_1259_dark_flow_600_km_s_closure",
+    "_l96_uqff_axiom_paper_1255_muonic_h_radius_0_84_fm_closure",
+    "_l96_uqff_axiom_paper_1258_grb_bimodality_2_s_closure",
+    "_l96_uqff_axiom_paper_1231_kk_d_crit_22_dirac_match_closure",
+    "_l96_uqff_axiom_paper_1254_100_s_ledger_scaling_closure",
+    "_l96_uqff_axiom_paper_1166_kbasis_25_3_universal_closure",
+    "_l96_uqff_axiom_paper_1254_neutron_correction_46_s_closure",
+    "_l96_uqff_axiom_paper_1274_n_s_scalar_tilt_0_96468_closure",
+    "_l96_uqff_axiom_paper_1289_kepler_eta_max_0_7405_closure",
+    "_l96_uqff_axiom_paper_1298_bqp_bound_2_pow_d_2_closure",
+    "_l96_uqff_axiom_paper_1277_u_i_sun_2_75e_7_closure",
+    "_l96_uqff_axiom_paper_1271_lambda_canonical_rho_scm_closure",
+    "_l96_uqff_axiom_paper_1281_ds_phase_inverted_k_mex_closure",
+    "_l96_uqff_axiom_paper_1297_goldbach_weak_odd_3_primes_closure",
+    "_l96_uqff_axiom_paper_1296_beal_gcd_gt_1_closure",
+    "_l96_uqff_axiom_paper_1299_np_neq_co_np_closure",
+    "_l96_uqff_axiom_paper_1284_wheeler_dewitt_f_u_0_closure",
+    "_l96_uqff_axiom_paper_1199_s446_surface_code_threshold_1_pct_closure",
+    "_l96_uqff_axiom_paper_1199_s444_log_2_e_1_4427_closure",
+    "_l96_uqff_axiom_paper_1199_s445_pi_over_2_1_5708_closure",
+    "_l96_uqff_axiom_paper_1199_s450_omega_w1_0_5671_closure",
+    "_l96_uqff_axiom_paper_1199_s451_khinchin_k_2_6854_closure",
+    "_l96_uqff_axiom_paper_1199_s452_sqrt_2pi_2_5066_closure",
+    "_l96_uqff_axiom_paper_1199_information_closure_count_157_closure",
+    "_l96_uqff_axiom_paper_1199_direct_locking_8_count_closure",
+    "_l96_uqff_axiom_paper_1518_F_TRZ_squared_1_100_closure",
+    "_l96_uqff_axiom_paper_1199_s443_ln_2_alt_phi_minus_form_closure",
+    "_l96_uqff_axiom_paper_1327_flat_rotation_beta_i_6029_closure",
+    "_l96_uqff_axiom_paper_1328_galaxy_types_4_closure",
+    "_l96_uqff_axiom_paper_1328_galaxy_subtypes_24_closure",
+    "_l96_uqff_axiom_paper_1329_baryon_fraction_50_6_closure",
+    "_l96_uqff_axiom_paper_1332_z_reion_7_0_closure",
+    "_l96_uqff_axiom_paper_1333_t_21cm_minus_289_mk_closure",
+    "_l96_uqff_axiom_paper_1334_sf_efficiency_1_75_closure",
+    "_l96_uqff_axiom_paper_1457_hubble_bubble_30_pct_closure",
+    "_l96_uqff_axiom_paper_1350_rvb_threshold_0_506_closure",
+    "_l96_uqff_axiom_paper_1350_frustration_dim_5_closure",
+    "_l96_uqff_axiom_paper_1429_gw_memory_fraction_6_pct_closure",
+    "_l96_uqff_axiom_paper_1435_schwinger_enhanced_1_22e18_vm_closure",
+    "_l96_uqff_axiom_paper_1439_t_neg_minus_2512_s_closure",
+    "_l96_uqff_axiom_paper_1442_sphaleron_energy_0_875_ev_closure",
+    "_l96_uqff_axiom_paper_1441_dm_suppression_factor_3_closure",
+    "_l96_uqff_axiom_paper_1443_d_crit_26_universal_count_closure",
+    "_l96_uqff_axiom_paper_1436_nfw_c_vir_d_bsfg_beta_995_closure",
+    "_l96_uqff_axiom_paper_1438_sfe_boost_k_phi_1_75_closure",
+    "_l96_uqff_axiom_paper_1430_gw_memory_paired_h_peak_closure",
+    "_l96_uqff_axiom_paper_500_u_ua_canonical_1e_4_closure",
+    "_l96_uqff_axiom_paper_1408_bertrand_uniform_p_1_4_closure",
+    "_l96_uqff_axiom_paper_1412_z_reion_alt_7_70_closure",
+    "_l96_uqff_axiom_paper_1416_r_aa_qgp_0_208_closure",
+    "_l96_uqff_axiom_paper_1418_e_ankle_3_62e18_ev_closure",
+    "_l96_uqff_axiom_paper_1421_cnub_temp_1_954_k_closure",
+    "_l96_uqff_axiom_paper_1407_szilard_w_kt_ln_2_closure",
+    "_l96_uqff_axiom_paper_1404_solar_nu_e_1_3_alt_closure",
+    "_l96_uqff_axiom_paper_1405_hale_22_alt_closure",
+    "_l96_uqff_axiom_paper_1413_su3_colors_3_alt_closure",
+    "_l96_uqff_axiom_paper_1411_delta_cp_neg_pi2_alt_closure",
+    "_l96_uqff_axiom_paper_1352_spin_hall_e2_h_paired_closure",
+    "_l96_uqff_axiom_paper_1355_jamming_phi_j_alt_2_3_closure",
+    "_l96_uqff_axiom_paper_1358_ee_coupling_alt_6_pct_closure",
+    "_l96_uqff_axiom_paper_1359_codons_64_paired_closure",
+    "_l96_uqff_axiom_paper_1359_amino_acids_20_paired_closure",
+    "_l96_uqff_axiom_paper_1369_planck_l_qg_2_2e_35_m_closure",
+    "_l96_uqff_axiom_paper_1314_m_t_over_m_e_338000_closure",
+    "_l96_uqff_axiom_paper_1306_majorana_via_f_trz_closure",
+    "_l96_uqff_axiom_paper_1347_high_tc_alt_125_k_closure",
+    "_l96_uqff_axiom_paper_1343_kk_d_bsfg_minus_1_5_paired_closure",
+    "_l96_uqff_axiom_paper_a5_m_u_up_quark_2_16_mev_closure",
+    "_l96_uqff_axiom_paper_a5_m_d_down_quark_4_67_mev_closure",
+    "_l96_uqff_axiom_paper_a6_dm2_21_solar_7_42e_5_ev2_closure",
+    "_l96_uqff_axiom_paper_a6_dm2_31_atmospheric_2_515e_3_ev2_closure",
+    "_l96_uqff_axiom_paper_a6_dm31_dm21_ratio_33_closure",
+    "_l96_uqff_axiom_paper_a6_m_2_neutrino_8_5_meV_closure",
+    "_l96_uqff_axiom_paper_a8_paper_1521_1522_bayesian_k_uqff_9_closure",
+    "_l96_uqff_axiom_paper_a8_bayesian_k_sm_lcdm_26_closure",
+    "_l96_uqff_axiom_paper_a8_bayesian_delta_bic_uqff_wins_closure",
+    "_l96_uqff_axiom_paper_a8_bayesian_k_diff_17_closure"
+  ],
+  "millennium_derive_functions": [
+    "_millennium_yang_mills_derive",
+    "_millennium_riemann_derive",
+    "_millennium_bsd_derive",
+    "_millennium_navier_stokes_derive",
+    "_millennium_hodge_derive",
+    "_millennium_poincare_derive",
+    "_millennium_p_vs_np_derive",
+    "_millennium_black_hole_info_derive"
+  ],
+  "public_calculate_surfaces": [
+    "calculate_resonant_adpm",
+    "calculate_scm",
+    "calculate_f_u_bi",
+    "calculate_f_u_bi_i",
+    "calculate_triadic_g",
+    "calculate_vacuum_ledger",
+    "calculate_universal_inertial_operator",
+    "calculate_nuclear_magic",
+    "calculate_lenr",
+    "calculate_f_u_zero",
+    "calculate_ua_layers",
+    "calculate_dpm_grinding",
+    "calculate_caduceus",
+    "calculate_shell_orbital",
+    "calculate_lenr_full",
+    "calculate_negative_time_dual_existence",
+    "calculate_si_derivations",
+    "calculate_quantum_gravity",
+    "calculate_black_hole",
+    "calculate_vds_dvp_bh26",
+    "calculate_bsd_rank_cohomology",
+    "calculate_cosmology",
+    "calculate_particle_physics",
+    "calculate_gw_events",
+    "calculate_agn_jet",
+    "calculate_astrophysics",
+    "calculate_high_energy_astro",
+    "calculate_qgp",
+    "calculate_higgs_precision",
+    "calculate_bsm_constraints",
+    "calculate_status_report",
+    "calculate_paradox",
+    "calculate_whitepaper",
+    "calculate_analytic_closures"
+  ],
+  "calculator_source_path": "/sessions/vibrant-keen-bohr/mnt/Star-Magic/uqff_pure_calculator.py",
+  "calculator_source_size_bytes": 2618198,
+  "calculator_source_lines": 48418
+}
