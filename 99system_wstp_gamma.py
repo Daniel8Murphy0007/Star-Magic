@@ -343,7 +343,12 @@ def compute_FUBii_system(M: float, r: float, t: float, gamma_THz: float) -> floa
 
 
 class NinetyNineSystemGammaSweepV1:
-    """Upgraded 99-system Γ sweep (v1): 8 Γ points, extended catalogue."""
+    """Upgraded 99-system Γ sweep (v1): 8 Γ points, extended catalogue.
+    Restored 2026-06-26 commit-1f9d844c-recovery: per-category breakdown,
+    finite_systems counter, and original per-Γ stability field (carried
+    forward from V0 NinetyNineSystemGammaSweep along with the V1 sweep-wide
+    min/peak stability metric).
+    """
 
     def compute(self, dataset: dict) -> dict:
         t = float(dataset.get("t_sec", 86400.0))
@@ -352,15 +357,27 @@ class NinetyNineSystemGammaSweepV1:
         sweep_results = []
         for gamma_THz in GAMMA_SWEEP:
             total = 0.0
+            finite_count = 0
+            cats: Dict[str, float] = {}
             for s in systems:
-                total += compute_FUBii_system(s["M"], s["r"], t, gamma_THz)
+                val = compute_FUBii_system(s["M"], s["r"], t, gamma_THz)
+                total += val
+                if math.isfinite(val):
+                    finite_count += 1
+                    cat = s.get("cat", "uncategorized")
+                    cats[cat] = cats.get(cat, 0.0) + val
             sweep_results.append({
-                "gamma_THz": gamma_THz,
-                "total_FUBii": total,
-                "per_system_avg": total / len(systems),
+                "gamma_THz":              gamma_THz,
+                "Gamma_THz":              gamma_THz,   # V0 alias
+                "total_FUBii":            total,
+                "F_U_Bi_i_aggregate":     total,        # V0 alias
+                "per_system_avg":         total / len(systems),
+                "finite_systems":         finite_count, # V0 restored
+                "categories":             cats,         # V0 restored: per-category breakdown
+                "per_gamma_stability":    finite_count / float(len(systems)),  # V0 restored
             })
 
-        # Peak stability
+        # V1 sweep-wide stability (min/peak ratio across Γ sweep)
         peak_val = max(abs(sr["total_FUBii"]) for sr in sweep_results)
         min_val = min(abs(sr["total_FUBii"]) for sr in sweep_results)
         stability = min_val / (peak_val + 1e-300)
@@ -375,7 +392,7 @@ class NinetyNineSystemGammaSweepV1:
             ],
             "sweep": sweep_results,
             "n_systems": len(systems),
-            "note": "PAPER_1017 CP4. Session 220. 99-system WSTP v1.",
+            "note": "PAPER_1017 + PAPER_996 CP4. Session 220 (v1) extends Session 218 (v0). 99-system WSTP.",
         }
 
 
@@ -426,35 +443,55 @@ def generate_wstp_99system_gamma_code_v1() -> str:
     return "\n".join(wl)
 
 
+def _run_wolframscript(code: str, timeout: int = 120) -> Tuple[bool, str]:
+    """Standalone subprocess wrapper for executing Wolfram Language code.
+    Returns (success, stdout_or_error). Restored 2026-06-26 from commit 1f9d844c.
+    """
+    try:
+        result = subprocess.run(
+            ["wolframscript", "-code", code],
+            capture_output=True, text=True, timeout=timeout,
+        )
+        if result.returncode == 0:
+            return True, result.stdout.strip()
+        return False, result.stderr.strip() or f"exit code {result.returncode}"
+    except (subprocess.TimeoutExpired, FileNotFoundError) as e:
+        return False, str(e)
+
+
 class WSTPGammaSweepRunnerV1:
-    """WSTP kernel runner with Python fallback (v1)."""
+    """WSTP kernel runner with Python fallback (v1).
+    Restored 2026-06-26 commit-1f9d844c-recovery: V0 dual-return cross-validation
+    pattern reinstated. Always runs Python sweep for verification; if wolframscript
+    is available, runs WL kernel too and returns BOTH for cross-check (V0 behaviour).
+    """
 
     def compute(self, dataset: dict) -> dict:
-        import subprocess
-        code = generate_wstp_99system_gamma_code_v1()
+        wl_code = generate_wstp_99system_gamma_code_v1()
+        run_live = bool(dataset.get("run_wstp", False))
 
-        try:
-            result = subprocess.run(
-                ["wolframscript", "-code", code],
-                capture_output=True, text=True, timeout=120,
-            )
-            if result.returncode == 0:
-                return {
-                    "primary_equations": [
-                        f"WSTP kernel: LIVE execution",
-                        f"Output: {result.stdout[:200]}",
-                    ],
-                    "wstp_live": True,
-                    "note": "PAPER_1017 CP4. Session 220.",
-                }
-        except (FileNotFoundError, subprocess.TimeoutExpired):
-            pass
-
-        # Fallback: Python sweep
+        # V0-restored dual-return: always Python (verification), optional WL (live)
         sweep_calc = NinetyNineSystemGammaSweepV1()
-        res = sweep_calc.compute(dataset)
-        res["wstp_live"] = False
-        return res
+        python_result = sweep_calc.compute(dataset)
+
+        wstp_ok = False
+        wstp_output = "Kernel not requested (set dataset['run_wstp']=True to invoke)"
+        if run_live:
+            wstp_ok, wstp_output = _run_wolframscript(wl_code)
+
+        return {
+            "wstp_code":         wl_code,                # V0 restored
+            "wstp_executed":     wstp_ok,                 # V0 restored
+            "wstp_live":         wstp_ok,                 # V1 alias
+            "wstp_output":       wstp_output,             # V0 restored
+            "python_result":     python_result,           # V0 restored: full Python verification
+            "primary_equations": [
+                f"WSTP 99-system Γ sweep: {len(GAMMA_SWEEP)} values × 99 systems = {len(GAMMA_SWEEP)*99} evaluations",
+                f"Python aggregate at Γ=0.1 THz: {python_result['sweep'][2]['F_U_Bi_i_aggregate']:.6e}",
+                f"WSTP live: {wstp_ok}",
+            ],
+            "note": "PAPER_996 + PAPER_1017 CP4. Session 220 v1 + Session 218 v0 unified. 99-system WSTP/Python cross-check.",
+        }
 
 
 # ── §5  Solar Calibration Convergence ────────────────────────────────────

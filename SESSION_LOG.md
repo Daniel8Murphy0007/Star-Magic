@@ -7550,48 +7550,48 @@ The fidelity gate `uqff_fidelity_tests.py` does NOT exercise QCalcGeom.py. That'
 ### No physics changes
 
 Zero modifications to canonical primitives. Zero new closures added. The recovery is purely: (1) restore two deleted files from git history; (2) fix one wrapper function in QCalcGeom.py so it adapts to the post-cleanup dpm scalar return.
-laim" bullet lists, structure of paper |
-| §9 Conclusions and outlook | 530 | ΔBIC = 94.1 summary, 3-category follow-up roadmap (independent reproduction / forward-prediction tests / primitive reduction), invitation to scrutiny |
-| Abstract | 322 | 250-300 word target met; distilled from §4 headline derivations + §5 BIC + §8 limitations; explicit "NOT a replacement" + "NOT a Clay proof" wording |
 
-### Drafting tone calibration (carried through all sections)
+---
 
-Every section follows the same five-rule honest-framing template established in §4:
+## SESSION 2026-06-26 ROUND 13 — COMMIT 1f9d844c FORENSIC RECOVERY
 
-1. Set the empirical anchor / prior art with citations.
-2. State the UQFF closure with the exact formula and numerical value.
-3. Report the residual against the anchor honestly.
-4. Add a numbered ``what this does and does not establish'' paragraph that explicitly bounds the claim (no overclaiming).
-5. Reference the live `uqff predict` / `uqff status` commands the reviewer can run to verify.
+**Date:** 2026-06-26
+**Owner:** Claude, at Daniel T. Murphy's explicit directive after per-commit numstat audit caught the merge being lossy despite "8/8 tests pass" subject.
 
-The same template applies to §8 Limitations (which enumerates failures without softening) and the Yang-Mills §4.4 (which discloses the 5970 GeV registry-bug correction in the headline section rather than burying it).
+### What got restored to 99system_wstp_gamma.py (commit 1f9d844c had quietly dropped):
 
-### Knit file status
+1. **`_run_wolframscript(code, timeout=120) -> Tuple[bool, str]`** — module-level standalone subprocess wrapper for executing Wolfram Language code. Previously inlined into WSTPGammaSweepRunnerV1.compute, now restored as reusable function.
 
-`uqff_manuscript_v2.tex` now `\input{}`s all 14 section files in the correct order. The `[Draft pending.]` placeholders for §1, §2, §3, §6, §7, §8, §9, and the abstract have all been replaced. The full manuscript can be compiled with `pdflatex uqff_manuscript_v2.tex` (twice for references).
+2. **`NinetyNineSystemGammaSweepV1.compute()` per-Gamma output fields restored:**
+   - `finite_systems` — count of math.isfinite results across 99 systems
+   - `categories` — per-category aggregation (stellar/galaxy/nebula/compact/cluster/cosmo/agn/ns_merger/smbh_merger/qgp/dm_halo)
+   - `per_gamma_stability` — finite_count/99.0 V0 metric
+   - V0 aliases `Gamma_THz` (uppercase) and `F_U_Bi_i_aggregate` carried forward alongside V1 names
+   - V1 sweep-wide stability (min/peak ratio) retained
 
-### BibTeX status
+3. **`WSTPGammaSweepRunnerV1.compute()` V0 dual-return cross-validation restored:**
+   - `wstp_code` — the generated Wolfram Language code string (gone since 1f9d844c)
+   - `wstp_executed` boolean (alongside V1 `wstp_live`)
+   - `wstp_output` — kernel stdout when live, explanatory note when not
+   - `python_result` — full Python verification sweep (V0 always ran both for cross-check; V1 was either/or)
+   - `primary_equations` now includes the Python aggregate at Γ=0.1 THz
 
-`references.bib` carries ~30 entries covering:
+4. **PAPER_996 citation restored** alongside PAPER_1017 (both class compute() and runner compute() notes). Session 218 + Session 220 lineage both visible in active code.
 
-- Planck 2018, PDG 2024, Tanabashi 2018 (canonical cosmology + particle anchors)
-- Weinberg 1989, Martin 2012 (cosmological constant problem prior art)
-- Mayer-Jensen 1955, Goeppert Mayer 1948, Haxel-Jensen-Suess 1949 (nuclear shell model)
-- Smolanczuk 1997, Oganessian 2006 (superheavy magic-number candidates)
-- Holmlid 2015, Holmlid 2019 (ultra-dense hydrogen)
-- Huizenga 1993, Park 2000 (cold-fusion skeptical literature, cited pre-emptively)
-- Esteban 2020 (neutrino global fit)
-- Gonzalez 2021, Yue 2013 (neutron-lifetime bottle/beam methods)
-- Riess 2022 (Hubble tension)
-- Jaffe-Witten 2000 (Yang-Mills Clay statement)
-- Chen 2006, Athenodorou 2020 (lattice QCD glueball)
-- Kass-Raftery 1995 (BIC interpretation)
-- Benjamini-Hochberg 1995 (FDR procedure)
-- Polyakov 1981, GSW 1987 (bosonic string critical dimension)
-- LongRange 2003 (gravity inverse-square law tests)
-- Polchinski 1998, Rovelli 2004, Verlinde 2011 (alternative parameter-economy frameworks)
-- de Moura 2021 (Lean 4)
-- 8 UQFF whitepapers cited inline (PAPER_646, 1005, 1133, 1141, 1156, 1167, 1203, 1209HH, 1318, 1521, 1522, 648, 1726)
+### Verification
+
+- `_run_tests()` reports 8/8 OK (catalogue 99 systems, Γ sweep 8 points, AGN 7, WSTP code 1799 chars, solar calibration g_eff=434.51 m/s², S_26^(3) < S_26)
+- Full uqff_fidelity_tests.py: 867 passed, 0 failed (no regressions)
+- _run_wolframscript correctly returns (False, "[Errno 2] No such file...") when wolframscript binary absent
+
+### Methodology change
+
+Per Daniel's directive: the keyword/sample classification of net-negative commits is unreliable. Going forward each net-negative commit needs per-function diff inspection (BEFORE.funcs vs AFTER.funcs, with body comparison for renamed pairs). 29 net-negative commits remain to re-walk this way.
+
+### No physics changes
+
+Zero modifications to canonical primitives, calculator, or fidelity gate. Recovery is purely re-introduction of code that was already in git history at 1f9d844c^.
+tepapers cited inline (PAPER_646, 1005, 1133, 1141, 1156, 1167, 1203, 1209HH, 1318, 1521, 1522, 648, 1726)
 
 Approximately 30-50 more BibTeX entries are needed to back the full set of secondary citations; targeted as the next batch of polish work.
 
