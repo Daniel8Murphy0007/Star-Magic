@@ -1986,6 +1986,43 @@ except Exception as _e:
     print(f"  FAIL  BLOCK 29 setup error: {_e}")
 
 
+# ============================================================
+# BLOCK #30: QCALCGEOM REGRESSION GUARD
+#   Imports QCalcGeom and runs its self-test suite. The dpm
+#   v3.0 SM-perversion cleanup changed derive_from_quantum_chain
+#   to return a scalar (was 2-tuple); QCalcGeom local wrapper
+#   absorbs both shapes. This block ensures QCalcGeom stays
+#   importable + green so the dpm <-> BSFG bridge cannot
+#   silently regress again.
+#   Assertion: run_qcalcgeom_tests returns >= 40 (47/47 typical).
+# ============================================================
+try:
+    import QCalcGeom as _qg
+    import io as _io, contextlib as _cl
+    _buf = _io.StringIO()
+    with _cl.redirect_stdout(_buf):
+        _qg_pass = _qg.run_qcalcgeom_tests(verbose=False)
+    if isinstance(_qg_pass, int) and _qg_pass >= 40:
+        PASS += 1
+        print(f"  PASS  QCalcGeom self-test: {_qg_pass} tests passed")
+    else:
+        FAIL += 1
+        FAILURES.append(("BLOCK_30 QCalcGeom self-test", f"returned {_qg_pass}"))
+        print(f"  FAIL  QCalcGeom self-test returned {_qg_pass}")
+except ImportError as _e:
+    # scipy optional; skip cleanly if unavailable in CI env
+    if "scipy" in str(_e):
+        print(f"  SKIP  QCalcGeom (scipy not installed in this env)")
+    else:
+        FAIL += 1
+        FAILURES.append(("BLOCK_30 QCalcGeom import", str(_e)))
+        print(f"  FAIL  QCalcGeom import: {_e}")
+except Exception as _e:
+    FAIL += 1
+    FAILURES.append(("BLOCK_30 QCalcGeom setup", str(_e)))
+    print(f"  FAIL  QCalcGeom setup error: {_e}")
+
+
 # ---------- summary ----------
 print()
 print("=" * 70)

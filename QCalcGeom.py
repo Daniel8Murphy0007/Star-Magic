@@ -133,8 +133,21 @@ THZ_PHONON  = dpm.THZ_PHONON
 _C_LIGHT    = getattr(dpm, "_C_LIGHT", 2.99792458e8)
 
 def _derive_rho_from_quantum_chain(n_levels: int = 26, f_SCm: float = 0.57) -> Tuple[float, float]:
-    """Wrapper — all rho_vac in this module MUST trace to Quantum Chain Step 0-7."""
-    return dpm.derive_from_quantum_chain(n_levels=n_levels, f_SCm=f_SCm)
+    """Wrapper - all rho_vac in this module MUST trace to Quantum Chain Step 0-7.
+    Returns (rho_energy_J_per_m3, rho_mass_equivalent_kg_per_m3) for back-compat
+    with this modules compute_FUBi / compute_FUBii / solve_habitable_zone /
+    compute_emergent_mass call sites that historically expected the 2-tuple.
+    dpm v3.0 (post 2026-05 SM-perversion cleanup) returns only the scalar
+    energy density; we synthesize the mass-equivalent locally via /c^2 ONLY
+    when downstream code projects to mass (Quantum Chain Step 7).
+    Fixed 2026-06-26: dpm.derive_from_quantum_chain signature drift recovery.
+    """
+    result = dpm.derive_from_quantum_chain(n_levels=n_levels, f_SCm=f_SCm)
+    if isinstance(result, tuple):
+        return result
+    rho_energy = float(result)
+    rho_mass_eq = rho_energy / (_C_LIGHT ** 2)
+    return rho_energy, rho_mass_eq
 
 # =============================================================================
 # CANONICAL BSFG CONSTANTS (for test fidelity only; production paths use dpm above)
