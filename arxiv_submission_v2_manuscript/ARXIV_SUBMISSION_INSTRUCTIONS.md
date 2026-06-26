@@ -38,8 +38,10 @@ ARXIV_SUBMISSION_INSTRUCTIONS.md          ← this file (do NOT upload)
 
 ### Step 1 — Create a .tar.gz of the source files
 
+**In Git Bash on Windows, use forward slashes** (backslashes are escape characters in bash and will silently corrupt the path):
+
 ```bash
-cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+cd /c/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
 tar -czf uqff_arxiv_submission_v2.tar.gz \
     arxiv_submission_v2_manuscript/abstract.tex \
     arxiv_submission_v2_manuscript/section_*.tex \
@@ -47,6 +49,17 @@ tar -czf uqff_arxiv_submission_v2.tar.gz \
     arxiv_submission_v2_manuscript/uqff_manuscript_v2.bbl \
     arxiv_submission_v2_manuscript/uqff_manuscript_v2.tex
 ```
+
+(If you accidentally use backslashes — e.g., `cd C:\Users\tmsjd\...` — bash will eat the `\U`, `\t`, etc. and you will see `cd: C:UserstmsjdsourcerepoDaniel...: No such file or directory`. That is the symptom; forward slashes are the fix.)
+
+Verify the result:
+
+```bash
+ls -la uqff_arxiv_submission_v2.tar.gz
+tar -tzf uqff_arxiv_submission_v2.tar.gz | head -20
+```
+
+You should see ~150-250 KB and 16 files.
 
 The resulting `uqff_arxiv_submission_v2.tar.gz` is what you upload to arXiv.
 
