@@ -1,0 +1,372 @@
+# UQFF Cross-Wired Papers — Multi-Solver Dispatch Index
+
+**Papers that feed MORE THAN ONE solver process simultaneously.**
+
+**Count: 360 papers** that combine `simultaneous_solver` (F_U=0, MUGE, 99-system, triadic) with 2+ other physics domains.
+
+These papers are LOAD-BEARING. A paper that looks 'unwired' by paper_id may actually be feeding three different solver routines through the simultaneous F_U=0 dispatch, the MUGE catalog, AND the 99-system master sum. This index surfaces those papers so they're not treated as legacy.
+
+**Format:** `PAPER_<id>` — topics_covered
+
+---
+
+- **PAPER_016** (`016_Quantum_Entanglement_UQFF_Nonlocal_Correlations`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_050** (`050_26D_Manifold_Compactification_3plus1_Spacetime`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_089** (`089_UQFF_Master_Equation_Derivation`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_090** (`090_MUGE_Compressed_Gravity`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_091** (`091_MUGE_Resonance_14_Mode`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_092** (`092_SgrA_MUGE_Comparison`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_093** (`093_M87_Event_Horizon_UQFF`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_094** (`094_Magnetar_SGR1745_UQFF_Calibration`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_100** (`100_THz_Resonance_Holes_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_102** (`102_Navier_Stokes_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_105** (`105_BH_Phases_Nebulae_Galaxy_Models`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_106** (`106_UQFF_Vacuum_Energy_Dark_Energy_Connection`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_110** (`110_EP06_Gaia_SgrA_Distance_Proof`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_114** (`114_EP07_ParkerProbe_Heliosheath_Proof`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_115** (`115_EP09_3C273_QuasarJet_Proof`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_119** (`119_UQFF_7System_Equation_Reference`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_120** (`120_UQFF_Astronomical_Systems_Catalog`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_121** (`121_UQFF_71Equation_Catalog_Complete_Framework`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_127** (`127_UQFF_Resonant_ParkerSolarProbe_DeltaSW`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_129** (`129_UQFF_Triadic_3C273_Jet_NegativeTime_N13`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_131** (`131_UQFF_Superconductive_GW170817_Chandra_Jets_Combined`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_134** (`134_UQFF_Heliosphere_Ug2_SolarWind_Transmutation_HelioAge_PlanetaryWater`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_139** (`139_UQFF_HydrogenAtom_Ug4i_InverseBoyle_MetallicH_CrystallineMUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_140** (`140_UQFF_UAprSCm10_DualMonopole_VacuumDensity_UniversalRatio`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_141** (`141_UQFF_H2O_Azeotrope_OceanicSalinity_Buoy_Ug4_NOAAValidation`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_142** (`142_UQFF_Hydrogen_PToE_Resonance_Hres_Z1to126_ShellMagicNumbers`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_143** (`143_UQFF_40pct_Contribution_MUGE_vs_Prior_SchrodingerDirac_Bridge`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_145** (`145_UQFF_MUGE_Compression_Cycle3_Unified_Framework_12Term_Resonance`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_146** (`146_UQFF_SuperconductiveResonance_12Term_MUGE_Master_Equation`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_147** (`147_UQFF_FDPM_VorticalResonance_DPM_Driver_Aether_Coupling`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_148** (`148_UQFF_SGR1745_Magnetar_MUGE_FluidDynamics_Dominant`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_149** (`149_UQFF_SgrA_MUGE_FDPM_Dominance_Extreme_Gravity`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_150** (`150_UQFF_Tapestry_Westerlund2_MUGE_StarFormation_Resonance`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_151** (`151_UQFF_Pillars_RingsOfRelativity_MUGE_Cascade_Gravity`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_152** (`152_UQFF_StudentsGuide_Cosmological_MUGE_Baseline`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_153** (`153_UQFF_MorrisThorne_Wormhole_Geodesics_UQFF_Metric`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_154** (`154_UQFF_NavierStokes_QuasarJets_JosStam_SCm_Force`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_155** (`155_UQFF_SM_Gravity_MUGE_Resonance_Equilibrium_LimitingCase`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_156** (`156_UQFF_Millennium_Prize_Roadmap_10_Equations_Clay_Bridge`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_157** (`157_SolarSystem_UQFF_FU_Validation_Sun_Earth_Jupiter_Neptune`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_158** (`158_Hybrid_MUGE_Blending_Model_Beta_Compressed_Resonance`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_159** (`159_13th_Resonance_Term_MorrisThorne_Wormhole_MUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_163** (`163_UQFF_Modular_Compressed_MUGE_Decomposed_Functions`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_164** (`164_HighEnergy_Dataset_UQFF_Validation_CERN_GWOSC_EHT_Chandra`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_168** (`168_MUGE_3D_Simulation_Entity_Framework_GPU_Rendering`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_169** (`169_CoAnQi_Architecture_UQFF_3D_Plugin_System`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_172** (`172_FU_Complete_Unified_Field_Assembly`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_173** (`173_Modular_Compressed_MUGE_9Term_Decomposition`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_174** (`174_Modular_Resonance_MUGE_13Term_Wormhole`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_177** (`177_FluidSolver_NavierStokes_UQFF_Coupling`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_178** (`178_CoAnQi_3D_Simulation_Entity_Framework`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_180** (`180_CoAnQi_Unit_Test_Suite_26_Validated_Functions`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_187** (`187_Canonical_7_Object_MUGESystem_Catalog`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_188** (`188_CoAnQi_Build_Distribution_Architecture`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_193** (`193_CoAnQi_Namespaced_Modular_Cpp_Architecture`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_195** (`195_CoAnQi_JSON_YAML_CSV_Data_Loader_Framework`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_196** (`196_Triadic_Master_Equation_System_Compressed_Resonance_Buoyancy_UQFF`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_197** (`197_F_U_Bi_i_Extended_Integral_UV_mm_Wave_Hybrid_Hierarchical`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_198** (`198_F_UBii_Taxonomy_Part1_Compact_Object_Stellar_Buoyancy_Forces`) — buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_199** (`199_F_UBii_Taxonomy_Part2_Cosmological_Dark_Sector_Buoyancy_Forces`) — buoyancy_internal, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_200** (`200_Um_Universal_Magnetism_Taxonomy_Complete_Variant_Catalogue`) — buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_205** (`205_Ramanujan_Polynomials_Q26_UQFF_26State_Summations`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc
+- **PAPER_208** (`208_UQFF_Variable_Calibration_phi_fTRZ_rhoUA_SSq_Qwave_CIA`) — buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_209** (`209_UQFF_vs_LambdaCDM_Comparison_Framework`) — buoyancy_external, buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_210** (`210_UQFF_vs_MOND_Comparison_Framework`) — buoyancy_internal, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_211** (`211_UQFF_99System_Complete_Framework_Compression_Cycle3`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_212** (`212_UQFF_48Scale_Molecular_Rotor_CIA_CrossSection_Framework`) — buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_213** (`213_H_res_Suite_D_universe_Master_Equations`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_214** (`214_MHD_Clusters_Jets_Accretion_UQFF_Framework`) — buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_216** (`216_Triadic_UQFF_Numerical_Validation_Westerlund2_Pillars`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_217** (`217_DeepSearch_FUBii_Polynomial_Rare_Mathematical_Discoveries`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_226** (`226_MagnetarSGR0501_11Term_MUGE_UQFF`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_227** (`227_Tapestry_LMC_Stellar_Wind_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_228** (`228_Westerlund2_OB_StellarWind_MUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_229** (`229_Pillars_Creation_Erosion_MUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_230** (`230_NGC2525_SN2018gv_Negative_MassLoss_MUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_231** (`231_HUDF_Cosmic_Field_z3p5_MUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_232** (`232_NGC1792_Stellar_Forge_Starburst_MUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_233** (`233_SGR1745_BH_Proximity_Enhanced_MUGE`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_234** (`234_SgrAStar_Accretion_Precession_Enhanced_MUGE`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_235** (`235_Antennae_NGC4038_Double_Merger_Interaction_MUGE`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_237** (`237_UQFFSource10_Catalogue_Master_Buoyancy_26Layer_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_240** (`240_UQFF_Spooky_Action_DPM_Resonance_gH_Hydrogen`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_242** (`242_RingsOfRelativityEinsteinLensingMUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_243** (`243_NGC3603FullMUGECavityPressure`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_244** (`244_MUGE_Quantum_Uncertainty_Gravity_SubTerm_Universal`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_245** (`245_MUGE_Fluid_Self_Gravity_Archimedes_Buoyancy_SubTerm`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_246** (`246_MUGE_Dual_Mode_Oscillatory_Gravity_Standing_Traveling_Wave`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_247** (`247_MUGE_Merger_Interaction_Modulation_Tidal_Gravity_Boost`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_248** (`248_UQFF_Source10_Batch_OpenMP_DPM_Resonance_Profiling`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_249** (`249_UQFF_CUDA_GPU_Tiled_GEMM_Multi_System_Acceleration`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_251** (`251_EtaCarina_Homunculus_DPM_Invisibility_LENR_Resonance`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_259** (`259_NGC1275_AGN_Feedback_Buoyancy_Equilibrium_Cooling_Flow_BCG`) — buoyancy_internal, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_260** (`260_HorseheadNebula_Universal_Erosion_Buoyancy_Coupling_PDR_Structural_Form_Independence`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_261** (`261_NGC3603_Dual_Dynamic_Feedback_Equilibrium_Timescale_Scale_Invariant_Theorem_YMC`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_262** (`262_NGC2525_SN_TypeIa_Negative_Mass_Loss_Gravitational_Sign_Reversal_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_263** (`263_UQFF_Simultaneous_CoAction_Universality_Dissipative_Buoyancy_Pair_Master_Theorem`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_264** (`264_HUDF_TRZ_CPT_Asymmetric_Gravitational_Phase_Transition_NegativeTime`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_265** (`265_HUDF_DualChannel_Interaction_Cascade_Buoyancy_Quadratic_Merger_Amplification`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_266** (`266_HUDF_Primordial_IGM_Superconducting_Gravitational_Meissner_Effect_Bcrit`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_269** (`269_NGC1792_SN_RamPressure_Degeneracy_Point_Kinematic_Invariant_StarburstGravity`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_274** (`274_Andromeda_HI21cm_UQFF_GalacticBuoyancyResonanceFrequency_omegaHI_Bridging`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_276** (`276_Andromeda_FriedmannUQFF_HzExpansionCoupling_H_UQFF_NearUnityResonance`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_278** (`278_Sombrero_DustRing_UQFF_GravitationalRingResonator_omega_ring_r_ring`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_279** (`279_Sombrero_SMBH_Dominance_Ratio_gamma_BH_SphereOfInfluence_r_SOI`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_284** (`284_M16_UQFF_DualMassCoActionProduct_Phi_dm_SFR_Erosion`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_293** (`293_CompressedResonanceUQFF24_DualChannelCoSumArchitecture_10TermCR`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_294** (`294_CompressedResonanceUQFF24_VacuumDifferentialHarmonic_hbarDenominatorCoupling`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_295** (`295_CompressedResonanceUQFF24_CompressedCooperSuperSeeding_fDPMSquaredScalingLaw`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_302** (`302_HydrogenPToE_Ug4iReactiveResonanceVacuumBridge_Gamma_4p704e36`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_303** (`303_HydrogenPToE_LymanAlphaTripleFrequencyResonanceLock_freqRatio_1p000`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_308** (`308_SpiralGalaxy_TorqueGravitationalAmplifier_tau_2p046_307Myr`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_314** (`314_NGC6302Resonance_PN_DPM_MacroAntenna_F_DPM_1p267e50_ratio_2p017e13`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_316** (`316_NGC6302Resonance_CooperDPM_Asc_6p994e21_asuper_1p747e9_P295confirm`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_321** (`321_CR34_CrossChannelDominanceCrossover_Vf_5p43e28_CompressedResonanceReversal`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_326** (`326_TriadicMasterUQFF_26State_Ramanujan_CoSumArchitecture_FUg1_Rt_FUBi`) — buoyancy_external, caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_329** (`329_Um_Bilinear_Heaviside_Quasi_Neutrino_VacuumCascade_DoubleExponentialSSq`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_330** (`330_H_res_6Equation_Nuclear_Resonance_Udp_Dipole_kNuc_NZ_Scaling`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_331** (`331_26State_MUGE_FrequencyBasis_fAether_fSuper_Magnetar_SpinDown_ProofIdentities`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_334** (`334_Ui_Complex_Superconductive_VacuumDensity_OmegaS_fTRZ_BetaI_CompactGalacticBifurcation`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_335** (`335_kkREB_FUBii_Ramanujan_CoSum_FUBi_Buoyancy_Kernel_fUb_VolumeRatio`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_336** (`336_gCompressed_AllForces_DM_Perturbation_Rt_26State_4Subterm_Resonant_Decomposition`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_337** (`337_Qwave81_Updated_Statistics_Phase_Separation_Cosine_Vela_Validation`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_355** (`355_PLCKG287_Merger_Relic_Triadic_FUg1_Rt_FUBi_DeltaRho`) — buoyancy_external, caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_367** (`367_PSZ2G181_Merger_Relic_Full5Eq_Triadic_FUBi_Compressed_Resonant_Buoyancy_Ui`) — buoyancy_external, caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_371** (`371_MUGE_12Term_Superconductive_Resonance`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_372** (`372_Compressed_UQFF_Bcrit`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_373** (`373_MorrisThorne_Wormhole_Null_Geodesics`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_374** (`374_J1610_Relativistic_Quasar_Jet`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_375** (`375_UQFF_Advanced_Integration`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_376** (`376_UQFF_Formal_Proof_Set`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_377** (`377_Wormhole_MUGE_Impl_Safety`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_378** (`378_CohesiveUQFF_IntegrationFormula`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_379** (`379_MUGE_DualModel_7System_Comparison`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_380** (`380_UQFF_Solvable_Equation_Set`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_381** (`381_SGR1745_Compressed_MUGE_Spectral_Term_Decomposition`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_382** (`382_UQFF_12Term_Spectral_Ladder_SGR1745`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_383** (`383_Ug4i_Transient_Age_Decay_Law`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_384** (`384_SagAStar_Full_Resonance_Term_Decomposition`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_385** (`385_Canonical_7System_UQFF_Parameter_Registry`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_386** (`386_LaTeX_DualBlock_Master_UQFF_May2025_Document_Integration`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_387** (`387_vSCm_Relativistic_Parameter_Update`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_388** (`388_YangMills_MassGap_VacuumDensity_Evolution`) — biological, dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_389** (`389_Galactic_OmegaS_VelocityDispersion_Calibration`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_390** (`390_SMBH_Mass_Sigma_Dispersion_UQFF_Anchor`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_391** (`391_Hybrid_MUGE_Meissner_Blending_Model`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_394** (`394_FU_Complete_ThreeTerm_StarMagic_Master`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_395** (`395_Wormhole_UQFF_Resonance_Acceleration_Term`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_397** (`397_UQFF_Solvable_15_Equations_Taxonomy`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_399** (`399_7System_MUGE_Numerical_Validation_Table`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_408** (`408_ResonanceMUGE_14Term_Wormhole_Complete_Sum`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_420** (`420_FU_Complete_Lambda_i_4th_Dissipation_Sum_Code_Gap`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_422** (`422_UQFF_29System_CrossValidation_Matrix`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_423** (`423_Um_Complete_SSq_Vacuum_Thermal_Damping`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, proto_hydrogen, universal_sc
+- **PAPER_430** (`430_SGR0501_4516_Magnetar_PerSystem_MUGE`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_431** (`431_SGR1745_2900_Complete_PerSystem_MUGE_BHProximity`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_432** (`432_SgrA_SMBH_PerSystem_MUGE_Accretion_DM_Precession`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_433** (`433_Tapestry_Starbirth_PerSystem_MUGE_WindFeedback`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_434** (`434_Westerlund2_PerSystem_MUGE_TauSF2Myr`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_435** (`435_PillarsOfCreation_PerSystem_MUGE_ErosionCoupling`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_436** (`436_RingsOfRelativity_PerSystem_MUGE_LensingAmplification`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_437** (`437_UQFFLearningAssessment_EvB_AdvancementMetric`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_438** (`438_NGC2525_PerSystem_MUGE_SNMassLoss_BHProximity`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_439** (`439_NGC3603_PerSystem_MUGE_CavityPressure_DualWind`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_440** (`440_BubbleNebula_NGC7635_PerSystem_MUGE_GrowingExpansion`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_441** (`441_AntennaeGalaxies_PerSystem_MUGE_MergerInteractionBoost`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_442** (`442_HorseheadNebula_PerSystem_MUGE_GrowingErosion5Myr`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_443** (`443_NGC1275_PerseusA_PerSystem_MUGE_BDecay_FilamentCoupling_CoolingFlow`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_444** (`444_HUDF_GalaxiesGalore_PerSystem_MUGE_CosmicScale_HighRedshift`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_445** (`445_NGC1792_StellarForge_PerSystem_MUGE_StarburstWindDominance`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_446** (`446_UQFFSource10_5ForceFramework_TriadicGravity_FirstPrimaryTextModule`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_447** (`447_OrionNebula_UQFF_MUGE_HAlpha_SFR_Evolution`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_448** (`448_MultiSystem_UQFF_Core_Compression_Framework_Fenv_Architecture`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_449** (`449_YoungStars_Outflows_Pressure_Vout100kms_MUGE_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_450** (`450_Eagle_Nebula_Wind_Radiation_Pressure_NGC6611_UQFF`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_451** (`451_BigBang_Gravity_Evolution_MUGE_QG_DM_GW_Composite_Fcosmo`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_452** (`452_Compressed_UQFF_Env_Modular_7System_Cycle2_Registry`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_453** (`453_Magnetar_DualMode_UQFF_Compressed_Frequency_SGR1745_AetherResonance`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_454** (`454_MultiSystem_Compression_Cycle2_19System_Registry_Universal`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_455** (`455_UQFF_29System_Expanded_Registry_Saturn_Hydrogen_HRes_Session115Hub`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_456** (`456_MUGE_29System_Compressed_Unified_Gravity_Duniverse_4Factor_13Fenv`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_457** (`457_MUGE_38System_Extended_Env_Ftorque_Fshock_Fcosmo_AutoCascade`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_458** (`458_MUGE_Final_7System_Resonance_10Term_Acceleration_Suite_getSolutions`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_459** (`459_UFE_Orb_Plasmoid_Dynamics_RedDwarf_tMinus_Transform_26QuantumLevels`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_460** (`460_Nebular_UQFF_Drawing32_LENR_NonLocal_Higgs_DNA_Energy`) — biological, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_462** (`462_Inertia_UQFF_Wave_Energy_Inertial_Operator_ThreeLeg_Proofset`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_463** (`463_Hydrogen_Compressed_Space_Espace_7Factor_HiggsFreq_MayanPrecession`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_464** (`464_M51_WhirlpoolGalaxy_MUGE_UQFF_Tidal_NGC5195_DensityWaves`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_465** (`465_NGC1316_CosmicDustBunnies_MUGE_UQFF_Merger_AGNJets_ClusterDisruption`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_466** (`466_V838Mon_LightEcho_UQFF_Ug1_DustModulation_TRZ_VacuumCorrection`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_467** (`467_NGC1300_BarredSpiral_MUGE_UQFF_BarGasFunneling_DensityWaves_SFR`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_468** (`468_SMBHBinary_MUGE_UQFF_FrequencyDerived_DPM_THz_Coalescence`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_469** (`469_NGC346_Nebula_MUGE_UQFF_Ug3Collapse_ClusterEntanglement_BlueshiftedQuantum`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_470** (`470_SMBH_Msigma_UQFF_Resonance_FeedbackCalibration_f0063_26StateModel`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_472** (`472_Abell2256_UQFF_FUBii_Enhanced`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_473** (`473_MUGEModule_7System_Compressed_Resonance`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_474** (`474_MUGEResonanceModule_12System_Superconductive`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_475** (`475_UQFF_SubTerm_Modules_Catalogue`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_476** (`476_DPM_PreBigBang_26Sphere_Birth_Model`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_479** (`479_UQFFBuoyancyAstroModule_ComplexArithmetic_5System`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_483** (`483_MultiSystem_UQFF_Compiler_Modules_4_5_7_8_AstroSystems`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_489** (`489_UQFF_Nineteen_System_26D_Polynomial_Framework`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_491** (`491_MUGE_Compressed_Nine_Term_Gravity_Framework`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_492** (`492_MUGE_Resonance_Thirteen_Mode_Frequency_Spectrum`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_503** (`503_UQFF_Lagrangian_Wolfram_Export`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_504** (`504_WOLFRAM_TERM_AutoCollection_Framework`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_512** (`512_Eta_Carinae_BuoyantGravity_PCR`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_513** (`513_NGC1277_Hypergraph_SpacetimeDimension`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_524** (`524_Plasma_Orb_Emergence_Threshold_Orion_Proplyd_Calibration`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_525** (`525_Session141_Hub_Universal_Spectrum_DPM_Quantum_Egg_Plasma_Orb_Proplyds`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_helium, proto_hydrogen, universal_sc
+- **PAPER_531** (`531_BB_Hypergraph_Origin_VDS_SCm_Expansion`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_533** (`533_Solar_System_Proplyd_DVP_Orbital_Quantization`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_536** (`536_DPM_Split_Monopole_MHD_Proplyd_Topology`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_537** (`537_Solar_Body_Proplyd_Legacy_10_Body_Table`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_541** (`541_DPM_Proplyd_Bidirectional_Encompassment_Framework`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_helium, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_542** (`542_UQFF_OffDiag_Proplyd_Orion_Four_Telescope_Fit`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_545** (`545_Simultaneous_Multi_Method_Equivalence_Merger_Hub`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_549** (`549_Galaxy_Merger_UQFF_vs_Newton_Einstein_ThreeMethod_Hub`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_555** (`555_BSFG_Geodesic_Metric_Compatibility`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_563** (`563_Millennium_Prize_UQFF_Coordinator_All_Six_Problems`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_579** (`579_UQFF_All_Forms_Evolution_Catalogue_Triadic_Solution`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_583** (`583_UQFF_Six_Form_Simultaneous_Solver`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_589** (`589_UQFF_Dark_Energy_Void_Buoyancy`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_593** (`593_UQFF_Gravitational_Constant_Void_Coupling`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_594** (`594_UQFF_Black_Hole_Finite_Bound`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_595** (`595_UQFF_Sgr_A_Star_Bound_Application`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_598** (`598_VDS_DVP_BH26_Integration_Reference`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_613** (`613_UQFF_NASA_ATP_Grant_Framework_Validation`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_614** (`614_UQFF_FU_Complete_26D_Projection_Operator`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_622** (`622_UQFF_Zero_Mass_Aether_Vacuum_Gradient_Reformulation`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_629** (`629_UQFF_MS073567421_Cluster_AGN_Jet_Void_Pocket`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_632** (`632_UQFF_Grant_Proposal_Dataset_Compression_Framework`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_643** (`643_UQFF_Thermal_Lens_Equation_LENR_Applications`) — buoyancy_external, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_645** (`645_UQFF_Einstein_Field_Equations_Black_Hole_Singularity_Resolution`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_657** (`657_QCalcGeom_Universal_Buoyancy_Solver`) — buoyancy_internal, caduceus_inertial, dpm_grinding, negative_time, proto_hydrogen, universal_buoyancy
+- **PAPER_688** (`688_NGC1316MUGECalculation`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_692** (`692_M51WhirlpoolTidalInteraction`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_700** (`700_UQFFEquationMathematicalDerivation`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_702** (`702_SaturnRingSystemUQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_703** (`703_NGC1275MagneticMonsterUQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_704** (`704_HorseheadNebulaBarnard33UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_705** (`705_NGC3603StarCluster2UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_706** (`706_NGC3603StarClusterPrimaryUQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_707** (`707_NGC2525BarredSpiral2UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_708** (`708_PillarsOfCreationM16UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_709** (`709_Westerlund2StarClusterUQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_710** (`710_NGC2014NGC2020StarformingUQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_731** (`731_NGC1316MergerEvolution`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_732** (`732_TenAstroSystemsMUGE`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_733** (`733_EighteenAstroSystemsMUGE`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_734** (`734_LENR_Kn_ThreeScenario_Calibration_Constants`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_741** (`741_UQFF_Compression_Cycle2_38System_FEnv_Master`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_742** (`742_Sombrero_Galaxy_MUGE_Dust_Lane_Drag`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_743** (`743_Saturn_Ring_Tidal_MUGE_T_ring_F_wind`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_744** (`744_M16_Eagle_Nebula_MUGE_Msf_Erad_Radiation_Erosion`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_745** (`745_Crab_Nebula_Expanding_MUGE_Pulsar_Wind_Magnetic`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_750** (`750_M51_NGC1316_MUGE_Simulation_Whirlpool_FornaxA`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_786** (`786_NGC4826_Black_Eye_Galaxy_Three_UQFF`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_787** (`787_NGC1805_LMC_Cluster_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_788** (`788_NGC6307_NGC7027_PN_Pair_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_789** (`789_Cassini_Ring_Gaps_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_790** (`790_ESO391_12_Lenticular_Three_UQFF`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_791** (`791_M57_Ring_Nebula_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_792** (`792_LMC_Large_Magellanic_Cloud_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_793** (`793_ESO510_G13_Warped_Spiral_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_798** (`798_AFGL5180_Massive_SFR_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_799** (`799_NGC2174_Monkey_Head_Nebula_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_800** (`800_NGC685_Barred_Spiral_Three_UQFF`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_801** (`801_NGC3507_Spiral_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_802** (`802_NGC3511_Spiral_Crater_Three_UQFF`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_803** (`803_NGC3596_Gas_Nebula_Spiral_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_804** (`804_NGC1961_Spiral_Three_UQFF`) — caduceus_inertial, dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_805** (`805_NGC5335_Spiral_Three_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_807** (`807_CGM_Metal_Retention_UQFF_Theorem`) — caduceus_inertial, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_811** (`811_Antennae_Galaxies_NGC4038_4039_Clean_UQFF_Merger`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_812** (`812_ACP_Dynamic_Qwave_THz_Hole_UBmi_Belly_Button_UQFF`) — dpm_grinding, epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_814** (`814_Quadriadic_UQFF_NANOGrav_15yr_AGN_SMBH_Coevolution`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, millennium, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_823** (`823_UQFF_Compression_Cycle2_Derivation_Method`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_833** (`833_Universal_Gravity_Equation_Catalog_All29_UQFF_Systems`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_853** (`853_Solfeggio_Frequency_Pi_Encoding_Resonance_UQFF_Triadic`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_923** (`923_SCm_Phonon_Resonance_Acceleration`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_928** (`928_GW190425_Wavelength_Phonon_Correction`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_954** (`954_Et_Linewidth_Modulation`) — epoch, high_energy, lambda_cc, lenr, material_science, proto_hydrogen, universal_sc
+- **PAPER_961** (`961_Compressed_Gravity_Triadic`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_962** (`962_Resonant_Gravity_Triadic`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_963** (`963_Buoyancy_Gravity_Triadic`) — epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_964** (`964_3D_MUGE_Magnetar_Sim`) — dpm_grinding, epoch, high_energy, lambda_cc, material_science, proto_hydrogen, universal_sc
+- **PAPER_965** (`965_NS_Phonon_GW190425`) — dpm_grinding, epoch, high_energy, lambda_cc, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_966** (`966_Unified_Triadic_Solver`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_967** (`967_NS_Phonon_Tidal_Deformability`) — dpm_grinding, epoch, high_energy, lambda_cc, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_968** (`968_Production_Scaling_V11_Benchmark`) — epoch, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_969** (`969_Expanded_26D_Ramanujan_Higher_Order`) — epoch, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_972** (`972_ALICE_Centrality_Multiplicity`) — dpm_grinding, epoch, lambda_cc, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_973** (`973_Color_Deconfinement_Phase`) — dpm_grinding, epoch, lambda_cc, material_science, millennium, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_974** (`974_99_System_Master_Equation`) — epoch, high_energy, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_975** (`975_Triadic_QGP_Validation`) — dpm_grinding, epoch, high_energy, lambda_cc, material_science, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_976** (`976_MUGE_Galaxy_Cluster_3D`) — dpm_grinding, epoch, high_energy, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_977** (`977_Production_Scaling_V12_Benchmark`) — dpm_grinding, epoch, lambda_cc, material_science, proto_hydrogen, universal_buoyancy, universal_sc, yang_mills
+- **PAPER_978** (`978_QCalcGeom_Vectorized_Pipeline`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_979** (`979_FUBi_Master_Buoyancy_6Layer`) — buoyancy_external, dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_984** (`984_99_System_Aggregate_FUBi`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_994** (`994_Solar_Calibration_147`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_995** (`995_99System_Gamma_Sweep`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_996** (`996_WSTP_Gamma_Sweep_Runner`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_997** (`997_Production_Scaling_V13`) — buoyancy_external, epoch, high_energy, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1017** (`1017_99System_WSTP_Gamma_V1`) — epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc, yang_mills
+- **PAPER_1050** (`1050_MUGE_FUBii_9System_Synthesis`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1051** (`1051_Universal_Duality_SCm_UA_Theorem`) — dpm_grinding, epoch, high_energy, lambda_cc, lenr, material_science, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_1075** (`1075_3D_Volumetric_MUGE_Fields`) — dpm_grinding, lambda_cc, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1079** (`1079_Galaxy_Cluster_Cooling_Flow_Suppression`) — high_energy, lambda_cc, material_science, proto_helium, proto_hydrogen, universal_sc
+- **PAPER_1091** (`1091_Production_Scaling_V23`) — dpm_grinding, material_science, proto_hydrogen, universal_sc
+- **PAPER_1097** (`1097_Production_Scaling_V24_Vectorized`) — material_science, proto_hydrogen
+- **PAPER_1099** (`1099_Production_Scaling_V25_Pipeline`) — material_science, proto_hydrogen, universal_sc
+- **PAPER_1101** (`1101_SCm_Qubit_T2_Coherence_FUBi_Ratio`) — buoyancy_external, lambda_cc, material_science, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1105** (`1105_Hydrogen_Universe_Dual_3D_MUGE`) — dpm_grinding, lambda_cc, proto_hydrogen
+- **PAPER_1119** (`1119_Lorentz_Regauging_Vacuum_Energy_Heaviside`) — epoch, high_energy, lambda_cc, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_sc
+- **PAPER_1138** (`1138_SCm_Holmlid_Parkhomov_PonsFleischmann_Upgrade`) — buoyancy_external, lenr, material_science, negative_time, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1139** (`1139_SCm_PonsFleischmann_Derivation`) — buoyancy_external, lenr, material_science, negative_time, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1141** (`1141_SCm_Rossi_ECat_Variants_Unified`) — buoyancy_external, lenr, material_science, negative_time, periodic_elements, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1149** (`1149_PSZ2G181_Stroe2025_Xray_Mach_UQFF_Global_Connections`) — caduceus_inertial, dpm_grinding, epoch, negative_time, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1151** (`1151_VDS_DVP_BH26_Variant_Branches_Coupled_Field`) — dpm_grinding, proto_hydrogen, universal_sc
+- **PAPER_1152** (`1152_QCalcGeom_SimEngine_12Stage_CPT_Pipeline`) — dpm_grinding, lambda_cc, material_science, proto_hydrogen, universal_sc
+- **PAPER_1155** (`1155_DPM_26Layer_Amplification_Particle_Masses`) — dpm_grinding, lenr, proto_hydrogen, universal_sc
+- **PAPER_1156** (`1156_UQFF_Cosmological_Constant_Closure`) — dpm_grinding, high_energy, lambda_cc, proto_hydrogen, universal_buoyancy, universal_sc
+- **PAPER_1185** (`1185_Neutrino_GW_Cross_Coupling_UQFF`) — dpm_grinding, proto_hydrogen, universal_sc
+- **PAPER_1197** (`1197_Universal_Buoyancy_Simultaneous_Solver_UQFF`) — proto_hydrogen, universal_buoyancy
+- **PAPER_1200** (`1200_UQFF_FUBi_FUBii_Stationarity_Derived_G_Proof`) — buoyancy_external, buoyancy_internal, dpm_grinding, lenr, proto_hydrogen, universal_buoyancy
+- **PAPER_1203** (`1203_UQFF_Canonical_v1.5_Simultaneous_Solver_Convergence`) — buoyancy_external, buoyancy_internal, dpm_grinding, lenr, proto_hydrogen, universal_buoyancy
+- **PAPER_1241** (`1241_GOLDBACH_CONJECTURE`) — caduceus_inertial, dpm_grinding, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1242** (`1242_TWIN_PRIME_CONJECTURE`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1243** (`1243_COLLATZ_CONJECTURE`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1244** (`1244_ABC_CONJECTURE`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1245** (`1245_CONTINUUM_HYPOTHESIS`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1246** (`1246_GRH_GENERALIZED_RIEMANN`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1247** (`1247_LANGLANDS_PROGRAM`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1248** (`1248_SMOOTH_POINCARE_4D`) — caduceus_inertial, lambda_cc, material_science, millennium, proto_hydrogen, vacuum_ledger
+- **PAPER_1249** (`1249_CMB_COLD_SPOT`) — caduceus_inertial, dpm_grinding, lambda_cc, proto_hydrogen, vacuum_ledger
+- **PAPER_1250** (`1250_AXIS_OF_EVIL_CMB`) — caduceus_inertial, dpm_grinding, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1251** (`1251_DARK_FLOW_BULK_VELOCITY`) — caduceus_inertial, dpm_grinding, lambda_cc, lenr, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1252** (`1252_LATE_ISW_EFFECT`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1254** (`1254_NEUTRON_LIFETIME_PUZZLE`) — dpm_grinding, lambda_cc, material_science, proto_hydrogen, universal_sc
+- **PAPER_1256** (`1256_TAU_NEUTRINO_MASS_HIERARCHY`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1257** (`1257_STERILE_NEUTRINO_EXISTENCE`) — caduceus_inertial, dpm_grinding, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1258** (`1258_GRB_LONG_SHORT_BIMODALITY`) — caduceus_inertial, high_energy, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1260** (`1260_SGR_A_STAR_FLARES`) — caduceus_inertial, dpm_grinding, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1262** (`1262_STELLAR_IMF_SALPETER`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1263** (`1263_BH_ENTROPY_AREA_LAW`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1264** (`1264_HOLOGRAPHIC_DIM_PRINCIPLE`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1265** (`1265_ADS_CFT_TO_DS_EXTENSION`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1266** (`1266_WHEELER_DEWITT_EQUATION`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, vacuum_ledger
+- **PAPER_1269** (`1269_ORIGIN_OF_LIFE_ABIOGENESIS`) — caduceus_inertial, lambda_cc, material_science, proto_hydrogen, universal_sc, vacuum_ledger
+- **PAPER_1275** (`1275_QUANTUM_REFERENCE_FRAME`) — lambda_cc, proto_hydrogen
+- **PAPER_1284** (`1284_WAVE_FUNCTION_UNIVERSE_WDW`) — lambda_cc, proto_hydrogen
+- **PAPER_1286** (`1286_HILBERT_6TH_AXIOMATIZE_PHYSICS`) — lambda_cc, lenr, proto_hydrogen
+- **PAPER_1295** (`1295_ERDOS_STRAUS_4_OVER_N`) — lambda_cc, proto_hydrogen
+- **PAPER_1488** (`1488_ZERO_MASS_BIGBANG_STATE`) — caduceus_inertial, dpm_grinding, negative_time, proto_hydrogen
+- **PAPER_1499** (`1499_F_U_GENESIS_4_COMPONENT`) — caduceus_inertial, millennium, proto_hydrogen, universal_buoyancy
+- **PAPER_1519** (`1519_PCR_QUANTUM_TRIADIC`) — material_science, proto_hydrogen, universal_sc
+- **PAPER_1717** (`1717_LITHIUM_7_FACTOR_3`) — epoch, millennium, proto_hydrogen, universal_sc
+- **PAPER_1745** (`1745_WHEELER_DEWITT_F_U_0`) — millennium, proto_hydrogen
