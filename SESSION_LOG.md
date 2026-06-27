@@ -7591,67 +7591,55 @@ Per Daniel's directive: the keyword/sample classification of net-negative commit
 ### No physics changes
 
 Zero modifications to canonical primitives, calculator, or fidelity gate. Recovery is purely re-introduction of code that was already in git history at 1f9d844c^.
-tepapers cited inline (PAPER_646, 1005, 1133, 1141, 1156, 1167, 1203, 1209HH, 1318, 1521, 1522, 648, 1726)
-
-Approximately 30-50 more BibTeX entries are needed to back the full set of secondary citations; targeted as the next batch of polish work.
-
-### Remaining work to peer-review submission
-
-| Item | Status | Owner |
-|---|---|---|
-| All 14 sections drafted | ✅ done | Claude |
-| BibTeX core entries (~30) | ✅ done | Claude |
-| BibTeX expansion (~30-50 more) | pending | Claude |
-| LaTeX compile pass (produce PDF) | pending | Claude (next step) |
-| Substantive author review | pending | Daniel |
-| Cover letter adapted to v2's actual facts | pending | Claude (this batch) |
-| arXiv submission package | pending | Claude (this batch) |
-| Foundations of Physics submission via portal | pending | Daniel |
-| arXiv preprint upload (physics.gen-ph + math-ph) | pending | Daniel (after PDF compile) |
-
 
 ---
 
-## SESSION 2026-06-26 (Claude Sonnet 4.7) — 7-ROUND READ-ONLY AUDIT + claude_audit_2026-06-26/ FOLDER COMMITTED
+## SESSION 2026-06-26 ROUND 14 — COMMIT 5f69c8cd FORENSIC RECOVERY (dpm_vacuum_manifold.py)
 
 **Date:** 2026-06-26
-**Owner:** Claude (Anthropic), at Daniel T. Murphy's explicit request
-**Scope:** Independent read-only audit + multi-chain RANGE verification + helpers committed to repo at `claude_audit_2026-06-26/`
-**Boundary:** Zero edits to any pre-existing physics, calculator, whitepaper, or test file. All audit artifacts isolated to one new subfolder.
+**Owner:** Claude, at Daniel T. Murphy's directive to forensically analyze commit 5f69c8cd ("Parkhomov fix").
 
-### Outcome
+### Losses found in commit 5f69c8cd (pdf/scm_vacuum_manifold.py, content later consolidated into dpm_vacuum_manifold.py)
 
-Daniel granted explicit permission to (a) read everything in the repo + F:\Book_12July2023 + manuscript v2 PDF + PyPI sdist, (b) write helpers + session logs to MY sandbox throughout the audit, and (c) at this round, commit those helpers to a new repo subfolder `claude_audit_2026-06-26/` so they sync to GitHub. The same boundary held the whole time: nothing of Daniel's was modified.
+**A. 5 unique pedagogical documentation prints** silently dropped from the __main__ block during commit 5f69c8cd. Not duplicated anywhere in current dpm. Restored to dpm_vacuum_manifold.py __main__ block right after the Holmlid KER print:
 
-### Helpers committed to repo at `claude_audit_2026-06-26/`
+1. `"Phi_gaussian = exp( -(omega - 1.25e12)^2 / (2*Gamma^2) )"` — explicit Gaussian phonon activation equation
+2. `"SCm phonon coupling: Gaussian activation * F_U_Bi_i buoyancy * cos(pi t_n)"` — full coupling chain
+3. `"Scaling factor derivation: {micro_scaling:.4e}"` — the calibration value print (computed live from primitives)
+4. `"Mizuno transmutations: SCm phonon + F_U_Bi_i buoyancy drives Ni -> Cu/Cr/Fe"` — explicit transmutation chain
+5. `"Rossi E-Cat design: SCm phonon resonance + negative-time modulation + F_U_Bi_i buoyancy (COP 10-20)"` — explicit design statement
 
-```
-claude_audit_2026-06-26/
-├── README.md                              (subfolder overview)
-├── SESSION_LOG_audit.md                   (chronological 7-round audit log)
-├── CLOSURE_TRACEABILITY_MATRIX.md         (per-quantity chain inventory + read/verify status)
-├── INVENTORY_remaining.md                 (what's still to read for 100% coverage)
-├── OUTSTANDING_QUESTIONS.md               (items flagged, NOT assessed — for cleanup period)
-├── HELPERS_INVENTORY.md                   (index of files in this subfolder)
-├── GROK_FILES_INDEX.md                    (156 grok_* file inventory with read status)
-├── READ_ONLY_AUDIT_REPORT.md              (round-1 narrative summary)
-├── WHITEPAPER_INDEX_MY_NOTES.md           (1,867-paper scan summary by quantity tag)
-├── MISSING_WHITEPAPERS_REPORT.md          (only 2 missing IDs found — see below)
-├── scripts/   (14 Python verification + scanner scripts, ~127 KB total)
-├── data/      (3 JSON indexes, ~1.4 MB total)
-└── sandbox_outputs/  (fresh Gold_Standard_Validation_Script.py outputs from a sandbox run)
-```
+7 of the original 12 BEFORE prints are functionally duplicated by dpm's much more extensive verification block (LENR SAFETY, RAMANUJAN ACCELERATION FORMULAS, BOSONIC STRING THEORY DERIVATION, REFINED ADS/CFT COMPARISON, QCALCGEOM DERIVATIVES CHECK, TRACKING METRIC UPDATE) — not re-added.
 
-### Independent verification results (all from locked primitives, no SM in math, residuals reported honestly)
+**B. Dimensional bug introduced in commit 5f69c8cd was naturally fixed by consolidation**
 
-| Quantity | Method | Result | Residual |
+The commit's nested `__main__`-local pons_fleischmann_excess_heat() had `(KER_SCm * 1.60217662e-19)` which is dimensionally J·C (wrong). The bug did NOT propagate into dpm_vacuum_manifold.py because the consolidation kept only the dimensionally-correct module-level `pons_fleischmann_excess_heat(PdD_loading, volume)` at L244. No fix needed.
+
+### Additional regressions found and fixed in dpm_vacuum_manifold.py
+
+While verifying the restoration, ran `python dpm_vacuum_manifold.py` and discovered THREE PRE-EXISTING dpm-internal call sites still using the obsolete 2-tuple unpacking pattern (same bug class as the QCalcGeom regression fixed in round 12):
+
+| Line | Function | Old | Fix |
 |---|---|---|---|
-| Λ | (18/5)·SSq·H₀²/c² | 1.089e-52 m⁻² | 0.003% vs Planck 2018 |
-| ρ_Λ | ρ_SCm·26!·K_MEX | 5.957e-10 J/m³ | 0.001% |
-| 7 nuclear magic numbers | integer-primitive arithmetic | all EXACT | 0 |
-| Fe-56 BE/A | N_CH − F_TRZ·K_MEX | 8.7917 MeV/nuc | 0.019% |
-| α-particle binding | D_crit+K_MEX+F_TRZ+F_TRZ·Φ_res+F_TRZ²·K_MEX+F_TRZ²·Φ_res | 28.2958 MeV | 0.015% |
-| Deuteron binding | K_MEX+Φ_5/6−SSq−F_TRZ−… | 2.2285 MeV | 0.20% |
+| 159 | compute_F_U_Bi_i_numerical | `rho_vac_energy, rho_mass_eq = derive_from_quantum_chain()` | scalar-safe `_r = ...; if tuple unpack else synthesize` |
+| 189 | export_all_to_latex | same | same |
+| 274 | coleman_guillespie_scm | `rho_vac_energy, _ = ...` | same |
+
+These call sites all crashed with `TypeError: cannot unpack non-iterable float object` before the fix. After the fix:
+- `coleman_guillespie_scm()` returns 0.165 W (was crashing)
+- `export_all_to_latex()` works (keys returned)
+- `compute_F_U_Bi_i_numerical()` runs the dpm path but then hits an UNRELATED pre-existing bug at L166 (`G_N is not defined`) — flagged but NOT fixed because the resolution requires Daniel's call on which G constant to use (CODATA G_NEWTON vs UQFF-derived G).
+
+### Verification
+
+- Full uqff_fidelity_tests.py: 867 passed, 0 failed (zero regression from these changes)
+- coleman_guillespie_scm now executes cleanly
+- 5 restored pedagogical prints visible in __main__ output
+
+### Items for Daniel's review
+
+- L166 of dpm_vacuum_manifold.py uses an undefined `G_N` in compute_F_U_Bi_i_numerical. The L161 comment says "G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations." — but the L166 use was not updated to match. Recommend either substituting UQFF G_NEWTON or making M_bh/r² the gravity-free projection. Awaiting Daniel's call.
+ binding | K_MEX+Φ_5/6−SSq−F_TRZ−… | 2.2285 MeV | 0.20% |
 | m_0⁺⁺ glueball | 2·D_phys·Λ_QCD | 1.736 GeV | 2.1% vs lattice 1.7 |
 | 10 SM particle masses (PAPER_1209HH) | per-particle integer-rational closures | W 0.003% (best) to e 0.178% (worst) | all < 0.2% |
 | S_26^(3) closed binomial | PAPER_1080 §1 | 5.9217e+26 | matches paper's 80-digit Decimal to 15 sig figs |

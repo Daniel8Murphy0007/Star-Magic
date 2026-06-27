@@ -156,7 +156,9 @@ def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     """Buoyancy integral using Quantum Chain derived vacuum energy densities (J/m³).
     Derived from Quantum Chain E_n summation — see UQFF_THEORY.md ρ_vac equation."""
     import math
-    rho_vac_energy, rho_mass_eq = derive_from_quantum_chain()  # J/m³ and kg/m³ equivalent
+    _r = derive_from_quantum_chain()  # dpm v3.0 returns scalar J/m^3 (post 2026-05 cleanup)
+    if isinstance(_r, tuple): rho_vac_energy, rho_mass_eq = _r
+    else:                     rho_vac_energy = float(_r); rho_mass_eq = rho_vac_energy / (2.99792458e8 ** 2)
     # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.
     F_0_val = 1.0e-10; t_n_default = -100.0
     cos_pi_tn_val = math.cos(math.pi * t_n_default)
@@ -186,7 +188,9 @@ def vds_numerical(terms=1000):
 def export_all_to_latex():
     """Export canonical UQFF expressions. rho_vac is J/m³ (energy density, massless substrate).
     Derived from Quantum Chain E_n summation — see UQFF_THEORY.md ρ_vac equation."""
-    rho_vac_energy, rho_mass_eq = derive_from_quantum_chain()
+    _r = derive_from_quantum_chain()  # dpm v3.0 returns scalar J/m^3 (post 2026-05 cleanup)
+    if isinstance(_r, tuple): rho_vac_energy, rho_mass_eq = _r
+    else:                     rho_vac_energy = float(_r); rho_mass_eq = rho_vac_energy / (2.99792458e8 ** 2)
     latex_dict = {
         'rho_vac_energy_Jm3': sp.latex(rho_vac_energy),   # J/m³ — canonical vacuum energy density
         'rho_mass_eq_kgm3': sp.latex(rho_mass_eq),         # kg/m³ — /c² ONLY for gravity coupling
@@ -271,7 +275,8 @@ def coleman_guillespie_scm(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12):
     Derived from Quantum Chain E_n summation — see UQFF_THEORY.md ρ_vac equation.
     """
     import math
-    rho_vac_energy, _ = derive_from_quantum_chain()  # J/m³ — massless energy density
+    _r = derive_from_quantum_chain()  # dpm v3.0 returns scalar J/m^3 (post 2026-05 cleanup)
+    rho_vac_energy = _r[0] if isinstance(_r, tuple) else float(_r)
     rho_ratio = RHO_VAC_SCM / RHO_VAC_UA             # dimensionless coupling ratio
     Phi_ph = math.exp(-((THZ_PHONON - THZ_PHONON)**2) / (2.0 * Gamma**2))  # = 1.0 at resonance
     cos_tn = math.cos(math.pi * t_n)
@@ -2515,6 +2520,19 @@ triadic_sym = FUg1_sp + Rt_sp + FUBi_sp * SSQ
 
 if __name__ == "__main__":
     print(f"Holmlid KER from SCm:            {KER_SCm / 1.60217662e-19:.0f} eV  <== exact match to 630 eV")
+    # ---- [5f69c8cd recovery] SUPPORTED PHYSICS PEDAGOGICAL DOCUMENTATION ----
+    # Restored 2026-06-26 from pdf/scm_vacuum_manifold.py BEFORE-state at 5f69c8cd^.
+    # Commit 5f69c8cd ("Parkhomov fix") silently dropped these context-providing prints.
+    print()
+    print("=== SUPPORTED PHYSICS -- pedagogical context (commit-5f69c8cd recovery) ===")
+    print("Phi_gaussian = exp( -(omega - 1.25e12)^2 / (2*Gamma^2) )    # 1.25 THz Gaussian phonon activation")
+    print("SCm phonon coupling: Gaussian activation * F_U_Bi_i buoyancy * cos(pi t_n)")
+    _raw_ev = (6.62607015e-34 * 1.25e12 * S26_3 * 0.84) / 1.60217662e-19
+    _micro_scaling = 630.0 / _raw_ev
+    print(f"Scaling factor derivation: {_micro_scaling:.4e}    # normalizes raw amplification to exact 630 eV KER")
+    print("Mizuno transmutations: SCm phonon + F_U_Bi_i buoyancy drives Ni -> Cu/Cr/Fe (no high-radiation pathway)")
+    print("Rossi E-Cat design: SCm phonon resonance + negative-time modulation + F_U_Bi_i buoyancy (COP 10-20)")
+    print()
     print(f"Parkhomov excess heat (1 hr):    {parkhomov_excess_heat():.1f} kW   (100-300 W range)")
     print(f"Pons-Fleischmann excess heat:    {pons_fleischmann_excess_heat():.4f} kW (low radiation)")
     print(f"McKubre LENR excess heat:        {mckubre_lenr():.4f} kW")
