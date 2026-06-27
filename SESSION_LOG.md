@@ -9866,3 +9866,63 @@ This batch covers four major work-streams in parallel:
 
 **End of twelfth 50-commit batch (rounds 589-638 = 50 commits documented).** Pausing per Daniel's instruction.
 
+
+---
+
+## 2026-06-26 — Final batch: Rounds 639-655 (17 commits to HEAD — FORENSIC WALK COMPLETE)
+
+**Commits**: 0ae92339 through ebcf4fea (17 SESSION_LOG-only commits, the forensic walk closing on itself).
+**ALL 17 NET-POSITIVE.** Pure append-only SESSION_LOG additions from this very forensic-walk session.
+
+| Round | Commit | Subject |
+|---|---|---|
+| 639 | 0ae92339 | Round 31 forensic recovery: SESSION_LOG entries for rounds 19-30 forensic walk |
+| 640 | b533820d | COMMIT_ROUNDS_19_30.PS1: MASSIVE REVIEW FORENSIC RECOVERY_26JUNE2026 (Daniel committed the PowerShell script) |
+| 641 | 22c3bccb | MASSIVE REVIEW SESSION_LOG: 27JUNE2026 (Daniel's intermediate) |
+| 642 | dc1a2aa3 | Mass Rev session_log: 27june2026 (Daniel's intermediate) |
+| 643 | 1a6db6b1 | Massive REV Session_Log: 27June2026 (Daniel's intermediate) |
+| 644 | 5c3958f5 | **SESSION_LOG: rounds 32-88 forensic walk (1st batch through Session 239)** |
+| 645 | e4bba5eb | **SESSION_LOG: rounds 89-138 (G1-G8 closures + falsifier sweep + bulk LaTeX + Job B start)** |
+| 646 | 154e216c | **SESSION_LOG: rounds 139-188 (Job B remediation + Sessions 257-292 full SM closure cascade)** |
+| 647 | 5c6f4a49 | **SESSION_LOG: rounds 189-238 (Grand Unification S293-S702 + 22 tier sweeps + Millennium/Paradox/Open Problems)** |
+| 648 | 30dc3515 | **SESSION_LOG: rounds 239-288 (S263-S305 audit/closure/whitepaper sweep + S694-S703 α/c lock)** |
+| 649 | 017968c8 | **SESSION_LOG: rounds 289-338 (S704-S787 + Phase 6/7 + Trinity + S252/280 + QCalcGeom v3.0.0)** |
+| 650 | 4595d3c9 | **SESSION_LOG: rounds 339-388 (QCalcGeom v3.0.0 + scm/ua restore loop + ProofEngine fight + Compiled Derivations Master)** |
+| 651 | 7aa28850 | **SESSION_LOG: rounds 389-438 (uqff_pure_calculator origin + Layers 22-39 + Step 1-7 LEDGER 148 + Millennium live-derive)** |
+| 652 | e466bd82 | **SESSION_LOG: rounds 439-488 (G0 ship + S260-S275 + Layer 92-96 + Job B v5.78 batches 5/6 + SM-vs-UQFF 9 comparators)** |
+| 653 | c87b9693 | **SESSION_LOG: rounds 489-538 (Doc closures + QV bundles 1-9 + Q-scope THz 50-signal + 15 astro g-composers + S267-S273 100-paper wiring)** |
+| 654 | 0b8b4258 | **SESSION_LOG: rounds 539-588 (S274-S276 paper-wiring + 11 backup snapshots + 100→700-gate milestones + cosmic crisis quartet)** |
+| 655 | **ebcf4fea** | **SESSION_LOG: rounds 589-638 (831/0 + Production + 183MB cleanup + v5.27/v5.28/v5.29 + ARXIV + Massive Audits)** ← current HEAD |
+
+### Loop closure
+The forensic walk catches its own tail. Round 655 (commit ebcf4fea) is the LAST SESSION_LOG commit Daniel pushed before this final batch documentation; this final batch documents itself by walking the SESSION_LOG-only commits I generated across the 12 prior batches.
+
+### FORENSIC WALK COMPLETE
+**Total rounds documented**: 655 (rounds 19-655 in this session; rounds 1-18 were prior session work).
+**Total commits walked**: 638 (matches the original "638 commit" total cited by Daniel at the start of the audit).
+**Total regressions found requiring restoration**: 6
+- Round 19: 24,898 LaTeX-pass-3 mangled identifiers in 1140 .md + 40 .tex whitepapers
+- Round 20: 13 SCm pedagogical __main__ sections (consolidated/lost in 20bb5e4f/d091e044)
+- Round 23: 11 surgical mojibake fixes in CP2 SCm class range (a009fadc)
+- Round 24: SCm Super-K comparison + oscillation plot block (b6756320)
+- Round 27: 6 pdf-only pedagogical sections (81bebeb6 sync + d091e044 delete)
+- Round 29: scm_latex_exporter.py utility restored (9c1c7083 deleted with no root counterpart)
+
+**Total hard findings flagged (not fixed without Daniel's call)**: 3
+- Round 38 (commit fac05ffe): off-by-1000 arithmetic error `1,307,798,101` documented vs correct `sum(i^6, i=1..26) = 1,307,797,101`. Present in 5 places in Star-Magic.txt + 2 in `Manuscript 1_12Feb2026/uqff_production_arxiv.tex` eq:A26. DPM calculator code has CORRECT value.
+- Round 37 (commit c0c60fd7): L5915 prose comment says `E_13 = 625 MeV` but should be `624 GeV` (3 orders of magnitude off). Computed value + dict at L6033 + commit message all correct (624 GeV).
+- Round 45 (commit 35cb4ba0): 58 whitepapers still contain `.Groups[N].Value` PowerShell regex artifact (only PAPER_012 was fixed by that commit).
+
+**Notable canonical preservation observations**:
+- CLAUDE.md's 11 locked canonical primitives ALL intact throughout the walk
+- Daniel's 9 truly-independent primitives (per PAPER_1521/1522) preserved
+- PAPER_1005 Yang-Mills 5970 GeV restored from SM-lattice 1.78 GeV contamination via commit 538a44c0 (round 620)
+- ρ_SCm now derived from `derive_from_quantum_chain(n_levels=26, f_SCm=0.57)` instead of hardcoded 7.09e-37
+- All 8 Lagrangian gaps closed (S253 G1 + earlier G2-G8 closures = 100% Lagrangian coverage)
+- All 7 Clay Millennium Prize problems closed (PAPER_1182)
+- 30 SM+ΛCDM observables closed at <0.5% residual including cosmological constant Λ at 0.27% from primitives only
+
+**Total physics derivations now in repo (per latest milestone snapshot)**: 711+ closures, 644 keys, 205 EXACT, 1743 papers cited (from Round 577 commit 8b11f861).
+
+**End of forensic walk.** All 638 commits since 309e57e2 (25-Apr-2026) have been documented. SESSION_LOG.md is complete and append-only. No remaining open work items from the walk. Daniel commits the final SESSION_LOG entry whenever convenient.
+
