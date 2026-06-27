@@ -7785,3 +7785,57 @@ All three pre-date commit 3ad5f273 and require Daniel's call on resolution direc
 - CondensedPhysics3.py (2 unpack sites fixed)
 - CondensedPhysics4.py (1 unpack site fixed)
 - SESSION_LOG.md (this entry)
+
+---
+
+## SESSION 2026-06-26 ROUND 16 — COMMIT ce5dda7e FORENSIC RECOVERY
+
+**Date:** 2026-06-26
+**Owner:** Claude, at Daniel T. Murphy's directive to forensically analyze commit ce5dda7e ("merge double __main__ into single combined block").
+
+### What commit ce5dda7e originally did
+
+PURELY ADDITIVE — added 6 pedagogical __main__ output sections to BOTH pdf/scm_vacuum_manifold.py AND scm_vacuum_manifold.py (root):
+1. SCm Phonon Coupling Mechanism (Phi_gaussian equation)
+2. BRILLOUIN LENR MECHANISM (acoustic/ultrasonic = 1.25 THz SCm phonon)
+3. GODIN LENR MECHANISM (Ni-H = SCm phonon resonance + buoyancy)
+4. RAMANUJAN 26D AMPLIFICATION (S26_3 = 1.4531e26)
+5. VDS CONVERGENCE PROOF
+6. LENR SAFETY MECHANISMS
+
+Plus 2 reactor spec lines:
+- "Input: 27 W | Gas: 107 L/min | Efficiency: 555:1"
+- "Surplus water: 237 mL/h | pH: -37 | Cooling: 7-10 deg F below ambient"
+
+### Survival check across the consolidation chain
+
+Both files were later deleted (pdf/scm in commit 9c1c7083; root scm in commit 336445d4) — content consolidated into dpm_vacuum_manifold.py. The consolidation preserved:
+- ✓ SCm Phonon Coupling text (restored separately in round 14)
+- ✓ Brillouin: full module-level function `brillouin_lenr_scm(v_acoustic, f_stim, N_Ni, volume)` at L985
+- ✓ Godin: full module-level function `godin_lenr_scm(N_Ni, t_n, PdH_loading)` at L985-988
+- ✓ VDS CONVERGENCE PROOF: richer section with both ratio test and root test at L2863
+- ✓ LENR SAFETY: section at L2559
+- ✓ Ramanujan: "RAMANUJAN ACCELERATION FORMULAS" section at L2568
+
+### LOST in consolidation (the 5 pedagogical items dpm did not carry forward)
+
+1. `=== BRILLOUIN LENR MECHANISM ===` header + 2 pedagogical print lines in __main__ — function exists, pedagogical context missing
+2. `=== GODIN LENR MECHANISM ===` header + 2 pedagogical print lines in __main__ — function exists, pedagogical context missing
+3. `=== RAMANUJAN 26D AMPLIFICATION ===` header + 2-line summary in __main__ — richer section exists elsewhere, this concise summary missing
+4. `"Input: 27 W | Gas: 107 L/min | Efficiency: 555:1"` (reactor spec line) — completely missing from dpm
+5. `"Surplus water: 237 mL/h | pH: -37 | Cooling: 7-10 deg F below ambient"` (reactor spec line) — completely missing from dpm
+
+### Restored
+
+Inserted into dpm_vacuum_manifold.py __main__ block right before the "REVISED REACTOR VALIDATION" section at L2617. Result: 4 new pedagogical sections (BRILLOUIN, GODIN, RAMANUJAN 26D, plus the 2 reactor spec lines integrated into REACTOR VALIDATION).
+
+### Verification
+
+- All 5 restored items now present in dpm (verified via grep)
+- Module imports cleanly (no syntax/import error)
+- Full uqff_fidelity_tests.py: 867 passed, 0 failed (zero regression)
+
+### Files modified
+
+- dpm_vacuum_manifold.py (5 pedagogical __main__ items restored)
+- SESSION_LOG.md (this entry)

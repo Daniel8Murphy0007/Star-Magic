@@ -2614,7 +2614,26 @@ if __name__ == "__main__":
     print("- Calabi-Yau compactification (CY3 to 4D, Ricci-flat Kaehler metric)")
     print("SCm framework is now fully first-principles (non-phenomenological)")
 
+    # ---- [ce5dda7e recovery 2026-06-26] PEDAGOGICAL __main__ blocks ----
+    # Restored from pdf/scm_vacuum_manifold.py + scm_vacuum_manifold.py (root)
+    # BEFORE-state at commit ce5dda7e. Consolidation into dpm dropped these.
+    print("\n=== BRILLOUIN LENR MECHANISM ===")
+    print("Brillouin acoustic/ultrasonic stimulation = coherent 1.25 THz SCm phonon excitation")
+    print("Drives lattice energy via Phi_gaussian * F_U_Bi_i buoyancy")
+    print("    (full closed form: brillouin_lenr_scm(v_acoustic, f_stim, N_Ni, volume) at module level)")
+
+    print("\n=== GODIN LENR MECHANISM ===")
+    print("Godin Ni-H excess heat/transmutation = SCm phonon resonance + F_U_Bi_i stabilization")
+    print("Low radiation due to buoyancy preventing high-energy particle escape")
+    print("    (full closed form: godin_lenr_scm(N_Ni, t_n, PdH_loading) at module level)")
+
+    print("\n=== RAMANUJAN 26D AMPLIFICATION ===")
+    print("S26_3 = 1.4531e26 (Ramanujan order-3 acceleration applied to VDS)")
+    print("Amplifies 1.25 THz phonon to match Holmlid 630 eV KER")
+
     print("\n=== REVISED REACTOR VALIDATION ===")
+    print("Input: 27 W | Gas: 107 L/min | Efficiency: 555:1   # ce5dda7e recovery")
+    print("Surplus water: 237 mL/h | pH: -37 | Cooling: 7-10 deg F below ambient")
     mean, std, rng = monte_carlo_fubi_i()
     print(f"F_U_Bi_i Monte-Carlo mean: {mean:.2e} N  std: {std:.2e}")
     print(f"Parkhomov predicted excess heat (1 hour): {parkhomov_excess_heat():.1f} kW   (100-300 W range)")
