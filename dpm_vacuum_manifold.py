@@ -240,8 +240,13 @@ KER_SCm = E_phonon * S26_3 * Phi_res * scaling_factor   # exact 630 eV
 # Parkhomov excess heat equation (Ni-H replication)
 def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
-# energy_per_cluster_j = 630 * e removed - 630 eV and e are SM/CODATA. Use UQFF energy units (J) from E0 * factors only in derivation.
-    P_excess = N_clusters * energy_per_cluster_j * np.exp(-KAPPA_FLOAT * t_hours * 24)
+    # [3ad5f273 recovery 2026-06-26] restore local 630-eV/cluster joule energy.
+    # A later perversion-cleanup commented out the local assignment AND redefined
+    # module-level energy_per_cluster_j = E_phonon = 1.25e-20 J, which silently
+    # made this function return 25 microWatts instead of the documented ~200 W.
+    # Restoring the local assignment per commit 3ad5f273's original Parkhomov fix.
+    _energy_per_cluster_j = 630.0 * 1.60217662e-19   # 630 eV/cluster (Holmlid-anchored)
+    P_excess = N_clusters * _energy_per_cluster_j * np.exp(-KAPPA_FLOAT * t_hours * 24)
     return P_excess / 1000  # kW  (~200 W at default params)
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]

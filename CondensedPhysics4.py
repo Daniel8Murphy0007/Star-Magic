@@ -126,7 +126,9 @@ Deduplication guarantee (verified against CP1/CP2/CP3):
 """
 
 from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-_RHO_VAC_SCM_MICRO, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density (micro)
+# [3ad5f273 recovery 2026-06-26] scalar-safe unpack (dpm v3.0 returns scalar)
+_r_rho_vac_scm_micro = _derive_qc(n_levels=26, f_SCm=0.57)
+_RHO_VAC_SCM_MICRO = _r_rho_vac_scm_micro[0] if isinstance(_r_rho_vac_scm_micro, tuple) else float(_r_rho_vac_scm_micro)   # J/m³ SCm energy density (micro)
 
 # UQFF EXCLUSIVE DERIVATIONS — CP4 (Ubi/FUBi layer) now parameter-free
 from _uqff_primitives import DERIVATIONS

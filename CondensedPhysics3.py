@@ -58,8 +58,12 @@ Physics Constants (canonical UQFF values):
 """
 
 from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
-_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
+# [3ad5f273 recovery 2026-06-26] dpm v3.0 returns scalar (was 2-tuple).
+# Scalar-safe unpacking absorbs both shapes for backwards compat.
+_r1 = _derive_qc(n_levels=26, f_SCm=0.57)
+_r2 = _derive_qc(n_levels=26, f_SCm=5.7)
+_RHO_VAC_SCM = _r1[0] if isinstance(_r1, tuple) else float(_r1)   # J/m^3 SCm energy density
+_RHO_VAC_UA  = _r2[0] if isinstance(_r2, tuple) else float(_r2)   # J/m^3 UA  energy density (10x)
 
 
 import math
