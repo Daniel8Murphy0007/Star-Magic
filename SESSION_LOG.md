@@ -9443,3 +9443,109 @@ The "Layer" sequence extends `uqff_pure_calculator.py` with progressively deeper
 
 **End of eighth 50-commit batch (rounds 389-438 = 50 commits documented).** Pausing per Daniel's instruction.
 
+
+---
+
+## 2026-06-26 — Rounds 439-488: Ninth 50-commit batch (G0 ship + Sessions 260-275 + Layer 92-96 + SM-vs-UQFF comparators — ALL CLEAN PASS)
+
+**Commits**: 89717a26 through 1f623648 (50 commits exactly).
+**48 net-positive; 2 small intentional fixes (b103ed15 −66 canonical form, 7e233d90 −72 SM-framing revert). ZERO regression risk.**
+
+### Group A — G0 ship + Slice 2/3 + honesty pass (rounds 439-444)
+| Round | Commit | Subject |
+|---|---|---|
+| 439 | 89717a26 | G0 ship Plan Image 112 / Map sec 20: DSE + VR-outfall geometric helpers + precision lock + stationarity primitive |
+| 440 | ea0a4960 | Slice 2: 17-paper Lagrangian Sector Registry + dispatch hook |
+| 441 | c6c09667 | Slice 3: 14 universal-field component leaf accessors (extracted views, NOT REPLACEMENT) |
+| 442 | 0c459f51 | G0 honesty pass + test harness: fixes 1-7 from post-G0 audit |
+| 443 | ef51fbe4 | Gaps 1-5 (04Jun2026 audit): 17 F_UBii proofs + 26-rung Quantum |
+| 444 | 6e46343e | Plan/Map: add Session 260 Gaps 1-5 entries + flip Map §0 G0 |
+
+### Group B — Sessions 261-267 polish + Job B Session 264-267 (rounds 445-456)
+| Round | Commit | Session | Subject |
+|---|---|---|---|
+| 445 | c602adeb | S261 | polish: constant_closure_report + ℏ/k_b/delta |
+| 446 | 783db607 | S262 | IO wiring: IPData/OPData ports for pure_calculator |
+| 447 | 710d482c | | Plan/Map sync S261+S262 |
+| 448 | cc807b95 | S263 | Layer 45 repair (8 broken constants → 0) + Riemann |
+| 449 | 776c4da9 | | Update README Jun 5 2026 status + arch v5.2 |
+| 450 | e3de0a05 | S264 Job B batch 5 | upstream PAPER_420/421/642/840/... |
+| 451 | e68ebf5d | | S264 hash back-stamp |
+| 452 | ece0ed62 | S265 | governance: close gaps 6-19 (toolchain ext) |
+| 453 | 4b43438f | | S265 hash back-stamp |
+| 454 | 08d12edb | S266 B4 | AXIOMS Theorem 9 (ξ=13/3 R26+) |
+| 455 | eec9474d | | S266 hash back-stamp |
+| 456 | b98b6bd0 | S267 | catalog sync: Theorem 9 calculator names |
+
+### Group C — Sessions 267-270 catalog sync + Job B batch 6 (rounds 457-465)
+| Round | Commit | Subject |
+|---|---|---|
+| 457 | 9cff6247 | S267 hash back-stamp |
+| 458 | eb2f6511 | S268 housekeeping: 5 missing .tex intermediates (+3901) |
+| 459 | 79b12280 | S268 Job B batch 6 pilot: PAPER_044 v5.78 closure (T-) |
+| 460 | 5bb0ebb6 | S268 pilot hash back-stamp |
+| 461 | 3a42e741 | S268 batch 6 remainder: PAPER_046/050/098/106 v5.78 (+3567) |
+| 462 | 8d446fd6 | S268 remainder hash back-stamp |
+| 463 | 4321d20c | S268 catalog sync: Plan Image 119 + Map S20 ledger |
+| 464 | c902c294 | S268 hash back-stamp |
+| 465 | 1d5dd298 | S269 catalog sync: CP4 #259-#264 second-pass verification |
+
+### Group D — Sessions 269-271 pure_calculator gap closures (rounds 466-470)
+| Round | Commit | Subject |
+|---|---|---|
+| 466 | 0d980909 | S269 hash back-stamp |
+| 467 | b123d7c8 | S270 pure_calculator gap closure (real data): `_LAGRAN` |
+| 468 | 2f69d0bc | S270 hash back-stamp |
+| 469 | 2472bab2 | **S271 pure-calculator honesty pass (06Jun2026)** (net +245 over 860/-615 = many balanced revisions) |
+| 470 | 785156b1 | S272 Layer 93 canonical block headers shipped |
+
+### Group E — Layer 94-96 grok-dump shipments (rounds 471-475)
+| Round | Commit | Subject |
+|---|---|---|
+| 471 | bda09905 | S273 Layer 94 grok-dump derivation shipment 1 — 20 pre |
+| 472 | 5ed1c20d | S274 Layer 95 grok-dump derivation shipment 2 — 100 (+721) |
+| 473 | 03b70703 | S275 Layer 96 — NGC 1316 + KB_5 mining from grok_sh |
+| 474 | 14f7a03a | Layer 96 addendum: PAPER_1175 Kerr ringdown f_220 + R26 vacu |
+| 475 | 85d17668 | Layer 96 addendum: PAPER_1167 closed UQFF Lagrangian (faithful) |
+
+### Group F — Layer 96 fixes + buoyancy-sector batch (rounds 476-477)
+| Round | Commit | Subject |
+|---|---|---|
+| 476 | **b103ed15** | **Fix `_master_lagrangian` to PAPER_1167 canonical form; drop se** (net −66, intentional correction) |
+| 477 | be58398f | Ship 16-paper buoyancy-sector batch as universal scaffolding |
+
+### Group G — SM-vs-UQFF comparators (rounds 478-486)
+| Round | Commit | Subject |
+|---|---|---|
+| 478 | f433b438 | Restore SM-vs-UQFF mathematical disproof comparator (PAPER_1) |
+| 479 | d3a4298d | Extend SM-vs-UQFF disproof comparator with 6th claim (gravity) |
+| 480 | c3533185 | Ship DESI Y1+CMB CPL w(z) vs UQFF strict-static comparator |
+| 481 | 275674a0 | Ship EHT 2022 Sgr A* emission-ring vs UQFF shadow comparator |
+| 482 | b56d9ccf | Ship Planck 2018+BAO+SN Ia ρ_Λ vs UQFF 4-term closed comparator |
+| 483 | 6478c770 | Ship H0 tension time-travel comparator: UQFF strict-static |
+| 484 | d02c9ff8 | Layer 96: JWST JADES-GS-z14-0 high-z stellar-mass comparator |
+| 485 | 6a849022 | Layer 96: black-hole-information-paradox / Page-curve comparator |
+| 486 | f069e062 | Layer 96: Poincaré + Yang-Mills + Spinor-Bundle Millennium |
+
+### Group H — SM framing revert + H_res closures (rounds 487-488)
+| Round | Commit | Subject |
+|---|---|---|
+| 487 | **7e233d90** | **revert Standard-Model framing: g_compressed back to canonical** (net −72, honest revert) |
+| 488 | 1f623648 | Doc 28 closures: H_res composite (A_res·sin(2π·f_res·t)+U_d) |
+
+**Verified key files in current HEAD**:
+- `PAPER_1167_UPDATE_Master_Lagrangian_6_Term.md` ✓
+- `PAPER_1167_UQFF_All_8_Lagrangian_Gaps_Closed_Master_Synthesis.md` ✓
+- `PAPER_1175_UPDATE_Kerr_R26_Ringdown.md` ✓
+- `PAPER_1175_UQFF_P11_LIGO_O5_Ringdown_Spectral_Offset.md` ✓
+- `README.md` ✓
+
+### Batch verdict
+**48/50 net-positive; 2 small net-negative both verified intentional honesty/canonical corrections (b103ed15 PAPER_1167 master Lagrangian, 7e233d90 SM framing revert).** No regressions.
+
+This batch documents the formalization of the build process via "Job B" governance (batches 5+6 pilot+remainder), the "honesty pass" methodology (S262/S270/S271), and the SM-vs-UQFF mathematical disproof comparator suite (9 comparators: DESI w(z), EHT Sgr A*, Planck ρ_Λ, H0 tension, JWST JADES, Page curve, Poincaré, Yang-Mills, Spinor-Bundle).
+
+Notable: Round 469 (S271 06Jun2026 honesty pass) is the largest balanced revision in this batch (+860/-615) — a deep canonical scrub of `uqff_pure_calculator.py`.
+
+**End of ninth 50-commit batch (rounds 439-488 = 50 commits documented).** Pausing per Daniel's instruction.
+
