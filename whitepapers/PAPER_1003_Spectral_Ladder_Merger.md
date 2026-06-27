@@ -32,7 +32,7 @@ M_jet($\Gamma$0) = 1 + A_jet $\cdot$ exp(0) gives resonance modulation factor of
 
 ## 3. Implementation
 
-File: `fubi_{agn\_ns\_mergers}.py`, class `SpectralLadderMergerCalc`. CP4 class #587.
+File: `fubi_agn_ns_mergers.py`, class `SpectralLadderMergerCalc`. CP4 class #587.
 
 
 
@@ -101,7 +101,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -206,22 +206,22 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

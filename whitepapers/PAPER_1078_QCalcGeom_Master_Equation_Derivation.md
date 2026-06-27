@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `qcalcgeom_{core\_derivation}.py`
+**Module:** `qcalcgeom_core_derivation.py`
 
 ---
 
@@ -76,8 +76,8 @@ The SI unit trace confirms correct dimensionality:
 
 1. BSFG coupling: `qcalcgeom_helpers.py` ($\eta = 10^{-22}$)
 2. 26D string compactification: `MAIN_{1\_CoAnQi}.cpp` SOURCE115-116
-3. Ramanujan corrections: `vds_{dvp\_bsh\_symbolic\_proofs}.py`
-4. SCm phonon framework: `scm_{phonon\_linewidth}.py`
+3. Ramanujan corrections: `vds_dvp_bsh_symbolic_proofs.py`
+4. SCm phonon framework: `scm_phonon_linewidth.py`
 
 
 
@@ -125,7 +125,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

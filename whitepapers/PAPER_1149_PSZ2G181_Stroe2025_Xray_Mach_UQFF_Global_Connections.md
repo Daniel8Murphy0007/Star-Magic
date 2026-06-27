@@ -48,7 +48,7 @@ as a buoyancy amplification exponent).
 ## 1. Introduction
 
 PAPER_367 established PSZ2 G181.06+48.47 as the first galaxy cluster for which all five UQFF
-force modes were computed simultaneously (buoyancy-unified $F_{U\_Bi\_i}$, MUGE Compressed,
+force modes were computed simultaneously (buoyancy-unified $F_U_Bi_i$, MUGE Compressed,
 MUGE Resonant, buoyancy $F_{Bi}$, and complex vacuum energy $U_i$).  However, the parameters
 used in PAPER_367 were preliminary placeholders: $z = 0.40$ and $M \sim 10^{4}\ M_\odot$
 (encoding artefact).  Stroe et al. (2025) now provide authoritative observed values from 174 ks of
@@ -116,13 +116,13 @@ $$g_{Res} = g_{MUGE} \cdot f_{TRZ} \cdot \sum_{j=1}^{5} \phi_j \approx g_{MUGE} 
 
 $$\boxed{g_{Res} \approx 1.07 \times 10^{-18}\ \text{m/s}^2}$$
 
-### 3.4 Buoyancy $F_{U\_Bi\_i}$ (Full Assembly)
+### 3.4 Buoyancy $F_U_Bi_i$ (Full Assembly)
 
-$$F_{U\_Bi\_i} = \sum_{k} \left[ k_{Ub,k} \cdot \frac{f_{UA'} \cdot f_{SCm} \cdot R_{EB}}{r_{500}^2} \cdot H_k(\nu_{THz}) \cdot f_{Ub} \right]$$
+$$F_U_Bi_i = \sum_{k} \left[ k_{Ub,k} \cdot \frac{f_{UA'} \cdot f_{SCm} \cdot R_{EB}}{r_{500}^2} \cdot H_k(\nu_{THz}) \cdot f_{Ub} \right]$$
 
 With $k_{Ub} = 0.1$, $\Delta k_\eta \approx 7.25 \times 10^8$, $R_{EB} = r_{500}$:
 
-$$\boxed{F_{U\_Bi\_i} \approx -2.14 \times 10^{38}\ \text{N}} \quad (\text{inward vacuum buoyancy at cluster scale})$$
+$$\boxed{F_U_Bi_i \approx -2.14 \times 10^{38}\ \text{N}} \quad (\text{inward vacuum buoyancy at cluster scale})$$
 
 ### 3.5 Complex Vacuum Energy $U_i$
 
@@ -139,7 +139,7 @@ $$\boxed{U_i \approx (1.04 \times 10^{32} + i\,1.04 \times 10^{33})\ \text{J}}$$
 
 | Equation | Mode | Value | Direction |
 |----------|------|-------|-----------|
-| $F_{U\_Bi\_i}$ | UQFF Buoyancy-Unified | $-2.14 \times 10^{38}$ N | Inward (vacuum compression) |
+| $F_U_Bi_i$ | UQFF Buoyancy-Unified | $-2.14 \times 10^{38}$ N | Inward (vacuum compression) |
 | $g_{MUGE}$ | MUGE Compressed | $4.1 \times 10^{-18}$ m/s$^2$ | Positive |
 | $g_{Res}$ | MUGE Resonant | $1.07 \times 10^{-18}$ m/s$^2$ | Positive |
 | $F_{Bi}$ | UQFF Buoyancy | $+6.3 \times 10^{26}$ N | Upward (SCm $>$ UA') |
@@ -188,7 +188,7 @@ $\mathcal{M}_X \approx 1.3$--$1.6$, fully consistent with the Stroe 2025 upper l
 ### 4.3 Radio Buoyancy Wavefront
 
 The non-thermal radio relic does **not** trace the thermal shock.  In UQFF, the relic marks the
-**vacuum buoyancy wavefront** — the surface where $F_{U\_Bi\_i}$ transitions from repulsive to
+**vacuum buoyancy wavefront** — the surface where $F_U_Bi_i$ transitions from repulsive to
 attractive.  This wavefront propagates at:
 
 $$v_{Bi} = v_{shock} \times \left(1 + \beta_i \cdot \cos(\pi t_n)\right), \quad \beta_i \approx 0.603$$
@@ -246,7 +246,7 @@ $$P_{1.4\,\text{GHz}} \propto M_{500}^{3.10 \pm 0.59}$$
 **UQFF interpretation:** The relic synchrotron power is sourced by the buoyancy-driven
 particle acceleration. In UQFF, the power available to relic electrons is:
 
-$$P_{relic} \propto F_{U\_Bi\_i} \cdot v_{Bi} \propto M_{500}^{3} \cdot r_{500}^{-2} \cdot r_{500} \propto M_{500}^{3.0}$$
+$$P_{relic} \propto F_U_Bi_i \cdot v_{Bi} \propto M_{500}^{3} \cdot r_{500}^{-2} \cdot r_{500} \propto M_{500}^{3.0}$$
 
 (using $r_{500} \propto M_{500}^{1/3}$ from the mass-radius relation).
 
@@ -267,7 +267,7 @@ This system connects to **four major UQFF framework lines** across the full code
 
 **Connection:** The Cassini Division, Encke Gap, and Maxwell Gap are the solar-system analogue
 of PSZ2 G181's inner ICM discontinuities.  In both cases, UQFF predicts sharp density edges
-at radii where $F_{U\_Bi\_i}$ transitions sign.  For PSZ2 G181:
+at radii where $F_U_Bi_i$ transitions sign.  For PSZ2 G181:
 
 $$r_{disc} / r_{500} \approx \cos(\pi t_n) / \beta_i \approx 0.5$$
 

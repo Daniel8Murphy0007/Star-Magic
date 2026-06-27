@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1016
-title: "TXS 0506+056 Revised 3-Gamma-Point F_{U\_Bi\_i} Profile"
+title: "TXS 0506+056 Revised 3-Gamma-Point F_U_Bi_i Profile"
 session: 220
 date: 2026-04-14
 author: "Daniel T. Murphy"
@@ -13,11 +13,11 @@ gradient: 1.51}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1016: TXS 0506+056 Revised 3-Gamma-Point F_{U\_Bi\_i} Profile
+# PAPER_1016: TXS 0506+056 Revised 3-Gamma-Point F_U_Bi_i Profile
 
 ## Abstract
 
-We revise the F_{U\_Bi\_i} profile for TXS 0506+056 (the first identified neutrino blazar) using a 3-Gamma-point characterization: Gamma_1 = 0.05 THz (extreme flare, 2.56x), Gamma_2 = 0.10 THz (IceCube resonance, 2.30x), Gamma_3 = 0.30 THz (sustained emission, 1.06x). The monotonic decrease with increasing Gamma confirms thermal decoupling of the buoyancy-jet interaction at higher frequencies, with a gradient of 1.51x between extreme and sustained states.
+We revise the F_U_Bi_i profile for TXS 0506+056 (the first identified neutrino blazar) using a 3-Gamma-point characterization: Gamma_1 = 0.05 THz (extreme flare, 2.56x), Gamma_2 = 0.10 THz (IceCube resonance, 2.30x), Gamma_3 = 0.30 THz (sustained emission, 1.06x). The monotonic decrease with increasing Gamma confirms thermal decoupling of the buoyancy-jet interaction at higher frequencies, with a gradient of 1.51x between extreme and sustained states.
 
 ## 1. Three-Point Characterization
 
@@ -41,7 +41,7 @@ ratio 2.56/1.06 = 1.51x.
 
 ## 4. Implementation
 
-File: `fubi_{i\_txs0506\_revised}.py`, classes `TXS0506ExtremeFlareCalc`, `TXS0506IceCubeCalc`,
+File: `fubi_i_txs0506_revised.py`, classes `TXS0506ExtremeFlareCalc`, `TXS0506IceCubeCalc`,
 `TXS0506SustainedEmissionCalc`, `TXS0506ThreeGammaProfileCalc`. CP4 class #600. Tests: 8/8 pass.
 
 
@@ -60,7 +60,7 @@ File: `fubi_{i\_txs0506\_revised}.py`, classes `TXS0506ExtremeFlareCalc`, `TXS05
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -109,7 +109,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -213,7 +213,7 @@ BSH timescale: system-dependent
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -222,7 +222,7 @@ BSH timescale: system-dependent
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

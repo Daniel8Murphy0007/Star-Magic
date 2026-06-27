@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 212
-**Source:** scm_{phonon\_linewidth}.py (LinewidthEnetEvolution)
+**Source:** scm_phonon_linewidth.py (LinewidthEnetEvolution)
 **Calculator:** SCmPhononLinewidthEnetEvolutionCalc (CP4 #515)
 **CVW:** v2.0.0 compliant
 
@@ -64,7 +64,7 @@ with $\omega_{\text{SCm}} = 2\pi \times 1.25 \times 10^{12}$ rad/s.
 ## 2. UQFF Integration
 
 The `SCmPhononLinewidthEnetEvolutionCalc` calculator (CP4 #515) is a stateless, parameterized
-calculator that accepts dataset parameters V, F_{U\_Bi}, F_U, and [SSq]. It sweeps across three
+calculator that accepts dataset parameters V, F_U_Bi, F_U, and [SSq]. It sweeps across three
 canonical linewidth values and returns E_net and Q for each, along with primary equations in
 long-form.
 
@@ -82,7 +82,7 @@ the integrated E_net for typical SCm parameters.
 
 ## 4. Source Data
 
-- **File:** scm_{phonon\_linewidth}.py
+- **File:** scm_phonon_linewidth.py
 - **Session:** 212
 - **CP4 Class:** SCmPhononLinewidthEnetEvolutionCalc (#515)
 
@@ -101,7 +101,7 @@ the integrated E_net for typical SCm parameters.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -151,7 +151,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -217,14 +217,14 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -235,7 +235,7 @@ BSH timescale: $10^4$ yr
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

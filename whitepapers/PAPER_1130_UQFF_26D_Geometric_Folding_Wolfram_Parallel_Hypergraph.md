@@ -258,7 +258,7 @@ with the 26-layer VDS as the irreducible causal structure. Gravity remains Step 
 PAPER_495 (Cosmic Quantum Egg 26D) | PAPER_535 (VDS/DVP/BH hub) |
 PAPER_552 (26D tensor off-diagonal NS/YM) | PAPER_1127 (SCm LQG holonomy) |
 PAPER_1128 (SCm String Theory 26D) | PAPER_1129 (VDS/DVP/BH long-form) |
-COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md
+COMPLETE_UQFF_EQUATIONS_REFERENCE.md
 
 
 ---

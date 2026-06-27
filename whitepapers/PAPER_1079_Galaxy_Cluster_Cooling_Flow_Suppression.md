@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `galaxy_{cluster\_cooling\_flow}.py`
+**Module:** `galaxy_cluster_cooling_flow.py`
 
 ---
 
@@ -79,7 +79,7 @@ The suppression factor varies with phonon linewidth through $\Phi(\Gamma)$ in th
 1. Perseus cooling flow: NGC 1275, $M_{\text{cool}} \sim 13 \times 10^9$ M$_\odot$ H$_2$
 2. Sutherland & Dopita (1993): Cooling functions
 3. $F_{U,Bi,i}$ framework: `MAIN_{1\_CoAnQi}.cpp` SOURCE4
-4. ICM physics: `gen_{muge\_ngc1275}.py`
+4. ICM physics: `gen_muge_ngc1275.py`
 
 
 
@@ -157,7 +157,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

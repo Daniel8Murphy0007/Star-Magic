@@ -61,26 +61,26 @@ the achieved result: **1.75 MB** for a 108,000-line C++20 monolith.
 ```cmake
 if(MSVC)
     # Base C++20 setup
-    add_{compile\_options}(/permissive-)
-    add_{compile\_options}(/Zc:__cplusplus)
+    add_compile_options(/permissive-)
+    add_compile_options(/Zc:__cplusplus)
 
     # Release-MaxCompress flags (only in Release config)
-    add_{compile\_options}("$<$<CONFIG:Release>:/arch:AVX2>")
-    add_{compile\_options}("$<$<CONFIG:Release>:/GL>")
-    add_{compile\_options}("$<$<CONFIG:Release>:/Os>")
-    add_{compile\_options}("$<$<CONFIG:Release>:/Gw>")
-    add_{compile\_options}("$<$<CONFIG:Release>:/GF>")
-    add_{compile\_options}("$<$<CONFIG:Release>:/Gy>")
-    add_{compile\_options}("$<$<CONFIG:Release>:/Oi>")
-    add_{link\_options}("$<$<CONFIG:Release>:/LTCG>")
-    add_{link\_options}("$<$<CONFIG:Release>:/OPT:REF>")
-    add_{link\_options}("$<$<CONFIG:Release>:/OPT:ICF>")
+    add_compile_options("$<$<CONFIG:Release>:/arch:AVX2>")
+    add_compile_options("$<$<CONFIG:Release>:/GL>")
+    add_compile_options("$<$<CONFIG:Release>:/Os>")
+    add_compile_options("$<$<CONFIG:Release>:/Gw>")
+    add_compile_options("$<$<CONFIG:Release>:/GF>")
+    add_compile_options("$<$<CONFIG:Release>:/Gy>")
+    add_compile_options("$<$<CONFIG:Release>:/Oi>")
+    add_link_options("$<$<CONFIG:Release>:/LTCG>")
+    add_link_options("$<$<CONFIG:Release>:/OPT:REF>")
+    add_link_options("$<$<CONFIG:Release>:/OPT:ICF>")
 endif()
 
 # Optional post-build UPX compression
 find_program(UPX_EXECUTABLE upx)
 if(UPX_EXECUTABLE)
-    add_{custom\_command}(TARGET MAIN_{1\_CoAnQi} POST_BUILD
+    add_custom_command(TARGET MAIN_{1\_CoAnQi} POST_BUILD
         COMMAND ${UPX_EXECUTABLE} --best --ultra-brute
             "$<TARGET_FILE:MAIN_{1\_CoAnQi}>"
         COMMENT "UPX compressing executable"
@@ -138,9 +138,9 @@ cmake —build build_msvc —config Release 2>&1 | Select-String "error C|Finish
 
 ```
 Compression ratio      C_ratio = size_final / size_debug
-LTCG gain              G_LTCG  = (size_{no\_LTCG} - size_{with\_LTCG}) / size_{no\_LTCG}
+LTCG gain              G_LTCG  = (size_no_LTCG - size_with_LTCG) / size_no_LTCG
 AVX throughput factor  F_AVX2  = throughput_AVX2 / throughput_SSE2   \approx 2\times (256-bit width)
-UPX expansion ratio    R_UPX   = time_decompression / time_{cold\_start}  (< 50 ms typical)
+UPX expansion ratio    R_UPX   = time_decompression / time_cold_start  (< 50 ms typical)
 ```
 
 ---
@@ -184,7 +184,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -203,7 +203,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -234,7 +234,7 @@ Since $p_{\mathrm{DVP}} = 101$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -260,7 +260,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_{H\_UQFF}` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
 | Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
 | Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
 | $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
@@ -289,14 +289,14 @@ Paper number: PAPER_505
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 
@@ -307,16 +307,16 @@ Paper number: PAPER_505
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -325,8 +325,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -334,7 +334,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -345,8 +345,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -365,8 +365,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

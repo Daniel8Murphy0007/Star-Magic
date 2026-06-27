@@ -158,10 +158,10 @@ Higher $T$ $\to$ larger $\Gamma_T$ $\to$ broader resonance $\to$ more clusters i
 ## 7. Canonical Constants
 
 ```python
-# From pdf/scm_{vacuum\_manifold}.py (CANONICAL — do not alter)
+# From pdf/scm_vacuum_manifold.py (CANONICAL — do not alter)
 SSQ         = 0.57           # [SSq]
 KAPPA       = 5e-4           # day^{-1}
-RHO_{VAC\_SCM} = 7.09e-37       # J/m³
+RHO_VAC_SCM = 7.09e-37       # J/m³
 THZ_PHONON  = 1.25e12        # Hz
 BETA_I      = 0.6            # buoyancy coupling
 S26_3       = 1.4531e26      # Ramanujan amplification
@@ -174,15 +174,15 @@ KER_SCm     = E_phonon * S26_3 * PHI_RESONANCE  # ~631 eV (canonical 630 eV)
 
 ## 8. Code Implementation
 
-All LENR functions are implemented across the Star-Magic codebase (canonical: `pdf/scm_{vacuum\_manifold}.py`):
+All LENR functions are implemented across the Star-Magic codebase (canonical: `pdf/scm_vacuum_manifold.py`):
 
-- `parkhomov_{excess\_heat}(N_clusters, t_hours)` — Ni–H excess heat prediction
-- `pons_{fleischmann\_excess\_heat}(PdD_loading, volume)` — Pd–D excess heat
-- `monte_{carlo\_fubi\_i}(n_samples)` — $F_{U_{Bi_i}}$ statistical analysis over reactor parameter space
-- `compute_{F\_U\_Bi\_i\_numerical}(M_bh, r, Gamma)` — numerical $F_{U_{Bi_i}}$ integral
+- `parkhomov_excess_heat(N_clusters, t_hours)` — Ni–H excess heat prediction
+- `pons_fleischmann_excess_heat(PdD_loading, volume)` — Pd–D excess heat
+- `monte_carlo_fubi_i(n_samples)` — $F_{U_{Bi_i}}$ statistical analysis over reactor parameter space
+- `compute_F_U_Bi_i_numerical(M_bh, r, Gamma)` — numerical $F_{U_{Bi_i}}$ integral
 - `vds_numerical(terms)` — 26D Vacuum Density Series $\text{Li}_{26}([SSq])$
 
-Propagated to: `CondensedPhysics.py`, `CondensedPhysics2.py`, `CondensedPhysics3.py`, `CondensedPhysics4.py`, `QCalc.py`, `99system_{master\_equation}.py`, `99system_{wstp\_gamma}.py`, `99system_{wstp\_gamma\_upgraded}.py`, `index.js`.
+Propagated to: `CondensedPhysics.py`, `CondensedPhysics2.py`, `CondensedPhysics3.py`, `CondensedPhysics4.py`, `QCalc.py`, `99system_master_equation.py`, `99system_wstp_gamma.py`, `99system_wstp_gamma_upgraded.py`, `index.js`.
 
 ---
 

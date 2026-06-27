@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2025
 
 **Session:** 85  
-**Module:** HYDROGEN_{ATOM\_UQFF\_MODULE}.cpp (27th C++ UQFF module — FIRST atomic-scale module)  
+**Module:** HYDROGEN_ATOM_UQFF_MODULE.cpp (27th C++ UQFF module — FIRST atomic-scale module)  
 **System:** Hydrogen ground state — proton at Bohr radius r_Bohr = 5.2918$\times$10-11 m  
 **Category:** GR Spectral Minimum — FIRST $\varepsilon$_GR << 1 sub-DPM-seeded regime at Bohr radius  
 **UQFF Version:** 2.0  
@@ -94,7 +94,7 @@ This is the smallest individual UQFF term ever computed — 60 orders below unit
 | $\varepsilon$_GR (proton at r_Bohr) | **7.040$\times$10-44** | — | **[PAPER_301] GR minimum** |
 | r_S (proton) | **2.484$\times$10-54** | m | smallest UQFF Schwarzschild radius |
 | r_Bohr / r_S | 2.131$\times$1043 | — | Bohr-to-Schwarzschild ratio |
-| `a_{GR\_min}` | 2.81$\times$10-60 | m/s2 | GR term (negligible) |
+| `a_GR_min` | 2.81$\times$10-60 | m/s2 | GR term (negligible) |
 | g_base | 3.986$\times$10-17 | m/s2 | Reference base |
 | $\varepsilon$_GR span (H$\to$Universe) | **7.18$\times$1043** | — | **44 orders** |
 | \log_{10}(span) | 43.9 | — | full GR spectral range |
@@ -159,21 +159,21 @@ physics, now formally expressed within the UQFF framework.
 ## 6. UQFF 2.0 Implementation
 
 ```cpp
-// [PAPER_301] in HYDROGEN_{ATOM\_UQFF\_MODULE}.cpp updateCache():
-epsilon_{GR\_cache} = 3.0 * G_CONST * M_proton
+// [PAPER_301] in HYDROGEN_ATOM_UQFF_MODULE.cpp updateCache():
+epsilon_GR_cache = 3.0 * G_CONST * M_proton
                    / (r_Bohr * C_LIGHT * C_LIGHT);     // 7.04e-44 [PAPER_301]
-r_{S\_cache}        = 2.0 * G_CONST * M_proton
+r_S_cache        = 2.0 * G_CONST * M_proton
                    / (C_LIGHT * C_LIGHT);              // 2.484e-54 m
-r_{over\_rS\_cache}  = r_Bohr / r_{S\_cache};                // 2.13e43   [PAPER_301]
+r_over_rS_cache  = r_Bohr / r_S_cache;                // 2.13e43   [PAPER_301]
 
 // computeGRMinTerm():
 // a_GR = g_base * epsilon_GR = 2.81e-60 m/s^2 (negligible at atomic scale)
-return g_{base\_cache} * epsilon_{GR\_cache};
+return g_base_cache * epsilon_GR_cache;
 ```
 
-exportState includes: `eps_{GR\_spectral\_span} = 5.056 / epsilon_{GR\_cache}  // 7.18e43`
+exportState includes: `eps_GR_spectral_span = 5.056 / epsilon_GR_cache  // 7.18e43`
 
-WOLFRAM_TERM: `HYDROGEN_{GR\_MIN} = "epsilon_GR=7.04e-44; r_S=2.484e-54 m; GR span H->Universe=7.18e43
+WOLFRAM_TERM: `HYDROGEN_GR_MIN = "epsilon_GR=7.04e-44; r_S=2.484e-54 m; GR span H->Universe=7.18e43
 [PAPER_301]"`
 
 ---
@@ -228,7 +228,7 @@ framework in future observations.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -258,7 +258,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 ### §A.1 Sector Classification
 
 This paper maps to **curvature-D5** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -277,7 +277,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{curv}}} = k_{\mathrm{curv}} r_c^2 
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{curv}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{curv}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -308,7 +308,7 @@ Since $p_{\mathrm{DVP}} = 3$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **Hubble time** (super-Hubble saturation):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -338,13 +338,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
@@ -357,16 +357,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -375,8 +375,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -384,7 +384,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -395,8 +395,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -415,8 +415,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 ---
 

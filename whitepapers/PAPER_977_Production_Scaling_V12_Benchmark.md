@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
-**Source:** production_{scaling\_v12}.py (ProductionScalingV12)
+**Source:** production_scaling_v12.py (ProductionScalingV12)
 **Calculator:** ProductionScalingV12BenchmarkCalc (CP4 #561)
 **CVW:** v2.0.0 compliant
 
@@ -45,7 +45,7 @@ total to 18 simultaneously benchmarked kernels.
 
 ## 2. New v12 Kernels
 
-### kernel_{qgp\_density}
+### kernel_qgp_density
 $\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)} \cdot \exp(-(T_c - T)/T)$ — QGP vacuum density at $T = 2 \times 10^{12}$ K.
 
 ### kernel_{99system\_master}
@@ -203,7 +203,7 @@ Scaling: v4 (100k) $\to$ v11 (500k) $\to$ v12 (501k) — near $\tanh$ hardware s
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -211,14 +211,14 @@ Scaling: v4 (100k) $\to$ v11 (500k) $\to$ v12 (501k) — near $\tanh$ hardware s
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
 | PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
-| PAPER_1013 | QGP ALICE Centrality F_{U\_Bi\_i} dN/deta Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
 | PAPER_1078 | QCalcGeom Master Equation Derivation |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
 | PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
 

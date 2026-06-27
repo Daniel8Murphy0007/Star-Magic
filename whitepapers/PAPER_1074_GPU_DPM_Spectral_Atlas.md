@@ -108,8 +108,8 @@ dominant line at 1.25 THz with FWHM governed by $\sigma$_G.
 
 ## References
 
-- `source10_{gpu\_dpm\_atlas}.py`: Implementation (11/11 tests pass)
-- `production_{scaling\_v17}.py`: Kernels `kernel_{gpu\_dpm\_atlas\_peak}`, `kernel_{dpm\_line\_fwhm}`
+- `source10_gpu_dpm_atlas.py`: Implementation (11/11 tests pass)
+- `production_scaling_v17.py`: Kernels `kernel_gpu_dpm_atlas_peak`, `kernel_dpm_line_fwhm`
 - PAPER_877: Three-Assumption UQFF Cosmogenesis
 
 
@@ -158,7 +158,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

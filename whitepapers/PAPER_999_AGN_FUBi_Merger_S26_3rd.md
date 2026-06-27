@@ -1,22 +1,22 @@
 ﻿---
 paper_id: PAPER_999
-title: "AGN F_{U\_Bi} Merger with 3rd-Order Ramanujan S26(3)"
+title: "AGN F_U_Bi Merger with 3rd-Order Ramanujan S26(3)"
 session: 219
 date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [AGN, F_{U\_Bi}, merger, Ramanujan, S26, 3rd-order, SMBH]
+tags: [AGN, F_U_Bi, merger, Ramanujan, S26, 3rd-order, SMBH]
 crosslinks: [PAPER_991, PAPER_979, PAPER_989]
 calibration: {S26_3rd: 0.095, M_bh: 5.5e7, a_spin: 0.70}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_999: AGN F_{U\_Bi} Merger with S26(3)
+# PAPER_999: AGN F_U_Bi Merger with S26(3)
 
 ## Abstract
 
-We derive the buoyancy force F_{U\_Bi} at the SMBH horizon of AGN merger systems using the 3rd-order
+We derive the buoyancy force F_U_Bi at the SMBH horizon of AGN merger systems using the 3rd-order
 Ramanujan summation S26(3) = 0.095. The recursive coefficient R_n^{(d,k)} = $\Sigma$_{j=0}^{k-1} (-1)^j
 C(k-1,j)/(n+j)! provides alternating-sign corrections that reduce S26 from 0.57 (1st-order) to 0.095
 (3rd-order).
@@ -25,7 +25,7 @@ C(k-1,j)/(n+j)! provides alternating-sign corrections that reduce S26 from 0.57 
 
 F_{U,Bi}^{AGN} = $\rho$_SCm $\cdot$ V $\cdot$ S26(3)2 $\cdot$ |Ub|/(|Ug| + |Ub|)
 
-For Centaurus A (M_BH = 5.5$\times$107 MM_sun, a = 0.70): F_{U\_Bi} = 5.47$\times$1035 m/s2.
+For Centaurus A (M_BH = 5.5$\times$107 MM_sun, a = 0.70): F_U_Bi = 5.47$\times$1035 m/s2.
 
 ## 2. Ramanujan S26(3)
 
@@ -35,7 +35,7 @@ Distinct from S26(1) = 0.57 due to higher-order alternating cancellation.
 
 ## 3. Implementation
 
-File: `fubi_{agn\_ns\_mergers}.py`, class `AGNFUBiMergerCalc`. CP4 class #583.
+File: `fubi_agn_ns_mergers.py`, class `AGNFUBiMergerCalc`. CP4 class #583.
 
 ---
 
@@ -74,7 +74,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -155,7 +155,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -269,19 +269,19 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -291,7 +291,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
 | PAPER_1042 | Mock-Theta Phonon Partition Ramanujan q-Series |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 | PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |

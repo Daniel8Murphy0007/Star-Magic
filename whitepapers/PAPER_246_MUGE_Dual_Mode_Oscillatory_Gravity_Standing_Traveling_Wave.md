@@ -21,10 +21,10 @@ grok_{share\_8d951e12}.txt 4th-pass)
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_b_i, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_b_i\,/\,F_U(r,t)\Bigr), \quad [SSq]
 = 0.57
 $$
 
@@ -36,13 +36,13 @@ establishes the **dual-mode oscillatory gravity sub-term** (`g_osc`), which is t
 two distinct wave modes: a standing wave and a Hubble-normalised traveling wave.
 
 Mode 1 (standing wave): `g_osc1 = 2A*cos(kx)*cos(?t)` — the classic interference pattern of two
-equal-amplitude counter-propagating waves. Mode 2 (traveling wave): `g_osc2 = (2p/T_{H\_gyr})*A*cos(kx
+equal-amplitude counter-propagating waves. Mode 2 (traveling wave): `g_osc2 = (2p/T_H_gyr)*A*cos(kx
 - ?t)` — a unidirectional propagating disturbance whose amplitude is suppressed by the inverse
-Hubble time in gigayears, `(2p/T_{H\_gyr})`, connecting gravitational oscillations to the cosmological
+Hubble time in gigayears, `(2p/T_H_gyr)`, connecting gravitational oscillations to the cosmological
 expansion rate.
 
 The key resonance condition — `?_local = 2p/t_Hubble` — places the system at the threshold where
-Mode 2 dominates the superposition because `(2p/T_{H\_gyr}) ? 1` for `T_{H\_gyr} = 2p`. Away from
+Mode 2 dominates the superposition because `(2p/T_H_gyr) ? 1` for `T_H_gyr = 2p`. Away from
 resonance, Mode 1 dominates for Hubble times much larger than 2p Gyr. The time-averaged result
 `?g_osc? = 0` ensures no net secular drift — oscillatory gravity is a zero-mean perturbation to the
 static MUGE field.
@@ -62,7 +62,7 @@ present in Standard Model treatments.
 | Oscillation amplitude | A_osc | 1 x 10?^1° | m/s^2 | Gravitational wave amplitude |
 | Wavenumber | k | 1/r | 1/m | Spatial frequency at system scale r |
 | Angular frequency | ? | 2pc/r | rad/s | Relativistic frequency at scale r |
-| Hubble time | `t_{H\_gyr}` | 13.8 | Gyr | Current epoch value |
+| Hubble time | `t_H_gyr` | 13.8 | Gyr | Current epoch value |
 | Position | x | variable | m | Spatial coordinate |
 | Time | t | variable | s | Note: in context, passed as epoch |
 
@@ -80,7 +80,7 @@ $$
 \end{aligned}
 $$
 
-**Mode 2 amplitude factor at T_{H\_gyr} = 13.8:**
+**Mode 2 amplitude factor at T_H_gyr = 13.8:**
 ```
 (2p / 13.8) ˜ 0.455
 ```
@@ -114,13 +114,13 @@ $$
 g_osc2 = (2p / \text{T\_H\_gyr}) * A * cos(k*x - ?*t)
 $$
 
-The factor `(2p / T_{H\_gyr})` has units of `1/Gyr` when T_{H\_gyr} is in gigayears, but since A is
-already in m/s^2, the result is dimensionally consistent only if T_{H\_gyr} is treated as a
+The factor `(2p / T_H_gyr)` has units of `1/Gyr` when T_H_gyr is in gigayears, but since A is
+already in m/s^2, the result is dimensionally consistent only if T_H_gyr is treated as a
 dimensionless ratio `T_H / (1 Gyr)`. This convention is standard in cosmological normalisation
 within MUGE.
 
 **Physical interpretation:** Gravitational disturbances traveling at cosmological speeds are
-attenuated by the Hubble expansion. The factor `(2p/T_{H\_gyr})` is the instantaneous angular expansion
+attenuated by the Hubble expansion. The factor `(2p/T_H_gyr)` is the instantaneous angular expansion
 rate in units of `(Gyr)?^1`, analogous to the Hubble parameter H0 = 1/t_Hubble but expressed in the
 natural angular frequency unit.
 
@@ -132,9 +132,9 @@ $$
 (2p / \text{T\_H\_gyr}) = 1  ?  \text{T\_H\_gyr} = 2p ˜ 6.28 Gyr
 $$
 
-For the current Universe (`T_{H\_gyr} = 13.8`), Mode 2 amplitude factor ˜ 0.455 — Mode 2 carries about
-45% of Mode 1 amplitude. At early cosmic times (`T_{H\_gyr} ? 2p ˜ 6.3 Gyr`, i.e., z ˜ 0.5 in ?CDM),
-the two modes were equal in amplitude. At Mode 2 resonance (`T_{H\_gyr} = 2p`), the interference
+For the current Universe (`T_H_gyr = 13.8`), Mode 2 amplitude factor ˜ 0.455 — Mode 2 carries about
+45% of Mode 1 amplitude. At early cosmic times (`T_H_gyr ? 2p ˜ 6.3 Gyr`, i.e., z ˜ 0.5 in ?CDM),
+the two modes were equal in amplitude. At Mode 2 resonance (`T_H_gyr = 2p`), the interference
 pattern is maximally complex.
 
 ### 2.4 Zero Time Average
@@ -172,11 +172,11 @@ For r = 1 Mpc: T_osc ˜ 3.3 Myr — comparable to galaxy cluster merger timescal
 
 **Theorem (MUGE Oscillatory Zero Mean):** The dual-mode oscillatory sub-term `g_osc = g_osc1 +
 g_osc2` is a zero-mean bounded perturbation to the static MUGE field for all systems with finite r.
-The maximum instantaneous amplitude is `|g_osc|_max = A * (2 + 2p/`T_{H\_gyr}`)`, reached when both modes
+The maximum instantaneous amplitude is `|g_osc|_max = A * (2 + 2p/`T_H_gyr`)`, reached when both modes
 constructively interfere at an antinode. No secular modification of total MUGE gravity results from
 this term in the time-averaged limit.
 
-The **Hubble resonance condition** `T_{H\_gyr} = 2p` is the unique epoch at which Mode 1 and Mode 2
+The **Hubble resonance condition** `T_H_gyr = 2p` is the unique epoch at which Mode 1 and Mode 2
 have equal amplitude, producing the most complex gravitational interference pattern observable.
 
 ---
@@ -185,7 +185,7 @@ have equal amplitude, producing the most complex gravitational interference patt
 
 - **Gravitational wave background:** The dual-mode structure predicts a specific spatial correlation pattern in the stochastic gravitational wave background — standing-wave nodes should appear as directions of suppressed GW strain in future pulsar timing arrays (IPTA, SKA).
 - **Galaxy cluster mass oscillations:** At r ~ Mpc, T_osc ~ 3 Myr — oscillatory gravity contributes to ICM pressure waves seen in Chandra X-ray maps. The mode-2/mode-1 amplitude ratio (0.455 at z=0) is a direct probe of the Hubble constant at the cluster.
-- **Early Universe enhancement:** At z ˜ 0.5 (T_{H\_gyr} ˜ 2p), the standing and traveling waves were equal — enhanced gravitational perturbations at this epoch may leave an imprint in the large-scale galaxy power spectrum at `k ˜ 0.1 h/Mpc`.
+- **Early Universe enhancement:** At z ˜ 0.5 (T_H_gyr ˜ 2p), the standing and traveling waves were equal — enhanced gravitational perturbations at this epoch may leave an imprint in the large-scale galaxy power spectrum at `k ˜ 0.1 h/Mpc`.
 
 ---
 
@@ -242,7 +242,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -261,7 +261,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -292,7 +292,7 @@ Since $p_{\mathrm{DVP}} = 17$ is **sub-threshold** (threshold at $p > 26$), the 
 
 The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -321,9 +321,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -338,14 +338,14 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *5 cross-reference(s) identified.*
@@ -355,16 +355,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -373,8 +373,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -382,7 +382,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -393,8 +393,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -413,8 +413,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

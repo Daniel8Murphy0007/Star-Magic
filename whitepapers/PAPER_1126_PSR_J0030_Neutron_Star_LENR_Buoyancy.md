@@ -19,7 +19,7 @@ sigma_n(rho) = sigma_0 * (rho/rho_0) reach sigma_n ~ 10^35 m^2 at interior
 densities, producing F_neutron ~ 10^49 N — the largest per-body neutron force
 in the UQFF library, 39 orders of magnitude above the general SNR value and
 consistent with the Sgr A* density regime. The resulting buoyancy displacement
-gives F_{U\_Bi} ~ 10^208 N (positive buoyancy equivalence class shared with SNRs).
+gives F_U_Bi ~ 10^208 N (positive buoyancy equivalence class shared with SNRs).
 
 ---
 
@@ -127,19 +127,19 @@ $$a_\text{coef} \cdot x_2^2 + b_\text{coef} \cdot x_2 + c_\text{coef} = 0$$
 
 with:
 
-- a_coef = dpm_{ug1\_seed}(M, r, B_0)
+- a_coef = dpm_ug1_seed(M, r, B_0)
 - b_coef = 4.72e-3
-- c_coef = -F_0 + rho_{vac\_UA} * DPM_stability
+- c_coef = -F_0 + rho_vac_UA * DPM_stability
 
 F_0 = 1.83e71 (FUBII reference force).
 
-### 3.9 Total Buoyancy (F_{U\_Bi})
+### 3.9 Total Buoyancy (F_U_Bi)
 
 $$F_{U,\text{Bi}} = -F_0 + F_\text{momentum} + U_{g1} + F_{U,\text{Bi},i}$$
 
 $$F_{U,\text{Bi},i} = \text{integrand\_total} \cdot |x_2|$$
 
-**Benchmark:** F_{U\_Bi} ~ 2.53e208 N (positive buoyancy; same equivalence class as SNRs).
+**Benchmark:** F_U_Bi ~ 2.53e208 N (positive buoyancy; same equivalence class as SNRs).
 
 ---
 
@@ -172,7 +172,7 @@ laboratory and astrophysical LENR within a single UQFF formula.
    the predicted neutron-drop dynamics timescale omega_act^{-1} ~ 5e-4 s.
 
 3. **EOS sensitivity:** A sweep over M from 1.0 to 2.5 M_sun maps how
-   F_{U\_Bi} depends on the nuclear equation of state, directly constraining
+   F_U_Bi depends on the nuclear equation of state, directly constraining
    the neutron star mass-radius relation.
 
 ---
@@ -213,13 +213,13 @@ F_neutron value in the entire UQFF library (~10^{49} N). This result:
 
 - Validates the density-linear cross-section scaling law sigma_n(rho) = sigma_0 * rho/rho_0
   across 39 orders of magnitude (lab to neutron star)
-- Places PSR J0030+0451 in the same F_{U\_Bi} equivalence class as SNRs (~10^{208} N)
+- Places PSR J0030+0451 in the same F_U_Bi equivalence class as SNRs (~10^{208} N)
 - Provides three independent observational tests accessible to NICER, ALMA, and
   future X-ray timing missions
 - Extends FUBII benchmark Step 4 to the extreme-density regime
 
 **Paper benchmark:** sigma_n(rho) ~ 10^{35} m^2, F_neutron ~ 10^{49} N,
-F_{U\_Bi} ~ 2.53e208 N (PAPER_1126, FUBII benchmark Step 4).
+F_U_Bi ~ 2.53e208 N (PAPER_1126, FUBII benchmark Step 4).
 
 ---
 

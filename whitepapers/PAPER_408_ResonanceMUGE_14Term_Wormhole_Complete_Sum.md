@@ -14,11 +14,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_{share\_cfdcad2f5}.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx"
+**Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx"
 C++ implementation)  
-**Section:** C++ source — `compute_{resonance\_MUGE}()` function with `compute_{a\_wormhole}()` as 14th
+**Section:** C++ source — `compute_resonance_MUGE()` function with `compute_a_wormhole()` as 14th
 additive term  
-**Session:** 108 (grok_{share\_cfdcad2f5}.txt construction file re-analysis)  
+**Session:** 108 (grok_share_cfdcad2f5.txt construction file re-analysis)  
 **CP4 Class:** `ResonanceMUGE14TermCompleteWormholeSumCalculator` (#57)
 
 ---
@@ -42,7 +42,7 @@ but an **integrated resonance MUGE term**:
 $$g_{\text{res,14}} = \underbrace{a_{\text{DPM}} + a_{\text{THz}} + a_{\text{vac,diff}} + a_{\text{super}} + a_{\text{aether}} + U_{g4i}}_{\text{Terms 1–6}} + \underbrace{a_{\text{quantum}} + a_{\text{Aether}} + a_{\text{fluid}} + a_{\text{osc}} + a_{\text{exp}} + f_{\text{TRZ}}}_{\text{Terms 7–12}} + \underbrace{a_{\text{worm}}}_{\text{Term 14}}$$
 
 > Note: Term 13 = $f_{\text{TRZ}} = 0.1$ and Term 14 = $a_{\text{worm}}$ as confirmed by
-> the construction file `compute_{resonance\_MUGE}()` implementation.
+> the construction file `compute_resonance_MUGE()` implementation.
 
 ---
 
@@ -103,7 +103,7 @@ where:
 | Context | Standalone $a_{\text{worm}}$ formula derivation | $a_{\text{worm}}$ as 14th additive term in full resonance MUGE |
 | Formula | $a_{\text{worm}} = f_{\text{worm}} \cdot E_{\text{vac}}/(b^2+r^2)$ | Same formula **within** a 14-term co-sum |
 | Physical role | Independent wormhole acceleration | Resonance MUGE vacuum correction |
-| Code location | `c`ompute_{a\_wormhole}`()` | `c`ompute_{resonance\_MUGE}`()` return sum |
+| Code location | `c`ompute_a_wormhole`()` | `c`ompute_resonance_MUGE`()` return sum |
 
 ### 4.2 Magnitude Comparison at r = 104 m
 
@@ -143,7 +143,7 @@ is a **deliberate additive extension** of the 12-term formula.
 | Framework | Terms | Reference |
 |-----------|-------|-----------|
 | PAPER_371 | 12-term MUGE Superconductive Resonance | Session 101 |
-| `grok_{share\_cfdcad2f5}`.txt | 13-term (adds $f_{\text{TRZ}}$ explicitly as 12th) | Session 107 |
+| `grok_share_cfdcad2f5`.txt | 13-term (adds $f_{\text{TRZ}}$ explicitly as 12th) | Session 107 |
 | PAPER_408 | **14-term** (adds $a_{\text{worm}}$ as final term) | **Session 108** |
 
 ---
@@ -151,12 +151,12 @@ is a **deliberate additive extension** of the 12-term formula.
 ## 6. C++ Source
 
 ```cpp
-// grok_{share\_cfdcad2f5}.txt construction file
-double compute_{a\_wormhole}(double r, double f_worm, double Evac_neb, double b) {
+// grok_share_cfdcad2f5.txt construction file
+double compute_a_wormhole(double r, double f_worm, double Evac_neb, double b) {
     return f_worm * Evac_neb * (1.0 / (b * b + r * r));
 }
 
-double compute_{resonance\_MUGE}(const MUGESystem& sys,
+double compute_resonance_MUGE(const MUGESystem& sys,
                               const ResonanceParams& params) {
     double aDPM       = /* DPM term ... */;
     double aTHz       = /* THz cascade ... */;
@@ -172,7 +172,7 @@ double compute_{resonance\_MUGE}(const MUGESystem& sys,
     double fTRZ       = 0.1;
 
     // Add wormhole term to resonance MUGE as per updates
-    double a_worm = compute_{a\_wormhole}(params.r, params.f_worm,
+    double a_worm = compute_a_wormhole(params.r, params.f_worm,
                                        params.Evac_neb, params.b);
 
     return aDPM + aTHz + avac_diff + asuper + aaether_res + Ug4i
@@ -232,7 +232,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -272,7 +272,7 @@ mock-theta framework with the SCm phonon spectrum.
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -291,7 +291,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -322,7 +322,7 @@ Since $p_{\mathrm{DVP}} = 67$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -370,7 +370,7 @@ $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 ---
 
-*Whitepaper generated Session 108. Source: grok_{share\_cfdcad2f5}.txt lines 277-1600.*
+*Whitepaper generated Session 108. Source: grok_share_cfdcad2f5.txt lines 277-1600.*
 
 
 
@@ -380,7 +380,7 @@ $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -388,7 +388,7 @@ $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
@@ -399,16 +399,16 @@ $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -417,8 +417,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -426,7 +426,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -437,8 +437,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -457,8 +457,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

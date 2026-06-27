@@ -116,9 +116,9 @@ distinguishing SCm from quintessence models ($w > -1$).
 
 ## References
 
-- `scm_{dark\_energy\_enet\_gamma}.py`: Implementation (10/10 tests pass)
-- `et_{full\_lagrangian}.py`: E_net(t) base (without $\Gamma$ coupling)
-- `production_{scaling\_v17}.py`: Kernels `kernel_{enet\_gamma\_coupled}`, `kernel_{dark\_energy\_eos\_w0}`
+- `scm_dark_energy_enet_gamma.py`: Implementation (10/10 tests pass)
+- `et_full_lagrangian.py`: E_net(t) base (without $\Gamma$ coupling)
+- `production_scaling_v17.py`: Kernels `kernel_enet_gamma_coupled`, `kernel_dark_energy_eos_w0`
 - PAPER_877: Three-Assumption UQFF Cosmogenesis
 - PAPER_1073: SCm Inflation Phonon-Driven
 
@@ -192,7 +192,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

@@ -101,7 +101,7 @@ $$\Phi_{\text{res}} = 0.84, \quad \rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ 
 
 1. Nambu, Y. (1970). Duality and hadrodynamics. Copenhagen talk.
 2. Goto, T. (1971). Relativistic quantum mechanics of one-dimensional mechanical continuum. *Prog. Theor. Phys.* **46**, 1560.
-3. VDS 26-ladder: PAPER_1109; Polyakov in SCm: PAPER_1142; `scm_{vacuum\_manifold}.py`
+3. VDS 26-ladder: PAPER_1109; Polyakov in SCm: PAPER_1142; `scm_vacuum_manifold.py`
 
 
 ### Key References with arXiv/DOI Identifiers

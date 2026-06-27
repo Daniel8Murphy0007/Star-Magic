@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_981
-title: "F_{U\_Bi\_i} Variational Derivation from Lagrangian Mechanics"
+title: "F_U_Bi_i Variational Derivation from Lagrangian Mechanics"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -12,7 +12,7 @@ calibration: {SSq: 0.57, beta_i: 0.603, kappa: "0.0005/day", omega_SCm: "2$\pi$$
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_981: F_{U\_Bi\_i} Variational Derivation from Lagrangian Mechanics
+# PAPER_981: F_U_Bi_i Variational Derivation from Lagrangian Mechanics
 
 ## Abstract
 
@@ -47,10 +47,10 @@ For $M = M_\odot$, $r = 1$ AU, $t = 86400$ s:
 
 ## 4. Implementation
 
-Class `FUBiVariationalDerivation` in `fubi_{master\_calculator}.py`: constructs $\mathcal{L}$, computes $F_{EL}$ numerically, validates sign consistency with direct-sum $F_{U,\text{Bi}_i}$.
+Class `FUBiVariationalDerivation` in `fubi_master_calculator.py`: constructs $\mathcal{L}$, computes $F_{EL}$ numerically, validates sign consistency with direct-sum $F_{U,\text{Bi}_i}$.
 
 ## References
-- PAPER_979: Master 6-Layer F_{U\_Bi\_i}
+- PAPER_979: Master 6-Layer F_U_Bi_i
 - PAPER_969: Expanded 26D Ramanujan
 
 ---
@@ -72,7 +72,7 @@ The SCm Lagrangian is the fundamental action principle from which all UQFF force
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -155,7 +155,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -228,7 +228,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -238,7 +238,7 @@ mock-theta framework with the SCm phonon spectrum.
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1061 | Kozima SCm Integration Neutron-Drop |
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |

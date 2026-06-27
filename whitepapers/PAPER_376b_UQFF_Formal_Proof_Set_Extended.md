@@ -131,7 +131,7 @@ $$
 | 9 | afluid_freq | f_fluid $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 | 10 | Osc_term | A $\cdot$ sin($\omega$t + $\phi$) $\cdot$ Evac_neb / c | m/s2 PASS |
 | 11 | aexp_freq | f_exp $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 12 | fTRZ | `f_{TRZ\_val}` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 12 | fTRZ | `f_TRZ_val` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 
 ### 2.2 Normalization Chain
 
@@ -240,7 +240,7 @@ characterizes the vacuum state at each point in the 26D BSFG metric.
 ### §A.1 Sector Classification
 
 This paper maps to **formal-proof** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -259,7 +259,7 @@ $$\boxed{g_{\mathrm{compressed}} = \sum_{i=1}^{26}[U_{g1,i} + U_{g2,i} + U_{g3,i
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{dim}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{dim}} = 0$$
 
 ---
 
@@ -283,7 +283,7 @@ Since $p_{\mathrm{DVP}} = 3$ is **sub-threshold** ($p < 26$), the dimensional an
 
 The BSH saturation timescale for this sector is **4.35e17 s (Hubble time)**:
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 ### §B.4 Production-Scale Consistency
 
@@ -304,7 +304,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -354,7 +354,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -412,9 +412,9 @@ mock-theta framework with the SCm phonon spectrum.
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -441,13 +441,13 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

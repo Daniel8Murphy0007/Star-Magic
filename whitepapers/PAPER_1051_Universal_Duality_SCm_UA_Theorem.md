@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 
 We formalise the universal SCm-UA duality theorem: every gravitational system admits a complementary
 phonon-condensate (SCm, inside-to-outside) and vacuum-aether (UA, outside-to-inside) description.
-The net buoyancy F_{U\_Bi\_i} = F_SCm - F_UA, with sign(E_net) classifying systems as EXPANSION (F_SCm >
+The net buoyancy F_U_Bi_i = F_SCm - F_UA, with sign(E_net) classifying systems as EXPANSION (F_SCm >
 F_UA; nebulae, Universe), COLLAPSE (F_UA > F_SCm; compact objects), or EQUILIBRIUM (F_SCm approx
 F_UA; stable orbits). The duality ratio R_d = F_SCm/F_UA spans 10^-7 (Universe-scale) to 10^7
 (quantum-scale). 99-system closure is demonstrated.
@@ -80,7 +80,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -179,18 +179,18 @@ BSH: sign of BSH determines expansion (positive) vs collapse (negative).
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 
 *8 cross-reference(s) identified.*
 

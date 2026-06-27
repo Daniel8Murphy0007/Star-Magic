@@ -11,7 +11,7 @@ crosslinks: [PAPER_1065, PAPER_1066, PAPER_877]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1183: First-Principles Variational Derivation of $F_{U\_Bi\_i}$ — Patch to PAPER_1065
+# PAPER_1183: First-Principles Variational Derivation of $F_U_Bi_i$ — Patch to PAPER_1065
 
 ## Abstract
 
@@ -25,7 +25,7 @@ The minimum repair is to write down the simplest explicit Lagrangian compatible 
 
 ## 2. Explicit Lagrangian
 
-We work in the radial sector ($r > 0$). Let $m$ be the test-mass, $\mu_s$ the SCm magnetic moment ($\mu_s = \rho_{\text{SCm}} V_{\text{body}}$, supplied by PAPER_1066), $M_s$ the source mass, and $g_{\text{buoy}}$, $g_{\text{phonon}}$ uniform forces per unit mass arising respectively from the buoyancy sector ($F_{U\_Bi\_i}$ envelope) and the SCm phonon coupling (PAPER_1066, $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$).
+We work in the radial sector ($r > 0$). Let $m$ be the test-mass, $\mu_s$ the SCm magnetic moment ($\mu_s = \rho_{\text{SCm}} V_{\text{body}}$, supplied by PAPER_1066), $M_s$ the source mass, and $g_{\text{buoy}}$, $g_{\text{phonon}}$ uniform forces per unit mass arising respectively from the buoyancy sector ($F_U_Bi_i$ envelope) and the SCm phonon coupling (PAPER_1066, $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$).
 
 The explicit Lagrangian is
 
@@ -105,7 +105,7 @@ The variational machinery is now first-principles verified. The following inputs
 
 ## 7. Corollary: Cosmogenesis Chain Closure
 
-Every paper in the corpus terminating its derivation chain with $\delta S/\delta \phi = 0$ (PAPER_877 axioms → DPM + ACP → $\rho_{\text{vac}}$ → Stage 5 → $U_{b,\text{seed}}$ → four forces → $F_{U\_Bi\_i}$ → sector E-L → $\delta S/\delta \phi = 0$) now has, at its terminal step, an explicit Lagrangian and a verified Euler–Lagrange equation rather than a label. The chain is closed in the sense of having a checkable last step.
+Every paper in the corpus terminating its derivation chain with $\delta S/\delta \phi = 0$ (PAPER_877 axioms → DPM + ACP → $\rho_{\text{vac}}$ → Stage 5 → $U_{b,\text{seed}}$ → four forces → $F_U_Bi_i$ → sector E-L → $\delta S/\delta \phi = 0$) now has, at its terminal step, an explicit Lagrangian and a verified Euler–Lagrange equation rather than a label. The chain is closed in the sense of having a checkable last step.
 
 ## 8. Calibration Constants (Unchanged)
 

@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** et_{phonon\_resonance}.py §7 (SpectralLadderPhononMapping)
+**Source:** et_phonon_resonance.py §7 (SpectralLadderPhononMapping)
 **Calculator:** SpectralLadderPhononMappingCalc (CP4 #540)
 **CVW:** v2.0.0 compliant
 
@@ -51,7 +51,7 @@ Each level $n$ from 1 to 26 produces a unique $(E_n, \omega_n, Q_n)$ triplet, fu
 
 ## 5. Source Data
 
-- **File:** et_{phonon\_resonance}.py §7
+- **File:** et_phonon_resonance.py §7
 - **Session:** 214
 - **CP4 Class:** SpectralLadderPhononMappingCalc (#540)
 
@@ -82,7 +82,7 @@ Each level $n$ from 1 to 26 produces a unique $(E_n, \omega_n, Q_n)$ triplet, fu
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -197,14 +197,14 @@ $Q_n$ saturation profile: $\text{BSH}(n) = Q_n / Q_\text{max}$.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

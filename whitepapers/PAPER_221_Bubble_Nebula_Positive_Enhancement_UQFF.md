@@ -94,8 +94,8 @@ The positive enhancement from $F_{U,Bi,i}$ buoyancy provides a measurable correc
 
 1. Christopoulou, P.E. et al. (1995). Bubble Nebula NGC 7635. *A&A* **295**, 509.
 2. Freyer, T. et al. (2006). Wind-blown bubbles around massive stars. *ApJ* **638**, 262.
-3. SCm vacuum manifold constants: `scm_{vacuum\_manifold}.py`
-4. UQFF $F_{U,Bi,i}$: `COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md`
+3. SCm vacuum manifold constants: `scm_vacuum_manifold.py`
+4. UQFF $F_{U,Bi,i}$: `COMPLETE_UQFF_EQUATIONS_REFERENCE.md`
 
 
 ### Key References with arXiv/DOI Identifiers

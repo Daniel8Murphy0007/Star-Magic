@@ -103,11 +103,11 @@ DVP prime sieve, BSH harmonic saturation, wormhole phonon damping. Target: 800,0
 
 ## 3. Implementation
 
-- `scm_{inflation\_calculator}.py`: SCmInflationaryHubble, SCmInflationaryScaleFactor, SCmInflationaryEnet, SCmInflationLagrangian, SCmSlowRollParameters, SCmInflationPipeline
-- `uqff_{lagrangian\_derivation}.py` §18: SECTION_{18\_SCM\_INFLATION\_BUOYANCY}
-- `thorne_{morris\_exotic\_derivation}.py`: FlareOutCondition, WormholeEinsteinEquations, NECViolation, SCmPhononEnergyDensity, BuoyancyPressure, ExoticMatterDerivation
-- `vds_{dvp\_bsh\_symbolic\_proofs}.py`: VDSConvergenceProof, DVPPrimeSieveProof, BSHHarmonicDecayProof
-- `production_{scaling\_v16}.py`: 36 kernels, 800k calc/s target
+- `scm_inflation_calculator.py`: SCmInflationaryHubble, SCmInflationaryScaleFactor, SCmInflationaryEnet, SCmInflationLagrangian, SCmSlowRollParameters, SCmInflationPipeline
+- `uqff_lagrangian_derivation.py` §18: SECTION_{18\_SCM\_INFLATION\_BUOYANCY}
+- `thorne_morris_exotic_derivation.py`: FlareOutCondition, WormholeEinsteinEquations, NECViolation, SCmPhononEnergyDensity, BuoyancyPressure, ExoticMatterDerivation
+- `vds_dvp_bsh_symbolic_proofs.py`: VDSConvergenceProof, DVPPrimeSieveProof, BSHHarmonicDecayProof
+- `production_scaling_v16.py`: 36 kernels, 800k calc/s target
 
 ## References
 
@@ -157,7 +157,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -250,7 +250,7 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}} = 1.25$ THz 
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -262,7 +262,7 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}} = 1.25$ THz 
 | PAPER_1021 | Pulsar Timing Phonon TOA Residual |
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1066 | UQFF Lagrangian First Principles Field Theory |

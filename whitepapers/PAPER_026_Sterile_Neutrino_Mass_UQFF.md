@@ -86,5 +86,5 @@ $$1\ \text{keV} \lesssim m_s \lesssim 100\ \text{keV}$$
 
 1. Dodelson, S. & Widrow, L.M. (1994). Sterile neutrinos as dark matter. *Phys. Rev. Lett.* **72**, 17.
 2. Boyarsky, A. et al. (2014). Unidentified line in X-ray spectra. arXiv:1402.4119.
-3. SCm vacuum manifold: `scm_{vacuum\_manifold}.py`
-4. VDS derivation: `vds_{dvp\_bsh\_symbolic\_proofs}.py`
+3. SCm vacuum manifold: `scm_vacuum_manifold.py`
+4. VDS derivation: `vds_dvp_bsh_symbolic_proofs.py`

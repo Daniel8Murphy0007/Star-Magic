@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_987
-title: "WSTP F_{U\_Bi\_i} Symbolic Export — Wolfram Language Expression #51"
+title: "WSTP F_U_Bi_i Symbolic Export — Wolfram Language Expression #51"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -12,11 +12,11 @@ calibration: {SSq: 0.57, beta_i: 0.603, omega_SCm: "2\pi\times1.25 THz", wstp_ex
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_987: WSTP F_{U\_Bi\_i} Symbolic Export — Wolfram Language Expression #51
+# PAPER_987: WSTP F_U_Bi_i Symbolic Export — Wolfram Language Expression #51
 
 ## Abstract
 
-Expression #51 in `wstp_{kernel\_demo\_runner}.py` encodes the complete 6-layer $F_{U,\text{Bi}_i}$ master equation in Wolfram Language for symbolic evaluation via the Wolfram Symbolic Transfer Protocol (WSTP). The export enables closed-form simplification, series expansion, and parametric analysis of all six layers simultaneously within the Mathematica kernel.
+Expression #51 in `wstp_kernel_demo_runner.py` encodes the complete 6-layer $F_{U,\text{Bi}_i}$ master equation in Wolfram Language for symbolic evaluation via the Wolfram Symbolic Transfer Protocol (WSTP). The export enables closed-form simplification, series expansion, and parametric analysis of all six layers simultaneously within the Mathematica kernel.
 
 ## 1. Wolfram Language Definition
 
@@ -67,11 +67,11 @@ result = link.getResult()
 
 ## 4. Implementation
 
-Added as expression #51 in `wstp_{kernel\_demo\_runner}.py`, function `_build_expressions()`. Total WSTP
+Added as expression #51 in `wstp_kernel_demo_runner.py`, function `_build_expressions()`. Total WSTP
 expressions: 51.
 
 ## References
-- PAPER_979: Complete 6-Layer F_{U\_Bi\_i}
+- PAPER_979: Complete 6-Layer F_U_Bi_i
 - PAPER_985: Production Kernel
 
 
@@ -153,7 +153,7 @@ The Wolfram export allows symbolic computation of $\delta S / \delta\phi$ direct
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

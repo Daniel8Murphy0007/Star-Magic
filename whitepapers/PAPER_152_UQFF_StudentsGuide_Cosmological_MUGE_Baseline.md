@@ -22,7 +22,7 @@ Resonance Baseline: g = 3.958$\times$10^14 m/s^2
 **Domain:** §2.2 MUGE Compression Cycle 3 (07b7f7a6)  
 **Source Thread:** `grok_{share\_07b7f7a635c04b6e90170b8a481ab1b0\_content}.txt`  
 **UQFF Mode:** Superconductive Resonance (cosmological regime)  
-**Validator:** `CondensedPhysics2.py` v2.1.0, SOURCE4 (student_{guide\_SOURCE4})  
+**Validator:** `CondensedPhysics2.py` v2.1.0, SOURCE4 (student_guide_SOURCE4)  
 **Cross-links:** PAPER_151 (Pillars/Rings cascade terminus), PAPER_153 (exotic geometry extension)
 
 ---
@@ -91,7 +91,7 @@ resonance.
 
 ### 2.1 Master Equation
 
-$$g(r,t) = a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res} + U_{g4i} + a_{quantum\_freq} + a_{Aether\_freq} + a_{fluid\_freq} + Osc_{term} + a_{exp\_freq} + f_{TRZ}$$
+$$g(r,t) = a_{DPM} + a_{THz} + a_vac_diff + a_super_freq + a_aether_res + U_{g4i} + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_{term} + a_exp_freq + f_{TRZ}$$
 
 ### 2.2 Term-by-Term Evaluation
 
@@ -124,23 +124,23 @@ Negligible at cosmological scale.
 
 **Term 3: avac_diff (Vacuum Energy Differential)**
 
-$$a_{vac\_diff} = \kappa_U \cdot (E_{vac,neb} - E_{vac,ISM})$$
+$$a_vac_diff = \kappa_U \cdot (E_{vac,neb} - E_{vac,ISM})$$
 
-$$a_{vac\_diff} = 0.5 \times (7.09 \times 10^{-36} - 7.09 \times 10^{-37}) = 3.19 \times 10^{-36} \text{ m/s}^2$$
+$$a_vac_diff = 0.5 \times (7.09 \times 10^{-36} - 7.09 \times 10^{-37}) = 3.19 \times 10^{-36} \text{ m/s}^2$$
 
 Negligible.
 
 **Term 4: asuper_freq (Superconductive Frequency)**
 
-$$a_{super\_freq} = F_{super} \cdot f_{THz} \cdot \rho_{SCm} \cdot v_{SCm}^2$$
+$$a_super_freq = F_{super} \cdot f_{THz} \cdot \rho_{SCm} \cdot v_{SCm}^2$$
 
-$$a_{super\_freq} = 6.287 \times 10^{-19} \times 10^{12} \times 10^{15} \times (10^8)^2 = 6.287 \times 10^{24} \text{ m/s}^2$$
+$$a_super_freq = 6.287 \times 10^{-19} \times 10^{12} \times 10^{15} \times (10^8)^2 = 6.287 \times 10^{24} \text{ m/s}^2$$
 
 **Term 5: aaether_res (Aether Resonance)**
 
-$$a_{aether\_res} = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c$$
+$$a_aether_res = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c$$
 
-$$a_{aether\_res} = 5 \times 10^{-5} \times 10^{15} \times 10^8 \times 3 \times 10^8 = 1.5 \times 10^{27} \text{ m/s}^2$$
+$$a_aether_res = 5 \times 10^{-5} \times 10^{15} \times 10^8 \times 3 \times 10^8 = 1.5 \times 10^{27} \text{ m/s}^2$$
 
 **Term 6: Ug4i (Vacuum Concentration)**
 
@@ -152,25 +152,25 @@ $$U_{g4i} \approx 3.0 \times 10^{-4} \text{ m/s}^2$$
 
 **Term 7: aquantum_freq (Quantum Frequency)**
 
-$$a_{quantum\_freq} = k_1 \cdot \frac{\hbar \omega_i}{m_p \cdot r}$$
+$$a_quantum_freq = k_1 \cdot \frac{\hbar \omega_i}{m_p \cdot r}$$
 
-$$a_{quantum\_freq} = 1.5 \times \frac{1.055 \times 10^{-34} \times 10^{-8}}{1.67 \times 10^{-27} \times 4.4 \times 10^{26}} = 2.15 \times 10^{-40} \text{ m/s}^2$$
+$$a_quantum_freq = 1.5 \times \frac{1.055 \times 10^{-34} \times 10^{-8}}{1.67 \times 10^{-27} \times 4.4 \times 10^{26}} = 2.15 \times 10^{-40} \text{ m/s}^2$$
 
 Negligible.
 
 **Term 8: aAether_freq (Aether Frequency)**
 
-$$a_{Aether\_freq} = k_2 \cdot \kappa \cdot c \cdot \omega_i$$
+$$a_Aether_freq = k_2 \cdot \kappa \cdot c \cdot \omega_i$$
 
-$$a_{Aether\_freq} = 1.2 \times 5 \times 10^{-4} \times 3 \times 10^8 \times 10^{-8} = 1.8 \times 10^{-3} \text{ m/s}^2$$
+$$a_Aether_freq = 1.2 \times 5 \times 10^{-4} \times 3 \times 10^8 \times 10^{-8} = 1.8 \times 10^{-3} \text{ m/s}^2$$
 
 **Term 9: afluid_freq (Fluid Frequency – Cosmological B-field)**
 
-$$a_{fluid\_freq} = k_3 \cdot \frac{B^2}{4\pi\rho_{SCm}} \cdot \frac{1}{r}$$
+$$a_fluid_freq = k_3 \cdot \frac{B^2}{4\pi\rho_{SCm}} \cdot \frac{1}{r}$$
 
 At B = 1 nG = 10^-9 T, r = 4.4 Gpc = 1.36$\times$10^26 m:
 
-$$a_{fluid\_freq} = 1.8 \times \frac{(10^{-9})^2}{4\pi \times 10^{15}} \times \frac{1}{1.36 \times 10^{26}} \approx 1.06 \times 10^{-62} \text{ m/s}^2$$
+$$a_fluid_freq = 1.8 \times \frac{(10^{-9})^2}{4\pi \times 10^{15}} \times \frac{1}{1.36 \times 10^{26}} \approx 1.06 \times 10^{-62} \text{ m/s}^2$$
 
 Negligible at cosmological B-field. (Compare: at Tapestry B~1 mG afluid_freq= dominant.)
 
@@ -186,9 +186,9 @@ $$= 7.09 \times 10^{-37} \times (-0.368) \approx -2.61 \times 10^{-37} \text{ m/
 
 **Term 11: aexp_freq (Expansion Frequency – Hubble coupling)**
 
-$$a_{exp\_freq} = k_4 \cdot H_0 \cdot c$$
+$$a_exp_freq = k_4 \cdot H_0 \cdot c$$
 
-$$a_{exp\_freq} = 2.0 \times (2.18 \times 10^{-18} \text{ s}^{-1}) \times 3 \times 10^8 = 1.308 \times 10^{-9} \text{ m/s}^2$$
+$$a_exp_freq = 2.0 \times (2.18 \times 10^{-18} \text{ s}^{-1}) \times 3 \times 10^8 = 1.308 \times 10^{-9} \text{ m/s}^2$$
 
 **Term 12: fTRZ (Topological Resonance Zone)**
 
@@ -343,7 +343,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 - Murphy D.T. (2025), PAPER_149  Sgr A* MUGE FDPM Dominance
 - Murphy D.T. (2026), PAPER_151  Pillars/Rings MUGE Cascade
 - Murphy D.T. (2026), PAPER_147  FDPM Vortical Resonance Driver
-- `SOURCE4` namespace, `MAIN_{1\_CoAnQi}.cpp` lines 2562326026 (student_{guide\_SOURCE4})
+- `SOURCE4` namespace, `MAIN_{1\_CoAnQi}.cpp` lines 2562326026 (student_guide_SOURCE4)
 - `grok_{share\_07b7f7a635c04b6e90170b8a481ab1b0\_content}.txt`  Thread 07b7f7a6 extraction
 - Blasi P. & De Marco D. (1999), Astropart. Phys. 12, 169  Cosmological B-field 1 nG bound
 .Groups[1].Value   UQFF Student's Guide Universe: Cosmological MUGE Baseline
@@ -353,7 +353,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -403,7 +403,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -417,7 +417,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ### §A.1 Sector Classification
 
 This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -436,7 +436,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\mathrm{SCm}} \ma
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -466,7 +466,7 @@ Since $p_{\mathrm{DVP}} = 5$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -493,14 +493,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1052 | TQFT Anyon Braiding Chern-Simons |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *5 cross-reference(s) identified.*
@@ -510,16 +510,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -528,8 +528,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -537,7 +537,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -548,8 +548,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -568,8 +568,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 ---
 

@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 212
-**Source:** ns_{phonon\_gw170817\_wstp}.py (PhononSuppressedGW170817Strain)
+**Source:** ns_phonon_gw170817_wstp.py (PhononSuppressedGW170817Strain)
 **Calculator:** GW170817PhononSuppressedStrainCalc (CP4 #518)
 **CVW:** v2.0.0 compliant
 
@@ -82,7 +82,7 @@ testable prediction for next-generation detectors (Einstein Telescope, Cosmic Ex
 
 ## 4. Source Data
 
-- **File:** ns_{phonon\_gw170817\_wstp}.py
+- **File:** ns_phonon_gw170817_wstp.py
 - **Session:** 212
 - **CP4 Class:** GW170817PhononSuppressedStrainCalc (#518)
 
@@ -232,14 +232,14 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 ## Abstract
-Arkani-Hamed, Dimopoulos, and Dvali (ADD, 1998) proposed that the hierarchy problem can be resolved by n$\geq$2 large extra spatial dimensions in which gravity propagates. The fundamental Planck scale M_* can be as low as ~1 TeV if extra dimensions have radii R~0.1 mm (n=2). This paper integrates the ADD model into UQFF as a new F_{U\_Bi\_i} term F_LED (Large Extra Dimension force), yielding F_LED = k_LED $\times$ (M_*/M_Pl)2 = 6.72$\times$$10^{-23}$ N. While numerically tiny, F_LED represents a novel extra-dimensional vacuum modification and is applied to the 8-system Chandra batch (SNR 1181, H1821+643, Sonification Collection, IC 443, M74, MSH 15-52, SDSS J1531+3414, Sagittarius A*). Sgr A*'s negative buoyancy is potentially linked to ADD-predicted graviton leakage into extra dimensions.
+Arkani-Hamed, Dimopoulos, and Dvali (ADD, 1998) proposed that the hierarchy problem can be resolved by n$\geq$2 large extra spatial dimensions in which gravity propagates. The fundamental Planck scale M_* can be as low as ~1 TeV if extra dimensions have radii R~0.1 mm (n=2). This paper integrates the ADD model into UQFF as a new F_U_Bi_i term F_LED (Large Extra Dimension force), yielding F_LED = k_LED $\times$ (M_*/M_Pl)2 = 6.72$\times$$10^{-23}$ N. While numerically tiny, F_LED represents a novel extra-dimensional vacuum modification and is applied to the 8-system Chandra batch (SNR 1181, H1821+643, Sonification Collection, IC 443, M74, MSH 15-52, SDSS J1531+3414, Sagittarius A*). Sgr A*'s negative buoyancy is potentially linked to ADD-predicted graviton leakage into extra dimensions.
 
 ---
 
@@ -74,27 +74,27 @@ where N_KK is the number of accessible KK modes. The correction factor (M_*/M_Pl
 
 ### 2.3 Relative Magnitude
 
-    F_LED = 6.72 * 10^-23 N  $\leftarrow$ SMALLEST term in F_{U\_Bi\_i}
+    F_LED = 6.72 * 10^-23 N  $\leftarrow$ SMALLEST term in F_U_Bi_i
     vs F_LENR = 1.56 * 10^36 N  (59 orders of magnitude difference)
 
 
-F_LED is the smallest F_{U\_Bi\_i} term but represents the most theoretically profound: it connects UQFF
+F_LED is the smallest F_U_Bi_i term but represents the most theoretically profound: it connects UQFF
 to extra-dimensional gravity theory.
 
 ---
 
 ## 3. Eight-System Calculations (ADD model session)
 
-### Updated F_{U\_Bi\_i} Equation:
+### Updated F_U_Bi_i Equation:
 
-    F_{U\_Bi\_i} = Integral0^{x2} [-F_0 + gravity + momentum + rho_vac*DPM_stab
+    F_U_Bi_i = Integral0^{x2} [-F_0 + gravity + momentum + rho_vac*DPM_stab
                + F_LENR + F_act + F_DE + F_res
                + F_quark + F_neutrino + F_ALP + F_dark + F_LED] dx
 
 
 ### Results with F_LED (final values — ADD dominates only via theoretical connection):
 
-| System | `F_{U\_Bi}` (N) | F_LED contribution | Analysis Point |
+| System | `F_U_Bi` (N) | F_LED contribution | Analysis Point |
 |--------|-----------|-------------------|----------------|
 | SNR 1181 (Pa 30) | 2.65$\times$$10^{208}$ | +6.72$\times$$10^{-23}$ N | F_LED suggests graviton-mediated energy in neon lattice |
 | H1821+643 quasar | 2.09$\times$$10^{212}$ | +6.72$\times$$10^{-23}$ N | ADD suppressed graviton $\to$ weak quasar influence on cluster |
@@ -105,20 +105,20 @@ to extra-dimensional gravity theory.
 | SDSS J1531+3414 | 1.40$\times$$10^{212}$ | +6.72$\times$$10^{-23}$ N | F_LED stabilizes galaxy merger dynamics |
 | **Sagittarius A*** | **-8.31$\times$$10^{211}$** | +6.72$\times$$10^{-23}$ N | **Negative buoyancy + F_LED = graviton leakage hypothesis** |
 
-All F_{U\_Bi} final values unchanged by F_LED (F_LENR dominates).
+All F_U_Bi final values unchanged by F_LED (F_LENR dominates).
 
 ---
 
 ## 4. Sgr A* and ADD Graviton Leakage
 
-The unique feature of Sgr A*'s negative F_{U\_Bi\_i} (-8.31$\times$$10^{211}$ N) in the context of ADD:
+The unique feature of Sgr A*'s negative F_U_Bi_i (-8.31$\times$$10^{211}$ N) in the context of ADD:
 - ADD predicts graviton loss to extra dimensions at r < R (< 0.1 mm)
 - Near Sgr A*'s event horizon (~$10^{10}$ m), extreme spacetime curvature may trigger effective extra-dimensional coupling
 - The ADD model naturally explains *why* gravity appears repulsive at extreme SMBH scales if graviton KK modes carry energy into the bulk
 
 ### Mathematical Connection:
 
-    For Sgr A*, the gravitational term in F_{U\_Bi\_i}:
+    For Sgr A*, the gravitational term in F_U_Bi_i:
     ($\mu$_s$\nabla$(M_s/r)) * DPM_gravity $\to$ sign flip possible when extra-dimensional correction dominates
     
     Modified: ($\mu$_s$\nabla$(M_s/r))_eff = ($\mu$_s$\nabla$(M_s/r)) * (1 - (M_*/M_Pl)2 * f(r/R))
@@ -144,7 +144,7 @@ experimentally.
 - Numerically negligible but theoretically the most profound new term: links UQFF to extra-dimensional gravity
 - Sgr A*'s negative buoyancy may be linked to ADD graviton leakage into compact extra dimensions
 - Provides a new astrophysical approach to constraining fundamental Planck scale M_*
-- All 8-system F_{U\_Bi} values unchanged — F_LENR dominance confirmed even with ADD extension
+- All 8-system F_U_Bi values unchanged — F_LENR dominance confirmed even with ADD extension
 
 ---
 
@@ -160,7 +160,7 @@ Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -288,7 +288,7 @@ mock-theta framework with the SCm phonon spectrum.
 ### §A.1 Sector Classification
 
 This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -307,7 +307,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\mathrm{SCm}} \ma
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -338,7 +338,7 @@ Since $p_{\mathrm{DVP}} = 113$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -367,9 +367,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -384,7 +384,7 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -393,7 +393,7 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
@@ -405,16 +405,16 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -423,8 +423,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -432,7 +432,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -443,8 +443,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -463,8 +463,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

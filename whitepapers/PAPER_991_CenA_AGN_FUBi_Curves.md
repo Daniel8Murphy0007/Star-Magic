@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_991
-title: "Centaurus A AGN F_{U\_Bi\_i} Curves — 7-Point Gamma Sweep with Jet Modulation"
+title: "Centaurus A AGN F_U_Bi_i Curves — 7-Point Gamma Sweep with Jet Modulation"
 session: 218
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -12,7 +12,7 @@ calibration: {M_BH: "5.5e7 Msun", a_spin: 0.70, B_gauss: 3000, gamma_points: 7}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_991: Centaurus A AGN F_{U\_Bi\_i} Curves
+# PAPER_991: Centaurus A AGN F_U_Bi_i Curves
 
 ## Abstract
 
@@ -28,15 +28,15 @@ with $A_{\text{jet}} = 1.5$, $\Gamma_0 = 2\pi \times 0.1\text{ THz}$, $\sigma_Ga
 
 $$P_{\text{jet}}(\Gamma) = \frac{B^2}{8\pi} \left(\frac{r_H}{c}\right)^2 a^2 c \cdot M_{\text{jet}}(\Gamma)$$
 
-## 3. Combined F_{U\_Bi\_i} at Horizon
+## 3. Combined F_U_Bi_i at Horizon
 
 $$F_{U,\text{Bi}_i}^{\text{CenA}}(\Gamma) = U_g(r_H) - U_b(r_H) + P_{\text{jet}}(\Gamma) \times 10^{-45}$$
 
-The jet power coupling at $10^{-45}$ ensures dimensional consistency with the acceleration-scale F_{U\_Bi\_i}.
+The jet power coupling at $10^{-45}$ ensures dimensional consistency with the acceleration-scale F_U_Bi_i.
 
 ## 4. Implementation
 
-File: `fubi_{inside\_outside}.py`, class `CentaurusAFUBiCurves`. CP4 class #575.
+File: `fubi_inside_outside.py`, class `CentaurusAFUBiCurves`. CP4 class #575.
 
 ---
 
@@ -45,7 +45,7 @@ File: `fubi_{inside\_outside}.py`, class `CentaurusAFUBiCurves`. CP4 class #575.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -95,7 +95,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -174,14 +174,14 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -190,7 +190,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

@@ -107,7 +107,7 @@ The v26 REST endpoint accepts batched computation requests:
 ```
 POST /api/v26/batch
 Content-Type: application/x-msgpack
-Body: [system_{params\_1}, system_{params\_2}, ..., system_{params\_N}]
+Body: [system_{params\_1}, system_{params\_2}, ..., system_params_N]
 ```
 
 ### 5.2 QCalcGeom Vectorisation
@@ -195,7 +195,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -298,7 +298,7 @@ BSH timescale: $\tau_{\text{pipeline}} = 1.75$ $\mu$s (single-thread latency).
 
 The production pipeline operates in six stages:
 
-1. **Content generation**: Python scripts create PAPER_{N\_Title}.md in `whitepapers/`
+1. **Content generation**: Python scripts create PAPER_N_Title.md in `whitepapers/`
 2. **LaTeX compliance check**: All math must use `$...$` or `$$...$$` (no Unicode math, no `\(...\)`)
 3. **CVW v2.0.0 gate**: G1--G6 gate checks enforce canonical UQFF constants
 4. **PDF rendering**: `pandoc --pdf-engine=xelatex -V geometry:margin=1in -V fontsize=11pt -V colorlinks=true`
@@ -329,7 +329,7 @@ The Ramanujan order-3 acceleration operator $S_{26}^{(3)}$ amplifies the raw $\t
 
 ---
 
-## 4. F_{U\_Bi\_i} Master Equation
+## 4. F_U_Bi_i Master Equation
 
 
 $$F_{U,Bi,i} = \int_0^\infty \left(-F_0 + \frac{GM}{r^2} + \rho_{\text{vac,SCm}} \cdot U_{UA} \cdot \cos(\pi t_n)\right) dr$$

@@ -215,7 +215,7 @@ output); string vibrations are Step 3 phonon resonances in the SCm condensate.
 PAPER_535 (VDS/DVP/BH catalogue hub) | PAPER_1127 (SCm LQG holonomy) |
 PAPER_590 (Planck constant derived) | PAPER_592 (Speed of light triad) |
 PAPER_887 (UQFF vs String Theory 10-aspect comparison) |
-COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md
+COMPLETE_UQFF_EQUATIONS_REFERENCE.md
 
 
 ---

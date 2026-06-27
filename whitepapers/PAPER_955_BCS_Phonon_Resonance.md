@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** et_{phonon\_resonance}.py §6 (BCSPhononResonance)
+**Source:** et_phonon_resonance.py §6 (BCSPhononResonance)
 **Calculator:** BCSPhononResonanceCalc (CP4 #539)
 **CVW:** v2.0.0 compliant
 
@@ -47,7 +47,7 @@ $$Q_\text{res} = \frac{\omega_text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 
 ## 4. Source Data
 
-- **File:** et_{phonon\_resonance}.py §6
+- **File:** et_phonon_resonance.py §6
 - **Session:** 214
 - **CP4 Class:** BCSPhononResonanceCalc (#539)
 
@@ -111,7 +111,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -206,7 +206,7 @@ $Q_\text{res}$ determines the BSH bandwidth at the resonance shell.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

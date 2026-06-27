@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_986
-title: "BCS Spectral Ladder Master Coupling via F_{U\_Bi\_i}"
+title: "BCS Spectral Ladder Master Coupling via F_U_Bi_i"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -12,7 +12,7 @@ calibration: {SSq: 0.57, Delta_BCS: "1.764 k_B T_c", omega_SCm: "2\pi\times1.25 
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_986: BCS Spectral Ladder Master Coupling via F_{U\_Bi\_i}
+# PAPER_986: BCS Spectral Ladder Master Coupling via F_U_Bi_i
 
 ## Abstract
 
@@ -50,7 +50,7 @@ This couples the superconducting order parameter to the master buoyancy force:
 Class `BCSSpectralLadderMasterCouplingCalc` in `CondensedPhysics4.py` (#570): computes $\Delta_{\text{BCS}}$, spectral ladder sum, and coupling product for given $(T, T_c, M, r, t, \Gamma)$.
 
 ## References
-- PAPER_979: Complete 6-Layer F_{U\_Bi\_i}
+- PAPER_979: Complete 6-Layer F_U_Bi_i
 - PAPER_969: Expanded 26D Ramanujan
 
 ---
@@ -74,7 +74,7 @@ where $\psi$ is the Cooper pair order parameter and $\phi$ is the UQFF field.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -124,7 +124,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -195,7 +195,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -203,7 +203,7 @@ mock-theta framework with the SCm phonon spectrum.
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
 

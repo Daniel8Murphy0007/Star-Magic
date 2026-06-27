@@ -21,11 +21,11 @@ kernels). Six new kernels cover the Session 220 physics domains:
 
 | Kernel | Description |
 |--------|-------------|
-| `k`ernel_{3c273\_agn\_fub}`i` | 3C273 AGN `F_{U\_Bi\_i}` jet modulation |
-| `k`ernel_{ton618\_agn\_fub}`i` | TON618 ultramassive AGN curves |
-| `k`ernel_{gw170817\_merge}`r` | GW170817 BNS strain suppression |
-| `k`ernel_{smbh\_merger\_fub}`i` | SMBH merger inspiral `F_{U\_Bi}` |
-| `k`ernel_{dm\_halo\_nf}`w` | DM halo NFW with SCm coupling |
+| `k`ernel_{3c273\_agn\_fub}`i` | 3C273 AGN `F_U_Bi_i` jet modulation |
+| `k`ernel_ton618_agn_fub`i` | TON618 ultramassive AGN curves |
+| `k`ernel_gw170817_merge`r` | GW170817 BNS strain suppression |
+| `k`ernel_smbh_merger_fub`i` | SMBH merger inspiral `F_U_Bi` |
+| `k`ernel_dm_halo_nf`w` | DM halo NFW with SCm coupling |
 | `k`ernel_{txs0506\_3gamm}`a` | TXS 0506+056 3-Gamma-point profile |
 
 ## 1. Scaling History
@@ -47,12 +47,12 @@ kernels). Six new kernels cover the Session 220 physics domains:
 ## 3. REST API
 
 22 total routes including new endpoints:
-- `POST /api/fubi/smbh-merger` — SMBH merger F_{U\_Bi} with S26(3)
+- `POST /api/fubi/smbh-merger` — SMBH merger F_U_Bi with S26(3)
 - `POST /api/dm/halo-nfw` — DM halo NFW profile with SCm coupling
 
 ## 4. Implementation
 
-File: `production_{scaling\_v15}.py`, class `ProductionScalingV15`. CP4 class #602. Tests: 8/8 pass.
+File: `production_scaling_v15.py`, class `ProductionScalingV15`. CP4 class #602. Tests: 8/8 pass.
 
 
 
@@ -116,7 +116,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -220,19 +220,19 @@ BSH timescale: system-dependent
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
 

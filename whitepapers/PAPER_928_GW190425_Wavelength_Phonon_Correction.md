@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
-**Source:** SCm phonon gap implementation (ns_{phonon\_gw190425\_wstp}.py)
+**Source:** SCm phonon gap implementation (ns_phonon_gw190425_wstp.py)
 **Calculator:** GW190425WavelengthPhononCorrectionCalc (CP4 #512)
 **CVW:** v2.0.0 compliant
 
@@ -105,7 +105,7 @@ multi-frequency GW components from the same source.
 
 - PAPER_927: GW190425 phonon-suppressed strain
 - PAPER_916: GW190425 mass-gap phonon suppression
-- ns_{phonon\_gw190425\_wstp}.py: 5-class standalone module
+- ns_phonon_gw190425_wstp.py: 5-class standalone module
 - WSTP expression #28: lambda_UQFF GW190425
 
 ---
@@ -167,7 +167,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -255,14 +255,14 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravi
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
@@ -273,7 +273,7 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravi
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

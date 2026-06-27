@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1013
-title: "QGP ALICE Centrality F_{U\_Bi\_i} Curves — dN/deta Scaling Across 4 Bins"
+title: "QGP ALICE Centrality F_U_Bi_i Curves — dN/deta Scaling Across 4 Bins"
 session: 220
 date: 2026-04-14
 author: "Daniel T. Murphy"
@@ -13,7 +13,7 @@ dNdeta_{0\_5}: 10752.1}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1013: QGP ALICE Centrality F_{U\_Bi\_i} Curves
+# PAPER_1013: QGP ALICE Centrality F_U_Bi_i Curves
 
 ## Abstract
 
@@ -44,7 +44,7 @@ deconfined phase.
 
 ## 4. Implementation
 
-File: `fubi_{i\_curves\_agn\_ns\_qgp}.py`, class `QGPALICECentralityCurvesCalc`. CP4 class #597. Tests:
+File: `fubi_i_curves_agn_ns_qgp.py`, class `QGPALICECentralityCurvesCalc`. CP4 class #597. Tests:
 8/8 pass.
 
 
@@ -114,7 +114,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -218,7 +218,7 @@ BSH timescale: system-dependent
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -231,7 +231,7 @@ BSH timescale: system-dependent
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `vds_{dvp\_bsh\_symbolic\_proofs}.py` (RamanujanBinomialExpansionProof class)
+**Module:** `vds_dvp_bsh_symbolic_proofs.py` (RamanujanBinomialExpansionProof class)
 
 ---
 
@@ -133,7 +133,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
 **Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
-**Primary Validation File:** validate_{pta\_uqff}.py  
+**Primary Validation File:** validate_pta_uqff.py  
 **C++ Sources:** source27.cpp, source28.cpp, MAIN_{1\_CoAnQi}.cpp  
 
 ---
@@ -106,7 +106,7 @@ optical surveys, standard calculations (Sesana 2013, Kelley et al. 2017, Ravi et
 
 Reconciling A_GR,std ~ 1.5 x 10^{-}1^5 with the observed A_obs ~ 2.4 x 10^{-}1^5 requires invoking
 one or more of:
-1. Anomalously large SMBH masses (M_BH > 10^9 M_{M\_sun} in most merging pairs)
+1. Anomalously large SMBH masses (M_BH > 10^9 M_M_sun in most merging pairs)
 2. High binary number densities inconsistent with galaxy merger counts
 3. Significant environmental hardening stalling (which would further *reduce* A, making the problem
 worse)
@@ -354,7 +354,7 @@ UQFF uses the same SMBH binary population as standard GR analyses:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| SMBH mass range | 10^7 - 10^{1}0 `M_{M\_sun}` | Galaxy scaling relations |
+| SMBH mass range | 10^7 - 10^{1}0 `M_M_sun` | Galaxy scaling relations |
 | Primary mass function dN/d log M | M^(-0.3) (Aller & Richstone 2002) | SDSS/2dF surveys |
 | Galaxy merger rate R(z) | 0.02 Gpc^{-}3 yr^{-}1 (z=0) | IllustrisTNG |
 | Redshift evolution | R(z) ~  (1+z)^2.7 | Conselice et al. 2014 |
@@ -412,7 +412,7 @@ parameters — the TRZ inversion scale follows analytically from these two value
 observations across 2025-2035 will measure the spectral slope and amplitude with sufficient
 precision to confirm or rule out the TRZ amplification regime.
 
-**Validator:** `validate_{pta\_uqff}.py`
+**Validator:** `validate_pta_uqff.py`
 
 The number of SMBH binaries contributing to the SGWB at f_yr:
 
@@ -433,7 +433,7 @@ This is well within the observed SMBH binary candidate population from galaxy su
 | Population parameter | GR | UQFF |
 |---------------------|-----|------|
 | N_bin at f_yr | ~500 | ~195 |
-| Mean ℳ required | 6.3 x 10^8 `M_{M\_sun}` | 4.8 x 10^8 `M_{M\_sun}` |
+| Mean ℳ required | 6.3 x 10^8 `M_M_sun` | 4.8 x 10^8 `M_M_sun` |
 | D_L sensitivity | <3 Gpc (z < 0.6) | <3 Gpc (z < 0.6) |
 | Stalling fraction tolerated | f_coal < 0.6 | f_coal < 0.9 |
 
@@ -453,7 +453,7 @@ Complete comparison of UQFF predictions against all four PTA datasets:
 | EPTA DR2 | 2.5 $\pm$ 0.7 | 2.4 | -0.65 $\pm$ 0.10 | -0.58 | Confirmed | ✅ |
 | CPTA | 2.0 $\pm$ 0.9 | 2.4 | -0.50 $\pm$ 0.20 | -0.58 | Confirmed | ✅ |
 | GR (standard SMBH) | -- | 1.5 | -- | -0.667 | -- | ❌ (-38%) |
-| GR (extreme pop.) | -- | 2.4 | -- | -0.667 | -- | ⚠️ (requires M > 10^9 `M_{M\_sun}`) |
+| GR (extreme pop.) | -- | 2.4 | -- | -0.667 | -- | ⚠️ (requires M > 10^9 `M_M_sun`) |
 
 **Frequency band coverage:**
 
@@ -480,7 +480,7 @@ sources (CGWs). The number of resolvable sources scales as:
 
 Since UQFF predicts A = 2.4 x 10^{-}1^5 (same as observed), the resolvability threshold is:
 
-- For NANOGrav sensitivity: Sources with ℳ > 10^9 M_{M\_sun} at z < 0.5 — **~0-3 resolved sources expected**
+- For NANOGrav sensitivity: Sources with ℳ > 10^9 M_M_sun at z < 0.5 — **~0-3 resolved sources expected**
 - UQFF chirp mass correction (ℳ_eff = 1.32 x ℳ_true) means true masses are **24% lower** than GR-inferred
 - **Prediction:** No secure individual CGW detection by PTAs by 2030; first detection with SKA around 2033-2037
 
@@ -615,7 +615,7 @@ to 0.98 (mHz), providing a direct observational probe of TRZ inversion.
 The UQFF calibration constants are consistent across all 19 papers in this series, spanning BNS
 mergers at 100 Hz to SMBH binaries at nHz — a frequency range spanning 10 orders of magnitude.
 
-Link to validation file: `validate_{pta\_uqff}.py`
+Link to validation file: `validate_pta_uqff.py`
 
 ---
 
@@ -627,7 +627,7 @@ Link to validation file: `validate_{pta\_uqff}.py`
 ### §A.1 Sector Classification
 
 This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -642,11 +642,11 @@ $$V(\phi_{\mathrm{BH}}) = \frac{1}{2} m^2 \phi_{\mathrm{BH}}^2 + \frac{\lambda}{
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{BH}}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R + \rho_{\mathrm{vac,[SCm]}} g_{\mu\nu} + F_{U\_Bi\_i}/r^2 = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{BH}}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R + \rho_{\mathrm{vac,[SCm]}} g_{\mu\nu} + F_U_Bi_i/r^2 = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{BH}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{BH}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -675,9 +675,9 @@ Since $p_{\mathrm{DVP}} = 71$ is **resonant** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10^6 M_BH/M_{M\_sun} yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **10^6 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -706,9 +706,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -760,7 +760,7 @@ from Pulsar Timing Analysis," *Astrophys. J. Lett.* **265**, L39 (1983).
 9. `source28.cpp` — SOURCE28 namespace: SgrA*/SGR1745 SuperFreq, QuantumFreq, AetherFreq, FluidFreq,
 ExpFreq
 10. `MAIN_{1\_CoAnQi}.cpp` — UQFF master executable (446 modules, 6,688+ physics terms)
-11. `validate_{pta\_uqff}.py` — UQFF PTA validation script (Star-Magic repository)
+11. `validate_pta_uqff.py` — UQFF PTA validation script (Star-Magic repository)
 
 ---
 
@@ -799,7 +799,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -849,7 +849,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -877,14 +877,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
 **Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
-**Primary Validation File:** validate_{pta\_uqff}.py  
+**Primary Validation File:** validate_pta_uqff.py  
 **C++ Sources:** source27.cpp, source28.cpp, MAIN_{1\_CoAnQi}.cpp
 
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
-> *Added by upgrade_{early\_whitepapers}.py (v4.75). This appendix cross-references
+> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
 > the production physics constants and master equations to enable reproducibility
 > against the current codebase state.*
 
@@ -908,13 +908,13 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `c`ompute_{Ug1\_SOURCE}`4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_{Ug2\_SOURCE}`4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `c`ompute_{Ug3\_SOURCE}`4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
-| -$\Sigma$$\lambda$i*Ui*E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| -$\Sigma$$\lambda$i*Ui*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
 $\lambda$_1=10^{-}1^0, $\lambda$_2=10^{-}1^2, $\lambda$_3=10^{-}1^1, $\lambda$_4=10^{-}1^3 (free parameters, not yet empirically
@@ -950,14 +950,14 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -978,16 +978,16 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -996,8 +996,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -1005,7 +1005,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -1016,8 +1016,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -1036,6 +1036,6 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 

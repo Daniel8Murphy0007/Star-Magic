@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_1011
-title: "GW170817 NS Merger F_{U\_Bi\_i} Curves — 66.7% Strain Reduction and 367.8-Cycle Phase Lag"
+title: "GW170817 NS Merger F_U_Bi_i Curves — 66.7% Strain Reduction and 367.8-Cycle Phase Lag"
 session: 220
 date: 2026-04-14
 author: "Daniel T. Murphy"
@@ -12,11 +12,11 @@ calibration: {M_total: 2.73, d_Mpc: 40, m1: 1.46, m2: 1.27, suppression: 0.667, 
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1011: GW170817 NS Merger F_{U\_Bi\_i} Curves — 66.7% Strain Reduction
+# PAPER_1011: GW170817 NS Merger F_U_Bi_i Curves — 66.7% Strain Reduction
 
 ## Abstract
 
-We compute F_{U\_Bi\_i} curves for GW170817 (BNS merger, d = 40 Mpc, M_total = 2.73 M_sun) incorporating
+We compute F_U_Bi_i curves for GW170817 (BNS merger, d = 40 Mpc, M_total = 2.73 M_sun) incorporating
 buoyancy-induced strain suppression. The UQFF framework predicts a 66.7% reduction in gravitational
 wave strain amplitude relative to vacuum GR, with a phase lag of 367.8 cycles accumulated over the
 inspiral. These signatures are potentially detectable in next-generation GW observatories (ET, CE).
@@ -52,7 +52,7 @@ This represents the integrated phase difference between UQFF-modified and vacuum
 
 ## 4. Implementation
 
-File: `fubi_{i\_curves\_agn\_ns\_qgp}.py`, class `GW170817MergerCurvesCalc`. CP4 class #595. Tests: 8/8
+File: `fubi_i_curves_agn_ns_qgp.py`, class `GW170817MergerCurvesCalc`. CP4 class #595. Tests: 8/8
 pass.
 
 
@@ -122,7 +122,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -227,17 +227,17 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 
 *8 cross-reference(s) identified.*

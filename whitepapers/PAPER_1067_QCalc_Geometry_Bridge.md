@@ -17,8 +17,8 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 
 We document the QCalc geometry bridge connecting QCalc.py numerical solvers to the UQFF framework.
 The bridge maps QCalc geometric quantities (Christoffel symbols, Riemann tensor, geodesic deviation)
-to UQFF buoyancy fields via g_{Ug\_sum} = sum(Ug1 + Ug2 + Ug3 + Ug4) with beta_i weighting. Validation:
-QCalc g_{Ug\_sum}(Sun) = 276.8 m/s^2 vs UQFF g_base = 274.0 m/s^2 (1.0% agreement).
+to UQFF buoyancy fields via g_Ug_sum = sum(Ug1 + Ug2 + Ug3 + Ug4) with beta_i weighting. Validation:
+QCalc g_Ug_sum(Sun) = 276.8 m/s^2 vs UQFF g_base = 274.0 m/s^2 (1.0% agreement).
 
 ## 1. Key Equations
 
@@ -75,7 +75,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -174,7 +174,7 @@ BSH timescale: sector-dependent.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -182,7 +182,7 @@ BSH timescale: sector-dependent.
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

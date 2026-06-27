@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **CVW:** v2.0.0 compliant
 **Source:** grok`_share`_c35c3b7a1.txt (Nov 24–28, 2025)
 **C++ Module:** source200`_cosmic`_quantum\_egg.cpp (26D chaotic dynamics engine)
-**Build Flag:** `-DUSE_{COSMIC\_QUANTUM\_EGG}`
+**Build Flag:** `-DUSE_COSMIC_QUANTUM_EGG`
 **Menu Access:** MAIN`_1`_CoAnQi.exe $\to$ Option 12 (Cosmic Egg build)
 
 ---
@@ -137,7 +137,7 @@ double B_max = (Ub > 0) ? 1.0 / Ub : 1e3;
 int n_eff = std::min(n_states, (int)std::min(B_max, 1e4));
 double F = 0.0;
 for (int k = 1; k <= n_eff; ++k)
-    F += std::exp(-E_{UQFF\_sum} * k / (kT > 0 ? kT : 1e-50));
+    F += std::exp(-E_UQFF_sum * k / (kT > 0 ? kT : 1e-50));
 ### 3.4 Modified Pre-Fertilization Energy — Full Form (E_pre) 
 Combining all contributions from PI Math Genesis (PAPER_496), Wolfram folding (PAPER_499), and the
 cosmic egg density: 
@@ -157,9 +157,9 @@ $$\sum_{n=1}^{\infty} \frac{d_n(\pi)}{10^n} = \pi - 3 = 0.14159265\ldots$$
 - If $\Delta\rho_{vac} \to 0$: Thermal activation vanishes (no Big Bang trigger) 
 **Python Implementation** (CondensedPhysics2.py, line 46605, \PreFertilizationEnergyCalculator):python
 pi_amp = math.pi - 3.0  # = 0.14159265...
-f_{QVD\_product} = (1.0 + delta_QVD / kT0) ** n_dims  # 26D vacuum channel product
+f_QVD_product = (1.0 + delta_QVD / kT0) ** n_dims  # 26D vacuum channel product
 boltzmann_act = 1.0 - math.exp(-drho_vac / kT0)
-E_pre = pi_amp * f_{QVD\_product} * boltzmann_act * F_Wolfram * rho_egg
+E_pre = pi_amp * f_QVD_product * boltzmann_act * F_Wolfram * rho_egg
 ### 3.5 Modified Hubble Equation with \Omega_egg 
 $$\boxed{\dot{a}(t) = H_0 \sqrt{\Omega_Lambda + \Omega_{SCm} + \Omega_{egg}} + \int_{cloud} v_{SCm}\, dV}$$ 
 The $v_{SCm}$ dispersal wave integral provides an additional non-perturbative contribution from the egg-dispersal field (see §3.6). 
@@ -174,14 +174,14 @@ This $\sim$7.1% increase in expansion rate is consistent with the Hubble tension
 **C++ Implementation** (MAIN`_1`_CoAnQi.cpp, line 30118, \HubbleEggModifiedTerm_CE):cpp
 double sum_omega = Omega_L + Omega_SCm + Omega_egg;
 if (sum_omega < 0.0) sum_omega = 0.0;
-return H0 * std::sqrt(sum_omega) + v_{SCm\_int};
+return H0 * std::sqrt(sum_omega) + v_SCm_int;
 ```
 
 **Python Implementation** (CondensedPhysics2.py, line 46726, `EggProliferatedHubbleCalculator`):
 ```python
-a_dot = H0 * math.sqrt(Omega_L + Omega_SCm + Omega_egg) + v_{SCm\_int}
-a_{dot\_LCDM} = H0 * math.sqrt(Omega_L)
-delta_{a\_dot} = a_dot - a_{dot\_LCDM}
+a_dot = H0 * math.sqrt(Omega_L + Omega_SCm + Omega_egg) + v_SCm_int
+a_dot_LCDM = H0 * math.sqrt(Omega_L)
+delta_a_dot = a_dot - a_dot_LCDM
 ### 3.6 SCm Migration as Egg-Dispersal Waves 
 $$v_{SCm} = \frac{\Delta_{QVD}}{\eta_{SCm}} \cdot \frac{\partial\rho_{vac}}{\partial r} \cdot g_{Um}(r) \cdot \left(1 + \frac{B_{Wolfram} \cdot \rho_{egg}}{D_{26}}\right)$$ 
 | Symbol | Meaning | Default Value | Units | 
@@ -206,7 +206,7 @@ inflationary onset without an external inflaton field.
 --- 
 ## 4. 26D Chaotic Dynamics Engine 
 ### 4.1 Architecture 
-The C++ implementation in `source200_{cosmic\_quantum\_egg}.cpp` models 26 independent
+The C++ implementation in `source200_cosmic_quantum_egg.cpp` models 26 independent
 \DimensionalSphere instances within a \CosmicQuantumEgg engine: 
 | Component | Purpose | Key Parameters | 
 |-----------|---------|----------------| 
@@ -214,7 +214,7 @@ The C++ implementation in `source200_{cosmic\_quantum\_egg}.cpp` models 26 indep
 `ua_value=1.0`, `chaos_range=0.01` | 
 | \DimensionalSphere (\times26) | Per-dimension state | `center_offsets[26]`, \radius,
 \rotation_angle, \distortion_factor | 
-| \CosmicQuantumEgg | Simulation engine | `ua_fill=1.0`, \l`ast_{quantum\_freq}`, \l`ast_{void\_volume}`
+| \CosmicQuantumEgg | Simulation engine | `ua_fill=1.0`, \l`ast_quantum_freq`, \l`ast_void_volume`
 | 
 ### 4.2 Simulation Step 
 Each time step applies four operations to all 26 dimensions:cpp
@@ -259,7 +259,7 @@ if (abs(chaotic_decimal - PI) < 0.001) {
 }
 ```
 
-When the chaotic decimal converges to within $0.001$ of $\pi$, the system has formed a transient spinor ordering — exported to Wolfram for symbolic verification via `source174_{wolfram\_bridge\_embedded}.cpp`.
+When the chaotic decimal converges to within $0.001$ of $\pi$, the system has formed a transient spinor ordering — exported to Wolfram for symbolic verification via `source174_wolfram_bridge_embedded.cpp`.
 
 ### 4.5 Spherical Outline from Chaos
 
@@ -292,7 +292,7 @@ The morphological resemblance to an egg about to hatch (hot interior = egg yolk;
 egg membrane) is not merely aesthetic. In UQFF terms, Type Ia supernovae represent *SCm shell
 collapse events*: the absence of a central neutron star means the entire structure radiates SCm
 energy outward through the shell — precisely the geometry predicted for an egg-dispersal wave
-(PAPER_497). SNR G272.2-03.2 has been added to `observational_{systems\_config}.h` under the key
+(PAPER_497). SNR G272.2-03.2 has been added to `observational_systems_config.h` under the key
 `SNR_G272`.
 
 ---
@@ -351,16 +351,16 @@ bridge:
 
 ## 8. MAIN\_1 Physics Terms (Session 133)
 
-Five `PhysicsTerm_{COSMIC\_EGG}` classes in MAIN`_1`_CoAnQi.cpp (lines 30006–30170) wrap the core
+Five `PhysicsTerm_COSMIC_EGG` classes in MAIN`_1`_CoAnQi.cpp (lines 30006–30170) wrap the core
 equations for the interactive calculator:
 
 | Static Instance | Class | Physics |
 |-----------------|-------|---------|
-| `g_`ce_{rho\_eg}`g` | `CosmicEggDensityTerm_CE` | $\rho_{egg} = \nu_{flux} \cdot e^{\Delta_{QVD}/E_{SCm}}$ |
-| `g_`ce_{F\_wolfra}`m` | `WolframFoldingFactorTerm_CE` | $F_{Wolfram} = \sum_k e^{-E_{UQFF,k}/kT}$ |
-| `g_`ce_{omega\_eg}`g` | `OmegaEggParameterTerm_CE` | $\Omega_{egg} = \rho_{egg}/\rho_{crit}$ (capped 0.2) |
-| `g_`ce_{v\_sc}`m` | `SCmEggDispersalWaveTerm_CE` | $v_{SCm}$ with egg boost |
-| `g_{ce\_hubble}` | `HubbleEggModifiedTerm_CE` | $\dot{a} = H_0\sqrt{\Sigma\Omega} + \int v_{SCm}\,dV$ |
+| `g_`ce_rho_eg`g` | `CosmicEggDensityTerm_CE` | $\rho_{egg} = \nu_{flux} \cdot e^{\Delta_{QVD}/E_{SCm}}$ |
+| `g_`ce_F_wolfra`m` | `WolframFoldingFactorTerm_CE` | $F_{Wolfram} = \sum_k e^{-E_{UQFF,k}/kT}$ |
+| `g_`ce_omega_eg`g` | `OmegaEggParameterTerm_CE` | $\Omega_{egg} = \rho_{egg}/\rho_{crit}$ (capped 0.2) |
+| `g_`ce_v_sc`m` | `SCmEggDispersalWaveTerm_CE` | $v_{SCm}$ with egg boost |
+| `g_ce_hubble` | `HubbleEggModifiedTerm_CE` | $\dot{a} = H_0\sqrt{\Sigma\Omega} + \int v_{SCm}\,dV$ |
 
 Convenience function `runCosmicEggPhysicsTerms(params, t)` executes all 5 terms and prints results.
 
@@ -498,7 +498,7 @@ mock-theta framework with the SCm phonon spectrum.
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -517,7 +517,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -548,7 +548,7 @@ Since $p_{\mathrm{DVP}} = 53$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -611,7 +611,7 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -633,16 +633,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -651,8 +651,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -660,7 +660,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -671,8 +671,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -691,8 +691,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

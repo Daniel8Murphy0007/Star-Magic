@@ -34,8 +34,8 @@ independent physical mechanisms). It did NOT record the **actual numerical value
 individual term** for any specific system. This paper provides the **first per-term numeric
 tabulation** for SGR1745 — establishing a 78-order dynamic range spectral ladder.
 
-The discovery: $a_{fluid\_freq}$ dominates by **75 orders of magnitude** above the weakest term
-$a_{Aether\_freq}$. This defines a UQFF term hierarchy for compact objects.
+The discovery: $a_fluid_freq$ dominates by **75 orders of magnitude** above the weakest term
+$a_Aether_freq$. This defines a UQFF term hierarchy for compact objects.
 
 ---
 
@@ -78,23 +78,23 @@ $$\boxed{a_{THz} = 1.182\times10^{-33} \ \text{m/s}^2}$$
 
 ### Term 3: Vacuum Energy Differential (avac_diff)
 
-$$a_{vac\_diff} = \frac{\Delta E_{vac} \cdot v_{exp}^2 \cdot a_{DPM}}{E_{vac,neb} \cdot c^2}$$
+$$a_vac_diff = \frac{\Delta E_{vac} \cdot v_{exp}^2 \cdot a_{DPM}}{E_{vac,neb} \cdot c^2}$$
 
-$$\boxed{a_{vac\_diff} = 3.545\times10^{-53} \ \text{m/s}^2}$$
+$$\boxed{a_vac_diff = 3.545\times10^{-53} \ \text{m/s}^2}$$
 
 ### Term 4: Super-Frequency Coupling (asuper_freq)
 
-$$a_{super\_freq} = \frac{F_{super} \cdot f_{THz} \cdot a_{DPM}}{E_{vac,neb} \cdot c}$$
+$$a_super_freq = \frac{F_{super} \cdot f_{THz} \cdot a_{DPM}}{E_{vac,neb} \cdot c}$$
 
 With $F_{super} = 6.287\times10^{-19}$ N (magnetar magnetic force):
 
-$$\boxed{a_{super\_freq} = 1.048\times10^{-21} \ \text{m/s}^2}$$
+$$\boxed{a_super_freq = 1.048\times10^{-21} \ \text{m/s}^2}$$
 
 ### Term 5: Aether Resonance (aaether_res)
 
 $$a_{aether\ res} = \frac{F_{aether} \cdot a_{DPM}}{E_{vac,neb}}$$
 
-$$\boxed{a_{aether\_res} = 3.900\times10^{-38} \ \text{m/s}^2}$$
+$$\boxed{a_aether_res = 3.900\times10^{-38} \ \text{m/s}^2}$$
 
 ### Term 6: Vacuum Concentration Reactivity (Ug4i / E_react term)
 
@@ -107,23 +107,23 @@ $$\boxed{U_{g4i} \approx 0 \ \text{m/s}^2 \quad \text{(system too old — reacte
 
 ### Term 7: Quantum Frequency Coupling (aquantum_freq)
 
-$$a_{quantum\_freq} = \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \frac{2\pi}{t_{Hubble}}$$
+$$a_quantum_freq = \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \frac{2\pi}{t_{Hubble}}$$
 
-$$\boxed{a_{quantum\_freq} = 1.708\times10^{-66} \ \text{m/s}^2}$$
+$$\boxed{a_quantum_freq = 1.708\times10^{-66} \ \text{m/s}^2}$$
 
 ### Term 8: Aether Frequency Coupling (aAether_freq)
 
-$$a_{Aether\_freq} = \frac{F_{aether} \cdot E_{vac,neb}}{m_\text{eff} \cdot c \cdot t_{Hubble}}$$
+$$a_Aether_freq = \frac{F_{aether} \cdot E_{vac,neb}}{m_\text{eff} \cdot c \cdot t_{Hubble}}$$
 
-$$\boxed{a_{Aether\_freq} = 1.863\times10^{-84} \ \text{m/s}^2 \quad \text{(MINIMUM — weakest term)}}$$
+$$\boxed{a_Aether_freq = 1.863\times10^{-84} \ \text{m/s}^2 \quad \text{(MINIMUM — weakest term)}}$$
 
 ### Term 9: Fluid Frequency Coupling (afluid_freq) — DOMINANT
 
-$$a_{fluid\_freq} = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM} \cdot c}$$
+$$a_fluid_freq = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM} \cdot c}$$
 
 With $f_{fluid} = 1.269\times10^{-14}$ Hz for SGR1745:
 
-$$\boxed{a_{fluid\_freq} = 1.773\times10^{-9} \ \text{m/s}^2 \quad \text\bf{(DOMINANT)}}$$
+$$\boxed{a_fluid_freq = 1.773\times10^{-9} \ \text{m/s}^2 \quad \text\bf{(DOMINANT)}}$$
 
 ### Term 10: Oscillatory Term (Osc_term)
 
@@ -135,11 +135,11 @@ $$\boxed{\text{Osc\_term} = 0 \ \text{m/s}^2}$$
 
 ### Term 11: Expansion Frequency (aexp_freq)
 
-$$a_{exp\_freq} = \frac{f_{exp} \cdot E_{vac,neb} \cdot a_{DPM}}{E_{vac,ISM} \cdot c}$$
+$$a_exp_freq = \frac{f_{exp} \cdot E_{vac,neb} \cdot a_{DPM}}{E_{vac,ISM} \cdot c}$$
 
 Where $f_{exp} = 2\pi \cdot H(z) \cdot t = 1.373\times10^{-8}$ Hz:
 
-$$\boxed{a_{exp\_freq} = 1.623\times10^{-57} \ \text{m/s}^2}$$
+$$\boxed{a_exp_freq = 1.623\times10^{-57} \ \text{m/s}^2}$$
 
 ### Term 12: TRZ Neutrino Coupling (fTRZ)
 
@@ -177,7 +177,7 @@ in sum but physically distinct mechanisms)
 
 ## 5. Dynamic Range Analysis
 
-**78-order dynamic range** from $a_{fluid\_freq} = 1.773\times10^{-9}$ to $a_{Aether\_freq} = 1.863\times10^{-84}$.
+**78-order dynamic range** from $a_fluid_freq = 1.773\times10^{-9}$ to $a_Aether_freq = 1.863\times10^{-84}$.
 
 This 78-order span reflects the multi-scale physics encoded in UQFF:
 - **Fluid scale** (10-9): Macroscopic vacuum coupling to system volume — dominant at magnetar scale
@@ -192,7 +192,7 @@ Unified Quantum Field Framework should encode.
 
 ## 6. Term Hierarchy Law (SGR1745 Compact Object)
 
-$$a_{fluid} \gg a_{super} \gg a_{aether\_res} \gg a_{THz} \gg a_{DPM} \gg a_{vac} \gg a_{exp} \gg a_{quantum} \gg a_{Aether}$$
+$$a_{fluid} \gg a_{super} \gg a_aether_res \gg a_{THz} \gg a_{DPM} \gg a_{vac} \gg a_{exp} \gg a_{quantum} \gg a_{Aether}$$
 
 For a compact magnetar at $r = 10^4$ m, $V_{sys} = 4.189\times10^{12}$ m3, the dominant mechanism
 is the **vacuum energy density coupling through the system volume**: the product $E_{vac,neb} \cdot V_{sys} / (E_{vac,ISM} \cdot c)$ sets the scale of gravitational coupling for compact objects.
@@ -205,18 +205,18 @@ All 12 term values confirmed via C++ unit test suite in `grok_{share\_11254865}.
 ~7000-7600):
 
 ```cpp
-test_{compute\_aDPM}()      → expected: 3.545e-42  m/s2  PASS
-test_{compute\_aTHz}()      → expected: 1.182e-33  m/s2  PASS
-test_{compute\_avac\_diff}() → expected: 3.545e-53  m/s2  PASS
-test_{compute\_asuper}()    → expected: 1.048e-21  m/s2  PASS
-test_{compute\_aaether}()   → expected: 3.900e-38  m/s2  PASS
-test_{compute\_Ug4i}()      → expected: ~0.0       m/s2  PASS
-test_{compute\_aquantum}()  → expected: 1.708e-66  m/s2  PASS
-test_{compute\_aAether}()   → expected: 1.863e-84  m/s2  PASS
-test_{compute\_afluid}()    → expected: 1.773e-9   m/s2  PASS
-test_{compute\_Osc\_term}()  → expected: 0.0        m/s2  PASS
-test_{compute\_aexp}()      → expected: 1.623e-57  m/s2  PASS
-test_{resonance\_MUGE}()    → expected: ~1.773e-9  m/s2  PASS
+test_compute_aDPM()      → expected: 3.545e-42  m/s2  PASS
+test_compute_aTHz()      → expected: 1.182e-33  m/s2  PASS
+test_compute_avac_diff() → expected: 3.545e-53  m/s2  PASS
+test_compute_asuper()    → expected: 1.048e-21  m/s2  PASS
+test_compute_aaether()   → expected: 3.900e-38  m/s2  PASS
+test_compute_Ug4i()      → expected: ~0.0       m/s2  PASS
+test_compute_aquantum()  → expected: 1.708e-66  m/s2  PASS
+test_compute_aAether()   → expected: 1.863e-84  m/s2  PASS
+test_compute_afluid()    → expected: 1.773e-9   m/s2  PASS
+test_compute_Osc_term()  → expected: 0.0        m/s2  PASS
+test_compute_aexp()      → expected: 1.623e-57  m/s2  PASS
+test_resonance_MUGE()    → expected: ~1.773e-9  m/s2  PASS
 ```
 
 ---
@@ -240,7 +240,7 @@ per-term numeric tabulation of all 12 resonance MUGE terms for any system*
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -270,7 +270,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 ### §A.1 Sector Classification
 
 This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -289,7 +289,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\mathrm{SCm}} \ma
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -320,7 +320,7 @@ Since $p_{\mathrm{DVP}} = 83$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -349,9 +349,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -366,13 +366,13 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
@@ -382,7 +382,7 @@ bridge.*
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
@@ -393,16 +393,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -411,8 +411,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -420,7 +420,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -431,8 +431,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -451,8 +451,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

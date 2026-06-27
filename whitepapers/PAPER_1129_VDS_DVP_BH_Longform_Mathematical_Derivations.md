@@ -297,7 +297,7 @@ number algebra.
 PAPER_535 (VDS/DVP/BH catalogue hub) | PAPER_543 (Navier-Stokes regularity proof) |
 PAPER_536 (DPM split monopole proplyd topology) | PAPER_652 (fine structure constant) |
 PAPER_1127 (SCm LQG holonomy) | PAPER_1128 (SCm String Theory 26D) |
-COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md
+COMPLETE_UQFF_EQUATIONS_REFERENCE.md
 
 
 ---

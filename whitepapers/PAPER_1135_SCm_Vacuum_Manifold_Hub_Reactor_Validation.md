@@ -46,8 +46,8 @@ $$F_{U,Bi,i} = \left[-F_0 + \frac{GM}{r^2}\cos(\pi t_n) + \rho_{\mathrm{UA}}\cos
 
 $$F_{U,Bi,i} \approx 1.906 \times 10^{11}\ \mathrm{N}$$
 
-This benchmark is reproduced by `compute_{F\_U\_Bi\_i\_numerical}()` in
-`scm_{vacuum\_manifold}.py` without any fitted parameters.
+This benchmark is reproduced by `compute_F_U_Bi_i_numerical()` in
+`scm_vacuum_manifold.py` without any fitted parameters.
 
 ---
 
@@ -185,7 +185,7 @@ specific moment within the pre-gravitational epoch.
 - **PAPER\_1129**: VDS/DVP/BH long-form derivations
 - **PAPER\_1130**: 26D folding operator — same canonical constants
 - **CondensedPhysics4.py**: `SCmVacuumManifoldHubCalculator` (#636)
-- **scm\_vacuum\_manifold.py**: all canonical constants, `compute_{F\_U\_Bi\_i\_numerical}()`, `vds_numerical()`
+- **scm\_vacuum\_manifold.py**: all canonical constants, `compute_F_U_Bi_i_numerical()`, `vds_numerical()`
 
 ---
 

@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
-**Source:** qgp_{ramanujan\_application}.py (YangMillsMassGapCalculator)
+**Source:** qgp_ramanujan_application.py (YangMillsMassGapCalculator)
 **Calculator:** YangMillsMassGapCalc (CP4 #555)
 **CVW:** v2.0.0 compliant
 
@@ -197,7 +197,7 @@ Gap closure at $T_c$ corresponds to BSH shell dissolution — buoyancy overcomes
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -206,7 +206,7 @@ Gap closure at $T_c$ corresponds to BSH shell dissolution — buoyancy overcomes
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
 | PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
-| PAPER_1013 | QGP ALICE Centrality F_{U\_Bi\_i} dN/deta Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |

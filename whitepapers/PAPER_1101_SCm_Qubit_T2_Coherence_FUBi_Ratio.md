@@ -1,6 +1,6 @@
 ---
 paper_id: "PAPER_1101"
-title: "SCm Qubit T2 Coherence via F_{U\_Bi} / F_U Ratio and Thermal Protection"
+title: "SCm Qubit T2 Coherence via F_U_Bi / F_U Ratio and Thermal Protection"
 session: 225
 date: 2026-04-15
 author: "Daniel T. Murphy"

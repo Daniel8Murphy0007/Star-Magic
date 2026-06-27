@@ -390,7 +390,7 @@ Mode & Dominant Term & Primary Use Case \tabularnewline
 
 \subsection*{\textbackslash\{\}S\{\}A.1 Sector Classification}
 
-This paper maps to \textbf{magnetar-field} sector of the 9-sector UQFF Lagrangian (see \verb|uqff_{lagrangian\_derivation}.py|).
+This paper maps to \textbf{magnetar-field} sector of the 9-sector UQFF Lagrangian (see \verb|uqff_lagrangian_derivation.py|).
 
 \subsection*{\textbackslash\{\}S\{\}A.2 Lagrangian Density}
 
@@ -408,7 +408,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\mathrm{SCm}} \ma
 
 \subsection*{\textbackslash\{\}S\{\}A.4 Cosmogenesis Linkage Chain}
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U\_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
 
@@ -436,7 +436,7 @@ Since $p_{\mathrm{DVP}} = 5$ is \textbf{sub-threshold} (threshold at $p > 26$), 
 
 The BSH saturation timescale for this sector is \textbf{103 yr} (field decay quiescence):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -474,7 +474,7 @@ Observable & UQFF Prediction & SM / Experiment & Source & Alignment \tabularnewl
 Fine structure constant $\alpha$ & UQFF reproduces $\alpha$ via Ug1 dipole coupling & 1/137.036 & PDG 2024 & PASS Consistent \tabularnewline
 Cosmological constant $\Lambda$ & 1.1$\times$10-52 m-2 (UQFF vacuum term) & 1.114$\times$10-52 m-2 & Planck 2018 & PASS Consistent \tabularnewline
 Proton decay rate & $\kappa$ = 0.0005/day $\to$ $\Gamma$\_p suppression & < 4.17$\times$10-35/yr & Super-K 2024 & PASS Consistent \tabularnewline
-UQFF buoyancy signature & \verb|F_{U\_Bi\_i}| unique gravitational correction & Not yet measured & Future gravitational wave detectors & Testable \tabularnewline
+UQFF buoyancy signature & \verb|F_U_Bi_i| unique gravitational correction & Not yet measured & Future gravitational wave detectors & Testable \tabularnewline
 \bottomrule
 \end{longtable}
 \end{center}
@@ -488,9 +488,9 @@ UQFF buoyancy signature & \verb|F_{U\_Bi\_i}| unique gravitational correction & 
 \section*{Appendix: Kozima-UQFF LENR Mechanism (Session 204)}
 
 \begin{quote}
-*Derived from \verb|fneutron_{s26\_coupling}.py|, \verb|kozima_{scm\_cross\_section}.py|,
-\verb|kozima_{wstp\_kernel}.py|, and \verb|scm_{activation\_function}.py|. Added by
-\verb|upgrade_{kozima\_ramanujan\_appendices}.py| (Session 204, April 2026).*
+*Derived from \verb|fneutron_s26_coupling.py|, \verb|kozima_scm_cross_section.py|,
+\verb|kozima_wstp_kernel.py|, and \verb|scm_activation_function.py|. Added by
+\verb|upgrade_kozima_ramanujan_appendices.py| (Session 204, April 2026).*
 \end{quote}
 
 \subsection*{K.1 Neutron Drop Force --- Static Model}
@@ -569,7 +569,7 @@ This gives the buoyancy force weighted by the full 26-level vacuum density spect
 
 $$A_{\mathrm{SCm}}(B) = \exp\!\left[-\frac{B^2}{B_{\mathrm{crit}}^2}\right], \quad B_{\mathrm{crit}} = 4.4 \times 10^{13} \;\text{T}$$
 
-The Gaussian activation (from \verb|scm_{activation\_function}.py|) governs the transition probability for the neutron-drop mechanism as a function of ambient magnetic field.
+The Gaussian activation (from \verb|scm_activation_function.py|) governs the transition probability for the neutron-drop mechanism as a function of ambient magnetic field.
 
 \subsection*{K.6 Wolfram Implementation}
 
@@ -582,7 +582,7 @@ SCmActivation[B]
 FNeutronS26[..., nTerms]
 \end{verbatim}
 
-*Source: \verb|kozima_{wstp\_kernel}.py| $\to$ \verb|uqff_{kozima\_kernel}.wl|*
+*Source: \verb|kozima_wstp_kernel.py| $\to$ \verb|uqff_kozima_kernel.wl|*
 
 \noindent\rule{\textwidth}{0.4pt}
 
@@ -591,7 +591,7 @@ FNeutronS26[..., nTerms]
 \begin{quote}
 *Auto-generated cross-reference appendix linking this paper to
 Sessions 204--225 extensions (PAPER\_1000--1081). Added by
-\verb|update_{corpus\_crossrefs}.py| (Session 225, April 2026).*
+\verb|update_corpus_crossrefs.py| (Session 225, April 2026).*
 \end{quote}
 
 \begin{center}
@@ -631,7 +631,7 @@ PAPER\_1073 & SCm Phonon-Driven Inflation Vacuum Buoyancy \tabularnewline
 
 \begin{quote}
 *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-Added by \verb|upgrade_{kozima\_ramanujan\_appendices}.py|. For detailed derivations,
+Added by \verb|upgrade_kozima_ramanujan_appendices.py|. For detailed derivations,
 see PAPER\_840/851/852/855.*
 \end{quote}
 
@@ -661,7 +661,7 @@ Module & Purpose & Key Result \tabularnewline
 \midrule
 \endhead
 \verb|r|amanujan\_\{polylog\textbackslash\{\}\_s26\}\verb|.py| & Li\_26([SSq]) via Euler-Ramanujan acceleration & 15.7+ digits in 53 terms \tabularnewline
-\verb|s26_{wstp\_kernel}.py| & 8-symbol Wolfram export (\verb|UQFFS26|) & S26, R26, NaiveLi, S26VDS \tabularnewline
+\verb|s26_wstp_kernel.py| & 8-symbol Wolfram export (\verb|UQFFS26|) & S26, R26, NaiveLi, S26VDS \tabularnewline
 \bottomrule
 \end{longtable}
 \end{center}
@@ -725,7 +725,7 @@ sigma\_0 & 10\textasciicircum{}-4 & Base neutron cross-section \tabularnewline
 \end{longtable}
 \end{center}
 
-*Implementation: all modules operational in \verb|CondensedPhysics.py|, \verb|CondensedPhysics2.py|, \verb|MAIN_{1\_CoAnQi}.cpp|, and Wolfram kernels (\verb|uqff_{kozima\_kernel}.wl|, \verb|uqff_{s26\_kernel}.wl|, \verb|uqff_{mock\_theta\_pi\_kernel}.wl|).*
+*Implementation: all modules operational in \verb|CondensedPhysics.py|, \verb|CondensedPhysics2.py|, \verb|MAIN_{1\_CoAnQi}.cpp|, and Wolfram kernels (\verb|uqff_kozima_kernel.wl|, \verb|uqff_s26_kernel.wl|, \verb|uqff_mock_theta_pi_kernel.wl|).*
 
 \noindent\rule{\textwidth}{0.4pt}
 

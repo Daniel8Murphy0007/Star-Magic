@@ -8,7 +8,7 @@
 
 ## Abstract
 
-The SCm vacuum manifold module `scm_{vacuum\_manifold}.py` is upgraded with three new physics blocks: (1) numerical Holmlid KER derivation from first principles, (2) the Parkhomov excess heat equation for Ni–H replication, and (3) a Pons–Fleischmann low-radiation insight. All derive from the same canonical 1.25 THz phonon resonance and 26D Ramanujan amplification. Reactor validation data (555:1 efficiency, -37 pH, surplus water) is confirmed consistent with SCm buoyancy stabilization.
+The SCm vacuum manifold module `scm_vacuum_manifold.py` is upgraded with three new physics blocks: (1) numerical Holmlid KER derivation from first principles, (2) the Parkhomov excess heat equation for Ni–H replication, and (3) a Pons–Fleischmann low-radiation insight. All derive from the same canonical 1.25 THz phonon resonance and 26D Ramanujan amplification. Reactor validation data (555:1 efficiency, -37 pH, surplus water) is confirmed consistent with SCm buoyancy stabilization.
 
 ---
 
@@ -53,14 +53,14 @@ P_{\text{excess}}(t=1\ \text{hr}) = 2\times10^{18} \times 1.009\times10^{-16} \t
 This is consistent with Parkhomov's reported 150–280 W excess heat in independent Ni–H replications~[3,4].
 
 ```python
-def parkhomov_{excess\_heat}(N_clusters=2.0e18, t_hours=1):
+def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters (canonical).
     Canonical N_clusters = 2.0e18 (Ni-H active site density).
     Output: ~0.20 kW (200 W) at default params -- matches 150-280 W observations.
     """
     kappa = 0.0005
-    energy_{per\_cluster\_j} = 630 * 1.60217662e-19  # canonical 630 eV/cluster (Holmlid KER)
-    P_excess = N_clusters * energy_{per\_cluster\_j} \
+    energy_per_cluster_j = 630 * 1.60217662e-19  # canonical 630 eV/cluster (Holmlid KER)
+    P_excess = N_clusters * energy_per_cluster_j \
                * np.exp(-kappa * t_hours * 24)
     return P_excess / 1e3  # kW  (~0.20 kW at default params)
 ```
@@ -121,9 +121,9 @@ The SCm upgrade adds quantitative Holmlid, Parkhomov, and Pons–Fleischmann cor
 
 ---
 
-**Source TEX:** `pdf/SCm_{Holmlid\_Parkhomov\_PonsFleischmann\_Upgrade}.tex`  
+**Source TEX:** `pdf/SCm_Holmlid_Parkhomov_PonsFleischmann_Upgrade.tex`  
 **PDF:** `pdf/PAPER_{1138\_SCm\_Holmlid\_Parkhomov\_PonsFleischmann\_Upgrade}.pdf`  
-**Module:** `pdf/scm_{vacuum\_manifold}.py` (upgrade block integrated)  
+**Module:** `pdf/scm_vacuum_manifold.py` (upgrade block integrated)  
 **CP4 Class:** `HolmlidParkhomovPonsFleischmannUpgrade` (#639)
 
 

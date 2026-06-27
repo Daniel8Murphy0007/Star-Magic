@@ -219,7 +219,7 @@ central limit (Step 10); spin networks are Step 3 in the UQFF canonical chain.
 **References:**  
 PAPER_535 (VDS/DVP/BH catalogue hub) | PAPER_552 (26D tensor off-diagonal) |
 PAPER_590 (Planck constant derived) | PAPER_878–PAPER_887 (SCm E(t) batch) |
-COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md
+COMPLETE_UQFF_EQUATIONS_REFERENCE.md
 
 
 ---

@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_377
-title: "compute_{a\_wormhole}() Implementation & MUGE Safety Infrastructure"
+title: "compute_a_wormhole() Implementation & MUGE Safety Infrastructure"
 session: 102
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [vacuum, SCm, MUGE, wormhole, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_377 — compute_{a\_wormhole}() Implementation & MUGE Safety Infrastructure
+# PAPER_377 — compute_a_wormhole() Implementation & MUGE Safety Infrastructure
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
 
 
-This paper presents a UQFF analysis of compute_{a\_wormhole}() Implementation & MUGE Safety
+This paper presents a UQFF analysis of compute_a_wormhole() Implementation & MUGE Safety
 Infrastructure, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
@@ -40,12 +40,12 @@ UQFF framework.
 
 ---
 
-## 2. compute_{a\_wormhole}() — Implemented Function
+## 2. compute_a_wormhole() — Implemented Function
 
 ### Canonical Form
 
 ```cpp
-double compute_{a\_wormhole}(double r, double b = 1.0,
+double compute_a_wormhole(double r, double b = 1.0,
                           double f_worm = 1.0,
                           double Evac_neb = 7.09e-36) {
     return f_worm * Evac_neb * (1.0 / (b * b + r * r));
@@ -70,23 +70,23 @@ At r = 1e12 m, b = 1.0:  a_worm = 7.09e-36 / 1e24 = 7.09e-60 m/s2
 At r = 0.0 m,  b = 1.0:  a_worm = 7.09e-36 / 1.0  = 7.09e-36 m/s2  (throat max)
 ```
 
-### Integration into compute_{resonance\_MUGE}()
+### Integration into compute_resonance_MUGE()
 
 ```cpp
-double compute_{resonance\_MUGE}(const MUGESystem& sys, const ResonanceParams& res) {
+double compute_resonance_MUGE(const MUGESystem& sys, const ResonanceParams& res) {
     double aDPM          = compute_aDPM(sys, res);
     double aTHz          = compute_aTHz(aDPM, sys, res);
-    double avac_diff     = compute_{avac\_diff}(aDPM, sys, res);
-    double asuper_freq   = compute_{asuper\_freq}(aDPM, res);
-    double aaether_res   = compute_{aaether\_res}(aDPM, res);
+    double avac_diff     = compute_avac_diff(aDPM, sys, res);
+    double asuper_freq   = compute_asuper_freq(aDPM, res);
+    double aaether_res   = compute_aaether_res(aDPM, res);
     double Ug4i          = compute_Ug4i(aDPM, sys, res);
-    double aquantum_freq = compute_{aquantum\_freq}(aDPM, res);
-    double aAether_freq  = compute_{aAether\_freq}(aDPM, res);
-    double afluid_freq   = compute_{afluid\_freq}(sys, res);
-    double Osc_term      = compute_{Osc\_term}();
-    double aexp_freq     = compute_{aexp\_freq}(aDPM, sys, res);
+    double aquantum_freq = compute_aquantum_freq(aDPM, res);
+    double aAether_freq  = compute_aAether_freq(aDPM, res);
+    double afluid_freq   = compute_afluid_freq(sys, res);
+    double Osc_term      = compute_Osc_term();
+    double aexp_freq     = compute_aexp_freq(aDPM, sys, res);
     double fTRZ          = compute_fTRZ(res);
-    double a_worm        = compute_{a\_wormhole}(sys.r);   // ← NEW final term
+    double a_worm        = compute_a_wormhole(sys.r);   // ← NEW final term
 
     return aDPM + aTHz + avac_diff + asuper_freq + aaether_res
          + Ug4i + aquantum_freq + aAether_freq + afluid_freq
@@ -101,75 +101,75 @@ double compute_{resonance\_MUGE}(const MUGESystem& sys, const ResonanceParams& r
 Division-by-zero protection added to 4 compressed MUGE functions:
 
 ```cpp
-double compute_{compressed\_base}(const MUGESystem& sys) {
+double compute_compressed_base(const MUGESystem& sys) {
     if (sys.r == 0.0)
         throw std::runtime_error("Division by zero in r");
     return G * sys.M / (sys.r * sys.r);
 }
 
-double compute_{compressed\_super\_adj}(const MUGESystem& sys) {
+double compute_compressed_super_adj(const MUGESystem& sys) {
     if (sys.Bcrit == 0.0)
         throw std::runtime_error("Division by zero in Bcrit");
     return 1 - sys.B / sys.Bcrit;
 }
 
-double compute_{compressed\_quantum}(double hbar, double Delta_{x\_p}, ...) {
-    if (Delta_{x\_p} == 0.0)
-        throw std::runtime_error("Division by zero in Delta_{x\_p}");
-    return (hbar / Delta_{x\_p}) * integral_psi * (2 * PI / tHubble);
+double compute_compressed_quantum(double hbar, double Delta_x_p, ...) {
+    if (Delta_x_p == 0.0)
+        throw std::runtime_error("Division by zero in Delta_x_p");
+    return (hbar / Delta_x_p) * integral_psi * (2 * PI / tHubble);
 }
 
-double compute_{compressed\_perturbation}(const MUGESystem& sys) {
+double compute_compressed_perturbation(const MUGESystem& sys) {
     if (sys.r == 0.0)
         throw std::runtime_error("Division by zero in r^3");
-    return (sys.M + sys.M_DM) * (sys.delta_{rho\_rho} + 3*G*sys.M / (sys.r*sys.r*sys.r));
+    return (sys.M + sys.M_DM) * (sys.delta_rho_rho + 3*G*sys.M / (sys.r*sys.r*sys.r));
 }
 --- 
 ## 4. Complete 24-Test Assertion Suite 
-The final test suite (`run_{unit\_tests}()`) contains 24 tests: 
+The final test suite (`run_unit_tests()`) contains 24 tests: 
 | Test Function | Expected Value | Source | 
 |---|---|---| 
-| `test_{compute\_compressed\_base}` | G\timesM_sun/(1AU)2 \approx 0.0059 | DPM-seeded validation | 
-| `test_{compute\_compressed\_expansion}` | 1.0 (at t=0) | Zero-time boundary | 
-| `test_{compute\_compressed\_super\_adj}` | 0.9 (B=1e10, Bcrit=1e11) | B/Bcrit = 0.1 | 
-| `test_{compute\_compressed\_fluid}` | 4.189e-2 | \rho\timesV\timesg product | 
-| `test_{compute\_compressed\_env}` | 1.0 | Identity | 
-| `test_{compute\_compressed\_Ug\_sum}` | 0.0 | Simplified | 
-| `test_{compute\_compressed\_cosm}` | 1.1e-52\timesc2/3 | \Lambda constant | 
-| `test_{compute\_compressed\_quantum}` | (ℏ/1e-68)\times2.176e-18\times(2\pi/4.35e17) | Hubble time | 
-| `test_{compute\_compressed\_perturbation}` | M\times(1e-5+3\mu_s\nabla(M_s/r)/r) | SGR1745 params | 
-| `test_{compute\_compressed\_MUGE}` | 1.782e39 m/s2 | SGR1745 vs document | 
-| `test_{compute\_aDPM}` | 3.545e-42 m/s2 | SGR1745 | 
-| `test_{compute\_aTHz}` | 1.182e-33 m/s2 | aDPM=3.545e-42, vexp=1e3 | 
-| `test_{compute\_avac\_diff}` | 3.545e-53 m/s2 | aDPM=3.545e-42, vexp=1e3 | 
-| `test_{compute\_asuper\_freq}` | 1.048e-21 m/s2 | aDPM=3.545e-42 | 
-| `test_{compute\_aaether\_res}` | 3.900e-38 m/s2 | aDPM=3.545e-42 | 
-| `test_{compute\_Ug4i}` | 0.0 (Ereact\approx0 at t=3.799e10) | Decay asymptote | 
-| `test_{compute\_aquantum\_freq}` | 1.708e-66 m/s2 | Hubble resonance scale | 
-| `test_{compute\_aAether\_freq}` | 1.863e-84 m/s2 | Aether freq | 
-| `test_{compute\_afluid\_freq}` | 1.773e-9 m/s2 | SGR1745 afluid confirmation | 
-| `test_{compute\_Osc\_term}` | 0.0 | Identity | 
-| `test_{compute\_aexp\_freq}` | 1.623e-57 m/s2 | SGR1745 at t=3.799e10 | 
-| `test_{compute\_fTRZ}` | 0.1 | Default value | 
-| `test_{compute\_resonance\_MUGE}` | 1.773e-9 m/s2 | SGR1745 total resonance | 
-| **`test_{compute\_a\_wormhole}`** | **1/(1+r2) (at Evac_neb=1, b=1)** | **NEW in v9** |cpp
-void test_{compute\_a\_wormhole}() {
+| `test_compute_compressed_base` | G\timesM_sun/(1AU)2 \approx 0.0059 | DPM-seeded validation | 
+| `test_compute_compressed_expansion` | 1.0 (at t=0) | Zero-time boundary | 
+| `test_compute_compressed_super_adj` | 0.9 (B=1e10, Bcrit=1e11) | B/Bcrit = 0.1 | 
+| `test_compute_compressed_fluid` | 4.189e-2 | \rho\timesV\timesg product | 
+| `test_compute_compressed_env` | 1.0 | Identity | 
+| `test_compute_compressed_Ug_sum` | 0.0 | Simplified | 
+| `test_compute_compressed_cosm` | 1.1e-52\timesc2/3 | \Lambda constant | 
+| `test_compute_compressed_quantum` | (ℏ/1e-68)\times2.176e-18\times(2\pi/4.35e17) | Hubble time | 
+| `test_compute_compressed_perturbation` | M\times(1e-5+3\mu_s\nabla(M_s/r)/r) | SGR1745 params | 
+| `test_compute_compressed_MUGE` | 1.782e39 m/s2 | SGR1745 vs document | 
+| `test_compute_aDPM` | 3.545e-42 m/s2 | SGR1745 | 
+| `test_compute_aTHz` | 1.182e-33 m/s2 | aDPM=3.545e-42, vexp=1e3 | 
+| `test_compute_avac_diff` | 3.545e-53 m/s2 | aDPM=3.545e-42, vexp=1e3 | 
+| `test_compute_asuper_freq` | 1.048e-21 m/s2 | aDPM=3.545e-42 | 
+| `test_compute_aaether_res` | 3.900e-38 m/s2 | aDPM=3.545e-42 | 
+| `test_compute_Ug4i` | 0.0 (Ereact\approx0 at t=3.799e10) | Decay asymptote | 
+| `test_compute_aquantum_freq` | 1.708e-66 m/s2 | Hubble resonance scale | 
+| `test_compute_aAether_freq` | 1.863e-84 m/s2 | Aether freq | 
+| `test_compute_afluid_freq` | 1.773e-9 m/s2 | SGR1745 afluid confirmation | 
+| `test_compute_Osc_term` | 0.0 | Identity | 
+| `test_compute_aexp_freq` | 1.623e-57 m/s2 | SGR1745 at t=3.799e10 | 
+| `test_compute_fTRZ` | 0.1 | Default value | 
+| `test_compute_resonance_MUGE` | 1.773e-9 m/s2 | SGR1745 total resonance | 
+| **`test_compute_a_wormhole`** | **1/(1+r2) (at Evac_neb=1, b=1)** | **NEW in v9** |cpp
+void test_compute_a_wormhole() {
     double r = 1e4;
     double b = 1.0;
     double expected = 1.0 / (1.0 + r * r);  // f_worm=1, Evac_neb=1 for test
-    double result = compute_{a\_wormhole}(r, b, 1.0, 1.0);
+    double result = compute_a_wormhole(r, b, 1.0, 1.0);
     assert(std::abs(result - expected) < 1e-6);
 }
 ```
 
 ---
 
-## 5. CSV File I/O — load_{muge\_systems}()
+## 5. CSV File I/O — load_muge_systems()
 
 Complete 18-field CSV parser for MUGESystem:
 
 ```cpp
-std::vector<MUGESystem> load_{muge\_systems}(const std::string& filename) {
+std::vector<MUGESystem> load_muge_systems(const std::string& filename) {
     std::vector<MUGESystem> systems;
     std::ifstream in(filename);
     if (in.is_open()) {
@@ -195,7 +195,7 @@ std::vector<MUGESystem> load_{muge\_systems}(const std::string& filename) {
             std::getline(ss, token, ','); sys.rho_fluid    = std::stod(token);
             std::getline(ss, token, ','); sys.g_local      = std::stod(token);
             std::getline(ss, token, ','); sys.M_DM         = std::stod(token);
-            std::getline(ss, token, ','); sys.delta_{rho\_rho} = std::stod(token);
+            std::getline(ss, token, ','); sys.delta_rho_rho = std::stod(token);
             systems.push_back(sys);
         }
     }
@@ -205,7 +205,7 @@ std::vector<MUGESystem> load_{muge\_systems}(const std::string& filename) {
 
 **CSV Format (18 fields):**
 ```
-name,I,A,omega1,omega2,Vsys,vexp,t,z,ffluid,M,r,B,Bcrit,rho_fluid,g_local,M_DM,delta_{rho\_rho}
+name,I,A,omega1,omega2,Vsys,vexp,t,z,ffluid,M,r,B,Bcrit,rho_fluid,g_local,M_DM,delta_rho_rho
 ```
 
 ---
@@ -221,7 +221,7 @@ int main(int argc, char** argv) {
         if (arg == "—input"  && i + 1 < argc) input_file  = argv[i + 1];
         if (arg == "—output" && i + 1 < argc) output_file = argv[i + 1];
     }
-    // If —input given: load_{muge\_systems}(input_file)
+    // If —input given: load_muge_systems(input_file)
     // If —output given: redirect std::cout to file
 }
 ```
@@ -236,14 +236,14 @@ Header decomposition for modular build:
 main.cpp         — command-line entry, orchestration
 celestial.h/cpp  — CelestialBody struct, Ug1/Ug2/Ug3/Ug4/Um/FU functions
 muge.h/cpp       — MUGESystem, ResonanceParams, compressed+resonance MUGE
-fluidsolver.h/cpp — FluidSolver (Navier-Stokes), simulate_{quasar\_jet}
+fluidsolver.h/cpp — FluidSolver (Navier-Stokes), simulate_quasar_jet
 ```
 
 CMakeLists.txt:
 ```cmake
-cmake_{minimum\_required}(VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
 project(StarMagic)
-set(CMAKE_{CXX\_STANDARD} 11)
+set(CMAKE_CXX_STANDARD 11)
 add_executable(star_magic main.cpp celestial.cpp muge.cpp fluidsolver.cpp)
 ```
 
@@ -305,7 +305,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -317,7 +317,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ### §A.1 Sector Classification
 
 This paper maps to **wormhole-metric** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -336,7 +336,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{WH}}} = R_{\mu\nu} + \Phi'(r)/r - 
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{WH}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{WH}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -367,7 +367,7 @@ Since $p_{\mathrm{DVP}} = 61$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **throat crossing time** (geodesic stabilization):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -396,9 +396,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -413,7 +413,7 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -423,7 +423,7 @@ bridge.*
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *9 cross-reference(s) identified.*
@@ -433,16 +433,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -451,8 +451,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -460,7 +460,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -471,8 +471,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -491,8 +491,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

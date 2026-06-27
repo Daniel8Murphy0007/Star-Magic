@@ -1,16 +1,16 @@
 ﻿---
 paper_id: PAPER_472
-title: "Abell 2256 Galaxy Cluster UQFF F_{U\_Bi\_i\_enhanced} Integral"
+title: "Abell 2256 Galaxy Cluster UQFF F_U_Bi_i_enhanced Integral"
 session: 123
 date: 2026-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [galaxy, AGN, cluster, merger, DPM, SCm, F_{U\_Bi\_i}, buoyancy]
+tags: [galaxy, AGN, cluster, merger, DPM, SCm, F_U_Bi_i, buoyancy]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_472 — Abell 2256 Galaxy Cluster UQFF F_{U\_Bi\_i\_enhanced} Integral
+# PAPER_472 — Abell 2256 Galaxy Cluster UQFF F_U_Bi_i_enhanced Integral
 **Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper applies the F_{U\_Bi\_i\_enhanced} integral to Abell 2256, a massive galaxy cluster undergoing
+This paper applies the F_U_Bi_i_enhanced integral to Abell 2256, a massive galaxy cluster undergoing
 a major merger event at redshift z $\approx$ 0.058. With cluster mass M = 1.5 $\times$ 1015 MM_sun and virial radius r
 = 1.42 $\times$ 1025 m, Abell 2256 represents the most massive system evaluated in the UQFF framework to
 date. The integral produces a net UQFF force F $\approx$ -1.23 $\times$ 10218 N — confirming that UQFF buoyancy
@@ -44,7 +44,7 @@ laboratory for UQFF cluster-scale computation:
 
 ---
 
-## 2. Core UQFF Equation: F_{U\_Bi\_i\_enhanced}
+## 2. Core UQFF Equation: F_U_Bi_i_enhanced
 
 The enhanced buoyancy-unified integral sums 12 physical contributions across the UQFF field volume:
 
@@ -64,7 +64,7 @@ $$F_{U,Bi,i} = \int_{r\_0}^{r_{max}} \left[ -F_0 + F_{DPM,mom} + F_{DPM,grav} + 
 | F_EM | $\mu$0 I2/2 | Electromagnetic string force |
 | F_neut | m_n n_n c2 | Neutron density energy |
 | F_rel | 0.1 M c2 | Relativistic mass correction (10%) |
-| `F_{sweet\_vac}` | $\rho$_vac_UA $\times$ c2 $\times$ r3 | Vacuum-sweetspot energy |
+| `F_sweet_vac` | $\rho$_vac_UA $\times$ c2 $\times$ r3 | Vacuum-sweetspot energy |
 | F_Kozima | ħ $\omega$_LENR n_level2 | Kozima LENR quantum dominant |
 
 ### 2.2 Cluster Parameters
@@ -77,7 +77,7 @@ $$
   & \omega_LENR      = 7.85e12 Hz       (standard nuclear) \\
   & n_level     = 13               ([SCm] quantum shell) \\
   & \rho_\Lambda         = 7.0e-30 kg/m3    (dark energy density) \\
-  & \rho_{vac\_UA}    = 7.09e-36 J/m3
+  & \rho_vac_UA    = 7.09e-36 J/m3
 \end{aligned}
 $$
 
@@ -93,8 +93,8 @@ $$
 | F_LENR | +1.84e212 | ~0% |
 | F_rel | +2.69e255 | dominant+ |
 | F_Kozima | +7.85e30 | negligible |
-| `F_{sweet\_vac}` | +7.09e-39 | negligible |
-| **Net `F_{U\_Bi\_i}`** | **-1.23 $\times$ 10218 N** | — |
+| `F_sweet_vac` | +7.09e-39 | negligible |
+| **Net `F_U_Bi_i`** | **-1.23 $\times$ 10218 N** | — |
 
 ### 3.2 Key Result
 
@@ -134,7 +134,7 @@ This creates a pressure gradient reversal front — the UQFF analog of a merger 
 
 ## 5. Multi-Scale UQFF Validation
 
-| Object | Mass (MM_sun) | `F_{U\_Bi\_i}` (N) | n_level |
+| Object | Mass (MM_sun) | `F_U_Bi_i` (N) | n_level |
 |--------|-----------|-------------|---------|
 | NGC 6302 (Butterfly) | 0.64 | -2.09 $\times$ 10212 | 13 |
 | NGC 5128 (Centaurus A) | 5.5 $\times$ 109 | -8.32 $\times$ 10217 | 13 |
@@ -150,15 +150,15 @@ applicability.
 ## 6. Connection to Existing Whitepapers
 
 - **PAPER_338**: Abell 2256 first catalogue entry (radio relic, ICM context)
-- **PAPER_311–316**: Butterfly Nebula F_{U\_Bi\_i} baseline methodology
-- **PAPER_347**: Centaurus A F_{U\_Bi\_i} intermediate-scale validation
+- **PAPER_311–316**: Butterfly Nebula F_U_Bi_i baseline methodology
+- **PAPER_347**: Centaurus A F_U_Bi_i intermediate-scale validation
 - **PAPER_476** (this series): DPM 26-sphere framework feeding F_DPM terms
 
 ---
 
 ## 7. Conclusion
 
-The F_{U\_Bi\_i\_enhanced} integral applied to Abell 2256 yields F $\approx$ -1.23 $\times$ 10218 N, demonstrating UQFF
+The F_U_Bi_i_enhanced integral applied to Abell 2256 yields F $\approx$ -1.23 $\times$ 10218 N, demonstrating UQFF
 coherence at galaxy cluster scale. The formalism correctly captures the net confining force during
 active mergers, with the dark energy term providing the only significant outward contribution. The
 Kozima and vacuum-sweetspot terms remain physically consistent but geometrically negligible at
@@ -203,7 +203,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -342,7 +342,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -364,7 +364,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ### §A.1 Sector Classification
 
 This paper maps to **GW-radiation** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -383,7 +383,7 @@ $$\boxed{\frac{\delta S}{\delta h_{\mu\nu}} = \Box h_{\mu\nu} + \kappa \rho_{\ma
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta h_{\mu\nu} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta h_{\mu\nu} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -414,7 +414,7 @@ Since $p_{\mathrm{DVP}} = 83$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **chirp time $\tau$_c** (inspiral phase locking):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -456,8 +456,8 @@ future Chandra CXC monitoring observations.
 
 
 **UQFF Parameters (Abell 2256):** $\kappa$ = 0.0005/day | [SSq] = 0.57 | H_SCm $\approx$ 0.99 | $k_{\eta}$ = 10-113  
-**Class:** `Abell2256UQFFModule` | **Source:** `g`rok_{share\_b0a3dc1d}`.txt` L10055–10420  
-**Tags:** galaxy-cluster, UQFF, F_{U\_Bi\_i\_enhanced}, ICM, radio-relic, merger, buoyancy  
+**Class:** `Abell2256UQFFModule` | **Source:** `grok_share_b0a3dc1d.txt` L10055–10420  
+**Tags:** galaxy-cluster, UQFF, F_U_Bi_i_enhanced, ICM, radio-relic, merger, buoyancy  
 
 
 
@@ -467,19 +467,19 @@ future Chandra CXC monitoring observations.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
@@ -492,7 +492,7 @@ future Chandra CXC monitoring observations.
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
 | PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
@@ -506,16 +506,16 @@ future Chandra CXC monitoring observations.
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -524,8 +524,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -533,7 +533,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -544,8 +544,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -564,8 +564,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `scm_{lenr\_cop\_gamma}.py`
+**Module:** `scm_lenr_cop_gamma.py`
 
 ---
 
@@ -86,7 +86,7 @@ The $\Gamma$-dependent COP reveals:
 
 1. Kozima, H. "The Science of the Cold Fusion Phenomenon" (2006)
 2. Fleischmann, M. & Pons, S. J. Electroanal. Chem. 261 (1989)
-3. SCm phonon framework: `scm_{phonon\_linewidth}.py`
+3. SCm phonon framework: `scm_phonon_linewidth.py`
 4. Widom-Larsen LENR: PAPER_643
 
 
@@ -167,7 +167,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

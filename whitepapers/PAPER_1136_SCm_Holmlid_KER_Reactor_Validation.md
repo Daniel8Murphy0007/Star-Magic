@@ -56,7 +56,7 @@ The SCm 1.25 THz phonon + 26D amplification directly reproduces Holmlid's 630 eV
 
 ---
 
-**Source TEX:** `pdf/SCm_{Holmlid\_KER\_Validation}.tex`  
+**Source TEX:** `pdf/SCm_Holmlid_KER_Validation.tex`  
 **PDF:** `pdf/PAPER_{1136\_SCm\_Holmlid\_KER\_Reactor\_Validation}.pdf`  
 **CP4 Class:** `HolmlidKERReactorValidator` (#637)
 

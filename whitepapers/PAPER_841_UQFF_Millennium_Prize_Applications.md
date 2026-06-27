@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 196 (updated Session 204) | **Date:** August 3, 2025, 03:30 PM EDT (updated April 7,
 2026)  
 **Share:** https://grok.com/share/UQFF_{MillenniumPrize\_20250803\_0330PM}  
-**Standalone Calculator:** `millennium_{prize\_uqff\_calculator}.py` (Tier 2, Session 204)
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` (Tier 2, Session 204)
 
 ---
 
@@ -29,8 +29,8 @@ $$
 L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
-All 13 F_{U\_Bi\_i} force terms now derive from a single variational principle $\delta$S/$\delta$$\phi$_I = 0. A standalone
-Tier 2 calculator (`millennium_{prize\_uqff\_calculator}.py`) implements the full 9-sector formalism
+All 13 F_U_Bi_i force terms now derive from a single variational principle $\delta$S/$\delta$$\phi$_I = 0. A standalone
+Tier 2 calculator (`millennium_prize_uqff_calculator.py`) implements the full 9-sector formalism
 with 4 sub-calculators (NavierStokesUQFFCalculator, YangMillsMassGapUQFFCalculator,
 RiemannSpectralResonanceCalculator, UnifiedLagrangianForceCalculator). While UQFF does not claim
 direct solutions, its nonlinear resonance dynamics, neutron drop coherence, and vacuum energy
@@ -52,7 +52,7 @@ time, or provide a blowup counterexample.
 
 
 **UQFF Contribution:**
-The vacuum energy body force in F_{U\_Bi\_i} can be cast as an external force f in the Navier-Stokes
+The vacuum energy body force in F_U_Bi_i can be cast as an external force f in the Navier-Stokes
 system:
 
     f = f_ext + k_vac * rho_vac,[UA] + F_LENR * cos(omega_LENR * t)
@@ -148,12 +148,12 @@ heuristic inspiration only.
 
 2. **Density-scaled nuclear cross-section:** $\sigma$_n($\rho$) = $\sigma$_0 x ($\rho$/$\rho$_0) spanning $10^{-22}$-$10^{17}$ kg/m3 provides a continuous nuclear coupling model across astrophysical environments.
 
-3. **Negative buoyancy formalism:** F_{U\_Bi\_i} < 0 in SMBH environments defines a repulsive vacuum
+3. **Negative buoyancy formalism:** F_U_Bi_i < 0 in SMBH environments defines a repulsive vacuum
 force regime, a new mathematical condition in buoyancy field theory.
 
 4. **Gaussian resonance cross-section:** $\sigma$_n($\omega$) = $\sigma$_0x($\omega$/$\omega$_LENR)2xexp(-($\omega$-$\omega$_LENR)2/2$\Delta$$\omega$2) provides frequency-selective nuclear coupling with spectral width $\Delta$$\omega$ = 2$\pi$x0.05x$10^{12}$ s^-1.
 
-5. **Unified force hierarchy:** 11-term F_{U\_Bi\_i} spans 87 orders of magnitude (F_LED=6.72x$10^{-23}$ N to F_LENR=6.16x$10^{39}$ N), the largest force hierarchy in a unified framework.
+5. **Unified force hierarchy:** 11-term F_U_Bi_i spans 87 orders of magnitude (F_LED=6.72x$10^{-23}$ N to F_LENR=6.16x$10^{39}$ N), the largest force hierarchy in a unified framework.
 
 ---
 
@@ -193,7 +193,7 @@ force regime, a new mathematical condition in buoyancy field theory.
 ### 4.2 Astrophysical System Modeling
 
     Targets: SNRs, neutron stars, SMBHs, galaxy clusters
-    Method:  UQFF F_{U\_Bi\_i} calculations validated against Chandra/JWST/ALMA
+    Method:  UQFF F_U_Bi_i calculations validated against Chandra/JWST/ALMA
     Value:   Predictive framework for 35+ system types
     Deliverable: Python calculator for arbitrary astrophysical system input
 
@@ -207,7 +207,7 @@ force regime, a new mathematical condition in buoyancy field theory.
 
 ### 4.4 Unified Field Theory Development
 
-    Goal:    Derive F_{U\_Bi\_i} from a single Lagrangian
+    Goal:    Derive F_U_Bi_i from a single Lagrangian
     Status:   CLOSED (Session 202) — 9-sector Unified Lagrangian identified
     
     L_UQFF = $\sqrt{}$(-g) [ L_EH + L_YM + L_Dirac + $L_{\phi}$ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
@@ -215,8 +215,8 @@ force regime, a new mathematical condition in buoyancy field theory.
     All 13 force terms derived via $\delta$S/$\delta$$\phi$_I = 0:
       Sectors 1-9 -> Ug1-4, Ubi1-4, Um, Tr($A_{\mu}$$\nu$), F_LENR, F_LED, F_neutron
     
-    Calculator: millennium_{prize\_uqff\_calculator}.py -> UnifiedLagrangianForceCalculator
-    Reference:  uqff_{lagrangian\_derivation}.py (Session 202, commit 9d26977)
+    Calculator: millennium_prize_uqff_calculator.py -> UnifiedLagrangianForceCalculator
+    Reference:  uqff_lagrangian_derivation.py (Session 202, commit 9d26977)
 
 ---
 
@@ -332,20 +332,20 @@ $$
 
 ## 6. Standalone Tier 2 Calculator (Session 204)
 
-**File:** `millennium_{prize\_uqff\_calculator}.py`
+**File:** `millennium_prize_uqff_calculator.py`
 
 ### Usage:
 ```bash
 # CLI report
-python millennium_{prize\_uqff\_calculator}.py
+python millennium_prize_uqff_calculator.py
 
 # JSON export
-python millennium_{prize\_uqff\_calculator}.py —json output.json
+python millennium_prize_uqff_calculator.py —json output.json
 ```
 
 ### Import:
 ```python
-from millennium_{prize\_uqff\_calculator} import MillenniumPrizeUQFFMasterCalculator
+from millennium_prize_uqff_calculator import MillenniumPrizeUQFFMasterCalculator
 calc = MillenniumPrizeUQFFMasterCalculator()
 result = calc.compute(dataset={})
 # result contains: navier_stokes, yang_mills, riemann_hypothesis, unified_lagrangian
@@ -358,10 +358,10 @@ cutoff |
 condensate comparison | 
 | RiemannSpectralResonanceCalculator | Riemann | LENR (8) + KK (9) | Spectral modes, GUE pair
 correlation | 
-| UnifiedLagrangianForceCalculator | All (`F_{U\_Bi\_i}`) | All 9 sectors | 13 force terms from single
+| UnifiedLagrangianForceCalculator | All (`F_U_Bi_i`) | All 9 sectors | 13 force terms from single
 Lagrangian | 
 ### Key Results (default parameters):
-F_{U\_Bi\_i} (total) = 2.7083e+55 N  (9 sectors, 13 terms)
+F_U_Bi_i (total) = 2.7083e+55 N  (9 sectors, 13 terms)
 m_gap (YM)       = 5969.92 GeV   (sigma=0.180 GeV^2, H_SCm=0.99, v_SCm=3.00e4 m/s)
 f_LENR (NS)      = 1.56e+36 N    (oscillatory body force at 1.25 THz)
 Harmonic ratio   = 4.17e9        (300 Hz -> 1.25 THz bridge)
@@ -381,7 +381,7 @@ Harmonic ratio   = 4.17e9        (300 Hz -> 1.25 THz bridge)
 | Mathematical novelty | High | 13 force terms, 87-order hierarchy, negative buoyancy |
 | Experimental validation potential | High | 1.25 THz resonance directly testable in LENR lab |
 | Astrophysical validation | High | Chandra/JWST/ALMA multi-system confirmation |
-| Standalone calculator | ** COMPLETE** | `millennium_{prize\_uqff\_calculator}`.py (4 classes) |
+| Standalone calculator | ** COMPLETE** | `millennium_prize_uqff_calculator`.py (4 classes) |
 | Continue developing? | **STRONGLY YES** | Novel framework, practical applications, validation pathway |
 
 ---
@@ -394,9 +394,9 @@ UQFF does not directly solve Millennium Prize Problems but provides:
 of magnitude)
 4. A validated astrophysical force calculator (35+ systems, 4 negative buoyancy cases confirmed)
 5. A clear pathway to clean energy applications via LENR thermal energy production
-6. **NEW (Session 204):** A 9-sector Unified Lagrangian closing the gap in §4.4 — all F_{U\_Bi\_i} terms
+6. **NEW (Session 204):** A 9-sector Unified Lagrangian closing the gap in §4.4 — all F_U_Bi_i terms
 now derive from $\delta$S/$\delta$$\phi$_I = 0
-7. **NEW (Session 204):** A standalone Tier 2 calculator (`millennium_{prize\_uqff\_calculator}.py`)
+7. **NEW (Session 204):** A standalone Tier 2 calculator (`millennium_prize_uqff_calculator.py`)
 with 4 sub-calculators implementing the full formalism
 
 Development should continue with priority on LENR experimental validation and astrophysical
@@ -415,7 +415,7 @@ L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L
 
 **Euler-Lagrange Equations (per sector):**
 ```
-§1 EH:     deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu/c^4         -> F_{gravity\_baseline}
+§1 EH:     deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu/c^4         -> F_gravity_baseline
 §2 YM:     deltaS/deltaA^a_mu = 0 -> D_nu F^{amunu} = J^{amu}        -> Ug3, F_quark, m_gap^2
 §3 Dirac:  deltaS/delta\bar{\psi} = 0 -> (igamma^mu D_mu - m)psi = 0             -> F_neutrino, F_neutron
 §4 Scalar: deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4        -> Ug4, F_dark
@@ -429,17 +429,17 @@ F_act, F_res
 
 **Result:**
 ```
-F_{U\_Bi\_i} = Sigma(Ug1-4) + Sigma(Ubi1-4) + Um + Tr(A_munu) + F_LENR + F_LED + F_neutron
+F_U_Bi_i = Sigma(Ug1-4) + Sigma(Ubi1-4) + Um + Tr(A_munu) + F_LENR + F_LED + F_neutron
          = 13 force terms, 9 sectors, single variational principle
 ```
 
 **Critical Values:**
 - m_gap (Yang-Mills) = 5969.92 GeV ($\sigma$=0.180 GeV^2, H_SCm=0.99, v_SCm=3.00e4 m/s)
 - f_LENR = 1.56e+36 N (Navier-Stokes body force at 1.25 THz)
-- F_{U\_Bi\_i} (total) = 2.7083e+55 N (all 9 sectors, default parameters)
+- F_U_Bi_i (total) = 2.7083e+55 N (all 9 sectors, default parameters)
 - Harmonic ratio = 4.17e9 (300 Hz -> 1.25 THz cross-scale bridge)
 
-**Code Reference:** `millennium_{prize\_uqff\_calculator}.py` ->
+**Code Reference:** `millennium_prize_uqff_calculator.py` ->
 `MillenniumPrizeUQFFMasterCalculator.compute()`
 
 ---
@@ -540,7 +540,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -556,7 +556,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -575,7 +575,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -606,7 +606,7 @@ Since $p_{\mathrm{DVP}} = 3$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -635,9 +635,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -652,7 +652,7 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -675,16 +675,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -693,8 +693,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -702,7 +702,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -713,8 +713,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -733,8 +733,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

@@ -59,7 +59,7 @@ around the system center. At each grid point $(x, y, z)$:
 4. $\vec{g} = -g_{\text{MUGE}} \cdot \hat{r}$ — gravitational vector (radial inward)
 5. $v_{\text{circ}}(r) = \sqrt{r \cdot |g_{\text{MUGE}}|}$ — circular velocity
 
-Output cubes: `density_cube`, `g_{magnitude\_cube}`, `gx/gy/gz_cube`, `v_{circ\_cube}`
+Output cubes: `density_cube`, `g_magnitude_cube`, `gx/gy/gz_cube`, `v_circ_cube`
 
 ## §4 Rotation Curve Extraction
 
@@ -105,7 +105,7 @@ Each system receives density/velocity/gravity cubes with summary statistics.
 ## References
 
 - `muge_{3d\_volumetric}.py`: Implementation (10/10 tests pass)
-- `production_{scaling\_v17}.py`: Kernels `kernel_{muge\_8term\_gravity}`, `kernel_{nfw\_density}`
+- `production_scaling_v17.py`: Kernels `kernel_{muge\_8term\_gravity}`, `kernel_nfw_density`
 - CondensedPhysics4.py: MUGECluster3DSimCalc (radial predecessor)
 
 
@@ -178,14 +178,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 
 *4 cross-reference(s) identified.*
 

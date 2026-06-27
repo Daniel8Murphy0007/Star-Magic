@@ -8,7 +8,7 @@ status: production
 cvw: "v2.0.0"
 tags: [ALICE, multiplicity, SCm, phonon, Pb-Pb, centrality, LHC]
 crosslinks: [PAPER_1004, PAPER_1005, PAPER_969]
-calibration: {sqrt_{s\_NN}: 5020, dNdeta: 7565, N_part: 383}
+calibration: {sqrt_s_NN: 5020, dNdeta: 7565, N_part: 383}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
@@ -32,7 +32,7 @@ fit.
 
 ## 3. Implementation
 
-File: `scm_{qgp\_dynamics}.py`, class `ALICEMultiplicityCalc`. CP4 class #590.
+File: `scm_qgp_dynamics.py`, class `ALICEMultiplicityCalc`. CP4 class #590.
 
 
 
@@ -101,7 +101,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -206,19 +206,19 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
-| PAPER_1013 | QGP ALICE Centrality F_{U\_Bi\_i} dN/deta Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1021 | Pulsar Timing Phonon TOA Residual |
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |

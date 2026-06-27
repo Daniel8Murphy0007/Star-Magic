@@ -121,7 +121,7 @@ Gravity is the late-emergent central limit; SCm operates with extra-gravitationa
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -182,7 +182,7 @@ mock-theta framework with the SCm phonon spectrum.
 ### §A.1 Sector Classification
 
 This paper maps to **observational-validation sector** of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -199,7 +199,7 @@ $$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi - (4\pi G \rho/c^2)\phi + 
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
 
 ---
 
@@ -221,7 +221,7 @@ $$p_{\mathrm{DVP}} = 103, \quad n_{\mathrm{channel}} = 17/26$$
 
 The BSH saturation timescale for this sector is **10^5-10^7 yr (varies by system)**:
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 ### §B.4 Production-Scale Consistency
 
@@ -242,9 +242,9 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density rho_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -271,21 +271,21 @@ bridge.*
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `s`tellar_{wind\_nebulae\_exploration}`.py` | UQFF prediction engine for additional nebulae | 5 systems, 5-11% agreement |
-| `n`ebula_{obs\_comparison}`.py` | Simulation vs JWST/Chandra/Hubble/ALMA | Mean 7.8% agreement |
+| `stellar_wind_nebulae_exploration.py` | UQFF prediction engine for additional nebulae | 5 systems, 5-11% agreement |
+| `nebula_obs_comparison.py` | Simulation vs JWST/Chandra/Hubble/ALMA | Mean 7.8% agreement |
 
 ### S210.2 Wormhole Geodesic Modules
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `w`ormhole_{geodesic\_simulator}`.py` | BSFG 26D geodesic integrator | Morris-Thorne traversable with phonon stabilization |
+| `wormhole_geodesic_simulator.py` | BSFG 26D geodesic integrator | Morris-Thorne traversable with phonon stabilization |
 | PAPER_901 | Phonon-modified Christoffel symbols | Additive correction to geodesic equation |
 
 ### S210.3 BH Phonon Physics
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `b`h_{phonon\_interaction}`.py` | SCm phonon coupling at horizons/ergospheres | Superradiance bandwidth broadened |
+| `bh_phonon_interaction.py` | SCm phonon coupling at horizons/ergospheres | Superradiance bandwidth broadened |
 | PAPER_905-906 | Ergosphere superradiance + QPO coupling | Phonon-amplified jet launching |
 | PAPER_908-909 | Jet power + Hawking T modification | M87/Sgr A* power ratio explained |
 
@@ -306,7 +306,7 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204--225 extensions (PAPER_1000--1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

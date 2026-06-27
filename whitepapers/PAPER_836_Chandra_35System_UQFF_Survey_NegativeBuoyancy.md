@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 ## Abstract
-A comprehensive UQFF Master F_{U\_Bi\_i} Buoyancy analysis of 35+ astrophysical systems drawn from Chandra X-ray Observatory, JWST, and ALMA observations is presented. Systems span SNRs (~$10^{208}$ N), galaxies (~$10^{211}$ N), quasars and galaxy clusters (~$10^{212}$ N), and laboratory devices (~$10^{154}$ N). The critical discovery is **negative buoyancy** (repulsive F_{U\_Bi\_i}) in four systems: Galactic Center, Chandra 25 Images composite, Galactic Center Vent, and Sagittarius A* — all characterized by dense SMBH environments. F_LENR dominates all results at $10^{36}$–$10^{39}$ N, orders of magnitude above all secondary F_{U\_Bi\_i} terms.
+A comprehensive UQFF Master F_U_Bi_i Buoyancy analysis of 35+ astrophysical systems drawn from Chandra X-ray Observatory, JWST, and ALMA observations is presented. Systems span SNRs (~$10^{208}$ N), galaxies (~$10^{211}$ N), quasars and galaxy clusters (~$10^{212}$ N), and laboratory devices (~$10^{154}$ N). The critical discovery is **negative buoyancy** (repulsive F_U_Bi_i) in four systems: Galactic Center, Chandra 25 Images composite, Galactic Center Vent, and Sagittarius A* — all characterized by dense SMBH environments. F_LENR dominates all results at $10^{36}$–$10^{39}$ N, orders of magnitude above all secondary F_U_Bi_i terms.
 
 ---
 
@@ -26,9 +26,9 @@ A comprehensive UQFF Master F_{U\_Bi\_i} Buoyancy analysis of 35+ astrophysical 
 
 ### 1.1 UQFF Framework Applied
 
-    F_{U\_Bi} = -F_0 + (m_e c2/r2)*DPM_momentum*costheta + ($\mu$_s$\nabla$(M_s/r))*DPM_gravity + F_{U\_Bi\_i}
+    F_U_Bi = -F_0 + (m_e c2/r2)*DPM_momentum*costheta + ($\mu$_s$\nabla$(M_s/r))*DPM_gravity + F_U_Bi_i
     
-    F_{U\_Bi\_i} = Integral0^{x2} [-F_0 + gravity + momentum + rho_vac*DPM_stab
+    F_U_Bi_i = Integral0^{x2} [-F_0 + gravity + momentum + rho_vac*DPM_stab
                 + F_LENR + F_act + F_torque + F_DE + F_res] dx
 
 
@@ -43,12 +43,12 @@ A comprehensive UQFF Master F_{U\_Bi\_i} Buoyancy analysis of 35+ astrophysical 
 ## 2. Complete System Results
 
 ### 2.1 Laboratory Device
-| System | M (kg) | r (m) | `F_{U\_Bi}` (N) |
+| System | M (kg) | r (m) | `F_U_Bi` (N) |
 |--------|--------|-------|-----------|
 | Field Generator (Colman-Gillespie) | 1 | 0.1 | 1.12$\times$$10^{154}$ |
 
 ### 2.2 Stellar / SNR Scale (~$10^{208}$ N)
-| System | M (kg) | r (m) | `F_{U\_Bi}` (N) |
+| System | M (kg) | r (m) | `F_U_Bi` (N) |
 |--------|--------|-------|-----------|
 | Eagle Nebula M16 | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 2.65$\times$$10^{49}$ |
 | HBC 672 | ~$10^{30}$ | ~3$\times$$10^{15}$ | 1.67$\times$$10^{43}$ |
@@ -70,7 +70,7 @@ A comprehensive UQFF Master F_{U\_Bi\_i} Buoyancy analysis of 35+ astrophysical 
 | Sonification Collection | 1.989$\times$$10^{35}$ | 3.09$\times$$10^{17}$ | 5.30$\times$$10^{208}$ |
 
 ### 2.3 Galaxy / Cluster Scale (~$10^{211}$–$10^{212}$ N)
-| System | M (kg) | r (m) | `F_{U\_Bi}` (N) |
+| System | M (kg) | r (m) | `F_U_Bi` (N) |
 |--------|--------|-------|-----------|
 | NGC 7469 (Seyfert) | ~$10^{40}$ | ~$10^{20}$ | 3.07$\times$$10^{63}$ |
 | Virgo Cluster | ~$10^{44}$ | ~$10^{22}$ | 2.37$\times$$10^{63}$ |
@@ -86,7 +86,7 @@ A comprehensive UQFF Master F_{U\_Bi\_i} Buoyancy analysis of 35+ astrophysical 
 | SDSS J1531+3414 | 1.989$\times$$10^{44}$ | 3.09$\times$$10^{22}$ | 1.40$\times$$10^{212}$ |
 
 ### 2.4 Galactic Center / SMBH — NEGATIVE BUOYANCY
-| System | M (kg) | r (m) | `F_{U\_Bi}` (N) | Sign |
+| System | M (kg) | r (m) | `F_U_Bi` (N) | Sign |
 |--------|--------|-------|-----------|------|
 | Galactic Center (Sgr A*) | 7.956$\times$$10^{36}$ | 6.17$\times$$10^{18}$ | **-8.31$\times$$10^{211}$** | NEGATIVE |
 | Galactic Center Vent | 7.956$\times$$10^{36}$ | 6.17$\times$$10^{18}$ | **-8.31$\times$$10^{211}$** | NEGATIVE |
@@ -100,7 +100,7 @@ A comprehensive UQFF Master F_{U\_Bi\_i} Buoyancy analysis of 35+ astrophysical 
 ## 3. Negative Buoyancy Analysis
 
 ### Physical Interpretation
-Negative F_{U\_Bi\_i} in UQFF indicates a **repulsive vacuum force** where the vacuum energy density
+Negative F_U_Bi_i in UQFF indicates a **repulsive vacuum force** where the vacuum energy density
 effectively repels rather than attracts. This is characterized by:
 - Dense SMBH environments with high vacuum curvature
 - DPM_gravity term sign reversal at extreme mass/radius ratios
@@ -111,7 +111,7 @@ All four negative cases share: M_BH ~ $10^{36}$–$10^{44}$ kg, r ~ $10^{18}$–
 
 ### Mathematical Condition:
 
-    F_{U\_Bi\_i} < 0 when:
+    F_U_Bi_i < 0 when:
       $\mu$_s$\nabla$(M_s/r) > F_0 scale reversal threshold
       i.e., when the gravitational term dominates over the vacuum energy driving term
       Numerically: M > ~10^36 kg at r > ~10^18 m (SMBH regime)
@@ -141,9 +141,9 @@ scales.**
 
 ## 6. Conclusions
 The 35-system UQFF Chandra survey establishes:
-1. F_LENR (1.56–6.16$\times$$10^{36}$–39 N) universally dominates F_{U\_Bi\_i}
-2. Negative buoyancy (repulsive F_{U\_Bi\_i}) is a real UQFF phenomenon in SMBH/high-density regimes
-3. F_{U\_Bi} scales from $10^{207}$ N (NGC 6543) to $10^{212}$ N (galaxy clusters) in agreement with system mass/radius parameters
+1. F_LENR (1.56–6.16$\times$$10^{36}$–39 N) universally dominates F_U_Bi_i
+2. Negative buoyancy (repulsive F_U_Bi_i) is a real UQFF phenomenon in SMBH/high-density regimes
+3. F_U_Bi scales from $10^{207}$ N (NGC 6543) to $10^{212}$ N (galaxy clusters) in agreement with system mass/radius parameters
 4. The framework is validated against multi-wavelength Chandra, JWST, and ALMA observations
 
 ---
@@ -196,7 +196,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -296,7 +296,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 ### §A.1 Sector Classification
 
 This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -315,7 +315,7 @@ $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\mathrm{LENR}}^2 \
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -346,7 +346,7 @@ Since $p_{\mathrm{DVP}} = 103$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -375,9 +375,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -392,13 +392,13 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
@@ -419,16 +419,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -437,8 +437,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -446,7 +446,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -457,8 +457,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -477,8 +477,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

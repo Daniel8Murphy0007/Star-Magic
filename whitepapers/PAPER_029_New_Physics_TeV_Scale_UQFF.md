@@ -18,8 +18,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** March 6, 2026  
 **Version:** 1.0  
 **arXiv Reference:** 2506.15306 (BSM at neutrino facilities, primary)  
-**Validation File:** `bsm_{physics\_validation}.py`  Section 6 (UQFF DPM Integration)  
-**C++ Source:** `source4.cpp`  BSM calibration block (`SM_{universe\_fraction} = 0.05`)  
+**Validation File:** `bsm_physics_validation.py`  Section 6 (UQFF DPM Integration)  
+**C++ Source:** `source4.cpp`  BSM calibration block (`SM_universe_fraction = 0.05`)  
 **UQFF Domain:** 1.4  Beyond Standard Model (BSM) Physics  
 **Status:** ? Complete
 
@@ -124,7 +124,7 @@ $$f_{SM} = \frac{\rho_{baryonic}}{\rho_{total}} = \frac{Ug_{total}}{F_U^{total}}
 
 $$F_U = (Ug_1 + Ug_2 + Ug_3 + Ug_4) - (Ub_1 + Ub_2 + Ub_3 + Ub_4) + U_m + U_A + R_{SCm}$$
 
-**f_SM = ?_baryonic / ?_total = Ug_total / F_{U\_total}**
+**f_SM = ?_baryonic / ?_total = Ug_total / F_U_total**
 
 where:
 
@@ -148,9 +148,9 @@ the string-sector projection:
 
 Correction for string entropy dilution (Paper #22, D_s = [SSq]^(-1) = 1.754):
 
-**f_{SM\_corrected} = [SSq]^4 / ([SSq]^(-1) + [SSq]^(-1/2))**
+**f_SM_corrected = [SSq]^4 / ([SSq]^(-1) + [SSq]^(-1/2))**
 
-Numerical result from `bsm_{physics\_validation}.py` UQFF DPM mapping:
+Numerical result from `bsm_physics_validation.py` UQFF DPM mapping:
 
 **f_SM^UQFF = 0.0485 $\times$ 5%** ?
 
@@ -172,7 +172,7 @@ Paper #26 derives from the sterile neutrino M_s1 = 7.1 keV relic density: ?_SCm 
 
 **f_DM^UQFF = [SSq]^2  ?_SCm  (1 - f_SM) / (1 + [SSq]) = 0.3249 $\times$ 1 $\approx$ 0.95 / 1.57 = 0.197**
 
-Numerical result including aether UA contribution (full computation in `bsm_{physics\_validation}.py`):
+Numerical result including aether UA contribution (full computation in `bsm_physics_validation.py`):
 
 **f_DM^UQFF = 0.268 $\times$ 27%** ?
 
@@ -272,29 +272,29 @@ the universe is invisible to the Standard Model.
 
 ## 4. Validation
 
-### 4.1 Validation File: `bsm_{physics\_validation}.py`  Section 6
+### 4.1 Validation File: `bsm_physics_validation.py`  Section 6
 
-The UQFF DPM integration section of `bsm_{physics\_validation}.py` maps the BSM constants to UQFF field
+The UQFF DPM integration section of `bsm_physics_validation.py` maps the BSM constants to UQFF field
 parameters:
 
 ```python
 # === Section 6: UQFF DPM INTEGRATION ===
-mappings = map_{to\_UQFF\_DPM}(bsm)
+mappings = map_to_UQFF_DPM(bsm)
 # Key outputs:
-# SM_{universe\_fraction}: 0.05 (from source4.cpp: SM_{universe\_fraction} = 0.05)
-# k_{eta\_VLQ}: 0.13 (vector-like quark contribution to Ug2/Ug4)
-# `SCm_{flavor\_mixing}`: 1.537e-3 (|V_cb| from Paper #28)
-# t_{n\_LFV\_constraint}: 3.833 (DPM temporal reversal from Paper #27)
+# SM_universe_fraction: 0.05 (from source4.cpp: SM_universe_fraction = 0.05)
+# k_eta_VLQ: 0.13 (vector-like quark contribution to Ug2/Ug4)
+# `SCm_flavor_mixing`: 1.537e-3 (|V_cb| from Paper #28)
+# t_n_LFV_constraint: 3.833 (DPM temporal reversal from Paper #27)
 ```
 
-Running `python bsm_{physics\_validation}.py` produces:
+Running `python bsm_physics_validation.py` produces:
 
 ```
 --- UQFF DPM INTEGRATION ---
-  mu_{s\_deviation}: 4.876e+00
-  k_{eta\_VLQ}: 1.298e-01
-  SCm_{flavor\_mixing}: 1.537e-03
-  t_{n\_LFV\_constraint}: 3.833e+00
+  mu_s_deviation: 4.876e+00
+  k_eta_VLQ: 1.298e-01
+  SCm_flavor_mixing: 1.537e-03
+  t_n_LFV_constraint: 3.833e+00
 ```
 
 ### 4.2 Validation File: `source4.cpp`  SM Universe Fraction
@@ -304,7 +304,7 @@ The C++ calibration in `source4.cpp` encodes the arXiv:2506.15306 result directl
 ```cpp
 // --- 2506.15306: SM Universe Fraction ---
 // Context: SM accounts for ~5% of universe ? BSM is dominant
-double SM_{universe\_fraction} = 0.05;     // SM visible matter fraction
+double SM_universe_fraction = 0.05;     // SM visible matter fraction
 ```
 
 UQFF derivation check:
@@ -342,7 +342,7 @@ With DPM projection correction:
 
 **f_SM = [SSq]^5  [SSq] / (1 + [SSq]^2) = [SSq]^6 / (1 + [SSq]^2) = 0.0343 / 1.325 = 0.0259**
 
-Full numerical result from RGE integration in `bsm_{physics\_validation}.py`:
+Full numerical result from RGE integration in `bsm_physics_validation.py`:
 
 **f_SM^UQFF = 0.0485**  matching 5% to 3%.
 
@@ -397,7 +397,7 @@ two calibration constants $\kappa$ = 0.0005/day and [SSq] = 0.57:
 TeV-scale predictions:
 - **M_KK = 11.6 TeV**  KK graviton resonance accessible at FCC-hh
 - **ds_? / s_SM = +0.3% at 1 PeV**  testable at IceCube with 20-year dataset
-- **E_{BSM\_threshold} = 141 GeV**  BSM physics fully dominant above M_W scale
+- **E_BSM_threshold = 141 GeV**  BSM physics fully dominant above M_W scale
 - **d_CP = 119.9** (UQFF lower-octant resolution)  testable at DUNE 2030
 
 Zero free parameters. $\kappa$ = 0.0005/day and [SSq] = 0.57 are fixed from magnetar spin-down (Papers
@@ -440,9 +440,9 @@ the BSM scale used in this paper.
 5. IceCube Collaboration (2023). Science 380, 1338. High-energy neutrino spectrum.
 6. ATLAS Collaboration (2024). arXiv:2506.15515. Vector-like quark limits.
 7. ECFA Higgs Factory Study (2025). arXiv:2506.15390.
-8. Murphy, D.T., `bsm_{physics\_validation}.py` 6 UQFF DPM Integration. Star-Magic repository.
-9. Murphy, D.T., `source4.cpp` BSM calibration block (SM_{universe\_fraction} = 0.05). Star-Magic.
-10. VALIDATION_{MASTER\_INDEX}.md §1.4, Domain BSM Physics, Paper #29. Star-Magic repository.
+8. Murphy, D.T., `bsm_physics_validation.py` 6 UQFF DPM Integration. Star-Magic repository.
+9. Murphy, D.T., `source4.cpp` BSM calibration block (SM_universe_fraction = 0.05). Star-Magic.
+10. VALIDATION_MASTER_INDEX.md §1.4, Domain BSM Physics, Paper #29. Star-Magic repository.
 11. Cross-references: Paper #22 (M_KK), Paper #24 (f_CP), Paper #26 (sterile ?), Paper #27 (LFV),
 Paper #28 ([SCm]_flavor).
 
@@ -500,7 +500,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -549,8 +549,8 @@ mock-theta framework with the SCm phonon spectrum.
 | G3 | UQFF calibration constants (?, [SSq]) properly applied | ? $\kappa$ = 0.0005/day; [SSq]=0.57; D_s=1.754 |
 | G4 | Comparison with standard model (GR/SM) explicitly shown | ? Table §3.1: SM no prediction vs UQFF M_KK = 11.6 TeV |
 | G5 | Physical units verified (dimensional analysis) | ? f_SM dimensionless; M_KK in GeV; s_? in cm |
-| G6 | Source validation file referenced and run successfully | ? `b`sm_{physics\_validation}`.py` Section 6 |
-| G7 | C++ source file connection documented | ? `source4.cpp` `SM_{universe\_fraction}` = 0.05 |
+| G6 | Source validation file referenced and run successfully | ? `bsm_physics_validation.py` Section 6 |
+| G7 | C++ source file connection documented | ? `source4.cpp` `SM_universe_fraction` = 0.05 |
 | G8 | arXiv/LIGO/CERN reference cited | ? arXiv:2506.15306 (primary); Planck 2020 |
 
 ---
@@ -572,11 +572,11 @@ mock-theta framework with the SCm phonon spectrum.
 ---
 
 *Paper #29 complete. Next: Paper #30  Dark Sector Mediators in UQFF (arXiv:2506.15347).*  
-*Session: March 6, 2026 | Domain: 1.4 BSM Physics | Validated by: `bsm_{physics\_validation}`.py 6*
+*Session: March 6, 2026 | Domain: 1.4 BSM Physics | Validated by: `bsm_physics_validation`.py 6*
 
 ---
 
-**Validators:** `bsm_{physics\_validation}.py`  PASSED; `validate_{new\_physics}.py`  PASSED (6/6)  
+**Validators:** `bsm_physics_validation.py`  PASSED; `validate_new_physics.py`  PASSED (6/6)  
 *TeV physics: VLQ singlet ? ? [0.22,0.52], (T,B,Y) triplet ? ? [0.14,0.46], mass limit 2600 GeV; SM
 universe fraction f_SM = 5%; KK spectrum E_1 = 1.97$\times$10 GeV (R=10?? m); GZK horizon 31.8 Mpc;
 Einstein radius SgrA* 1.454 arcsec; UQFF 26D projection 16% extended + 84% compact; DPM: $\kappa$_s =
@@ -589,7 +589,7 @@ Einstein radius SgrA* 1.454 arcsec; UQFF 26D projection 16% extended + 84% compa
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
-> *Added by upgrade_{early\_whitepapers}.py (v4.75). This appendix cross-references
+> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
 > the production physics constants and master equations to enable reproducibility
 > against the current codebase state.*
 
@@ -613,13 +613,13 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `c`ompute_{Ug1\_SOURCE}`4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_{Ug2\_SOURCE}`4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `c`ompute_{Ug3\_SOURCE}`4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
-| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
 $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
@@ -653,7 +653,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -672,7 +672,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -703,7 +703,7 @@ Since $p_{\mathrm{DVP}} = 113$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -733,7 +733,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -754,16 +754,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -772,8 +772,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -781,7 +781,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -792,8 +792,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -812,8 +812,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 ---
 

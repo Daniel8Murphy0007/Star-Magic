@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
-**Source:** SCm phonon gap implementation (production_{scaling\_v7}.py)
+**Source:** SCm phonon gap implementation (production_scaling_v7.py)
 **Calculator:** ProductionScalingV7BenchmarkCalc (CP4 #514)
 **CVW:** v2.0.0 compliant
 
@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 Production benchmark suite targeting 300,000 calculations/second, a 3x improvement over the v4
-baseline (100k calc/s). Implements 8 benchmark kernels: 26-Layer Gravity summation, F_{U\_Bi\_i}
+baseline (100k calc/s). Implements 8 benchmark kernels: 26-Layer Gravity summation, F_U_Bi_i
 Assembly, Phonon a_res computation, Jet M_jet(Gamma) evaluation, NS Spindown correction, GW190425
 strain calculation, Full Pipeline v7 (all-in-one), and Vectorized Phonon Batch processing. Each
 kernel is timed independently and the aggregate throughput is compared against the 300k target. The
@@ -76,7 +76,7 @@ Optional numpy vectorization for K8
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | n_iterations | 10000 | Benchmark iterations |
-| `target_{calc\_per\_s}` | 300000 | Target throughput |
+| `target_calc_per_s` | 300000 | Target throughput |
 
 ---
 
@@ -105,8 +105,8 @@ pipeline serialization is the primary bottleneck.
 
 ## 5. References
 
-- production_{scaling\_v4}.py: Previous 100k baseline
-- production_{scaling\_v7}.py: Current 300k target implementation
+- production_scaling_v4.py: Previous 100k baseline
+- production_scaling_v7.py: Current 300k target implementation
 - PAPER_922: M87 jet power curve (performance-critical MC sampling)
 
 ---
@@ -146,7 +146,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -274,18 +274,18 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1021 | Pulsar Timing Phonon TOA Residual |

@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_351
-title: "ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_{U\_Bi\_i} and Kozima LENR Force"
+title: "ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force"
 session: 96
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,13 +10,13 @@ tags: ["TDE", "AGN", "vacuum", "F_U_Bi_i", "buoyancy", "black-hole", "Chandra", 
 sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_351  ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_{U\_Bi\_i} and Kozima LENR Force
+# PAPER_351  ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_{share\_31b5c807a4}.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF F_{U\_Bi\_i} for a TDE with 0.3c ultrafast outflow and Kozima LENR
+**Classification:** FIRST UQFF F_U_Bi_i for a TDE with 0.3c ultrafast outflow and Kozima LENR
 coupling  
 **Author:** Daniel T. Murphy  
 
@@ -28,8 +28,8 @@ coupling
 
 ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete
 multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for
-the stellar mass black hole remnant (M_BH = 106 M?), yielding F_{U\_Bi\_i}  -8.32$\times$10 N  six orders of
-magnitude smaller than AGN-scale F_{U\_Bi\_i}, reflecting the much smaller BH mass. The ultrafast
+the stellar mass black hole remnant (M_BH = 106 M?), yielding F_U_Bi_i  -8.32$\times$10 N  six orders of
+magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast
 outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10 N at
 the stellar disruption interface.
 
@@ -39,7 +39,7 @@ the stellar disruption interface.
 
 ### 2.1 UQFF Buoyancy-Unified Force (TDE Scale)
 
-$$F_{U\_Bi\_i} \approx -8.32 \times 10^{211}\ \mathrm{N}$$
+$$F_U_Bi_i \approx -8.32 \times 10^{211}\ \mathrm{N}$$
 
 The six-order-of-magnitude reduction from the AGN scale (-8.32$\times$107 N) reflects M_BH = 106 M? vs. 10?
 M?.
@@ -62,9 +62,9 @@ $$r_{\mathrm{tide}} = R_\star \left(\frac{M_{\mathrm{BH}}}{M_\star}\right)^{1/3}
 At r_tide the vacuum density gradient drives LENR-scale nuclear coupling between compressed stellar
 nuclei.
 
-### 2.4 Full F_{U\_Bi\_i} Decomposition
+### 2.4 Full F_U_Bi_i Decomposition
 
-$$F_{U\_Bi\_i}^{\mathrm{ASASSN}} = F_{\mathrm{UQFF}}^{\mathrm{TDE}} + F_{\mathrm{Kozima}} + F_{\mathrm{outflow}}$$
+$$F_U_Bi_i^{\mathrm{ASASSN}} = F_{\mathrm{UQFF}}^{\mathrm{TDE}} + F_{\mathrm{Kozima}} + F_{\mathrm{outflow}}$$
 
 $$\approx -8.32\times 10^{211} + 10^{30} + P_{\mathrm{outflow}}/r_{\mathrm{tide}}\ \mathrm{N}$$
 
@@ -149,7 +149,7 @@ where $t_{\mathrm{sat}}$ is the BSH saturation timescale. For ASASSN-14li, the B
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | M_BH | UV-optical fit | 106 M? |
-| `F_{U\_Bi\_i}` | UQFF TDE scale | -8.32$\times$10 N |
+| `F_U_Bi_i` | UQFF TDE scale | -8.32$\times$10 N |
 | v_out | Chandra Fe K | 0.3c |
 | F_Kozima | LENR coupling | 10 N |
 | r_tide | R_?(M_BH/M_?)^(1/3) | ~7 R? |
@@ -159,11 +159,11 @@ where $t_{\mathrm{sat}}$ is the BSH saturation timescale. For ASASSN-14li, the B
 ## 4. Physical Significance
 
 ASASSN-14li bridges stellar-scale and AGN-scale UQFF physics. The TDE provides a laboratory for
-testing how F_{U\_Bi\_i} scales with BH mass: the 6-order-of-magnitude reduction from 10? M? to 106 M?
-tracks the mass scaling F_{U\_Bi\_i} ? M_BH^a, a derived from comparing PAPER_346 (M87) to PAPER_351,
+testing how F_U_Bi_i scales with BH mass: the 6-order-of-magnitude reduction from 10? M? to 106 M?
+tracks the mass scaling F_U_Bi_i ? M_BH^a, a derived from comparing PAPER_346 (M87) to PAPER_351,
 enabling a power-law calibration of the BH mass dependence of UQFF vacuum buoyancy.
 
-The Kozima LENR force at F_Kozima = 10 N is much smaller than F_{U\_Bi\_i} in this TDE context,
+The Kozima LENR force at F_Kozima = 10 N is much smaller than F_U_Bi_i in this TDE context,
 suggesting LENR effects are perturbative at stellar BH scales.
 
 ---
@@ -171,7 +171,7 @@ suggesting LENR effects are perturbative at stellar BH scales.
 ## 5. Deduplication Note
 
 - **vs. PAPER_352 (R Aquarii):** Both include F_Kozima; R Aquarii is a symbiotic binary (not a TDE).
-- **vs. all AGN papers (346350):** TDE F_{U\_Bi\_i}  10 N (stellar mass BH) vs. AGN 107$\times$108 N.
+- **vs. all AGN papers (346350):** TDE F_U_Bi_i  10 N (stellar mass BH) vs. AGN 107$\times$108 N.
 
 ---
 
@@ -191,7 +191,7 @@ at 3s by 2027); the UQFF deviation from standard predictions exceeds the measure
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -274,7 +274,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -292,9 +292,9 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -309,21 +309,21 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204--225 extensions (PAPER_1000--1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1027 | Tidal Disruption Event SCm Fallback |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1060 | VDS LENR Isotopic Transmutation Chain |
 | PAPER_1061 | Kozima SCm Integration Neutron-Drop |
@@ -339,16 +339,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -357,8 +357,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -366,7 +366,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -377,8 +377,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -397,8 +397,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 ---
 

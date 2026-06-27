@@ -116,8 +116,8 @@ noise and optical depth effects.
 
 ## References
 
-- `alma_{cycle12\_validation}.py`: Implementation (10/10 tests pass)
-- `production_{scaling\_v17}.py`: Kernels `kernel_{alma\_fubi\_profile}`, `kernel_{alma\_chi2\_co21}`
+- `alma_cycle12_validation.py`: Implementation (10/10 tests pass)
+- `production_scaling_v17.py`: Kernels `kernel_alma_fubi_profile`, `kernel_alma_chi2_co21`
 - `APIFetch.py`: ALMAFetcher stub (L1119) — future real data integration
 - PAPER_1074: GPU DPM Spectral Atlas
 
@@ -167,12 +167,12 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 
 *2 cross-reference(s) identified.*
 

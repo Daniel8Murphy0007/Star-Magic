@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
-**Source:** blazar_{jet\_power\_curves\_extended}.py (CentaurusAJetPowerCurves)
+**Source:** blazar_jet_power_curves_extended.py (CentaurusAJetPowerCurves)
 **Calculator:** CentaurusAJetPowerCurvesCalc (CP4 #523)
 **CVW:** v2.0.0 compliant
 
@@ -63,7 +63,7 @@ $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 
 ## 4. Source Data
 
-- **File:** blazar_{jet\_power\_curves\_extended}.py
+- **File:** blazar_jet_power_curves_extended.py
 - **Session:** 213
 - **CP4 Class:** CentaurusAJetPowerCurvesCalc (#523)
 
@@ -82,7 +82,7 @@ $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -177,13 +177,13 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1021 | Pulsar Timing Phonon TOA Residual |

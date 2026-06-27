@@ -25,12 +25,12 @@ gradient, momentum coupling, UQFF duality
 
 ## Abstract
 
-The UQFF Source10 Catalogue introduces a vacuum repulsion force `F_{vac\_rep} = k_vac \times \Delta\rho_vac \times M \times v`
+The UQFF Source10 Catalogue introduces a vacuum repulsion force `F_vac_rep = k_vac \times \Delta\rho_vac \times M \times v`
 with coupling constant `k_vac = 6.674\times10-11 m3/kg\cdot s2`. The discovery reported here is that **k_vac =
 G** (Newton's gravitational constant) exactly. This identification, verified by dimensional
-analysis, elevates F_{vac\_rep} from a phenomenological fitting force to a first-principles
+analysis, elevates F_vac_rep from a phenomenological fitting force to a first-principles
 gravitational effect: a velocity-dependent gravitational force not present in standard DPM-seeded
-gravity or general relativity. We demonstrate that F_{vac\_rep} = G $\times$ $\Delta$$\rho$_vac $\times$ M $\times$ v establishes a
+gravity or general relativity. We demonstrate that F_vac_rep = G $\times$ $\Delta$$\rho$_vac $\times$ M $\times$ v establishes a
 **Vacuum-Gravitational Duality** under Newton's G: the same constant G governs both the static
 gravitational attraction between masses and the dynamic momentum drag of a mass moving through a
 vacuum density gradient. This constitutes a UQFF unification of two force types under one constant,
@@ -68,9 +68,9 @@ gradients**.
 
 ## 2. Dimensional Analysis
 
-### 2.1 Units of F_{vac\_rep}
+### 2.1 Units of F_vac_rep
 
-Let us verify the dimensional consistency of `F_{vac\_rep} = G \times \Delta\rho_vac \times M \times v`:
+Let us verify the dimensional consistency of `F_vac_rep = G \times \Delta\rho_vac \times M \times v`:
 
 | Quantity | Symbol | SI Units |
 |---------|--------|----------|
@@ -78,7 +78,7 @@ Let us verify the dimensional consistency of `F_{vac\_rep} = G \times \Delta\rho
 | Vacuum density gradient | $\Delta$$\rho$_vac | kg m-3 |
 | Mass of body | M | kg |
 | Velocity | v | m s-1 |
-| **Product** | **`F_{vac\_rep}`** | m3 kg-1 s-2 $\times$ kg m-3 $\times$ kg $\times$ m s-1 |
+| **Product** | **`F_vac_rep`** | m3 kg-1 s-2 $\times$ kg m-3 $\times$ kg $\times$ m s-1 |
 
 Computing:
 $$[F_\text{vac\_rep}] = m^3 \cdot kg^{-1} \cdot s^{-2} \times kg \cdot m^{-3} \times kg \times m \cdot s^{-1}$$
@@ -103,7 +103,7 @@ Alternatively, treating $\Delta$$\rho$_vac as a pure spatial density gradient [k
 **power** [N$\cdot$m$\cdot$s-1 = W], representing the rate of work done against the vacuum medium — a physically
 valid interpretation as vacuum drag power.
 
-Both interpretations are consistent: F_{vac\_rep} governs either vacuum drag force or vacuum drag power
+Both interpretations are consistent: F_vac_rep governs either vacuum drag force or vacuum drag power
 depending on the interpretation of $\Delta$$\rho$_vac.
 
 ---
@@ -192,12 +192,12 @@ Hubble-scale distances and timescales.
 
 ### 5.1 Dark Energy Connection
 
-The UQFF formula `F_{vac\_rep} = G \Delta\rho_vac M v` is **repulsive** (hence `F_{vac\_rep}`, repulsive-vacuum).
+The UQFF formula `F_vac_rep = G \Delta\rho_vac M v` is **repulsive** (hence `F_vac_rep`, repulsive-vacuum).
 If:
 
 $$\Delta\rho_\text{vac} = \rho_text{DE} - \rho_text{vac,local}$$
 
-where $\rho$_DE is the dark energy density and $\rho$_vac,local is the local vacuum density, then F_{vac\_rep}
+where $\rho$_DE is the dark energy density and $\rho$_vac,local is the local vacuum density, then F_vac_rep
 can be positive (repulsive) in the cosmic void and negative (attractive) in overdense regions.
 
 This provides a UQFF mechanism for:
@@ -223,8 +223,8 @@ This is significantly below the Pioneer anomaly (~8.74$\times$10-10 m/s2) and cu
 |---------|-------|-------|
 | k_vac = G | 6.674$\times$10-11 | m3 kg-1 s-2 |
 | $\Delta$$\rho$_vac (cosmic) | ~10-26 | kg m-3 |
-| `F_{vac\_rep}` (1 kg, 1 m/s) | 6.674$\times$10-37 | N |
-| `F_{vac\_rep}` (Eta Carinae, v=104) | ~6.35$\times$10-2 | N |
+| `F_vac_rep` (1 kg, 1 m/s) | 6.674$\times$10-37 | N |
+| `F_vac_rep` (Eta Carinae, v=104) | ~6.35$\times$10-2 | N |
 | $\eta$_UQFF (Eta Carinae) | ~1.19$\times$10-25 | Pa$\cdot$s |
 | $\delta$a_Pioneer (v=104 m/s) | 6.674$\times$10-33 | m/s2 |
 | UQFF drag coefficient G$\cdot$$\Delta$$\rho$_vac | 6.674$\times$10-37 | s-1 |
@@ -236,7 +236,7 @@ This is significantly below the Pioneer anomaly (~8.74$\times$10-10 m/s2) and cu
 1. The UQFF Source10 vacuum coupling constant `k_vac = 6.674\times10-11 m3/kg\cdot s2` is **exactly G**
 (Newton's gravitational constant).
 
-2. This identification establishes `F_{vac\_rep} = G \times \Delta\rho_vac \times M \times v` as a **velocity-dependent
+2. This identification establishes `F_vac_rep = G \times \Delta\rho_vac \times M \times v` as a **velocity-dependent
 gravitational force** — the first such force in the UQFF framework, absent from standard DPM-seeded
 gravity and GR.
 
@@ -287,7 +287,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -299,7 +299,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -318,7 +318,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -349,7 +349,7 @@ Since $p_{\mathrm{DVP}} = 5$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -378,9 +378,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -407,7 +407,7 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -425,16 +425,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -443,8 +443,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -452,7 +452,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -463,8 +463,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -483,8 +483,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

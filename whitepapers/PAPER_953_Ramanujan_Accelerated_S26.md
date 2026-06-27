@@ -166,14 +166,14 @@ Bernoulli coefficients provide the harmonic correction to buoyancy saturation.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204--225 extensions (PAPER_1000--1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |

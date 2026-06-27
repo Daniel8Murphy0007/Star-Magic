@@ -72,7 +72,7 @@ limiting case.
 
 Starting from the MUGE 12-term equation:
 
-$$g_{MUGE} = a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res} + U_{g4i} + a_{quantum\_freq} + a_{Aether\_freq} + a_{fluid\_freq} + Osc_{term} + a_{exp\_freq} + f_{TRZ}$$
+$$g_{MUGE} = a_{DPM} + a_{THz} + a_vac_diff + a_super_freq + a_aether_res + U_{g4i} + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_{term} + a_exp_freq + f_{TRZ}$$
 
 **Term 1: aDPM ? 0**
 
@@ -88,21 +88,21 @@ As B ? 0 in the SM limit, the THz resonance is not driven: f_THz ? 0 in vacuum. 
 
 **Term 3: avac_diff ? 0**
 
-$$a_{vac\_diff} = \kappa_U \cdot (E_{vac,neb} - E_{vac,ISM})$$
+$$a_vac_diff = \kappa_U \cdot (E_{vac,neb} - E_{vac,ISM})$$
 
-In the SM limit, the vacuum energy is static (?t ? 0), so all vacuum components equilibrate: $E_{vac,neb} \to E_{vac,ISM}$, and $a_{vac\_diff} \to 0$. ?
+In the SM limit, the vacuum energy is static (?t ? 0), so all vacuum components equilibrate: $E_{vac,neb} \to E_{vac,ISM}$, and $a_vac_diff \to 0$. ?
 
 **Term 4: asuper_freq ? 0**
 
-$$a_{super\_freq} = F_{super} \cdot f_{THz} \cdot \rho_{SCm} \cdot v_{SCm}^2$$
+$$a_super_freq = F_{super} \cdot f_{THz} \cdot \rho_{SCm} \cdot v_{SCm}^2$$
 
-As ?_SCm ? ?_b (baryonic matter), v_SCm ? v_thermal. For typical stellar environments, $v_{thermal} \sim 10^5$ m/s  v_SCm = 10^8 m/s, and F_{superf\_THz} ? 0 when THz resonance is absent. $a_{super\_freq} \to 0$. ?
+As ?_SCm ? ?_b (baryonic matter), v_SCm ? v_thermal. For typical stellar environments, $v_{thermal} \sim 10^5$ m/s  v_SCm = 10^8 m/s, and F_superf_THz ? 0 when THz resonance is absent. $a_super_freq \to 0$. ?
 
 **Term 5: aaether_res ? 0**
 
-$$a_{aether\_res} = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c$$
+$$a_aether_res = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c$$
 
-As ?_SCm ? ?_b and v_SCm ? v_thermal: $a_{aether\_res} \to \gamma \cdot \rho_b \cdot v_{th} \cdot c$. With ?=5$\times$10^-5 and v_th/c ~ 10^-3:
+As ?_SCm ? ?_b and v_SCm ? v_thermal: $a_aether_res \to \gamma \cdot \rho_b \cdot v_{th} \cdot c$. With ?=5$\times$10^-5 and v_th/c ~ 10^-3:
 
 $$a_{aether\_res, SM} = 5 \times 10^{-5} \times \rho_b \times v_{th} \cdot c \approx 5 \times 10^{-5} \times 10^3 \times 3 \times 10^5 \times 3 \times 10^8 = 4.5 \times 10^{12} \text{ m/s}^2$$
 
@@ -120,7 +120,7 @@ Comparable to the Pioneer anomaly acceleration (~8.74$\times$10^-10 m/s^2). This
 residual aether resonance in the outer solar system contributes to the Pioneer anomaly at the 10^-9
 m/s^2 level. ? (consistent with observation)
 
-For the SM limit proof, we take B ? 0 strictly: $a_{aether\_res} \to 0$. ?
+For the SM limit proof, we take B ? 0 strictly: $a_aether_res \to 0$. ?
 
 **Term 6: Ug4i -- THE SURVIVING TERM**
 
@@ -136,11 +136,11 @@ $$\lim_{\kappa t \to 0} U_{g4i} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r
 
 **Terms 711: All ? 0**
 
-- $a_{quantum\_freq} \propto \omega_i \to 0$ (no rotation in SM limit)
-- $a_{Aether\_freq} \propto \omega_i \to 0$
-- $a_{fluid\_freq} \propto B^2 \to 0$
+- $a_quantum_freq \propto \omega_i \to 0$ (no rotation in SM limit)
+- $a_Aether_freq \propto \omega_i \to 0$
+- $a_fluid_freq \propto B^2 \to 0$
 - $Osc_{term} \propto E_{vac,ISM} \cdot \cos(...) \to 0$ (static vacuum, ?t ? 0: cos(0) = 1, but $E_{vac,ISM} \to 0$ in SM)
-- $a_{exp\_freq} \propto H_0 \to$ negligible for local physics
+- $a_exp_freq \propto H_0 \to$ negligible for local physics
 
 **Term 12: fTRZ ? 0 by hypothesis** ?
 
@@ -160,7 +160,7 @@ $$g_{MUGE}\big|_{SM\ limit} = U_{g4i}\big|_{\kappa t \to 0} = \underbrace{\frac{
 
 Retaining the leading-order deviations from the SM limit:
 
-$$g_{MUGE} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{\kappa t}{2}\right) + a_{aether\_res,residual} + a_{exp\_freq} + f_{TRZ} + \mathcal{O}(\kappa^2 t^2, B^2, f_{TRZ}^2)$$
+$$g_{MUGE} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{\kappa t}{2}\right) + a_{aether\_res,residual} + a_exp_freq + f_{TRZ} + \mathcal{O}(\kappa^2 t^2, B^2, f_{TRZ}^2)$$
 
 The dominant correction terms with numerical values at Earth's surface:
 
@@ -196,7 +196,7 @@ $$g_{GR}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \frac{3G
 
 The UQFF Ug4i with ?t correction:
 
-$$g_{UQFF}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{\kappa t}{2} + \frac{a_{aether\_res}}{\mu_s\nabla(M_s/r)} + ...\right)$$
+$$g_{UQFF}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{\kappa t}{2} + \frac{a_aether_res}{\mu_s\nabla(M_s/r)} + ...\right)$$
 
 At GR-relevant scales ($r \sim r_s = 2GM/c^2$):
 
@@ -218,7 +218,7 @@ Mercury's perihelion precession (GR prediction: 43 arcsec/century, observed: 43.
 
 UQFF correction to Mercury's orbit:
 
-$$\delta a_{Mercury} = a_{aether\_res,Mercury} + U_{g4i,correction} + a_{exp\_freq}$$
+$$\delta a_{Mercury} = a_{aether\_res,Mercury} + U_{g4i,correction} + a_exp_freq$$
 
 $$\approx 10^{-9} + 10^{-12} + 10^{-9} \approx 2 \times 10^{-9} \text{ m/s}^2$$
 
@@ -319,7 +319,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -349,7 +349,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -368,7 +368,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -398,7 +398,7 @@ Since $p_{\mathrm{DVP}} = 13$ is **sub-threshold** (threshold at $p > 26$), the 
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -425,9 +425,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -453,14 +453,14 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204--225 extensions (PAPER_1000--1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -474,7 +474,7 @@ bridge.*
 | PAPER_1052 | TQFT Anyon Braiding Chern-Simons |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
-| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *19 cross-reference(s) identified.*
@@ -482,16 +482,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -500,8 +500,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -509,7 +509,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -520,8 +520,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -540,8 +540,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

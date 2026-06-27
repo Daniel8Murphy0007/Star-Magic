@@ -61,7 +61,7 @@ string of 23 numeric columns with indices $\mathrm{BCOL\_0}$ through $\mathrm{BC
 | 15 | $g_C$ | Compressed-MUGE gravity [m/s\textsuperscript{2}] |
 | 16 | $g_R$ | Resonance-MUGE gravity [m/s\textsuperscript{2}] |
 | 17 | $g_{\rm BSFG}$ | BSFG buoyancy gravity [m/s\textsuperscript{2}] |
-| 18 | $F_{U\_Bi\_i}$ | Buoyancy-integral force [N] |
+| 18 | $F_U_Bi_i$ | Buoyancy-integral force [N] |
 | 19 | $S_{26}^{(3)}$ | Third-order 26D Ramanujan sum |
 | 20 | $G_{\rm phonon}$ | Phonon linewidth [$\Gamma$] |
 | 21 | $w_{\rm oracle}$ | Wolfram oracle weight |

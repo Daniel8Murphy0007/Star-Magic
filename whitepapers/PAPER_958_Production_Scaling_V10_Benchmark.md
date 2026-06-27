@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** production_{scaling\_v10}.py (ProductionScalingV10)
+**Source:** production_scaling_v10.py (ProductionScalingV10)
 **Calculator:** ProductionScalingV10BenchmarkCalc (CP4 #542)
 **CVW:** v2.0.0 compliant
 
@@ -43,11 +43,11 @@ are added to the existing 12, bringing the total to 14 simultaneously benchmarke
 
 ## 2. New Kernels (v10)
 
-### kernel_{bcs\_gap\_solve}
+### kernel_bcs_gap_solve
 BCS gap fixed-point iteration at $T = 4.2$ K:
 $$\Delta_{n+1} = \frac{\hbar\omega_\text{SCm}}{2} \tanh\!\left(\frac{\Delta_n}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
-### kernel_{spectral\_ladder\_eval}
+### kernel_spectral_ladder_eval
 26-state HRes spectral ladder:
 $$E_n = E_0 \cdot (2\pi)^{n/3} \cdot S_{26}, \quad n = 1, \ldots, 26$$
 
@@ -62,7 +62,7 @@ Target: $\text{rate} \geq 450{,}000$ calc/s.
 
 ## 4. Source Data
 
-- **File:** production_{scaling\_v10}.py
+- **File:** production_scaling_v10.py
 - **Session:** 214
 - **CP4 Class:** ProductionScalingV10BenchmarkCalc (#542)
 
@@ -191,7 +191,7 @@ Throughput scaling: v4 (100k) $\to$ v10 (450k) follows $\tanh$ saturation toward
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

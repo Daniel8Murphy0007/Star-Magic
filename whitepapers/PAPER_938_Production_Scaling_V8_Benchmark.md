@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 212
-**Source:** production_{scaling\_v8}.py (ProductionScalingV8)
+**Source:** production_scaling_v8.py (ProductionScalingV8)
 **Calculator:** ProductionScalingV8BenchmarkCalc (CP4 #522)
 **CVW:** v2.0.0 compliant
 
@@ -25,7 +25,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 We present the v8 production scaling benchmark targeting 350,000 calculations per second, a 17%
 increase over the v7 target of 300,000. The benchmark suite comprises 10 kernels spanning the full
-UQFF computational pipeline: 26-layer gravity summation, F_{U\_Bi\_i} assembly, phonon a_res evaluation,
+UQFF computational pipeline: 26-layer gravity summation, F_U_Bi_i assembly, phonon a_res evaluation,
 jet M_jet(Gamma) computation, NS spindown, GW170817 strain, blazar ergosphere coupling, REST
 /api/phonon/jet roundtrip, QCalcGeom vectorized operations, and full pipeline v8 integration.
 Performance is measured in calculations per second with automated pass/fail against the 350k target.
@@ -37,7 +37,7 @@ Performance is measured in calculations per second with automated pass/fail agai
 | Kernel | Operation | Complexity |
 |--------|-----------|-----------|
 | 1 | 26-Layer Gravity Summation | O(26) per eval |
-| 2 | `F_{U\_Bi\_i}` Field Assembly | O(26) per eval |
+| 2 | `F_U_Bi_i` Field Assembly | O(26) per eval |
 | 3 | Phonon a_res Evaluation | O(1) per eval |
 | 4 | Jet M_jet(Gamma) | O(1) per eval |
 | 5 | NS Spindown Correction | O(1) per eval |
@@ -72,13 +72,13 @@ where $R_k$ is the throughput of kernel $k$ and $K = 10$ is the total kernel cou
 The `ProductionScalingV8BenchmarkCalc` (CP4 #522) runs 4 representative kernels (gravity, phonon,
 jet, GW170817) inline and reports individual and average rates. The simulate() method sweeps
 iteration counts [1000, 5000, 10000, 50000] to verify scaling linearity. The full 10-kernel suite is
-available in production_{scaling\_v8}.py.
+available in production_scaling_v8.py.
 
 ---
 
 ## 4. Source Data
 
-- **File:** production_{scaling\_v8}.py
+- **File:** production_scaling_v8.py
 - **Session:** 212
 - **CP4 Class:** ProductionScalingV8BenchmarkCalc (#522)
 
@@ -126,7 +126,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -176,7 +176,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -257,18 +257,18 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1021 | Pulsar Timing Phonon TOA Residual |

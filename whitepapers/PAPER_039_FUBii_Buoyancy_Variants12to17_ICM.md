@@ -32,9 +32,9 @@ Overflow, Entanglement Entropy, Decoherence, and Radio Lobe Dynamics
 
 This paper completes the 17-variant F_UBii taxonomy with six ICM-relevant applications. Variant 12
 (hawk) derives the UQFF buoyancy of Hawking radiation from stellar-mass black holes  predicting
-F_{UBii\_hawk} = -2.452 N for a 5 M? black hole at r = 30 km. Variant 13 (bd) applies the framework to
+F_UBii_hawk = -2.452 N for a 5 M? black hole at r = 30 km. Variant 13 (bd) applies the framework to
 loop quantum cosmology's Big Bang bounce at Planck density. Variant 14 (roche) derives the mass
-transfer buoyancy in X-ray binaries, predicting F_{UBii\_roche} = 1.964$\times$1055 N for Cygnus X-2. Variants
+transfer buoyancy in X-ray binaries, predicting F_UBii_roche = 1.964$\times$1055 N for Cygnus X-2. Variants
 15 (ent), 16 (dec), and 17 (lobe) address entanglement entropy, quantum decoherence, and AGN radio
 lobe dynamics respectively. Together, these six variants complete the 17-variant taxonomy spanning
 from quantum to cosmological scales.
@@ -59,7 +59,7 @@ For a 10 M? black hole: T_H ~ 6$\times$10?? K  unmeasurable in practice, but pro
 gravitational foundation for black hole thermodynamics. The UQFF buoyancy force is the
 field-theoretic manifestation of this thermal back-pressure.
 
-### 1.2 F_{UBii\_hawk} Equation
+### 1.2 F_UBii_hawk Equation
 
 $$F_{\mathrm{UBii,hawk}} = -F_{\mathrm{rel}} \cdot \frac{\hbar c^3}{8\pi G M_{BH} k_B E_{\mathrm{LEP}}} \cdot Q_{\mathrm{wave}} \cdot \left(\frac{r_s}{r}\right)^2$$
 
@@ -99,11 +99,11 @@ F_hawk = -10?  1.014$\times$10 $\approx$ 0.2424 = -2.452 N
 
 $$\boxed{F_{\mathrm{UBii,hawk}}^{5M_\odot} = -2.452 \text{ N}}$$
 
-**Validator confirms: BuoyancyProofVariants.py ? F_{UBii\_hawk} = -2.452 N ?**
+**Validator confirms: BuoyancyProofVariants.py ? F_UBii_hawk = -2.452 N ?**
 
 ### 1.4 Physical Interpretation
 
-F_{UBii\_hawk} = -2.452 N is a **laboratory-scale force**  the UQFF buoyancy of Hawking radiation from
+F_UBii_hawk = -2.452 N is a **laboratory-scale force**  the UQFF buoyancy of Hawking radiation from
 a stellar-mass black hole is equivalent to the weight of ~0.25 kg (250 grams) on Earth's surface.
 This is remarkable: the quantum gravitational effect of a black hole, 1.4 as massive as the Sun,
 registers as a kilogram-scale buoyancy force in the UQFF framework.
@@ -123,7 +123,7 @@ when the universe's energy density reaches the Planck density ?_Planck ~ 5.155$\
 density, quantum geometry effects dominate and the classical GR equations are replaced by effective
 loop quantum equations.
 
-### 2.2 F_{UBii\_bd} Equation
+### 2.2 F_UBii_bd Equation
 
 $$F_{\mathrm{UBii,bd}} = F_{\mathrm{rel}} \cdot \frac{\rho_{\mathrm{bounce}}}{\rho_{\mathrm{Planck}}} \cdot \frac{H_{\mathrm{bounce}}^2}{E_{\mathrm{LEP}}} \cdot Q_{\mathrm{wave}} \cdot \left(\frac{a_{\mathrm{bounce}}}{a}\right)^3$$
 
@@ -158,7 +158,7 @@ cataclysmic variables (white dwarf accretors), and likely Type Ia supernova prog
 **Key system:** Cygnus X-2  neutron star X-ray binary with M_donor = 0.6 M?, M_NS = 1.8 M?, P_orb =
 9.84 days, dM/dt ~ 3$\times$10?? M?/yr
 
-### 3.2 F_{UBii\_roche} Equation
+### 3.2 F_UBii_roche Equation
 
 $$F_{\mathrm{UBii,roche}} = F_{\mathrm{rel}} \cdot \frac{G \cdot M_{\mathrm{donor}} \cdot M_{\mathrm{accretor}}}{R_L^2 \cdot E_{\mathrm{LEP}}} \cdot Q_{\mathrm{wave}} \cdot \frac{dM}{dt}$$
 
@@ -185,11 +185,11 @@ $$F_{\mathrm{roche}} = 10^{-10} \times \frac{6.674\times10^{-11} \times 1.193\ti
 
 $$\boxed{F_{\mathrm{UBii,roche}}^{CygX2} = 1.964 \times 10^{55} \text{ N}}$$
 
-**Validator confirms: BuoyancyProofVariants.py ? F_{UBii\_roche} = 1.964$\times$1055 N ?**
+**Validator confirms: BuoyancyProofVariants.py ? F_UBii_roche = 1.964$\times$1055 N ?**
 
 ### 3.4 Physical Interpretation
 
-F_{UBii\_roche} = 1.964$\times$1055 N is the UQFF unified field force driving Cygnus X-2's mass transfer.
+F_UBii_roche = 1.964$\times$1055 N is the UQFF unified field force driving Cygnus X-2's mass transfer.
 Compare to the gravitational tidal force at L1:
 $$F_{\mathrm{tidal}}^{L1} \sim \frac{G M_{\mathrm{NS}} \cdot M_{\mathrm{donor}}}{a^2} \sim \frac{6.674\times10^{-11} \times 3.58\times10^{30} \times 1.193\times10^{30}}{(3\times10^9)^2} \sim 3.2\times10^{31} \text{ N}$$
 
@@ -201,7 +201,7 @@ formulation.
 
 ## 4. Variant 15: Entanglement Entropy Buoyancy (ent)
 
-### 4.1 F_{UBii\_ent} Equation
+### 4.1 F_UBii_ent Equation
 
 $$F_{\mathrm{UBii,ent}} = -F_{\mathrm{rel}} \cdot \frac{k_B S_{\mathrm{ent}}}{E_{\mathrm{LEP}}} \cdot \frac{A_{\mathrm{surf}}}{l_P^2} \cdot Q_{\mathrm{wave}} \cdot \ln(N_{\mathrm{states}})$$
 
@@ -219,14 +219,14 @@ The UQFF entanglement buoyancy is therefore:
 $$F_{\mathrm{UBii,ent}}^{BH} = -F_{\mathrm{rel}} \cdot \frac{k_B S_{BH}}{E_{\mathrm{LEP}}} \cdot S_{BH} \cdot Q_{\mathrm{wave}} \cdot \ln(e^{S_{BH}}) = -F_{\mathrm{rel}} \cdot \frac{k_B}{E_{\mathrm{LEP}}} \cdot S_{BH}^3$$
 
 This S^3 scaling of black hole entanglement buoyancy is a UQFF prediction: for Sgr A* (S_BH ~ 10?
-bits), F_{UBii\_ent} ~ -10?  (1.381$\times$10?/1.22$\times$10??)  (10?) ? -10-57 N  an astronomically large force
+bits), F_UBii_ent ~ -10?  (1.381$\times$10?/1.22$\times$10??)  (10?) ? -10-57 N  an astronomically large force
 that reflects the enormous information content of the SMBH.
 
 ### 4.3 Page Curve Interpretation
 
-The UQFF entanglement buoyancy reversal at the Page time corresponds to F_{UBii\_ent} changing sign:
-- Before Page time: F_{UBii\_ent} < 0 (entropy increasing, information lost  inward compression)
-- After Page time: F_{UBii\_ent} > 0 (entropy decreasing, information recovered  outward buoyancy)
+The UQFF entanglement buoyancy reversal at the Page time corresponds to F_UBii_ent changing sign:
+- Before Page time: F_UBii_ent < 0 (entropy increasing, information lost  inward compression)
+- After Page time: F_UBii_ent > 0 (entropy decreasing, information recovered  outward buoyancy)
 
 This UQFF prediction provides a dynamical force-based interpretation of the Page curve: information
 recovery is literally driven by a change in the direction of the entanglement buoyancy force.
@@ -235,15 +235,15 @@ recovery is literally driven by a change in the direction of the entanglement bu
 
 ## 5. Variant 16: Decoherence Time Buoyancy (dec)
 
-### 5.1 F_{UBii\_dec} Equation
+### 5.1 F_UBii_dec Equation
 
 $$F_{\mathrm{UBii,dec}} = F_{\mathrm{rel}} \cdot \frac{\hbar}{\tau_{\mathrm{dec}} \cdot E_{\mathrm{LEP}}} \cdot \frac{\lambda_{dB}^2}{\sigma_{\mathrm{scatter}}} \cdot Q_{\mathrm{wave}} \cdot e^{-t/\tau_{\mathrm{dec}}}$$
 
 ### 5.2 Exponential Decay
 
-The exp(-t/t_dec) factor gives F_{UBii\_dec} an exponential time profile  the buoyancy force decreases
+The exp(-t/t_dec) factor gives F_UBii_dec an exponential time profile  the buoyancy force decreases
 as quantum coherence is lost to the environment. At t = 0, the full UQFF quantum buoyancy acts. At t
->> t_dec, F_{UBii\_dec} ? 0 and the system is fully classical.
+>> t_dec, F_UBii_dec ? 0 and the system is fully classical.
 
 ### 5.3 Quantum-Classical Transition
 
@@ -264,7 +264,7 @@ Powerful radio galaxies (Cygnus A, Hercules A, MS0735) inflate radio lobes that 
 through the ICM, preventing cooling flows. The lobe interior is filled with relativistic plasma
 (?_lobe << ?_ICM), rising like a hot air balloon.
 
-### 6.2 F_{UBii\_lobe} Equation
+### 6.2 F_UBii_lobe Equation
 
 $$F_{\mathrm{UBii,lobe}} = F_{\mathrm{rel}} \cdot \frac{P_{\mathrm{lobe}} V_{\mathrm{lobe}}}{E_{\mathrm{LEP}}} \cdot \frac{\rho_{\mathrm{ICM}}}{\rho_{\mathrm{lobe}}} \cdot Q_{\mathrm{wave}} \cdot \frac{v_{\mathrm{rise}}}{c}$$
 
@@ -312,15 +312,15 @@ from the density ratio and relativistic effects).
 
 Variants 1217 complete the F_UBii taxonomy:
 
-1. **hawk:** F_{UBii\_hawk} = -2.452 N for 5 M? BH – Hawking radiation in UQFF appears as a
+1. **hawk:** F_UBii_hawk = -2.452 N for 5 M? BH – Hawking radiation in UQFF appears as a
 laboratory-scale inward buoyancy
 2. **bd:** LQC bounce buoyancy ~0.034 N  pre-inflationary signal propagated to today
-3. **roche:** F_{UBii\_roche} = 1.964$\times$1055 N for Cygnus X-2  mass-transfer-amplified gravitational
+3. **roche:** F_UBii_roche = 1.964$\times$1055 N for Cygnus X-2  mass-transfer-amplified gravitational
 buoyancy
 4. **ent:** Entanglement buoyancy scales as S  Page curve = F_UBii sign reversal
 5. **dec:** Decoherence buoyancy exponentially decays  quantum-to-classical transition is a force
 diminution
-6. **lobe:** F_{UBii\_lobe} ~ 5$\times$106 N for Cygnus A – AGN lobe buoyancy drives cluster ICM feedback
+6. **lobe:** F_UBii_lobe ~ 5$\times$106 N for Cygnus A – AGN lobe buoyancy drives cluster ICM feedback
 
 All 17 F_UBii variants are self-consistent with the base equation F_UBii = F_U - F_Bi - F_i,
 normalized by F_rel = 10? N and E_LEP = 1.22$\times$10?? J.
@@ -338,7 +338,7 @@ normalized by F_rel = 10? N and E_LEP = 1.22$\times$10?? J.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -419,7 +419,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -432,7 +432,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
-> *Added by upgrade_{early\_whitepapers}.py (v4.75). This appendix cross-references
+> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
 > the production physics constants and master equations to enable reproducibility
 > against the current codebase state.*
 
@@ -456,13 +456,13 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `c`ompute_{Ug1\_SOURCE}`4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_{Ug2\_SOURCE}`4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `c`ompute_{Ug3\_SOURCE}`4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
-| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
 $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
@@ -496,7 +496,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 ### §A.1 Sector Classification
 
 This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -511,11 +511,11 @@ $$V(\phi_{\mathrm{BH}}) = \frac{1}{2} m^2 \phi_{\mathrm{BH}}^2 + \frac{\lambda}{
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{BH}}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R + \rho_{\mathrm{vac,[SCm]}} g_{\mu\nu} + F_{U\_Bi\_i}/r^2 = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{BH}}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R + \rho_{\mathrm{vac,[SCm]}} g_{\mu\nu} + F_U_Bi_i/r^2 = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{BH}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{BH}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -544,9 +544,9 @@ Since $p_{\mathrm{DVP}} = 29$ is **resonant** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **106 M_BH/M_{M\_sun} yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -575,9 +575,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -592,19 +592,19 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1058 | LQG Ashtekar Area Spectrum SCm |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 
@@ -615,16 +615,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -633,8 +633,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -642,7 +642,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -653,8 +653,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -673,8 +673,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 

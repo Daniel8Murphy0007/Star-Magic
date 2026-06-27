@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1088
-title: "F_{U\_Bi\_i} Seven-Component Force Decomposition: Phonon, Inflation, BCS, VDS, DVP, BSH, and QCalcGeom Sectors"
+title: "F_U_Bi_i Seven-Component Force Decomposition: Phonon, Inflation, BCS, VDS, DVP, BSH, and QCalcGeom Sectors"
 session: 225
 date: 2026-04-15
 author: "Daniel T. Murphy"

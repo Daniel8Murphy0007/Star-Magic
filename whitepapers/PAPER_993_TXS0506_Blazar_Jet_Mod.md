@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_993
-title: "TXS 0506+056 Blazar Jet F_{U\_Bi\_i} Modulation — 3.3x Peak"
+title: "TXS 0506+056 Blazar Jet F_U_Bi_i Modulation — 3.3x Peak"
 session: 218
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -12,7 +12,7 @@ calibration: {M_BH: "3e8 Msun", a_spin: 0.95, peak_mod: "3.3x", B_gauss: 5000}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_993: TXS 0506+056 Blazar Jet F_{U\_Bi\_i} Modulation
+# PAPER_993: TXS 0506+056 Blazar Jet F_U_Bi_i Modulation
 
 ## Abstract
 
@@ -29,13 +29,13 @@ with $A_{\text{jet}} = 2.3$ for TXS 0506+056 (higher than CenA due to extreme sp
 The 3.3$\times$ jet power enhancement at SCm resonance provides a natural explanation for the IceCube
 neutrino excess: enhanced proton acceleration in the jet produces pions that decay to neutrinos.
 
-## 3. F_{U\_Bi\_i} at Horizon
+## 3. F_U_Bi_i at Horizon
 
 The buoyancy-gravity balance at the ergosphere boundary ($r_H$ for $a = 0.95$) gives $F_{U,\text{Bi}_i} < 0$ (inward-dominant), with the jet modulation acting as a perturbative correction.
 
 ## 4. Implementation
 
-File: `fubi_{inside\_outside}.py`, class `TXS0506FUBiCurves`. CP4 class #577.
+File: `fubi_inside_outside.py`, class `TXS0506FUBiCurves`. CP4 class #577.
 
 ---
 
@@ -44,7 +44,7 @@ File: `fubi_{inside\_outside}.py`, class `TXS0506FUBiCurves`. CP4 class #577.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -94,7 +94,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -173,20 +173,20 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

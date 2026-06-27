@@ -198,7 +198,7 @@ At $\Gamma = 0.3\ \mathrm{THz}$: $\Phi(\omega_0) = 1.0$, half-maximum at $\pm 0.
 - **PAPER\_1129**: VDS/DVP/BH long-form derivations
 - **PAPER\_1130**: 26D folding operator $\mathcal{F}_{26}$ built on this manifold
 - **CondensedPhysics4.py**: `SCmVacuumManifoldPrimordialCalculator` (#632)
-- **scm\_vacuum\_manifold.py**: `compute_{F\_U\_Bi\_i\_numerical}()`, `SSQ`, `RHO_{VAC\_SCM}`
+- **scm\_vacuum\_manifold.py**: `compute_F_U_Bi_i_numerical()`, `SSQ`, `RHO_VAC_SCM`
 
 ---
 

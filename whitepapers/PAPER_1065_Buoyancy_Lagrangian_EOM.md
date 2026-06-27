@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1065
-title: "Buoyancy Lagrangian EOM -- Variational Derivation of F_{U\_Bi\_i}"
+title: "Buoyancy Lagrangian EOM -- Variational Derivation of F_U_Bi_i"
 session: 204
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -11,11 +11,11 @@ crosslinks: [PAPER_1064]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1065: Buoyancy Lagrangian EOM — Variational Derivation of F_{U\_Bi\_i}
+# PAPER_1065: Buoyancy Lagrangian EOM — Variational Derivation of F_U_Bi_i
 
 ## Abstract
 
-We present the variational derivation of F_{U\_Bi\_i} from the UQFF Lagrangian. Starting from L_UQFF = T
+We present the variational derivation of F_U_Bi_i from the UQFF Lagrangian. Starting from L_UQFF = T
 - V_grav + V_buoy + L_phonon, the Euler-Lagrange equation delta_S/delta_phi = 0 yields the master
 buoyancy equation of motion: d^2r/dt^2 = -$\mu$_s$\nabla$(M_s/r) + g_buoy(r,t) + g_phonon(r,Gamma). The variational
 approach confirms self-consistency with the 6-layer master equation (PAPER_979) and provides a
@@ -76,7 +76,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -175,7 +175,7 @@ BSH timescale: sector-dependent.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -185,7 +185,7 @@ BSH timescale: sector-dependent.
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1066 | UQFF Lagrangian First Principles Field Theory |

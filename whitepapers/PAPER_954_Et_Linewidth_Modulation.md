@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** blazar_{jet\_phonon}.py (EtLinewidthModulation)
+**Source:** blazar_jet_phonon.py (EtLinewidthModulation)
 **Calculator:** EtLinewidthModulationCalc (CP4 #538)
 **CVW:** v2.0.0 compliant
 
@@ -47,7 +47,7 @@ $$t_\text{flip} = \frac{\pi}{2\omega_text{SCm}} \approx 0.064 \text{ ps}$$
 
 ## 4. Source Data
 
-- **File:** blazar_{jet\_phonon}.py
+- **File:** blazar_jet_phonon.py
 - **Session:** 214
 - **CP4 Class:** EtLinewidthModulationCalc (#538)
 
@@ -79,7 +79,7 @@ $$t_\text{flip} = \frac{\pi}{2\omega_text{SCm}} \approx 0.064 \text{ ps}$$
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -165,13 +165,13 @@ $\text{BSH}(t) = S_{26} \cdot |\cos(\omega_text{SCm} t)| \cdot \exp(-\Gamma t)$ 
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
@@ -179,7 +179,7 @@ $\text{BSH}(t) = S_{26} \cdot |\cos(\omega_text{SCm} t)| \cdot \exp(-\Gamma t)$ 
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

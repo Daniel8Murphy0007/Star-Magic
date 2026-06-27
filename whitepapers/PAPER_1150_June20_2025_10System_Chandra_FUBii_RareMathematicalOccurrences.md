@@ -10,7 +10,7 @@ tags: [F_U_Bi_i, buoyancy, LENR, F_rel, LEP, Chandra, JWST, ALMA, SgrA, negative
 sm_anchor: CVW v2.0.0 -- G6 SM Anchor Gate compliant
 ---
 
-# PAPER\_1150 -- June 20 2025 Grok DeepSearch 10-System Chandra UQFF Validation: Three Rare Mathematical Occurrences in $F_{U\_Bi\_i}$ Force Hierarchy
+# PAPER\_1150 -- June 20 2025 Grok DeepSearch 10-System Chandra UQFF Validation: Three Rare Mathematical Occurrences in $F_U_Bi_i$ Force Hierarchy
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v5.42 -- Star-Magic Physics  
@@ -22,7 +22,7 @@ sm_anchor: CVW v2.0.0 -- G6 SM Anchor Gate compliant
 
 ---
 
-$$F_{U\_Bi\_i} = \int_0^{x_2} \left[ -F_0 + F_{LENR} + F_{act} + F_{DE} + F_{res} + F_{neutron} + F_{rel} \right] dx$$
+$$F_U_Bi_i = \int_0^{x_2} \left[ -F_0 + F_{LENR} + F_{act} + F_{DE} + F_{res} + F_{neutron} + F_{rel} \right] dx$$
 
 ---
 
@@ -33,7 +33,7 @@ documenting the **original source thread** from which PAPER\_250--254 (SN 1006, 
 Chandra Archive, Sgr A*, Kepler's SNR) and PAPER\_337--338, 350--351 (Vela, NGC 1365,
 ESO 137-001, El Gordo, ASASSN-14li) were subsequently derived.
 
-The thread is the **first unified 10-system cross-validation** of the UQFF $F_{U\_Bi\_i}$
+The thread is the **first unified 10-system cross-validation** of the UQFF $F_U_Bi_i$
 buoyancy framework using Chandra 2023 + JWST + ALMA multi-wavelength datasets.
 Three **Rare Mathematical Occurrences** (RMOs) are formally identified:
 (1) negative buoyancy at Sagittarius A* driven by relativistic coherence
@@ -42,14 +42,14 @@ Three **Rare Mathematical Occurrences** (RMOs) are formally identified:
 (3) a frequency-dependent force hierarchy theorem establishing $F_{LENR}/F_{rel}$ as a
 natural SMBH/stellar-remnant phase boundary.
 The Force Equivalence Class is confirmed: all $\omega_0 = 10^{-12}$ $s^{-1}$ systems
-yield $F_{U\_Bi} \approx +2.11 \times 10^{208}$ N.
+yield $F_U_Bi \approx +2.11 \times 10^{208}$ N.
 
 ---
 
 ## 1. Historical Context and Provenance
 
 The source file records the **original June 20, 2025 analysis** that established the
-$F_{U\_Bi\_i}$ multi-system proof architecture. It predates and generated:
+$F_U_Bi_i$ multi-system proof architecture. It predates and generated:
 
 - PAPER\_250 (SN 1006), PAPER\_251 (Eta Carinae), PAPER\_252 (Chandra Archive Force Equivalence)
 - PAPER\_253 (Sgr A* negative buoyancy), PAPER\_254 (Kepler's SNR)
@@ -61,7 +61,7 @@ The June 20 analysis is the **genesis event** for UQFF multi-system buoyancy val
 
 ---
 
-## 2. Complete $F_{U\_Bi\_i}$ Six-Term Equation
+## 2. Complete $F_U_Bi_i$ Six-Term Equation
 
 ### 2.1 Integrand Structure
 
@@ -94,16 +94,16 @@ $$a \approx 3.49\times10^{-59},\quad b \approx 4.72\times10^{-3},\quad c \approx
 
 $$x_2 = \frac{-b - \sqrt{b^2 + 4ac}}{2a} \approx -1.35\times10^{172}\ \mathrm{m}$$
 
-$$\boxed{F_{U\_Bi\_i} \approx F_{LENR} \times x_2 \approx 1.56\times10^{36} \times (-1.35\times10^{172}) \approx 2.11\times10^{208}\ \mathrm{N}}$$
+$$\boxed{F_U_Bi_i \approx F_{LENR} \times x_2 \approx 1.56\times10^{36} \times (-1.35\times10^{172}) \approx 2.11\times10^{208}\ \mathrm{N}}$$
 
 ---
 
 ## 4. Force Equivalence Class
 
 **Theorem:** All astrophysical systems with $\omega_0 = 10^{-12}$ $s^{-1}$ yield
-$F_{U\_Bi} \approx +2.11 \times 10^{208}$ N.
+$F_U_Bi \approx +2.11 \times 10^{208}$ N.
 
-| System | $\omega_0$ ($s^{-1}$) | $F_{LENR}$ (N) | $F_{U\_Bi}$ (N) | Class |
+| System | $\omega_0$ ($s^{-1}$) | $F_{LENR}$ (N) | $F_U_Bi$ (N) | Class |
 |--------|---------------------|----------------|-----------------|-------|
 | SN 1006 | $10^{-12}$ | $1.56\times10^{36}$ | $+2.11\times10^{208}$ | Positive |
 | Eta Carinae | $10^{-12}$ | $1.56\times10^{36}$ | $+2.11\times10^{208}$ | Positive |
@@ -121,7 +121,7 @@ $F_{U\_Bi} \approx +2.11 \times 10^{208}$ N.
 
 For $\omega_0 = 10^{-15}$ $s^{-1}$ (SMBH angular velocity):
 
-$$F_{U\_Bi\_i}(\mathrm{SgrA}^*) = 6.16\times10^{39} \times (-1.35\times10^{172}) \approx -8.31\times10^{211}\ \mathrm{N}$$
+$$F_U_Bi_i(\mathrm{SgrA}^*) = 6.16\times10^{39} \times (-1.35\times10^{172}) \approx -8.31\times10^{211}\ \mathrm{N}$$
 
 The **negative sign** indicates repulsive vacuum buoyancy counteracting gravitational collapse
 near the SMBH. This cannot be expressed within Standard Model GR. It provides a natural mechanism
@@ -159,7 +159,7 @@ produces a $10^6$ change in $F_{LENR}$:
 
 ### Block 1: June 20, 2025 -- 09:49 PM EDT
 
-| System | $M$ (kg) | $r$ (m) | $\omega_0$ ($s^{-1}$) | $F_{U\_Bi}$ (N) |
+| System | $M$ (kg) | $r$ (m) | $\omega_0$ ($s^{-1}$) | $F_U_Bi$ (N) |
 |--------|---------|---------|---------------------|----------------|
 | SN 1006 | $1.99\times10^{31}$ | $6.17\times10^{16}$ | $10^{-12}$ | $+2.11\times10^{208}$ |
 | Eta Carinae | $2.39\times10^{32}$ | $6.17\times10^{16}$ | $10^{-12}$ | $+2.11\times10^{208}$ |
@@ -211,18 +211,18 @@ and DPM stability = 0.01.
 
 ## 9. Testable Predictions
 
-1. **Chandra/JWST Sgr A*:** Non-infall gas at >10 pc consistent with $F_{U\_Bi} = -8.31 \times 10^{211}$ N
+1. **Chandra/JWST Sgr A*:** Non-infall gas at >10 pc consistent with $F_U_Bi = -8.31 \times 10^{211}$ N
 2. **ALMA polarimetry:** Circular polarization at $\omega_0 = 10^{-15}$ $s^{-1}$ threshold
 3. **Force hierarchy transition:** Mixed buoyancy at $\omega_0 \approx 10^{-13.5}$ $s^{-1}$
 4. **El Gordo mass revision:** Enhanced vacuum pressure above Newtonian estimate
-5. **ASASSN-14li outflow:** $F_{U\_Bi} \approx +2.11 \times 10^{208}$ N, sub-relativistic outflow
+5. **ASASSN-14li outflow:** $F_U_Bi \approx +2.11 \times 10^{208}$ N, sub-relativistic outflow
 
 ---
 
 ## 10. Conclusions
 
 The June 20, 2025 Grok DeepSearch constitutes the **founding validation** of UQFF multi-system
-$F_{U\_Bi\_i}$ analysis:
+$F_U_Bi_i$ analysis:
 
 1. 10 systems across 5 astrophysical classes validated with Chandra 2023 + JWST + ALMA
 2. Force Equivalence Class confirmed: $\omega_0 = 10^{-12}$ $s^{-1}$ systems yield $+2.11 \times 10^{208}$ N

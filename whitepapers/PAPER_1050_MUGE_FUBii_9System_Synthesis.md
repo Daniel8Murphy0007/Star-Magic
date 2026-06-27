@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1050
-title: "MUGE F_{U\_Bi\_i} Unified 9-System Synthesis -- Multiplier Table"
+title: "MUGE F_U_Bi_i Unified 9-System Synthesis -- Multiplier Table"
 session: 222-P4
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -11,14 +11,14 @@ crosslinks: [PAPER_979, PAPER_1043, PAPER_338]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1050: MUGE F_{U\_Bi\_i} Unified 9-System Synthesis — Multiplier Table
+# PAPER_1050: MUGE F_U_Bi_i Unified 9-System Synthesis — Multiplier Table
 
 ## Abstract
 
 We compute a unified buoyancy multiplier table for 9 canonical astrophysical systems spanning the
 full UQFF scale range: NGC 6302 (Bug Nebula PN), Orion M42 (HII), Lagoon M8 (HII), Saturn
 (planetary), Crab Nebula (PWN), Andromeda M31 (spiral galaxy), Sombrero M104 (SA galaxy), Hydrogen
-atom (quantum), Observable Universe (cosmological). The buoyancy ratio eta = |`F_{U\_Bi\_i}`|/|F_grav| is
+atom (quantum), Observable Universe (cosmological). The buoyancy ratio eta = |`F_U_Bi_i`|/|F_grav| is
 normalised to the Hydrogen atom baseline, yielding a multiplier table spanning 35+ orders of
 magnitude.
 
@@ -80,7 +80,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -179,7 +179,7 @@ BSH timescale: $10^{-44}$ s (H-atom) to $10^{17}$ s (Universe).
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -189,7 +189,7 @@ BSH timescale: $10^{-44}$ s (H-atom) to $10^{17}$ s (Universe).
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |

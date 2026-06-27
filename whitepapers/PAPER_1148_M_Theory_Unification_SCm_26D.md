@@ -118,7 +118,7 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \kappa = 5.0
 
 1. Witten, E. (1995). String theory dynamics in various dimensions. *Nucl. Phys. B* **443**, 85.
 2. Horava, P. & Witten, E. (1996). Eleven-dimensional supergravity on a manifold with boundary. *Nucl. Phys. B* **460**, 506.
-3. Polyakov: PAPER_1142; Nambu-Goto: PAPER_1143; Type IIA: PAPER_1145; Heterotic: PAPER_1146; CY: PAPER_1147; `scm_{vacuum\_manifold}.py`
+3. Polyakov: PAPER_1142; Nambu-Goto: PAPER_1143; Type IIA: PAPER_1145; Heterotic: PAPER_1146; CY: PAPER_1147; `scm_vacuum_manifold.py`
 
 
 ### Key References with arXiv/DOI Identifiers

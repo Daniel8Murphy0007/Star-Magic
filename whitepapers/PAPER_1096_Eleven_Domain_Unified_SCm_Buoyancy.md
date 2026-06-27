@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1096
-title: "Eleven-Domain Unified SCm Buoyancy Validation: F_{U\_Bi} + F_{U\_Bi\_i} = F_U Across All Sectors"
+title: "Eleven-Domain Unified SCm Buoyancy Validation: F_U_Bi + F_U_Bi_i = F_U Across All Sectors"
 session: 225
 date: 2026-04-15
 author: "Daniel T. Murphy"
@@ -93,7 +93,7 @@ all observed phenomena. Gravity is the late-emergent central limit.
 - PAPER_1094: CMB Buoyancy Sector Lagrangian
 - PAPER_1095: Horizon Buoyancy Sector Lagrangian
 - PAPER_979: FUBiMasterBuoyancyCalc (CP4)
-- PAPER_990: F_{U\_Bi} Distinction (fubi_{inside\_outside}.py)
+- PAPER_990: F_U_Bi Distinction (fubi_inside_outside.py)
 
 
 ### Key References with arXiv/DOI Identifiers

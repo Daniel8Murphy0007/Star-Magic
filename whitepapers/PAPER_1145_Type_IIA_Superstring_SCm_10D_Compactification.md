@@ -96,7 +96,7 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \beta_i = 0.
 
 1. Polchinski, J. (1995). *String Theory*, Vol. 2. Cambridge.
 2. Witten, E. (1995). String theory dynamics in various dimensions. *Nucl. Phys. B* **443**, 85.
-3. Type IIB in SCm: PAPER_1144; M-theory: PAPER_1148; `scm_{vacuum\_manifold}.py`
+3. Type IIB in SCm: PAPER_1144; M-theory: PAPER_1148; `scm_vacuum_manifold.py`
 
 
 ### Key References with arXiv/DOI Identifiers

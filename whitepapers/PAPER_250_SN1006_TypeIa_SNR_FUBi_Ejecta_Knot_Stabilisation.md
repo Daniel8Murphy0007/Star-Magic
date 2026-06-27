@@ -1,17 +1,17 @@
 ﻿---
 paper_id: PAPER_250
-title: "SN 1006 Type Ia SNR F_{U\_Bi\_i} — Ejecta Knot Stabilisation and Force Equivalence Class
+title: "SN 1006 Type Ia SNR F_U_Bi_i — Ejecta Knot Stabilisation and Force Equivalence Class
 Founding Member"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [AGN, F_{U\_Bi\_i}, UQFF, Chandra, LENR, phonon, FUBi, supernova]
+tags: [AGN, F_U_Bi_i, UQFF, Chandra, LENR, phonon, FUBi, supernova]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_250: SN 1006 Type Ia SNR F_{U\_Bi\_i} — Ejecta Knot Stabilisation and Force Equivalence Class Founding Member
+# PAPER_250: SN 1006 Type Ia SNR F_U_Bi_i — Ejecta Knot Stabilisation and Force Equivalence Class Founding Member
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -21,10 +21,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_b_i, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b\_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa =
+h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_b_i/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1}
 $$
 
@@ -33,7 +33,7 @@ $$
 SN 1006 is the remnant of a Type Ia supernova that occurred approximately 1,019 years ago (~1006 CE)
 at a distance of ~7,000 light-years. Among the five Chandra dataset systems studied in Sessions
 72b–72d, SN 1006 serves as the **founding member of the UQFF Force Equivalence Class** — the first
-system to establish the benchmark F_{U\_Bi} ˜ +2.11 $\times$ 102°8 N for all ?0 = 10?12 systems.
+system to establish the benchmark F_U_Bi ˜ +2.11 $\times$ 102°8 N for all ?0 = 10?12 systems.
 
 Three physically distinct phenomena are discoverable from this system:
 
@@ -82,7 +82,7 @@ $$
 $$
 
 This is the canonical SN 1006 DPM value. As PAPER_251 will show, this is 100$\times$ smaller than the Eta
-Carinae value — yet both produce the same F_{U\_Bi}.
+Carinae value — yet both produce the same F_U_Bi.
 
 ### 2.2 LENR Dominant Force
 
@@ -97,7 +97,7 @@ $$
 $$
 
 F_LENR is 33 orders of magnitude larger than the DPM-seeded gravity term (~106 N), confirming LENR as
-the dominant contributor to the F_{U\_Bi\_i} integrand.
+the dominant contributor to the F_U_Bi_i integrand.
 
 ### 2.3 Ejecta Knot Stabilisation via F_neutron
 
@@ -120,7 +120,7 @@ provides this coherence through Kozima-model neutron capture phonon coupling at 
 This is a unique property of Type Ia ejecta knots where near-nuclear densities persist in
 filamentary structures.
 
-### 2.4 Integration Upper Limit x2 and F_{U\_Bi\_i}
+### 2.4 Integration Upper Limit x2 and F_U_Bi_i
 
 The quadratic stability condition `a\cdotx2 + b\cdotx + c = 0` yields:
 $$
@@ -132,7 +132,7 @@ $$
 \end{aligned}
 $$
 
-The F_{U\_Bi\_i} integral:
+The F_U_Bi_i integral:
 $$
 \begin{aligned}
   & \text{F\_U\_Bi\_i} = integrand_total \times |x2| \\
@@ -145,7 +145,7 @@ $$
 ## 3. Force Equivalence Class Theorem (Founding Statement)
 
 **Theorem (UQFF Equivalence Class — SN 1006 Founding Member):** Any astrophysical system
-characterised by ?0 = 10?12 rad/s will produce F_{U\_Bi} ˜ +2.11 $\times$ 102°8 N regardless of mass M,
+characterised by ?0 = 10?12 rad/s will produce F_U_Bi ˜ +2.11 $\times$ 102°8 N regardless of mass M,
 luminosity L_X, age t, magnetic field B0, or ejecta density ?. The ?0 parameter gates the buoyancy
 sector through F_LENR = k_LENR$\cdot$(?_LENR/?0)2, which overwhelms all other terms by = 33 orders.
 
@@ -183,7 +183,7 @@ SN 1006 is the **founding member** of this equivalence class. PAPER_251 (Eta Car
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -248,7 +248,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_{lagrangian\_derivation}.py`).
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
@@ -267,7 +267,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_U_Bi_i \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -298,7 +298,7 @@ Since $p_{\mathrm{DVP}} = 31$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_U_b \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
@@ -327,9 +327,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -344,14 +344,14 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
@@ -376,16 +376,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -394,8 +394,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -403,7 +403,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -414,8 +414,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -434,8 +434,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
-`uqff_{mock\_theta\_pi\_kernel}.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
 
 
 
