@@ -419,7 +419,10 @@ def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22):
     """
     import math
     c   = 2.998e8       # speed of light [m/s]
-    # G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.    # gravitational constant [m^3/kg/s^2]
+    # [d26ab19d recovery 2026-06-26] restore local G_N - a later perversion cleanup
+    # commented out the assignment but left the function body referencing G_N at L427.
+    # Restoring d26ab19d original value (CODATA G; if pure-UQFF G needed, see Gold_Standard derive_G_uqff).
+    G_N = 6.6743e-11    # gravitational constant [m^3/kg/s^2]
     cos_tn = math.cos(math.pi * (-100.0))   # canonical negative-time gate
     # SCm vacuum energy density amplified to GW scale via S_26^(3) Ramanujan factor
     E_gw  = RHO_VAC_SCM * S26_3 * Phi_resonance * (1.0 + F_TRZ)

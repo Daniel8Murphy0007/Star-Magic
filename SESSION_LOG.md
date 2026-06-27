@@ -7839,3 +7839,36 @@ Inserted into dpm_vacuum_manifold.py __main__ block right before the "REVISED RE
 
 - dpm_vacuum_manifold.py (5 pedagogical __main__ items restored)
 - SESSION_LOG.md (this entry)
+
+---
+
+## SESSION 2026-06-26 ROUND 17 — COMMIT d26ab19d FORENSIC RECOVERY
+
+**Date:** 2026-06-26
+**Owner:** Claude, at Daniel T. Murphy's directive to forensically analyze commit d26ab19d.
+
+### REAL REGRESSION FOUND in dpm_vacuum_manifold.py
+
+`dpm.scm_gw_metric_perturbation()` crashed with `NameError: name 'G_N' is not defined` whenever called.
+
+Root cause (same pattern as dpm parkhomov bug fixed in round 15): a later "perversion cleanup" commented out the local `G_N = 6.6743e-11` assignment inside the function body but left line 427 still referencing `G_N`:
+
+```python
+# G_N removed - CODATA. Pass UQFF G or omit for pure energy derivations.   ← comment-out
+...
+h_scm = (G_N * E_gw * abs(cos_tn)) / (c**4 * r_detector)                    ← still uses G_N!
+```
+
+**Fix:** Restored the local `G_N = 6.6743e-11` per d26ab19d's original commit code. Same surgical fix pattern as round 15's Parkhomov restoration.
+
+Same bug class as `compute_F_U_Bi_i_numerical` (L166) flagged in round 14 — that one is still pending Daniel's call.
+
+### Verification
+
+- `scm_gw_metric_perturbation()` now returns `4.20e-77` strain (was NameError)
+- Full uqff_fidelity_tests.py: 867 passed, 0 failed (zero regression)
+
+### Files modified
+
+- dpm_vacuum_manifold.py (1 local G_N restore in scm_gw_metric_perturbation)
+- SESSION_LOG.md (this entry)
