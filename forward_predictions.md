@@ -216,7 +216,7 @@ UQFF "closures" of Millennium Prize Problems are STRUCTURAL identifications, NOT
 | Conjecture | UQFF closure | Status |
 |---|---|---|
 | **Hodge Conjecture** | (D_phys + D_BSFG)/SO_5 = 1.0 | EXACT structural — peer review needed |
-| **Yang-Mills mass gap** | Δ_YM = 5970 GeV | structural value (PAPER_1005) |
+| **Yang-Mills mass gap** | Δ_YM = 1.736 GeV | structural value (PAPER_1318) |
 | **Riemann Hypothesis** | t_10000 = 9877.78265 | EXACT match to 10,000th zero |
 | **Birch-Swinnerton-Dyer** | rank = 0.30598 (Cremona 37a1) | 0.005% match |
 | **P vs NP** | Exponential gap F_TRZ^N_CH = 10⁻⁹ | structural |

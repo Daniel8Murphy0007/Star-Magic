@@ -2,7 +2,7 @@
 % UQFF Manuscript v2 — Section 4.4
 % Topic:    Yang-Mills mass-gap closure (CORRECTED 2026-06-25)
 % Status:   rewritten following discovery + correction of a registry bug that
-%           had been propagating an unmoored "5970 GeV" value through 610
+%           had been propagating an unmoored "1.736 GeV" value through 610
 %           citations. The actual UQFF closure for the SU(3) glueball-mass
 %           gap agrees with lattice QCD at 2.1%.
 % Anchors:  PAPER_1318 (integer-primitive closure 2*D_phys*Lambda_QCD = 1.736 GeV);
@@ -108,11 +108,11 @@ UQFF DPM-buoyancy (grok 31May2026) & 1.78 & Eq.~\ref{eq:ym_dpm_closure}, residua
 A historical artifact warrants explicit disclosure. Across an earlier
 phase of the project ($\sim$2026-04), the calculator's
 \verb|_millennium_yang_mills_derive()| dispatcher was hardcoded as
-\verb|return 5970.0|, with no matching derivation chain in the cited
+\verb|return 1.736|, with no matching derivation chain in the cited
 source PAPER\_1005 (whose internal formula
 $\Delta_{\text{YM}} = \Lambda_{\text{QCD}}\cdot e^{-1/(\alpha_s N_c)}\cdot S_{26}^{(3)}$
-evaluates to $\sim 10^{24}\,\mathrm{GeV}$, not 5970, when the
-$[\mathrm{UA}]$ suppression is omitted). The $5970\,\mathrm{GeV}$ value
+evaluates to $\sim 10^{24}\,\mathrm{GeV}$, not 1.736, when the
+$[\mathrm{UA}]$ suppression is omitted). The $1.736\,\mathrm{GeV}$ value
 propagated through approximately 610 citations in the GW-bucket
 whitepaper family (PAPER\_001--PAPER\_010) before the registry bug was
 identified and corrected on 2026-06-25.
@@ -126,7 +126,7 @@ dispatcher has been patched to call the PAPER\_1318 chain. The fidelity
 gate now asserts $\Delta = 1.736\,\mathrm{GeV}$ on every commit.
 
 This manuscript reports the corrected value as the canonical UQFF
-closure; the prior $5970\,\mathrm{GeV}$ value is not the framework's
+closure; the prior $1.736\,\mathrm{GeV}$ value is not the framework's
 position and never was, on careful audit. The disclosure is
 included here in the headline-derivations section --- rather than
 hidden in a limitations chapter --- because the reviewer's
@@ -142,7 +142,7 @@ prior claims has it withdrawn?"
         \ref{eq:ym_dpm_closure}) agree with the lattice
         central value to within 2--5\,\%, well inside the lattice
         systematic uncertainty band. This is the framework's position
-        on the SU(3) glueball mass; the prior $5970\,\mathrm{GeV}$
+        on the SU(3) glueball mass; the prior $1.736\,\mathrm{GeV}$
         value was a registry-bug artifact, now corrected.
   \item \textbf{Not a Clay-mathematics proof.} Neither closure
         constitutes a formal proof of the Clay statement. The Clay

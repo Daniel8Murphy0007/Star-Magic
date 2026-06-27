@@ -62,10 +62,10 @@ CATEGORY_UPGRADE_SPECS = {
     },
     "particle_physics": {
         "n_generations": 3,
-        "YM_gap_GeV": 5970.0,
+        "YM_gap_GeV": 1.736,
         "closure_call": "_uqff.calculate_particle_physics({})",
         "paper": "PAPER_1209HH + PAPER_1005 + PAPER_1220",
-        "note": "10 SM masses + YM 5970 GeV via D_phys minus 1",
+        "note": "10 SM masses + YM 1.736 GeV via D_phys minus 1",
     },
     "lenr_nuclear": {
         "holmlid_keV": 0.63,

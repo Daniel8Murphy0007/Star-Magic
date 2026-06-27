@@ -24,7 +24,7 @@ Source ranges (exact user order start):
 - PAPER_1136 through PAPER_1154 (v1.1.0: SSq Lorentz geo, PTF net-zero CPT, M-theory 26D→11D, Polyakov 26D SCm tension/tachyon, FUBii partition).
 - PAPER_1112 through PAPER_1135 (v1.2.0: SCm vacuum manifold primordial first principle (1131), LENR Kozima density-scaled neutron drop (1126), SCm 26D string phonon tension + 22-compact (1128), primordial 26D ladder split VDS/DVP/BSH Cosmic Quantum Egg (1132), 9-sector UQFF Lagrangian SCm/phonon/LENR/KK (1112+1131)).
 - PAPER_1086 through PAPER_1111 (v1.3.0: SCm DE gamma-phonon replacement for LambdaCDM (1086/1090), F_U,Bi,i 7-component force decomposition (1088), inflation+DE buoyancy Lagrangians + EL stationarity + 3 regimes (1089/1090), SCm phonon-modulated LQG area operator (1100), 26D SCm string theory action + phonon tension + Regge + tachyon cancel (1106), 26-level vacuum density ladder + Ramanujan zeta(3) truncation + WKB (1109)).
-- PAPER_1064 through PAPER_1079 (v1.4.0: UQFF 9-sector Lagrangian first-principles with explicit ρ_SCm CC subtraction (1066/1065), buoyancy EOM variational derivation for F_U,Bi,i (1065), BFKL/Sudakov SCm phonon resummation + effective coupling (1064), VDS-DVP-BSH hybrid number system unification (1069), QCalcGeom bridge to UQFF buoyancy (1067), Yang-Mills mass gap VDS bridge + BCS phonon pairing ~5970 GeV (1070)).
+- PAPER_1064 through PAPER_1079 (v1.4.0: UQFF 9-sector Lagrangian first-principles with explicit ρ_SCm CC subtraction (1066/1065), buoyancy EOM variational derivation for F_U,Bi,i (1065), BFKL/Sudakov SCm phonon resummation + effective coupling (1064), VDS-DVP-BSH hybrid number system unification (1069), QCalcGeom bridge to UQFF buoyancy (1067), Yang-Mills mass gap VDS bridge + BCS phonon pairing ~1.736 GeV (1070)).
 - PAPER_1038 through PAPER_1061 (v1.5.0: WD crystallization buoyancy latent heat SCm + Gaia pile-up delay (1038), SCm galaxy cluster ICM beta-model phonon buoyancy + HSE bias reduction (1039), M-sigma phonon-corrected SMBH power law + jet modulation (1048), LQG Ashtekar area spectrum SCm gamma shift (1058), CGC BK saturation phonon mod (1059), Kozima SCm neutron-drop LENR COP 2.3x + VDS isotopic evolution chain (1060/1061)).
 - Subsequent ranges per directive will be folded in phased (L6: 1016-1026 etc.).
 
@@ -320,7 +320,7 @@ class PredictionEngine(FirstPrinciplesCompressor):
             'uqff_9sector_lagrangian_scm_phonon_lenr': {
                 'equation': 'L_UQFF = L_EH + L_YM + L_Dirac + L_SCm + L_mag + L_buoy + L_aether + L_LENR + L_KK ; L_SCm=½(∂φ)^2 - λ(φ²-v_SCm²)² with V(φ0)=-7.09e-37 J/m³ = -ρ_SCm; 9-sector closure from phonon/LENR/KK upgrades (1112 v26 pipeline + 1131 primordial)',
                 'source_papers': ['PAPER_1112 (Production Scaling V26 Pipeline + Session 225 9-sector Lagrangian)', 'PAPER_1131 (SCm Vacuum Manifold Primordial)'],
-                'falsifiable_prediction': 'm_gap=5970 GeV (YM); Kozima neutron-drop LENR COP parametric; phonon mass m_phonon=√(8λ) v_SCm ; testable in high-density fusion / ultra-dense H(0) experiments',
+                'falsifiable_prediction': 'm_gap=1.736 GeV (YM); Kozima neutron-drop LENR COP parametric; phonon mass m_phonon=√(8λ) v_SCm ; testable in high-density fusion / ultra-dense H(0) experiments',
                 'callable': self._mode_9sector_lagrangian,
             },
             # --- NEW from exact next range PAPER_1086_–1111_ (Range-4; missing/new only; primordial first-principles per 1300+ compressor) ---
@@ -393,9 +393,9 @@ class PredictionEngine(FirstPrinciplesCompressor):
                 'callable': self._mode_vds_dvp_bsh_hybrid,
             },
             'yang_mills_mass_gap_vds_bcs_phonon': {
-                'equation': 'Δ_YM ≈ 5970 GeV = Λ_QCD · exp(-1/(α_s(T) N_c)) · S_26^(3) (BCS-like SCm phonon pairing at 1.25 THz); m_UQFF ≈ 0.44 GeV variant (VDS bridge m_YM (1 + ρ_SCm/ρ_QCD · β_i S_26)); VDS: Δ ∝ ρ_VDS^{1/4} (1 + [SSq] n/26); QGP closes at Tc≈170 MeV (α_s→0)',
+                'equation': 'Δ_YM ≈ 1.736 GeV = Λ_QCD · exp(-1/(α_s(T) N_c)) · S_26^(3) (BCS-like SCm phonon pairing at 1.25 THz); m_UQFF ≈ 0.44 GeV variant (VDS bridge m_YM (1 + ρ_SCm/ρ_QCD · β_i S_26)); VDS: Δ ∝ ρ_VDS^{1/4} (1 + [SSq] n/26); QGP closes at Tc≈170 MeV (α_s→0)',
                 'source_papers': ['PAPER_1070 (Yang-Mills Mass Gap VDS Bridge -- Vacuum Density Gap Derivation)', 'PAPER_1064 upgrade block (Session 225)'],
-                'falsifiable_prediction': 'Non-perturbative gap ~5970 GeV (or 0.44 GeV low-scale) + VDS ρ^{1/4} scaling; deconfinement transition at 170 MeV reproduces ALICE/LHC; phonon pairing mechanism testable in heavy-ion + high-density SCm experiments',
+                'falsifiable_prediction': 'Non-perturbative gap ~1.736 GeV (or 0.44 GeV low-scale) + VDS ρ^{1/4} scaling; deconfinement transition at 170 MeV reproduces ALICE/LHC; phonon pairing mechanism testable in heavy-ion + high-density SCm experiments',
                 'callable': self._mode_yang_mills_gap_vds,
             },
             # --- ADDED Range-5 completion (PAPER_1072/1073/1076; missing/new only; primordial SCm phonon/activation/inflation/DE gamma modulation per 1300+ + latest "git commit, push... Then extract") ---
@@ -412,7 +412,7 @@ class PredictionEngine(FirstPrinciplesCompressor):
                 'callable': self._mode_scm_inflation_phonon_buoyancy,
             },
             'scm_activation_phonon_threshold_heaviside': {
-                'equation': 'H_SCm(T) = 1 / (1 + exp(-(T - T_SCm)/ΔT)) ≈0.99 (smooth Heaviside); T_SCm~60 K (ω_SCm=1.25 THz equiv); 7 regimes BBN(1e9K)→ISM(100K); phonon condensation onset; from L_SCm=½(∂φ)^2 - λ(φ²-v_SCm²)^2 with V(φ0)=-ρ_SCm=-7.09e-37 J/m³ exact; m_phonon=√(8λ) v_SCm; S26^(3) Ramanujan explicit (Pochhammer + SSq exp decay); 9-sector L9 = EH+YM(m_gap=5970GeV)+Dirac+SCm+mag+buoy+aether+LENR+KK',
+                'equation': 'H_SCm(T) = 1 / (1 + exp(-(T - T_SCm)/ΔT)) ≈0.99 (smooth Heaviside); T_SCm~60 K (ω_SCm=1.25 THz equiv); 7 regimes BBN(1e9K)→ISM(100K); phonon condensation onset; from L_SCm=½(∂φ)^2 - λ(φ²-v_SCm²)^2 with V(φ0)=-ρ_SCm=-7.09e-37 J/m³ exact; m_phonon=√(8λ) v_SCm; S26^(3) Ramanujan explicit (Pochhammer + SSq exp decay); 9-sector L9 = EH+YM(m_gap=1.736 GeV)+Dirac+SCm+mag+buoy+aether+LENR+KK',
                 'source_papers': ['PAPER_1072 (SCm Activation Function Calculator -- Phonon Threshold Dynamics)', 'PAPER_1066/1073 Session 225 9-sector + S26^(3) integration'],
                 'falsifiable_prediction': 'H_SCm≈0.99 in astrophysical/condensed-matter T; 1.25 THz threshold lines in LENR spectra; explicit 9-sector closure + m_phonon + V=-ρ_SCm (no free CC) testable in high-density fusion / ultra-dense H(0) / analogue gravity',
                 'callable': self._mode_scm_activation_threshold,
@@ -678,8 +678,8 @@ class PredictionEngine(FirstPrinciplesCompressor):
         return 0.001  # 0.1% hybrid closure
 
     def _mode_yang_mills_gap_vds(self, params: Dict[str, float]) -> float:
-        """PAPER_1070 + 1064: Δ_YM ~5970 GeV BCS phonon + VDS bridge residual."""
-        target = 5970.0  # GeV gap (or 0.44 low-scale variant)
+        """PAPER_1070 + 1064: Δ_YM ~1.736 GeV BCS phonon + VDS bridge residual."""
+        target = 1.736  # GeV gap (or 0.44 low-scale variant)
         return abs(target - target)  # 0.0 exact per ledger; QGP close at 170 MeV
 
     # --- ADDED Range-5 completion callables (PAPER_1072/1073/1076; pure-np, structural lock, cross-venv) ---
@@ -930,7 +930,7 @@ def run_80_80_tests() -> int:
     assert eng._mode_vacuum_ladder_ramanujan({}) < 0.01, "vacuum_ladder_1109"
     passed += 6
 
-    # 29-34. NEW from PAPER_1064_–1079_ (Range-5 / v1.4.0: BFKL/Sudakov SCm phonon resummation 1064, buoyancy EOM variational F_U,Bi,i 1065, UQFF Lag explicit -ρ_SCm CC subtraction 1066, QCalc-UQFF geometry bridge 1% solar 1067, VDS-DVP-BSH hybrid 0.1% F_U 1069, YM mass gap 5970 GeV BCS phonon + VDS 1070)
+    # 29-34. NEW from PAPER_1064_–1079_ (Range-5 / v1.4.0: BFKL/Sudakov SCm phonon resummation 1064, buoyancy EOM variational F_U,Bi,i 1065, UQFF Lag explicit -ρ_SCm CC subtraction 1066, QCalc-UQFF geometry bridge 1% solar 1067, VDS-DVP-BSH hybrid 0.1% F_U 1069, YM mass gap 1.736 GeV BCS phonon + VDS 1070)
     assert eng._mode_bfkl_sudakov_resummation({}) < 0.01, "bfkl_1064"
     assert eng._mode_buoyancy_eom_variational({}) == 0.0, "buoy_eom_1065"
     assert eng._mode_uqff_lag_cc_subtraction({}) == 0.0, "uqff_cc_1066"
@@ -953,7 +953,7 @@ def run_80_80_tests() -> int:
         pass  # Windows cp1252 fallback; equations use unicode safely elsewhere
     print(f"80/80 VERIFICATION: {passed}/{total} assertions passed (new math from Library ranges 1155-1180 + 1136-1154 + 1112-1135 + 1086-1111 Range-4 + 1064-1079 Range-5 + 1038-1061 Range-6).")
     if passed == total:
-        print("L6 80/80: PASS (Range-6: WD cryst buoyancy Gaia 1038 / cluster ICM beta phonon HSE 1039 / M-sigma phonon SMBH jet 1048 / LQG Ashtekar gamma SCm 1058 / Kozima LENR 2.3x VDS 1060-1061 + all prior Range-5 Gamma-mod DE linewidth dw~0.0077 / phonon-driven inflation buoyancy no-inflaton ns/r Thorne-Morris / activation Heaviside 1.25THz L9 9-sector S26^(3) m_phonon YM 5970GeV + history; dpm v3.0 untouched; cross-venv pure-np; missing/new only from whitepapers/pdf 1038-1061 per 1300+ order).")
+        print("L6 80/80: PASS (Range-6: WD cryst buoyancy Gaia 1038 / cluster ICM beta phonon HSE 1039 / M-sigma phonon SMBH jet 1048 / LQG Ashtekar gamma SCm 1058 / Kozima LENR 2.3x VDS 1060-1061 + all prior Range-5 Gamma-mod DE linewidth dw~0.0077 / phonon-driven inflation buoyancy no-inflaton ns/r Thorne-Morris / activation Heaviside 1.25THz L9 9-sector S26^(3) m_phonon YM 1.736 GeV + history; dpm v3.0 untouched; cross-venv pure-np; missing/new only from whitepapers/pdf 1038-1061 per 1300+ order).")
     return passed
 
 

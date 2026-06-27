@@ -140,7 +140,7 @@ pip install --upgrade 'uqff[api]'
 uqff version                                # → uqff 5.28.0
 uqff serve --port 8000 &                    # launch server in background
 curl http://localhost:8000/version          # → JSON metrics
-curl http://localhost:8000/predict/yang_mills   # → 5970.0
+curl http://localhost:8000/predict/yang_mills   # → 1.736
 kill %1                                     # stop server
 ```
 

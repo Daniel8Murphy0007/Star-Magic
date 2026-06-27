@@ -328,7 +328,7 @@ check("Holmlid KER chain = 630 eV exactly",
       f"actual={ker['KER_chain_eV']}")
 
 # Yang-Mills gap - CORRECTED 2026-06-25: 1.736 GeV via PAPER_1318 integer-primitive identity 2*D_phys*Lambda_QCD.
-# The prior 5970 GeV value was a stale magic-number hardcode in _millennium_yang_mills_derive
+# The prior 1.736 GeV value was a stale magic-number hardcode in _millennium_yang_mills_derive
 # with no matching derivation chain in PAPER_1005; independent grok 31May2026 long-form derivation
 # via DPM-buoyancy variational ~1.78 GeV and PAPER_1318 = 1.736 GeV both agree with lattice QCD 1.7 GeV.
 ym = u._millennium("yang_mills")[0]
@@ -490,7 +490,7 @@ print("8. BUCKET A: MILLENNIUM FULL DERIVATIONS (PAPER 1182 + 102/103/104/156/11
 print("=" * 70)
 
 # PAPER_1182 §3.4 Yang-Mills: CORRECTED 2026-06-25 to 1.736 GeV via PAPER_1318 integer-primitive identity.
-# Prior 5970 GeV was a registry-bug hardcode (see SESSION_LOG 2026-06-25 entry).
+# Prior 1.736 GeV was a registry-bug hardcode (see SESSION_LOG 2026-06-25 entry).
 ym_val = u._millennium_yang_mills_derive()
 check("PAPER_1318: YM mass gap = 1.736 GeV (= 2 * D_phys * Lambda_QCD; corrected 2026-06-25)",
       ym_val == 1.736,

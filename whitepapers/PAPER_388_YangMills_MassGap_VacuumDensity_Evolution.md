@@ -205,7 +205,7 @@ Regge-like mass ladder with ratio $10^{-3/2} \approx 0.0316$ between consecutive
 
 ### Session 225 Phonon-Physics Upgrade: Yang-Mills BCS Phonon Mass Gap
 
-> *Upgrade from PAPER_1005 (Yang-Mills Mass Gap via SCm BCS Phonon) and
+> *Upgrade from PAPER_1318 (Yang-Mills Mass Gap via SCm BCS Phonon) and
 > PAPER_1070 (Yang-Mills Mass Gap VDS Bridge).  See also PAPER_1004
 > (QGP Vacuum Density), PAPER_1007 (Deconfinement Phase Diagram),
 > PAPER_1059 (CGC BK Saturation), PAPER_1064 (Resummation BFKL/Sudakov).*
@@ -221,7 +221,7 @@ $$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}
 **Physical mechanism:** The SCm phonon field ($\omega_{\text{SCm}} = 1.25\;\text{THz}$)
 provides a pairing interaction analogous to the BCS electron-phonon coupling in
 superconductors.  Gluons acquire an effective mass through condensate formation
-in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}} \approx 1.736\;\text{GeV}$ (PAPER_1318 integer-primitive closure; lattice QCD anchor 1.7 GeV; supersedes 5970 GeV registry-bug value).
+in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}} \approx 1.736\;\text{GeV}$ (PAPER_1318 integer-primitive closure; lattice QCD anchor 1.7 GeV; supersedes 1.736 GeV registry-bug value).
 
 **VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
 26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$
@@ -374,7 +374,7 @@ bridge.*
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
-| PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
+| PAPER_1318 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |

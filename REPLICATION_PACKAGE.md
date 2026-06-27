@@ -92,7 +92,7 @@ uqff predict holmlid_D_minus_1
 
 ```bash
 uqff predict yang_mills
-# Expected: 5970.0  (GeV)
+# Expected: 1.736  (GeV)
 ```
 
 ### SM 12-fermion spectrum (Section 4.5)
@@ -156,7 +156,7 @@ Each `PAPER_XXXX_<slug>.md` is one axiom set / derivation / theorem. The full ca
 
 For headline derivations cited in the manuscript:
 
-- `whitepapers/PAPER_1005_*.md` — Yang-Mills mass gap derivation
+- `whitepapers/PAPER_1318_*.md` — Yang-Mills mass gap derivation
 - `whitepapers/PAPER_1133_*.md` — Holmlid 630 eV chain
 - `whitepapers/PAPER_1156_*.md` — Lambda cosmological derivation
 - `whitepapers/PAPER_1167_*.md` — All-8-Lagrangian-gaps master synthesis
@@ -245,4 +245,4 @@ As of v5.28.0 (manuscript submission), no published independent replication exis
 
 ### "What's the catch?"
 
-There is none materially affecting reproducibility. The framework is open-source (AGPL), version-controlled, CI-validated, and immediately installable. The only "catch" is that physics is hard, and a parameter-economical framework that disagrees with the Standard Model on Yang-Mills mass gap (5970 GeV vs lattice's 1.78 GeV) cannot both be correct. UQFF welcomes the experimental test.
+There is none materially affecting reproducibility. The framework is open-source (AGPL), version-controlled, CI-validated, and immediately installable. The only "catch" is that physics is hard, and a parameter-economical framework that disagrees with the Standard Model on Yang-Mills mass gap (1.736 GeV vs lattice's 1.78 GeV) cannot both be correct. UQFF welcomes the experimental test.

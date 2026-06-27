@@ -100,10 +100,10 @@ CATEGORY_UPGRADE_SPECS = {
         "n_generations": 3,
         "n_colors": 3,
         "m_H_GeV": 125.0,
-        "YM_gap_GeV": 5970.0,
+        "YM_gap_GeV": 1.736,
         "closure_call": "_uqff.calculate_particle_physics()",
         "paper": "PAPER_1209HH + PAPER_1005 + PAPER_1220",
-        "note": "YM mass gap 5970 GeV; ADD large extra dim FLED; ATLAS off-shell H",
+        "note": "YM mass gap 1.736 GeV; ADD large extra dim FLED; ATLAS off-shell H",
     },
     "gravitational_waves": {
         "f_220_baseline_Hz": 250.7,

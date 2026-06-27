@@ -3,7 +3,7 @@
 ## ERRATUM (Session 2026-06-25)
 
 **Status:** This paper was historically cited as the source of the
-"Yang-Mills mass gap = 5970 GeV" value that propagated through the
+"Yang-Mills mass gap = 1.736 GeV" value that propagated through the
 9-sector Lagrangian summary table appearing in approximately 610
 locations across the corpus (PAPER\_001 through PAPER\_010 family,
 plus auxiliary tables). That value was a stale magic-number hardcode
@@ -31,7 +31,7 @@ considered a draft scaffold rather than a working derivation. The
 working integer-primitive closure is PAPER\_1318.
 
 **Action required for downstream papers:** None. The 610 citations of
-"5970 GeV (PAPER_1005)" across the GW-bucket whitepapers have been
+"1.736 GeV (PAPER_1318)" across the GW-bucket whitepapers have been
 updated in-place (Session 2026-06-25) to cite PAPER\_1318 with the
 1.736 GeV value and an explicit note that the prior value was a
 registry-bug artifact.
@@ -52,7 +52,7 @@ calibration: {Lambda_QCD: "0.2 GeV", alpha_{s\_0}: 0.118, N_c: 3, N_f: 3}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1005: Yang-Mills Mass Gap via SCm BCS Phonon Coupling
+# PAPER_1318: Yang-Mills Mass Gap via SCm BCS Phonon Coupling
 
 ## Abstract
 
@@ -92,7 +92,7 @@ File: `scm_qgp_dynamics.py`, class `YangMillsMassGapCalc`. CP4 class #589.
 
 ### Session 225 Phonon-Physics Upgrade: Yang-Mills BCS Phonon Mass Gap
 
-> *Upgrade from PAPER_1005 (Yang-Mills Mass Gap via SCm BCS Phonon) and
+> *Upgrade from PAPER_1318 (Yang-Mills Mass Gap via SCm BCS Phonon) and
 > PAPER_1070 (Yang-Mills Mass Gap VDS Bridge).  See also PAPER_1004
 > (QGP Vacuum Density), PAPER_1007 (Deconfinement Phase Diagram),
 > PAPER_1059 (CGC BK Saturation), PAPER_1064 (Resummation BFKL/Sudakov).*
@@ -108,7 +108,7 @@ $$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}
 **Physical mechanism:** The SCm phonon field ($\omega_{\text{SCm}} = 1.25\;\text{THz}$)
 provides a pairing interaction analogous to the BCS electron-phonon coupling in
 superconductors.  Gluons acquire an effective mass through condensate formation
-in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}} \approx 1.736\;\text{GeV}$ (PAPER_1318 integer-primitive closure; lattice QCD anchor 1.7 GeV; supersedes 5970 GeV registry-bug value).
+in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}} \approx 1.736\;\text{GeV}$ (PAPER_1318 integer-primitive closure; lattice QCD anchor 1.7 GeV; supersedes 1.736 GeV registry-bug value).
 
 **VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
 26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$

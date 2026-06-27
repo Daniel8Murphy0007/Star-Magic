@@ -35,7 +35,7 @@ Each row: quantity → all documented chains → my read status → verification
 | E | Δ_YM = (g²_YM·Λ_QCD)/(4π²)·SSq·H_SCm | PAPER_1111 | ✓ (grok summary) | ✓ 0.0031 (semantically different) |
 | F | Δ_YM = (g_YM²·Λ_QCD)/((4π)² · [SSq]·H_SCm) (alternate normalization) | PAPER_1111 alternate | partial | not in sandbox yet |
 | G | KK regulator m₁c² ≈ 0.16 meV from L_KK* ≈ 1.23 mm | PAPER_1173 | ✓ | ✓ (uses ζ(5)/(128π⁶)) |
-| - | 5970 GeV (HISTORICAL, REGISTRY-BUG, retracted 2026-06-25) | (was attributed to PAPER_1005, no actual derivation) | erratum read ✓ | — never canonical |
+| - | 1.736 GeV (HISTORICAL, REGISTRY-BUG, retracted 2026-06-25) | (was attributed to PAPER_1005, no actual derivation) | erratum read ✓ | — never canonical |
 
 ### Proton mass m_p — N ≥ 2 chains
 

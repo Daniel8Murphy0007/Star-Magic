@@ -40303,9 +40303,9 @@ Ran terminal command: Get-Content "whitepapers\PAPER_002_GW190425_Mass_Gap_Inter
 
 Ran terminal command: Select-String -Path "whitepapers\PAPER_002_GW190425_Mass_Gap_Interpretation.md" -Pattern '\\\$' | Select-Object -First 4 | ForEach-Object { "{0}: {1}" -f $_.LineNumber, $_.Line }
 
-Searched for regex `Delta.*5970` (`**/whitepapers/PAPER_002_GW190425_Mass_Gap_Interpretation.md`), no results
+Searched for regex `Delta.*1.736` (`**/whitepapers/PAPER_002_GW190425_Mass_Gap_Interpretation.md`), no results
 
-Ran terminal command: Select-String -Path "whitepapers\PAPER_002_GW190425_Mass_Gap_Interpretation.md" -Pattern '5970' | ForEach-Object { "{0}: {1}" -f $_.LineNumber, $_.Line }
+Ran terminal command: Select-String -Path "whitepapers\PAPER_002_GW190425_Mass_Gap_Interpretation.md" -Pattern '1.736' | ForEach-Object { "{0}: {1}" -f $_.LineNumber, $_.Line }
 
 Ran terminal command: Get-Content "whitepapers\PAPER_002_GW190425_Mass_Gap_Interpretation.md" | Select-Object -Skip 258 -First 6
 

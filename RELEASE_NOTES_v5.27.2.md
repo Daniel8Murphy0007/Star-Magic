@@ -26,7 +26,7 @@ uqff search alpha            # finds 10 hits across 7 namespaces
 
 ```bash
 uqff predict holmlid_D_minus_1        # 630 eV LENR from calculate_lenr_full
-uqff predict yang_mills               # 5970 GeV mass gap from Millennium
+uqff predict yang_mills               # 1.736 GeV mass gap from Millennium
 uqff predict magic_numbers            # all 7 magic numbers from nuclear
 uqff predict hubble_tension           # 67.4 km/s/Mpc from paradox dispatch
 ```

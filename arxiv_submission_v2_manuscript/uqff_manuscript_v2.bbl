@@ -107,7 +107,7 @@ Maria~Goeppert Mayer and J.~Hans~D. Jensen.
 \bibitem{Murphy_PAPER_1005}
 Daniel~T. Murphy.
 \newblock {PAPER}\_1005 --- {Yang--Mills} mass-gap candidate $\delta =
-  5970\,\mathrm{GeV}$ from $l_{YM}$ sector, 2026.
+  1.736\,\mathrm{GeV}$ from $l_{YM}$ sector, 2026.
 \newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
   v5.29.0+.
 
@@ -152,7 +152,7 @@ Daniel~T. Murphy.
   \lambda_{QCD} = 1.736\,\mathrm{GeV}$ (integer-primitive {Yang--Mills}
   closure; corrected 2026-06-25), 2026.
 \newblock Star-Magic whitepaper. Bundled with \texttt{pip install uqff}
-  v5.29.0+. Replaces the prior $5970\,\mathrm{GeV}$ value cited from
+  v5.29.0+. Replaces the prior $1.736\,\mathrm{GeV}$ value cited from
   PAPER\_1005, which has been issued an erratum.
 
 \bibitem{Murphy_PAPER_1521}

@@ -499,7 +499,7 @@ oscillations; the ratio ωSCm /ωsound governs the phonon transmission eciency 
 10
 
 Session 225 Phonon-Physics Upgrade: Yang-Mills BCS Phonon Mass Gap
-*Upgrade from PAPER_1005 (Yang-Mills Mass Gap via SCm BCS Phonon) and PAPER_1070 (Yang-Mills Mass Gap VDS Bridge). See also PAPER_1004 (QGP Vacuum
+*Upgrade from PAPER_1318 (Yang-Mills Mass Gap via SCm BCS Phonon) and PAPER_1070 (Yang-Mills Mass Gap VDS Bridge). See also PAPER_1004 (QGP Vacuum
 Density), PAPER_1007 (Deconnement Phase Diagram), PAPER_1059 (CGC BK Saturation), PAPER_1064 (Resummation BFKL/Sudakov).*
 The late-corpus analysis derives the Yang-Mills mass gap via a BCS-like phonon pairing mechanism
 in the SCm vacuum:
@@ -531,7 +531,7 @@ Physical mechanism: The SCm phonon eld (ωSCm = 1.25 THz) provides a pairing in
 
 analogous to the BCS electron-phonon coupling in superconductors. Gluons acquire an eective
 mass through condensate formation in the SCm-modied vacuum, yielding a non-perturbative gap
-∆YM ≈ 5970 GeV at the 9-sector Lagrangian closure (PAPER_1066, \{}S{}2).
+∆YM ≈ 1.736 GeV at the 9-sector Lagrangian closure (PAPER_1066, \{}S{}2).
 
 VDS bridge (PAPER_1070): The vacuum density series links the gap to the 26-level hierarchy:
 1/4
@@ -593,7 +593,7 @@ Kaluza-Klein 26D
 
 Canonical Einstein-Hilbert
 
-mgap = 5970 GeV (PAPER_1005)
+mgap = 1.736 GeV (PAPER_1318)
 
 Kozima neutron-drop (PAPER_1061)
 V (ϕ0 ) = −ρSCm canonical

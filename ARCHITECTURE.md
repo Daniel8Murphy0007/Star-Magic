@@ -120,7 +120,7 @@ Physics-wise, UQFF organizes itself into 9 Lagrangian sectors:
 
 ```
 L_UQFF = L_EH      (General Relativity in 26D)
-       + L_YM      (Yang-Mills gauge; mass gap = 5970 GeV)
+       + L_YM      (Yang-Mills gauge; mass gap = 1.736 GeV)
        + L_Dirac   (Fermion / LENR; Kozima TNCF)
        + L_SCm     (SCm manifold; V(φ₀) = −ρ_SCm)
        + L_mag     (U_m magnetism; Heaviside amplifier)

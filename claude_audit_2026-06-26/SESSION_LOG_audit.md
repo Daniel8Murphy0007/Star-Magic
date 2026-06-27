@@ -39,7 +39,7 @@ planck_length (0.035%), p1, p6, p7, p9, p10, f_NL, epsilon, e_crack, spinor.
 
 Acknowledged my prior framing was off:
 - "S_26^(3) chain missing step" — wrong; PAPER_1080 §1 binomial form exists
-- "5970 GeV registry-bug" — overclaimed as a current issue; was already corrected 2026-06-25
+- "1.736 GeV registry-bug" — overclaimed as a current issue; was already corrected 2026-06-25
 - "Phi_res 0.84 vs 5/6 tension" — wrong; both are locked primitives in different sectors
 
 Read:
@@ -64,7 +64,7 @@ Wrote `verify_ramanujan_paper1080.py` — independently reproduced
 ## Round 3 — PAPER_1005 erratum verified + comprehensive closure papers
 
 Confirmed by reading the file itself (top of `PAPER_1005_YangMills_MassGap_SCm.md`):
-> *ERRATUM (Session 2026-06-25): ... that value (5970 GeV) was a stale magic-number hardcode...
+> *ERRATUM (Session 2026-06-25): ... that value (1.736 GeV) was a stale magic-number hardcode...
 >  with NO matching derivation chain... 610 citations updated in-place 2026-06-25...
 >  current best UQFF closure is PAPER_1318: m_0⁺⁺ = 2·D_phys·Λ_QCD = 1.736 GeV*
 
@@ -105,7 +105,7 @@ Manuscript v2 read end-to-end:
 - §8 Limitations (Star-Magic reactor 30× under, 5 tensions disclosed, no third-party reproduction, YM history)
 - §9 Conclusions
 
-Confirmed manuscript v2 §4.10 + §8.4 disclose the YM 5970 GeV history transparently
+Confirmed manuscript v2 §4.10 + §8.4 disclose the YM 1.736 GeV history transparently
 ("most embarrassing single item in the framework's history"). Canonical = 1.736 GeV.
 
 F:\Book_12July2023\Aetheric Propulsion pre-codebase documents:

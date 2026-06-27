@@ -30,7 +30,7 @@ proof, derivation, and theorem in the UQFF corpus.
 
 | Public paradox key | Routes to | Derivation function | UQFF value |
 |---|---|---|---|
-| `yang_mills_mass_gap` | yang_mills | `_millennium_yang_mills_derive` | **5970 GeV** |
+| `yang_mills_mass_gap` | yang_mills | `_millennium_yang_mills_derive` | **1.736 GeV** |
 | `riemann_hypothesis` | riemann | `_millennium_riemann_derive` | t_10000 EXACT (9877.78265) |
 | `bsd_conjecture` | bsd | `_millennium_bsd_derive` | 0.30598 (Cremona 37a1, 0.005%) |
 | `navier_stokes_smoothness` | navier_stokes | `_millennium_navier_stokes_derive` | enstrophy cap 0.85 |
@@ -183,7 +183,7 @@ evaluation; the whitepaper carries:
 |---|---|
 | `PAPER_001_GW170817_UQFF_Damping_Analysis.md` | GW damping derivation |
 | `PAPER_646_Universal_Inertial_Operator.md` | U_i = 2.75e-7 derivation |
-| `PAPER_1005_*Yang_Mills*.md` | YM mass gap = 5970 GeV |
+| `PAPER_1318_*Yang_Mills*.md` | YM mass gap = 1.736 GeV |
 | `PAPER_1133_Holmlid_Rydberg_SCm_Bridge.md` | 630 eV chain derivation |
 | `PAPER_1141_Rossi_ECat_Variants_Unified.md` | Star-Magic reactor closure |
 | `PAPER_1156_Lambda_UQFF_Cosmology.md` | Λ at 0.003% match |

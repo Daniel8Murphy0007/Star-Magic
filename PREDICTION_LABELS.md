@@ -55,7 +55,7 @@ These are NEW predictions because UQFF's value derivations did NOT match any lit
 
 | Problem | UQFF value | Status |
 |---|---|---|
-| Yang-Mills mass gap | 5970 GeV (PAPER_1005) | **NEW** — disagrees with the 1.78 GeV SM lattice estimate. Experimentally testable at FCC. |
+| Yang-Mills mass gap | 1.736 GeV (PAPER_1318) | **NEW** — disagrees with the 1.78 GeV SM lattice estimate. Experimentally testable at FCC. |
 | Riemann hypothesis (t_10000) | 9877.78265 EXACT | **NEW** — first non-trivial value derived; matches OEIS to machine precision. Testable against any zero counter. |
 | Navier-Stokes (enstrophy cap) | 0.85 | **NEW** — structural bound; testable in DNS simulations. |
 | Hodge conjecture identity | 1.0 EXACT | **NEW** — algebraic; awaiting peer review. |

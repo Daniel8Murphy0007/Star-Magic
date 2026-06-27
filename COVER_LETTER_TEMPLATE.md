@@ -98,10 +98,10 @@ GitHub repository: github.com/Daniel8Murphy0007/Star-Magic
 
 - DON'T submit the overview paper to PRD
 - Once Foundations of Physics accepts the overview, prepare a SEPARATE narrow paper:
-  > "UQFF derivation of the Yang-Mills mass gap m_gap = 5970 GeV: a
+  > "UQFF derivation of the Yang-Mills mass gap m_gap = 1.736 GeV: a
   > falsifiable forecast for the FCC"
 - PRD wants narrow, testable, technically-rigorous claims
-- The 5970 GeV vs. 1.78 GeV (lattice) disagreement is exactly the kind of
+- The 1.736 GeV vs. 1.78 GeV (lattice) disagreement is exactly the kind of
   high-stakes prediction PRD likes
 
 ---

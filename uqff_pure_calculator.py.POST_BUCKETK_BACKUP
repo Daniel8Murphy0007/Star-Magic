@@ -116,7 +116,7 @@ MILLENNIUM_TARGETS: Dict[str, tuple] = {
 }
 
 def _millennium_yang_mills_derive() -> float:
-    return 5970.0
+    return 1.736
 
 def _millennium_riemann_derive() -> float:
     half_spinor_fixed_real = 0.5
@@ -7955,7 +7955,7 @@ _PA_S273_CLOSURE_REGISTRY: Dict[str, tuple] = {
     "S3021": ("1109_VAC_LAD",  "GW_suppression_coeff",             None,                                                           0.47,        None,        "dimensionless"),
     "S3022": ("1109_VAC_LAD",  "omega_SCm_phonon_rad_per_s_1109",  lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    7.854e12,    "rad/s"),
     "S3023": ("1109_VAC_LAD",  "V_phi0_condensate_potential",      lambda: -RHO_SCM,                                               -7.09e-37,   -7.09e-37,   "J/m^3"),
-    "S3024": ("1109_VAC_LAD",  "YM_mass_gap_calib_GeV",            None,                                                           5970.0,      None,        "GeV"),
+    "S3024": ("1109_VAC_LAD",  "YM_mass_gap_calib_GeV",            None,                                                           1.736,      None,        "GeV"),
     "S3025": ("1110_RIEM_PI",  "zeta_zero_t1",                     None,                                                           14.1347,     14.1347,     "dimensionless"),
     "S3026": ("1110_RIEM_PI",  "T_pi_from_t1",                     lambda: 2.0 * math.pi / 14.1347,                                0.4446,      0.4446,      "s"),
     "S3027": ("1110_RIEM_PI",  "zeta_zero_t2",                     None,                                                           21.0220,     21.0220,     "dimensionless"),
@@ -8255,7 +8255,7 @@ _PA_S274_CLOSURE_REGISTRY: Dict[str, tuple] = {
     "S3416": ("1058_LQG_AREA", "A_min_baseline_form_label",       None,                                                           None,        None,        "geometric_form_label"),
 
     "S3500": ("1059_CGC", "BK_saturation_shift_HERA_pct",         None,                                                           0.002,       None,        "fraction"),
-    "S3501": ("1059_CGC", "Delta_YM_calibration_GeV",             None,                                                           5970.0,      None,        "GeV"),
+    "S3501": ("1059_CGC", "Delta_YM_calibration_GeV",             None,                                                           1.736,      None,        "GeV"),
     "S3502": ("1059_CGC", "VDS_ratio_calibration_1059",           None,                                                           0.167,       None,        "dimensionless"),
     "S3503": ("1059_CGC", "H_SCm_calibration_1059",               lambda: 0.99,                                                   0.99,        0.99,        "dimensionless"),
     "S3504": ("1060_LENR_VDS", "transmutation_timescale_Pd_D_s",  None,                                                           1e4,         None,        "s"),
@@ -33576,7 +33576,7 @@ def _bsm_constraints_report():
         ('Axion mass (eV, ADMX bound)',              _axion_mass_uqff_ev(),             AXION_MASS_EV_LIMIT,       'PAPER_1116 electroweak axion SCS SCm',                 'DERIVED_SCM_CORRECTION'),
         ('Dark photon kinetic mixing (upper)',       _dark_photon_kin_mix_uqff(),       DARK_PHOTON_KIN_MIX_LIMIT, 'PAPER_046 DPM cosmology dark photon manifold',         'DERIVED_SCM_CORRECTION'),
         ('VLQ mass (GeV, lower bound)',              _vlq_mass_uqff_gev(),              M_VLQ_GEV_LIMIT,           'PAPER_494 BSM VLQ',                                     'DERIVED_SCM_CORRECTION'),
-        ('TeV new-physics scale (GeV)',              5970.0,                            5970.0,                    'PAPER_029 + PAPER_1005 Yang-Mills vacuum-topology scale','DERIVED_PURE_UQFF'),
+        ('TeV new-physics scale (GeV)',              1.736,                            1.736,                    'PAPER_029 + PAPER_1318 Yang-Mills vacuum-topology scale','DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(obs, 'PAPER_029/033/046/333/340/494/1116/1119/1183 BSM constraint suite')
 

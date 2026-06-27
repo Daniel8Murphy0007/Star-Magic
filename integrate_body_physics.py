@@ -10,7 +10,7 @@ cross-reference appendices.
 PKG block types:
   PKG-GW   : GW Strain Modulation (PAPER_1000/1011/1012/1022)
   PKG-AGN  : Buoyancy-Corrected Eddington (PAPER_1002/1009/1037/1048)
-  PKG-YM   : Yang-Mills BCS Phonon Mass Gap (PAPER_1005/1007/1059/1064/1070)
+  PKG-YM   : Yang-Mills BCS Phonon Mass Gap (PAPER_1318/1007/1059/1064/1070)
   PKG-CLU  : ICM Buoyancy Force Profile (PAPER_1039/1041/1044/1046/1079)
   PKG-DM   : SCm-Modified NFW Dark Matter (PAPER_1015/1019)
   PKG-LENR : VDS LENR Transmutation Dynamics (PAPER_1060/1061/1081)
@@ -203,7 +203,7 @@ PKG_BLOCKS["PKG-YM"] = r"""<!-- PKG-YM-S225 -->
 
 ### Session 225 Phonon-Physics Upgrade: Yang-Mills BCS Phonon Mass Gap
 
-> *Upgrade from PAPER_1005 (Yang-Mills Mass Gap via SCm BCS Phonon) and
+> *Upgrade from PAPER_1318 (Yang-Mills Mass Gap via SCm BCS Phonon) and
 > PAPER_1070 (Yang-Mills Mass Gap VDS Bridge).  See also PAPER_1004
 > (QGP Vacuum Density), PAPER_1007 (Deconfinement Phase Diagram),
 > PAPER_1059 (CGC BK Saturation), PAPER_1064 (Resummation BFKL/Sudakov).*
@@ -220,7 +220,7 @@ $$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}
 provides a pairing interaction analogous to the BCS electron-phonon coupling in
 superconductors.  Gluons acquire an effective mass through condensate formation
 in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}}
-\approx 5970\;\text{GeV}$ at the 9-sector Lagrangian closure (PAPER_1066, §2).
+\approx 1.736\;\text{GeV}$ at the 9-sector Lagrangian closure (PAPER_1066, §2).
 
 **VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
 26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$
@@ -346,7 +346,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | Sector | Domain | Late-Corpus Result |
 |--------|--------|-------------------|
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
-| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
+| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 1.736\;\text{GeV}$ (PAPER_1318) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |

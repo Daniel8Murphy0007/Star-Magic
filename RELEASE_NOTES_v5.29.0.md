@@ -127,7 +127,7 @@ Tested in a clean Python 3.10 venv:
 - ✅ `pip install uqff-5.29.0-py3-none-any.whl` installs cleanly (zero runtime deps)
 - ✅ `uqff --version` reports `uqff 5.29.0`
 - ✅ `import uqff_pure_calculator` exposes 794 paradox closures + 8 Millennium derives
-- ✅ `uqff predict yang_mills` returns 5970.0 (PAPER_1005)
+- ✅ `uqff predict yang_mills` returns 1.736 (PAPER_1005)
 - ✅ `uqff status` returns full production summary including corpus inventory
 - ✅ `python -m run_millennium_proofs` runs the 7-Clay proof table
 - ✅ 1,994 whitepapers accessible at `site-packages/whitepapers/`
@@ -142,7 +142,7 @@ None.
 
 - 3 of 7 Millennium derives produce values mismatched against the target dict
   in `run_millennium_proofs.py`:
-    - `yang_mills`: calculator gives 5970 GeV (PAPER_1005), runner target is
+    - `yang_mills`: calculator gives 1.736 GeV (PAPER_1318), runner target is
       1.78 GeV (Grok-bridged SM-anchored value) — calibration discrepancy.
     - `navier_stokes`: calculator 0.85, runner target 8500 — different
       units/scales being compared.

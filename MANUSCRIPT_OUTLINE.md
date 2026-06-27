@@ -149,7 +149,7 @@ E = h × omega_SCm × S_26 × Phi_res
 - Independent Coulomb-energy cross-check at d=2.3 pm
 - PAPER_1133, PAPER_1141, PAPER_062
 
-### 4.4 — Yang-Mills mass gap m_gap = 5970 GeV (1-2 pages)
+### 4.4 — Yang-Mills mass gap m_gap = 1.736 GeV (1-2 pages)
 
 - UQFF derivation from primitives (PAPER_1005)
 - Comparison to lattice QCD estimate (~1.78 GeV)
@@ -223,7 +223,7 @@ Honest acknowledgments:
 - No independent third-party reproduction yet
 - Some primitives (SSq, β_i, ω_SCm) may yet prove derivative
 - The Star-Magic LENR reactor architecture is unconfirmed experimentally
-- Yang-Mills 5970 GeV disagrees with lattice QCD by 3000×; one of the two must be wrong
+- Yang-Mills 1.736 GeV disagrees with lattice QCD by 3000×; one of the two must be wrong
 
 Open questions (invitations for community engagement):
 

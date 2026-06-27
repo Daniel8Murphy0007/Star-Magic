@@ -53,7 +53,7 @@ Sample cross-check (run from `/tmp/uqff_verify` C++ binary):
 | `hubble_tension()` | `{'primary_result': 67.4}` (dict) | 5.6 (target − ref) | ⚠️ different semantics |
 | `alpha_inverse_137_036()` | 137.04 | 137.04 | ✅ |
 | `axiom_count_18_v2()` (new) | 18 | 18.0 | ✅ |
-| `yang_mills_mass_gap` (in YM derive function) | 5970.0 | 5970.0 (existing) | ✅ |
+| `yang_mills_mass_gap` (in YM derive function) | 1.736 | 1.736 (existing) | ✅ |
 
 ---
 

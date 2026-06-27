@@ -157,7 +157,7 @@ Viability: ns≈0.9833, r≈0.133 (Planck/BICEP consistent); δw≈0.0077 phanto
 Source: compressor + COMPLETE_UQFF + dpm v3.0.  
 Status: **CLOSED** (multiple)
 
-**36-40. KK / rho_KK / hbar / R26 / Vacuum Ladder / YM 5970 GeV Variants + LQG / Area / M-sigma / WD / Cluster / Kozima LENR Family (kk_regulator_zeta5_first_principles, kk_hbar_falsifiable_submm, vacuum_density_ladder_ramanujan_26, yang_mills_mass_gap_vds_bcs_phonon ~5970 GeV, lqg_scm_phonon_modulated_area_operator, m_sigma_phonon_corrected_smbh, wd_crystallization_buoyancy_latent_scm, scm_galaxy_cluster_icm_buoyancy_beta_phonon, kozima_scm_neutron_drop_lenr_cop COP>1 2.3x, etc.)**  
+**36-40. KK / rho_KK / hbar / R26 / Vacuum Ladder / YM 1.736 GeV Variants + LQG / Area / M-sigma / WD / Cluster / Kozima LENR Family (kk_regulator_zeta5_first_principles, kk_hbar_falsifiable_submm, vacuum_density_ladder_ramanujan_26, yang_mills_mass_gap_vds_bcs_phonon ~1.736 GeV, lqg_scm_phonon_modulated_area_operator, m_sigma_phonon_corrected_smbh, wd_crystallization_buoyancy_latent_scm, scm_galaxy_cluster_icm_buoyancy_beta_phonon, kozima_scm_neutron_drop_lenr_cop COP>1 2.3x, etc.)**  
 Root: dpm v3.0 + PAPER_1171-1173/1109/1070/1100/1048/1038/1039/1061 (rho_KK 0.15% match, hbar ~1.23 mm Newton violation, LQG A_gap shift 0.34%, WD τ≈1 Gyr Gaia, cluster b=0.15-0.18 HSE bias, LENR 2.3x).  
 Viability: Multiple 0.15%-1% real-scale matches; falsifiable at LHC/ALMA/NICER/Gaia/sub-mm/COP tests; 80/80 + QCalcGeom asserts.  
 Source: compressor phased ranges + COMPLETE_UQFF + dpm v3.0.  

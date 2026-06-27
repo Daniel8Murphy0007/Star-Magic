@@ -57,7 +57,7 @@ CATEGORY_UPGRADE_SPECS = {
     },
     "particle_physics": {
         "n_generations": 3,
-        "YM_gap_GeV": 5970.0,
+        "YM_gap_GeV": 1.736,
         "closure_call": "_uqff.calculate_particle_physics({})",
         "paper": "PAPER_1209HH + PAPER_1005 + PAPER_1220",
         "note": "SM masses + YM gap + neutrino oscillation",

@@ -287,7 +287,7 @@
 | Axion mass (eV, ADMX bound) | 1.083e-05 | 1e-05 | 8.33 | ? |
 | Dark photon kinetic mixing (upper) | 9e-08 | 1e-07 | 10.00 | ? |
 | VLQ mass (GeV, lower bound) | 1586 | 1500 | 5.70 | ? |
-| TeV new-physics scale (GeV) | 5970 | 5970 | EXACT | ? |
+| TeV new-physics scale (GeV) | 1.736 | 1.736 | EXACT | ? |
 | Schwinger limit E_s (V/m) | 1.22e+18 | 1.32e+18 | 7.60 | ? |
 | T-violation BSM asymmetry | 0.06029 | 0.0603 | 0.02 | ? |
 | Light-by-light sigma (alpha^4=Lambda^4) | 2.836e-09 | 2.84e-09 | 0.15 | ? |

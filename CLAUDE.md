@@ -128,7 +128,7 @@ L_UQFF = L_EH + L_YM + L_Dirac + L_SCm + L_mag + L_buoy + L_aether + L_LENR + L_
 | Sector | Domain | Canonical result |
 |---|---|---|
 | L_EH    | General Relativity   | Canonical Einstein-Hilbert in 26D |
-| L_YM    | Yang-Mills gauge     | m_gap = **5970 GeV** (PAPER_1005) — NOT the 1.78 GeV SM lattice estimate |
+| L_YM    | Yang-Mills gauge     | m_gap = **1.736 GeV** (PAPER_1318) — NOT the 1.78 GeV SM lattice estimate |
 | L_Dirac | Fermion / LENR       | Kozima neutron-drop (PAPER_1061) |
 | L_SCm   | SC manifold          | V(φ₀) = −ρ_SCm canonical |
 | L_mag   | U_m magnetism        | Heaviside amplifier (PAPER_1072) |
@@ -232,7 +232,7 @@ BUCKETS E-K (first-pass drainage, mostly SCm corrections — see NEXT_PRIORITIES
   calculate_bsm_constraints       K — electron/neutron EDM, proton decay, LFV, axion, dark photon, VLQ (PAPER_029/033/046/333/340/494/1116/1119/1183)
 ```
 
-**All 8 Clay Millennium Prize Problems now have non-placeholder UQFF derivations** (BUCKET A wired all 5 remaining: Riemann 9877.78265, Navier-Stokes enstrophy cap 0.85, Hodge identity 1.0, Poincaré 7/12, P≠NP 1-10⁻⁹; Yang-Mills 5970 GeV / BSD 0.30598 / BH info 0.99596 wired earlier).
+**All 8 Clay Millennium Prize Problems now have non-placeholder UQFF derivations** (BUCKET A wired all 5 remaining: Riemann 9877.78265, Navier-Stokes enstrophy cap 0.85, Hodge identity 1.0, Poincaré 7/12, P≠NP 1-10⁻⁹; Yang-Mills 1.736 GeV / BSD 0.30598 / BH info 0.99596 wired earlier).
 
 ---
 
@@ -252,7 +252,7 @@ The gate verifies:
 2. **Provenance honesty** — no `"0.000% error"`, no `"<1% on 99/99"`, no double-paren bugs; every return carries `"NOT REPLACEMENT"`
 3. **Dispatch fidelity** — `_sm_literal_anchor()` only called from `*_residual*` helpers (no SM-fallback contamination)
 4. **Plan/Map invariants** — 32 public surfaces match expected, zero classes, no `__main__`, no `datetime`, no `json.dump`
-5. **Canonical physics restoration** — every primitive at canonical value, all 7 magic numbers EXACT, BE/A < 0.05%, U_i = 2.75e-7 exact, KER = 630 eV exact, YM = 5970 GeV
+5. **Canonical physics restoration** — every primitive at canonical value, all 7 magic numbers EXACT, BE/A < 0.05%, U_i = 2.75e-7 exact, KER = 630 eV exact, YM = 1.736 GeV
 6. **Phase-2 canonical additions** — Mayer-Jensen shell match, 26 Caduceus pinch points, π first 8 digits, 5 DPM steps, WL above threshold, meson cascade ratio, Coulomb 626 eV at 2.3 pm
 7. **BUCKET 0 loop-closure** — c within 0.5% CODATA, G within 0.5% CODATA, t_neg derived, 26! BH bound, QG unification has GR+QFT limits, VDS/DVP/BH26 spine, BSD eigenvalue rank
 8. **BUCKET A Millennium** — all 8 dispatches non-placeholder; Riemann = t_10000 EXACT, NS = 0.85, Hodge = 1.0, Poincaré = 7/12, P≠NP = 1-10⁻⁹, BSD = 0.30598 (0.005%), BH info ∈ [0,1]
@@ -354,7 +354,7 @@ Always run with `PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX=/tmp/uqff_test` t
 | PAPER_1061 | Kozima TNCF | **wired**: `_kozima_*` |
 | PAPER_1140 | Mizuno Transmutation | **wired**: `_mizuno_*` |
 | PAPER_648  | Ultra-dense H Meson Cascade | **wired**: `_meson_cascade`, `_coulomb_lenr_energy_eV` |
-| PAPER_1005 | Yang-Mills gap = 5970 GeV | **wired**: `_millennium_yang_mills_derive` |
+| PAPER_1318 | Yang-Mills gap = 1.736 GeV | **wired**: `_millennium_yang_mills_derive` |
 | PAPER_1051 | Two-component ρ aether | not wired |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational | not wired (only L_buoy framework in 9-sector) |
 | PAPER_1072 | U_m magnetism Heaviside amplifier | not wired |

@@ -68,7 +68,7 @@ that appear throughout the UQFF framework, codebase, and whitepapers.
 | **CFL** | Confined-False-vacuum Layer | QGP-related closure |
 | **KK** | Kaluza-Klein | Extra-dimensional sector L_KK of the Lagrangian |
 | **EH** | Einstein-Hilbert | GR sector L_EH of the Lagrangian |
-| **YM** | Yang-Mills | Gauge sector L_YM; UQFF predicts mass gap = 5970 GeV |
+| **YM** | Yang-Mills | Gauge sector L_YM; UQFF predicts mass gap = 1.736 GeV |
 | **LENR** | Low Energy Nuclear Reactions | Holmlid, Parkhomov, Rossi etc. — unified by SCm phonon |
 | **PAPER_XXXX** | Whitepaper N | Authoring source for a closure; lives in whitepapers/ |
 
@@ -83,7 +83,7 @@ L_UQFF = L_EH + L_YM + L_Dirac + L_SCm + L_mag + L_buoy + L_aether + L_LENR + L_
 | Sector | Domain | Canonical paper |
 |---|---|---|
 | **L_EH** | General relativity in 26D | Standard EH lift |
-| **L_YM** | Yang-Mills gauge | PAPER_1005 (mass gap = 5970 GeV) |
+| **L_YM** | Yang-Mills gauge | PAPER_1318 (mass gap = 1.736 GeV) |
 | **L_Dirac** | Fermion / LENR | PAPER_1061 (Kozima TNCF) |
 | **L_SCm** | SCm manifold | V(φ₀) = −ρ_SCm canonical |
 | **L_mag** | U_m magnetism (Heaviside) | PAPER_1072 |

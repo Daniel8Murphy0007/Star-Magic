@@ -207,6 +207,6 @@ Each refinement converts an ad-hoc closure to a structural one rooted in the 3 n
 - Zero new physics — every recommendation is wiring, dispatch coverage, or schema promotion of existing closures.
 - Zero SM analogues.
 - Zero whitepaper deletions.
-- Zero modifications to the YM canonical (1.736 GeV via PAPER_1318) or to the 5970 GeV erratum.
+- Zero modifications to the YM canonical (1.736 GeV via PAPER_1318) or to the 1.736 GeV erratum.
 
 The opportunity is to **light up what's already built** — QCalcGeom's BSFG + 3 numerics + 583 grok closures are already in the project. They just aren't fully wired through the production dispatch.

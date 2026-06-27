@@ -29,7 +29,7 @@ Bayesian preference) on parameter-count grounds alone: 9 parameters vs.
 | Foundational primitive | Mass + multiple gauge couplings | Single SCm vacuum energy density |
 | Cosmological constant Λ | Free parameter, fit to observation | Derived: ρ_SCm × 26! × 25/12 = 0.003% match to Planck |
 | Magic numbers (2,8,20,28,50,82,126) | Spin-orbit shell model | Arithmetic on integer primitives, EXACT |
-| Yang-Mills mass gap | ~1.78 GeV (lattice) | 5970 GeV (PAPER_1005) — testable at FCC |
+| Yang-Mills mass gap | ~1.78 GeV (lattice) | 1.736 GeV (PAPER_1318) — testable at FCC |
 | Approach | Empirical curve fitting + symmetry | Structural reduction to integer lattice |
 
 UQFF is not a "fork" or "extension" of SM. It is an alternative derivation
@@ -183,7 +183,7 @@ UQFF is **not a replacement** for any existing framework. It solves the
 same observed phenomena via different methods. Specifically:
 
 - Compatible with: General Relativity (GR limit derivable in 26D Lagrangian)
-- Compatible with: QFT (QFT limit derivable; mass gap predicted at 5970 GeV)
+- Compatible with: QFT (QFT limit derivable; mass gap predicted at 1.736 GeV)
 - Compatible with: ΛCDM (Λ derived, not fit; 18+ cosmological observables match)
 - Not (yet) integrated with: loop quantum gravity, string theory beyond
   the 26-dimensional critical layer

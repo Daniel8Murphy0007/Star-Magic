@@ -142,7 +142,7 @@ Two possibilities worth flagging back to you:
 2. **Yang-Mills mass gap value drift (documented in PAPER_545 §225):**
    - REGISTRY (Gold): `5.3e4` multiplier × pure E_crack → 5.89 × 10¹² ("registry-bug value")
    - PAPER_545 §225: **1.736 GeV** from BCS-phonon mechanism (PAPER_1318)
-   - PAPER_1005 historical: 5970 GeV
+   - PAPER_1005 historical: 1.736 GeV
    - The manuscript v2 §4.4 disclosure correction is the right call — the new 1.736 GeV (lattice QCD anchor 1.7 GeV) is the canonical UQFF value, and the Gold REGISTRY entry hasn't been updated to match yet.
 
 3. **`Gold_Standard_Validation_Script.py:1108-1112`** — `derive_k_b_uqff` returns CODATA `1.380649e-23` directly, labeled "proxy" in the comments. Honest: it's a closure, not a derivation. Worth flagging only if you want to derive k_B from the 26D phonon ledger separately.

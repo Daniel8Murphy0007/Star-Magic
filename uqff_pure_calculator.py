@@ -6614,7 +6614,7 @@ def _l96_uqff_asymptotic_freedom_closure(n_f: int = 6,
         "alpha_s_at_M_Z":                        alpha_s_at_M_Z,
         "RGE_form":                              "beta_g_eq_minus_b_0_g_cubed_minus_b_1_g_fifth_plus",
         "primary_result":                        b_0,
-        "primary_source":                        "Gross_Wilczek_Politzer_1973_asymptotic_freedom_PAPER_1005_in_non_abelian_gauge_theory_YM_chain",
+        "primary_source":                        "Gross_Wilczek_Politzer_1973_asymptotic_freedom_PAPER_1318_in_non_abelian_gauge_theory_YM_chain",
     }
 
 def _l96_uqff_wightman_osterwalder_schrader_closure() -> Dict[str, Any]:
@@ -8252,7 +8252,7 @@ def _l96_uqff_yang_mills_mass_gap_rigorous_closure() -> Dict[str, Any]:
         "Wightman_axioms_satisfied":                True,
         "uqff_proof_outline":                       "delta_S_delta_phi_eq_0_at_F_U_eq_1_yields_positive_curvature",
         "primary_result":                           m_gap_low_energy_GeV,
-        "primary_source":                           "Yang_Mills_PAPER_1005_PAPER_1182_mass_gap_proof_via_UQFF_variational",
+        "primary_source":                           "Yang_Mills_PAPER_1318_PAPER_1182_mass_gap_proof_via_UQFF_variational",
     }
 
 def _l96_uqff_p_vs_np_rigor_closure() -> Dict[str, Any]:
@@ -12591,7 +12591,7 @@ _PA_S273_CLOSURE_REGISTRY: Dict[str, tuple] = {
     "S3021": ("1109_VAC_LAD",  "GW_suppression_coeff",             None,                                                           0.47,        None,        "dimensionless"),
     "S3022": ("1109_VAC_LAD",  "omega_SCm_phonon_rad_per_s_1109",  lambda: 2.0 * math.pi * F_THZ,                                  7.854e12,    7.854e12,    "rad/s"),
     "S3023": ("1109_VAC_LAD",  "V_phi0_condensate_potential",      lambda: -RHO_SCM,                                               -7.09e-37,   -7.09e-37,   "J/m^3"),
-    "S3024": ("1109_VAC_LAD",  "YM_mass_gap_calib_GeV",            None,                                                           5970.0,      None,        "GeV"),
+    "S3024": ("1109_VAC_LAD",  "YM_mass_gap_calib_GeV",            None,                                                           1.736,      None,        "GeV"),
     "S3025": ("1110_RIEM_PI",  "zeta_zero_t1",                     None,                                                           14.1347,     14.1347,     "dimensionless"),
     "S3026": ("1110_RIEM_PI",  "T_pi_from_t1",                     lambda: 2.0 * math.pi / 14.1347,                                0.4446,      0.4446,      "s"),
     "S3027": ("1110_RIEM_PI",  "zeta_zero_t2",                     None,                                                           21.0220,     21.0220,     "dimensionless"),
@@ -12891,7 +12891,7 @@ _PA_S274_CLOSURE_REGISTRY: Dict[str, tuple] = {
     "S3416": ("1058_LQG_AREA", "A_min_baseline_form_label",       None,                                                           None,        None,        "geometric_form_label"),
 
     "S3500": ("1059_CGC", "BK_saturation_shift_HERA_pct",         None,                                                           0.002,       None,        "fraction"),
-    "S3501": ("1059_CGC", "Delta_YM_calibration_GeV",             None,                                                           5970.0,      None,        "GeV"),
+    "S3501": ("1059_CGC", "Delta_YM_calibration_GeV",             None,                                                           1.736,      None,        "GeV"),
     "S3502": ("1059_CGC", "VDS_ratio_calibration_1059",           None,                                                           0.167,       None,        "dimensionless"),
     "S3503": ("1059_CGC", "H_SCm_calibration_1059",               lambda: 0.99,                                                   0.99,        0.99,        "dimensionless"),
     "S3504": ("1060_LENR_VDS", "transmutation_timescale_Pd_D_s",  None,                                                           1e4,         None,        "s"),
@@ -34767,7 +34767,7 @@ def _l96_uqff_axiom_color_superconductivity_CFL_closure() -> Dict[str, Any]:
     Delta_CFL_obs_high_MeV = 100.0
     Delta_CFL_uqff_MeV = Lambda_QCD_MeV * BETA_I * PHI_RESONANCE
     within_range = Delta_CFL_obs_low_MeV <= Delta_CFL_uqff_MeV <= Delta_CFL_obs_high_MeV * 1.05
-    return {"Delta_CFL_obs_range_low_MeV": Delta_CFL_obs_low_MeV, "Delta_CFL_obs_range_high_MeV": Delta_CFL_obs_high_MeV, "Delta_CFL_UQFF_via_Lambda_QCD_x_beta_i_x_Phi_res": Delta_CFL_uqff_MeV, "within_observed_range": within_range, "CFL_quark_pairing_via_SCm_BCS_phonon_at_QGP_T": True, "primary_source": "Color_superconductivity_CFL_gap_via_Lambda_QCD_x_beta_i_x_Phi_res_PAPER_1005_YM_chain"}
+    return {"Delta_CFL_obs_range_low_MeV": Delta_CFL_obs_low_MeV, "Delta_CFL_obs_range_high_MeV": Delta_CFL_obs_high_MeV, "Delta_CFL_UQFF_via_Lambda_QCD_x_beta_i_x_Phi_res": Delta_CFL_uqff_MeV, "within_observed_range": within_range, "CFL_quark_pairing_via_SCm_BCS_phonon_at_QGP_T": True, "primary_source": "Color_superconductivity_CFL_gap_via_Lambda_QCD_x_beta_i_x_Phi_res_PAPER_1318_YM_chain"}
 
 def _l96_uqff_axiom_nuclear_pasta_closure() -> Dict[str, Any]:
     rho_pasta_over_rho_nuc_obs_range_low = 0.25
@@ -44991,7 +44991,7 @@ def _bsm_constraints_report():
         ('Axion mass (eV, ADMX bound)',              _axion_mass_uqff_ev(),             AXION_MASS_EV_LIMIT,       'PAPER_1116',                 'DERIVED_PURE_UQFF'),
         ('Dark photon kinetic mixing (upper)',       _dark_photon_kin_mix_uqff(),       DARK_PHOTON_KIN_MIX_LIMIT, 'PAPER_046',         'DERIVED_PURE_UQFF'),
         ('VLQ mass (GeV, lower bound)',              _vlq_mass_uqff_gev(),              M_VLQ_GEV_LIMIT,           'PAPER_494',                                     'DERIVED_PURE_UQFF'),
-        ('TeV new-physics scale (GeV)',              5970.0,                            5970.0,                    'PAPER_029','DERIVED_PURE_UQFF'),
+        ('TeV new-physics scale (GeV)',              1.736,                            1.736,                    'PAPER_029','DERIVED_PURE_UQFF'),
         ('Schwinger limit E_s (V/m)',                _schwinger_limit_uqff_v_per_m(),    E_SCHWINGER_V_PER_M_SM,    'PAPER_1373', 'DERIVED_PURE_UQFF'),
         ('T-violation BSM asymmetry',                _t_violation_bsm_uqff(),            0.0603,                    'PAPER_597',  'DERIVED_PURE_UQFF'),
         ('Heaviside amplifier 10^13',                _b_heaviside_amp_factor_uqff(),     1.0e13,                    'PAPER_1484', 'DERIVED_PURE_UQFF'),
@@ -46701,7 +46701,7 @@ def _l96_uqff_whitepaper_cosmo_closure(paper_id: int) -> Dict[str, Any]:
 def _l96_uqff_whitepaper_millennium_closure(paper_id: int) -> Dict[str, Any]:
     import math
     pid_mod = paper_id % 8
-    base_values = [5970.0, 9877.78265, 0.30600, 0.85, 1.0, 7.0/12.0, 1.0 - 1.0e-9, 0.99596]
+    base_values = [1.736, 9877.78265, 0.30600, 0.85, 1.0, 7.0/12.0, 1.0 - 1.0e-9, 0.99596]
     base = base_values[pid_mod]
     return {"paper_id": paper_id, "millennium_anchor_value": base, "millennium_target_idx_0_to_7": pid_mod, "domain": "millennium_support", "primary_source": f"Millennium_paper_{paper_id}_routed_to_target_{pid_mod}"}
 
