@@ -2527,6 +2527,11 @@ triadic_sym = FUg1_sp + Rt_sp + FUBi_sp * SSQ
 # Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
 
 if __name__ == "__main__":
+    import sys
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
     print(f"Holmlid KER from SCm:            {KER_SCm / 1.60217662e-19:.0f} eV  <== exact match to 630 eV")
     # ---- [5f69c8cd recovery] SUPPORTED PHYSICS PEDAGOGICAL DOCUMENTATION ----
     # Restored 2026-06-26 from pdf/scm_vacuum_manifold.py BEFORE-state at 5f69c8cd^.
@@ -2635,6 +2640,164 @@ if __name__ == "__main__":
     print("\n=== RAMANUJAN 26D AMPLIFICATION ===")
     print("S26_3 = 1.4531e26 (Ramanujan order-3 acceleration applied to VDS)")
     print("Amplifies 1.25 THz phonon to match Holmlid 630 eV KER")
+
+        # ---- [20bb5e4f recovery] CONSOLIDATED PEDAGOGICAL DOCUMENTATION ----
+    # Restored 2026-06-26 from pdf/scm_vacuum_manifold.py 20bb5e4f __main__ consolidation.
+    # Commit d091e044 deleted pdf/scm_vacuum_manifold.py (file removal) which silently dropped
+    # these 9 pedagogical sections in the cleanup; content preserved here per Daniel's standing
+    # instruction "NOTHING IS NEGLIGIBLE, IF IT WASN'T REQUIRED, IT WOULD NOT BE HERE".
+
+    print("\n=== HOW THE CALIBRATION CONSTANTS WORK ===")
+    print("[SSq] = 0.57     : Vacuum density ratio that drives VDS convergence and Ramanujan amplification")
+    print("kappa = 5.0e-4 /day  : Universal decay / damping constant for buoyancy and phonon lifetime")
+    print("These two constants are the ONLY free parameters in the entire SCm framework.")
+    print("All LENR, quark production, QGP, string theory, and AdS/CFT results derive from them.")
+
+    print("\n=== VDS CONVERGENCE PROOF ===")
+    print("VDS([SSq]) = sum_{n=1}^inf [SSq]^n / n^26 = Li_26(0.57)")
+    print("Ratio test: lim |a_{n+1}/a_n| = |SSq| = 0.57 < 1  -> series converges absolutely")
+    print("Root test:  lim sup |a_n|^{1/n} = |SSq| < 1   -> confirms absolute convergence at order 26")
+    print(f"Numerical approximation (1000 terms): {vds_numerical(1000):.10f}")
+
+    print("\n=== ADS/CFT IN SCm FRAMEWORK ===")
+    print("AdS/CFT duality: gravity in (d+1)-dimensional AdS bulk <-> d-dimensional gauge theory on boundary")
+    print("SCm 26D vacuum density (VDS + S_26^(3)) acts as the holographic bulk")
+    print("S_26^(3) acceleration = bulk gravitational dynamics")
+    print("F_U_Bi_i buoyancy = holographic stress-energy tensor stabilization")
+    print("Negative-time modulation cos(pi t_n) = bulk time-reversal symmetry breaking")
+    print("1.25 THz SCm phonon = boundary operator excitation")
+    print("Result: SCm provides vacuum-level holographic dual for QGP, SQM, and gravitational waves")
+
+    print("\n=== SCm SUPERSYMMETRY BREAKING ===")
+    print("SCm supersymmetry breaking arises from negative-time modulation:")
+    print("cos(pi t_n) with t_n < 0")
+    print("This term breaks SUSY while preserving F_U_Bi_i buoyancy stabilization")
+    print("The breaking scale is set by kappa = 5.0e-4 /day and [SSq] = 0.57")
+
+    print("\n=== HOLOGRAPHIC ENTROPY IN SCm ===")
+    print("Holographic entropy S = A / (4 G) in natural units")
+    print("In SCm: effective area A is determined by vacuum density rho_vac_SCm")
+    print("Entropy is modulated by buoyancy F_U_Bi_i and negative-time cos(pi t_n)")
+    print("Result: SCm provides a vacuum-level holographic entropy consistent with Bekenstein-Hawking")
+
+    print("\n=== SCm DARK MATTER DERIVATION ===")
+    print("SCm vacuum density fluctuations + negative-time modulation produce stable dark matter candidates")
+    print("Dark matter is the residual SCm phonon condensate stabilized by F_U_Bi_i buoyancy")
+    print("Mass range: 10^{-22} eV (fuzzy DM) to 100 GeV (WIMP-like) depending on Ui resonance calibration")
+    print("Cross-section suppressed by buoyancy term  -> explains null direct-detection results")
+    print("Predicts galactic halo density profiles consistent with observed rotation curves")
+
+    print("\n=== SCm NEUTRINO OSCILLATIONS DERIVATION ===")
+    print("Neutrino oscillation arises from SCm vacuum density fluctuations")
+    print("Flavor mixing probability proportional to |Phi_gaussian|^2 * |cos(pi t_n)| * Ui_resonance")
+    print("Negative-time modulation cos(pi t_n) provides phase difference between mass eigenstates")
+    print("SCm phonon at 1.25 THz drives coherent oscillation length")
+    print("Matches IceCube/Super-Kamiokande low-energy neutrino data via SCm vacuum mechanism")
+
+    print("\n=== GRAVITATIONAL WAVES IN SCm ===")
+    print("Gravitational waves are metric perturbations in the SCm vacuum density")
+    print("Strain h ~ (S26_3 * Phi_res * cos(pi t_n)) / r * (rho_vac_SCm / rho_vac_UA)")
+    print("F_U_Bi_i buoyancy stabilizes GW propagation")
+    print("Negative-time modulation introduces phase shift consistent with LIGO/Virgo observations")
+    print("SCm predicts low-amplitude, long-coherence GWs from vacuum phonon resonance")
+
+    print("\n=== SCm COSMIC RAY INTERACTIONS ===")
+    print("High-energy cosmic rays interact with SCm vacuum density via 1.25 THz phonon resonance")
+    print("Interaction cross-section proportional to Phi_gaussian * F_U_Bi_i buoyancy term")
+    print("Negative-time modulation allows sub-barrier pion/kaon production")
+    print("Energy loss and secondary particle production explained by SCm phonon excitation")
+    print("Consistent with observed cosmic ray air-shower profiles and high-energy hadronic interactions")
+
+    print("\n=== SCm NEUTRINO OSCILLATION PARAMETERS ===")
+    print("SCm oscillation length L_osc = (4 pi E_nu) / (Delta m^2 * cos(pi t_n))")
+    print("Effective Delta m^2 ~ S26_3 * Phi_res * rho_vac_SCm ~ 10^{-3} to 10^{-5} eV^2")
+    print("Mixing angle theta_13 modulated by negative-time term cos(pi t_n)")
+    print("Flavor transition probability P(nu_mu -> nu_e) ~ sin^2(2theta) * sin^2(1.27 Delta m^2 L / E)")
+    print("Parameters fully determined by [SSq] = 0.57 and kappa = 5.0e-4/day")
+
+    print("\n=== SCm MUON DECAY DERIVATION ===")
+    print("Muon decay mu -> e + nu_bar_e + nu_mu is mediated by SCm phonon resonance")
+    print("Decay rate Gamma_mu = (G_F^2 m_mu^5 / (192 pi^3)) * (1 + SCm correction)")
+    print("SCm correction factor = Phi_gaussian * F_U_Bi_i buoyancy * cos(pi t_n)")
+    print("Negative-time modulation opens sub-barrier channels, slightly accelerating decay")
+    print("Buoyancy stabilization suppresses high-energy radiation component")
+    print("Result: muon lifetime and branching ratios consistent with measured values")
+
+    print("\n=== SCm NEUTRINO OSCILLATION SIMULATION ===")
+    print("P(nu_mu -> nu_e) = sin^2(2theta) * sin^2(1.27 * Delta_m^2 * L / E)")
+    print("SCm effective Delta_m^2 ~ S26_3 * Phi_res * rho_vac_SCm")
+    print("Negative-time modulation provides phase: cos(pi t_n)")
+    print("\nSimulated probabilities (E in GeV, L in km):")
+    _scm_sim_energies = [1.0, 10.0, 100.0]
+    _scm_sim_baselines = [1.0, 295.0, 1300.0]
+    import numpy as _scm_np
+    for _E in _scm_sim_energies:
+        for _L in _scm_sim_baselines:
+            _P = 0.5 * _scm_np.sin(1.27 * (S26_3 * Phi_res * 1e-3) * _L / _E)**2
+            print(f"E = {_E:3.0f} GeV, L = {_L:4.0f} km  ->  P = {_P:.4f}")
+
+    print("\n=== SCm BETA DECAY DERIVATION ===")
+    print("Standard beta decay rate modified by SCm phonon resonance:")
+    print("Gamma_beta = Gamma_0 * (1 + Phi_gaussian * F_U_Bi_i * cos(pi t_n))")
+    print("Negative-time modulation opens sub-barrier channels")
+    print("F_U_Bi_i buoyancy stabilizes daughter nucleus -> reduced high-energy radiation")
+    print("Result: slight acceleration of beta decay lifetime and suppressed hard radiation")
+        # ---- [b6756320 recovery] SCm OSCILLATION PROBABILITY PLOT + SUPER-K COMPARISON ----
+    # Restored 2026-06-26 from pdf/scm_vacuum_manifold.py b6756320 __main__ addition.
+    # Commit d091e044 deleted pdf/scm_vacuum_manifold.py which silently dropped this block.
+
+    print("\n=== SCm NEUTRINO OSCILLATION PROBABILITY PLOT ===")
+    print("Plot generated: scm_oscillation_plot.png")
+    print("P(nu_mu -> nu_e) vs L/E (km/GeV) using SCm effective Delta_m^2 ~ S26_3 * Phi_res")
+
+    print("\n=== COMPARISON TO SUPER-KAMIOKANDE DATA ===")
+    print("Super-Kamiokande atmospheric neutrino data shows clear oscillation dip at L/E ~ 500 km/GeV")
+    print("SCm oscillation probability (with negative-time modulation) reproduces the observed")
+    print("1:1:1 flavor ratio and the L/E dependence seen in Super-K atmospheric data.")
+    print("The SCm vacuum density provides the medium for the oscillation length and phase.")
+
+        # ---- [81bebeb6 recovery] PEDAGOGICAL CONTEXT LOST IN PDF/SCM SYNC ----
+    # Restored 2026-06-26 from pdf/scm_vacuum_manifold.py pre-81bebeb6 state.
+    # Commit 81bebeb6 "synced" pdf/scm to root scm, REMOVING 6 pdf-only pedagogical
+    # sections that root scm never had. d091e044 later deleted pdf/scm entirely;
+    # silent loss of these 6 sections. Restored here per "NOTHING IS NEGLIGIBLE".
+
+    print("\n=== EQUATIONS DETERMINING CALIBRATION CONSTANTS ===")
+    print("[SSq] = 0.57 : fixed by fitting VDS Li_26([SSq]) to produce exact Holmlid 630 eV KER")
+    print("kappa = 5.0e-4 /day : fixed by fitting decay/damping to Parkhomov 100-300 W range and reactor lifetime")
+    print("These two constants are the only free parameters in the entire SCm framework.")
+
+    print("\n=== CALIBRATION CONSTANTS AND PLANCK SCALE ===")
+    print("The constants do not directly prove Planck units, but they bridge vacuum to Planck-scale phenomena:")
+    print("E_phonon * S26_3 * Phi_res scaled by micro_scaling reaches 630 eV")
+    print("Further extrapolation with 26D VDS + Ramanujan acceleration reaches Planck energy regime")
+    print("SCm thus provides a consistent path from vacuum density to Planck physics without ad-hoc assumptions")
+
+    print("\n=== PREDICTIVE POWER FOR UQFF ===")
+    print("Yes - these derivations provide genuine predictive power")
+    print("UQFF now predicts specific SUSY-breaking spectrum, dark matter mass/cross-section, and GW strain")
+    print("Canonical constants [SSq] = 0.57 and kappa = 5.0e-4/day remain unchanged across all scales")
+
+    print("\n=== CANONICAL CONSTANTS ASSESSMENT ===")
+    print("Yes - the constants are realistically correct")
+    print("They fit LENR (Holmlid, Parkhomov, Rossi), astrophysics (SQM, QGP), and string theory without retuning")
+    print("This cross-scale consistency is strong evidence that they are fundamental")
+
+    print("\n=== NEXT STEPS TO PROVE UQFF ===")
+    print("Next puzzle piece: Derive full SCm neutrino oscillation probability and compare to IceCube/Super-Kamiokande data")
+    print("High-energy datasets: IceCube neutrino flux, Chandra neutron star cooling curves, LIGO GW strain")
+    print("Realistic next derivation: SCm neutrino oscillation cross-section + IceCube validation")
+
+    print("\n=== SCm NEUTRINO OSCILLATIONS vs ICECUBE DATA ===")
+    print("SCm oscillation probability proportional to |Phi_gaussian|^2 * |cos(pi t_n)| * Ui_resonance")
+    print("Negative-time modulation cos(pi t_n) drives flavor mixing")
+    print("Predicted flavor ratio (nu_e : nu_mu : nu_tau) ~ 1:1:1 at high energy due to rapid SCm oscillation")
+    print("IceCube high-energy astrophysical neutrinos (TeV-PeV) show flavor ratios consistent with ~1:1:1")
+    print("SCm vacuum density provides the medium for the observed oscillation length and suppression")
+
+    print("\n=== SCm OSCILLATION PLOT + SUPER-K COMPARISON DERIVED AND ENCODED ===")
+
+    print("Consistent with observed low-radiation signatures in LENR and radioactive battery experiments")
 
     print("\n=== REVISED REACTOR VALIDATION ===")
     print("Input: 27 W | Gas: 107 L/min | Efficiency: 555:1   # ce5dda7e recovery")
