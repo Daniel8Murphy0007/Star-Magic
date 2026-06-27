@@ -7872,3 +7872,46 @@ Same bug class as `compute_F_U_Bi_i_numerical` (L166) flagged in round 14 — th
 
 - dpm_vacuum_manifold.py (1 local G_N restore in scm_gw_metric_perturbation)
 - SESSION_LOG.md (this entry)
+
+---
+
+## SESSION 2026-06-26 ROUND 18 — COMMIT 78a5345f FORENSIC RECOVERY
+
+**Date:** 2026-06-26
+**Owner:** Claude, at Daniel T. Murphy's directive to forensically analyze commit 78a5345f.
+
+### Commit 78a5345f's two parts
+
+1. **Restored 4 QCD/SQM functions to pdf/scm_vacuum_manifold.py** (s26_3_from_vds, qgp_energy_density_scm, strange_quark_matter_density, mit_bag_scm) — fixing 5004091d propagation gap.
+2. **Added 4 NEW pedagogical __main__ sections** in pdf/scm:
+   - RAMANUJAN ACCELERATION FORMULAS
+   - BOSONIC STRING THEORY DERIVATION IN SCm
+   - REFINED ADS/CFT COMPARISON
+   - QCALCGEOM DERIVATIVES CHECK
+
+### Survival check in dpm (pdf/scm later deleted in 9c1c7083; content consolidated)
+
+- 4 QCD/SQM functions: ✓ all present (verified in round on 5004091d)
+- 4 new __main__ sections: ✓ all 4 headers present in dpm, body content preserved
+
+### MINOR PEDAGOGICAL TEXT LOSS RESTORED
+
+The Ramanujan section in dpm condensed the original 2-line attribution into 1 line, dropping the explicit Ramanujan-theory-of-divergent-series reference:
+
+OLD (78a5345f):
+```
+print("This is the closed-form acceleration factor derived from Ramanujan's theory")
+print("of divergent series, consistent with absolute convergence of VDS (|SSq| = 0.57 < 1)")
+```
+
+CURRENT dpm (pre-fix):
+```
+print("Closed-form acceleration factor; absolute convergence of VDS proven (|SSq| = 0.57 < 1)")
+```
+
+**Fix:** Restored the 2-line original attribution per 78a5345f.
+
+### Verification
+
+- IMPORT OK
+- Full uqff_fidelity_tests.py: 867 passed, 0 failed (zero regression)

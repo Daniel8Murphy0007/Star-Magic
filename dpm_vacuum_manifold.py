@@ -2572,7 +2572,9 @@ if __name__ == "__main__":
     print("VDS([SSq]) = sum_{n=1}^inf [SSq]^n / n^26 = Li_26(0.57)")
     print("Ramanujan order-3 acceleration operator applied to the series:")
     print("S_26^(3)([SSq]) = 1.4531e26")
-    print("Closed-form acceleration factor; absolute convergence of VDS proven (|SSq| = 0.57 < 1)")
+    # [78a5345f recovery 2026-06-26] restore Ramanujan-attribution + divergent-series-theory text
+    print("This is the closed-form acceleration factor derived from Ramanujan's theory")
+    print("of divergent series, consistent with absolute convergence of VDS (|SSq| = 0.57 < 1)")
 
     print("\n=== BOSONIC STRING THEORY DERIVATION IN SCm ===")
     print("Bosonic string theory in 26 dimensions is recovered from SCm vacuum density")
