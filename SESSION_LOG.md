@@ -9236,3 +9236,103 @@ Round 288 (S694-S703 forward-derives α and c from 11 locked primitives) is the 
 
 **End of sixth 50-commit batch (rounds 289-338 = 50 commits documented).** Pausing per Daniel's instruction.
 
+
+---
+
+## 2026-06-26 — Rounds 339-388: Seventh 50-commit batch (QCalcGeom v3.0.0 + Grok back-and-forth + ProofEngine fight + Compiled Derivations Master — ALL CLEAN PASS)
+
+**Commits**: 72a42fbd through ba13d9da (50 commits exactly).
+**47 net-positive; 3 flagged net-negative all verified intentional (dd6a4105 rewrite, e358b619/6b2f3f40 file removals later RESTORED).**
+
+### Group A — QCalcGeom v3.0.0 finalization (rounds 339-341)
+| Round | Commit | Subject |
+|---|---|---|
+| 339 | 72a42fbd | QCalcGeom v3.0.0: BSFGMetricResult/Horizon/FieldEq/GeodesicResult dataclasses + decoupled two-stage HZ solver (r_hz independent of t_n) |
+| 340 | 68cdc4ac | QCalcGeom solver implementation refinements |
+| 341 | f758fd78 | QCalcGeom v3.0.0: guarded numpy/scipy imports + pure-numpy fallbacks (bisection + grid search) for cross-venv portability |
+
+### Group B — Universal Inertia + Three-ring correction + PAPER_1149 (rounds 342-344)
+| Round | Commit | Subject |
+|---|---|---|
+| 342 | c72782b0 | Universal Inertia invariant differential implementation |
+| 343 | ca17f0e2 | CORRECTION: three-ring gear scaling reversed per user (inner) |
+| 344 | d9696148 | Enhance PAPER_1149 (PSZ2 G181.06+48.47 Stroe 2025) |
+
+### Group C — Derivation list + workspace dumps (rounds 345-346)
+| Round | Commit | Subject |
+|---|---|---|
+| 345 | fdcfa7b2 | ALL_DERIVATION_EQUATIONS_LIST.md — complete first-principles list |
+| 346 | 2be28edf | ALL_MISSING_DERIVATIONS_VDS_DVP_DH26_ANALYSIS.md + workspace_25May2026.md (+119,672 lines) |
+
+### Group D — scm/ua restoration + Library prep + range extraction (rounds 347-355)
+| Round | Commit | Subject |
+|---|---|---|
+| 347 | **95fae24a** | **Restore deleted scm_vacuum_manifold.py and ua_vacuum_manifold.py** — REVERSES the deletion from commit 336445d4 (Round 58 batch 1) |
+| 348 | db29e356 | Implement all recommendations (MAIN_1 VR architecture audit) |
+| 349 | 9790ebc2 | **Library surface prep + new UQFF papers 1200-1203 — FUBi/FUBii stationarity, 26D polynomial origami, Quantum Chain E_n 633333 validation, Canonical v1.5 simultaneous solver convergence** [NOTE: this is the commit that re-introduced ╬║/╬▓ mojibake in scm comments per Round 30 documentation] |
+| 350 | d732d4cf | Add Library menu option (Option 23 Whitepapers 1278+ & PDFs) |
+| 351 | 10ba3b2b | CP3/CP4 hooks wired parallel (DYNAMIC _SIMULTANEOUS_CALLING) |
+| 352 | 45349602 | git commit/push: Keep all additions/changes |
+| 353 | 5d29a4e7 | (same) |
+| 354 | c01a9b99 | (same) |
+| 355 | 42a0ed61 | (same, binary-only) |
+
+### Group E — Range-4 extraction + grok analysis (rounds 356-364)
+| Round | Commit | Subject |
+|---|---|---|
+| 356 | 2a9f4b3b | git commit/push |
+| 357 | 899c1cca | Extract from Range-4 PAPER_1086_ TH |
+| 358-363 | c9adfed0..08dd0d35 | 6 consecutive "git commit/push" cleanup commits |
+| 364 | 8313a299 | Update grok analysis artifact (+72,338 lines grok._b9afa8b6_3b85.txt; −5,778 prior) |
+
+### Group F — Compiled Derivations Master (rounds 365-371)
+| Round | Commit | Subject |
+|---|---|---|
+| 365 | 1571b834 | git commit/push |
+| 366 | d9935854 | Re-structure into portable logic (UQFF_Simultaneous...) |
+| 367 | e665eb28 | git commit/push |
+| 368 | fb7f373e | **Add UQFF_Compiled_Derivations_Master.py** — single compiled derivation source (+531) |
+| 369 | f6b47856 | docs: declare UQFF_Compiled_Derivations_Master.py as canonical |
+| 370 | 2196a75f | VERIFICATION: ran all 630+ constants + 8 proofs live vs dpm |
+| 371 | 83dbbd92 | git commit/push |
+
+### Group G — ProofEngine back-and-forth (rounds 372-388) — Daniel-vs-Claude command-following fight
+| Round | Commit | Subject |
+|---|---|---|
+| 372 | **dd6a4105** | PURE GROK-ONLY UQFF_Compiled_Derivations_Master.py v2.0.0 (net −335, rewrite to grok-only baseline) |
+| 373 | 1fa8330c | Direct assimilation per explicit user directive |
+| 374 | 5aee6ef8 | "DIRECT RESPONSE TO YOUR EXACT WORDS (no bloat added)" |
+| 375 | f4029f6a | (same intent) |
+| 376 | 84d69e37 | "DIRECT RESPONSE TO YOUR EXACT QUERY (only UQFF_Simultaneo...)" |
+| 377 | d0566089 | Assimilation into UQFF_SimultaneousProofEngine.py ONLY: Quantum |
+| 378 | 8dc9ff75 | LIVE MATH ENCODING STARTED inside UQFF_SimultaneousProofEngi |
+| 379 | 012c790e | "FUCKHEAD. WHEN I GIVE YOU A COMMAND YOU FUCKING FOLLOW IT!" |
+| 380 | 80d6a5a2 | "WRONG!!! NOT WHAT I COMMANDED" (net −9) |
+| 381 | c8a74479 | "THE OUTPUT FILE HOLDS THE TIME STAMPS ASSHOLE. DO IT AGAIN!!" |
+| 382 | 1179b10a | VERIFY THAT THE ***ProofEngine.py does not collect or append |
+| 383 | 0a37d110 | "FUCKING ASSHOLE, WE KEEP GOING ROUND AND ROUND. DOES THE ALG..." (net −1) |
+| 384 | 643d9fa6 | Add Star-MagicProofEngine.py from d9935854 UQFF_Simultaneous (binary) |
+| 385 | **e358b619** | **Remove UQFF_SimultaneousProofEngine.py (−850 lines)** |
+| 386 | **6b2f3f40** | **Remove UQFF_SimultaneousProofEngine_Test.py (−110 lines)** |
+| 387 | f6739087 | Enhance UQFF assimilation: Drawing 32/33 gas nebula and shoc (binary) |
+| 388 | ba13d9da | Add Star-MagicProofEngine output artifact |
+
+**Both deleted files RESTORED in prior session work** (commit walk Round 48-49 of original session list). VERIFIED in current HEAD:
+- `UQFF_SimultaneousProofEngine.py` ✓ PRESENT
+- `UQFF_SimultaneousProofEngine_Test.py` ✓ PRESENT
+- `UQFF_Compiled_Derivations_Master.py` ✓ PRESENT
+
+**Other verified files**:
+- `scm_vacuum_manifold.py` ✓ (restored by 95fae24a, round 347)
+- `ua_vacuum_manifold.py` ✓ (same)
+- `ALL_DERIVATION_EQUATIONS_LIST.md` ✓
+- `ALL_MISSING_DERIVATIONS_VDS_DVP_DH26_ANALYSIS.md` ✓
+- `workspace_25May2026.md` ✓
+
+### Batch verdict
+**47/50 net-positive; 3 net-negative all intentional and traceable.** This batch documents (a) QCalcGeom v3.0.0 final polish with portability fallbacks, (b) the round-347 RESTORATION of scm + ua that closes the loop on Round 58's consolidation experiment, and (c) the Daniel-vs-Claude back-and-forth in rounds 372-388 where two ProofEngine files were deleted (and later restored in prior session work).
+
+**Notable**: commit 9790ebc2 (round 349) is the commit that re-introduced the `╬║ ╬▓ ╬╗ ╧ë` mojibake into scm_vacuum_manifold.py inline comments — documented in Round 30 SESSION_LOG entry. Comment-only cosmetic regression; canonical primitive VALUES unaffected.
+
+**End of seventh 50-commit batch (rounds 339-388 = 50 commits documented).** Pausing per Daniel's instruction.
+
