@@ -8472,3 +8472,104 @@ This matches CLAUDE.md's foundational principle: "ZERO MASS at quantum cycle sta
 **Fidelity gate**: 867 passed, 0 failed.
 
 **Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 34: Commit 0e7a2ebf forensic recovery ([SSq] first-principles S5c — NO REGRESSION)
+
+**Commit**: `0e7a2ebf` "[SSq] first-principles derivation: DPM relativistic geometry + Riemann VDS dual method (S5c)"
+**Scope**: 2 files, pure additive +538 (zero deletions): `_chain_trace_SSq.py` +231 new tracer; `dpm_vacuum_manifold.py` +307 (S5c section).
+
+**S5c section in current HEAD (L4730+)** — VERIFIED PRESENT with canonical Star-Magic.txt Ch.18 reference. The two-method derivation:
+
+**Method A — DPM Relativistic Geometry**: SCm moves toward UA at `v_SCm = c/3` (Star-Magic.txt Ch.4 canonical maximum-attraction velocity). Lorentz factor `γ_SCm = 1/√(1 - 1/9) = 3/(2√2)`. [SSq] emerges from this geometric ratio.
+
+**Method B — Riemann VDS dual**: alternate independent derivation using Vacuum Density Series `Li_26([SSq])` convergence anchor.
+
+**4 new functions in dpm** (all PRESENT in current HEAD):
+- `derive_SSq_from_DPM_geometry()` — Method A (DPM relativistic geometry) ✓
+- `derive_SSq_from_Riemann_VDS()` — Method B (Riemann VDS dual) ✓
+- `derive_SSq_bootstrap_AMU()` — bootstrap from AMU = M_0_DPM × A_26 (using Round 33's A_26 = 1,307,797,101) ✓
+- `derive_SSq_summary()` — convergence comparison ✓
+
+**`_chain_trace_SSq.py`** ✓ PRESENT (13,273 bytes — has grown since 0e7a2ebf's 231 lines, suggesting later enhancements)
+
+**Significance**: This commit elevates [SSq] = 0.57 from a "free calibration parameter" to a derived quantity. Two independent first-principles methods converging on the same value strengthens its status as a structural consequence rather than an arbitrary fit. Combined with PAPER_1521/1522 (which proved D_BSFG = 6 and K_MEX = 25/12 are derivative), this further reduces the truly-independent-primitive count below the canonical 9.
+
+CLAUDE.md APPENDED-2026-06-18 section currently lists [SSq] as one of the 9 independent primitives. If S5c's derivation holds rigorously, that count may drop to 8. **NOT modifying CLAUDE.md per Rule 11** — Daniel's call whether/when to update the primitive count.
+
+**Verdict**: CLEAN PASS — all 4 functions wired, both tracer files present, fidelity gate green.
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 35: Commit 9289806f forensic recovery (n-p split S5d — NO REGRESSION)
+
+**Commit**: `9289806f` "Fix #2: n-p mass split from Ug3 90-deg quark confinement crossing integral (S5d)"
+**Scope**: 2 files: `_chain_trace_np_split.py` +171 (new); `dpm_vacuum_manifold.py` +213/-24.
+
+**S5d additions** (all PRESENT in current HEAD):
+- `def chain_Ug3_np_split()` at L5112 ✓ — returns dict with Route A (Ug3 arc integral, K3=1 placeholder for Fix #4) + Route B (quark confinement De Broglie scale, primary derivation)
+- S5d section header at L5037 ✓ with full physics rationale referencing Star-Magic.txt lines 107-108, 1264 ("The strong force IS Ug3 at nuclear scale" — neutron at θ = π/2 Ug3 rotation)
+- Route B derivation: `m_q,up = hbar / (r_c,up * c) = 2.706e-28 kg`, `m_q,down = 5.672e-28 kg` (canonical r_c values from Star-Magic.txt L103); `Delta_M_np = (m_q,down - m_q,up) * (rho_SCm / rho_UA)^2 = 2.968e-30 kg = 1.665 MeV/c²` (+28.7% vs observed 1.293 MeV/c²; residual feeds Fix #3 Ug2 EM correction in next commit)
+
+**`_chain_trace_np_split.py`** ✓ PRESENT (8,549 B)
+
+**-24 modifications** to `chain_derive_particle_masses` — replaced placeholder leading-order neutron mass (which used the ℏΔω/2c² grinding-pair frequency estimate that gave the wrong answer ~1e-41 kg) with proper S5d-derived `M_n_derived = M_p_derived + chain_Ug3_np_split()["primary_result_kg"]`. Forward-references `chain_Ug2_electron_mass()` (S5e, next commit's Fix #3) for electron computation. Verified at L4635-4665 in current HEAD.
+
+**Significance**: Establishes the n-p mass split as derived from quark confinement geometry via two independent routes converging on the same physical picture (Ug3 90° rotation at nuclear scale). The +28.7% residual is intentional — it's the seed for Fix #3 (Ug2 outer-bubble correction) and Fix #4 (K3_eff coupling constant inversion).
+
+**Verdict**: CLEAN PASS — Route A + Route B derivations preserved verbatim, tracer file present, fidelity gate green.
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 36: Commit cb167873 forensic recovery (Fix #3 + #4 + #8: S5e/S5f/S5g — NO REGRESSION)
+
+**Commit**: `cb167873` "Fix #3 electron Ug2 outer-bubble + Fix #4 coupling K1-K4 + Fix #8 r_cross independent (S5e/S5f/S5g)"
+**Scope**: 2 files: `_chain_trace_fix348.py` +262 (new); `dpm_vacuum_manifold.py` +468/-14.
+
+**S5e — Fix #3 (electron mass)**: `chain_Ug2_electron_mass()` at L5250 ✓
+- Route B (PRIMARY): `m_e = ℏ / (R_C_UP × DPM_RATIO^(5/2) × c)`
+- 2.5 DPM layers: 2 full scaling steps to outer bubble + 0.5 from `S(r-R_b)` geometry
+- `R_C_LEPTON = R_C_UP × DPM_DENSITY_RATIO^2.5` ✓ (module constant present)
+- Numeric verification: `R_C_LEPTON = 4.111e-13 m`, `m_e_derived = 8.557e-31 kg`, error vs PDG 9.109e-31 = **−6.06%** (matches commit's claimed −6.07% within roundoff)
+- Route A: Ug2/Ug1 field ratio with K1=K2=1 placeholders → fixed by Fix #4
+- EM residual consistency: Fix#2 +0.3715 MeV = 72.7% of electron rest mass
+
+**S5f — Fix #4 (coupling constants K1-K4)**: `chain_coupling_constants()` at L5399 ✓
+- K1_eff = 5.040e+77 (Ug1 = M_p·c² at r=R_nuc — proton rest-energy constraint)
+- K2_eff = 2.824e+66 (Ug2 = M_e·c² at r=R_bubble — electron rest-energy constraint, uses Fix#3)
+- K3_eff = 5.979e-36 (from Fix#2 Route A n-p split, stored as `K3_EFF` module constant ✓)
+- K4_eff = 2.966e+18 (galactic energy density constraint: `Ω_g·M_BH/(d_g·c²)`)
+- K1/K2/K4 are local-only inside function (K3 is module-level since Fix#2 needs it)
+- SC mode consistency ratios returned (sc_ratio_K1=1.0 normalized, K2/K1, K3/K1, K4/K1)
+
+**S5g — Fix #8 (r_cross independent)**: `chain_r_cross_independent()` at L5579 ✓
+- Mechanism: "Primordial FUBii galactic DPM crossing" (per L6001 docstring)
+- Solves r_cross from primordial FUBii without circular dependency on M_emergent
+
+**New module constants** (all PRESENT in current HEAD):
+- `R_C_LEPTON` ✓
+- `OMEGA_G_GALACTIC = 7.3e-16 rad/s` ✓ (galactic angular rate Ω_g)
+- `M_BH_SgrA = 8.15e36 kg` ✓ (Sgr A* mass anchor)
+- `D_GALACTIC_SUN = 2.55e20 m` ✓ (Sun-to-GC distance)
+- `K3_EFF = 5.979e-36` ✓
+
+**`_chain_trace_fix348.py`** ✓ PRESENT (12,132 B)
+
+**-14 modifications** to `chain_derive_particle_masses` — replaced electron mass leading-order calculation with `chain_Ug2_electron_mass()` output. Verified at L4654 ("Electron mass derived in S5e (Fix #3)...") + L4699 (formula label).
+
+**Section markers** all present: S5e L5250, S5f L5399, S5g L5579. Forward-references to Fix #3/4/8 from chain_derive_particle_masses correct.
+
+**Verdict**: CLEAN PASS — all 3 fixes wired with full derivations, all module constants defined, tracer file present, numeric anchors verified arithmetically (R_C_LEPTON, m_e Fix#3 result both match within roundoff).
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
