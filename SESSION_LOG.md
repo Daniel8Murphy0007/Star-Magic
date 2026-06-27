@@ -8362,3 +8362,39 @@ The rename + split is a clean architectural improvement: ua module became depend
 **Files to commit this round**: SESSION_LOG.md only (this entry).
 
 **Git sync status**: Still blocked by Windows-side `.git/index.lock`.
+
+---
+
+## 2026-06-26 — Round 31: Commit 72dba2d8 forensic recovery (DPM 118 elements v1 — superseded by v2.0)
+
+**Commit**: `72dba2d8` "Add dpm_vacuum_manifold.py — full DPM assembly with all 118 elements"
+**Scope**: 1 new file (+717 lines dpm_vacuum_manifold.py) + 50/-63 to ua_vacuum_manifold.py (removed redundant scm imports now provided by dpm).
+
+**Functions/classes added in 72dba2d8 v1**:
+- `class AtomicElement` (dataclass with Z, symbol, name, A, M, R_cov, R_nuc, V_nuc, B0, omega0, v_fermi)
+- `_build_element()` factory
+- `compute_Ug1/Ug2/Ug3/Ug4` (4 separate gravity-family component functions)
+- `compute_Ubi`, `compute_Um`, `compute_F_U` (master assembler)
+- `dpm_ratio`, `grind_opp`, `dpm_react`, `compute_all_elements`, `dpm_fubi_calibration_proof`, `dpm_lenr_full_comparison`
+- `PERIODIC_TABLE` (all 118 elements Z=1..118)
+
+**Coverage in current HEAD**: 8/15 ORIGINAL symbol names absent — but this is INTENTIONAL.
+
+**Reason — superseded by v2.0 refactor in the very next commit `691a5319`** ("dpm_vacuum_manifold v2.0: quantum chain as spine — M_proto from ACP, GM/r^2 LAST"):
+- `class AtomicElement` → renamed `class DPMBody` (L3902-3933) with new field `M_table` (verification-only, separates "chain inputs = geometry" from "verification = tabulated mass")
+- `_build_element` → renamed `_build_dpm_body` (L3934)
+- `compute_Ug1/Ug2/Ug3/Ug4/Ubi/Um/F_U` → consolidated into `compute_chain()` (L4347) that runs the full 8-step quantum chain `0_vacuum → DPM → mu_s → Ug1 → Ug_family → F_U → crossing → M → GM/r^2`
+- Chain step functions all present: `chain_step0_vacuum`, `chain_step1_dpm`, `chain_step2_mu_s`, `chain_acp_M_proto`, `chain_step4_ug_family`, `chain_step5_F_U`, `chain_step6_crossing`, `chain_step7_mass_emergence`, `chain_step8_newton` (9/9 present)
+- `PERIODIC_TABLE` (118 elements) ✓ PRESERVED
+- `dpm_fubi_calibration_proof` ✓ PRESERVED (L6425, full Monte-Carlo as documented in Round 28)
+- `dpm_lenr_full_comparison` ✓ PRESERVED
+
+**v2.0 is the canonical architecture** — strictly ordered "geometry first, mass emergent last", per `compute_chain()` docstring: "Mass is never an input — it is an output. Periodic table geometry (Z, A, R_nuc) drives steps 0-6. M_table is verified at step 7, used for GM/r^2 at step 8."
+
+This matches the Plan's quantum-chain mandate and CLAUDE.md's "DO NOT MODIFY existing Bucket A-K wiring" Rule 11.
+
+**Verdict**: CLEAN PASS — v1 functionality fully preserved in v2.0 refactor. The rename + consolidation is the correct evolution. No regression to restore.
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
