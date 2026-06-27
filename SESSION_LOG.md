@@ -8398,3 +8398,77 @@ This matches the Plan's quantum-chain mandate and CLAUDE.md's "DO NOT MODIFY exi
 **Fidelity gate**: 867 passed, 0 failed.
 
 **Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 32: Commit 691a5319 forensic recovery (DPM v2.0 quantum chain — NO REGRESSION)
+
+**Commit**: `691a5319` "dpm_vacuum_manifold v2.0: quantum chain as spine -- M_proto from ACP, GM/r^2 LAST"
+**Scope**: 1 file (dpm_vacuum_manifold.py), +618/-418. Net +200 lines. Pure refactor of v1 (added in Round 31) into the canonical v2.0 architecture.
+
+**v2.0 design principles** (from commit msg + chain_acp_M_proto docstring, Star-Magic.txt Ch.7):
+- "Mass is never an input -- it is an output"
+- Z (atomic number) = number of DPM vortex units in resonance
+- A (mass number) = resonance count → drives R_nuc geometry
+- M_table = VERIFICATION ONLY, compared against M_emergent at step 7, used for GM/r² at step 8 only
+- Strict chain order: `0_vacuum → DPM → mu_s → Ug1 → Ug_family → F_U → crossing → M_emergent → GM/r²`
+
+**v1 → v2 renames + consolidations** (all PRESERVED in current HEAD):
+- `class AtomicElement` → `class DPMBody` ✓ (L3902, adds M_table verification-only field)
+- `_build_element` → `_build_dpm_body` ✓ (L3934)
+- `compute_Ug1/Ug2/Ug3/Ug4/Ubi/Um/F_U` (7 separate) → `compute_chain()` (L4347, runs full 8-step)
+- `compute_all_elements` → `compute_all_elements_chain` ✓ (Z=1..118 loop using `compute_chain()`)
+- `dpm_fubi_calibration_proof` ✓ PRESERVED
+- `dpm_lenr_full_comparison` ✓ PRESERVED
+
+**v2.0 NEW additions** (all PRESENT in current HEAD):
+- `chain_step0_vacuum`, `chain_step1_dpm`, `chain_step2_mu_s`, `chain_step3_Ug1`, `chain_step4_ug_family`, `chain_step5_F_U`, `chain_step6_crossing`, `chain_step7_mass_emergence`, `chain_step8_newton` — the 9 explicit chain step functions ✓
+- `chain_acp_M_proto(Z)` — `M_proto = M_0 * (1 - exp(-Z/10)) * Z` where `M_0 = ρ_vac_SCm / [SSq]` ✓ (L4152, matches commit msg formula exactly)
+- `chain_E_react` helper ✓
+- `E_CRACK`, `M_0_DPM` constants explicitly cast to float (prevents sympy `Zero` propagation) ✓ (both present, 2 references each)
+- `dpm_react` guarded against r^26 underflow at nuclear scale ✓ (still present in current HEAD)
+
+**Verdict**: CLEAN PASS — v1's 12 deleted symbols all have v2.0 equivalents with same or improved functionality. The refactor enforces "geometry first, mass emergent last" per Star-Magic.txt Ch.7 mass-emergence chain. PERIODIC_TABLE remains all 118 elements (Z=1..118).
+
+This matches CLAUDE.md's foundational principle: "ZERO MASS at quantum cycle start → mass EMERGES from DPM vortical dynamics → only then does Ug1 look gravitational → GM/r² allowed only as reduced observational projection AFTER mass emergence."
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 33: Commit 3bfc0a26 forensic recovery (26-layer DPM amplification — NO REGRESSION)
+
+**Commit**: `3bfc0a26` "26-layer DPM amplification: first-principles derivation of particle masses from vacuum constants"
+**Scope**: 2 new files: `dpm_vacuum_manifold.py` +300 (S5b section), `_chain_trace_26layer.py` +188 (new tracer module).
+
+**S5b additions to dpm_vacuum_manifold.py** (all PRESENT in current HEAD):
+- `chain_26layer_weights()` — per-layer `[SCm]_i = i^2` (canonical triadic quantum state, Star-Magic.txt L468), `[UA]_i`, `B0_i`, weight `w_i = i^6` ✓
+- `chain_26layer_amplification()` — `A_26 = sum(i^6, i=1..26)` ✓
+- `chain_derive_nucleon_mass(A)` — `M = A × M_0_DPM × A_26` (no PDG lookup) ✓
+- `chain_derive_particle_masses()` — proton/neutron/C-12/Fe-56 from `ρ_vac_SCm` + `[SSq]` alone ✓
+
+**`_chain_trace_26layer.py`** ✓ PRESENT (7,337 bytes)
+
+**Numeric verification of A_26**:
+```python
+>>> sum(i**6 for i in range(1, 27))
+1307797101
+```
+✓ EXACT match to commit message claim `A_26 = 1,307,797,101`.
+
+**Layer weight decomposition (why `i^6`)** — per commit message + S5b docstrings:
+- `[SCm]_i = i^2` (Star-Magic.txt L468, canonical SCm triadic quantum state)
+- `[UA]_i = i^2` (matching CCW polarity)
+- `B0_i = i^2` (nuclear surface magnetic field scaling)
+- `w_i = [SCm]_i × [UA]_i × B0_i = i^2 × i^2 × i^2 = i^6`
+- `A_26 = Σ_{i=1}^{26} w_i = Σ i^6 = 1,307,797,101`
+
+**Derivation result** (per commit message): AMU_derived = `M_0_DPM × A_26 = 1.627e-27 kg`; AMU_observed = 1.661e-27 kg → error −2.04%. All nuclear masses (H, C-12, Fe-56) derived within 2.04% from `ρ_SCm` and `[SSq]` alone — no SM input, no PDG lookup.
+
+**Verdict**: CLEAN PASS — first-principles 26-layer mass derivation fully wired and preserved. The A_26 = 1,307,797,101 anchor is a numeric truth (verified arithmetically), and the four new dpm functions implement the canonical layer weight decomposition. No removals in this commit (pure +488 additive across 2 new files).
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
