@@ -7915,3 +7915,450 @@ print("Closed-form acceleration factor; absolute convergence of VDS proven (|SSq
 
 - IMPORT OK
 - Full uqff_fidelity_tests.py: 867 passed, 0 failed (zero regression)
+
+---
+
+## 2026-06-26 — Round 19: Commit 4684f438 forensic recovery (LaTeX-pass-3 mass mangling)
+
+**Commit**: `4684f438` "LaTeX pass 3 — fix cdot/times/Delta spacing, log10, multi-subscript, Unicode Greek, C1 chars"
+**Scope**: 2005 files modified (1135 .md + 1 .py + ~870 PDFs); added `fix_latex2.py`.
+
+**Regression found**: The LaTeX-pass-3 normalizer over-applied a "wrap snake_case in `${}_{}$`" rule to Python identifiers inside fenced code blocks, inline backticks, and prose references. Result: **24,604 mangled snake_case identifiers across 1155 .md whitepapers + 40 .tex whitepapers**.
+
+Mangled patterns:
+- `parkhomov_{excess\_heat}` (should be `parkhomov_excess_heat`)
+- `kozima_{scm\_cross\_section}` (should be `kozima_scm_cross_section`)
+- `` `k``ozima_{wstp\_kernel}`.py` `` (split-backtick variant, should be `kozima_wstp_kernel.py`)
+
+**Fix**: Wrote `/tmp/fix_mangled_identifiers.py` with two reverse-mangle regexes:
+
+```python
+PATT_SIMPLE = re.compile(r'([A-Za-z][A-Za-z0-9]*)_\{([A-Za-z][A-Za-z0-9_]*(?:\\_[A-Za-z][A-Za-z0-9_]*)+)\}')
+PATT_SPLIT  = re.compile(r'`([A-Za-z])`([A-Za-z][A-Za-z0-9]*)_\{([A-Za-z][A-Za-z0-9_]*(?:\\_[A-Za-z][A-Za-z0-9_]*)+)\}`\.([a-z]+)`')
+```
+
+Patterns require `\_` (escaped underscore) inside the brace group — this is the LaTeX-3 mangling signature and never appears in legitimate math LaTeX like `F_{U,Bi}` or `F_{U_{Bi}}`.
+
+**Results**:
+- `.md` corpus: 1140 files modified, 24,604 reversals (18,142 SIMPLE + 6,462 SPLIT)
+- `.tex` corpus (2nd pass): 40 files modified, 294 reversals
+- Math-context `F_{U,Bi}`, `F_{U_{Bi}}`, `M_{\mathrm{...}}` etc. preserved (1108 .md files still contain legitimate `F_{U...` math notation)
+- Final mangled count: **0**
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit**:
+- 1140 whitepaper .md files (mangled identifier reversal)
+- 40 whitepaper .tex files (same reversal applied to LaTeX corpus)
+- SESSION_LOG.md (this entry)
+
+Per CLAUDE.md Rules 3, 9, 10: no narrative regression, append-only log, Daniel reviews and commits.
+
+---
+
+## 2026-06-26 — Round 20: Commit 20bb5e4f forensic recovery (8-__main__ consolidation losses)
+
+**Commit**: `20bb5e4f` "fix: consolidate 8 __main__ blocks into one in scm_vacuum_manifold.py; add sys.stdout utf-8 reconfigure for Windows console"
+**Scope**: 1 file (pdf/scm_vacuum_manifold.py), +206/-6 lines.
+
+**Initial appearance**: net-positive, mostly pedagogical print() consolidation. No code logic changed.
+
+**Regression discovered**: The target file `pdf/scm_vacuum_manifold.py` was DELETED in a later commit `d091e044` ("consolidate pdf/scm_vacuum_manifold.py: remove 5x duplicate __main__ blocks"). When d091e044 removed the file, **9 pedagogical sections** added by 20bb5e4f silently disappeared from the codebase:
+
+1. `=== HOW THE CALIBRATION CONSTANTS WORK ===` (SSq + κ as ONLY free parameters)
+2. `=== VDS CONVERGENCE PROOF ===` (ratio + root test for Li_26)
+3. `=== ADS/CFT IN SCm FRAMEWORK ===` (already present in dpm — VERIFIED PRESENT)
+4. `=== SCm SUPERSYMMETRY BREAKING ===` (cos(π t_n) drives SUSY breaking)
+5. `=== HOLOGRAPHIC ENTROPY IN SCm ===` (Bekenstein-Hawking via ρ_vac_SCm)
+6. `=== SCm DARK MATTER DERIVATION ===` (10⁻²² eV fuzzy → 100 GeV WIMP-like)
+7. `=== SCm NEUTRINO OSCILLATIONS DERIVATION ===` (Phi_gaussian phase mechanism)
+8. `=== GRAVITATIONAL WAVES IN SCm ===` (strain via S26_3 · Phi_res · cos(π t_n))
+9. `=== SCm COSMIC RAY INTERACTIONS ===` (Phi_gaussian cross-section)
+10. `=== SCm NEUTRINO OSCILLATION PARAMETERS ===` (L_osc, Δm², θ_13 modulation)
+11. `=== SCm MUON DECAY DERIVATION ===` (Γ_μ correction via Phi_gaussian)
+12. `=== SCm NEUTRINO OSCILLATION SIMULATION ===` (numeric P(ν_μ→ν_e) over E×L grid)
+13. `=== SCm BETA DECAY DERIVATION ===` (Γ_β correction, low-radiation LENR signature)
+
+Plus the `sys.stdout.reconfigure(encoding='utf-8', errors='replace')` Windows-console UTF-8 fix at the top of `__main__`.
+
+**Fix**: Restored all 13 pedagogical sections + UTF-8 reconfigure to BOTH canonical files:
+- `dpm_vacuum_manifold.py` (DPM canonical root, has 3 `__main__` blocks)
+- `scm_vacuum_manifold.py` (SCm canonical root, has 1 `__main__` block)
+
+Insertion points:
+- dpm: before existing `=== REVISED REACTOR VALIDATION ===` at L2639 (joins the existing rich pedagogical sequence)
+- scm: before final `return {...}` dict at end of `__main__`
+
+Restoration uses ASCII-safe rendering of the original `\\π` `→` Unicode (em-dash, arrow, π) → `pi`, `->`, `-` to avoid the Windows-console issue that motivated 20bb5e4f's UTF-8 reconfigure in the first place. Belt-and-suspenders.
+
+**Note on Rule 3 compliance**: CLAUDE.md Rule 3 ("NO COMMENTS WHATSOEVER", "NO NARRATIVE OF ANY KIND") and Rule 6 ("no `__main__` in uqff_pure_calculator.py") apply specifically to the **pure calculator**. The DPM and SCm vacuum manifolds (`dpm_vacuum_manifold.py`, `scm_vacuum_manifold.py`) are NOT the pure calculator — they are pedagogical/derivation reference modules with ~437 and ~263 existing `print()` lines apiece, all inside `__main__` blocks. Restoring 13 more sections preserves the established style and Daniel's standing instruction "NOTHING IS NEGLIGIBLE".
+
+**Fidelity gate**: 867 passed, 0 failed (unchanged — restorations are inside `__main__`, no public API impact).
+
+**Files to commit**:
+- `dpm_vacuum_manifold.py` (13 pedagogical sections + UTF-8 reconfigure inserted before L2639)
+- `scm_vacuum_manifold.py` (13 pedagogical sections + UTF-8 reconfigure inserted before final `return`)
+- `SESSION_LOG.md` (this entry)
+
+---
+
+## 2026-06-26 — Round 21: Commit 0f9f6ca1 forensic recovery (smart sqrt — NO REGRESSION)
+
+**Commit**: `0f9f6ca1` "fix: upgrade_latex.py - smart sqrt conversion; sqrt{N} and sqrt{(expr)} instead of bare sqrt{}"
+**Scope**: 1 file (upgrade_latex.py), +17/-1.
+
+**Diff analysis**:
+- Removed bare `'√': r'\sqrt{}'` entry from `MATH_CHARS` dict (the unicode `√` no longer dispatched naively)
+- Added new `elif c == '√':` branch in `replace_in_text()`:
+  - `√(expr)` → `$\sqrt{expr}$` (looks ahead for matching `)`)
+  - `√N`, `√x`, `√{x}` → `$\sqrt{N}$` (single char follow)
+  - Fallback: `$\sqrt{}$`
+
+**Current HEAD verification**: `upgrade_latex.py` is PRESENT (~12 KB, mtime Apr 28 13:48). The smart sqrt logic at L124-L141 is INTACT with comments and behavior unchanged from this commit. Bare `'√': r'\sqrt{}'` dict entry has been removed as intended (no `'√': r` matches in MATH_CHARS).
+
+**Verdict**: CLEAN PASS — utility-tool improvement, no physics impact, no canonical primitives touched, no public-surface side effects, no removals to investigate, no later commit reverted this work.
+
+**Fidelity gate**: not run (no file modifications this round).
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 22: Commit 3330f41c forensic recovery (747 PDFs regenerated — NO REGRESSION)
+
+**Commit**: `3330f41c` "chore: commit 747 PDFs regenerated after pass 3 LaTeX fixes (binary delta from MiKTeX timestamps)"
+**Scope**: 747 binary PDFs in `pdf/` directory.
+
+**Analysis**: 100% binary delta (`-	-	` in numstat indicates binary diff). Zero source-code lines. These are MiKTeX-regenerated PDFs following the LaTeX-3 source pass at commit `4684f438`. Binary deltas reflect:
+- New PDF metadata timestamps from regeneration
+- LaTeX rendering improvements from the upstream `.md` corrections
+- No content removal — same papers, regenerated cleanly
+
+**Verification**: Spot-checked 10 random PDFs from the 747 commit; all PRESENT in current HEAD with substantial file sizes (118 KB – 491 KB). Total `pdf/` count: 1296 PDFs (no net deletions).
+
+**Verdict**: CLEAN PASS — binary asset regeneration only, no physics, no canonical primitives, no public surfaces, no removals to recover, no later commit reverted this work.
+
+**Fidelity gate**: not run (no source-code modifications this round).
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 23: Commit a009fadc forensic recovery (CP2 +10 SCm classes — mojibake repair)
+
+**Commit**: `a009fadc` "feat: add 10 SCm physics calculator classes to CondensedPhysics2 — SUSY breaking, holographic entropy, dark matter, neutrino oscillations (full/params/simulation), GW metric perturbation, cosmic rays, muon/beta decay; CP2 680->690 classes, 55284->55626 lines; source: scm_vacuum_manifold.py Session 204"
+**Scope**: 1 file (CondensedPhysics2.py), tracked via git LFS.
+
+**Diff is LFS pointer delta**: oid `df60021d` (2,245,202 bytes) → oid `3ec544a3` (2,263,235 bytes). Real content delta = +18,033 bytes = 10 new classes inserted at end of CP2.
+
+**Coverage verification**: All 10 SCm classes from a009fadc PRESENT in current HEAD CP2 (post-LFS smudge, 55,692 lines):
+- L55310 `SCmSUSYBreakingUQFFCalculator` (31 lines)
+- L55341 `SCmHolographicEntropyUQFFCalculator` (36 lines)
+- L55377 `SCmDarkMatterUQFFCalculator` (35 lines)
+- L55412 `SCmNeutrinoOscillationUQFFCalculator` (36 lines)
+- L55448 `SCmNeutrinoOscParamUQFFCalculator` (36 lines)
+- L55484 `SCmGravitationalWaveUQFFCalculator` (31 lines) ← named `GW metric perturbation` in commit msg
+- L55515 `SCmCosmicRayUQFFCalculator` (32 lines)
+- L55547 `SCmMuonDecayUQFFCalculator` (34 lines)
+- L55581 `SCmBetaDecayUQFFCalculator` (31 lines)
+- L55612 `SCmNeutrinoOscSimulationUQFFCalculator` (79 lines) — has E×L grid simulation loop
+
+Each class is fully fleshed out (compute() method with proper UQFF inputs: kappa, t_n, SSq, F_TRZ, S26_3, etc.) — not stubs.
+
+**Regression found — mojibake**: 11 instances of `ï¿½` (U+FFFD replacement char, Latin-1 mis-decoded into UTF-8) inside the 10 SCm class docstrings/comments. These are the result of em-dash characters (`—`) in the original Session 204 source being mis-encoded during a previous filesystem transit. Examples:
+- `Source: scm_vacuum_manifold.py ï¿½ Session 204 SUSY phenomenology block.`
+- `Source: scm_vacuum_manifold.py ï¿½ Session 204 holographic entropy block.`
+- `Gamma_0 = G_F^2 * m_mu^5 / (192 * pi^3 * hbar) ï¿½ simplified proxy`
+
+**Surgical fix**: Replaced the 11 mojibake instances inside the SCm class range (L55310-L55691) with ` - ` (ASCII em-dash equivalent) per the standing instruction to keep Windows-console-compatible text. **Did NOT touch the 2705 other mojibake occurrences elsewhere in CP2** — those are outside the scope of a009fadc and a separate cleanup decision for Daniel.
+
+**LFS object restoration**: My first attempt did a global mojibake fix (touched 2716 occurrences). I REVERTED that by restoring CP2 from `.git/lfs/objects/43/7d/437ddfafded96a56818786e580b5e3c022a4448ea32392a39d91f6b342aecdf2` (SHA256 verified, size 2,252,601 bytes), then re-applied the surgical fix limited to L55310-L55691.
+
+**Verification**:
+- Pre-fix mojibake count in SCm range: 11 → Post-fix: 0
+- Pre-fix mojibake count globally: 2716 → Post-fix: 2705 (delta = 11, exactly matches)
+- Net file size delta: 2,252,601 → 2,252,546 bytes (-55 bytes)
+- File-wide syntax: pre-existing f-string nested-quote error at L34547 (NOT from a009fadc, NOT from my edit; can be addressed in a separate forensic pass)
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit**:
+- `CondensedPhysics2.py` (11 surgical mojibake fixes in L55310-L55691, the 10 SCm classes from a009fadc)
+- `SESSION_LOG.md` (this entry)
+
+**Outstanding issue for separate forensic pass**: Pre-existing f-string syntax error at L34547 (`{'STALLED' if is_stalled else 'OK'}` inside f-string with same-quote) — incompatible with Python 3.10 but valid in 3.12+. This pre-dates a009fadc and is not within scope of this round.
+
+---
+
+## 2026-06-26 — Round 24: Commit b6756320 forensic recovery (Ramanujan PAPER_853/854 + SCm Super-K block)
+
+**Commit**: `b6756320` "Add ramanujan_26_state_summation + expanded_ramanujan_26d (PAPER_853/854); final cross-reference complete — 137 functions, all verified OK"
+**Scope**: 15 files modified. Notable adds:
+- `scm_vacuum_manifold.py` +2043 lines (root canonical SCm module — major upgrade)
+- `pdf/scm_vacuum_manifold.py` +40 lines (later deleted in d091e044)
+- `CondensedPhysics3.py` +276 lines (10 SCm classes propagated to CP3)
+- `CondensedPhysics4.py` +250 lines (10 SCm classes propagated to CP4)
+- `_propagate_scm_physics.py` +1452 lines (new propagation helper)
+- 2 grok conversation .txt files (research notes, +14207 lines combined)
+- 3 QCalc_*_extracted.py files (extracted constants/terms regenerated)
+- LFS pointer updates: CP1/CP2/MAIN_1/QCalc/index.js (2/2 lines = pointer SHA delta)
+
+**Coverage verification — all 15 files PRESENT in current HEAD** except `pdf/scm_vacuum_manifold.py` (deleted in d091e044, covered in Round 20).
+
+**Named function additions**:
+- `ramanujan_26_state_summation()` — PRESENT in both `dpm_vacuum_manifold.py` (L2208) and `scm_vacuum_manifold.py` (L2124) ✓
+- `expanded_ramanujan_26d()` — PRESENT in both (L2232 / L2148) plus also in `ramanujan_26d_expanded.py` (standalone module) ✓
+
+**CP3/CP4 class propagation (10 SCm classes)** — VERIFIED PRESENT in current HEAD:
+| Class | CP3 | CP4 |
+|---|---|---|
+| SCmSUSYBreakingCalculator | 1 | 1 |
+| SCmHolographicEntropyCalculator | 1 | 1 |
+| SCmDarkMatterCalculator | 1 | 1 |
+| SCmNeutrinoOscillationCalculator | 1 | 1 |
+| SCmNeutrinoOscParamCalculator | 1 | 1 |
+| SCmGravitationalWaveCalculator | 1 | 1 |
+| SCmCosmicRayCalculator | 1 | 1 |
+| SCmMuonDecayCalculator | 1 | 1 |
+| SCmBetaDecayCalculator | 1 | 1 |
+| SCmNeutrinoOscSimulationCalculator | 1 | 1 |
+
+No mojibake regression in CP3 SCm range (L15093-15430) or CP4 SCm range (L47411-47723).
+
+**Regression found** — `pdf/scm_vacuum_manifold.py +40` lines added a brand-new pedagogical block:
+- `=== SCm NEUTRINO OSCILLATION PROBABILITY PLOT ===` (refs `scm_oscillation_plot.png`)
+- `=== COMPARISON TO SUPER-KAMIOKANDE DATA ===` (atmospheric ν L/E ~ 500 km/GeV oscillation dip, 1:1:1 flavor ratio)
+- `=== SCm OSCILLATION PLOT + SUPER-K COMPARISON DERIVED AND ENCODED ===`
+
+All 6 unique strings (SCm OSCILLATION PROBABILITY PLOT, SCm NEUTRINO OSCILLATION PROBABILITY PLOT, COMPARISON TO SUPER-KAMIOKANDE DATA, Super-Kamiokande atmospheric neutrino, SCm OSCILLATION PLOT + SUPER-K COMPARISON, scm_oscillation_plot.png) were ABSENT from all canonical files in current HEAD — silent loss from the d091e044 deletion of `pdf/scm_vacuum_manifold.py`.
+
+**Fix**: Restored the SCm Super-K comparison block to BOTH canonical files:
+- `dpm_vacuum_manifold.py` — inserted after Round-20's SCm BETA DECAY DERIVATION block
+- `scm_vacuum_manifold.py` — inserted at corresponding position
+
+ASCII-safe rendering: `nu_mu -> nu_e`, `pi`, no em-dash, no ✅, no checkmark, no Unicode arrows (Windows-console compatibility).
+
+**Verification post-restore**:
+- All 5 unique tokens present once in each canonical file
+- Both files: SYNTAX OK
+- Fidelity gate: 867 passed, 0 failed
+
+**Files to commit**:
+- `dpm_vacuum_manifold.py` (added Super-K block)
+- `scm_vacuum_manifold.py` (added Super-K block)
+- `SESSION_LOG.md` (this entry)
+
+---
+
+## 2026-06-26 — Round 25: Commit a050daa3 forensic recovery (UQFF Four Immutable Pillars — NO REGRESSION)
+
+**Commit**: `a050daa3` "Add UQFF Four Immutable Pillars + UQFFExtensions from uqff_pillars.py"
+**Scope**: 1 file (scm_vacuum_manifold.py), +282/-2.
+
+**Additions** (all into `scm_vacuum_manifold.py`):
+- `@dataclass UQFFConstants` — canonical κ + [SSq] + c bundle
+- `class Pillar1_VacuumBuoyancyResonance` — Triadic Master + 12-term F_UBii integrand, 10-element SUBSET_CHAIN, `compute_FU()`, `compute_h_UQFF()`
+- `class Pillar2_26DHierarchyCompactification` — `ramanujan_26state_sum()`
+- `class Pillar3_CrossScaleUnification` — `gr_limit()`, `lambdacdm_limit()`, `triadic_co_sum()`, `mond_limit()`
+- `class Pillar4_TriadicMasterRamanujanProof` — proof helpers
+- `class UQFFExtensions` — `stress_energy_tensor_mapping()`, `particle_spectrum_26d()`, `black_hole_info_recovery()`, `quantum_measurement_resonance()`, `dpm_nonlocal_entanglement()`
+
+**Removals (-2)**: legacy summary line `print("[OK] scm_vacuum_manifold.py canonical + complete. ...")` updated with new counts.
+
+**Coverage verification** (current HEAD):
+- All **6 classes** present in `scm_vacuum_manifold.py` ✓
+- All **6 classes** present in `dpm_vacuum_manifold.py` (canonical mirror — cascade preserved) ✓
+- All **12 named methods** present in both files ✓
+- No mojibake in Pillar code ranges (scm L2182-L2459, dpm L2266-L2543)
+
+**Source file note**: `uqff_pillars.py` (mentioned in commit message as the import source) never existed in git history — it was an external scratch file used as a one-shot copy source. The class content is preserved inside the canonical scm/dpm files; not a regression.
+
+**Verdict**: CLEAN PASS — physics-bearing additions all wired to both canonical files. No removals to recover. No later commit reverted this work.
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 26: Commit cda681d2 forensic recovery (sympy Four Pillar + LaTeX export — NO REGRESSION)
+
+**Commit**: `cda681d2` "Add sympy symbolic Four Pillar expressions + LaTeX export to scm_vacuum_manifold"
+**Scope**: 1 file (scm_vacuum_manifold.py), +44/-1.
+
+**Additions** (all into scm_vacuum_manifold.py at L2353-L2386 + L2811-L2820):
+- Symbolic Pillar 1: `FU_sym` (force assembly) + `h_UQFF_sym` (GW strain with Ub/F_U damping)
+- Symbolic Pillar 2: `ramanujan_26_sym = sp.Sum(SSQ**k * sp.sin(2*pi*k*n/26), (k, 0, 25))`
+- Symbolic Pillar 3: `FU_gr_sym = FU_sym.subs(Ub_sp, 0)` (GR emergent limit)
+- Symbolic Pillar 4: `triadic_sym = FUg1_sp + Rt_sp + FUBi_sp * SSQ`
+- LaTeX-export print block in `__main__`: 5 sp.latex() output lines + cosmology damping numeric example
+
+**Removals (-1)**: legacy summary line updated to mention `(class + sympy symbolic)`.
+
+**Coverage verification** (current HEAD — both scm and dpm canonical mirror):
+- All 5 sympy symbol assignments present: FU_sym, h_UQFF_sym, ramanujan_26_sym, FU_gr_sym, triadic_sym ✓
+- All 5 LaTeX-export print labels present: `Pillar 1 F_U:`, `Pillar 1 h_UQFF:`, `Pillar 2 ramanujan_26:`, `Pillar 3 GR limit:`, `Pillar 4 triadic:` ✓
+- Section header `UQFF FOUR PILLARS SYMPY SYMBOLIC FORMS`: 2 occurrences in each file (1 section header at top + 1 print label in `__main__`) ✓
+- scm header at L2397, scm print label at L2862
+- dpm header at L2481, dpm print label at L3099 (canonical mirror — cascade preserved)
+
+**Verdict**: CLEAN PASS — sympy symbolic Four Pillar additions all wired to both canonical files. No removals to recover. No later commit reverted this work.
+
+**Fidelity gate**: not run (no file modifications this round).
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 27: Commit 81bebeb6 forensic recovery (pdf/scm sync — 6 sections lost)
+
+**Commit**: `81bebeb6` "Sync pdf/scm_vacuum_manifold.py with root (overwrite stale copy)"
+**Scope**: 1 file (pdf/scm_vacuum_manifold.py), +2366/-241 — sync to match root scm at that time.
+
+**Analysis**: The "sync" operation OVERWROTE pdf/scm with root scm content. The -241 deletions were content unique to pdf/scm that didn't have a counterpart in root scm. After 81bebeb6, pdf/scm = root scm exactly. Then commit `d091e044` deleted pdf/scm entirely. Net effect: the -241 lines of pdf-only content were silently lost from the codebase.
+
+**Diff of pedagogical section headers — sections REMOVED from pdf/scm in 81bebeb6**:
+- ✓ ADS/CFT IN SCm FRAMEWORK (Round 20 already restored)
+- ✓ COMPARISON TO SUPER-KAMIOKANDE DATA (Round 24 already restored)
+- ✓ GRAVITATIONAL WAVES IN SCm (Round 20)
+- ✓ HOLOGRAPHIC ENTROPY IN SCm (Round 20)
+- ✓ REVISED REACTOR VALIDATION (was always in root scm)
+- ✓ SCm BETA DECAY DERIVATION (Round 20)
+- ✓ SCm COSMIC RAY INTERACTIONS (Round 20)
+- ✓ SCm DARK MATTER DERIVATION (Round 20)
+- ✓ SCm MUON DECAY DERIVATION (Round 20)
+- ✓ SCm NEUTRINO OSCILLATION PARAMETERS (Round 20)
+- ✓ SCm NEUTRINO OSCILLATION PROBABILITY PLOT (Round 24)
+- ✓ SCm NEUTRINO OSCILLATION SIMULATION (Round 20)
+- ✓ SCm NEUTRINO OSCILLATIONS DERIVATION (Round 20)
+- ✓ SCm SUPERSYMMETRY BREAKING (Round 20)
+- **MISSING** CALIBRATION CONSTANTS AND PLANCK SCALE
+- **MISSING** CANONICAL CONSTANTS ASSESSMENT
+- **MISSING** EQUATIONS DETERMINING CALIBRATION CONSTANTS
+- **MISSING** NEXT STEPS TO PROVE UQFF
+- **MISSING** PREDICTIVE POWER FOR UQFF
+- **MISSING** SCm NEUTRINO OSCILLATIONS vs ICECUBE DATA
+
+**6 sections truly missing** from current HEAD scm + dpm canonical files.
+
+**Fix**: Restored the 6 missing pedagogical sections to BOTH `dpm_vacuum_manifold.py` and `scm_vacuum_manifold.py`, inserted right after the Round-24 Super-K block (joining the existing pedagogical flow). ASCII-safe rendering (no κ/π/ν, no em-dash, no Unicode arrows).
+
+Also caught and fixed an indent regression at L2800 of dpm (the SCm OSCILLATION PLOT print line from Round 24 had ended up at col 0; corrected to 4-space indent so it lives inside `__main__`).
+
+**Verification post-restore**:
+- All 6 sections present once in each canonical file ✓
+- Both files: SYNTAX OK
+- Fidelity gate: 867 passed, 0 failed
+
+**Files to commit**:
+- `dpm_vacuum_manifold.py` (6 restored sections + indent fix)
+- `scm_vacuum_manifold.py` (6 restored sections)
+- `SESSION_LOG.md` (this entry)
+
+---
+
+## 2026-06-26 — Round 28: Commit 2de61887 forensic recovery (UA vacuum manifold rebuild — NO REGRESSION)
+
+**Commit**: `2de61887` "Rebuild ua_vacuum_manifold.py: deduplicate 12 repeated blocks into single clean module with 14 unique compute functions; add DPM_vacuum_manifold.md architecture reference"
+**Scope**: 4 new files added (+1835 lines total).
+
+**Files added in 2de61887**:
+- `DPM_vacuum_manifold.md` (+370 lines, 17 KB) — architecture reference
+- `ua_vacuum_manifold.py` (+651 lines, 36 KB) — root canonical UA module
+- `pdf/ua_vacuum_manifold.py` (+651 lines) — pdf-folder duplicate
+- `pdf/uqff_pillars.py` (+163 lines) — pdf-folder pillars
+
+**Coverage verification** (current HEAD):
+- `DPM_vacuum_manifold.md` ✓ PRESENT (17,460 bytes; intact header "DPM Vacuum Manifold — Architecture Reference")
+- `ua_vacuum_manifold.py` ✓ PRESENT (36,094 bytes)
+- `pdf/ua_vacuum_manifold.py` removed by next commit `9c1c7083` ("remove .py source files from pdf/; correct canonical comment strings to root path") — intentional cleanup
+- `pdf/uqff_pillars.py` removed by same commit — intentional cleanup
+
+**ua_* function inventory in current HEAD** — 15/15 PRESENT:
+ua_layer_density, ua_dpm_total_density, ua_dpm_buoyancy_factor, ua_calibration_ratio, ua_phonon_linewidth_ode, ua_solve_phonon_linewidth, ua_linewidth_convergence, ua_lenr_comparison, ua_casimir_comparison, ua_string_brane_embedding, ua_cosmological_acceleration, ua_rotation_curve_flat, ua_hubble_tension_modulation, ua_dark_energy_substitute, ua_calibration_ratio_proof.
+
+**One intentional refactor**: `ua_fubi_calibration_proof` (2de61887) was split into:
+- `ua_calibration_ratio_proof` (current HEAD, in ua_vacuum_manifold.py) — thin standalone stub returning density ratio constants only; no scm import
+- `dpm_fubi_calibration_proof` (current HEAD, in dpm_vacuum_manifold.py L6425) — full Monte-Carlo F_U_Bi_i proof, returns mean/std/range, F_U_Bi_cosmological, UA_total_density, DPM_buoyancy_factor + rich scale_interpretation docstring
+
+The rename + split is a clean architectural improvement: ua module became dependency-free (no scm import → no circular dep), dpm root carries the full Monte-Carlo proof (proper canonical root pattern). All original functionality preserved + extended.
+
+**Verdict**: CLEAN PASS — additive commit; pdf duplicates intentionally removed in next commit; one function renamed/split with full functionality preserved in dpm root.
+
+**Fidelity gate**: not run (no file modifications this round).
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 29: Commit 9c1c7083 forensic recovery (pdf/ cleanup + canonical path strings)
+
+**Commit**: `9c1c7083` "Fix: remove .py source files from pdf/; correct all canonical comment strings to root path"
+**Scope**: 13 files modified — 4 pdf/.py deletions + path string corrections across 9 other files + cp1252→utf-8 encoding pass on scm.
+
+**Files deleted (-3740 lines)**:
+- `pdf/scm_vacuum_manifold.py` (-2827) — pure duplicate of root scm (synced in Round 27/81bebeb6); content preserved at root + Round 20/24/27 pedagogical restorations
+- `pdf/ua_vacuum_manifold.py` (-651) — pure duplicate of root ua_vacuum_manifold.py
+- `pdf/uqff_pillars.py` (-163) — pillars content was already imported into root scm by commit a050daa3 (Round 25)
+- `pdf/scm_latex_exporter.py` (-99) — LaTeX-export utility; **ONLY pdf/.py file from this commit with no root counterpart**
+
+**Canonical primitives in current HEAD** (post-9c1c7083) — VERIFIED INTACT:
+- KAPPA = sp.Rational(5, 10000) ✓ (`κ = 5.0e-4 day⁻¹` with mojibake-comment ╬║ but value correct)
+- KAPPA_FLOAT = float(KAPPA) ✓
+- RHO_VAC_SCM = derive_from_quantum_chain(n_levels=26, f_SCm=0.57) ✓ (improved from hardcoded 7.09e-37 → quantum-chain derived, per canonical "NO hardcoded values" principle)
+- RHO_VAC_UA = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10) ✓ (matches ρ_UA = 10×ρ_SCm canonical lock)
+- BETA_I = 0.6, LAMBDA_I = 1.0, OMEGA_S = 2.5e-6 ✓ all values intact
+- SSQ = sp.Rational(57, 100) ✓ ([SSq] = 0.57 unchanged)
+- F_TRZ, S26_3, Phi_res ✓ all present in both scm + dpm
+
+**Path string corrections** (97 +/- balanced pairs): every `[canonical: pdf/scm_vacuum_manifold.py]` comment in 99system, CP1-CP4, QCalc, index.js, scm corrected to `[canonical: scm_vacuum_manifold.py]`. Pure annotation update, no code semantics.
+
+**Regression found — utility loss**: `pdf/scm_latex_exporter.py` (99 lines, imports from scm_vacuum_manifold) was deleted with no root counterpart. The `export_all_to_latex` function it depends on IS preserved in both `scm_vacuum_manifold.py` (L123) and `dpm_vacuum_manifold.py` (L188), so the import target survives — but the utility script that generates `SCm_Whitepaper_Section.tex` + PDF was silently lost from the codebase.
+
+**Fix**: Restored `scm_latex_exporter.py` to repo root (2,901 bytes, 96 lines). Adjustments from the deleted pdf-relative version:
+- `OUT_DIR` updated: was `os.path.dirname(__file__)` (which evaluated to "pdf/" at original location); now `os.path.join(os.path.dirname(os.path.abspath(__file__)), "pdf")` so generated `.tex`/`.pdf` still land in `pdf/` folder regardless of where the script runs from
+- Added `os.makedirs(OUT_DIR, exist_ok=True)` safety guard
+- Replaced unicode ✅ / ❌ at output messages with ASCII `[OK]` / `[FAIL]` (Windows console safety, consistent with my prior rounds)
+- All LaTeX template content, monte_carlo_fubi_i call, and 5-section Refined Proof Outline preserved verbatim
+
+**Encoding regression note**: 9c1c7083 also did a `cp1252 → utf-8` re-encoding pass on scm. This is when the mojibake (╬║ ╬▓ ╬╗ ╧ë) entered the codebase for greek letter comments. The PRIMITIVE VALUES are unaffected — only the inline comments showing the greek-letter names became display-corrupted. Per CLAUDE.md Rule 3 (no comments needed in calculator), this is cosmetic only. Out of scope for current commit; not fixing here.
+
+**Verification**:
+- `scm_latex_exporter.py`: SYNTAX OK, imports verified
+- Fidelity gate: 867 passed, 0 failed
+
+**Files to commit**:
+- `scm_latex_exporter.py` (new at root)
+- `SESSION_LOG.md` (this entry)
+
+**Git sync status**: Still blocked by Windows-side `.git/index.lock`. Awaiting Daniel to delete `C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\.git\index.lock` from Windows.
+
+---
+
+## 2026-06-26 — Round 30: Commit 39a1a3b2 forensic recovery (cp1252→utf-8 partial fix — NO REGRESSION FROM THIS COMMIT)
+
+**Commit**: `39a1a3b2` "Fix: re-encode scm_vacuum_manifold.py cp1252->utf-8 (87 corrupted bytes in comments/docstrings)"
+**Scope**: 1 file (scm_vacuum_manifold.py), +68/-68 — pure encoding cleanup, no semantic changes.
+
+**Three-state encoding evolution** for the greek-letter inline comments:
+
+| State | KAPPA comment | BETA_I comment | Notes |
+|---|---|---|---|
+| Pre-9c1c7083 (original) | `κ = 5.0 × 10^{-4}` | `β_i` | Proper UTF-8 greek |
+| 9c1c7083 (cp1252 corruption) | (binary mojibake) | (binary mojibake) | 87 corrupted bytes |
+| 39a1a3b2 (THIS commit, partial fix) | `? = 5.0 × 10^{-4}` | `ß_i` | ASCII placeholder + Latin-1 lookalikes |
+| Current HEAD (re-regressed at 9790ebc2) | `╬║ = 5.0 ├ù 10^{-4}` | `╬▓_i` | mojibake worse than 39a1a3b2 |
+
+**Verdict for THIS commit (39a1a3b2)**: CLEAN PASS — did exactly what the message said. It rescued scm_vacuum_manifold.py from cp1252-mismatched binary corruption (87 mangled bytes) into a parsable, syntactically valid utf-8 file. The fix was partial — it used `?` placeholders and Latin-1 lookalikes (`ß` for `β`) rather than restoring the original proper greek (`β`, `κ`, `λ`, `ω`, `Φ`) — but that was the best mechanical fix possible at the time without manual restoration.
+
+**Future regression noted**: A LATER commit `9790ebc2` ("Library surface prep + new UQFF papers 1200-1203 …") RE-introduced cp1252 mojibake into scm_vacuum_manifold.py (`╬║ ╬▓ ╬╗ ╧ë`, etc.), which is worse than the 39a1a3b2 partial-fix state. This will be addressed when the commit walk reaches 9790ebc2. OUT OF SCOPE for current round.
+
+**Canonical primitive values**: ALL unchanged across all three encoding states. The mojibake exists only in inline `#` comments next to the primitive definitions — the actual `KAPPA = sp.Rational(5, 10000)`, `BETA_I = 0.6`, etc. assignments are encoding-independent and intact.
+
+**Verdict**: CLEAN PASS — encoding-only fix, no physics impact, no canonical primitives touched, no functions added or removed.
+
+**Fidelity gate**: not run (no file modifications this round).
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+**Git sync status**: Still blocked by Windows-side `.git/index.lock`.
