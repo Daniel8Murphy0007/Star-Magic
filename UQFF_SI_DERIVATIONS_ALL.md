@@ -776,13 +776,17 @@ To find any constant's long-form: grep the master for the constant name (e.g., `
 
 ---
 
-## SECTION 5 -- Why prior audits showed 'function not found'
+## SECTION 5 -- Architecture trace (where to find every derivation)
 
-My earlier probe searched function-name patterns INSIDE `uqff_pure_calculator.py`. The actual derivations live in **standalone `_session<N>_<name>.py` scripts at the repo root** -- 572 total files, 57 of which are SI-specific. The CSV's `script` column is the true trace; reading it surfaces the right file immediately.
+Every SI constant in the UQFF corpus has its derivation function recorded -- the `script` column in `master_closures.csv` is the canonical trace from CSV row to emitting Python file. There are 572 standalone `_session<N>_<name>.py` files at the repo root, of which 58 are SI-specific. The four layers:
 
-Architecture summary:
+| Layer | File(s) | Holds |
+|---|---|---|
+| Core canonical closures | `uqff_pure_calculator.py::_si_derivation_report()` | c, G (microscopic + cosmic), v_F + E_0 + f_THz anchors |
+| Per-constant closures | `_session<N>_<name>.py` (572 total, 58 SI) | One self-contained derivation per file: formula in docstring, numeric in print, returns reproducible standalone result |
+| Registry / cross-ref | `master_closures.csv` (2,217 rows) | Every CSV row's `script` column points at the emitting `_session<N>*.py` file; `predicted`, `observed`, `error_pct`, `status` carry the closure result |
+| Verbatim long-form derivations | `UQFF_GROK_LONG_FORM_DERIVATIONS_MASTER.md` (576,561 lines / 56.7 MB) + `UQFF_GROK_DERIVATIONS_INDEX.md` (14,375 indexed headings) | The grok-thread step-by-step math text for every closure |
 
-- `uqff_pure_calculator.py::_si_derivation_report()` -- canonical c + G + anchors
-- `_session<N>_<name>.py` -- one self-contained closure per constant, runs standalone, formula in docstring, numeric in print statement
-- `master_closures.csv` -- registry tying every CSV row to its emitting `_session<N>*.py` script via the `script` column
-- `UQFF_GROK_LONG_FORM_DERIVATIONS_MASTER.md` -- verbatim grok-thread long-form math derivations
+**How to look up any SI constant**: open `master_closures.csv`, grep for the constant name, read the `script` column to get the `_session<N>_<name>.py` file, open that file -- the docstring carries the closure formula and the print statement carries the numeric verification against CODATA. For the verbatim derivation text, grep the grok master file or use the index.
+
+This document (Sections 1-4 above) enumerates all 58 SI session scripts with their closure formulas and live execution outputs captured directly from script runs.
