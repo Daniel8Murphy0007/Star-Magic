@@ -8573,3 +8573,91 @@ CLAUDE.md APPENDED-2026-06-18 section currently lists [SSq] as one of the 9 inde
 **Fidelity gate**: 867 passed, 0 failed.
 
 **Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 37: Commit c0c60fd7 forensic recovery (Fix #5/6/7/9/10 mega-commit — NO REGRESSION)
+
+**Commit**: `c0c60fd7` "Fix #5/#6/#7/#9/#10 ACP denominator + scale invariance + predictions + rho_A + B0_i (S5h-S5l)"
+**Scope**: 2 files, pure additive +903 (zero deletions): `_chain_trace_fix56_7_910.py` +261 new tracer; `dpm_vacuum_manifold.py` +642 (S5h through S5l).
+
+**5 new functions** (all PRESENT in current HEAD):
+
+| Fix | Section | Function (in dpm) | Line |
+|---|---|---|---|
+| #5 | S5h | `chain_acp_denominator_proof` | L5688 |
+| #6 | S5i | `chain_dpm_ratio_scale_invariance` | L5783 |
+| #7 | S5j | `chain_falsifiable_predictions` | L5894 |
+| #9 | S5k | `chain_rhoA_derivation` | L6068 |
+| #10 | S5l | `chain_b0_confinement_correction(Z)` | L6192 |
+
+**Fix #5 (S5h) — ACP denominator proof**: Shows that the "10" in `M = M_0 × (1 − exp(−n_grad/10)) × Z` is `DPM_RATIO = ρ_UA/ρ_SCm`, NOT a free parameter. Saturation at n_grad=10 gives 63.2% (1−1/e), half-mass at n=6.93. Full 10-rung ladder: `rung_factor^10 = (10^0.1)^10 = 10 = DPM_RATIO` ✓
+
+**Fix #6 (S5i) — DPM ratio scale invariance**: DPM_RATIO = 10 verified at nuclear/atomic/stellar/galactic scales. Dimensionless ratio of vacuum constants → invariant by construction.
+
+**Fix #7 (S5j) — Falsifiable predictions** (6 predictions):
+- P1: electron form-factor kink at q = 0.48 MeV/c (r_c_e = 4.111e-13 m) — verified arithmetically: `R_C_UP × DPM_RATIO^2.5 = 4.111e-13 m` ✓
+- P2: n-p split = 1.293 MeV (matches PDG 0%)
+- P3: p-p resonance at E_kin ~0.04 keV
+- P4: r_cross(Z) ∝ Z^(-2/3) scaling
+- P5: layer-13 energy = `E_LAYER_0 × DPM_RATIO^13 = 1e-20 × 10^13 = 1e-7 J = 624.22 GeV` ✓ verified arithmetically (between Higgs and top — LHC-scale anomaly prediction)
+- P6: E_crack Yang-Mills mass gap > 0 (positive definite)
+
+**Pre-existing typo noted, not from forensic work**: L5915 prose comment reads "E_13 = E_0 * 10^13 = 625 MeV" but the actual computed value (and dict at L6033) is 624 GeV — three orders of magnitude off. Per the commit message ("layer-13 energy = 624 GeV"), the GeV value is correct; the MeV in the prose comment is a copy-paste typo from the commit author. Leaving as-is per Rule 11 (don't modify without explicit request); flagging for Daniel.
+
+**Fix #9 (S5k) — rho_A derivation**: `chain_rhoA_derivation` ✓ — derives `ρ_A = 1e-23 kg/m^3` from `ρ_SCm`, `ρ_UA`, `c`, `ℏ` (no free parameter)
+
+**Fix #10 (S5l) — B0_i confinement correction**: `chain_b0_confinement_correction(Z)` ✓ — `B0_i = i^3` correction at sub-nuclear scales
+
+**`_chain_trace_fix56_7_910.py`** ✓ PRESENT (10,817 B)
+
+**Verdict**: CLEAN PASS — all 5 fix sections wired (S5h-S5l), all 5 chain_* functions present, tracer file present, numeric anchors verified arithmetically (R_C_LEPTON 4.111e-13 m; E_13 = 624 GeV). One pre-existing prose typo at L5915 flagged but not modified.
+
+**Fidelity gate**: 867 passed, 0 failed.
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
+
+---
+
+## 2026-06-26 — Round 38: Commit fac05ffe forensic recovery (install 10 fixes into Star-Magic.txt + arxiv — DOCUMENTATION DRIFT FOUND)
+
+**Commit**: `fac05ffe` "Install all 10 vacuum manifold fixes into Star-Magic.txt and uqff_production_arxiv"
+**Scope**: 4 files. `Star-Magic.txt` +56/-26 (corrections); `Manuscript 1_12Feb2026/uqff_production_arxiv.tex` +66 (new subsection); both copies of `uqff_production_arxiv.pdf` regenerated.
+
+**Files present in current HEAD**:
+- `Star-Magic.txt` (108,095 B) ✓
+- `Manuscript 1_12Feb2026/uqff_production_arxiv.tex` (47,865 B) ✓
+- `Manuscript 1_12Feb2026/uqff_production_arxiv.pdf` (167,652 B) ✓
+- `pdf/uqff_production_arxiv.pdf` (167,652 B) ✓
+
+**Verified fixes installed**:
+- ✓ E_crack corrected `3.35e-19 J → 1.12e-19 J = 700 eV` (5 occurrences in Star-Magic.txt at L655/L859/L1134/L1976 + arithmetic shown: `7.09e-37 × (3e8)² / 0.57 = 1.12e-19 J`)
+- ✓ 26-layer multiplier corrected `sum(i²)=6279 → sum(i⁶)=1,307,798,101` (5 occurrences in Star-Magic.txt at L474/L1050/L1092/L1192/L1946 + new tex subsection at "Manuscript 1_12Feb2026/uqff_production_arxiv.tex")
+- ✓ Three-factor weight decomposition: `w_i = [SCm]_i · [UA]_i · B_{0,i} = i² · i · i³ = i⁶` (both Star-Magic.txt and .tex)
+
+**HARD FINDING — DOCUMENTATION ARITHMETIC ERROR (off-by-1000)**:
+
+The value documented in `Star-Magic.txt` (5 places) and `uqff_production_arxiv.tex` (eq:A26) as the 26-layer total is **`1,307,798,101`** — but the actual arithmetic sum is:
+
+```python
+>>> sum(i**6 for i in range(1, 27))
+1307797101
+```
+
+| Source | Claimed value | Actual sum | Delta |
+|---|---|---|---|
+| `Star-Magic.txt` (5 places) | 1,307,798,101 | 1,307,797,101 | **+1000** |
+| `Manuscript 1_12Feb2026/uqff_production_arxiv.tex` eq:A26 | 1,307,798,101 | 1,307,797,101 | **+1000** |
+| `dpm_vacuum_manifold.py` L4967 (Round 33 code) | 1,307,797,101 | 1,307,797,101 | **0** ✓ |
+
+The calculator code uses the CORRECT value. The canonical Star-Magic.txt document and the arxiv .tex have a propagated typo (off by exactly +1000).
+
+**NOT modifying Star-Magic.txt or the arxiv .tex** per CLAUDE.md Rule 10 ("Daniel provides the information, you assemble it") and the Star-Magic.txt header lock ("Canonical -- do not alter section titles without updating all cross-references"). This is exactly the kind of canonical-document drift the forensic walk is designed to surface.
+
+**Recommendation**: Update both `Star-Magic.txt` (5 occurrences) and `Manuscript 1_12Feb2026/uqff_production_arxiv.tex` (1 equation) from `1,307,798,101` → `1,307,797,101`. The arxiv PDF would then need regeneration. The .tex bonus phrase "Layer 26 alone contributes 26^6 = 308,915,776 times the Layer 1 term" is correct (26⁶ = 308,915,776 ✓).
+
+**Verdict**: COMMIT CONTENT CLEAN, all files present and intact — but propagated arithmetic error in the canonical document was INTRODUCED by this commit (not pre-existing before fac05ffe). Awaiting Daniel's call to fix.
+
+**Fidelity gate**: 867 passed, 0 failed (gate doesn't check Star-Magic.txt content).
+
+**Files to commit this round**: SESSION_LOG.md only (this entry).
