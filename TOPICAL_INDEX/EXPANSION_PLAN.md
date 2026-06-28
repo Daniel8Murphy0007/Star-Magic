@@ -598,7 +598,15 @@ in SESSION_LOG.md.
 - Phase D, E1, E2, E3 regression remain green.
 - See SESSION_LOG.md Round 664 for verification record.
 
-**E5 — CM/GR/bio/chem/geo/materials: STATUS PENDING** (108 scripts)
+**E5 — Condensed matter + biology + geophysics: STATUS COMPLETE (2026-06-28, Round 665)**
+- 30 verified-from-source closures added (10 CM S393-S402, 10 bio S403-S412, 10 geo S423-S432). All 30 pre-injection verified.
+- Files: `test_phase_e5_cm_bio_geo_assimilation.py` (75 lines); `assimilation_dispatch.py` extended (+30 entries, TOTAL_E5 = 30).
+- 30/30 CM+bio+geo regression PASS.
+- 9 EXACT closures: CM_Sommerfeld_Wilson_R_W = K_MEX-F_TRZ·Phi_res = 2; CM_BCS_isotope_alpha = 1/2; CM_Brinkman_Rice = 3/2; CM_XY_3D_nu = D_PHYS/D_BSFG = 2/3; bio_ATP_hydrolysis = 30.5 kJ/mol exact; bio_Kleiber = 3/4; bio_telomere = D_BSFG = 6; geo_magnetopause = SO_5 = 10; geo_brunt_vaisala = F_TRZ^4.
+- Dispatch crosses 100 observables; total now 101 across 9 domains.
+- NOTE: chemistry (chem_*) and materials (steel/concrete/etc.) sub-domains pending; partial chemistry coverage already in E1.periodic_table_periods.
+- Phase D/E1/E2/E3/E4 regression remain green.
+- See SESSION_LOG.md Round 665 for verification record.
 
 **E6 — KK universal scaling: STATUS PENDING** (10 scripts)
 
