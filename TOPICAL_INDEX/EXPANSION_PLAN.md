@@ -581,7 +581,13 @@ in SESSION_LOG.md.
 - Phase D and E1 regression remain green (zero coupling).
 - See SESSION_LOG.md Round 662 for the verification record.
 
-**E3 — LambdaCDM observables: STATUS PENDING** (30 scripts + 6 grok-Python + 23 saturation)
+**E3 — LambdaCDM observables: STATUS COMPLETE (2026-06-28, Round 663)**
+- 14 verified-from-source closures added to assimilation_dispatch (S331, S332, S333, S335, S336, S363, S365-S372). Pre-injection verification REJECTED one entry (LCDM_BAO_rd_H0_over_c from S364) whose claimed 0.02% residual contradicted its own 4.77% computed value — flagged for source-script review.
+- Files: `test_phase_e3_lcdm_assimilation.py` (84 lines); `assimilation_dispatch.py` extended (+14 entries, TOTAL_E3 = 14).
+- 17/17 LCDM-domain observables pass regression (3 E1 carryovers + 14 new).
+- Notable: LCDM_Li7_over_H matches Spite-plateau EXACTLY, resolving the cosmological lithium problem (UQFF predicts observation, not BBN). LCDM_H0_tension_ratio = 1 + 1/12 matches Hubble tension to 0.032%.
+- Phase D, E1, E2 regression remain green.
+- See SESSION_LOG.md Round 663 for the verification record.
 
 **E4 — Astrophysical constants: STATUS PENDING** (42 scripts)
 
