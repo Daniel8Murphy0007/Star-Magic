@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.29.3"
+version = "5.29.4"
 description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, full proof corpus: 1994 whitepapers + Lean 4 scaffold + 4 arXiv bundles + manuscript)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -206,6 +206,21 @@ exclude = [
     "ZENODO_DOI_SETUP.md",
     "forward_predictions.md",
     "verification_log.csv",
+    "master_closures.csv",
+    "CHANGELOG.md",
+    "_append_paper1189_closures.py",
+    "_append_millennium_closures.py",
+    "_append_frontier_closures.py",
+    "_phase1_extract_paper_closures.py",
+    "_phase2_merge_closures_ledger.py",
+    "_harvest_json_closures.py",
+    "_harvest_text_closures.py",
+    "_emit_closure_json.py",
+    "_audit_closure_gaps.py",
+    "_show_closure_evidence.py",
+    "_phase1_paper_closures.json",
+    "unified_closure_audit.json",
+    "UQFF_UNIFIED_CLOSURE_DERIVATIONS.py",
     "uqff_exact_closures.cpp",
     "uqff_dashboard.html",
 ]
