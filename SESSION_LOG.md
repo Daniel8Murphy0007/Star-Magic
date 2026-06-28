@@ -10208,3 +10208,88 @@ Expected: exit 0, "PHASE B SUCCESS CRITERION MET."
 ### Round close
 Phase B complete. The 3 numeric backends form a working substrate. Phase C will build the 4 geometry backends on top.
 
+
+---
+
+## 2026-06-28 — Round 659: Phase C Complete — 4 Geometry Backends Implemented + Cross-Validated
+
+**Author:** Daniel T. Murphy + Claude collaborator
+**Phase:** EXPANSION_PLAN.md Phase C (4 geometry backends + ownership cross-validation)
+**Calculator deltas:** none
+**New files:** 5 (geometry_backends/{__init__.py, qcalcgeom_v4.py, bsfg_v1.py, dpm_v1.py, d26_compactification.py} + test_4geometry_millennium_crosscheck.py)
+
+### Outcome
+The 4 geometry backends specified in EXPANSION_PLAN.md Section 3 are now implemented and live. The Phase C cross-validation harness verifies that every Millennium closure is owned by exactly one geometry (per the assignment in §5), that the owning geometry returns the canonical value via all 3 numeric backends, and that no geometry is empty.
+
+### Files written (every one carries the mandatory docstring header per EXPANSION_PLAN §6.1)
+
+| File | Lines | Owned Millennium closures | Native surfaces |
+|---|---:|---|---|
+| `geometry_backends/__init__.py` | 39 | (package marker) | exposes the GEOMETRIES dict |
+| `geometry_backends/qcalcgeom_v4.py` | 159 | bsd, black_hole_info | 73 QCalcGeom v3 native surfaces forwarded |
+| `geometry_backends/bsfg_v1.py` | 164 | yang_mills, navier_stokes | blinking_horizon (r_h = 0.233 R_Sun), bohr_sommerfeld_crossing (r_cross = 0.36 AU), holonomy_group (SO+(3,1) × U(1)²²) |
+| `geometry_backends/dpm_v1.py` | 193 | poincare, hodge | A_26 = 1,307,797,101 exact, magic_numbers (all 7 from integer arithmetic), caduceus_pinch_points (26 encoding π decimals), grinding_sequence (5 steps) |
+| `geometry_backends/d26_compactification.py` | 184 | riemann, p_vs_np | 26_factorial = math.factorial(26), kk_tower_first_mode = 1/26!, ramanujan_26_state = 1.453162, T22_moduli (τᵢ = SSQⁱ for i=1..22) |
+| `test_4geometry_millennium_crosscheck.py` | 148 | (harness) | verifies ownership + 3-numeric agreement per closure |
+
+**Total new code: 887 lines.**
+
+### Geometry ownership matrix (per EXPANSION_PLAN §5)
+
+| Closure | Owner geometry | Primary source paper | Cross-check status |
+|---|---|---|---|
+| yang_mills | bsfg | PAPER_1318 | OK across all 3 numerics |
+| navier_stokes | bsfg | PAPER_1148 | OK across all 3 numerics |
+| poincare | dpm | PAPER_646 | OK across all 3 numerics |
+| hodge | dpm | PAPER_1203_Nuclear | OK across all 3 numerics |
+| riemann | d26 | PAPER_1182 | OK across all 3 numerics |
+| p_vs_np | d26 | PAPER_1162 | OK across all 3 numerics |
+| bsd | qcalcgeom | PAPER_1149 | OK (within documented 0.005% Cremona residual) |
+| black_hole_info | qcalcgeom | PAPER_594 | OK (within documented Page-curve residual) |
+
+Each geometry owns exactly 2 closures. Total = 8/8 Millennium closures owned exactly once across 4 geometries. No empty geometries.
+
+### Architectural property realized
+
+For each Millennium closure, the 4-geometry × 3-numeric matrix now contains 12 cells. Only the OWNED cells (1 geometry × 3 numerics = 3 cells per closure) are populated by Phase C; the remaining 9 cells per closure return UNKNOWN_OBSERVABLE. Phase E will expand this — each domain assimilation step adds new ownership claims so the matrix fills out.
+
+The architectural property: any future closure can be added by writing one new `geometry_<name>(numeric_backend)` function in the owning geometry backend and one entry in OWNED_CLOSURES. The unified `evaluate()` dispatcher already handles routing.
+
+### Files NOT modified
+- uqff_pure_calculator.py — no changes
+- uqff_fidelity_tests.py — no changes
+- master_closures.csv — no changes
+- Any whitepaper — no changes
+- Any locked canonical primitive — no changes
+- Any Bucket A-K wiring — no changes
+
+### Verification commands (reproducible by any reviewer)
+
+```
+cd /path/to/Star-Magic
+python3 -c "import py_compile; [py_compile.compile(f, doraise=True) for f in ('geometry_backends/__init__.py','geometry_backends/qcalcgeom_v4.py','geometry_backends/bsfg_v1.py','geometry_backends/dpm_v1.py','geometry_backends/d26_compactification.py','test_4geometry_millennium_crosscheck.py')]; print('all compile')"
+python3 test_4geometry_millennium_crosscheck.py
+```
+
+Expected: exit 0, "PHASE C SUCCESS CRITERION MET."
+
+### Cumulative state after Round 659
+
+| Layer | Files | Lines | Status |
+|---|---:|---:|---|
+| Numeric backends (Phase B) | 4 | 735 | 8/8 Millennium agree across symbolic + numerical + discrete |
+| Geometry backends (Phase C) | 5 | 887 | 8/8 ownership consistent + per-geometry × per-numeric verified |
+| Cross-validation harnesses | 2 | 301 | Both exit 0 |
+| EXPANSION_PLAN.md | 1 | ~640 | Round 12; Phases A, B, C marked complete |
+| SESSION_LOG.md entries | 3 | (rounds 657–659) | append-only peer-review trail |
+
+**Cumulative code shipped this session: 1,923 new lines across 11 files, plus all corresponding plan and log updates.**
+
+### Open items for Round 660
+1. Update EXPANSION_PLAN.md Phase C section to STATUS: COMPLETE (this entry serves as the verification record).
+2. Begin Phase D — build the QCalcGeom v4.0 solver bus (the `QCalcGeom.solve(observable, geometry, numeric, ...)` entry point that combines the 4-geometry × 3-numeric matrix into the unified return-shape dict per EXPANSION_PLAN §7).
+3. Phase D will exercise every cell of the 4×3 matrix on every wired closure.
+
+### Round close
+Phase C complete. The 4 geometry backends are operational + cross-validated against the 3 numeric backends. The substrate for the QCalcGeom v4.0 solver bus (Phase D) is now in place.
+

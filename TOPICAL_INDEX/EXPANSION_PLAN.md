@@ -485,19 +485,42 @@ Seven phases (A through G). Each phase has an entry criterion, a deliverable, an
 
 **Verification record:** see SESSION_LOG.md Round 658 for the exact harness output and reproducibility commands.
 
-### Phase C — Implement the 4 geometry backends
+### Phase C — Implement the 4 geometry backends — STATUS: COMPLETE (2026-06-28, Round 659)
 
-**Entry criterion:** Phase B complete.
+**Outcome:** all four geometry backends shipped; ownership cross-validation harness reports the 8 Millennium closures are owned exactly once across the 4 geometries; every owning geometry agrees across all 3 numeric backends.
 
-**Actions:**
-- C1. `geometry_backends/qcalcgeom_v4.py` — wraps existing QCalcGeom v3 calculators behind the unified `evaluate(observable, numeric_backend)` interface.
-- C2. `geometry_backends/bsfg_v1.py` — extracts BSFG metric/horizon/holonomy from PAPER_1148, PAPER_1149, `bsfg_wormhole_geodesic.py`, and the qcalcgeom helpers.
-- C3. `geometry_backends/dpm_v1.py` — uses `dpm/scm/ua_vacuum_manifold.py` for the 26-state mediator + 4-layer UA + 5-step grinding.
-- C4. `geometry_backends/d26_compactification.py` — 26-fold derivative + KK tower per PAPER_1080, PAPER_1161, PAPER_1162.
+**C1 — `geometry_backends/qcalcgeom_v4.py`:** COMPLETE (159 lines, compiles).
+- Owns: `bsd`, `black_hole_info`.
+- Forwards 73 QCalcGeom v3 native surfaces (compute_FUBi, compute_FUBii, compute_F_U, solve_habitable_zone, vds_series, dvp_arithmetic, bsh_harmonic, bh26_eigenvalue, vds_dvp_coupled, bh26_bsh_resonance, compute_three_ring_gear, compute_universal_inertia, etc.) via `evaluate(observable, numeric_backend)`.
 
-**Deliverable:** four pluggable geometry backends sharing a common interface.
+**C2 — `geometry_backends/bsfg_v1.py`:** COMPLETE (164 lines, compiles).
+- Owns: `yang_mills`, `navier_stokes`.
+- Native surfaces: blinking_horizon (r_h = 0.233 R_Sun), bohr_sommerfeld_crossing (r_cross = 0.36 AU), holonomy_group (SO+(3,1) × U(1)²²).
+- Primary papers: PAPER_1148, PAPER_1149, PAPER_1318.
 
-**Verification:** each backend exposes `evaluate(observable, numeric_backend)` and returns the assimilation result dict for at least one canonical observable.
+**C3 — `geometry_backends/dpm_v1.py`:** COMPLETE (193 lines, compiles).
+- Owns: `poincare`, `hodge`.
+- Native surfaces: A_26 = 1,307,797,101 exact integer; the 7 magic_numbers via integer arithmetic on {D_phys, SO_5, D_crit, A_5}; caduceus_pinch_points (26 encoding π decimals, first 8 digits demonstrated); grinding_sequence (5 steps from Big Bang to UA''''').
+- Primary papers: PAPER_646, PAPER_1155, PAPER_1203_Nuclear.
+
+**C4 — `geometry_backends/d26_compactification.py`:** COMPLETE (184 lines, compiles).
+- Owns: `riemann`, `p_vs_np`.
+- Native surfaces: 26_factorial (4.033×10²⁶ exact), kk_tower_first_mode (1/26!), ramanujan_26_state (S_26^(3) = 1.453162), T22_moduli (τᵢ = SSQⁱ for i=1..22).
+- Primary papers: PAPER_1080, PAPER_1161, PAPER_1162, PAPER_1164, PAPER_1182.
+
+**Cross-validation harness `test_4geometry_millennium_crosscheck.py`:** COMPLETE (148 lines, compiles).
+- Verifies geometry ownership matches EXPANSION_PLAN §5 (8/8 OK).
+- For each owned closure, exercises the owning geometry under all 3 numeric backends.
+- Reports per-geometry coverage (no empty geometries).
+- Exit 0 on success; non-zero with structured diff otherwise.
+
+**Live cross-validation result (2026-06-28):** PHASE C SUCCESS CRITERION MET. All 4 geometries operational; 8/8 ownership consistent; numeric agreement preserved.
+
+**Deliverable status:** four pluggable geometry backends shipped; shared `evaluate(observable, numeric_backend)` interface; full ownership audit in place.
+
+**Architectural property realized:** any future closure is added by writing one `geometry_<name>(numeric_backend)` function plus one OWNED_CLOSURES entry. The unified dispatcher handles routing; Phase E will use this property to wire the 358 SI-dimensioned session scripts.
+
+**Verification record:** see SESSION_LOG.md Round 659 for the exact harness output and reproducibility commands.
 
 ### Phase D — Build the QCalcGeom v4.0 solver bus
 
