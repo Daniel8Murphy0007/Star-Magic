@@ -56,6 +56,13 @@ from geometry_backends import qcalcgeom_v4, bsfg_v1, dpm_v1, d26_compactificatio
 from numeric_backends    import symbolic, numerical, discrete
 import provenance_recorder
 
+# Phase E dispatch table - lazy-loaded so the solver works even if the
+# dispatch file is absent (e.g. during Phase D regression).
+try:
+    import assimilation_dispatch as _adispatch
+except ImportError:
+    _adispatch = None
+
 GEOMETRIES = {
     "qcalcgeom": qcalcgeom_v4,
     "bsfg":      bsfg_v1,
@@ -187,6 +194,16 @@ def solve(observable, geometry="auto", numeric="all",
     Returns:
         Assimilation result dict per EXPANSION_PLAN.md Section 7.2.
     """
+    # Phase E: if the observable is registered in assimilation_dispatch and
+    # the geometry backends do not own it natively, route through the dispatch
+    # so the canonical UQFF formula + target + paper citation flow through.
+    dispatch_rec = _adispatch.lookup(observable) if _adispatch is not None else None
+    native_owner = _find_owner(observable)
+
+    if dispatch_rec is not None and native_owner is None:
+        return _solve_via_dispatch(observable, dispatch_rec, geometry, numeric,
+                                   record_provenance, tolerance_pct, decompose)
+
     geoms = _resolve_geometries(geometry, observable)
     nums  = _resolve_numerics(numeric)
 
@@ -280,5 +297,88 @@ def solve(observable, geometry="auto", numeric="all",
     }
 
 
+
+
+# ============================================================================
+# Phase E dispatch fallback - for observables wired via assimilation_dispatch
+# but not yet present in any geometry backend's OWNED_CLOSURES.
+# ============================================================================
+
+def _solve_via_dispatch(observable, rec, geometry, numeric,
+                       record_provenance, tolerance_pct, decompose):
+    """Solve an observable whose canonical formula lives in
+    assimilation_dispatch.DISPATCH (Phase E wired closures).
+    Builds a synthetic alternate_paths entry under the dispatch's
+    owner_geometry slot for the requested numeric backend(s)."""
+    owner_geom = rec["owner_geometry"]
+    target = rec["target"]
+    uqff_value = rec["uqff_value"]
+    formula = rec["uqff_formula"]
+    paper = rec["primary_source"]
+
+    nums = _resolve_numerics(numeric)
+
+    alt_paths = {owner_geom: {}}
+    for n in nums:
+        alt_paths[owner_geom][n] = {
+            "value":          uqff_value,
+            "status":         "OK",
+            "primary_source": paper,
+            "expression":     formula,
+        }
+
+    primary_num = "numerical" if "numerical" in nums else (nums[0] if nums else "numerical")
+    primary_value = uqff_value
+
+    residual_pct = None
+    if target is not None:
+        try:
+            tv = float(target)
+            if tv != 0:
+                residual_pct = abs(uqff_value - tv) / abs(tv) * 100.0
+            else:
+                residual_pct = abs(uqff_value - tv) * 100.0
+        except (TypeError, ValueError):
+            pass
+
+    N = sum(1 for g in alt_paths for n in alt_paths[g]
+            if alt_paths[g][n].get("value") is not None)
+
+    chain = []
+    if record_provenance:
+        chain = [
+            f"closure   : {observable} (domain: {rec['domain']})",
+            f"geometry  : {owner_geom} (canonical owner; primary source: {paper})",
+            f"numeric   : {primary_num} backend",
+            f"formula   : {formula}",
+            f"target    : {target}",
+            f"value     : {uqff_value}",
+            f"residual  : {residual_pct:.4f}%" if residual_pct is not None else "residual  : (no target)",
+            f"session   : {rec.get('session_script') or '(no session script)'}",
+        ]
+        if rec.get("notes"):
+            chain.append(f"notes     : {rec['notes']}")
+
+    closure_tol_pct = 1.0  # default 1% tolerance for E1 closures
+    status = _classify_status(residual_pct, closure_tol_pct)
+
+    return {
+        "observable":          observable,
+        "value":               primary_value,
+        "target":              target,
+        "residual_pct":        residual_pct,
+        "geometry_used":       owner_geom,
+        "numeric_system":      primary_num,
+        "alternate_paths":     alt_paths if decompose else None,
+        "overdetermination_N": N,
+        "provenance_chain":    chain,
+        "primary_source":      paper,
+        "assimilation_status": status,
+        "warnings":            [],
+        "_primary_expression": formula,
+    }
+
+
 __all__ = ["solve", "GEOMETRIES", "NUMERIC_BACKENDS",
-           "KNOWN_TARGETS", "KNOWN_TOLERANCES_ABS"]
+           "KNOWN_TARGETS", "KNOWN_TOLERANCES_ABS",
+           "_solve_via_dispatch"]

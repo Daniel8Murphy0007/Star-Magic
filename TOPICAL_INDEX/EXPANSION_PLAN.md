@@ -556,23 +556,41 @@ Seven phases (A through G). Each phase has an entry criterion, a deliverable, an
 
 **Verification record:** see SESSION_LOG.md Round 660 for the exact regression output and reproducibility commands.
 
-### Phase E — Domain assimilation (the main wiring work)
+### Phase E — Domain assimilation (the main wiring work) — STATUS: IN PROGRESS
 
-**Entry criterion:** Phase D complete.
+Phase E is being executed per-sub-step with each sub-round shipping, logging,
+and verifying independently. This preserves a per-domain peer-review trail
+in SESSION_LOG.md.
 
-**Actions:** (one sub-phase per domain; can run in parallel)
-- E1. SI + fundamentals: wire 143 session scripts to SI_TO_CLOSURE dispatch in `assimilation_dispatch.py`.
-- E2. SM free parameters: wire 27 scripts to SM_TO_CLOSURE dispatch (cross with PAPER_1209HH).
-- E3. LambdaCDM observables: wire 30 scripts + promote the 6 grok-Python derives + 23 saturation closures.
-- E4. Astrophysical constants: wire 42 scripts (Earth/Moon/Sun/planets + MUGE per-system).
-- E5. Condensed matter (10), GR observables (10), biology (24), chemistry (25), geophysics (28), materials science (11) — 108 scripts total.
-- E6. KK universal scaling: wire 10 scripts.
-- E7. Re-run Phase 2 merge (`_phase2_merge_closures_ledger.py`) -> `master_closures.csv` with the 3 new columns (`geometry_used`, `numeric_system`, `assimilation_status`).
-- E8. Generate `OVERDETERMINATION_MAP.csv` per Section 9 via `_build_overdetermination_views.py`.
+**E1 — SI + fundamentals: STATUS COMPLETE (2026-06-28, Round 661)**
+- 20 verified-from-source closures wired across 5 domains (SI, SM, LCDM, astro, chem).
+- Files: `assimilation_dispatch.py` (327 lines), `test_phase_e1_si_assimilation.py` (117 lines).
+- `qcalcgeom_solver.py` extended with `_solve_via_dispatch()` fallback (+103 lines).
+- 20/20 observables pass regression. 14 EXACT, 6 OK (worst residual 0.574% for alpha_s_M_Z, within PDG 1-sigma).
+- Scope discipline: EXPANSION_PLAN cited 143 SI scripts. Round 661 wired the
+  highest-value subset (20 with documented formulas from session scripts +
+  PAPER_1181 + master_closures.csv paper_orphan rows). Future E1.x sub-rounds
+  will extend this dispatch one-formula-at-a-time, only adding entries whose
+  UQFF closure is independently sourced. No invented formulas.
+- See SESSION_LOG.md Round 661 for the verification record.
 
-**Deliverable:** 358 SI-dimensioned observables wired through `QCalcGeom.solve()`. 2,217 ledger rows tagged with geometry x numeric x status.
+**E2 — SM free parameters: STATUS PENDING** (27 session scripts: sm_*, part_*)
 
-**Verification:** `OVERDETERMINATION_MAP.csv` exists, has rows for every assimilated observable, and shows N >= 1 for every row. The wide-format and .md summary regenerate cleanly.
+**E3 — LambdaCDM observables: STATUS PENDING** (30 scripts + 6 grok-Python + 23 saturation)
+
+**E4 — Astrophysical constants: STATUS PENDING** (42 scripts)
+
+**E5 — CM/GR/bio/chem/geo/materials: STATUS PENDING** (108 scripts)
+
+**E6 — KK universal scaling: STATUS PENDING** (10 scripts)
+
+**E7 — Phase 2 merge with 3 new columns: STATUS PENDING**
+
+**E8 — Generate OVERDETERMINATION_MAP.csv: STATUS PENDING** (per Section 9 + `_build_overdetermination_views.py`)
+
+**Phase E cumulative deliverable:** 358 SI-dimensioned observables wired through `QCalcGeom.solve()`; 2,217 ledger rows tagged with geometry x numeric x status; OVERDETERMINATION_MAP.csv long + wide + .md summary generated.
+
+**Phase E verification:** the per-sub-round harnesses in `test_phase_e<N>_<domain>_assimilation.py` will each exit 0 on their respective domains; Phase E8 will produce the final OVERDETERMINATION_MAP that visually demonstrates the full 4-geometry x 3-numeric matrix coverage for every assimilated observable.
 
 ### Phase F — Public surface integration
 
