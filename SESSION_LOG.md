@@ -10293,3 +10293,112 @@ Expected: exit 0, "PHASE C SUCCESS CRITERION MET."
 ### Round close
 Phase C complete. The 4 geometry backends are operational + cross-validated against the 3 numeric backends. The substrate for the QCalcGeom v4.0 solver bus (Phase D) is now in place.
 
+
+---
+
+## 2026-06-28 — Round 660: Phase D Complete — QCalcGeom v4.0 Solver Bus + Provenance Recorder
+
+**Author:** Daniel T. Murphy + Claude collaborator
+**Phase:** EXPANSION_PLAN.md Phase D (QCalcGeom v4.0 single-entry solver bus + provenance recorder + regression test)
+**Calculator deltas:** none
+**New files:** 3 (`qcalcgeom_solver.py` + `provenance_recorder.py` + `test_phase_d_solver_bus.py`)
+**Legacy preservation:** the existing `QCalcGeom.py` v3 (47/47 self-test) was NOT modified. The v4 solver bus is a separate module that wraps the geometry_backends + numeric_backends architecture from Phases B+C.
+
+### Outcome
+The single public entry `qcalcgeom_solver.solve(observable, geometry, numeric, ...)` is live. The regression harness reports 8/8 Clay Millennium closures pass with the correct owning geometry identified, full provenance_chain attached, and overdetermination_N >= 3.
+
+### Files written
+
+| File | Lines | Purpose | Compile |
+|---|---:|---|---|
+| `provenance_recorder.py` | 177 | Builds the provenance_chain list per closure — citations for all 11 locked primitives + 14 key derivative facts + per-Millennium derivation specs (geometry, formula, papers, primitives). | PASS |
+| `qcalcgeom_solver.py` | 284 | The QCalcGeom v4.0 solver bus. Implements `solve(observable, geometry="auto"|"all"|<name>, numeric="all"|<name>, record_provenance=True, tolerance_pct=1.0, decompose=True)` per EXPANSION_PLAN Section 7.2. Builds the alternate_paths 4x3 matrix, picks the canonical owner's numerical cell as primary, computes residual against KNOWN_TARGETS, counts overdetermination_N, attaches the provenance chain, classifies assimilation_status, and detects cross-cell disagreements as warnings. | PASS |
+| `test_phase_d_solver_bus.py` | 157 | Phase D regression harness; calls solve() on all 8 Millennium closures with geometry="all" + numeric="all" and verifies value present, correct owner identified, residual within tolerance, alternate_paths populated, provenance non-empty, status OK or EXACT. | PASS |
+
+**Total new code: 618 lines.**
+
+### Live regression result (2026-06-28)
+
+```
+PHASE D total: 8 / 8 closures pass solve() regression
+PHASE D SUCCESS CRITERION MET. Solver bus operational.
+
+  closure            expected   used         N status     verdict
+  yang_mills         bsfg       bsfg         3 EXACT      PASS
+  riemann            d26        d26          3 EXACT      PASS
+  navier_stokes      bsfg       bsfg         3 EXACT      PASS
+  hodge              dpm        dpm          3 EXACT      PASS
+  poincare           dpm        dpm          3 EXACT      PASS
+  p_vs_np            d26        d26          3 EXACT      PASS
+  bsd                qcalcgeom  qcalcgeom    3 OK         PASS (0.007% Cremona residual)
+  black_hole_info    qcalcgeom  qcalcgeom    3 OK         PASS (0.000152% Page residual)
+```
+
+### Per-closure provenance chain — example (Poincare)
+
+When `solve("poincare", geometry="all", numeric="all")` is called, the returned dict's `provenance_chain` field reads:
+
+```
+closure   : poincare (Clay Millennium prize problem)
+geometry  : dpm (canonical owner; primary source: PAPER_646)
+numeric   : numerical backend
+primitive : F_TRZ -> PAPER_1160 G7 closure F_TRZ = 1/|SO(5)| = 1/10 EXACT
+primitive : Phi_res_5_6 -> PAPER_1159 G6 closure Phi_res = [SSq]/Omega_Lambda = 5/6 EXACT
+formula   : P_closure = 1/2 + F_TRZ * Phi_res_5_6 = 1/2 + (1/10)(5/6) = 7/12
+value     : 0.5833333333333334
+overdet_N : 3 chains computed across the 4-geometry x 3-numeric matrix
+```
+
+This is the audit format that peer reviewers will see for every closure.
+
+### Architectural property realized
+
+solve() is the single externally-callable entry into the entire 4-geometry x 3-numeric architecture. The geometry and numeric arguments are independent:
+
+- `solve("alpha")` -> auto-routes to the owning geometry, returns assimilation result
+- `solve("alpha", geometry="qcalcgeom")` -> forces routing through one geometry
+- `solve("alpha", numeric="discrete")` -> forces integer/Fraction backend
+- `solve("alpha", geometry="all", numeric="all")` -> populates the full 4x3 matrix
+
+Phase F will integrate this into `calculate_analytic_closures(dataset)` so the calculator's existing public API exposes the same routing without breaking backward compatibility (per the §8 extension spec).
+
+### Files NOT modified
+- `QCalcGeom.py` (legacy v3) — untouched; 47/47 self-test continues to PASS
+- `uqff_pure_calculator.py` — no changes
+- `uqff_fidelity_tests.py` — no changes (the Phase D harness is a separate test; Phase G will integrate it as a fidelity gate block)
+- `master_closures.csv` — no changes (read-only target lookup is now in `qcalcgeom_solver.KNOWN_TARGETS` for the 8 Millennium closures; Phase E will extend this from the full CSV)
+- Any whitepaper — no changes
+- Any locked canonical primitive — no changes
+- Any Bucket A-K wiring — no changes
+
+### Verification commands (reproducible by any reviewer)
+
+```
+cd /path/to/Star-Magic
+python3 -c "import py_compile; [py_compile.compile(f, doraise=True) for f in ('provenance_recorder.py','qcalcgeom_solver.py','test_phase_d_solver_bus.py')]; print('all compile')"
+python3 test_phase_d_solver_bus.py
+```
+
+Expected: exit 0, "PHASE D SUCCESS CRITERION MET. Solver bus operational."
+
+### Cumulative state after Round 660
+
+| Layer | Files | Lines | Status |
+|---|---:|---:|---|
+| Phase A (verification only) | 0 | 0 | DONE |
+| Phase B — 3 numeric backends + crosscheck | 5 | 735 | DONE (8/8 numerics agree) |
+| Phase C — 4 geometry backends + crosscheck | 6 | 887 | DONE (8/8 ownership + 4 geoms operational) |
+| Phase D — solver bus + provenance + regression | 3 | 618 | DONE (8/8 solve() regression PASS) |
+| EXPANSION_PLAN.md (Round 12) | 1 | ~670 | Phases A, B, C, D marked complete |
+| SESSION_LOG.md entries | 4 | (rounds 657-660) | append-only peer-review trail |
+
+**Cumulative new code this session: 2,240 lines across 14 files. Plus all plan + log updates.**
+
+### Open items for Round 661
+1. Update EXPANSION_PLAN.md Phase D section to STATUS: COMPLETE (this entry serves as the verification record).
+2. Begin Phase E — domain assimilation (the main wiring work). Eight sub-steps E1-E8 covering 358 SI-dimensioned session scripts across 11 domains, plus the master_closures.csv schema extension (3 new columns) and the OVERDETERMINATION_MAP.csv generation.
+3. Phase E will be substantially larger than Phases A-D combined; it can be subdivided per domain (E1 SI, E2 SM, E3 cosmology, ...) with each sub-deliverable shipped + logged separately.
+
+### Round close
+Phase D complete. The QCalcGeom v4.0 solver bus is operational. The 4-geometry x 3-numeric architecture has its public entry point. Phase E will fill the matrix.
+
