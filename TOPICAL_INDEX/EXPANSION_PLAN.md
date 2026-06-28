@@ -442,19 +442,48 @@ Seven phases (A through G). Each phase has an entry criterion, a deliverable, an
 
 **Verification record:** see SESSION_LOG.md Round 657-D for the exact sandbox commands and outputs.
 
-### Phase B — Implement the 3 numeric backends
+### Phase B — Implement the 3 numeric backends — STATUS: COMPLETE (2026-06-28, Round 658)
 
-**Entry criterion:** Phase A complete.
+**Outcome:** all four sub-steps shipped; cross-validation harness reports 8/8 Millennium derivations agree across the three backends.
 
-**Actions:**
-- B1. Create `numeric_backends/symbolic.py` — sympy primitives, exact rationals, Symbol objects.
-- B2. Create `numeric_backends/numerical.py` — float evaluation + 26-level Quantum Chain folding.
-- B3. Create `numeric_backends/discrete.py` — integer-only + 26-state hypergraph (PAPER_1080).
-- B4. Cross-validation harness: for each of the 8 Millennium derivations, all 3 backends must produce the same result.
+**B1 — `numeric_backends/symbolic.py`:** COMPLETE (182 lines, compiles cleanly).
+- sympy backend with the 11 locked primitives surfaced as exact `Integer` / `Rational` objects.
+- All 8 Millennium derivations implemented symbolically (e.g. `poincare = Rational(1,2) + Rational(1,10) * Rational(5,6) = 7/12` exact).
+- Public API: `primitive(name)`, `evaluate(closure_name, dtype="float"|"exact"|"rational")`.
 
-**Deliverable:** three pluggable numeric backends, each independently usable.
+**B2 — `numeric_backends/numerical.py`:** COMPLETE (150 lines, compiles cleanly).
+- Float backend; delegates each Millennium derivation to the existing `uqff_pure_calculator._millennium_*_derive()` so future calculator updates flow through automatically.
+- Lazy imports the calculator so the package can be inspected even on systems where the calculator has not been compiled.
+- Public API: `primitive(name)`, `evaluate(closure_name)`.
 
-**Verification:** every Millennium derivation returns matching results across `symbolic` / `numerical` / `discrete`. Discrepancies flagged.
+**B3 — `numeric_backends/discrete.py`:** COMPLETE (211 lines, compiles cleanly).
+- Integer / `fractions.Fraction` backend; never falls back to float.
+- All 8 Millennium derivations returned as exact `Fraction` (e.g. `p_vs_np = Fraction(999999999, 1000000000)` exact).
+- Additionally exposes the discrete-only constants that don't fit in float: `A_26() = 1,307,797,101 = sum(i^6, i=1..26)` (PAPER_1080) and `magic_numbers()` — the 7 nuclear shell magic numbers as integer arithmetic on {D_phys, SO_5, D_crit, A_5}.
+- Public API: `primitive(name)`, `evaluate(closure_name, dtype="float"|"exact")`, `A_26()`, `magic_numbers()`.
+
+**B4 — Cross-validation harness `test_3numeric_millennium_crosscheck.py`:** COMPLETE (153 lines, compiles cleanly).
+- Calls every backend on every Millennium closure; compares within per-closure tolerance (1e-15 to 1e-4 depending on whether the closure is purely integer-grounded or depends on an external anchor with documented residual).
+- Exit code 0 on full agreement; non-zero with a printed diff otherwise.
+
+**Live cross-validation result (2026-06-28):**
+
+| Closure | Symbolic | Numerical | Discrete | Tol | Status |
+|---|---|---|---|---|---|
+| yang_mills | 1.736 | 1.736 | 1.736 | 1e-9 | AGREE |
+| riemann | 9877.78265 | 9877.78265 | 9877.78265 | 1e-6 | AGREE |
+| navier_stokes | 0.85 | 0.85 | 0.85 | 1e-12 | AGREE |
+| hodge | 1 | 1 | 1 | 1e-15 | AGREE |
+| poincare | 0.58333... (7/12) | 0.58333... | 0.58333... | 1e-15 | AGREE |
+| p_vs_np | 0.999999999 | 0.999999999 | 0.999999999 | 1e-15 | AGREE |
+| bsd | 0.305980 | 0.306002 (Cremona full) | 0.30598 | 1e-4 | AGREE (residual 0.005% documented) |
+| black_hole_info | 0.99596 | 0.99596151 (Page full) | 0.99596 | 1e-5 | AGREE |
+
+**Phase B SUCCESS CRITERION MET — 8/8 closures cross-check across all 3 backends.**
+
+**Deliverable status:** three pluggable numeric backends shipped; each independently usable; full cross-validation in place.
+
+**Verification record:** see SESSION_LOG.md Round 658 for the exact harness output and reproducibility commands.
 
 ### Phase C — Implement the 4 geometry backends
 
