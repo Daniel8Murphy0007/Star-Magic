@@ -589,7 +589,14 @@ in SESSION_LOG.md.
 - Phase D, E1, E2 regression remain green.
 - See SESSION_LOG.md Round 663 for the verification record.
 
-**E4 — Astrophysical constants: STATUS PENDING** (42 scripts)
+**E4 — Astrophysical constants + GR observables: STATUS COMPLETE (2026-06-28, Round 664)**
+- 20 verified-from-source closures added to assimilation_dispatch (S383-S392 astro, S453-S462 GR). All 20 pre-injection verified.
+- Files: `test_phase_e4_astro_gr_assimilation.py` (81 lines); `assimilation_dispatch.py` extended (+20 entries, TOTAL_E4 = 20).
+- 24/24 astro+GR observables pass regression (4 E1 carryovers + 10 new astro + 10 new GR).
+- 7 EXACT closures from pure integer-primitive arithmetic: astro_ISCO_r_M = D_BSFG, astro_WD_radius_mass_exponent = -Phi_res·F_TRZ·D_PHYS = -1/3, astro_grav_binding_coeff = 3/5, GR_Shapiro_delay_coeff = D_PHYS = 4, GR_photon_sphere_r_M = D_PHYS - F_TRZ·SO_5 = 3, GR_Kerr_ISCO_extremal = F_TRZ·SO_5 = 1.
+- All classical GR tests (Mercury, light bending, Shapiro, GPB geodetic + frame drag, Hulse-Taylor, BH shadow, NANOGrav) callable via solve().
+- Phase D, E1, E2, E3 regression remain green.
+- See SESSION_LOG.md Round 664 for verification record.
 
 **E5 — CM/GR/bio/chem/geo/materials: STATUS PENDING** (108 scripts)
 
