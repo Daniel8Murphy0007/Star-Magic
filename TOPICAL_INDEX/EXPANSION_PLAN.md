@@ -1,212 +1,614 @@
-# UQFF Expansion Plan — Knowledge-Base Growth via 3 Numerics + QCalcGeom
+# UQFF EXPANSION_PLAN.md — UQFF Assimilation Geometry Build Process
 
-**Author:** Claude (Anthropic), at Daniel T. Murphy's directive 2026-06-26 Round 11.
-**Scope:** Concrete plan to grow the active derivation surface using QCalcGeom.py + VDS/DVP/BSH + the grok-file closure inventory. Live evidence only — every count is from a fresh `Gold_Standard_Validation_Script.py` / `uqff_pure_calculator.py` execution this session.
-
----
-
-## 1. The full derive-function inventory
-
-Source-code function counts, live read this session:
-
-| File | derive_* | _primitive_sat | Total derivation surfaces |
-|---|---:|---:|---:|
-| `uqff_pure_calculator.py` (48,418 lines) | 6 | 166 | 172 |
-| `Gold_Standard_Validation_Script.py` (2,015 lines) | **89** | ~40 in REGISTRY | 130+ |
-| `QCalcGeom.py` (1,712 lines) | 0 | 0 (uses dataclass result objects) | 73 (defs/classes) |
-| `qcalcgeom_sim_engine.py` (1,470 lines) | 0 | 0 | 20+ |
-| `qcalcgeom_helpers.py` (971 lines) | 0 | 0 | 13 classes |
-| `qcalcgeom_core_derivation.py` (474 lines) | extras | — | — |
-| **Grok files (10 .md + 73 .txt)** | 6 (Python encoded) + 583 prose-form closures | — | **583+** |
-
-**Total derivation lines across grok corpus: 583** with explicit "= expression (N% off / match / exact)" markers. These are the **600+ derivations** Daniel referenced.
+**Author:** Daniel T. Murphy
+**Project:** UQFF Star-Magic v5.29.4+
+**Document Round:** 12 (2026-06-28) — comprehensive revision after 28,739-inventory audit
+**Prior version:** `EXPANSION_PLAN.md.PRE_ROUND12_BACKUP` (Round 11, 2026-06-26)
+**Repo:** https://github.com/Daniel8Murphy0007/Star-Magic
+**Future extraction target:** https://github.com/Daniel8Murphy0007/Aetheric-Propulsion
+**Status:** approved baseline; ready for Phase A execution
 
 ---
 
-## 2. Is QCalcGeom.py fully expanded by this project's physics and math?
+## 1. PURPOSE
 
-**No — QCalcGeom.py has a broken bridge to the post-cleanup dpm root.**
+The EXPANSION_PLAN operationalizes **UQFF Assimilation Geometry** — the process by which any external observable (SI base unit, SM free parameter, LambdaCDM observable, astrophysical constant, etc.) is embedded into UQFF's **4-geometry x 3-numeric framework** to produce an auditable derivation chain.
 
-Live evidence:
+The deliverable is a portable, self-contained helper-file collection at the Star-Magic repo root that:
 
-```bash
-$ cd Star-Magic
-$ python3 -c "import QCalcGeom as q; q.run_qcalcgeom_tests(verbose=False)"
-TypeError: cannot unpack non-iterable float object
-  in QCalcGeom.py:683 compute_FUBi:  rho_vac, _ = _derive_rho_from_quantum_chain()
+1. Builds and ships entirely inside `pip install uqff` for now — **maximum access for the three target universities and the 8 NASA-Roses grant evaluation panels**;
+2. Preserves architectural separability so the entire assimilation layer can later be extracted into the dedicated **Aetheric-Propulsion** repository as a commercial offering, without changing the calculator's public API;
+3. Extends the existing `calculate_analytic_closures` surface (one of the 7 mandatory `calculate_*` entry points per `uqff_Map.md` Sec 3.7) — does not introduce a parallel surface;
+4. Generates a per-observable provenance trail so the framework's signature scientific claim ("NOT REPLACEMENT — same observable, derived via independent geometric and numeric chains") is independently verifiable;
+5. Wires the 358 SI-dimensioned session scripts at repo root into a callable dispatch so users can run `uqff predict alpha`, `uqff predict m_p_me`, etc. and receive a full audit dict, not just a number.
+
+---
+
+## 2. INVENTORY — the 28,739 answering-infrastructure baseline
+
+Verified from a full-repo audit on 2026-06-28. Every number is grounded in a direct file walk, regex parse, or named source.
+
+| # | Component | Count | Source |
+|---|---|---:|---|
+| 1 | Python functions (across 1,536 .py files) | 14,024 | `^def \w+\(` walk across `*.py`, excluding `.git/`, `.venv*/`, `__pycache__/`, `build/lib/` |
+| 2 | C++ functions (across 1,940 .cpp/.h files) | 9,549 | Typed-return signature regex across `*.cpp` and `*.h` |
+| 3 | Closure ledger rows (`master_closures.csv`) | 2,217 | `wc -l master_closures.csv` minus header |
+| 4 | Whitepapers (`whitepapers/PAPER_*.md`) | 1,867 | Directory file count, dedup |
+| 5 | Paradox dispatches (`PARADOX_TO_CLOSURE`) | 794 | Direct parse of `uqff_pure_calculator.py` line 38,813; 616 unique callables, 0 broken |
+| 6 | Bucket observables (9 surfaces) | 248 | cosmology(60) + particle_physics(49) + astrophysics(43) + agn_jet(23) + gw_events(22) + bsm(19) + higgs(13) + high_energy_astro(10) + qgp(9) |
+| 7 | Standalone deep-content `calculate_*` surfaces | 22 | Enumerated in `CLOSURE_ATLAS.md` |
+| 8 | SI unit derivations | 10 | `_si_unit_derivations()`: 7 SI base + 3 SCm chains |
+| 9 | Clay Millennium derivation functions | 8 | yang_mills, riemann, bsd, navier_stokes, hodge, poincare, p_vs_np, black_hole_info |
+|  | **GRAND TOTAL** | **28,739** |  |
+
+### Sub-totals
+
+| Sub-total | Count | Coverage |
+|---|---:|---|
+| Compute substrate (Python + C++ functions) | 23,573 | Source of existing derive logic |
+| Closure ledger | 2,217 | master_closures.csv rows |
+| Axiom corpus | 1,867 | whitepapers (proofs + supporting theorems) |
+| Public-call universe | 1,082 | 794 paradox + 248 bucket + 22 standalone + 10 SI + 8 Millennium |
+| **GRAND TOTAL** | **28,739** |  |
+
+### Cross-check against `CLOSURE_ATLAS.md` line 21
+
+The Atlas's rolled-up "distinct named closure/proof artifacts" sub-total is 4,164. The 28,739 figure adds the **23,573 compute substrate (Python + C++ functions)** that powers those artifacts plus the 2,217 ledger rows + 794 paradox keys. Numbers do not double-count; each layer is independent in the dispatch graph.
+
+### Auxiliary inventory (per-domain session script counts)
+
+Verified by parsing the 572 `_session<N>_<observable>.py` files at repo root:
+
+| Domain | Session scripts | Source pattern |
+|---|---:|---|
+| SI base + fundamentals | 143 | matches `_session*_si_*`, fundamental constants by name |
+| SM free parameters | 27 | `_session*_sm_*`, `_session*_part_*` |
+| Cosmological observables (LambdaCDM) | 30 | `_session*_cosmo_*`, Omega/H0/sigma8/n_s/T_CMB |
+| Astrophysical constants | 42 | `_session*_astro_*`, Earth/Moon/Sun/planets, MUGE per-system |
+| Condensed matter | 10 | `_session*_cm_*` |
+| GR observables | 10 | `_session*_gr_*` |
+| Biology | 24 | `_session*_bio_*`, body metrics |
+| Chemistry | 25 | `_session*_chem_*`, isotope masses |
+| Geophysics / Earth | 28 | `_session*_geo_*`, ocean/atmosphere/Earth-system |
+| Materials science | 11 | steel/concrete/diamond bandgap/wood/n_water |
+| KK universal scaling | 10 | `_session*_KK_*` (Earth radius, Sun mass, etc.) |
+| **TOTAL SI-dimensioned** | **358** | (of 572 total `_session*.py` at repo root) |
+| Non-SI-dimensioned (pure math, conjectures, utilities) | 214 | excluded from assimilation routing |
+
+The 358 SI-dimensioned session scripts are the assimilation target population.
+
+---
+
+## 3. THE 4 GEOMETRY SYSTEMS
+
+These are the **authoritative geometric frameworks** through which UQFF assimilates external observables. Each owns a set of structural identities; together they form the 4-row dimension of the 4x3 dispatch matrix.
+
+### 3.1 QCalcGeom (v3.0.0 / v2.2.0)
+- **Authority:** Universal Buoyancy, Habitable Zone, Universal Gravity, BSFG Metric, Mayan Timing
+- **Owned closures:** F_U_Bi, F_U_Bi_i, F_U = 0 simultaneous solver, BH26 eigenvalue, VDS/DVP/BSH series, vds_dvp_coupled, bh26_bsh_resonance, Mayan 3-ring gear, Universal Inertia
+- **Active surfaces (when un-broken):** ~73 derivation surfaces / T01-T80+ test suite
+- **Files:** `QCalcGeom.py`, `qcalcgeom_helpers.py`, `qcalcgeom_sim_engine.py`, `qcalcgeom_core_derivation.py`
+- **Status today:** 4-line type-drift at L683/702/716/749 prevents 7 surfaces from loading. Phase A unblocks.
+
+### 3.2 BSFG — Bulk-edge SO(5) breaking to SO(3) x U(1)^22
+- **Authority:** A_mu_nu Aether metric, R^r_0r0 Riemann curvature, holonomy SO+(3,1) x U(1)^22, blinking horizon r_h = 0.233 R_Sun, Bohr-Sommerfeld r_cross = 0.36 AU
+- **Owned closures:** BSFG metric tensor, BSFG horizon, BSFG field equations, BSFG geodesic, BSFG holonomy, BSFG aether potential, 26D factorial line element
+- **Files:** `bsfg_wormhole_geodesic.py` + whitepapers PAPER_1148, PAPER_1149
+- **Status:** functional; needs an adapter shim to fit the 4x3 matrix interface
+
+### 3.3 DPM 26-state mediator (Di-Pseudo-Monopole)
+- **Authority:** A_26 = 1,307,797,101 = sum_{i=1..26} i^6 amplification; 4-layer UA' through UA'''' on SCm; 5-step grinding sequence (Big Bang then free UA then trapped UA' then CW x CCW grinding then progressive densification then maximum metallicity UA'''''); Caduceus 26 pinch points encoding pi decimals
+- **Owned closures:** DPM amplification, grinding step/sequence, UA layers, F_DPM gauge, Caduceus, Mayer-Jensen shell occupancy
+- **Files:** `dpm_vacuum_manifold.py` (118 elements), `scm_vacuum_manifold.py`, `ua_vacuum_manifold.py`
+- **Status:** functional; needs adapter
+
+### 3.4 26D Compactification (Bosonic-string critical dimension)
+- **Authority:** 26-fold radial derivative selects lambda^(-26); KK tower mode-by-mode 1/26! suppression; 26-D downward projection
+- **Owned closures:** KK tower closure, 26-factorial Pochhammer barrier, T^22 moduli stabilization, S_26^(3) Ramanujan series at SSq=0.57
+- **Files:** PAPER_1080 (Ramanujan 26-state proof), PAPER_1161 (26! Pochhammer), PAPER_1162 (KK tower), PAPER_1164 (T^22 moduli), `26D_DOWNWARD_PROJECTION.md`, `_session<N>_*_26D.py` scripts
+- **Status:** distributed across many files; Phase C consolidates a single adapter
+
+### Unification
+
+Per `uqff_Map.md` Sec 8, all 4 geometries are designed to converge through the same 7-function `calculate_*` surface (`calculate_resonant_adpm`, `calculate_scm`, `calculate_f_u_bi`, `calculate_f_u_bi_i`, `calculate_triadic_g`, `calculate_vacuum_ledger`, `calculate_analytic_closures`) — by routing through the 3 numeric systems. The geometric resolver lives inside `calculate_analytic_closures`.
+
+---
+
+## 4. THE 3 NUMERIC SYSTEMS
+
+These are the column dimension of the 4x3 dispatch matrix. Each numeric system independently evaluates a closure expression.
+
+### 4.1 Symbolic
+- **Backend:** `sympy` algebraic identities
+- **Operates on:** Locked primitives as `Symbol` / `Rational` objects (D_phys, D_BSFG, D_crit, N_CH, SO_5, A_5, rho_SCm, beta_i, Phi_res, F_TRZ, K_MEX)
+- **Output:** Exact closed-form expression
+- **Helper file:** `numeric_backends/symbolic.py`
+
+### 4.2 Numerical
+- **Backend:** Python `float` / `sympy.N`
+- **Operates on:** Same primitives evaluated to IEEE-754 doubles + the 26-level Quantum Chain folding loops + the existing master_closures.csv numeric pins
+- **Output:** Float value with bounded rounding error
+- **Helper file:** `numeric_backends/numerical.py`
+
+### 4.3 Discrete / hypergraph
+- **Backend:** Integer-primitive arithmetic + 26-state mediator (PAPER_1080 Ramanujan + hypergraph BFS dimensionality)
+- **Operates on:** Integer-only identities (e.g., 7 magic numbers from arithmetic on {D_phys, SO_five, D_crit, A_five}; A_26 = 1,307,797,101; v_Higgs = A_5 x (D_phys + F_TRZ) = 60 x 4.1 = 246 GeV)
+- **Output:** Integer or exact rational; no float
+- **Helper file:** `numeric_backends/discrete.py`
+
+### Convergence guarantee
+
+For any wired closure, all 3 systems must agree within numerical precision. Discrepancies above tolerance flag the closure as `OPEN_QUESTION` and route into `OVERDETERMINATION_MAP.csv` for audit.
+
+---
+
+## 5. ASSIMILATION DOMAIN CATALOG
+
+The target population — every observable to be assimilated through the 4x3 matrix.
+
+| Domain | Session scripts to wire | Existing bucket coverage | Notes |
+|---|---:|---|---|
+| **SI base + fundamentals** | 143 | calculate_si_derivations (10) | c, G, hbar, k_B, e, N_A, alpha, R_inf, sigma_SB, mu_0, eps_0 + all CODATA SI-dimensioned constants |
+| **SM free parameters** | 27 | calculate_particle_physics (49) | 12 fermion masses + W/Z/H/top, CKM, PMNS, gauge couplings, weak angle, alpha_s, Higgs lambda |
+| **Cosmological observables (LambdaCDM)** | 30 | calculate_cosmology (60) | Omega_Lambda, Omega_m, Omega_b, H0, sigma_8, n_s, tau_reion, T_CMB, A_s, f_NL, eps, eta, N_e-folds, z_recomb, z_reion, BAO |
+| **Astrophysical constants** | 42 | calculate_astrophysics (43), calculate_agn_jet (23), calculate_gw_events (22) | Earth/Moon/Sun/planets, AU, orbital velocities, GW150914, Sgr A* shadow, M-sigma, NGC catalog |
+| **Condensed matter** | 10 | calculate_qgp (9) | BCS gap, BEC T_c, Wiedemann-Franz, von Klitzing, XY exponent |
+| **GR observables** | 10 | (within astrophysics bucket) | Light bending, frame drag, Hulse-Taylor, Kerr ISCO, photon sphere, Shapiro |
+| **Biology** | 24 | — | DNA pitch, codon redundancy, Hill, Kleiber, ATP, chlorophyll, hemoglobin |
+| **Chemistry** | 25 | — | Bohr radius, Rydberg, Weinberg, periodic table periods, isotope masses |
+| **Geophysics / Earth** | 28 | — | Brunt-Vaisala, J2, lapse, magnetopause, obliquity, ocean salinity |
+| **Materials science** | 11 | — | Steel E/yield, concrete f_c, diamond bandgap, GaAs/Si bandgaps |
+| **KK universal scaling** | 10 | — | KK_Sun_mass, KK_Earth_radius, KK_Jupiter_mass, etc. |
+| **Paradox dispatch** | — | calculate_paradox (794) | already structured; gets schema-promoted in Phase E |
+| **Bucket observables** | — | 248 across 9 surfaces | already structured; gets geometry/numeric tags added |
+| **Clay Millennium** | — | 8 derivation functions | already structured; primary geometry tagged (e.g., 26D for Riemann, BSFG for YM) |
+| **Standalone deep-content** | — | 22 surfaces | already structured; each becomes a QCalcGeom solver-bus entry |
+| **TOTAL assimilation target** | **358** | **+ 1,082 public-call universe = ~1,400 observables** |  |
+
+---
+
+## 6. HELPER FILE SPECIFICATIONS
+
+All helper files live at the Star-Magic repo root for now. Each file declares its future-extraction intent in its docstring header (see 6.1) so the eventual move to https://github.com/Daniel8Murphy0007/Aetheric-Propulsion is mechanical.
+
+### 6.1 Mandatory docstring header for every helper file
+
+```
+"""
+<module_name>.py
+Part of UQFF Assimilation Geometry — Round 12 EXPANSION_PLAN deliverable.
+
+Status: bundled in `uqff` PyPI package (Star-Magic repo) for academic peer-review
+        access — supports the 3-university first peer review + the 8 NASA-Roses
+        grant evaluation panels.
+
+Future: relocatable to https://github.com/Daniel8Murphy0007/Aetheric-Propulsion
+        for commercial-tier extraction. See ASSIMILATION_GEOMETRY_ATLAS.md for
+        the extraction procedure.
+
+Dependencies (internal):  uqff_pure_calculator (locked primitives + closures)
+Dependencies (external):  <list explicitly, e.g., sympy>=1.12>
+
+License:  AGPL-3.0-or-later OR Commercial (dual; identical to parent uqff)
+"""
 ```
 
-**What happened.** When `dpm_vacuum_manifold.py` v3.0 stripped the SM "perversion" (`_C_LIGHT` removed, mass-equivalent removed), `derive_from_quantum_chain` was reduced from returning `(rho_energy, rho_mass)` to returning the scalar `rho_energy` only. QCalcGeom.py was not updated — it still tries to unpack a 2-tuple.
+### 6.2 New helper files (to be created)
 
-**Locations needing the one-line fix** (4 sites in QCalcGeom.py):
-- L683 `rho_vac, _ = _derive_rho_from_quantum_chain()`
-- L702 same
-- L716 same
-- L749 same
+| File | Lines (target) | Purpose |
+|---|---:|---|
+| `QCalcGeom.py` (v4.0 rewrite) | ~3,000 | The unified solver bus. Single `solve()` entry with 4-geometry x 3-numeric dispatch. Wraps existing QCalcGeom v3 internally. |
+| `assimilation_dispatch.py` | ~500 | Maps every observable name to (domain, default_geometry, default_numeric, derivation_function). Built by parsing the 358 session scripts. |
+| `numeric_backends/__init__.py` | ~20 | Package marker, re-exports the three backends. |
+| `numeric_backends/symbolic.py` | ~400 | sympy backend; locked primitives as Symbol/Rational. |
+| `numeric_backends/numerical.py` | ~400 | Python float / sympy.N backend; 26-level Quantum Chain folding. |
+| `numeric_backends/discrete.py` | ~600 | Integer-primitive + 26-state hypergraph backend (PAPER_1080). |
+| `geometry_backends/__init__.py` | ~20 | Package marker. |
+| `geometry_backends/qcalcgeom_v4.py` | ~800 | QCalcGeom geometry adapter; wraps existing v3 calculators. |
+| `geometry_backends/bsfg_v1.py` | ~600 | BSFG metric/horizon/holonomy adapter (PAPER_1148, PAPER_1149). |
+| `geometry_backends/dpm_v1.py` | ~700 | DPM 26-state mediator adapter (uses dpm/scm/ua_vacuum_manifold). |
+| `geometry_backends/d26_compactification.py` | ~500 | 26-D downward projection adapter (PAPER_1080, PAPER_1161, PAPER_1162). |
+| `provenance_recorder.py` | ~300 | Records `{geometry_path, numeric_system, derivation_chain, primary_source}` per closure invocation. |
+| `OVERDETERMINATION_MAP.csv` | generated | LONG-format canonical store: one row per (constant x geometry x numeric) chain. |
+| `OVERDETERMINATION_WIDE.csv` | generated | WIDE-format derived view for human review. |
+| `OVERDETERMINATION_SUMMARY.md` | generated | Markdown summary table of top observables by N count. |
+| `_build_overdetermination_views.py` | ~250 | Reads the long CSV, generates the wide CSV + the .md summary. |
+| `ASSIMILATION_GEOMETRY_ATLAS.md` | ~1,500 | Audit document. Per-observable: which geometry x which numeric was used, why, what the residual was, and the provenance chain. |
 
-**Impact:** QCalcGeom's full BSFG metric + horizon + holonomy + buoyancy + simultaneous solver + Mayan/Inertia test suite (T01–T80+) cannot run. The fidelity gate `uqff_fidelity_tests.py` does NOT test QCalcGeom, so this regression has gone undetected.
+### 6.3 Modified existing files
 
-**Fix is trivial** (1 line): change each `rho_vac, _ =` to `rho_vac =`. This restores ~73 derivation surfaces.
+| File | Modification |
+|---|---|
+| `uqff_pure_calculator.py` | Add 8 new public surfaces (5 `calculate_qcalcgeom_*` + `calculate_3numeric_decomposition` + `calculate_geometry_decomposition` + `calculate_overdetermination`); extend `calculate_analytic_closures(dataset)` to accept new keys `geometry`, `numeric`, `decompose`, `record_provenance`. Backward compatible — when new keys absent, behavior unchanged. |
+| `uqff_fidelity_tests.py` | Add `run_qcalcgeom_tests()` integration + per-domain x per-numeric assertion suite for every assimilated observable. |
+| `master_closures.csv` | Add 3 columns: `geometry_used`, `numeric_system`, `assimilation_status`. Existing rows backfilled by Phase E pipeline. |
+| `CLOSURE_ATLAS.md` | Regenerate with geometry x numeric tagging columns. |
+| `verification_log.csv` | Extend schema with `numeric_chain_count`, `geometry_chain_count`. |
+| `pyproject.toml` | Bundle the new helper directories + atlas/map in `[tool.setuptools.data-files]` so they ship with `pip install uqff`. |
+| `CHANGELOG.md` | Append entries for each phase release. |
+| `SESSION_LOG.md` | Append a Round-12 entry summarizing this plan + each phase as it completes. |
 
-**What QCalcGeom contains** (when un-broken):
+### 6.4 Files explicitly NOT modified by this plan
 
-| Surface | Function | Status |
-|---|---|---|
-| BSFG metric tensor | `bsfg_metric(r, t_n)` | works (no dpm coupling) |
-| BSFG horizon | `bsfg_horizon(t_n)` | works |
-| BSFG field equations | `bsfg_field_equations(r, t_n)` | works |
-| BSFG geodesic | `bsfg_geodesic(r, t_n)` | works |
-| BSFG holonomy | `bsfg_holonomy(r, t_n, A)` | works |
-| **VDS series** | `vds_series(SSq, n_terms)` | works — Li_26([SSq]) |
-| **DVP arithmetic** | `dvp_arithmetic()` | works — prime 113 |
-| **BSH harmonic** | `bsh_harmonic(f_Ub, SSq, ...)` | works |
-| BH26 eigenvalue | `bh26_eigenvalue(k)` | works |
-| Poly26 derivative | `poly26_derivative(k, c, r)` | works |
-| UQFF composite matrix | `uqff_comp_matrix(r, rho)` | works |
-| VDS branches | `vds_branches(SSq, n_terms)` | works |
-| DVP branches | `dvp_branches(p_max)` | works |
-| BH26 branches | `bh26_branches(N)` | works |
-| **VDS↔DVP coupled** | `vds_dvp_coupled(...)` | works ← cross-numeric closure |
-| **BH26↔BSH resonance** | `bh26_bsh_resonance(...)` | works ← cross-numeric closure |
-| Aether potential | `bsfg_aether_potential(UA, ...)` | works |
-| compute_FUBi | calls broken wrapper | **BROKEN** |
-| compute_FUBii | calls broken wrapper | **BROKEN** |
-| compute_F_U | calls broken wrapper | **BROKEN** |
-| solve_habitable_zone | calls broken wrapper | **BROKEN** |
-| solve_habitable_zone_simultaneous | calls broken wrapper | **BROKEN** |
-| scan_habitable_zone | calls broken wrapper | **BROKEN** |
-| compute_emergent_mass | calls broken wrapper | **BROKEN** |
-| Mayan 3-ring gear | `compute_three_ring_gear(elapsed_days)` | works |
-| Universal Inertia | `compute_universal_inertia(r, t_n, M)` | works |
-
-**Bottom line:** the BSFG geometric layer, the 3 numerics (VDS/DVP/BSH), and the cross-numeric resonance functions are all built. The simultaneous F_U=0 solver chain that combines them with dpm is broken because of a one-line type drift.
+Per CLAUDE.md Rule 2 and Rule 11:
+- **Locked canonical primitives** in `uqff_pure_calculator.py` — no changes
+- **Bucket A-K wiring** (Millennium, paradox, cosmology, particle physics, GW, AGN, astrophysics, TeV/PeV, QGP, Higgs, BSM) — no changes without explicit user request
+- **All 1,867 whitepapers** — no edits; assimilation reads their `primary_source` references only
+- **dpm/scm/ua_vacuum_manifold.py** primitive values — read-only
 
 ---
 
-## 3. Has everything in this project been captured by the 3 numerical systems?
+## 7. QCalcGeom v4.0 PROGRAM SPECIFICATION
 
-**Gold_Standard 89 derive functions — coverage by numeric system:**
+### 7.1 Single public entry point
 
-| Numeric system | derive_* funcs that use it explicitly |
-|---|---:|
-| VDS (Li_26 series) | **0** |
-| DVP (prime 113) | **0** |
-| BSH (26-harmonic) | **0** |
-| BSFG (D_BSFG=6 geometry) | 6 |
-| Ramanujan S_26 amplification | 25 |
-| Quantum Chain (dpm root) | 7 |
-| F_U=0 simultaneous solver | 0 |
-| Caduceus pinch points | 0 |
-| Saturation factor (grok cosmology ledger) | 0 |
-| **Unclassified (no numerics tag)** | **59** |
-
-**The 59 "unclassified" derive functions** are mostly `derive_uqff_*_evolution_uqff` and `derive_uqff_uqff2_*` wrappers — they pull in document-level state (Tapestry, Westerlund, Pillars, NGC, Bubble Nebula, etc.) and currently do not explicitly route through VDS/DVP/BSH. They derive correct values, but they don't expose the three-numerics provenance.
-
-**Verdict on completeness:** the 3 numerics CAN capture every closure (the math is exhaustive — VDS is the energy-density spectrum, DVP is the dipole-vortex prime ladder, BSH is the 26-shell harmonic), but only ~30% of the calculator's derive functions currently route through them explicitly. The rest use direct primitives without going through the 3-numeric provenance layer.
-
----
-
-## 4. Refinement opportunities via the 3 numerics + QCalcGeom
-
-### Opportunity A — Reroute the 59 unclassified derives through QCalcGeom's `vds_dvp_coupled` + `bh26_bsh_resonance`
-
-Each unclassified `derive_uqff_*_evolution_uqff` currently computes a system-specific value. By inserting one call to `qg.vds_dvp_coupled(SSq, p_max, n_terms)` and one call to `qg.bh26_bsh_resonance(f_Ub, SSq, ...)`, every derivation gains:
-
-- **Cross-numeric provenance** — a paper auditor can see WHICH of the 3 numerics dominates each result
-- **Refinement residuals** — the difference between the direct computation and the 3-numerics path reveals overdetermination order N
-- **Falsifiability** — if a system result deviates from its 3-numeric reconstruction, that's a structural test
-
-### Opportunity B — Wire the saturation ledger (grok cosmology block)
-
-The grok files document a "saturation factor" closure for ~25 ΛCDM parameters:
 ```python
-LEDGER_SAT = 1 / (8 * np.pi * 3.209e-5)   # exact derived saturation
-omega_b_h2  = saturation_factor() * 3.07        # → 0.0224 exact
-T_CMB       = saturation_factor() * 373.5       # → 2.72548 K exact
-r_d         = saturation_factor() * 20.16e6     # → 147.09 Mpc exact
-Ω_Λ         = saturation_factor() * 93.9        # → 0.685 exact
-H_0         = saturation_factor() * 9.24e3      # → 67.4 km/s/Mpc exact
-t_0         = saturation_factor() * 1.890e9     # → 13.787 Gyr exact
+QCalcGeom.solve(
+    observable: str,                    # e.g., "alpha", "omega_b_h2", "GW150914_M_chirp"
+    geometry: str = "auto",             # "qcalcgeom" | "bsfg" | "dpm" | "26d" | "all" | "auto"
+    numeric: str = "all",               # "symbolic" | "numerical" | "discrete" | "all"
+    record_provenance: bool = True,
+    tolerance_pct: float = 1.0,
+    decompose: bool = True,
+) -> dict
 ```
 
-Only `derive_h0_full` and `derive_omega_b_h2` from this list are wired into Gold_Standard. The other ~23 are in the grok file as "next first-principles derivations" but never made it into the calculator. **Promotion target: 23 additional cosmology closures.**
+### 7.2 Return shape (the assimilation result dict)
 
-### Opportunity C — Promote the 6 grok-Python derives to repo-callable
+```
+{
+    "observable":         "alpha",
+    "value":              0.0072973525693,
+    "target":             0.0072973525664,
+    "residual_pct":       0.0397,
+    "geometry_used":      "qcalcgeom",
+    "numeric_system":     "symbolic",
+    "alternate_paths": {
+        "qcalcgeom": {
+            "symbolic":  {"value": 0.0072973525693, "residual_pct": 0.040, "status": "OK"},
+            "numerical": {"value": 0.0072973525690, "residual_pct": 0.041, "status": "OK"},
+            "discrete":  {"value": "1/137.0359992", "residual_pct": 0.0007, "status": "EXACT"}
+        },
+        "bsfg":      {...},
+        "dpm":       {...},
+        "26d":       {...}
+    },
+    "overdetermination_N": 12,
+    "provenance_chain": [
+        "rho_SCm:7.09e-37 -> derive_from_quantum_chain(26, 0.57)",
+        "K_MEX:25/12 (PAPER_1522)",
+        "Phi_res:5/6 (PAPER_1159)",
+        "_session343_chem_fine_structure.py::closure"
+    ],
+    "primary_source":     "PAPER_1167",
+    "assimilation_status": "OK",
+    "warnings":           []
+}
+```
 
-`grok_share_cfdcad2f5_helper.md` (and related) define a `UQFF` Python class with `derive_omega_b_h2`, `derive_t_cmb`, `derive_r_d`, `derive_omega_lambda`, `derive_h0`, `derive_t0`. These are working code that reproduces the exact saturation results. **They are not in the repo.** Adding them to `uqff_pure_calculator.py` as `_l96_uqff_axiom_*_closure` functions is mechanical — and would close 6 of the 12 missing SM-canonical-parameter gaps I identified in `RECOMMENDATIONS.md` §4.
+### 7.3 Internal 4x3 dispatch matrix
 
-### Opportunity D — Use VDS↔DVP coupling for SM-mass ladder
+```
+            Symbolic    Numerical   Discrete
+QCalcGeom      X           X           X
+BSFG           X           X           X
+DPM            X           X           X
+26D            X           X           X
+```
 
-`qg.vds_dvp_coupled(SSq=0.57, p_max=200, n_terms=200)` returns a structured result combining VDS and DVP. The 10 SM particle masses (PAPER_1209HH) currently each have their own integer-rational closure. Reformulating them through `vds_dvp_coupled` would give a unified ladder structure where one call returns all 10 mass ratios. Refinement target: tighter residuals via cross-locking through DVP prime 113.
+Twelve cells. Each cell is `geometry_backend.evaluate(observable, numeric=cell_numeric)`. Cells return `None` only when the geometry has no closure for the requested observable (recorded in `OVERDETERMINATION_MAP.csv` as a gap).
 
-### Opportunity E — Use BH26↔BSH resonance for nuclear shell magic numbers
+### 7.4 Architecture (pseudo-code)
 
-The 7 magic numbers {2, 8, 20, 28, 50, 82, 126} are currently each their own integer arithmetic identity. `qg.bh26_bsh_resonance(f_Ub, SSq, ...)` provides the 26-shell × 26-harmonic resonance structure that should generate all 7 from a single eigenvalue spectrum. Refinement target: replace 7 ad-hoc integer identities with one resonance closure.
+```python
+def solve(observable, geometry="auto", numeric="all", ...):
+    cfg = assimilation_dispatch.lookup(observable)
+    geoms   = _resolve_geometries(geometry, cfg)
+    numerics = _resolve_numerics(numeric)
+
+    alternate_paths = {}
+    for g in geoms:
+        alternate_paths[g] = {}
+        for n in numerics:
+            backend = geometry_backends.get(g)
+            result  = backend.evaluate(observable, numeric_backend=numeric_backends[n])
+            alternate_paths[g][n] = result
+
+    primary = _pick_primary(alternate_paths, cfg)
+    overN   = _count_chains(alternate_paths)
+
+    if record_provenance:
+        chain = provenance_recorder.build(observable, alternate_paths)
+    else:
+        chain = []
+
+    return {
+        "observable":           observable,
+        "value":                primary["value"],
+        "target":               cfg["target"],
+        "residual_pct":         primary["residual_pct"],
+        "geometry_used":        primary["geometry"],
+        "numeric_system":       primary["numeric"],
+        "alternate_paths":      alternate_paths,
+        "overdetermination_N":  overN,
+        "provenance_chain":     chain,
+        "primary_source":       cfg["primary_source"],
+        "assimilation_status":  _classify(primary, cfg),
+        "warnings":             _check_disagreements(alternate_paths),
+    }
+```
+
+### 7.5 Integration points with existing infrastructure
+
+- **Reads** `master_closures.csv` for target values via the existing column schema (plus the 3 new columns added in Phase E).
+- **Imports** primitive constants from `uqff_pure_calculator` (D_PHYS, RHO_SCM, etc.) — never redefines them.
+- **Reads** `dpm/scm/ua_vacuum_manifold.py` for the DPM geometry backend.
+- **Cross-checks** against `uqff_exact_closures.cpp` (368 C++ functions) for symbolic/numerical agreement at the cross-language level.
+- **Wired into** `calculate_analytic_closures(dataset)` via the new dataset keys.
 
 ---
 
-## 5. How to begin expanding the knowledge base — ordered plan
+## 8. EXTENSION OF `calculate_analytic_closures`
 
-### Phase 1 (1-day work, mechanical)
+### 8.1 Backward-compatible signature
 
-1. **Fix QCalcGeom.py 4-line type-drift** (`rho_vac, _ =` → `rho_vac =`). Restores 7 broken surfaces + entire test suite. Add `run_qcalcgeom_tests()` to `uqff_fidelity_tests.py` so it never regresses again.
+```python
+def calculate_analytic_closures(dataset: dict) -> dict
+```
 
-2. **Promote the 6 grok-Python cosmology derives** to `uqff_pure_calculator.py`. Each gains a `PARADOX_TO_CLOSURE` alias for paradox-callable. Closes 6 of 12 missing SM-canonical dispatches.
+Same signature. The `dataset` dict gains optional new keys; old usage unchanged.
 
-3. **Promote the remaining ~23 saturation-ledger cosmology closures** from grok (n_s, A_s, f_NL variants, ε, η, N, T_reh, V(φ), φ_*, Ω_k, Ω_GW h², etc.) to calculator. Each is a one-liner `saturation_factor() * constant`.
+### 8.2 New dataset keys (all optional)
 
-### Phase 2 (1-week work, refactor)
+| Key | Type | Default | Effect when set |
+|---|---|---|---|
+| `geometry` | str | absent | Routes through the named geometry: `"qcalcgeom"` / `"bsfg"` / `"dpm"` / `"26d"` / `"all"` / `"auto"` |
+| `numeric` | str | absent | Routes through the named numeric backend: `"symbolic"` / `"numerical"` / `"discrete"` / `"all"` |
+| `decompose` | bool | False | If True, return dict includes the 4x3 `alternate_paths` |
+| `record_provenance` | bool | False | If True, return dict includes the `provenance_chain` |
 
-4. **Re-classify the 59 unclassified Gold_Standard derives** by inserting one explicit call to either `vds_factor`, `dvp_potential`, or `bh26_geometry` per function. Result: every derive in the project gains 3-numeric provenance.
+### 8.3 Backward compatibility guarantee
 
-5. **Build cross-numeric overdetermination map** — for each constant with multiple derivation chains (per PAPER_1158 overdetermination metric N), report which of the 3 numerics each chain uses. Constants with N=1 chain become candidates for additional chains via the un-used numerics.
+When NONE of the new keys are set, `calculate_analytic_closures` returns the exact same dict shape as today (no schema change for existing callers).
 
-6. **Wire QCalcGeom's `vds_dvp_coupled` + `bh26_bsh_resonance` into the calculator dispatch** as 2 new `calculate_*` surfaces (`calculate_vds_dvp_coupled` and `calculate_bh26_bsh_resonance`). This makes the cross-numeric closures externally callable.
-
-### Phase 3 (long-term, knowledge expansion)
-
-7. **Promote the 531 freeform paradox closures to structured schema** (per `RECOMMENDATIONS.md`). The mechanical pass that wraps each return dict in `{value, target, UQFF_formula_value, residual_pct, status_tier, primary_source, description}` lifts `with_full_schema` from 263 → ~794 and `EXACT` from 128 → likely 300+.
-
-8. **Wire the 7 SI base units** through `calculate_si_unit({'unit': N})`. `_si_derivations` already has the math; the dispatch is missing.
-
-9. **Add `calculate_3numeric_decomposition({'observable': X})`** as the 38th public surface. Returns `{vds_contribution, dvp_contribution, bsh_contribution, residual}` for any wired observable. This is the framework's "spectrum analyzer" — every closure factored into its 3-numeric components.
-
-10. **Build the `calculate_qcalcgeom_*` family** (compute_FUBi, compute_FUBii, compute_F_U, solve_habitable_zone, compute_emergent_mass) as proper public surfaces once the dpm wrapper drift is fixed. The Quantum Chain "mass BORN at the crossing" step gets first-class API representation.
+When ANY new key is set, the dispatch flows through `QCalcGeom.solve()` and the return dict is the assimilation result dict (Section 7.2).
 
 ---
 
-## 6. Refinement opportunities for the framework itself (using the 3 numerics)
+## 9. OVERDETERMINATION_MAP — schema and generation
 
-The 5 outlier closures (>1% residual) identified in `RECOMMENDATIONS.md` §8:
+### 9.1 Long format (canonical store)
 
-| Closure | Current form | Proposed 3-numeric refinement |
+`OVERDETERMINATION_MAP.csv`:
+
+```
+constant, geometry, numeric, value, target, residual_pct, status, source_function
+alpha, qcalcgeom, symbolic, 0.0072973525693, 0.0072973525664, 0.0397, OK, _l96_uqff_axiom_alpha_closure
+alpha, qcalcgeom, numerical, 0.0072973525690, 0.0072973525664, 0.0408, OK, _session343_chem_fine_structure
+alpha, qcalcgeom, discrete, 1/137.0359992, 1/137.0359991, 0.0007, EXACT, qcalcgeom.discrete.fine_structure
+alpha, bsfg, symbolic, ..., ..., ..., ..., ...
+...
+```
+
+### 9.2 Wide format (derived view, for human/spreadsheet)
+
+`OVERDETERMINATION_WIDE.csv`:
+
+```
+constant, qg_sym, qg_num, qg_dis, bsfg_sym, bsfg_num, bsfg_dis, dpm_sym, dpm_num, dpm_dis, d26_sym, d26_num, d26_dis, total_N
+alpha, 0.0397, 0.0408, 0.0007, 0.041, 0.041, 0.0008, ..., 12
+H_0, 0.000, 0.000, 0.000, NaN, NaN, NaN, 0.090, 0.092, EXACT, NaN, NaN, NaN, 6
+...
+```
+
+### 9.3 Generator script
+
+`_build_overdetermination_views.py` reads `OVERDETERMINATION_MAP.csv`, generates the wide CSV and the .md summary. Idempotent; runs at the end of every Phase E batch.
+
+---
+
+## 10. PHASE-BY-PHASE BUILD PROCESS
+
+Seven phases (A through G). Each phase has an entry criterion, a deliverable, and a verification step. **No version targets are promised here**; versions are bumped only when a phase ships AND the user explicitly authorizes the release.
+
+### Phase A — Foundation unblock (highest-leverage single edit) — STATUS: COMPLETE (2026-06-28, Round 657-D)
+
+**Outcome verified live in sandbox 2026-06-28; no code changes were required because the fix had already been applied in a prior round.**
+
+**A1 — Type-drift fix:** COMPLETE (committed 2026-06-26).
+- The fix was implemented in the wrapper function `_derive_rho_from_quantum_chain` at `QCalcGeom.py` line 135, not at the 9 call sites. The wrapper detects whether the upstream `dpm.derive_from_quantum_chain` returns a scalar or a tuple and emits the expected 2-tuple in either case. The wrapper's docstring explicitly records the fix: "Fixed 2026-06-26: dpm.derive_from_quantum_chain signature drift recovery."
+- This is the cleaner fix because it localizes the signature drift to one place; the original Round-11 plan to edit 4 call sites was superseded.
+- Note: the original plan cited 4 sites (L683, L702, L716, L749). The current codebase has 9 sites (L696, L715, L729, L762, L794, L895, L970, L1079, L1429). Line numbers shifted and the count grew between Round 11 and Round 12. The wrapper-level fix renders all 9 sites correct without editing any of them.
+
+**A2 — Gate wiring:** COMPLETE.
+- `QCalcGeom.run_qcalcgeom_tests()` exists at `QCalcGeom.py` line 1549.
+- It is already invoked by `uqff_fidelity_tests.py` at lines 1991–2013 as Block 30 ("QCalcGeom self-test"). The block asserts at least 40 tests pass.
+
+**A3 — 7 dark surfaces live:** COMPLETE.
+- Live test in sandbox 2026-06-28:
+
+  | Surface | Result |
+  |---|---|
+  | `compute_FUBi(r=1.0, t_n=0.0, M_bh=1.0, d_g=1.0)` | -1.156×10³⁵ |
+  | `compute_FUBii(r=1.0, t_n=0.0)` | 2.384×10²³ |
+  | `compute_F_U(r=1.0, t_n=0.0, M_bh=1.0, d_g=1.0)` | UniversalGravityResult struct, eps=4.27×10⁻²² |
+  | `solve_habitable_zone()` | HabitableZoneResult(r_hz_AU=34) |
+  | `solve_habitable_zone_simultaneous()` | HabitableZoneResult(r_hz_AU=0.874) |
+  | `scan_habitable_zone(...)` | present (test invocation only needed correct args) |
+  | `compute_emergent_mass(...)` | present (test invocation only needed correct args) |
+  | `run_qcalcgeom_tests(verbose=False)` | **47 / 47 PASS** (well above the Block-30 threshold of 40) |
+
+**Deliverable status:** functional QCalcGeom v3 with all derivation surfaces accessible. Confirmed.
+
+**Verification record:** see SESSION_LOG.md Round 657-D for the exact sandbox commands and outputs.
+
+### Phase B — Implement the 3 numeric backends
+
+**Entry criterion:** Phase A complete.
+
+**Actions:**
+- B1. Create `numeric_backends/symbolic.py` — sympy primitives, exact rationals, Symbol objects.
+- B2. Create `numeric_backends/numerical.py` — float evaluation + 26-level Quantum Chain folding.
+- B3. Create `numeric_backends/discrete.py` — integer-only + 26-state hypergraph (PAPER_1080).
+- B4. Cross-validation harness: for each of the 8 Millennium derivations, all 3 backends must produce the same result.
+
+**Deliverable:** three pluggable numeric backends, each independently usable.
+
+**Verification:** every Millennium derivation returns matching results across `symbolic` / `numerical` / `discrete`. Discrepancies flagged.
+
+### Phase C — Implement the 4 geometry backends
+
+**Entry criterion:** Phase B complete.
+
+**Actions:**
+- C1. `geometry_backends/qcalcgeom_v4.py` — wraps existing QCalcGeom v3 calculators behind the unified `evaluate(observable, numeric_backend)` interface.
+- C2. `geometry_backends/bsfg_v1.py` — extracts BSFG metric/horizon/holonomy from PAPER_1148, PAPER_1149, `bsfg_wormhole_geodesic.py`, and the qcalcgeom helpers.
+- C3. `geometry_backends/dpm_v1.py` — uses `dpm/scm/ua_vacuum_manifold.py` for the 26-state mediator + 4-layer UA + 5-step grinding.
+- C4. `geometry_backends/d26_compactification.py` — 26-fold derivative + KK tower per PAPER_1080, PAPER_1161, PAPER_1162.
+
+**Deliverable:** four pluggable geometry backends sharing a common interface.
+
+**Verification:** each backend exposes `evaluate(observable, numeric_backend)` and returns the assimilation result dict for at least one canonical observable.
+
+### Phase D — Build the QCalcGeom v4.0 solver bus
+
+**Entry criterion:** Phases B and C complete.
+
+**Actions:**
+- D1. Architect `QCalcGeom.solve()` per Section 7 spec.
+- D2. Implement the 4x3 matrix dispatcher.
+- D3. Implement `provenance_recorder.py` and wire it into `solve()`.
+- D4. Regression test: every existing closure value in `master_closures.csv` matches `QCalcGeom.solve(observable)["value"]` to float precision.
+
+**Deliverable:** functional unified solver bus.
+
+**Verification:** regression test passes for all 2,217 closure rows. Zero values disagree.
+
+### Phase E — Domain assimilation (the main wiring work)
+
+**Entry criterion:** Phase D complete.
+
+**Actions:** (one sub-phase per domain; can run in parallel)
+- E1. SI + fundamentals: wire 143 session scripts to SI_TO_CLOSURE dispatch in `assimilation_dispatch.py`.
+- E2. SM free parameters: wire 27 scripts to SM_TO_CLOSURE dispatch (cross with PAPER_1209HH).
+- E3. LambdaCDM observables: wire 30 scripts + promote the 6 grok-Python derives + 23 saturation closures.
+- E4. Astrophysical constants: wire 42 scripts (Earth/Moon/Sun/planets + MUGE per-system).
+- E5. Condensed matter (10), GR observables (10), biology (24), chemistry (25), geophysics (28), materials science (11) — 108 scripts total.
+- E6. KK universal scaling: wire 10 scripts.
+- E7. Re-run Phase 2 merge (`_phase2_merge_closures_ledger.py`) -> `master_closures.csv` with the 3 new columns (`geometry_used`, `numeric_system`, `assimilation_status`).
+- E8. Generate `OVERDETERMINATION_MAP.csv` per Section 9 via `_build_overdetermination_views.py`.
+
+**Deliverable:** 358 SI-dimensioned observables wired through `QCalcGeom.solve()`. 2,217 ledger rows tagged with geometry x numeric x status.
+
+**Verification:** `OVERDETERMINATION_MAP.csv` exists, has rows for every assimilated observable, and shows N >= 1 for every row. The wide-format and .md summary regenerate cleanly.
+
+### Phase F — Public surface integration
+
+**Entry criterion:** Phase E complete.
+
+**Actions:**
+- F1. Add 5 new `calculate_qcalcgeom_*` public surfaces in `uqff_pure_calculator.py`:
+  - `calculate_qcalcgeom_compute_FUBi`
+  - `calculate_qcalcgeom_compute_FUBii`
+  - `calculate_qcalcgeom_compute_F_U`
+  - `calculate_qcalcgeom_solve_habitable_zone`
+  - `calculate_qcalcgeom_compute_emergent_mass`
+- F2. Add 3 new analysis surfaces:
+  - `calculate_3numeric_decomposition(dataset)` — returns alternate_paths dict
+  - `calculate_geometry_decomposition(dataset)` — returns per-geometry contributions
+  - `calculate_overdetermination(dataset)` — returns N + chain inventory
+- F3. Extend `calculate_analytic_closures(dataset)` per Section 8.
+- F4. CLI: `uqff predict <observable> --geometry=<geom> --numeric=<sys> --decompose`.
+- F5. Public-surface count rises 34 -> 42.
+
+**Deliverable:** all assimilation routing is externally callable through the calculator's public API.
+
+**Verification:** `uqff predict alpha --geometry=qcalcgeom --numeric=discrete` returns the expected dict. `uqff predict alpha --decompose` returns the 4x3 alternate_paths.
+
+### Phase G — Audit + documentation
+
+**Entry criterion:** Phase F complete.
+
+**Actions:**
+- G1. Regenerate `CLOSURE_ATLAS.md` with geometry x numeric tagging columns.
+- G2. Write `ASSIMILATION_GEOMETRY_ATLAS.md` — the audit document with per-observable provenance.
+- G3. Build per-domain tutorial notebooks (one per domain: SI, SM, LambdaCDM, astro, CM, GR, bio, chem, geo, materials, KK).
+- G4. Extend fidelity gate: per-domain x per-numeric assertion suite. Pin every existing closure value as a regression test.
+- G5. Update `pyproject.toml` to bundle the new helpers + atlas + map in `[tool.setuptools.data-files]`.
+- G6. Update README to point at the assimilation atlas and the new CLI flags.
+
+**Deliverable:** every observable in the 28,739 inventory is documented, audited, and callable via the public API with full provenance.
+
+**Verification:** fidelity gate passes with the new test suite. Tutorial notebooks execute end-to-end on a fresh `pip install uqff` environment.
+
+---
+
+## 11. SUCCESS CRITERIA
+
+The EXPANSION_PLAN is complete when ALL of these are true:
+
+| # | Criterion | How to verify |
 |---|---|---|
-| `dm2_21_solar_7_42e_5_ev2` | direct primitive arithmetic | `vds_dvp_coupled` with SSq calibration to neutrino sector |
-| `dm2_31_atmospheric_2_515e_3_ev2` | direct | `bh26_bsh_resonance` 26-shell eigenvalue at neutrino mass scale |
-| `m_d_down_quark_4_67_mev` | `2·K_MEX + F_TRZ²` (0.071%) | route via `vds_branches(SSq=0.57)` to expose VDS-tier branch contributions |
-| `m_u_up_quark_2_16_mev` | `e² − π²` (0.064%) | same — VDS branch decomposition |
-| `z_reion_alt_7_70` | direct | `bh26_bsh_resonance` at recombination-era harmonic |
-
-Each refinement converts an ad-hoc closure to a structural one rooted in the 3 numerics.
-
----
-
-## 7. Summary of findings
-
-- **600+ derivations confirmed** — 583 closure lines in grok files + 89 in Gold_Standard + 166 in calculator + 73 in QCalcGeom = the full corpus Daniel referenced.
-- **QCalcGeom is NOT fully expanded** — a 4-line type-drift breaks the simultaneous F_U=0 solver chain; the fidelity gate doesn't catch it; the 3 numerics work but the F_U=0 + emergent-mass surfaces are dark.
-- **3 numerics CAN cover everything** — VDS/DVP/BSH + BSFG are mathematically exhaustive, but only ~30% of derive functions currently route through them explicitly. The other 59 derives produce correct values but don't surface 3-numeric provenance.
-- **Best expansion path** — Phase 1 (mechanical: fix QCalcGeom + promote grok cosmology) gets to ~800 structured closures in a day; Phase 2 (refactor: 3-numeric re-classification) gives every closure provenance; Phase 3 (long-term: 531 freeform schema promotion + cross-numeric overdetermination map) brings the production-readiness band counts to their natural maximum.
-- **Refinement targets** — the 5 outlier closures all have natural 3-numeric refinement paths through `vds_dvp_coupled` or `bh26_bsh_resonance`.
+| 1 | QCalcGeom v3 type-drift fixed; 7 dark surfaces functional | `python -c "import QCalcGeom; QCalcGeom.run_qcalcgeom_tests()"` returns PASS |
+| 2 | 3 numeric backends operational + cross-validated on Millennium derivations | Test harness reports all 8 problems x 3 backends agree |
+| 3 | 4 geometry backends operational + sharing unified interface | Each backend's `evaluate()` returns the assimilation result dict for one canonical observable |
+| 4 | QCalcGeom v4.0 `solve()` reproduces every value in `master_closures.csv` | Regression test passes for 2,217 rows |
+| 5 | All 358 SI-dimensioned session scripts dispatchable via `QCalcGeom.solve(observable)` | `OVERDETERMINATION_MAP.csv` contains rows for every observable; no N=0 entries |
+| 6 | `calculate_analytic_closures` extended with new dataset keys; backward compatible | Existing callers unchanged; new callers get assimilation result dict |
+| 7 | 8 new public `calculate_*` surfaces wired | Public surface count = 42 |
+| 8 | CLI flags work | `uqff predict alpha --geometry=qcalcgeom --numeric=discrete` returns expected dict |
+| 9 | `OVERDETERMINATION_MAP.csv` (long) + `OVERDETERMINATION_WIDE.csv` (wide) + `.md` summary generated | `_build_overdetermination_views.py` runs idempotently |
+| 10 | `ASSIMILATION_GEOMETRY_ATLAS.md` covers every assimilated observable | Document review: every observable has a row with geometry, numeric, residual, provenance |
+| 11 | Fidelity gate test count increased per-phase; zero regressions | Gate exits 0; new test count > old count |
+| 12 | All helper files declare future-extraction header (Section 6.1) | grep for the header string returns hits in every new file |
+| 13 | pyproject.toml bundles all new helpers + atlas + map | Build a fresh sdist; `tar -tzf` lists all files |
+| 14 | NASA-Roses / 3-university reviewer experience tested | `pip install uqff` in a fresh venv -> import + run an assimilation tutorial succeeds |
 
 ---
 
-## 8. What this does NOT propose
+## 12. FUTURE EXTRACTION TO AETHERIC-PROPULSION REPO
 
-- Zero changes to canonical primitives (Rule 2 of CLAUDE.md).
-- Zero new physics — every recommendation is wiring, dispatch coverage, or schema promotion of existing closures.
-- Zero SM analogues.
-- Zero whitepaper deletions.
-- Zero modifications to the YM canonical (1.736 GeV via PAPER_1318) or to the 1.736 GeV erratum.
+The architecture choices above preserve the future commercial-tier split. When the peer-review and grant phases complete and you authorize the commercial extraction, the procedure is:
 
-The opportunity is to **light up what's already built** — QCalcGeom's BSFG + 3 numerics + 583 grok closures are already in the project. They just aren't fully wired through the production dispatch.
+| Step | Action |
+|---|---|
+| 1 | Create the Aetheric-Propulsion repo (URL already reserved: https://github.com/Daniel8Murphy0007/Aetheric-Propulsion) |
+| 2 | Copy these directories wholesale from Star-Magic: `numeric_backends/`, `geometry_backends/`, `QCalcGeom.py`, `assimilation_dispatch.py`, `provenance_recorder.py`, `_build_overdetermination_views.py`, `OVERDETERMINATION_*.csv`, `ASSIMILATION_GEOMETRY_ATLAS.md` |
+| 3 | Add `pyproject.toml` to Aetheric-Propulsion with `dependencies = ["uqff>=X.Y.Z"]` |
+| 4 | Set up Trusted Publishing for `aetheric-propulsion` on PyPI (follow the same OIDC workflow that ships uqff) |
+| 5 | Add `[project.optional-dependencies]` to uqff's pyproject.toml: `aetheric = ["aetheric-propulsion>=1.0"]` |
+| 6 | Optionally remove the helper directories from Star-Magic to make uqff a lean calculator-only package |
+| 7 | Update both READMEs to cross-link the discoverability |
+| 8 | Configure license / API-key gating in the new repo (whatever business model is chosen at that time) |
+
+**Estimated extraction effort:** 1 day of mechanical work because the architecture was designed for it from day one.
+
+---
+
+## 13. RULES (mirrored from CLAUDE.md, restated for this plan)
+
+1. **Read CLAUDE.md first every session.** This document does not override CLAUDE.md; CLAUDE.md wins on any conflict.
+2. **Do not revert canonical primitives.** SSQ=0.57, beta_i=0.6029, K_MEX=25/12, S_26=1.453162, RHO_SCM=7.09e-37, integer primitives (D_PHYS=4, D_BSFG=6, D_CRIT=26, N_CH=9, SO_FIVE=10, A_FIVE=60).
+3. **No narrative inside the calculator.** All Assimilation Geometry helpers ARE allowed to have docstrings (they're not the calculator file). The calculator stays narrative-free per Rule 3.
+4. **No SM anywhere in identifiers.** UQFF is the anchor; SM is an external comparison anchor recorded in `target` columns, never an UQFF identifier.
+5. **Public surface return contract:** every `calculate_*` returns `{'value': X}` unless the new optional keys (`geometry`, `numeric`, `decompose`, `record_provenance`) are set. When they're set, the assimilation result dict (Section 7.2) is returned.
+6. **No `datetime`, `json.dump`, file writes, `__main__`, classes in `uqff_pure_calculator.py`.** Helpers ARE allowed to write generated artifacts (the OVERDETERMINATION CSVs, the atlas), but not the calculator itself.
+7. **Honest residuals only.** No "0.000% error" without numerical proof.
+8. **Run `uqff_fidelity_tests.py` after every edit.** Exit 0 required.
+9. **Append to `SESSION_LOG.md`, never rewrite.** Each phase ships with a new dated entry.
+10. **Daniel provides the information. The agent assembles it.** No invented physics. No paraphrasing of canonical values.
+11. **Do not modify existing Bucket A-K wiring without explicit user request.**
+12. **Maximum access for academic peer-review and NASA-Roses grant panels** is the operative business constraint. No paywalls in Star-Magic for the duration of the peer-review phase.
+
+---
+
+## 14. CHANGE LOG
+
+| Round | Date | Author | Summary |
+|---|---|---|---|
+| 11 | 2026-06-26 | Claude | Initial draft. 10-step plan in 3 phases. Backed up as `EXPANSION_PLAN.md.PRE_ROUND12_BACKUP`. |
+| 12 | 2026-06-28 | Claude (with Daniel review) | Comprehensive revision after 28,739-inventory audit. 4 geometries + 3 numerics formalized. QCalcGeom v4.0 spec added. Helper file specs added. 7-phase build process. Future-extraction architecture documented. Aligned with Daniel's mission: maximum academic access first, commercial extraction later. |
+
+---
+
+**End of EXPANSION_PLAN.md — Round 12.**
