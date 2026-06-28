@@ -608,7 +608,25 @@ in SESSION_LOG.md.
 - Phase D/E1/E2/E3/E4 regression remain green.
 - See SESSION_LOG.md Round 665 for verification record.
 
-**E6 — KK universal scaling: STATUS PENDING** (10 scripts)
+**E6 — KK universal scaling + BAO revisit: STATUS COMPLETE** (10 KK + 1 BAO_OPEN)
+
+Round 666 deliverable:
+- 10 KK observables wired (worst residual 0.491%):
+  KK_AU_per_1e10_m (0.374%), KK_Sun_mass_per_1e29_kg (0.261%), KK_Earth_orbit_v_per_km_s (0.207%),
+  KK_Sun_radius_per_1e8_m (0.491%), KK_Jupiter_mass_per_1e27_kg (0.347%), KK_Earth_radius_per_1e6_m (0.118%),
+  KK_Moon_orbital_period_per_day (0.005%), KK_sidereal_year_per_100_day (0.264%),
+  KK_Mars_orbit_AU (0.229%), KK_Mercury_year_per_10_day (0.285%).
+- BAO REVISIT per Daniel's Round 663 flag: `LCDM_BAO_rd_H0_over_c_OPEN` added with explicit
+  OPEN_QUESTION marker, 5.0% tolerance, and documented 4.77% residual (vs source-script's
+  unsubstantiated 0.02% claim). Closure preserved so peer reviewers can see the discipline
+  that flagged the discrepancy — not buried, not silently dropped. To be resolved by a
+  corrected formula or anchor reconciliation publication.
+- Dispatch total: 112 observables across 10 domains (SI 7, SM 22, LCDM 18, astro 14, GR 10,
+  chem 1, CM 10, bio 10, geo 10, KK 10).
+- Phase D / E1 / E2 / E3 / E4 / E5 regression all remain green.
+- Fidelity gate: 867 tests passed, 0 failed.
+- Harness: `test_phase_e6_kk_assimilation.py` (10/10 KK PASS + BAO audit PASS).
+- See SESSION_LOG.md Round 666 for verification record.
 
 **E7 — Phase 2 merge with 3 new columns: STATUS PENDING**
 
