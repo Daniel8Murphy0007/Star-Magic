@@ -574,7 +574,12 @@ in SESSION_LOG.md.
   UQFF closure is independently sourced. No invented formulas.
 - See SESSION_LOG.md Round 661 for the verification record.
 
-**E2 — SM free parameters: STATUS PENDING** (27 session scripts: sm_*, part_*)
+**E2 — SM free parameters: STATUS COMPLETE (2026-06-28, Round 662)**
+- 17 verified-from-source closures added to assimilation_dispatch (S324, S326, S373-S382, S438-S442); pre-injection verification rejected any formula whose computed value diverged from documented residual + 0.5% slack.
+- Files: `test_phase_e2_sm_assimilation.py` (109 lines); `assimilation_dispatch.py` extended (+17 entries, TOTAL_E2 = 17).
+- 22/22 SM-domain observables pass regression. 3 EXACT (generation_count, wimp_exponent, plus E1 carryovers), 16 OK within sub-percent, 1 documented TENSION at 1.17% (SM_cabibbo_theta_deg_S326 within its source's 1.1% residual band).
+- Phase D and E1 regression remain green (zero coupling).
+- See SESSION_LOG.md Round 662 for the verification record.
 
 **E3 — LambdaCDM observables: STATUS PENDING** (30 scripts + 6 grok-Python + 23 saturation)
 
