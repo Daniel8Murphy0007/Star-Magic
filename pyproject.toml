@@ -98,7 +98,7 @@ uqff-api = "uqff_api:run"
 # ===========================================================================
 
 [tool.setuptools]
-py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter", "uqff_fidelity_tests", "run_millennium_proofs", "BuoyancyProofVariants", "first_principles_derivation", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script"]
+py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter", "uqff_fidelity_tests", "run_millennium_proofs", "BuoyancyProofVariants", "first_principles_derivation", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script", "ua_vacuum_manifold", "buoyancy_lagrangian_eom", "buoyancy_lagrangian_eom_enhanced", "_session288_universal_buoyancy_simultaneous_solver", "_session303_universal_buoyancy_solver", "UQFF_SimultaneousProofEngine", "GrokThread_StarMagic_UnifiedFramework"]
 include-package-data = true
 
 # v5.29.0: bundle the FULL proof corpus as a sub-package.
@@ -215,6 +215,7 @@ exclude = [
     "_phase_g3_tutorial_notebooks.py",
     "_step5_paper1800_verify.py",
     "_step5_paper1801_verify.py",
+    "Star-MagicProofEngine.py",
     "phase_e7_tag_audit.csv",
     "WHITEPAPER_INDEX.md",
     "COVERAGE_GAPS.md",

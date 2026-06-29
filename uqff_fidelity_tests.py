@@ -120,6 +120,14 @@ PUBLIC_FUNCS = [
     "calculate_3numeric_decomposition",
     "calculate_geometry_decomposition",
     "calculate_overdetermination",
+    "calculate_buoyancy_proofs",
+    "calculate_simultaneous_proof_engine",
+    "calculate_ua_vacuum_manifold",
+    "calculate_documented_closed",
+    "calculate_star_magic_reactor",
+    "calculate_inflation_force_chart",
+    "calculate_tier_b_absent_papers",
+    "calculate_proof_engine",
 ]
 
 for name in PUBLIC_FUNCS:
@@ -244,7 +252,7 @@ public_calc = sorted(
     and callable(getattr(u, n))
     and n.startswith("calculate_")
 )
-check("42 public calculate_* functions (34 prior + 8 Phase F qcalcgeom/decomposition surfaces)",
+check("50 public calculate_* functions (34 prior + 8 Phase F + 8 new dispatchers)",
       sorted(PUBLIC_FUNCS) == public_calc,
       f"actual: {public_calc}")
 
@@ -1912,13 +1920,13 @@ try:
                 _surf_err += 1
         except Exception:
             _surf_err += 1
-    if _surf_ok == 42 and _surf_err == 0:
+    if _surf_ok == 50 and _surf_err == 0:
         PASS += 1
-        print(f"  PASS  public surface sweep: 34/34 returned {{'value': ...}}")
+        print(f"  PASS  public surface sweep: 50/50 returned {{'value': ...}}")
     else:
         FAIL += 1
-        FAILURES.append(("BLOCK_59 public surface sweep", f"{_surf_ok}/42 OK, {_surf_err} errors"))
-        print(f"  FAIL  public surface sweep: {_surf_ok}/42, {_surf_err} errors")
+        FAILURES.append(("BLOCK_59 public surface sweep", f"{_surf_ok}/50 OK, {_surf_err} errors"))
+        print(f"  FAIL  public surface sweep: {_surf_ok}/50, {_surf_err} errors")
 except Exception as _e:
     FAIL += 1
     FAILURES.append(("BLOCK_59 public surface sweep setup", str(_e)))
