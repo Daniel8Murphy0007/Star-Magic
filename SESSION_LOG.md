@@ -12696,3 +12696,108 @@ several backticked file-name references. The error was caught immediately (grep 
 gaps), and the entry was rewritten via Python file I/O (no heredoc) to restore all backticked
 content cleanly. Documented here for peer-review audit completeness — the discipline that
 caught the gap is the same discipline that caught the Edit-tool truncations in earlier rounds.
+
+
+---
+
+## Round 679 — v5.31.0 ship success + v5.31.1 patch prep for late commit (2026-06-29 09:30 UTC)
+**Commit:** pending Daniel's review (per Rule 11)
+
+### v5.31.0 ship — confirmed live on PyPI
+
+After Round 678 prepped pyproject.toml v5.31.0 + CHANGELOG.md entry, Daniel committed
+(`490b7b62`), pushed, and tagged `v5.31.0`. Trusted Publishing OIDC via `release.yml`
+fired on the tag push and successfully uploaded to PyPI.
+
+PyPI confirmation via direct URL fetch of `https://pypi.org/project/uqff/5.31.0/`:
+- Header: "uqff 5.31.0"
+- Released: Jun 29, 2026
+- Source distribution `uqff-5.31.0.tar.gz` — 19.4 MB, SHA256 `2be42805720e690730e1fd7da4eabbe2f4b4da4a4f938a5eee446914ca410e35`
+- Wheel `uqff-5.31.0-py3-none-any.whl` — 25.6 MB, SHA256 `077f7489bb3648a9c7fa1c03f903f161ff44e264b83c7f228672dfd0156383d9`
+- Trusted Publishing: Yes, via release.yml at commit `490b7b62cd053871fad731a5d0f01109769491ae`
+- Sigstore transparency entries: 2006408095 (sdist) + 2006408233 (wheel)
+
+The framework's full Phase E/F/G work, Cabibbo dual closure (Round 674), PAPER_1800 +
+PAPER_1801 (Rounds 677-678), 10 tutorial notebooks (Round 675), and Aetheric-Propulsion
+extraction kit (Round 676) are all now reachable via `pip install uqff==5.31.0`.
+
+Also: Step 7 confirmed complete — Daniel successfully migrated the EXTRACTION_KIT to the
+Aetheric-Propulsion repo (separate confirmation earlier). That ship lives separately on
+its own future PyPI release.
+
+### Late-commit issue — f2d73eb1 didn't make v5.31.0
+
+After Daniel tagged + pushed v5.31.0, he committed `f2d73eb1` "UQFF - 5.31.0 ship_29June2026"
+to master. This commit contains a large whitepaper drop:
+
+- ~1,426 files updated/added
+- ~435,532 line insertions
+- Sample new whitepapers:
+  - `PAPER_1256_TAU_NEUTRINO_MASS_HIERARCHY.md`
+  - `PAPER_1257_STERILE_NEUTRINO_EXISTENCE.md`
+  - `PAPER_1258_GRB_LONG_SHORT_BIMODALITY.md`
+  - `PAPER_1259_FRB_ORIGIN_MECHANISM.md` (and many more in PAPER_1200-1799 range)
+
+Verified via `git merge-base --is-ancestor f2d73eb1 v5.31.0`: NO — f2d73eb1 is
+chronologically AFTER the tag. The v5.31.0 PyPI artifact was built from the EARLIER
+commit `490b7b62`, so the f2d73eb1 whitepaper drop is NOT in the published wheel/sdist.
+
+### PyPI immutability rule
+
+PyPI does NOT permit uploading a new artifact with the same version number, even after
+yanking. To ship the f2d73eb1 content, the only canonical path is a new version number.
+
+Patch bump (5.31.0 -> 5.31.1) is correct because f2d73eb1:
+- Adds whitepaper content (bundled via existing `whitepapers/*.md` package-data glob)
+- Does NOT change the public API (no calculator surface modifications)
+- Does NOT touch dispatch (still 116 observables)
+- Does NOT shift fidelity gate (still 907/0)
+
+So semver patch (X.Y.Z+1) is the canonical choice.
+
+### Actions in Round 679
+
+**A. pyproject.toml v5.31.0 -> v5.31.1**
+TOML parse verified.
+
+**B. CHANGELOG.md v5.31.1 entry prepended (~1 KB)**
+- Lists the f2d73eb1 whitepaper drop trigger
+- Notes "no public API change, no dispatch change, fidelity unchanged"
+- Documents the PyPI immutability rule that forced the patch bump
+
+**C. SESSION_LOG.md** (this entry, appended via Python file I/O — no bash heredoc to
+avoid the backtick-stripping incident from Round 678).
+
+### Lesson learned (for future ships)
+
+Documenting for peer-review audit completeness: the v5.31.0 ship flow worked but the
+window between "tag pushed" and "next commit lands on master" should be treated as a
+release-freeze window. Future practice:
+1. After bumping pyproject.toml + CHANGELOG, commit + push master and let CI go green.
+2. THEN tag and push the tag.
+3. Wait for the PyPI publish + GitHub Release to confirm live.
+4. ONLY THEN resume new commits to master.
+
+If new commits land between the version-bump commit and the tag, they get the version
+number but ship in the next patch. That's what happened with f2d73eb1.
+
+### Files modified
+- **MOD** `pyproject.toml` — version 5.31.0 -> 5.31.1
+- **MOD** `CHANGELOG.md` — v5.31.1 entry prepended
+- **MOD** `SESSION_LOG.md` (this entry)
+
+### Open items for Round 680+
+
+1. **v5.31.1 ship execution** (Daniel) — commit the v5.31.1 prep, push master, wait for
+   CI green, then tag v5.31.1 and push tag -> Trusted Publishing OIDC to PyPI.
+2. **Aetheric-Propulsion v0.1.0 first PyPI release** (Daniel, optional) — when ready,
+   configure PyPI Trusted Publishing for `aetheric-propulsion` and tag.
+3. **Future ship discipline** — apply the "release-freeze window" practice documented above.
+
+### Round close
+
+v5.31.0 is the first PyPI release containing the full Phase E/F/G + Round 669-678 work.
+The framework is now publicly reachable in its peer-review-ready state. v5.31.1 will be
+the patch release that catches up the f2d73eb1 whitepaper drop. Discipline maintained:
+no fabricated content shipped, all work traceable through SESSION_LOG rounds + CHANGELOG
++ Sigstore transparency entries + git commit chain.
