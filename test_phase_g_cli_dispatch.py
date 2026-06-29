@@ -37,11 +37,11 @@ def main():
         print("PASS  list --domain SI -> 7 observables, alpha_inverse present")
 
     rc, out, _ = run(["list", "--dispatch"])
-    if rc != 0 or "114 observable(s)" not in out:
+    if rc != 0 or "116 observable(s)" not in out:
         print(f"FAIL: list --dispatch should report 114, got rc={rc}")
         all_pass = False
     else:
-        print("PASS  list --dispatch -> 114 observables")
+        print("PASS  list --dispatch -> 116 observables")
 
     rc, out, _ = run(["assimilate", "alpha_inverse"])
     if rc != 0 or "value: 137.0" not in out:

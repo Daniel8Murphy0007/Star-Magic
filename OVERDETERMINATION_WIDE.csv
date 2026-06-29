@@ -54,6 +54,8 @@ Pop_III_IMF_max,astro,dpm,,,,,,,EXACT,EXACT,EXACT,,,,3,3,PAPER_1652
 SM_PMNS_theta_12_deg,SM,d26,,,,,,,,,,0.0848%,0.0848%,0.0848%,3,3,PAPER_1209HH
 SM_alpha_s_M_Z_S378,SM,dpm,,,,,,,0.0141%,0.0141%,0.0141%,,,,3,3,PAPER_1209HH
 SM_cabibbo_sin_S379,SM,dpm,,,,,,,0.0149%,0.0149%,0.0149%,,,,3,3,PAPER_1209HH
+SM_cabibbo_sin_alternate,SM,dpm,,,,,,,0.0252%,0.0252%,0.0252%,,,,3,3,PAPER_1167
+SM_cabibbo_sin_primary,SM,dpm,,,,,,,0.0075%,0.0075%,0.0075%,,,,3,3,PAPER_1167
 SM_cabibbo_theta_deg_S326,SM,dpm,,,,,,,1.1669%,1.1669%,1.1669%,,,,3,3,PAPER_1167
 SM_delta_CP,SM,dpm,,,,,,,0.6410%,0.6410%,0.6410%,,,,3,3,PAPER_1209HH
 SM_eta_gamma_gamma_BR,SM,dpm,,,,,,,0.1058%,0.1058%,0.1058%,,,,3,3,PAPER_1209HH

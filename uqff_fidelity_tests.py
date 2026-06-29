@@ -2053,7 +2053,7 @@ print("=" * 70)
 try:
     import assimilation_dispatch as _ad
     import qcalcgeom_solver as _qg
-    _expected_total = 114
+    _expected_total = 116
     check("Phase G4: dispatch carries 114 observables",
           len(_ad.DISPATCH) == _expected_total,
           f"actual={len(_ad.DISPATCH)}")
@@ -2065,7 +2065,7 @@ try:
           _actual_domains == _expected_domains,
           f"actual={_actual_domains}")
 
-    _expected_owner_dist = {"qcalcgeom": 21, "bsfg": 21, "dpm": 52, "d26": 20}
+    _expected_owner_dist = {"qcalcgeom": 21, "bsfg": 21, "dpm": 54, "d26": 20}
     _actual_owner_dist = {}
     for _rec in _ad.DISPATCH.values():
         _g = _rec["owner_geometry"]

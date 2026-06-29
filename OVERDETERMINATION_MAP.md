@@ -5,13 +5,13 @@ via the `qcalcgeom_solver.solve()` 4 x 3 dispatch matrix.
 
 ## Top-line metrics
 
-- Observables in dispatch:       **114**
-- 4 x 3 matrix cells (total):    **1368**
-- Populated cells:               **342**  (25.0%)
+- Observables in dispatch:       **116**
+- 4 x 3 matrix cells (total):    **1392**
+- Populated cells:               **348**  (25.0%)
 - EXACT cells:                   **99**
-- OK cells:                      **243**
+- OK cells:                      **249**
 - TENSION cells (OPEN_QUESTION): **0**
-- GAP cells (no closure):        **1026**
+- GAP cells (no closure):        **1044**
 
 ## Per-domain rollup
 
@@ -22,7 +22,7 @@ via the `qcalcgeom_solver.solve()` 4 x 3 dispatch matrix.
 | KK | 10 | 0 | 30 | 0 | 0.4910% |
 | LCDM | 20 | 9 | 51 | 0 | 4.0181% |
 | SI | 7 | 15 | 6 | 0 | 0.0263% |
-| SM | 22 | 15 | 51 | 0 | 1.1669% |
+| SM | 24 | 15 | 57 | 0 | 1.1669% |
 | astro | 14 | 21 | 21 | 0 | 0.6667% |
 | bio | 10 | 9 | 21 | 0 | 0.2113% |
 | chem | 1 | 3 | 0 | 0 | 0.0000% |
@@ -73,7 +73,7 @@ rather than coincidental. See PAPER_1156 and SESSION_LOG Round 669.
 | GW_memory_fraction | astro | qcalcgeom | 3 | 3 |
 | ITER_R_over_a | SI | bsfg | 3 | 3 |
 | KK_AU_per_1e10_m | KK | dpm | 3 | 3 |
-| ... | ... | ... | ... | ... | _(plus 89 more in OVERDETERMINATION_WIDE.csv)_ |
+| ... | ... | ... | ... | ... | _(plus 91 more in OVERDETERMINATION_WIDE.csv)_ |
 
 ## Schema notes
 

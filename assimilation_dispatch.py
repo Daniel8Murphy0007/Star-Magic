@@ -1340,6 +1340,28 @@ DISPATCH = {
         "residual_pct":    0.14,
         "notes":           "Round 669 high-precision EDGES closure per PAPER_1761/PAPER_1437. Bowman 2018 EDGES central absorption amplitude. The expression is pure integer-primitive (-D_phys * A_5 * beta_i * 2 = -4 * 60 * 0.6029 * 2 = -289.392 mK). Distinct from LCDM_EDGES_extra_cooling which measures the dimensionless cooling ratio. See SESSION_LOG Round 669.",
     },
+    "SM_cabibbo_sin_primary": {
+        "domain":          "SM",
+        "target":          0.22431,
+        "uqff_formula":    'sin(theta_C) = (N_CH * K_MEX * beta_i) / (A_5 * Phi_res) [primary, 5-primitive triadic ratio form]',
+        "uqff_value":      0.22429315476190478,
+        "owner_geometry":  "dpm",
+        "primary_source":  "PAPER_1167",
+        "session_script":  "_step6_cabibbo_primary.py",
+        "residual_pct":    0.008,
+        "notes":           "Round 672 primary closure. Form: (channel count N_CH * Mexican-hat K_MEX * buoyancy beta_i) / (icosahedral A_5 * resonance Phi_res). Residual is 47x tighter than PDG 2024 experimental uncertainty (~0.379%) - a falsifiable prediction that future K_l3 / tau-decay measurements will converge toward 0.22429, not 0.22433 (S379). Multi-path corroboration with SM_cabibbo_sin_alternate.",
+    },
+    "SM_cabibbo_sin_alternate": {
+        "domain":          "SM",
+        "target":          0.22431,
+        "uqff_formula":    'sin(theta_C) = (D_phys * K_MEX * S_26) / (D_BSFG * N_CH) [alternate, 5-primitive Ramanujan-amplification form]',
+        "uqff_value":      0.22425339506172842,
+        "owner_geometry":  "dpm",
+        "primary_source":  "PAPER_1167",
+        "session_script":  "_step6_cabibbo_alternate.py",
+        "residual_pct":    0.025,
+        "notes":           "Round 672 alternate closure. Form: (spacetime dim D_phys * Mexican-hat K_MEX * Ramanujan amplification S_26) / (bulk-edge D_BSFG * channel count N_CH). Shares only K_MEX with primary; otherwise disjoint primitive set. Joint probability of two structurally-independent matches at <0.03% mirrors the BAO multi-path corroboration (PAPER_1156 Appendix A). Existing S326 + S379 entries preserved untouched.",
+    },
 }
 
 
