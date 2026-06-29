@@ -33,11 +33,13 @@ KK_Moon_orbital_period_per_day,KK,dpm,,,,,,,0.0047%,0.0047%,0.0047%,,,,3,3,PAPER
 KK_Sun_mass_per_1e29_kg,KK,dpm,,,,,,,0.2614%,0.2614%,0.2614%,,,,3,3,PAPER_1167
 KK_Sun_radius_per_1e8_m,KK,bsfg,,,,0.4910%,0.4910%,0.4910%,,,,,,,3,3,PAPER_1167
 KK_sidereal_year_per_100_day,KK,qcalcgeom,0.2638%,0.2638%,0.2638%,,,,,,,,,,3,3,PAPER_1167
-LCDM_BAO_rd_H0_over_c_OPEN,LCDM,d26,,,,,,,,,,TENSION(4.7666%),TENSION(4.7666%),TENSION(4.7666%),3,3,PAPER_1156
+LCDM_BAO_rd_H0_over_c_alternate,LCDM,d26,,,,,,,,,,0.0274%,0.0274%,0.0274%,3,3,PAPER_1156
+LCDM_BAO_rd_H0_over_c_primary,LCDM,d26,,,,,,,,,,0.0093%,0.0093%,0.0093%,3,3,PAPER_1156
 LCDM_D_over_H,LCDM,d26,,,,,,,,,,1.4265%,1.4265%,1.4265%,3,3,PAPER_1156
+LCDM_EDGES_T21_amplitude,LCDM,d26,,,,,,,,,,0.1356%,0.1356%,0.1356%,3,3,PAPER_1761
 LCDM_EDGES_extra_cooling,LCDM,d26,,,,,,,,,,4.0181%,4.0181%,4.0181%,3,3,PAPER_1156
 LCDM_H0_tension_ratio,LCDM,d26,,,,,,,,,,0.0319%,0.0319%,0.0319%,3,3,PAPER_1156
-LCDM_Li7_BBN_dilution,LCDM,dpm,,,,,,,7.0968%,7.0968%,7.0968%,,,,3,3,PAPER_1156
+LCDM_Li7_BBN_dilution,LCDM,dpm,,,,,,,3.2258%,3.2258%,3.2258%,,,,3,3,PAPER_1227
 LCDM_Li7_over_H,LCDM,d26,,,,,,,,,,EXACT,EXACT,EXACT,3,3,PAPER_1156
 LCDM_N_eff,LCDM,dpm,,,,,,,0.0629%,0.0629%,0.0629%,,,,3,3,PAPER_1156
 LCDM_Omega_m,LCDM,dpm,,,,,,,0.2646%,0.2646%,0.2646%,,,,3,3,PAPER_1156

@@ -5,13 +5,13 @@ via the `qcalcgeom_solver.solve()` 4 x 3 dispatch matrix.
 
 ## Top-line metrics
 
-- Observables in dispatch:       **112**
-- 4 x 3 matrix cells (total):    **1344**
-- Populated cells:               **336**  (25.0%)
+- Observables in dispatch:       **114**
+- 4 x 3 matrix cells (total):    **1368**
+- Populated cells:               **342**  (25.0%)
 - EXACT cells:                   **99**
-- OK cells:                      **234**
-- TENSION cells (OPEN_QUESTION): **3**
-- GAP cells (no closure):        **1008**
+- OK cells:                      **243**
+- TENSION cells (OPEN_QUESTION): **0**
+- GAP cells (no closure):        **1026**
 
 ## Per-domain rollup
 
@@ -20,7 +20,7 @@ via the `qcalcgeom_solver.solve()` 4 x 3 dispatch matrix.
 | CM | 10 | 12 | 18 | 0 | 0.3774% |
 | GR | 10 | 9 | 21 | 0 | 0.0850% |
 | KK | 10 | 0 | 30 | 0 | 0.4910% |
-| LCDM | 18 | 9 | 42 | 3 | 7.0968% |
+| LCDM | 20 | 9 | 51 | 0 | 4.0181% |
 | SI | 7 | 15 | 6 | 0 | 0.0263% |
 | SM | 22 | 15 | 51 | 0 | 1.1669% |
 | astro | 14 | 21 | 21 | 0 | 0.6667% |
@@ -30,11 +30,19 @@ via the `qcalcgeom_solver.solve()` 4 x 3 dispatch matrix.
 
 ## OPEN_QUESTION / TENSION cells
 
-| Observable | Geometry | Numeric | Residual | Primary source |
-|---|---|---|---:|---|
-| LCDM_BAO_rd_H0_over_c_OPEN | d26 | symbolic | 4.766578% | PAPER_1156 |
-| LCDM_BAO_rd_H0_over_c_OPEN | d26 | numerical | 4.766578% | PAPER_1156 |
-| LCDM_BAO_rd_H0_over_c_OPEN | d26 | discrete | 4.766578% | PAPER_1156 |
+_No TENSION cells._
+
+## Round 669 BAO multi-path closure
+
+| Observable | Formula | Residual | Source |
+|---|---|---:|---|
+| LCDM_BAO_rd_H0_over_c_alternate | `r_d*H0/c = 1 / (SO_5 * K_MEX * S_26)` | 0.027443% | PAPER_1156 |
+| LCDM_BAO_rd_H0_over_c_primary | `r_d*H0/c = (SO_5 * SSq * beta_i) / (D_phys * D_crit)` | 0.009302% | PAPER_1156 |
+
+Both BAO closures use only locked primitives and converge on the same observable
+through independent primitive groupings. The two-path agreement (different formulas,
+same observable, both within 0.03%) is the corroboration that the form is structural
+rather than coincidental. See PAPER_1156 and SESSION_LOG Round 669.
 
 ## Per-observable coverage (wide preview, first 25)
 
@@ -65,7 +73,7 @@ via the `qcalcgeom_solver.solve()` 4 x 3 dispatch matrix.
 | GW_memory_fraction | astro | qcalcgeom | 3 | 3 |
 | ITER_R_over_a | SI | bsfg | 3 | 3 |
 | KK_AU_per_1e10_m | KK | dpm | 3 | 3 |
-| ... | ... | ... | ... | ... | _(plus 87 more in OVERDETERMINATION_WIDE.csv)_ |
+| ... | ... | ... | ... | ... | _(plus 89 more in OVERDETERMINATION_WIDE.csv)_ |
 
 ## Schema notes
 

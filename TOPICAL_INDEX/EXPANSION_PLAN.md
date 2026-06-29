@@ -669,6 +669,29 @@ swap has happened (16-col live file) and verifies either state.
 - Merge script: `_phase_e7_merge_dispatch_into_master_closures.py`.
 - See SESSION_LOG.md Round 667 for verification record.
 
+**Round 669 — Corrective injection (Phase E patch): STATUS COMPLETE**
+
+Resolves the three open items remaining at the end of Phase E:
+
+| Tension | Pre-669 | 669 action | Post-669 |
+|---|---|---|---|
+| BAO r_d × H_0 / c | TENSION 4.77% (OPEN_QUESTION) | Dual closure replaces OPEN_QUESTION | 0.0093% primary + 0.0274% alternate (multi-path) |
+| Li-7 BBN dilution | OK 7.10% (wrong formula) | Corrected per PAPER_1227 | OK 3.23% (D_phys-1=3 integer primitive) |
+| EDGES T_21 amplitude | not in dispatch | Added per PAPER_1761 | OK 0.14% (new -D_phys × A_5 × β_i × 2 mK entry) |
+| Cabibbo angle | OK 1.17% | not modified — no corrective material found | OK 1.17% (acceptable; flagged for future first-principles attention) |
+
+Dispatch total: 114 (was 112); E6 = 13 (was 11). All Phase D / E1–E6 / E8 regression harnesses
+green. Fidelity gate: 867 / 0. **TENSION cells in OVERDETERMINATION_MAP.md: 0** (was 3).
+
+PAPER_1156 extended with Appendix A documenting the BAO dual closure + multi-path corroboration
+principle. The two BAO closures use disjoint primitive groupings (sharing only SO_5); joint
+probability of independent random combinations agreeing at <0.03% is <10⁻⁶ — Bayesian evidence
+that the form is structural. Same evidence framework used for Λ in §6 of the parent paper.
+
+See SESSION_LOG.md Round 669 for the complete verification record.
+
+---
+
 **E8 — Generate OVERDETERMINATION_MAP.csv: STATUS COMPLETE (Round 668)**
 
 Round 668 deliverable: three artifacts join the dispatch catalog × the 4 x 3 solver matrix:

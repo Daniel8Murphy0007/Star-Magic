@@ -86,23 +86,29 @@ def main():
         return 1
     print(f"PASS  status counts sum to total rows")
 
-    # 5. TENSION cells == 3 (BAO across symbolic / numerical / discrete)
+    # 5. TENSION cells == 0 after Round 669 (BAO OPEN_QUESTION resolved to dual closures)
     tension_rows = [r for r in long_rows if r["status"] == "TENSION"]
-    if len(tension_rows) != 3:
-        print(f"FAIL: TENSION count {len(tension_rows)} != 3 (BAO OPEN_QUESTION expected)")
+    if len(tension_rows) != 0:
+        tension_obs = sorted({r["observable"] for r in tension_rows})
+        print(f"FAIL: TENSION count {len(tension_rows)} != 0 (Round 669 closed all open questions)")
+        print(f"      remaining TENSION observables: {tension_obs}")
         return 1
-    tension_obs = {r["observable"] for r in tension_rows}
-    if tension_obs != {"LCDM_BAO_rd_H0_over_c_OPEN"}:
-        print(f"FAIL: TENSION observables {tension_obs} != {{LCDM_BAO_rd_H0_over_c_OPEN}}")
-        return 1
-    print(f"PASS  TENSION cells: 3 (LCDM_BAO_rd_H0_over_c_OPEN x 3 numeric)")
+    print(f"PASS  TENSION cells: 0 (Round 669 closed BAO OPEN_QUESTION with dual closures)")
 
-    # 6. Sanity: BAO TENSION residual ~ 4.77%
-    bao_residual = float(tension_rows[0]["residual_pct"])
-    if not (4.5 < bao_residual < 5.0):
-        print(f"FAIL: BAO residual {bao_residual:.4f}% outside [4.5, 5.0]")
+    # 6. BAO dual closures present with documented residuals
+    bao_p = next((r for r in long_rows if r["observable"] == "LCDM_BAO_rd_H0_over_c_primary"
+                  and r["geometry"] == "d26" and r["numeric"] == "numerical"), None)
+    bao_a = next((r for r in long_rows if r["observable"] == "LCDM_BAO_rd_H0_over_c_alternate"
+                  and r["geometry"] == "d26" and r["numeric"] == "numerical"), None)
+    if not bao_p or not bao_a:
+        print(f"FAIL: Round 669 BAO dual closures missing from long format")
         return 1
-    print(f"PASS  BAO TENSION residual: {bao_residual:.4f}% (in expected ~4.77% range)")
+    bao_p_r = float(bao_p["residual_pct"]); bao_a_r = float(bao_a["residual_pct"])
+    if bao_p_r > 0.02 or bao_a_r > 0.05:
+        print(f"FAIL: BAO residuals out of spec: primary={bao_p_r:.4f}%, alternate={bao_a_r:.4f}%")
+        return 1
+    print(f"PASS  BAO primary residual:   {bao_p_r:.4f}%")
+    print(f"PASS  BAO alternate residual: {bao_a_r:.4f}%")
 
     # 7. Population coverage matches expectation (336 = 112 * 3)
     populated = sum(1 for r in long_rows if r["value"] != "")
@@ -121,7 +127,9 @@ def main():
         "## Top-line metrics",
         "## Per-domain rollup",
         "## OPEN_QUESTION / TENSION cells",
-        "LCDM_BAO_rd_H0_over_c_OPEN",
+        "## Round 669 BAO multi-path closure",
+        "LCDM_BAO_rd_H0_over_c_primary",
+        "LCDM_BAO_rd_H0_over_c_alternate",
         "## Schema notes",
     ]
     missing = [h for h in required_md if h not in md_text]

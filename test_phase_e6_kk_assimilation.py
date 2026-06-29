@@ -56,29 +56,49 @@ def main():
     passing = sum(1 for r in rows if r[4] == "PASS")
     print(f"PHASE E6 KK total: {passing} / {len(rows)}")
 
-    # Explicit BAO revisit check
+    # Round 669 corrective injection audit — BAO dual closures + Li-7 + EDGES
     print()
     print("=" * 78)
-    print("BAO OPEN_QUESTION audit (S364 revisit per Round 663 flag)")
+    print("Round 669 corrective injection audit (replaces Round 666 OPEN_QUESTION)")
     print("=" * 78)
-    bao_name = "LCDM_BAO_rd_H0_over_c_OPEN"
-    if bao_name not in ad.DISPATCH:
-        print(f"FAIL: {bao_name} not in dispatch (it should be marked OPEN_QUESTION)")
+    if "LCDM_BAO_rd_H0_over_c_OPEN" in ad.DISPATCH:
+        print("FAIL: legacy OPEN_QUESTION entry still present; Round 669 removal not applied")
         return 1
-    bao_rec = ad.DISPATCH[bao_name]
-    bao_result = solve(bao_name, geometry="auto", numeric="numerical")
-    print(f"  observable:  {bao_name}")
-    print(f"  formula:     {bao_rec['uqff_formula']}")
-    print(f"  uqff_value:  {bao_result['value']}")
-    print(f"  target:      {bao_result['target']}")
-    print(f"  residual%:   {bao_result['residual_pct']:.4f}%  (documented 4.77% inconsistency vs source-script's claimed 0.02%)")
-    print(f"  status:      {bao_result['assimilation_status']}")
-    print(f"  notes:       {bao_rec['notes']}")
-    if "OPEN_QUESTION" not in bao_rec["notes"]:
-        print("FAIL: OPEN_QUESTION marker missing from notes")
-        return 1
+    print("  Round 666 OPEN_QUESTION removed: OK")
+
+    targets = [
+        ("LCDM_BAO_rd_H0_over_c_primary",   "(SO_5 * SSq * beta_i) / (D_phys * D_crit)",
+         0.033040484293971134, 0.02),
+        ("LCDM_BAO_rd_H0_over_c_alternate", "1 / (SO_5 * K_MEX * S_26)",
+         0.033040484293971134, 0.04),
+        ("LCDM_Li7_BBN_dilution",           "D_phys - 1 = 3 EXACT (per PAPER_1227)",
+         3.1, 4.5),
+        ("LCDM_EDGES_T21_amplitude",        "-D_phys * A_5 * beta_i * 2 mK (per PAPER_1761)",
+         -289.0, 0.2),
+    ]
+    for name, formula, target, max_resid in targets:
+        if name not in ad.DISPATCH:
+            print(f"  FAIL: {name} missing from dispatch")
+            return 1
+        r = solve(name, geometry="auto", numeric="numerical")
+        if r["value"] is None:
+            print(f"  FAIL: {name} returned None")
+            return 1
+        if abs(r["target"] - target) > 1e-9 * abs(target):
+            print(f"  FAIL: {name} target {r['target']} != expected {target}")
+            return 1
+        if r["residual_pct"] is None or r["residual_pct"] > max_resid:
+            print(f"  FAIL: {name} residual {r['residual_pct']:.4f}% > tolerance {max_resid}%")
+            return 1
+        print(f"  PASS: {name:<40s} resid={r['residual_pct']:.4f}%  formula: {formula}")
+
     print()
-    print("BAO OPEN_QUESTION preserved with honest residual + audit trail marker.")
+    print("Round 669 multi-path corroboration:")
+    p_v = ad.DISPATCH["LCDM_BAO_rd_H0_over_c_primary"]["uqff_value"]
+    a_v = ad.DISPATCH["LCDM_BAO_rd_H0_over_c_alternate"]["uqff_value"]
+    print(f"  primary   = {p_v:.10f}  (5-primitive triadic co-sum form)")
+    print(f"  alternate = {a_v:.10f}  (3-primitive amplification form)")
+    print(f"  spread    = {abs(p_v - a_v):.2e}  (simulation-range solution per Daniel multi-path principle)")
     print()
 
     if all_pass:
