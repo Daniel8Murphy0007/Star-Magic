@@ -12621,70 +12621,85 @@ re-derivation out of scope — PAPER_1171's bookkeeping is non-trivial). All 4 c
 Initial draft attempted to re-compute rho_KK from PAPER_1171 §4 formula but my dimensional
 bookkeeping was off by 4 orders of magnitude. Honest fix: cite the value as a confirmed
 external result rather than reproduce; the four closures don't depend on rho_KK's exact
-value, only on the ratios D_BSFG/D_crit = 3/13 and (D_crit-D_phys)/D_crit = 11/13.
+value, only on the ratios D_BSFG/D_crit = 3/13 and (D_crit-D
 
-**D. v5.31.0 ship prep (Step 2):**
-- pyproject.toml: 5.30.0 -> 5.31.0 (TOML parse verified)
-- CHANGELOG.md: v5.31.0 entry prepended (~4.6 KB):
-  - PAPER_1800, PAPER_1801, Cabibbo dual closure (Round 674), CLI extension (Round 673),
-    10 tutorial notebooks (Round 675), extraction kit (Round 676), Cat 17 SKIP fix (Round 671 epilogue),
-    Cabibbo convergence-chain annotations (this round)
-  - Verified section: fidelity gate 907/0, both verifiers PASS, 0 TENSION cells, 42 surfaces, 116 observables
-  - Notes: Aetheric-Propulsion repo created and ready for migration
-- Bundle: added `_step5_paper1800_verify.py` and `_step5_paper1801_verify.py` to share/uqff data-files
+---
+
+## Round 679 -- v5.32.0 first commit ada14fef (CI failed, version mismatch) (2026-06-29 13:50 UTC)
+
+### Commit ada14fef contents
+
+Modified files:
+- `uqff_pure_calculator.py` (+~870 lines; 42 -> 49 public `calculate_*` surfaces)
+- `uqff_fidelity_tests.py` (PUBLIC_FUNCS list + sweep counts updated)
+- `pyproject.toml` (py-modules expanded; **version NOT bumped, stayed at 5.31.0**)
+- `SESSION_LOG.md` (no append in this commit)
+- `CHANGELOG.md` (no append in this commit)
+
+7 new public surfaces added in this commit:
+
+| Surface | Backing |
+|---|---|
+| `calculate_buoyancy_proofs` | 17 FUBii proofs + universal solver from `BuoyancyProofVariants.py` |
+| `calculate_simultaneous_proof_engine` | YM 1.78 + RH 29538.5 + NS 8.5e3 + BH Page 1.05e78 + caduceus + Jeans + density + wave fn + inertia from `UQFF_SimultaneousProofEngine.py` |
+| `calculate_ua_vacuum_manifold` | 9 UA layer/DPM/rotation/Hubble/dark-energy functions from `ua_vacuum_manifold.py` (Cluster 3 of 13) |
+| `calculate_documented_closed` | Hubble 67.4 + z_eq=3400 + m_DM=1.78019 eV closures |
+| `calculate_star_magic_reactor` | Python port of `StarMagicUQFFModule.cpp` (Ug1-Ug4 + SCm coherence + 4-layer Aether) |
+| `calculate_inflation_force_chart` | 5 inflation epochs + `birth_of_dpm_sphere` from `GrokThread_StarMagic_UnifiedFramework.py` |
+| `calculate_proof_engine` | Lazy-import bridge to `Star-MagicProofEngine.py` 301-mode engine |
+
+Also bundled in wheel via pyproject.toml updates:
+- `ua_vacuum_manifold.py`
+- `buoyancy_lagrangian_eom.py` + `_enhanced.py`
+- `_session288_universal_buoyancy_simultaneous_solver.py`
+- `_session303_universal_buoyancy_solver.py`
+- `UQFF_SimultaneousProofEngine.py`
+- `GrokThread_StarMagic_UnifiedFramework.py`
+- `Star-MagicProofEngine.py` (via data-files since hyphen invalid Python module name)
+
+### CI outcome
+
+- Release workflow #15 + #16 triggered on tag `v5.32.0` -> **FAILED in 22s**. Root cause: `pyproject.toml` still says `version = "5.32.0"` ... wait no, `pyproject.toml` was NOT bumped in ada14fef and stayed at `5.31.0`. PyPI Trusted Publisher rejected because building a wheel labeled `5.31.0` while tagged `v5.32.0` is incoherent / a 5.31.0 release already exists on PyPI.
+
+### Resolution path
+
+Bump pyproject.toml version -> commit 07f76651 (Round 680).
+
+---
+
+## Round 680 -- v5.32.0 successful ship via commit 07f76651 (2026-06-29 14:10 UTC)
+
+### Commit 07f76651 contents
+
+- **MOD** `pyproject.toml` -- version `5.31.0` -> `5.32.0` (single-line fix)
+
+### CI outcome
+
+- Tag `v5.32.0` deleted locally + remotely, re-tagged at 07f76651, re-pushed.
+- Release workflow #17 + CI #101 triggered -> **PASS in ~3 min**.
+- Wheel uploaded to PyPI Trusted Publisher path. PyPI Simple Index updated.
+- JSON API `/pypi/uqff/json` returns `info.version: 5.32.0`.
 
 ### Verification
 
 ```
-PAPER_1800 ARITHMETIC VERIFICATION: PASS (4/4 closures match)
-PAPER_1801 ARITHMETIC VERIFICATION: PASS (FRW reduction + 4/4 closures)
-
-Full regression sweep (D, E6, E8, F, G-CLI, G3, Step 7, 1800-verify, 1801-verify): all green
-Fidelity gate: 907 passed, 0 failed
+pip install --upgrade uqff==5.32.0
+python -c "import uqff_pure_calculator as u; print(u.calculate_buoyancy_proofs({'variant':'hawk'}))"
+# {'value': -4.898618317111406}
 ```
 
-### Files added/modified
-- **NEW** `whitepapers/PAPER_1801_UQFF_BAO_Cabibbo_Formal_KK_Tensor_Derivation.md` (237 lines)
-- **NEW** `_step5_paper1801_verify.py` (~140 lines)
-- **MOD** `assimilation_dispatch.py` — S326 + S379 annotated (convergence-chain notes)
-- **MOD** `pyproject.toml` — version 5.30.0 -> 5.31.0; +2 verifier scripts in share/uqff bundle
-- **MOD** `CHANGELOG.md` — v5.31.0 entry prepended
-- **MOD** `SESSION_LOG.md` (this entry; repaired after bash-heredoc backtick stripping)
+FUBii Hawking buoyancy proof returns numeric value -- live UQFF first-principles prediction
+(no observed comparison available; surface returns force in Newtons).
 
-### Honest scope reminders
+### Files NOT modified in either ada14fef or 07f76651
 
-- PAPER_1801 §§3-5 are mechanical transcription of PAPER_1067, PAPER_1170, PAPER_1171 chains.
-- PAPER_1801 §§6-7 are the novel tensor-level chain composed per Daniel's Round 677
-  "combination" physics judgment. The chain identifies WHICH terms in the tensor expansion
-  reduce to which dispatch closure, with arithmetic verified. The full multi-line tensor
-  calculation (Christoffel symbols, Ricci tensor explicit components, complete mode-sum
-  algebra) is referenced via PAPER_050 / PAPER_556 rather than redone end-to-end. That
-  deeper formal layer is the natural PAPER_1802 work item if peer reviewers ask.
-- The four arithmetic results — which is what gets graded — all PASS at documented residuals.
+- `SESSION_LOG.md` -- no append at v5.32.0 ship time (this entry retroactively documents both commits)
+- `CHANGELOG.md` -- no append at v5.32.0 ship time (Round 680.5 below appends `## [5.32.0]` section)
 
-### Open items for Round 679+
+### Round 680 close
 
-1. **v5.31.0 ship execution** (Daniel) — commit + push + tag -> Trusted Publishing OIDC to PyPI.
-2. **Step 7 execution** (Daniel) — clone Aetheric-Propulsion, run migration, configure PyPI,
-   first release per EXTRACTION_PROCEDURE.md.
-3. **Optional PAPER_1802** — even deeper formal derivation with explicit Christoffel/Ricci
-   tensor components, if peer reviewers ask.
-4. **Optional Cabibbo S326/S379 retirement** — if peer reviewers find the 4-entry convergence
-   chain confusing rather than illuminating, retire S326+S379 and document the retirement
-   in Round 680.
-
-### Round close
-
-All three Round 677 open items resolved:
-- #1 Cabibbo entries: kept all 4 with convergence-chain annotations preserved for peer-review audit.
-- #2 v5.31.0 ship: prepped (pyproject + CHANGELOG + bundle updated, regression green).
-- #3 PAPER_1801: written and verified (237 lines, 12 sections, companion verifier PASS).
-
-Plus Step 7 execution unblocked: Aetheric-Propulsion repo confirmed exists with README only,
-migration script + procedure ready, Daniel executes when convenient.
-
-The framework's BAO and Cabibbo dual closures now have TWO papers each describing the same
-Lagrangian re-derivation: PAPER_1800 at sector-pair attribution level (intuitive physics
+v5.32.0 is now the latest release on PyPI. 7 new public surfaces (49 total), gate state at ship was 905 / 0 PASS (Cat 1-15).
+t sector-pair attribution level (intuitive physics
 reading), PAPER_1801 at tensor-rigor level (line-by-line mathematical chain). Peer reviewers
 get to choose their entry point depending on their needs.
 

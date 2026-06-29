@@ -2,6 +2,44 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.32.0] — 2026-06-29
+
+### Added — 7 new public `calculate_*` surfaces (42 → 49 total)
+
+- `calculate_buoyancy_proofs(dataset)` — 17 FUBii buoyancy proof variants (virx, termv, upar, coup, orbdec, kn, fermi, kne, whim, ps, sfe, hawk, bd, roche, ent, dec, lobe) + universal buoyancy simultaneous solver. Backed by `BuoyancyProofVariants.py`, `_session288_universal_buoyancy_simultaneous_solver.py`, `_session303_universal_buoyancy_solver.py`.
+- `calculate_simultaneous_proof_engine(dataset)` — 17 dispatches: Yang-Mills 1.78 GeV, Riemann t₁₀₀₀₀ = 29538.5, Navier-Stokes enstrophy 8.5e3, Black-Hole Page entropy 1.05e78, caduceus coil twist, inertial operator, DE power, Jeans mass, density profile, wave function magnitude, quantum inertia. Backed by `UQFF_SimultaneousProofEngine.py`.
+- `calculate_ua_vacuum_manifold(dataset)` — 9 dispatches: UA layer density (1-4), DPM total density, DPM buoyancy factor, calibration ratio, cosmological acceleration, rotation curve flat, Hubble tension modulation, dark energy substitute. Backed by `ua_vacuum_manifold.py` (uqff_Map §8 Cluster 3 of 13 — first time live as standalone predictor).
+- `calculate_documented_closed(dataset)` — Hubble tension canonical 67.4 km/s/Mpc (vs 70.18 tilted mean rejected), matter-radiation equality z_eq = 3400 (ρ_m0/ρ_r0 = 3401), Dark Matter m_DM = 1.78019 eV (K_MEX·S_26·1e-26·Λ·(1/3)·(A_5·D_phys·(1+Λ)) integer-primitive identity, 0.011% residual). Sourced from `follow_up_09June2026.docx` documented-CLOSED items previously not wired.
+- `calculate_star_magic_reactor(dataset)` — 15 dispatches Python port of `StarMagicUQFFModule.cpp` (Ug1 dipole, Ug2 outer bubble, Ug3 magnetic strings, Ug4 BH-star distance, SCm coherence, Aether deriv UA'→UA'''', Um strings, X2 baseline, coherence integrand, compressed_g) + reactor anchor constants (COP 555:1, 27W input, pH=-37, ambient T).
+- `calculate_inflation_force_chart(dataset)` — 4 dispatches: birth_of_dpm_sphere (26-shell EM field), 5 inflation epochs (Fisile → Star/Planet → Galaxy → Supercluster → Pre-Big-Bang DPM), F_U_at_epoch per stage, all_epochs_summary. Backed by `GrokThread_StarMagic_UnifiedFramework.py`.
+- `calculate_proof_engine(dataset)` — Lazy-import bridge to `Star-MagicProofEngine.py` exposing **301 named proof modes** with `{action: list_modes | get_mode | portable_80_80 | known_modes_sample}`. Each mode carries `{equation, source, value, falsifiable_prediction, engine}`.
+
+### Bundled into pip wheel (pyproject.toml py-modules + data-files)
+
+- `ua_vacuum_manifold.py`
+- `buoyancy_lagrangian_eom.py` + `buoyancy_lagrangian_eom_enhanced.py`
+- `_session288_universal_buoyancy_simultaneous_solver.py`
+- `_session303_universal_buoyancy_solver.py`
+- `UQFF_SimultaneousProofEngine.py`
+- `GrokThread_StarMagic_UnifiedFramework.py`
+- `Star-MagicProofEngine.py` (via data-files; hyphen makes it invalid as py-module identifier)
+
+### Ship history (this release)
+
+- Commit **ada14fef** — first attempt; CI release workflow failed in 22s because `pyproject.toml` was not bumped (stayed at `5.31.0` while tag pushed as `v5.32.0`).
+- Commit **07f76651** — single-line fix: `version = "5.31.0"` → `version = "5.32.0"`. Tag `v5.32.0` deleted + re-pushed at this commit. Release workflow #17 + CI #101 PASS. PyPI Trusted Publisher upload successful.
+
+### Verified
+- PyPI Simple Index lists `uqff-5.32.0.tar.gz` + `uqff-5.32.0-py3-none-any.whl`.
+- JSON API `https://pypi.org/pypi/uqff/json` returns `info.version: 5.32.0`.
+- `pip install --upgrade uqff==5.32.0` succeeds.
+- `calculate_buoyancy_proofs({'variant':'hawk'})` returns `{'value': -4.898618317111406}` (FUBii Hawking buoyancy in Newtons — first-principles UQFF prediction with no observed comparison; falsifiable forward).
+- Fidelity gate `uqff_fidelity_tests.py`: 905 / 0 PASS at ship.
+
+### Notes
+- 13 independent solver clusters from `uqff_Map.md §8` now have public-API coverage: Clusters 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 all reachable via at least one of the 7 new dispatchers above + previously-existing surfaces.
+- Round 679 (commit ada14fef) and Round 680 (commit 07f76651) of `SESSION_LOG.md` document the failed-then-fixed ship sequence.
+
 ## [5.31.0] — 2026-06-29
 
 **Phase G CLI extension + Round 674 Cabibbo dual closure + Round 675 tutorial notebooks + Round 676 Aetheric-Propulsion extraction kit + Round 677 PAPER_1800 (BAO + Cabibbo Lagrangian re-derivation) + Round 678 PAPER_1801 (formal tensor-level KK derivation).**
