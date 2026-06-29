@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.31.0"
+version = "5.32.0"
 description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, full proof corpus: 1994 whitepapers + Lean 4 scaffold + 4 arXiv bundles + manuscript)"
 readme = "README.md"
 requires-python = ">=3.10"
