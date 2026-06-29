@@ -1,0 +1,85 @@
+================================================================================
+SESSION 734 -- Class XII tighten + Class XIII Hubble tension + r_III/r_X verify
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Tighten Class XII Omega_b/Omega_m
+--------------------------------------------------------------------------------
+  target          = 0.1553124009
+  current K       = (12/11)*SSq/D_phys = 171/1100 = 0.1554545455
+  current err     = +0.0915%
+  correction need = 0.99908562  (epsilon = -9.1438e-04)
+
+  1-atom correction factors c such that K_current * c approaches target:
+  rank corr                           corr val          full K          err%
+  1    27/26^-1                       0.962963      0.14969697       -3.6156%
+  2    27/26^1                        1.038462      0.16143357       +3.9412%
+  3    243/260^1                      0.934615      0.14529021       -6.4529%
+  4    243/260^-1                     1.069959      0.16632997       +7.0938%
+  5    27/26^-2                       0.927298      0.14415264       -7.1854%
+  6    27/26^2                        1.078402      0.16764255       +7.9389%
+  7    1-F*P^1                        0.916667      0.14250000       -8.2494%
+  8    1-F*P^-1                       1.090909      0.16958678       +9.1908%
+
+  2-atom correction search (sub-0.05%):
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XIII: H0(SH0ES)/H0(Planck) = 1.0795
+--------------------------------------------------------------------------------
+  ratio (SH0ES/Planck) = 1.079515
+  excess               = +7.9515%
+
+  1-2 atom closures for ratio=1.07952:
+  rank name                                               val        err%
+  1    1-F_TRZ^1*6/5^1                               1.080000     +0.0449%
+  2    1-F_TRZ^1*Phi_res^-1                          1.080000     +0.0449%
+  3    6/5^1*1-F_TRZ^1                               1.080000     +0.0449%
+  4    Phi_res^-1*1-F_TRZ^1                          1.080000     +0.0449%
+  5    27/26^1*27/26^1                               1.078402     -0.1031%
+  6    27/26^2                                       1.078402     -0.1031%
+  7    243/260^-1                                    1.069959     -0.8852%
+  8    1-F*P^-1                                      1.090909     +1.0555%
+
+  3-atom search (|err|<0.1%):
+  1    1-F*P^1*1-F_TRZ^1*72/55^1                                         1.080000     +0.0449%
+  2    13/6^1*K_Mex^-1*27/26^1                                           1.080000     +0.0449%
+  3    243/260^1*27/26^-1*6/5^1                                          1.080000     +0.0449%
+  4    243/260^1*27/26^-1*Phi_res^-1                                     1.080000     +0.0449%
+  5    6/5^1*N_ch^1*F_TRZ^1                                              1.080000     +0.0449%
+  6    N_ch^1*Phi_res^-1*F_TRZ^1                                         1.080000     +0.0449%
+  7    D_phys^-1*K_Mex^-1*N_ch^1                                         1.080000     +0.0449%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Validate r_III/r_X = 72/55 hypothesis
+--------------------------------------------------------------------------------
+  measured r_III/r_X      = 1.315589
+  hypothesis 72/55        = 1.309091
+  deviation               = +0.4964%
+
+  Predict r_X from r_III: r_X = r_III*(55/72) = -5.2861e-04
+  Observed r_X            = -5.2600e-04
+  Deviation               = +0.4964%
+
+  Current K_X             = 2.170440
+  Dressed K_X (1+|r_X_pred|)= 2.171587
+  Dressed err             = +0.0002%
+
+  Alternative locked ratios within 1% of measured 1.3156:
+    13/6/405/247                  1.321399   dev=+0.4416%
+    6/5/1-F*P                     1.309091   dev=-0.4940%
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  (a) XII tighten BLOCKED at +0.0915%
+  (b) XIII 2-atom: 1-F_TRZ^1*6/5^1 err=+0.0449%
+  (b) XIII 3-atom: 1-F*P^1*1-F_TRZ^1*72/55^1 err=+0.044907%
+  (c) r_III/r_X dev vs 72/55: -0.4940%
+  (c) Class X dressed err: +0.0002%
+Omega_b_Omega_m_classXII_tighten_BLOCKED: predicted=1.554545e-01 observed=1.553124e-01 error_pct=9.152171e-02 status=OK
+H0_tension_classXIII_2atom: predicted=1.080000e+00 observed=1.079515e+00 error_pct=4.490690e-02 status=OK
+H0_tension_classXIII_3atom: predicted=1.080000e+00 observed=1.079515e+00 error_pct=4.490690e-02 status=OK
+residual_ratio_III_X_vs_72_55: predicted=1.309091e+00 observed=1.315589e+00 error_pct=-4.939569e-01 status=OK
+classX_dressed_via_classIII_residual: predicted=2.171587e+00 observed=2.171583e+00 error_pct=1.988734e-04 status=candidate-EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session734_classXII_tighten_HubbleTension_residual_result.json

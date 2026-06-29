@@ -1,0 +1,26 @@
+========================================================================
+S297 OrionHZ smoke tests
+========================================================================
+  [PASS] T-1 G2V classical HZ = 0.95-1.37 AU  
+  [PASS] T-2 HZ(L=0) = (0,0)  
+  [PASS] T-3 HZ scales as sqrt(L)  
+  [PASS] T-4 M-dwarf HZ closer in  
+  [PASS] T-5 Orion UV flux > solar at 1 AU  3.343e+02
+  [PASS] T-6 F_UV(L=0)=0  
+  [PASS] T-7 F_UV(r=0)=0  
+  [PASS] T-8 F_UV scales as 1/r^2  
+  [PASS] T-9 Orion-modified HZ_out < classical HZ_out  0.641 < 1.370
+  [PASS] T-10 Orion-modified HZ_in unchanged  
+  [PASS] T-11 modified HZ(F=0) == classical  
+  [PASS] T-12 aether bounded  
+  [PASS] T-13 aether(rho=0)=1  
+  [PASS] T-14 calculator returns required keys  
+  [PASS] T-15 headline tag  
+  [PASS] T-16 n_anchors=4  
+  [PASS] T-17 3 Orion-embedded compressed  3/3
+  [PASS] T-18 all anchor matches  4/4
+  [PASS] T-19 cp4_id=441  
+  [PASS] T-20 audit_session=297  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

@@ -1,0 +1,102 @@
+================================================================================
+SESSION 721 -- Class V (G) + L_SCM:M_SCM proportionality
+================================================================================
+
+STEP (a) -- Class V opening: dimensional path for G
+--------------------------------------------------------------------------------
+
+  [G] = m^3 / (kg * s^2)
+
+  Using rho_vac^b * c^a * L_SCM^d * M_SCM^e (kg^(b+e) m^(-b+a+d) s^(-2b-a)):
+      b + e        = -1
+      2b + a       =  2
+      -b + a + d   =  3
+
+  Three eqs, four unknowns -> one-parameter family.
+  Cleanest solution (b = 0, no rho_vac dressing):
+      e = -1,  a = 2,  d = 1
+  =>  G = K_G * c^2 * L_SCM / M_SCM       (K_G dimensionless locked rational)
+
+STEP (a.2) -- Solve M_SCM from G = c^2 * L_SCM / M_SCM  (K_G = 1)
+--------------------------------------------------------------------------------
+  M_SCM = c^2 * L_SCM / G = 4.702655485e+29 kg
+        = 0.236443 solar masses
+        = 2.160716e+37 Planck masses
+        = 2.638e+65 eV  (rest energy)
+
+STEP (b) -- L_SCM:M_SCM proportionality (user insight)
+--------------------------------------------------------------------------------
+  Gravitational radius R_g = G * M_SCM / c^2 = 349.226733192 m
+  L_SCM                                       = 349.226733192 m
+  rel diff (R_g vs L_SCM): 0.000000e+00 %
+
+  Schwarzschild radius R_s = 2 * G * M_SCM / c^2 = 698.453466 m
+  L_SCM = R_s / 2 = R_g  (EXACT by construction since K_G = 1)
+
+  PROPORTIONALITY LAW (user-predicted):
+      L_SCM = G * M_SCM / c^2     <-->     M_SCM = c^2 * L_SCM / G
+  This is the SINGLE dimensional law tying the Class IV (length) and
+  Class V (mass) anchors.  They are not independent primitives;
+  they are tied by a 1-parameter Schwarzschild-style identity.
+
+STEP (c) -- Cross-check: does hbar = M_SCM * c * L_SCM hold?
+--------------------------------------------------------------------------------
+  M_SCM * c * L_SCM = 4.923471e+40 J*s
+  hbar_observed     = 1.054572e-34 J*s
+  ratio             = 4.668692e+74  (~10^74)
+
+  -> Compton-style identity FAILS by ~10^74 orders.
+     The two laws (Schwarzschild vs Compton) are STRUCTURALLY
+     INDEPENDENT.  Only the Schwarzschild form ties L_SCM and M_SCM.
+
+STEP (d) -- Physical identification of M_SCM (Class V anchor)
+--------------------------------------------------------------------------------
+  M_SCM = 0.2364 M_sun
+
+  astrophysical reference                   value (kg)        rel err
+  ----------------------------------------  ----------------  -------
+  M_chandrasekhar (1.4 M_sun)               2.784488e+30  4.921e+00 <-- closest
+  M_min H-burning (0.075 M_sun)             1.491690e+29  6.828e-01 <-- closest
+  M_brown_dwarf upper (0.08 M_sun)          1.591136e+29  6.617e-01 <-- closest
+  M_red_dwarf lower (~0.08 M_sun)           1.591136e+29  6.617e-01
+  M_sub_stellar mid (~0.5 M_sun)            9.944600e+29  1.115e+00
+  2 * 0.075 M_sun (binary brown dwarf)      2.983380e+29  3.656e-01 <-- closest
+  alpha-1 * M_sun (~0.137)                  1.451385e+28  9.691e-01
+  F_TRZ * 5 * M_sun (~0.5)                  9.944600e+29  1.115e+00
+
+  Closest reference: 2 * 0.075 M_sun (binary brown dwarf)  (rel err 3.656e-01)
+
+  M_SCM ~ 0.237 M_sun lies in the SUB-STELLAR regime, near the
+  hydrogen-burning threshold (~0.08 M_sun).  Not a clean locked
+  multiple of a known reference mass.
+
+STEP (e) -- Class V closure: G = c^2 * L_SCM / M_SCM
+--------------------------------------------------------------------------------
+  G_predicted = 6.674300000000e-11 m^3/(kg s^2)
+  G_observed  = 6.674300000000e-11 m^3/(kg s^2)
+  rel err     = 0.00e+00 %  (EXACT by construction)
+
+================================================================================
+UNIVERSALITY CLASSIFICATION (extended to 5 chains):
+================================================================================
+
+  Class   Chain   Closure form                                             Anchors
+  ------  ------  -------------------------------------------------------  ------------------------------
+  I       alpha   per-loop locked rationals (lambda_3=15/7, lambda_4=19/12)  0 dim anchors
+  II      mu      single locked ratio r = 3*K_Mex = 25/4                   0 dim anchors
+  III     c       Borel + (13/3) delta^3 exp(-c_2 delta)                   1 dim anchor (c)
+  IV      hbar    rho_vac * L_SCM^4 / v_SCM                                3 dim anchors (c, rho_vac, L_SCM)
+  V       G       c^2 * L_SCM / M_SCM                                      4 dim anchors (c, rho_vac, L_SCM, M_SCM)
+
+  Dim-anchor sequence by class: 0, 0, 1, 3, 4
+
+  CROSS-CLASS PROPORTIONALITY (the 'a:b' link):
+      L_SCM = G * M_SCM / c^2     [Class IV anchor = R_g of Class V anchor]
+  This single law collapses the IV/V anchor pair to ONE free parameter
+  (choose either L_SCM or M_SCM; the other is determined).
+
+G_classV_closure: predicted=6.674300000000e-11 observed=6.674300000000e-11 error_pct=+0.000000e+00 status=EXACT
+L_SCM_M_SCM_proportionality: predicted=3.492267331920e+02 observed=3.492267331920e+02 error_pct=+0.000000e+00 status=EXACT
+compton_vs_gravity_independence: predicted=4.923471e+40 observed=1.054572e-34 error_pct=+4.668692e+76 status=FAIL
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session721_classV_G_and_LSCM_MSCM_proportionality_result.json

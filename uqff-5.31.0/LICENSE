@@ -1,0 +1,137 @@
+UQFF Star-Magic — Dual License Notice
+======================================
+
+Copyright (c) 2025-2026 Daniel T. Murphy / Star-Magic Research Program.
+All rights reserved.
+
+NOTE: This project was previously distributed under the MIT License
+(see LICENSE-MIT-PREVIOUS.txt for archival reference). As of
+2026-06-18, the licensing terms have been changed to the dual model
+described below. The MIT License continues to govern code revisions
+made strictly before the 2026-06-18 commit that introduced this file;
+all current and future revisions are governed by the dual license
+below. By using, cloning, or modifying any version of this software
+dated 2026-06-18 or later, you accept the dual-license terms.
+
+This software is offered under a DUAL LICENSE model.
+You MUST choose ONE of the two licenses below before using, copying,
+modifying, or redistributing this software.
+
+------------------------------------------------------------------------
+OPTION A — GNU AFFERO GENERAL PUBLIC LICENSE v3.0 (AGPL-3.0)
+------------------------------------------------------------------------
+
+You may use, copy, modify, and redistribute this software under the
+terms of the GNU Affero General Public License v3.0 as published by
+the Free Software Foundation. The full text is in the file
+LICENSE-AGPL-3.0.txt distributed with this software, and is also
+available at:
+
+    https://www.gnu.org/licenses/agpl-3.0.html
+
+Key consequences of choosing AGPL-3.0:
+
+  1. You may use this software for any academic, research, personal,
+     non-commercial, or commercial purpose subject to AGPL-3.0 terms.
+
+  2. If you modify this software and distribute the modified version,
+     OR if you make the modified version available to users over a
+     network (including SaaS / hosted-service / web-API / cloud
+     deployment), you MUST release the complete corresponding source
+     code of your modifications under AGPL-3.0.
+
+  3. Derivative works (including ports, rewrites in other languages,
+     forks, and works that link or combine with this code) must
+     themselves be released under AGPL-3.0.
+
+  4. This software is provided "AS IS" without warranty of any kind,
+     express or implied, including warranties of MERCHANTABILITY or
+     FITNESS FOR A PARTICULAR PURPOSE. The authors are not liable for
+     any claim, damages, or other liability arising from your use.
+
+Universities, national laboratories, individual researchers, and
+non-profit institutions are explicitly invited to use this software
+under the AGPL-3.0 option for replication, peer-review, teaching, and
+follow-on research.
+
+------------------------------------------------------------------------
+OPTION B — COMMERCIAL LICENSE
+------------------------------------------------------------------------
+
+If the AGPL-3.0 obligations (especially the SaaS / network-use
+share-alike clause and the derivative-works share-alike clause) are
+incompatible with your use, you may instead obtain a COMMERCIAL
+LICENSE from the copyright holder.
+
+Typical situations requiring the Commercial License:
+
+  - Building proprietary commercial products that link, embed, or
+    derive from this software without releasing your source.
+  - Operating a commercial Software-as-a-Service deployment that
+    exposes UQFF predictions to paying users without releasing your
+    full server source.
+  - Distributing this software bundled with proprietary hardware
+    (including LENR reactors, power-generation equipment, sensor
+    arrays, or any device incorporating Star-Magic principles) under
+    proprietary terms.
+  - Any commercial spin-off arising from research funded with public
+    grants that used this software, where the resulting product is to
+    remain proprietary.
+
+Commercial license terms (fees, scope, field of use, royalty options,
+support, and indemnification) are negotiated on a case-by-case basis.
+See COMMERCIAL.md for full details.
+
+To request a commercial license, contact:
+
+    Daniel T. Murphy
+    daniel.murphy00@enrgyone.com
+    Subject line: "UQFF Star-Magic Commercial License Request"
+
+------------------------------------------------------------------------
+SCIENTIFIC CITATION REQUIREMENT (BOTH OPTIONS)
+------------------------------------------------------------------------
+
+Whether you use this software under AGPL-3.0 or under a commercial
+license, any academic publication, technical report, patent
+application, white paper, or public presentation that uses results
+produced by this software MUST cite the UQFF framework. See the file
+CITATION.cff for the canonical citation form.
+
+------------------------------------------------------------------------
+TRADEMARKS
+------------------------------------------------------------------------
+
+"UQFF", "Star-Magic", "Di-Pseudo-Monopole", and "DPM" as applied to
+the framework described in this software, together with associated
+logos and design marks, are unregistered trademarks of Daniel T.
+Murphy / Star-Magic Research Program. Neither license option grants
+trademark rights. You may factually state that your product "uses
+UQFF" or "is compatible with UQFF" but may not use the marks in a
+manner that implies endorsement or affiliation without separate
+written permission.
+
+------------------------------------------------------------------------
+PATENT NOTICE
+------------------------------------------------------------------------
+
+Certain applications of the UQFF framework (notably the Star-Magic
+LENR reactor architecture, COP 555:1 at 27 W, ambient T, pH -37) may
+be subject to pending or issued patents. The dual-license terms above
+do NOT grant any express or implied patent license beyond what is
+required for the licensed use of this software. Hardware
+implementations require a separate patent license; contact the
+address above.
+
+------------------------------------------------------------------------
+SEVERABILITY
+------------------------------------------------------------------------
+
+If any provision of this dual-license notice is held unenforceable by
+a court of competent jurisdiction, the remaining provisions shall
+remain in full force and effect. The AGPL-3.0 text in
+LICENSE-AGPL-3.0.txt controls where this notice and the AGPL-3.0
+diverge for users who have chosen Option A.
+
+------------------------------------------------------------------------
+End of dual-license notice.

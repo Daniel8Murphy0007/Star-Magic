@@ -1,0 +1,1 @@
+S319 COMPLETE. Bounce time t_min = t_P/F_TRZ = 5.390e-43 s; rho_max/rho_P = F_TRZ^18 = 1.000e-18; no t=0 singularity.

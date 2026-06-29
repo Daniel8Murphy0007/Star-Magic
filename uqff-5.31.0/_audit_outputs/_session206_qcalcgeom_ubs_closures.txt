@@ -1,0 +1,8 @@
+QCalcGeom-v220-system-dimensionality: 4 vs 4 -> EXACT
+QCalcGeom-v220-zone-trichotomy: 3 vs 3 -> EXACT
+QCalcGeom-v220-hz-buoyancy-unit-ratio: 1.0 vs 1.0 -> EXACT
+QCalcGeom-v220-cg-boundary-2to1: 2.0 vs 2.0 -> EXACT
+QCalcGeom-v220-aether-mass-cube-law: 8.0 vs 8.0 -> EXACT
+QCalcGeom-v220-cg-hz-seed-ratio: 0.793700525984 vs 0.793700525984 -> EXACT
+QCalcGeom-v220-ubs-test-count: 7 vs 7 -> EXACT
+QCalcGeom-v220-system-dimensionality: 4 vs 4 -> EXACT

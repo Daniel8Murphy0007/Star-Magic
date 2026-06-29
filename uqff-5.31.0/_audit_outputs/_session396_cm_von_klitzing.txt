@@ -1,0 +1,1 @@
+S396 COMPLETE. log10(R_K) = D_phys+SSq*Phi_res-SSq*F_TRZ+F_TRZ^2*Phi_res = 4.4263; obs (log10 h/e^2) = 4.4118; match 0.329%.

@@ -1,0 +1,79 @@
+================================================================================
+SESSION 746 -- A_s alt base; k_D fine refine; Class XXVII D/H
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- A_s: alternate bases (7/200)^k, ξ^k searches
+--------------------------------------------------------------------------------
+  base (7/200)^5 = 5.2522e-08, needed mult = 0.039983
+    1/K_Mex*F*P                              mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    9/250/1-F_TRZ                            mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    F*P*1/K_Mex                              mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    F*P/K_Mex                                mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    D_phys/SO5^2                             mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+
+  base xi^3/20 = 2.0309e-09, needed mult = 1.03400150
+
+  base Y_p*xi = 8.4219e-04, needed mult = 2.493506e-06
+
+  base (7/200)^4 = 1.5006e-06, needed mult = 0.001399
+
+  base (7/200)^5 = 5.2522e-08, needed mult = 0.039983
+    1/K_Mex*F*P                              mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    9/250/1-F_TRZ                            mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    F*P*1/K_Mex                              mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    F*P/K_Mex                                mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+    D_phys/SO5^2                             mult=0.040000  A_s=2.1009e-09  err=+0.04167%
+
+  base (7/200)^6 = 1.8383e-09, needed mult = 1.142381
+    11/9*243/260                             mult=1.142308  A_s=2.0999e-09  err=-0.00643%
+    243/260*11/9                             mult=1.142308  A_s=2.0999e-09  err=-0.00643%
+
+  BEST: A_s = (7/200)^5 * [1/K_Mex*F*P] = 2.1009e-09, err = +0.041667%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- k_D fine refine (current -0.0139% via 1+(5/108)^2)
+--------------------------------------------------------------------------------
+  target multiplier = 1.0022826667
+  current best 1+(5/108)^2 = 1.002143, residual ~+1.4e-4
+  delta target = 0.00228267
+
+  3-atom delta search (a*b/c ≈ 0.00228):
+    1+9/250*SSq/N_ch                           mult=1.0022800  k_D=0.130000  err=-0.000266%
+    1+243/260*Y_p/SO5^2                        mult=1.0022898  k_D=0.130001  err=+0.000712%
+    1+(5/108)^2*1/D_crit/9/250                 mult=1.0022899  k_D=0.130001  err=+0.000722%
+    1+9/250*9/250/SSq                          mult=1.0022737  k_D=0.129999  err=-0.000896%
+    1+1-Phi_res*33/40/A_5                      mult=1.0022917  k_D=0.130001  err=+0.000898%
+
+  BEST: k_D = 18.75*[1+9/250*SSq/N_ch]/r_s = 0.130000, err = -0.000266%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XXVII: D/H = 2.527e-5 (Cooke+ 2018)
+--------------------------------------------------------------------------------
+  D/H observed = 2.527e-05
+  Hypothesis: D/H = Y_p * xi / (D_phys^2 * K_Mex) = 2.5266e-05, err = -0.0173%
+  Equivalent: (1-n_s)^2 * (33/40) / (4*SO5) = 2.5266e-05, err = -0.0173%
+
+  2-atom direct search:
+
+  3-atom direct search:
+    1/N_ch*33/40/A_5^2                            = 2.5463e-05  err = +0.76360%
+    1-F_TRZ*1/SO5/A_5^2                           = 2.5000e-05  err = -1.06846%
+    D_crit*xi/A_5^2                               = 2.4826e-05  err = -1.75549%
+    1/N_ch*Phi_res/A_5^2                          = 2.5720e-05  err = +1.78142%
+
+  BEST: D/H = Y_p * xi / (D_phys^2 * K_Mex) = 2.5266e-05, err = -0.0173%
+
+classXXIV_As_session746: predicted=2.100875e-09 observed=2.100000e-09 error_pct=4.166667e-02 status=OK
+classXXIII_kD_session746: predicted=1.299997e-01 observed=1.300000e-01 error_pct=-2.660593e-04 status=OK
+classXXVII_DH_deuterium_BBN: predicted=2.526562e-05 observed=2.527000e-05 error_pct=-1.731302e-02 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  classXXIV_As_session746         err = +0.041667%
+  classXXIII_kD_session746        err = -0.000266%
+  classXXVII_DH_deuterium_BBN     err = -0.017313%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session746_DH_kD_As_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

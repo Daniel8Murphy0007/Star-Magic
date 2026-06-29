@@ -1,0 +1,75 @@
+Generated 137 unary forms.
+
+=== UNARY MATCHES (single primitive) ===
+  beta_i ~= log(Phi_res+1)                 = 0.606136   residual = 0.553%
+  beta_i ~= exp(-1/2)                      = 0.606531   residual = 0.619%
+
+=== BINARY MATCHES (a OP b) ===
+Top 25 unique binary forms:
+  log(ln2+1) * log(pi)                               = 0.602802   residual = 0.000%
+  log(pi) * log(ln2+1)                               = 0.602802   residual = 0.000%
+  1/D_phys + exp(-K_Mex/2)                           = 0.602866   residual = 0.011%
+  exp(-K_Mex/2) + 1/D_phys                           = 0.602866   residual = 0.011%
+  log(D_BSFG) - sqrt(sqrt2)                          = 0.602552   residual = 0.041%
+  log(Phi_res+1) / log(sqrt3+1)                      = 0.603089   residual = 0.048%
+  exp(-Phi_res) * log(3+1)                           = 0.602481   residual = 0.053%
+  exp(-Phi_res) * log(D_phys)                        = 0.602481   residual = 0.053%
+  log(3+1) * exp(-Phi_res)                           = 0.602481   residual = 0.053%
+  log(D_phys) * exp(-Phi_res)                        = 0.602481   residual = 0.053%
+  1/sqrt5 / log(ln3+1)                               = 0.603302   residual = 0.083%
+  exp(-e/2) + log(sqrt2)                             = 0.603455   residual = 0.109%
+  log(sqrt2) + exp(-e/2)                             = 0.603455   residual = 0.109%
+  ln3 * log(sqrt3)                                   = 0.603474   residual = 0.112%
+  ln3^2 / sqrt2^2                                    = 0.603474   residual = 0.112%
+  log(2+1) * log(sqrt3)                              = 0.603474   residual = 0.112%
+  log(3) * log(sqrt3)                                = 0.603474   residual = 0.112%
+  log(sqrt3) * ln3                                   = 0.603474   residual = 0.112%
+  log(sqrt3) * log(2+1)                              = 0.603474   residual = 0.112%
+  log(sqrt3) * log(3)                                = 0.603474   residual = 0.112%
+  log(sqrt3) / 1/ln3                                 = 0.603474   residual = 0.112%
+  1/2 * ln3^2                                        = 0.603474   residual = 0.112%
+  exp(-ln2) * ln3^2                                  = 0.603474   residual = 0.112%
+  ln3^2 * 1/2                                        = 0.603474   residual = 0.112%
+  ln3^2 * exp(-ln2)                                  = 0.603474   residual = 0.112%
+
+=== CLEAN BINARY (small integers / clean primitives) ===
+  1/D_phys + exp(-K_Mex/2)                           = 0.602866   residual = 0.011%
+  exp(-K_Mex/2) + 1/D_phys                           = 0.602866   residual = 0.011%
+  ln3^2 / sqrt2^2                                    = 0.603474   residual = 0.112%
+  1/2 * ln3^2                                        = 0.603474   residual = 0.112%
+  exp(-ln2) * ln3^2                                  = 0.603474   residual = 0.112%
+  ln3^2 * 1/2                                        = 0.603474   residual = 0.112%
+  ln3^2 * exp(-ln2)                                  = 0.603474   residual = 0.112%
+  ln3^2 / 2                                          = 0.603474   residual = 0.112%
+  1/D_crit + exp(-SSq)                               = 0.603987   residual = 0.197%
+  exp(-SSq) + 1/D_crit                               = 0.603987   residual = 0.197%
+  exp(-1/2) - exp(-D_BSFG)                           = 0.604052   residual = 0.208%
+  1/N_ch + exp(-sqrt2/2)                             = 0.604180   residual = 0.229%
+
+=== TARGETED HYPOTHESES ===
+  exp(-1/2)                                               = 0.606531  residual =  0.619%
+  SSq + Phi_res/D_crit                                    = 0.602051  residual =  0.124%  <<<<
+  SSq + F_TRZ*(D_BSFG-2*pi*F_TRZ)                         = 1.107168  residual = 83.671%
+  1 - SSq*Phi_res - F_TRZ                                 = 0.425000  residual = 29.496%
+  Phi_res - F_TRZ*(K_Mex+...)                             = 0.605067  residual =  0.376%
+  SSq + (Phi_res-SSq)*F_TRZ                               = 0.596333  residual =  1.073%
+  SSq + F_TRZ*Phi_res/(D_phys-1)*K_Mex                    = 0.627870  residual =  4.159%
+  (D_BSFG-SSq*D_phys)/(D_BSFG+SSq*D_BSFG)                 = 0.394904  residual = 34.488%
+  3/5 + F_TRZ*F_TRZ/3                                     = 0.603333  residual =  0.088%  <<<<
+  3/5 + Phi_res*F_TRZ/sqrt(5)                             = 0.637268  residual =  5.718%
+  3/5 + F_TRZ*Phi_res/...                                 = 0.602792  residual =  0.001%  <<<<
+  (1+SSq)/(SSq+pi)                                        = 0.422999  residual = 29.828%
+  Phi_res*Phi_res*K_Mex/(D_phys/2)                        = 0.723380  residual = 20.003%
+  K_Mex - 3/2 - F_TRZ/sqrt(D_BSFG)                        = 0.542509  residual = 10.002%
+  (D_BSFG+2*F_TRZ)/(K_Mex*5)                              = 0.595200  residual =  1.261%
+  SSq + Phi_res*K_Mex*F_TRZ^2                             = 0.587361  residual =  2.561%
+  1 - K_Mex*Phi_res*F_TRZ*2                               = 0.652778  residual =  8.291%
+  Phi_res*Phi_res - pi*F_TRZ/sqrt(D_crit)                 = 0.632833  residual =  4.982%
+  Phi_res - F_TRZ*pi*Phi_res*Phi_res                      = 0.615167  residual =  2.052%
+  3/5 + (pi-3)*F_TRZ/sqrt(2)                              = 0.610012  residual =  1.196%
+  3/5 + (pi-3)/(K_Mex*D_BSFG)                             = 0.611327  residual =  1.415%
+
+=== BEST OVERALL ===
+  beta_i ~= log(ln2+1) * log(pi) = 0.602802   residual = 0.0004%
+
+Wrote _session277_beta_i_hunt.json  (132 binary candidates)

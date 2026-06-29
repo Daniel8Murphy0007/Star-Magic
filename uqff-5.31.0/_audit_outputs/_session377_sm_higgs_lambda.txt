@@ -1,0 +1,1 @@
+S377 COMPLETE. lambda_H = F_TRZ*K_Mex*SSq + F_TRZ^3*K_Mex*N_ch*SSq = 0.1294; obs (m_H=125.1, v=246) = 0.1293; match 0.106%.

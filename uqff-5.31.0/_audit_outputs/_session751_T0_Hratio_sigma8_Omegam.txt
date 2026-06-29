@@ -1,0 +1,114 @@
+================================================================================
+SESSION 751 -- T_0 push; H_0 ratio; sigma_8/Omega_m
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- T_0 candidate-EXACT push
+--------------------------------------------------------------------------------
+  T_HC = h*c/(L_SCM*k_B) = 4.119893e-05 K
+  r3 target  = 6.615463e+04
+  r3 S750    = 1.837321e+03  (T_0=0.0757, err=-97.222688%)
+  needed correction mult on r3:  36.00603339  (delta = +3.5006e+01)
+
+  3-atom delta search (tol 1%):
+    1+[beta_i a*b/c A_5 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[A_5 a*b/c beta_i 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[D_crit a/b/c 1-F_TRZ 33/40]  d=3.5017e+01  T0=2.72632  err=+0.030000%
+    1+[D_crit a/b/c 33/40 1-F_TRZ]  d=3.5017e+01  T0=2.72632  err=+0.030000%
+    1+[D_crit a/b/c 1-F*P 416/513]  d=3.4977e+01  T0=2.72332  err=-0.079877%
+    1+[D_crit a/b/c 416/513 1-F*P]  d=3.4977e+01  T0=2.72332  err=-0.079877%
+    1+[D_crit a*b/c 416/513 beta_i]  d=3.4971e+01  T0=2.72282  err=-0.098198%
+    1+[416/513 a*b/c D_crit beta_i]  d=3.4971e+01  T0=2.72282  err=-0.098198%
+    1+[27/26 a/b/c r 33/40]  d=3.4965e+01  T0=2.72240  err=-0.113865%
+    1+[27/26 a/b/c 33/40 r]  d=3.4965e+01  T0=2.72240  err=-0.113865%
+    1+[11/9 a*b/c 31/30 r]  d=3.5082e+01  T0=2.73127  err=+0.211829%
+    1+[31/30 a*b/c 11/9 r]  d=3.5082e+01  T0=2.73127  err=+0.211829%
+
+  4-atom delta search (tol 0.3%):
+    1+[beta_i a*b/(c*d) D_BSFG F_TRZ 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[beta_i a*b*c/d D_BSFG SO5 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[beta_i a*b/(c*d) D_BSFG 31/30 F_TRZ]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[beta_i a*b*c/d SO5 D_BSFG 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[D_BSFG a*b/(c*d) beta_i F_TRZ 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[D_BSFG a*b*c/d beta_i SO5 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[D_BSFG a*b/(c*d) beta_i 31/30 F_TRZ]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[D_BSFG a*b*c/d SO5 beta_i 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[SO5 a*b*c/d beta_i D_BSFG 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[SO5 a*b*c/d D_BSFG beta_i 31/30]  d=3.5007e+01  T0=2.72558  err=+0.002953%
+    1+[D_phys a*b/(c*d) 11/9 SSq Y_p]  d=3.5008e+01  T0=2.72566  err=+0.005893%
+    1+[D_phys a*b/(c*d) 11/9 Y_p SSq]  d=3.5008e+01  T0=2.72566  err=+0.005893%
+
+  BEST: T_0 = S750*[1+beta_i a*b/c A_5 31/30] = 2.72558, err = +0.002953%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XXXIIIb: H_0 tension ratio
+--------------------------------------------------------------------------------
+  1/t_H = 67.6611 km/s/Mpc  (natural Hubble unit)
+  Planck:  H_0 = (1/t_H)*(1 - K_Mex/(N_ch*A_5))   = 67.4001  (obs 67.4, err=+0.000091%)
+  SH0ES:   H_0 = (1/t_H)*(1 + K_Mex*(5/108)/(11/9)) = 73.0005  (obs 73.0, err=+0.000709%)
+  planck factor = 1291/1296 = 0.99614198
+  sh0es factor  = 1709/1584 = 1.07891414
+  rho_pred = sh0es/planck = 15381/14201 = 1.083093
+  rho_obs  = 1.083086
+  err = +0.000617%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XXXIV: sigma_8 and Omega_m
+--------------------------------------------------------------------------------
+
+  sigma_8: Planck 2018 = 0.8111 +/- 0.0060
+  SEED: sigma_8 = 416/513 = 0.810916, err = -0.022663%  (1-atom, 0-anchor)
+  needed mult = 1.00022668, delta = +2.2668e-04
+
+  2-atom delta:
+
+  3-atom delta:
+    1+[416/513 a/b/c A_5 A_5]  d=2.2525e-04  s8=0.811099  err=-0.000143%
+    1+[1-n_s a/b/c D_crit D_BSFG]  d=2.2436e-04  s8=0.811098  err=-0.000232%
+    1+[1-n_s a/b/c D_BSFG D_crit]  d=2.2436e-04  s8=0.811098  err=-0.000232%
+    1+[D_phys a*b/c xi A_5]  d=2.2917e-04  s8=0.811102  err=+0.000248%
+    1+[xi a*b/c D_phys A_5]  d=2.2917e-04  s8=0.811102  err=+0.000248%
+    1+[33/40 a/b/c A_5 A_5]  d=2.2917e-04  s8=0.811102  err=+0.000248%
+    1+[beta_i a*b/c xi N_ch]  d=2.3027e-04  s8=0.811103  err=+0.000359%
+    1+[xi a*b/c beta_i N_ch]  d=2.3027e-04  s8=0.811103  err=+0.000359%
+    1+[r a/b/c D_BSFG D_crit]  d=2.3077e-04  s8=0.811103  err=+0.000409%
+    1+[r a/b/c D_crit D_BSFG]  d=2.3077e-04  s8=0.811103  err=+0.000409%
+
+  BEST sigma_8: (416/513)*[1+416/513 a/b/c A_5 A_5] = 0.811099, err = -0.000143%
+
+  Omega_m: Planck 2018 = 0.3153 +/- 0.0073
+  SEED: Omega_m = N_ch*(1-n_s) = 9*(7/200) = 63/200 = 0.315000, err = -0.095147%  (2-atom, 0-anchor)
+  needed mult = 1.00095238, delta = +9.5238e-04
+
+  2-atom delta:
+
+  3-atom delta:
+    1+[1-n_s a*b/c Y_p N_ch]  d=9.5278e-04  Om=0.315300  err=+0.000040%
+    1+[Y_p a*b/c 1-n_s N_ch]  d=9.5278e-04  Om=0.315300  err=+0.000040%
+    1+[5/108 a/b/c A_5 416/513]  d=9.5152e-04  Om=0.315300  err=-0.000086%
+    1+[5/108 a/b/c 416/513 A_5]  d=9.5152e-04  Om=0.315300  err=-0.000086%
+    1+[xi a/b/c beta_i D_BSFG]  d=9.5027e-04  Om=0.315299  err=-0.000211%
+    1+[xi a/b/c D_BSFG beta_i]  d=9.5027e-04  Om=0.315299  err=-0.000211%
+    1+[SSq a/b/c A_5 SO5]  d=9.5000e-04  Om=0.315299  err=-0.000238%
+    1+[F_TRZ a*b/c SSq A_5]  d=9.5000e-04  Om=0.315299  err=-0.000238%
+    1+[SSq a*b/c F_TRZ A_5]  d=9.5000e-04  Om=0.315299  err=-0.000238%
+    1+[SSq a/b/c SO5 A_5]  d=9.5000e-04  Om=0.315299  err=-0.000238%
+    1+[SSq a*b*c r 5/108]  d=9.5000e-04  Om=0.315299  err=-0.000238%
+    1+[SSq a*b*c 5/108 r]  d=9.5000e-04  Om=0.315299  err=-0.000238%
+
+  BEST Omega_m: (63/200)*[1+1-n_s a*b/c Y_p N_ch] = 0.315300, err = +0.000040%
+
+classXXXII_T0_CMB_session751: predicted=2.725580e+00 observed=2.725500e+00 error_pct=2.953364e-03 status=OK
+classXXXIIIb_H0_ratio_session751: predicted=7.300045e+01 observed=7.300000e+01 error_pct=6.173596e-04 status=OK
+classXXXIV_sigma8_session751: predicted=8.110988e-01 observed=8.111000e-01 error_pct=-1.427874e-04 status=OK
+classXXXIV_Omega_m_session751: predicted=3.153001e-01 observed=3.153000e-01 error_pct=3.964478e-05 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  T_0           err = +0.002953%
+  H_0 ratio     err = +0.000617%
+  sigma_8       err = -0.000143%
+  Omega_m       err = +0.000040%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session751_result.json

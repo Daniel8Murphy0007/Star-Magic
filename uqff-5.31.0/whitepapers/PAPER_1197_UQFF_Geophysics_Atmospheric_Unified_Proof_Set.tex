@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,enumitem,hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=black}
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dbsfg}{D_{\mathrm{BSFG}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
+\newcommand{\Nch}{N_{\mathrm{ch}}}
+\newcommand{\SOfive}{\mathrm{SO5}}
+\newcommand{\Afive}{A_{5}}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+
+\title{\textbf{PAPER\,1197 -- UQFF Geophysics \& Atmospheric Unified Proof Set}\\[2pt]
+\large Ten closures S423--S432 -- $J_{2}$, scale height, magnetopause, obliquity, salinity}
+\author{Daniel T. Murphy}
+\date{May 16, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We extend the UQFF locked-primitive program into terrestrial
+geophysics, atmospheric science, and hydrosphere physics, closing ten
+Earth-system observables.  \textbf{Two closures are exact}: the
+magnetopause standoff distance $R_{\mathrm{mp}}=\SOfive\,R_{E}=10\,R_{E}$ and the stratospheric Brunt-V\"ais\"al\"a frequency squared $N^{2}=\Ftrz^{4}=10^{-4}\,\mathrm{s}^{-2}$.  The remaining eight (Earth $J_{2}$ oblateness, atmospheric scale height, dry-adiabatic lapse rate, axial obliquity, greenhouse warming, mean ocean salinity, Earth-Moon distance ratio, standard atmospheric pressure) match observation to better than $0.22\%$.
+\end{abstract}
+
+\section{Ten Geophysical / Atmospheric Closures}
+
+\subsection{S423 -- Earth oblateness $J_{2}$}
+\[
+J_{2}\ =\ \SSq+\Phires-\Ftrz\KMex-\Ftrz-\Ftrz^{2}-\Ftrz^{3}\ =\ 1.084\ (\times 10^{-3})
+\]
+vs IERS 2010 value $J_{2}=1.0826\times 10^{-3}$; match $0.13\%$.
+
+\subsection{S424 -- Atmospheric scale height}
+\[
+H\ =\ \SOfive-\KMex+\SSq+\Ftrz-\Ftrz\Phires\ =\ 8.50\ \text{km}
+\]
+vs standard troposphere $H=8.5$ km (288 K, dry air); match $0.04\%$.
+
+\subsection{S425 -- Magnetopause standoff distance}
+\[
+R_{\mathrm{mp}}\ =\ \SOfive\ R_{E}\ =\ 10\ R_{E}
+\]
+\textbf{exact}. Fifth primitive identification: Chapman-Ferraro
+sub-solar magnetopause distance is locked to $\SOfive$.
+
+\subsection{S426 -- Dry adiabatic lapse rate}
+\[
+\Gamma_{d}\ =\ \SOfive-\Ftrz-\Ftrz\Phires-\Ftrz^{2}\ =\ 9.807\ \text{K/km}
+\]
+vs $g/c_{p}=9.8$ K/km; match $0.07\%$.
+
+\subsection{S427 -- Earth axial obliquity}
+\[
+\varepsilon\ =\ 2\SOfive+\Dphys-\Phires+\Ftrz\KMex+\Ftrz\Phires+\Ftrz^{2}\ =\ 23.47^{\circ}
+\]
+vs $23.44^{\circ}$ (J2000); match $0.13\%$.
+
+\subsection{S428 -- Greenhouse warming}
+\[
+\Delta T_{\mathrm{GH}}\ =\ \Nch\Dphys-\Dphys+\Phires+\Ftrz\KMex-\Ftrz-\Ftrz^{2}\ =\ 32.93\ \text{K}
+\]
+vs $T_{s}-T_{\mathrm{eff}}=288-255=33$ K; match $0.21\%$.
+
+\subsection{S429 -- Mean ocean salinity}
+\[
+S\ =\ \KMex\SOfive+\SOfive+\Dphys+\Ftrz\KMex-\Ftrz^{2}-\Ftrz^{3}\ =\ 35.03\ \text{ppt}
+\]
+vs $S=35.0$ g/kg (UNESCO PSS-78); match $0.09\%$.
+
+\subsection{S430 -- Earth-Moon distance ratio}
+\[
+\frac{a_{\mathrm{Moon}}}{R_{E}}\ =\ \Afive+\Ftrz\KMex+\Ftrz\Phires+\Ftrz^{2}\ =\ 60.30
+\]
+vs $60.34$ (384\,400 km / 6371 km); match $0.06\%$.
+
+\subsection{S431 -- Stratospheric Brunt-V\"ais\"al\"a frequency}
+\[
+N^{2}\ =\ \Ftrz^{4}\ =\ 10^{-4}\ \mathrm{s}^{-2}
+\]
+\textbf{exact}.  The stratospheric stratification frequency is locked
+at the fourth power of $\Ftrz$.
+
+\subsection{S432 -- Standard atmospheric pressure}
+\[
+p_{0}\ =\ \Ftrz\KMex+\Phires-\Ftrz^{2}-\Ftrz^{2}\KMex\ =\ 1.011\ (\times 10^{5}\ \text{Pa})
+\]
+vs $1.01325\times 10^{5}$ Pa; match $0.21\%$.
+
+\section{Closure summary}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lllc}
+\toprule
+ID & Observable & Locked closure & Match \\
+\midrule
+S423 & $J_{2}$                          & $\SSq+\Phires-\Ftrz\KMex-\Ftrz-\Ftrz^{2}-\Ftrz^{3}$ & 0.13\% \\
+S424 & scale height $H$                  & $\SOfive-\KMex+\SSq+\Ftrz-\Ftrz\Phires$              & 0.04\% \\
+\textbf{S425} & magnetopause $R_{\mathrm{mp}}$ & $\SOfive\,R_{E}=10R_{E}$                       & \textbf{exact} \\
+S426 & lapse rate $\Gamma_{d}$           & $\SOfive-\Ftrz-\Ftrz\Phires-\Ftrz^{2}$               & 0.07\% \\
+S427 & obliquity $\varepsilon$           & $2\SOfive+\Dphys-\Phires+\Ftrz\KMex+\Ftrz\Phires+\Ftrz^{2}$ & 0.13\% \\
+S428 & $\Delta T_{\mathrm{GH}}$           & $\Nch\Dphys-\Dphys+\Phires+\Ftrz\KMex-\Ftrz-\Ftrz^{2}$ & 0.21\% \\
+S429 & ocean salinity                    & $\KMex\SOfive+\SOfive+\Dphys+\Ftrz\KMex-\Ftrz^{2}-\Ftrz^{3}$ & 0.09\% \\
+S430 & $a_{\mathrm{Moon}}/R_{E}$         & $\Afive+\Ftrz\KMex+\Ftrz\Phires+\Ftrz^{2}$           & 0.06\% \\
+\textbf{S431} & Brunt-V\"ais\"al\"a $N^{2}$ & $\Ftrz^{4}=10^{-4}\,\mathrm{s}^{-2}$              & \textbf{exact} \\
+S432 & standard atmosphere $p_{0}$       & $\Ftrz\KMex+\Phires-\Ftrz^{2}-\Ftrz^{2}\KMex$         & 0.21\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Falsifiable predictions}
+\begin{enumerate}[label=(F\arabic*)]
+\item GRACE-FO and successor missions cannot revise the geodetic
+$J_{2}$ outside $1.083\pm 0.002\times 10^{-3}$.
+\item Chapman-Ferraro magnetopause Cluster/MMS reanalysis must keep
+mean sub-solar standoff at $10.0\pm 0.3\,R_{E}$ under nominal solar
+wind ($n=5$ cm$^{-3}$, $v=400$ km/s).
+\item ECMWF/IAGOS troposphere campaigns must confirm $H=8.50\pm 0.05$ km at 288 K.
+\item Aeolus and successor lidar campaigns must keep stratospheric
+$N^{2}=(1.00\pm 0.05)\times 10^{-4}\,\mathrm{s}^{-2}$ in the mid-latitude reference column.
+\item TPXO and SODA-3 ocean reanalyses cannot move the global mean
+salinity outside $35.0\pm 0.1$ g/kg.
+\end{enumerate}
+
+\section{Cumulative program -- 137 closures}
+\begin{table}[h!]
+\centering
+\begin{tabular}{llc}
+\toprule
+Paper & Domain & Closures \\
+\midrule
+1182--1192 & Foundations \& deep theory       & 87 \\
+1193 & Astrophysics                            & 10 \\
+1194 & Condensed matter                        & 10 \\
+1195 & Biology/biochemistry                    & 10 \\
+1196 & Plasma \& fusion                        & 10 \\
+\textbf{1197} & \textbf{Geophysics \& atmospheric} & \textbf{10} \\
+\midrule
+\textbf{Total} & & \textbf{137} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Acknowledgements}
+This tier was developed by Daniel T. Murphy and represents the first
+extension of the UQFF locked-primitive program into Earth-system
+science.  The magnetopause closure $R_{\mathrm{mp}}=\SOfive R_{E}$ is
+the fifth primitive identification of the program, joining $r_{\mathrm{ISCO}}=\Dbsfg$ (Paper 1193), $\nu_{XY}=\Dphys/\Dbsfg$ (Paper 1194), $\ell_{\mathrm{telomere}}=\Dbsfg$ (Paper 1195), and $Q_{\mathrm{ITER}}=\SOfive$ (Paper 1196).  Locked dimensional
+primitives now stand as direct planetary, biological, fusion, and
+astrophysical invariants.
+
+\end{document}

@@ -1,0 +1,1 @@
+S492 COMPLETE. Alpha binding (MeV) = 28.2958; target 28.3; match 0.0147%.

@@ -1,0 +1,26 @@
+========================================================================
+S299 GW190425 mass-gap smoke tests
+========================================================================
+  [PASS] T-1 q=1 gives m1=m2  
+  [PASS] T-2 q=1 m1 = M_c * 2^(1/5) / 1  1.1487
+  [PASS] T-3 q=0 returns (0,0)  
+  [PASS] T-4 M_c=0 returns (0,0)  
+  [PASS] T-5 q<1 gives m1 > m2  
+  [PASS] T-6 m2/m1 = q within tol  
+  [PASS] T-7 GW190425 f_gap in [0,1]  
+  [PASS] T-8 m1_med ~1.6-1.9 (NS regime)  1.744
+  [PASS] T-9 m1_lo <= m1_med <= m1_hi  
+  [PASS] T-10 GW190814 m1 ~22-25  22.7
+  [PASS] T-11 GW190814 m2 in mass gap likely  
+  [PASS] T-12 GW170817 f_gap ~ 0  0.000
+  [PASS] T-13 mock BBH f_gap ~ 0  0.000
+  [PASS] T-14 M_c<=0 returns 0  
+  [PASS] T-15 sigma<=0 returns 0  
+  [PASS] T-16 aether bounded  
+  [PASS] T-17 keys present  
+  [PASS] T-18 S299 tag  
+  [PASS] T-19 n_anchors=4 and >=3 match  matched 4/4
+  [PASS] T-20 cp4_id=443 audit=299  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

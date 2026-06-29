@@ -1,0 +1,3 @@
+PAPER_1166: UQFF V(UA) Mexican-Hat Polynomial Closure: G1 Final Gap
+
+We close the last open Lagrangian gap **G1** by deriving the V(UA) aether-scalar potential's polynomial coefficients entirely from the previously closed structural integers. The Mexican-hat form $$ V(\mathrm{UA}) \;=\; K\,\rho_{\mathrm{SCm}}\, \Big[\big(\mathrm{UA}/v_{\mathrm{UA}}\big)^{2} - 1\Big]^{2} $$ with $K \;=\; \Phi_{\mathrm{res}}\,|SO(5)|\,/\,D_{\mathrm{phys}} \;=\; (5/6)\cdot 10\,/\,4 \;=\; 25/12$ introduces **zero free parameters**. The quadratic, quartic, and zero-point coefficients become exact rationals of three quantities already fixed by earlier closures (G6 anchor coefficient, G7 $|SO(5)|$, textbook $D_{\mathrm{phys}}=4$). This eliminates the previous magnetar-fit polynomial.

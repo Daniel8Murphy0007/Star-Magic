@@ -1,0 +1,1 @@
+S504 COMPLETE. Circle packing eta_2D = 0.918167; closure = Phi_res+F*K-F*Phi_res-F^2*K-F^2*Phi_res-F^3-F^2; target 0.906900; match 1.2424%.

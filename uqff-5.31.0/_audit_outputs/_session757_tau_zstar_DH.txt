@@ -1,0 +1,93 @@
+================================================================================
+SESSION 757 -- tau CE; z_* CE; D/H Class XLIV
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- tau_reion strict CE push (corrected)
+--------------------------------------------------------------------------------
+  S755 base (Y_p*(5/108)*(1-n_s)/alpha) = 0.05440202, err = +0.003718%
+  delta needed = -3.7182e-05
+
+  2-atom delta on tau base (tol 5e-3%):
+
+  3-atom delta on tau base (tol 1e-3%):
+
+  4-atom delta on tau base (tol 5e-4%):
+
+  Direct 4-atom on tau (tol 1e-3%):
+
+  BEST tau: S755 base = 0.05440202, err = +0.003718%
+  STATUS: tight CLOSED
+
+--------------------------------------------------------------------------------
+TRACK (b) -- z_* strict CE refinement
+--------------------------------------------------------------------------------
+  S756 base (N_ch*(27/25)/((11/9)*alpha)) = 1089.8099, err = +0.000911%
+  delta needed = -9.1092e-06
+
+  2-atom delta on z_* base (tol 1e-3%):
+
+  3-atom delta on z_* base (tol 5e-4%):
+
+  BEST z_*: S756 base = 1089.8099, err = +0.000911%
+  STATUS: tight CLOSED
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XLIV: primordial D/H abundance
+--------------------------------------------------------------------------------
+  observed D/H = 2.5470e-05
+  Seed (5/108)^3 = 9.9229e-05, err = +289.5918%
+  Seed 1/(D_phys*D_crit*SO5^2) = 9.6154e-05, err = +277.5180%
+  Seed xi*Y_p*(5/108) = 3.8990e-05, err = +53.0827%
+
+  2-atom direct on D/H (tol 10%):
+    [xi a*b 1/137] = 2.5091e-05  err=-1.487079%
+    [1/137 a*b xi] = 2.5091e-05  err=-1.487079%
+    [xi a*b alpha] = 2.5085e-05  err=-1.512959%
+    [alpha a*b xi] = 2.5085e-05  err=-1.512959%
+
+  3-atom direct on D/H (tol 1%):
+    [F_TRZ a*b*c 1-n_s alpha] = 2.5541e-05  err=+0.277715%
+    [F_TRZ a*b*c alpha 1-n_s] = 2.5541e-05  err=+0.277715%
+    [1-n_s a*b*c F_TRZ alpha] = 2.5541e-05  err=+0.277715%
+    [1-n_s a*b/c alpha SO5] = 2.5541e-05  err=+0.277715%
+    [alpha a*b*c F_TRZ 1-n_s] = 2.5541e-05  err=+0.277715%
+    [alpha a*b/c 1-n_s SO5] = 2.5541e-05  err=+0.277715%
+    [1-n_s a*b*c alpha F_TRZ] = 2.5541e-05  err=+0.277715%
+    [alpha a*b*c 1-n_s F_TRZ] = 2.5541e-05  err=+0.277715%
+    [F_TRZ a*b*c 1-n_s 1/137] = 2.5547e-05  err=+0.304065%
+    [F_TRZ a*b*c 1/137 1-n_s] = 2.5547e-05  err=+0.304065%
+    [1-n_s a*b*c F_TRZ 1/137] = 2.5547e-05  err=+0.304065%
+    [1-n_s a*b*c 1/137 F_TRZ] = 2.5547e-05  err=+0.304065%
+
+  4-atom direct on D/H (tol 0.1%):
+    [1/mpme a*b/(c*d) alpha D_BSFG D_crit] = 2.5476e-05  err=+0.023719%
+    [1/mpme a*b/(c*d) alpha D_crit D_BSFG] = 2.5476e-05  err=+0.023719%
+    [alpha a/(b*c*d) D_BSFG D_crit mpme] = 2.5476e-05  err=+0.023719%
+    [alpha a/(b*c*d) D_BSFG mpme D_crit] = 2.5476e-05  err=+0.023719%
+    [alpha a/(b*c*d) D_crit D_BSFG mpme] = 2.5476e-05  err=+0.023719%
+    [alpha a/(b*c*d) D_crit mpme D_BSFG] = 2.5476e-05  err=+0.023719%
+    [alpha a*b/(c*d) 1/mpme D_BSFG D_crit] = 2.5476e-05  err=+0.023719%
+    [alpha a*b/(c*d) 1/mpme D_crit D_BSFG] = 2.5476e-05  err=+0.023719%
+    [alpha a/(b*c*d) mpme D_BSFG D_crit] = 2.5476e-05  err=+0.023719%
+    [alpha a/(b*c*d) mpme D_crit D_BSFG] = 2.5476e-05  err=+0.023719%
+    [31/30 a/(b*c*d) D_crit D_crit A_5] = 2.5477e-05  err=+0.026149%
+    [31/30 a/(b*c*d) D_crit A_5 D_crit] = 2.5477e-05  err=+0.026149%
+    [31/30 a/(b*c*d) A_5 D_crit D_crit] = 2.5477e-05  err=+0.026149%
+    [F_TRZ a*b/(c*d) 1-F*P A_5 A_5] = 2.5463e-05  err=-0.027629%
+    [D_phys a*b/(c*d) xi N_ch A_5] = 2.5463e-05  err=-0.027629%
+
+  BEST D/H: [1/mpme a*b/(c*d) alpha D_BSFG D_crit] = 2.5476e-05, err = +0.023719%
+
+classXLI_tau_reion_session757: predicted=5.440202e-02 observed=5.440000e-02 error_pct=3.718354e-03 status=OK
+classXLII_z_star_session757: predicted=1.089810e+03 observed=1.089800e+03 error_pct=9.109248e-04 status=OK
+classXLIV_DH_session757: predicted=2.547604e-05 observed=2.547000e-05 error_pct=2.371875e-02 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  tau (XLI)      err = +0.003718%  (tight CLOSED)
+  z_* (XLII)     err = +0.000911%  (tight CLOSED)
+  D/H (XLIV)     err = +0.023719%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session757_result.json

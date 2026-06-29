@@ -1,0 +1,26 @@
+========================================================================
+S295 CoolingFlowMdot smoke tests
+========================================================================
+  [PASS] T-1 NGC1275 Mdot in classical range  808.31
+  [PASS] T-2 Mdot(L=0)=0  
+  [PASS] T-3 Mdot(T=0)=0  
+  [PASS] T-4 Mdot scales as L  
+  [PASS] T-5 Mdot scales as 1/T  
+  [PASS] T-6 Bondi Mdot > 0  
+  [PASS] T-7 Bondi Mdot(0)=0  
+  [PASS] T-8 Bondi scales with eta  
+  [PASS] T-9 aether bounded  
+  [PASS] T-10 aether(rho=0)=1  
+  [PASS] T-11 calculator returns required keys  
+  [PASS] T-12 headline tag  
+  [PASS] T-13 n_anchors=4  
+  [PASS] T-14 all anchors in expected range  4/4
+  [PASS] T-15 all Mdot_cool > 0  
+  [PASS] T-16 NGC1275 has highest Mdot  
+  [PASS] T-17 invalid dataset OK  
+  [PASS] T-18 t_n parameter accepted  
+  [PASS] T-19 cp4_id=439  
+  [PASS] T-20 audit_session=295  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

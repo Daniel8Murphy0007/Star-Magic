@@ -1,0 +1,164 @@
+================================================================================
+SESSION 772 -- alpha_s XC; z_dec XCI; D_H(0.61)/r_drag XCII; CV-5 XCIII
+================================================================================
+
+================================================================================
+TRACK (a) -- Class XC: alpha_s = -0.0045 (search on |alpha_s|=0.0045, restore sign)
+================================================================================
+  Target |alpha_s| = 0.0045
+
+  2-atom direct (tol 5%):
+    [beta_i a*b 1/137] = 0.004401  err=-2.2060%
+    [1/137 a*b beta_i] = 0.004401  err=-2.2060%
+    [beta_i a*b alpha] = 0.004400  err=-2.2317%
+    [alpha a*b beta_i] = 0.004400  err=-2.2317%
+    [F_TRZ a*b 5/108] = 0.004630  err=+2.8807%
+    [5/108 a*b F_TRZ] = 0.004630  err=+2.8807%
+    [5/108 a/b SO5] = 0.004630  err=+2.8807%
+
+  3-atom direct (tol 0.5%):
+    [1-F_TRZ a*b*c 137/200 1/137] = 0.004500  err=+0.0000%
+    [1-F_TRZ a*b*c 1/137 137/200] = 0.004500  err=+0.0000%
+    [xi a/b/c Phi_res 1-F*P] = 0.004500  err=+0.0000%
+    [xi a/b/c 1-F*P Phi_res] = 0.004500  err=+0.0000%
+    [xi a*b/c 27/25 33/40] = 0.004500  err=+0.0000%
+    [27/25 a/b/c D_phys A_5] = 0.004500  err=+0.0000%
+    [27/25 a/b/c A_5 D_phys] = 0.004500  err=+0.0000%
+    [27/25 a*b/c xi 33/40] = 0.004500  err=+0.0000%
+    [137/200 a*b*c 1-F_TRZ 1/137] = 0.004500  err=+0.0000%
+    [137/200 a*b*c 1/137 1-F_TRZ] = 0.004500  err=+0.0000%
+    [1/137 a*b*c 1-F_TRZ 137/200] = 0.004500  err=+0.0000%
+    [1/137 a*b*c 137/200 1-F_TRZ] = 0.004500  err=+0.0000%
+    [1-F_TRZ a*b*c 137/200 alpha] = 0.004499  err=-0.0263%
+    [137/200 a*b*c 1-F_TRZ alpha] = 0.004499  err=-0.0263%
+    [1-F_TRZ a*b*c alpha 137/200] = 0.004499  err=-0.0263%
+
+  4-atom direct (tol 0.05%):
+    [F_TRZ a*b*c*d F_TRZ 33/40 6/11] = 0.004500  err=+0.0000%
+    [F_TRZ a*b*c*d 33/40 F_TRZ 6/11] = 0.004500  err=+0.0000%
+    [F_TRZ a*b*c*d 33/40 6/11 F_TRZ] = 0.004500  err=+0.0000%
+    [F_TRZ a*b*c/d 33/40 6/11 SO5] = 0.004500  err=+0.0000%
+    [F_TRZ a*b*c*d 6/11 33/40 F_TRZ] = 0.004500  err=+0.0000%
+    [F_TRZ a*b*c/d 6/11 33/40 SO5] = 0.004500  err=+0.0000%
+    [Phi_res a*b*c/d N_ch r A_5] = 0.004500  err=+0.0000%
+    [Phi_res a*b*c/d 1-F_TRZ r D_BSFG] = 0.004500  err=+0.0000%
+    [Phi_res a*b*c/d r 1-F_TRZ D_BSFG] = 0.004500  err=+0.0000%
+    [D_BSFG a*b*c/d 1/12 r D_phys] = 0.004500  err=+0.0000%
+    [N_ch a*b*c/d Phi_res r A_5] = 0.004500  err=+0.0000%
+    [N_ch a*b*c/d r Phi_res A_5] = 0.004500  err=+0.0000%
+    [N_ch a*b*c/d r 1/12 D_BSFG] = 0.004500  err=+0.0000%
+    [N_ch a*b*c/d 1/12 r D_BSFG] = 0.004500  err=+0.0000%
+    [1-F_TRZ a*b*c/d Phi_res r D_BSFG] = 0.004500  err=+0.0000%
+
+  BEST |alpha_s|: [1-F*P a*b/(c*d) r 11/6 D_phys] = 0.004500, err = +0.000000%
+  Sign restored:  alpha_s pred = -0.004500  vs obs = -0.004500  err = -0.000000%
+================================================================================
+TRACK (b) -- Class XCI: z_dec = 1089.92 (CMB decoupling redshift)
+================================================================================
+  Target z_dec = 1089.92
+
+  2-atom direct (tol 5%):
+
+  3-atom direct (tol 0.5%):
+    [1-F*P a/b/c xi Y_p] = 1088.435374  err=-0.1362%
+    [1-F*P a/b/c Y_p xi] = 1088.435374  err=-0.1362%
+    [D_phys a*b/c 243/260 xi] = 1087.552448  err=-0.2172%
+    [243/260 a*b/c D_phys xi] = 1087.552448  err=-0.2172%
+
+  4-atom direct (tol 0.05%):
+    [243/260 a/(b*c*d) 1-n_s Y_p F_TRZ] = 1089.930478  err=+0.0010%
+    [243/260 a/(b*c*d) Y_p 1-n_s F_TRZ] = 1089.930478  err=+0.0010%
+    [N_ch a*b/(c*d) 27/26 1-n_s Y_p] = 1089.930478  err=+0.0010%
+    [N_ch a*b/(c*d) 27/26 Y_p 1-n_s] = 1089.930478  err=+0.0010%
+    [SO5 a*b/(c*d) 243/260 1-n_s Y_p] = 1089.930478  err=+0.0010%
+    [SO5 a*b/(c*d) 243/260 Y_p 1-n_s] = 1089.930478  err=+0.0010%
+    [27/26 a*b/(c*d) N_ch 1-n_s Y_p] = 1089.930478  err=+0.0010%
+    [27/26 a*b/(c*d) N_ch Y_p 1-n_s] = 1089.930478  err=+0.0010%
+    [243/260 a/(b*c*d) F_TRZ 1-n_s Y_p] = 1089.930478  err=+0.0010%
+    [243/260 a/(b*c*d) F_TRZ Y_p 1-n_s] = 1089.930478  err=+0.0010%
+    [243/260 a*b/(c*d) SO5 1-n_s Y_p] = 1089.930478  err=+0.0010%
+    [243/260 a*b/(c*d) SO5 Y_p 1-n_s] = 1089.930478  err=+0.0010%
+    [243/260 a/(b*c*d) 1-n_s F_TRZ Y_p] = 1089.930478  err=+0.0010%
+    [243/260 a/(b*c*d) Y_p F_TRZ 1-n_s] = 1089.930478  err=+0.0010%
+    [1-n_s a/(b*c*d) beta_i alpha 1/137] = 1089.878281  err=-0.0038%
+
+  BEST z_dec: [243/260 a/(b*c*d) 1-n_s Y_p F_TRZ] = 1089.930478, err = +0.000961%
+================================================================================
+TRACK (c) -- Class XCII: D_H(0.61)/r_drag = 20.86 (BAO dimensionless ratio)
+================================================================================
+  Target D_H(0.61)/r_drag = 20.86
+
+  2-atom direct (tol 5%):
+    [n_s a/b 5/108] = 20.844000  err=-0.0767%
+    [K_Mex a*b SO5] = 20.833333  err=-0.1278%
+    [SO5 a*b K_Mex] = 20.833333  err=-0.1278%
+    [K_Mex a/b F_TRZ] = 20.833333  err=-0.1278%
+    [D_crit a*b 416/513] = 21.083821  err=+1.0730%
+    [416/513 a*b D_crit] = 21.083821  err=+1.0730%
+    [D_crit a/b 11/9] = 21.272727  err=+1.9786%
+    [307/325 a/b 5/108] = 20.403692  err=-2.1875%
+    [D_crit a*b 33/40] = 21.450000  err=+2.8284%
+    [33/40 a*b D_crit] = 21.450000  err=+2.8284%
+    [243/260 a/b 5/108] = 20.187692  err=-3.2230%
+    [Phi_res a*b D_crit] = 21.666667  err=+3.8671%
+
+  3-atom direct (tol 0.5%):
+    [243/260 a*b/c 31/30 5/108] = 20.860615  err=+0.0030%
+    [31/30 a*b/c 243/260 5/108] = 20.860615  err=+0.0030%
+    [416/513 a/b/c r 27/25] = 20.856898  err=-0.0149%
+    [416/513 a/b/c 27/25 r] = 20.856898  err=-0.0149%
+    [Phi_res a*b/c D_crit 27/26] = 20.864198  err=+0.0201%
+    [D_crit a*b/c Phi_res 27/26] = 20.864198  err=+0.0201%
+    [mpme a/b/c r 22/9] = 20.865371  err=+0.0257%
+    [mpme a/b/c 22/9 r] = 20.865371  err=+0.0257%
+    [1-F_TRZ a*b/c 416/513 1-n_s] = 20.852130  err=-0.0377%
+    [416/513 a*b/c 1-F_TRZ 1-n_s] = 20.852130  err=-0.0377%
+    [beta_i a/b/c 1-n_s 33/40] = 20.879654  err=+0.0942%
+    [beta_i a/b/c 33/40 1-n_s] = 20.879654  err=+0.0942%
+    [Phi_res a*b/c K_Mex 1/12] = 20.833333  err=-0.1278%
+    [K_Mex a*b/c Phi_res 1/12] = 20.833333  err=-0.1278%
+    [Phi_res a*b/c 1-F_TRZ r] = 20.833333  err=-0.1278%
+
+  4-atom direct (tol 0.05%):
+    [27/26 a*b*c/d 31/30 1-F_TRZ 5/108] = 20.860615  err=+0.0030%
+    [31/30 a*b*c/d 27/26 1-F_TRZ 5/108] = 20.860615  err=+0.0030%
+    [1-F_TRZ a*b*c/d 27/26 31/30 5/108] = 20.860615  err=+0.0030%
+    [1-F_TRZ a*b*c/d 31/30 27/26 5/108] = 20.860615  err=+0.0030%
+    [27/26 a*b*c/d 1-F_TRZ 31/30 5/108] = 20.860615  err=+0.0030%
+    [31/30 a*b*c/d 1-F_TRZ 27/26 5/108] = 20.860615  err=+0.0030%
+    [243/260 a*b*c/d 416/513 D_crit 307/325] = 20.860621  err=+0.0030%
+    [416/513 a*b*c/d 243/260 D_crit 307/325] = 20.860621  err=+0.0030%
+    [D_crit a*b*c/d 243/260 416/513 307/325] = 20.860621  err=+0.0030%
+    [D_crit a*b*c/d 416/513 243/260 307/325] = 20.860621  err=+0.0030%
+    [243/260 a*b*c/d D_crit 416/513 307/325] = 20.860621  err=+0.0030%
+    [416/513 a*b*c/d D_crit 243/260 307/325] = 20.860621  err=+0.0030%
+    [r a/(b*c*d) n_s Y_p 1/137] = 20.860738  err=+0.0035%
+    [r a/(b*c*d) n_s 1/137 Y_p] = 20.860738  err=+0.0035%
+    [r a/(b*c*d) Y_p n_s 1/137] = 20.860738  err=+0.0035%
+
+  BEST D_H(0.61)/r_drag: [243/260 a*b/c 31/30 5/108] = 20.860615, err = +0.002950%
+================================================================================
+TRACK (d) -- Class XCIII: CV-5 architectural identity
+================================================================================
+  r        = 9/250 = 0.036000
+  1 - n_s  = 7/200 = 0.035000
+  r / (1-n_s) = (9/250)/(7/200) = 36/35  =  1.0285714286
+  36/35                       =  1.0285714286
+  Identity check: LHS == RHS ?  True
+  err = +0.000000%  ->  EXACT architectural identity
+
+classXC_alpha_s_running_session772: predicted=-4.500000e-03 observed=-4.500000e-03 error_pct=-0.000000e+00 status=EXACT
+classXCI_z_dec_session772: predicted=1.089930e+03 observed=1.089920e+03 error_pct=9.613261e-04 status=CE_strict
+classXCII_D_H_over_rdrag_z061_session772: predicted=2.086062e+01 observed=2.086000e+01 error_pct=2.950070e-03 status=CE_strict
+classXCIII_CV5_tensor_tilt_session772: predicted=1.028571e+00 observed=1.028571e+00 error_pct=0.000000e+00 status=EXACT
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  XC    alpha_s            pred=-0.00450  err=-0.0000%  (EXACT)
+  XCI   z_dec              pred=1089.930   err=+0.0010%  (CE_strict)
+  XCII  D_H/r_drag (0.61)  pred=20.8606    err=+0.0030%  (CE_strict)
+  XCIII CV-5 identity      pred=1.028571  err=+0.0000%  (EXACT)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session772_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

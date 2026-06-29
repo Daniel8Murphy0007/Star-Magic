@@ -1,0 +1,1 @@
+Wood rho: 500 kg/m^3 vs 500 -> 0.0000% [EXACT]

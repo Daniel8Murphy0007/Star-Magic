@@ -1,0 +1,149 @@
+
+==============================================================================
+  SECTION 1 — New constants (R_C_LEPTON, galactic, K3_EFF)
+==============================================================================
+  R_C_UP              = 1.3000e-15 m  (up-quark confinement)
+  R_C_DOWN            = 6.2000e-16 m  (down-quark confinement)
+  R_C_LEPTON          = 4.1110e-13 m  (Ug2 outer-bubble electron)
+  OMEGA_G_GALACTIC    = 7.3000e-16 rad/s
+  M_BH_SgrA           = 8.1500e+36 kg
+  D_GALACTIC_SUN      = 2.5500e+20 m
+  K3_EFF              = 5.9790e-36
+  [PASS]  R_C_LEPTON = R_C_UP * 10^2.5  -- R_C_LEPTON=4.1110e-13
+  [PASS]  Galactic coupling = Omega_g * M_bh / d_g ~ 23  -- coupling=23.3314
+  [PASS]  K3_EFF positive  -- K3_EFF=5.9790e-36
+
+==============================================================================
+  SECTION 2 — Fix #3: Electron mass from Ug2 outer-bubble (S5e)
+==============================================================================
+
+  Route B (PRIMARY):
+    r_c_lepton     = 4.1110e-13 m
+    DPM layers     = 2.5
+    DPM factor     = 316.2278
+    m_e derived    = 8.556814e-31 kg
+    m_e derived    = 0.4800 MeV/c^2
+    m_e observed   = 9.109384e-31 kg  (PDG 2022)
+    error          = -6.07%
+
+  Route A (field ratio, K1=K2=1 placeholders):
+    field_ratio    = 1.089000e-03
+    m_e_A          = 1.821485e-30 kg
+    error_A        = +100.0%
+
+  EM residual consistency (Fix #2 feed-forward):
+    Fix #2 EM residual  = 0.3715 MeV
+    Fraction of m_e     = 0.7269
+    Interpretation: Fix #2 EM residual = 0.3715 MeV = 0.727 × m_e(0.511 MeV). Ug2 outer bubble carri...
+  [PASS]  Route B error within ±10% of PDG electron mass  -- error=-6.07%
+  [PASS]  m_e Route B positive
+  [PASS]  m_e Route B in plausible range [1e-31, 1e-29] kg  -- m_e=8.5568e-31
+  [PASS]  EM residual fraction of m_e in (0, 2)  -- frac=0.7269
+  [PASS]  primary_result matches route_B
+
+==============================================================================
+  SECTION 3 — Fix #4: Coupling constants K1-K4 from vacuum constraints (S5f)
+==============================================================================
+
+  Inputs:
+    Z              = 1
+    R_nuc          = 1.2000e-15 m
+    M_proto        = 1.1837e-37 kg
+    mu_s           = 5.1318e-81 kg
+    E_react        = 5.9290e+10
+    cos(pi/4)      = 0.707107
+
+  K1_eff: 5.0399e+77
+    Constraint: Ug1(r=R_nuc, t=0) = M_p * c^2
+    Ug1_unit  = 2.9827e-88
+    M_p*c^2   = 1.5033e-10 J
+
+  K2_eff: 2.8237e+66
+    Constraint: Ug2(r=R_bubble, t=0) = M_e * c^2  [Fix #3 electron mass]
+    M_e used  = 8.5568e-31 kg  (Fix #3 Route B)
+    M_e*c^2   = 7.6905e-14 J
+
+  K3_eff: 5.9790e-36
+    Constraint: Ug3 arc integral = Delta_M_np_obs * c^2  [Fix #2 Route A]
+
+  K4_eff: 2.9655e+18
+    Constraint: Ug4 = galactic energy density at r=R_nuc, Z=1
+    gal_coupling = 23.3314
+
+  SC mode consistency (H_SCm^n_j structural pattern):
+    H_SCm^0 = 1.0000  (K1 structure)
+    H_SCm^1 = 0.9900  (K2 structure)
+    H_SCm^2 = 0.9801  (K3 structure)
+    H_SCm^3 = 0.9703  (K4 structure)
+    ratio K2/K1 = 5.602605e-12
+    ratio K3/K1 = 1.186330e-113
+    ratio K4/K1 = 5.884012e-60
+  [PASS]  K1_eff positive  -- K1_eff=5.0399e+77
+  [PASS]  K2_eff positive  -- K2_eff=2.8237e+66
+  [PASS]  K3_eff == K3_EFF constant
+  [PASS]  K4_eff positive  -- K4_eff=2.9655e+18
+  [PASS]  K1_eff / (M_p*c^2/Ug1_unit) = 1.0 (self-consistent)  -- K1_eff self-consistency
+  [PASS]  K2_eff / (M_e*c^2/Ug2_unit) = 1.0 (self-consistent)  -- K2_eff self-consistency
+
+==============================================================================
+  SECTION 4 — Fix #8: r_cross independent from primordial FUBii (S5g)
+==============================================================================
+
+  Z=1 (Hydrogen):
+    v_fermi           = 7.7000e+05 m/s
+    E_react           = 5.9290e+10
+    galactic_coupling = 23.3314  (Omega_g*M_bh/d_g)
+    r_cross_indep     = 7.2290e-13 m
+    R_nuc             = 1.2000e-15 m
+    r_cross / R_nuc   = 6.0242e+02  (scale bridging factor)
+    r_vs_R_cov        = 2.3319e-02
+
+  Z^(-2/3) scaling survey:
+     Z  Sym    r_cross_indep [m]      vs R_nuc   Z-scale err [%]
+------------------------------------------------------------------------------
+     1  H             7.2290e-13    6.0242e+02           +0.0000%
+     2  He            4.5540e-13    2.3907e+02           +0.0000%
+     3  Li            3.4753e-13    1.5140e+02           +0.0000%
+     4  Be            2.8688e-13    1.1493e+02           +0.0000%
+     5  B             2.4723e-13    9.2637e+01           -0.0000%
+     6  C             2.1893e-13    7.9690e+01           +0.0000%
+     7  N             1.9755e-13    6.8305e+01           +0.0000%
+     8  O             1.8073e-13    5.9767e+01           +0.0000%
+     9  F             1.6708e-13    5.2178e+01           -0.0000%
+    10  Ne            1.5574e-13    4.7814e+01           -0.0000%
+  [PASS]  r_cross_independent positive
+  [PASS]  r_cross_independent finite
+  [PASS]  galactic_coupling = 23 ± 10  -- gal_coupling=23.3314
+  [PASS]  r_cross_indep(Z=1) between 1e-14 and 1e-10 m (atomic-to-nuclear bridge)  -- r=7.2290e-13
+  [PASS]  r_cross monotone decreasing Z=2  -- r(2)=4.5540e-13 < r(1)=7.2290e-13
+  [PASS]  r_cross monotone decreasing Z=3  -- r(3)=3.4753e-13 < r(2)=4.5540e-13
+  [PASS]  r_cross monotone decreasing Z=4  -- r(4)=2.8688e-13 < r(3)=3.4753e-13
+  [PASS]  r_cross monotone decreasing Z=5  -- r(5)=2.4723e-13 < r(4)=2.8688e-13
+  [PASS]  r_cross monotone decreasing Z=6  -- r(6)=2.1893e-13 < r(5)=2.4723e-13
+
+==============================================================================
+  SECTION 5 — chain_derive_particle_masses electron entry (Fix #3 integrated)
+==============================================================================
+
+  electron observed  = 9.109384e-31 kg
+  electron derived   = 8.556814e-31 kg
+  electron error     = -6.07%
+  mp/me ratio obs    = 1836.15
+  formula            : hbar / (R_C_UP * DPM_RATIO^(5/2) * c)  [Fix #3 S5e]
+  [PASS]  Electron entry has derived_kg
+  [PASS]  Electron error within ±20%  -- error=-6.07%
+  [PASS]  Proton still at -2.74% ± 0.1  -- p_error=-2.7471%
+  [PASS]  Neutron still at -2.70% ± 0.2  -- n_error=-2.7038%
+
+==============================================================================
+  SUMMARY — Fix #3 / Fix #4 / Fix #8 chain trace
+==============================================================================
+  Fix #3  m_e Route B:   8.5568e-31 kg  (-6.07% vs PDG)
+  Fix #4  K1_eff:        5.0399e+77  [Ug1=M_p*c^2 at R_nuc]
+  Fix #4  K2_eff:        2.8237e+66  [Ug2=M_e*c^2 at R_bubble]
+  Fix #4  K3_eff:        5.9790e-36  [n-p split Fix#2 Route A]
+  Fix #4  K4_eff:        2.9655e+18  [galactic energy constraint]
+  Fix #8  r_cross(Z=1):  7.2290e-13 m  (ratio to R_nuc: 6.0242e+02)
+  Fix #8  scaling:       r_cross ∝ Z^(-2/3)  confirmed monotone Z=1..6
+
+  All checks PASSED.  Exit code 0.

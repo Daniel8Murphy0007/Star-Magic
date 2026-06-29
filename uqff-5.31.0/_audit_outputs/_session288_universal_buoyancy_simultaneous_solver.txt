@@ -1,0 +1,40 @@
+========================================================================
+Session 288 — Universal Buoyancy simultaneous solver smoke tests
+========================================================================
+  [PASS] T-1 symbolic system has 5 equations  n=5
+  [PASS] T-2 K_UB symbolic == 10 − 9·β_i/10  sym=9.457390  num=9.457390
+  [PASS] T-3 χ_UB canonical is r-independent  free=['M_body', 'R_body', 'beta_i', 'c', 'rho_SCm']
+  [PASS] T-4 ρ_UA / ρ_SCm = 10 (G7 companion)  ratio=10.000000000000
+  [PASS] T-5 K_UB = 9.45739  K_UB=9.457390
+  [PASS] T-6 Earth HZ radius in [0.7, 1.1] AU  r_hz=0.7814 AU
+  [PASS] T-7 g_eff = G·M_sun/r²  g=9.714536e-03
+  [PASS] T-8 χ_UB(Earth) ≈ 1.35e-56 (Aether under-buoys rocky matter)  χ=1.353e-56
+  [PASS] T-9 F_UBi > F_UBi_i (UA dominates SCm)  F_UBi/F_UBi_i = 18.429
+  [PASS] T-10 F_UBi/F_UBi_i = 10/(β·9/10) ≈ 18.42  ratio=18.429443  expected=18.429443
+  [PASS] T-11 habitable=True at T_target=288 K  hab=True
+  [PASS] T-12 Mars HZ radius in [1.3, 1.7] AU for T=210 K  r=1.5213 AU
+  [PASS] T-13 habitable=False at T=210 K (Mars cold)  hab=False
+  [PASS] T-14 Proxima b HZ radius in [0.03, 0.08] AU  r=0.0488 AU
+  [PASS] T-15 K2-18b HZ radius in [0.1, 0.25] AU  r=0.1512 AU
+  [PASS] T-16 Δg_aether = g_eff·χ_UB for all bodies  4/4
+  [PASS] T-17 Δg_aether > 0 (Aether buoyancy lifts mass)  Δg=1.314e-58 m/s²
+  [PASS] T-18 invalid inputs raise ValueError  raised=6/6
+  [PASS] T-19 chi_UB(<=0) raises ValueError  
+  [PASS] T-20 compute() returns required keys  missing=set()
+  [PASS] T-21 SESSION_288_CALCULATORS exposes class  
+------------------------------------------------------------------------
+  RESULT: 21/21 tests passed
+========================================================================
+
+Universal Buoyancy simultaneous solver — headline (Sun-Earth, 288 K):
+  r_hz        = 0.781419 AU   (1.168986e+11 m)
+  T_eq        = 288.00 K
+  g_eff       = 9.714536e-03 m/s^2     (Newton emergent)
+  g_universal = 9.714536e-03 m/s^2     (after Aether buoyancy)
+  Δg_aether   = 1.314488e-58 m/s^2     (= g_eff · χ_UB)
+  chi_UB      = 1.353115e-56                 (r-independent identity)
+  K_UB        = 9.457390                   (10 - 9*beta_i/10)
+  F_UBi       = 8.300518e-34 N
+  F_UBi_i     = 4.503944e-35 N
+  F_grav      = 5.801521e+22 N
+  habitable   = True

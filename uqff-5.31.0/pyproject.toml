@@ -1,0 +1,397 @@
+[build-system]
+requires = ["setuptools>=77.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uqff"
+version = "5.31.0"
+description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, full proof corpus: 1994 whitepapers + Lean 4 scaffold + 4 arXiv bundles + manuscript)"
+readme = "README.md"
+requires-python = ">=3.10"
+# PEP 639 SPDX string form (setuptools >=77).
+# Commercial license terms are documented in COMMERCIAL.md and linked via project.urls below.
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE", "LICENSE-AGPL-3.0.txt", "LICENSE-MIT-PREVIOUS.txt", "NOTICE"]
+authors = [
+    { name = "Daniel T. Murphy", email = "daniel.murphy00@enrgyone.com" },
+]
+maintainers = [
+    { name = "Daniel T. Murphy", email = "daniel.murphy00@enrgyone.com" },
+]
+keywords = [
+    "physics",
+    "unified field theory",
+    "vacuum physics",
+    "LENR",
+    "low energy nuclear reactions",
+    "cosmological constant",
+    "Holmlid",
+    "Star-Magic reactor",
+    "Di-Pseudo-Monopole",
+    "DPM",
+    "nuclear shell model",
+    "Yang-Mills mass gap",
+    "Millennium prize problems",
+    "Lean 4",
+    "formal verification",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = [
+    "coverage>=7.0",
+    "pytest>=7.0",
+]
+docs = [
+    "sphinx>=6.0",
+    "sphinx-rtd-theme>=1.2",
+]
+api = [
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+]
+jupyter = [
+    "ipython>=8.0",
+    "jupyter>=1.0",
+]
+all = [
+    "coverage>=7.0",
+    "pytest>=7.0",
+    "sphinx>=6.0",
+    "sphinx-rtd-theme>=1.2",
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+    "ipython>=8.0",
+    "jupyter>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Daniel8Murphy0007/Star-Magic"
+Documentation = "https://github.com/Daniel8Murphy0007/Star-Magic#readme"
+Repository = "https://github.com/Daniel8Murphy0007/Star-Magic"
+Issues = "https://github.com/Daniel8Murphy0007/Star-Magic/issues"
+Changelog = "https://github.com/Daniel8Murphy0007/Star-Magic/blob/main/SESSION_LOG.md"
+"Commercial License" = "https://github.com/Daniel8Murphy0007/Star-Magic/blob/main/COMMERCIAL.md"
+
+[project.scripts]
+uqff = "uqff_cli:main"
+uqff-api = "uqff_api:run"
+
+# ===========================================================================
+# setuptools configuration
+# ===========================================================================
+
+[tool.setuptools]
+py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter", "uqff_fidelity_tests", "run_millennium_proofs", "BuoyancyProofVariants", "first_principles_derivation", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script"]
+include-package-data = true
+
+# v5.29.0: bundle the FULL proof corpus as a sub-package.
+# Whitepapers, formal Lean, arXiv bundles, manuscript, audit outputs all ship.
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "whitepapers",
+    "whitepapers.*",
+    "formal",
+    "formal.*",
+    "arxiv_submission_1159_1172",
+    "arxiv_submission_1159_1172.*",
+    "arxiv_submission_1173_1176",
+    "arxiv_submission_1173_1176.*",
+    "arxiv_submission_1177_1180",
+    "arxiv_submission_1177_1180.*",
+    "arxiv_submission_1181_1189",
+    "arxiv_submission_1181_1189.*",
+    "_audit_outputs",
+    "_audit_outputs.*",
+    "docs",
+    "docs.*",
+    "scripts",
+    "scripts.*",
+    "notebooks",
+    "notebooks.*",
+]
+exclude = [
+    "build*",
+    "*.egg-info",
+    "dist*",
+    "__pycache__*",
+    "node_modules*",
+    ".venv*",
+    "venv*",
+    "*.dir*",
+    "CMakeFiles*",
+    "Debug*",
+    "Release*",
+    "x64*",
+    "calculator_advanced*",
+    "Manuscript 1_12Feb2026*",
+]
+
+# v5.29.0: package-data globs to include non-Python files in the wheel
+[tool.setuptools.package-data]
+"*" = [
+    "*.md",
+    "*.tex",
+    "*.lean",
+    "*.toml",
+    "*.csv",
+    "*.txt",
+    "*.cpp",
+    "*.html",
+    "*.cff",
+    "*.yml",
+    "*.ipynb",
+    "*.rst",
+    "*.bib",
+    "*.pdf",
+    "*.json",
+]
+"whitepapers" = ["*.md", "*.tex"]
+"formal" = ["*.lean", "*.toml", "lean-toolchain", "README.md", "**/*.lean"]
+"arxiv_submission_1159_1172" = ["**/*"]
+"arxiv_submission_1173_1176" = ["**/*"]
+"arxiv_submission_1177_1180" = ["**/*"]
+"arxiv_submission_1181_1189" = ["**/*"]
+"_audit_outputs" = ["*.txt"]
+"docs" = ["*.rst", "*.py", "*.md", "Makefile"]
+"scripts" = ["*.py"]
+"notebooks" = ["*.ipynb"]
+
+# v5.29.0: top-level data files (README, root proof docs, gold standard, grok archives)
+[tool.setuptools.data-files]
+"share/uqff" = [
+    "LICENSE",
+    "LICENSE-AGPL-3.0.txt",
+    "LICENSE-MIT-PREVIOUS.txt",
+    "NOTICE",
+    "COMMERCIAL.md",
+    "CITATION.cff",
+    "README.md",
+    "CLAUDE.md",
+    "SESSION_LOG.md",
+    "PRODUCTION_ROADMAP.md",
+    "PREDICTION_LABELS.md",
+    "STATISTICAL_HYGIENE.md",
+    "PROVENANCE_AUDIT.md",
+    "COVERAGE.md",
+    "INPUT_DOMAINS.md",
+    "NEXT_PRIORITIES.md",
+    "FAQ.md",
+    "TROUBLESHOOTING.md",
+    "GLOSSARY.md",
+    "ARCHITECTURE.md",
+    "INSTALL.md",
+    "RELEASE_PROCESS.md",
+    "CODE_OF_CONDUCT.md",
+    "CLOSURE_ATLAS.md",
+    "ASSIMILATION_GEOMETRY_ATLAS.md",
+    "OVERDETERMINATION_MAP.csv",
+    "OVERDETERMINATION_WIDE.csv",
+    "OVERDETERMINATION_MAP.md",
+    "assimilation_dispatch.py",
+    "qcalcgeom_solver.py",
+    "provenance_recorder.py",
+    "_build_overdetermination_views.py",
+    "_phase_e7_merge_dispatch_into_master_closures.py",
+    "_phase_g1_atlas_append.py",
+    "_phase_g2_geometry_atlas.py",
+    "_phase_g3_tutorial_notebooks.py",
+    "_step5_paper1800_verify.py",
+    "_step5_paper1801_verify.py",
+    "phase_e7_tag_audit.csv",
+    "WHITEPAPER_INDEX.md",
+    "COVERAGE_GAPS.md",
+    "ZENODO_DOI_SETUP.md",
+    "forward_predictions.md",
+    "verification_log.csv",
+    "master_closures.csv",
+    "CHANGELOG.md",
+    "_append_paper1189_closures.py",
+    "_append_millennium_closures.py",
+    "_append_frontier_closures.py",
+    "_phase1_extract_paper_closures.py",
+    "_phase2_merge_closures_ledger.py",
+    "_harvest_json_closures.py",
+    "_harvest_text_closures.py",
+    "_emit_closure_json.py",
+    "_audit_closure_gaps.py",
+    "_show_closure_evidence.py",
+    "_phase1_paper_closures.json",
+    "unified_closure_audit.json",
+    "UQFF_UNIFIED_CLOSURE_DERIVATIONS.py",
+    "uqff_exact_closures.cpp",
+    "uqff_dashboard.html",
+]
+"share/uqff/geometry_backends" = [
+    "geometry_backends/__init__.py",
+    "geometry_backends/qcalcgeom_v4.py",
+    "geometry_backends/bsfg_v1.py",
+    "geometry_backends/dpm_v1.py",
+    "geometry_backends/d26_compactification.py",
+]
+"share/uqff/numeric_backends" = [
+    "numeric_backends/__init__.py",
+    "numeric_backends/symbolic.py",
+    "numeric_backends/numerical.py",
+    "numeric_backends/discrete.py",
+]
+"share/uqff/proofs" = [
+    "AXIOMS_AND_THEOREMS.md",
+    "PAPER_1080_Ramanujan_Binomial_Expansion_Proof.md",
+    "ALL_EQUATIONS_FROM_SESSION_AND_AUDIT_FILES.md",
+    "ALL_EQUATIONS_FROM_WORKSPACES_22MAY_25MAY2026.md",
+    "ALL_EQUATIONS_SINCE_THREAD_CREATED.md",
+    "ALL_EQUATIONS_WITH_COMPLETE_DERIVATIONS.md",
+    "ADDITIONAL_UQFF_CLOSURE_EQUATIONS_BEYOND_30.md",
+    "CLOSED_CONSTANTS_INVENTORY.md",
+    "COMPLETE_UQFF_30_CLOSURE_EQUATIONS_S266_S295.md",
+    "COMPLETE_UQFF_EQUATIONS_REFERENCE.md",
+    "COMPLETE_UQFF_INTEGRATION_PLAN_FEB15_2026.md",
+    "COMPLETE_UQFF_UNIFIED_FRAMEWORK.md",
+    "FIVE_IMMUTABLE_CONSTANTS_DERIVED_EQUATIONS.md",
+    "PRIMORDIAL_BBN_PROTO_HYDROGEN_HELIUM_CLOSURE_DERIVATIONS.md",
+    "Star-Magic_closure_review_12June2026.md",
+    "UM_HEAVISIDE_GAP_CLOSURE_COMPLETION_REPORT.md",
+    "UQFF_BBN_CLOSURE_EQUATIONS_COMPLETE.md",
+    "UQFF_CALIBRATION_AUDIT.md",
+    "UQFF_CALIBRATION_GAP_ANALYSIS.md",
+    "UQFF_CLOSURE_EQUATIONS_FULL_DERIVATIONS.md",
+    "UQFF_CONSTANTS_VARIABLES_REFERENCE.md",
+    "UQFF_INTEGRATION_COMPLETE.md",
+    "UQFF_INTEGRATION_GUIDE.md",
+    "UQFF_LOCKED_PRIMITIVES_COMPLETE_CLOSURE_EQUATION_SYSTEM.md",
+    "UQFF_MODULE_CATALOG.md",
+    "UQFF_PURE_DERIVATIONS_NO_OBSERVATIONS.md",
+    "UQFF_SM_ANCHOR_REQUIREMENTS.md",
+    "UQFF_THEORY.md",
+    "UQFF_UM_HEAVISIDE_GAP.md",
+    "UQFF_VALIDATION_CONVERSATION_CAPTURE.md",
+    "UQFF_VALIDATION_SYNC_AUDIT.md",
+    "VERIFICATION_REPORT_2026-05-26.md",
+    "VERIFICATION_REPORT_DERIVED_VS_FITTED.md",
+]
+"share/uqff/gold_standard" = [
+    "Gold_Standard_Pure_UQFF.md",
+    "Gold_Standard_Full_LaTeX_Dump.tex",
+    "Gold_Standard_Full_Sympy_LaTeX_Dump.tex",
+]
+"share/uqff/grok_archives" = [
+    "grok._b9afa8b6_3b85_31May2026.md",
+    "grok_8461fe4e_c903.md",
+    "grok_b8e305e6_1f29.md",
+]
+"share/uqff/submission_prep" = [
+    "MANUSCRIPT_OUTLINE.md",
+    "COVER_LETTER_TEMPLATE.md",
+    "PEER_REVIEW_SUBMISSION_PLAN.md",
+    "REPLICATION_PACKAGE.md",
+    "REVIEWER_OUTREACH_LIST.md",
+]
+"share/uqff/audit_reports" = [
+    "K1_CPP_EXTENSION_REPORT.md",
+    "CPP_PYTHON_CROSSCHECK_REPORT.md",
+    "PERFORMANCE_PROFILE.md",
+    "SECURITY_AND_MEMORY_AUDIT.md",
+    "LINT_BASELINE.md",
+]
+
+# ===========================================================================
+# Tooling configuration
+# ===========================================================================
+
+[tool.coverage.run]
+source = ["uqff_pure_calculator"]
+omit = [
+    "*/tests/*",
+    "*/whitepapers/*",
+    "*/arxiv_submission_*/*",
+    "*/_audit_outputs/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra"
+testpaths = ["."]
+python_files = ["uqff_fidelity_tests.py"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+exclude = [
+    "whitepapers",
+    "formal",
+    "arxiv_submission_1159_1172",
+    "arxiv_submission_1173_1176",
+    "arxiv_submission_1177_1180",
+    "arxiv_submission_1181_1189",
+    "Manuscript 1_12Feb2026",
+    "_audit_outputs",
+    "*.PRE_*",
+    "*.POST_*",
+    "*.BROKEN_*",
+    "*.TRUNCATED*",
+    "*.CORRUPTED_*",
+    "Gold_Standard_*",
+    "99system_*",
+    "Core",
+    "uqff_pure_calculator_Test.py",
+    "*_backup*",
+    "*_BACKUP*",
+    "RESTORE_POINT_*",
+    "build", "dist", ".venv", ".git", "__pycache__",
+    "_crosscheck_harness.cpp",
+    "notebooks",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = [
+    "E501",
+    "E701",
+    "E731",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"uqff_pure_calculator.py" = ["E", "F", "W"]
+"uqff_jupyter.py" = ["F401"]
+"uqff_api.py" = ["F401"]
+"uqff_cli.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+exclude = [
+    "uqff_pure_calculator.py",
+    "Gold_Standard_.*",
+    "99system_.*",
+    "whitepapers",
+    "formal",
+    "arxiv_submission_.*",
+    "Manuscript 1_12Feb2026",
+    "_audit_outputs",
+]

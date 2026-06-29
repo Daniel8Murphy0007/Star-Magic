@@ -1,0 +1,37 @@
+================================================================================
+SESSION 703 -- c-chain 2-loop coefficient on layered M_BSFG bundle
+================================================================================
+  small parameter (locked from S702): delta_c        = 1/1440 = 6.944444e-04
+  2-loop coefficient (forward-derived this slot):
+     c_2^(c) = Phi_res * (D_phys/D_BSFG) * pi^2
+            = (5/6)   * (4/6)            * pi^2
+            = (5/9)   * pi^2
+            = 5.4831135562
+  geometric decomposition:
+     two-winding on S^1_DPM = pi^2          = 9.869604
+     resonance phase / cycle = Phi_res      = 0.833333
+     D_phys / D_BSFG projection             = 0.666667
+--------------------------------------------------------------------------------
+  c_tree-R (S702, 1-loop)                   = 2.997917e+08 m/s
+  c_2loop  (S703, +c_2*delta_c^2 tail)      = 2.997925e+08 m/s
+  c_CODATA (exact)                          = 2.997925e+08 m/s
+  residual S702 (1-loop)                    = -2.6396 ppm
+  residual S703 (2-loop)                    = +0.006475 ppm
+                                            = +6.475 ppb
+  improvement factor (1-loop -> 2-loop)     = 407.7x
+--------------------------------------------------------------------------------
+  predicted 2-loop tail   = c_2^(c) * delta_c^2     = 2.644248e-06
+  observed gap left by S702                          = 2.637778e-06
+  tail / gap match                                   = +0.2453 %
+--------------------------------------------------------------------------------
+  candidate 2-loop coefficients tested:
+    Phi_res*(D_phys/D_BSFG)*pi^2 = 5pi^2/9          tail= 2.6442 ppm  d=   +6.47 ppb  <-- adopted
+    SSq * pi^2 = 0.57*pi^2                          tail= 2.7130 ppm  d=  +75.22 ppb
+    K_Mex * 2 = 25/6                                tail= 2.0094 ppm  d= -628.39 ppb
+    pi^2 / 2                                        tail= 2.3798 ppm  d= -257.95 ppb
+    (D_phys-1) * pi^2 / D_BSFG = pi^2/2             tail= 2.3798 ppm  d= -257.95 ppb
+  best low-order match                      = Phi_res*(D_phys/D_BSFG)*pi^2 = 5pi^2/9
+================================================================================
+c2_coefficient_geometric: predicted=5.483113556e+00 observed=5.469696000e+00 error_pct=0.245307 status=OK
+c_2loop_layered_dpm: predicted=2.997925e+08 observed=2.997925e+08 error_pct=0.000000648 status=OK
+Artifact written: _session703_c_2loop_result.json

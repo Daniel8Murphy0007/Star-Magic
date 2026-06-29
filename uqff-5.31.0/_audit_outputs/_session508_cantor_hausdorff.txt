@@ -1,0 +1,1 @@
+S508 COMPLETE. Cantor Hausdorff dim = 0.635000; closure = SSq+F*Phi_res-F^2*Phi_res-F^2; target 0.630930; match 0.6451%.

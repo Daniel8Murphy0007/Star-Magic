@@ -1,0 +1,15 @@
+========================================================================
+qcalcgeom_core_derivation.py — Self-Tests
+========================================================================
+  [PASS] Test 1: r_cross = 1.476923e-08 m
+  [PASS] Test 2: (26!)^{-1/13} = 8.982845311690616e-03
+  [PASS] Test 3: S₂₆⁽³⁾ = 9.500000e-02
+  [PASS] Test 4: Φ(Γ₀) = 9.500000e-02 ≈ S₂₆⁽³⁾
+  [PASS] Test 5: QCalcGeom = 1.197344e-12 m
+  [PASS] Test 6: Dimensional proof valid → [m]
+  [PASS] Test 7: QCalcGeom peaks at Γ = 0.10 THz
+  [PASS] Test 8: QCalcGeom(2M)/QCalcGeom(M) = 2.0000 ≈ 2.0
+  [PASS] Test 9: KK eigenvalues match [26, 54, 84, 116, 150]
+  [PASS] Test 10: All outputs contain primary_equations
+
+  qcalcgeom_core_derivation.py: 10/10 tests passed

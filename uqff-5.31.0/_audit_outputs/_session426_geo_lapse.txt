@@ -1,0 +1,1 @@
+S426 COMPLETE. Gamma_d = 9.8067 K/km; target 9.8; match 0.0680%.

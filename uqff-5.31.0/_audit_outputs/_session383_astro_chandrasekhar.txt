@@ -1,0 +1,1 @@
+S383 COMPLETE. M_Ch = F_TRZ*D_phys^2*(1-F_TRZ) = 1.4400 M_sun; obs (textbook, mu_e=2) = 1.44; match 0.0000%.

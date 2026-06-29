@@ -1,0 +1,19 @@
+Session 242 — Λ closure verification
+============================================================
+[SSq]               = 0.57
+Ω_Λ = (6/5)·[SSq]   = 0.6840   (Planck 2018: 0.6847, 0.102% off)
+
+Formula:  Λ = (18/5) · [SSq] · H_0² / c²
+
+  H_0 = 2.184e-18 s^-1   (Planck H_0 (67.4 km/s/Mpc))
+    Λ = 1.0890e-52 m^-2
+      vs Planck 2018  (1.089e-52): 0.002% off
+      vs Planck+DESI  (1.114e-52): 2.246% off
+
+  H_0 = 2.268e-18 s^-1   (UQFF cosmic H_0 (t_Hubble^-1))
+    Λ = 1.1744e-52 m^-2
+      vs Planck 2018  (1.089e-52): 7.838% off
+      vs Planck+DESI  (1.114e-52): 5.418% off
+
+Conclusion: Planck H_0 anchor closes Λ at <0.1% off CODATA.
+Test C from AXIOMS Theorem 6 → CLOSED parameter-free.

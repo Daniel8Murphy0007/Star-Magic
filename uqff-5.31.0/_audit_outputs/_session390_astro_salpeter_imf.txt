@@ -1,0 +1,1 @@
+S390 COMPLETE. alpha_Salpeter = K_Mex+Phi_res-F_TRZ*D_BSFG+F_TRZ^2*(D_phys-Phi_res) = 2.3483; obs (Salpeter 1955) = 2.35; match 0.071%.

@@ -1,0 +1,1 @@
+S538 COMPLETE. ln 10 = 2.302667; closure = K_Mex+F*K_Mex+F^2+F^3; target 2.302585; match 0.0035%.

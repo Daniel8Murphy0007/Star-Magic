@@ -1,0 +1,1 @@
+S399 COMPLETE. zeta(3) closure = Phi_res+F_TRZ*D_phys-F_TRZ^2*Phi_res*D_phys = 1.2000; obs (Apery) = 1.2021; match 0.171%.

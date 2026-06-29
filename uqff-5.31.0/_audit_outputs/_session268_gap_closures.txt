@@ -1,0 +1,80 @@
+========================================================================
+Session 268 -- Close the 4 foundational gaps
+========================================================================
+
+--- GAP 2: Length scale ---
+  Candidates and best-fit SM length match:
+    V_SCm/f_THz                         = 8.0000e-05 m
+    c*hbar/E_0 (Compton-of-E_0)         = 3.1579e-06 m
+    (hbar*c/rho_UA)^(1/2)               = 6.6738e+04 m
+    (hbar*c/rho_SCm)^(1/2)              = 2.1105e+05 m
+
+  Reduced Compton of E_0:  hbar*c/E_0   = 3.1579e-06 m
+  Full Compton of E_0:    h*c/E_0        = 1.9842e-05 m
+    SM Bohr a_0                          = 5.2918e-11 m
+    Ratio  a_0 / (hbar*c/E_0)            = 0.0000
+
+  If L_SCm := V_SCm/f_THz, then a_0/L_SCm = 6.614715e-07
+    (no obvious structural match yet)
+
+--- GAP 1: Mass scale ---
+  E_0 / c^2              = 1.1111e-37 kg
+  hbar*f_THz / c^2       = 1.4620e-39 kg
+  rho_UA*L_meso^3 / c^2  = 4.0334e-65 kg
+  SM m_e                  = 9.1094e-31 kg
+  SM m_p                  = 1.6726e-27 kg
+
+  m_e c^2 / E_0 = 8.1984e+06
+  Closest structural matches to m_e*c^2/E_0:
+    D_crit^5                  = 1.1881e+07   delta = +44.92%
+    (4sqrtpi)^7               = 9.0042e+05   delta = -89.02%
+    A5^2 * D_BSFG^2/SSq       = 2.2737e+05   delta = -97.23%
+    A5^3                      = 2.1600e+05   delta = -97.37%
+    D_crit^5/SSq              = 2.0845e+07   delta = +154.25%
+
+  Best: m_e = D_crit^5 * E_0/c^2 = 1.3202e-30 kg
+  Residual vs SM m_e: 44.9223%
+  Status: OPEN
+
+--- GAP 3: Temperature anchor (k_B) ---
+  Wien T at f_THz peak                  = 21.2266 K
+  SM T_CMB                              = 2.7255 K
+  rho_A / T_CMB = 3.6691e-24  (units: J/(m^3 K), wrong)
+  E_0 / k_B (SM) = 724.30 K   <-- LENR coherence T?
+  Closest LENR onset T ~ 600-800 K -- order-of-magnitude match
+
+--- GAP 4: Charge / eps_0 anchor ---
+  e^2/eps_0 (UQFF closed)  = 2.8966e-27
+  e^2/eps_0 (SM)            = 2.8992e-27
+  Residual                  = 0.0886%
+  --> The COMBINATION e^2/eps_0 is closed by alpha+hbar+c.
+  --> Splitting it into e and eps_0 separately requires
+      ONE charge anchor (e OR eps_0 OR mu_0).
+
+========================================================================
+GAP CLOSURE STATUS
+========================================================================
+  GAP 1 (mass)         : OPEN    m_e via D_crit^5  (44.922%)
+  GAP 2 (length)       : SPLIT -- meso CLOSED, atomic OPEN
+     L_SCm = V_SCm/f_THz = 8e-5 m  (meso coherence)
+  GAP 3 (temperature)  : OPEN
+     candidate T_SCm = E_0/k_B = 724.3 K
+  GAP 4 (charge)       : COLLAPSED to 1 anchor
+     e^2/eps_0 closed at 0.09%; need ONE of {e, eps_0, mu_0}.
+
+NET RESULT after S268:
+  Closed from System II alone:
+     c, hbar, alpha, m_p/m_e, a_0/r_p, rho_Lambda, F_U, e^2/eps_0
+  Honest assessment:
+     - mass: m_e structural prefactor search FAILED (best 45% off)
+       Mass + atomic-length are coupled via Compton; need one anchor.
+     - temperature: no closure from anchors; need 1 T anchor.
+     - charge:  e^2/eps_0 CLOSED (0.09%); only 1 sub-anchor needed.
+  Total NEW anchors needed:  3
+     1) mass-or-length anchor  (atomic scale)
+     2) temperature anchor
+     3) charge anchor
+  Total anchor budget:       9 + 3 = 12
+  Distance from LEVEL_13:    1 anchor short of D_crit/2
+
+Wrote _session268_gap_closures.json

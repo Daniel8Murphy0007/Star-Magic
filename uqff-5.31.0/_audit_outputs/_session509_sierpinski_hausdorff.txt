@@ -1,0 +1,1 @@
+S509 COMPLETE. Sierpinski Hausdorff dim = 1.583333; closure = 2*Phi_res - F*Phi_res = 19/12; target 1.584963; match 0.1028%.

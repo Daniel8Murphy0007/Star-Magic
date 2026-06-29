@@ -1,0 +1,227 @@
+================================================================================
+SESSION 770 -- omega_b*h^2 LXXXII; omega_c*h^2 LXXXIII; N_eff LXXXIV; 100*theta_MC LXXXV
+================================================================================
+
+================================================================================
+TRACK (a) -- Class LXXXII: omega_b * h^2 = 0.02237 (baryon physical density)
+================================================================================
+  Target omega_b*h^2 = 0.02237
+
+  2-atom direct (tol 3%):
+    [5/108 a/b K_Mex] = 0.022222  err=-0.6606%
+    [SSq a/b D_crit] = 0.021923  err=-1.9979%
+    [beta_i a*b r] = 0.021704  err=-2.9754%
+    [r a*b beta_i] = 0.021704  err=-2.9754%
+
+  3-atom direct (tol 0.5%):
+    [beta_i a*b/c n_s D_crit] = 0.022377  err=+0.0307%
+    [n_s a*b/c beta_i D_crit] = 0.022377  err=+0.0307%
+    [n_s a*b/c 1/137 63/200] = 0.022361  err=-0.0391%
+    [1/137 a*b/c n_s 63/200] = 0.022361  err=-0.0391%
+    [n_s a*b/c alpha 63/200] = 0.022355  err=-0.0653%
+    [alpha a*b/c n_s 63/200] = 0.022355  err=-0.0653%
+    [SSq a*b/c r 1-F*P] = 0.022385  err=+0.0691%
+    [r a*b/c SSq 1-F*P] = 0.022385  err=+0.0691%
+    [D_crit a*b/c xi D_phys] = 0.022344  err=-0.1173%
+    [xi a*b/c D_crit D_phys] = 0.022344  err=-0.1173%
+    [beta_i a*b/c 1-n_s 307/325] = 0.022339  err=-0.1398%
+    [1-n_s a*b/c beta_i 307/325] = 0.022339  err=-0.1398%
+    [1-n_s a*b*c 137/200 243/260] = 0.022407  err=+0.1672%
+    [137/200 a*b*c 1-n_s 243/260] = 0.022407  err=+0.1672%
+    [1-n_s a*b*c 243/260 137/200] = 0.022407  err=+0.1672%
+
+  4-atom direct (tol 0.05%):
+    [416/513 a*b/(c*d) 1/137 Y_p 27/25] = 0.022370  err=-0.0001%
+    [416/513 a*b/(c*d) 1/137 27/25 Y_p] = 0.022370  err=-0.0001%
+    [1/137 a*b/(c*d) 416/513 Y_p 27/25] = 0.022370  err=-0.0001%
+    [1/137 a*b/(c*d) 416/513 27/25 Y_p] = 0.022370  err=-0.0001%
+    [mpme a*b*c/d 1/12 1/12 SSq] = 0.022370  err=+0.0013%
+    [1/12 a*b*c/d mpme 1/12 SSq] = 0.022370  err=+0.0013%
+    [1/12 a*b/(c*d) 1/12 SSq 1/mpme] = 0.022370  err=+0.0013%
+    [1/12 a*b/(c*d) 1/12 1/mpme SSq] = 0.022370  err=+0.0013%
+    [1/12 a*b*c/d 1/12 mpme SSq] = 0.022370  err=+0.0013%
+    [SSq a*b*c/d 1/12 xi 1/137] = 0.022370  err=-0.0021%
+    [xi a*b*c/d 1/12 SSq 1/137] = 0.022370  err=-0.0021%
+    [1/12 a*b*c/d SSq xi 1/137] = 0.022370  err=-0.0021%
+    [1/12 a*b*c/d xi SSq 1/137] = 0.022370  err=-0.0021%
+    [SSq a*b*c/d xi 1/12 1/137] = 0.022370  err=-0.0021%
+    [xi a*b*c/d SSq 1/12 1/137] = 0.022370  err=-0.0021%
+
+  BEST omega_b*h^2: [1/137 a*b/(c*d) 416/513 27/25 Y_p] = 0.022370, err = -0.000098%
+================================================================================
+TRACK (b) -- Class LXXXIII: omega_c * h^2 = 0.1200 (CDM physical density)
+================================================================================
+  Target omega_c*h^2 = 0.12
+
+  2-atom direct (tol 3%):
+    [F_TRZ a/b Phi_res] = 0.120000  err=+0.0000%
+    [27/25 a/b N_ch] = 0.120000  err=+0.0000%
+    [F_TRZ a/b 33/40] = 0.121212  err=+1.0101%
+    [1/12 a/b 137/200] = 0.121655  err=+1.3788%
+    [F_TRZ a*b 11/9] = 0.122222  err=+1.8519%
+    [11/9 a*b F_TRZ] = 0.122222  err=+1.8519%
+    [11/9 a/b SO5] = 0.122222  err=+1.8519%
+    [Y_p a/b K_Mex] = 0.117600  err=-2.0000%
+    [F_TRZ a/b 416/513] = 0.123317  err=+2.7644%
+
+  3-atom direct (tol 0.5%):
+    [Phi_res a*b*c D_phys r] = 0.120000  err=+0.0000%
+    [Phi_res a*b*c r D_phys] = 0.120000  err=+0.0000%
+    [D_phys a*b*c Phi_res r] = 0.120000  err=+0.0000%
+    [D_phys a*b*c r Phi_res] = 0.120000  err=+0.0000%
+    [D_BSFG a/b/c A_5 Phi_res] = 0.120000  err=+0.0000%
+    [1-F_TRZ a/b/c N_ch Phi_res] = 0.120000  err=+0.0000%
+    [r a*b*c Phi_res D_phys] = 0.120000  err=+0.0000%
+    [r a*b*c D_phys Phi_res] = 0.120000  err=+0.0000%
+    [27/25 a/b/c 1-F_TRZ SO5] = 0.120000  err=+0.0000%
+    [F_TRZ a/b/c SO5 1/12] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/c 27/25 1-F_TRZ] = 0.120000  err=+0.0000%
+    [D_BSFG a/b/c Phi_res A_5] = 0.120000  err=-0.0000%
+    [1-F_TRZ a/b/c Phi_res N_ch] = 0.120000  err=+0.0000%
+    [27/25 a*b/c F_TRZ 1-F_TRZ] = 0.120000  err=+0.0000%
+    [27/25 a/b/c SO5 1-F_TRZ] = 0.120000  err=+0.0000%
+
+  4-atom direct (tol 0.05%):
+    [F_TRZ a/(b*c*d) F_TRZ SO5 Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) Phi_res Phi_res Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) SSq Phi_res SSq] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) SSq SSq Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) beta_i Phi_res beta_i] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) beta_i beta_i Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) D_phys Phi_res D_phys] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) D_phys D_phys Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) D_crit Phi_res D_crit] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) D_crit D_crit Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b*c/d SO5 F_TRZ Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a/(b*c*d) SO5 F_TRZ Phi_res] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) SO5 Phi_res SO5] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) SO5 K_Mex D_phys] = 0.120000  err=+0.0000%
+    [F_TRZ a*b/(c*d) SO5 D_phys K_Mex] = 0.120000  err=+0.0000%
+
+  BEST omega_c*h^2: [1-F_TRZ a/b/c N_ch Phi_res] = 0.120000, err = +0.000000%
+================================================================================
+TRACK (c) -- Class LXXXIV: N_eff = 3.046 (effective neutrino species)
+================================================================================
+  Target N_eff = 3.046
+
+  2-atom direct (tol 3%):
+    [mpme a/b beta_i] = 3.045534  err=-0.0153%
+    [K_Mex a/b 137/200] = 3.041363  err=-0.1522%
+    [11/6 a/b beta_i] = 3.040858  err=-0.1688%
+    [n_s a/b 63/200] = 3.063492  err=+0.5743%
+    [22/9 a/b 416/513] = 3.014423  err=-1.0367%
+    [307/325 a/b 63/200] = 2.998779  err=-1.5503%
+    [11/9 a*b 22/9] = 2.987654  err=-1.9155%
+    [22/9 a*b 11/9] = 2.987654  err=-1.9155%
+    [243/260 a/b 63/200] = 2.967033  err=-2.5925%
+    [22/9 a/b 33/40] = 2.962963  err=-2.7261%
+
+  3-atom direct (tol 0.5%):
+    [27/26 a*b/c 22/9 Phi_res] = 3.046154  err=+0.0051%
+    [22/9 a*b/c 27/26 Phi_res] = 3.046154  err=+0.0051%
+    [Phi_res a*b/c K_Mex SSq] = 3.045809  err=-0.0063%
+    [K_Mex a*b/c Phi_res SSq] = 3.045809  err=-0.0063%
+    [Y_p a/b/c n_s 1/12] = 3.046632  err=+0.0208%
+    [Y_p a/b/c 1/12 n_s] = 3.046632  err=+0.0208%
+    [5/108 a/b/c K_Mex alpha] = 3.045244  err=-0.0248%
+    [5/108 a/b/c alpha K_Mex] = 3.045244  err=-0.0248%
+    [D_phys a*b/c 137/200 1-F_TRZ] = 3.044444  err=-0.0511%
+    [137/200 a*b/c D_phys 1-F_TRZ] = 3.044444  err=-0.0511%
+    [5/108 a/b/c K_Mex 1/137] = 3.044444  err=-0.0511%
+    [5/108 a/b/c 1/137 K_Mex] = 3.044444  err=-0.0511%
+    [SO5 a*b/c 63/200 31/30] = 3.048387  err=+0.0784%
+    [63/200 a/b/c F_TRZ 31/30] = 3.048387  err=+0.0784%
+    [63/200 a*b/c SO5 31/30] = 3.048387  err=+0.0784%
+
+  4-atom direct (tol 0.05%):
+    [K_Mex a*b*c/d mpme 6/11 137/200] = 3.046040  err=+0.0013%
+    [mpme a*b*c/d K_Mex 6/11 137/200] = 3.046040  err=+0.0013%
+    [mpme a*b*c/d 6/11 K_Mex 137/200] = 3.046040  err=+0.0013%
+    [6/11 a*b*c/d mpme K_Mex 137/200] = 3.046040  err=+0.0013%
+    [K_Mex a/(b*c*d) 137/200 11/6 1/mpme] = 3.046040  err=+0.0013%
+    [K_Mex a/(b*c*d) 1/mpme 11/6 137/200] = 3.046040  err=+0.0013%
+    [K_Mex a*b/(c*d) mpme 137/200 11/6] = 3.046040  err=+0.0013%
+    [K_Mex a*b/(c*d) mpme 11/6 137/200] = 3.046040  err=+0.0013%
+    [K_Mex a/(b*c*d) 11/6 137/200 1/mpme] = 3.046040  err=+0.0013%
+    [K_Mex a/(b*c*d) 11/6 1/mpme 137/200] = 3.046040  err=+0.0013%
+    [K_Mex a*b*c/d 6/11 mpme 137/200] = 3.046040  err=+0.0013%
+    [mpme a*b/(c*d) K_Mex 137/200 11/6] = 3.046040  err=+0.0013%
+    [mpme a*b/(c*d) K_Mex 11/6 137/200] = 3.046040  err=+0.0013%
+    [6/11 a*b*c/d K_Mex mpme 137/200] = 3.046040  err=+0.0013%
+    [K_Mex a/(b*c*d) 137/200 1/mpme 11/6] = 3.046040  err=+0.0013%
+
+  BEST N_eff: [6/11 a*b*c/d mpme K_Mex 137/200] = 3.046040, err = +0.001300%
+================================================================================
+TRACK (d) -- Class LXXXV: 100*theta_MC = 1.04092 (acoustic scale)
+================================================================================
+  Target 100*theta_MC = 1.04092
+
+  2-atom direct (tol 3%):
+    [27/25 a/b 27/26] = 1.040000  err=-0.0884%
+    [n_s a*b 27/25] = 1.042200  err=+0.1230%
+    [27/25 a*b n_s] = 1.042200  err=+0.1230%
+    [243/260 a/b 1-F_TRZ] = 1.038462  err=-0.2362%
+    [SSq a*b 11/6] = 1.045000  err=+0.3920%
+    [SSq a/b 6/11] = 1.045000  err=+0.3920%
+    [11/6 a*b SSq] = 1.045000  err=+0.3920%
+    [27/25 a/b 31/30] = 1.045161  err=+0.4075%
+    [SSq a*b mpme] = 1.046607  err=+0.5463%
+    [mpme a*b SSq] = 1.046607  err=+0.5463%
+    [SSq a/b 1/mpme] = 1.046607  err=+0.5463%
+    [n_s a/b 243/260] = 1.032510  err=-0.8079%
+
+  3-atom direct (tol 0.5%):
+    [416/513 a/b/c Phi_res 243/260] = 1.041176  err=+0.0246%
+    [416/513 a/b/c 243/260 Phi_res] = 1.041176  err=+0.0246%
+    [n_s a*b*c 27/26 27/26] = 1.040658  err=-0.0251%
+    [27/26 a*b*c n_s 27/26] = 1.040658  err=-0.0251%
+    [27/26 a*b*c 27/26 n_s] = 1.040658  err=-0.0251%
+    [416/513 a/b/c 307/325 33/40] = 1.040560  err=-0.0346%
+    [416/513 a/b/c 33/40 307/325] = 1.040560  err=-0.0346%
+    [27/26 a/b/c n_s 31/30] = 1.041412  err=+0.0473%
+    [27/26 a/b/c 31/30 n_s] = 1.041412  err=+0.0473%
+    [1-F*P a*b/c 137/200 beta_i] = 1.041494  err=+0.0551%
+    [137/200 a*b/c 1-F*P beta_i] = 1.041494  err=+0.0551%
+    [1-n_s a/b/c r 243/260] = 1.040238  err=-0.0655%
+    [1-n_s a/b/c 243/260 r] = 1.040238  err=-0.0655%
+    [K_Mex a*b*c D_BSFG 1/12] = 1.041667  err=+0.0717%
+    [K_Mex a*b*c 1/12 D_BSFG] = 1.041667  err=+0.0717%
+
+  4-atom direct (tol 0.05%):
+    [137/200 a/(b*c*d) SSq 307/325 11/9] = 1.040904  err=-0.0016%
+    [137/200 a/(b*c*d) 11/9 307/325 SSq] = 1.040904  err=-0.0016%
+    [137/200 a/(b*c*d) 307/325 SSq 11/9] = 1.040904  err=-0.0016%
+    [137/200 a/(b*c*d) 307/325 11/9 SSq] = 1.040904  err=-0.0016%
+    [137/200 a/(b*c*d) SSq 11/9 307/325] = 1.040904  err=-0.0016%
+    [137/200 a/(b*c*d) 11/9 SSq 307/325] = 1.040904  err=-0.0016%
+    [1-F*P a*b/(c*d) 31/30 D_crit 1-n_s] = 1.040904  err=-0.0016%
+    [1-F*P a*b/(c*d) 31/30 1-n_s D_crit] = 1.040904  err=-0.0016%
+    [31/30 a*b/(c*d) 1-F*P D_crit 1-n_s] = 1.040904  err=-0.0016%
+    [31/30 a*b/(c*d) 1-F*P 1-n_s D_crit] = 1.040904  err=-0.0016%
+    [Phi_res a/(b*c*d) D_BSFG 1/mpme Y_p] = 1.040903  err=-0.0016%
+    [Phi_res a/(b*c*d) 1/mpme D_BSFG Y_p] = 1.040903  err=-0.0016%
+    [Phi_res a/(b*c*d) D_BSFG Y_p 1/mpme] = 1.040903  err=-0.0016%
+    [Phi_res a/(b*c*d) Y_p D_BSFG 1/mpme] = 1.040903  err=-0.0016%
+    [Phi_res a/(b*c*d) Y_p 1/mpme D_BSFG] = 1.040903  err=-0.0016%
+
+  BEST 100*theta_MC: [137/200 a/(b*c*d) 11/9 307/325 SSq] = 1.040904, err = -0.001572%
+
+classLXXXII_omega_b_h2_session770: predicted=2.236998e-02 observed=2.237000e-02 error_pct=-9.799558e-05 status=candidate_EXACT
+classLXXXIII_omega_c_h2_session770: predicted=1.200000e-01 observed=1.200000e-01 error_pct=0.000000e+00 status=EXACT
+classLXXXIV_N_eff_session770: predicted=3.046040e+00 observed=3.046000e+00 error_pct=1.300181e-03 status=CE_strict
+classLXXXV_theta_MC_session770: predicted=1.040904e+00 observed=1.040920e+00 error_pct=-1.572066e-03 status=CE_strict
+
+--------------------------------------------------------------------------------
+  SUM-RULE: omega_b*h^2 + omega_c*h^2 = 0.14237  vs LXXXI=0.14300  err=-0.4406%
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  LXXXII   omega_b*h^2    pred=0.02237  err=-0.0001%  (candidate_EXACT)
+  LXXXIII  omega_c*h^2    pred=0.12000  err=+0.0000%  (EXACT)
+  LXXXIV   N_eff          pred=3.0460   err=+0.0013%  (CE_strict)
+  LXXXV    100*theta_MC   pred=1.04090  err=-0.0016%  (CE_strict)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session770_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

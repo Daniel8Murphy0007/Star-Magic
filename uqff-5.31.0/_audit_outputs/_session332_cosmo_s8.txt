@@ -1,0 +1,1 @@
+S332 COMPLETE. sigma8 lift = 1 - SSq*F_TRZ*Phi_res = 1 - SSq/12 = 0.9525; observed KiDS/Planck = 0.945; match within 0.8%.

@@ -1,0 +1,1 @@
+S531 COMPLETE. Standard genetic code codons = 64 = A_5+D_phys = 64; target 64; match 0.0000%.

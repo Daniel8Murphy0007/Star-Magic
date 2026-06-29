@@ -1,0 +1,7 @@
+S204-GW-chirp-equal-mass: 0.870550563296 vs 0.870550563296 -> EXACT
+S204-GW-quadrupole-coeff: 12.8 vs 12.8 -> EXACT
+S204-CP2-gap-operations: 33 vs 33 -> EXACT
+S204-BHpairs-placeholder-gone: 1 vs 1 -> EXACT
+S204-Ug-sum-linearity-dim: 4 vs 4 -> EXACT
+S204-GW-merger-time-ratio: 0.125 vs 0.125 -> EXACT
+S204-GW-chirp-equal-mass: 0.870550563296 vs 0.870550563296 -> EXACT

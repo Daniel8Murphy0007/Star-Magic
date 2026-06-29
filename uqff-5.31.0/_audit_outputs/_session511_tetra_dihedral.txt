@@ -1,0 +1,1 @@
+S511 COMPLETE. Tetrahedron dihedral (deg/100) = 0.709833; closure = Phi_res-F*Phi_res-F^2*K-F^2*Phi_res-F^3-F^2; target 0.705288; match 0.6445%.

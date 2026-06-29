@@ -1,0 +1,8 @@
+WKB-1-Mayan-Baktun: 144000 vs 144000 -> EXACT
+WKB-2-Mayan-Long-Count: 1872000 vs 1872000 -> EXACT
+WKB-3-Biblical-generation: 40 vs 40 -> EXACT
+WKB-4-Epoch-5-zero-point-cycle: 21600 vs 21600 -> EXACT
+WKB-5-PI-decoder:-digit-sum-of-first-10-digits: 39 vs 39 -> EXACT
+WKB-6-Bosonic-string-D_crit-from-(D-2)/24: 26 vs 26 -> EXACT
+WKB-7-D_phys: 4 vs 4 -> EXACT
+WKB-1-Mayan-Baktun: 144000 vs 144000 -> EXACT

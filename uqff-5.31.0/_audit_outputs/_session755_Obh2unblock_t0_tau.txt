@@ -1,0 +1,140 @@
+================================================================================
+SESSION 755 -- Omega_b h^2 UNBLOCK; t_0; tau
+================================================================================
+New atoms: 1/mpme=5.446170e-01, alpha=7.297353e-03, 1/137=7.299270e-03
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Omega_b h^2 UNBLOCK with QED atoms
+--------------------------------------------------------------------------------
+  S753 base = 0.02237049, err = +0.002175%
+  delta needed = -2.1754e-05  (very small)
+
+  Direct 3-atom on Obh2 (tol 0.005%, with new atoms):
+
+  Direct 4-atom on Obh2 (tol 0.001%, strict CE):
+    [416/513 a*b/(c*d) 1/137 Y_p 27/25] = 0.02236998  err=-0.000098%
+    [416/513 a*b/(c*d) 1/137 27/25 Y_p] = 0.02236998  err=-0.000098%
+    [1/137 a*b/(c*d) 416/513 Y_p 27/25] = 0.02236998  err=-0.000098%
+    [1/137 a*b/(c*d) 416/513 27/25 Y_p] = 0.02236998  err=-0.000098%
+
+  2-atom delta on S753 base (tol 0.005%):
+
+  3-atom delta on S753 base (tol 0.001%):
+
+  BEST Omega_b h^2: [416/513 a*b/(c*d) 1/137 Y_p 27/25] = 0.02236998, err = -0.000098%
+  STATUS: UNBLOCKED
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XL: age of universe t_0
+--------------------------------------------------------------------------------
+  observed t_0 = 13.797 Gyr, t_H = 14.4517 Gyr
+  t_0/t_H = 0.95469737
+  Class XIX seed (0.967): t_0 = 13.9748 Gyr, err = +1.2886%
+
+  2-atom direct on t_0/t_H = 0.9547 (tol 1%):
+    t_H*[1/mpme a/b SSq] = 13.8081 Gyr  err=+0.080768%
+    t_H*[1-F_TRZ a/b 307/325] = 13.7691 Gyr  err=-0.202016%
+    t_H*[31/30 a/b 27/25] = 13.8272 Gyr  err=+0.219206%
+    t_H*[1-F*P a*b 27/26] = 13.7569 Gyr  err=-0.290594%
+    t_H*[27/26 a*b 1-F*P] = 13.7569 Gyr  err=-0.290594%
+    t_H*[1-F*P a/b n_s] = 13.7279 Gyr  err=-0.501073%
+    t_H*[27/26 a/b 27/25] = 13.8959 Gyr  err=+0.716572%
+    t_H*[1-F*P a*b 31/30] = 13.6890 Gyr  err=-0.782986%
+    t_H*[31/30 a*b 1-F*P] = 13.6890 Gyr  err=-0.782986%
+    t_H*[1-F_TRZ a/b 243/260] = 13.9165 Gyr  err=+0.865781%
+    t_H*[SSq a/b beta_i] = 13.6631 Gyr  err=-0.970669%
+
+  3-atom direct on t_0/t_H (tol 0.3%):
+    t_H*[307/325 a*b/c 307/325 243/260] = 13.7974 Gyr  err=+0.002620%
+    t_H*[n_s a*b/c 243/260 307/325] = 13.7983 Gyr  err=+0.009095%
+    t_H*[243/260 a*b/c n_s 307/325] = 13.7983 Gyr  err=+0.009095%
+    t_H*[xi a/b/c F_TRZ r] = 13.7994 Gyr  err=+0.017151%
+    t_H*[xi a/b/c r F_TRZ] = 13.7994 Gyr  err=+0.017151%
+    t_H*[SO5 a*b/c xi r] = 13.7994 Gyr  err=+0.017151%
+    t_H*[xi a*b/c SO5 r] = 13.7994 Gyr  err=+0.017151%
+    t_H*[SSq a*b*c 137/200 22/9] = 13.7932 Gyr  err=-0.027657%
+    t_H*[137/200 a*b*c SSq 22/9] = 13.7932 Gyr  err=-0.027657%
+    t_H*[SSq a*b*c 22/9 137/200] = 13.7932 Gyr  err=-0.027657%
+    t_H*[22/9 a*b*c SSq 137/200] = 13.7932 Gyr  err=-0.027657%
+    t_H*[22/9 a*b*c 137/200 SSq] = 13.7932 Gyr  err=-0.027657%
+
+  4-atom direct on t_0/t_H (tol 0.05%):
+    t_H*[Phi_res a*b/(c*d) 416/513 31/30 137/200] = 13.7969 Gyr  err=-0.000465%
+    t_H*[Phi_res a*b/(c*d) 416/513 137/200 31/30] = 13.7969 Gyr  err=-0.000465%
+    t_H*[416/513 a*b/(c*d) Phi_res 31/30 137/200] = 13.7969 Gyr  err=-0.000465%
+    t_H*[416/513 a*b/(c*d) Phi_res 137/200 31/30] = 13.7969 Gyr  err=-0.000465%
+    t_H*[1-F*P a*b*c/d 1-F*P 137/200 beta_i] = 13.7971 Gyr  err=+0.000562%
+    t_H*[1-F*P a*b*c/d 137/200 1-F*P beta_i] = 13.7971 Gyr  err=+0.000562%
+    t_H*[137/200 a*b*c/d 1-F*P 1-F*P beta_i] = 13.7971 Gyr  err=+0.000562%
+    t_H*[xi a*b/(c*d) 11/9 beta_i 1/137] = 13.7971 Gyr  err=+0.000562%
+    t_H*[xi a*b/(c*d) 11/9 1/137 beta_i] = 13.7971 Gyr  err=+0.000562%
+    t_H*[11/9 a*b/(c*d) xi beta_i 1/137] = 13.7971 Gyr  err=+0.000562%
+    t_H*[11/9 a*b/(c*d) xi 1/137 beta_i] = 13.7971 Gyr  err=+0.000562%
+    t_H*[307/325 a*b/(c*d) 307/325 1-F_TRZ 27/26] = 13.7974 Gyr  err=+0.002620%
+    t_H*[307/325 a*b/(c*d) 307/325 27/26 1-F_TRZ] = 13.7974 Gyr  err=+0.002620%
+    t_H*[33/40 a*b/(c*d) 137/200 SSq 27/26] = 13.7974 Gyr  err=+0.003113%
+    t_H*[33/40 a*b/(c*d) 137/200 27/26 SSq] = 13.7974 Gyr  err=+0.003113%
+
+  BEST t_0: t_H*[Phi_res a*b/(c*d) 416/513 31/30 137/200] = 13.7969 Gyr, err = -0.000465%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XLI: tau reionization
+--------------------------------------------------------------------------------
+  observed tau = 0.0544
+  Seed 27/500 = 0.054, err = -0.7353%
+  Seed 11/200 = 0.055, err = +1.1029%
+  Seed (1-n_s)*Phi_res*N_ch = 0.26250, err = +382.5368%
+
+  2-atom direct on tau (tol 1%):
+    [F_TRZ a*b 1/mpme] = 0.054462  err=+0.113423%
+    [1/mpme a*b F_TRZ] = 0.054462  err=+0.113423%
+    [1/mpme a/b SO5] = 0.054462  err=+0.113423%
+
+  3-atom direct on tau (tol 0.3%):
+    [63/200 a/b/c D_BSFG n_s] = 0.054404  err=+0.007620%
+    [63/200 a/b/c n_s D_BSFG] = 0.054404  err=+0.007620%
+    [SSq a*b/c xi r] = 0.054427  err=+0.049786%
+    [xi a*b/c SSq r] = 0.054427  err=+0.049786%
+    [5/108 a/b/c 1-F_TRZ 307/325] = 0.054456  err=+0.103630%
+    [5/108 a/b/c 307/325 1-F_TRZ] = 0.054456  err=+0.103630%
+    [r a/b/c n_s 137/200] = 0.054461  err=+0.111903%
+    [r a/b/c 137/200 n_s] = 0.054461  err=+0.111903%
+    [D_BSFG a*b/c 1/mpme A_5] = 0.054462  err=+0.113423%
+    [1/mpme a*b/c D_BSFG A_5] = 0.054462  err=+0.113423%
+    [1-F_TRZ a*b/c 1/mpme N_ch] = 0.054462  err=+0.113423%
+    [1/mpme a*b/c 1-F_TRZ N_ch] = 0.054462  err=+0.113423%
+    [beta_i a*b/c 416/513 N_ch] = 0.054322  err=-0.142695%
+    [416/513 a*b/c beta_i N_ch] = 0.054322  err=-0.142695%
+    [22/9 a*b/c 5/108 K_Mex] = 0.054321  err=-0.145243%
+
+  4-atom direct on tau (tol 0.05%):
+    [Y_p a*b*c/d 5/108 1-n_s alpha] = 0.054402  err=+0.003718%
+    [5/108 a*b*c/d Y_p 1-n_s alpha] = 0.054402  err=+0.003718%
+    [1-n_s a*b*c/d Y_p 5/108 alpha] = 0.054402  err=+0.003718%
+    [1-n_s a*b*c/d 5/108 Y_p alpha] = 0.054402  err=+0.003718%
+    [Y_p a*b*c/d 1-n_s 5/108 alpha] = 0.054402  err=+0.003718%
+    [5/108 a*b*c/d 1-n_s Y_p alpha] = 0.054402  err=+0.003718%
+    [K_Mex a*b/(c*d) 307/325 beta_i A_5] = 0.054402  err=+0.004224%
+    [K_Mex a*b/(c*d) 307/325 A_5 beta_i] = 0.054402  err=+0.004224%
+    [307/325 a*b/(c*d) K_Mex beta_i A_5] = 0.054402  err=+0.004224%
+    [307/325 a*b/(c*d) K_Mex A_5 beta_i] = 0.054402  err=+0.004224%
+    [SO5 a*b/(c*d) 63/200 A_5 n_s] = 0.054404  err=+0.007620%
+    [SO5 a*b/(c*d) 63/200 n_s A_5] = 0.054404  err=+0.007620%
+    [63/200 a/(b*c*d) F_TRZ A_5 n_s] = 0.054404  err=+0.007620%
+    [63/200 a/(b*c*d) F_TRZ n_s A_5] = 0.054404  err=+0.007620%
+    [63/200 a*b/(c*d) SO5 A_5 n_s] = 0.054404  err=+0.007620%
+
+  BEST tau: [Y_p a*b*c/d 5/108 1-n_s alpha] = 0.054402, err = +0.003718%
+
+classXXXVII_Omega_b_h2_session755: predicted=2.236998e-02 observed=2.237000e-02 error_pct=-9.799558e-05 status=OK
+classXL_t_0_session755: predicted=1.379694e+01 observed=1.379700e+01 error_pct=-4.646324e-04 status=OK
+classXLI_tau_reion_session755: predicted=5.440202e-02 observed=5.440000e-02 error_pct=3.718354e-03 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Omega_b h^2 unblock  err = -0.000098%  (UNBLOCKED)
+  t_0                  err = -0.000465%
+  tau reionization     err = +0.003718%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session755_result.json

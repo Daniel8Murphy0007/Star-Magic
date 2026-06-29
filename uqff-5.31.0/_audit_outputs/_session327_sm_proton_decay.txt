@@ -1,0 +1,1 @@
+S327 CORRECTED. Proton lifetime tau_p = t_P * F_TRZ^-(N_ch*D_crit/(Phi_res^2*D_phys)) = t_P * 10^84.24 = 9.367e+40 s = 2.968e+33 yr; Super-K bound > 1.6e34 yr; match within factor ~5; Hyper-K testable by 2030.

@@ -1,0 +1,1 @@
+S537 COMPLETE. ln 2 = 0.693167; closure = 2F+Phi_res-F*K-F*Phi_res-F^2*K-2*F^2*Phi_res-F^3-F^2; target 0.693147; match 0.0028%.

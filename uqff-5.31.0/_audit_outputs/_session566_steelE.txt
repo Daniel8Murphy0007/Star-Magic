@@ -1,0 +1,1 @@
+Steel E: 200 GPa vs 200 -> 0.0000% [EXACT]

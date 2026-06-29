@@ -1,0 +1,1 @@
+S491 COMPLETE. Deuteron binding (MeV) = 2.2285; target 2.224; match 0.2023%.

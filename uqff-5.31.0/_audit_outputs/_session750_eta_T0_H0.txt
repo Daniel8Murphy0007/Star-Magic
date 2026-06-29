@@ -1,0 +1,181 @@
+================================================================================
+SESSION 750 -- eta_b fine; T_0 retry; H_0 Hubble
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- eta_b fine: (1-n_s)^6 * 208/627
+--------------------------------------------------------------------------------
+  base = 6.098234e-10, err = -0.028957%
+  needed mult = 1.00028965, delta = +2.8965e-04
+
+  3-atom delta search:
+    1+[27/26 a/b/c A_5 A_5]  delta=2.8846e-04  eta=6.1000e-10  err=-0.000119%
+    1+[r a/b/c K_Mex A_5]  delta=2.8800e-04  eta=6.1000e-10  err=-0.000165%
+    1+[r a/b/c A_5 K_Mex]  delta=2.8800e-04  eta=6.1000e-10  err=-0.000165%
+    1+[31/30 a/b/c A_5 A_5]  delta=2.8704e-04  eta=6.1000e-10  err=-0.000261%
+    1+[F_TRZ a*b*c Phi_res xi]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[F_TRZ a*b*c xi Phi_res]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[Phi_res a*b*c F_TRZ xi]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[Phi_res a*b*c xi F_TRZ]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[xi a*b*c F_TRZ Phi_res]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[xi a*b*c Phi_res F_TRZ]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[Phi_res a*b/c xi SO5]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+    1+[xi a*b/c Phi_res SO5]  delta=2.8646e-04  eta=6.1000e-10  err=-0.000319%
+
+  4-atom delta search (tol 0.5%):
+    1+[416/513 a*b*c/d 5/108 5/108 D_BSFG]  delta=2.8968e-04  eta=6.1000e-10  err=+0.000003%
+    1+[5/108 a*b*c/d 416/513 5/108 D_BSFG]  delta=2.8968e-04  eta=6.1000e-10  err=+0.000003%
+    1+[5/108 a*b*c/d 5/108 416/513 D_BSFG]  delta=2.8968e-04  eta=6.1000e-10  err=+0.000003%
+    1+[n_s a*b/(c*d) 27/25 A_5 A_5]  delta=2.8950e-04  eta=6.1000e-10  err=-0.000015%
+    1+[27/25 a*b/(c*d) n_s A_5 A_5]  delta=2.8950e-04  eta=6.1000e-10  err=-0.000015%
+    1+[F_TRZ a*b/(c*d) xi SSq K_Mex]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+    1+[F_TRZ a*b/(c*d) xi K_Mex SSq]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+    1+[xi a*b/(c*d) F_TRZ SSq K_Mex]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+    1+[xi a*b/(c*d) F_TRZ K_Mex SSq]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+    1+[xi a/(b*c*d) SSq K_Mex SO5]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+    1+[xi a/(b*c*d) SSq SO5 K_Mex]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+    1+[xi a/(b*c*d) K_Mex SSq SO5]  delta=2.8947e-04  eta=6.1000e-10  err=-0.000018%
+
+  BEST: eta_b = (1-n_s)^6*(208/627)*base*[1+416/513 a*b*c/d 5/108 5/108 D_BSFG] = 6.1000e-10, err = +0.000003%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- T_0 = 2.7255 K  multi-anchor retry
+--------------------------------------------------------------------------------
+  r1 = lambda_max/L_SCM = 3.044462e-06
+  r2 = T_0*k_B*L_SCM/(h*c) = 6.615463e+04
+  r3 = T_0/T_HC = T_0*L_SCM*k_B/(h*c) = 6.615463e+04
+  r4 = u_CMB/rho_vac_SCM = 5.888295e+22
+
+  4-atom search for r3 = 6.6155e+04 (tol 0.5%):
+    D_BSFG a/(b*c*d) SSq xi 5/108 = 6.6144e+04  err=-0.016757%
+    D_BSFG a/(b*c*d) xi SSq 5/108 = 6.6144e+04  err=-0.016757%
+    D_BSFG a/(b*c*d) xi 5/108 SSq = 6.6144e+04  err=-0.016757%
+    D_BSFG a/(b*c*d) 5/108 xi SSq = 6.6144e+04  err=-0.016757%
+    D_BSFG a/(b*c*d) SSq 5/108 xi = 6.6144e+04  err=-0.016757%
+    D_BSFG a/(b*c*d) 5/108 SSq xi = 6.6144e+04  err=-0.016757%
+    N_ch a*b/(c*d) N_ch 1-n_s 1-n_s = 6.6122e+04  err=-0.048639%
+    SO5 a/(b*c*d) xi r 11/9 = 6.6116e+04  err=-0.058837%
+    SO5 a/(b*c*d) xi 11/9 r = 6.6116e+04  err=-0.058837%
+    SO5 a/(b*c*d) r xi 11/9 = 6.6116e+04  err=-0.058837%
+    SO5 a/(b*c*d) r 11/9 xi = 6.6116e+04  err=-0.058837%
+    SO5 a/(b*c*d) 11/9 xi r = 6.6116e+04  err=-0.058837%
+
+  Trial: (1/F_TRZ)^4 * D_BSFG * 11/10 = 6.6000e+04, err = -0.2337%
+
+  inv_xi = 2.9091e+02, inv_xi^2 = 8.4628e+04
+  Compare r4 = 5.8883e+22
+  A_5^8 = 1.6796e+14, ratio r4/A_5^8 = 3.5057e+08
+  A_5^9 = 1.0078e+16, ratio r4/A_5^9 = 5.8429e+06
+  A_5^10 = 6.0466e+17, ratio r4/A_5^10 = 9.7382e+04
+  A_5^11 = 3.6280e+19, ratio r4/A_5^11 = 1.6230e+03
+  A_5^12 = 2.1768e+21, ratio r4/A_5^12 = 2.7050e+01
+  A_5^13 = 1.3061e+23, ratio r4/A_5^13 = 4.5084e-01
+  A_5^14 = 7.8364e+24, ratio r4/A_5^14 = 7.5140e-03
+  A_5^15 = 4.7018e+26, ratio r4/A_5^15 = 1.2523e-04
+  A_5^12 = 2.1768e+21, r4/A_5^12 = 27.050452
+
+  2-atom search for r4/A_5^12 = 2.7050e+01:
+    D_crit*27/26 = 2.7000e+01  err=-0.1865%
+    27/26*D_crit = 2.7000e+01  err=-0.1865%
+    D_crit/n_s = 2.6943e+01  err=-0.3972%
+    D_crit*31/30 = 2.6867e+01  err=-0.6794%
+    31/30*D_crit = 2.6867e+01  err=-0.6794%
+    n_s/r = 2.6806e+01  err=-0.9053%
+    243/260/1-n_s = 2.6703e+01  err=-1.2834%
+    n_s/1-n_s = 2.7571e+01  err=+1.9259%
+  3-atom:
+    31/30 a/b/c 33/40 5/108 = 2.7055e+01  err=+0.0151%
+    31/30 a/b/c 5/108 33/40 = 2.7055e+01  err=+0.0151%
+    D_crit a*b/c 27/25 27/26 = 2.7040e+01  err=-0.0386%
+    27/25 a*b/c D_crit 27/26 = 2.7040e+01  err=-0.0386%
+    1-F*P a*b/c 31/30 1-n_s = 2.7063e+01  err=+0.0482%
+    31/30 a*b/c 1-F*P 1-n_s = 2.7063e+01  err=+0.0482%
+    416/513 a/b/c Phi_res r = 2.7031e+01  err=-0.0736%
+    416/513 a/b/c r Phi_res = 2.7031e+01  err=-0.0736%
+    D_phys a/b/c Y_p beta_i = 2.7080e+01  err=+0.1092%
+    D_phys a/b/c beta_i Y_p = 2.7080e+01  err=+0.1092%
+
+  3-atom search for r3 = 6.6155e+04 (tol 2%):
+
+  r3 / A_5^2 = 1.8376e+01:  2-atom hits:
+
+  r3 / A_5^3 = 3.0627e-01:  2-atom hits:
+    A_5^3 * (11/9/D_phys) = 6.6000e+04  err base ratio=-0.2337%
+    A_5^3 * (Y_p/416/513) = 6.5260e+04  err base ratio=-1.3531%
+
+  r3 / A_5^4 = 5.1045e-03:  2-atom hits:
+    A_5^4 * (5/108/N_ch) = 6.6667e+04  err base ratio=+0.7740%
+
+  BEST: T_0 = (h*c/(L_SCM*k_B)) * [D_BSFG a/(b*c*d) SSq xi 5/108] = 2.7250 K, err = -0.016757%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XXXIII: H_0 (Hubble)
+--------------------------------------------------------------------------------
+  1/t_H = 67.6611 km/s/Mpc  (natural Hubble unit)
+  H_0(Planck) = 67.4
+  H_0(SH0ES)  = 73.0
+  Planck/natural = 0.99614106
+  SH0ES/natural  = 1.07890649
+
+  H_0(Planck) candidate: (1/t_H)*(1 - (1-n_s)/7)
+    (1 - (1-n_s)/7) = (1 - 1/200) = 199/200 = 0.995000
+    H_0 = 67.3228, err = -0.114548%
+
+  Planck delta search (target mult = 0.99499):
+    needed delta = -3.8589e-03
+    1-F_TRZ/D_crit  delta=3.8462e-03  H_0=67.4009  err=+0.0013%
+    1-1-n_s/N_ch  delta=3.8889e-03  H_0=67.3980  err=-0.0030%
+    1-xi/1-F_TRZ  delta=3.8194e-03  H_0=67.4027  err=+0.0040%
+    1-xi/1-F*P  delta=3.7500e-03  H_0=67.4074  err=+0.0109%
+    1-r/N_ch  delta=4.0000e-03  H_0=67.3905  err=-0.0142%
+    1-xi*27/25  delta=3.7125e-03  H_0=67.4099  err=+0.0147%
+    1-27/25*xi  delta=3.7125e-03  H_0=67.4099  err=+0.0147%
+    1-xi/243/260  delta=3.6780e-03  H_0=67.4122  err=+0.0182%
+  3-atom Planck:
+    1-[K_Mex a/b/c N_ch A_5]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[F_TRZ a*b*c Phi_res 5/108]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[Phi_res a*b*c F_TRZ 5/108]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[K_Mex a/b/c A_5 N_ch]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[F_TRZ a*b*c 5/108 Phi_res]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[Phi_res a*b*c 5/108 F_TRZ]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[Phi_res a*b/c 5/108 SO5]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[xi a/b/c 33/40 27/25]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[xi a/b/c 27/25 33/40]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[5/108 a*b*c F_TRZ Phi_res]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[5/108 a*b*c Phi_res F_TRZ]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+    1-[5/108 a*b/c Phi_res SO5]  delta=3.8580e-03  H_0=67.4001  err=+0.000091%
+
+  SH0ES delta search (target mult = 1.07770):
+    needed delta = +7.8906e-02
+    1+K_Mex/D_crit  delta=8.0128e-02  H_0=73.0827  err=+0.1132%
+  3-atom SH0ES:
+    1+[K_Mex a*b/c 5/108 11/9]  delta=7.8914e-02  H_0=73.0005  err=+0.000709%
+    1+[5/108 a*b/c K_Mex 11/9]  delta=7.8914e-02  H_0=73.0005  err=+0.000709%
+    1+[F_TRZ a*b/c n_s 11/9]  delta=7.8955e-02  H_0=73.0033  err=+0.004454%
+    1+[n_s a*b/c F_TRZ 11/9]  delta=7.8955e-02  H_0=73.0033  err=+0.004454%
+    1+[n_s a/b/c SO5 11/9]  delta=7.8955e-02  H_0=73.0033  err=+0.004454%
+    1+[n_s a/b/c 11/9 SO5]  delta=7.8955e-02  H_0=73.0033  err=+0.004454%
+    1+[F_TRZ a/b/c 27/26 11/9]  delta=7.8788e-02  H_0=72.9920  err=-0.010994%
+    1+[F_TRZ a/b/c 11/9 27/26]  delta=7.8788e-02  H_0=72.9920  err=-0.010994%
+    1+[xi a*b/c 33/40 r]  delta=7.8776e-02  H_0=72.9912  err=-0.012091%
+    1+[33/40 a*b/c xi r]  delta=7.8776e-02  H_0=72.9912  err=-0.012091%
+    1+[K_Mex a*b*c 1-n_s 27/25]  delta=7.8750e-02  H_0=72.9894  err=-0.014505%
+    1+[K_Mex a*b*c 27/25 1-n_s]  delta=7.8750e-02  H_0=72.9894  err=-0.014505%
+
+  BEST Planck: (1/t_H)*[1-K_Mex a/b/c N_ch A_5] = 67.4001, err = +0.000091%
+  BEST SH0ES:  (1/t_H)*[1+K_Mex a*b/c 5/108 11/9] = 73.0005, err = +0.000709%
+
+classXXX_eta_b_session750: predicted=6.100000e-10 observed=6.100000e-10 error_pct=3.005792e-06 status=OK
+classXXXII_T0_CMB_session750: predicted=2.725043e+00 observed=2.725500e+00 error_pct=-1.675659e-02 status=OK
+classXXXIII_H0_Planck_session750: predicted=6.740006e+01 observed=6.740000e+01 error_pct=9.148646e-05 status=OK
+classXXXIII_H0_SH0ES_session750: predicted=7.300052e+01 observed=7.300000e+01 error_pct=7.088466e-04 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  eta_b        err = +0.000003%
+  T_0          err = -0.01675659472249562
+  H_0(Planck)  err = +0.000091%
+  H_0(SH0ES)   err = +0.000709%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session750_eta_T0_H0_result.json

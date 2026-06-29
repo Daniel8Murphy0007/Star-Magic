@@ -1,0 +1,91 @@
+============================================================================
+Session 267 -- EXTENDED CLOSURES + GAP MAP
+Continuation of S266 root closure.
+============================================================================
+
+--- Closure 7: hbar ---
+  System I  (SM):   hbar = 1.054572e-34 J*s
+  System II (UQFF): E_0 / (f_THz * (A5 + D_phys^2))
+                    = 1e-20 / (1250000000000.0 * 76)
+                    = 1.052632e-34 J*s
+  Residual: 0.1840%  [CLOSED]
+
+--- Closure 8: electron Compton consistency check ---
+  lambda_C (SM)        = 2.426310e-12 m
+  lambda_C (UQFF chain)= 2.420171e-12 m
+  Residual: 0.2530%  [CLOSED]
+  Note: still requires m_e as external input.  m_e absolute
+        scale is the first open foundational gap.
+
+--- Closure 9: Rydberg constant consistency check ---
+  R_inf (SM)        = 1.097373e+07 m^-1
+  R_inf (UQFF chain)= 1.100735e+07 m^-1
+  Residual: 0.3064%  [CLOSED]
+
+--- Closure 10: G via Lambda + Einstein equation ---
+  G (SM, CODATA)    = 6.674300e-11 m^3/(kg*s^2)
+  G (UQFF via Lam)  = 6.647807e-11 m^3/(kg*s^2)
+  Residual: 0.3969%  [CLOSED]
+  Note: chains through GR's Einstein-Lambda relation.
+        Pure-anchor closure of G remains OPEN.
+
+--- Closure 11: electron charge e consistency ---
+  e (SM)         = 1.602177e-19 C
+  e (UQFF chain) = 1.601466e-19 C
+  Residual: 0.0443%  [CLOSED]
+  Note: requires eps_0 (vacuum permittivity) as external input.
+        eps_0 is the 'charge anchor' gap.
+
+
+============================================================================
+FOUNDATIONAL GAP MAP
+============================================================================
+
+After S266 + S267, the following are CLOSED from System II alone:
+  - c             (V_SCm anchor)
+  - hbar          (E_0/f_THz with structural 76)
+  - 1/alpha       (4*D_crit + D_BSFG*D_phys + N_ch = 137)
+  - m_p/m_e       (A5^2/2 + D_BSFG^2 = 1836)
+  - a_0/r_p       (chained from above)
+  - rho_Lambda    (48*rho_A absolute prefactor)
+  - F_U           (4-DPM crossing identity = 1)
+
+REMAINING GAPS to close the full SM constant set:
+  GAP 1: Absolute mass scale
+         (m_p or m_e, alone -- not just ratio)
+         Need: anchor with units of [kg] OR closed E/c^2
+
+  GAP 2: Absolute length scale
+         (r_p or a_0 or ell_Planck, alone -- not just ratio)
+         Need: anchor with units of [m] beyond V_SCm/f_THz=8e-5 m
+         Candidate: SCm coherence length L_SCm
+
+  GAP 3: Temperature anchor
+         (for k_B = 1.381e-23 J/K)
+         Need: anchor with units of [K] OR fundamental T_SCm
+         Candidate: T_SCm = E_0/k_B = 724 K (LENR coherence T?)
+
+  GAP 4: Charge anchor
+         (for e, eps_0)
+         Need: anchor with units of [C] OR closed eps_0
+         Candidate: derive eps_0 from rho_vac SCm coupling
+
+WITH 4 new anchors (1 mass, 1 length, 1 temperature, 1 charge)
+ALL remaining SM constants chain through closed ratios.
+
+Total anchor budget after closure:
+  9 (current) + 4 (gap fillers) = 13 = LEVEL_13
+  ** structural coincidence: D_crit / 2 = 13 **
+
+============================================================================
+SUMMARY (S267 only)
+============================================================================
+target                         residual %  status
+--------------------------------------------------------
+hbar                               0.1840  CLOSED
+lambda_C_consistency               0.2530  CLOSED
+Rydberg                            0.3064  CLOSED
+G_via_Lambda                       0.3969  CLOSED
+e_chain                            0.0443  CLOSED
+
+Wrote _session267_extended_closures.json

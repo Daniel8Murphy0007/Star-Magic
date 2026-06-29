@@ -1,0 +1,1 @@
+S395 COMPLETE. L_0 coeff = K_Mex+Phi_res+F_TRZ*D_phys-SSq*F_TRZ+F_TRZ^2*D_phys = 3.2997; obs (pi^2/3) = 3.2899; match 0.298%.

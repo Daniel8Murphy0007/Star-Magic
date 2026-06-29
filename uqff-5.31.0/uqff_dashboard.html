@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>UQFF Calculator — State Dashboard</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 16px; background: #fafbfc; color: #1f2328; }
+  h1 { font-size: 20px; margin: 0 0 4px 0; }
+  .sub { color: #57606a; font-size: 13px; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .card { background: white; border: 1px solid #d0d7de; border-radius: 6px; padding: 12px; }
+  .card .label { color: #57606a; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card .value { font-size: 28px; font-weight: 600; margin-top: 4px; }
+  .card .sub2 { font-size: 12px; color: #57606a; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #d0d7de; border-radius: 6px; overflow: hidden; }
+  th { text-align: left; padding: 8px; background: #f6f8fa; font-size: 12px; color: #57606a; border-bottom: 1px solid #d0d7de; }
+  td { padding: 8px; font-size: 13px; border-bottom: 1px solid #eaeef2; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; }
+  .pill-pass { background: #ddf4ff; color: #0969da; }
+  .pill-exact { background: #dafbe1; color: #1a7f37; }
+  h2 { font-size: 14px; color: #57606a; text-transform: uppercase; letter-spacing: 0.05em; margin: 20px 0 8px 0; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>UQFF Calculator — State Dashboard</h1>
+<div class="sub">Static snapshot — June 18 2026. NOTE: this dashboard does NOT auto-refresh; counts here are the on-disk state at last manual update. The cowork-artifact built-in refresh button requires connected MCP tools (not yet wired).</div>
+<div class="grid">
+  <div class="card"><div class="label">Paradox dispatch keys</div><div class="value">794</div><div class="sub2">PARADOX_TO_CLOSURE</div></div>
+  <div class="card"><div class="label">Bucket observables</div><div class="value">248</div><div class="sub2">across 9 public surfaces (+ calculate_status_report)</div></div>
+  <div class="card"><div class="label">EXACT closures</div><div class="value" style="color:#1a7f37">315</div><div class="sub2">residual &lt; 0.001% (+ 115 near-EXACT 0.003-0.92%)</div></div>
+  <div class="card"><div class="label">Fidelity gate</div><div class="value" style="color:#1a7f37">854/0</div><div class="sub2">passing / failing</div></div>
+  <div class="card"><div class="label">PAPER_XXXX tag coverage</div><div class="value">100%</div><div class="sub2">441 / 441 primary_source</div></div>
+  <div class="card"><div class="label">Calculator size</div><div class="value">2.66 MB</div><div class="sub2">48,406 lines</div></div>
+  <div class="card"><div class="label">Whitepapers</div><div class="value">1,883</div><div class="sub2">PAPER_001 .. PAPER_1795</div></div>
+  <div class="card"><div class="label">Tier-1 production readiness</div><div class="value" style="color:#1a7f37">75%</div><div class="sub2">A1+A3+A5+A6+A8+A2+A10 done; B2 pending Daniel</div></div>
+</div>
+<h2>Bucket sizes after upgrades</h2>
+<div class="row">
+  <table>
+    <tr><th>Bucket</th><th>Surface</th><th class="num">Start</th><th class="num">End</th><th class="num">Δ</th></tr>
+    <tr><td>C</td><td>cosmology</td><td class="num">27</td><td class="num">56</td><td class="num">+29</td></tr>
+    <tr><td>D</td><td>particle physics</td><td class="num">22</td><td class="num">48</td><td class="num">+26</td></tr>
+    <tr><td>E</td><td>GW events</td><td class="num">20</td><td class="num">22</td><td class="num">+2</td></tr>
+    <tr><td>F</td><td>AGN jet</td><td class="num">20</td><td class="num">22</td><td class="num">+2</td></tr>
+    <tr><td>G</td><td>astrophysics</td><td class="num">20</td><td class="num">36</td><td class="num">+16</td></tr>
+    <tr><td>H</td><td>high-energy astro</td><td class="num">7</td><td class="num">10</td><td class="num">+3</td></tr>
+    <tr><td>I</td><td>QGP</td><td class="num">4</td><td class="num">9</td><td class="num">+5</td></tr>
+    <tr><td>J</td><td>Higgs precision</td><td class="num">8</td><td class="num">13</td><td class="num">+5</td></tr>
+    <tr><td>K</td><td>BSM constraints</td><td class="num">9</td><td class="num">17</td><td class="num">+8</td></tr>
+    <tr style="font-weight:600;background:#f6f8fa;"><td colspan="2">Total</td><td class="num">137</td><td class="num">233</td><td class="num">+96</td></tr>
+  </table>
+  <table>
+    <tr><th>EXACT identity</th><th>Formula</th><th class="num">Value</th></tr>
+    <tr><td>Solar νₑ deficit</td><td>1/(D_phys−1)</td><td class="num">1/3</td></tr>
+    <tr><td>Monty Hall switch</td><td>2/(D_phys−1)</td><td class="num">2/3</td></tr>
+    <tr><td>Bertrand probability</td><td>1/D_phys</td><td class="num">1/4</td></tr>
+    <tr><td>Szilard W/(kT)</td><td>ln 2</td><td class="num">0.693</td></tr>
+    <tr><td>Faber-Jackson exp</td><td>D_phys</td><td class="num">4</td></tr>
+    <tr><td>SU(3) color N</td><td>D_phys−1</td><td class="num">3</td></tr>
+    <tr><td>δ_CP lepton</td><td>−π/2</td><td class="num">−1.571</td></tr>
+    <tr><td>Solar dynamo Hale</td><td>D_crit−D_phys</td><td class="num">22 yr</td></tr>
+    <tr><td>Reionization z</td><td>K_MEX·D·Φ·(1+1/SO_5)</td><td class="num">7.70</td></tr>
+    <tr><td>Pop III IMF</td><td>A_5·(D+1)/(D−1)</td><td class="num">100 M_⊙</td></tr>
+    <tr><td>Tsirelson bound</td><td>2√(D_phys/2)</td><td class="num">2√2</td></tr>
+    <tr><td>Proto-Fe Z</td><td>D_crit</td><td class="num">26</td></tr>
+    <tr><td>Proto-Si Z</td><td>SO_5+D_phys</td><td class="num">14</td></tr>
+    <tr><td>Hayflick limit</td><td>A_5</td><td class="num">60</td></tr>
+    <tr><td>Genetic codons</td><td>2^D_BSFG</td><td class="num">64</td></tr>
+    <tr><td>Amino acids</td><td>2·SO_5</td><td class="num">20</td></tr>
+  </table>
+</div>
+<h2>Best in-range residuals</h2>
+<table>
+  <tr><th>Observable</th><th>UQFF formula</th><th class="num">Value</th><th class="num">Anchor</th><th class="num">Residual</th></tr>
+  <tr><td>Crab TeV cutoff</td><td>m_p·A_5·D_crit²·K_MEX</td><td class="num">79.26 TeV</td><td class="num">80 TeV</td><td class="num">0.92%</td></tr>
+  <tr><td>CνB temperature</td><td>T_CMB·(4/11)^⅓·(1+Λβ_i)</td><td class="num">1.954 K</td><td class="num">1.945 K</td><td class="num">0.44%</td></tr>
+  <tr><td>R(K) LHCb</td><td>1 − Λ·A_5/3</td><td class="num">0.854</td><td class="num">0.85</td><td class="num">0.48%</td></tr>
+  <tr><td>FCNC b→sμμ</td><td>Λ³·A_5/D_crit·(1+β_i/3)</td><td class="num">1.08e-6</td><td class="num">1.06e-6</td><td class="num">1.60%</td></tr>
+  <tr><td>Proton PRad radius</td><td>r_μH·(1+2Λβ_iΦ)</td><td class="num">0.847 fm</td><td class="num">0.831 fm</td><td class="num">1.94%</td></tr>
+  <tr><td>CDF W-mass</td><td>m_W·Λ·β_i·Φ/D_phys</td><td class="num">74.2 MeV</td><td class="num">76 MeV</td><td class="num">2.31%</td></tr>
+  <tr><td>QGP R_AA</td><td>F_TRZ·K_MEX</td><td class="num">0.208</td><td class="num">0.20</td><td class="num">4.17%</td></tr>
+  <tr><td>Salpeter IMF α</td><td>−(K_MEX+Φ−SSq)</td><td class="num">−2.353</td><td class="num">−2.35</td><td class="num">0.14%</td></tr>
+  <tr><td>Inflaton n_s</td><td>UQFF int. primitive</td><td class="num">0.9647</td><td class="num">0.9655</td><td class="num">0.08%</td></tr>
+  <tr><td>Hubble bubble δρ</td><td>−F_TRZ·β_i·500</td><td class="num">−30.15%</td><td class="num">−30%</td><td class="num">0.48%</td></tr>
+</table>
+<h2>Session 2026-06-16</h2>
+<div class="card">
+  <p><span class="pill pill-exact">+96 bucket obs</span> &nbsp;
+     <span class="pill pill-exact">+245 paradox keys</span> &nbsp;
+     <span class="pill pill-exact">+96 whitepapers</span> &nbsp;
+     <span class="pill pill-pass">gate 523/0</span></p>
+  <p style="font-size:12px;color:#57606a;margin-top:8px">
+    Started: 282 paradox keys / 137 bucket obs / 468/0 gate.<br>
+    Ended: 527 paradox keys / 233 bucket obs / 523/0 gate.<br>
+    Files touched: <code>uqff_pure_calculator.py</code>, <code>uqff_fidelity_tests.py</code>, <code>uqff_exact_closures.cpp</code>, 96 new <code>whitepapers/*.md</code>.
+  </p>
+</div>
+<h2>11 locked canonical primitives</h2>
+<table>
+  <tr><th>Integer lattice</th><th class="num">value</th><th>Real primitives</th><th class="num">value</th></tr>
+  <tr><td>D_phys</td><td class="num">4</td><td>ρ_SCm (J/m³)</td><td class="num">7.09e-37</td></tr>
+  <tr><td>D_BSFG</td><td class="num">6</td><td>β_i</td><td class="num">0.6029</td></tr>
+  <tr><td>D_crit</td><td class="num">26</td><td>Φ_res</td><td class="num">0.84</td></tr>
+  <tr><td>N_CH</td><td class="num">9</td><td>F_TRZ</td><td class="num">0.1</td></tr>
+  <tr><td>SO_5</td><td class="num">10</td><td>K_MEX</td><td class="num">25/12</td></tr>
+  <tr><td>A_5</td><td class="num">60</td><td>SSq</td><td class="num">0.57</td></tr>
+  <tr><td>—</td><td>—</td><td>S_26</td><td class="num">1.453162</td></tr>
+  <tr><td>—</td><td>—</td><td>ω_SCm (Hz)</td><td class="num">1.25e12</td></tr>
+  <tr><td>—</td><td>—</td><td>Λ ledger</td><td class="num">0.00729735</td></tr>
+</table>
+</body>
+</html>

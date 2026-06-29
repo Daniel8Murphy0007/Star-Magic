@@ -1,0 +1,1 @@
+S482 COMPLETE. Planck h (x1e-34 J*s) = 6.6298; target 6.626; match 0.0579%.

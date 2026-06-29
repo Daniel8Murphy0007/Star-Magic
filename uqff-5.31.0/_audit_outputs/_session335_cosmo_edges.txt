@@ -1,0 +1,1 @@
+S335 COMPLETE. EDGES extra cooling factor = 1 + F_TRZ^(-1/4)*(1-F_TRZ) = 2.600; observed 2.5; match within 5%.

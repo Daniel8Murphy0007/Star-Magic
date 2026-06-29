@@ -1,0 +1,185 @@
+================================================================================
+SESSION 765 -- A_planck (LXIII); tau_reion (LXIV); S_8 (LXV); eta_b WIDENED (LXII-v2)
+================================================================================
+================================================================================
+TRACK (a) -- Class LXIII: A_planck = 1.000 (Planck lensing amplitude)
+================================================================================
+  Target: A_planck = 1.000000
+  Note: A_planck = 1 is the GR/LambdaCDM consistency value.
+  Same structural identity class as LV (gamma_PPN = SSq/SSq = 1).
+  Trivial UQFF identity: A_planck = Phi_res / Phi_res = 1 (EXACT).
+  predicted = 1.0000000000  observed = 1.0000000000  err = +0.0000e+00%
+================================================================================
+TRACK (b) -- Class LXIV: tau_reion = 0.0544 (Planck 2018 optical depth)
+================================================================================
+  Target: tau_reion = 0.0544
+
+  2-atom direct (tol 3%):
+    [F_TRZ a*b 1/mpme] = 0.054462  err=+0.1134%
+    [1/mpme a*b F_TRZ] = 0.054462  err=+0.1134%
+    [1/mpme a/b SO5] = 0.054462  err=+0.1134%
+    [F_TRZ a/b mpme] = 0.054462  err=+0.1134%
+    [F_TRZ a*b 6/11] = 0.054545  err=+0.2674%
+    [6/11 a*b F_TRZ] = 0.054545  err=+0.2674%
+    [6/11 a/b SO5] = 0.054545  err=+0.2674%
+    [F_TRZ a/b 11/6] = 0.054545  err=+0.2674%
+    [5/108 a/b Phi_res] = 0.055556  err=+2.1242%
+
+  3-atom direct (tol 0.5%):
+    [63/200 a/b/c D_BSFG n_s] = 0.054404  err=+0.0076%
+    [63/200 a/b/c n_s D_BSFG] = 0.054404  err=+0.0076%
+    [SSq a*b/c xi r] = 0.054427  err=+0.0498%
+    [xi a*b/c SSq r] = 0.054427  err=+0.0498%
+    [r a*b*c 33/40 11/6] = 0.054450  err=+0.0919%
+    [r a*b*c 11/6 33/40] = 0.054450  err=+0.0919%
+    [33/40 a*b*c r 11/6] = 0.054450  err=+0.0919%
+    [33/40 a*b*c 11/6 r] = 0.054450  err=+0.0919%
+    [11/6 a*b*c r 33/40] = 0.054450  err=+0.0919%
+    [11/6 a*b*c 33/40 r] = 0.054450  err=+0.0919%
+    [r a*b/c 33/40 6/11] = 0.054450  err=+0.0919%
+    [33/40 a*b/c r 6/11] = 0.054450  err=+0.0919%
+    [5/108 a/b/c 1-F_TRZ 307/325] = 0.054456  err=+0.1036%
+    [5/108 a/b/c 307/325 1-F_TRZ] = 0.054456  err=+0.1036%
+    [r a/b/c n_s 137/200] = 0.054461  err=+0.1119%
+
+  4-atom direct (tol 0.05%):
+    [Y_p a*b*c/d 5/108 1-n_s alpha] = 0.054402  err=+0.0037%
+    [5/108 a*b*c/d Y_p 1-n_s alpha] = 0.054402  err=+0.0037%
+    [1-n_s a*b*c/d Y_p 5/108 alpha] = 0.054402  err=+0.0037%
+    [1-n_s a*b*c/d 5/108 Y_p alpha] = 0.054402  err=+0.0037%
+    [Y_p a*b*c/d 1-n_s 5/108 alpha] = 0.054402  err=+0.0037%
+    [5/108 a*b*c/d 1-n_s Y_p alpha] = 0.054402  err=+0.0037%
+    [K_Mex a*b/(c*d) 307/325 beta_i A_5] = 0.054402  err=+0.0042%
+    [K_Mex a*b/(c*d) 307/325 A_5 beta_i] = 0.054402  err=+0.0042%
+    [307/325 a*b/(c*d) K_Mex beta_i A_5] = 0.054402  err=+0.0042%
+    [307/325 a*b/(c*d) K_Mex A_5 beta_i] = 0.054402  err=+0.0042%
+    [1-n_s a*b/(c*d) 11/6 n_s 11/9] = 0.054404  err=+0.0076%
+    [1-n_s a*b/(c*d) 11/6 11/9 n_s] = 0.054404  err=+0.0076%
+    [11/6 a*b/(c*d) 1-n_s n_s 11/9] = 0.054404  err=+0.0076%
+    [11/6 a*b/(c*d) 1-n_s 11/9 n_s] = 0.054404  err=+0.0076%
+    [SO5 a*b/(c*d) 63/200 A_5 n_s] = 0.054404  err=+0.0076%
+
+  BEST tau_reion: [Y_p 5/108 1-n_s alpha a*b*c/d] = 5.440202e-02, err = +0.003718%
+================================================================================
+TRACK (c) -- Class LXV: S_8 = sigma_8 * sqrt(Omega_m/0.3) = 0.832 (Planck)
+================================================================================
+  Target: S_8 = 0.832
+
+  2-atom direct (tol 3%):
+    [SSq a/b 137/200] = 0.832117  err=+0.0140%
+    [SO5 a*b 1/12] = 0.833333  err=+0.1603%
+    [1-F_TRZ a/b 27/25] = 0.833333  err=+0.1603%
+    [1/12 a/b F_TRZ] = 0.833333  err=+0.1603%
+    [1/12 a*b SO5] = 0.833333  err=+0.1603%
+    [137/200 a/b 33/40] = 0.830303  err=-0.2040%
+    [11/9 a*b 137/200] = 0.837222  err=+0.6277%
+    [137/200 a*b 11/9] = 0.837222  err=+0.6277%
+    [416/513 a*b 31/30] = 0.837947  err=+0.7147%
+    [31/30 a*b 416/513] = 0.837947  err=+0.7147%
+    [1-F_TRZ a*b 1-F*P] = 0.825000  err=-0.8413%
+    [1-F*P a*b 1-F_TRZ] = 0.825000  err=-0.8413%
+
+  3-atom direct (tol 0.5%):
+    [r a/b/c 243/260 5/108] = 0.832000  err=+0.0000%
+    [r a/b/c 5/108 243/260] = 0.832000  err=+0.0000%
+    [Phi_res a*b*c 11/6 1/mpme] = 0.832054  err=+0.0065%
+    [11/6 a*b*c Phi_res 1/mpme] = 0.832054  err=+0.0065%
+    [Phi_res a*b*c 1/mpme 11/6] = 0.832054  err=+0.0065%
+    [Phi_res a*b/c 1/mpme 6/11] = 0.832054  err=+0.0065%
+    [Phi_res a*b/c 11/6 mpme] = 0.832054  err=+0.0065%
+    [1/mpme a*b*c Phi_res 11/6] = 0.832054  err=+0.0065%
+    [1/mpme a*b/c Phi_res 6/11] = 0.832054  err=+0.0065%
+    [1/mpme a*b*c 11/6 Phi_res] = 0.832054  err=+0.0065%
+    [11/6 a*b/c Phi_res mpme] = 0.832054  err=+0.0065%
+    [11/6 a*b*c 1/mpme Phi_res] = 0.832054  err=+0.0065%
+    [Phi_res a/b/c mpme 6/11] = 0.832054  err=+0.0065%
+    [Phi_res a/b/c 6/11 mpme] = 0.832054  err=+0.0065%
+    [33/40 a*b*c 33/40 11/9] = 0.831875  err=-0.0150%
+
+  4-atom direct (tol 0.05%):
+    [SSq a*b*c/d 1/12 416/513 5/108] = 0.832000  err=+0.0000%
+    [r a/(b*c*d) 1-F_TRZ 5/108 27/26] = 0.832000  err=+0.0000%
+    [r a/(b*c*d) 5/108 1-F_TRZ 27/26] = 0.832000  err=+0.0000%
+    [416/513 a*b*c/d 1/12 SSq 5/108] = 0.832000  err=+0.0000%
+    [1/12 a*b*c/d SSq 416/513 5/108] = 0.832000  err=+0.0000%
+    [1/12 a/(b*c*d) K_Mex 27/26 5/108] = 0.832000  err=+0.0000%
+    [1/12 a/(b*c*d) K_Mex 5/108 27/26] = 0.832000  err=+0.0000%
+    [1/12 a/(b*c*d) 27/26 K_Mex 5/108] = 0.832000  err=+0.0000%
+    [1/12 a*b*c/d 416/513 SSq 5/108] = 0.832000  err=+0.0000%
+    [1/12 a/(b*c*d) 5/108 K_Mex 27/26] = 0.832000  err=+0.0000%
+    [SSq a*b*c/d 416/513 1/12 5/108] = 0.832000  err=-0.0000%
+    [D_phys a*b*c/d D_BSFG r 27/26] = 0.832000  err=-0.0000%
+    [D_phys a*b/(c*d) D_crit K_Mex A_5] = 0.832000  err=-0.0000%
+    [D_phys a*b/(c*d) D_crit A_5 K_Mex] = 0.832000  err=-0.0000%
+    [D_phys a*b*c/d r D_BSFG 27/26] = 0.832000  err=-0.0000%
+
+  BEST S_8: [SSq 1/12 416/513 5/108 a*b*c/d] = 8.320000e-01, err = +0.000000%
+================================================================================
+TRACK (d) -- Class LXII-v2: eta_b = 6.14e-10  (5-atom widened via seed+shell)
+================================================================================
+  Target eta_b = 6.140000e-10
+  Seed (locked) = alpha_em^3 * xi = 1.335792e-09
+  Shell target (eta_b / seed) = 0.459653
+
+  2-atom shell candidates (tol 5%):
+    [63/200 a/b 137/200] shell=0.459854  -> eta_b=6.142691e-10  err=+0.0438%
+    [mpme a/b D_phys] shell=0.459038  -> eta_b=6.131793e-10  err=-0.1337%
+    [11/6 a/b D_phys] shell=0.458333  -> eta_b=6.122378e-10  err=-0.2870%
+    [SSq a*b 416/513] shell=0.462222  -> eta_b=6.174325e-10  err=+0.5590%
+    [416/513 a*b SSq] shell=0.462222  -> eta_b=6.174325e-10  err=+0.5590%
+    [SO5 a*b 5/108] shell=0.462963  -> eta_b=6.184220e-10  err=+0.7202%
+    [5/108 a/b F_TRZ] shell=0.462963  -> eta_b=6.184220e-10  err=+0.7202%
+    [5/108 a*b SO5] shell=0.462963  -> eta_b=6.184220e-10  err=+0.7202%
+    [n_s a/b K_Mex] shell=0.463200  -> eta_b=6.187387e-10  err=+0.7718%
+    [Phi_res a/b 11/6] shell=0.454545  -> eta_b=6.071780e-10  err=-1.1111%
+    [Phi_res a*b 6/11] shell=0.454545  -> eta_b=6.071780e-10  err=-1.1111%
+    [6/11 a*b Phi_res] shell=0.454545  -> eta_b=6.071780e-10  err=-1.1111%
+
+  3-atom shell candidates (tol 1%):
+    [Phi_res a*b/c SSq 31/30] shell=0.459677  -> eta_b=6.140332e-10  err=+0.0054%
+    [SSq a*b/c Phi_res 31/30] shell=0.459677  -> eta_b=6.140332e-10  err=+0.0054%
+    [n_s a/b/c 1-n_s A_5] shell=0.459524  -> eta_b=6.138280e-10  err=-0.0280%
+    [n_s a/b/c A_5 1-n_s] shell=0.459524  -> eta_b=6.138280e-10  err=-0.0280%
+    [N_ch a*b/c 1-n_s 137/200] shell=0.459854  -> eta_b=6.142691e-10  err=+0.0438%
+    [1-n_s a*b/c N_ch 137/200] shell=0.459854  -> eta_b=6.142691e-10  err=+0.0438%
+    [Y_p a/b/c SSq 243/260] shell=0.459895  -> eta_b=6.143233e-10  err=+0.0527%
+    [Y_p a/b/c 243/260 SSq] shell=0.459895  -> eta_b=6.143233e-10  err=+0.0527%
+    [K_Mex a*b*c Y_p 1-F_TRZ] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [Y_p a*b*c K_Mex 1-F_TRZ] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [K_Mex a*b*c 1-F_TRZ Y_p] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [1-F_TRZ a*b*c K_Mex Y_p] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [1-F_TRZ a*b*c Y_p K_Mex] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [Y_p a*b*c 1-F_TRZ K_Mex] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [27/26 a*b/c 416/513 11/6] shell=0.459330  -> eta_b=6.135693e-10  err=-0.0701%
+
+  3-atom shell tight (tol 0.1%):
+    [Phi_res a*b/c SSq 31/30] shell=0.459677  -> eta_b=6.140332e-10  err=+0.0054%
+    [SSq a*b/c Phi_res 31/30] shell=0.459677  -> eta_b=6.140332e-10  err=+0.0054%
+    [n_s a/b/c 1-n_s A_5] shell=0.459524  -> eta_b=6.138280e-10  err=-0.0280%
+    [n_s a/b/c A_5 1-n_s] shell=0.459524  -> eta_b=6.138280e-10  err=-0.0280%
+    [N_ch a*b/c 1-n_s 137/200] shell=0.459854  -> eta_b=6.142691e-10  err=+0.0438%
+    [1-n_s a*b/c N_ch 137/200] shell=0.459854  -> eta_b=6.142691e-10  err=+0.0438%
+    [Y_p a/b/c SSq 243/260] shell=0.459895  -> eta_b=6.143233e-10  err=+0.0527%
+    [Y_p a/b/c 243/260 SSq] shell=0.459895  -> eta_b=6.143233e-10  err=+0.0527%
+    [K_Mex a*b*c Y_p 1-F_TRZ] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [Y_p a*b*c K_Mex 1-F_TRZ] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [K_Mex a*b*c 1-F_TRZ Y_p] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+    [1-F_TRZ a*b*c K_Mex Y_p] shell=0.459375  -> eta_b=6.136292e-10  err=-0.0604%
+
+  BEST eta_b (5-atom = seed3 + shell): [alpha^3*xi * (Phi_res SSq 31/30 a*b/c)] = 6.140332e-10, err = +0.005410%
+
+classLXIII_A_planck_session765: predicted=1.000000e+00 observed=1.000000e+00 error_pct=0.000000e+00 status=EXACT
+classLXIV_tau_reion_session765: predicted=5.440202e-02 observed=5.440000e-02 error_pct=3.718354e-03 status=CE_strict
+classLXV_S8_session765: predicted=8.320000e-01 observed=8.320000e-01 error_pct=0.000000e+00 status=EXACT
+classLXII_eta_b_widened_session765: predicted=6.140332e-10 observed=6.140000e-10 error_pct=5.410045e-03 status=CE_strict
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  LXIII A_planck            pred=1.000000  err=+0.0000e+00%  (EXACT)
+  LXIV  tau_reion           pred=5.440202e-02  err=+0.0037%  (CE_strict)
+  LXV   S_8                 pred=8.320000e-01  err=+0.0000%  (EXACT)
+  LXII  eta_b (widened)     pred=6.140332e-10  err=+0.0054%  (CE_strict)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session765_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

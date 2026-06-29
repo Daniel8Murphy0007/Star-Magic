@@ -1,0 +1,30 @@
+========================================================================
+Session 286 — TDE mass-rate relation smoke tests
+========================================================================
+  [PASS] T-1 r_t ∝ M_BH^(1/3) ratio 2.0  ratio=2.000000
+  [PASS] T-2 r_s(1 M_sun) ≈ 2953 m  r_s=2954.01 m
+  [PASS] T-3 Hills mass (solar-type) ~ 1.1e8 M_sun  M_Hills=1.143e+08 M_sun
+  [PASS] T-4 1e6 M_sun SMBH disrupts Sun outside horizon  
+  [PASS] T-5 1e10 M_sun SMBH swallows Sun whole (no TDE)  
+  [PASS] T-6 t_fb(1e6 M_sun, Sun) ~ 41 days  t_fb=40.95 d
+  [PASS] T-7 t_fb ∝ M_BH^(1/2) ratio 2.0  ratio=2.000000
+  [PASS] T-8 peak dM/dt for 1e6 M_sun TDE in [0.1, 30] M_sun/yr  pk=2.973 M_sun/yr
+  [PASS] T-9 dM/dt(10·t_fb)/pk = 10^(-5/3) ≈ 0.0464  ratio=0.021544 exp=0.021544
+  [PASS] T-10 L_Edd(1e6 M_sun) ≈ 1.26e44 erg/s  L=1.260e+44
+  [PASS] T-11 1e6 SMBH TDE peaks super-Eddington (ratio > 1)  ratio=133.66
+  [PASS] T-12 1e10 SMBH compute → can_disrupt=False  r_t/r_s=0.051
+  [PASS] T-13 ASASSN-14li t_fb ~ 40-90 d  t_fb=57.91 d
+  [PASS] T-14 sim_set has 5 entries with monotone-decreasing tail  n=5
+  [PASS] T-15 output contains all required keys  missing=set()
+  [PASS] T-16 invalid inputs raise ValueError  raised=4/4
+  [PASS] T-17 SESSION_286_CALCULATORS registry  
+  [PASS] T-18 M_Hills(WD)/M_Hills(Sun) = 0.01^1.5  ratio=1.000e-03 exp=1.000e-03
+------------------------------------------------------------------------
+  RESULT: 18/18 tests passed
+========================================================================
+
+Headline TDE predictions (M_*=1 M_sun, R_*=1 R_sun):
+  ASASSN-14li  M_BH=2.00e+06  t_fb= 57.91 d  dMdt_pk=2.102 M_sun/yr  super-Edd×47.3
+  AT2019dsg    M_BH=3.00e+06  t_fb= 70.93 d  dMdt_pk=1.717 M_sun/yr  super-Edd×25.7
+  AT2019qiz    M_BH=5.00e+06  t_fb= 91.56 d  dMdt_pk=1.330 M_sun/yr  super-Edd×12.0
+  Sgr A* TDE   M_BH=4.15e+06  t_fb= 83.42 d  dMdt_pk=1.459 M_sun/yr  super-Edd×15.8

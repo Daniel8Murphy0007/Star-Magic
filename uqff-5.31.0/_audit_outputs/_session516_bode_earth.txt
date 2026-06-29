@@ -1,0 +1,1 @@
+S516 COMPLETE. Earth Bode = 1.0000 = F_TRZ*SO5 = 1 AU; target 1; match 0.0000%.

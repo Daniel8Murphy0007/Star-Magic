@@ -1,0 +1,34 @@
+================================================================================
+SESSION 713 -- alpha-chain 4-loop universal Borel test (Class I)
+================================================================================
+  alpha_inv_tree                  = 137.427500157    (residual +2856.92 ppm)
+  alpha_inv_2loop                 = 137.034801075    (residual -8.742 ppm)
+  alpha_inv_3loop                 = 137.035360541    (residual -4.660 ppm)
+--------------------------------------------------------------------------------
+  Universal Borel rule prediction at 4-loop:
+    c_4 = c_2^3 / 3! = (pi/8)^3 / 6  = 1.009319e-02
+    delta_4 = c_4 * alpha_tree^3      = 3.888727e-09
+    4-loop shift magnitude            = +0.0039 ppm
+--------------------------------------------------------------------------------
+  alpha_inv_4loop (alternation -)   = 137.035360008   (residual -4.6636 ppm)
+  alpha_inv_4loop (same-sign  +)    = 137.035361074    (residual -4.6558 ppm)
+  CODATA 2018 alpha_inv             = 137.035999084
+--------------------------------------------------------------------------------
+  Gap analysis (does 4-loop Borel close the -4.66 ppm residual?):
+    gap needed at 3-loop            = +4.6597 ppm
+    Borel 4-loop magnitude          = 0.0039 ppm
+    ratio (gap / 4-loop magnitude)  = 1198.3
+    --> 4-loop Borel is ORDERS OF MAGNITUDE too small to close the gap.
+--------------------------------------------------------------------------------
+  STRUCTURAL CONCLUSION:
+    Class I universal rule c_n = c_2^(n-1)/(n-1)! predicts a 4-loop
+    shift of 0.0039 ppm.  The 3-loop residual is +4.660 ppm.
+    Gap exceeds Borel prediction by a factor of ~1198.
+    --> alpha-chain residual is NOT a missing 4-loop Borel term.
+    --> Either c_3 sign/coefficient needs revision, or a non-Borel
+        contribution (analog of the c-chain 13/3 geometric phase)
+        operates between 3-loop and CODATA.
+================================================================================
+alpha_3loop_baseline: predicted=1.3703536054e+02 observed=1.3703599908e+02 error_pct=+0.0004659674 status=OK
+alpha_4loop_borel_test: predicted=1.3703536107e+02 observed=1.3703599908e+02 error_pct=+0.0004655785 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session713_alpha_4loop_borel_test_result.json

@@ -1,0 +1,81 @@
+========================================================================
+MUON
+========================================================================
+  m_mu_obs        = 1.88353e-28 kg
+  -log10/Planck   = 20.06278
+    N=19 -> beta_mu = 10.6278
+    N=20 -> beta_mu = 0.6278
+
+  N_mu candidates: 20 = 2*SO5 = D_crit-D_BSFG = N_p+1
+  Adopt N_mu=20, target beta_mu = 0.62778
+
+  TARGETED:
+    Phi_res - K_Mex*F_TRZ  = 5/6 - 25/120 = 5/8             = 0.62500  residual=0.443%
+    5/8                                                     = 0.62500  residual=0.443%
+    beta_i + F_TRZ/(K_Mex*D_BSFG)                           = 0.61087  residual=2.694%
+    Phi_res - F_TRZ*K_Mex                                   = 0.62500  residual=0.443%
+    3/5 + Phi_res*F_TRZ/(K_Mex+1)                           = 0.62703  residual=0.120%  <<<
+    SSq + Phi_res/D_crit + 3*F_TRZ^2                        = 0.63205  residual=0.680%
+
+  [beta_mu brute]  target = 0.62778    matches: 195
+    1/beta_e + beta_i^2                                = 0.62779   residual = 0.002%
+    beta_i^2 + 1/beta_e                                = 0.62779   residual = 0.002%
+    log(sqrt5) - exp(-sqrt3)                           = 0.62780   residual = 0.003%
+    sqrt(pi) - log(pi)                                 = 0.62772   residual = 0.009%
+    log(beta_e) * log(beta_i+1)                        = 0.62772   residual = 0.009%
+    log(beta_i+1) * log(beta_e)                        = 0.62772   residual = 0.009%
+    1/sqrt2 / log(K_Mex+1)                             = 0.62797   residual = 0.031%
+    exp(-ln2/2) / log(K_Mex+1)                         = 0.62797   residual = 0.031%
+    exp(-sqrt3) + log(SSq+1)                           = 0.62800   residual = 0.034%
+    log(SSq+1) + exp(-sqrt3)                           = 0.62800   residual = 0.034%
+    1/N_ch / exp(-sqrt3)                               = 0.62803   residual = 0.039%
+    sqrt(ln3) - exp(-sqrt3/2)                          = 0.62753   residual = 0.040%
+    exp(-SSq/2) - exp(-K_Mex)                          = 0.62750   residual = 0.045%
+    log(beta_i+1) / exp(-SSq/2)                        = 0.62737   residual = 0.065%
+    exp(-Phi_res) * sqrt(K_Mex)                        = 0.62729   residual = 0.078%
+
+========================================================================
+TAU
+========================================================================
+  m_tau_obs       = 3.16754e-27 kg
+  -log10/Planck   = 18.83703
+    N=18 -> beta_tau = 8.3703
+
+  N_tau candidates: 18 = 2*N_ch = 3*D_BSFG = N_p-1
+  Adopt N_tau=18, target beta_tau = 8.37029
+
+  TARGETED:
+    K_Mex * D_phys                                          = 8.33333  residual=0.442%
+    Phi_res * SO5                                           = 8.33333  residual=0.442%
+    D_BSFG + sqrt(D_BSFG)                                   = 8.44949  residual=0.946%
+    D_BSFG + sqrt(K_Mex*pi)                                 = 8.55832  residual=2.246%
+    K_Mex*D_phys + F_TRZ/...                                = 8.37093  residual=0.008%  <<<
+    D_BSFG + K_Mex + F_TRZ*K_Mex                            = 8.29167  residual=0.939%
+    D_BSFG + sqrt(K_Mex*F_TRZ*A5)                           = 9.53553  residual=13.921%
+    beta_e + beta_e + Phi_res                               = 8.39922  residual=0.346%
+    2*beta_e + Phi_res                                      = 8.39922  residual=0.346%
+    2*beta_e + F_TRZ*K_Mex+F_TRZ^2+ Phi_res                 = 8.41222  residual=0.501%
+    2*beta_e + Phi_res - F_TRZ^2*K_Mex                      = 8.37839  residual=0.097%  <<<
+    8 + F_TRZ*sqrt(D_BSFG/Phi_res)                          = 8.26833  residual=1.218%
+    e^2 + F_TRZ*sqrt(beta_p)                                = 7.49583  residual=10.447%
+    sqrt(D_BSFG) + D_BSFG                                   = 8.44949  residual=0.946%
+    D_phys + D_phys + F_TRZ*sqrt(K_Mex*A5)                  = 9.11803  residual=8.933%
+
+  [beta_tau brute]  target = 8.37029    matches: 87
+    e / SSq^2                                          = 8.36652   residual = 0.045%
+    pi^2 - sqrt(sqrt5)                                 = 8.37426   residual = 0.047%
+    log(D_crit) + sqrt(D_crit)                         = 8.35712   residual = 0.157%
+    sqrt(D_crit) + log(D_crit)                         = 8.35712   residual = 0.157%
+    e^2 / log(sqrt2+1)                                 = 8.38357   residual = 0.159%
+    ln3 / log(beta_p)                                  = 8.38454   residual = 0.170%
+    log(2+1) / log(beta_p)                             = 8.38454   residual = 0.170%
+    log(3) / log(beta_p)                               = 8.38454   residual = 0.170%
+    beta_e / log(SSq+1)                                = 8.38650   residual = 0.194%
+    exp(-1/2) + sqrt(A5)                               = 8.35250   residual = 0.213%
+    sqrt(A5) + exp(-1/2)                               = 8.35250   residual = 0.213%
+    log(Phi_res+1) + sqrt(A5)                          = 8.35210   residual = 0.217%
+    sqrt(A5) + log(Phi_res+1)                          = 8.35210   residual = 0.217%
+    1 + e^2                                            = 8.38906   residual = 0.224%
+    1/1 + e^2                                          = 8.38906   residual = 0.224%
+
+Wrote _session279_mu_tau_closure.json

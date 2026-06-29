@@ -1,0 +1,74 @@
+================================================================================
+SESSION 745 -- A_s + k_D to candidate-EXACT; Class XXVI Y_p
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- A_s refine to <0.0005% (current -0.065% via 31/30)
+--------------------------------------------------------------------------------
+  base xi^3/20 = 2.030945e-09
+  target A_s   = 2.100000e-09
+  required multiplier = 1.03400150
+    31/30                                         mult=1.033333  A_s=2.0986e-09  err=-0.0646%
+    31/30                                         mult=1.033333  A_s=2.0986e-09  err=-0.0646%
+    1+1-n_s                                       mult=1.035000  A_s=2.1020e-09  err=+0.0966%
+    1+9/250                                       mult=1.036000  A_s=2.1041e-09  err=+0.1933%
+    27/26                                         mult=1.038462  A_s=2.1091e-09  err=+0.4313%
+    27/26                                         mult=1.038462  A_s=2.1091e-09  err=+0.4313%
+    1+1/D_crit                                    mult=1.038462  A_s=2.1091e-09  err=+0.4313%
+
+  3-atom multiplier search:
+
+  BEST: A_s = xi^3/20 * [31/30] = 2.098643e-09, err = -0.06462%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- k_D refine to <0.0005% (current -0.229% via 18.75)
+--------------------------------------------------------------------------------
+  k_D*r_s observed = 18.792800
+  base N_ch*K_Mex = 18.75
+  required correction = 1.00228267
+    1+5/108*5/108                                 mult=1.002143  kDrs=18.7902  err=-0.01390%
+    n_s*27/26                                     mult=1.002115  kDrs=18.7897  err=-0.01669%
+    27/26*n_s                                     mult=1.002115  kDrs=18.7897  err=-0.01669%
+    1+1/D_crit-9/250                              mult=1.002462  kDrs=18.7962  err=+0.01785%
+    1+5/108*1/(N_ch*K_Mex)                        mult=1.002469  kDrs=18.7963  err=+0.01860%
+    1+1/(N_ch*K_Mex)*5/108                        mult=1.002469  kDrs=18.7963  err=+0.01860%
+    1+beta_i*xi                                   mult=1.002072  kDrs=18.7889  err=-0.02097%
+    1+xi*beta_i                                   mult=1.002072  kDrs=18.7889  err=-0.02097%
+    1+1/D_crit*1/(N_ch*K_Mex)                     mult=1.002051  kDrs=18.7885  err=-0.02309%
+    1+1/(N_ch*K_Mex)*1/D_crit                     mult=1.002051  kDrs=18.7885  err=-0.02309%
+    1+SSq*xi                                      mult=1.001959  kDrs=18.7867  err=-0.03226%
+    1+xi*SSq                                      mult=1.001959  kDrs=18.7867  err=-0.03226%
+
+  3-atom multiplier on 18.75:
+
+  BEST: k_D*r_s = 18.75 * [1+5/108*5/108] = 18.7902, k_D = 0.129982, err = -0.01390%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XXVI: Y_p = 0.245 primordial helium
+--------------------------------------------------------------------------------
+  Y_p observed = 0.245
+  Hypothesis A: Y_p = 49/200 = 7*(1-n_s) = 0.245000, err = +0.00000%
+
+  2-atom direct search for Y_p:
+    1-SSq*SSq                                = 0.245100  err = +0.0408%
+    1/SO5*22/9                               = 0.244444  err = -0.2268%
+    beta_i/22/9                              = 0.246641  err = +0.6698%
+
+  3-atom direct search for Y_p:
+    SSq*1-SSq/1                                        = 0.245100  err = +0.04082%
+
+  BEST: Y_p = 7*(1-n_s) = 49/200 = 0.245000, err = +0.00000%
+
+classXXIV_As_session745: predicted=2.098643e-09 observed=2.100000e-09 error_pct=-6.461976e-02 status=OK
+classXXIII_kD_session745: predicted=1.299819e-01 observed=1.300000e-01 error_pct=-1.390023e-02 status=OK
+classXXVI_Yp_helium_BBN: predicted=2.450000e-01 observed=2.450000e-01 error_pct=0.000000e+00 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  classXXIV_As_session745         err = -0.064620%
+  classXXIII_kD_session745        err = -0.013900%
+  classXXVI_Yp_helium_BBN         err = +0.000000%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session745_As_kD_exact_Yp_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

@@ -1,0 +1,83 @@
+================================================================================
+SESSION 720 -- hbar Class IV no-go theorem + L_SCM 12th primitive
+================================================================================
+
+STEP 1 -- No-go theorem for length emergence from {rho_vac, c} + primitives
+--------------------------------------------------------------------------------
+
+  Dimensional bases:
+    [rho_vac] = J/m^3 = kg / (m * s^2)
+    [c]       = m / s
+    [primitives] = dimensionless
+
+  General monomial: rho_vac^a * c^b
+    dims = kg^a * m^(-a + b) * s^(-2a - b)
+
+  To obtain pure length [m]^1:
+    kg-exponent = 0      ->  a = 0
+    s-exponent  = 0      ->  -2a - b = 0  ->  b = 0
+    m-exponent  = 1      ->  -a + b = 1   ->  0 + 0 = 1  CONTRADICTION
+
+  THEOREM (proved): No combination of {rho_vac, c} and dimensionless
+                    locked primitives yields a quantity with units of m.
+
+  COROLLARY: hbar-chain requires AT LEAST ONE external length scale
+             irreducible to the existing 11 primitives.
+
+STEP 2 -- Promotion: L_SCM := (hbar * v_SCM / rho_vac_SCm)^(1/4)
+--------------------------------------------------------------------------------
+  L_SCM = 349.226733192 m  (the SCm length quantum, 12th primitive)
+  L_SCM^4 = 1.487407e+10 m^4
+
+  This is THE Class IV anchor.  Adding it completes the dimensional
+  basis required to construct hbar from the framework.
+
+STEP 3 -- hbar closure with extended (12-primitive) taxonomy
+--------------------------------------------------------------------------------
+  hbar_predicted = rho_vac * L_SCM^4 / v_SCM = 1.054571817000e-34 J*s
+  hbar_observed  =                            1.054571817000e-34 J*s
+  rel err        = 4.06e-14 %
+  Status: EXACT by construction (L_SCM was solved from hbar definition)
+
+STEP 4 -- Do other physical lengths factor through L_SCM rationally?
+--------------------------------------------------------------------------------
+  scale                         value (m)        L/L_SCM         locked candidates
+  ----------------------------  ---------------  --------------  -------------------
+  Planck length l_P             1.616255e-35      4.628097e-38   log10 = -37.33
+  electron Compton lambda_C     2.426310e-12      6.947665e-15   log10 = -14.16
+  Bohr radius a_0               5.291772e-11      1.515283e-13   log10 = -12.82
+
+  Observation: derived scales separate from L_SCM by 37 orders of magnitude
+  (Planck), 14 orders (Compton), 13 orders (Bohr).  These ratios are NOT
+  rational dressings of locked primitives -- they involve additional
+  fundamental constants (G, m_e, alpha).
+
+  CONCLUSION: L_SCM is a structurally distinct length scale from the
+  Planck/atomic regime.  It is the SCm-bulk action-quantum scale,
+  belonging to the macroscopic-vacuum regime (~350 m).
+
+STEP 5 -- Class IV formalization (two-anchor closure)
+--------------------------------------------------------------------------------
+
+  Class IV closure form for hbar:
+      hbar = rho_vac_SCm * L_SCM^4 / v_SCM
+
+  Where:
+    * rho_vac_SCm : dimensionful primitive (J/m^3) -- already an anchor
+    * v_SCM       : dimensionful primitive (m/s) = c/3 -- relates to c (dim primitive)
+    * L_SCM       : NEW 12th primitive (m) -- THE Class IV anchor
+
+  Total dimensional primitives required to derive hbar:
+    {c, rho_vac_SCm, L_SCM} -- three independent dimensionful anchors
+
+  By contrast:
+    Class I  (alpha): 0 dim anchors needed (alpha is dimensionless)
+    Class II (mu):    0 dim anchors needed (mass ratio is dimensionless)
+    Class III (c):    1 dim anchor needed (length/time, captured by c itself)
+    Class IV  (hbar): 3 dim anchors needed (rho_vac, c, L_SCM)
+
+
+hbar_nogo_theorem_length_emergence: predicted=0.0 observed=1.0 error_pct=+100.000000 status=FAIL
+hbar_classIV_L_SCM_12th_primitive: predicted=1.054571817000e-34 observed=1.054571817000e-34 error_pct=+0.000000 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session720_hbar_classIV_nogo_and_L_SCM_promotion_result.json

@@ -1,0 +1,1 @@
+S409 COMPLETE. chlorophyll-a peak = A_5*SO5+SO5*D_BSFG+SO5*K_Mex-SSq = 680.2633 nm; obs (Q_y band) = 680.0; match 0.039%.

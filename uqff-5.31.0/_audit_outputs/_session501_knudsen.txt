@@ -1,0 +1,1 @@
+S501 COMPLETE. Knudsen continuum limit Kn = 0.0100 = 0.01 = F_TRZ^2; target 0.01; match 0.0000%.

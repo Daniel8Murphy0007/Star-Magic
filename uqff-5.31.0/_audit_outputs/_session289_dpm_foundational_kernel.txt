@@ -1,0 +1,46 @@
+========================================================================
+Session 289 — DPM Foundational Gravity Kernel smoke tests
+========================================================================
+  [PASS] T-1 F_DPM = I*A*(om1-om2) symbolic form  
+  [PASS] T-2 a_DPM symbolic form contains F_DPM and divides by c*V_sys  
+  [PASS] T-3 a_DPM scales as 1/r^2 under light-cone closure  coefficient free syms: ['V_body', 'c', 'mu_eff', 'rho_SCm']
+  [PASS] T-4 coefficient = mu_eff * rho_SCm * c / V_body  
+  [PASS] T-5 5 closure equations under light-cone parametrisation  n=5
+  [PASS] T-6 K_DPM is finite and positive  K_DPM = 1.477278e+36
+  [PASS] T-7 K_DPM in expected scale range [1e30, 1e40]  K_DPM = 1.477e+36
+  [PASS] T-8 Sun-Earth a_DPM matches G*M/r^2 exactly (anchor)  rel = 0.000e+00
+  [PASS] T-9 ratio = 1 across 0.4-40 AU (Sun, light-cone closure)  max |ratio-1| = 2.220e-16 across 6 orbits
+  [PASS] T-10 SgrA*-S2 ratio = V_sun/V_sgra (closure-dependent)  ratio = 1.949e-04, V_sun/V_sgra = 1.949e-04
+  [PASS] T-11 Earth-Moon ratio = V_sun/V_earth (closure-dependent)  ratio = 1.302e+06, V_sun/V_earth = 1.302e+06
+  [PASS] T-12 calculator returns required keys  missing = set()
+  [PASS] T-13 calculator headline ratio == 1 at anchor  ratio = 1.0
+  [PASS] T-14 registry exposes class  
+  [PASS] T-15 invalid inputs raise ValueError  raised = 3/3
+  [PASS] T-16 RHO_SCm = 4*sqrt(pi)*1e-37 (Session 287 G9)  
+  [PASS] T-17 RHO_UA / RHO_SCm = 10 (Session 287 G7)  
+  [PASS] T-18 dimensional numeric reduction matches Sun-Earth Newton  a = 5.931843e-03, Newton = 5.931843e-03
+  [PASS] T-19 tag tier mix is reported as DERIVED+POSTULATED+CALIBRATED  
+  [PASS] T-20 single-pair a_DPM * r^2 invariant (1/r^2 reduction)  spread = 2.220e-16
+  [PASS] T-21 canonical two-pair a_DPM scales as 1/r^4 (DPM = 2 pairs)  a*r^4 free syms: ['R_body', 'V_body', 'beta_geom', 'c', 'rho_SCm', 'rho_body']
+  [PASS] T-22 two-pair a_DPM * r^4 invariant across 0.1-100 AU  spread = 0.000e+00
+  [PASS] T-23 two-pair ratio Mars/Earth = (r_E/r_M)^4 (1/r^4 sig)  actual=0.185663, expected=0.185663
+------------------------------------------------------------------------
+  RESULT: 23/23 tests passed
+========================================================================
+
+Heliocentric ratio table (closure self-consistency check):
+  Mercury   ratio = 1.000000000000
+  Venus     ratio = 1.000000000000
+  Earth     ratio = 1.000000000000
+  Mars      ratio = 1.000000000000
+  Jupiter   ratio = 1.000000000000
+  Pluto     ratio = 1.000000000000
+
+K_DPM (CALIBRATED @ Sun-Earth)  = 1.477278e+36
+Anchor scale: rho_SCm = 7.0898e-37 J/m^3, rho_UA = 7.0898e-36 J/m^3
+
+Canonical TWO-PAIR DPM (foundational 1/r^4 signature):
+  0.1 AU    a_two_pair = 1.297e-81 m/s^2
+  1.0 AU    a_two_pair = 1.297e-85 m/s^2
+  10 AU     a_two_pair = 1.297e-89 m/s^2
+  100 AU    a_two_pair = 1.297e-93 m/s^2

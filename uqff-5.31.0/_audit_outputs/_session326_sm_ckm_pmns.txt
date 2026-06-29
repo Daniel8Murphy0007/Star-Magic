@@ -1,0 +1,1 @@
+S326 CORRECTED. sin(theta_C) = (1-Phi_res)*sqrt(F_TRZ*K_Mex*N_ch) = 0.2282; theta_C = 13.19 deg (obs 13.04 deg); match within 1.1%.

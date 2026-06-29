@@ -1,0 +1,51 @@
+================================================================================
+SESSION 718 -- c-chain class assignment (Class III: Borel + geom phase)
+================================================================================
+  c-chain carry-over: c_2 = (5/9)pi^2 = 5.483114
+  pure-Borel lambdas: lambda_3^c = 1, lambda_4^c = 1
+  geometric-phase rank: rank = D_crit/D_BSFG = 13/3
+--------------------------------------------------------------------------------
+  TEST 1: Unified-ratio hypothesis (S717 framework)
+    ratio_of_ratios = 3*lambda_3^2 / (2*lambda_4) = 3/2 = 1.500000
+    Class II requires this = 1 exactly
+    mismatch = +50.0000 %  --> c is NOT Class II
+--------------------------------------------------------------------------------
+  TEST 2: Effective per-loop lambda_3^c from additive geom phase
+    geom phase value      = 1.4457e-09
+    equivalent Delta c_3  = 4.316865
+    c_3 Borel base        = c_2^2/2 = 15.032267
+    -> lambda_3_eff       = 1 + Delta_c_3 / c_3_Borel = 1.2871732227
+    closed form (no damping):  1 + 702/(75*pi^4)            = 1.2882687817
+    closed form (damped):      1 + 702/(75*pi^4)*exp(-c_2 delta) = 1.2871732227
+--------------------------------------------------------------------------------
+  Locked-rational candidates near lambda_3_eff (= 1.287173):
+    9/7                                  = 9/7          = 1.285714   rel=1.1334e-03 <-- best
+    5/4                                  = 5/4          = 1.250000   rel=2.8880e-02
+    K_Mex / Phi_res / 2                  = 5/4          = 1.250000   rel=2.8880e-02
+    4/3                                  = 4/3          = 1.333333   rel=3.5862e-02
+    11/9                                 = 11/9         = 1.222222   rel=5.0460e-02
+    13/10                                = 13/10        = 1.300000   rel=9.9651e-03
+    1 + 2/(N_ch - D_phys/2)              = 9/7          = 1.285714   rel=1.1334e-03
+    D_BSFG/D_phys - K_Mex/SO5            = 31/24        = 1.291667   rel=3.4909e-03
+    1 + F_TRZ * Phi_res * D_phys         = 4/3          = 1.333333   rel=3.5862e-02
+--------------------------------------------------------------------------------
+  Best locked-rational match: 9/7 = 9/7 (rel err 1.13e-03)
+  Verdict: effective lambda is NOT a clean locked rational at machine
+           precision; the ADDITIVE damped form 13/3 * delta^3 * exp(-c_2 delta)
+           is the canonical closed form.  c-chain is its own class.
+================================================================================
+  c-chain final cascade (S701 -> S708):
+    tree  raw 3 v_SCM                 =  +692.286 ppm
+    1-loop / 2-loop / 3-loop Borel    =    +1.437 ppb (before geom)
+    rank=13/3 geom phase              = +2890.4745 ppt
+================================================================================
+  UNIVERSALITY CLASSIFICATION (FINAL):
+    Class I   alpha : c_n = lambda_n * c_2^(n-1) / (n-1)!,  per-loop locked
+    Class II  mu    : c_n = c_2 * r^(n-2),                   single locked ratio
+    Class III c     : c_n = c_2^(n-1) / (n-1)! (lambda=1)    + additive
+                      Delta_geom = (D_crit/D_BSFG) delta^3 exp(-c_2 delta)
+                      i.e., Borel + locked-rank additive damped geom phase
+================================================================================
+c_chain_classII_unified_ratio: predicted=1.000000000000e+00 observed=1.500000000000e+00 error_pct=+50.000000 status=FAIL
+c_chain_classIII_borel_plus_geom: predicted=2.997924588665e+08 observed=2.997924580000e+08 error_pct=+2.890474511318e-07 status=WARN
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session718_c_chain_class_assignment_result.json

@@ -1,0 +1,159 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={UQFF Prediction P13: DESI Y5 Dark Energy w(z) Second-Derivative Strict-Static Test},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{UQFF Prediction P13: DESI Y5 Dark Energy w(z) Second-Derivative
+Strict-Static Test}
+\author{}
+\date{2026-05-11}
+
+\begin{document}
+\maketitle
+
+\section{\texorpdfstring{UQFF Prediction P13: DESI Y5 Dark Energy
+\(w(z)\) Second-Derivative Strict-Static
+Test}{UQFF Prediction P13: DESI Y5 Dark Energy w(z) Second-Derivative Strict-Static Test}}\label{uqff-prediction-p13-desi-y5-dark-energy-wz-second-derivative-strict-static-test}
+
+\subsection{1. Setup}\label{setup}
+
+DESI 2024 BAO + SN Ia + CMB combined analysis reports a possible drift
+in the dark-energy equation of state, parametrized as
+
+\[
+w(z) = w_0 + w_a \cdot \frac{z}{1 + z}, \qquad (w_0, w_a) = (-0.827 \pm 0.063,\; -0.75 \pm 0.29) .
+\]
+
+P7 (PAPER\_1170) already constrains the \emph{first} derivative: UQFF
+predicts \(w_0 = -1\), \(w_a = 0\) because the R26 vacuum energy is
+strictly static.
+
+P13 extends to the \emph{second} derivative.
+
+\subsection{2. UQFF Closed Form (P13)}\label{uqff-closed-form-p13}
+
+Because \(\rho_\Lambda = (V(0) + \rho_{R26} + \rho_{KK} + \rho_{BSFG})\)
+is \emph{strictly} time-independent in the closed Lagrangian
+(PAPER\_1167, PAPER\_1170), all derivatives of \(w(z)\) vanish
+identically:
+
+\[
+\boxed{\frac{d^n w}{dz^n}\bigg|_{\rm UQFF} = 0 \quad \text{for all } n \ge 1.}
+\]
+
+In particular, the second derivative
+
+\[
+\frac{d^2 w}{dz^2} = 0 \pm 0
+\]
+
+is a \emph{zero-parameter} prediction --- UQFF has no freedom to evade
+it.
+
+\subsection{3. Numerical Comparison}\label{numerical-comparison}
+
+Standard \(w_0 w_a\)CDM has \(d^2 w/dz^2 = 2 w_a/(1+z)^3\). At
+\(z = 0.5\):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Model & \(d^2 w/dz^2\) at \(z=0.5\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\Lambda\)CDM & 0 \\
+DESI 2024 best fit (\(w_a = -0.75\)) & \(-0.444\) \\
+\textbf{UQFF (P13)} & \textbf{0} \\
+\end{longtable}
+}
+
+\subsection{4. Falsifiable Prediction
+(P13)}\label{falsifiable-prediction-p13}
+
+DESI Y5 (2028) is forecast to constrain \(w_a\) at the \(\pm 0.05\)
+level after BAO + SN + CMB combination. The implied second-derivative
+bound at \(z = 0.5\) is
+
+\[
+|d^2 w/dz^2| < 0.030 \quad \text{(DESI Y5 1-}\sigma\text{)} .
+\]
+
+\textbf{Falsifier:} if DESI Y5 confirms \(w_a\) deviating from 0 at the
+\(\ge 3\sigma\) level (equivalently \(|d^2 w/dz^2| > 0.030\) at
+\(z = 0.5\) at \(\ge 3\sigma\)), UQFF static-vacuum is excluded.
+
+\subsection{5. Cross-Check with CP4
+\#262}\label{cross-check-with-cp4-262}
+
+CP4 calculator \texttt{UQFFDarkEnergySecondDerivativeCalculator} returns
+\(d^2 w/dz^2 = 0.0\) at all \(z\) for default inputs, with the DESI Y5
+bound included for comparison.
+
+\subsection{6. Status}\label{status}
+
+CLOSED. P13 added to predictions table alongside P6--P12. P13 is unique
+among the predictions for being a \textbf{strict zero with no UQFF
+freedom}.
+
+
+% Session 258 auto-injected bibliography stub
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}

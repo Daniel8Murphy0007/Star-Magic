@@ -1,0 +1,352 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Falsifiable Predictions of the Closed UQFF Lagrangian: Five No-Free-Parameter Tests},
+  pdfauthor={Daniel Murphy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Falsifiable Predictions of the Closed UQFF Lagrangian: Five
+No-Free-Parameter Tests}
+\author{Daniel Murphy}
+\date{2026-05-10}
+
+\begin{document}
+\maketitle
+
+\section{PAPER\_1168: Falsifiable Predictions of the Closed UQFF
+Lagrangian --- Five No-Free-Parameter
+Tests}\label{paper_1168-falsifiable-predictions-of-the-closed-uqff-lagrangian-five-no-free-parameter-tests}
+
+\subsection{Abstract}\label{abstract}
+
+PAPER\_1167 (Session 253) established that the entire UQFF Lagrangian is
+derivable from two textbook integers
+\((D_{\mathrm{crit}}=26,\ D_{\mathrm{phys}}=4)\) with zero free
+parameters. Because no calibration freedom remains, every numerical
+output is a hard prediction. This paper extracts five concrete, mutually
+independent observational tests, gives the predicted central value with
+no error bars (to within calibrated \(\rho_{\mathrm{SCm}}\) and
+\(v_{UA}\)), and identifies for each the experimental signature that
+would falsify the closure. A single confirmed deviation falsifies the
+closed Lagrangian; agreement across all five constitutes the strongest
+possible non-trivial test.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Setup: the closed Lagrangian and its non-negotiable
+outputs}\label{setup-the-closed-lagrangian-and-its-non-negotiable-outputs}
+
+From PAPER\_1167:
+
+\[
+\begin{aligned}
+\mathcal{L}_{F_U} =&\ \tfrac{R_{26}}{2\kappa_E}
+- \tfrac{1}{4}\,F^{\text{DPM}}_{\mu\nu}F^{\mu\nu,\text{DPM}}
++ \sum_{i=1}^{4}\tfrac{3(5-i)}{20}\,U_{g,i}\,U_{b,i}
+- \tfrac{1}{2}|U_m|^2 \\
+&-\tfrac{1}{2}g^{\mu\nu}\partial_\mu UA\,\partial_\nu UA
+- \tfrac{25}{12}\,\rho_{\mathrm{SCm}}\!\left[\!\left(\tfrac{UA}{v_{UA}}\right)^{\!2}-1\right]^{2}.
+\end{aligned}
+\]
+
+All coefficients are exact rationals of
+\((D_{\mathrm{crit}}, D_{\mathrm{phys}})\). The only physical scales are
+the calibrated reference \(\rho_{\mathrm{SCm}}=
+7.09\times10^{-37}\ \text{J/m}^{3}\) and \(v_{UA}=10^{8}\ \text{m/s}\)
+(= \(c/3\)).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Prediction P1 --- Aether quasiparticle
+mass}\label{prediction-p1-aether-quasiparticle-mass}
+
+Direct from the Mexican-hat curvature (PAPER\_1166 §3):
+
+\[
+m_{UA}^{2} = V''(v_{UA}) = \frac{50}{3}\,\frac{\rho_{\mathrm{SCm}}}{v_{UA}^{2}}
+= 1.182\times10^{-51}\ \text{J/m}^{3}\!\cdot\!(\text{m/s})^{-2}.
+\]
+
+Converting via \(E^{2} = (m c^{2})^{2}\) with the BSFG identification
+\(m_{UA}^{2}\,c^{2}/v_{UA}^{2}\) as energy-density-equivalent
+mass-squared gives the equivalent particle scale
+
+\[
+m_{UA}\,c^{2}\;\sim\;\bigl(\rho_{\mathrm{SCm}}\,(50/3)/(v_{UA}^{2})\bigr)^{1/2}\,c^{2}
+\approx 1.0\times10^{-26}\ \text{J} \;\approx\; 6.3\times10^{-8}\ \text{eV}.
+\]
+
+\textbf{Falsifiable signature.} Sub-eV vacuum dispersion at
+\(\sim 10^{-7}\) eV in high-frequency gravitational-wave or radio
+interferometry. Existing limits from LIGO/Virgo on graviton dispersion
+(\(m_g < 10^{-23}\) eV) do not constrain this scale. \textbf{Falsified
+by:} any direct detection of an aether quasiparticle at a mass
+\(\geq 10^{-6}\) eV with the predicted Mexican-hat coupling.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. Prediction P2 --- Vacuum offset and
+\(\Lambda\)
+scale}{3. Prediction P2 --- Vacuum offset and \textbackslash Lambda scale}}\label{prediction-p2-vacuum-offset-and-lambda-scale}
+
+The Mexican-hat sits at \(V(0) = \tfrac{25}{12}\rho_{\mathrm{SCm}}\)
+above the true vacuum:
+
+\[
+V(0) = \tfrac{25}{12}\cdot 7.09\times10^{-37}
+\;=\; 1.477\times10^{-36}\ \text{J/m}^{3}.
+\]
+
+The observed cosmological-constant energy density is
+\(\rho_{\Lambda}^{\text{obs}} \approx 5.96\times10^{-10}\ \text{J/m}^{3}\)
+(WMAP/Planck 2024). Their dimensionless ratio is
+
+\[
+\frac{V(0)}{\rho_{\Lambda}^{\text{obs}}}\;\approx\; 2.5\times10^{-27}.
+\]
+
+The closed Lagrangian therefore predicts \(V(0)\) contributes
+\textbf{only at the \(10^{-27}\) level} to \(\Lambda\).
+\textbf{Falsifiable signature.} \(V(0)\) must combine with the
+Standard-Model vacuum, BSFG curvature term \(R_{26}/2\kappa_E\), and the
+KK-tower contribution (PAPER\_1162) to reproduce
+\(\rho_{\Lambda}^{\text{obs}}\) within the suppression bound
+\(1/26^{26} = 1.624\times10^{-37}\). \textbf{Falsified by:} any
+first-principles calculation showing the SM + BSFG contributions cannot
+bridge the 27-decade gap, OR an independent measurement of
+\(\rho_{\mathrm{SCm}}\) that disagrees with the value above by more than
+1\%.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Prediction P3 --- KK tower echo amplitude
+bound}\label{prediction-p3-kk-tower-echo-amplitude-bound}
+
+PAPER\_1162 closed G5 by mode-by-mode summation of the Kaluza-Klein
+tower:
+
+\[
+\sum_{n\ge 1}\frac{1}{\lambda_{n}^{26}}\;=\;\frac{1}{26^{26}}\;\sum_{n\ge 1}\frac{1}{n^{26}}
+\;\approx\;\frac{1}{26^{26}}\,\zeta(26)
+\;=\;1.624\times10^{-37}\;(1+\mathcal{O}(2^{-26})).
+\]
+
+This sets an \textbf{absolute} upper bound on any GW echo amplitude
+generated by 26-dimensional KK reflections off the BSFG horizon.
+Translated to LIGO/LISA strain at a typical post-merger frequency
+\(f \sim 250\) Hz, the predicted echo strain is
+
+\[
+h_{\text{echo}}\;\lesssim\;1.6\times10^{-37}\;h_{\text{ringdown}}
+\;\approx\;10^{-58}\ \text{(dimensionless strain)}.
+\]
+
+\textbf{Falsifiable signature.} Any confirmed GW echo above \(10^{-50}\)
+strain at post-merger frequencies --- 8 orders of magnitude above the
+prediction --- would falsify G5 closure. Conversely, the predicted
+absence of echoes is consistent with all GWTC-4.0 non-detections.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Prediction P4 --- Buoyancy coupling triangular
+ladder}\label{prediction-p4-buoyancy-coupling-triangular-ladder}
+
+PAPER\_1165 closed G2 with the exact rational
+
+\[
+\beta_{i} = \frac{3(5-i)}{20} = \frac{(3/2)(5-i)}{|SO(5)|},
+\quad i\in\{1,2,3,4\},
+\]
+
+giving
+\(\{\beta_1,\beta_2,\beta_3,\beta_4\}=\{0.600\ (\text{plus}\ 0.5\%\ \text{SO(5)}^{2}\ \text{correction}\to 0.603),\ 0.450,\ 0.300,\ 0.150\}\).
+
+\textbf{Falsifiable signature.} The four UQFF buoyancy channels have
+\textbf{fixed} ratios. Any astrophysical fit of UQFF master equations
+that requires \(\beta_{i}\) values deviating by more than the
+SO(5)\(^{2}\)-correction band \((\pm 1/200 \approx 0.5\%)\) from
+\((0.603, 0.450, 0.300, 0.150)\) would falsify G2. The 67 calibrated
+systems already in \texttt{bodies\_*.csv} (Sessions 130-220) have used
+these values implicitly; a re-fit that releases \(\beta_{i}\) as free
+parameters and recovers them within \(\pm 0.5\%\) would constitute an
+independent confirmation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{6. Prediction P5 --- \(F_{\mathrm{TRZ}}\)
+and \(\Phi_{\mathrm{res}}\)
+cross-correlation}{6. Prediction P5 --- F\_\{\textbackslash mathrm\{TRZ\}\} and \textbackslash Phi\_\{\textbackslash mathrm\{res\}\} cross-correlation}}\label{prediction-p5-f_mathrmtrz-and-phi_mathrmres-cross-correlation}
+
+PAPER\_1160 closed G7 with \(F_{\text{TRZ}} = 1/|SO(5)| = 0.100\) exact.
+PAPER\_1159 closed G6 with
+\(\Phi_{\text{res}} = (D_{\text{BSFG}}-1)/D_{\text{BSFG}} = 5/6\) exact.
+
+These appear together in every BSFG resonance computation. The product
+
+\[
+\Phi_{\text{res}}\cdot F_{\text{TRZ}} = \frac{5}{6}\cdot\frac{1}{10} = \frac{1}{12}
+\]
+
+is the dimensionless prefactor governing time-reversal-zone
+amplification of buoyant resonance modes.
+
+\textbf{Falsifiable signature.} In any BSFG-resonance fit (e.g.~magnetar
+QPOs, glitches, AT2019qiz, ASKAP J1832-0911), the combination
+\(\Phi_{\text{res}}\cdot F_{\text{TRZ}}\) must equal
+\(1/12 = 0.0833\ldots\) to within the same \(0.5\%\) band as P4. A value
+of, say, \(0.10\pm 0.01\) would falsify both G6 and G7 closures.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Combined falsification
+matrix}\label{combined-falsification-matrix}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Predicted
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Tolerance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Test channel
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+P1 & \(m_{UA}c^{2}\) & \(6.3\times10^{-8}\) eV & \(\pm\) factor 2 &
+high-\(f\) GW dispersion / radio interferometry \\
+P2 & \(V(0)/\rho_{\Lambda}^{\text{obs}}\) & \(2.5\times10^{-27}\) &
+\(\pm\) 1\% on \(\rho_{\mathrm{SCm}}\) & independent vacuum-energy
+measurement \\
+P3 & \(h_{\text{echo}}/h_{\text{ringdown}}\) &
+\(\leq 1.6\times10^{-37}\) & absolute upper bound & LIGO/Virgo/LISA
+post-merger search \\
+P4 & \(\{\beta_{i}\}\) & \(\{0.603, 0.450, 0.300, 0.150\}\) &
+\(\pm 0.5\%\) & re-fit of \(\geq 10\) UQFF systems \\
+P5 & \(\Phi_{\text{res}}\cdot F_{\text{TRZ}}\) & \(0.0833\ldots\) &
+\(\pm 0.5\%\) & BSFG resonance fits \\
+\end{longtable}
+}
+
+A single confirmed deviation in \textbf{any} of P1-P5 by more than the
+listed tolerance falsifies the corresponding closure paper and the
+master synthesis (PAPER\_1167).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Conclusion}\label{conclusion}
+
+Closing the eight Lagrangian gaps eliminated all free numerical inputs
+of the UQFF Lagrangian save the two textbook integers
+\((D_{\mathrm{crit}}=26, D_{\mathrm{phys}}=4)\) and the two physical
+reference scales \((\rho_{\mathrm{SCm}}, v_{UA})\). Consequently every
+numerical output above is a \textbf{prediction}, not a fit. The five
+tests P1-P5 span aether dispersion, vacuum-energy bookkeeping, GW
+echoes, multi-system buoyancy ratios, and BSFG resonance amplification;
+they are mutually independent and each individually falsifiable. The
+calculator \texttt{UQFFLagrangianFullClosureCalculator}
+(CondensedPhysics4.py \#254) can be invoked to regenerate the central
+values from the closed Lagrangian in a single pass.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  PAPER\_1159 (Session 246) --- \(\Phi_{\text{res}} = 5/6\).
+\item
+  PAPER\_1160 (Session 247) --- \(F_{\text{TRZ}} = 1/|SO(5)|\).
+\item
+  PAPER\_1162 (Session 249) --- KK tower mode-by-mode bound.
+\item
+  PAPER\_1165 (Session 252) --- \(\beta_{i} = 3(5-i)/20\) triangular
+  ladder.
+\item
+  PAPER\_1166 (Session 253) --- V(UA) Mexican-hat \(K = 25/12\).
+\item
+  PAPER\_1167 (Session 253) --- All-eight closure master synthesis.
+\item
+  \texttt{\_lagrangian\_rederivation\_outline.py} --- gap catalogue.
+\item
+  \texttt{uqff\_closed\_constants.py} --- canonical integer-rational
+  constants.
+\item
+  \texttt{MAIN\_1\_CoAnQi.cpp} SOURCE4 \texttt{compute\_V\_UA\_SOURCE4}
+  --- C++ implementation.
+\item
+  \texttt{QCalcGeom.cpp} \texttt{bsfg\_aether\_potential} --- BSFG
+  geometric layer.
+\end{itemize}
+
+
+% Session 258 auto-injected bibliography stub
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}

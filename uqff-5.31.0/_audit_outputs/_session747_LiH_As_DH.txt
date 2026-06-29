@@ -1,0 +1,82 @@
+================================================================================
+SESSION 747 -- A_s fine; D/H fine; Class XXVIII Li/H
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- A_s fine: (1-n_s)^6 * (11/9)(243/260) currently -0.0064%
+--------------------------------------------------------------------------------
+  S746 base = 2.099865e-09, err = -0.006430%
+  required multiplier = 1.0000643070
+  delta = 6.431e-05
+
+  3-atom delta (a*b/c) search:
+    1+(5/108)^2*1/K_Mex/D_phys^2                    = 6.4300e-05  A_s=2.1000e-09  err=-0.000001%
+    1+1/D_crit*1/SO5^2/D_BSFG                       = 6.4103e-05  A_s=2.1000e-09  err=-0.000020%
+
+  Full multiplier 1.00006431 3-atom search:
+
+  BEST: A_s = (1-n_s)^6*(11/9)*(243/260) = 2.099865e-09, err = -0.0064303%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- D/H fine: Y_p*xi/(D_phys²*K_Mex) currently -0.017%
+--------------------------------------------------------------------------------
+  S746 base = 2.526562e-05, err = -0.01731%
+  needed mult = 1.00017316, delta = 1.732e-04
+
+  3-atom delta search:
+    1+(5/108)^2*1/A_5^2/xi                          = 1.7320e-04  D/H=2.5270e-05  err=+0.000004%
+    1+1/A_5*27/26/SO5^2                             = 1.7308e-04  D/H=2.5270e-05  err=-0.000008%
+    1+31/30*beta_i/A_5^2                            = 1.7305e-04  D/H=2.5270e-05  err=-0.000011%
+    1+(5/108)^2*F*P/31/30                           = 1.7285e-04  D/H=2.5270e-05  err=-0.000031%
+    1+1/K_Mex*9/250/SO5^2                           = 1.7280e-04  D/H=2.5270e-05  err=-0.000036%
+    1+1/A_5^2*beta_i/n_s                            = 1.7355e-04  D/H=2.5270e-05  err=+0.000039%
+    1+1/A_5^2*SSq/1-F*P                             = 1.7273e-04  D/H=2.5270e-05  err=-0.000043%
+    1+1/A_5*1/SO5^2/n_s                             = 1.7271e-04  D/H=2.5270e-05  err=-0.000045%
+
+  BEST: D/H = Y_p*xi/(D_phys²*K_Mex)*[1+(5/108)^2*1/A_5^2/xi] = 2.5270e-05, err = +0.000004%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XXVIII: ⁷Li/H = 1.6e-10 (Spite plateau)
+--------------------------------------------------------------------------------
+  Li/H observed (Spite plateau) = 1.60e-10
+  Li/H standard BBN prediction = 4.50e-10  <- 'Lithium problem'
+  UQFF closes to observed (resolves Li problem if successful)
+
+  H1: (1-n_s)^7 * (5/2) = 1.608e-10, err = +0.530%  ['5/2'=Phi_res*3, not clean]
+  H2: Y_p*(1-n_s)^5 * 3/(4*A_5) = 1.608e-10, err = +0.530%
+  H4: xi^3 = 4.062e-08, err = +25286.810%
+  H5: (D/H)*xi^2*SSq = 1.702e-10, err = +6.358%
+
+  3-atom direct search for Li/H = 1.6e-10:
+    (5/108)^2*1/A_5^2/A_5^2                       = 1.654e-10  err = +3.3636%
+
+  Multiplier on xi^3 (=4.062e-08): needed = 0.00394
+    1-n_s*1/N_ch                             mult=0.00389  Li/H=1.580e-10  err=-1.2735%
+    1/N_ch*9/250                             mult=0.00400  Li/H=1.625e-10  err=+1.5472%
+    5/108*F*P                                mult=0.00386  Li/H=1.567e-10  err=-2.0571%
+    1/D_crit*1/SO5                           mult=0.00385  Li/H=1.562e-10  err=-2.3584%
+
+  Multiplier on (1-n_s)^7 (=6.434e-11): needed = 2.48682
+    1/D_phys*SO5                             mult=2.50000  Li/H=1.608e-10  err=+0.5302%
+    27/25/1-SSq                              mult=2.51163  Li/H=1.616e-10  err=+0.9977%
+    beta_i/Y_p                               mult=2.46082  Li/H=1.583e-10  err=-1.0455%
+    D_BSFG/22/9                              mult=2.45455  Li/H=1.579e-10  err=-1.2977%
+    SO5*Y_p                                  mult=2.45000  Li/H=1.576e-10  err=-1.4805%
+    K_Mex/33/40                              mult=2.52525  Li/H=1.625e-10  err=+1.5456%
+    22/9*31/30                               mult=2.52593  Li/H=1.625e-10  err=+1.5727%
+
+  BEST: Li/H = Y_p*(1-n_s)^5 * 3/(4*A_5) = 1.6085e-10, err = +0.5302%
+
+classXXIV_As_session747: predicted=2.099865e-09 observed=2.100000e-09 error_pct=-6.430288e-03 status=OK
+classXXVII_DH_session747: predicted=2.527000e-05 observed=2.527000e-05 error_pct=3.958166e-06 status=OK
+classXXVIII_LiH_Spite_plateau: predicted=1.608482e-10 observed=1.600000e-10 error_pct=5.301514e-01 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  classXXIV_As_session747         err = -0.006430%
+  classXXVII_DH_session747        err = +0.000004%
+  classXXVIII_LiH_Spite_plateau   err = +0.5302%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session747_LiH_As_DH_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

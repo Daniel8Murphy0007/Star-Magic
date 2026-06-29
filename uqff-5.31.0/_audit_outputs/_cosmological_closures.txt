@@ -1,0 +1,30 @@
+==============================================================================
+UQFF COSMOLOGICAL CLOSURES (Session 257, G11-G17)
+==============================================================================
+
+Constant          UQFF closed     Observation    residual  identity
+----------------------------------------------------------------------------------------------------
+T_CMB            2.726843e+00    2.725500e+00      0.049%  60K / (D_crit-D_phys) = 60/22
+n_s              9.666667e-01    9.649000e-01      0.183%  1 - 2/(|SO(5)|*D_BSFG) = 29/30
+Omega_Lambda     6.840000e-01    6.847000e-01      0.102%  [SSq] / Phi_res = 0.57/(5/6)
+Omega_m          3.160000e-01    3.153000e-01      0.222%  1 - [SSq]/Phi_res
+eta_bg           6.283185e-10    6.100000e-10      3.003%  2*pi * F_TRZ^10 = 2*pi/10^10
+tau_reion        5.000000e-02    5.400000e-02      7.407%  F_TRZ^2 * Phi_res * D_BSFG = 1/20
+A_s              2.083333e-09    2.100000e-09      0.794%  K_Mex * F_TRZ^9 = (25/12)*10^-9
+r_tens (UB)      1.200000e-02    6.000000e-02       bound  F_TRZ^2 / Phi_res = 0.012 (consistent, well below 0.06)
+
+KEY OBSERVATIONS:
+  - N_e (e-folds of inflation) = |SO(5)|*D_BSFG = 60 = SAME INTEGER as k_B closure G10
+    The 60 = order of A_5 (icosahedral rotation group) cross-locks G10 and G12.
+  - Omega_Lambda/Omega_m = [SSq]/Phi_res ratio is a direct cross-check of G6.
+  - A_s amplitude uses K_Mexican-hat coefficient from PAPER_1166 (G1).
+  - tau_reion = 1/(|SO(5)|^2 * Phi^-1 * D_BSFG^-1) = F_TRZ^2 * Phi * D_BSFG = 1/20.
+  - eta_b/photon = 2*pi/|SO(5)|^10 (one F_TRZ per matter species).
+
+REMAINING COSMOLOGICAL ANCHOR:
+  H_0 (Hubble constant) -- cannot be derived from {E_0, f_THz, v_F}.
+  Requires cosmic-time anchor t_0 = 1/H_0 = age of universe. This is the
+  SECOND independent SI anchor system needed (the first being the SCm phonon
+  triplet). Honest closure -- not a fudge.
+
+Wrote: _cosmological_closures.json

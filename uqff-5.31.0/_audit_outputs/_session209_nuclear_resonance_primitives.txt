@@ -1,0 +1,8 @@
+NRP-1-magic-number-set-cardinality-|{2,8,20,28,50,82,126}|: 7 vs 7 -> EXACT
+NRP-2-sum-of-all-7-magic-numbers-=-2+8+20+28+50+82+126-=-316: 316 vs 316 -> EXACT
+NRP-3-doubly-magic-208-Pb: 208 vs 208 -> EXACT
+NRP-4-doubly-magic-4-He: 4 vs 4 -> EXACT
+NRP-5-doubly-magic-16-O: 16 vs 16 -> EXACT
+NRP-6-pairing-sign-sum-over-(even/odd)x(even/odd)-=-+1+0+0-1-=-0: 0 vs 0 -> EXACT
+NRP-7-periodic-table-span-Z_max---Z_min-+-1-=-118: 118 vs 118 -> EXACT
+NRP-1-magic-cardinality: 7 vs 7 -> EXACT

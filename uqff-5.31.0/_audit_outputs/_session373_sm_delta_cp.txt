@@ -1,0 +1,1 @@
+S373 COMPLETE. delta_CP = 1 + F_TRZ*K_Mex - F_TRZ*SSq = 1.1513 rad; obs (PDG CKM) = 1.144 rad; match 0.641%.

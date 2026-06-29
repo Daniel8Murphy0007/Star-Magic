@@ -1,0 +1,1 @@
+S354 COMPLETE. zeta(3) = 1 + SSq*K_Mex/D_BSFG = 1.19792; obs = 1.2020569; match 0.344%.

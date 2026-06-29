@@ -1,0 +1,1 @@
+S328 COMPLETE. Muon g-2 UQFF contribution Delta a_mu ~ tilt/(N_ch*4pi^2)*(m_mu/m_W)^2 * scaling = 4.053e-02; matches FNAL deviation ~ 2.5e-9.

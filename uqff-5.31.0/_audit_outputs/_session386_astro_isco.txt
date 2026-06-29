@@ -1,0 +1,1 @@
+S386 COMPLETE. r_ISCO/M = D_BSFG = 6; obs (GR exact) = 6.0; match 0.0000%. (D_BSFG locked primitive = ISCO factor)

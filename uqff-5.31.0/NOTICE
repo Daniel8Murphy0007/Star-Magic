@@ -1,0 +1,63 @@
+UQFF Star-Magic
+Copyright (c) 2025-2026 Daniel T. Murphy / Star-Magic Research Program.
+All rights reserved.
+
+This product includes software developed by Daniel T. Murphy as part of
+the Star-Magic Research Program (https://github.com/Daniel8Murphy0007/
+Star-Magic).
+
+Licensed under a DUAL LICENSE:
+  - Option A: GNU Affero General Public License v3.0 (AGPL-3.0)
+    See LICENSE and LICENSE-AGPL-3.0.txt
+  - Option B: Commercial License
+    See LICENSE and COMMERCIAL.md
+    Contact: daniel.murphy00@enrgyone.com
+
+You must choose one license option before using this software.
+
+==============================================================================
+SCIENTIFIC ATTRIBUTION REQUIREMENT
+==============================================================================
+
+Any academic publication, technical report, patent application, white
+paper, or public presentation that uses results produced by this
+software MUST cite the UQFF framework. See CITATION.cff for the
+canonical citation form.
+
+==============================================================================
+TRADEMARKS
+==============================================================================
+
+"UQFF", "Star-Magic", "Di-Pseudo-Monopole", and "DPM" are unregistered
+trademarks of Daniel T. Murphy / Star-Magic Research Program.
+
+==============================================================================
+PATENT NOTICE
+==============================================================================
+
+Certain applications of UQFF (notably the Star-Magic LENR reactor
+architecture) may be subject to pending or issued patents. Software
+licenses do NOT grant hardware patent rights. Contact the author for
+patent licensing.
+
+==============================================================================
+THIRD-PARTY COMPONENTS
+==============================================================================
+
+This software has no runtime dependencies beyond the Python standard
+library (Python 3.10+ required). The optional reference C++ closures
+in uqff_exact_closures.cpp depend only on <cmath> from the C++
+standard library.
+
+==============================================================================
+DISCLAIMER OF WARRANTY
+==============================================================================
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

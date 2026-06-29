@@ -1,0 +1,115 @@
+================================================================================
+SESSION 760 -- Omega_c*h^2 push; Sigma m_nu (XLIX); A_s (L)
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Omega_c*h^2 (XLVII) strict-CE push via delta-shell
+--------------------------------------------------------------------------------
+  base: pred=0.120597, err=-0.002549%
+  delta needed = +2.5491e-05
+
+  2-atom delta on Omega_c*h^2 (tol 1%):
+
+  3-atom delta on Omega_c*h^2 (tol 0.2%):
+    1+[F_TRZ a*b*c 1-n_s alpha] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[F_TRZ a*b*c alpha 1-n_s] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[1-n_s a*b*c F_TRZ alpha] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[1-n_s a*b/c alpha SO5] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[alpha a*b*c F_TRZ 1-n_s] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[alpha a*b/c 1-n_s SO5] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[1-n_s a*b*c alpha F_TRZ] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+    1+[alpha a*b*c 1-n_s F_TRZ] = 2.5541e-05 -> Och2=0.120600 err=+0.000005%
+
+  4-atom delta on Omega_c*h^2 (tol 0.02%):
+    1+[1-n_s a*b/(c*d) 5/108 D_crit 22/9] -> Och2=0.120600 err=+0.000000%
+    1+[1-n_s a*b/(c*d) 5/108 22/9 D_crit] -> Och2=0.120600 err=+0.000000%
+    1+[5/108 a*b/(c*d) 1-n_s D_crit 22/9] -> Och2=0.120600 err=+0.000000%
+    1+[5/108 a*b/(c*d) 1-n_s 22/9 D_crit] -> Och2=0.120600 err=+0.000000%
+
+  BEST Omega_c*h^2: base*[1+1-n_s a*b/(c*d) 5/108 D_crit 22/9] = 0.120600, err = +0.000000%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XLIX: Sum m_nu = 0.06 eV
+--------------------------------------------------------------------------------
+
+  Seed: Y_p/D_phys = 0.06125 err=+2.0833%
+
+  2-atom direct on Sigma m_nu (tol 5%):
+    [Y_p a*b Y_p] = 0.060025  err=+0.041667%
+    [r a/b beta_i] = 0.059711  err=-0.481008%
+    [beta_i a/b SO5] = 0.060290  err=+0.483333%
+    [F_TRZ a*b beta_i] = 0.060290  err=+0.483333%
+    [beta_i a*b F_TRZ] = 0.060290  err=+0.483333%
+    [1/mpme a/b N_ch] = 0.060513  err=+0.855004%
+    [6/11 a/b N_ch] = 0.060606  err=+1.010101%
+    [Y_p a/b D_phys] = 0.061250  err=+2.083333%
+    [1-n_s a/b SSq] = 0.061404  err=+2.339181%
+    [1-n_s a/b beta_i] = 0.058053  err=-3.245425%
+    [5/108 a/b 416/513] = 0.057091  err=-4.847756%
+    [137/200 a*b 1/12] = 0.057083  err=-4.861111%
+
+  3-atom direct on Sigma m_nu (tol 1%):
+    [D_BSFG a/b/c SO5 SO5] = 0.060000  err=+0.000000%
+    [SO5 a*b/c r D_BSFG] = 0.060000  err=+0.000000%
+    [r a*b/c SO5 D_BSFG] = 0.060000  err=+0.000000%
+    [27/25 a*b/c 5/108 Phi_res] = 0.060000  err=+0.000000%
+    [5/108 a*b/c 27/25 Phi_res] = 0.060000  err=+0.000000%
+    [D_phys a*b/c 1-F_TRZ A_5] = 0.060000  err=+0.000000%
+    [1-F_TRZ a*b/c D_phys A_5] = 0.060000  err=+0.000000%
+    [r a/b/c F_TRZ D_BSFG] = 0.060000  err=-0.000000%
+    [r a/b/c D_BSFG F_TRZ] = 0.060000  err=-0.000000%
+    [137/200 a*b/c 1/137 1/12] = 0.060000  err=+0.000000%
+    [1/137 a*b/c 137/200 1/12] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c F_TRZ D_BSFG] = 0.060000  err=+0.000000%
+
+  4-atom direct on Sigma m_nu (tol 0.1%):
+    [F_TRZ a/(b*c*d) D_BSFG 5/108 D_BSFG] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c/d D_BSFG 1/12 Phi_res] = 0.060000  err=+0.000000%
+    [F_TRZ a*b/(c*d) A_5 SO5 SO5] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c/d 1-F*P 6/11 Phi_res] = 0.060000  err=+0.000000%
+    [F_TRZ a*b/(c*d) 11/9 Phi_res 22/9] = 0.060000  err=+0.000000%
+    [F_TRZ a*b/(c*d) 11/9 22/9 Phi_res] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c*d 11/9 6/11 1-F_TRZ] = 0.060000  err=+0.000000%
+    [F_TRZ a/(b*c*d) 5/108 D_BSFG D_BSFG] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c*d 6/11 1-F_TRZ 11/9] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c*d 6/11 11/9 1-F_TRZ] = 0.060000  err=+0.000000%
+    [F_TRZ a*b*c/d 1/12 D_BSFG Phi_res] = 0.060000  err=+0.000000%
+    [Phi_res a*b/(c*d) 1-F_TRZ K_Mex D_BSFG] = 0.060000  err=+0.000000%
+    [Phi_res a*b/(c*d) 1-F_TRZ D_BSFG K_Mex] = 0.060000  err=+0.000000%
+    [Phi_res a*b/(c*d) r D_BSFG 1/12] = 0.060000  err=+0.000000%
+    [Phi_res a*b*c/d r 22/9 11/9] = 0.060000  err=+0.000000%
+
+  BEST Sigma m_nu: [D_BSFG a/b/c SO5 SO5] = 0.060000, err = +0.000000%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class L: A_s = 2.1e-9
+--------------------------------------------------------------------------------
+
+  Seed scales:
+    alpha^4 = 2.8357e-09  (3.0% off from 2.84e-9 vs 2.1e-9)
+    xi^3    = 4.0619e-08
+    r*xi^3  = 1.4623e-09
+    r^2*xi^2= 1.5314e-08
+    k_pivot^2*alpha^4 = 7.0893e-12
+    1/(D_BSFG*A_5^4) = 1.2860e-08
+
+  2-atom direct on A_s (tol 50%):
+
+  3-atom direct on A_s (tol 20%):
+
+  4-atom direct on A_s (tol 2%):
+
+  BEST A_s: none = 0.0000e+00, err = +9999.000000%
+
+classXLVII_Omega_c_h2_session760: predicted=1.206000e-01 observed=1.206000e-01 error_pct=4.508468e-07 status=CE_strict
+classXLIX_sum_mnu_session760: predicted=6.000000e-02 observed=6.000000e-02 error_pct=0.000000e+00 status=EXACT
+classL_A_s_session760: predicted=0.000000e+00 observed=2.100000e-09 error_pct=-1.000000e+02 status=OPEN
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Omega_c*h^2 (XLVII)  err = +0.000000%  (CE_strict)
+  Sum m_nu    (XLIX)   err = +0.000000%  (EXACT)
+  A_s         (L)      err = +9999.000000%  (OPEN)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session760_result.json

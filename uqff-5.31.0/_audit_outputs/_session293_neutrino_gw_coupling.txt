@@ -1,0 +1,26 @@
+========================================================================
+S293 NeutrinoGWCoupling smoke tests
+========================================================================
+  [PASS] T-1 h_uqff > 0 for valid input  
+  [PASS] T-2 h_uqff = 0 for f<=0  
+  [PASS] T-3 h_uqff = 0 for r<=0  
+  [PASS] T-4 h scales as 1/sqrt(r)  
+  [PASS] T-5 SCM_FACTOR == 1/3  
+  [PASS] T-6 damping(m=0)=0  
+  [PASS] T-7 damping(f=0)=0  
+  [PASS] T-8 damping > 0 for valid  
+  [PASS] T-9 damping tiny (<1)  
+  [PASS] T-10 skew=0 for m=0  
+  [PASS] T-11 skew>0 for valid  
+  [PASS] T-12 SN1987A skew tiny  2.573e-04s
+  [PASS] T-13 aether bounded  
+  [PASS] T-14 aether(rho=0)=1  
+  [PASS] T-15 calculator returns required keys  
+  [PASS] T-16 headline tag  
+  [PASS] T-17 positive anchors detected  2/2
+  [PASS] T-18 negative anchors below threshold  2/2
+  [PASS] T-19 cp4_id=437  
+  [PASS] T-20 audit_session=293  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

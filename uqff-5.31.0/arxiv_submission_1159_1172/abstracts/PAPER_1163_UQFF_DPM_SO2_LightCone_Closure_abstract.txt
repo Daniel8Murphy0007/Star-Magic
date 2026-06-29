@@ -1,0 +1,3 @@
+PAPER_1163: DPM Gauge Embedding: SO(2)_DPM = Light-Cone Plane in SO(26) (G3 Closure)
+
+We close gap **G3** of the Lagrangian re-derivation outline by identifying the SO(2) gauge structure of the DPM (di-pseudo-monopole CW/CCW pair) with the **light-cone gauge 2-plane** that is removed in standard bosonic string light-cone quantization at $D_{\rm crit}=26$. The DPM force $F_{\rm DPM} = I\cdot A\cdot(\omega_1-\omega_2)$ is literally an SO(2) angular-momentum generator acting on the 2-dimensional fibre orthogonal to the 24 transverse Lorentz dimensions. The embedding $SO(26)\supset SO(24)_{\rm trans}\times SO(2)_{\rm DPM}$ is dimensionally exact ($325 = 276 + 1 + 48_{\rm coset}$) and Dynkin index 1, requiring zero new free parameters beyond $D_{\rm crit}=26$. ---

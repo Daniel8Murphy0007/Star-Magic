@@ -1,0 +1,1 @@
+S398 COMPLETE. T_BEC coeff = K_Mex+Phi_res+F_TRZ*(D_phys+F_TRZ*Phi_res) = 3.3250; obs (4pi/zeta(3/2)^(2/3)) = 3.3125; match 0.377%.

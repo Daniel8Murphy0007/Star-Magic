@@ -1,0 +1,17 @@
+============================================================================
+SESSION 696 -- 2-loop / KK-tail closure of 1/alpha residual
+============================================================================
+  alpha_tree (S694/S695)    : 7.276563998161455e-03
+  1/alpha_tree              : 137.427500157
+  1/alpha_CODATA            : 137.035999084
+  empirical 2-loop coef     : c_emp    = 0.391501073
+  structural candidate      : c_struct = pi/(2*D_phys) = pi/8 = 0.392699082
+  coefficient match         : +0.3060%  (of empirical)
+  1/alpha_UQFF^(2)          : 137.034801075
+  residual (UQFF^2 - CODATA): -0.001198009
+  residual percent          : -0.0008742 %
+  residual ppm              : -8.742 ppm
+============================================================================
+two_loop_coefficient: predicted=0.392699082 observed=0.391501073 error_pct=0.306004 status=OK
+alpha_inverse_v3: predicted=137.034801075 observed=137.035999084 error_pct=-0.0008742 status=OK
+Artifact written: _session696_2loop_kk_result.json

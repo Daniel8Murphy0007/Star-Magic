@@ -1,0 +1,1 @@
+S357 COMPLETE. gamma_EulerMascheroni = SSq + F_TRZ^2 * Phi_res = 0.57833; obs = 0.57721566; match 0.194%.

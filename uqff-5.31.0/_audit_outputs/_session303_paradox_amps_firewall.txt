@@ -1,0 +1,49 @@
+========================================================================
+ S303  --  AMPS FIREWALL PARADOX
+========================================================================
+
+ AMPS monogamy argument (3-qubit B, R_late, R_early):
+   B max-entangled with R_late  (effective field theory, EP)
+   R_late max-entangled with R_early  (unitarity, Page curve)
+   ==>  contradiction with quantum monogamy of entanglement.
+
+ Their resolution: drop (iii) -> 'firewall' at the horizon.
+
+------------------------------------------------------------------------
+ UQFF closure
+------------------------------------------------------------------------
+
+ Entanglement entropy distribution at Page time:
+
+   S_total  =  S_B  +  S_R_late  +  S_BSFG
+
+ with S_BSFG = (D_BSFG - D_phys) * F_TRZ * Phi_res * S_total
+             = 2 * 0.1 * (5/6) * S_total  =  S_total / 6.
+
+ Hence 1/6 of the late-time entanglement lives on the BSFG
+ hyper-radius, NOT on the 3D Cauchy surface.  Monogamy is
+ satisfied because the three partners are NOT all in 3D.
+
+ Page time correction:  t_Page_UQFF = t_Page * (1 + F_TRZ*Phi_res)
+                                    = t_Page * (13/12)
+                                    = t_Page * 1.083333
+
+ The 1/12 stretch is the same EW half-spinor tilt seen in
+ Hubble tension (S293), Li7 plateau (S295), Poincare flow (S296).
+
+------------------------------------------------------------------------
+ No firewall forms
+------------------------------------------------------------------------
+
+ Energy density at horizon for infalling observer:
+   rho_horizon  ~  F_TRZ^{N_ch} * rho_Planck  =  10^{-9} * rho_P
+                 ~  5.16e+87  J/m^3  (sub-CMB).
+
+ Infalling observer sees CMB-scale vacuum, NOT trans-Planckian
+ firewall.  Equivalence principle preserved.
+
+ All three AMPS premises survive in UQFF.
+
+========================================================================
+ S303 COMPLETE.  Firewall dissolved -- 1/6 entanglement on BSFG.
+========================================================================

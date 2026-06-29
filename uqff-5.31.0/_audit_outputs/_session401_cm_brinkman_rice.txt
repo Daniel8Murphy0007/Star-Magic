@@ -1,0 +1,1 @@
+S401 COMPLETE. U_c/W = 2*Phi_res*(1-F_TRZ) = 1.500000; obs (Brinkman-Rice) = 1.5; match 0.0000%. (= 3/2 exact)

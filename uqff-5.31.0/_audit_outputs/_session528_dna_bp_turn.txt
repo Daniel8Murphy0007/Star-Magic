@@ -1,0 +1,1 @@
+S528 COMPLETE. DNA base-pairs per turn = 10.512500; closure = SO5+Phi_res-F*K-F*Phi_res-F^2*K-F^2*Phi_res; target 10.5; match 0.1190%.

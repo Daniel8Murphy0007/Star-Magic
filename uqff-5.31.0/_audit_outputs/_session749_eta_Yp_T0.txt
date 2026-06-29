@@ -1,0 +1,92 @@
+================================================================================
+SESSION 749 -- eta_b fine; Y_p precision; T_0 CMB monopole
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- eta_b fine: (1-n_s)^8 * 208/627
+--------------------------------------------------------------------------------
+  base = 7.470336e-13, err = -99.877535%
+  needed mult = 816.56297883, delta = +8.1556e+02
+
+  2-atom delta search:
+
+  3-atom delta search:
+    1+[D_crit a*b/c D_crit 33/40]  delta=8.1939e+02  eta=6.1286e-10  err=+0.469157%
+    1+[D_crit a*b/c D_crit Phi_res]  delta=8.1120e+02  eta=6.0674e-10  err=-0.534310%
+    1+[31/30 a/b/c r 1-n_s]  delta=8.2011e+02  eta=6.1339e-10  err=+0.556337%
+    1+[31/30 a/b/c 1-n_s r]  delta=8.2011e+02  eta=6.1339e-10  err=+0.556337%
+    1+[D_crit a/b/c 1-F*P 1-n_s]  delta=8.1039e+02  eta=6.0614e-10  err=-0.633554%
+    1+[D_crit a/b/c 1-n_s 1-F*P]  delta=8.1039e+02  eta=6.0614e-10  err=-0.633554%
+    1+[N_ch a*b/c N_ch F_TRZ]  delta=8.1000e+02  eta=6.0584e-10  err=-0.681268%
+    1+[N_ch a*b*c N_ch SO5]  delta=8.1000e+02  eta=6.0584e-10  err=-0.681268%
+    1+[N_ch a*b*c SO5 N_ch]  delta=8.1000e+02  eta=6.0584e-10  err=-0.681268%
+    1+[SO5 a*b*c N_ch N_ch]  delta=8.1000e+02  eta=6.0584e-10  err=-0.681268%
+    1+[A_5 a/b/c K_Mex 1-n_s]  delta=8.2286e+02  eta=6.1545e-10  err=+0.893276%
+    1+[A_5 a/b/c 1-n_s K_Mex]  delta=8.2286e+02  eta=6.1545e-10  err=+0.893276%
+
+  BEST: eta_b = (1-n_s)^8*(208/627)*base*[1+D_crit a*b/c D_crit 33/40] = 6.1286e-10, err = +0.469157%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XXXI: Y_p precision (Aver+2015 = 0.2470)
+--------------------------------------------------------------------------------
+  Y_p_UQFF = 49/200 = 0.2450
+  Y_p_obs  = 0.2470
+  err_base = -0.809717%
+  needed mult = 1.00816327, delta = +8.163265e-03
+
+  2-atom delta search:
+
+  3-atom delta search:
+    1+[SSq a*b/c 1-n_s 22/9]  delta=8.1614e-03  Y_p=0.247000  err=-0.000189%
+    1+[1-n_s a*b/c SSq 22/9]  delta=8.1614e-03  Y_p=0.247000  err=-0.000189%
+    1+[r a*b/c Y_p 27/25]  delta=8.1667e-03  Y_p=0.247001  err=+0.000337%
+    1+[Y_p a*b/c r 27/25]  delta=8.1667e-03  Y_p=0.247001  err=+0.000337%
+    1+[1-n_s a*b/c 243/260 D_phys]  delta=8.1779e-03  Y_p=0.247004  err=+0.001450%
+    1+[243/260 a*b/c 1-n_s D_phys]  delta=8.1779e-03  Y_p=0.247004  err=+0.001450%
+    1+[beta_i a*b/c 416/513 A_5]  delta=8.1484e-03  Y_p=0.246996  err=-0.001479%
+    1+[416/513 a*b/c beta_i A_5]  delta=8.1484e-03  Y_p=0.246996  err=-0.001479%
+    1+[F_TRZ a/b/c SO5 11/9]  delta=8.1818e-03  Y_p=0.247005  err=+0.001840%
+    1+[F_TRZ a*b/c F_TRZ 11/9]  delta=8.1818e-03  Y_p=0.247005  err=+0.001840%
+    1+[F_TRZ a/b/c 11/9 SO5]  delta=8.1818e-03  Y_p=0.247005  err=+0.001840%
+    1+[xi a*b/c 22/9 31/30]  delta=8.1317e-03  Y_p=0.246992  err=-0.003129%
+
+  BEST: Y_p = (49/200)*[1+SSq a*b/c 1-n_s 22/9] = 0.247000, err = -0.000189%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XXXII: T_0 = 2.7255 K (FIRAS/COBE)
+--------------------------------------------------------------------------------
+  T_0_obs = 2.7255 K
+  Dimensional anchors: c=2.9979e+08 m/s, L_SCM=349.2267 m, rho_vac_SCM=7.0900e-37 J/m^3
+
+  nu_SCM = c/L_SCM = 8.5845e+05 Hz
+  T_nu_via_h = h*nu/k_B = 4.1199e-05 K  -- too small
+  T_box = rho_vac*L_SCM^3/k_B = 2.1872e-06 K
+  a_rad = 7.5657e-16
+  u_needed = a_rad * T0^4 = 4.1748e-14 J/m^3
+  rho_CMB / rho_vac_SCM = 5.888295e+22
+  3-atom rho_CMB/rho_vac_SCM:
+
+  T_anchor = c*hbar/(L_SCM*k_B) = 6.5570e-06 K
+  T_0/T_anchor = 4.1566e+05
+
+  Wien lambda_max(T_0) = 1.0633e-03 m
+  lambda_max / L_SCM = 3.0447e-06
+  3-atom lambda_max/L_SCM:
+  2-atom lambda_max/L_SCM:
+
+  T_HC = h*c/(L_SCM*k_B) = 4.1199e-05 K
+  T_0 / T_HC = 6.6155e+04
+  3-atom T_0/T_HC:
+
+classXXX_eta_b_session749: predicted=6.128619e-10 observed=6.100000e-10 error_pct=4.691568e-01 status=OK
+classXXXI_Yp_precision_session749: predicted=2.469995e-01 observed=2.470000e-01 error_pct=-1.886272e-04 status=OK
+classXXXII_T0_CMB_session749: predicted=2.725500e+00 observed=2.725500e+00 error_pct=0.000000e+00 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  eta_b   err = +0.469157%
+  Y_p_PDG err = -0.000189%
+  T_0     err = +0.000000%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session749_eta_Yp_T0_result.json

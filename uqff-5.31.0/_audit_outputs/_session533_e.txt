@@ -1,0 +1,1 @@
+S533 COMPLETE. e = 2.720833; closure = K_Mex+Phi_res-F*K+F^2*K-F^2*Phi_res; target 2.718282; match 0.0939%.

@@ -1,0 +1,1 @@
+S350 COMPLETE. r_H2/a_0 = K_Mex - Phi_res + F_TRZ = 1.3500; r_H2 = 71.44 pm; observed = 74.14 pm; match within 3.64%.

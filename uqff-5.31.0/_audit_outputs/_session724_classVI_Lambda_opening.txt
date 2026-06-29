@@ -1,0 +1,97 @@
+================================================================================
+SESSION 724 -- Class VI opening (cosmological constant Lambda)
+================================================================================
+
+  L_SCM            = 349.226733 m       (S720)
+  M_SCM            = 1.492189e+29 kg     (K_G=33/104, S723)
+  Lambda_obs       = 1.1056e-52 m^-2
+  L_dS = Lambda^(-1/2) = 9.5104e+25 m
+  L_Hubble = c/H0  = 1.3725e+26 m
+  T_universe       = 4.3549e+17 s
+
+--------------------------------------------------------------------------------
+STEP (a) -- Dimensional family Lambda = K * rho_vac^a c^-2a L_SCM^(3a-2) M_SCM^-a
+--------------------------------------------------------------------------------
+
+  a   b=-2a   d=3a-2   e=-a  base value (m^-2)     K needed      
+--------------------------------------------------------------------------------
+ -3       6      -11      3  7.182481e+218         1.539301e-271 
+ -2       4       -8      2  1.617253e+144         6.836283e-197 
+ -1       2       -5      1  3.641510e+69          3.036103e-122 
+  0       0       -2      0  8.199456e-06          1.348382e-47  
+  1      -2        1     -1  1.846242e-80          5.988382e+27  
+  2      -4        4     -2  4.157115e-155         2.659537e+102 
+  3      -6        7     -3  9.360425e-230         1.181143e+177 
+
+  Observation: K_needed values span ~10^(-122) to 10^(103); NONE are
+  locked rationals or simple products of the 11 primitives.
+
+--------------------------------------------------------------------------------
+STEP (b) -- Failure of locked-rational match (Class VI no-go for IV/V anchors)
+--------------------------------------------------------------------------------
+
+  No locked-rational match within 5% for any 'a' in [-3,3].
+
+--------------------------------------------------------------------------------
+STEP (c) -- Class VI requires NEW dimensional anchor L_H
+--------------------------------------------------------------------------------
+
+  Friedmann form: Lambda = 3 / L_dS^2  with  L_dS = (3/Lambda)^(1/2) = c * sqrt(3) / H_0
+  K_Lambda = 3  (de Sitter / Friedmann)
+  L_dS_predicted = (3/Lambda_obs)^(1/2) = 1.6473e+26 m
+  L_dS_observed  = 1.6473e+26 m  (EXACT by definition)
+
+  Alternative locked form: Lambda = K_L / L_H^2 with K_L locked rational
+    K_L = 3               -> L_H = 1.6473e+26 m   ratio L_H/L_SCM = 4.7169e+23
+    K_L = 1               -> L_H = 9.5104e+25 m   ratio L_H/L_SCM = 2.7233e+23
+    K_L = 1/(8pi)         -> L_H = 1.8971e+25 m   ratio L_H/L_SCM = 5.4322e+22
+    K_L = 33/104 (=K_G)   -> L_H = 5.3572e+25 m   ratio L_H/L_SCM = 1.5340e+23
+
+--------------------------------------------------------------------------------
+STEP (d) -- Can L_H be derived from L_SCM + locked rationals?
+--------------------------------------------------------------------------------
+
+  L_dS / L_SCM = 2.7233e+23
+  log10(ratio) = 23.4351
+
+  Test: does (c/v_SCM)^N hit the ratio for any locked N?
+    log10(c/v_SCM) = 0.4768; need N = 49.1486
+    -> N is NOT a small integer; not locked.
+
+  Test: does (D_crit)^N hit the ratio?
+    log10(D_crit) = 1.4150; need N = 16.5622
+    -> N is NOT a small integer; not locked.
+
+  Test: L_dS = T_universe * c ?
+    T_universe * c = 1.3056e+26 m  vs L_dS = 9.5104e+25 m
+    rel err = +37.2786%
+
+  CONCLUSION: L_H (Hubble/de Sitter scale) is an INDEPENDENT dimensional
+  anchor.  Class VI adds 1 anchor to the count.
+
+--------------------------------------------------------------------------------
+STEP (e) -- Updated universality classification (6 chains)
+--------------------------------------------------------------------------------
+
+  Class  Chain    Closure form                                                 Anchors
+  ------------------------------------------------------------------------------------------
+  I      alpha    per-loop locked lambda_n                                     0
+  II     mu       single ratio r = 25/4                                        0
+  III    c        Borel + (13/3) delta^3 exp(-c_2 delta)                       1 (c)
+  IV     hbar     rho_vac * L_SCM^4 / v_SCM                                    3 (c, rho_vac, L_SCM)
+  V      G        (33/104) c^2 L_SCM / M_SCM, M_SCM derived from L_SCM         3 (=IV; M_SCM derived)
+  VI     Lambda   3 / L_H^2  (Friedmann; L_H is NEW independent anchor)        4 (+L_H)
+
+  Anchor sequence by class: {0, 0, 1, 3, 3, 4}
+  Total independent dimensional anchors: 4
+    1. c          (Class III)
+    2. rho_vac    (Class IV)
+    3. L_SCM      (Class IV/V joint)
+    4. L_H        (Class VI, NEW)
+
+Lambda_Friedmann_LdS_definition: predicted=3.316800e-52 observed=1.105600e-52 error_pct=+2.000000e+02 status=EXACT
+Lambda_no_locked_rational_existing_anchors: predicted=5.988382e+27 observed=1.000000e+00 error_pct=+5.988382e+29 status=FAIL
+L_H_not_derivable_from_L_SCM: predicted=4.914865e+01 observed=4.900000e+01 error_pct=+3.033659e-01 status=FAIL
+locked_FTRZ_Phires_invariant: predicted=8.333333e-02 observed=8.333333e-02 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session724_classVI_Lambda_opening_result.json

@@ -1,0 +1,1 @@
+S486 COMPLETE. Magic number Ca = 20.0000 = 20 = 2*SO5; target 20; match 0.0000%.

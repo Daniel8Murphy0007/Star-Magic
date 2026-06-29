@@ -1,0 +1,32 @@
+========================================================================
+Session 291 - Orion H2O ice formation rate (Gap #1) tests
+========================================================================
+  [PASS] T-1  v_th(H, 300 K) ~ 2.5e5 cm/s  v_th = 2.510e+05 cm/s
+  [PASS] T-2  v_th scales as sqrt(T)  
+  [PASS] T-3  k_LH increases with T_d  k_LH(10)=1.371e+00, k_LH(50)=6.721e+04
+  [PASS] T-4  k_LH positive finite  k_LH(50K)=6.721e+04 s^-1/grain
+  [PASS] T-5  k_acc(Orion) >> k_acc(diffuse)  orion=6.440e-10, diffuse=4.553e-16
+  [PASS] T-6  f_Aether(Orion, t_n=0) ~ 1 (within 1e-3)  f_Aether = 1.000000e+00
+  [PASS] T-7  f_Aether bounded in [1-1e-3, 1+1e-3]  
+  [PASS] T-8  Orion BN/KL: rate > 0  rate = 6.440e-07 cm^-3 s^-1
+  [PASS] T-9  Orion regime ACCRETION_LIMITED  ACCRETION_LIMITED
+  [PASS] T-10 TMC-1 cold: rate > 0  rate = 1.440e-13
+  [PASS] T-11 Hot core (T_d=200K) SUBLIMATED  
+  [PASS] T-12 sublimation cutoff exactly at T_d > 152 K  
+  [PASS] T-13 rate monotone in n_H (low < high)  6.44e-10 < 6.44e-07
+  [PASS] T-14 Orion X_pred within factor 100 of X_obs=1e-4 (rate-eqn order)  X_pred = 1.000e-04, X_obs = 1.000e-04
+  [PASS] T-15 calculator returns required keys  
+  [PASS] T-16 headline tag DERIVED+CALIBRATED+POSTULATED  
+  [PASS] T-17 validation_passed True (2 active positive, 2 zero negative)  pos=2/2, neg=2/2
+  [PASS] T-18 invalid inputs raise ValueError  raised = 5/5
+  [PASS] T-19 SESSION_291_CALCULATORS exposes class  
+  [PASS] T-20 cp4_id=435 audit_session=291  
+------------------------------------------------------------------------
+  RESULT: 20/20 tests passed
+========================================================================
+
+Anchor validation table:
+  [+] Orion BN/KL warm clump            T_d= 50.0K  rate=6.44e-07  X_pred=1.0e-04  X_obs=1.0e-04  [ACTIVE, ACCRETION_LIMITED]
+  [+] TMC-1 cold dark cloud             T_d= 10.0K  rate=1.44e-13  X_pred=1.0e-04  X_obs=1.0e-04  [ACTIVE, ACCRETION_LIMITED]
+  [-] Hot core (sublimated)             T_d=200.0K  rate=0.00e+00  X_pred=0.0e+00  X_obs=0.0e+00  [ZERO, SUBLIMATED]
+  [-] Diffuse cloud                     T_d= 20.0K  rate=4.55e-19  X_pred=0.0e+00  X_obs=0.0e+00  [ZERO, ACCRETION_LIMITED]

@@ -1,0 +1,1 @@
+S320 COMPLETE. Holographic bulk/boundary degeneracy = A_5/D_crit = 60/26 = 2.3077; Bekenstein-Hawking entropy = (A_5/D_crit) * A/(4 ell_P^2).

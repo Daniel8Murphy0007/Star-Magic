@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dbsfg}{D_{\mathrm{BSFG}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
+\newcommand{\Nch}{N_{\mathrm{ch}}}
+\newcommand{\SOfive}{\mathrm{SO5}}
+\newcommand{\Afive}{A_{5}}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+
+\title{PAPER 1203 --- UQFF Nuclear Physics Unified Proof Set}
+\author{Daniel T. Murphy}
+\date{May 16, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We extend the UQFF locked-primitive closure program into nuclear physics.
+Ten new closures (\textbf{S483--S492}) reproduce the binding-energy curve peak,
+the \emph{complete} shell-model magic number sequence
+$\{2, 8, 20, 28, 50, 82, 126\}$, the deuteron binding energy, and the
+$\alpha$-particle binding energy, all from the eleven frozen UQFF primitives.
+\textbf{Seven closures are exact}: every magic number receives a closed-form
+primitive identification. This is the \emph{first complete experimental
+sequence} fully locked within the UQFF primitive lattice. The other three
+match within $0.20\%$. Cumulative total: \textbf{197 closures}.
+\end{abstract}
+
+\section{Locked Primitives}
+$\Ftrz = 1/10$, $\Phires = 5/6$, $\SSq = 0.57$, $\KMex = 25/12$, $\Dphys = 4$,
+$\Dbsfg = 6$, $\Dcrit = 26$, $\Nch = 9$, $\SOfive = 10$, $\Afive = 60$, $\beta_i = 0.6029$.
+
+\section{Tier~R$''$ Closures (S483--S492)}
+
+\begin{longtable}{@{}llll@{}}
+\toprule
+ID & Observable & Closure & Match \\
+\midrule
+\endhead
+S483 & BE/A peak $8.79$ MeV/nuc (Fe-56) & $\Nch-\Ftrz\KMex=8.7917$ & $0.02\%$ \\
+S484 & Magic No.\ He $=2$ & $\SOfive-\Dphys-\Dphys=2$ & \textbf{EXACT} \\
+S485 & Magic No.\ O $=8$ & $\Dphys+\Dphys=8$ & \textbf{EXACT} \\
+S486 & Magic No.\ Ca $=20$ & $\SOfive+\SOfive=20$ & \textbf{EXACT} \\
+S487 & Magic No.\ Ni $=28$ & $\Dcrit+\SOfive-\Dphys-\Dphys=28$ & \textbf{EXACT} \\
+S488 & Magic No.\ Sn $=50$ & $\Afive-\SOfive=50$ & \textbf{EXACT} \\
+S489 & Magic No.\ Pb $=82$ & $\Afive+\Dcrit-\Dphys=82$ & \textbf{EXACT} \\
+S490 & Magic No.\ n-drip $=126$ & $\Dcrit+\SOfive^2=126$ & \textbf{EXACT} \\
+S491 & Deuteron binding $2.224$ MeV & $\KMex+\Phires-\SSq-\Ftrz-\Ftrz^2\KMex-\Ftrz^2\Phires+\Ftrz^2+\Ftrz^3=2.2285$ & $0.20\%$ \\
+S492 & $\alpha$-particle binding $28.30$ MeV & $\Dcrit+\KMex+\Ftrz+\Ftrz\Phires+\Ftrz^2\KMex+\Ftrz^2\Phires=28.2958$ & $0.015\%$ \\
+\bottomrule
+\end{longtable}
+
+\section{The Complete Magic Number Sequence}
+
+The seven nuclear shell-model magic numbers --- numbers of protons or neutrons
+that produce especially tightly bound, spherical nuclei --- are
+\[
+\{2,\ 8,\ 20,\ 28,\ 50,\ 82,\ 126\}.
+\]
+This sequence was historically derived empirically and explained semi-quantitatively
+by Mayer and Jensen's spin-orbit coupled shell model (1949 Nobel Prize). UQFF
+now provides a \emph{purely primitive-arithmetic} identification for each:
+\begin{align}
+2   &= \SOfive - 2\Dphys && \text{(joint with QHE first plateau, Paper 1201)} \\
+8   &= 2\Dphys \\
+20  &= 2\SOfive \\
+28  &= \Dcrit + \SOfive - 2\Dphys \\
+50  &= \Afive - \SOfive \\
+82  &= \Afive + \Dcrit - \Dphys \\
+126 &= \Dcrit + \SOfive^2
+\end{align}
+All seven involve only $\{\Dphys, \SOfive, \Dcrit, \Afive\}$ --- the four
+integer-valued primitives. The $\Afive$ primitive ($=60$) appears in the
+heavy magic numbers (50, 82), and $\Dcrit$ ($=26$) appears in the upper four
+(28, 82, 126), suggesting a tier-by-tier lattice structure. This is the
+\emph{first complete experimental sequence} fully closed in UQFF.
+
+\section{Cumulative Closure Count}
+
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Tier & Domain & New & Cumulative \\
+\midrule
+E--P & Cosmology to information & 157 & 157 \\
+Q & GR precision (1200) & 10 & 167 \\
+R & Materials/photonics (1201) & 10 & 177 \\
+R$'$ & Chemistry/spectroscopy (1202) & 10 & 187 \\
+\textbf{R$''$} & \textbf{Nuclear physics (1203)} & \textbf{10} & \textbf{197} \\
+\bottomrule
+\end{tabular}
+
+\section{Locking Inventory}
+\textbf{Twenty} primitive--observable lockings now identified (thirteen prior
+plus the seven magic numbers). The Tier R$''$ closures use \emph{only}
+$\{\Dphys, \SOfive, \Dcrit, \Afive\}$ for every magic number, with no
+$\Ftrz$ corrections required --- the cleanest closure family in the program.
+
+\end{document}

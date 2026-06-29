@@ -1,0 +1,19 @@
+Session 280 — f_TRZ suppression smoke tests
+------------------------------------------------------------
+  [PASS] T-1 gated below N_FLOOR  
+  [PASS] T-2 gated at exactly N_FLOOR  
+  [PASS] T-3 amp at N=100 == 0.01  got 0.01
+  [PASS] T-4 amp at N=1e4 == 1e-4  got 0.0001
+  [PASS] T-5 phase(0) == +1  
+  [PASS] T-6 phase(1) == -1  
+  [PASS] T-7 phase(0.5) ~= 0  
+  [PASS] T-8 mult(100,0) == 0.99  got 0.99
+  [PASS] T-9 mult(100,1) == 1.01  got 1.01
+  [PASS] T-10 mult gated == 1.0  
+  [PASS] T-11 deep stack mult ~ 1.0  got 0.9999
+  [PASS] T-12 Perseus mult == 1-1/317  got 0.996845426
+  [PASS] T-13 Earth crust gated, U unchanged  
+  [PASS] T-14 Sgr A* auto-N -> deep suppression  N=14019, mult=0.999929
+  [PASS] T-15 opposing-mod net within 0.5% of Heaviside  net=7.875e+12 vs H=7.900e+12
+------------------------------------------------------------
+Results: 15 PASS, 0 FAIL

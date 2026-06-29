@@ -1,0 +1,23 @@
+  [PASS] G1-1 H2O default brightness > 0: T_b = 1.00e+15 K
+  [PASS] G1-2 H2O luminosity in JWST-plausible range (1e-5..1e3 Lsun): L = 2.20e-02 Lsun
+  [PASS] G1-3 CH3OH 6.7 GHz mode switch: freq = 6.66852 GHz
+  [PASS] G1-4 Maser cap T_b <= 1e15 K: T_b cap honoured
+  [PASS] G1-5 Provides primary/available/simulation triple: triple OK
+  [PASS] G3-1 logL_UQFF finite: logL_UQFF = -32.40
+  [PASS] G3-2 UQFF favoured for in-window signal: delta_logL = 4.86
+  [PASS] G3-3 Far-tail samples disfavour UQFF: delta_logL = -27.32
+  [PASS] G3-4 Window bounds [-5, +200] s: window OK
+  [PASS] G3-5 Mean predicted dt = +12 s: dt0 = 12.0 s
+  [PASS] G5-1 Suppression S in (0,1]: S = 9.164e-02
+  [PASS] G5-2 Observed dM/dt < classical: obs=27.5, cls=300.0
+  [PASS] G5-3 At least one xi_SC lands in Chandra 6-30 band: found in xi_SC sweep: True
+  [PASS] G5-4 Cooling time t_cool > 0: t_cool = 0.00 Gyr
+  [PASS] G5-5 Triple output present: triple OK
+  [PASS] P-Earth preset has required keys: keys OK
+  [PASS] P-Mars preset has required keys: keys OK
+  [PASS] P-Europa preset has required keys: keys OK
+  [PASS] P-Enceladus preset has required keys: keys OK
+  [PASS] P-Io preset has required keys: keys OK
+  [PASS] P-Titan preset has required keys: keys OK
+
+TOTAL: 21/21 PASS  |  0 FAIL

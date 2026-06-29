@@ -1,0 +1,18 @@
+============================================================================
+SESSION 697 -- BSFG path-integral 2-loop coefficient (exact decomposition)
+============================================================================
+  (A) sunset symmetry factor    S_sun  = 1/2        (= 0.5)
+  (B) azimuthal phase           Phi_az = Vol(S^1) = 6.283185307179586  (= 2*pi)
+  (C) Coulomb-gauge projector   P_Cou  = 1/(2*D_phys) = 1/8  (= 0.125)
+  c_2 = S_sun * Phi_az * P_Cou  = pi/(2*D_phys) = pi/8 = 0.392699081698724
+  reference pi/8                                       = 0.392699081698724
+  exact match (1e-15)?          : True
+----------------------------------------------------------------------------
+  1/alpha_tree (S694/S695)      : 137.427500157
+  1/alpha_UQFF^(2) (S696/S697)  : 137.034801075
+  1/alpha_CODATA                : 137.035999084
+  residual                       : -8.742 ppm (-0.0008742 %)
+============================================================================
+c_2_decomposition: predicted=0.392699081699 observed=0.392699081699 error_pct=0.000000 status=OK
+alpha_inverse_v3_locked: predicted=137.034801075 observed=137.035999084 error_pct=-0.0008742 status=OK
+Artifact written: _session697_c2_exact_result.json

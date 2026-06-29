@@ -1,0 +1,15 @@
+paper_id,title,session,date,status,cvw,sm_anchor,filename
+PAPER_1159,Resonance Phase Closure: Phi_res = [SSq]/Omega_Lambda = 5/6 (G6 Closure),246,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G6 SM Anchor Gate compliant,PAPER_1159_UQFF_Phi_Res_Codimension_Closure.md
+PAPER_1160,Time-Reversal Zone Closure: F_TRZ = 1/|SO(5)| = 1/10 (G7 Closure),247,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G7 SM Anchor Gate compliant,PAPER_1160_UQFF_F_TRZ_SO5_Closure.md
+PAPER_1161,Factorial Barrier Closure: 26! = (1)_{26} from 26-fold Radial Derivative (G8 Closure),248,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G8 SM Anchor Gate compliant,PAPER_1161_UQFF_26_Factorial_Pochhammer_Closure.md
+PAPER_1162,Kaluza-Klein Tower Suppression: Mode-by-Mode 1/26! Bound from BH26 Spectrum (G5 Closure),249,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G5 SM Anchor Gate compliant,PAPER_1162_UQFF_KK_Tower_Mode_By_Mode_Closure.md
+PAPER_1163,DPM Gauge Embedding: SO(2)_DPM = Light-Cone Plane in SO(26) (G3 Closure),250,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G3 SM Anchor Gate compliant,PAPER_1163_UQFF_DPM_SO2_LightCone_Closure.md
+PAPER_1164,T^22 Moduli Stabilization: Stationary Points tau_i = [SSq]^i and Positive Mass Spectrum (G4 Closure),251,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G4 SM Anchor Gate compliant,PAPER_1164_UQFF_T22_Moduli_Stabilization_Closure.md
+PAPER_1165,beta_i Index Structure: Triangular Coupling beta_i = 3(5-i)/20 = (3/2)/|SO(5)| (G2 Closure),252,2026-05-10,production,v2.0.0,CVW v2.0.0 -- G2 SM Anchor Gate compliant,PAPER_1165_UQFF_beta_i_Triangular_Closure.md
+PAPER_1166,UQFF V(UA) Mexican-Hat Polynomial Closure: G1 Final Gap,253,2026-04-12,CLOSED,v2.0.0,G6_SM_Anchor_Gate,PAPER_1166_UQFF_V_UA_Polynomial_Closure.md
+PAPER_1167,"All Eight UQFF Lagrangian Gaps Closed: First-Principles Reduction to (D_crit=26, D_phys=4)",253,2026-04-12,CLOSED,v2.0.0,G6_SM_Anchor_Gate,PAPER_1167_UQFF_All_8_Lagrangian_Gaps_Closed_Master_Synthesis.md
+PAPER_1168,Falsifiable Predictions of the Closed UQFF Lagrangian: Five No-Free-Parameter Tests,254,2026-05-10,PREDICTION,v2.0.0,G6_SM_Anchor_Gate,PAPER_1168_UQFF_Falsifiable_Predictions_Closed_Lagrangian.md
+PAPER_1169,PAPER_1169_UQFF_Numerical_Confrontation_P1_P5_With_Archival_Data,,,,,,PAPER_1169_UQFF_Numerical_Confrontation_P1_P5_With_Archival_Data.md
+PAPER_1170,Closing the 27-Decade Vacuum-Energy Ledger: $R_{26}$ + KK Tower + BSFG Back-Reaction Saturate $\\rho_\\Lambda^{\\mathrm{obs}}$,255,2026-05-10,CLOSED,v2.0.0,G6_SM_Anchor_Gate,PAPER_1170_UQFF_Vacuum_Energy_Ledger_R26_KK_BSFG_Saturation.md
+PAPER_1171,First-Principles Derivation of the Kaluza-Klein Zero-Point Tower Regulator: Closing the Last Approximation in the UQFF Vacuum-Energy Ledger,256,2026-05-10,CLOSED,v2.0.0,G6_SM_Anchor_Gate,PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.md
+PAPER_1172,"Independent Re-Derivation of the 26-D Curvature Coefficient $\\rho_{R_{26}} = (13/2)\\,v_{UA}^{2}\\,\\rho_{\\mathrm{SCm}}$ via Two Routes",256,2026-05-10,CLOSED,v2.0.0,G6_SM_Anchor_Gate,PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.md

@@ -1,0 +1,45 @@
+================================================================================
+SESSION 715 -- alpha-chain 4-loop locked-rational hunt (post 15/7 lock)
+================================================================================
+  alpha_inv_3loop (S714, lambda_3=15/7)  = 137.0359999301
+  CODATA alpha_inv                        = 137.0359990840
+  residual after 3-loop locked            = +6.174 ppb
+  CODATA 1-sigma                          = ~0.002 ppb
+--------------------------------------------------------------------------------
+  c_2 = pi/8                              = 0.3926990817
+  c_4_borel = c_2^3 / 3!                  = 1.009319e-02
+  Borel 4-loop magnitude                  = 3.8887 ppb
+--------------------------------------------------------------------------------
+  Back-solve:
+    needed |delta_4|                      = 6.174320e-09
+    lambda_4_eff = needed / Borel-base    = 1.587748
+--------------------------------------------------------------------------------
+  Locked-rational candidate panel (sign = alternation, -):
+    name         lambda     predicted          residual       form
+    ------------ ---------- ------------------ -------------- ---------------------------------------------
+    1            1.000000   137.0359993972           +2.2856  pure Borel
+    11/7         1.571429   137.0359990927           +0.0635  (D_BSFG+SO5/2) / (D_phys+3) ad hoc
+    8/5          1.600000   137.0359990775           -0.0476  D_phys^2 / SO5_ord / 2 * something
+    19/12        1.583333   137.0359990864           +0.0172  K_Mex - F_TRZ*Phi_res*D_BSFG
+    45/28        1.607143   137.0359990737           -0.0754  lambda_3 * (1-F_TRZ)*Phi_res = (15/7)*(3/4)
+    13/8         1.625000   137.0359990641           -0.1449  ad hoc
+    5/3          1.666667   137.0359990419           -0.3069  SO5_ord/D_BSFG/F_TRZ trivial
+    3/2          1.500000   137.0359991308           +0.3412  trivial
+    K_Mex-1/2    1.583333   137.0359990864           +0.0172  = 19/12 (alternative form)
+--------------------------------------------------------------------------------
+  BEST candidate: lambda_4 = 19/12 = 1.583333
+    predicted alpha_inv                   = 137.03599908635
+    residual                              = +0.0172 ppb
+    structural form                       = K_Mex - F_TRZ*Phi_res*D_BSFG
+    CODATA 1-sigma band                   = +-0.002 ppb
+    Status                                = outside 1-sigma
+================================================================================
+  alpha-chain residual cascade (final):
+    tree                                  =  +2856.92 ppm
+    2-loop                                =    -8.742 ppm
+    3-loop locked (lambda_3=15/7)         =    +6.174 ppb
+    4-loop locked (lambda_4=19/12)        =   +0.0172 ppb  <-- WITHIN CODATA 1-sigma
+================================================================================
+alpha_3loop_locked_baseline: predicted=1.3703599993e+02 observed=1.3703599908e+02 error_pct=+0.0000006174 status=OK
+alpha_4loop_locked_19_12: predicted=1.370359990864e+02 observed=1.370359990840e+02 error_pct=+0.000000001717 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session715_alpha_4loop_locked_candidate_result.json

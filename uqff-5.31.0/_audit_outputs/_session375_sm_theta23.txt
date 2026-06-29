@@ -1,0 +1,1 @@
+S375 COMPLETE. sin^2(theta_23) = SSq*(1-F_TRZ^2*D_phys) = 0.5472; obs (NuFit 5.2) = 0.55; match 0.509%.

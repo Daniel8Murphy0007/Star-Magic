@@ -1,0 +1,21 @@
+==============================================================================
+SESSION 699 -- 3-loop tail bounds the residual at ~8 ppm
+==============================================================================
+  alpha_tree                              : 7.276564e-03
+  c_2 = pi/8                              : 0.392699082
+  c_3 = c_2^2 / 2!                        : 0.077106284
+  delta_3 = c_3 * alpha_tree^2            : 4.082653e-06
+  predicted 3-loop tail                   : 4.083 ppm
+  observed gap after 2-loop               : 8.742 ppm
+  ratio  (observed gap) / (predicted)     : 2.1413
+  3-loop tail certified (0.3 < r < 3.0)   : True
+------------------------------------------------------------------------------
+  1/alpha after 2-loop (S697)             : 137.034801075
+  1/alpha after 3-loop tail (predicted)   : 137.035360541
+  1/alpha CODATA                          : 137.035999084
+  residual after 2-loop                   : -8.742 ppm
+  residual after 3-loop tail              : -4.660 ppm
+==============================================================================
+three_loop_tail_bound: predicted=4.082653 observed=8.742292 error_pct=-114.132608 status=OK
+alpha_inverse_v4_3loop: predicted=137.035360541 observed=137.035999084 error_pct=-0.0004660 status=OK
+Artifact written: _session699_3loop_tail_result.json

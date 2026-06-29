@@ -1,0 +1,24 @@
+================================================================================
+SESSION 706 -- Loop-Factorial Rule at n=4
+================================================================================
+  alpha-chain c_4 (rational pi^3 coeff) = 1/3072  (= pi^3 * 3.2552083333e-04)
+  alpha-chain numeric c_4               = 1.009318902354e-02
+  c-chain    c_4 (rational pi^6 coeff)  = 125/4374      (= pi^6 * 2.8577960677e-02)
+  c-chain    numeric c_4                = 2.747454256902e+01
+--------------------------------------------------------------------------------
+  alpha n=4 cross-ratio  c_4 c_1^2 / (c_2 c_3) = 1/3
+  c     n=4 cross-ratio  c_4 c_1^2 / (c_2 c_3) = 1/3
+--------------------------------------------------------------------------------
+  c-chain 4-loop tail c_4 * delta_c^4              = 6.390e-12
+  c-chain 3-loop residual (from S704)               = +1.437e-09
+  ratio (4-loop tail / 3-loop residual)             = 0.0044
+  4-loop term is BELOW residual?                    = True
+--------------------------------------------------------------------------------
+  c-chain S_1 = 0.9993055555555556
+  c-chain S_2 = 0.9993081998039912
+  c-chain S_3 = 0.9993081947697153
+  c-chain S_4 = 0.9993081947761051
+--------------------------------------------------------------------------------
+c_chain_4loop_coefficient: predicted=2.747454256902e+01 observed=2.747454256902e+01 error_pct=0.0000000000 status=OK
+loop_factorial_rule_n4: predicted=3.333333333333e-01 observed=3.333333333333e-01 error_pct=0.0000000000 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session706_loop_factorial_n4_result.json

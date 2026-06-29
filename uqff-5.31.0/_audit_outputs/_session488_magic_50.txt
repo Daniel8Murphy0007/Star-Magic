@@ -1,0 +1,1 @@
+S488 COMPLETE. Magic number Sn = 50.0000 = 50 = A_5 - SO5; target 50; match 0.0000%.

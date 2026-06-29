@@ -1,0 +1,26 @@
+========================================================================
+S301 P vs NP conjecture anchor smoke tests
+========================================================================
+  [PASS] T-1 search(0)=1  
+  [PASS] T-2 search(1)=2  
+  [PASS] T-3 search(10)=1024  
+  [PASS] T-4 search(-1)=0  
+  [PASS] T-5 search(>1000)=inf  
+  [PASS] T-6 poly(0)=0  
+  [PASS] T-7 poly(2,3)=8  
+  [PASS] T-8 poly(-1)=0  
+  [PASS] T-9 delta_C(20) > 0  
+  [PASS] T-10 delta_C(30) > delta_C(20)  
+  [PASS] T-11 4 statements  
+  [PASS] T-12 all statements unanchored  
+  [PASS] T-13 all conjecture grade  
+  [PASS] T-14 aether bounded  
+  [PASS] T-15 aether(rho=0)=1  
+  [PASS] T-16 keys present  
+  [PASS] T-17 S301 tag  
+  [PASS] T-18 tier=CONJECTURE  
+  [PASS] T-19 0 anchored and 4 statements  
+  [PASS] T-20 cp4_id=445 audit=301  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

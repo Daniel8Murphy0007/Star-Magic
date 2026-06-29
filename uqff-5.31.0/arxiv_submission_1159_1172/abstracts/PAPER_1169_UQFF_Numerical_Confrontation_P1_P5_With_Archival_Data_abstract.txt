@@ -1,0 +1,3 @@
+PAPER_1169: PAPER_1169_UQFF_Numerical_Confrontation_P1_P5_With_Archival_Data
+
+PAPER_1168 (Session 254) extracted five no-free-parameter falsifiable predictions from the closed UQFF Lagrangian. This paper confronts each prediction with publicly available archival data (Planck 2024, LIGO/Virgo GWTC-4.0, calibrated UQFF systems in `bodies_*.csv`) and reports the residuals. **Result: zero falsification events.** All five predictions are either confirmed within tolerance, or sit comfortably below current observational upper bounds. The single tension noted (P2 vacuum-energy bookkeeping) is not a falsification but a pointer to further $R_{26}$ + KK contributions that are explicitly accounted for in the closed Lagrangian. ---

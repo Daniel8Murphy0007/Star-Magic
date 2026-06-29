@@ -1,0 +1,1 @@
+S347 COMPLETE. sin^2(theta_W) = K_Mex/N_ch = 25/108 = 0.23148; observed (MS-bar at M_Z) = 0.23122; match within 0.113%.

@@ -1,0 +1,1 @@
+S317 COMPLETE. Singularity replaced by BSFG core r_core = ell_P/F_TRZ = 1.616e-34 m; K_max = 3.829e+67 m^-2 (finite, no infinity).

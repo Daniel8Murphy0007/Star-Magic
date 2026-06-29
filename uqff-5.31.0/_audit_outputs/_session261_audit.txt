@@ -1,0 +1,64 @@
+======================================================================
+ SESSION 261 -- Coherence Audit Pass 1 (READ-ONLY)
+======================================================================
+
+[1/5] Canonical constants presence audit
+  [NOTE] CondensedPhysics.py: not all canonical constants present (missing: 2/7) - expected for narrowly scoped files
+  [NOTE] CondensedPhysics2.py: not all canonical constants present (missing: 3/7) - expected for narrowly scoped files
+  [NOTE] CondensedPhysics3.py: not all canonical constants present (missing: 3/7) - expected for narrowly scoped files
+  [OK]   CondensedPhysics4.py: all 7 canonical constants present
+  [NOTE] QCalcGeom.cpp: not all canonical constants present (missing: 3/7) - expected for narrowly scoped files
+  [NOTE] _p4_p5_predictions_table.py: not all canonical constants present (missing: 6/7) - expected for narrowly scoped files
+
+[2/5] CP4 falsifier zero-parameter audit (#258-#264)
+  [OK]   #258 P6 (Session 257, PAPER_1173): UQFFKKTowerHbarRegulatorCalculator declares zero/fixed free parameters
+  [OK]   #259 P11 (Session 258, PAPER_1175): UQFFRingdownSpectralOffsetCalculator declares zero/fixed free parameters
+  [OK]   #260 P12 (Session 258, PAPER_1176): UQFFSigma8WeakLensingCalculator declares zero/fixed free parameters
+  [OK]   #261 P6+P11+P12 joint (Session 259, PAPER_1177): UQFF2027JointFalsifierCalculator declares zero/fixed free parameters
+  [OK]   #262 P13 (Session 259, PAPER_1178): UQFFDarkEnergySecondDerivativeCalculator declares zero/fixed free parameters
+  [OK]   #263 P6+P10+P11+P12 joint (Session 260, PAPER_1179): UQFF2027QuadrupleFalsifierCalculator declares zero/fixed free parameters
+  [OK]   #264 P14 (Session 260, PAPER_1180): UQFFCMBmuDistortionCalculator declares zero/fixed free parameters
+
+[3/5] Stale PDF sweep (delegating to _audit_stale_pdfs.py)
+  [NOTE] Stale PDF parse: no match
+
+[4/5] arxiv bundle lint sweep
+  [FLAG] Bundle missing: arxiv_submission_1159_1170
+  [OK]   arxiv_submission_1159_1172: lint clean ([PASS] PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.md |  | === Summary: 14/14 clean ===)
+  [OK]   arxiv_submission_1173_1176: lint clean ([PASS] PAPER_1176_UQFF_P12_Euclid_Sigma8_R26_Saturation.md |  | === Summary: 4/4 clean ===)
+  [OK]   arxiv_submission_1177_1180: lint clean ([PASS] PAPER_1180_UQFF_P14_CMB_S4_mu_Distortion.md |  | === Summary: 4/4 clean ===)
+
+[5/5] MUGE / Newtonian leak scan (CondensedPhysics*.py)
+  [NOTE] CondensedPhysics.py: 209 GM/r occurrences without emergent-gravity context
+  [NOTE]    L21878: return {'Ug': Ug, 'F_U': Ug, 'equation': f"F_U = G*M/r^2 = {Ug:.3e} m/s^2"}
+  [NOTE]    L21969: steps.append(f"UQFF Base: F_U = G*M/r^2 = {uqff['Ug']:.6e} m/s^2")
+  [NOTE]    L23159: return {'Ug': Ug, 'F_U': Ug, 'equation': f"F_U = G*M/r^2 = {Ug:.3e} m/s^2"}
+  [NOTE]    ... 206 more
+  [NOTE] CondensedPhysics2.py: 11 GM/r occurrences without emergent-gravity context
+  [NOTE]    L16520: v_circular = math.sqrt(G * M / r)
+  [NOTE]    L32230: v_escape = math.sqrt(2 * G * M / r)
+  [NOTE]    L45528: v_circ        = math.sqrt(G * M / r)
+  [NOTE]    ... 8 more
+  [NOTE] CondensedPhysics3.py: 21 GM/r occurrences without emergent-gravity context
+  [NOTE]    L2264: Ubi = 0.5 * (G * M / r ** 2)
+  [NOTE]    L2265: FU  = -(Ug1 + Ug2 + Ug3 + Ug4 + Ubi) * (G * M / r ** 2)
+  [NOTE]    L2272: f'FU({body_name}) = -(Ug1+Ug2+Ug3+Ug4+Ubi)*(G*M/r^2)',
+  [NOTE]    ... 18 more
+  [NOTE] CondensedPhysics4.py: 19 GM/r occurrences without emergent-gravity context
+  [NOTE]    L308: # In Ug1, G*M/r^2 is used as the mass-gradient operator within dipole form.
+  [NOTE]    L2011: pert       = (M + M_DM) * (delta_rho_over_rho + 3.0 * G * M / r**3)
+  [NOTE]    L2463: 'g_newton = G*M/r?',
+  [NOTE]    ... 16 more
+  [OK]   CondensedPhysics_backup_20260204_024629.py: no unwrapped GM/r patterns
+  [OK]   CondensedPhysics_InputData.py: no unwrapped GM/r patterns
+  [OK]   CondensedPhysics_OutputData.py: no unwrapped GM/r patterns
+  [OK]   CondensedPhysics_Validation.py: no unwrapped GM/r patterns
+  [OK]   CondensedPhysicsAggregator.py: no unwrapped GM/r patterns
+  [NOTE] Total flagged GM/r occurrences (for manual review): 260
+
+======================================================================
+ FLAGS: 1   NOTES: 27
+======================================================================
+
+--- FLAGS (require action) ---
+  - Bundle missing: arxiv_submission_1159_1170

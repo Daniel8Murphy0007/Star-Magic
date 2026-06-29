@@ -1,0 +1,38 @@
+================================================================================
+SESSION 710 -- mu-chain 2-loop via D_crit - F_TRZ*D_phys = 128/5
+================================================================================
+  Tree:   mu_tree = A_5^2/2 + D_BSFG^2          = 1836  (EXACT)
+  delta:  delta_mu = 3*F_TRZ/A_5^2              = 1/12000
+--------------------------------------------------------------------------------
+  c_2 hypothesis (four locked-rational forms, all agree):
+    Form A: D_crit - F_TRZ*D_phys               = 128/5
+    Form B: (D_crit*SO5_order - D_phys)/SO5_o.  = 128/5
+    Form C: D_crit - D_phys/SO5_order           = 128/5
+    Form D: (10*D_crit - D_phys)/10             = 128/5
+    numeric value                                = 25.600000
+--------------------------------------------------------------------------------
+  2-loop factor (exact rational): 1 + delta - c_2*delta^2
+    = 1 + 1/12000 - (128/5)/12000^2
+    = 1 + 7500/9e7 - 16/9e7
+    = 1 + 7484/90,000,000
+    factor numeric                              = 1.000083155555556
+--------------------------------------------------------------------------------
+  mu_pred_1loop = mu_tree*(1+delta)             = 1836.1530000000
+  mu_pred_2loop = mu_tree*(1+delta-c_2*delta^2) = 1836.1526736000
+  CODATA mu                                     = 1836.1526734300
+  2-loop residual (absolute)                    = +1.700000e-07
+  2-loop err_pct                                = +9.2585e-09 % (+92.585 ppt)
+--------------------------------------------------------------------------------
+  Residual cascade mu-chain:
+    tree                                          = -83.149 ppm
+    tree + 1-loop                                 =    +0.178 ppm
+    tree + 2-loop                                 =  +0.00009 ppm (+92.58 ppt)
+--------------------------------------------------------------------------------
+  Universal rule readiness (S711 verification):
+    Predicted c_3^(mu) = c_2^2 / 2!              = 8192/25  (= 327.6800)
+    Cross-chain check: c_3*c_1/c_2^2             = 1/2
+      (must equal 1/2 -- proven for alpha + c chains, now mu)
+================================================================================
+mu_1loop_baseline: predicted=1.8361530000e+03 observed=1.8361526734e+03 error_pct=+0.0000177856 status=OK
+mu_2loop_prediction: predicted=1.8361526736e+03 observed=1.8361526734e+03 error_pct=+0.000000009258 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session710_mu_2loop_result.json

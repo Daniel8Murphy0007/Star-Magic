@@ -1,0 +1,1 @@
+S365 COMPLETE. sigma_8 = (1 + Phi_res - F_TRZ*K_Mex)/2 = 0.8125; obs = 0.811; match 0.185%.

@@ -1,0 +1,1 @@
+S408 COMPLETE. PS quantum yield = F_TRZ+F_TRZ^2*K_Mex+F_TRZ^3*D_phys = 0.1248; obs (1/8) = 0.125; match 0.133%.

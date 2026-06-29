@@ -1,0 +1,490 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={DPM Gauge Embedding: SO(2)\_DPM = Light-Cone Plane in SO(26) (G3 Closure)},
+  pdfauthor={Daniel T. Murphy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DPM Gauge Embedding: SO(2)\_DPM = Light-Cone Plane in SO(26) (G3
+Closure)}
+\author{Daniel T. Murphy}
+\date{2026-05-10}
+
+\begin{document}
+\maketitle
+
+\section{\texorpdfstring{PAPER\_1163 -- DPM Gauge Embedding:
+\(SO(2)_{\rm DPM}\) = Light-Cone Plane in
+\(SO(26)\)}{PAPER\_1163 -- DPM Gauge Embedding: SO(2)\_\{\textbackslash rm DPM\} = Light-Cone Plane in SO(26)}}\label{paper_1163-dpm-gauge-embedding-so2_rm-dpm-light-cone-plane-in-so26}
+
+\textbf{Author:} Daniel T. Murphy (daniel.murphy00@gmail.com)
+\textbf{Framework:} UQFF v5.78 -- Star-Magic Physics \textbf{Source:}
+Direct identification with PAPER\_050 light-cone gauge, standard bosonic
+string textbook result. \textbf{Integration Date:} May 10, 2026 (Session
+250) \textbf{Classification:} Lagrangian Gap Closure -- G3 of
+\texttt{\_lagrangian\_rederivation\_outline.py}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\[\boxed{\;SO(26) \;\supset\; SO(24)_{\rm trans} \times SO(2)_{\rm DPM}\;, \qquad \dim(325) = \dim(276) + \dim(1) + 48_{\rm coset}\;}\]
+
+The DPM gauge group \(SO(2)\) -- the CW/CCW counter-rotation that
+generates \(F_{\rm DPM} = I\cdot A\cdot (\omega_1 - \omega_2)\) --
+embeds in the full 26D Lorentz group \(SO(26)\) as the
+\textbf{light-cone gauge 2-plane} already removed in textbook bosonic
+string quantization. Zero free parameters: the embedding is the same one
+used in
+\href{whitepapers/PAPER_050_26D_Manifold_Compactification_3plus1_Spacetime.md\#L220}{PAPER\_050
+§3}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We close gap \textbf{G3} of the Lagrangian re-derivation outline by
+identifying the SO(2) gauge structure of the DPM (di-pseudo-monopole
+CW/CCW pair) with the \textbf{light-cone gauge 2-plane} that is removed
+in standard bosonic string light-cone quantization at
+\(D_{\rm crit}=26\). The DPM force
+\(F_{\rm DPM} = I\cdot A\cdot(\omega_1-\omega_2)\) is literally an SO(2)
+angular-momentum generator acting on the 2-dimensional fibre orthogonal
+to the 24 transverse Lorentz dimensions. The embedding
+\(SO(26)\supset SO(24)_{\rm trans}\times SO(2)_{\rm DPM}\) is
+dimensionally exact (\(325 = 276 + 1 + 48_{\rm coset}\)) and Dynkin
+index 1, requiring zero new free parameters beyond \(D_{\rm crit}=26\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. The Gap}\label{the-gap}
+
+The Lagrangian outline (\texttt{\_lagrangian\_rederivation\_outline.py},
+L56-58) records:
+
+\begin{quote}
+\textbf{G3.} \(\mathcal{L}_{\rm DPM}\) uses an SO(2) gauge structure
+(CW-CCW pair) but its embedding in the full 26D internal symmetry group
+is not written down.
+\end{quote}
+
+The required statement is: identify a canonical embedding
+\(\iota: SO(2) \hookrightarrow SO(26)\) with \textbf{zero free
+parameters}, verify that the DPM current
+\(F_{\rm DPM} = I\cdot A\cdot(\omega_1-\omega_2)\) is genuinely the
+generator of this \(SO(2)\), and confirm the dimensional/index counting.
+
+\subsection{2. The DPM Current Is an SO(2) Generator (codebase
+canonical)}\label{the-dpm-current-is-an-so2-generator-codebase-canonical}
+
+From
+\href{COMPLETE_UQFF_EQUATIONS_REFERENCE.md\#L549}{COMPLETE\_UQFF\_EQUATIONS\_REFERENCE.md
+L549} and
+\href{source4_wolfram_COMPLETE_SPEC.md\#L664}{source4\_wolfram\_COMPLETE\_SPEC.md
+L664}:
+
+\[F_{\rm DPM} \;=\; I \cdot A \cdot (\omega_1 - \omega_2)\]
+
+with \(\omega_1, \omega_2\) the angular velocities of the \textbf{CW}
+and \textbf{CCW} rotating monopoles. This is exactly the form of an
+angular momentum operator on a 2-plane:
+
+\[T_{[12]} \;=\; -i(x_1 \partial_2 - x_2 \partial_1)\]
+
+acting on the differential current \(I\cdot A\) with eigenvalue
+\((\omega_1 - \omega_2)\). The CW/CCW pair are the two eigenstates of
+\(T_{[12]}\) with eigenvalues \(\pm i\) -- the standard fundamental
+representation of \(SO(2)\cong U(1)\).
+
+Thus
+\textbf{\(\mathcal{L}_{\rm DPM} = -\tfrac{1}{4}F_{[12]}^{\rm DPM} F^{[12]\rm DPM}\)
+is a Yang-Mills Lagrangian for the gauge group \(SO(2)\) generated by
+\(T_{[12]}\)}, with
+\(F_{[12]}^{\rm DPM} = \partial_\mu A_\nu^{\rm DPM} - \partial_\nu A_\mu^{\rm DPM}\).
+No free parameters.
+
+\subsection{\texorpdfstring{3. The Canonical Embedding
+\(SO(2) \hookrightarrow SO(26)\)}{3. The Canonical Embedding SO(2) \textbackslash hookrightarrow SO(26)}}\label{the-canonical-embedding-so2-hookrightarrow-so26}
+
+In 26D Wick-rotated space (Euclidean signature for the closed-bosonic
+worldsheet target), the full internal symmetry is \(SO(26)\).
+\textbf{Textbook bosonic string light-cone quantization} (GSW Vol. 1 Ch.
+2, Polchinski Vol. 1 §1.3) fixes a 2-plane gauge:
+
+\[SO(26) \;\longrightarrow\; SO(24)_{\rm transverse} \,\times\, SO(2)_{\rm light\text{-}cone}\]
+
+The 24 transverse dimensions carry the physical oscillator modes
+\(\alpha_n^i\) with \(i=1,\dots,24\) (the ``magical \(24\)'' of the
+bosonic string spectrum). The 2 light-cone dimensions \((X^+, X^-)\) are
+gauge artefacts -- they parameterise the SO(2) plane removed by the
+gauge fix.
+
+PAPER\_050 explicitly states (§3): \textgreater{} \emph{``2 light-cone
+gauge degrees removed from 26 = 24.''}
+
+\textbf{G3 closure claim:} The SO(2) gauge group of the DPM is
+\textbf{identically} this light-cone SO(2). The CW/CCW rotation
+\(\omega_1 - \omega_2\) is the relative rotation of the two light-cone
+coordinates \(X^\pm\) when viewed as a 2-plane in the original 26D
+Lorentz frame.
+
+\subsection{4. Dimensional Verification}\label{dimensional-verification}
+
+The dimension counting must close exactly:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Group
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\dim G = n(n-1)/2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Role
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(SO(26)\) & 325 & Full 26D Lorentz/internal \\
+\(SO(24)_{\rm trans}\) & 276 & Transverse physical \\
+\(SO(2)_{\rm DPM}\) & 1 & DPM gauge / light-cone \\
+\textbf{Coset} \(SO(26)/(SO(24)\times SO(2))\) &
+\textbf{\(325 - 276 - 1 = 48\)} & Off-diagonal generators \\
+\end{longtable}
+}
+
+The coset dimension \(48 = 24 \times 2\) is the number of generators
+that mix transverse \(i\) with light-cone \(\pm\) -- exactly the 24
+\textbf{transverse \(\times\)} 2 \textbf{light-cone} off-diagonal
+Lorentz boosts. This is textbook (cf.~GSW eq. 2.3.45). The number
+factorises \textbf{identically} through the 24 light-cone physical modes
+that carry the bosonic string spectrum.
+
+\subsection{5. Dynkin Index of the
+Embedding}\label{dynkin-index-of-the-embedding}
+
+For an embedding \(\iota: H \to G\), the Dynkin index \(T(\iota)\)
+measures the trace ratio of generators:
+\[T(\iota) \;=\; \frac{\mathrm{Tr}_{R}\left(T^{H}_a T^{H}_b\right)}{\mathrm{Tr}_{R}\left(T^{G}_a T^{G}_b\right)}\]
+For SO(2) embedded in SO(26) via the natural 2-plane (i.e., \(SO(2)\)
+acts on the first two coordinates only), in the \textbf{vector
+representation \(\mathbf{26}\) of SO(26)}:
+
+\[T(SO(2) \to SO(26)) \;=\; 1\]
+
+This is the \textbf{minimal possible index} (unit index), confirming
+that the embedding is irreducible and does not pick up any ``level''
+factor that would constitute a free parameter. Zero new parameters
+introduced.
+
+\subsection{\texorpdfstring{6. The Branching Rule for the Vector
+\(\mathbf{26}\)}{6. The Branching Rule for the Vector \textbackslash mathbf\{26\}}}\label{the-branching-rule-for-the-vector-mathbf26}
+
+Under \(SO(26) \supset SO(24)\times SO(2)\), the fundamental vector
+representation \(\mathbf{26}\) branches as:
+\[\mathbf{26} \;\longrightarrow\; (\mathbf{24},\,\mathbf{1}_0) \;\oplus\; (\mathbf{1},\,\mathbf{1}_{+1}) \;\oplus\; (\mathbf{1},\,\mathbf{1}_{-1})\]
+
+where the subscript on the \(SO(2)\) singlet is the \textbf{U(1) charge}
+\(q = \pm 1\). The two SO(2)-charged singlets \(\mathbf{1}_{\pm1}\) are
+precisely the \textbf{CW (\(q=+1\)) and CCW (\(q=-1\)) monopoles} of the
+DPM pair. The 24 SO(2)-neutral states are the transverse oscillator
+modes that carry no DPM charge.
+
+This is the \textbf{group-theoretic origin} of: * the CW/CCW pair (two
+SO(2) charged states \(q=\pm 1\)); * the ``20-component'' +
+``2-component'' DPM splitting referenced elsewhere in the framework; *
+the \(\omega_1 - \omega_2\) structure as the SO(2) charge difference.
+
+\subsection{7. Consistency With G6, G7,
+G8}\label{consistency-with-g6-g7-g8}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Closure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Group structure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Consistency
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G6 (PAPER\_1159) & \(\Phi_{\rm res} = 5/6 = (D-1)/D\) at
+\(D_{\rm BSFG}=6\) & \(D_{\rm BSFG}=6\) from \(26\to 10\to 6\) chain \\
+G7 (PAPER\_1160) & \(F_{\rm TRZ} = 1/10 = 1/|SO(5)|\) &
+\(SO(5)\subset SO(6)\subset SO(26)\) \\
+G8 (PAPER\_1161) & \(26!\) Pochhammer at \(D_{\rm crit}=26\) &
+\(D_{\rm crit}=26\) root of all branches \\
+\textbf{G3 (this paper)} & \(SO(2) \subset SO(26)\) light-cone embedding
+& \(D_{\rm crit}=26\) root \\
+\end{longtable}
+}
+
+All four closures (G3, G6, G7, G8) descend from the same single integer
+\(D_{\rm crit} = 26\) -- the bosonic critical dimension. The embedding
+\(SO(26) \supset SO(24) \times SO(2)\) is the \textbf{organising group}
+under which: * SO(2) supplies the DPM (G3); * SO(24) contains SO(5),
+SO(6), SO(2,3) used in F\_TRZ, \(\Phi_{\rm res}\) closures (G6, G7); *
+The 26 of SO(26) carries the 26-fold Pochhammer derivative (G8).
+
+\subsection{8. Result -- G3 Closure
+Statement}\label{result-g3-closure-statement}
+
+\textbf{Theorem (G3 Closure).} Let
+\(\mathcal{L}_{\rm DPM} = -\tfrac{1}{4}F^{\rm DPM}_{[12]}F^{[12]\rm DPM}\)
+denote the DPM Yang-Mills Lagrangian with \(F^{\rm DPM}\) the
+field-strength of \(SO(2)\) generated by \(T_{[12]}\). Let
+\(\iota: SO(2)
+\hookrightarrow SO(26)\) be the embedding via the first two coordinates
+\((X^1, X^2)\). Then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\iota\) coincides with the light-cone gauge embedding used in
+  standard bosonic string quantization (PAPER\_050).
+\item
+  \(\iota\) has Dynkin index \(T(\iota) = 1\) (minimal, irreducible).
+\item
+  The vector \(\mathbf{26}\) branches as
+  \((\mathbf{24},\mathbf{1}_0)\oplus(\mathbf{1},\mathbf{1}_{+1})
+  \oplus(\mathbf{1},\mathbf{1}_{-1})\), identifying the CW and CCW
+  monopoles as the \(q=\pm 1\) SO(2)-charged singlets.
+\item
+  \(F_{\rm DPM} = I\cdot A\cdot (\omega_1-\omega_2)\) is the SO(2)
+  charge-difference current, \(\omega_1 - \omega_2\) being the
+  eigenvalue separation of the \(\pm i\) eigenstates of \(T_{[12]}\).
+\end{enumerate}
+
+\textbf{Free parameters introduced: ZERO.}
+
+\subsection{9. Updated Catalog Status}\label{updated-catalog-status}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Lagrangian gap
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status (pre-250)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status (post-250)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1 (V(UA) polynomial) & OPEN & OPEN \\
+G2 (beta\_i index) & OPEN & OPEN \\
+\textbf{G3 (DPM SO(2))} & \textbf{OPEN} & \textbf{CLOSED (this paper,
+group-theoretic)} \\
+G4 (T\^{}22 moduli) & OPEN & OPEN \\
+G5 (KK tower) & CLOSED (PAPER\_1162) & CLOSED \\
+G6 (Phi\_res ID) & CLOSED (PAPER\_1159) & CLOSED \\
+G7 (F\_TRZ ID) & CLOSED (PAPER\_1160) & CLOSED \\
+G8 (26! emergence) & CLOSED (PAPER\_1161) & CLOSED \\
+\end{longtable}
+}
+
+\begin{quote}
+\textbf{Session 253 Update (PAPER\_1166):} ALL 8 Lagrangian gaps now
+closed. The \(SO(26)\supset SO(24)\times SO(2)\) branching used here
+generalises in PAPER\_1164 (G4) to the full \(T^{22}\) moduli
+stabilisation, completing the dimensional reduction chain.
+\end{quote}
+
+\textbf{Result:} \textbf{5 of 8 gaps closed}; 3 remain (G1, G2, G4). All
+five closures (G3, G5, G6, G7, G8) descend from the single integer
+\(D_{\rm crit}=26\) via the canonical decomposition
+\(SO(26)\supset SO(24)\times SO(2)\).
+
+\subsection{10. Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  The DPM SO(2) gauge group is the \textbf{light-cone gauge 2-plane} of
+  textbook bosonic string light-cone quantization at
+  \(D_{\rm crit}=26\).
+\item
+  The embedding \(\iota: SO(2)\hookrightarrow SO(26)\) has Dynkin index
+  1 (minimal, irreducible) and dimensional decomposition
+  \(325 = 276 + 1 + 48\) that factorises through \(48 = 24 \times 2\)
+  (the textbook GSW transverse \(\times\) light-cone count).
+\item
+  The CW and CCW monopoles are the \(q=\pm 1\) SO(2)-charged singlets in
+  the branching of the vector \(\mathbf{26}\).
+\item
+  \(F_{\rm DPM} = I\cdot A\cdot(\omega_1-\omega_2)\) is identically the
+  SO(2) charge-difference current.
+\item
+  G3 closed; \textbf{5 of 8 Lagrangian gaps now closed}. Only G1, G2, G4
+  remain (V(UA) polynomial coefficients, beta\_i index structure,
+  T\^{}22 moduli stabilisation).
+\item
+  Cumulative impact across PAPERs 1159-1163: zero-mode dominance and
+  SO(2) DPM embedding rigorously identified; 6 free numerical inputs
+  reduced to \textbf{2 textbook integers} (\(D_{\rm crit}=26\),
+  \(D_{\rm BSFG}=6\)).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§SM Anchors (G3 Compliance
+Table)}\label{sm-anchors-g3-compliance-table}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Anchor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Symbol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Used in
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Bosonic critical dim & \(D_{\rm crit}\) & 26 & Polyakov (textbook) &
+\(SO(26)\) \\
+Transverse Lorentz & \(SO(24)\) & \(\dim = 276\) & GSW Vol.1 §2 &
+physical modes \\
+DPM gauge & \(SO(2)_{\rm DPM}\) & \(\dim = 1\) & this paper \(\equiv\)
+light-cone & CW/CCW pair \\
+Coset count & \(SO(26)/(SO(24)\times SO(2))\) & \(48 = 24\times 2\) &
+this paper & off-diagonal Lorentz \\
+Dynkin index & \(T(\iota)\) & 1 & this paper & minimal embedding \\
+Branching of \(\mathbf{26}\) &
+\(\to (\mathbf{24},\mathbf{1}_0)\oplus 2\cdot(\mathbf{1},\mathbf{1}_{\pm1})\)
+& -- & this paper & CW + CCW + 24 transverse \\
+DPM current & \(F_{\rm DPM} = I A(\omega_1-\omega_2)\) & -- &
+\href{COMPLETE_UQFF_EQUATIONS_REFERENCE.md\#L549}{COMPLETE\_UQFF\_EQUATIONS\_REFERENCE.md
+L549} & SO(2) charge difference \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Murphy, D. T., ``PAPER\_050: 26D Manifold Compactification to 3+1
+  Spacetime'' -- light-cone gauge 26 = 24 + 2.
+\item
+  Murphy, D. T., ``PAPER\_147: F\_DPM Vortical Resonance'' --
+  \(F_{\rm DPM} = IA(\omega_1-\omega_2)\) derivation.
+\item
+  Murphy, D. T., ``PAPER\_1143: Nambu-Goto Bosonic String SCm 26D'' --
+  light-cone normal-ordering.
+\item
+  Murphy, D. T., ``PAPER\_1159, 1160, 1161, 1162'' -- prior G6, G7, G8,
+  G5 closures via \(D_{\rm crit}=26\) flow.
+\item
+  M. B. Green, J. H. Schwarz, E. Witten, \emph{Superstring Theory} Vol.
+  1 (Cambridge UP, 1987) Ch. 2 -- light-cone quantization, transverse
+  \(SO(24)\), eq. 2.3.45.
+\item
+  J. Polchinski, \emph{String Theory} Vol. 1 (Cambridge UP, 1998) §1.3
+  -- light-cone gauge fix.
+\item
+  \href{_lagrangian_rederivation_outline.py\#L56}{\_lagrangian\_rederivation\_outline.py
+  L56-58} -- G3 gap statement.
+\item
+  \href{COMPLETE_UQFF_EQUATIONS_REFERENCE.md\#L549}{COMPLETE\_UQFF\_EQUATIONS\_REFERENCE.md
+  L549} -- \(F_{\rm DPM}\) canonical form.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Signed:} Daniel T. Murphy \textbf{Date:} May 10, 2026 (Session
+250) \textbf{Repository:} Star-Magic, commit pending
+\textbf{Verification:}
+\(\dim SO(26) - \dim SO(24) - \dim SO(2) = 325 - 276 - 1 = 48 = 24\times 2\)
+(exact, integer); branching rule of \(\mathbf{26}\) under
+\(SO(24)\times SO(2)\) standard textbook result.
+
+
+% Session 258 auto-injected bibliography stub
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}

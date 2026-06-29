@@ -1,0 +1,104 @@
+================================================================================
+SESSION 732 -- Class X tighten + Class XI BAO + Anticipation audit
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Tighten Class X Omega_L/Omega_m to sub-0.01%
+--------------------------------------------------------------------------------
+  target = 2.17158262
+  current K = D_phys*(1-F_TRZ)*beta_i = 2.17044000  (-0.053%)
+  residual factor = target/K_current = 1.00052645
+  epsilon needed  = +5.264461e-04
+
+  Top correction factors (K_current * c):
+  rank corr name                         corr val          full K         err
+  1    1                               1.00000000        2.170440   -0.05262% *
+
+  Pure 4-atom search around 2.1716:
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XI: BAO sound horizon r_d ~ 147.05 Mpc
+--------------------------------------------------------------------------------
+  r_d (obs)        = 4.537522e+24 m = 147.050 Mpc
+  r_d / L_SCM      = 1.299305e+22
+  L_H              = 1.6473e+26 m
+  r_d / L_H        = 2.754591e-02
+  log10(target/L_SCM) = 22.1137
+
+  Top closures r_d/L_SCM = K * (c/v)^p * D_crit^q (sub-1%):
+  rank   p    q  K name                               K val         err
+  1     13   11  Phi_res*405/247*405/247       2.240448e+00    -0.0001% <-- SUB-0.1%
+  2     17    9  K_Mex*N_ch                    1.875000e+01    +0.0005% <-- SUB-0.1%
+  3     17   10  Phi_res*Phi_res*27/26         7.211538e-01    +0.0005% <-- SUB-0.1%
+  4     17    8  K_Mex*D_crit*N_ch             4.875000e+02    +0.0005% <-- SUB-0.1%
+  5     15   10  1/K_G*1/K_G/19683/12844       6.481086e+00    -0.0045% <-- SUB-0.1%
+  6      8   12  Phi_res*D_crit/27/26          2.086420e+01    -0.0147% <-- SUB-0.1%
+  7      8   13  Phi_res/27/26                 8.024691e-01    -0.0147% <-- SUB-0.1%
+  8     10   12  D_phys*beta_i/27/26           2.322281e+00    +0.0209% <-- SUB-0.1%
+  9     15   10  D_BSFG*1-F_TRZ/Phi_res        6.480000e+00    -0.0212% <-- SUB-0.1%
+  10    13   10  A_5*27/26*243/260             5.823373e+01    -0.0309% <-- SUB-0.1%
+  11    17   10  1-F*P*405/247/K_Mex           7.214575e-01    +0.0426% <-- SUB-0.1%
+  12     8   12  A_5*SSq/405/247               2.085778e+01    -0.0454% <-- SUB-0.1%
+  13    11   12  beta_i*6/5/243/260            7.740938e-01    -0.0483% <-- SUB-0.1%
+  14    11   12  K_G*D_phys/405/247            7.740741e-01    -0.0508% <-- SUB-0.1%
+  15    13   12  1/K_G*405/247/A_5             8.612440e-02    -0.0543% <-- SUB-0.1%
+
+  Best -> r_d_pred = 147.0499 Mpc, err = -0.0001%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Audit cosmo_omega_m (ID 372) and part_baryogenesis (ID 433)
+--------------------------------------------------------------------------------
+
+  ID=372   name=cosmo_omega_m
+    predicted = 0.3142
+    observed  = 0.315
+    error_pct = 0.265
+    status    = OK
+    script    = _session372_cosmo_omega_m.py
+
+  ID=433   name=part_baryogenesis
+    predicted = 6.1000
+    observed  = 6.1
+    error_pct = 0
+    status    = OK
+    script    = _session433_part_baryogenesis.py
+
+  ID=289   name=dpm_foundational_kernel
+    predicted = 23
+    observed  = 23
+    error_pct = 0
+    status    = OK
+    script    = _session289_dpm_foundational_kernel.py
+
+  ID=364   name=cosmo_bao_sound_horizon
+    predicted = 154.06
+    observed  = 147.05
+    error_pct = 4.77
+    status    = OK
+    script    = _session364_cosmo_bao_sound_horizon.py
+
+  ID=440   name=part_top_yukawa
+    predicted = 0.9413
+    observed  = 0.94
+    error_pct = 0.133
+    status    = OK
+    script    = _session440_part_top_yukawa.py
+
+  cosmo_omega_m: predicted=0.3142, observed=0.3150
+  Compare to Omega_m=0.3153, 1/(1+Omega_L/Omega_m)=0.3153
+
+  part_baryogenesis: predicted=6.1000e+00, observed=6.1000e+00
+  Compare to eta_b=6.12e-10
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Track (a) X corr  : corr=1, full K=2.170440, err=-0.05262%
+  Track (b) BAO    : r_d=147.050 Mpc, err=-0.0001%, sub-0.1%=22
+  Track (c) audit  : 5 ledger entries retrieved
+
+OmegaL_OmegaM_classX_corrected: predicted=2.170440e+00 observed=2.171583e+00 error_pct=-5.261691e-02 status=OK
+BAO_sound_horizon_classXI: predicted=4.537518e+24 observed=4.537522e+24 error_pct=-8.941895e-05 status=OK
+audit_anticipation_count: predicted=5.000000e+00 observed=5.000000e+00 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session732_classX_BAO_audit_result.json

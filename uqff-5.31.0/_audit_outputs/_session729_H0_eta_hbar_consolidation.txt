@@ -1,0 +1,88 @@
+================================================================================
+SESSION 729 -- H_0 tighten + Class VIII eta + Class IV stress
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- tighten H_0 = K * c/L_H to sub-0.1%
+--------------------------------------------------------------------------------
+  H_0 (obs)     = 2.192695e-18 s^-1
+  c/L_H         = 1.819948e-18 s^-1
+  K needed      = 1.204812
+
+  Top sub-5% candidates:
+  rank K name                                 K val     rel err
+  1    K_Mex*beta_i/27/26                  1.209522    +0.3909% *
+  2    6/5                                 1.200000    -0.3994% *
+  3    27/26*27/26/1-F_TRZ                 1.198225    -0.5467%
+  4    SO5*1/K_G/D_crit                    1.212121    +0.6067%
+  5    Phi_res*Phi_res/SSq                 1.218324    +1.1215%
+  6    K_Mex*SSq                           1.187500    -1.4369%
+  7    K_G*D_phys/27/26                    1.222222    +1.4451%
+  8    K_G*D_phys*243/260                  1.186243    -1.5413%
+  9    243/260*6/5/1-F*P                   1.223497    +1.5508%
+  10   1-F_TRZ*6/5/1-F*P                   1.178182    -2.2103%
+  11   1-F*P*6/5/243/260                   1.176955    -2.3121%
+  12   K_Mex*27/26*SSq                     1.233173    +2.3540%
+  13   27/26*27/26/1-F*P                   1.176439    -2.3550%
+  14   K_Mex*243/260*beta_i                1.173916    -2.5644%
+  15   Phi_res*1-F_TRZ/beta_i              1.243987    +3.2516%
+
+  Best: K = K_Mex*beta_i/27/26, err = +0.3909%
+  Sub-0.1% count: 0
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class VIII: baryon-to-photon ratio eta_b ~ 6.12e-10
+--------------------------------------------------------------------------------
+  eta_obs = n_b/n_gamma = 6.1200e-10  (Planck 2018)
+  log10(eta) = -9.2132
+
+  Top (p,q,K) closures within 5%:
+  rank   p    q  K name                           K val     predicted         err
+  1      1   -7  243/260/SSq               1.639676e+00    6.1202e-10    +0.0032% <-- SUB-0.5%
+  2      2   -7  SSq/27/26                 5.488889e-01    6.1420e-10    +0.3601% <-- SUB-0.5%
+  3      1   -6  SSq/N_ch                  6.333333e-02    6.1463e-10    +0.4296% <-- SUB-0.5%
+  4     -1   -6  SSq                       5.700000e-01    6.1548e-10    +0.5687% *
+  5     -1   -7  D_crit*SSq                1.482000e+01    6.1548e-10    +0.5687% *
+  6     -1   -5  SSq/D_crit                2.192308e-02    6.1548e-10    +0.5687% *
+  7     -1   -6  243/260*beta_i            5.634796e-01    6.0844e-10    -0.5818% *
+  8     -3   -6  N_ch*SSq                  5.130000e+00    6.1633e-10    +0.7079% *
+  9      2   -7  1-F_TRZ*beta_i            5.426100e-01    6.0718e-10    -0.7880% *
+  10     3   -7  K_G*SSq                   1.808654e-01    6.0674e-10    -0.8591% *
+  11     2   -7  1-F*P*beta_i              5.526583e-01    6.1842e-10    +1.0493% *
+  12     1   -8  D_crit/beta_i             4.312490e+01    6.1910e-10    +1.1604% *
+  13     1   -7  1/beta_i                  1.658650e+00    6.1910e-10    +1.1604% *
+  14     0   -6  K_G*beta_i                1.913048e-01    6.1928e-10    +1.1892% *
+  15     3   -8  D_phys/Phi_res            4.800000e+00    6.1932e-10    +1.1964% *
+
+  Log-form probe: log10(eta) = -9.2132
+  Test: -N_ch * D_phys / 4 = -9.0000    (= -9)
+  Test: -N_ch * 1.024     = -9.2133  (close to -9.21)
+  Test: -log10(D_crit)*N_ch/sm  ...
+  factor = log10(eta) / -N_ch = 1.023694
+  Best log-factor match: 27/26 = 1.0385  rel=+1.4425%
+
+  Best closure: (p,q,K) = (1,-7,243/260/SSq)  err +0.0032%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class IV stress-test: hbar = rho_vac * L_SCM^4 / v_SCM
+--------------------------------------------------------------------------------
+  Observed hbar           = 1.054572e-34 J*s
+  Predicted (v=1.0e8)     = 1.054572e-34  err +2.1330e-11%
+  Predicted (v=c/3)       = 1.055302e-34    err +6.9229e-02%
+  Delta between forms     = 6.9229e-02%
+  Class IV verdict: both forms preserve EXACT/candidate-EXACT status.
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Track (a) H_0: best K=K_Mex*beta_i/27/26, err=+0.3909%, sub-0.1%=0
+  Track (b) eta: best (p,q,K)=(1,-7,243/260/SSq), err=+0.0032%, sub-0.1%=1
+  Track (c) hbar: v=1e8 err=+2.13e-11%, v=c/3 err=+6.92e-02%
+
+H0_classVII_tightened: predicted=2.201267e-18 observed=2.192695e-18 error_pct=+3.909186e-01 status=OK
+eta_baryonPhoton_classVIII_best: predicted=6.120196e-10 observed=6.120000e-10 error_pct=+3.204085e-03 status=OK
+hbar_classIV_stress_v1e8: predicted=1.054572e-34 observed=1.054572e-34 error_pct=+2.132997e-11 status=OK
+hbar_classIV_stress_v_c3: predicted=1.055302e-34 observed=1.054572e-34 error_pct=+6.922856e-02 status=OK
+locked_FTRZ_Phires_invariant: predicted=8.333333e-02 observed=8.333333e-02 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session729_H0_eta_hbar_consolidation_result.json

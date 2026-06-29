@@ -1,0 +1,1 @@
+S521 COMPLETE. Jupiter period = 11.812500; closure = SO5+F*SO5+Phi_res-F^2*K; target 11.862; match 0.4173%.

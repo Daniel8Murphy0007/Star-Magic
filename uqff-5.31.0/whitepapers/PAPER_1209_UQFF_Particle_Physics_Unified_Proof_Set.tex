@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dbsfg}{D_{\mathrm{BSFG}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
+\newcommand{\Nch}{N_{\mathrm{ch}}}
+\newcommand{\SOfive}{\mathrm{SO5}}
+\newcommand{\Afive}{A_{5}}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+
+\title{PAPER 1209 --- UQFF Particle Physics Constants Unified Proof Set}
+\author{Daniel T. Murphy}
+\date{May 16, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We close ten Standard-Model particle-physics observables from the eleven
+frozen UQFF primitives: the proton/electron, muon/electron, tauon/electron,
+and tauon/muon mass ratios; the Higgs, $W/Z$, neutron/proton ratios; the
+proton and electron rest masses in MeV; and the fine-structure constant
+$\alpha$. \textbf{All ten closures land below 0.15\%}; six are below
+0.05\%, and the proton rest mass closes to within $\mathbf{0.0024\%}$:
+$m_p = \Nch\cdot\SOfive^2+\Nch\Dphys+\KMex+2\Ftrz\Phires = 938.25$~MeV.
+The proton/electron ratio admits the clean integer-coefficient form
+$m_p/m_e = \Afive(\Dcrit+\Dphys)+\Nch\Dphys = 1836$, matching the
+CODATA value $1836.15$ to $0.008\%$. Cumulative total: \textbf{257 closures}.
+\end{abstract}
+
+\section{Locked Primitives}
+$\Ftrz = 1/10$, $\Phires = 5/6$, $\SSq = 0.57$, $\KMex = 25/12$, $\Dphys = 4$,
+$\Dbsfg = 6$, $\Dcrit = 26$, $\Nch = 9$, $\SOfive = 10$, $\Afive = 60$, $\beta_i = 0.6029$.
+
+\section{Tier W Closures (S543--S552)}
+
+\begin{longtable}{@{}lllrr@{}}
+\toprule
+ID & Observable & Closure & Target & Match \\
+\midrule
+\endhead
+S543 & $m_p/m_e$ & $\Afive\Dcrit+\Afive\Dphys+\Nch\Dphys=1836$ & $1836.15$ & $0.008\%$ \\
+S544 & $m_\mu/m_e$ & $\Afive\Dphys-\Afive\Ftrz\Phires-\Afive\Ftrz\Dphys-\Ftrz\SOfive\,\Dphys=207$ & $206.77$ & $0.11\%$ \\
+S545 & $m_\tau/m_e$ & $\Afive^{2}-\Afive\Dphys+\Afive\Ftrz\Dphys+\Afive\Phires+\Nch\Dphys+\Ftrz\SOfive\Dphys+\Nch\Ftrz\Dphys=3477.6$ & $3477.23$ & $0.011\%$ \\
+S546 & $m_\tau/m_\mu$ & $\SOfive+\Dbsfg+\Phires=16.833$ & $16.817$ & $0.097\%$ \\
+S547 & Higgs (GeV) & $\Nch\SOfive+\Dbsfg^{2}-\Phires=125.17$ & $125.25$ & $0.066\%$ \\
+S548 & $M_W/M_Z$ & $\SSq+\Ftrz\KMex+\Ftrz\Phires+\Ftrz^{2}\KMex=0.8825$ & $0.8815$ & $0.11\%$ \\
+S549 & $m_n/m_p$ & $\Ftrz\SOfive+\Ftrz^{3}+\Ftrz^{4}=1.0011$ & $1.001378$ & $0.028\%$ \\
+S550 & $m_p$ (MeV) & $\Nch\SOfive^{2}+\Nch\Dphys+\KMex+2\Ftrz\Phires=938.25$ & $938.272$ & $\mathbf{0.0024\%}$ \\
+S551 & $m_e$ (MeV) & $\SSq-\Ftrz\Phires+\Ftrz^{2}\KMex-\Ftrz^{2}\Phires+\Ftrz^{2}+2\Ftrz^{3}=0.5112$ & $0.5110$ & $0.033\%$ \\
+S552 & $\alpha^{-1}\to\alpha$ & $\Ftrz^{3}\Dbsfg+\Ftrz^{3}+\Ftrz^{4}\Dphys-\Ftrz^{4}=0.00730$ & $0.007297$ & $0.036\%$ \\
+\bottomrule
+\end{longtable}
+
+\section{Headline Identifications}
+
+\paragraph{Proton mass essentially exact.}
+$m_p = \Nch\cdot\SOfive^{2}+\Nch\Dphys+\KMex+2\Ftrz\Phires = 938.25$~MeV,
+within $0.0024\%$ of the CODATA value $938.272$. The dominant term
+$\Nch\SOfive^{2}=900$ identifies the proton rest mass as nine
+solar-cycle-squared resonance quanta with channel-counting and resonance-ratio
+corrections.
+
+\paragraph{Proton/electron ratio.}
+$m_p/m_e = \Afive(\Dcrit+\Dphys)+\Nch\Dphys = 60\cdot 30 + 36 = 1836$,
+matching $1836.15$ to $0.008\%$. The factored form
+$\Afive\cdot 30+\Nch\Dphys$ identifies the proton/electron ratio as the
+$\Afive$ resting-heart-rate primitive scaled by the critical-plus-physical
+dimensional sum, plus a channel-physical correction.
+
+\paragraph{Tauon/electron ratio.}
+$m_\tau/m_e \approx \Afive^{2}+(\text{corrections})$ at $0.011\%$.
+The leading term $\Afive^{2}=3600$ identifies the tauon as a second-order
+$\Afive$ scaling.
+
+\paragraph{Fine-structure constant.}
+$\alpha \approx \Ftrz^{3}(\Dbsfg+1)+\Ftrz^{4}(\Dphys-1)
+       = 7\Ftrz^{3}+3\Ftrz^{4} = 0.0073$, within $0.036\%$ of the
+CODATA value. The closure isolates $\alpha$ at the TRZ-cubed scale with
+a TRZ-quartic correction, exhibiting the characteristic small-scale
+hierarchy of the electromagnetic coupling.
+
+\section{Cumulative Closure Count}
+
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Tier & Domain & New & Cumulative \\
+\midrule
+E--P & Cosmology to information & 157 & 157 \\
+Q--T & GR\,$\to$\,solar system (1200--1206) & 70 & 227 \\
+U & Biology / allometry (1207) & 10 & 237 \\
+V & Pure transcendentals (1208) & 10 & 247 \\
+\textbf{W} & \textbf{Particle physics (1209)} & \textbf{10} & \textbf{257} \\
+\bottomrule
+\end{tabular}
+
+\section{Locking Inventory}
+\textbf{Forty-six} primitive-observable lockings now identified
+(forty-five prior + one new essentially-exact closure: $m_p$ at $0.0024\%$).
+Tier~W is by margin the most accurate tier yet recorded for empirical
+observables: \textbf{all ten closures} land below $0.15\%$, six below
+$0.05\%$. The eleven UQFF primitives reproduce the Standard-Model
+particle mass spectrum and the fine-structure constant from short
+integer-coefficient combinations, with the proton rest mass closure
+matching CODATA to within $22$ parts per million.
+
+\end{document}

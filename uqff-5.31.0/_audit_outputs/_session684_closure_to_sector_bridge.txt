@@ -1,0 +1,11 @@
+Bridge map written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\bridge_map.csv
+  closures bridged: 579
+  sectors invoked:
+    L_aether(7)      455 closures
+    L_phi(4)         409 closures
+    L_KK(9)          379 closures
+    L_YM(2)          323 closures
+    L_EH(1)          291 closures
+    L_buoy(6)        288 closures
+    master(N=9)      238 closures
+Lagrangian re-run bridge: 579/579 closures mapped -> EXACT

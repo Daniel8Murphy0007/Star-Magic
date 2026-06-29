@@ -1,0 +1,16 @@
+Audited 0 closures.
+
+  PHYSICS  (UQFF-primitive derivations)               0 / 0
+  PROOF    (foundational-constant derivations)        0 / 0
+  DATA     (observational-data closures)              0 / 0
+  BOOKKEEP (null/checkpoint, no derivation)           0 / 0
+  unclassified (no file):                             0
+
+
+--- PHYSICS samples ---
+
+--- PROOF samples ---
+
+--- DATA samples ---
+
+--- BOOKKEEP samples ---

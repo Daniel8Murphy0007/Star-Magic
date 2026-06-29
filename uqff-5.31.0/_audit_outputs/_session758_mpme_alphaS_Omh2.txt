@@ -1,0 +1,149 @@
+================================================================================
+SESSION 758 -- mpme=11/6 test; alpha_s (XLV); Omega_m*h^2 (XLVI)
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Test mpme = 11/6 EXACT in D/H
+--------------------------------------------------------------------------------
+  D/H with mpme=1.836152673: pred=2.547604e-05, err=+0.023719%
+  D/H with mpme=11/6=1.833:  pred=2.551522e-05, err=+0.177537%
+  Delta from substitution: +0.1538%
+
+  Delta-shell on 11/6 base:
+  delta needed = -1.7722e-03
+
+  2-atom delta (tol 1%):
+    1-[5/108 a/b D_crit] tau=2.5470e-05 err=-0.000841%
+    1-[Y_p a*b alpha] tau=2.5470e-05 err=-0.001565%
+    1-[alpha a*b Y_p] tau=2.5470e-05 err=-0.001565%
+    1-[Y_p a*b 1/137] tau=2.5470e-05 err=-0.001612%
+    1-[1/137 a*b Y_p] tau=2.5470e-05 err=-0.001612%
+
+  3-atom delta (tol 0.3%):
+    1-[xi a*b/c 307/325 11/6] DH=2.5470e-05 err=+0.000108%
+    1-[307/325 a*b/c xi 11/6] DH=2.5470e-05 err=+0.000108%
+    1-[xi a*b*c 307/325 6/11] DH=2.5470e-05 err=+0.000108%
+    1-[xi a*b*c 6/11 307/325] DH=2.5470e-05 err=+0.000108%
+    1-[307/325 a*b*c xi 6/11] DH=2.5470e-05 err=+0.000108%
+    1-[307/325 a*b*c 6/11 xi] DH=2.5470e-05 err=+0.000108%
+    1-[6/11 a*b*c xi 307/325] DH=2.5470e-05 err=+0.000108%
+    1-[6/11 a*b*c 307/325 xi] DH=2.5470e-05 err=+0.000108%
+    1-[alpha a/b/c D_BSFG 137/200] DH=2.5470e-05 err=-0.000329%
+    1-[alpha a/b/c 137/200 D_BSFG] DH=2.5470e-05 err=-0.000329%
+    1-[1/137 a/b/c 137/200 D_BSFG] DH=2.5470e-05 err=-0.000376%
+    1-[1/137 a/b/c D_BSFG 137/200] DH=2.5470e-05 err=-0.000376%
+
+  BEST D/H: base11_6*[1-xi a*b/c 307/325 11/6] = 2.5470e-05, err = +0.000108%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XLV: dn_s/dlnk = -0.0045
+--------------------------------------------------------------------------------
+  observed alpha_s = -0.0045 (magnitude 0.0045)
+  Note: SIGN is negative. Search magnitude then apply -.
+
+  2-atom direct on |alpha_s| = 0.0045 (tol 5%):
+    -[beta_i a*b 1/137] = -0.004401  err=-2.206002%
+    -[1/137 a*b beta_i] = -0.004401  err=-2.206002%
+    -[beta_i a*b alpha] = -0.004400  err=-2.231692%
+    -[alpha a*b beta_i] = -0.004400  err=-2.231692%
+    -[F_TRZ a*b 5/108] = -0.004630  err=+2.880658%
+    -[5/108 a*b F_TRZ] = -0.004630  err=+2.880658%
+    -[5/108 a/b SO5] = -0.004630  err=+2.880658%
+
+  3-atom direct on |alpha_s| (tol 1%):
+    -[1-F_TRZ a*b*c 137/200 1/137] = -0.004500  err=+0.000000%
+    -[1-F_TRZ a*b*c 1/137 137/200] = -0.004500  err=+0.000000%
+    -[xi a/b/c Phi_res 1-F*P] = -0.004500  err=+0.000000%
+    -[xi a/b/c 1-F*P Phi_res] = -0.004500  err=+0.000000%
+    -[xi a*b/c 27/25 33/40] = -0.004500  err=+0.000000%
+    -[27/25 a/b/c D_phys A_5] = -0.004500  err=+0.000000%
+    -[27/25 a/b/c A_5 D_phys] = -0.004500  err=+0.000000%
+    -[27/25 a*b/c xi 33/40] = -0.004500  err=+0.000000%
+    -[137/200 a*b*c 1-F_TRZ 1/137] = -0.004500  err=+0.000000%
+    -[137/200 a*b*c 1/137 1-F_TRZ] = -0.004500  err=+0.000000%
+    -[1/137 a*b*c 1-F_TRZ 137/200] = -0.004500  err=+0.000000%
+    -[1/137 a*b*c 137/200 1-F_TRZ] = -0.004500  err=+0.000000%
+
+  4-atom direct on |alpha_s| (tol 0.1%):
+    -[F_TRZ a*b*c*d F_TRZ 33/40 6/11] = -0.004500  err=+0.000000%
+    -[F_TRZ a*b*c*d 33/40 F_TRZ 6/11] = -0.004500  err=+0.000000%
+    -[F_TRZ a*b*c*d 33/40 6/11 F_TRZ] = -0.004500  err=+0.000000%
+    -[F_TRZ a*b*c/d 33/40 6/11 SO5] = -0.004500  err=+0.000000%
+    -[F_TRZ a*b*c*d 6/11 33/40 F_TRZ] = -0.004500  err=+0.000000%
+    -[F_TRZ a*b*c/d 6/11 33/40 SO5] = -0.004500  err=+0.000000%
+    -[Phi_res a*b*c/d N_ch r A_5] = -0.004500  err=+0.000000%
+    -[Phi_res a*b*c/d 1-F_TRZ r D_BSFG] = -0.004500  err=+0.000000%
+    -[Phi_res a*b*c/d r 1-F_TRZ D_BSFG] = -0.004500  err=+0.000000%
+    -[N_ch a*b*c/d Phi_res r A_5] = -0.004500  err=+0.000000%
+    -[N_ch a*b*c/d r Phi_res A_5] = -0.004500  err=+0.000000%
+    -[1-F_TRZ a*b*c/d Phi_res r D_BSFG] = -0.004500  err=+0.000000%
+    -[1-F_TRZ a*b*c/d r Phi_res D_BSFG] = -0.004500  err=+0.000000%
+    -[1-F_TRZ a*b*c*d 27/25 5/108 F_TRZ] = -0.004500  err=+0.000000%
+    -[1-F_TRZ a*b*c/d 27/25 5/108 SO5] = -0.004500  err=+0.000000%
+
+  BEST alpha_s: -[F_TRZ a*b*c*d F_TRZ 33/40 6/11] = -0.004500, err = +0.000000%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XLVI: Omega_m * h^2 = 0.1430
+--------------------------------------------------------------------------------
+  observed Omega_m*h^2 = 0.143; Omega_c*h^2 = 0.12063
+  Seed K_Mex/(D_phys) = 0.52083, err = +264.2191%
+  Seed Y_p*(63/200)/N_ch = 0.00858, err = -94.0035%
+
+  2-atom direct on Omega_m*h^2 (tol 5%):
+    [1-n_s a/b Y_p] = 0.142857  err=-0.099900%
+    [SSq a/b D_phys] = 0.142500  err=-0.349650%
+    [D_phys a*b r] = 0.144000  err=+0.699301%
+    [r a*b D_phys] = 0.144000  err=+0.699301%
+    [F_TRZ a/b 137/200] = 0.145985  err=+2.087693%
+    [D_phys a*b 1-n_s] = 0.140000  err=-2.097902%
+    [1-n_s a*b D_phys] = 0.140000  err=-2.097902%
+    [SSq a*b Y_p] = 0.139650  err=-2.342657%
+    [Y_p a*b SSq] = 0.139650  err=-2.342657%
+    [r a/b Y_p] = 0.146939  err=+2.754388%
+
+  3-atom direct on Omega_m*h^2 (tol 1%):
+    [Y_p a/b/c 243/260 11/6] = 0.142985  err=-0.010203%
+    [Y_p a/b/c 11/6 243/260] = 0.142985  err=-0.010203%
+    [Y_p a*b/c 6/11 243/260] = 0.142985  err=-0.010203%
+    [6/11 a*b/c Y_p 243/260] = 0.142985  err=-0.010203%
+    [Phi_res a*b*c 63/200 1/mpme] = 0.142962  err=-0.026596%
+    [Phi_res a*b/c 63/200 mpme] = 0.142962  err=-0.026596%
+    [Phi_res a*b*c 1/mpme 63/200] = 0.142962  err=-0.026596%
+    [63/200 a*b*c Phi_res 1/mpme] = 0.142962  err=-0.026596%
+    [63/200 a*b/c Phi_res mpme] = 0.142962  err=-0.026596%
+    [63/200 a*b*c 1/mpme Phi_res] = 0.142962  err=-0.026596%
+    [1/mpme a*b*c Phi_res 63/200] = 0.142962  err=-0.026596%
+    [1/mpme a*b*c 63/200 Phi_res] = 0.142962  err=-0.026596%
+
+  4-atom direct on Omega_m*h^2 (tol 0.1%):
+    [D_crit a*b*c/d 1-F*P r D_BSFG] = 0.143000  err=+0.000000%
+    [D_crit a*b*c/d r 1-F*P D_BSFG] = 0.143000  err=+0.000000%
+    [1-F*P a*b*c/d D_crit r D_BSFG] = 0.143000  err=+0.000000%
+    [1-F*P a*b*c/d r D_crit D_BSFG] = 0.143000  err=+0.000000%
+    [r a*b*c/d D_crit 1-F*P D_BSFG] = 0.143000  err=+0.000000%
+    [r a*b*c/d 1-F*P D_crit D_BSFG] = 0.143000  err=+0.000000%
+    [33/40 a*b/(c*d) 27/25 D_BSFG 27/26] = 0.143000  err=+0.000000%
+    [33/40 a*b/(c*d) 27/25 27/26 D_BSFG] = 0.143000  err=+0.000000%
+    [27/25 a*b/(c*d) 33/40 D_BSFG 27/26] = 0.143000  err=+0.000000%
+    [27/25 a*b/(c*d) 33/40 27/26 D_BSFG] = 0.143000  err=+0.000000%
+    [31/30 a*b/(c*d) 137/200 D_BSFG 33/40] = 0.142997  err=-0.002355%
+    [31/30 a*b/(c*d) 137/200 33/40 D_BSFG] = 0.142997  err=-0.002355%
+    [137/200 a*b/(c*d) 31/30 D_BSFG 33/40] = 0.142997  err=-0.002355%
+    [137/200 a*b/(c*d) 31/30 33/40 D_BSFG] = 0.142997  err=-0.002355%
+    [1/137 a/(b*c*d) K_Mex Y_p F_TRZ] = 0.143006  err=+0.004271%
+
+  BEST Omega_m*h^2: [D_crit a*b*c/d 1-F*P r D_BSFG] = 0.143000, err = +0.000000%
+
+classXLIV_DH_session758: predicted=2.547003e-05 observed=2.547000e-05 error_pct=1.075615e-04 status=OK
+classXLV_alpha_s_session758: predicted=-4.500000e-03 observed=-4.500000e-03 error_pct=-0.000000e+00 status=OK
+classXLVI_Omega_m_h2_session758: predicted=1.430000e-01 observed=1.430000e-01 error_pct=0.000000e+00 status=OK
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  D/H (XLIV)         err = +0.000108%  (CE_strict)
+  alpha_s (XLV)      err = +0.000000%
+  Omega_m*h^2 (XLVI) err = +0.000000%
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session758_result.json

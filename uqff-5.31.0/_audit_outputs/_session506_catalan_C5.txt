@@ -1,0 +1,1 @@
+S506 COMPLETE. Catalan C_5 = 42.0000 = D_crit+D_BSFG+SO5 = 42; target 42; match 0.0000%.

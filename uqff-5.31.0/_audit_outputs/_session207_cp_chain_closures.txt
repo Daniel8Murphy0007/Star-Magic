@@ -1,0 +1,8 @@
+CPCH-1-bsfg_buoyancy-1/r^2-scaling: 0.25 vs 0.25 -> EXACT
+CPCH-2-compute_FUBii-linear-r: 2.0 vs 2.0 -> EXACT
+CPCH-3-bsfg_buoyancy-even-parity: 1.0 vs 1.0 -> EXACT
+CPCH-4-compute_FUBii-even-parity: 1.0 vs 1.0 -> EXACT
+CPCH-5-zero-point-identity: 0.0 vs 0.0 -> EXACT
+CPCH-6-great-cycle-sign-flip: -1.0 vs -1.0 -> EXACT
+CPCH-7-4pi/3-sphere-coefficient: 4.188790204786 vs 4.188790204786 -> EXACT
+CPCH-1-bsfg-buoyancy-inverse-square: 0.25 vs 0.25 -> EXACT

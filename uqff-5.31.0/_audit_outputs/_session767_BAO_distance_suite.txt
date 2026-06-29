@@ -1,0 +1,238 @@
+================================================================================
+SESSION 767 -- BAO suite at z=0.38: D_A (LXX); D_V (LXXI); D_M (LXXII); f*sig8 (LXXIII)
+================================================================================
+  r_drag (LIV)  = 147.0502 Mpc
+  z_BAO_eff (LXI) = 19/50 = 0.38
+  H(z=0.38) (LXIX) = 81.5 km/s/Mpc
+
+================================================================================
+TRACK (a) -- Class LXX: D_A(z=0.38) = 1099.8 Mpc (angular diameter)
+================================================================================
+  Target D_A(0.38) = 1099.8000  (r_drag-shell target = 7.479080)
+
+  2-atom shell (tol 3%):
+    [11/6 a/b Y_p] ratio=7.482993  -> 1100.3754  err=+0.0523%
+    [mpme a/b Y_p] ratio=7.494501  -> 1102.0676  err=+0.2062%
+    [Phi_res a*b N_ch] ratio=7.500000  -> 1102.8763  err=+0.2797%
+    [N_ch a*b Phi_res] ratio=7.500000  -> 1102.8763  err=+0.2797%
+    [N_ch a*b 33/40] ratio=7.425000  -> 1091.8475  err=-0.7231%
+    [33/40 a*b N_ch] ratio=7.425000  -> 1091.8475  err=-0.7231%
+    [D_BSFG a/b 416/513] ratio=7.399038  -> 1088.0299  err=-1.0702%
+    [N_ch a/b 11/9] ratio=7.363636  -> 1082.8240  err=-1.5436%
+    [D_phys a/b 1/mpme] ratio=7.344611  -> 1080.0262  err=-1.7979%
+    [D_phys a*b mpme] ratio=7.344611  -> 1080.0262  err=-1.7979%
+    [mpme a*b D_phys] ratio=7.344611  -> 1080.0262  err=-1.7979%
+    [D_phys a/b 6/11] ratio=7.333333  -> 1078.3679  err=-1.9487%
+
+  3-atom shell (tol 0.5%):
+    [6/11 a/b/c K_Mex 1-n_s] ratio=7.480519  -> 1100.0116  err=+0.0192%
+    [6/11 a/b/c 1-n_s K_Mex] ratio=7.480519  -> 1100.0116  err=+0.0192%
+    [D_BSFG a*b/c 27/26 Phi_res] ratio=7.476923  -> 1099.4828  err=-0.0288%
+    [27/26 a*b/c D_BSFG Phi_res] ratio=7.476923  -> 1099.4828  err=-0.0288%
+    [N_ch a/b/c D_crit 5/108] ratio=7.476923  -> 1099.4828  err=-0.0288%
+    [N_ch a/b/c 5/108 D_crit] ratio=7.476923  -> 1099.4828  err=-0.0288%
+    [beta_i a*b/c 31/30 1/12] ratio=7.475960  -> 1099.3412  err=-0.0417%
+    [31/30 a*b/c beta_i 1/12] ratio=7.475960  -> 1099.3412  err=-0.0417%
+    [F_TRZ a/b/c alpha 11/6] ratio=7.474691  -> 1099.1545  err=-0.0587%
+    [F_TRZ a/b/c 11/6 alpha] ratio=7.474691  -> 1099.1545  err=-0.0587%
+    [F_TRZ a*b/c 6/11 alpha] ratio=7.474691  -> 1099.1545  err=-0.0587%
+    [6/11 a*b/c F_TRZ alpha] ratio=7.474691  -> 1099.1545  err=-0.0587%
+    [6/11 a/b/c SO5 alpha] ratio=7.474691  -> 1099.1545  err=-0.0587%
+    [6/11 a/b/c alpha SO5] ratio=7.474691  -> 1099.1545  err=-0.0587%
+    [22/9 a/b/c 27/26 63/200] ratio=7.472728  -> 1098.8660  err=-0.0849%
+
+  4-atom shell (tol 0.05%):
+    [D_phys a*b/(c*d) 31/30 beta_i 1-F*P] ratio=7.479003  -> 1099.7886  err=-0.0010%
+    [D_phys a*b/(c*d) 31/30 1-F*P beta_i] ratio=7.479003  -> 1099.7886  err=-0.0010%
+    [31/30 a*b/(c*d) D_phys beta_i 1-F*P] ratio=7.479003  -> 1099.7886  err=-0.0010%
+    [31/30 a*b/(c*d) D_phys 1-F*P beta_i] ratio=7.479003  -> 1099.7886  err=-0.0010%
+    [r a*b/(c*d) 27/26 137/200 alpha] ratio=7.478888  -> 1099.7717  err=-0.0026%
+    [r a*b/(c*d) 27/26 alpha 137/200] ratio=7.478888  -> 1099.7717  err=-0.0026%
+    [27/26 a*b/(c*d) r 137/200 alpha] ratio=7.478888  -> 1099.7717  err=-0.0026%
+    [27/26 a*b/(c*d) r alpha 137/200] ratio=7.478888  -> 1099.7717  err=-0.0026%
+    [SO5 a*b/(c*d) 307/325 11/9 31/30] ratio=7.479359  -> 1099.8411  err=+0.0037%
+    [SO5 a*b/(c*d) 307/325 31/30 11/9] ratio=7.479359  -> 1099.8411  err=+0.0037%
+    [307/325 a/(b*c*d) F_TRZ 11/9 31/30] ratio=7.479359  -> 1099.8411  err=+0.0037%
+    [307/325 a/(b*c*d) F_TRZ 31/30 11/9] ratio=7.479359  -> 1099.8411  err=+0.0037%
+    [307/325 a*b/(c*d) SO5 11/9 31/30] ratio=7.479359  -> 1099.8411  err=+0.0037%
+    [307/325 a*b/(c*d) SO5 31/30 11/9] ratio=7.479359  -> 1099.8411  err=+0.0037%
+    [307/325 a/(b*c*d) 11/9 F_TRZ 31/30] ratio=7.479359  -> 1099.8411  err=+0.0037%
+
+  BEST D_A(0.38): r_drag * [31/30 a*b/(c*d) D_phys 1-F*P beta_i] = 1099.7886, err = -0.001032%
+================================================================================
+TRACK (b) -- Class LXXI: D_V(z=0.38) = 1476.8 Mpc (BAO dilation)
+================================================================================
+  Target D_V(0.38) = 1476.8000  (r_drag-shell target = 10.042831)
+
+  2-atom shell (tol 3%):
+    [Phi_res a/b 1/12] ratio=10.000000  -> 1470.5017  err=-0.4265%
+    [N_ch a/b 1-F_TRZ] ratio=10.000000  -> 1470.5017  err=-0.4265%
+    [A_5 a/b D_BSFG] ratio=10.000000  -> 1470.5017  err=-0.4265%
+    [22/9 a/b Y_p] ratio=9.977324  -> 1467.1672  err=-0.6523%
+    [D_BSFG a/b beta_i] ratio=9.951899  -> 1463.4284  err=-0.9054%
+    [1-n_s a/b xi] ratio=10.181818  -> 1497.2381  err=+1.3839%
+    [33/40 a/b 1/12] ratio=9.900000  -> 1455.7967  err=-1.4222%
+    [N_ch a/b 1-F*P] ratio=9.818182  -> 1443.7653  err=-2.2369%
+    [D_phys a*b 22/9] ratio=9.777778  -> 1437.8239  err=-2.6392%
+    [22/9 a*b D_phys] ratio=9.777778  -> 1437.8239  err=-2.6392%
+    [SO5 a*b 31/30] ratio=10.333333  -> 1519.5184  err=+2.8926%
+    [31/30 a/b F_TRZ] ratio=10.333333  -> 1519.5184  err=+2.8926%
+
+  3-atom shell (tol 0.5%):
+    [27/25 a*b*c 31/30 N_ch] ratio=10.044000  -> 1476.9719  err=+0.0116%
+    [31/30 a*b*c 27/25 N_ch] ratio=10.044000  -> 1476.9719  err=+0.0116%
+    [N_ch a*b*c 27/25 31/30] ratio=10.044000  -> 1476.9719  err=+0.0116%
+    [N_ch a*b*c 31/30 27/25] ratio=10.044000  -> 1476.9719  err=+0.0116%
+    [27/25 a*b*c N_ch 31/30] ratio=10.044000  -> 1476.9719  err=+0.0116%
+    [31/30 a*b*c N_ch 27/25] ratio=10.044000  -> 1476.9719  err=+0.0116%
+    [beta_i a/b/c Y_p Y_p] ratio=10.044148  -> 1476.9937  err=+0.0131%
+    [A_5 a/b/c 22/9 22/9] ratio=10.041322  -> 1476.5781  err=-0.0150%
+    [22/9 a*b*c 137/200 D_BSFG] ratio=10.046667  -> 1477.3640  err=+0.0382%
+    [137/200 a*b*c 22/9 D_BSFG] ratio=10.046667  -> 1477.3640  err=+0.0382%
+    [D_BSFG a*b*c 22/9 137/200] ratio=10.046667  -> 1477.3640  err=+0.0382%
+    [D_BSFG a*b*c 137/200 22/9] ratio=10.046667  -> 1477.3640  err=+0.0382%
+    [11/9 a*b/c 137/200 1/12] ratio=10.046667  -> 1477.3640  err=+0.0382%
+    [22/9 a*b*c D_BSFG 137/200] ratio=10.046667  -> 1477.3640  err=+0.0382%
+    [137/200 a*b*c D_BSFG 22/9] ratio=10.046667  -> 1477.3640  err=+0.0382%
+
+  4-atom shell (tol 0.05%):
+    [D_BSFG a*b*c/d n_s 307/325 1/mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c*d n_s 307/325 mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c*d n_s mpme 307/325] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c/d 307/325 n_s 1/mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c*d 307/325 n_s mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c*d 307/325 mpme n_s] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c*d mpme n_s 307/325] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [D_BSFG a*b*c*d mpme 307/325 n_s] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c/d D_BSFG 307/325 1/mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c*d D_BSFG 307/325 mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c*d D_BSFG mpme 307/325] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c/d 307/325 D_BSFG 1/mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c*d 307/325 D_BSFG mpme] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c*d 307/325 mpme D_BSFG] ratio=10.042512  -> 1476.7531  err=-0.0032%
+    [n_s a*b*c*d mpme D_BSFG 307/325] ratio=10.042512  -> 1476.7531  err=-0.0032%
+
+  BEST D_V(0.38): r_drag * [307/325 a*b*c*d D_BSFG mpme n_s] = 1476.7531, err = -0.003175%
+================================================================================
+TRACK (c) -- Class LXXII: D_M(z=0.38) = 1517.7 Mpc (comoving ang. diam.)
+================================================================================
+  Target D_M(0.38) = 1517.7000  (r_drag-shell target = 10.320967)
+
+  2-atom shell (tol 3%):
+    [SO5 a*b 31/30] ratio=10.333333  -> 1519.5184  err=+0.1198%
+    [31/30 a/b F_TRZ] ratio=10.333333  -> 1519.5184  err=+0.1198%
+    [31/30 a*b SO5] ratio=10.333333  -> 1519.5184  err=+0.1198%
+    [SO5 a/b n_s] ratio=10.362694  -> 1523.8359  err=+0.4043%
+    [SO5 a*b 27/26] ratio=10.384615  -> 1527.0594  err=+0.6167%
+    [27/26 a/b F_TRZ] ratio=10.384615  -> 1527.0594  err=+0.6167%
+    [27/26 a*b SO5] ratio=10.384615  -> 1527.0594  err=+0.6167%
+    [1-n_s a/b xi] ratio=10.181818  -> 1497.2381  err=-1.3482%
+    [r a/b xi] ratio=10.472727  -> 1540.0163  err=+1.4704%
+    [D_BSFG a/b SSq] ratio=10.526316  -> 1547.8965  err=+1.9896%
+    [SO5 a/b 307/325] ratio=10.586319  -> 1556.7200  err=+2.5710%
+
+  3-atom shell (tol 0.5%):
+    [n_s a/b/c F_TRZ 243/260] ratio=10.325103  -> 1518.3081  err=+0.0401%
+    [SO5 a*b/c n_s 243/260] ratio=10.325103  -> 1518.3081  err=+0.0401%
+    [n_s a*b/c SO5 243/260] ratio=10.325103  -> 1518.3081  err=+0.0401%
+    [n_s a/b/c 243/260 F_TRZ] ratio=10.325103  -> 1518.3081  err=+0.0401%
+    [D_BSFG a/b/c beta_i n_s] ratio=10.312849  -> 1516.5062  err=-0.0787%
+    [D_BSFG a/b/c n_s beta_i] ratio=10.312849  -> 1516.5062  err=-0.0787%
+    [K_Mex a*b*c D_BSFG 33/40] ratio=10.312500  -> 1516.4549  err=-0.0820%
+    [K_Mex a*b*c 33/40 D_BSFG] ratio=10.312500  -> 1516.4549  err=-0.0820%
+    [D_BSFG a*b*c K_Mex 33/40] ratio=10.312500  -> 1516.4549  err=-0.0820%
+    [D_BSFG a*b*c 33/40 K_Mex] ratio=10.312500  -> 1516.4549  err=-0.0820%
+    [33/40 a*b*c K_Mex D_BSFG] ratio=10.312500  -> 1516.4549  err=-0.0820%
+    [33/40 a*b*c D_BSFG K_Mex] ratio=10.312500  -> 1516.4549  err=-0.0820%
+    [22/9 a*b/c 31/30 Y_p] ratio=10.309902  -> 1516.0728  err=-0.1072%
+    [31/30 a*b/c 22/9 Y_p] ratio=10.309902  -> 1516.0728  err=-0.1072%
+    [A_5 a*b/c 63/200 11/6] ratio=10.309091  -> 1515.9536  err=-0.1151%
+
+  4-atom shell (tol 0.05%):
+    [beta_i a*b*c/d D_phys D_phys 243/260] ratio=10.321251  -> 1517.7417  err=+0.0027%
+    [D_phys a*b*c/d beta_i D_phys 243/260] ratio=10.321251  -> 1517.7417  err=+0.0027%
+    [D_phys a*b*c/d D_phys beta_i 243/260] ratio=10.321251  -> 1517.7417  err=+0.0027%
+    [A_5 a*b*c/d 33/40 alpha 1-n_s] ratio=10.320541  -> 1517.6374  err=-0.0041%
+    [A_5 a*b*c/d alpha 33/40 1-n_s] ratio=10.320541  -> 1517.6374  err=-0.0041%
+    [33/40 a*b*c/d A_5 alpha 1-n_s] ratio=10.320541  -> 1517.6374  err=-0.0041%
+    [33/40 a*b*c/d alpha A_5 1-n_s] ratio=10.320541  -> 1517.6374  err=-0.0041%
+    [alpha a*b*c/d A_5 33/40 1-n_s] ratio=10.320541  -> 1517.6374  err=-0.0041%
+    [alpha a*b*c/d 33/40 A_5 1-n_s] ratio=10.320541  -> 1517.6374  err=-0.0041%
+    [N_ch a*b*c/d 1-F_TRZ 31/30 416/513] ratio=10.321659  -> 1517.8016  err=+0.0067%
+    [N_ch a*b*c/d 31/30 1-F_TRZ 416/513] ratio=10.321659  -> 1517.8016  err=+0.0067%
+    [1-F_TRZ a*b*c/d N_ch 31/30 416/513] ratio=10.321659  -> 1517.8016  err=+0.0067%
+    [1-F_TRZ a*b*c/d 31/30 N_ch 416/513] ratio=10.321659  -> 1517.8016  err=+0.0067%
+    [31/30 a*b*c/d N_ch 1-F_TRZ 416/513] ratio=10.321659  -> 1517.8016  err=+0.0067%
+    [31/30 a*b*c/d 1-F_TRZ N_ch 416/513] ratio=10.321659  -> 1517.8016  err=+0.0067%
+
+  BEST D_M(0.38): r_drag * [D_phys a*b*c/d D_phys beta_i 243/260] = 1517.7417, err = +0.002748%
+================================================================================
+TRACK (d) -- Class LXXIII: f*sigma_8(z=0.38) = 0.497 (RSD growth amplitude)
+================================================================================
+  Target f*sigma_8(0.38) = 0.497
+
+  2-atom direct (tol 3%):
+    [beta_i a*b 33/40] = 0.497392  err=+0.0790%
+    [33/40 a*b beta_i] = 0.497392  err=+0.0790%
+    [31/30 a/b K_Mex] = 0.496000  err=-0.2012%
+    [27/26 a/b K_Mex] = 0.498462  err=+0.2941%
+    [1-F*P a*b 1/mpme] = 0.499232  err=+0.4491%
+    [1/mpme a*b 1-F*P] = 0.499232  err=+0.4491%
+    [1-F*P a/b mpme] = 0.499232  err=+0.4491%
+    [1-F*P a*b 6/11] = 0.500000  err=+0.6036%
+    [6/11 a*b 1-F*P] = 0.500000  err=+0.6036%
+    [D_BSFG a*b 1/12] = 0.500000  err=+0.6036%
+    [1-F*P a/b 11/6] = 0.500000  err=+0.6036%
+    [11/9 a/b 22/9] = 0.500000  err=+0.6036%
+
+  3-atom direct (tol 0.5%):
+    [n_s a*b*c 6/11 307/325] = 0.497211  err=+0.0425%
+    [6/11 a*b*c n_s 307/325] = 0.497211  err=+0.0425%
+    [n_s a*b*c 307/325 6/11] = 0.497211  err=+0.0425%
+    [307/325 a*b*c n_s 6/11] = 0.497211  err=+0.0425%
+    [307/325 a*b*c 6/11 n_s] = 0.497211  err=+0.0425%
+    [6/11 a*b*c 307/325 n_s] = 0.497211  err=+0.0425%
+    [n_s a*b/c 307/325 11/6] = 0.497211  err=+0.0425%
+    [307/325 a*b/c n_s 11/6] = 0.497211  err=+0.0425%
+    [137/200 a*b/c 137/200 307/325] = 0.496737  err=-0.0530%
+    [Y_p a*b/c 11/9 beta_i] = 0.496673  err=-0.0657%
+    [11/9 a*b/c Y_p beta_i] = 0.496673  err=-0.0657%
+    [27/25 a*b/c 63/200 137/200] = 0.496642  err=-0.0720%
+    [63/200 a*b/c 27/25 137/200] = 0.496642  err=-0.0720%
+    [1-F_TRZ a*b/c 63/200 SSq] = 0.497368  err=+0.0741%
+    [63/200 a*b/c 1-F_TRZ SSq] = 0.497368  err=+0.0741%
+
+  4-atom direct (tol 0.05%):
+    [SSq a*b/(c*d) 416/513 1-F_TRZ 31/30] = 0.497013  err=+0.0026%
+    [SSq a*b/(c*d) 416/513 31/30 1-F_TRZ] = 0.497013  err=+0.0026%
+    [416/513 a*b/(c*d) SSq 1-F_TRZ 31/30] = 0.497013  err=+0.0026%
+    [416/513 a*b/(c*d) SSq 31/30 1-F_TRZ] = 0.497013  err=+0.0026%
+    [1-n_s a/(b*c*d) SO5 n_s alpha] = 0.497022  err=+0.0044%
+    [1-n_s a/(b*c*d) n_s SO5 alpha] = 0.497022  err=+0.0044%
+    [1-n_s a/(b*c*d) n_s alpha SO5] = 0.497022  err=+0.0044%
+    [1-n_s a/(b*c*d) alpha n_s SO5] = 0.497022  err=+0.0044%
+    [F_TRZ a*b/(c*d) 1-n_s n_s alpha] = 0.497022  err=+0.0044%
+    [F_TRZ a*b/(c*d) 1-n_s alpha n_s] = 0.497022  err=+0.0044%
+    [1-n_s a*b/(c*d) F_TRZ n_s alpha] = 0.497022  err=+0.0044%
+    [1-n_s a*b/(c*d) F_TRZ alpha n_s] = 0.497022  err=+0.0044%
+    [1-n_s a/(b*c*d) SO5 alpha n_s] = 0.497022  err=+0.0044%
+    [1-n_s a/(b*c*d) alpha SO5 n_s] = 0.497022  err=+0.0044%
+    [5/108 a*b/(c*d) 307/325 r 22/9] = 0.496957  err=-0.0087%
+
+  BEST f*sigma_8: [416/513 a*b/(c*d) SSq 1-F_TRZ 31/30] = 0.497013, err = +0.002644%
+
+classLXX_D_A_z038_session767: predicted=1.099789e+03 observed=1.099800e+03 error_pct=-1.032045e-03 status=CE_strict
+classLXXI_D_V_z038_session767: predicted=1.476753e+03 observed=1.476800e+03 error_pct=-3.175328e-03 status=CE_strict
+classLXXII_D_M_z038_session767: predicted=1.517742e+03 observed=1.517700e+03 error_pct=2.747599e-03 status=CE_strict
+classLXXIII_fsigma8_z038_session767: predicted=4.970131e-01 observed=4.970000e-01 error_pct=2.644301e-03 status=CE_strict
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  LXX    D_A(0.38)        pred=1099.7886  err=-0.0010%  (CE_strict)
+  LXXI   D_V(0.38)        pred=1476.7531  err=-0.0032%  (CE_strict)
+  LXXII  D_M(0.38)        pred=1517.7417  err=+0.0027%  (CE_strict)
+  LXXIII f*sigma_8(0.38)  pred=0.4970    err=+0.0026%  (CE_strict)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session767_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

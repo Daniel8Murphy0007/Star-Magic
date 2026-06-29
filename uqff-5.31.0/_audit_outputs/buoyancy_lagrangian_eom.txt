@@ -1,0 +1,82 @@
+========================================================================
+Buoyancy Lagrangian Euler-Lagrange EOM Calculator
+========================================================================
+
+── Sgr A* System (astrophysical scale) ──
+  ══════════════════════════════════════════════════════════════
+  BUOYANCY LAGRANGIAN EULER-LAGRANGE DERIVATION
+  ══════════════════════════════════════════════════════════════
+  
+  §1. Buoyancy Sector Lagrangian Density:
+    L_buoy = ½(∂_μ φ_buoy)² − V(φ_buoy) + J_buoy · φ_buoy
+  
+  §2. Potential (from 4-layer Ug summation):
+    V(φ) = ½ m_eff² φ²
+    m_eff² = β_i·Σ|Ug_i|·Ω_g·M/(d_g·c²·ħ²)·[UA]
+           = 0.603·4.0000e-10·1.0·8.5527e+36/(2.4400e+20·c²·ħ²)·0.0001
+           = 8.451281e+53  kg²
+    m_eff  = 9.193085e+26  kg  (5.1578e+62 eV)
+  
+  §3. Source Current (vacuum displacement → buoyancy reversal):
+    J_buoy = (F_{U,Bi}/F_U − 1) · ρ_SCm · c²
+           = (1.1/1.0 − 1) · 7.0900e-37 · c²
+           = 6.372495e-21  kg/m³·(m/s)²
+    Buoyancy reversed: True
+  
+  §4. Euler-Lagrange Equation:
+    δS/δφ_buoy = 0
+    ∂L/∂φ − ∂_μ(∂L/∂(∂_μφ)) = 0
+    −m_eff²·φ + J_buoy − □φ = 0
+  
+    ══> □φ + m_eff²·φ = J_buoy  (Klein-Gordon with source)
+  
+  §5. Static Solution (∂_t φ = 0):
+    ∇²φ = m_eff²·φ − J_buoy
+    φ_static(r) = (J_buoy/m_eff²)·[1 − exp(−m_eff·r)]
+    φ_∞ = J_buoy/m_eff² = 7.540271e-75
+  
+  §6. Buoyancy Range (Compton wavelength):
+    λ_buoy = ħ/(m_eff·c) = 3.827891e-70 m
+           = 1.240405e-86 pc
+    This is the distance over which SCm vacuum displacement
+    produces measurable buoyancy anomalies.
+  
+  §7. Consistency Check (existing Ubi values from δS/δΩ_g = 0):
+    Ug1 = 1.0000e-10  →  Ubi1 = -2.1136e+02
+    Ug2 = 1.0000e-10  →  Ubi2 = -2.1136e+02
+    Ug3 = 1.0000e-10  →  Ubi3 = -2.1136e+02
+    Ug4 = 1.0000e-10  →  Ubi4 = -2.1136e+02
+    F_{U,Bi} (total) = -8.4546e+02
+  
+  §8. Connection to Existing Variational Equations:
+    ✓ δS/δA_SCm = 0  →  ∇×B_SCm = μ₀ J_SCm  (magnetic, L466)
+    ✓ δS/δΩ_g  = 0  →  Ubi_i (buoyancy forces, L537)
+    ✓ δS/δφ̂    = 0  →  Um (helical string magnetism, L543)
+    ★ δS/δφ_buoy = 0  →  □φ + m_eff²φ = J_buoy  [THIS MODULE]
+  ══════════════════════════════════════════════════════════════
+
+  EOM: □φ + m_eff²·φ = J_buoy
+  m_eff = 9.193085e+26 kg
+  λ_buoy = 3.827891e-70 m
+  φ_∞ = 7.540271e-75
+  J_buoy = 6.372495e-21
+
+── Lab-Scale System (Colman-Gillespie, 0.5 kg) ──
+  EOM: □φ + m_eff²·φ = J_buoy
+  m_eff = 1.813268e+21 kg
+  λ_buoy = 1.940702e-64 m
+  φ_∞ = 9.690708e-64
+  J_buoy = 3.186247e-21
+  Buoyancy reversed: True
+
+── Complete Variational Equations (9-Sector Lagrangian) ──
+    ✓   δS/δA_SCm = 0 → ∇×B_SCm = μ₀ J_SCm
+    ✓   δS/δΩ_g = 0 → Ubi_i = -β_i Ug_i Ω_g M/d_g [UA]
+    ✓   δS/δφ̂ = 0 → Um = Σ μ_j/r_j (1-e^{-γt}) φ̂ N P E
+  ★ NEW δS/δφ_buoy = 0 → □φ + m_eff²φ = J_buoy  [NEW]
+
+[OK] Results exported: buoyancy_lagrangian_eom_results.json
+
+========================================================================
+COMPLETE
+========================================================================

@@ -1,0 +1,1 @@
+S443 COMPLETE. ln(2) = 0.6932; target 0.6931; match 0.0096%.

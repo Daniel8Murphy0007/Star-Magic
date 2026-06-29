@@ -1,0 +1,50 @@
+
+==============================================================================
+Step 1: declare explicit Lagrangian terms for radial motion
+==============================================================================
+T_kin   = m*Derivative(r(t), t)**2/2
+V_grav  = M_s*m*mu_s/r(t)
+V_buoy  = -g_buoy*m*r(t)
+V_phon  = -g_phonon*m*r(t)
+L_total = -M_s*m*mu_s/r(t) + g_buoy*m*r(t) + g_phonon*m*r(t) + m*Derivative(r(t), t)**2/2
+
+==============================================================================
+Step 2: apply Euler-Lagrange
+==============================================================================
+Euler-Lagrange equation:
+   m*(-M_s*mu_s + (-g_buoy - g_phonon + Derivative(r(t), (t, 2)))*r(t)**2)/r(t)**2 = 0
+
+=> r-double-dot = M_s*mu_s/r(t)**2 + g_buoy + g_phonon
+
+==============================================================================
+Step 3: compare to PAPER_1065 boxed claim
+==============================================================================
+PAPER_1065 boxed: rdd = -mu_s * grad(M_s/r) + g_buoy + g_phonon
+ expanded : M_s*mu_s/r(t)**2 + g_buoy + g_phonon
+ derived  : M_s*mu_s/r(t)**2 + g_buoy + g_phonon
+ residual : 0
+
+[V5 DERIVED]  Boxed EOM recovered with residual = 0.
+            PAPER_1065 variational claim verified by first-
+            principles SymPy derivation with explicit V_buoy,
+            V_phonon functional forms.
+
+==============================================================================
+Step 4: Hamiltonian formulation (for completeness)
+==============================================================================
+H(r,p) = M_s*m*mu_s/r(t) - g_buoy*m*r(t) - g_phonon*m*r(t) + p**2/(2*m)
+V_eff  = m*(M_s*mu_s - (g_buoy + g_phonon)*r(t)**2)/r(t)
+Confirms paper's Hamiltonian form H = p^2/(2m) + V_eff(r).
+
+==============================================================================
+Step 5: sub-claims required for full closure
+==============================================================================
+This script DOES NOT derive:
+  - the magnetic-moment value mu_s (taken as primitive)
+  - the source mass M_s (boundary condition)
+  - the functional time dependence of g_buoy(t), g_phonon(t)
+    (uniform constants in this minimal model)
+
+Those are provided by PAPER_1066 (Mexican-hat L_SCm, gives
+phonon mass) and by the empirical buoyancy calibration suite.
+The variational machinery itself is now first-principles verified.

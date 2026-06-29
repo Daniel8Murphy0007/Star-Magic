@@ -1,0 +1,1 @@
+S490 COMPLETE. Magic number n-drip = 126.0000 = 126 = D_crit + SO5^2; target 126; match 0.0000%.

@@ -1,0 +1,86 @@
+STEP 1: m_p/m_e from UQFF structural identity (S266)
+  A5^2/2 + D_BSFG^2  = 1836.0
+  m_p/m_e observed   = 1836.1527
+  residual           = 0.0083%
+
+STEP 2: m_e = m_p_pred / 1836
+  m_p_pred           = 1.6740e-27 kg
+  m_e_pred           = 9.1176e-31 kg
+  m_e_obs            = 9.1094e-31 kg
+  residual           = 0.0897%
+
+STEP 3: standalone hierarchy form
+  log10(m_e/m_Planck) = -22.378262
+  exponent (positive) = 22.378262
+   N_e = 22  (D_crit - 4)  beta_e = 3.7826
+   N_e = 23  (D_BSFG + D_phys + N_ch + D_phys)  beta_e = -6.2174
+   N_e = 22  (2*N_ch + D_phys)  beta_e = 3.7826
+   N_e = 22  (N_p + D_phys - 1)  beta_e = 3.7826
+   N_e = 22  (D_crit - D_BSFG + D_phys - 2)  beta_e = 3.7826
+   N_e = 22  (D_BSFG^2/2 + N_ch + D_BSFG + 4-D_BSFG+...)  beta_e = 3.7826
+
+  Adopted N_e = 22, target beta_e = 3.78262
+
+Hunt: generated 158 unary forms.
+  141 binary matches under 0.5% tolerance
+
+Top 25 unique:
+  sqrt(D_crit) - sqrt(sqrt3)                              = 3.782946   residual = 0.009%
+  log(A5+1) - exp(-sqrt5/2)                               = 3.783952   residual = 0.035%
+  log(3+1) + log(SO5+1)                                   = 3.784190   residual = 0.041%
+  log(D_phys) + log(SO5+1)                                = 3.784190   residual = 0.041%
+  log(SO5+1) + log(3+1)                                   = 3.784190   residual = 0.041%
+  log(SO5+1) + log(D_phys)                                = 3.784190   residual = 0.041%
+  log(D_crit) + log(ln2+1)                                = 3.784686   residual = 0.055%
+  log(ln2+1) + log(D_crit)                                = 3.784686   residual = 0.055%
+  log(ln3+1) * sqrt(D_crit)                               = 3.779782   residual = 0.075%
+  sqrt(D_crit) * log(ln3+1)                               = 3.779782   residual = 0.075%
+  3^2 * exp(-sqrt3/2)                                     = 3.785580   residual = 0.078%
+  N_ch * exp(-sqrt3/2)                                    = 3.785580   residual = 0.078%
+  exp(-sqrt3/2) * 3^2                                     = 3.785580   residual = 0.078%
+  exp(-sqrt3/2) * N_ch                                    = 3.785580   residual = 0.078%
+  exp(-sqrt3/2) / 1/N_ch                                  = 3.785580   residual = 0.078%
+  sqrt(D_crit) - log(e+1)                                 = 3.785758   residual = 0.083%
+  log(A5+1) - SSq^2                                       = 3.785974   residual = 0.089%
+  e + sqrt(beta_p)                                        = 3.785990   residual = 0.089%
+  sqrt(beta_p) + e                                        = 3.785990   residual = 0.089%
+  log(D_BSFG+1) * log(D_BSFG+1)                           = 3.786566   residual = 0.104%
+  log(A5) - sqrt(F_TRZ)                                   = 3.778117   residual = 0.119%
+  log(A5+1) - 1/3                                         = 3.777541   residual = 0.134%
+  log(A5+1) - exp(-ln3)                                   = 3.777541   residual = 0.134%
+  2^2 - exp(-3/2)                                         = 3.776870   residual = 0.152%
+  D_phys - exp(-3/2)                                      = 3.776870   residual = 0.152%
+
+Top 15 'clean' forms (UQFF primitives only):
+  K_Mex^2 - SSq                                           = 3.770278   residual = 0.326%
+  1/Phi_res * pi                                          = 3.769911   residual = 0.336%
+  pi * 1/Phi_res                                          = 3.769911   residual = 0.336%
+  pi / Phi_res                                            = 3.769911   residual = 0.336%
+  1/Phi_res / 1/pi                                        = 3.769911   residual = 0.336%
+
+TARGETED HYPOTHESES:
+  2*beta_p + 1.5                                          = 3.78000  residual =  0.069%  <<<<<
+  D_BSFG - SSq*D_phys                                     = 3.72000  residual =  1.655%
+  D_BSFG*SSq + D_phys*F_TRZ - F_TRZ/D_BSFG                = 3.80333  residual =  0.548%
+  N_ch/2 - K_Mex*Phi_res                                  = 2.76389  residual = 26.932%
+  2*beta_p + beta_i + F_TRZ                               = 2.98287  residual = 21.143%
+  2*beta_p + 2*Phi_res + F_TRZ*sqrt(D_phys)               = 4.14667  residual =  9.624%
+  beta_p + beta_i + D_BSFG*F_TRZ + ...                    = 3.78287  residual =  0.006%  <<<<<
+  D_BSFG - K_Mex + beta_i                                 = 4.51953  residual = 19.482%
+  D_BSFG - K_Mex + beta_p + F_TRZ                         = 5.15667  residual = 36.325%
+  2*beta_p + 1 + Phi_res + F_TRZ/D_BSFG                   = 4.13000  residual =  9.184%
+  pi + beta_p - Phi_res/D_BSFG                            = 4.14270  residual =  9.519%
+  pi + Phi_res - F_TRZ/SSq                                = 3.79949  residual =  0.446%
+  pi + beta_p - Phi_res*F_TRZ                             = 4.19826  residual = 10.988%
+  Phi_res*D_phys + beta_i - F_TRZ*K_Mex                   = 3.72787  residual =  1.448%
+  Phi_res*D_phys + beta_i/2 + F_TRZ*..                    = 3.77777  residual =  0.128%  <<<<<
+  Phi_res*D_phys + Phi_res/2 - F_TRZ*..                   = 3.59400  residual =  4.987%
+  2*Phi_res + 2 + Phi_res*F_TRZ - K_Mex*F_TRZ             = 3.54167  residual =  6.370%
+  2*(Phi_res + 1) + Phi_res*Phi_res/K_Mex                 = 4.00000  residual =  5.747%
+  3 + Phi_res - F_TRZ*sqrt(D_BSFG)                        = 3.58838  residual =  5.135%
+  4 - F_TRZ*sqrt(D_crit-D_phys)*...                       = 3.77814  residual =  0.118%  <<<<<
+
+=== BEST CLEAN ===
+  beta_e = K_Mex^2 - SSq = 3.77028   residual = 0.3263%
+
+Wrote _session278_me_closure.json

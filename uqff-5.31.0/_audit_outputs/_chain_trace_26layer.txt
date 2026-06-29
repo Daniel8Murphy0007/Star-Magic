@@ -1,0 +1,98 @@
+========================================================================
+26-LAYER DPM AMPLIFICATION  --  First-Principles Mass Derivation
+========================================================================
+
+  M_0_DPM          = 1.243827e-36 kg   (= rho_SCm / [SSq])
+  rho_SCm          = 7.0898e-37 kg/m^3  (vacuum SCm density)
+  [SSq]            = 0.5700          (E_crack gate)
+  AMU (PDG)        = 1.660539e-27 kg
+  AMU / M_0_DPM    = 1.335024e+09  (target for 26-layer sum)
+  N_LAYERS         = 26
+
+========================================================================
+LAYER-BY-LAYER BREAKDOWN  (w_i = [SCm]_i × [UA]_i × B0_i = i^6)
+========================================================================
+    i   [SCm]_i=i^2    [UA]_i=i    B0_i=i^3         w_i=i^6  cumulative_sum
+------------------------------------------------------------------------
+    1             1           1           1               1  Σ=             1  M=1.2438e-36 kg
+    2             4           2           8              64  Σ=            65  M=8.0849e-35 kg
+    3             9           3          27             729  Σ=           794  M=9.8760e-34 kg
+    4            16           4          64           4,096  Σ=         4,890  M=6.0823e-33 kg
+    5            25           5         125          15,625  Σ=        20,515  M=2.5517e-32 kg
+    6            36           6         216          46,656  Σ=        67,171  M=8.3549e-32 kg
+    7            49           7         343         117,649  Σ=       184,820  M=2.2988e-31 kg
+    8            64           8         512         262,144  Σ=       446,964  M=5.5595e-31 kg
+    9            81           9         729         531,441  Σ=       978,405  M=1.2170e-30 kg
+   10           100          10       1,000       1,000,000  Σ=     1,978,405  M=2.4608e-30 kg
+   11           121          11       1,331       1,771,561  Σ=     3,749,966  M=4.6643e-30 kg
+   12           144          12       1,728       2,985,984  Σ=     6,735,950  M=8.3784e-30 kg
+   13           169          13       2,197       4,826,809  Σ=    11,562,759  M=1.4382e-29 kg
+   14           196          14       2,744       7,529,536  Σ=    19,092,295  M=2.3748e-29 kg
+   15           225          15       3,375      11,390,625  Σ=    30,482,920  M=3.7915e-29 kg
+   16           256          16       4,096      16,777,216  Σ=    47,260,136  M=5.8783e-29 kg
+   17           289          17       4,913      24,137,569  Σ=    71,397,705  M=8.8806e-29 kg
+   18           324          18       5,832      34,012,224  Σ=   105,409,929  M=1.3111e-28 kg
+   19           361          19       6,859      47,045,881  Σ=   152,455,810  M=1.8963e-28 kg
+   20           400          20       8,000      64,000,000  Σ=   216,455,810  M=2.6923e-28 kg
+   21           441          21       9,261      85,766,121  Σ=   302,221,931  M=3.7591e-28 kg
+   22           484          22      10,648     113,379,904  Σ=   415,601,835  M=5.1694e-28 kg
+   23           529          23      12,167     148,035,889  Σ=   563,637,724  M=7.0107e-28 kg
+   24           576          24      13,824     191,102,976  Σ=   754,740,700  M=9.3877e-28 kg
+   25           625          25      15,625     244,140,625  Σ=   998,881,325  M=1.2424e-27 kg
+   26           676          26      17,576     308,915,776  Σ= 1,307,797,101  M=1.6267e-27 kg
+
+========================================================================
+26-LAYER AMPLIFICATION FACTOR  (A_26)
+========================================================================
+
+  A_26 (exact integer)      = 1,307,797,101
+  AMU_derived = M_0×A_26    = 1.626674e-27 kg
+  AMU_observed (PDG)        = 1.660539e-27 kg
+  Error                     = -2.04%
+  f_SSq_gate                = 1.020819    (≈1: residual is [SSq]=0.57 E_crack gate)
+
+  PREDICTED rho_SCm         = 7.2374e-37 kg/m^3
+  CANONICAL  rho_SCm        = 7.0898e-37 kg/m^3
+  Prediction error          = +2.08%
+
+  AMU = M_0_DPM × A_26 within 2.1%.  Residual = [SSq] E_crack gate (SSq=0.57).  ρ_SCm is PREDICTED by the requirement that 1 AMU = one 26-layer DPM bundle.
+
+========================================================================
+NUCLEON MASS DERIVATION  (M = A × M_0_DPM × A_26, no PDG input)
+========================================================================
+
+  A=  1: derived = 1.626674e-27 kg  PDG_ref = 1.660539e-27 kg  error = -2.04%
+         formula: A × M_0_DPM × A_26  (A_26=1,307,797,101)
+         inputs:  rho_SCm, SSq, N_LAYERS=26 -- no PDG mass lookup
+
+  A= 12: derived = 1.952008e-26 kg  PDG_ref = 1.992647e-26 kg  error = -2.04%
+         formula: A × M_0_DPM × A_26  (A_26=1,307,797,101)
+         inputs:  rho_SCm, SSq, N_LAYERS=26 -- no PDG mass lookup
+
+  A= 56: derived = 9.109373e-26 kg  PDG_ref = 9.299019e-26 kg  error = -2.04%
+         formula: A × M_0_DPM × A_26  (A_26=1,307,797,101)
+         inputs:  rho_SCm, SSq, N_LAYERS=26 -- no PDG mass lookup
+
+========================================================================
+PARTICLE MASSES FROM VACUUM CONSTANTS  (no PDG mass input)
+========================================================================
+
+  Shared:  A_26 = 1,307,797,101  |  M_0_DPM = 1.243827e-36 kg
+
+  PROTON:
+    Formula:  1 × M_0_DPM × A_26
+    Derived:  1.626674e-27 kg
+    Observed: 1.672622e-27 kg
+    Error:    -2.75%
+
+  NEUTRON:
+    Formula:  1 × M_0_DPM × A_26  +  Delta_M_np(Ug3 Fix#2)
+    Leading-order derived:  1.629641e-27 kg
+    Observed:               1.674927e-27 kg
+    Error (leading order):  -2.70%
+    Observed n-p split:     2.3056e-30 kg  (1.293 MeV/c^2)
+Traceback (most recent call last):
+  File "C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_chain_trace_26layer.py", line 130, in <module>
+    print(f"    hbar*Dw/2c^2 estimate:  {n_d['delta_M_np_hbar_est']:.4e} kg  (too small by ~11 orders)")
+                                         ~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'delta_M_np_hbar_est'

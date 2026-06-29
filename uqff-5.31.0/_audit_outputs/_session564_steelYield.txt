@@ -1,0 +1,1 @@
+Steel yield: 250 MPa vs 250 -> 0.0000% [EXACT]

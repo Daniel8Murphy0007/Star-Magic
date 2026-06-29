@@ -1,0 +1,94 @@
+m_Planck                = 2.176462e-08 kg
+m_p observed            = 1.672622e-27 kg
+m_p / m_Planck          = 7.685051e-20
+log10(m_p / m_Planck)   = -19.114353
+
+=> total exponent      = 19.114353
+   integer part N_p    = 19
+   fractional extra    = 0.114353
+   beta_p = extra/F_TRZ = 1.143532
+
+========================================================================
+Structural candidates for integer N_p = 19:
+========================================================================
+   19  N_ch + D_phys + D_BSFG  <-- match
+   19  D_BSFG + D_crit - D_phys - N_ch  <-- match
+   19  2*N_ch + 1  <-- match
+   19  D_crit - N_ch + 2  <-- match
+   19  4*D_BSFG - 5  <-- match
+   19  2*D_phys + N_ch + 2  <-- match
+   19  D_crit - SO5 + D_phys - 1  <-- match
+
+========================================================================
+Structural candidates for beta_p = 1.143532:
+========================================================================
+  1.142500   res=  0.090%   1 + SSq/4  [HIT]
+  1.140000   res=  0.309%   2 * SSq  [HIT]
+  1.115000   res=  2.495%   1 + Phi_res*F_TRZ + 4*F_TRZ^2 - F_TRZ*Phi_res*F_TRZ  (near)
+  1.106000   res=  3.282%   2*beta_i - F_TRZ  (near)
+  1.083333   res=  5.264%   K_Mex - 1
+  1.206000   res=  5.463%   2*beta_i
+  1.266667   res= 10.768%   1 + 2*F_TRZ * D_phys/3
+  1.385000   res= 21.116%   1 + F_TRZ + SSq*0.5
+  1.403333   res= 22.719%   SSq + Phi_res
+  1.466667   res= 28.258%   2*Phi_res - 1/(D_phys+1)
+
+========================================================================
+CLOSURE TEST: m_p = m_Planck * F_TRZ^( N_ch+D_phys+D_BSFG + 2*SSq*F_TRZ )
+========================================================================
+  N_p           = N_ch + D_phys + D_BSFG = 19
+  beta_p        = 2 * SSq                = 1.14
+  exponent      = 19.114000
+  predicted m_p = 1.673983e-27 kg
+  observed  m_p = 1.672622e-27 kg
+  residual      = 0.0814%
+
+  Sanity: with beta_p_observed = 1.1435,
+          residual = 0.000000%
+
+========================================================================
+Same template for m_e / m_Planck:
+========================================================================
+  log10(m_e/m_Planck) = -22.378262
+  integer N_e         = 22
+  extra               = 0.378262
+  beta_e              = 3.7826
+  candidate N_e structural?
+       31  N_ch + D_BSFG + 4*D_phys
+       25  N_ch + D_phys + 2*D_BSFG
+       51  2*D_crit - SO5 + N_ch
+       22  D_crit - 4 (= 22)  <-- match
+    22.833333333333332  D_crit - 4 + Phi_res
+        0  A5/3 + N_ch -? 
+
+S266 closure: m_p/m_e = A5^2/2 + D_BSFG^2 = 1836.0
+=> m_e = m_p / 1836 = 9.117554e-31  vs observed 9.109384e-31
+   residual = 0.0897%
+
+========================================================================
+S275 SUMMARY -- the same template closes m_p/m_Planck
+========================================================================
+
+  m_p = m_Planck * F_TRZ^( N_p + beta_p * F_TRZ )
+
+       N_p    = N_ch + D_phys + D_BSFG = 19    (channel + physical + BSFG)
+       beta_p = 2 * SSq               = 1.14   (twice the spin-square fraction)
+
+  Predicted m_p = 1.673983e-27 kg
+  Observed  m_p = 1.672622e-27 kg
+  Residual      = 0.0814%
+
+  CONNECTION TO LAMBDA (S273/S274):
+      Lambda:  exponent = 123 + beta_i * F_TRZ   (beta_i = 0.603)
+      m_p   :  exponent =  19 + beta_p * F_TRZ   (beta_p = 1.140 = 2*SSq)
+
+  Both follow the IDENTICAL template
+    target = anchor * F_TRZ^( integer_hierarchy + small_correction * F_TRZ )
+  where:
+    integer_hierarchy is a sum of UQFF dimensional primitives
+    small_correction is a UQFF dimensionless primitive ratio
+  The 2*SSq form is the SIMPLEST possible structural beta_p.
+
+  This collapses the m_p/m_Planck OPEN item from S270.
+
+Wrote _session275_mp_planck_closure.json

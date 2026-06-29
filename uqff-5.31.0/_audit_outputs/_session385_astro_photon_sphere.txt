@@ -1,0 +1,1 @@
+S385 COMPLETE. r_ph/M = K_Mex + Phi_res + F_TRZ = 3.0167; obs (GR exact) = 3.0; match 0.556%.

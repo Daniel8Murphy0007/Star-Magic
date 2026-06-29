@@ -1,0 +1,1 @@
+S362 COMPLETE. theta_Mills = 1 + K_Mex*beta_i/D_phys = 1.31401; obs = 1.30637788; match 0.584%.

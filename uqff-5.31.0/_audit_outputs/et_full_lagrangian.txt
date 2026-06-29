@@ -1,0 +1,45 @@
+========================================================================
+et_full_lagrangian.py — Self-Test
+========================================================================
+
+T1  H_0 = 2.1950e-18 s⁻¹, Λ = 1.1129e-52 m⁻²
+    ρ_crit = 8.6168e-27 kg/m³, ρ_Λ = 5.9628e-27 kg/m³
+    PASS
+
+T2  L_{E(t)} at t=0 = 7.569877e+45
+    E_net = 3.890984e-02, regime = expanding
+    PASS
+
+T3  L_Et ratio (V=1e68/V=1e48) = 1.00e+20
+    PASS
+
+T4  w_ΛCDM = -1.0
+    w_UQFF = 6658491331838092.000000
+    Δw = 6658491331838093.000000
+    Preferred: LCDM
+    PASS
+
+T5  Contrast table: 10 rows
+    PASS
+
+T6  Fine-tuning: ~10^139 (QFT/observed)
+    PASS
+
+T7  χ²_ΛCDM = 1.0000, χ²_UQFF = 49261674240181128072635279602614272.0000
+    Δχ² = -49261674240181128072635279602614272.0000
+    PASS
+
+T8  Sign-flipping: ratio=0.8 → expanding
+    ratio=0.3 → eroding
+    ratio=0.5 → balanced
+    PASS
+
+T9  WSTP kernel: valid (L_Et + ΛCDM definitions present)
+    PASS
+
+T10 Time series (5 pts): ['7.5699e+45', 'inf', 'inf', 'inf', 'inf']
+    PASS
+
+========================================================================
+RESULTS: 10/10 PASS, 0 FAIL
+========================================================================

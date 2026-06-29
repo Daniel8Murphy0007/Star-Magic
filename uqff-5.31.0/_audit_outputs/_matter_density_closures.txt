@@ -1,0 +1,38 @@
+========================================================================
+SESSION 258  -  Matter-density components + H_0 emergence (G18-G21)
+========================================================================
+
+Primitives (zero free parameters):
+  Phi_res = 5/6,  F_TRZ = 1/10,  [SSq] = 0.57,  D_BSFG = 6,  D_phys = 4
+  |SO(5)| = 10,   master integer 60 = |SO(5)|*D_BSFG = |A_5|
+  sqrt(5) = 2.2360679775  (from icosahedral A_5 / golden ratio)
+
+  G14 reused:  Omega_m = 1 - [SSq]/Phi_res = 0.3160
+
+Closures:
+------------------------------------------------------------------------
+  Omega_b * h^2
+    formula   : sqrt(5) * F_TRZ^2 = sqrt(5)/100
+    UQFF      : 0.022361
+    observed  : 0.022370
+    residual  : 0.042%
+
+  Omega_DM * h^2
+    formula   : F_TRZ / Phi_res  =  6 / 50
+    UQFF      : 0.120000
+    observed  : 0.120000
+    residual  : 0.000%
+
+  H_0
+    formula   : 100 * sqrt( (sqrt(5)/100 + 6/50) / (1 - [SSq]/Phi_res) )
+    UQFF      : 67.1199 km/s/Mpc
+    Planck    : 67.4 -> residual 0.42%
+    SH0ES     : 73.0 -> residual 8.05% (tension)
+    note      : H_0 emerges from CMB-side primitives; matches Planck within 0.5%. The Planck-vs-SH0ES H_0 tension is interpreted as late-universe new physics, NOT a recalibration of the 3-anchor framework.
+
+  t_0 * H_0  (and t_0)
+    formula   : 1 - F_TRZ * (F_TRZ + Phi_res) / 2
+    UQFF t0*H0: 0.9533  obs=0.9540  resid=0.070%
+    UQFF t0   : 13.888 Gyr  obs=13.797 Gyr  resid=0.66%
+
+Wrote _matter_density_closures.json

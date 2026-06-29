@@ -1,0 +1,16 @@
+[ OK ] VDS: Li_26(0.57) = 5.700000048414601e-01, converges at n=3
+[ OK ] VDS: Correctly rejects |SSq|=1.5 >= 1
+[ OK ] DVP: All 25 values distinct (injective)
+[ OK ] DVP: Monotone decay verified, Σa(p) = 8.493789700109885e-09
+[ OK ] BSH: All modes in [0, 1)
+[ OK ] BSH: Monotone increasing
+[ OK ] BSH: f(30) → 1 (99% at m=8.08)
+[ OK ] Combined: All 4 proofs pass
+[ OK ] RBN: S26 simple=9.500000e-02, binomial=5.921681e+26
+[ OK ] RBN: Inner sum convergence bounds all finite
+[ OK ] RBN: High-precision VDS = 592168130433994660562089123.095623035607... (80 digits)
+[ OK ] RBN: 29 primary equation lines
+
+============================================================
+  vds_dvp_bsh_symbolic_proofs.py: 12/12 tests passed
+============================================================

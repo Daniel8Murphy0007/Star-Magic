@@ -1,0 +1,192 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={UQFF P14: CMB-S4 Spectral Distortion mu-Parameter Strict Bound from R26 Closure},
+  pdfauthor={Daniel Murphy},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{UQFF P14: CMB-S4 Spectral Distortion mu-Parameter Strict Bound
+from R26 Closure}
+\author{Daniel Murphy}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Abstract}\label{abstract}
+
+The UQFF closed Lagrangian, with all 26 radial layers locked at
+saturated occupation, predicts vanishing additional CMB
+chemical-potential spectral distortion:
+\(\mu_{\mathrm{UQFF}} \le 1.0 \times 10^{-8}\). This sits at the
+projected \(1\sigma\) floor of CMB-S4 (and just below LiteBIRD/PIXIE
+forecasts). Detection of \(\mu > 3.0 \times 10^{-8}\) at \(3\sigma\)
+falsifies the R26 saturation assumption. This is the
+cosmological-microwave-background counterpart of PAPER\_1178 (DESI Y5
+strict-static dark energy).
+
+\section{1. UQFF Prediction}\label{uqff-prediction}
+
+The R26 manifold has zero free parameters in cosmic time at \(z < 10^6\)
+(recombination + diffusion-damping era). Energy injection into the CMB
+photon bath is bounded above by the residual buoyancy ledger residual,
+which is geometrically fixed at
+
+\[
+\mu_{\mathrm{UQFF}} = \frac{\rho_{\mathrm{BSFG}}}{\rho_{\gamma,0} \cdot \xi_0} \cdot f_{\mathrm{damp}} \le 1.0 \times 10^{-8}
+\]
+
+where \(\rho_{\mathrm{BSFG}} = 5.96 \times 10^{-10}\) J/m\^{}3 (4-term
+G2 ledger), \(\rho_{\gamma,0} = 4.17 \times 10^{-14}\) J/m\^{}3,
+\(\xi_0 = 13/3\), and the damping-era suppression
+\(f_{\mathrm{damp}} = e^{-(z_\mu / 5 \times 10^4)^{5/2}}\) with
+\(z_\mu \sim 2 \times 10^6\) saturates the integral to \(\le 10^{-8}\).
+
+\section{2. Observational Channels}\label{observational-channels}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Experiment & Year forecast & \(1\sigma\) on \(\mu\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+FIRAS (1996) & published & \(9 \times 10^{-5}\) \\
+PIXIE forecast & late 2020s & \(1 \times 10^{-8}\) \\
+CMB-S4 & 2030-2033 & \(1 \times 10^{-8}\) (broad) \\
+LiteBIRD & 2032-2034 & \(\sim 1 \times 10^{-8}\) \\
+\end{longtable}
+}
+
+\section{3. Falsification Criterion}\label{falsification-criterion}
+
+UQFF is falsified if any of these experiments measure
+
+\[
+\mu_{\mathrm{obs}} > 3.0 \times 10^{-8} \quad \text{at}\ 3\sigma.
+\]
+
+\section{4. CP4 Implementation}\label{cp4-implementation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ CondensedPhysics4 }\ImportTok{import}\NormalTok{ UQFFCMBmuDistortionCalculator}
+\NormalTok{r }\OperatorTok{=}\NormalTok{ UQFFCMBmuDistortionCalculator().compute()}
+\CommentTok{\# returns: mu\_UQFF\_upper\_bound = 1.0e{-}8,}
+\CommentTok{\#          mu\_falsifier\_3sigma = 3.0e{-}8,}
+\CommentTok{\#          decisive\_experiment = "CMB{-}S4 / LiteBIRD (2030{-}2034)"}
+\end{Highlighting}
+\end{Shaded}
+
+\section{5. References}\label{references}
+
+{[}1{]} PAPER\_1174 --- UQFF closed Lagrangian and 4-term G2 ledger.
+{[}2{]} PAPER\_1178 --- UQFF P13 DESI Y5 strict-static dark energy.
+{[}3{]} Chluba \& Sunyaev 2012 --- CMB spectral distortion forecasts.
+{[}4{]} CMB-S4 collaboration 2022 --- Science Book.
+
+
+% Session 258 auto-injected bibliography stub
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}

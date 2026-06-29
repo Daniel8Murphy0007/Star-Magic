@@ -1,0 +1,1 @@
+S498 COMPLETE. Sphere drag C_d = 0.4773; target 0.47; match 1.5603%.

@@ -1,0 +1,40 @@
+========================================================================
+Session 290 - FieldGeneratorCorrelation V4 validation tests
+========================================================================
+  [PASS] T-1  gamma_f symmetric  gamma(6k,12k)=0.606531
+  [PASS] T-2  gamma_f(f,f) = 1  
+  [PASS] T-3  gamma_f one octave -> 1/e  got 0.606531, expected 0.606531
+  [PASS] T-4  eta_P(P,P) = 1  
+  [PASS] T-5  eta_P symmetric  
+  [PASS] T-6  eta_P in [0,1]  eta_P(17,65) = 0.8108
+  [PASS] T-7  rho_DPM(f_SCm) = 1  
+  [PASS] T-8  rho_DPM(60 Hz) < 1e-5  (incandescent rejection)  rho_DPM(60) = 2.600e-10
+  [PASS] T-9  rho_DPM(2.4 GHz) < 1e-50  (RF rejection)  rho_DPM(2.4G) = 6.278e-76
+  [PASS] T-10 C_total identical anchors = 1  C_total(self) = 1.000000
+  [PASS] T-11 reactor <-> field gen C > 0.70  (positive A)  C = 0.9489
+  [PASS] T-12 reactor <-> Holmlid UDH C > 0.70  (positive A)  C = 0.9819
+  [PASS] T-13 field gen <-> Holmlid UDH C > 0.70  (positive A)  C = 0.9901
+  [PASS] T-14 reactor <-> plasma globe C < 0.30  (negative)  C = 0.2936
+  [PASS] T-15 reactor <-> incandescent C < 0.30  (negative)  C = 0.0000
+  [PASS] T-16 reactor <-> RF antenna C < 0.30  (negative)  C = 0.0000
+  [PASS] T-17 separation |min(positive) - max(negative)| > 0.40  pos_min=0.9489, neg_max=0.2936, sep=0.6553
+  [PASS] T-18 delta_T_aether > 0 for all positive inputs  dT_field=8.836e-18 K, dT_bulb=2.339e-14 K
+  [PASS] T-19 tau_relax_SCm matches h/(k_B*T_SCm)  
+  [PASS] T-20 invalid inputs raise ValueError  raised = 5/5
+  [PASS] T-21 validation_passed == True (3 pos, 3 neg)  pos=2/2, neg=3/3
+  [PASS] T-22 tag tier mix DERIVED+CALIBRATED+POSTULATED  
+  [PASS] T-23 registry exposes class  
+------------------------------------------------------------------------
+  RESULT: 23/23 tests passed
+========================================================================
+
+Validation table (reference: Murphy reactor):
+  [+] Murphy reactor <-> Murphy field generator           C=0.9489  (POSITIVE_MATCH)
+  [+] Murphy reactor <-> Holmlid UDH                      C=0.9819  (POSITIVE_MATCH)
+  [-] Murphy reactor <-> Plasma globe (retail)            C=0.2936  (NEGATIVE_REJECT)
+  [-] Murphy reactor <-> Incandescent bulb                C=0.0000  (NEGATIVE_REJECT)
+  [-] Murphy reactor <-> RF antenna far-field             C=0.0000  (NEGATIVE_REJECT)
+
+f_SCm   = 6.000e+03 Hz
+sigma_log = 0.693147  (one-octave coherence)
+tau_relax_SCm = 4.799e-17 s

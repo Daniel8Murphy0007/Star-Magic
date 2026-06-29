@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{array}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  language=C++,
+  showstringspaces=false,
+  columns=fullflexible
+}
+
+\title{Gap Verification Audit: \\
+  $U_m$ Heaviside Amplifier and Job~B Scope (v5.78)}
+\author{Star-Magic UQFF Audit \\ PAPER\_1181 \,/\, Session 268}
+\date{May 22, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A prior session summary listed two items as the next major work
+items in the Star-Magic UQFF codebase:
+(i)~adding a Heaviside phase-transition amplifier
+$(1+10^{13}f_H)(1+f_q)$ to the universal-magnetism term $U_m$,
+and (ii)~an estimate that approximately 142 whitepapers require
+new authoring under Job B (v5.78 closure propagation). This audit
+verifies both claims directly against the source tree. Claim~(i)
+is \emph{falsified}: the amplifier is already present in four
+independent locations, including the canonical
+\verb|compute_Um_SOURCE4| of \verb|MAIN_1_CoAnQi.cpp|
+(PAPER\_421 integration). Claim~(ii) is \emph{partially supported
+but mis-framed}: 113 papers require new authoring, 29 require
+verification only; together they sum to 142, but the work is not
+uniform.
+\end{abstract}
+
+\section{Claim 1: $U_m$ Heaviside Amplifier}
+
+\subsection{Asserted canonical form}
+
+\begin{equation}
+U_m
+= \Bigl[\sum_j \tfrac{\mu_j}{r_j}\bigl(1-e^{-\gamma t\cos(\pi t_n)}\bigr)\hat\phi_j\Bigr]
+   \cdot P_{\mathrm{SCm}}\cdot E_{\mathrm{react}}
+   \cdot \underbrace{(1+10^{13}f_H)}_{\text{Heaviside}}
+   \cdot \underbrace{(1+f_q)}_{\text{quasi-periodic}}
+\end{equation}
+where $f_H=\Theta(\rho_{\mathrm{SCm}}-\rho_c)$ activates the
+$\sim 10^{13}$-fold amplification across the superconducting
+phase transition, and $f_q$ is a low-amplitude beat tied to the
+434-yr Gleisberg supercycle.
+
+\subsection{Direct source check}
+
+\begin{center}
+\begin{tabular}{lllc}
+\toprule
+\textbf{Location} & \textbf{File} & \textbf{Lines} & \textbf{Implements?} \\
+\midrule
+SOURCE4 unified $U_m$        & MAIN\_1\_CoAnQi.cpp & 24172--24190 & \textbf{Yes} (PAPER\_421) \\
+SOURCE42 \texttt{PhysicsTerm}& MAIN\_1\_CoAnQi.cpp & 12100--12170 & \textbf{Yes} \\
+\texttt{compute\_Um\_Heaviside\_factor} & CondensedPhysics.py & 39950+ & \textbf{Yes} \\
+\texttt{um\_magnetic} strings & index.js & 9759, 9899, 10018 & \textbf{Yes} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The SOURCE4 implementation (verbatim, MAIN\_1\_CoAnQi.cpp L24180--24189):
+
+\begin{lstlisting}
+// PAPER_421: Heaviside phase-transition amplifier
+//   (1 + 10^13 * Theta(rho_SCm - rho_c))
+double f_H = (body.SCm_density >= rho_c_SOURCE4) ? 1.0 : 0.0;
+double heaviside_factor = 1.0 + 1e13 * f_H;
+
+// PAPER_421: Quasi-periodic beating modifier
+//   (1 + A_q * cos(Delta_omega * t))
+// Delta_omega = 2*pi/(434*365.25) rad/day  (434-yr Gleisberg beat)
+double quasi_factor = 1.0 + A_q_SOURCE4 * std::cos(Delta_omega_SOURCE4 * t);
+
+return Um_base * heaviside_factor * quasi_factor;
+\end{lstlisting}
+
+\noindent with constants declared at MAIN\_1\_CoAnQi.cpp L24016--L24018:
+
+\begin{lstlisting}
+const double rho_c_SOURCE4       = 1e15;                              // kg/m^3
+const double A_q_SOURCE4         = 0.1;                               // 10%
+const double Delta_omega_SOURCE4 = 2.0 * PI_SOURCE4 / (434.0*365.25); // rad/day
+\end{lstlisting}
+
+\subsection{Verdict}
+
+Claim~1 is \textbf{falsified}. The amplifier exists in:
+the SOURCE4 unified-field assembly (\verb|compute_Um_SOURCE4|),
+the SOURCE42 catalog (\verb|HeavisideFactor|,
+\verb|HeavisideUmWithHeaviside|), the Python calculator
+(\verb|compute_Um_Heaviside_factor|), and the JavaScript library's
+documented equation strings. The repository-memory note flagging
+the gap is \textbf{stale}: it predates the PAPER\_421 integration
+that added the amplifier to the SOURCE4 namespace.
+
+\subsection{Recommended follow-up (low priority)}
+
+\begin{enumerate}
+\item Confirm \verb|QCalcGeom.py| v2.1.0's $F_U$ assembly threads
+      the amplified $U_m$ into the simultaneous-equation solver.
+\item Cross-check \verb|index.js| \verb|calculateUm()| uses the
+      amplifier or only documents it in metadata strings.
+\item Verify $\rho_c=10^{15}\,\mathrm{kg/m^3}$ against Fermilab
+      Type-II SC magnetar-core data.
+\item Verify the 434-yr Gleisberg $\Delta\omega$ matches the
+      long-term solar-cycle anchor in \verb|grok_share_cfdcad2f5.txt|.
+\end{enumerate}
+
+These are validation tasks, not implementation gaps.
+
+\section{Claim 2: ``$\sim$142 papers need real authoring''}
+
+\subsection{Authoritative bucket tally}
+
+Direct enumeration of \verb|_job_b_categorization.csv|
+(1,199 rows, May 22 2026):
+
+\begin{center}
+\begin{tabular}{rlc}
+\toprule
+\textbf{Count} & \textbf{Bucket} & \textbf{Class} \\
+\midrule
+982 & NO UPDATE (specific system / framework app.)        & scoped out \\
+ 42 & v5.78 27-decade vacuum ledger (P\_1170) + $\xi=13/3$ & authoring \\
+ 34 & NO UPDATE unless ledger/$\xi$ enters; verify only    & conditional \\
+ 29 & Verify v5.78 closed-Lagrangian/ledger cross-ref      & verify \\
+ 28 & Update tables; P6--P14, CP4 \#254--\#264             & authoring \\
+ 20 & v5.78 closure block inserted; .tex regenerated       & \textbf{DONE} \\
+ 15 & v5.78 closed-Lagrangian cross-ref (G1--G8) + CP4     & authoring \\
+ 12 & Forward-pointer P\_1174 P1--P14 + P\_1177--1180      & authoring \\
+ 11 & Forward-pointer P\_1171/1172 ($\xi=13/3$ R26+KK)     & authoring \\
+ 10 & v5.78 closure block inserted; PDF regenerated        & \textbf{DONE} \\
+  5 & .tex/PDF regenerated + SOURCE REPAIR (Unicode)       & \textbf{DONE} \\
+  5 & Three-anchor SI closure banner (Sess 237--241)       & authoring \\
+  5 & .tex converted from .md; PDF regenerated             & \textbf{DONE} \\
+  1 & duplicate row (stale)                                & drop \\
+\midrule
+\textbf{1199} & \textbf{TOTAL} & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Reclassified workload}
+
+\begin{center}
+\begin{tabular}{lr l}
+\toprule
+\textbf{Class} & \textbf{Count} & \textbf{Notes} \\
+\midrule
+Authoring required          & \textbf{113} & $42+28+15+12+11+5$ \\
+Verification only           &  29 & confirm existing cross-ref \\
+Conditional (audit, no-op)  &  34 & trigger if $\xi$/ledger enters \\
+Already DONE v5.78          &  35 & $20+10+5$ \\
+Out of scope (NO UPDATE)    & 982 & scoped-out by topic \\
+Stale duplicate             &   1 & drop \\
+\midrule
+\textbf{Total}              & \textbf{1199} & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Verdict}
+
+Claim~2 is \textbf{partially supported but imprecise}:
+$113+29=142$ papers will be \emph{touched} by Job~B
+(authored or verified), but the framing
+``$\sim$142 papers needing real authoring'' overstates the
+authoring fraction by a factor of $142/113\approx 1.26$.
+The honest split is \textbf{113 author $+$ 29 verify}.
+
+\section{Revised Next-Step Priority Ranking}
+
+Given that the $U_m$ Heaviside gap is closed and the Job~B count
+is 113 (not 142), the previously published 8-step plan should be
+re-ordered:
+
+\begin{enumerate}
+\item \textbf{Delete} the $U_m$ amplifier step --- already done.
+\item Generate \verb|LEDGER_REVIEW_QUEUE.csv| for the 43 flagged
+      \verb|master_closures.csv| rows (10 high-error $\ge 10\%$ +
+      15 PARSE\_FAIL + 18 NaN).
+\item Recalibrate the 10 high-residual ledger entries
+      (IDs 270, 293, 330, 337, 351, 352, 739, 760, 764, 805) using
+      v5.78 anchors (PAPER\_1156, 1170, 1171, 1172).
+\item Author the 4--6 reusable v5.78 section templates
+      (T-$\Lambda$, T-LAG, T-SI, T-PRED, T-$\xi$).
+\item Bucket-batched paper updates --- 113 papers, 5--10 per
+      commit, starting with the 42 cosmology / $\Lambda$ /
+      vacuum-energy papers using the T-$\Lambda$ template.
+\item Verify-only sweep of the 29 bucket-G papers.
+\item Regenerate updated PDFs with \verb|pdflatex|;
+      commit \verb|.md|/\verb|.tex|/\verb|.pdf| together.
+\item Final coherence audit mirroring Session 261.
+\end{enumerate}
+
+\section{Citations}
+
+\begin{itemize}
+\item MAIN\_1\_CoAnQi.cpp L24016--24018, L24172--24190
+      (PAPER\_421: Heaviside + quasi-periodic amplifiers in SOURCE4 $U_m$).
+\item MAIN\_1\_CoAnQi.cpp L12100--12170 (SOURCE42: \verb|HeavisideFraction|,
+      \verb|HeavisideFactor|, \verb|HeavisideUmWithHeaviside|).
+\item CondensedPhysics.py L39950+ (\verb|compute_Um_Heaviside_factor|).
+\item index.js L9690, 9759, 9811, 9899, 9943, 10018
+      (\verb|f_heaviside|, \verb|f_quasi|, full \verb|um_magnetic| strings).
+\item \verb|_job_b_categorization.csv| (1,199 rows, May 22 2026).
+\item Job~B brief: ``Job B\_Update papers with current canonical UQFF v5\_78.txt''
+      (395 lines, Phase B1--B4).
+\item COMPLETE\_UQFF\_EQUATIONS\_REFERENCE.md L522--553 (canonical $U_m$ form).
+\end{itemize}
+
+\section{Conclusion}
+
+The two items proposed as the ``next big step'' do not survive
+direct source-tree verification in the form stated:
+
+\begin{itemize}
+\item The $U_m$ Heaviside phase-transition amplifier is
+      \textbf{already implemented} in four places, with the
+      canonical $10^{13}$ scale and the 434-yr Gleisberg-locked
+      quasi-periodic beat; it is \emph{not} the most-impactful
+      uncoded physics.
+\item The Job~B authoring queue is \textbf{113 papers}, not 142;
+      the 142 figure conflates authoring with verification.
+\end{itemize}
+
+The corrected next major step is the \textbf{ledger review queue}
+(43 flagged closures, with 10 high-residual recalibrations
+against the v5.78 anchors), followed by the 113-paper Job~B
+authoring sweep using reusable templates.
+
+\end{document}

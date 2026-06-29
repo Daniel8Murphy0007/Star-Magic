@@ -1,0 +1,1 @@
+S485 COMPLETE. Magic number O = 8.0000 = 8 = 2*D_phys; target 8; match 0.0000%.

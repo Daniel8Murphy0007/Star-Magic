@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_confirm_all_derivations_level1.py", line 97, in <module>
+    w = csv.DictWriter(f, fieldnames=list(out_rows[0].keys()))
+                                          ~~~~~~~~^^^
+IndexError: list index out of range

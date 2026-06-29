@@ -1,0 +1,1 @@
+S334 COMPLETE. CMB axis-of-evil predicted from A_5=60 icosahedral; 5-fold axis spacing = 72.0 deg; matches CMB quadrupole-octupole alignment (~10 deg).

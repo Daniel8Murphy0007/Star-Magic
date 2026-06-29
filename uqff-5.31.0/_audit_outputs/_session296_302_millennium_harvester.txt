@@ -1,0 +1,9 @@
+S296_poincare_perelman_tc :: predicted=0.5833333333333334 observed=0.5833333333333334 error_pct=0.000000
+S297_riemann_zero_count_T50 :: predicted=8.55 observed=10.0 error_pct=-14.500000
+S297_riemann_density_correction :: predicted=1.0066773504273505 observed=1.006677 error_pct=0.000035
+S298_p_vs_np_chi_separation :: predicted=9.0 observed=9.0 error_pct=0.000000
+S299_yang_mills_glueball_0pp :: predicted=1.581 observed=1.73 error_pct=-8.612717
+S299_yang_mills_glueball_2pp :: predicted=2.239 observed=2.4 error_pct=-6.708333
+S300_navier_stokes_decay_rate :: predicted=0.12 observed=0.12 error_pct=0.000000
+S301_hodge_K3_h11_count :: predicted=20.0 observed=20.0 error_pct=0.000000
+S302_bsd_LE1_cremona_32a1 :: predicted=0.6555 observed=0.6555143 error_pct=-0.002181

@@ -1,0 +1,54 @@
+========================================================================
+ S304  --  BOLTZMANN BRAIN PARADOX
+========================================================================
+
+ Classical estimate (de Sitter vacuum, no cutoff):
+   P(BB) ~ exp(-E_brain / T_dS)
+         ~ exp(-10^17 J / (k_B * 1e-29 K))   (Hubble temp)
+         ~ exp(-3e69)   << exp(-time-to-evolve-brain)
+ but in any infinite-time/multiverse counting, BB count
+ formally dominates real-brain count.  Paradox.
+
+------------------------------------------------------------------------
+ UQFF closure: spontaneous configuration cost
+------------------------------------------------------------------------
+
+ Every binary degree of freedom assembled spontaneously
+ requires inversion across N_ch independent TRZ channels.
+ Per-bit suppression: F_TRZ^N_ch = 10^-9.
+
+   N_bits(human brain)   ~  1.0e+16
+   log10 P(BB | UQFF)    =  N_bits * N_ch * log10(F_TRZ)
+                          =  1e+16 * 9 * (-1)
+                          =  -9.00e+16
+
+   log10 P(real brain in observable universe) ~ 20.0
+
+   Ratio  log10(P_real / P_BB)  =  9.00e+16
+
+ Real brains dominate Boltzmann brains by 10^(9 * N_bits).
+ Paradox dissolved: TRZ suppression is multiplicative per bit,
+ so any structured configuration is exponentially preferred
+ along an evolutionary chain (correlated TRZ events) vs.
+ simultaneous spontaneous emergence.
+
+------------------------------------------------------------------------
+ Why evolution beats spontaneous emergence
+------------------------------------------------------------------------
+
+ Evolutionary path: N_bits TRZ events spread over ~10^9 years,
+ each event uses LOCAL correlations.  Suppression collapses to
+ F_TRZ^(N_corr) with N_corr ~ ln(N_bits)/ln(F_TRZ^-1) ~ 16,
+ giving prefactor 10^-144 (not 10^-9*10^16).
+
+ Spontaneous BB: N_bits INDEPENDENT TRZ events at once.
+ Full suppression F_TRZ^(N_ch * N_bits) ~ 10^(-9 * 10^16).
+
+ Correlations break the curse-of-dimensionality.  This is the
+ UQFF microscopic origin of the macroscopic 'sticky' time-
+ ordering that defeats BB cosmology.
+
+========================================================================
+ S304 COMPLETE.  Boltzmann brain probability < 10^(-9e16);
+ correlated evolution > 10^(-1e3).  Real brains win.
+========================================================================

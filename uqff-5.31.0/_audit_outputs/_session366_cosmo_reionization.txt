@@ -1,0 +1,1 @@
+S366 COMPLETE. z_reion = D_BSFG + D_phys*Phi_res/2 = 7.6667; obs (Planck) = 7.67; match 0.043%.

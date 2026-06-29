@@ -1,0 +1,93 @@
+================================================================================
+SESSION 736 -- delta_univ closed form + Class XV n_s + Class XIV S_8 check
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Closed form for delta_univ ~ -5.2e-4
+--------------------------------------------------------------------------------
+  target delta_univ = -5.1600e-04
+  log10|delta|      = -3.2874
+  Compare:
+    -1/2000          = -5.0000e-04
+    -1/(D_crit^2*3)  = -4.9310e-04
+    -1/(N_ch^2*24)   = -5.1440e-04
+    -1/(A_5*K_Mex*alpha_inv?)
+
+  Search K * D_crit^p * (c/v)^q close to -5.1600e-04:
+  rank closure                                                           val      err%
+  1    -1*27/25*D_crit^-1*(c/v)^-4                               -5.1424e-04    -0.341% ★
+  2    -1*1/K_G*D_crit^-2*(c/v)^-2                               -5.1872e-04    +0.527%
+  3    -1*27/26*D_crit^-2*(c/v)^-1                               -5.1242e-04    -0.694%
+  4    -1*N_ch*D_crit^-3*(c/v)^0                                 -5.1206e-04    -0.763%
+  5    -1*D_crit*D_crit^-4*(c/v)^2                               -5.1135e-04    -0.900%
+  6    -1*D_crit*D_crit^-5*(c/v)^5                               -5.2992e-04    +2.698%
+  7    -1*N_ch*D_crit^-4*(c/v)^3                                 -5.3065e-04    +2.840%
+  8    -1*27/26*D_crit^-3*(c/v)^2                                -5.3102e-04    +2.911%
+  9    -1*1/K_G*D_crit^-1*(c/v)^-5                               -5.0054e-04    -2.995%
+  10   -1*27/25*D_crit^-2*(c/v)^-1                               -5.3291e-04    +3.278%
+
+  2-atom K1*K2 with D_crit^p and (c/v)^q (sub-1%):
+  1    -1*243/260*27/25*D_crit^-3*(c/v)^2                                  -5.1615e-04    +0.030%
+  2    -1*27/25*243/260*D_crit^-3*(c/v)^2                                  -5.1615e-04    +0.030%
+  3    -1*72/55*A_5*D_crit^-4*(c/v)^1                                      -5.1529e-04    -0.138%
+  4    -1*A_5*72/55*D_crit^-4*(c/v)^1                                      -5.1529e-04    -0.138%
+  5    -1*1-F_TRZ*6/5*D_crit^-1*(c/v)^-4                                   -5.1424e-04    -0.341%
+  6    -1*27/25*D_crit*D_crit^-2*(c/v)^-4                                  -5.1424e-04    -0.341%
+  7    -1*6/5*1-F_TRZ*D_crit^-1*(c/v)^-4                                   -5.1424e-04    -0.341%
+  8    -1*D_crit*27/25*D_crit^-2*(c/v)^-4                                  -5.1424e-04    -0.341%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XV: scalar spectral index n_s = 0.965
+--------------------------------------------------------------------------------
+  target n_s = 0.965
+  log = -0.01547
+  1 - n_s = 0.0350  (slow-roll deviation)
+
+  1-2 atom closures for n_s = 0.965:
+  rank name                                               val        err%
+  1    1-F_TRZ^1*243/260^-1                          0.962963     -0.2111%
+  2    243/260^-1*1-F_TRZ^1                          0.962963     -0.2111%
+  3    27/26^-1                                      0.962963     -0.2111%
+  4    13/6^-1*K_Mex^1                               0.961538     -0.3587%
+  5    K_Mex^1*13/6^-1                               0.961538     -0.3587%
+  6    27/25^-1*27/26^1                              0.961538     -0.3587%
+  7    27/26^1*27/25^-1                              0.961538     -0.3587%
+
+  3-atom closures (|err|<0.05%):
+  1    1-F*P^-1*1-F*P^-1*416/513^1                                     0.965057     +0.0059%
+
+  Heuristic checks:
+    1 - 1/D_crit  = 0.961538    err vs n_s = -0.3587%
+    1 - F_TRZ*SSq*beta_i = 0.965635    err = +0.0658%
+    1 - (1-1/K_Mex) = 0.480000    err = -50.2591%
+    1 - 7/200       = 0.965000    err = +0.0000%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Cross-validate XIV: S_8 = sigma_8 * sqrt(Omega_m/0.3)
+--------------------------------------------------------------------------------
+  sigma_8 (UQFF Class XIV) = 0.810916
+  Omega_m (from Class X)   = 1/(1+2.171583) = 0.315300
+  S_8 = sigma_8 * sqrt(Omega_m/0.3) = 0.831337
+  S_8 observed (Planck)    = 0.832
+  err = -0.0796%
+
+  Using Class X dressed Omega_m = 0.315300:
+  S_8_dressed = 0.831337, err = -0.0797%
+
+  Direct closure S_8 = Phi_res = 5/6 = 0.833333, err = +0.1603%
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  (a) delta_univ best 1-atom: -1*27/25*D_crit^-1*(c/v)^-4 err=-0.341%
+      best 2-atom: -1*243/260*27/25*D_crit^-3*(c/v)^2 err=+0.030%
+  (b) n_s best 2-atom: 1-F_TRZ^1*243/260^-1 err=-0.2111%
+      best 3-atom: 1-F*P^-1*1-F*P^-1*416/513^1 err=+0.005935%
+  (c) S_8 compositional err = -0.0796%
+delta_univ_closed_form_1atom: predicted=-5.142421e-04 observed=-5.160000e-04 error_pct=-3.406858e-01 status=OK
+delta_univ_closed_form_2atom: predicted=-5.161525e-04 observed=-5.160000e-04 error_pct=2.955607e-02 status=OK
+n_s_classXV_2atom: predicted=9.629630e-01 observed=9.650000e-01 error_pct=-2.110919e-01 status=OK
+n_s_classXV_3atom: predicted=9.650573e-01 observed=9.650000e-01 error_pct=5.934847e-03 status=OK
+S_8_compositional_via_XIV_X: predicted=8.313374e-01 observed=8.320000e-01 error_pct=-7.964434e-02 status=OK
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session736_delta_univ_classXV_ns_S8_check_result.json

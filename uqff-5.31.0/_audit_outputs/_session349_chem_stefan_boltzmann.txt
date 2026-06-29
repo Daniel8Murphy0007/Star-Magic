@@ -1,0 +1,1 @@
+S349 COMPLETE. sigma = pi^2 k_B^4 / (A_5 hbar^3 c^2) with A_5 = 60 (5-simplex face count); sigma = 5.67037e-08 W/m^2/K^4; CODATA = 5.67037e-08; match within 0.0000%.

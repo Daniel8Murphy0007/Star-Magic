@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_append_paper1189_closures.py", line 31, in <module>
+    for r in existing: w.writerow(r)
+                       ~~~~~~~~~~^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\Lib\csv.py", line 226, in writerow
+    return self.writer.writerow(self._dict_to_list(rowdict))
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\Lib\csv.py", line 221, in _dict_to_list
+    raise ValueError("dict contains fields not in fieldnames: "
+                     + ", ".join([repr(x) for x in wrong_fields]))
+ValueError: dict contains fields not in fieldnames: 'category', 'closure', 'cvw_stamp', 'sm_anchor'

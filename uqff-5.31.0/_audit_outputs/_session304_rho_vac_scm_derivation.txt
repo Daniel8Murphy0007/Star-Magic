@@ -1,0 +1,27 @@
+========================================================================
+S304 RHO_VAC_SCm derivation closures (gap #14)
+========================================================================
+  [PASS] T-1 14 chains present  
+  [PASS] T-2 all 14 chains closed  14/14
+  [PASS] T-3 canonical positive  
+  [PASS] T-4 canonical near target  gap=+0.00%
+  [PASS] T-5 C01_canonical closes  err=0.00e+00
+  [PASS] T-6 C02_geom_mean closes  err=2.36e-16
+  [PASS] T-7 C03_dim_ratio closes  err=0.00e+00
+  [PASS] T-8 C04_critical_dim closes  err=0.00e+00
+  [PASS] T-9 C05_kappa_balance closes  err=0.00e+00
+  [PASS] T-10 C06_SO5_A5 closes  err=0.00e+00
+  [PASS] T-11 C07_N_ch closes  err=0.00e+00
+  [PASS] T-12 C08_log_exp closes  err=9.42e-16
+  [PASS] T-13 C09_planck_ratio closes  err=0.00e+00
+  [PASS] T-14 C10_UA_decade closes  err=0.00e+00
+  [PASS] T-15 C11_SSq_split closes  err=0.00e+00
+  [PASS] T-16 C12_K_Mex_split closes  err=0.00e+00
+  [PASS] T-17 C13_compound_pivot closes  err=1.18e-16
+  [PASS] T-18 C14_F_TRZ_inverse closes  err=0.00e+00
+  [PASS] T-19 keys present  
+  [PASS] T-20 cp4_id=448 audit=304  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================
+Wrote _session304_rho_vac_scm_derivation_closures.json: canonical=7.0898e-37 J/m^3 vs target=7.0898e-37 (residual=0.000%)

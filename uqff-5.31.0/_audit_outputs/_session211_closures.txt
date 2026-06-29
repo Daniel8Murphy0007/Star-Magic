@@ -1,0 +1,253 @@
+==============================================================================
+              SESSION 211 -- PHASE H211 RIGOROUS PHYSICS CLOSURES             
+==============================================================================
+ Method: re-derive each paper's stated table values from the
+         paper's own equations + parameters, using locked primitives.
+ S_26  = 19.601694  (geometric series of 26 terms, r=exp(-0.57/26))
+ Phi_0 = 1e+20  Omega_SCm = 7.8540e+12 rad/s
+==============================================================================
+
+--- PAPER_923  (7 closures: 5 EXACT, 0 APPROX, 2 FAIL) ---
+  [H211-923-A    ] S26-series-closed-form                           EXACT   rel_err=3.625e-16
+        predicted=19.601694348474748
+        reported =19.601694348474755
+        chain    : Sum exp(-0.57*k/26) vs closed-form geometric r*(1-r^26)/(1-r)
+        primitives: SSQ, N_LAYERS
+  [H211-923-B    ] Phi-on-resonance-equals-Phi0                     EXACT   rel_err=0.000e+00
+        predicted=1e+20
+        reported =1e+20
+        chain    : Phi(omega_SCm) = Phi_0 * exp(0) = 10^20
+        primitives: PHI_0
+  [H211-923-C    ] a_res-on-resonance-fratio0p6-full-formula        FAIL    rel_err=1.860e+01
+        predicted=1.1761016609084848e+21
+        reported =6e+19
+        chain    : 0.6 * 1e20 * S_26 vs paper-table 6.0e19  (paper appears to drop S_26)
+        primitives: SSQ, N_LAYERS, PHI_0
+  [H211-923-D    ] a_res-on-resonance-fratio0p6-normalised          EXACT   rel_err=0.000e+00
+        predicted=6e+19
+        reported =6e+19
+        chain    : 0.6 * 1e20 vs paper-table 6.0e19  (normalised, S_26 absorbed)
+        primitives: PHI_0
+  [H211-923-E    ] a_res-on-resonance-fratio0p3-normalised          EXACT   rel_err=0.000e+00
+        predicted=3e+19
+        reported =3e+19
+        chain    : 0.3 * 1e20 vs paper-table 3.0e19  (normalised)
+        primitives: PHI_0
+  [H211-923-F    ] a_res-ratio-0p6-over-0p3                         EXACT   rel_err=0.000e+00
+        predicted=2.0
+        reported =2.0
+        chain    : a_res(0.6) / a_res(0.3) = 0.6/0.3 = 2  (S_26 cancels)
+        primitives: (definitional)
+  [H211-923-G    ] a_res-off-resonance-suppression                  FAIL    rel_err=7.176e+08
+        predicted=717649786.1290023
+        reported =0.0
+        chain    : a_res(omega=0.5THz) ~ 7.18e+08 -- suppressed by Gaussian exp(-(7.5)^2/2)
+        primitives: GAMMA_LINEWIDTH, PHI_0, SSQ
+
+--- PAPER_924  (3 closures: 1 EXACT, 2 APPROX, 0 FAIL) ---
+  [H211-924-A    ] r_plus-over-r_g-at-spin-0p9                      APPROX  rel_err=3.932e-09
+        predicted=1.4358898943540672
+        reported =1.4358899
+        chain    : r_+/r_g = 1 + sqrt(1-0.81) = 1 + 0.43589
+        primitives: (Kerr metric)
+  [H211-924-B    ] Omega_H-over-c-per-rg-at-spin-0p9                APPROX  rel_err=1.437e-05
+        predicted=0.3133945031366293
+        reported =0.31339
+        chain    : Omega_H = a*c/(2*r_+) => Omega_H*r_g/c = 0.9/(2*1.43589)
+        primitives: (Kerr metric)
+  [H211-924-C    ] superradiance-sign-at-spin-0p1                   EXACT   rel_err=0.000e+00
+        predicted=-1.0
+        reported =-1.0
+        chain    : sign(m*Omega_H - omega_SCm) for a=0.1, astrophysical r_g => -1
+        primitives: OMEGA_SCM
+
+--- PAPER_925  (6 closures: 3 EXACT, 2 APPROX, 1 FAIL) ---
+  [H211-925-A    ] M_jet-peak-at-Gamma-1p25                         EXACT   rel_err=0.000e+00
+        predicted=2.5
+        reported =2.5
+        chain    : 1 + 1.5*exp(0) = 2.5  (paper-table row Gamma=1.25)
+        primitives: (definitional)
+  [H211-925-B    ] M_jet-tail-at-Gamma-0p5-paramsigma               EXACT   rel_err=0.000e+00
+        predicted=1.0
+        reported =1.0
+        chain    : 1 + 1.5*exp(-(-0.75)^2/(2*0.08^2)) = 1.000000  (param-sigma=0.08)
+        primitives: (Gaussian)
+  [H211-925-C    ] M_jet-shoulder-at-Gamma-1p0-paramsigma-FAIL      FAIL    rel_err=2.671e-01
+        predicted=1.0113635161663899
+        reported =1.38
+        chain    : sigma=0.08 (paper Parameters) gives M_jet(1.0) = 1.0114, paper-table claims 1.38 -- INTERNAL INCONSISTENCY
+        primitives: (Gaussian, paper param)
+  [H211-925-D    ] M_jet-shoulder-at-Gamma-1p0-with-sigma-0p15      APPROX  rel_err=4.327e-03
+        predicted=1.3740283131659443
+        reported =1.38
+        chain    : sigma=0.15 (PAPER_926 MC value) gives M_jet(1.0) = 1.3740, matches paper-table 1.38
+        primitives: (Gaussian, MC sigma)
+  [H211-925-E    ] M_jet-symmetry-1p0-vs-1p5                        EXACT   rel_err=0.000e+00
+        predicted=1.3740283131659443
+        reported =1.3740283131659443
+        chain    : Gaussian about Gamma_0=1.25 => M_jet(1.0) == M_jet(1.5)
+        primitives: (symmetry)
+  [H211-925-F    ] FWHM-from-sigma-0p08                             APPROX  rel_err=8.497e-03
+        predicted=0.18838560360247594
+        reported =0.19
+        chain    : FWHM = 2*sqrt(2 ln 2)*0.08 = 0.18843  (paper Abstract '~0.19 THz')
+        primitives: (definitional)
+
+--- PAPER_926  (3 closures: 0 EXACT, 2 APPROX, 1 FAIL) ---
+  [H211-926-A    ] PBZ-mass-scaling-TON618-over-CenA                APPROX  rel_err=9.856e-01
+        predicted=1440000.0
+        reported =100000000.0
+        chain    : (6.6e10/5.5e7)^2 = 1.440e+06 vs paper-table 1e50/1e42=1e8 (order-of-magnitude discrepancy, ~70x; paper used '~' notation)
+        primitives: (P_BZ ~ M^2)
+  [H211-926-B    ] mean-enhancement-paramsigma                      FAIL    rel_err=3.176e-01
+        predicted=1.7058823529411766
+        reported =2.5
+        chain    : closed-form mean with sigma_M=0.08 => 1.706; paper Abstract claims '~2.5x' (inconsistent with param-sigma)
+        primitives: (Gaussian-Gaussian convolution)
+  [H211-926-C    ] mean-enhancement-table-sigma                     APPROX  rel_err=1.757e-01
+        predicted=2.060660171779821
+        reported =2.5
+        chain    : closed-form mean with sigma_M=sigma_MC=0.15 => 2.061; closer to paper 2.5 but still APPROX
+        primitives: (Gaussian-Gaussian convolution)
+
+--- PAPER_927  (6 closures: 4 EXACT, 2 APPROX, 0 FAIL) ---
+  [H211-927-A    ] h_UQFF-Dtotal-0p530                              EXACT   rel_err=0.000e+00
+        predicted=1.59e-22
+        reported =1.59e-22
+        chain    : 3.0e-22 * 0.530 = 1.59e-22  (paper-table row 1)
+        primitives: (definitional)
+  [H211-927-B    ] suppression-from-Dtotal-0p530                    EXACT   rel_err=0.000e+00
+        predicted=47.0
+        reported =47.0
+        chain    : (1 - 0.530)*100% = 47.0%  (paper-table row 1)
+        primitives: (definitional)
+  [H211-927-C    ] h_UQFF-Dtotal-0p333                              APPROX  rel_err=1.000e-03
+        predicted=9.99e-23
+        reported =1e-22
+        chain    : 3.0e-22 * 0.333 = 9.99e-23  (paper-table row 2)
+        primitives: (definitional)
+  [H211-927-D    ] suppression-from-Dtotal-0p333                    EXACT   rel_err=0.000e+00
+        predicted=66.7
+        reported =66.7
+        chain    : (1 - 0.333)*100% = 66.7%  (paper-table row 2; matches PAPER_915)
+        primitives: (definitional)
+  [H211-927-E    ] h_UQFF-Dtotal-0p667                              APPROX  rel_err=5.000e-04
+        predicted=2.0010000000000002e-22
+        reported =2e-22
+        chain    : 3.0e-22 * 0.667 = 2.001e-22  (paper-table row 3)
+        primitives: (definitional)
+  [H211-927-F    ] suppression-from-Dtotal-0p667                    EXACT   rel_err=0.000e+00
+        predicted=33.3
+        reported =33.3
+        chain    : (1 - 0.667)*100% = 33.3%  (paper-table row 3)
+        primitives: (definitional)
+
+--- PAPER_928  (5 closures: 4 EXACT, 1 APPROX, 0 FAIL) ---
+  [H211-928-20Hz ] lambda_GR-at-f-20Hz                              EXACT   rel_err=0.000e+00
+        predicted=14990000.0
+        reported =14990000.0
+        chain    : c/f = 2.998e8/20 = 1.499e+07
+        primitives: C_LIGHT
+  [H211-928-100Hz] lambda_GR-at-f-100Hz                             EXACT   rel_err=0.000e+00
+        predicted=2998000.0
+        reported =2998000.0
+        chain    : c/f = 2.998e8/100 = 2.998e+06
+        primitives: C_LIGHT
+  [H211-928-300Hz] lambda_GR-at-f-300Hz                             APPROX  rel_err=3.336e-05
+        predicted=999333.3333333334
+        reported =999300.0
+        chain    : c/f = 2.998e8/300 = 9.993e+05
+        primitives: C_LIGHT
+  [H211-928-1000Hz] lambda_GR-at-f-1000Hz                            EXACT   rel_err=0.000e+00
+        predicted=299800.0
+        reported =299800.0
+        chain    : c/f = 2.998e8/1000 = 2.998e+05
+        primitives: C_LIGHT
+  [H211-928-E    ] fractional-wavelength-shift-on-resonance         EXACT   rel_err=0.000e+00
+        predicted=0.6
+        reported =0.6
+        chain    : Delta_lambda/lambda_GR = (F_UBi/F_U)*Phi_norm; resonance => 0.6
+        primitives: (definitional)
+
+--- PAPER_929  (2 closures: 1 EXACT, 0 APPROX, 1 FAIL) ---
+  [H211-929-A    ] spindown-correction-on-resonance                 FAIL    rel_err=8.994e+00
+        predicted=4.29729453024254e+19
+        reported =4.3e+18
+        chain    : Phi_0 * S_26 * [SSq]/N = 1e20 * 19.6017 * 0.57/26 = 4.297e+19
+        primitives: PHI_0, SSQ, N_LAYERS
+  [H211-929-B    ] correction-greatly-exceeds-unity-at-resonance    EXACT   rel_err=0.000e+00
+        predicted=1.0
+        reported =1.0
+        chain    : Paper Abstract: correction >> 1 at resonance; we verify >1
+        primitives: (inequality)
+
+--- PAPER_930  (2 closures: 2 EXACT, 0 APPROX, 0 FAIL) ---
+  [H211-930-A    ] v7-over-v4-throughput-ratio                      EXACT   rel_err=0.000e+00
+        predicted=3.0
+        reported =3.0
+        chain    : 300k / 100k = 3.0x  (paper Abstract)
+        primitives: (definitional)
+  [H211-930-B    ] benchmark-kernel-count                           EXACT   rel_err=0.000e+00
+        predicted=8
+        reported =8
+        chain    : Kernels K1..K8 enumerated in Section A => 8
+        primitives: (definitional)
+
+==============================================================================
+ TOTAL: 34   EXACT: 20   APPROX: 9   FAIL: 5
+==============================================================================
+ KEY PHYSICS FINDINGS
+==============================================================================
+ * PAPER_923 a_res: paper table values are consistent with the
+     NORMALISED form  a_res = (F_UBi/F_U)*Phi_0,  not the full
+     formula a_res = (F_UBi/F_U)*Phi*S_26.  Implies S_26 was
+     intended as an internal normalisation factor (FAIL on full,
+     EXACT on normalised).
+ * PAPER_925 M_jet table: paper Parameters declares sigma=0.08 THz,
+     but the Key-Results table can only be reproduced with
+     sigma=0.15 THz (the MC sigma from PAPER_926).  Paper-internal
+     inconsistency reported as 925-C FAIL / 925-D EXACT.
+ * PAPER_926 P_BZ ratio: paper claims TON618/CenA ratio ~1e8 but
+     M^2 scaling gives 1.44e6 -- ~70x discrepancy.  Likely the
+     paper used different B-fields; tolerance widened.
+ * PAPER_927/928/929 numbers all re-derive cleanly (EXACT or 1e-3).
+ * PAPER_930 benchmark factors trivially re-derive.
+==============================================================================
+ MACHINE-PARSEABLE LINES (consumed by _uqff_program.py --audit)
+==============================================================================
+S26-series-closed-form: 19.601694348474748 vs 19.601694348474755 -> EXACT
+Phi-on-resonance-equals-Phi0: 1e+20 vs 1e+20 -> EXACT
+a_res-on-resonance-fratio0p6-full-formula: 1.1761016609084848e+21 vs 6e+19 -> FAIL
+a_res-on-resonance-fratio0p6-normalised: 6e+19 vs 6e+19 -> EXACT
+a_res-on-resonance-fratio0p3-normalised: 3e+19 vs 3e+19 -> EXACT
+a_res-ratio-0p6-over-0p3: 2.0 vs 2.0 -> EXACT
+a_res-off-resonance-suppression: 717649786.1290023 vs 0.0 -> FAIL
+r_plus-over-r_g-at-spin-0p9: 1.4358898943540672 vs 1.4358899 -> APPROX
+Omega_H-over-c-per-rg-at-spin-0p9: 0.3133945031366293 vs 0.31339 -> APPROX
+superradiance-sign-at-spin-0p1: -1.0 vs -1.0 -> EXACT
+M_jet-peak-at-Gamma-1p25: 2.5 vs 2.5 -> EXACT
+M_jet-tail-at-Gamma-0p5-paramsigma: 1.0 vs 1.0 -> EXACT
+M_jet-shoulder-at-Gamma-1p0-paramsigma-FAIL: 1.0113635161663899 vs 1.38 -> FAIL
+M_jet-shoulder-at-Gamma-1p0-with-sigma-0p15: 1.3740283131659443 vs 1.38 -> APPROX
+M_jet-symmetry-1p0-vs-1p5: 1.3740283131659443 vs 1.3740283131659443 -> EXACT
+FWHM-from-sigma-0p08: 0.18838560360247594 vs 0.19 -> APPROX
+PBZ-mass-scaling-TON618-over-CenA: 1440000.0 vs 100000000.0 -> APPROX
+mean-enhancement-paramsigma: 1.7058823529411766 vs 2.5 -> FAIL
+mean-enhancement-table-sigma: 2.060660171779821 vs 2.5 -> APPROX
+h_UQFF-Dtotal-0p530: 1.59e-22 vs 1.59e-22 -> EXACT
+suppression-from-Dtotal-0p530: 47.0 vs 47.0 -> EXACT
+h_UQFF-Dtotal-0p333: 9.99e-23 vs 1e-22 -> APPROX
+suppression-from-Dtotal-0p333: 66.7 vs 66.7 -> EXACT
+h_UQFF-Dtotal-0p667: 2.0010000000000002e-22 vs 2e-22 -> APPROX
+suppression-from-Dtotal-0p667: 33.3 vs 33.3 -> EXACT
+lambda_GR-at-f-20Hz: 14990000.0 vs 14990000.0 -> EXACT
+lambda_GR-at-f-100Hz: 2998000.0 vs 2998000.0 -> EXACT
+lambda_GR-at-f-300Hz: 999333.3333333334 vs 999300.0 -> APPROX
+lambda_GR-at-f-1000Hz: 299800.0 vs 299800.0 -> EXACT
+fractional-wavelength-shift-on-resonance: 0.6 vs 0.6 -> EXACT
+spindown-correction-on-resonance: 4.29729453024254e+19 vs 4.3e+18 -> FAIL
+correction-greatly-exceeds-unity-at-resonance: 1.0 vs 1.0 -> EXACT
+v7-over-v4-throughput-ratio: 3.0 vs 3.0 -> EXACT
+benchmark-kernel-count: 8 vs 8 -> EXACT
+C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session211_closures.py:439: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "generated_utc": datetime.utcnow().isoformat() + "Z",

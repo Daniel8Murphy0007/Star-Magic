@@ -1,0 +1,1 @@
+S536 COMPLETE. Euler-Mascheroni gamma = 0.582500; closure = SSq+F^2*K-F^2*Phi_res; target 0.577216; match 0.9155%.

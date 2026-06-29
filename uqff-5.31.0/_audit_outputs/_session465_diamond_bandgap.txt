@@ -1,0 +1,1 @@
+S465 COMPLETE. Diamond bandgap = 5.4765 eV; target 5.47; match 0.1188%.

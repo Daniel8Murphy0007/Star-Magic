@@ -1,0 +1,11 @@
+[ OK ] Step 1: Flare-out satisfied (db/dr = -0.6563)
+[ OK ] Step 3: NEC violated (ρ+P = -9.874391e+00)
+[ OK ] Step 4: ρ_exotic = 5.544693e-23 > 0
+[ OK ] Step 5: P_SCm = -4.607000e-04 Pa < 0
+[ OK ] Step 5: ρ+P = -5.070273e-21 < 0 (exotic matter)
+[ OK ] Step 6: Full chain → (ρ+P) = -5.070273e-21
+[ OK ] S26 = 19.601694
+
+============================================================
+  thorne_morris_exotic_derivation.py: 7/7 tests passed
+============================================================

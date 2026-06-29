@@ -1,0 +1,88 @@
+==============================================================================
+UQFF Constant Derivation v2  --  three-anchor SI closure
+==============================================================================
+  E0  = 1.0000e-20 J
+  f   = 1.2500e+12 Hz   -> T = 8.0000e-13 s
+  v_F = 7.7000e+05 m/s  -> L = 6.1600e-07 m
+                         -> M = 1.6866e-32 kg
+
+Natural (dimensionless-prefactor = 1) values:
+  h_nat = E0/f       = 8.0000e-33  vs h_obs = 6.6261e-34  ratio = 1.2074e+01
+  c_nat = v_F        = 7.7000e+05  vs c_obs = 2.9979e+08  ratio = 2.5684e-03
+  G_nat = v_F^4/E0   = 3.5153e+43  vs G_obs = 6.6743e-11  ratio = 5.2669e+53
+
+Dimensionless prefactors required from UQFF ratios:
+  prefactor(h) = 8.2826e-02   (log10 = -1.082)
+  prefactor(c) = 3.8934e+02   (log10 = +2.590)
+  prefactor(G) = 1.8986e-54   (log10 = -53.722)
+  prefactor(alpha) = 7.2974e-03   (log10 = -2.137)
+
+--- target prefactor for h = 8.2826e-02 ---
+  ['BETA_I', '4pi', 'Li26'] signs=(1, -1, -1) -> 8.3766e-02  (log_off=+/-0.005)
+  ['BETA_I', '4pi', 'Li_26_raw'] signs=(1, -1, -1) -> 8.3766e-02  (log_off=+/-0.005)
+  ['SSQ', 'BETA_I', '4pi'] signs=(-1, 1, -1) -> 8.3766e-02  (log_off=+/-0.005)
+  ['F_TRZ', 'PHI_RES'] signs=(1, 1) -> 8.4000e-02  (log_off=+/-0.006)
+  ['PHI_RES', 'DPM=10'] signs=(1, -1) -> 8.4000e-02  (log_off=+/-0.006)
+  ['BETA_I', '2pi', 'pi'] signs=(-1, -1, -1) -> 8.4434e-02  (log_off=+/-0.008)
+  ['SSQ', 'PHI_RES', '26'] signs=(-1, -1, -1) -> 8.0329e-02  (log_off=+/-0.013)
+  ['PHI_RES', '26', 'Li26'] signs=(-1, -1, -1) -> 8.0329e-02  (log_off=+/-0.013)
+
+--- target prefactor for c = 3.8934e+02 ---
+  ['PHI_RES', '26', '4pi'] signs=(-1, 1, 1) -> 3.8896e+02  (log_off=+/-0.000)
+  ['DPM=10', '4pi', 'pi'] signs=(1, 1, 1) -> 3.9478e+02  (log_off=+/-0.006)
+  ['F_TRZ', '4pi', 'pi'] signs=(-1, 1, 1) -> 3.9478e+02  (log_off=+/-0.006)
+  ['BETA_I', 'DPM=10', '26'] signs=(-1, 1, 1) -> 4.3333e+02  (log_off=+/-0.046)
+  ['BETA_I', 'F_TRZ', '26'] signs=(-1, -1, 1) -> 4.3333e+02  (log_off=+/-0.046)
+  ['DPM=10', '26', 'Li26'] signs=(1, 1, -1) -> 4.5614e+02  (log_off=+/-0.069)
+  ['DPM=10', '26', 'Li_26_raw'] signs=(1, 1, -1) -> 4.5614e+02  (log_off=+/-0.069)
+  ['F_TRZ', '26', 'Li26'] signs=(-1, 1, -1) -> 4.5614e+02  (log_off=+/-0.069)
+
+--- target prefactor for G = 1.8986e-54 ---
+  no combo of <=3 primitives within 0.5 dex of target
+
+--- target prefactor for alpha = 7.2974e-03 ---
+  ['PHI_RES', '26', '2pi'] signs=(-1, -1, -1) -> 7.2873e-03  (log_off=+/-0.001)
+  ['BETA_I', '26', 'pi'] signs=(1, -1, -1) -> 7.3456e-03  (log_off=+/-0.003)
+  ['2pi', '4pi', 'Li26'] signs=(-1, -1, 1) -> 7.2191e-03  (log_off=+/-0.005)
+  ['2pi', '4pi', 'Li_26_raw'] signs=(-1, -1, 1) -> 7.2191e-03  (log_off=+/-0.005)
+  ['SSQ', '2pi', '4pi'] signs=(1, -1, -1) -> 7.2191e-03  (log_off=+/-0.005)
+  ['BETA_I', '2pi', '4pi'] signs=(1, -1, -1) -> 7.5991e-03  (log_off=+/-0.018)
+  ['26', 'pi', 'Li26'] signs=(-1, -1, 1) -> 6.9783e-03  (log_off=+/-0.019)
+  ['26', 'pi', 'Li_26_raw'] signs=(-1, -1, 1) -> 6.9783e-03  (log_off=+/-0.019)
+
+==============================================================================
+LEADING-ORDER CANDIDATE FORMULAS (no fit knobs)
+==============================================================================
+  alpha = 1 / (26*2pi)         = 6.1213e-03  (obs=7.2974e-03, log_off=-0.076)
+  h = alpha_uqff                 * E0/f = 4.8971e-35  (obs=6.6261e-34, log_off=-1.131)
+  h = SSQ*F_TRZ                  * E0/f = 4.5600e-34  (obs=6.6261e-34, log_off=-0.162)
+  h = 1/(4pi)                    * E0/f = 6.3662e-34  (obs=6.6261e-34, log_off=-0.017)
+  h = 1/(2pi*PHI_RES)            * E0/f = 1.5158e-33  (obs=6.6261e-34, log_off=+0.359)
+  h = F_TRZ*PHI_RES              * E0/f = 6.7200e-34  (obs=6.6261e-34, log_off=+0.006)
+  h = SSQ/(2pi)                  * E0/f = 7.2575e-34  (obs=6.6261e-34, log_off=+0.040)
+  h = 1/(26*F_TRZ*2pi)           * E0/f = 4.8971e-34  (obs=6.6261e-34, log_off=-0.131)
+
+  c = DPM^2*4pi                  * v_F  = 9.6761e+08  (obs=2.9979e+08, log_off=+0.509)
+  c = DPM*4pi*PHI_RES            * v_F  = 8.1279e+07  (obs=2.9979e+08, log_off=-0.567)
+  c = 26*F_TRZ*SSQ^-2            * v_F  = 6.1619e+06  (obs=2.9979e+08, log_off=-1.687)
+  c = 26*F_TRZ*BETA_I^-2         * v_F  = 5.5611e+06  (obs=2.9979e+08, log_off=-1.732)
+  c = 1/SSQ^14                   * v_F  = 2.0149e+09  (obs=2.9979e+08, log_off=+0.827)
+  c = 2pi*26*SSQ^-2              * v_F  = 3.8716e+08  (obs=2.9979e+08, log_off=+0.111)
+  c = 1/(SSQ*F_TRZ)^2            * v_F  = 2.3700e+08  (obs=2.9979e+08, log_off=-0.102)
+  c = PHI_RES/(SSQ^14)           * v_F  = 1.6925e+09  (obs=2.9979e+08, log_off=+0.752)
+
+  G = alpha_uqff^17              * v_F^4/E0 = 8.3629e+05  (obs=6.6743e-11, log_off=+16.098)
+  G = SSQ^58                     * v_F^4/E0 = 2.4362e+29  (obs=6.6743e-11, log_off=+39.562)
+  G = 1/(DPM^34*SSQ^2)           * v_F^4/E0 = 1.0820e+10  (obs=6.6743e-11, log_off=+20.210)
+  G = 1/26!                      * v_F^4/E0 = 8.7165e+16  (obs=6.6743e-11, log_off=+27.116)
+  G = 1/(26!*SSQ^7)              * v_F^4/E0 = 4.4588e+18  (obs=6.6743e-11, log_off=+28.825)
+  G = alpha_uqff*1/26!           * v_F^4/E0 = 5.3357e+14  (obs=6.6743e-11, log_off=+24.903)
+
+==============================================================================
+QUICK-WIN CHECK: alpha_uqff = 1/(26*2pi) as h-prefactor
+==============================================================================
+  required h-prefactor: 8.2826e-02
+  alpha_uqff          : 6.1213e-03
+  ratio               : 1.3531e+01
+  log10(ratio)        : +1.131
+  =>  h = alpha_uqff * E0 / f = 4.8971e-35  (obs=6.6261e-34, log_off=-1.131)
