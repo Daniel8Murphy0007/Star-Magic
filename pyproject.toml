@@ -212,6 +212,7 @@ exclude = [
     "_phase_e7_merge_dispatch_into_master_closures.py",
     "_phase_g1_atlas_append.py",
     "_phase_g2_geometry_atlas.py",
+    "_phase_g3_tutorial_notebooks.py",
     "phase_e7_tag_audit.csv",
     "WHITEPAPER_INDEX.md",
     "COVERAGE_GAPS.md",

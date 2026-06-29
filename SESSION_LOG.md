@@ -12157,3 +12157,150 @@ Three of the four (all except Li-7) use the multi-path principle. Li-7's single-
 form is EXACT to integer arithmetic and structurally indivisible — the cleanest
 possible closure per the discipline.
 
+
+---
+
+## Round 675 — Step 4: Per-domain tutorial notebooks (2026-06-29 06:18 UTC)
+**Commit:** pending Daniel's review (per Rule 11)
+
+### Trigger
+
+Step 4 of the seven-step "next" plan. Per AskUserQuestion decision: build all 10
+per-domain Jupyter notebooks in this round (vs. 3-representative or 1-flagship options).
+Each notebook teaches the Phase E/F/G assimilation API for one of the 10 dispatch
+domains: SI, SM, LCDM, astro, GR, chem, CM, bio, geo, KK.
+
+### Design
+
+Each notebook follows a consistent template:
+1. **Title cell** — domain label, observable count, references to ASSIMILATION_GEOMETRY_ATLAS.md and OVERDETERMINATION_MAP.md
+2. **Setup cell** — imports + full domain listing pulled live from `assimilation_dispatch.DISPATCH`
+3. **Deep-dive section** — 2-3 representative observables, each with:
+   - Markdown cell with formula, owner geometry, residual, primary source
+   - Simple call (`{'value': X}` Rule-5 contract)
+   - Decomposed call (8-field provenance dict)
+4. **Multi-path corroboration section** (where dual closures exist) — pairs primary + alternate, computes spread
+5. **Cross-references** — atlas, map, CLI equivalents, SESSION_LOG audit anchors
+
+Notebook prefix follows existing pattern (00_quickstart, 01_holmlid_lenr, ...): the 10 new
+notebooks use prefixes 10-19 to keep them in a contiguous block in alphabetical listing.
+
+### Actions
+
+1. **Generator built:** `_phase_g3_tutorial_notebooks.py` (~150 lines, idempotent).
+   Reads `assimilation_dispatch.DISPATCH` live, builds nbformat 4 JSON for each domain.
+   Re-runnable — regenerates all 10 notebooks from current dispatch state.
+2. **Initial bug + fix:** first generator output used `src.split("\n")` for source lists,
+   which strips the newlines and produces invalid Python on exec. Fixed by storing
+   source as a single string (also valid per nbformat 4 spec). Both notebook parsing
+   AND code execution now pass.
+3. **10 notebooks generated:**
+
+| Notebook | Domain | Observables | Cells |
+|---|---|---:|---:|
+| 10_assimilation_SI.ipynb | SI Fundamentals | 7 | 19 |
+| 11_assimilation_SM.ipynb | Standard Model | 24 | 22 |
+| 12_assimilation_LCDM.ipynb | Lambda-CDM Cosmology | 20 | 16 |
+| 13_assimilation_astro.ipynb | Astrophysical Constants | 14 | 14 |
+| 14_assimilation_GR.ipynb | General Relativity | 10 | 14 |
+| 15_assimilation_chem.ipynb | Chemistry | 1 | 8 |
+| 16_assimilation_CM.ipynb | Condensed Matter | 10 | 14 |
+| 17_assimilation_bio.ipynb | Biology / Biochemistry | 10 | 14 |
+| 18_assimilation_geo.ipynb | Geophysics | 10 | 14 |
+| 19_assimilation_KK.ipynb | Kaluza-Klein Universal Scaling | 10 | 14 |
+
+  Total: 116 observables documented, 149 cells across the 10 notebooks.
+
+4. **Multi-path corroboration sections** present in the three domains that have dual
+   closures injected:
+   - 11_assimilation_SM.ipynb: SM_cabibbo_sin_primary + SM_cabibbo_sin_alternate (Round 674)
+   - 12_assimilation_LCDM.ipynb: LCDM_BAO_rd_H0_over_c_primary + LCDM_BAO_rd_H0_over_c_alternate (Round 669)
+   - 10_assimilation_SI.ipynb: no dual closure currently (single-formula domain)
+5. **Harness built:** `test_phase_g3_tutorial_notebooks.py` (~80 lines). For each of the
+   10 notebooks: load JSON, validate nbformat 4, extract all code cells, exec them in a
+   single namespace per notebook, verify no exceptions raised. Lightweight — no Jupyter
+   kernel needed in CI.
+
+### Verification
+
+```
+10 notebooks generated, all parse as nbformat 4.
+
+PHASE G3 SUCCESS CRITERION MET. 10 / 10 notebooks executable.
+
+Full regression sweep:
+  test_phase_d_solver_bus.py                 -> PHASE D MET
+  test_phase_e6_kk_assimilation.py           -> PHASE E6 MET
+  test_phase_e8_overdetermination_map.py     -> PHASE E8 MET
+  test_phase_f_public_surfaces.py            -> PHASE F MET
+  test_phase_g_cli_dispatch.py               -> PHASE G CLI MET
+  test_phase_g3_tutorial_notebooks.py        -> PHASE G3 MET
+
+Fidelity gate: 907 passed, 0 failed (unchanged).
+```
+
+### Bundling
+
+Notebooks are already included in the pip-installed wheel via two existing mechanisms in
+`pyproject.toml`:
+1. `[tool.setuptools.packages.find]` includes `"notebooks"` and `"notebooks.*"` (line 127-128)
+2. `[tool.setuptools.package-data]` declares `"notebooks" = ["*.ipynb"]` (line 175)
+
+The Phase G3 generator script itself was added to the `share/uqff` data-files bundle
+so users who `pip install uqff` can regenerate notebooks from the latest dispatch:
+`python -m _phase_g3_tutorial_notebooks`.
+
+### Files added/modified
+- **NEW** `_phase_g3_tutorial_notebooks.py` (~150 lines, generator)
+- **NEW** `notebooks/10_assimilation_SI.ipynb` (19 cells)
+- **NEW** `notebooks/11_assimilation_SM.ipynb` (22 cells, multi-path Cabibbo)
+- **NEW** `notebooks/12_assimilation_LCDM.ipynb` (16 cells, multi-path BAO)
+- **NEW** `notebooks/13_assimilation_astro.ipynb` (14 cells)
+- **NEW** `notebooks/14_assimilation_GR.ipynb` (14 cells)
+- **NEW** `notebooks/15_assimilation_chem.ipynb` (8 cells; only 1 observable in domain)
+- **NEW** `notebooks/16_assimilation_CM.ipynb` (14 cells)
+- **NEW** `notebooks/17_assimilation_bio.ipynb` (14 cells)
+- **NEW** `notebooks/18_assimilation_geo.ipynb` (14 cells)
+- **NEW** `notebooks/19_assimilation_KK.ipynb` (14 cells)
+- **NEW** `test_phase_g3_tutorial_notebooks.py` (~80 lines, regression harness)
+- **MOD** `pyproject.toml` — added `_phase_g3_tutorial_notebooks.py` to `share/uqff` bundle
+- **MOD** `SESSION_LOG.md` (this entry)
+
+### Use cases
+
+**For NASA-Roses panel reviewers:**
+```bash
+pip install uqff
+jupyter notebook notebooks/12_assimilation_LCDM.ipynb
+# Walks through BAO dual closure end-to-end with executable verification
+```
+
+**For three-university peer-review reviewers:**
+Same. Each notebook is self-contained, runs against the installed package, and
+cross-references the canonical audit-trail documents (ASSIMILATION_GEOMETRY_ATLAS,
+OVERDETERMINATION_MAP, SESSION_LOG).
+
+**For Daniel (regeneration after dispatch grows):**
+```bash
+python3 _phase_g3_tutorial_notebooks.py
+# Re-emits all 10 notebooks from current dispatch state.
+```
+
+### Open items
+
+- **Step 5** — PAPER_NEW Lagrangian re-derivation of BAO + Cabibbo dual closures.
+  Needs Daniel's physics judgment (KK zero-mode identification chain).
+- **Step 7** — Aetheric-Propulsion extraction. Deferred until peer review complete.
+
+### Round close
+
+10 tutorial notebooks executable end-to-end. Combined with the v5.30.0 PyPI release,
+the CLI extension (Round 673), and the ASSIMILATION_GEOMETRY_ATLAS / OVERDETERMINATION_MAP
+documents, peer reviewers have **four parallel discovery paths**:
+1. **Markdown documents** for reading (atlases, OVERDETERMINATION_MAP.md)
+2. **Jupyter notebooks** for interactive learning (one per domain)
+3. **CLI** for terminal exploration (`uqff assimilate <observable> --decompose`)
+4. **Python API** for programmatic integration (`calculate_analytic_closures({...})`)
+
+Each path independently traces back to the same source of truth (`assimilation_dispatch.py`)
+and the same audit trail (`SESSION_LOG.md` rounds + PAPER_* whitepapers).
