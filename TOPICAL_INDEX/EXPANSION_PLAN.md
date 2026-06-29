@@ -628,9 +628,82 @@ Round 666 deliverable:
 - Harness: `test_phase_e6_kk_assimilation.py` (10/10 KK PASS + BAO audit PASS).
 - See SESSION_LOG.md Round 666 for verification record.
 
-**E7 — Phase 2 merge with 3 new columns: STATUS PENDING**
+**E7 — Phase 2 merge with 3 new columns: STATUS COMPLETE (Round 667; awaiting Daniel's atomic swap commit)**
 
-**E8 — Generate OVERDETERMINATION_MAP.csv: STATUS PENDING** (per Section 9 + `_build_overdetermination_views.py`)
+Round 667 deliverable:
+- `master_closures.csv` extended schema 13 → 16 columns: existing columns preserved + new
+  `geometry_used`, `numeric_system`, `assimilation_status`.
+- Staged file: `master_closures.csv.PROPOSED_E7` (528 KB; 2,216 data rows + header).
+- Backup: `master_closures.csv.PRE_PHASE_E7_BACKUP` preserves the v13 state.
+- Backfill from `assimilation_dispatch.py`: 31 rows tagged via two-stage matcher
+  (7 via exact session_script match, 24 via normalized observable-name substring match
+  against closure/label). The remaining 2,185 rows are historical closures awaiting
+  future solver-bus routing; they keep empty values in the new columns.
+- Tagged-row distribution:
+  * Geometry: d26=18, dpm=8, qcalcgeom=3, bsfg=2
+  * Status: EXACT=16, OK=14, TENSION=1
+- TENSION row preserved end-to-end: `LCDM_BAO_rd_H0_over_c_OPEN` (the Round 663 BAO
+  flag) shows up in the merged ledger with assimilation_status=TENSION, not OK —
+  the OPEN_QUESTION discipline is now visible in the master ledger as well as
+  the dispatch.
+- Audit log: `phase_e7_tag_audit.csv` lists every tagged row with the dispatch
+  observable, owner geometry, status, and match method (script_only / script+name /
+  name_substring) for full peer-review traceability.
+- Backward compatibility verified: harness confirms zero mutations to the original
+  13 columns vs `PRE_PHASE_E7_BACKUP`. All Phase D / E1-E6 regression harnesses
+  still green. Fidelity gate: 867/0.
+
+**Mount-write note (peer-review-relevant):** the workspace FUSE mount blocks
+in-place overwrite of existing files (cp, mv, dd, os.replace all fail with EPERM).
+The Phase E7 merge writes to `master_closures.csv.PROPOSED_E7`. Daniel's commit
+performs the atomic swap per the "YOU FIND AND I REVIEW AND COMMIT. PERIOD!"
+workflow rule:
+```
+mv master_closures.csv master_closures.csv.PRE_E7_LIVE
+mv master_closures.csv.PROPOSED_E7 master_closures.csv
+```
+The harness `test_phase_e7_master_closures_merge.py` auto-detects whether the
+swap has happened (16-col live file) and verifies either state.
+
+- Harness: `test_phase_e7_master_closures_merge.py` (6/6 checks PASS).
+- Merge script: `_phase_e7_merge_dispatch_into_master_closures.py`.
+- See SESSION_LOG.md Round 667 for verification record.
+
+**E8 — Generate OVERDETERMINATION_MAP.csv: STATUS COMPLETE (Round 668)**
+
+Round 668 deliverable: three artifacts join the dispatch catalog × the 4 x 3 solver matrix:
+- `OVERDETERMINATION_MAP.csv` (long format, 1,344 rows = 112 obs × 4 geom × 3 num; ~100 KB)
+- `OVERDETERMINATION_WIDE.csv` (wide format, 112 rows × 18 cols; one row per observable with 12 residual cells + owner_N + total_N; ~9 KB)
+- `OVERDETERMINATION_MAP.md` (human/peer-review summary with top-line metrics, per-domain rollup, TENSION block)
+
+Top-line metrics:
+- 112 observables × 12-cell 4 x 3 matrix = 1,344 total cells.
+- Populated cells: 336 (25.0%) — every observable's owner geometry's 3 numeric backends all populate.
+- EXACT cells: 99 (closures within 1e-9 of target).
+- OK cells: 234 (closures within documented residual tolerance).
+- TENSION cells: 3 (LCDM_BAO_rd_H0_over_c_OPEN routed through symbolic/numerical/discrete — all flagged TENSION because notes contain OPEN_QUESTION).
+- GAP cells: 1,008 (non-owner-geometry combinations — by design; each observable has one owner).
+
+Per-domain coverage with worst residual:
+| Domain | Obs | EXACT | OK | TENSION | Worst |
+|---|---:|---:|---:|---:|---:|
+| SI | 7 | 15 | 6 | 0 | 0.0263% |
+| SM | 22 | 15 | 51 | 0 | 1.1669% |
+| LCDM | 18 | 9 | 42 | 3 | 7.0968% (Li-7 BBN; well-known cosmology tension) |
+| astro | 14 | 21 | 21 | 0 | 0.6667% |
+| GR | 10 | 9 | 21 | 0 | 0.0850% |
+| chem | 1 | 3 | 0 | 0 | 0.0000% |
+| CM | 10 | 12 | 18 | 0 | 0.3774% |
+| bio | 10 | 9 | 21 | 0 | 0.2113% |
+| geo | 10 | 6 | 24 | 0 | 0.2139% |
+| KK | 10 | 0 | 30 | 0 | 0.4910% |
+
+Notable: LCDM_Li7_BBN_dilution at 7.10% — UQFF predicts 2.88 vs observed 3.1. The Lithium-7 problem is a well-known unresolved cosmology tension; UQFF gets within 7% without invoking BBN-specific tuning. Likely candidate for future OPEN_QUESTION elevation if a corrected derivation emerges.
+
+Generator script: `_build_overdetermination_views.py` (~150 lines, idempotent).
+Harness: `test_phase_e8_overdetermination_map.py` (8 checks, all PASS).
+Regression: Phase D / E1-E6 + E8 all green; fidelity gate 867/0.
+See SESSION_LOG.md Round 668 for verification record.
 
 **Phase E cumulative deliverable:** 358 SI-dimensioned observables wired through `QCalcGeom.solve()`; 2,217 ledger rows tagged with geometry x numeric x status; OVERDETERMINATION_MAP.csv long + wide + .md summary generated.
 
