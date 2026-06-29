@@ -2,24 +2,6 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
-## [5.31.1] — 2026-06-29
-
-**Whitepaper-drop patch release.** Adds the late-corpus whitepaper batch (commit `f2d73eb1`) that landed after the v5.31.0 tag was pushed.
-
-### Added
-- ~1,426 files updated/added — primarily new whitepapers in the `PAPER_1200`-`PAPER_1799` range:
-  - `PAPER_1256_TAU_NEUTRINO_MASS_HIERARCHY.md`
-  - `PAPER_1257_STERILE_NEUTRINO_EXISTENCE.md`
-  - `PAPER_1258_GRB_LONG_SHORT_BIMODALITY.md`
-  - `PAPER_1259_FRB_ORIGIN_MECHANISM.md` (and many more in the same numeric range)
-- ~435K lines of new whitepaper content bundled via the existing `whitepapers/*.md` package-data glob.
-
-### Notes
-- No public API change. `import uqff_pure_calculator` is identical to v5.31.0.
-- No dispatch changes — `assimilation_dispatch.py` still carries 116 observables.
-- Fidelity gate unchanged: 907 / 0.
-- Trigger for this release: commit `f2d73eb1` landed in master after `v5.31.0` tag, and PyPI does not permit re-uploading the same version number. Patch bump is the canonical path to ship.
-
 ## [5.31.0] — 2026-06-29
 
 **Phase G CLI extension + Round 674 Cabibbo dual closure + Round 675 tutorial notebooks + Round 676 Aetheric-Propulsion extraction kit + Round 677 PAPER_1800 (BAO + Cabibbo Lagrangian re-derivation) + Round 678 PAPER_1801 (formal tensor-level KK derivation).**
