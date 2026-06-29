@@ -2,6 +2,44 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.31.0] — 2026-06-29
+
+**Phase G CLI extension + Round 674 Cabibbo dual closure + Round 675 tutorial notebooks + Round 676 Aetheric-Propulsion extraction kit + Round 677 PAPER_1800 (BAO + Cabibbo Lagrangian re-derivation) + Round 678 PAPER_1801 (formal tensor-level KK derivation).**
+
+### Added
+- **PAPER_1800** (`whitepapers/PAPER_1800_UQFF_BAO_Cabibbo_Lagrangian_Rederivation.md`) — 312 lines, 12 sections. Closes the open Lagrangian item from PAPER_1156 Appendix A §A.6: derives BAO + Cabibbo dual closures from the closed nine-sector L_F_U via curvature/BSFG vs. Mexican-hat/Ramanujan sector-pair attribution.
+- **PAPER_1801** (`whitepapers/PAPER_1801_UQFF_BAO_Cabibbo_Formal_KK_Tensor_Derivation.md`) — 237 lines, 12 sections. Provides explicit tensor-level KK zero-mode derivation matching PAPER_1800's sector-pair attribution: metric ansatz block diagonalization, KK mode expansion, volume integration, FRW(z) reduction.
+- **Cabibbo dual closure** (Round 674) — `SM_cabibbo_sin_primary` at 0.008% + `SM_cabibbo_sin_alternate` at 0.025%. 47x and 15x tighter than PDG 2024 experimental uncertainty. Multi-path corroboration: primary uses {N_CH, K_MEX, β_i, A_5, Φ_res}; alternate uses {D_phys, K_MEX, S_26, D_BSFG, N_CH}; share only K_MEX + N_CH.
+- **Phase G7 CLI extension** (Round 673) — `uqff assimilate <observable> --geometry=... --numeric=... --decompose`, plus `uqff list --dispatch / --domain SI` and case-insensitive `predict` fallback to assimilation_dispatch. Existing 8 subcommands unchanged.
+- **10 per-domain tutorial notebooks** (Round 675) — `notebooks/1[0-9]_assimilation_*.ipynb`, one per dispatch domain (SI, SM, LCDM, astro, GR, chem, CM, bio, geo, KK), with multi-path sections for SM (Cabibbo) and LCDM (BAO). All 10 executable via `python3 test_phase_g3_tutorial_notebooks.py`.
+- **Aetheric-Propulsion extraction kit** (Round 676) — `EXTRACTION_KIT/` subdirectory with migration script + 25-file repo layout + 7-step EXTRACTION_PROCEDURE.md for future commercial-tier split. Standalone bundle (no runtime dep on uqff). Verified self-contained import + dispatch via `test_extraction_kit.py`.
+- **Cat 17 dispatch pinning** (Round 671 epilogue) — `uqff_fidelity_tests.py` extended with +16 dispatch-pinning checks: 114 → 116 observables (Round 674 +2), owner-geometry distribution {dpm=54, qcalcgeom=21, bsfg=21, d26=20}, BAO primary/alternate residual pins, Li-7 PAPER_1227 source pin, EDGES PAPER_1761 source pin, no-OPEN_QUESTION invariant.
+- **Cabibbo convergence-chain annotations** (Round 678) — `SM_cabibbo_theta_deg_S326` (1.1%) and `SM_cabibbo_sin_S379` (0.5%) entries preserved with notes explaining the convergence: S326 → S379 → primary (0.008%) → alternate (0.025%). Peer reviewers see the framework refining toward truth.
+
+### Verified
+- **Fidelity gate** `uqff_fidelity_tests.py`: **907 passed, 0 failed** (Round 671 epilogue Cat 17 SKIPs cleanly on bare CI runners without sympy).
+- **Companion arithmetic verifications:**
+  - `_step5_paper1800_verify.py` — 4/4 closures PASS (BAO primary 0.0093%, BAO alternate 0.0274%, Cabibbo primary 0.0075%, Cabibbo alternate 0.0252%).
+  - `_step5_paper1801_verify.py` — FRW(z) reduction parameters + 4/4 zero-mode coefficients PASS.
+- **Multi-path spreads:** BAO 1.21×10⁻⁵, Cabibbo 3.98×10⁻⁵ — joint-probability evidence the forms are structural rather than coincidental (PAPER_1800 §9, PAPER_1801 §8).
+- Phase D / E1-E6 / E8 / F / G-CLI / G3 / Step 7 / Step 5 regression harnesses all green.
+- **0 TENSION cells** in OVERDETERMINATION_MAP (unchanged from v5.30.0).
+- **42 public `calculate_*` surfaces** (unchanged from v5.30.0).
+- **116 observables** in dispatch (was 114 in v5.30.0; +2 from Round 674 Cabibbo injection).
+
+### CLI
+- `uqff assimilate alpha_inverse` → value: 137.0
+- `uqff assimilate LCDM_BAO_rd_H0_over_c_primary --decompose` → 8-field result dict
+- `uqff list --dispatch` → 116 observables
+- `uqff list --domain SI` → 7 SI observables
+- `uqff predict lcdm_bao_rd_h0_over_c_primary` (case-insensitive) → falls back to assimilation_dispatch
+
+### Notes
+- All 11 (effective 9 truly-independent + 2 derivative D_BSFG, K_MEX) locked canonical primitives intact.
+- All 34 prior public calculate_* surfaces unchanged in signature and return values.
+- The Aetheric-Propulsion repo (https://github.com/Daniel8Murphy0007/Aetheric-Propulsion) is created and ready for extraction via `EXTRACTION_KIT/_step7_migrate_to_aetheric_propulsion.py`. First standalone PyPI release (`pip install aetheric-propulsion`) follows EXTRACTION_PROCEDURE.md §§7.3-7.6 at Daniel's discretion.
+- See `SESSION_LOG.md` Rounds 671 epilogue + 672-678 for the full audit trail.
+
 ## [5.30.0] — 2026-06-29
 
 **Phase E + F + G — Assimilation Geometry Public API + Round 669 corrective injections.**

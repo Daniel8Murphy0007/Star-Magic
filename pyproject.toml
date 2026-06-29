@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.30.0"
+version = "5.31.0"
 description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, full proof corpus: 1994 whitepapers + Lean 4 scaffold + 4 arXiv bundles + manuscript)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -213,6 +213,8 @@ exclude = [
     "_phase_g1_atlas_append.py",
     "_phase_g2_geometry_atlas.py",
     "_phase_g3_tutorial_notebooks.py",
+    "_step5_paper1800_verify.py",
+    "_step5_paper1801_verify.py",
     "phase_e7_tag_audit.csv",
     "WHITEPAPER_INDEX.md",
     "COVERAGE_GAPS.md",

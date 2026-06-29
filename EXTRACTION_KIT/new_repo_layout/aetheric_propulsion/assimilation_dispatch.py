@@ -322,7 +322,7 @@ DISPATCH = {
         "primary_source":  "PAPER_1167",
         "session_script":  "_session326.py",
         "residual_pct":    1.1,
-        "notes":           'S326 corrected; matches obs 13.04 deg within 1.1%',
+        "notes":           'Convergence-chain entry 1 of 4 (Round 678 annotation): Original PAPER_1167 G-closure formula at 1.1% residual. Superseded but preserved for audit trail — peer reviewers see the framework refining toward truth. Chain: S326 (1.1%) -> S379 (0.5%) -> SM_cabibbo_sin_primary (0.008%) -> SM_cabibbo_sin_alternate (0.025%). See PAPER_1800 for Lagrangian re-derivation of primary + alternate.',
     },
     "SM_delta_CP": {
         "domain":          "SM",
@@ -399,7 +399,7 @@ DISPATCH = {
         "primary_source":  "PAPER_1209HH",
         "session_script":  "_session379.py",
         "residual_pct":    0.5,
-        "notes":           'Cabibbo angle sine = |V_us|',
+        "notes":           'Convergence-chain entry 2 of 4 (Round 678 annotation): Improved PAPER_1209HH formula at 0.5% residual, essentially within PDG experimental uncertainty (~0.379%). Superseded by SM_cabibbo_sin_primary (0.008%, Round 674) but preserved for audit trail. Chain: S326 (1.1%) -> S379 (0.5%) -> primary (0.008%) -> alternate (0.025%). See PAPER_1800 for Lagrangian re-derivation.',
     },
     "SM_proton_g_factor": {
         "domain":          "SM",
