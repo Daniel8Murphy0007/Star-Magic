@@ -12304,3 +12304,135 @@ documents, peer reviewers have **four parallel discovery paths**:
 
 Each path independently traces back to the same source of truth (`assimilation_dispatch.py`)
 and the same audit trail (`SESSION_LOG.md` rounds + PAPER_* whitepapers).
+
+---
+
+## Round 676 — Step 7: Aetheric-Propulsion extraction kit staged (2026-06-29 06:48 UTC)
+**Commit:** pending Daniel's review (per Rule 11)
+
+### Trigger
+
+Step 7 of the seven-step "next" plan. After Daniel confirmed v5.30.0 PyPI release was
+live and CI green on Round 675 (Step 4 notebooks), he asked to start Step 7 with Step 5
+deferred to the next commit. The Aetheric-Propulsion extraction was originally framed
+in EXPANSION_PLAN §12 as "when peer-review and grant phases complete" — Daniel pulled
+it forward to set up the architectural split now, with all parties (Star-Magic for free
+peer-review access; Aetheric-Propulsion as future commercial-tier home).
+
+### Decisions (via AskUserQuestion)
+
+1. **Extraction mode:** Stage in `Star-Magic/EXTRACTION_KIT/` — kit lives inside
+   Star-Magic, refresh from current state, migrate to target Aetheric-Propulsion
+   checkout when Daniel creates the repo.
+2. **Star-Magic policy:** Defer removal decision — kit is additive; nothing is removed
+   from Star-Magic. Both repos can coexist during the peer-review phase per the
+   "no paywalls" mandate.
+3. **Package dependency:** Bundle uqff_pure_calculator.py standalone — Aetheric-Propulsion
+   does NOT depend on uqff at runtime. Fully self-contained pip install.
+
+### Actions
+
+**1. Built migration script:** `EXTRACTION_KIT/_step7_migrate_to_aetheric_propulsion.py`
+   - Refresh mode (no args): copies current Star-Magic files into
+     `EXTRACTION_KIT/new_repo_layout/aetheric_propulsion/`
+   - Migrate mode (target dir arg): copies the entire layout into the target
+     Aetheric-Propulsion repo checkout
+   - Idempotent in both directions
+   - FUSE-mount-friendly: uses `shutil.copyfile` per-file rather than
+     `copytree+rmtree` (FUSE blocks rmtree of existing dirs)
+
+**2. Built the new repo layout** in `EXTRACTION_KIT/new_repo_layout/`:
+
+| Layer | Content |
+|---|---|
+| Top-level | `pyproject.toml` (name=aetheric-propulsion v0.1.0, AGPL-3.0-or-later, no runtime deps), `README.md`, `LICENSE-AGPL-3.0.txt`, `COMMERCIAL.md` |
+| CI | `.github/workflows/release.yml` (Trusted Publishing OIDC, mirrors Star-Magic's release.yml) |
+| Package | `aetheric_propulsion/__init__.py` (re-exports the 8 Phase F surfaces + solve + DISPATCH + domains) |
+| Bundled modules | `calculator.py` (renamed from uqff_pure_calculator.py), `assimilation_dispatch.py`, `qcalcgeom_solver.py`, `provenance_recorder.py`, `_build_overdetermination_views.py` |
+| Backends | `geometry_backends/` (4 files) + `numeric_backends/` (3 files) |
+| Data | `data/OVERDETERMINATION_MAP.csv`, `data/OVERDETERMINATION_WIDE.csv`, `data/OVERDETERMINATION_MAP.md`, `data/ASSIMILATION_GEOMETRY_ATLAS.md` |
+| Tests | `tests/test_smoke.py` (mirrors ci_smoke.py contract) |
+
+Total kit: **25 files** in `EXTRACTION_KIT/new_repo_layout/` + 2 management files
+(`_step7_migrate_to_aetheric_propulsion.py`, `EXTRACTION_PROCEDURE.md`).
+
+**3. Wrote EXTRACTION_PROCEDURE.md** — 7-step playbook for when Daniel creates the repo:
+- 7.1: Create the GitHub repo
+- 7.2: Clone locally, refresh the kit from Star-Magic
+- 7.3: Run migration script with target dir
+- 7.4: Verify, commit, push to the new repo
+- 7.5: Configure PyPI Trusted Publishing
+- 7.6: First PyPI release via tag push
+- 7.7 (deferred): Star-Magic cross-link in README
+
+**4. Built regression harness:** `test_extraction_kit.py` (4 checks):
+- Migration script refresh runs without error
+- All 25 required files present in `new_repo_layout/`
+- `pyproject.toml` parses as valid TOML with correct name/version
+- Bundled package imports cleanly via sys.path injection (no install needed):
+  - DISPATCH_LEN=116 confirmed
+  - DOMAINS list includes all 10 expected domains
+  - `alpha_inverse` returns 137.0 via the bundled `calculate_analytic_closures`
+
+### Verification
+
+```
+EXTRACTION_KIT regression: 4/4 PASS
+  IMPORT_OK version=0.1.0
+  DISPATCH_LEN=116
+  DOMAINS=['CM', 'GR', 'KK', 'LCDM', 'SI', 'SM', 'astro', 'bio', 'chem', 'geo']
+  ALPHA=137.0
+
+Full Star-Magic regression sweep (D, E6, E8, F, G-CLI, G3, Step 7): all green
+Fidelity gate: 907 passed, 0 failed (unchanged)
+```
+
+### Architecture notes
+
+- **No Star-Magic surface changed.** The kit is a new top-level subdirectory; existing
+  imports, paths, public surfaces, dispatch, solver — all untouched.
+- **Two repos can coexist on PyPI** during peer review: `pip install uqff` continues
+  to provide the full assimilation API; `pip install aetheric-propulsion` provides
+  the same core but under the `aetheric_propulsion` namespace. Users pick one or
+  the other (module names differ: `uqff_pure_calculator` vs `aetheric_propulsion.calculator`).
+- **Future re-syncs are scripted.** When Star-Magic's dispatch grows (more rounds
+  inject more observables), Daniel runs the migration script and gets a fresh
+  bundle ready for the next Aetheric-Propulsion release.
+
+### What Daniel does next when ready to publish
+
+The EXTRACTION_PROCEDURE.md document is the complete playbook. The kit stays in
+Star-Magic forever as the canonical source-of-truth + migration tooling. Aetheric-
+Propulsion gets shipped from the kit's contents whenever Daniel chooses to:
+1. Create the GitHub repo (URL already reserved)
+2. Run the migration script with the new repo's path as target
+3. Configure PyPI Trusted Publishing for `aetheric-propulsion`
+4. Tag v0.1.0 and push
+
+That's all. The architecture was designed for this from day one per EXPANSION_PLAN §12.
+
+### Files added/modified
+- **NEW** `EXTRACTION_KIT/_step7_migrate_to_aetheric_propulsion.py` (~140 lines, refresh + migrate)
+- **NEW** `EXTRACTION_KIT/EXTRACTION_PROCEDURE.md` (~150 lines, 7-step playbook)
+- **NEW** `EXTRACTION_KIT/new_repo_layout/` — 25 files staging the entire Aetheric-Propulsion package
+- **NEW** `test_extraction_kit.py` (~120 lines, 4-check regression)
+- **MOD** `SESSION_LOG.md` (this entry)
+
+### Open items
+
+- **Step 5** — PAPER_NEW Lagrangian re-derivation of BAO + Cabibbo dual closures. Needs
+  Daniel's physics judgment (KK zero-mode identification chain). Per Daniel's directive,
+  this happens in the NEXT commit after Step 7.
+- **Repo creation** (Daniel) — Step 7's downstream actions (create repo, run migration,
+  configure PyPI, first release) are Daniel's to execute when ready. The kit is fully
+  staged and verified.
+
+### Round close
+
+Step 7 architectural split complete and verified. The Aetheric-Propulsion package can be
+materialized into a real GitHub repo + PyPI release with a single `mv` plus a series of
+git commands (per EXTRACTION_PROCEDURE.md). All four primary discovery paths for
+Star-Magic (markdown docs, Jupyter notebooks, CLI, Python API) now have a parallel
+extraction-ready staging in the kit. The framework is positioned for the commercial-tier
+split whenever the peer-review phase completes.
+

@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=77.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aetheric-propulsion"
+version = "0.1.0"
+description = "UQFF Aetheric Propulsion — standalone bundle of the Phase E/F/G assimilation geometry (4 geometries x 3 numeric backends, 116-observable dispatch, BAO + Cabibbo dual closures). Sibling package to uqff; bundles its own calculator for full self-containment."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE-AGPL-3.0.txt"]
+authors = [
+    { name = "Daniel T. Murphy", email = "daniel.murphy00@enrgyone.com" },
+]
+keywords = [
+    "physics",
+    "unified field theory",
+    "UQFF",
+    "Star-Magic",
+    "assimilation geometry",
+    "DPM",
+    "vacuum physics",
+    "aetheric propulsion",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Daniel8Murphy0007/Aetheric-Propulsion"
+Repository = "https://github.com/Daniel8Murphy0007/Aetheric-Propulsion"
+Sibling = "https://github.com/Daniel8Murphy0007/Star-Magic"
+Issues = "https://github.com/Daniel8Murphy0007/Aetheric-Propulsion/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aetheric_propulsion", "aetheric_propulsion.*"]
+
+[tool.setuptools.package-data]
+"aetheric_propulsion" = ["*.py"]
+"aetheric_propulsion.geometry_backends" = ["*.py"]
+"aetheric_propulsion.numeric_backends" = ["*.py"]
+
+[tool.setuptools.data-files]
+"share/aetheric_propulsion" = [
+    "README.md",
+    "LICENSE-AGPL-3.0.txt",
+    "COMMERCIAL.md",
+    "data/OVERDETERMINATION_MAP.csv",
+    "data/OVERDETERMINATION_WIDE.csv",
+    "data/OVERDETERMINATION_MAP.md",
+    "data/ASSIMILATION_GEOMETRY_ATLAS.md",
+]
