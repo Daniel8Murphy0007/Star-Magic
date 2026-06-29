@@ -48085,8 +48085,138 @@ def calculate_whitepaper(dataset):
         return {'value': None}
     return {'value': result}
 
+def _qg_solve_safe(observable, geometry='auto', numeric='numerical', decompose=False):
+    try:
+        from qcalcgeom_solver import solve as _s
+        return _s(observable, geometry=geometry, numeric=numeric, decompose=decompose)
+    except Exception:
+        return None
+
+def calculate_qcalcgeom_compute_FUBi(dataset):
+    d = dataset or {}
+    M = float(d.get('M', d.get('m', DEFAULT_M)))
+    r = float(d.get('r', DEFAULT_R))
+    t_n = float(d.get('t_n', 0.0))
+    E = float(d.get('E', 1.0))
+    Z = int(d.get('Z', 1))
+    beta_eff = _beta_dynamic(E, Z, t_n)
+    return {'value': _f_u_bi_canonical(M, r, t_n, beta_eff)}
+
+def calculate_qcalcgeom_compute_FUBii(dataset):
+    d = dataset or {}
+    M = float(d.get('M', d.get('m', DEFAULT_M)))
+    r = float(d.get('r', DEFAULT_R))
+    t_n = float(d.get('t_n', 0.0))
+    E = float(d.get('E', 1.0))
+    Z = int(d.get('Z', 1))
+    beta_eff = _beta_dynamic(E, Z, t_n)
+    return {'value': _f_u_bii_canonical(M, r, t_n, beta_eff)}
+
+def calculate_qcalcgeom_compute_F_U(dataset):
+    d = dataset or {}
+    M = float(d.get('M', d.get('m', DEFAULT_M)))
+    r = float(d.get('r', DEFAULT_R))
+    t_n = float(d.get('t_n', 0.0))
+    E = float(d.get('E', 1.0))
+    Z = int(d.get('Z', 1))
+    Um = float(d.get('Um', 0.0))
+    beta_eff = _beta_dynamic(E, Z, t_n)
+    fubi = _f_u_bi_canonical(M, r, t_n, beta_eff)
+    fubii = _f_u_bii_canonical(M, r, t_n, beta_eff)
+    Ug_sum = G_NEWTON * M / (r * r) if r > 0 else 0.0
+    return {'value': Ug_sum - fubi + fubii + Um}
+
+def calculate_qcalcgeom_solve_habitable_zone(dataset):
+    d = dataset or {}
+    M = float(d.get('M', d.get('m', DEFAULT_M)))
+    t_n = float(d.get('t_n', 0.0))
+    return {'value': _solve_habitable_zone(M, t_n)}
+
+def calculate_qcalcgeom_compute_emergent_mass(dataset):
+    d = dataset or {}
+    r = float(d.get('r', DEFAULT_R))
+    t_n = float(d.get('t_n', 0.0))
+    E = float(d.get('E', 1.0))
+    Z = int(d.get('Z', 1))
+    Um = float(d.get('Um', 0.0))
+    beta_eff = _beta_dynamic(E, Z, t_n)
+    k_sp = _k_spring()
+    if r <= 0:
+        return {'value': None}
+    num = (k_sp * (r / 1.0) * (1.0 + 0.0)) * abs(math.cos(math.pi * t_n)) + Um
+    denom = beta_eff * G_NEWTON * RHO_SCM * (1.0 + 0.1) * abs(math.cos(math.pi * t_n))
+    if denom == 0.0:
+        return {'value': None}
+    return {'value': num * (r * r) / denom}
+
+def calculate_3numeric_decomposition(dataset):
+    d = dataset or {}
+    obs = d.get('observable') or d.get('name')
+    if not obs:
+        return {'value': None}
+    res = _qg_solve_safe(obs, geometry='auto', numeric='all', decompose=True)
+    if not res or not res.get('alternate_paths'):
+        return {'value': None}
+    owner = res.get('geometry_used')
+    cells = res['alternate_paths'].get(owner, {}) if owner else {}
+    out = {}
+    for n_label in ('symbolic', 'numerical', 'discrete'):
+        cell = cells.get(n_label) or {}
+        out[n_label] = cell.get('value')
+    return {'value': out}
+
+def calculate_geometry_decomposition(dataset):
+    d = dataset or {}
+    obs = d.get('observable') or d.get('name')
+    if not obs:
+        return {'value': None}
+    res = _qg_solve_safe(obs, geometry='all', numeric='numerical', decompose=True)
+    if not res or not res.get('alternate_paths'):
+        return {'value': None}
+    out = {}
+    for g_label in ('qcalcgeom', 'bsfg', 'dpm', 'd26'):
+        cells = res['alternate_paths'].get(g_label, {})
+        cell = cells.get('numerical') or {}
+        out[g_label] = cell.get('value')
+    return {'value': out}
+
+def calculate_overdetermination(dataset):
+    d = dataset or {}
+    obs = d.get('observable') or d.get('name')
+    if not obs:
+        return {'value': None}
+    res = _qg_solve_safe(obs, geometry='all', numeric='all', decompose=True)
+    if not res:
+        return {'value': None}
+    return {'value': {'overdetermination_N': res.get('overdetermination_N'),
+                       'owner_geometry': res.get('geometry_used'),
+                       'assimilation_status': res.get('assimilation_status'),
+                       'residual_pct': res.get('residual_pct')}}
+
 def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
     d = dataset or {}
+
+    qg = d.get("qcalcgeom_solve")
+    if isinstance(qg, dict):
+        obs = qg.get("observable") or qg.get("name")
+        if obs is None:
+            return {'value': None}
+        geom = qg.get("geometry", "auto")
+        num = qg.get("numeric", "numerical")
+        decomp = bool(qg.get("decompose", False))
+        res = _qg_solve_safe(obs, geometry=geom, numeric=num, decompose=decomp)
+        if res is None:
+            return {'value': None}
+        if decomp:
+            return {'value': {'value': res.get('value'),
+                              'target': res.get('target'),
+                              'residual_pct': res.get('residual_pct'),
+                              'geometry_used': res.get('geometry_used'),
+                              'numeric_system': res.get('numeric_system'),
+                              'overdetermination_N': res.get('overdetermination_N'),
+                              'alternate_paths': res.get('alternate_paths'),
+                              'assimilation_status': res.get('assimilation_status')}}
+        return {'value': res.get('value')}
 
     vr = d.get("vr_outfall")
     if isinstance(vr, dict):

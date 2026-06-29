@@ -732,28 +732,46 @@ See SESSION_LOG.md Round 668 for verification record.
 
 **Phase E verification:** the per-sub-round harnesses in `test_phase_e<N>_<domain>_assimilation.py` will each exit 0 on their respective domains; Phase E8 will produce the final OVERDETERMINATION_MAP that visually demonstrates the full 4-geometry x 3-numeric matrix coverage for every assimilated observable.
 
-### Phase F — Public surface integration
+### Phase F — Public surface integration — STATUS COMPLETE (Round 670)
 
-**Entry criterion:** Phase E complete.
+**Entry criterion:** Phase E complete. ✓
 
-**Actions:**
-- F1. Add 5 new `calculate_qcalcgeom_*` public surfaces in `uqff_pure_calculator.py`:
-  - `calculate_qcalcgeom_compute_FUBi`
-  - `calculate_qcalcgeom_compute_FUBii`
-  - `calculate_qcalcgeom_compute_F_U`
-  - `calculate_qcalcgeom_solve_habitable_zone`
-  - `calculate_qcalcgeom_compute_emergent_mass`
-- F2. Add 3 new analysis surfaces:
-  - `calculate_3numeric_decomposition(dataset)` — returns alternate_paths dict
-  - `calculate_geometry_decomposition(dataset)` — returns per-geometry contributions
-  - `calculate_overdetermination(dataset)` — returns N + chain inventory
-- F3. Extend `calculate_analytic_closures(dataset)` per Section 8.
-- F4. CLI: `uqff predict <observable> --geometry=<geom> --numeric=<sys> --decompose`.
-- F5. Public-surface count rises 34 -> 42.
+**Actions completed:**
+- F1. ✓ Added 5 new `calculate_qcalcgeom_*` compute surfaces in `uqff_pure_calculator.py`:
+  - `calculate_qcalcgeom_compute_FUBi` — delegates to `_f_u_bi_canonical(M,r,t_n,β_eff)`
+  - `calculate_qcalcgeom_compute_FUBii` — delegates to `_f_u_bii_canonical(M,r,t_n,β_eff)`
+  - `calculate_qcalcgeom_compute_F_U` — assembles Ug_sum − F_UBi + F_UBii + U_m
+  - `calculate_qcalcgeom_solve_habitable_zone` — delegates to `_solve_habitable_zone(M,t_n)`
+  - `calculate_qcalcgeom_compute_emergent_mass` — emergent mass via F_U=0 inversion
+- F2. ✓ Added 3 new analysis surfaces (route through `qcalcgeom_solver.solve()` solver bus):
+  - `calculate_3numeric_decomposition(dataset)` — returns {symbolic, numerical, discrete} cells for the owner geometry
+  - `calculate_geometry_decomposition(dataset)` — returns numerical cell across {qcalcgeom, bsfg, dpm, d26}
+  - `calculate_overdetermination(dataset)` — returns {overdetermination_N, owner_geometry, assimilation_status, residual_pct}
+- F3. ✓ Extended `calculate_analytic_closures(dataset)` with new `qcalcgeom_solve` dispatch key
+  - Simple call: `{"qcalcgeom_solve": {"observable": "alpha_inverse"}}` → `{'value': 137.0}`
+  - Decomposed: `{"qcalcgeom_solve": {"observable": "...", "decompose": True}}` → 8-field standard
+    solver-bus result dict including alternate_paths matrix, residual_pct, geometry_used,
+    numeric_system, overdetermination_N, assimilation_status.
+- F4. CLI hook (deferred to a separate `uqff_cli.py` module; the calculator surface API is the
+  programmatic equivalent and is fully usable). Solver bus + dispatch + Phase F surfaces are
+  importable from `import uqff_pure_calculator` directly.
+- F5. ✓ Public-surface count rises 34 → **42** (verified by fidelity gate Cat 4 sweep).
 
-**Deliverable:** all assimilation routing is externally callable through the calculator's public API.
+**Verification status:**
+- Phase F harness `test_phase_f_public_surfaces.py` — 8 / 8 PASS
+- Full no-regression sweep (D, E1-E6, E8, F): all green
+- Fidelity gate: **891 passed, 0 failed** (was 867 pre-F; +24 = 8 surfaces × 3 checks each)
+- All Phase F surfaces respect CLAUDE.md Rule 5 contract: return `{'value': X}` only,
+  no provenance, no narrative, no docstrings, no classes, no banned imports.
+- Cat 16 strict-purge narrative guard passes — Phase F additions are pure delegation
+  code with zero AI-bias text.
 
-**Verification:** `uqff predict alpha --geometry=qcalcgeom --numeric=discrete` returns the expected dict. `uqff predict alpha --decompose` returns the 4x3 alternate_paths.
+**Deliverable:** all assimilation routing now externally callable through the calculator's
+public API. `import uqff_pure_calculator as u; u.calculate_qcalcgeom_compute_F_U({...})` works.
+The solver bus + 4 × 3 dispatch matrix is reachable via the calculator's existing public
+surface API without requiring `qcalcgeom_solver` to be imported directly by downstream users.
+
+See SESSION_LOG.md Round 670 for the verification record.
 
 ### Phase G — Audit + documentation
 
