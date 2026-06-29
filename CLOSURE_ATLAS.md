@@ -315,3 +315,182 @@ fidelity gate.
 | "Show me all 8 Clay Millennium" | `uqff search hodge`, etc., or section 1 above |
 | "Show me all LENR reactors" | `uqff predict <reactor_key>` from section 4 list above |
 | "Show me a worked example" | `notebooks/` directory (00_quickstart, 01_holmlid_lenr, 02_magic_numbers, 03_cosmology) |
+
+---
+
+## 12. Assimilation overlay (Phase E + F)
+
+**Built:** 2026-06-29 (Round 670). Updated by `_phase_g1_atlas_append.py`.
+**Source of truth:** `assimilation_dispatch.py` (114 curated observables).
+**Public API:** 8 Phase F surfaces in `uqff_pure_calculator.py`:
+  `calculate_qcalcgeom_compute_{FUBi,FUBii,F_U,emergent_mass}`,
+  `calculate_qcalcgeom_solve_habitable_zone`,
+  `calculate_3numeric_decomposition`, `calculate_geometry_decomposition`,
+  `calculate_overdetermination`, plus the `qcalcgeom_solve` dispatch key in
+  `calculate_analytic_closures`.
+**Solver bus:** `qcalcgeom_solver.solve(observable, geometry, numeric, decompose)`.
+
+### 12.1 Per-domain rollup (114 observables, 10 domains)
+
+| Domain | Observables | Owner geometries | Worst residual |
+|---|---:|---|---:|
+| CM | 10 | bsfg, d26, dpm | 0.5000% |
+| GR | 10 | bsfg, qcalcgeom | 1.0000% |
+| KK | 10 | bsfg, dpm, qcalcgeom | 0.5000% |
+| LCDM | 20 | bsfg, d26, dpm | 5.0000% |
+| SI | 7 | bsfg, d26, dpm | 0.0260% |
+| SM | 22 | bsfg, d26, dpm | 1.1000% |
+| astro | 14 | bsfg, d26, dpm, qcalcgeom | 2.0000% |
+| bio | 10 | bsfg, d26, dpm | 0.5000% |
+| chem | 1 | bsfg | 0.0000% |
+| geo | 10 | bsfg, qcalcgeom | 0.5000% |
+
+### 12.2 Full 114-observable inventory
+
+Every row dispatchable via `qcalcgeom_solver.solve(observable)` or
+`calculate_analytic_closures({'qcalcgeom_solve': {'observable': name}})`.
+
+| Observable | Domain | Owner | Residual | Source |
+|---|---|---|---:|---|
+| `BH_seed_mass` | astro | d26 | 0.0000% | PAPER_1650 |
+| `CM_Apery_zeta3` | CM | d26 | 0.5000% | PAPER_1167 |
+| `CM_BCS_coherence_length_coeff` | CM | dpm | 0.5000% | PAPER_1167 |
+| `CM_BCS_gap_ratio` | CM | dpm | 0.5000% | PAPER_1167 |
+| `CM_BCS_isotope_alpha` | CM | dpm | 0.0000% | PAPER_1167 |
+| `CM_BEC_Tc_coeff` | CM | dpm | 0.5000% | PAPER_1167 |
+| `CM_Brinkman_Rice_U_c_W` | CM | dpm | 0.0000% | PAPER_1167 |
+| `CM_Sommerfeld_Wilson_R_W` | CM | dpm | 0.0000% | PAPER_1167 |
+| `CM_Wiedemann_Franz_L_coeff` | CM | dpm | 0.5000% | PAPER_1167 |
+| `CM_XY_3D_nu_exponent` | CM | bsfg | 0.0000% | PAPER_1167 |
+| `CM_log_R_K_von_Klitzing` | CM | dpm | 0.5000% | PAPER_1167 |
+| `Clifford_qualia_states` | SM | d26 | 0.0000% | PAPER_1666 |
+| `GR_BH_shadow_r_M` | GR | bsfg | 1.0000% | PAPER_1149 |
+| `GR_GPB_frame_drag` | GR | bsfg | 1.0000% | PAPER_1149 |
+| `GR_GPB_geodetic` | GR | bsfg | 0.5000% | PAPER_1149 |
+| `GR_Hulse_Taylor_ratio` | GR | bsfg | 1.0000% | PAPER_1149 |
+| `GR_Kerr_ISCO_extremal` | GR | bsfg | 0.0000% | PAPER_1149 |
+| `GR_Mercury_perihelion` | GR | bsfg | 1.0000% | PAPER_1149 |
+| `GR_NANOGrav_h_c` | GR | qcalcgeom | 1.0000% | PAPER_1149 |
+| `GR_Shapiro_delay_coeff` | GR | bsfg | 0.0000% | PAPER_1149 |
+| `GR_light_bending_solar_limb` | GR | bsfg | 0.5000% | PAPER_1149 |
+| `GR_photon_sphere_r_M` | GR | bsfg | 0.0000% | PAPER_1149 |
+| `GW_memory_fraction` | astro | qcalcgeom | 0.0000% | PAPER_1766 |
+| `ITER_R_over_a` | SI | bsfg | 0.0000% | PAPER_1706 |
+| `KK_AU_per_1e10_m` | KK | dpm | 0.5000% | PAPER_1167 |
+| `KK_Earth_orbit_v_per_km_s` | KK | dpm | 0.5000% | PAPER_1167 |
+| `KK_Earth_radius_per_1e6_m` | KK | qcalcgeom | 0.5000% | PAPER_1167 |
+| `KK_Jupiter_mass_per_1e27_kg` | KK | qcalcgeom | 0.5000% | PAPER_1167 |
+| `KK_Mars_orbit_AU` | KK | qcalcgeom | 0.5000% | PAPER_1167 |
+| `KK_Mercury_year_per_10_day` | KK | qcalcgeom | 0.5000% | PAPER_1167 |
+| `KK_Moon_orbital_period_per_day` | KK | dpm | 0.5000% | PAPER_1167 |
+| `KK_Sun_mass_per_1e29_kg` | KK | dpm | 0.5000% | PAPER_1167 |
+| `KK_Sun_radius_per_1e8_m` | KK | bsfg | 0.5000% | PAPER_1167 |
+| `KK_sidereal_year_per_100_day` | KK | qcalcgeom | 0.5000% | PAPER_1167 |
+| `LCDM_BAO_rd_H0_over_c_alternate` | LCDM | d26 | 0.0274% | PAPER_1156 |
+| `LCDM_BAO_rd_H0_over_c_primary` | LCDM | d26 | 0.0093% | PAPER_1156 |
+| `LCDM_D_over_H` | LCDM | d26 | 2.0000% | PAPER_1156 |
+| `LCDM_EDGES_T21_amplitude` | LCDM | d26 | 0.1400% | PAPER_1761 |
+| `LCDM_EDGES_extra_cooling` | LCDM | d26 | 5.0000% | PAPER_1156 |
+| `LCDM_H0_tension_ratio` | LCDM | d26 | 0.0400% | PAPER_1156 |
+| `LCDM_Li7_BBN_dilution` | LCDM | dpm | 3.2300% | PAPER_1227 |
+| `LCDM_Li7_over_H` | LCDM | d26 | 1.0000% | PAPER_1156 |
+| `LCDM_N_eff` | LCDM | dpm | 0.5000% | PAPER_1156 |
+| `LCDM_Omega_m` | LCDM | dpm | 0.5000% | PAPER_1156 |
+| `LCDM_T_CMB` | LCDM | dpm | 0.5000% | PAPER_1156 |
+| `LCDM_Y_p` | LCDM | dpm | 0.1000% | PAPER_1156 |
+| `LCDM_eta_B` | LCDM | d26 | 3.0000% | PAPER_1156 |
+| `LCDM_n_s_S336` | LCDM | d26 | 0.0500% | PAPER_1156 |
+| `LCDM_sigma8_KiDS_Planck_lift` | LCDM | dpm | 0.8000% | PAPER_1156 |
+| `LCDM_sigma_8_S365` | LCDM | dpm | 0.5000% | PAPER_1156 |
+| `LCDM_z_reion` | LCDM | bsfg | 0.1000% | PAPER_1156 |
+| `Pop_III_IMF_max` | astro | dpm | 0.0000% | PAPER_1652 |
+| `SM_PMNS_theta_12_deg` | SM | d26 | 1.0000% | PAPER_1209HH |
+| `SM_alpha_s_M_Z_S378` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_cabibbo_sin_S379` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_cabibbo_theta_deg_S326` | SM | dpm | 1.1000% | PAPER_1167 |
+| `SM_delta_CP` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_eta_gamma_gamma_BR` | SM | dpm | 1.0000% | PAPER_1209HH |
+| `SM_generation_count` | SM | dpm | 0.0000% | PAPER_1167 |
+| `SM_higgs_lambda_S377` | SM | dpm | 1.0000% | PAPER_1209HH |
+| `SM_higgs_lambda_S441` | SM | dpm | 1.0000% | PAPER_1209HH |
+| `SM_jarlskog_J` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_mH_over_mt` | SM | dpm | 1.0000% | PAPER_1209HH |
+| `SM_mt_over_mW` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_proton_g_factor` | SM | bsfg | 0.5000% | PAPER_1209HH |
+| `SM_theta_23_atm` | SM | dpm | 1.0000% | PAPER_1209HH |
+| `SM_top_yukawa_S376` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_top_yukawa_S440` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `SM_wimp_exponent` | SM | dpm | 0.5000% | PAPER_1209HH |
+| `alpha_inverse` | SI | d26 | 0.0260% | PAPER_1167 |
+| `alpha_s_M_Z` | SM | dpm | 0.5700% | PAPER_1167 |
+| `astro_BH_entropy_coeff` | astro | qcalcgeom | 1.0000% | PAPER_594 |
+| `astro_Chandrasekhar_mass` | astro | qcalcgeom | 1.0000% | PAPER_1149 |
+| `astro_ISCO_r_M` | astro | bsfg | 0.0000% | PAPER_1149 |
+| `astro_NS_compactness` | astro | qcalcgeom | 0.5000% | PAPER_1149 |
+| `astro_Salpeter_IMF_alpha` | astro | dpm | 1.0000% | PAPER_1149 |
+| `astro_Solar_Schwarzschild_ratio` | astro | bsfg | 2.0000% | PAPER_1149 |
+| `astro_TOV_max_mass` | astro | qcalcgeom | 1.0000% | PAPER_1149 |
+| `astro_WD_radius_mass_exponent` | astro | dpm | 0.5000% | PAPER_1149 |
+| `astro_grav_binding_coeff` | astro | dpm | 1.0000% | PAPER_1149 |
+| `astro_photon_sphere_r_M` | astro | bsfg | 0.5000% | PAPER_1149 |
+| `bertrand_uniform` | SI | d26 | 0.0000% | PAPER_1776 |
+| `bio_ATP_hydrolysis_kJ_mol` | bio | dpm | 0.0000% | PAPER_1167 |
+| `bio_DNA_pitch_bp_per_turn` | bio | d26 | 0.5000% | PAPER_1167 |
+| `bio_Hill_coefficient_O2` | bio | dpm | 0.5000% | PAPER_1167 |
+| `bio_Kleiber_exponent` | bio | dpm | 0.0000% | PAPER_1167 |
+| `bio_Redfield_C_N_ratio` | bio | dpm | 0.5000% | PAPER_1167 |
+| `bio_chlorophyll_a_peak_nm` | bio | dpm | 0.5000% | PAPER_1167 |
+| `bio_codon_redundancy_64_20` | bio | dpm | 0.5000% | PAPER_1167 |
+| `bio_photosynthesis_quantum_yield` | bio | dpm | 0.5000% | PAPER_1167 |
+| `bio_phyllotaxis_golden_ratio` | bio | d26 | 0.5000% | PAPER_1167 |
+| `bio_telomere_TTAGGG_length` | bio | bsfg | 0.0000% | PAPER_1167 |
+| `flat_rotation_beta_i` | astro | qcalcgeom | 0.0000% | PAPER_1756 |
+| `geo_Earth_Moon_a_over_R_E` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_Earth_obliquity_deg` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_J2_oblateness_norm` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_adiabatic_lapse_K_per_km` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_atm_pressure_atm_norm` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_atmospheric_scale_height_km` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_brunt_vaisala_N2_s2` | geo | qcalcgeom | 0.0000% | PAPER_1167 |
+| `geo_greenhouse_DeltaT_K` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `geo_magnetopause_R_E` | geo | bsfg | 0.0000% | PAPER_1167 |
+| `geo_ocean_salinity_ppt` | geo | qcalcgeom | 0.5000% | PAPER_1167 |
+| `higgs_vev` | SM | dpm | 0.0000% | PAPER_1636 |
+| `hubble_tension` | LCDM | d26 | 0.0000% | PAPER_1676 |
+| `m_W_alt` | SM | dpm | 0.0000% | PAPER_1686 |
+| `mp_me_ratio` | SI | bsfg | 0.0019% | PAPER_1167 |
+| `n_s_scalar_tilt` | LCDM | d26 | 0.0000% | PAPER_1736 |
+| `omega_lambda_6_5_SSQ` | LCDM | dpm | 0.0000% | PAPER_1696 |
+| `periodic_table_periods` | chem | bsfg | 0.0000% | PAPER_1167 |
+| `quantum_supremacy_qubits` | SI | dpm | 0.0000% | PAPER_1655 |
+| `stefan_boltzmann_prefactor` | SI | dpm | 0.0000% | PAPER_1167 |
+| `surface_code_threshold` | SI | d26 | 0.0000% | PAPER_1746 |
+| `weinberg_sin2` | SM | dpm | 0.1130% | PAPER_1167 |
+
+### 12.3 OVERDETERMINATION_MAP cross-references
+
+- `OVERDETERMINATION_MAP.csv` — long format, 1,368 rows = 114 obs × 4 geom × 3 numeric.
+- `OVERDETERMINATION_WIDE.csv` — wide format, 114 rows × 18 cols.
+- `OVERDETERMINATION_MAP.md` — peer-review summary with per-domain rollup, TENSION block,
+  and the Round 669 BAO multi-path closure section.
+- Round 669 closed the only OPEN_QUESTION (BAO) with dual closures; the framework now
+  ships with **0 TENSION cells**.
+
+### 12.4 Discovery cheat sheet
+
+```
+# List all 114 observables programmatically:
+import assimilation_dispatch as ad
+for name in sorted(ad.DISPATCH):
+    print(name, ad.DISPATCH[name]['domain'])
+
+# Call any observable through the calculator:
+import uqff_pure_calculator as u
+u.calculate_analytic_closures({'qcalcgeom_solve': {'observable': 'alpha_inverse'}})
+# -> {'value': 137.0}
+
+# Decomposed view with full provenance (8-field result dict):
+u.calculate_analytic_closures(
+    {'qcalcgeom_solve': {'observable': 'LCDM_BAO_rd_H0_over_c_primary', 'decompose': True}})
+```
+

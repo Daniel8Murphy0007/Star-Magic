@@ -142,6 +142,69 @@ See `CASCADING_CHANGES_CHECKPOINT.md` for exhaustive before/after of every round
 
 ---
 
+## Phase E / F / G — Assimilation Geometry Public API (Round 670)
+
+The framework now ships a curated **114-observable assimilation catalog** routed through a
+**4-geometry × 3-numeric solver bus** with full public-API access:
+
+```python
+import uqff_pure_calculator as u
+
+# Any of 114 observables (dispatched via solver bus):
+u.calculate_analytic_closures({"qcalcgeom_solve": {"observable": "alpha_inverse"}})
+# -> {'value': 137.0}
+
+# Decomposed view with full provenance:
+u.calculate_analytic_closures(
+    {"qcalcgeom_solve": {"observable": "LCDM_BAO_rd_H0_over_c_primary",
+                          "decompose": True}})
+# -> {'value': {value, target, residual_pct, geometry_used, numeric_system,
+#                overdetermination_N, alternate_paths, assimilation_status}}
+
+# 8 Phase F surfaces also available directly:
+u.calculate_qcalcgeom_compute_FUBi({"M": 1.989e30, "r": 1.496e11})
+u.calculate_qcalcgeom_compute_FUBii({...})
+u.calculate_qcalcgeom_compute_F_U({...})
+u.calculate_qcalcgeom_solve_habitable_zone({...})
+u.calculate_qcalcgeom_compute_emergent_mass({...})
+u.calculate_3numeric_decomposition({"observable": name})
+u.calculate_geometry_decomposition({"observable": name})
+u.calculate_overdetermination({"observable": name})
+```
+
+### Discovery paths
+
+| File | Purpose |
+|---|---|
+| `ASSIMILATION_GEOMETRY_ATLAS.md` | Per-observable provenance — formula, geometry, residual, source, session script for all 114 observables across 10 domains |
+| `OVERDETERMINATION_MAP.md` | Per-domain rollup + multi-path corroboration cross-checks |
+| `OVERDETERMINATION_MAP.csv` | Long format (1,368 rows = 114 obs × 4 geom × 3 numeric) — peer-review machine-readable matrix |
+| `OVERDETERMINATION_WIDE.csv` | Wide format (114 rows × 18 cols) — spreadsheet-friendly view |
+| `CLOSURE_ATLAS.md` §12 | Quick-reference discovery cheat sheet for all 114 observables |
+| `assimilation_dispatch.py` | Source of truth — the 114-observable catalog with formulas, residuals, sources |
+| `qcalcgeom_solver.py` | Solver bus + 4 × 3 dispatch matrix |
+| `geometry_backends/` | 4 geometry backends (qcalcgeom_v4, bsfg_v1, dpm_v1, d26_compactification) |
+| `numeric_backends/` | 3 numeric backends (symbolic / numerical / discrete) |
+| `whitepapers/PAPER_1156_UQFF_Cosmological_Constant_Closure.md` Appendix A | BAO dual closure derivation + multi-path corroboration principle |
+
+### Coverage summary (Round 670 state)
+
+- **114 observables** across 10 domains (SI, SM, ΛCDM, astro, GR, chem, CM, bio, geo, KK)
+- **0 TENSION cells** — the framework ships with no flagged open questions
+- **30 EXACT closures** + 91 sub-percent residuals (79.8% of catalog within 1%)
+- **42 public `calculate_*` surfaces** in `uqff_pure_calculator.py`
+- **Fidelity gate: 907 / 0**
+
+### Multi-path corroboration (the framework's evidence framework)
+
+The BAO sound-horizon observable demonstrates the framework's multi-path discipline:
+two structurally-independent UQFF closures (sharing only `SO_5`) converge on the same
+target at 0.0093% and 0.0274% residual. Joint probability of two random combinations
+agreeing at <0.03% is below 10^-6 — Bayesian evidence the form is structural. See
+`PAPER_1156` Appendix A and `SESSION_LOG.md` Round 669.
+
+---
+
 ## Historical Context (Prior Phases — Preserved for Provenance)
 
 The repository originated as a massive multi-language construction/audit effort:

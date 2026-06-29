@@ -201,6 +201,18 @@ exclude = [
     "RELEASE_PROCESS.md",
     "CODE_OF_CONDUCT.md",
     "CLOSURE_ATLAS.md",
+    "ASSIMILATION_GEOMETRY_ATLAS.md",
+    "OVERDETERMINATION_MAP.csv",
+    "OVERDETERMINATION_WIDE.csv",
+    "OVERDETERMINATION_MAP.md",
+    "assimilation_dispatch.py",
+    "qcalcgeom_solver.py",
+    "provenance_recorder.py",
+    "_build_overdetermination_views.py",
+    "_phase_e7_merge_dispatch_into_master_closures.py",
+    "_phase_g1_atlas_append.py",
+    "_phase_g2_geometry_atlas.py",
+    "phase_e7_tag_audit.csv",
     "WHITEPAPER_INDEX.md",
     "COVERAGE_GAPS.md",
     "ZENODO_DOI_SETUP.md",
@@ -223,6 +235,19 @@ exclude = [
     "UQFF_UNIFIED_CLOSURE_DERIVATIONS.py",
     "uqff_exact_closures.cpp",
     "uqff_dashboard.html",
+]
+"share/uqff/geometry_backends" = [
+    "geometry_backends/__init__.py",
+    "geometry_backends/qcalcgeom_v4.py",
+    "geometry_backends/bsfg_v1.py",
+    "geometry_backends/dpm_v1.py",
+    "geometry_backends/d26_compactification.py",
+]
+"share/uqff/numeric_backends" = [
+    "numeric_backends/__init__.py",
+    "numeric_backends/symbolic.py",
+    "numeric_backends/numerical.py",
+    "numeric_backends/discrete.py",
 ]
 "share/uqff/proofs" = [
     "AXIOMS_AND_THEOREMS.md",

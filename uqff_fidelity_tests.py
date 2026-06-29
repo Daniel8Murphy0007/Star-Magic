@@ -2044,6 +2044,99 @@ except Exception as _e:
         print(f"  FAIL  QCalcGeom setup error: {_e}")
 
 
+# ---------- Category 17: Dispatch pinning (Phase G4) ----------
+print()
+print("=" * 70)
+print("17. PHASE G4 — Dispatch value pinning (Round 670+)")
+print("=" * 70)
+
+try:
+    import assimilation_dispatch as _ad
+    import qcalcgeom_solver as _qg
+    _expected_total = 114
+    check("Phase G4: dispatch carries 114 observables",
+          len(_ad.DISPATCH) == _expected_total,
+          f"actual={len(_ad.DISPATCH)}")
+
+    _expected_domains = {"SI", "SM", "LCDM", "astro", "GR", "chem",
+                         "CM", "bio", "geo", "KK"}
+    _actual_domains = set(_ad.domains())
+    check("Phase G4: 10 canonical domains present",
+          _actual_domains == _expected_domains,
+          f"actual={_actual_domains}")
+
+    _expected_owner_dist = {"qcalcgeom": 21, "bsfg": 21, "dpm": 52, "d26": 20}
+    _actual_owner_dist = {}
+    for _rec in _ad.DISPATCH.values():
+        _g = _rec["owner_geometry"]
+        _actual_owner_dist[_g] = _actual_owner_dist.get(_g, 0) + 1
+    check("Phase G4: owner-geometry distribution pinned",
+          _actual_owner_dist == _expected_owner_dist,
+          f"actual={_actual_owner_dist}")
+
+    _bao_p = _ad.DISPATCH.get("LCDM_BAO_rd_H0_over_c_primary")
+    check("Phase G4: BAO primary closure pinned to d26",
+          _bao_p is not None and _bao_p["owner_geometry"] == "d26",
+          "missing or wrong owner")
+    check("Phase G4: BAO primary residual <= 0.01%",
+          _bao_p is not None and _bao_p["residual_pct"] <= 0.01,
+          f"actual={_bao_p['residual_pct'] if _bao_p else 'missing'}")
+
+    _bao_a = _ad.DISPATCH.get("LCDM_BAO_rd_H0_over_c_alternate")
+    check("Phase G4: BAO alternate closure pinned to d26",
+          _bao_a is not None and _bao_a["owner_geometry"] == "d26",
+          "missing or wrong owner")
+    check("Phase G4: BAO alternate residual <= 0.03%",
+          _bao_a is not None and _bao_a["residual_pct"] <= 0.03,
+          f"actual={_bao_a['residual_pct'] if _bao_a else 'missing'}")
+
+    _li7 = _ad.DISPATCH.get("LCDM_Li7_BBN_dilution")
+    check("Phase G4: Li-7 dilution pinned to D_phys-1=3 EXACT (PAPER_1227)",
+          _li7 is not None and abs(_li7["uqff_value"] - 3.0) < 1e-9,
+          "missing or wrong value")
+    check("Phase G4: Li-7 source pinned to PAPER_1227",
+          _li7 is not None and _li7["primary_source"] == "PAPER_1227",
+          f"actual={_li7['primary_source'] if _li7 else 'missing'}")
+
+    _edges = _ad.DISPATCH.get("LCDM_EDGES_T21_amplitude")
+    check("Phase G4: EDGES T_21 pinned to -289.392 mK (PAPER_1761)",
+          _edges is not None and abs(_edges["uqff_value"] - (-289.392)) < 1e-3,
+          "missing or wrong value")
+
+    check("Phase G4: NO OPEN_QUESTION entries in dispatch",
+          all("OPEN" not in _n for _n in _ad.DISPATCH.keys()),
+          f"OPEN entries: {[_n for _n in _ad.DISPATCH if 'OPEN' in _n]}")
+
+    _r_alpha = _qg.solve("alpha_inverse", geometry="auto", numeric="numerical")
+    check("Phase G4: solver bus alpha_inverse routes to d26",
+          _r_alpha["geometry_used"] == "d26",
+          f"actual={_r_alpha['geometry_used']}")
+    check("Phase G4: solver bus alpha_inverse value pinned 137.0",
+          _r_alpha["value"] == 137.0,
+          f"actual={_r_alpha['value']}")
+
+    _r_bao_p = _qg.solve("LCDM_BAO_rd_H0_over_c_primary", geometry="auto", numeric="numerical")
+    check("Phase G4: BAO primary value pinned (residual <= 0.01%)",
+          _r_bao_p["residual_pct"] is not None and _r_bao_p["residual_pct"] <= 0.01,
+          f"actual residual={_r_bao_p['residual_pct']}")
+
+    import uqff_pure_calculator as _u
+    check("Phase G4: calculate_overdetermination dispatches solver bus",
+          isinstance(_u.calculate_overdetermination({"observable": "alpha_inverse"})
+                     .get("value"), dict),
+          "overdetermination surface failed")
+    _ana = _u.calculate_analytic_closures(
+        {"qcalcgeom_solve": {"observable": "alpha_inverse"}})
+    check("Phase G4: calculate_analytic_closures qcalcgeom_solve key works",
+          _ana.get("value") == 137.0,
+          f"actual={_ana.get('value')}")
+
+except Exception as _e:
+    FAIL += 1
+    FAILURES.append(("Phase G4 dispatch pinning", str(_e)))
+    print(f"  FAIL  Phase G4 setup error: {_e}")
+
+
 # ---------- summary ----------
 print()
 print("=" * 70)
