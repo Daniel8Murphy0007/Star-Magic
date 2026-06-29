@@ -185,6 +185,99 @@ def _try_bucket_observable(name: str):
     return None
 
 
+def _try_assimilation_dispatch(name: str):
+    """Try the Phase E/F/G dispatch (assimilation_dispatch.DISPATCH) for `name`.
+    Case-insensitive lookup since dispatch keys are mixed-case (e.g. LCDM_BAO_...).
+    Returns the calculate_analytic_closures qcalcgeom_solve result (decomposed view)
+    or None if the observable is not in the dispatch or sympy is unavailable.
+    """
+    try:
+        import assimilation_dispatch as _ad
+        import uqff_pure_calculator as _u
+    except Exception:
+        return None
+    canonical = None
+    target_lc = (name or "").lower()
+    for key in _ad.DISPATCH:
+        if key.lower() == target_lc:
+            canonical = key
+            break
+    if canonical is None:
+        return None
+    try:
+        r = _u.calculate_analytic_closures({
+            "qcalcgeom_solve": {"observable": canonical, "decompose": True}})
+    except Exception:
+        return None
+    val = r.get("value") if isinstance(r, dict) else None
+    if not isinstance(val, dict) or val.get("value") is None:
+        return None
+    return val
+
+
+def _cmd_assimilate(args: argparse.Namespace) -> int:
+    """Route an observable through the qcalcgeom_solver bus with geometry/numeric controls."""
+    try:
+        import assimilation_dispatch as _ad
+        import uqff_pure_calculator as _u
+    except Exception as _e:
+        print(f"ERROR: assimilation_dispatch / uqff_pure_calculator import failed: {_e}", file=sys.stderr)
+        return 1
+    canonical = args.name
+    if canonical not in _ad.DISPATCH:
+        target_lc = canonical.lower()
+        for k in _ad.DISPATCH:
+            if k.lower() == target_lc:
+                canonical = k
+                break
+    payload = {"observable": canonical}
+    if args.geometry and args.geometry != "auto":
+        payload["geometry"] = args.geometry
+    if args.numeric and args.numeric != "numerical":
+        payload["numeric"] = args.numeric
+    if args.decompose:
+        payload["decompose"] = True
+    res = _u.calculate_analytic_closures({"qcalcgeom_solve": payload})
+    val = res.get("value") if isinstance(res, dict) else None
+    if val is None:
+        print(f"ERROR: observable '{args.name}' not in dispatch or solver bus returned None.",
+              file=sys.stderr)
+        print(f"Hint: `uqff list --dispatch` to enumerate the 114 known observables.",
+              file=sys.stderr)
+        return 1
+    if args.json:
+        print(_dump(val))
+    else:
+        if isinstance(val, dict):
+            print(f"observable: {args.name}")
+            for k in ("value", "target", "residual_pct", "geometry_used",
+                      "numeric_system", "overdetermination_N",
+                      "assimilation_status"):
+                if k in val:
+                    print(f"  {k}: {val[k]}")
+        else:
+            print(f"value: {val}")
+    return 0
+
+
+def _list_dispatch_observables():
+    """Return sorted list of all observables in assimilation_dispatch.DISPATCH, or [] if unavailable."""
+    try:
+        import assimilation_dispatch as _ad
+        return sorted(_ad.DISPATCH.keys())
+    except Exception:
+        return []
+
+
+def _list_dispatch_domains():
+    """Return list of dispatch domains, or [] if unavailable."""
+    try:
+        import assimilation_dispatch as _ad
+        return _ad.domains()
+    except Exception:
+        return []
+
+
 def _cmd_predict(args: argparse.Namespace) -> int:
     name = args.name.lower().strip()
     for source_name, fn in [
@@ -192,6 +285,7 @@ def _cmd_predict(args: argparse.Namespace) -> int:
         ("calculate_lenr_full", _try_lenr_full),
         ("calculate_nuclear_magic", _try_nuclear),
         ("bucket_observables", _try_bucket_observable),
+        ("assimilation_dispatch", _try_assimilation_dispatch),
     ]:
         value = fn(name)
         if value is not None:
@@ -248,6 +342,28 @@ def _cmd_search(args: argparse.Namespace) -> int:
 
 
 def _cmd_list(args: argparse.Namespace) -> int:
+    if getattr(args, 'domain', None) or getattr(args, 'dispatch', False):
+        try:
+            import assimilation_dispatch as _ad
+        except Exception as _e:
+            print(f'ERROR: assimilation_dispatch unavailable: {_e}', file=sys.stderr)
+            return 1
+        dom = getattr(args, 'domain', None)
+        if dom:
+            names = sorted(n for n, r in _ad.DISPATCH.items() if r.get('domain') == dom)
+        else:
+            names = sorted(_ad.DISPATCH.keys())
+        flt = getattr(args, 'filter', None)
+        if flt:
+            names = [n for n in names if flt.lower() in n.lower()]
+        if args.json:
+            print(_dump(names))
+        else:
+            for n in names:
+                rec = _ad.DISPATCH[n]
+                print(f"{n:<42s}  {rec['domain']:<6s}  owner={rec['owner_geometry']:<10s}  resid={rec.get('residual_pct')}%")
+            print(f"\n{len(names)} observable(s).")
+        return 0
     all_groups = {}
     if args.all:
         all_groups["PARADOX_TO_CLOSURE"] = _all_paradox_keys()
@@ -560,6 +676,10 @@ def main(argv=None):
     p_list = sub.add_parser("list", help="list closure names")
     p_list.add_argument("--filter")
     p_list.add_argument("--all", action="store_true")
+    p_list.add_argument("--dispatch", action="store_true",
+        help="list only the 114 Phase E/F/G dispatch observables")
+    p_list.add_argument("--domain", choices=["SI","SM","LCDM","astro","GR","chem","CM","bio","geo","KK"],
+        help="filter dispatch observables by domain (implies --dispatch)")
     p_list.add_argument("--json", action="store_true")
     p_list.set_defaults(func=_cmd_list)
 
@@ -577,6 +697,20 @@ def main(argv=None):
 
     p_gate = sub.add_parser("gate", help="run the fidelity gate")
     p_gate.set_defaults(func=_cmd_gate)
+
+    p_assim = sub.add_parser("assimilate",
+        help="route an observable through the qcalcgeom_solver 4x3 dispatch matrix (Phase E/F/G)")
+    p_assim.add_argument("name", help="observable name (see `uqff list --dispatch`)")
+    p_assim.add_argument("--geometry", default="auto",
+        choices=["auto", "qcalcgeom", "bsfg", "dpm", "d26"],
+        help="geometry backend (default: auto = owner geometry)")
+    p_assim.add_argument("--numeric", default="numerical",
+        choices=["symbolic", "numerical", "discrete", "all"],
+        help="numeric backend (default: numerical)")
+    p_assim.add_argument("--decompose", action="store_true",
+        help="return the full 8-field solver-bus result dict")
+    p_assim.add_argument("--json", action="store_true")
+    p_assim.set_defaults(func=_cmd_assimilate)
 
     p_serve = sub.add_parser("serve", help="launch the REST API (requires uqff[api])")
     p_serve.add_argument("--host", default="127.0.0.1")
