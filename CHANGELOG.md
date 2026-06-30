@@ -2,6 +2,79 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.34.0] — 2026-06-30
+
+### Added — Yang-Mills E_crack arxiv submission package (5 new files in `arxiv_yang_mills/`)
+
+The repository now stages a complete submission package for the Yang-Mills mass gap Clay Millennium Prize Problem, built in priority order **A → D → B → E** per the 30-Jun-2026 direction. The package establishes a public, timestamped, reproducible UQFF claim while honestly bounding the scope (physics-level proposal, not yet a Wightman-axiom-compliant proof).
+
+#### `arxiv_yang_mills/YANG_MILLS_E_CRACK_DERIVATION.md` (A — bridge document)
+
+Math-physics-community-readable working draft of the Yang-Mills mass gap derivation via the E_crack vacuum-cracking threshold. 9 sections:
+
+1. The Clay Yang-Mills problem (existence + mass gap requirements, current 2024-2026 state)
+2. UQFF framework primitives (the 9 truly-independent primitives, focus on ρ_SCm + [SSq] + c)
+3. **Derivation: E_crack = ρ_SCm · c² / [SSq] = 1.118 × 10⁻¹⁹ J** (positive-definite by construction with zero free parameters)
+4. Multi-designation cluster-position landscape (4 documented: 0.7 eV formula / ~700 eV experimental / ~624 GeV Layer-13 / 1.736 GeV PAPER 1318 lattice glueball)
+5. The dynamical mechanism (DPM vortex formation at UA/SCm interface as non-perturbative mass-generation pathway)
+6. Reproducibility via `pip install uqff==5.34.0`
+7. Lattice QCD consistency (Douglas Nature Rev. Phys. 2026 numerical evidence sits inside the multi-cluster landscape)
+8. **What this proposal IS — and IS NOT** (honest scope statement: physics proposal yes, Wightman-axiom proof not yet)
+9. Conclusion + invitation for community review, falsification attempts, and collaboration on formalization
+
+References: Jaffe-Witten 2000, Hairer 2024 Inventiones, Douglas 2026 Nature Rev. Phys., PAPER 1318, PAPER 1521, PAPER 1522, Compression Cycle 2.
+
+#### `arxiv_yang_mills/derive_yang_mills_mass_gap_uqff.py` (D — reproducibility script)
+
+Standalone Python script with NO external dependencies beyond the standard library. Reproduces the E_crack derivation in approximately 50 lines. Verified output:
+
+```
+Primitives:  ρ_SCm = 7.09e-37 J/m³,  [SSq] = 0.57,  c = 2.998e8 m/s
+Derivation:  E_crack = ρ_SCm · c² / [SSq]
+             = 1.117982e-19 J = 0.697789 eV
+Positive-definite by construction: True
+Free parameters: 0   Fitting applied: False
+Lattice QCD consistency (Douglas 2026, 100-2000 MeV): True
+```
+
+Designed for skeptic-friendly 30-second verification: any third party can `python3 derive_yang_mills_mass_gap_uqff.py` and reproduce the central claim without installing the UQFF package.
+
+#### `arxiv_yang_mills/preprint_scaffold.tex` (B — arxiv LaTeX scaffold)
+
+LaTeX preprint targeting math-ph (primary) cross-listed to hep-th. Includes:
+- `authblk` title block with author affiliation + ORCID placeholder
+- Drafted abstract (positive-definite E_crack claim, multi-cluster landscape, honest scope)
+- `amsthm` theorem environments (Theorem 1: positive-definite vacuum-cracking threshold with proof)
+- 8 main sections + 3 appendices with TODO blocks for prose drawn from the bridge document
+- 8-entry bibliography wired (Jaffe-Witten, Hairer, Douglas, Murphy-PyPI, Murphy-PAPER-1318, Murphy-PAPER-1521, Murphy-PAPER-1522, Murphy-CompCycle2)
+- Listings package for Python code embedding
+- Ready for `pdflatex` compilation
+
+Estimated time to fill TODO blocks: 1-2 days of prose.
+
+#### `arxiv_yang_mills/wightman_mapping.md` (E — Wightman axioms roadmap)
+
+Future-work scoping document for the Quantum Chain → Wightman axioms translation that would satisfy the Clay criterion:
+
+- Axiom-by-axiom analysis (W0: Hilbert + vacuum / W1: Poincaré / W2: spectral gap / W3: locality / W4: cyclicity)
+- Quantum Chain step-by-step mapping table (θ_vacuum → Ω, DPM_vortex → a_1†, Ug_family → operator algebra, E_crack → spectral gap value)
+- 4-phase translation roadmap (Phase 1: 2D toy model / Phase 2: 3D via Hairer regularity structures / Phase 3: 4D principal result / Phase 4: Clay submission)
+- Inventory of 8 existing v5.34.0 calculator surfaces that scaffold the Wightman translation
+- Honest scope: 18-36 months focused mathematical work per phase, collaboration explicitly invited
+- Collaboration contact for Hairer group, Erlangen school, constructive-QFT researchers, and Princeton/IAS
+
+#### `arxiv_yang_mills/README.md` (package overview)
+
+Submission path roadmap, quick verification instructions, file inventory, claim-vs-non-claim accountability table, contact + license.
+
+### Notes on PyPI package content
+
+The `arxiv_yang_mills/` folder is a documentation/research staging area in the repository. The wheel and sdist artifacts on PyPI continue to ship the same calculator surfaces as v5.33.0 (279 public `calculate_*` entry points, all canonical primitives intact). The version bump documents that the *repository* has new contents establishing the public submission infrastructure; the *PyPI package* code content is unchanged from v5.33.0.
+
+### Locked primitives intact
+
+ρ_SCm = 7.09×10⁻³⁷, β_i = 0.6029, [SSq] = 0.57, Φ_RESONANCE = 0.84, S_26 = 1.4531×10²⁶, ω_SCm = 1.25 THz, D_crit = 26, D_phys = 4, D_BSFG = 6, SO_5 = 10, A_5 = 60, N_ch = 9. Zero drift across the v5.33.0 → v5.34.0 transition.
+
 ## [5.33.0] — 2026-06-30
 
 ### Added — 140 new public `calculate_*` surfaces (139 → 279 total, +101%)

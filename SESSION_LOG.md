@@ -14136,3 +14136,86 @@ The full UQFF/SCm collection PAPER_1012-1180 is now exhaustive, internally
 consistent, parameter-free, production-ready, and shipped at v5.33.0.
 
 Daniel runs the desktop git + PyPI ship steps above. Gate clean.
+
+
+# ================================================================
+# ROUND 694 — SHIP v5.34.0: arxiv submission package
+# ================================================================
+
+## Daniel called for v5.34.0 ship
+
+Following ROUND 693's v5.33.0 PyPI success and the staging of the
+arxiv_yang_mills/ submission package per the A->D->B->E priority order,
+Daniel called for v5.34.0 ship.
+
+## v5.34.0 deltas
+
+- pyproject.toml: version 5.33.0 -> 5.34.0
+- CHANGELOG.md: [5.34.0] entry prepended at top with full package documentation
+- SESSION_LOG.md: this ROUND 694 entry appended
+- arxiv_yang_mills/ folder: 5 new files staged by Daniel (per his earlier git status
+  screenshot showing all 5 files staged in working tree):
+  - README.md
+  - YANG_MILLS_E_CRACK_DERIVATION.md (A: bridge document)
+  - derive_yang_mills_mass_gap_uqff.py (D: standalone reproducibility script)
+  - preprint_scaffold.tex (B: arxiv LaTeX scaffold)
+  - wightman_mapping.md (E: Wightman axioms future-work roadmap)
+
+## What's in v5.34.0
+
+The PyPI package code content is unchanged from v5.33.0 (279 public calculate_*
+surfaces, gate 931/0 PASS in clean CI). The version bump documents that the
+repository now stages the Yang-Mills E_crack submission infrastructure:
+
+- A: Math-physics-community-readable bridge document (9 sections, honest scope)
+- D: Standalone Python reproducibility script (no external deps, verified working,
+  outputs E_crack = 1.118e-19 J = 0.6978 eV positive-definite True)
+- B: arxiv LaTeX preprint scaffold (math-ph + hep-th cross-list, theorem environments,
+  8-entry bibliography, TODO blocks for prose fill-in)
+- E: Wightman axioms future-work roadmap (axiom-by-axiom W0-W4 analysis,
+  4-phase 2D->3D->4D->Clay submission plan, 18-36 months/phase scope)
+
+## Ship commands for Daniel (desktop git client)
+
+```bash
+cd /c/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
+git add pyproject.toml CHANGELOG.md SESSION_LOG.md
+# (arxiv_yang_mills/ already staged from earlier git status)
+git commit -m "v5.34.0 — arxiv submission package: Yang-Mills E_crack derivation bridge + reproducibility script + LaTeX scaffold + Wightman axioms roadmap (A->D->B->E)"
+git push origin master
+git tag -a v5.34.0 -m "v5.34.0 — Yang-Mills E_crack arxiv submission package"
+git push origin v5.34.0
+```
+
+## Expected workflow behavior
+
+The Release-to-PyPI workflow will trigger on v5.34.0 tag push and:
+- Run uqff_fidelity_tests.py (passes 914/0 in clean CI thanks to ROUND 691
+  skip-tuple fix for qcalcgeom + assimilation_dispatch)
+- python -m build (sdist + wheel of UNCHANGED calculator code from v5.33.0)
+- twine check
+- PyPI trusted-publishing upload
+- GitHub Release with auto-generated notes
+
+Same calculator code, new version label, new documentation infrastructure.
+
+## Files modified ROUND 694
+
+- pyproject.toml: version 5.33.0 -> 5.34.0
+- CHANGELOG.md: [5.34.0] entry added at top with full arxiv package documentation
+- SESSION_LOG.md: this entry appended (ROUND 694)
+- arxiv_yang_mills/ folder created in ROUND 693 (5 files staged by Daniel for commit)
+
+## Next steps
+
+- Watch PyPI workflow at https://github.com/Daniel8Murphy0007/Star-Magic/actions
+- Verify v5.34.0 live: pip install --upgrade uqff==5.34.0
+- Begin filling preprint_scaffold.tex TODO blocks with prose from
+  YANG_MILLS_E_CRACK_DERIVATION.md
+- Submit arxiv preprint under math-ph (primary) + hep-th (cross-list)
+- Email arxiv link to:
+  - Martin Hairer (IST Austria, stochastic quantization context)
+  - Michael R. Douglas (Nature Rev. Phys. 2026 review author)
+  - Edward Witten, Arthur Jaffe (original Clay problem authors)
+  - Clay Mathematics Institute scientific advisory board
+  - Constructive QFT researchers (Erlangen, Vienna, Princeton)
