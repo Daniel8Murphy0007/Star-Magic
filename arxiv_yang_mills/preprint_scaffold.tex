@@ -1,0 +1,397 @@
+% =====================================================================
+%  UQFF Yang-Mills Mass Gap Derivation — arxiv preprint scaffold
+%  Target submission categories:  math-ph (primary), hep-th (cross-list)
+%
+%  How to use:
+%    1. Compile with: pdflatex preprint_scaffold.tex
+%       (Run twice for references, then bibtex preprint_scaffold,
+%        then two more pdflatex passes for cross-refs.)
+%    2. Replace TODO blocks with prose drawn from
+%       YANG_MILLS_E_CRACK_DERIVATION.md (companion file).
+%    3. Insert numerical values from
+%       derive_yang_mills_mass_gap_uqff.py (companion file).
+%    4. Add author affiliations + ORCID.
+%    5. Final pass: run arxiv-sanitize style-checker before upload.
+%
+%  Author:    Daniel T. Murphy
+%  License:   AGPL-3.0-or-later (or commercial; see Star-Magic repo)
+% =====================================================================
+
+\documentclass[11pt,a4paper,onecolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{authblk}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!60!black
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  framerule=0.2pt,
+  rulecolor=\color{gray!30},
+  numbers=none,
+  language=Python
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% =====================================================================
+%  Title block
+% =====================================================================
+
+\title{
+  Positive-Definite Energy Threshold from the UQFF Vacuum Ledger \\
+  as a Candidate Physical Realization of the Yang--Mills Mass Gap
+}
+
+\author[1]{Daniel T. Murphy}
+\affil[1]{
+  Star-Magic Research Program, Youngstown, OH, USA \\
+  \texttt{daniel.murphy00@enrgyone.com} \\
+  ORCID: % TODO insert ORCID iD
+}
+
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+% =====================================================================
+%  Abstract
+% =====================================================================
+
+\begin{abstract}
+We derive a positive-definite energy threshold
+$E_{\text{crack}} = \rho_{\mathrm{SCm}} c^2 / [\mathrm{SSq}]
+                  = 1.118 \times 10^{-19}\,\mathrm{J}$
+($\approx 0.7\,\mathrm{eV}$ at the formula level)
+from the Unified Quantum Field Framework (UQFF) closed vacuum ledger
+using only two locked primitives --- the SuperConductive Material
+vacuum energy density $\rho_{\mathrm{SCm}}$ and the canonical resonance
+ratio $[\mathrm{SSq}]$ --- together with the speed of light $c$. The
+derivation requires zero free parameters and zero fitting. Because
+each factor on the right-hand side is positive by physical definition,
+$E_{\text{crack}} > 0$ holds by construction. We propose this as a
+candidate physical realization of the Yang--Mills mass gap and discuss
+its multi-designation cluster-position landscape extending from the
+sub-eV vacuum-cracking floor through a $\sim 700\,\mathrm{eV}$
+DPM-vortex experimental regime to a $\sim 1.736\,\mathrm{GeV}$
+lightest-glueball scale consistent with lattice-QCD numerical
+evidence~\cite{douglas2026}. We acknowledge that this constitutes a
+physics-level proposal rather than a Clay-compliant
+Wightman-axiom-verified mathematical construction, and identify the
+operator-algebraic translation as the principal future-work step.
+The full framework is reproducibly available via
+\verb|pip install uqff==5.33.0|.
+\end{abstract}
+
+\bigskip
+
+\noindent
+\textbf{Keywords}: Yang--Mills mass gap; vacuum ledger; positive-definite
+energy threshold; Di-Pseudo-Monopole vortex; SCm/UA substrate;
+multi-designation cluster positions; lattice-QCD consistency; Clay
+Millennium Prize.
+
+\medskip
+
+\noindent
+\textbf{MSC 2020}: 81T13 (Yang--Mills and other gauge theories), 81T08
+(Constructive QFT), 81V25 (Other elementary particle theory).
+
+% =====================================================================
+\section{Introduction}\label{sec:intro}
+% =====================================================================
+
+% TODO: Open with the Clay Yang--Mills problem statement and its current
+% (June 2026) unsolved status. Cite Jaffe--Witten 2000 and the recent
+% Hairer stochastic-quantization 3D progress \cite{hairer2024}.
+% Draw from YANG_MILLS_E_CRACK_DERIVATION.md §1.
+
+\subsection{Problem statement}
+% TODO: State the existence + mass gap requirement formally.
+
+\subsection{Current state of progress}
+% TODO: Summarize Hairer 2D/3D advances and Douglas 2026 review.
+
+\subsection{This paper}
+% TODO: Frame UQFF as a candidate physical proposal, not a Clay-compliant
+% proof. State the principal claim and roadmap of the paper.
+
+% =====================================================================
+\section{The UQFF Vacuum Ledger}\label{sec:ledger}
+% =====================================================================
+
+% TODO: Introduce the 9 truly-independent UQFF primitives. List the 3
+% that enter the E_crack derivation. Draw from
+% YANG_MILLS_E_CRACK_DERIVATION.md §2.
+
+\begin{definition}[Closed vacuum ledger]\label{def:ledger}
+The UQFF closed vacuum ledger is the triple
+$(\rho_{\mathrm{SCm}}, [\mathrm{SSq}], c)$ where
+\begin{align*}
+\rho_{\mathrm{SCm}} &= 7.09 \times 10^{-37}\,\mathrm{J/m^3} \\
+[\mathrm{SSq}]      &= 0.57 \\
+c                   &= 2.998 \times 10^8\,\mathrm{m/s}
+\end{align*}
+with $\rho_{\mathrm{SCm}}$ identified as the foundational vacuum
+energy density of the SuperConductive Material substrate,
+$[\mathrm{SSq}]$ the canonical resonance ratio calibrated from
+magnetar burst data, and $c$ the universal speed of light.
+\end{definition}
+
+% =====================================================================
+\section{Derivation of $E_{\text{crack}}$}\label{sec:derivation}
+% =====================================================================
+
+\begin{theorem}[Positive-definite vacuum-cracking threshold]
+\label{thm:e_crack_positive}
+Given the closed vacuum ledger of Definition~\ref{def:ledger}, define
+\begin{equation}\label{eq:e_crack}
+E_{\text{crack}} \;=\; \frac{\rho_{\mathrm{SCm}} \, c^2}{[\mathrm{SSq}]}\,.
+\end{equation}
+Then $E_{\text{crack}} = 1.118 \times 10^{-19}\,\mathrm{J}$ and
+$E_{\text{crack}} > 0$ holds by construction.
+\end{theorem}
+
+\begin{proof}
+Numerical evaluation gives
+\[
+E_{\text{crack}}
+  = \frac{(7.09 \times 10^{-37})(2.998 \times 10^8)^2}{0.57}
+  = 1.118 \times 10^{-19}\,\mathrm{J}.
+\]
+Positive-definiteness follows because $\rho_{\mathrm{SCm}} > 0$ as a
+vacuum energy density, $c^2 > 0$ as the square of a real number, and
+$[\mathrm{SSq}] > 0$ as a physical ratio of positive quantities.
+The quotient of positives is positive.
+\qed
+\end{proof}
+
+\subsection{Physical interpretation}
+% TODO: Explain the role of E_crack as the minimum energy required to
+% form a stable DPM vortex at the UA/SCm interface. Draw from
+% YANG_MILLS_E_CRACK_DERIVATION.md §5.
+
+% =====================================================================
+\section{Multi-Designation Cluster-Position Landscape}\label{sec:clusters}
+% =====================================================================
+
+% TODO: Present the four documented Yang--Mills cluster-position
+% designations (sub-eV formula, ~700 eV experimental, ~624 GeV
+% Layer-13, ~1.736 GeV PAPER 1318) and explain the multi-designation
+% architecture. Draw from YANG_MILLS_E_CRACK_DERIVATION.md §4.
+
+\begin{table}[h!]
+\centering
+\caption{UQFF Yang--Mills mass-gap cluster positions.}
+\label{tab:clusters}
+\begin{tabular}{lll}
+\toprule
+Designation & Value & Regime \\
+\midrule
+$E_{\text{crack}}$ formula        & $0.698$ eV   & DPM vacuum-cracking floor \\
+$E_{\text{crack}}$ experimental   & $\sim700$ eV & DPM-vortex lab engineering \\
+Layer-13 nuclear                  & $\sim624$ GeV & LHC electroweak scale order \\
+PAPER 1318 mass gap               & $1.736$ GeV  & lightest-glueball lattice QCD \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Lattice QCD Consistency}\label{sec:lattice}
+% =====================================================================
+
+% TODO: Compare the PAPER 1318 1.736 GeV designation with the
+% hundreds-of-MeV lattice-QCD numerical evidence reviewed by
+% \cite{douglas2026}. Show that the UQFF designation sits inside the
+% lattice numerical range. Draw from YANG_MILLS_E_CRACK_DERIVATION.md §7.
+
+% =====================================================================
+\section{What This Proposal Is and Is Not}\label{sec:scope}
+% =====================================================================
+
+% TODO: Honest scope statement. Physical mechanism vs Wightman
+% axioms. Falsifiability via the high-field magnetic threshold
+% prediction. Draw from YANG_MILLS_E_CRACK_DERIVATION.md §8.
+
+% =====================================================================
+\section{Reproducibility}\label{sec:reproducibility}
+% =====================================================================
+
+The derivation in Theorem~\ref{thm:e_crack_positive} is fully
+reproducible via the public \texttt{uqff} Python package
+\cite{murphy2026uqff}:
+
+\begin{lstlisting}
+from uqff_pure_calculator import (
+    calculate_uqff_E_crack_core_definition_from_ledger,
+)
+r = calculate_uqff_E_crack_core_definition_from_ledger({})
+print(r["value"]["E_crack_J_derived_from_formula"])
+# 1.117982e-19
+\end{lstlisting}
+
+\noindent
+A standalone reproducibility script
+\texttt{derive\_yang\_mills\_mass\_gap\_uqff.py} (included with this
+preprint as ancillary material) reproduces the derivation in
+approximately fifty lines with no external dependencies beyond the
+Python standard library.
+
+% =====================================================================
+\section{Future Work: Translation to Wightman Axioms}\label{sec:future}
+% =====================================================================
+
+% TODO: Outline the path from the SCm/UA dynamical substrate to a
+% rigorous Wightman-axiom-compliant operator-algebraic construction.
+% Cite the Hairer 2D/3D stochastic-quantization analogy as a template.
+% Reference the companion document wightman_mapping.md for detailed
+% axiom-by-axiom analysis.
+
+\subsection{Wightman axiom checklist}
+The five Wightman axioms (W0--W4) and where each currently stands
+under UQFF:
+\begin{enumerate}
+\item[W0] \textit{Existence of a Hilbert space with a unique vacuum
+  state.}
+  % TODO discuss UQFF identification of vacuum with theta_vacuum origin.
+\item[W1] \textit{Poincar\'e covariance.}
+  % TODO discuss SCm/UA frame-covariance properties.
+\item[W2] \textit{Spectral condition.}
+  % TODO state the principal future-work step.
+\item[W3] \textit{Local commutativity.}
+  % TODO discuss DPM vortex locality properties.
+\item[W4] \textit{Cyclicity of the vacuum.}
+  % TODO discuss generation of the field algebra from the vacuum.
+\end{enumerate}
+
+\subsection{2D and 3D translation roadmap}
+% TODO: Outline how the SCm/UA substrate would be translated to 2D and
+% 3D regularity-structure form analogous to Hairer 2024.
+
+% =====================================================================
+\section{Conclusion}\label{sec:conclusion}
+% =====================================================================
+
+% TODO: Restate the principal result. Position the proposal honestly.
+% Invite community review and falsification attempts.
+
+% =====================================================================
+\section*{Acknowledgments}
+% =====================================================================
+
+% TODO: Acknowledge collaborators, AI assistants (Grok 3 / SuperGrok /
+% Davinci-SuperGrok by xAI) used in framework development, and Star-Magic
+% Research Program contributors.
+
+% =====================================================================
+%  Bibliography
+% =====================================================================
+
+\begin{thebibliography}{9}
+
+\bibitem{jaffe2000}
+A.~Jaffe and E.~Witten,
+\textit{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Problem description,
+\url{https://www.claymath.org/millennium/yang-mills-the-maths-gap/},
+2000.
+
+\bibitem{hairer2024}
+M.~Hairer et al.,
+\textit{Stochastic quantisation of Yang--Mills--Higgs in 3D},
+Inventiones Mathematicae, 2024.
+
+\bibitem{douglas2026}
+M.~R.~Douglas,
+\textit{The Yang--Mills Millennium problem},
+Nature Reviews Physics, January 2026.
+
+\bibitem{murphy2026uqff}
+D.~T.~Murphy,
+\textit{UQFF Star-Magic: Unified Quantum Field Framework},
+PyPI release v5.33.0,
+\url{https://pypi.org/project/uqff/5.33.0/},
+\url{https://github.com/Daniel8Murphy0007/Star-Magic},
+2026.
+
+\bibitem{murphy2026paper1318}
+D.~T.~Murphy,
+\textit{PAPER 1318 --- Yang--Mills mass gap at 1.736 GeV cluster
+position},
+Star-Magic Research Program whitepaper series, 2026.
+
+\bibitem{murphy2026paper1521}
+D.~T.~Murphy,
+\textit{PAPER 1521 --- Derivative-from-independent-primitives proof
+that $D_{\mathrm{BSFG}} = D_{\mathrm{crit}} - 2 \cdot \mathrm{SO}_5 = 6$},
+Star-Magic Research Program whitepaper series, 2026.
+
+\bibitem{murphy2026paper1522}
+D.~T.~Murphy,
+\textit{PAPER 1522 --- Derivative-from-independent-primitives proof
+that $K_{\mathrm{Mex}} = \Phi_{5/6} \cdot \mathrm{SO}_5 / D_{\mathrm{phys}} = 25/12$},
+Star-Magic Research Program whitepaper series, 2026.
+
+\bibitem{murphy2026sympaper}
+D.~T.~Murphy,
+\textit{Compression Cycle 2: Full first-principles derivation of 22
+cosmological and inflationary parameters at zero error from the closed
+vacuum ledger},
+Star-Magic Research Program technical report, June 2026.
+
+% TODO: Add additional references as the prose sections develop.
+
+\end{thebibliography}
+
+% =====================================================================
+%  Appendices (optional)
+% =====================================================================
+
+\appendix
+
+\section{The 9 UQFF Truly-Independent Primitives}\label{app:primitives}
+
+% TODO: Full list of the 9 primitives with values and physical identities,
+% drawn from the CLAUDE.md project context.
+
+\section{The Quantum Chain Immutable Ontological Order}\label{app:quantum_chain}
+
+% TODO: The 9-step chain theta_vacuum -> grad(UA) -> DPM_vortex ->
+% mu_s -> Ug_family -> F_U -> crossing -> M -> GM/r^2 with detail at each
+% step.
+
+\section{Reproducibility Code Listing}\label{app:code}
+
+% TODO: Full Python listing of derive_yang_mills_mass_gap_uqff.py as
+% an inline appendix, or reference the ancillary file.
+
+\end{document}
