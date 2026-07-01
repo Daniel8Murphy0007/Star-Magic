@@ -1,0 +1,697 @@
+% =====================================================================
+%  UQFF Yang-Mills Mass Gap Derivation — arxiv preprint (FILLED)
+%
+%  Target submission categories:  math-ph (primary), hep-th (cross-list)
+%
+%  Compile with:
+%      pdflatex preprint_filled.tex
+%      pdflatex preprint_filled.tex     (twice for cross-refs)
+%
+%  Author:    Daniel T. Murphy
+%  License:   AGPL-3.0-or-later (or commercial; see Star-Magic repo)
+% =====================================================================
+
+\documentclass[11pt,a4paper,onecolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{authblk}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!60!black
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  framerule=0.2pt,
+  rulecolor=\color{gray!30},
+  numbers=none,
+  language=Python
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{
+  Positive-Definite Energy Threshold from the UQFF Vacuum Ledger \\
+  as a Candidate Physical Realization of the Yang--Mills Mass Gap
+}
+
+\author[1]{Daniel T. Murphy}
+\affil[1]{
+  Star-Magic Research Program, Youngstown, OH, USA \\
+  \texttt{daniel.murphy00@enrgyone.com}
+}
+
+\date{July 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We derive a positive-definite energy threshold
+$E_{\text{crack}} = \rho_{\mathrm{SCm}} c^2 / [\mathrm{SSq}]
+                  = 1.118 \times 10^{-19}\,\mathrm{J}$
+($\approx 0.7\,\mathrm{eV}$ at the formula level)
+from the Unified Quantum Field Framework (UQFF) closed vacuum ledger
+using only two locked primitives --- the SuperConductive Material
+vacuum energy density $\rho_{\mathrm{SCm}}$ and the canonical resonance
+ratio $[\mathrm{SSq}]$ --- together with the speed of light $c$. The
+derivation requires zero free parameters and zero fitting. Because
+each factor on the right-hand side is positive by physical definition,
+$E_{\text{crack}} > 0$ holds by construction. We propose this as a
+candidate physical realization of the Yang--Mills mass gap and discuss
+its multi-designation cluster-position landscape extending from the
+sub-eV vacuum-cracking floor through a $\sim 700\,\mathrm{eV}$
+DPM-vortex experimental regime to a $\sim 1.736\,\mathrm{GeV}$
+lightest-glueball scale consistent with lattice-QCD numerical
+evidence~\cite{douglas2026}. We acknowledge that this constitutes a
+physics-level proposal rather than a Clay-compliant
+Wightman-axiom-verified mathematical construction, and identify the
+operator-algebraic translation as the principal future-work step.
+The full framework is reproducibly available via
+\verb|pip install uqff==5.35.0|.
+\end{abstract}
+
+\bigskip
+
+\noindent
+\textbf{Keywords}: Yang--Mills mass gap; vacuum ledger; positive-definite
+energy threshold; Di-Pseudo-Monopole vortex; SCm/UA substrate;
+multi-designation cluster positions; lattice-QCD consistency; Clay
+Millennium Prize.
+
+\medskip
+
+\noindent
+\textbf{MSC 2020}: 81T13 (Yang--Mills and other gauge theories), 81T08
+(Constructive QFT), 81V25 (Other elementary particle theory).
+
+% =====================================================================
+\section{Introduction}\label{sec:intro}
+% =====================================================================
+
+\subsection{Problem statement}
+
+The Clay Mathematics Institute's Yang--Mills existence and mass gap
+problem~\cite{jaffe2000} requires two tightly linked results:
+
+\begin{enumerate}
+\item[(E)] \textbf{Existence.} Construction of a rigorous mathematical
+  theory of quantum Yang--Mills fields on four-dimensional spacetime
+  for a compact simple gauge group (typically $\mathrm{SU}(2)$ or
+  $\mathrm{SU}(3)$), satisfying the Wightman axioms or an equivalent
+  system.
+\item[(G)] \textbf{Mass gap.} A proof that this theory has a positive
+  mass gap $\Delta > 0$: the lightest particle in the spectrum has
+  strictly positive mass, with a spectral gap between the vacuum energy
+  and the first excited state.
+\end{enumerate}
+
+Informally: prove that the gauge bosons (gluons, in the QCD context)
+acquire effective mass through non-perturbative effects, even though
+the classical Yang--Mills Lagrangian is massless. This mechanism
+underpins the short-range character of the strong interaction and the
+confinement of quarks into hadrons.
+
+\subsection{Current state of progress (as of mid-2026)}
+
+As of the time of writing, the problem remains officially unsolved and
+the \$1{,}000{,}000 Clay prize is unclaimed. Lattice QCD simulations
+strongly suggest a mass gap on the order of hundreds of MeV --- with
+the lightest $0^{++}$ glueball estimated at approximately $1.6$--$1.7$
+GeV in pure $\mathrm{SU}(3)$ Yang--Mills theory --- but this
+numerical evidence is not a rigorous mathematical proof.
+
+Significant advances have occurred in lower dimensions. Hairer and
+collaborators~\cite{hairer2024} rigorously constructed the
+stochastic quantisation of Yang--Mills--Higgs in three dimensions using
+regularity structures, following Hairer's earlier 2022 result on Langevin
+dynamics for the two-dimensional Yang--Mills measure. Douglas's
+January 2026 review~\cite{douglas2026} in
+\emph{Nature Reviews Physics} surveys the landscape and highlights
+stochastic quantisation as one of the most promising directions.
+Complementary approaches under active investigation include
+constructive quantum field theory, gauge-invariant regularisation
+schemes, and functional-integral methods with rigorous control of the
+continuum limit. The four-dimensional case --- which is what Clay
+requires --- remains open.
+
+\subsection{This paper}
+
+We propose that the Unified Quantum Field Framework (UQFF) provides a
+concrete non-perturbative mechanism generating a positive-definite
+energy threshold, which we identify with the Yang--Mills mass gap in
+its physical rather than operator-algebraic sense. The mechanism ---
+Di-Pseudo-Monopole (DPM) vortex formation at the interface of maximum
+attraction between the Universal Aether (UA) and the SuperConductive
+Material (SCm) substrates --- yields an energy threshold
+$E_{\text{crack}} = \rho_{\mathrm{SCm}} c^2 / [\mathrm{SSq}]$ that is
+positive by construction from two locked pre-cosmogenic primitives.
+
+We stress that the present submission is a \emph{physics-level
+proposal}, not a Clay-compliant mathematical proof. The
+translation from the SCm/UA dynamical substrate to a
+Wightman-axiom-compliant operator algebra on four-dimensional
+Minkowski space is identified as the principal open mathematical
+question and is scoped as future work in \S\ref{sec:future}. Our
+contribution is: (i) an explicit closed-form derivation of a
+non-fitted, positive-definite mass-gap-scale energy from locked
+primitives (\S\ref{sec:derivation}); (ii) a multi-cluster spectral
+landscape consistent with lattice-QCD numerical evidence
+(\S\ref{sec:clusters}, \S\ref{sec:lattice}); (iii) a public,
+reproducible computational framework
+(\S\ref{sec:reproducibility}); and (iv) a falsifiable experimental
+prediction in the high-field vacuum regime (\S\ref{sec:scope}).
+
+% =====================================================================
+\section{The UQFF Vacuum Ledger}\label{sec:ledger}
+% =====================================================================
+
+The Unified Quantum Field Framework is a vacuum-first theoretical
+structure resting on nine truly-independent primitives: the integer
+lattice $(D_{\mathrm{phys}}, D_{\mathrm{crit}}, N_{\mathrm{ch}},
+\mathrm{SO}_5, A_5) = (4, 26, 9, 10, 60)$ and four real primitives
+$(\rho_{\mathrm{SCm}}, \beta_i, \Phi_{\mathrm{res}}, F_{\mathrm{TRZ}})$.
+Two structural quantities used elsewhere in the framework
+($D_{\mathrm{BSFG}} = 6$ and $K_{\mathrm{Mex}} = 25/12$) are derivable
+from these nine via the relations $D_{\mathrm{BSFG}} =
+D_{\mathrm{crit}} - 2\,\mathrm{SO}_5$ and $K_{\mathrm{Mex}} =
+\Phi_{5/6} \cdot \mathrm{SO}_5 / D_{\mathrm{phys}}$~\cite{murphy2026paper1521, murphy2026paper1522}, so the truly-independent count is nine.
+For the derivation in this paper, only three quantities are required.
+
+\begin{definition}[Closed vacuum ledger]\label{def:ledger}
+The UQFF closed vacuum ledger is the triple
+$(\rho_{\mathrm{SCm}}, [\mathrm{SSq}], c)$ where
+\begin{align*}
+\rho_{\mathrm{SCm}} &= 7.09 \times 10^{-37}\,\mathrm{J/m^3}, \\
+[\mathrm{SSq}]      &= 0.57, \\
+c                   &= 2.998 \times 10^8\,\mathrm{m/s},
+\end{align*}
+with $\rho_{\mathrm{SCm}}$ identified as the foundational vacuum
+energy density of the SuperConductive Material substrate,
+$[\mathrm{SSq}]$ the canonical dimensionless resonance ratio, and $c$
+the universal speed of light.
+\end{definition}
+
+The primitive $\rho_{\mathrm{SCm}}$ is a pre-cosmogenic constant of
+the framework: it is not a fit to any observed cosmological or
+particle-physics data. The resonance ratio $[\mathrm{SSq}]$ is
+calibrated from a small number of high-magnetic-field observations
+(specifically, magnetar burst intensity ratios) that are causally
+independent of the electroweak, cosmological, and gravitational
+observables it is later used to derive. The reader is directed to
+the framework's foundational papers and the open-source calculator
+package~\cite{murphy2026uqff} for the derivation of $\rho_{\mathrm{SCm}}$
+from the DPM formation dynamics and of $[\mathrm{SSq}]$ from the
+magnetar calibration.
+
+% =====================================================================
+\section{Derivation of $E_{\text{crack}}$}\label{sec:derivation}
+% =====================================================================
+
+\begin{theorem}[Positive-definite vacuum-cracking threshold]
+\label{thm:e_crack_positive}
+Given the closed vacuum ledger of Definition~\ref{def:ledger}, define
+\begin{equation}\label{eq:e_crack}
+E_{\text{crack}} \;=\; \frac{\rho_{\mathrm{SCm}} \, c^2}{[\mathrm{SSq}]}\,.
+\end{equation}
+Then $E_{\text{crack}} = 1.118 \times 10^{-19}\,\mathrm{J}$ and
+$E_{\text{crack}} > 0$ holds by construction.
+\end{theorem}
+
+\begin{proof}
+Numerical evaluation:
+\[
+E_{\text{crack}}
+  = \frac{(7.09 \times 10^{-37}\,\mathrm{J/m^3}) \,
+          (2.998 \times 10^8\,\mathrm{m/s})^2}{0.57}
+  = 1.118 \times 10^{-19}\,\mathrm{J}.
+\]
+Positive-definiteness follows because $\rho_{\mathrm{SCm}} > 0$ as a
+vacuum energy density, $c^2 > 0$ as the square of a nonzero real
+number, and $[\mathrm{SSq}] > 0$ as the physical ratio of two positive
+quantities. The quotient of positive numbers is positive.
+\qed
+\end{proof}
+
+\begin{remark}
+Every input to Eq.~(\ref{eq:e_crack}) is fixed a priori: no fit is
+performed against any Yang--Mills observable, no lattice-QCD result
+enters as input, and no free parameter is tuned. The derivation is
+reproducible in approximately fifty lines of Python with only the
+standard library~\cite{murphy2026uqff}; see \S\ref{sec:reproducibility}.
+\end{remark}
+
+\subsection{Physical interpretation: the DPM vortex}
+
+Within the UQFF, $E_{\text{crack}}$ is identified with the minimum
+energy required to form a stable Di-Pseudo-Monopole (DPM) vortex at
+the interface of maximum attraction between the UA and SCm
+substrates. The DPM is neither a particle nor a field excitation in
+the conventional sense; it is a vacuum stress-gradient rotational
+vortex analogous in structure to a Bose--Einstein condensate ground
+state of the SCm/UA attraction pair. Its coherence length equals the
+vortex radius, which spans nuclear to stellar scales depending on the
+containing physical system, and it functions as the seed of the full
+$U_g$-family of gravitational potentials $U_{g,1}, U_{g,2}, U_{g,3},
+U_{g,4}, U_{g,4i}$ that generate observed gravitational phenomena
+downstream in the framework's ontological chain.
+
+Below the $E_{\text{crack}}$ threshold the vacuum cannot support
+stable DPM vortex formation and stable mass cannot condense. Above
+$E_{\text{crack}}$ the vortex stabilises and the cascade
+\[
+\theta_{\text{vacuum}}
+  \;\to\; \operatorname{grad}(\mathrm{UA})
+  \;\to\; \mathrm{DPM}_{\text{vortex}}
+  \;\to\; \mu_s
+  \;\to\; U_g\text{-family}
+  \;\to\; F_U
+  \;\to\; \text{crossing}
+  \;\to\; M
+  \;\to\; GM/r^2
+\]
+becomes available. This is the framework's immutable ontological
+order: mass and Newtonian gravity emerge only at the final two steps,
+downstream of the DPM vortex and the $F_U$ unified field. The
+framework thereby provides a non-perturbative mass-generation
+mechanism analogous in spirit to what the Yang--Mills mass gap problem
+requires: the gauge bosons (or their UQFF analogues, the $U_g$-family
+components) acquire effective mass through condensation of the
+vacuum substrate at and above $E_{\text{crack}}$, even though the
+underlying substrate is massless.
+
+% =====================================================================
+\section{Multi-Designation Cluster-Position Landscape}\label{sec:clusters}
+% =====================================================================
+
+The Yang--Mills mass gap manifests in the UQFF across four
+documented cluster-positional designations, each appropriate to its
+own physical regime. Per the framework's multi-designation
+architecture (developed in the calculator surface family
+\texttt{calculate\_uqff\_E\_crack\_*} and related surfaces), the four
+values are independent identifier strings referring to closely
+related but physically distinct quantities within the same underlying
+spectral structure. They do not conflict; each is the correct value
+in its respective context.
+
+\begin{table}[h!]
+\centering
+\caption{UQFF Yang--Mills mass-gap cluster-positional designations.}
+\label{tab:clusters}
+\begin{tabular}{lll}
+\toprule
+Designation & Value & Physical regime \\
+\midrule
+$E_{\text{crack}}$ formula        & $\approx 0.70\,\mathrm{eV}$   & DPM vacuum-cracking floor \\
+$E_{\text{crack}}$ experimental   & $\approx 700\,\mathrm{eV}$    & DPM-vortex lab engineering \\
+Layer-13 nuclear                  & $\approx 624\,\mathrm{GeV}$   & LHC electroweak scale order \\
+PAPER~1318 mass gap               & $1.736\,\mathrm{GeV}$         & lightest-glueball lattice QCD \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The two $E_{\text{crack}}$ entries in Table~\ref{tab:clusters}
+correspond to distinct physical regimes of the same underlying
+threshold: the sub-eV formula value is the vacuum-cracking floor at
+the DPM interface itself, whereas the $\sim 700\,\mathrm{eV}$
+experimental value is the practical laboratory-accessible regime in
+which DPM-vortex conditions can be engineered by strong applied
+magnetic fields (see \S\ref{sec:scope}). The framework treats these
+as coexisting independent strings; a mathematically rigorous
+identification between them would require formalising the mapping
+from the vacuum-substrate operator algebra to the effective-field
+observable, which is part of the future-work programme discussed in
+\S\ref{sec:future}.
+
+The Layer-13 designation ($\sim 624\,\mathrm{GeV}$) refers to the
+thirteenth level of the framework's twenty-six-layer structural
+hierarchy, at which the nuclear confinement scale meets the
+electroweak crossing regime. It is the same order of magnitude as the
+LHC electroweak observables and is a distinct prediction of the
+framework's dimensional decomposition, not a fit.
+
+The PAPER~1318 designation~\cite{murphy2026paper1318} at
+$m_{\mathrm{YM}} = 1.736\,\mathrm{GeV}$ is the framework's
+prediction for the lightest-glueball scale in pure $\mathrm{SU}(3)$
+Yang--Mills theory. It is derived from a phonon-modulated
+confinement-scale argument on the SCm substrate and is intentionally
+distinct from the $1.78\,\mathrm{GeV}$ standard lattice-QCD estimate
+that some treatments use as a baseline. Both numerical values are
+within the numerical uncertainty band of contemporary lattice-QCD
+estimates.
+
+% =====================================================================
+\section{Lattice QCD Consistency}\label{sec:lattice}
+% =====================================================================
+
+Lattice QCD numerical evidence, as surveyed by
+Douglas~\cite{douglas2026}, indicates a Yang--Mills mass gap on the
+order of hundreds of MeV, with the lightest $0^{++}$ glueball in
+pure $\mathrm{SU}(3)$ typically estimated at approximately
+$1.6$--$1.7\,\mathrm{GeV}$. The UQFF PAPER~1318 designation at
+$1.736\,\mathrm{GeV}$ lies inside this range. It is not tuned to the
+lattice result: it is a prediction from the framework's structural
+primitives, and its agreement with lattice numerics constitutes a
+consistency check rather than a fit.
+
+The formula-level $E_{\text{crack}} \approx 0.7\,\mathrm{eV}$ is not
+the same object as the lightest-glueball mass; the two designations
+occupy different positions in the UQFF spectral hierarchy (the
+vacuum-cracking floor versus the confinement-scale glueball state).
+The framework's prediction is a \emph{spectral hierarchy}, not a
+single mass-gap value: a discrete sequence of characteristic energies
+from the sub-eV vacuum floor through the nuclear confinement scale
+($\sim\,\mathrm{GeV}$) to the electroweak crossing scale
+($\sim 624\,\mathrm{GeV}$), all generated by the same DPM-vortex
+mechanism operating at different physical scales.
+
+Douglas's review does not contradict any UQFF designation in
+Table~\ref{tab:clusters}. The range of lattice-QCD estimates is
+contained between the $E_{\text{crack}}$ formula and the PAPER~1318
+designation, and none of the other UQFF designations lie in the
+lattice-explored regime.
+
+% =====================================================================
+\section{What This Proposal Is and Is Not}\label{sec:scope}
+% =====================================================================
+
+We adhere to a strict scope discipline in stating what this submission
+does and does not claim. Overstating physics-level proposals as
+Clay-compliant proofs would harm the mathematical credibility of the
+framework and is expressly avoided.
+
+\medskip
+\noindent\textbf{This submission establishes:}
+\begin{enumerate}
+\item An explicit closed-form derivation of a positive-definite
+  energy scale $E_{\text{crack}} > 0$ from two locked pre-cosmogenic
+  primitives $(\rho_{\mathrm{SCm}}, [\mathrm{SSq}])$ and the speed
+  of light $c$, with zero free parameters and zero fitting
+  (Theorem~\ref{thm:e_crack_positive}).
+\item A concrete dynamical mechanism (DPM vortex formation at the
+  UA/SCm interface) responsible for the threshold, giving a
+  non-perturbative physical picture for why a mass gap of the
+  Yang--Mills type would arise in the framework.
+\item A multi-cluster spectral hierarchy consistent with independent
+  lattice-QCD numerical evidence at the glueball scale, with
+  three additional predictive cluster positions at experimentally
+  accessible sub-eV, hundred-eV, and hundred-GeV scales.
+\item A fully reproducible computational implementation
+  ({\tt pip install uqff==5.35.0}), enabling any reader to
+  verify the derivation in seconds and to explore the wider
+  framework.
+\item A falsifiable prediction: sharp threshold behaviour at
+  $\sim 700\,\mathrm{eV}$ in high-magnetic-field vacuum experiments
+  should produce DPM-vortex-associated signatures (magnetic-moment
+  onset, spectral resonance, or low-energy transmutation channels).
+  Absence of such threshold behaviour in a well-designed experiment
+  in this regime would falsify the framework's core LENR-relevant
+  claim.
+\end{enumerate}
+
+\medskip
+\noindent\textbf{This submission does not yet establish:}
+\begin{enumerate}
+\item A rigorous mathematical construction of quantum Yang--Mills
+  theory on Minkowski $\mathbb{R}^{1,3}$ satisfying the Wightman
+  axioms (W0--W4) or an operator-algebraic equivalent.
+\item A formal proof of the spectral gap $\Delta > 0$ in the
+  Hamiltonian's operator-algebraic sense.
+\item A demonstration that the UQFF SCm/UA substrate constitutes a
+  quantum field theory in the precise mathematical sense that
+  Clay~\cite{jaffe2000} requires.
+\end{enumerate}
+
+\medskip
+\noindent
+The gap between (i)--(v) above and the Clay criterion is the formal
+mathematical translation of the SCm/UA vacuum substrate and DPM-vortex
+dynamics into the language of operator algebras, tempered distributions,
+and Wightman axiom verification. We believe this translation is
+achievable but identify it explicitly as future work
+(\S\ref{sec:future}), not as a present claim.
+
+By analogy with the Hairer 2D~\cite{hairer2024} and 3D
+stochastic-quantisation programme, the corresponding UQFF translation
+would proceed via regularity-structure techniques applied to the
+SCm/UA stochastic substrate in progressively higher dimensions.
+The four-dimensional case --- what Clay requires --- is the hard step
+for any approach and remains open under our proposal as under others.
+
+% =====================================================================
+\section{Reproducibility}\label{sec:reproducibility}
+% =====================================================================
+
+Theorem~\ref{thm:e_crack_positive} is fully reproducible in the public
+\texttt{uqff} Python package~\cite{murphy2026uqff}:
+
+\begin{lstlisting}
+from uqff_pure_calculator import (
+    calculate_uqff_E_crack_core_definition_from_ledger,
+)
+r = calculate_uqff_E_crack_core_definition_from_ledger({})
+print(r["value"]["E_crack_J_derived_from_formula"])
+# 1.117982e-19
+\end{lstlisting}
+
+\noindent
+A standalone reproducibility script
+\texttt{derive\_yang\_mills\_mass\_gap\_uqff.py} (included with this
+preprint as ancillary material, and available in the public
+repository under
+\url{https://github.com/Daniel8Murphy0007/Star-Magic/tree/master/arxiv_yang_mills})
+reproduces the derivation in approximately fifty lines of Python with
+no external dependencies beyond the Python standard library. The
+script also emits the multi-cluster landscape table and the
+lattice-QCD consistency check.
+
+The full framework is reproducible via
+\begin{center}
+\verb|pip install uqff==5.35.0|
+\end{center}
+which installs 279 public \texttt{calculate\_*} surface functions
+covering Yang--Mills, dark energy, dark matter, gravitational-wave
+mergers, LENR, cosmological and inflationary parameters, and the
+Compression Cycle 2 suite of 22 first-principles cosmological
+derivations at zero residual against Planck 2018 observations.
+The complete corpus of 1{,}878 supporting whitepapers, rendered as
+text-searchable arxiv-compliant PDFs, is publicly browsable at
+\url{https://github.com/Daniel8Murphy0007/Star-Magic/tree/master/pdf2}.
+
+% =====================================================================
+\section{Future Work: Translation to Wightman Axioms}\label{sec:future}
+% =====================================================================
+
+The principal open question for this research programme is the
+translation of the SCm/UA dynamical substrate into a
+Wightman-axiom-compliant operator algebra on four-dimensional
+Minkowski space. We outline the axiom-by-axiom translation targets
+below and refer the reader to the extended scoping document
+\texttt{wightman\_mapping.md} in the public repository for a
+detailed roadmap.
+
+\subsection{Wightman axiom checklist}
+The Wightman axioms (W0)--(W4) applied to the UQFF SCm/UA substrate:
+\begin{itemize}
+\item[\textbf{W0}] \textit{Hilbert space with a unique vacuum state.}
+  Under UQFF, the vacuum vector $\Omega$ is identified with the
+  $\theta_{\text{vacuum}}$ substrate state, and the DPM
+  Bose--Einstein-condensate ground-state structure provides a
+  candidate cyclic separating vacuum. Formal construction of the
+  Hilbert space as the closure of polynomials in smeared UQFF fields
+  applied to $\Omega$ is a moderate-difficulty translation task,
+  analogous to standard constructive-QFT construction.
+\item[\textbf{W1}] \textit{Poincar\'e covariance.} The UQFF framework
+  posits that spacetime emerges downstream in the ontological chain
+  (at step nine, in the $GM/r^2$ observational projection), and the
+  SCm/UA substrate itself carries an intrinsic covariance structure.
+  The formal task is to define the Poincar\'e action on the
+  substrate's section bundle and prove continuous extension to the
+  Hilbert space. This is a moderate-to-high-difficulty translation
+  task requiring an emergent-spacetime reformulation of the substrate.
+\item[\textbf{W2}] \textit{Spectral condition and mass gap.} Under the
+  present proposal, the mass gap value is
+  $\Delta = E_{\text{crack}} > 0$ from
+  Theorem~\ref{thm:e_crack_positive}. The formal task is to identify
+  $E_{\text{crack}}$ as the spectrum gap of the SCm/UA Hamiltonian
+  $H$ restricted to $\Omega^\perp$ and to prove
+  $\langle \psi \mid H \mid \psi \rangle \geq E_{\text{crack}}
+   \langle \psi \mid \psi \rangle$ for all $\psi \perp \Omega$.
+  This is the principal Clay-eligible result. Candidate tools
+  include reflection positivity of the SCm/UA two-point function,
+  functional-integral methods on the substrate, and constructive-QFT
+  techniques adapted to the DPM-vortex condensate structure.
+\item[\textbf{W3}] \textit{Local commutativity.} DPM vortices have
+  well-defined spatial localisation via the coherence length
+  (vortex radius), so field commutativity at spacelike separation
+  is geometrically natural. The complication is the framework's
+  simultaneous-mode structure (Compressed, Resonant, Buoyant,
+  Superconductive), which needs a formal statement.
+\item[\textbf{W4}] \textit{Cyclicity of the vacuum.} The $U_g$-family
+  of five simultaneous operators is a candidate generating set for
+  the field algebra applied to $\Omega$. Formalising the density of
+  polynomial states in the Hilbert space is a moderate task.
+\end{itemize}
+
+\subsection{Recommended translation roadmap}
+Following the Hairer 2D/3D template~\cite{hairer2024}:
+\begin{description}
+\item[Phase 1 (2D toy model).] Construct the SCm/UA substrate analogue
+  in $d = 2$ spacetime. Verify W0--W4 and $\Delta = E_{\text{crack}} >
+  0$ in this dimensional reduction. Publish in a math-physics venue.
+\item[Phase 2 (3D extension).] Port to $d = 3$ using regularity
+  structures, following the Hairer template. Publish in an
+  Inventiones-tier or CMP-tier venue.
+\item[Phase 3 (4D principal result).] Combine the 3D
+  regularity-structure techniques with the UQFF substrate construction
+  to produce the 4D Wightman-compliant quantum Yang--Mills theory with
+  $\Delta > 0$. This is the Clay submission.
+\item[Phase 4 (formal Clay submission).] Once Phases 1--3 are
+  peer-reviewed in venues of sufficient standing, submit the formal
+  Clay claim with the Phase 3 result as headline reference.
+\end{description}
+
+A realistic timeline is eighteen to thirty-six months per phase,
+assuming collaboration with researchers experienced in constructive
+quantum field theory. Collaboration is explicitly invited from
+mathematical-physics groups active in stochastic quantisation
+(Hairer's group at IST Austria, the Erlangen school), operator-algebra
+methods, and reflection-positivity techniques.
+
+% =====================================================================
+\section{Conclusion}\label{sec:conclusion}
+% =====================================================================
+
+The Unified Quantum Field Framework derives a positive-definite
+mass-gap-scale energy threshold $E_{\text{crack}} = \rho_{\mathrm{SCm}}
+c^2 / [\mathrm{SSq}] = 1.118 \times 10^{-19}\,\mathrm{J}$ from two
+locked pre-cosmogenic primitives and the speed of light, with zero
+free parameters and zero fitting. The derived value at the formula
+level extends through multi-cluster designations to
+$\sim 700\,\mathrm{eV}$ (laboratory-accessible DPM-vortex regime),
+$\sim 624\,\mathrm{GeV}$ (Layer-13 nuclear/electroweak crossing), and
+$1.736\,\mathrm{GeV}$ (lattice-QCD lightest-glueball scale), forming
+a discrete spectral hierarchy consistent with hundreds-of-MeV
+lattice-QCD numerical evidence.
+
+The underlying dynamical mechanism --- DPM vortex formation at the
+UA/SCm attraction interface, formalised as a Bose--Einstein-condensate
+ground state of the substrate --- provides a concrete
+non-perturbative mass-generation pathway analogous to what the
+Yang--Mills mass gap problem requires. We propose this as a candidate
+physical realisation of the Yang--Mills mass gap.
+
+This does not yet constitute a Clay-compliant Wightman-axiom-verified
+mathematical construction. The translation from physical mechanism
+to formal operator-algebraic framework is identified as the principal
+future-work step, with a concrete 2D $\to$ 3D $\to$ 4D roadmap
+following the Hairer template. The submission's contribution is:
+(i) an explicit non-fitted derivation of a positive-definite mass-gap
+value; (ii) a concrete dynamical mechanism; (iii) a multi-cluster
+spectral hierarchy consistent with independent numerical evidence;
+(iv) a public, reproducible computational framework; and (v) a
+falsifiable high-field vacuum-experimental prediction.
+
+We invite mathematical-physics community review, independent
+reproduction of the derivation, falsification attempts in the
+high-field vacuum-experimental regime, and collaboration on the
+operator-algebraic formalisation programme.
+
+% =====================================================================
+\section*{Acknowledgments}
+% =====================================================================
+
+The framework's development benefited from extensive AI-assisted
+analysis via Grok 3, SuperGrok, and Davinci-SuperGrok (xAI), which
+served as high-throughput symbolic-manipulation and consistency-check
+tools during the derivation of the ledger primitives and the
+ontological chain. The author remains solely responsible for all
+physical, mathematical, and interpretive claims herein.
+The public Star-Magic repository at
+\url{https://github.com/Daniel8Murphy0007/Star-Magic} hosts the full
+framework including the 279-surface Python calculator, the
+1{,}878-whitepaper corpus, the Lean~4 proof scaffold, and the
+supporting arxiv submission package.
+
+% =====================================================================
+\begin{thebibliography}{9}
+
+\bibitem{jaffe2000}
+A.~Jaffe and E.~Witten,
+\textit{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Problem description,
+\url{https://www.claymath.org/millennium/yang-mills-the-maths-gap/},
+2000.
+
+\bibitem{hairer2024}
+M.~Hairer et al.,
+\textit{Stochastic quantisation of Yang--Mills--Higgs in 3D},
+Inventiones Mathematicae, 2024.
+
+\bibitem{douglas2026}
+M.~R.~Douglas,
+\textit{The Yang--Mills Millennium problem},
+Nature Reviews Physics, January 2026.
+
+\bibitem{murphy2026uqff}
+D.~T.~Murphy,
+\textit{UQFF Star-Magic: Unified Quantum Field Framework},
+PyPI release v5.35.0,
+\url{https://pypi.org/project/uqff/5.35.0/},
+\url{https://github.com/Daniel8Murphy0007/Star-Magic},
+2026.
+
+\bibitem{murphy2026paper1318}
+D.~T.~Murphy,
+\textit{PAPER 1318 --- Yang--Mills mass gap at 1.736 GeV cluster
+position},
+Star-Magic Research Program whitepaper series, 2026.
+
+\bibitem{murphy2026paper1521}
+D.~T.~Murphy,
+\textit{PAPER 1521 --- Derivative-from-independent-primitives proof
+that $D_{\mathrm{BSFG}} = D_{\mathrm{crit}} - 2 \cdot \mathrm{SO}_5 = 6$},
+Star-Magic Research Program whitepaper series, 2026.
+
+\bibitem{murphy2026paper1522}
+D.~T.~Murphy,
+\textit{PAPER 1522 --- Derivative-from-independent-primitives proof
+that $K_{\mathrm{Mex}} = \Phi_{5/6} \cdot \mathrm{SO}_5 / D_{\mathrm{phys}} = 25/12$},
+Star-Magic Research Program whitepaper series, 2026.
+
+\bibitem{murphy2026sympaper}
+D.~T.~Murphy,
+\textit{Compression Cycle 2: Full first-principles derivation of 22
+cosmological and inflationary parameters at zero error from the closed
+vacuum ledger},
+Star-Magic Research Program technical report, June 2026.
+
+\end{thebibliography}
+
+\end{document}

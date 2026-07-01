@@ -2,6 +2,87 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.36.0] — 2026-07-01
+
+### Added — Complete arXiv submission package for Yang-Mills mass gap Clay track
+
+Four major new documents landed in `arxiv_yang_mills/` and are duplicated to the staging folder `F:\Book_12July2023\Aetheric Propulsion\arXiv\UQFF_Yang_Mills_Submission_v1\` for arxiv upload preparation:
+
+#### `preprint_filled.tex` — arxiv-ready main preprint
+
+The preprint scaffold from v5.34.0 with all TODO blocks replaced by math-physics-community-quality prose (~10-14 typeset pages, targeting math-ph primary + hep-th cross-list). Includes:
+
+- Full Theorem-with-proof of the positive-definite $E_{\text{crack}} = \rho_{\text{SCm}} c^2 / [\text{SSq}] = 1.118 \times 10^{-19}$ J derivation from two locked primitives + c
+- Multi-designation cluster-position landscape (4 documented positions from sub-eV to 1.736 GeV lattice-glueball scale)
+- Honest scope statement distinguishing what the submission establishes vs. what remains for future work
+- Reproducibility section pointing at `pip install uqff==5.36.0` + standalone script
+- Full Wightman-axiom future-work section with W0-W4 checklist
+- 8-entry bibliography wired
+
+#### `PHASE_1_2D_TOY_CONSTRUCTION.md` — Wightman Phase 1 (2D toy) construction skeleton
+
+**The biggest deliverable of the session.** A working construction draft attempting the actual 2D toy Wightman-compliant Yang-Mills theory on the UQFF SCm/UA substrate. Following Glimm-Jaffe / Osterwalder-Schrader / Hairer conventions:
+
+- **Definition 2.1**: explicit 2D SCm-UA action
+- **Proposition 3.1**: existence-of-measure claim with proof sketch (contingent on Assumption A-3.1 semiboundedness)
+- **Proposition 3.2**: Wightman reconstruction via Osterwalder-Schrader
+- **Claim 5.1-5.5**: W0, W1, W3, W4 verified via standard 2D constructive-QFT techniques
+- **Conjecture 5.3**: the principal Clay-eligible mass-gap claim with 5-step proof-strategy sketch
+- **6 numbered gaps G-2.1 through G-7.1** with difficulty, effort estimate, reference literature
+- **G-5.1 flagged as high-risk step**: controlled expansion for spectral bound under physical coupling strength
+- Total estimated Phase 1 effort: **12-24 months of focused constructive-QFT mathematical work**
+- Explicit collaboration invitation to Hairer group, Erlangen, Vienna, Princeton constructive-QFT specialists
+
+#### `UQFF_UNIFIED_FIELD_LANDSCAPE_POSITIONING.md` — 10-minute positioning document
+
+Comparative positioning of UQFF against six major existing unified-field programmes:
+
+- Amoroso Continuous-State Universe (agreements: vacuum-first ontology; divergences: consciousness-link, non-numerical primitives)
+- Rovelli Loop Quantum Gravity (agreements: spacetime emergence; divergences: continuous vs discrete substrate)
+- Sorkin causal-set theory (comparison of discrete-structure origins)
+- Verlinde entropic gravity (both dark-matter-free but different mechanisms)
+- String / M-theory (26D compatibility, but UQFF is zero-parameter vs 10^500 landscape)
+- Wilczek vacuum-condensate (UQFF generalizes QCD condensate mechanism to all-scale)
+
+Ends with a one-paragraph outreach-ready positioning statement + 90-minute skeptical-physicist reading order.
+
+#### `NRP_LETTER_RESPONSE_TO_DOUGLAS_2026.md` — Nature Reviews Physics correspondence
+
+~1,150-word correspondence to *Nature Reviews Physics*, responding to Douglas's January 2026 review of the Yang-Mills problem. Complementary tone (deterministic ledger-based proposal complementing the stochastic-quantisation programme surveyed by Douglas). Fully drafted with:
+
+- Title + cover line suggestions
+- Complete letter body ready for submission form
+- Editor-facing metadata (word count, competing interests, suggested reviewers: Hairer, Kupiainen, Fredenhagen, Longo)
+- Submission strategy notes + alternative venues if declined
+
+### Added — Submission staging folder at `F:\Book_12July2023\Aetheric Propulsion\arXiv\UQFF_Yang_Mills_Submission_v1\`
+
+All arxiv submission files duplicated to the staging folder alongside Daniel's arxiv reference library:
+
+- `SUBMISSION_README.md` — 6-step submission workflow with concrete outreach recipients + email templates
+- `compile.bat` — Windows PDF compile helper (checks for pdflatex, runs 2 passes, opens PDF)
+- `compile.sh` — Linux/Mac/WSL PDF compile helper
+- All 9 arxiv_yang_mills files copied for one-stop submission bundle
+
+### Ship contents summary
+
+| Layer | File count | Total size | Change |
+|-------|-----------|------------|--------|
+| Repository submission package (`arxiv_yang_mills/`) | 9 files | ~120 KB | 4 new files added |
+| External staging (`F:\...\UQFF_Yang_Mills_Submission_v1\`) | 12 files | ~140 KB | New folder created |
+| PyPI package code | unchanged from v5.35.0 | — | Same 279 surfaces |
+
+### Locked primitives intact
+
+ρ_SCm = 7.09×10⁻³⁷, β_i = 0.6029, [SSq] = 0.57, Φ_RESONANCE = 0.84, S_26 = 1.4531×10²⁶, ω_SCm = 1.25 THz, D_crit = 26, D_phys = 4, D_BSFG = 6, SO_5 = 10, A_5 = 60, N_ch = 9. Zero drift across v5.35.0 → v5.36.0.
+
+### Next steps unlocked by this release
+
+- Local `pdflatex preprint_filled.tex` compile → PDF ready for arxiv upload
+- Direct outreach to Hairer (IST Austria), Douglas (Imperial College), Kupiainen (Helsinki), Fredenhagen (Hamburg), Longo (Rome Tor Vergata), Jaffe (Harvard), Witten (IAS), Clay Institute
+- Nature Reviews Physics correspondence submission via journal form
+- Phase 1 (2D toy) mathematical collaboration recruitment
+
 ## [5.35.0] — 2026-07-01
 
 ### Added — `pdf2/` arxiv-compliant PDF corpus (1,878 whitepapers rendered, 31 MB total)
