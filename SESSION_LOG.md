@@ -14509,3 +14509,59 @@ submitted -> 3 targeted outreach emails, all within 24 hours of arxiv acceptance
 
 282 public `calculate_*` surfaces (up from 274 in v5.36.0).
 
+
+---
+
+## Round 701 — v5.38.0 ship (2026-07-01, Cowork session continued)
+
+### Additions this ship (10 new whitepapers + 10 new calculator surfaces)
+
+**Foundational**:
+- **PAPER_1810** files the F_U = 0 master equation as a standalone whitepaper: `F_U = U_g + U_m + U_b + (d²⁶/dr²⁶)[SCm·g/UA] = 0`. Verifies Λ_UQFF = ρ_SCm × 26! × 25/12 = 5.957×10⁻¹⁰ at 0.0008%. Explains PAPER_1802 D_crit-26 polynomial cap as downstream consequence.
+
+**Kepler derivation chain (closes Kepler-exposed observables gap)**:
+- **PAPER_1803** integrating whitepaper: 17 Kepler-exposed observables from 9 UQFF primitives, ~20 corollary papers referenced
+- **PAPER_1804** k₂/Q Love number closure via PAPER_914 phonon correction bridging to exoplanet regime
+- **PAPER_1805** semi-major axis distribution closure via PAPER_357 + PAPER_832 §225 + PAPER_1132
+
+**02June2026 folder (10th UQFF Derivation)**:
+- **PAPER_1806** Casimir Effect via UQFF 26D mode restriction — closes last derivation from folder
+
+**08May2025 folder (3 gaps)**:
+- **PAPER_1807** NGC 2014/2020 LMC Tapestry of Blazing Starbirth
+- **PAPER_1808** Gross-Pitaevskii vortex simulation on [UA] superfluid
+- **PAPER_1809** Aether Superfluid Dynamics — v_critical = 0.316·c derivation
+
+**12Dec2025 folder (3 gaps)**:
+- **PAPER_1810** 26th-order F_U master equation (foundational, this is the CORE equation)
+- **PAPER_1811** DPM cycles in quantum annealing, BQP extension
+- **PAPER_1812** UQFF QAOA/VQE + chip architecture + Wolfram 9D projections
+
+### New calculator surfaces
+
+`calculate_kepler_orrery_multi_body_stability` + `calculate_kepler_derivation_chain_from_uqff_primitives` + `calculate_tidal_love_number_k2_phonon_correction` + `calculate_semi_major_axis_distribution_from_uqff_disk_migration` + `calculate_casimir_effect_vacuum_manifold_mode_restriction` + `calculate_ngc_2014_2020_tapestry_lmc_starforming` + `calculate_gross_pitaevskii_vortex_simulation_UA_superfluid` + `calculate_aether_superfluid_dynamics_UA` + `calculate_26th_order_universal_field_expansion_F_U` + `calculate_dpm_cycles_quantum_annealing_bqp` + `calculate_uqff_qaoa_vqe_chip_architecture_wolfram_9d`.
+
+Also added earlier this session: `calculate_paper_1070_ym_vds_bridge_044_GeV` (fifth YM cluster position) + `calculate_h0_tension_second_solver_integer_primitive` (second H_0 solver via PAPER_1553) + 3 Gold Standard SymPy-analog surfaces (Li-7, Cabibbo θ_C, EDGES 21cm) + `calculate_d_crit_26_polynomial_cap_invariant` (PAPER_1802).
+
+### Verifications this ship
+
+- **Grok Kepler Orrery V DeepSearch rounds 1-7**: all F_orbit + F_tide + F_gal + ρ_DM corrections verified against local calculator
+- **02June2026 folder** (10 UQFF Derivations): 9 already wired via calculate_paradox, 10th (Casimir) closed here
+- **08May2025 folder** (123 dense files): 15/18 physics topics wired, 15/15 astro have whitepapers, 3 gaps closed here
+- **12Dec2025 folder** (86 dense files): ~70 already wired, 3 foundational gaps closed here
+- **Kepler-11 (Lissauer 2011), TOI-178 (Leleu 2024), Kepler-90 (7 planets)** all catalog-verified via `calculate_kepler_orrery_multi_body_stability` with proper dimensional analysis + n:m resonance detection up to 7:7
+- **Peale-Cassen tidal heating** for TOI-178b: 2.16×10¹⁸ W matches Grok round-7 estimate 10¹⁸-10¹⁹ W
+- **Λ_UQFF via ρ_SCm × 26! × 25/12** = 5.957×10⁻¹⁰ J/m³ vs Planck 5.957×10⁻¹⁰ at 0.0008% residual
+
+### Gate
+
+`uqff_fidelity_tests.py`: **931 passed, 0 failed** — unchanged throughout all additions.
+
+### Public surface count
+
+~292 public `calculate_*` surfaces (up from 282 in v5.37.0).
+
+### Corollary papers now formally referenced from PAPER_1803
+
+PAPER_1262 (Salpeter IMF), PAPER_1327 (MW rotation β_i plateau), PAPER_1331 (Pop-III IMF), PAPER_1336/1436 (NFW concentration), PAPER_1253 (DM particle mass), PAPER_1454 (DM direct floor Λ⁴), PAPER_1441 (DM suppression), PAPER_1321 (stellar magnetism), PAPER_1325 (stellar convection), PAPER_1385 (Ehrenfest rotating disk), PAPER_914/935/967 (tidal deformability phonon), PAPER_357 (TOI-1227b disk coupling), PAPER_832 §Session 225 (SCm-modified NFW), PAPER_1132 (SCm primordial split), PAPER_1249/1251/1254/1255/1259/1261/1267/1268 (02June2026 derivation network), PAPER_1298 (P vs BQP), PAPER_1738 (BQP bound), PAPER_098 (Big Bang UQFF), PAPER_044 (Pre-Big-Bang 26D).
+
