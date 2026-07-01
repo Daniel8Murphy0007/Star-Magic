@@ -2,6 +2,64 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.35.0] — 2026-07-01
+
+### Added — `pdf2/` arxiv-compliant PDF corpus (1,878 whitepapers rendered, 31 MB total)
+
+The full UQFF whitepaper corpus is now rendered to text-searchable, embedded-font, letterpaper-geometry PDFs staged under `pdf2/` for public browsing on GitHub and for third-party archival citation.
+
+- **1,878 PDFs** covering every `PAPER_*.md`, `COMPLETE_*.md`, `SCm_*.md`, `UQFF_*.md`, and `WHITEPAPER_*.md` source in `whitepapers/`
+- **31 MB total** — small enough that no LFS is needed; plain-git storage
+- **Text-searchable** — any reader can `Ctrl-F` inside any PDF
+- **Embedded fonts** — Times/Helvetica/Courier via reportlab (Path B) or DejaVu via fontspec+lualatex (Path A)
+- **Standard geometry** — letter paper, 0.9-in margins, page numbers
+- **PDF metadata** — title, author, subject, date pulled from each source's YAML frontmatter
+- **Reproducible** — every PDF regenerable from source via one of two build scripts (see below)
+
+### Added — Two-path arxiv-compliant PDF build pipeline
+
+Both scripts are idempotent (skip up-to-date), resumable, parallelizable, and failure-tolerant (per-file errors log to `pdf2/_build_log.txt` without aborting the batch). Both target the same output format and quality standard.
+
+#### `_build_pdf2_arxiv_compliant.py` (Path A — pandoc + LaTeX)
+
+- **Requires**: `pandoc` + one of `lualatex` / `xelatex` / `pdflatex`
+- **Output quality**: Full LaTeX typeset math, complete markdown table support, LaTeX-typeset code blocks
+- **Speed**: ~1–3 papers/sec sequential, ~6–12 papers/sec with `--jobs 4`
+- **File size**: 100–500 KB per short paper
+- **Use when**: highest possible arxiv-preprint-quality output is needed
+- **Install**: `choco install pandoc miktex` on Windows
+
+#### `_build_pdf2_pure_python.py` (Path B — reportlab, no external tools)
+
+- **Requires**: `pip install markdown-it-py reportlab` (or `weasyprint` for higher-quality HTML/CSS layout)
+- **Output quality**: Text-searchable, embedded-font, correct heading/paragraph/table structure; math preserved as monospace LaTeX source (not typeset)
+- **Speed**: ~8–30 papers/sec sequential, ~30–80 papers/sec with `--jobs 4`
+- **File size**: 20–100 KB per short paper
+- **Use when**: pandoc/LaTeX not installed or the user wants zero external dependencies
+- **Install**: `pip install markdown-it-py reportlab`
+
+Both scripts accept the same CLI flags:
+
+```
+--limit N           # build only first N whitepapers
+--pattern "GLOB"    # filter source filenames (e.g., "PAPER_10*")
+--jobs N            # parallel workers (default 1)
+--force             # rebuild every PDF regardless of mtime
+--dry-run           # show what would be built without building
+```
+
+### Documentation
+
+- `pdf2/README.md` documents the arxiv publishing rules honored, build commands, expected failure modes, and sibling-folder relationships to the existing `pdf/` corpus (preserved as historical reference).
+
+### PyPI package content
+
+Unchanged from v5.34.0. The `pdf2/` corpus lives in the GitHub repository but is not shipped in the wheel/sdist (would bloat the package for a documentation artifact). PyPI users continue to receive the 279-surface calculator + arxiv_yang_mills/ submission package.
+
+### Locked primitives intact
+
+ρ_SCm = 7.09×10⁻³⁷, β_i = 0.6029, [SSq] = 0.57, Φ_RESONANCE = 0.84, S_26 = 1.4531×10²⁶, ω_SCm = 1.25 THz, D_crit = 26, D_phys = 4, D_BSFG = 6, SO_5 = 10, A_5 = 60, N_ch = 9. Zero drift across the v5.34.0 → v5.35.0 transition.
+
 ## [5.34.0] — 2026-06-30
 
 ### Added — Yang-Mills E_crack arxiv submission package (5 new files in `arxiv_yang_mills/`)

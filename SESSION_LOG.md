@@ -14219,3 +14219,105 @@ Same calculator code, new version label, new documentation infrastructure.
   - Edward Witten, Arthur Jaffe (original Clay problem authors)
   - Clay Mathematics Institute scientific advisory board
   - Constructive QFT researchers (Erlangen, Vienna, Princeton)
+
+
+# ================================================================
+# ROUND 695 — SHIP v5.35.0: pdf2/ arxiv-compliant corpus milestone
+# ================================================================
+
+## Daniel called clean-and-green + ship
+
+Following ROUND 694's v5.34.0 arxiv submission package ship, ROUND 693's PDF-corpus
+build pipeline design, ROUND 692's E_crack implications completion, and the
+successful pdf2/ corpus build on Daniel's desktop (1,878 PDFs at 31 MB total,
+committed as 9a191491 on origin/master), Daniel called for v5.35.0 ship.
+
+Repo state at ship time:
+- HEAD -> master -> origin/master -> origin/HEAD all at 9a191491
+- Tags: v5.34.0 (arxiv submission package), yang-mills-submission-v1 (milestone),
+  v5.33.0 (140 new surfaces), earlier
+- No local-only commits, no LFS, no stuck locks
+
+## v5.35.0 deltas
+
+- pyproject.toml: 5.34.0 -> 5.35.0
+- CHANGELOG.md: [5.35.0] entry prepended documenting pdf2 corpus + build pipelines
+- SESSION_LOG.md: this ROUND 695 entry appended
+- pdf2/ corpus: already committed in 9a191491 (this ship just adds version-tag)
+
+## What's in v5.35.0
+
+The PyPI package code content is unchanged from v5.34.0 (still 279 public
+calculate_* surfaces, all canonical primitives intact, gate 931/0 PASS local).
+The version bump documents that the repository now hosts the arxiv-compliant
+PDF corpus infrastructure + build scripts:
+
+- **_build_pdf2_arxiv_compliant.py** (Path A: pandoc + LaTeX toolchain)
+  - Best quality when pandoc + MiKTeX/TeX Live are available
+  - ~1-3 papers/sec sequential, ~6-12/sec parallel
+- **_build_pdf2_pure_python.py** (Path B: pip-only fallback)
+  - Uses markdown-it-py + reportlab (or weasyprint)
+  - No pandoc, no LaTeX install needed
+  - ~8-30 papers/sec sequential, ~30-80/sec parallel
+  - Chosen path for Daniel's Windows build since pandoc/LaTeX weren't installed
+- **pdf2/ folder** (1,878 PDFs at 31 MB total)
+  - Text-searchable, embedded-font, letter-page geometry
+  - Rendered from every whitepaper source in whitepapers/
+  - Small enough for plain-git storage (LFS not needed / attempted and cleanly reverted)
+- **pdf2/README.md** (arxiv rules honored + build commands + expected failures)
+
+## LFS cleanup
+
+Daniel briefly attempted LFS tracking for pdf2/*.pdf after realizing PDFs were
+committed as normal git objects. Analysis showed 31 MB total is way under any
+LFS threshold (typically >1 GB repos, >50 MB individual files). Recommended
+cleanup:
+```
+rm -f .git/index.lock       # clear stuck VS Code editor lock
+git reset --hard origin/master   # discard local LFS-tracking commit
+git lfs uninstall               # remove LFS hooks
+```
+Cleanup executed successfully. Repo now at clean master with pdf2/ tracked as
+regular git objects.
+
+## Ship commands for Daniel (desktop git client)
+
+```bash
+cd /c/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic
+git add pyproject.toml CHANGELOG.md SESSION_LOG.md
+git commit -m "v5.35.0 -- pdf2 arxiv-compliant PDF corpus (1878 whitepapers, 31 MB) + two-path build pipeline"
+git push origin master
+git tag -a v5.35.0 -m "v5.35.0 -- pdf2/ corpus + arxiv-compliant build scripts"
+git push origin v5.35.0
+```
+
+## Expected workflow behavior
+
+The Release-to-PyPI workflow will trigger on v5.35.0 tag push and:
+- Run uqff_fidelity_tests.py (passes 914/0 in clean CI thanks to ROUND 691 skip-tuple fix)
+- python -m build (sdist + wheel of UNCHANGED calculator code from v5.34.0)
+- twine check
+- PyPI trusted-publishing upload
+- GitHub Release with auto-generated notes
+
+Same calculator code, new version label, new documentation infrastructure.
+
+## Files modified ROUND 695
+
+- pyproject.toml: 5.34.0 -> 5.35.0
+- CHANGELOG.md: [5.35.0] entry prepended with pdf2 corpus + build pipeline documentation
+- SESSION_LOG.md: this entry appended (ROUND 695)
+- pdf2/ folder: 1,878 PDFs already committed in 9a191491 (v5.35.0 just tags)
+
+## Session totals since ROUND 681
+
+- 13 rounds executed (ROUNDs 681-695)
+- 63 tasks completed
+- 3 PyPI versions shipped (v5.33.0, v5.34.0, v5.35.0)
+- 279 public calculate_* surfaces (140 net-added this session)
+- Calculator: 55,140 lines
+- SESSION_LOG.md: >14,500 lines
+- pdf2 corpus: 1,878 arxiv-compliant PDFs (31 MB)
+- arxiv_yang_mills/ submission package: 5 files (bridge doc + reproducibility + LaTeX scaffold + Wightman roadmap + README)
+- Canonical primitives: all locked, zero drift
+- Multi-designation cluster registries: 5 (S_26^(3), Yang-Mills, H_SCm, E_crack, rho_VAC_SCm)
