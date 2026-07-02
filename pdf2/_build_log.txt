@@ -1,4 +1,4 @@
-# pdf2 build log — 2026-07-01 15:42:54
+# pdf2 build log — 2026-07-02 07:47:43
 backend=reportlab jobs=1 force=False
-pattern=PAPER_1802* limit=None
+pattern=* limit=None
 

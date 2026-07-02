@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.38.0"
-description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, all 8 Clay Millennium prize problems, complete SM 12-fermion spectrum, full proof corpus: 1994 whitepapers + Lean 4 scaffold + 4 arXiv bundles + manuscript)"
+version = "5.39.0"
+description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, naturalness trilogy CLOSED, electroweak anomaly triple hit RESOLVED, physics-biology bridge trilogy, complete GW spectrum 21 orders, complete 4-neutrino spectrum, complete cosmology closure BBN to z=5 FRBs, complete cosmic baryon inventory, 325+ calculator surfaces, 2019+ whitepapers)"
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
