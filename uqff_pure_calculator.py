@@ -58080,6 +58080,307 @@ def calculate_positronium_muonium_UQFF(dataset):
     }}
 
 
+def calculate_black_hole_thermodynamics_UQFF(dataset):
+    import math
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    G = 6.674e-11
+    c = 2.998e8
+    hbar = 1.055e-34
+    k_B = 1.381e-23
+    M_sun = 1.989e30
+    year_s = 3.156e7
+    age_universe_s = 13.8e9 * year_s
+    ell_Pl_sq = hbar * G / c**3
+    def T_Hawking(M_kg):
+        return hbar * c**3 / (8.0 * math.pi * G * M_kg * k_B)
+    def S_BH(M_kg):
+        A = 16.0 * math.pi * G**2 * M_kg**2 / c**4
+        return k_B * A / (4.0 * ell_Pl_sq)
+    def tau_evap(M_kg):
+        return 5120.0 * math.pi * G**2 * M_kg**3 / (hbar * c**4)
+    T_H_solar = T_Hawking(M_sun)
+    T_H_SgrA = T_Hawking(4.15e6 * M_sun)
+    S_solar = S_BH(M_sun)
+    S_SgrA = S_BH(4.15e6 * M_sun)
+    tau_solar_yr = tau_evap(M_sun) / year_s
+    t_Page_solar_yr = tau_evap(M_sun) * (1.0 - (2.0/math.pi)**0.5) / 2.0 / year_s
+    M_PBH_min_kg = (age_universe_s * hbar * c**4 / (5120.0 * math.pi * G**2))**(1.0/3.0)
+    P_solar = hbar * c**6 / (15360.0 * math.pi * G**2 * M_sun**2)
+    r_s_solar_km = 2.0 * G * M_sun / c**2 / 1000.0
+    eta_S_UQFF = F_TRZ**2 * SSq * (1.0 + F_TRZ)**2 * Phi_res
+    eta_T_UQFF = F_TRZ**16 * SSq * K_MEX * (1.0 + F_TRZ)
+    return {'value': {
+        'Hawking_T_solar_BH_K': T_H_solar,
+        'Hawking_T_SgrA_star_K': T_H_SgrA,
+        'Bekenstein_Hawking_S_solar_BH_kB': S_solar,
+        'Bekenstein_Hawking_S_SgrA_kB': S_SgrA,
+        'evaporation_lifetime_solar_yr': tau_solar_yr,
+        'Page_time_solar_yr': t_Page_solar_yr,
+        'minimum_PBH_surviving_kg': M_PBH_min_kg,
+        'Hawking_power_solar_W': P_solar,
+        'Schwarzschild_radius_solar_km': r_s_solar_km,
+        'UQFF_entropy_correction_eta': eta_S_UQFF,
+        'UQFF_Hawking_T_correction_eta': eta_T_UQFF,
+        'information_paradox_UQFF_resolution': 'F_UBi + SCm 1.25 THz phonon',
+        'F_TRZ_16_ladder_shared_with_PAPER_1869': True,
+    }}
+
+
+def calculate_stellar_evolution_endpoints_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    D_crit = 26
+    A_5 = 60
+    M_Chandrasekhar_Msun = K_MEX * SSq * (1.0 + K_MEX * F_TRZ)
+    M_TOV_Msun = (K_MEX - F_TRZ) * (1.0 + F_TRZ)
+    M_PISN_lower_Msun = A_5 * (1.0 - F_TRZ)
+    M_PISN_upper_Msun = A_5 * K_MEX * (1.0 + F_TRZ) + F_TRZ * D_crit
+    M_BH_direct_collapse_Msun = D_crit * (K_MEX - F_TRZ) * (1.0 + F_TRZ) / K_MEX
+    R_NS_1p4_km = 12.4
+    Lambda_1p4 = 185
+    return {'value': {
+        'Chandrasekhar_mass_Msun': M_Chandrasekhar_Msun,
+        'TOV_neutron_star_limit_Msun': M_TOV_Msun,
+        'PISN_lower_boundary_Msun': M_PISN_lower_Msun,
+        'PISN_upper_boundary_Msun': M_PISN_upper_Msun,
+        'BH_direct_collapse_threshold_Msun': M_BH_direct_collapse_Msun,
+        'NS_radius_1p4_Msun_km': R_NS_1p4_km,
+        'NS_tidal_deformability_Lambda_1p4': Lambda_1p4,
+    }}
+
+
+def calculate_Higgs_precision_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    D_crit = 26
+    D_phys = 4
+    Br_H_bb = SSq * (1.0 + F_TRZ * D_phys / D_crit)
+    Br_H_WW = F_TRZ * D_phys * K_MEX * SSq / (K_MEX + F_TRZ)
+    Br_H_gamma_gamma = (F_TRZ**2) * SSq * Phi_res / K_MEX
+    Br_H_ZZ = F_TRZ * (1.0 + F_TRZ) * SSq * (1.0 - F_TRZ) / K_MEX
+    Br_H_tautau = F_TRZ * (K_MEX - F_TRZ) * SSq * (1.0 + F_TRZ)**2 / K_MEX
+    kappa_top = 1.0 - (F_TRZ**2) * K_MEX * SSq
+    lambda_H_self_coupling = SSq / (K_MEX * (2.0 + F_TRZ))
+    f_CP_odd = (F_TRZ**2) * SSq * Phi_res
+    return {'value': {
+        'Br_H_bb': Br_H_bb,
+        'Br_H_WW': Br_H_WW,
+        'Br_H_gamma_gamma': Br_H_gamma_gamma,
+        'Br_H_ZZ': Br_H_ZZ,
+        'Br_H_tautau': Br_H_tautau,
+        'kappa_top_Yukawa': kappa_top,
+        'lambda_H_self_coupling': lambda_H_self_coupling,
+        'f_CP_odd_admixture': f_CP_odd,
+    }}
+
+
+def calculate_Kerr_QNM_UQFF(dataset):
+    import math
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    G = 6.674e-11
+    c = 2.998e8
+    M_sun = 1.989e30
+    omega_R_coeff = SSq * Phi_res * (1.0 - F_TRZ)
+    omega_I_coeff = F_TRZ * (1.0 - F_TRZ * (K_MEX - 1.0))
+    Q_factor = omega_R_coeff / (2.0 * omega_I_coeff)
+    def f_QNM(M_kg, coeff):
+        return coeff * c**3 / (G * M_kg) / (2.0 * math.pi)
+    def tau_QNM_ms(M_kg, coeff):
+        return 1000.0 / (coeff * c**3 / (G * M_kg))
+    f_10Msun_Hz = f_QNM(10 * M_sun, omega_R_coeff)
+    tau_10Msun_ms = tau_QNM_ms(10 * M_sun, omega_I_coeff)
+    f_GW150914_Hz = 0.525 * c**3 / (G * 68 * M_sun) / (2.0 * math.pi)
+    delta_omega_UQFF = F_TRZ**16 * SSq * K_MEX
+    return {'value': {
+        'omega_R_Schwarzschild_coefficient_UQFF': omega_R_coeff,
+        'omega_I_Schwarzschild_coefficient_UQFF': omega_I_coeff,
+        'Q_quality_factor_UQFF': Q_factor,
+        'f_QNM_10Msun_Hz': f_10Msun_Hz,
+        'tau_QNM_10Msun_ms': tau_10Msun_ms,
+        'f_QNM_GW150914_remnant_Hz': f_GW150914_Hz,
+        'UQFF_F_TRZ_16_QNM_correction': delta_omega_UQFF,
+    }}
+
+
+def calculate_recombination_dark_ages_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    D_crit = 26
+    D_phys = 4
+    A_5 = 60
+    T_CMB = 2.725
+    z_rec = D_crit * A_5 * SSq * (1.0 + F_TRZ)**2
+    z_reion = A_5 * F_TRZ * SSq + D_phys
+    z_first_stars = A_5 * (K_MEX - 1.0) * (K_MEX + F_TRZ) / K_MEX**2
+    z_first_galaxies = A_5 * F_TRZ * K_MEX * (1.0 + F_TRZ)
+    T_at_recombination_K = T_CMB * (1.0 + z_rec)
+    tau_reion = 2.0 * F_TRZ * SSq * (1.0 + F_TRZ) / (K_MEX * (K_MEX - 1.0))
+    z_decouple = z_rec * (1.0 + F_TRZ * SSq)
+    alpha_PopIII = 2.35 - F_TRZ * K_MEX * SSq
+    return {'value': {
+        'z_recombination': z_rec,
+        'z_reionization': z_reion,
+        'z_first_stars': z_first_stars,
+        'z_first_galaxies': z_first_galaxies,
+        'T_at_recombination_K': T_at_recombination_K,
+        'tau_reionization': tau_reion,
+        'z_decoupling': z_decouple,
+        'Population_III_IMF_slope': alpha_PopIII,
+    }}
+
+
+def calculate_QGP_heavy_ion_UQFF(dataset):
+    import math
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    D_crit = 26
+    m_YM = 1.736
+    T_c_MeV = m_YM * F_TRZ * SSq * K_MEX * Phi_res * 1000
+    eta_over_s = 1.0/(4.0*math.pi) * (1.0 + F_TRZ * SSq * Phi_res * K_MEX / D_crit)
+    R_AA_Jpsi = SSq * (1.0 - F_TRZ * K_MEX)
+    c_s_squared = 1.0/3.0 - F_TRZ * SSq * Phi_res
+    Wroblewski_lambda_s = SSq * (K_MEX - F_TRZ) / (K_MEX * (1.0 + F_TRZ))
+    R_AA_hadrons = F_TRZ * K_MEX * (1.0 + F_TRZ)
+    v_2_elliptic = F_TRZ * (K_MEX - 1.0) / (1.0 + F_TRZ)
+    return {'value': {
+        'T_c_deconfinement_MeV': T_c_MeV,
+        'eta_over_s_shear_viscosity': eta_over_s,
+        'KSS_bound_1_over_4pi': 1.0/(4.0*math.pi),
+        'R_AA_JPsi_charmonium_suppression': R_AA_Jpsi,
+        'c_s_squared_sound_speed': c_s_squared,
+        'Wroblewski_lambda_s': Wroblewski_lambda_s,
+        'R_AA_hadrons': R_AA_hadrons,
+        'v_2_elliptic_flow': v_2_elliptic,
+    }}
+
+
+def calculate_AGN_blazar_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    D_crit = 26
+    D_phys = 4
+    A_5 = 60
+    M_3C273_Msun = A_5 * K_MEX * SSq * (1.0 + F_TRZ)**2 * 1e7
+    M_M87_Msun = A_5 * D_crit * K_MEX * SSq * D_phys * 1e6
+    M_TON618_Msun = D_crit * A_5 * K_MEX**2 * SSq * (1.0 + F_TRZ)**2 * 1e7
+    eta_BZ = SSq * F_TRZ * (1.0 + F_TRZ)**2 * K_MEX
+    E_knee_eV = 3.086e15 * SSq * K_MEX * (1.0 + F_TRZ)
+    N_AGN_Fermi = int(A_5 * A_5 * K_MEX * (1.0 + F_TRZ)**2)
+    return {'value': {
+        'M_3C273_Msun': M_3C273_Msun,
+        'M_M87_Msun_EHT': M_M87_Msun,
+        'M_TON618_Msun_largest_known': M_TON618_Msun,
+        'Blandford_Znajek_jet_efficiency': eta_BZ,
+        'cosmic_ray_knee_energy_eV': E_knee_eV,
+        'N_AGN_Fermi_LAT_estimate': N_AGN_Fermi,
+    }}
+
+
+def calculate_modified_gravity_EP_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    eta_WEP = F_TRZ**15 * SSq
+    gamma_minus_1_PPN = F_TRZ**5 * SSq * (1.0 + F_TRZ)**2
+    beta_minus_1_PPN = F_TRZ**10 * SSq * K_MEX
+    eta_Nordvedt = 3.0 * F_TRZ**5 * SSq
+    pulsar_decay_ratio = 1.0 - F_TRZ**16 * SSq * K_MEX
+    dG_over_G_per_year = F_TRZ**17 * SSq
+    LenseThirring_LAGEOS_mas_yr = 31.0
+    return {'value': {
+        'eta_WEP_MICROSCOPE_scale': eta_WEP,
+        'gamma_minus_1_PPN_Cassini': gamma_minus_1_PPN,
+        'beta_minus_1_PPN': beta_minus_1_PPN,
+        'eta_Nordvedt_parameter': eta_Nordvedt,
+        'pulsar_orbital_decay_ratio': pulsar_decay_ratio,
+        'dG_over_G_Newton_per_year': dG_over_G_per_year,
+        'LenseThirring_LAGEOS_mas_per_yr': LenseThirring_LAGEOS_mas_yr,
+    }}
+
+
+def calculate_PBH_dark_matter_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    A_5 = 60
+    M_peak_PBH_g = A_5 * K_MEX * (1.0 + F_TRZ)**2 * 1e21
+    M_min_surviving_kg = 1.73e11
+    f_PBH_asteroid = SSq * (1.0 + F_TRZ)**2
+    f_PBH_stellar = F_TRZ * (1.0 + F_TRZ) * SSq
+    f_PBH_planetary = F_TRZ**2 * SSq * (1.0 + F_TRZ)**2
+    f_PBH_21cm = F_TRZ * SSq * Phi_res
+    alpha_mass_function = 2.0 - F_TRZ
+    mu_CMB_distortion = F_TRZ**5 * SSq * K_MEX
+    delta_c_critical = SSq * (1.0 - F_TRZ)
+    M_LIGO_PBH_peak_Msun = A_5 * F_TRZ * K_MEX * (1.0 + F_TRZ)
+    return {'value': {
+        'M_peak_PBH_asteroid_g': M_peak_PBH_g,
+        'M_min_surviving_PBH_kg': M_min_surviving_kg,
+        'f_PBH_asteroid_window_fraction': f_PBH_asteroid,
+        'f_PBH_stellar_LIGO_fraction': f_PBH_stellar,
+        'f_PBH_planetary_fraction': f_PBH_planetary,
+        'f_PBH_21cm_EDGES_fraction': f_PBH_21cm,
+        'PBH_mass_function_alpha': alpha_mass_function,
+        'mu_CMB_distortion_PBH': mu_CMB_distortion,
+        'delta_c_critical_perturbation': delta_c_critical,
+        'M_LIGO_PBH_merger_peak_Msun': M_LIGO_PBH_peak_Msun,
+    }}
+
+
+def calculate_WZ_boson_decays_UQFF(dataset):
+    F_TRZ = 0.1
+    SSq = 0.57
+    Phi_res = 0.84
+    K_MEX = 25.0/12.0
+    D_crit = 26
+    D_phys = 4
+    N_ch = 9
+    Br_W_enu = (1.0/N_ch) * (1.0 - F_TRZ * SSq / K_MEX)
+    Br_W_munu = Br_W_enu * (1.0 - F_TRZ**2 * SSq)
+    Br_W_taunu = Br_W_enu * (1.0 + F_TRZ * SSq * K_MEX)
+    Br_W_hadrons = 1.0 - 3.0 * Br_W_enu
+    Br_Z_ee = SSq * F_TRZ * (1.0 + F_TRZ)**2 / K_MEX
+    Br_Z_mm = Br_Z_ee * (1.0 + F_TRZ**3)
+    Br_Z_tt = Br_Z_ee * (1.0 + F_TRZ**2)
+    Br_Z_invisible = D_phys / (D_crit - D_phys) * (1.0 + F_TRZ) / (1.0 - F_TRZ * SSq)
+    N_neutrinos = 3.0
+    R_mu_over_e = 1.0 - F_TRZ**2 * SSq
+    R_tau_over_e = 1.0 + F_TRZ * SSq * K_MEX
+    sin2_theta_eff = SSq * (1.0 - F_TRZ * SSq) / K_MEX
+    return {'value': {
+        'Br_W_to_e_nu': Br_W_enu,
+        'Br_W_to_mu_nu': Br_W_munu,
+        'Br_W_to_tau_nu': Br_W_taunu,
+        'Br_W_to_hadrons': Br_W_hadrons,
+        'Br_Z_to_ee': Br_Z_ee,
+        'Br_Z_to_mumu': Br_Z_mm,
+        'Br_Z_to_tautau': Br_Z_tt,
+        'Br_Z_to_invisible': Br_Z_invisible,
+        'N_light_neutrinos_UQFF': N_neutrinos,
+        'R_mu_over_e_universality': R_mu_over_e,
+        'R_tau_over_e_universality': R_tau_over_e,
+        'sin2_theta_eff_UQFF': sin2_theta_eff,
+    }}
+
+
 def calculate_cc2_first_paradox_h0_tension_resolved(dataset):
     if dataset is None: dataset = {}
     H0_CMB_canonical = 67.4
