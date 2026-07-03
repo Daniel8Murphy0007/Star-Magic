@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "uqff"
 version = "5.41.0"
-description = "UQFF Star-Magic — vacuum-first unified physics framework (9 truly-independent primitives, complete SM origin of mass 16 masses from Yang-Mills gap, Pioneer anomaly RESOLVED, hadron J/ψ EXACT, physics-biology sextet complete with origin of life (64 codons + 20 amino acids EXACT), coronal heating problem RESOLVED, quantum measurement F_TRZ¹⁶ collapse rate EXACT, complete SM symmetry breaking cascade 20 orders, CνB PTOLEMY prediction, high-T_c superconductor design 323 K, Kolmogorov 5/3 EXACT, nuclear fission fragment distribution, structure formation, positronium/muonium precision, 352+ calculator surfaces, 2046+ whitepapers)"
+description = "UQFF Star-Magic - vacuum-first unified physics framework (9 truly-independent primitives, complete SM origin of mass, physics-biology sextet with genetic code EXACT, hadron J/psi EXACT, complete SM cascade 20 orders, CvB PTOLEMY prediction, high-Tc superconductor 323 K prediction, Kolmogorov 5/3 EXACT, Pioneer / coronal heating / quantum measurement / hierarchy problem RESOLVED, 352+ calculator surfaces, 2046+ whitepapers)"
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
