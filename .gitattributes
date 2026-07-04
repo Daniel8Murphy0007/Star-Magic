@@ -1,11 +1,22 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-MAIN_1_CoAnQi.cpp filter=lfs diff=lfs merge=lfs -text
-CondensedPhysics.py filter=lfs diff=lfs merge=lfs -text
-CondensedPhysics2.py filter=lfs diff=lfs merge=lfs -text
-CondensedPhysics_OutputData.py filter=lfs diff=lfs merge=lfs -text
-source2.cpp filter=lfs diff=lfs merge=lfs -text
-physics_backend.cpp filter=lfs diff=lfs merge=lfs -text
-QCalc.py filter=lfs diff=lfs merge=lfs -text
-index.js filter=lfs diff=lfs merge=lfs -text
+
+# CP + companion Python files: regular text, CRLF endings, importable Python (removed from LFS in v5.44.0)
+CondensedPhysics.py text eol=crlf
+CondensedPhysics2.py text eol=crlf
+CondensedPhysics3.py text eol=crlf
+CondensedPhysics4.py text eol=crlf
+CondensedPhysicsAggregator.py text eol=crlf
+CondensedPhysics_InputData.py text eol=crlf
+CondensedPhysics_OutputData.py text eol=crlf
+CondensedPhysics_Validation.py text eol=crlf
+CondensedPhysics_superposition_module.py text eol=crlf
+QCalc.py text eol=crlf
+
+# C++ and JS support files (ship as data, not importable Python)
+MAIN_1_CoAnQi.cpp text eol=crlf
+source2.cpp text eol=crlf
+index.js text eol=crlf
+
+# Binary files
 *.pdf binary

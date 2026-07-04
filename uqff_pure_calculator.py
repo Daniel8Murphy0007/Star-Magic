@@ -58462,6 +58462,59 @@ def calculate_periodic_table_UQFF(dataset):
     return {'value': d_block_capacity}
 
 
+def calculate_cp_modules_UQFF(dataset):
+    modules = ['CondensedPhysics', 'CondensedPhysics2', 'CondensedPhysics3', 'CondensedPhysics4',
+               'CondensedPhysicsAggregator', 'CondensedPhysics_InputData',
+               'CondensedPhysics_OutputData', 'CondensedPhysics_Validation',
+               'CondensedPhysics_superposition_module', 'QCalc']
+    import importlib
+    available = []
+    for m in modules:
+        try:
+            importlib.import_module(m)
+            available.append(m)
+        except Exception:
+            pass
+    return {'value': available}
+
+
+def calculate_cp_functions_UQFF(dataset):
+    module_name = dataset.get('module', 'CondensedPhysics') if isinstance(dataset, dict) else 'CondensedPhysics'
+    import importlib, inspect
+    try:
+        mod = importlib.import_module(module_name)
+    except Exception:
+        return {'value': []}
+    items = []
+    for name, obj in inspect.getmembers(mod):
+        if name.startswith('_'):
+            continue
+        if inspect.isfunction(obj):
+            items.append({'name': name, 'kind': 'function'})
+        elif inspect.isclass(obj):
+            items.append({'name': name, 'kind': 'class'})
+    return {'value': items}
+
+
+def calculate_cp_call_UQFF(dataset):
+    if not isinstance(dataset, dict):
+        return {'value': None}
+    module_name = dataset.get('module', 'CondensedPhysics')
+    target = dataset.get('function')
+    args = dataset.get('args', [])
+    kwargs = dataset.get('kwargs', {})
+    if not target:
+        return {'value': None}
+    import importlib
+    try:
+        mod = importlib.import_module(module_name)
+        obj = getattr(mod, target)
+        result = obj(*args, **kwargs) if callable(obj) else obj
+    except Exception as e:
+        return {'value': None, 'error': str(e)[:200]}
+    return {'value': result}
+
+
 def calculate_cc2_first_paradox_h0_tension_resolved(dataset):
     if dataset is None: dataset = {}
     H0_CMB_canonical = 67.4

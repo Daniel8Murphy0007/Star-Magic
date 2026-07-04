@@ -2,6 +2,81 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.44.0] — 2026-07-04
+
+### CP pipeline integration ship — 10 previously-inaccessible modules now importable via pip
+
+This ship makes the 4000+ CP calculator classes reachable through standard `pip install uqff` for the first time. Before v5.44.0, `CondensedPhysics.py`, `CondensedPhysics2.py`, `CondensedPhysics_OutputData.py`, `QCalc.py`, `MAIN_1_CoAnQi.cpp`, `source2.cpp`, and `index.js` were tracked by git-LFS and shipped as 131-132 byte pointer files inside the PyPI wheel. Additionally, `CondensedPhysicsAggregator.py`, `CondensedPhysics_InputData.py`, `CondensedPhysics_Validation.py`, `CondensedPhysics_superposition_module.py`, and `CondensedPhysics3.py`/`CondensedPhysics4.py` shipped as data files but were not registered in `[tool.setuptools] py-modules`, so `import CondensedPhysics3` (etc.) failed with `ModuleNotFoundError`.
+
+### Migrated OFF git-LFS (7 files, ~18 MB of real content now in wheel)
+
+- `CondensedPhysics.py` (7.43 MB) — 1,264 classes, Phase 1
+- `CondensedPhysics2.py` (2.15 MB) — 680 classes, Phase 2
+- `CondensedPhysics_OutputData.py` (0.34 MB)
+- `QCalc.py` (0.46 MB) — Scientific calculator
+- `MAIN_1_CoAnQi.cpp` (5.73 MB) — 6,698+ physics terms C++ backbone (ships as data)
+- `source2.cpp` (0.74 MB) — Qt6 GUI source (ships as data)
+- `index.js` (1.15 MB) — 106 astrophysical systems REST server (ships as data)
+
+Removed stale entry: `physics_backend.cpp filter=lfs ...` (file didn't exist on disk).
+
+### Fixed content corruption blocking imports
+
+- `CondensedPhysics2.py` line 34547 — `SyntaxError: f-string: expecting '}'`. Nested single-quote f-string: `f't_merge = ... ({'STALLED' if is_stalled else 'OK'})'` → outer quotes changed to double: `f"t_merge = ... ({'STALLED' if is_stalled else 'OK'})"`
+- `CondensedPhysics4.py` line 42271 — `IndentationError: unexpected indent`. Orphan dict-body fragment (9 lines) with no owning function or class removed.
+- `CondensedPhysics4.py` — 487 null bytes at end of file stripped (removed 487 bytes total).
+- `CondensedPhysics4.py` header line 3 — mojibake `�` replacement character replaced with `-` ASCII hyphen.
+
+Result: **All 10 CP-family Python files (CP1-4 + Aggregator + InputData + OutputData + Validation + superposition + QCalc) now syntax-clean and null-byte-free** — verified via `python3 -m py_compile` on each.
+
+### Registered CP-family modules in pyproject.toml
+
+Added to `[tool.setuptools] py-modules` (list grows from 17 to 27):
+
+```
+CondensedPhysics
+CondensedPhysics2
+CondensedPhysics3
+CondensedPhysics4
+CondensedPhysicsAggregator
+CondensedPhysics_InputData
+CondensedPhysics_OutputData
+CondensedPhysics_Validation
+CondensedPhysics_superposition_module
+QCalc
+```
+
+C++ (`MAIN_1_CoAnQi.cpp`, `source2.cpp`) and JS (`index.js`) cannot be Python modules — they ship as data files, accessible via file paths.
+
+### Updated .gitattributes
+
+- Removed all 8 LFS filter rules (7 real + 1 stale `physics_backend.cpp`)
+- Added explicit `text eol=crlf` normalization for all 13 CP-family/support files
+- Kept `*.pdf binary` and `* text=auto` defaults
+
+### After v5.44.0 ships
+
+Users running `pip install uqff==5.44.0` will get real Python content for all 10 CP-family modules and can do:
+
+```python
+import CondensedPhysics
+import CondensedPhysics2
+import CondensedPhysics3
+import CondensedPhysics4
+import CondensedPhysicsAggregator
+import CondensedPhysics_InputData
+import CondensedPhysics_OutputData
+import CondensedPhysics_Validation
+import CondensedPhysics_superposition_module
+import QCalc
+```
+
+The 4000+ CP calculator classes across CP1-4 become callable. `uqff_pure_calculator.py` remains the primary pure surface — the CP modules are complementary (may reference SM concepts, contain classes, and use narrative). Integration bridging from `uqff_pure_calculator` to CP dispatch is a future refinement.
+
+### Wheel size impact
+
+Wheel grows from ~25 MB (v5.43.0) to ~43 MB (v5.44.0) — adds ~18 MB of real CP + C++ + JS content that was previously LFS pointers.
+
 ## [5.43.0] — 2026-07-04
 
 ### Added — Ten new whitepapers (PAPER_1883 through PAPER_1892) + ten new public calculator surfaces closing cosmology, condensed matter, astrophysics, plasma physics, BSM, biophysics, atomic physics, and chemistry sectors

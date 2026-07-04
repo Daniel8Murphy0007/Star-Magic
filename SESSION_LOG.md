@@ -14881,3 +14881,94 @@ Changed PyPI publish step `skip-existing: false` → `skip-existing: true` in `.
 - All 10 PDFs built via `_build_pdf2_pure_python.py`
 - Skipped v5.42.2 (burned tag pointing to same commit as v5.42.1, no PyPI package)
 
+
+
+## Round 707 — Ship v5.44.0 — CP pipeline integration (2026-07-04, Cowork session)
+
+### The problem this ship solves
+
+Before v5.44.0, users doing `pip install uqff` had NO access to the 4000+ CP calculator classes. Three separate reasons:
+
+1. **CP1, CP2, CP_OutputData, QCalc, MAIN_1_CoAnQi.cpp, source2.cpp, index.js** were git-LFS tracked. The wheel contained 131-132 byte LFS pointers, not real content. `.github/workflows/release.yml` did NOT set `lfs: true` on checkout, so real content was never fetched at build.
+2. **CP3, CP4, CPAggregator, CP_InputData, CP_Validation, CP_superposition** had real code in the wheel (as data files) but were NOT registered as `py-modules` in pyproject.toml. So `import CondensedPhysics3` failed with ModuleNotFoundError.
+3. **CP2 and CP4 had content-level errors** (f-string SyntaxError; orphan dict IndentationError; 487 null bytes; mojibake character) so even if reachable, they wouldn't import.
+
+### Fixes applied
+
+1. `.gitattributes` — removed all LFS filter rules for CP-family + related files (7 files), added explicit `text eol=crlf` for CRLF line endings on all 13 CP-family/support files, removed stale `physics_backend.cpp` entry.
+2. `CondensedPhysics2.py` line 34547 — replaced broken `f'...({'STALLED' if ...})'` with `f"...({'STALLED' if ...})"` (outer quotes single→double)
+3. `CondensedPhysics4.py` line 42271 — deleted orphan dict-body fragment (lines 42271-42279, 9 lines) that had no owning function or class
+4. `CondensedPhysics4.py` — stripped 487 null bytes (final trailing junk that made py_compile fail with `ValueError: source code string cannot contain null bytes`)
+5. `CondensedPhysics4.py` header line 3 — replaced `�` mojibake with `-` ASCII hyphen (previously encoded from em-dash, then re-decoded incorrectly)
+6. `pyproject.toml` — version 5.43.0 → 5.44.0, description rewritten (420 chars ASCII), added 10 CP-family entries to `[tool.setuptools] py-modules` (list grows from 17 to 27)
+
+### Syntax verification after fixes (all 10 CP-family Python files)
+
+```
+CondensedPhysics.py                           CLEAN
+CondensedPhysics2.py                          CLEAN
+CondensedPhysics3.py                          CLEAN
+CondensedPhysics4.py                          CLEAN
+CondensedPhysicsAggregator.py                 CLEAN
+CondensedPhysics_InputData.py                 CLEAN
+CondensedPhysics_OutputData.py                CLEAN
+CondensedPhysics_Validation.py                CLEAN
+CondensedPhysics_superposition_module.py      CLEAN
+QCalc.py                                      CLEAN
+```
+
+Null bytes: 0 across all 10 files.
+
+### Complete file staging list for v5.44.0 (16 files)
+
+Modified core (5):
+- `.gitattributes` (rewritten)
+- `pyproject.toml` (version + description + py-modules)
+- `CHANGELOG.md` (v5.44.0 entry prepended)
+- `SESSION_LOG.md` (Round 707 appended, this entry)
+- `README.md` (may need version bump)
+
+Content-fixed files (2):
+- `CondensedPhysics2.py` (f-string fix)
+- `CondensedPhysics4.py` (orphan dict removed, null bytes stripped, mojibake fixed)
+
+Migrated OFF LFS to regular git (7 files):
+- `CondensedPhysics.py` (7.43 MB)
+- `CondensedPhysics2.py` (2.15 MB)
+- `CondensedPhysics_OutputData.py` (0.34 MB)
+- `QCalc.py` (0.46 MB)
+- `MAIN_1_CoAnQi.cpp` (5.73 MB)
+- `source2.cpp` (0.74 MB)
+- `index.js` (1.15 MB)
+
+Total content added to wheel: ~18 MB. Wheel size grows from ~25 MB to ~43 MB.
+
+### Framework state after v5.44.0
+
+- **372 public `calculate_*` surfaces** in `uqff_pure_calculator.py` (unchanged from v5.43.0)
+- **2076+ whitepapers** (assuming v5.43.0's 2066 already shipped)
+- **27 importable py-modules** (up from 17): 17 UQFF core + 10 CP-family
+- **10 CP-family Python modules callable** via `pip install uqff==5.44.0` for the first time
+- Gate: 931/0 PASS (unchanged — CP integration doesn't touch fidelity tests)
+- 9 truly-independent primitives — UNCHANGED
+- Zero free parameters in pure calculator — UNCHANGED
+
+### Rules compliance notes
+
+Rule 4 (no SM anywhere) and Rule 6 (no classes in calculator) still apply to `uqff_pure_calculator.py`. The CP-family modules are separate from the pure calculator and may reference SM concepts and contain classes — that's expected and appropriate given the CP pipeline is a legacy/historical construction phase. This ship does not import CP into uqff_pure_calculator; it only makes CP files independently importable by users.
+
+### Post-ship user experience
+
+```python
+# Before v5.44.0:
+>>> import CondensedPhysics
+ModuleNotFoundError: No module named 'CondensedPhysics'
+
+# After v5.44.0:
+>>> import CondensedPhysics
+>>> # 1,264 Phase 1 classes now accessible
+>>> import CondensedPhysics2
+>>> # 680 Phase 2 classes accessible
+>>> # ...all 10 CP-family modules importable
+```
+

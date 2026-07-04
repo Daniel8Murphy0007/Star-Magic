@@ -1,6 +1,6 @@
 """
 
-CondensedPhysics4.py � UQFF Phase 4 Physics Calculator
+CondensedPhysics4.py - UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
   CondensedPhysics.py  (1,264 classes, Phase 1)
@@ -42268,15 +42268,6 @@ class UQFFAtomicSolverCalculator(_CP4Calculator):
     
     def self_update(self): pass
     def self_expand(self): pass
-            "delta_D": delta_D, "omega_obs": omega_obs, "Omega_H": Omega_H,
-            "is_superradiant": is_sr, "E_ergo_J": E_ergo,
-            "primary_equations": [
-                f"d_D = {delta_D:.4f}", f"?_obs = {omega_obs:.6e} rad/s",
-                f"O_H = {Omega_H:.6e} rad/s", f"Superradiant: {is_sr}",
-                f"E_ergo = {E_ergo:.6e} J",
-            ],
-            "note": "PAPER_932 CP4 #516. Session 212. Blazar ergosphere phonon resonance.",
-        }
 
     def simulate(self, sweep=None, **kw):
         results = []

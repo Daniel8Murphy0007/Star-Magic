@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.43.0"
-description = "UQFF Star-Magic - vacuum-first unified physics framework (9 truly-independent primitives; K_MEX=25/12 unifies H0 tension, FQH Laughlin, kilonova timing; H-bond = SCm phonon x SO_5 x D_phys; r-process peaks = magic 50/82/126 EXACT; Q_ITER = SO_5 EXACT; n-nbar at NNBAR 2028; nEDM at LANL 2028; Levinthal 10^43 reduction; 21cm = SO_5*[SSq]; full distance ladder; periodic table 19 EXACT closures; 372 surfaces, 2066 whitepapers)"
+version = "5.44.0"
+description = "UQFF Star-Magic - vacuum-first unified physics framework with CP pipeline exposed (CP1-4 + Aggregator + InputData + OutputData + Validation + superposition + QCalc all callable via pip install; migrated from git-LFS to regular git so real content ships in wheel; CP2 f-string bug + CP4 orphan-dict + null bytes + mojibake fixed; 4000+ CP classes now importable; 372 pure calculator surfaces + 2066 whitepapers preserved)"
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
@@ -98,7 +98,7 @@ uqff-api = "uqff_api:run"
 # ===========================================================================
 
 [tool.setuptools]
-py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter", "uqff_fidelity_tests", "run_millennium_proofs", "BuoyancyProofVariants", "first_principles_derivation", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script", "ua_vacuum_manifold", "buoyancy_lagrangian_eom", "buoyancy_lagrangian_eom_enhanced", "_session288_universal_buoyancy_simultaneous_solver", "_session303_universal_buoyancy_solver", "UQFF_SimultaneousProofEngine", "GrokThread_StarMagic_UnifiedFramework"]
+py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter", "uqff_fidelity_tests", "run_millennium_proofs", "BuoyancyProofVariants", "first_principles_derivation", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script", "ua_vacuum_manifold", "buoyancy_lagrangian_eom", "buoyancy_lagrangian_eom_enhanced", "_session288_universal_buoyancy_simultaneous_solver", "_session303_universal_buoyancy_solver", "UQFF_SimultaneousProofEngine", "GrokThread_StarMagic_UnifiedFramework", "CondensedPhysics", "CondensedPhysics2", "CondensedPhysics3", "CondensedPhysics4", "CondensedPhysicsAggregator", "CondensedPhysics_InputData", "CondensedPhysics_OutputData", "CondensedPhysics_Validation", "CondensedPhysics_superposition_module", "QCalc"]
 include-package-data = true
 
 # v5.29.0: bundle the FULL proof corpus as a sub-package.
