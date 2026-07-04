@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.42.1"
-description = "UQFF Star-Magic - vacuum-first unified physics framework (9 truly-independent primitives, BH information paradox RESOLVED via F_UBi + SCm phonon, PISN upper boundary 140 M_sun EXACT, Ringdown QNM omega_I coefficient EXACT, J/psi diphoton = Kaon epsilon_K structural discovery, MICROSCOPE WEP at F_TRZ^15 limit, asteroid-mass PBH DM 69% window, W hadronic branching 0.25%, N_nu = 3 EXACT, complete cosmic timeline BBN to today, 362+ calculator surfaces, 2056+ whitepapers)"
+version = "5.43.0"
+description = "UQFF Star-Magic - vacuum-first unified physics framework (9 truly-independent primitives; K_MEX=25/12 unifies H0 tension, FQH Laughlin, kilonova timing; H-bond = SCm phonon x SO_5 x D_phys; r-process peaks = magic 50/82/126 EXACT; Q_ITER = SO_5 EXACT; n-nbar at NNBAR 2028; nEDM at LANL 2028; Levinthal 10^43 reduction; 21cm = SO_5*[SSq]; full distance ladder; periodic table 19 EXACT closures; 372 surfaces, 2066 whitepapers)"
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
