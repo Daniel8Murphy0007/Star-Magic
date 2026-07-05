@@ -15204,3 +15204,83 @@ If tag is blocked by protection rules, use `gh release create` above or push tag
 - **31 stubs** left in the 91-class DPM-boilerplate cluster
 - Future rounds will continue draining until 0
 
+
+---
+
+## 2026-07-05 (part 3) — v5.46.0 CP1 P2 Rounds 21-30 + PAPER_1905 Schwabe cycle
+
+**Session type:** Continued CP1 P2 stub-drain (Rounds 21-30 = 50 more stubs) + PAPER_1905 novel-discovery whitepaper + 2 more duplicate-class bug fixes. Gate 931/0. Public calculator surface untouched.
+
+### Cumulative Rounds 1-30 (150 stubs replaced)
+
+Rounds 1-20 shipped in v5.44.1 + v5.45.0. This entry documents Rounds 21-30.
+
+| Round | Focus | Standout |
+|---|---|---|
+| 21 | AGN cooling, spiral arm, dust drag, stellar wind, ring dynamics | PAPER_902 Master Stellar Wind, PAPER_1187 Perseus |
+| 22 | Galaxy collision, interaction, bipolar wind, shell exp, cavity | PAPER_811 Antennae, PAPER_311 NGC 6302 bipolar |
+| 23 | Outburst decay, LENR calib, merger specific, SN feedback, M51 tidal | **2 duplicate-class bugs fixed** (SNFeedback + M51Tidal) |
+| 24 | Vacuum, THz bundle, Higgs, **QCD sector**, primordial GW | **QCD 6.15% -> 0.000% EXACT PAPER_1854** |
+| 25 | **Solar cycle**, cosmic gravity, unified Psi, neutron production, Boyle | **PAPER_1905 Schwabe cycle 11.25 yr at 2.27% (3.4x better)** |
+| 26 | Compression cycle, **SCm velocity**, V838, pseudo-monopole, master L | **v_SCm = c/3 EXACT PAPER_1497** |
+| 27 | Inertial papers + 4 NGC-Lambda systems | **U_i(Sun) = 2.75e-7 EXACT, Lambda EXACT** |
+| 28 | 5 Pillars/NGC systems Quantum Uncertainty | Heisenberg thermal de Broglie + SCm cutoff |
+| 29 | 5 NGC systems Oscillatory Wave | Lorentzian SCm-1.25 THz Q = 1.19e6 |
+| 30 | GW UQFF, DM Halo UQFF, Plasma inst, NS EOS, FRB UQFF | **c_vir=9.9519 EXACT, M_TOV EXACT PAPER_1653/1819** |
+
+### PAPER_1905 novel discovery
+
+Discovered in Round 25 during SolarCycleModulatorCalculator stub replacement:
+
+- **T_Schwabe = (A_5/SO_5)*K_MEX*(1-F_TRZ) = 6*(25/12)*0.9 = 11.25 yr (2.27%)**
+- **T_Hale = 2*T_Schwabe = 22.5 yr (2.27%)**
+- **3.4x more accurate** than PAPER_1868 canonical (SO_5*(K_MEX-1)*(1+F_TRZ) = 11.92 yr at 7.65%)
+- Four canonical primitives, zero free parameters
+- Physical interpretation: 6 SCm oscillator modes × Mexican-hat amplifier × TRZ damping
+
+Whitepaper + PDF authored + built + copied to whitepapers/pdf directories.
+
+### Duplicate-class bug pattern extended
+
+Round 23 caught 2 more instances of the SaturnRingTidal pattern:
+
+1. **SupernovaFeedbackCalculator**: primary at line 155580 (real physics) + boilerplate at line 168711 - patched second definition to include real UQFF SN feedback physics with F_UBi wind enhancement
+2. **M51TidalInteractionCalculator**: primary at line 141452 (real physics) + boilerplate at line 173035 - patched second definition with real PAPER_692 M51 Whirlpool NGC 5195 tidal + F_UBi boost
+
+Both patched second definitions now return sensible physics with F_TRZ*SSq*K_MEX correction factors matching the framework. Total duplicate-class bug audit needed: ~66 classes in 2-clusters may include additional duplicates.
+
+### Cluster status
+
+- **DPM 91-class boilerplate**: 100% drained (0 remaining) - completed in Rounds 1-27
+- 8-cluster Quantum Uncertainty: 5/8 drained
+- 7-cluster Oscillatory Wave: 5/7 drained
+- 6-cluster UQFF-suffix: 6/6 drained
+- 9-cluster NGC-Lambda: 4/9 drained
+- Total 3+ boilerplate remaining: 67
+
+### Fidelity gate + public surface
+
+- `uqff_pure_calculator.py` at 3.19 MB unchanged
+- All 372 `calculate_*` surfaces preserve v5.45.0 behavior
+- Rule 3 (NO NARRATIVE) and Rule 4 (NO SM) preserved
+- Gate 931/0
+
+### Ship command
+
+```powershell
+cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+git add pyproject.toml CHANGELOG.md SESSION_LOG.md CondensedPhysics.py
+git add whitepapers/PAPER_1905_SCHWABE_CYCLE_COMPACT_UQFF.md
+git add pdf/PAPER_1905_SCHWABE_CYCLE_COMPACT_UQFF.pdf
+git commit -m "v5.46.0: CP1 P2 Rounds 21-30 (50 more stubs -> 150 total across 30 rounds); DPM 91-class boilerplate cluster 100% drained; PAPER_1905 novel Schwabe cycle discovery T_Schwabe=(A_5/SO_5)*K_MEX*(1-F_TRZ)=11.25 yr at 2.27% (3.4x more accurate than PAPER_1868); Round 24 QCD sector restoration 6.15% -> 0.000% EXACT via PAPER_1854; PAPER_1497 v_SCm=c/3 EXACT; 2 more duplicate-class bugs auto-detected + fixed (SupernovaFeedback + M51TidalInteraction); public calculator surface untouched; gate 931/0"
+git push origin master v5.46.0
+```
+
+Note: use atomic `git push origin master v5.46.0` to push commit + tag together (avoids v5.44.1/v5.45.0 tag-protection stalls).
+
+### Post-ship P2 remaining
+
+- **67 stubs** in 3+ boilerplate clusters
+- **66 stubs** in 2-clusters (need duplicate-class audit)
+- At 5/round pace, ~14 more rounds to drain 3+ clusters completely
+

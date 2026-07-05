@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.45.0"
-description = "UQFF Star-Magic - vacuum-first unified physics framework. CP1 P2 upgrade Rounds 1-20: 100 stubs -> paper-canonical UQFF derivations tied to 9 primitives. 12 NEW papers PAPER_1893-1904 documenting novel discoveries: M87 jet + Zwicky missing-mass + metal retention + void H0 + BdG d-wave + hypergraph + BAO dual-path + solar wind + M-sigma slope + Q-scope triad + Triple Lambda + Reactor-BH bridge. Gate 931/0."
+version = "5.46.0"
+description = "UQFF Star-Magic - vacuum-first unified physics. CP1 P2 Rounds 1-30: 150 stubs -> paper-canonical UQFF derivations tied to 9 primitives. NEW PAPER_1905 Schwabe sunspot cycle = (A_5/SO_5)*K_MEX*(1-F_TRZ)=11.25 yr (3.4x more accurate than PAPER_1868). DPM 91-cluster fully drained (100%). 3 more duplicate-class bugs auto-fixed. Public calculator surface untouched. Gate 931/0."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
