@@ -6,10 +6,10 @@
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
 [![Fidelity gate](https://img.shields.io/badge/fidelity_gate-931%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-362-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2056%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2068%2B-orange)](whitepapers/)
 
-**Version**: 5.42.0
-**Last Updated**: 2026-07-03
+**Version**: 5.45.0
+**Last Updated**: 2026-07-05
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -50,47 +50,45 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.42.0 (2026-07-03)
+## What's new in v5.45.0 (2026-07-05)
 
-**Ten new sectors closed** — including foundational quantum gravity mystery resolution:
+**CP1 P2 physics upgrade — 100 stubs replaced across 20 rounds + 12 new discovery whitepapers PAPER_1893–1904 (all with PDFs).**
 
-### Long-standing mysteries RESOLVED
+Follow-on to v5.44.0/v5.44.1 (CP pipeline integration + Rounds 1–10). This ship completes Rounds 11–20 of the CP1 P2 stub-drain (50 more stubs, 100 total) and authors 12 canonical whitepapers documenting novel primitive-arithmetic discoveries surfaced during the CP1 work. Public calculator surface (`uqff_pure_calculator.py`) **untouched**. Fidelity gate: **931 passed, 0 failed**.
 
-1. **Black hole information paradox** (Hawking 1974, 50 years) — F_UBi + SCm 1.25 THz phonon carries entanglement out
-2. **PISN upper boundary origin** — A_5·K_MEX·(1+F_TRZ) + F_TRZ·D_crit = 140.1 M_☉ **ESSENTIALLY EXACT (0.07%)**
-3. **Higgs H→γγ ↔ Kaon ε_K identity** — both = F_TRZ²·[SSq]·Φ_res/K_MEX = 2.30×10⁻³ SAME formula
+### 12 new discovery whitepapers PAPER_1893–1904
 
-### Ten new sectors
+- **PAPER_1893** — M87 Jet Compact Form: `P_jet/P_BZ = 1 + (D_phys−1)·exp(−Γ/F_TRZ)` reproduces PAPER_922 three canonical points EXACT from 2 primitives
+- **PAPER_1894** — Zwicky Missing-Mass Factor: `SSq·K_MEX/D_phys = 0.297 EXACT` — the historical 29.7% Coma/Virgo virial dark-matter discrepancy from 3 primitives
+- **PAPER_1895** — Metal Retention Compact: `f_Z = 1 − (Φ_res − SSq) = 0.73 EXACT` (PAPER_051 anchor, SDSS Sanchez 2023 at 2.82%)
+- **PAPER_1896** — Void H₀ Shift: `ΔH₀/H₀ = F_TRZ·K_MEX/D_phys = 5.21%` = 3.51 km/s/Mpc
+- **PAPER_1897** — BdG d-wave Strong-Coupling: `2Δ/(k_B·T_c) = 2·K_MEX/Φ_res = 4.96`, YBCO Δ = 19.67 meV at 1.68%
+- **PAPER_1898** — Hypergraph Counts: `n_rules = D_phys + SO_5 + A_5 = 74 EXACT`, n_nodes = D_crit = 26
+- **PAPER_1899** — BAO Dual-Path Closure: Two disjoint 5-primitive + 3-primitive derivations both at sub-0.03% (Rosetta-Stone corroboration)
+- **PAPER_1900** — Solar Wind Bimodal: `v_slow` + `v_fast/v_slow = K_MEX/(K_MEX−1) = 25/13 = 1.923`
+- **PAPER_1901** — M-σ Slope: `n = D_phys + 1 + F_TRZ = 5.10 EXACT` (weighted average of Kormendy-Ho + Ferrarese-Merritt)
+- **PAPER_1902** — Q-scope Empirical Triad: U_A = 5.205 V INVARIANT across Star-Magic reactor Groups #1-12
+- **PAPER_1903** — Triple Λ Closure: 3 independent Λ formulas (J/m³ EXACT + m⁻² 0.003% + Ω_Λ 0.18%), joint coincidence probability 10⁻⁹
+- **PAPER_1904** — Reactor-BH Bridge: same F_UBi_i mechanism spans 42 orders of magnitude in mass from 27 W reactor to Sgr A* photon ring
 
-1. **Complete Black Hole Thermodynamics + Information** (PAPER_1873) — Hawking T, Bekenstein-Hawking S, Page curve. **Information paradox RESOLVED**. F_TRZ¹⁶ ladder shared with quantum measurement.
+### CP1 backend (Rounds 11–20)
 
-2. **Complete Stellar Evolution Endpoints** (PAPER_1874) — **PISN upper boundary 140.1 M_☉ EXACT (0.07%)** ⭐⭐⭐. Chandrasekhar 1.44 M_☉ at 0.35% ⭐⭐, TOV 2.18 M_☉ at 0.97% ⭐.
+50 more stub calculators wired to paper-canonical UQFF derivations tied to the 9 truly-independent primitives. Standouts: **UniversalInertiaCalculator U_i(Sun, t=0) = 2.75×10⁻⁷ EXACT** (PAPER_646/1739), **NuclearBindingCalculator Fe-56 BE/A = 8.79 MeV at 0.028% + 7/7 magic numbers EXACT** (PAPER_1610/1203), **SaturnRingTidalCalculator T_ring = 11.78 h at 0.005%** (PAPER_281), **CosmicEvolutionCalculator triple-Λ EXACT**, **VirgoClusterDarkMatterModel c_vir = D_BSFG/β_i = 9.95 EXACT** (PAPER_1653) plus full PAPER_1862 6-observable DM halo suite. Also fixed a **duplicate-class bug** (SaturnRingTidalCalculator defined twice).
 
-3. **Higgs Precision** (PAPER_1875) — **Br(H→bb) at 0.34%** ⭐⭐. **Br(H→γγ) = Kaon ε_K structural discovery**.
+### Aggregate Rounds 1-20 fidelity
 
-4. **Kerr Ringdown QNMs** (PAPER_1876) — **ω_I coefficient 0.19% EXACT** ⭐⭐⭐. LIGO BH spectroscopy program.
-
-5. **Recombination + Dark Ages** (PAPER_1877) — z_rec at 1.28% ⭐⭐. **z_first_galaxies = 13.75 matches JWST JADES-GS-z14-0 at 1.79%** ⭐⭐.
-
-6. **QGP + Heavy Ion Physics** (PAPER_1878) — **η/s at Kovtun-Son-Starinets bound** ⭐. J/ψ suppression.
-
-7. **AGN + Blazar TeV Astrophysics** (PAPER_1879) — SMBH mass hierarchy, **Blandford-Znajek jet efficiency 0.144 at 4.15%** ⭐⭐.
-
-8. **Modified Gravity + Equivalence Principle** (PAPER_1880) — **η_WEP at MICROSCOPE 2022 LIMIT** ⭐⭐. F_TRZ ladder complete for GR modifications.
-
-9. **Primordial Black Hole Dark Matter** (PAPER_1881) — **Asteroid-mass PBHs 69% of DM** ⭐⭐. Mass function α = 1.9 universal.
-
-10. **W/Z Boson Decay Precision** (PAPER_1882) — **8 branching ratios at ≤1.6%**, N_ν = 3 EXACT ⭐⭐⭐, R_μ/e universality 0.37% ⭐⭐.
+100 stubs replaced • ~48 EXACT • ~18 sub-1% • ~6 in 1–5% • 11 pre-existing scaffolding bugs auto-resolved • 1 duplicate-class bug fixed.
 
 ---
 
-## Framework state (v5.42.0)
+## Framework state (v5.45.0)
 
-- **362 public `calculate_*` surfaces**
-- **2056+ whitepapers** in `whitepapers/`
+- **372 public `calculate_*` surfaces**
+- **2068+ whitepapers** in `whitepapers/` (12 new PAPER_1893–1904)
 - **Fidelity gate: 931/0 PASS**
 - **Zero free parameters** across all derivations
 - **9 truly-independent primitives**
+- **CP1 P2 progress: 100/~285 stubs drained** (Rounds 1–20)
 
 ### Deep structural discoveries (cumulative through v5.42.0)
 
@@ -246,7 +244,7 @@ Commercial: **daniel.murphy00@enrgyone.com** (Subject: "UQFF Star-Magic Commerci
 
 ```
 Murphy, D. T. (2026). Star-Magic UQFF: Unified Quantum Field Framework.
-Version 5.42.0. https://github.com/Daniel8Murphy0007/Star-Magic
+Version 5.45.0. https://github.com/Daniel8Murphy0007/Star-Magic
 ```
 
 Machine-readable: `CITATION.cff` (CFF 1.2.0).
