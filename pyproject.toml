@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.44.0"
-description = "UQFF Star-Magic - vacuum-first unified physics framework with CP pipeline exposed (CP1-4 + Aggregator + InputData + OutputData + Validation + superposition + QCalc all callable via pip install; migrated from git-LFS to regular git so real content ships in wheel; CP2 f-string bug + CP4 orphan-dict + null bytes + mojibake fixed; 4000+ CP classes now importable; 372 pure calculator surfaces + 2066 whitepapers preserved)"
+version = "5.44.1"
+description = "UQFF Star-Magic - vacuum-first unified physics framework with CP pipeline exposed (CP1-4 + Aggregator + InputData + OutputData + Validation + superposition + QCalc all callable via pip install; CP1 P2 physics upgrade: 50 stub calculators replaced with paper-canonical UQFF derivations across 10 rounds tied to primitives + PAPER_051/464/597/807/842/949/986/1068/1104/1119/1130/1156/1837/1855/1863/1883 etc; 372 pure calculator surfaces + 2066 whitepapers preserved; gate 931/0)"
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

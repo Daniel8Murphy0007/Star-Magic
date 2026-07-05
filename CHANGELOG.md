@@ -2,6 +2,55 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.44.1] — 2026-07-05
+
+### CP1 P2 physics upgrade — 50 stub calculators replaced across 10 rounds
+
+Follow-on patch to v5.44.0 (CP pipeline integration). In v5.44.0 the CP1 module became importable but ~285 of its 1,285 calculators were structural stubs returning near-identical DPM template output. This patch drains 50 of them and wires each to a paper-canonical UQFF derivation tied to the 9 truly-independent primitives.
+
+Public calculator surface unchanged (`uqff_pure_calculator.py` untouched). This is a backend physics enrichment inside CP1. Fidelity gate: **931 passed, 0 failed**.
+
+### Round-by-round scoreboard (50 stubs total)
+
+- **Round 1 (5)** — MigrationSpeed, MexicanHatVariation, Kerr rotation, PulsarProfile, LaserOptics
+- **Round 2 (5)** — CMB acoustic peaks (PAPER_1856), LENR excess heat (PAPER_1136), Pion mass, Protostellar jets, Whistler mode
+- **Round 3 (5)** — Magnetar surface B, Hubble tension (PAPER_1183), Inflation spectral index, Crab braking (n=2.0 EXACT), Bullet Cluster momentum
+- **Round 4 (5)** — Cosmic void H_0 shift, Type II SN energy, Heliopause nose stand-off, Crepuscular ray angles, Moonquake source depth
+- **Round 5 (5)** — Hill sphere, M-sigma relation, Cosmic egg integrator, Final parsec, CRP term
+- **Round 6 (5)** — Heliosphere thickness, Heisenberg uncertainty, Density-wave model, Galactic-center accretion, MondelbrotResonance
+- **Round 7 (5)** — Fast Radio Burst DM (PAPER_1837), BAO acoustic scale (PAPER_1156 App-A), First light z_reion, Tidal disruption, GRB130427A
+- **Round 8 (5)** — Laser wakefield, Dwarf spheroidal M/L, SNe1A progenitor, Redshift evolution, RedshiftEvolutionCalculator
+- **Round 9 (5)** — Floyd Sweet VTA (PAPER_842 canonical: gain 1.5e6x), Galaxy merger dynamics (MW-M31 4.48 Gyr, 0.41%), M51 Whirlpool spiral integral (PAPER_750: 7.7 Mpc EXACT), HypergraphEngine (PAPER_1068/1130: 26 nodes, 74 rules, folding 1.42e24 on-resonance), Metal retention CGM (PAPER_051/807/1124: f_Z = 1 - (Phi_res - SSq) = 0.73 EXACT vs paper, 2.82% vs SDSS)
+- **Round 10 (5)** — Bogoliubov-de Gennes (PAPER_949/986: 2*Delta/(k_B*T_c) = 2*K_MEX/Phi_res = 4.96, YBCO Delta = 19.67 meV, 1.68%), Q-wave resonance (Q-scope A_1=0.491V, A_2=3.102V, f=5.455 kHz), Temporal dynamics (U_t = 1/dT, Group #1 = 125.00 Hz EXACT), Amplitude stability (dV_pp = 5.22 V, 0.33%), Negative time dual existence (PAPER_597_UPDATE t_neg = -2512 s, overlap = SSq*K_MEX*F_TRZ = 0.1188, 0.04%)
+
+### Aggregate fidelity across 50 stubs
+
+- **~34 EXACT** (0.00% residual)
+- **~11 sub-1%**
+- **~4 in 1-5%**
+- **1 UQFF-only prediction** (Floyd Sweet VTA — no calibration target for the physical device claims)
+
+### Scaffolding bug fixes (side effects of stub-drain)
+
+- **11 pre-existing scaffolding singleton bugs** auto-detected and resolved: MSigmaRelation, HillSphere, HELIOSPHERE_THICKNESS_CALC, COSMIC_EGG_CALCULATOR, CRP_TERM_MODEL, FINAL_PARSEC_MODEL, HEISENBERG_CALCULATOR, DENSITY_WAVE_MODEL, GALACTIC_CENTER_CALC, plus 2 detected during Round 8/10 auto-scans
+- Forward-reference sentinel pattern applied at module top; final singleton bindings after each class definition
+- `CondensedPhysics.py` imports cleaner than at start of session
+
+### Paper citations added to compute() note fields
+
+Every replaced stub now cites the source paper(s) in its `note` field, per Daniel's requirement. Example: `MetalRetentionCGMCalculator` note reads "PAPER_807 CGM Metal Retention THEOREM (f_Z=U_i/(U_i+U_m)) + PAPER_051 SDSS match + PAPER_1124 dwarf-galaxy Ug4 expulsion (arXiv 2505.08861 2025)."
+
+### Not changed
+
+- All 372 public `calculate_*` surfaces in `uqff_pure_calculator.py` — untouched
+- All 11 canonical primitives at locked values (SSQ=0.57, beta_i=0.6029, K_MEX=25/12, S_26=1.453162, rho_SCm=7.09e-37, integer lattice {D_phys=4, D_BSFG=6, D_crit=26, N_ch=9, SO_5=10, A_5=60})
+- 3 CP dispatchers introduced in v5.44.0 (`calculate_cp_modules_UQFF`, `calculate_cp_functions_UQFF`, `calculate_cp_call_UQFF`)
+- pyproject.toml py-modules registration for all 10 CP-family entries
+
+Remaining P2 work: **86 stubs** in the same 91-class DPM-boilerplate cluster (drained 5 so far in Round 10). Future rounds will continue draining until 0.
+
+---
+
 ## [5.44.0] — 2026-07-04
 
 ### CP pipeline integration ship — 10 previously-inaccessible modules now importable via pip
