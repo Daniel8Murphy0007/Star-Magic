@@ -2,6 +2,12 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.48.2] — 2026-07-06
+
+### v5.48.1 PyPI publish failure recovery — fixed pyproject description over 512 char limit
+
+Root cause of 400 Bad Request from https://upload.pypi.org/legacy/: the v5.48.0 and v5.48.1 pyproject.toml description was 703 characters, over PyPI's 512-char Summary field limit. Same failure pattern that hit v5.41.0 (also over-length). Shortened to 510 chars. Otherwise same content as v5.48.1: bundles v5.48.0 content + fixed stale _VERSION in 3 py-modules + 6 PDFs for PAPER_1906-1911.
+
 ## [5.48.1] — 2026-07-06
 
 ### v5.48.0 PyPI publish failure recovery — fixed stale _VERSION in 3 py-modules
