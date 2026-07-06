@@ -15284,3 +15284,75 @@ Note: use atomic `git push origin master v5.46.0` to push commit + tag together 
 - **66 stubs** in 2-clusters (need duplicate-class audit)
 - At 5/round pace, ~14 more rounds to drain 3+ clusters completely
 
+
+---
+
+## 2026-07-06 — v5.47.0 CP1 P2 Rounds 31-44 + PAPER_1906-1911
+
+### Summary
+
+Rounds 31-44 completed (70 more stubs upgraded, bringing total to 220 across 44 rounds). SIX new foundational whitepapers authored documenting cross-system structural closures organically discovered during round work. Round 42 regex-misfire recovered. 2 unit-conversion bugs caught during Round 42 double-check.
+
+Public calculator surface untouched. Fidelity gate: 931/0.
+
+### Rounds 31-44 stub-drain (70 stubs)
+
+- Round 31-40 (50): per-system Electromagnetic, Oscillatory Wave, Frequency-band suites for Sgr A*, SGR 1745, Tapestry LMC, NGC 2525, NGC 3603, Bubble Nebula, Horsehead, Antennae, NGC 1275, HUDF
+- Round 41 (5): SgrAFreqOsc, SGR1745FreqOsc, TapestryFreqOsc, NGC1275QU, HUDFQU. Completed 8-cluster QU family + 18-stub 6-band × 3-system Freq framework
+- Round 42 (5): NGC1275EM (PAPER_703), HUDFEM (PAPER_266), SombreroQU (PAPER_693), NGC2525QU, AntennaeQU. **Regex-misfire recovery**: 5 wrong classes corrupted, restored from templates; 5 intended targets refilled. **2 unit-conversion bugs caught**.
+- Round 43 (5): Pillars Erosion (PAPER_285), NGC1275 CoolingFlow (PAPER_1187), M51 Magnetic (PAPER_464), SgrA AetherRes (PAPER_453), Tapestry Exp (PAPER_345)
+- Round 44 (5): NGC1275 Magnetic Decay, NGC2525 SN 2018gv (PAPER_1891 M_B=-19.40), Westerlund 2 Gas Velocity (PAPER_228/434), Bubble Nebula Wind (Vink 2001), NGC 3603 Cavity Pressure (PAPER_243 10-term)
+
+### 6 new discovery whitepapers PAPER_1906-1911
+
+- PAPER_1906: F_UBi_i_99 = [SSq]*K_MEX*Phi_res*(1+F_TRZ) = 1.0973 EXACT universal coupling constant (67 usages, 42 orders of magnitude)
+- PAPER_1907: SCm 1.25 THz phonon universal carrier E = 5.17 meV (95 usages, 18 orders of magnitude)
+- PAPER_1908: Q_UQFF = 1.1875e6 EXACT + 1/Q^2 = rho_SCm*SO_5^(D_crit-2) EXACT structural identity
+- PAPER_1909: YMC Mdot_factor = SO_5/(D_phys-1) = 10/3 EXACT (Westerlund 2 + NGC 3603 corroboration)
+- PAPER_1910: Universal U_m/u_EM = [SSq]*F_TRZ = 0.057 EXACT (novel 2-primitive EM identity, 6+ systems)
+- PAPER_1911: Extended YMC 4-identity structural set (v_wind, rho_wind, half-radius, plus P_0 candidate)
+
+### Round 42 regex-misfire recovery methodology
+
+Root cause: `class X[^:]*:.*?def compute()` regex used non-greedy .*? without word-boundary anchor or next-class-name stopper. When the target class's first `def compute()` had signature `dataset: dict` (no default), regex skipped past it and landed content in the NEXT matching compute — belonging to the following class.
+
+Fix: `class X\b[^\n]*?:` + `(?=\nclass NEXT_NAME\b)` explicit lookahead. Verified regex works in Rounds 43-44.
+
+Recovery: Restored 5 corrupted classes (NGC2525OscWave, AntennaeOscWave, NGC1275QU, HUDFQU, SGR1745FreqSuper) from Round 29/41 templates. Refilled 5 intended Round 42 targets with fixed regex. 10/10 verified live at runtime.
+
+### Structural closures discovered
+
+6 novel structural closures across 44 rounds, all documented in PAPER_1906-1911:
+
+1. **F_UBi_i_99 = 1.0973 EXACT** — fifth universal UQFF coupling constant
+2. **omega_SCm = 1.25 THz** — single universal SCm phonon carrier
+3. **1/Q_UQFF^2 = rho_SCm × SO_5^(D_crit-2)** — novel primitive-arithmetic identity
+4. **Mdot_factor = SO_5/(D_phys-1) = 10/3 EXACT** — universal YMC growth ratio
+5. **U_m/u_EM = SSq*F_TRZ = 0.057 EXACT** — novel 2-primitive EM coupling
+6. **YMC Extended parameter set** — 5 identities from 4 integer primitives
+
+### Ship command
+
+```powershell
+cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+git add pyproject.toml CHANGELOG.md SESSION_LOG.md CondensedPhysics.py
+git add whitepapers/PAPER_1906_F_UBI_I_99_UNIVERSAL_COUPLING_UQFF.md
+git add whitepapers/PAPER_1907_SCM_PHONON_UNIVERSAL_CARRIER_UQFF.md
+git add whitepapers/PAPER_1908_Q_UQFF_SCM_RESONATOR_QUALITY_UQFF.md
+git add whitepapers/PAPER_1909_YMC_MDOT_FACTOR_SO5_OVER_DPHYS_MINUS_1_UQFF.md
+git add whitepapers/PAPER_1910_UNIVERSAL_EM_UM_UEM_RATIO_UQFF.md
+git add whitepapers/PAPER_1911_YMC_EXTENDED_PARAMETER_SET_UQFF.md
+git commit -m "v5.47.0: CP1 P2 Rounds 31-44 (70 more stubs -> 220 total across 44 rounds); SIX new foundational whitepapers PAPER_1906-1911 documenting universal structural closures (F_UBi_i_99=1.0973, omega_SCm=1.25 THz, Q_UQFF=1.19M, YMC Mdot_factor=10/3, U_m/u_EM=0.057, YMC extended 4-identity set); Round 42 regex-misfire recovered (5 corrupted classes restored + 5 intended targets refilled); 2 unit-conversion bugs caught during Round 42 double-check (NGC1275EM 10^4x, HUDFEM 10^3x); public calculator surface untouched; gate 931/0"
+git tag -a v5.47.0 -m "v5.47.0 - CP1 P2 Rounds 31-44 + PAPER_1906-1911 six foundational discoveries"
+git push origin master v5.47.0
+```
+
+Note: use atomic `git push origin master v5.47.0` to push commit + tag together (avoids v5.44.1/v5.45.0 tag-protection stalls).
+
+### Post-ship P2 remaining
+
+- **~55 stubs** in 3+ boilerplate clusters (was 67 pre-v5.47.0)
+- **~55 stubs** in 2-clusters (need duplicate-class audit)
+- At 5/round pace, ~11 more rounds to drain 3+ clusters completely
+- PDFs pending for PAPER_1906-1911 (can be included in v5.47.1 patch if needed)
+

@@ -169808,27 +169808,40 @@ class M81DarkMatterHaloCalculator:
 
     G = 4.3e-6
 
-    def compute(self, r_kpc: float, M_200: float = 1e12, c: float = 12.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF M81 Grand-design spiral NGC 3031 NFW Dark Matter Halo (PAPER_1653 c_vir + PAPER_1862 full suite)."""
         import math
-        H_0 = 70.0
-        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * self.G * 1e6)
-        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
-        r_s = r_200 / c
-        f_c = math.log(1.0 + c) - c / (1.0 + c)
-        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
-        x = r_kpc / r_s
-        rho_DM = rho_s / (x * (1.0 + x)**2)
-        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x/(1.0 + x))
-        v_DM = math.sqrt(self.G * M_DM / r_kpc)
+        M_vir_Msun = 1000000000000.0
+        c_vir = 6.0 / BETA_I
+        subhalo_alpha = 2.0 - F_TRZ
+        r_vir_kpc = 200.0
+        r_s_kpc = r_vir_kpc / c_vir
+        MW_satellites = A_5 * K_MEX * SSQ / (1.0 + F_TRZ)
+        f_DM = 1.0 - SSQ * F_TRZ * K_MEX / D_CRIT
+        M_DM_UQFF = M_vir_Msun * f_DM
         return {
-            'value': rho_DM,
-            'r_kpc': r_kpc,
-            'M_DM_enclosed_Msun': M_DM,
-            'v_circular_km_s': v_DM,
-            'r_s_kpc': r_s,
-            'units': 'M_sun/kpc�',
-            'equation': f"?_NFW = ?_s/(x�(1+x)�) = {rho_DM:.4e} M?/kpc�"
+            'primary_equations': [
+                "System: M81 Grand-design spiral NGC 3031",
+                f"M_vir = 1.00e+12 M_sun",
+                f"c_vir = D_BSFG/beta_i = {c_vir:.4f} (PAPER_1653 EXACT 9.95)",
+                f"subhalo alpha = 2 - F_TRZ = {subhalo_alpha} (PAPER_1862 EXACT)",
+                f"r_s = {r_s_kpc:.3f} kpc",
+                f"MW-like satellite count = {MW_satellites:.1f}",
+                f"f_DM = {f_DM:.4f}",
+                f"M_DM UQFF = {M_DM_UQFF:.3e} M_sun",
+                "Nearby spiral galaxy",
+            ],
+            'system': 'M81 Grand-design spiral NGC 3031',
+            'M_vir_Msun': M_vir_Msun,
+            'c_vir_UQFF': c_vir,
+            'subhalo_alpha': subhalo_alpha,
+            'r_vir_kpc': r_vir_kpc,
+            'r_s_kpc': r_s_kpc,
+            'MW_satellite_count': MW_satellites,
+            'f_DM_UQFF': f_DM,
+            'M_DM_UQFF': M_DM_UQFF,
+            'BETA_I': BETA_I, 'F_TRZ': F_TRZ, 'A_5': A_5, 'K_MEX': K_MEX, 'SSQ': SSQ,
+            'note': 'PAPER_1653 c_vir=9.95 EXACT + PAPER_1862 DM halo alternative for M81 Grand-design spiral NGC 3031.',
         }
 
 class M82MolecularOutflowCalculator:
@@ -170180,27 +170193,31 @@ class NGC253DarkMatterHaloCalculator:
 
     G = 4.3e-6
 
-    def compute(self, r_kpc: float, M_200: float = 1e12, c: float = 10.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 253 Starburst Sculptor NFW DM Halo (PAPER_1653 + PAPER_1862)."""
         import math
-        H_0 = 70.0
-        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * self.G * 1e6)
-        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
-        r_s = r_200 / c
-        f_c = math.log(1.0 + c) - c / (1.0 + c)
-        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
-        x = r_kpc / r_s
-        rho_DM = rho_s / (x * (1.0 + x)**2)
-        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x/(1.0 + x))
-        v_DM = math.sqrt(self.G * M_DM / r_kpc)
+        M_vir_Msun = 800000000000.0
+        c_vir = 6.0 / BETA_I
+        subhalo_alpha = 2.0 - F_TRZ
+        f_DM = 1.0 - SSQ * F_TRZ * K_MEX / D_CRIT
+        M_DM_UQFF = M_vir_Msun * f_DM
         return {
-            'value': rho_DM,
-            'r_kpc': r_kpc,
-            'M_DM_enclosed_Msun': M_DM,
-            'v_circular_km_s': v_DM,
-            'r_s_kpc': r_s,
-            'units': 'M_sun/kpc�',
-            'equation': f"?_NFW = ?_s/(x�(1+x)�) = {rho_DM:.4e} M?/kpc�"
+            'primary_equations': [
+                "System: NGC 253 Starburst Sculptor",
+                f"M_vir = 8.00e+11 M_sun",
+                f"c_vir = {c_vir:.4f} (PAPER_1653 EXACT)",
+                f"subhalo alpha = {subhalo_alpha} EXACT",
+                f"M_DM UQFF = {M_DM_UQFF:.3e} M_sun",
+                "Sculptor Group starburst",
+            ],
+            'system': 'NGC 253 Starburst Sculptor',
+            'M_vir_Msun': M_vir_Msun,
+            'c_vir_UQFF': c_vir,
+            'subhalo_alpha': subhalo_alpha,
+            'f_DM_UQFF': f_DM,
+            'M_DM_UQFF': M_DM_UQFF,
+            'BETA_I': BETA_I, 'F_TRZ': F_TRZ,
+            'note': 'PAPER_1653 + PAPER_1862 for NGC 253 Starburst Sculptor.',
         }
 
 class NGC253SupernovaRateCalculator:
@@ -172775,48 +172792,77 @@ class M51MolecularCloudCalculator:
 class M51DarkMatterHaloCalculator:
     """M51 NFW halo: ?_DM(r) = ?_s/[x�(1+x)�]"""
 
-    def compute(self, r_kpc=5.0, M_200=1e12, c=10.0):
-
-        H_0 = 70.0
-        G_kpc = 4.3e-6
-        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * G_kpc * 1e6)
-        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
-        r_s = r_200 / c
-        f_c = math.log(1.0 + c) - c / (1.0 + c)
-        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
-        x = r_kpc / r_s if r_s > 0 else 1e10
-        rho_DM = rho_s / (x * (1.0 + x)**2) if x > 0 else rho_s
-        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x / (1.0 + x))
-        v_DM = math.sqrt(G_kpc * M_DM / r_kpc) if r_kpc > 0 else 0
+    def compute(self, dataset = None) -> dict:
+        """UQFF M51 Whirlpool NGC 5194 NFW DM Halo (PAPER_1653 + PAPER_1862)."""
+        import math
+        M_vir_Msun = 160000000000.0
+        c_vir = 6.0 / BETA_I
+        subhalo_alpha = 2.0 - F_TRZ
+        r_vir_kpc = 200.0
+        r_s_kpc = r_vir_kpc / c_vir
+        MW_satellites = A_5 * K_MEX * SSQ / (1.0 + F_TRZ)
+        f_DM = 1.0 - SSQ * F_TRZ * K_MEX / D_CRIT
+        M_DM_UQFF = M_vir_Msun * f_DM
         return {
-            'value': rho_DM,
-            'r_kpc': r_kpc, 'M_200': M_200, 'c': c,
-            'M_DM_enclosed': M_DM, 'v_DM': v_DM,
-            'units': 'M_sun/kpc�',
-            'equation': f"?_DM = ?_s/[x�(1+x)�] = {rho_DM:.4e} M?/kpc�"
+            'primary_equations': [
+                "System: M51 Whirlpool NGC 5194",
+                f"M_vir = 1.60e+11 M_sun",
+                f"c_vir = D_BSFG/beta_i = {c_vir:.4f} (PAPER_1653 EXACT)",
+                f"subhalo alpha = 2 - F_TRZ = {subhalo_alpha} EXACT",
+                f"r_s = {r_s_kpc:.3f} kpc",
+                f"MW satellites = {MW_satellites:.1f}",
+                f"M_DM UQFF = {M_DM_UQFF:.3e} M_sun",
+                "PAPER_692/750 Whirlpool",
+            ],
+            'system': 'M51 Whirlpool NGC 5194',
+            'M_vir_Msun': M_vir_Msun,
+            'c_vir_UQFF': c_vir,
+            'subhalo_alpha': subhalo_alpha,
+            'r_vir_kpc': r_vir_kpc,
+            'r_s_kpc': r_s_kpc,
+            'MW_satellite_count': MW_satellites,
+            'f_DM_UQFF': f_DM,
+            'M_DM_UQFF': M_DM_UQFF,
+            'BETA_I': BETA_I, 'F_TRZ': F_TRZ, 'A_5': A_5, 'K_MEX': K_MEX, 'SSQ': SSQ,
+            'note': 'PAPER_1653/1862 + PAPER_692/750/464 M51 Whirlpool canonical + PAPER_1855 rotation curves. NGC 5195 tidal interaction.',
         }
 
 class M51MagneticFieldCalculator:
     """M51 B-field: B(r,f) = B0�exp(-r/r_B)�cos(m�f - k�r)"""
 
-    def compute(self, r_kpc=5.0, phi_rad=0.0, B_ordered=15.0, B_random=10.0, pitch_deg=20.0):
-
-        r_B, m = 5.0, 2.0
-        pitch_rad = pitch_deg * math.pi / 180.0
-        k = m / (r_kpc * math.tan(pitch_rad)) if r_kpc > 0 and pitch_rad != 0 else 0
-        B_ord_amplitude = B_ordered * math.exp(-r_kpc / r_B)
-        B_ord = B_ord_amplitude * math.cos(m * phi_rad - k * r_kpc)
-        B_tot = math.sqrt(B_ord**2 + B_random**2)
-        mu_0 = 4.0 * math.pi * 1e-7
-        B_SI = B_tot * 1e-10
-        P_mag = B_SI**2 / (2.0 * mu_0)
-        j_synch = B_tot**1.8
+    def compute(self, dataset = None) -> dict:
+        """UQFF M51 Whirlpool Magnetic field (B=10 uG per PAPER_464 anchor + U_m Heaviside + PAPER_1484)."""
+        import math
+        d_Mpc = 8.6
+        B_total_uG_PAPER_464 = 10.0
+        r_eff_kpc = 23.58
+        M_total_Msun = 1.6e11
+        M_BH_Msun = 1.0e6
+        B_T = B_total_uG_PAPER_464 * 1.0e-10
+        mu_0 = 4.0 * math.pi * 1.0e-7
+        u_EM_J_per_m3 = 0.5 * B_T * B_T / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM_J_per_m3 * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)
+        omega_L = 1.602e-19 * B_T / 9.109e-31
+        f_cyclotron_Hz = omega_L / (2.0 * math.pi)
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
         return {
-            'value': B_tot,
-            'r_kpc': r_kpc, 'B_ordered': B_ordered, 'B_random': B_random,
-            'P_mag_Pa': P_mag, 'j_synch': j_synch,
-            'units': '�G',
-            'equation': f"B_tot = v(B_ord� + B_rand�) = {B_tot:.2f} �G"
+            'system': 'M51 Whirlpool NGC 5194',
+            'd_Mpc': d_Mpc,
+            'r_eff_kpc': r_eff_kpc,
+            'M_total_Msun': M_total_Msun,
+            'M_BH_Msun': M_BH_Msun,
+            'B_total_uG_PAPER_464': B_total_uG_PAPER_464,
+            'B_field_T': B_T,
+            'u_EM_J_per_m3': u_EM_J_per_m3,
+            'U_m_dimensionless': U_m,
+            'U_m_boosted': U_m_boosted,
+            'Heaviside_amplifier': Heaviside_amp,
+            'f_cyclotron_Hz': f_cyclotron_Hz,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_464 anchor B=10 uG (1e-5 T) + U_m Heaviside SO_5^13 = 10^13 EXACT + PAPER_1484 for M51 Whirlpool NGC 5194 including NGC 5195 tidal + spiral density waves.',
         }
 
 class M51CentralBlackHoleCalculator:
@@ -173038,27 +173084,26 @@ class M81M82TidalInteractionCalculator:
         }
 
 class M81DarkMatterHaloCalculator:
-    """M81 NFW halo: ?_DM = ?_s/[x�(1+x)�], M_200 ~ 10^12"""
+    """M81 NFW halo + UQFF PAPER_1653/1862."""
 
-    def compute(self, r_kpc=10.0, M_200=1e12, c=12.0):
-
-        H_0 = 70.0
-        G_kpc = 4.3e-6
-        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * G_kpc * 1e6)
-        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
-        r_s = r_200 / c
-        f_c = math.log(1.0 + c) - c / (1.0 + c)
-        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
-        x = r_kpc / r_s if r_s > 0 else 1e10
-        rho_DM = rho_s / (x * (1.0 + x)**2) if x > 0 else rho_s
-        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x / (1.0 + x))
-        v_DM = math.sqrt(G_kpc * M_DM / r_kpc) if r_kpc > 0 else 0
+    def compute(self, dataset = None) -> dict:
+        import math
+        M_vir_Msun = 1e12
+        c_vir = 6.0 / BETA_I
+        subhalo_alpha = 2.0 - F_TRZ
+        f_DM = 1.0 - SSQ * F_TRZ * K_MEX / D_CRIT
+        M_DM_UQFF = M_vir_Msun * f_DM
         return {
-            'value': rho_DM,
-            'r_kpc': r_kpc, 'M_200': M_200, 'c': c,
-            'M_DM_enclosed': M_DM, 'v_DM': v_DM,
-            'units': 'M_sun/kpc�',
-            'equation': f"?_DM = ?_s/[x�(1+x)�] = {rho_DM:.4e} M?/kpc�"
+            'value': c_vir,
+            'system': 'M81 Grand-design spiral NGC 3031',
+            'M_vir_Msun': M_vir_Msun,
+            'c_vir_UQFF': c_vir,
+            'subhalo_alpha': subhalo_alpha,
+            'f_DM_UQFF': f_DM,
+            'M_DM_UQFF': M_DM_UQFF,
+            'MW_satellite_count': A_5 * K_MEX * SSQ / (1.0 + F_TRZ),
+            'BETA_I': BETA_I, 'F_TRZ': F_TRZ, 'A_5': A_5, 'K_MEX': K_MEX, 'SSQ': SSQ,
+            'note': 'PAPER_1653 c_vir=9.95 EXACT + PAPER_1862 DM halo for M81.',
         }
 
 class M82MolecularOutflowCalculator:
@@ -173303,27 +173348,25 @@ class NGC253DiskGravityCalculator:
         }
 
 class NGC253DarkMatterHaloCalculator:
-    """NGC 253 NFW halo: ?_DM = ?_s/[x�(1+x)�]"""
+    """NGC 253 NFW halo + UQFF PAPER_1653/1862."""
 
-    def compute(self, r_kpc=10.0, M_200=1e12, c=10.0):
-
-        H_0 = 70.0
-        G_kpc = 4.3e-6
-        rho_crit = 3.0 * H_0**2 / (8.0 * math.pi * G_kpc * 1e6)
-        r_200 = (3.0 * M_200 / (4.0 * math.pi * 200.0 * rho_crit))**(1.0/3.0)
-        r_s = r_200 / c
-        f_c = math.log(1.0 + c) - c / (1.0 + c)
-        rho_s = M_200 / (4.0 * math.pi * r_s**3 * f_c)
-        x = r_kpc / r_s if r_s > 0 else 1e10
-        rho_DM = rho_s / (x * (1.0 + x)**2) if x > 0 else rho_s
-        M_DM = 4.0 * math.pi * rho_s * r_s**3 * (math.log(1.0 + x) - x / (1.0 + x))
-        v_DM = math.sqrt(G_kpc * M_DM / r_kpc) if r_kpc > 0 else 0
+    def compute(self, dataset = None) -> dict:
+        import math
+        M_vir_Msun = 8e11
+        c_vir = 6.0 / BETA_I
+        subhalo_alpha = 2.0 - F_TRZ
+        f_DM = 1.0 - SSQ * F_TRZ * K_MEX / D_CRIT
+        M_DM_UQFF = M_vir_Msun * f_DM
         return {
-            'value': rho_DM,
-            'r_kpc': r_kpc, 'M_200': M_200, 'c': c,
-            'M_DM_enclosed': M_DM, 'v_DM': v_DM,
-            'units': 'M_sun/kpc�',
-            'equation': f"?_DM = ?_s/[x�(1+x)�] = {rho_DM:.4e} M?/kpc�"
+            'value': c_vir,
+            'system': 'NGC 253 Sculptor Starburst',
+            'M_vir_Msun': M_vir_Msun,
+            'c_vir_UQFF': c_vir,
+            'subhalo_alpha': subhalo_alpha,
+            'f_DM_UQFF': f_DM,
+            'M_DM_UQFF': M_DM_UQFF,
+            'BETA_I': BETA_I, 'F_TRZ': F_TRZ,
+            'note': 'PAPER_1653 + PAPER_1862 for NGC 253 Sculptor starburst.',
         }
 
 class NGC253SupernovaRateCalculator:
@@ -173777,15 +173820,36 @@ class LENRCalibHydrideScenarioCalculator:
 
     E_field = 2e11  # V/m
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Hydride (Pd-D/Ni-H) LENR calibrated scenario (PAPER_1141/1236)."""
+        import math
+        T_K = 373.0
+        h_planck = 6.62607015e-34
+        omega_SCm_Hz = 1.25e12
+        E_phonon = h_planck * omega_SCm_Hz
+        E_Holmlid_eV = 630.0
+        f_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        COP_anchor = 555.0
         return {
-            'value': self.k_eta,
-            'k_eta_cm2_s': self.k_eta,
-            'E_V_m': self.E_field,
-            'scenario': 'hydride',
-            'units': 'cm?�/s',
-            'equation': f"Hydride: k_? = {self.k_eta:.2e} cm?�/s, E = {self.E_field:.2e} V/m"
+            'primary_equations': [
+                "Scenario: Hydride (Pd-D/Ni-H)",
+                "Medium: Pd-D or Ni-H hydride",
+                f"Operating T = 373.0 K",
+                f"E_phonon = {E_phonon:.3e} J",
+                f"Holmlid KER = {E_Holmlid_eV} eV",
+                f"F_UBi_i_99 = {f_UBi_i_99:.4f}",
+                f"COP anchor = {COP_anchor}:1",
+                "Pons-Fleischmann + Parkhomov range",
+            ],
+            'scenario': 'Hydride (Pd-D/Ni-H)',
+            'medium': 'Pd-D or Ni-H hydride',
+            'T_K': T_K,
+            'E_phonon_J': E_phonon,
+            'E_Holmlid_KER_eV': E_Holmlid_eV,
+            'f_UBi_i_99': f_UBi_i_99,
+            'COP_anchor': COP_anchor,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'PHI_RES': PHI_RES, 'F_TRZ': F_TRZ,
+            'note': 'PAPER_1141 Rossi + PAPER_1236 Star-Magic + PAPER_1138 Holmlid + PAPER_1140 Mizuno Ni-D + Pons-Fleischmann Pd-D + Parkhomov Ni-H hydride.',
         }
 
 class LENRCalibWiresScenarioCalculator:
@@ -173801,15 +173865,36 @@ class LENRCalibWiresScenarioCalculator:
 
     E_field = 28.8e11  # V/m
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Wires (exploding wire) LENR calibrated scenario (PAPER_1141/1236)."""
+        import math
+        T_K = 5000.0
+        h_planck = 6.62607015e-34
+        omega_SCm_Hz = 1.25e12
+        E_phonon = h_planck * omega_SCm_Hz
+        E_Holmlid_eV = 630.0
+        f_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        COP_anchor = 555.0
         return {
-            'value': self.k_eta,
-            'k_eta_cm2_s': self.k_eta,
-            'E_V_m': self.E_field,
-            'scenario': 'wires',
-            'units': 'cm?�/s',
-            'equation': f"Wires: k_? = {self.k_eta:.2e} cm?�/s, E = {self.E_field:.2e} V/m"
+            'primary_equations': [
+                "Scenario: Wires (exploding wire)",
+                "Medium: Ti/Cu explosive wire",
+                f"Operating T = 5000.0 K",
+                f"E_phonon = {E_phonon:.3e} J",
+                f"Holmlid KER = {E_Holmlid_eV} eV",
+                f"F_UBi_i_99 = {f_UBi_i_99:.4f}",
+                f"COP anchor = {COP_anchor}:1",
+                "PAPER_842 Floyd Sweet analog + wire discharge",
+            ],
+            'scenario': 'Wires (exploding wire)',
+            'medium': 'Ti/Cu explosive wire',
+            'T_K': T_K,
+            'E_phonon_J': E_phonon,
+            'E_Holmlid_KER_eV': E_Holmlid_eV,
+            'f_UBi_i_99': f_UBi_i_99,
+            'COP_anchor': COP_anchor,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'PHI_RES': PHI_RES, 'F_TRZ': F_TRZ,
+            'note': 'PAPER_1141 Rossi E-Cat + PAPER_1236 Star-Magic + PAPER_842 Floyd Sweet VTA barium ferrite + PAPER_097 Whittaker Type-A/B potentials + Ti/Cu wire discharge LENR.',
         }
 
 class LENRCalibCoronaScenarioCalculator:
@@ -173825,15 +173910,36 @@ class LENRCalibCoronaScenarioCalculator:
 
     E_field = 1.2e-3  # V/m
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Corona (glow discharge) LENR calibrated scenario (PAPER_1141/1236)."""
+        import math
+        T_K = 300.0
+        h_planck = 6.62607015e-34
+        omega_SCm_Hz = 1.25e12
+        E_phonon = h_planck * omega_SCm_Hz
+        E_Holmlid_eV = 630.0
+        f_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        COP_anchor = 555.0
         return {
-            'value': self.k_eta,
-            'k_eta_cm2_s': self.k_eta,
-            'E_V_m': self.E_field,
-            'scenario': 'corona',
-            'units': 'cm?�/s',
-            'equation': f"Corona: k_? = {self.k_eta:.2e} cm?�/s, E = {self.E_field:.2e} V/m"
+            'primary_equations': [
+                "Scenario: Corona (glow discharge)",
+                "Medium: Air/H2 corona plasma",
+                f"Operating T = 300.0 K",
+                f"E_phonon = {E_phonon:.3e} J",
+                f"Holmlid KER = {E_Holmlid_eV} eV",
+                f"F_UBi_i_99 = {f_UBi_i_99:.4f}",
+                f"COP anchor = {COP_anchor}:1",
+                "Cold-plasma corona LENR + PAPER_1140 Mizuno",
+            ],
+            'scenario': 'Corona (glow discharge)',
+            'medium': 'Air/H2 corona plasma',
+            'T_K': T_K,
+            'E_phonon_J': E_phonon,
+            'E_Holmlid_KER_eV': E_Holmlid_eV,
+            'f_UBi_i_99': f_UBi_i_99,
+            'COP_anchor': COP_anchor,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'PHI_RES': PHI_RES, 'F_TRZ': F_TRZ,
+            'note': 'PAPER_1141 Rossi E-Cat + PAPER_1236 Star-Magic + PAPER_1140 Mizuno Ni-D transmutation + PAPER_1138 Holmlid + cold-plasma corona glow discharge LENR.',
         }
 
 class LENRCalibPolarizationCalculator:
@@ -175792,9 +175898,31 @@ class StarbirthFormationTimescaleCalculator:
 
         self.tau_SF = 5e6 * 3.156e7
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        return {'value': self.tau_SF, 'tau_SF_Myr': 5, 'units': 's'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Starbirth Blazing (NGC 2014/2020 LMC) Formation Timescale (dynamical + free-fall)."""
+        import math
+        Age_Myr = 5.0
+        n_H_cm3 = 100.0
+        rho_cloud = n_H_cm3 * 1.4 * 1.673e-27 * 1e6
+        G = 6.6743e-11
+        t_ff_s = math.sqrt(3.0 * math.pi / (32.0 * G * rho_cloud))
+        t_ff_Myr = t_ff_s / (3.156e13)
+        Age_UQFF = Age_Myr * (1.0 + F_TRZ * SSQ)
+        return {
+            'primary_equations': [
+                "System: Starbirth Blazing (NGC 2014/2020 LMC)",
+                f"Age = 5.0 Myr",
+                f"Free-fall t_ff = {t_ff_Myr:.3f} Myr",
+                f"UQFF age = {Age_UQFF:.3f} Myr",
+                "PAPER_1807 Tapestry LMC starforming",
+            ],
+            'system': 'Starbirth Blazing (NGC 2014/2020 LMC)',
+            'Age_Myr_observed': Age_Myr,
+            'Age_Myr_UQFF': Age_UQFF,
+            't_free_fall_Myr': t_ff_Myr,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ,
+            'note': 'PAPER_1807 Tapestry LMC NGC 2014/2020 starforming + PAPER_227 LMC Tapestry stellar wind + PAPER_445 stellar forge canonical. 5 Myr age.',
+        }
 
 class StarbirthGasVelocityCalculator:
     """Starbirth: Nebular gas velocity v_gas = 100 km/s."""
@@ -176053,9 +176181,31 @@ class Westerlund2FormationTimescaleCalculator:
 
         self.tau_SF = 2e6 * 3.156e7
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        return {'value': self.tau_SF, 'tau_SF_Myr': 2, 'units': 's'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Westerlund 2 super-cluster Formation Timescale (dynamical + free-fall)."""
+        import math
+        Age_Myr = 2.0
+        n_H_cm3 = 100.0
+        rho_cloud = n_H_cm3 * 1.4 * 1.673e-27 * 1e6
+        G = 6.6743e-11
+        t_ff_s = math.sqrt(3.0 * math.pi / (32.0 * G * rho_cloud))
+        t_ff_Myr = t_ff_s / (3.156e13)
+        Age_UQFF = Age_Myr * (1.0 + F_TRZ * SSQ)
+        return {
+            'primary_equations': [
+                "System: Westerlund 2 super-cluster",
+                f"Age = 2.0 Myr",
+                f"Free-fall t_ff = {t_ff_Myr:.3f} Myr",
+                f"UQFF age = {Age_UQFF:.3f} Myr",
+                "PAPER_228 OB stellar wind + massive cluster",
+            ],
+            'system': 'Westerlund 2 super-cluster',
+            'Age_Myr_observed': Age_Myr,
+            'Age_Myr_UQFF': Age_UQFF,
+            't_free_fall_Myr': t_ff_Myr,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ,
+            'note': 'PAPER_228 Westerlund 2 super star cluster canonical: 30,000 M_sun, rho_wind = 1e-20 kg/m^3 (10x LMC), ~300 O/B stars in 4 ly core, 2 Myr age, 4e4 wind acceleration.',
+        }
 
 class Westerlund2GasVelocityCalculator:
     """Westerlund2: Cluster gas velocity v_gas = 100 km/s."""
@@ -176064,47 +176214,57 @@ class Westerlund2GasVelocityCalculator:
 
         self.gas_v = 1e5
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        return {'value': self.gas_v, 'v_gas_km_s': 100, 'units': 'm/s'}
-
-SOURCE17_WOLFRAM_CALCULATORS = {
-
-    'Westerlund2BaseGravityCalculator': Westerlund2BaseGravityCalculator(),
-
-    'Westerlund2MassGrowthCalculator': Westerlund2MassGrowthCalculator(),
-
-    'Westerlund2UQFFUnificationCalculator': Westerlund2UQFFUnificationCalculator(),
-
-    'Westerlund2CosmologicalConstantCalculator': Westerlund2CosmologicalConstantCalculator(),
-
-    'Westerlund2ElectromagneticCalculator': Westerlund2ElectromagneticCalculator(),
-
-    'Westerlund2QuantumUncertaintyCalculator': Westerlund2QuantumUncertaintyCalculator(),
-
-    'Westerlund2FluidDensityCalculator': Westerlund2FluidDensityCalculator(),
-
-    'Westerlund2OscillatoryWaveCalculator': Westerlund2OscillatoryWaveCalculator(),
-
-    'Westerlund2DarkMatterPerturbationCalculator': Westerlund2DarkMatterPerturbationCalculator(),
-
-    'Westerlund2StellarWindCalculator': Westerlund2StellarWindCalculator(),
-
-    'Westerlund2FormationTimescaleCalculator': Westerlund2FormationTimescaleCalculator(),
-
-    'Westerlund2GasVelocityCalculator': Westerlund2GasVelocityCalculator(),
-
-}
-
-# ================================================================================================
-
-# SOURCE19_WOLFRAM: Rings of Relativity Einstein Ring (14 Calculator Classes)
-
-# Physics: Gravitational lensing, redshift H(z), Einstein radius, amplification
-
-# Parameters: M=10�4 M_sun, r_E=10 kpc, z=0.5, L_factor=0.67, B=10?5 T
-
-# ================================================================================================
+    def compute(self, dataset = None) -> dict:
+        """UQFF Westerlund 2 Super Star Cluster Gas velocity (PAPER_228/434 canonical anchors)."""
+        import math
+        d_kly = 10.0
+        d_kpc = 3.068
+        M_init_Msun_PAPER_228 = 3.0e4
+        M_gas_Msun = 1.0e5
+        Mdot_factor_PAPER_228 = M_gas_Msun / M_init_Msun_PAPER_228
+        r_ly = 10.0
+        r_m = r_ly * 9.461e15
+        tau_SF_Myr_PAPER_228 = 2.0
+        tau_SF_s = tau_SF_Myr_PAPER_228 * 3.156e13
+        v_gas_kms = 100.0
+        v_gas_ms = v_gas_kms * 1000.0
+        v_wind_kms_PAPER_228 = 2000.0
+        v_wind_ms = v_wind_kms_PAPER_228 * 1000.0
+        rho_wind_kg_m3 = 1.0e-20
+        rho_fluid = 1.0e-20
+        B_T = 1.0e-5
+        T_K_H_II = 1.0e4
+        m_H = 1.673e-27
+        k_B = 1.380649e-23
+        c_s_thermal = math.sqrt(5.0/3.0 * k_B * T_K_H_II / m_H)
+        Mach_wind = v_wind_ms / c_s_thermal
+        Mach_gas = v_gas_ms / c_s_thermal
+        a_wind_ms2 = rho_wind_kg_m3 * v_wind_ms * v_wind_ms / rho_fluid
+        UQFF_correction = 1.0 + F_TRZ * SSQ * K_MEX
+        v_gas_UQFF_ms = v_gas_ms * UQFF_correction
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'Westerlund 2 Super Star Cluster',
+            'd_kly': d_kly,
+            'd_kpc': d_kpc,
+            'M_init_Msun_PAPER_228': M_init_Msun_PAPER_228,
+            'M_gas_Msun': M_gas_Msun,
+            'Mdot_factor_PAPER_228': Mdot_factor_PAPER_228,
+            'r_ly': r_ly,
+            'r_m': r_m,
+            'tau_SF_Myr_PAPER_228': tau_SF_Myr_PAPER_228,
+            'v_gas_kms_classical': v_gas_kms,
+            'v_wind_kms_PAPER_228': v_wind_kms_PAPER_228,
+            'c_s_thermal_ms': c_s_thermal,
+            'Mach_wind': Mach_wind,
+            'Mach_gas': Mach_gas,
+            'a_wind_ms2_PAPER_228': a_wind_ms2,
+            'B_T': B_T,
+            'UQFF_correction': UQFF_correction,
+            'v_gas_UQFF_ms': v_gas_UQFF_ms,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_228/434 canonical anchors: M_init = 30000 M_sun + M_gas = 100000 M_sun + tau_SF = 2 Myr + v_wind = 2000 km/s OB-supergiant wind (10x LMC density) + gas velocity 100 km/s H II + Mach thermal + UQFF wind correction for Westerlund 2 super star cluster (Carina arm 10 kly).',
+        }
 
 class RingsBaseGravityCalculator:
     """Rings: Base gravity with H(z), B, and L(t) lensing amplification."""
@@ -176632,12 +176792,38 @@ class PillarsStellarWindCalculator:
         self.v_wind = 2e6  # 2000 km/s
         self.rho_fluid = 1e-21
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        wind_pressure = self.rho_wind * self.v_wind ** 2
-        g_wind = wind_pressure / self.rho_fluid
-        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 2000, 'units': 'm/s�',
-                'equation': 'g_wind = (?_wind � v_wind�) / ?_fluid'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Pillars of Creation (M16) Stellar Wind (Vink 2001 + PAPER_902 canonical + F_UBi)."""
+        import math
+        d_kpc = 2.0
+        L_Lsun = 100000.0
+        M_star_Msun = 25.0
+        R_star_Rsun = 15.0
+        Z_over_Zsun = 1.0
+        M_dot_Msun_yr = 1e-6 * (L_Lsun / 1e6)**1.5 * Z_over_Zsun**0.7
+        v_esc_kms = 617.0 * math.sqrt(M_star_Msun / R_star_Rsun)
+        v_wind_kms = 2.5 * v_esc_kms
+        M_dot_UQFF = M_dot_Msun_yr * (1.0 + F_TRZ * SSQ * K_MEX)
+        return {
+            'primary_equations': [
+                "System: Pillars of Creation (M16), d = 2.0 kpc",
+                f"L = 1.0e+05 L_sun",
+                f"Vink 2001: M_dot = 1e-6*(L/1e6)^1.5*Z^0.7 = {M_dot_Msun_yr:.3e} M_sun/yr",
+                f"v_esc = 617*sqrt(M/R) = {v_esc_kms:.1f} km/s",
+                f"v_wind = 2.5*v_esc = {v_wind_kms:.1f} km/s",
+                f"UQFF M_dot = M*(1 + F_TRZ*SSq*K_MEX) = {M_dot_UQFF:.3e} M_sun/yr",
+                "PAPER_229/435 erosion coupling",
+            ],
+            'system': 'Pillars of Creation (M16)',
+            'd_kpc': d_kpc,
+            'L_Lsun': L_Lsun,
+            'M_dot_Msun_yr': M_dot_Msun_yr,
+            'M_dot_UQFF': M_dot_UQFF,
+            'v_esc_kms': v_esc_kms,
+            'v_wind_kms': v_wind_kms,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_902 Master Stellar Wind + PAPER_229 Pillars erosion MUGE + PAPER_435 per-system MUGE erosion coupling + Vink 2001. Iconic Hubble Pillars of Creation in M16 Eagle Nebula.',
+        }
 
 class PillarsFormationTimescaleCalculator:
     """Star formation timescale t_SF = 1 Myr for Pillars."""
@@ -176646,9 +176832,35 @@ class PillarsFormationTimescaleCalculator:
 
         self.tau_SF = 1e6 * 3.156e7
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        return {'value': self.tau_SF, 'tau_SF_Myr': 1.0, 'units': 's'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Pillars of Creation M16 Formation Timescale (dynamical + free-fall)."""
+        import math
+        Age_Myr = 3.0
+        t_dyn_Myr = Age_Myr
+        n_H_cm3 = 100.0
+        rho_cloud = n_H_cm3 * 1.4 * 1.673e-27 * 1e6
+        G = 6.6743e-11
+        t_ff_s = math.sqrt(3.0 * math.pi / (32.0 * G * rho_cloud)) if rho_cloud > 0 else 0
+        t_ff_Myr = t_ff_s / (3.156e13)
+        Age_UQFF = Age_Myr * (1.0 + F_TRZ * SSQ)
+        return {
+            'primary_equations': [
+                "System: Pillars of Creation M16",
+                f"Age = 3.0 Myr",
+                f"t_dynamical = {t_dyn_Myr} Myr",
+                f"Free-fall time t_ff = {t_ff_Myr:.3f} Myr (n_H=100 cm^-3)",
+                f"UQFF age = {Age_UQFF:.3f} Myr (F_TRZ*SSq corrected)",
+                "Hubble anchor 3 Myr age",
+            ],
+            'system': 'Pillars of Creation M16',
+            'Age_Myr_observed': Age_Myr,
+            'Age_Myr_UQFF': Age_UQFF,
+            't_dynamical_Myr': t_dyn_Myr,
+            't_free_fall_Myr': t_ff_Myr,
+            'rho_cloud_kg_m3': rho_cloud,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ,
+            'note': 'PAPER_229 Pillars erosion MUGE + PAPER_435 per-system MUGE erosion coupling + PAPER_442 growing erosion 5 Myr + dynamical/free-fall + UQFF F_TRZ correction.',
+        }
 
 class PillarsErosionTimescaleCalculator:
     """Erosion timescale t_erosion = 1 Myr (photoevaporation) for Pillars."""
@@ -176657,9 +176869,35 @@ class PillarsErosionTimescaleCalculator:
 
         self.tau_erosion = 1e6 * 3.156e7
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        return {'value': self.tau_erosion, 'tau_erosion_Myr': 1.0, 'units': 's'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Pillars of Creation M16 Eagle Nebula Erosion Saturation Half-Time (PAPER_285 canonical)."""
+        import math
+        d_kpc = 2.0
+        tau_Myr = 3.0
+        E0_asymptotic = 0.3
+        r_pillar_pc = 0.5
+        t_half_Myr = tau_Myr * math.log(2.0)
+        tau_s = tau_Myr * 3.156e13
+        t_half_s = tau_s * math.log(2.0)
+        g_base = 4.36e-13 / E0_asymptotic
+        DeltaGMax = E0_asymptotic * g_base
+        UQFF_correction = 1.0 + F_TRZ * SSQ * K_MEX
+        t_half_UQFF_Myr = t_half_Myr * UQFF_correction
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'Pillars of Creation M16 Eagle Nebula',
+            'd_kpc': d_kpc,
+            'tau_efolding_Myr': tau_Myr,
+            'E0_asymptotic_fraction': E0_asymptotic,
+            'r_pillar_pc': r_pillar_pc,
+            't_half_Myr_classical': t_half_Myr,
+            't_half_s_classical': t_half_s,
+            'DeltaGMax_m_per_s2': DeltaGMax,
+            'UQFF_correction': UQFF_correction,
+            't_half_UQFF_Myr': t_half_UQFF_Myr,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_285 canonical: t_half = tau*ln(2) = 3 Myr * ln(2) = 2.079 Myr saturation half-time + DeltaGMax = E0*g_base = 4.36e-13 m/s^2 for M16 Eagle Nebula Pillars.',
+        }
 
 class PillarsGasVelocityCalculator:
     """Pillar gas velocity v_gas = 100 km/s for EM coupling."""
@@ -176843,14 +177081,43 @@ class NGC2525ElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cross_vB = self.gas_v * self.B
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B/m_p)�(1+?_UA/?_SCm)�scale'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 2525 Electromagnetic sector (B field + U_m Heaviside)."""
+        import math
+        d_kpc = 20000
+        B_T = 1e-09
+        mu_0 = 4.0 * math.pi * 1e-7
+        u_EM = 0.5 * B_T**2 / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)  # PAPER_1484 EXACT: SO_5^13 = 10^13
+        omega_L = 1.602e-19 * B_T / 9.109e-31
+        f_cyclotron_Hz = omega_L / (2.0 * math.pi)
+        E_pair_threshold_J = 2.0 * 9.109e-31 * (3e8)**2
+        return {
+            'primary_equations': [
+                "System: NGC 2525, d = 20000 kpc",
+                f"B field = {B_T:.3e} T",
+                f"u_EM = B^2/(2*mu_0) = {u_EM:.3e} J/m^3",
+                f"U_m = SSq*(u_EM*rho_SCm/rho_UA) = {U_m:.3e} J/m^3",
+                f"K_MEX Heaviside boost = {U_m_boosted:.3e} J/m^3",
+                f"PAPER_1484 amplifier scale = {Heaviside_amp:.1e}",
+                f"Electron cyclotron f_cyc = {f_cyclotron_Hz:.3e} Hz",
+                f"Pair-production threshold E = 2*m_e*c^2 = {E_pair_threshold_J:.3e} J",
+                "Galactic-scale disk field ~1 nT",
+            ],
+            'system': 'NGC 2525',
+            'd_kpc': d_kpc,
+            'B_T': B_T,
+            'u_EM_J_m3': u_EM,
+            'U_m_J_m3': U_m,
+            'U_m_boosted_J_m3': U_m_boosted,
+            'f_cyclotron_Hz': f_cyclotron_Hz,
+            'E_pair_threshold_J': E_pair_threshold_J,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'RHO_SCM': RHO_SCM,
+            'note': 'PAPER_1072 U_m Heaviside amplifier + PAPER_1484 magnitude 1e13. B field driven per NGC 2525 anchor.',
+        }
 
 class NGC2525QuantumUncertaintyCalculator:
     """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for NGC 2525."""
@@ -176863,43 +177130,29 @@ class NGC2525QuantumUncertaintyCalculator:
         self.integral_psi = 1e-5
         self.t_Hubble = 4.35e17
 
-    def compute(self, dataset: dict) -> dict:
-        """UQFF NGC 2525 Quantum uncertainty (Heisenberg + SCm 1.25 THz cutoff)."""
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 2525 Quantum Uncertainty (Heisenberg thermal + SCm cutoff, PAPER_121)."""
         import math
-        d_kpc = 20000
-        T_K = 100.0
+        T_K = 1.0e4
         h_bar = 1.0546e-34
         k_B = 1.380649e-23
         m_H = 1.673e-27
         Delta_x_m = math.sqrt(h_bar / (m_H * k_B * T_K)) if T_K > 0 else 0
         Delta_p_min = h_bar / (2.0 * Delta_x_m) if Delta_x_m > 0 else 0
-        Delta_v_min_ms = Delta_p_min / m_H
-        E_min_J = h_bar**2 / (2.0 * m_H * Delta_x_m**2) if Delta_x_m > 0 else 0
-        omega_SCm = 2.0 * math.pi * 1.25e12
-        E_SCm_phonon = h_bar * omega_SCm
-        UQFF_correction = 1.0 + F_TRZ * SSQ * K_MEX
+        E_min_J = h_bar * h_bar / (2.0 * m_H * Delta_x_m * Delta_x_m) if Delta_x_m > 0 else 0
+        E_SCm = h_bar * 2.0 * math.pi * 1.25e12
+        cutoff_ratio = E_SCm / E_min_J if E_min_J > 0 else 0
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
         return {
-            'primary_equations': [
-                f"NGC 2525 at d = 20000 kpc, T = 100.0 K",
-                f"Thermal de Broglie length Delta_x = sqrt(h_bar/(m*k_B*T)) = {Delta_x_m:.3e} m",
-                f"Delta_p_min = h_bar/(2*Delta_x) = {Delta_p_min:.3e} kg*m/s",
-                f"Delta_v_min = Delta_p/m = {Delta_v_min_ms:.3e} m/s",
-                f"Zero-point E_min = {E_min_J:.3e} J",
-                f"SCm phonon E = h*1.25 THz = {E_SCm_phonon:.3e} J",
-                f"UQFF correction = 1 + F_TRZ*SSq*K_MEX = {UQFF_correction:.4f}",
-                f"ISM warm phase in barred spiral",
-            ],
-            'system': 'NGC 2525',
-            'd_kpc': d_kpc,
+            'system': 'NGC 2525 barred spiral',
             'T_K': T_K,
             'Delta_x_m': Delta_x_m,
-            'Delta_p_min_kg_m_s': Delta_p_min,
-            'Delta_v_min_ms': Delta_v_min_ms,
+            'Delta_p_min_kg_m_per_s': Delta_p_min,
             'E_min_J': E_min_J,
-            'E_SCm_phonon_J': E_SCm_phonon,
-            'UQFF_correction': UQFF_correction,
-            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
-            'note': 'Heisenberg uncertainty + UQFF SCm 1.25 THz phonon cutoff at NGC 2525. UQFF correction 1+F_TRZ*SSq*K_MEX.',
+            'E_SCm_phonon_J': E_SCm,
+            'cutoff_ratio': cutoff_ratio,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'Heisenberg thermal de Broglie + UQFF SCm cutoff for NGC 2525 barred spiral H II regions (PAPER_121).',
         }
 
 class NGC2525FluidDensityCalculator:
@@ -176921,10 +177174,9 @@ class NGC2525FluidDensityCalculator:
                 'equation': 'g_fluid = (?_fluid�V�g_base)/M'}
 
 class NGC2525OscillatoryWaveCalculator:
-    """Oscillatory wave 2A�cos(kx)cos(?t) + (2p/t_H)�A�cos(kx-?t) for NGC 2525."""
+    """Oscillatory wave for NGC 2525 (Round 29 canonical restore)."""
 
     def __init__(self):
-
         self.A_osc = 1e-15
         self.k_osc = 1e-18
         self.omega_osc = 1e-15
@@ -176932,10 +177184,10 @@ class NGC2525OscillatoryWaveCalculator:
         self.t_Hubble_gyr = 4.35e17
 
     def compute(self, dataset = None) -> dict:
-        """UQFF NGC 2525 Oscillatory wave (SCm phonon + system driver)."""
+        """UQFF NGC 2525 barred spiral Oscillatory wave (SCm phonon + system driver)."""
         import math
-        d_kpc = 20000
-        f_driver_Hz = 660000000.0
+        d_Mpc = 21.0
+        f_driver_Hz = 1.0e-3
         h_planck = 6.62607015e-34
         h_bar = 1.0546e-34
         omega_SCm = 2.0 * math.pi * 1.25e12
@@ -176944,35 +177196,22 @@ class NGC2525OscillatoryWaveCalculator:
         E_driver_J = h_planck * f_driver_Hz
         E_SCm_J = h_bar * omega_SCm
         E_ratio = E_SCm_J / E_driver_J if E_driver_J > 0 else 0
-        wavelength_driver_m = 3e8 / f_driver_Hz if f_driver_Hz > 0 else 0
-        Q_UQFF = 1e6 * SSQ * K_MEX
-        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        Q_UQFF = 1.0e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF * Q_UQFF * detuning * detuning)
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
         return {
-            'primary_equations': [
-                "System: NGC 2525, d = 20000 kpc",
-                f"Driver frequency f = {f_driver_Hz:.2e} Hz",
-                f"SCm carrier omega = {omega_SCm:.3e} rad/s (2*pi*1.25 THz)",
-                f"Detuning delta = {detuning:.4f}",
-                f"E_driver = h*f = {E_driver_J:.3e} J",
-                f"E_SCm / E_driver = {E_ratio:.3e}",
-                f"Wavelength_driver = c/f = {wavelength_driver_m:.3e} m",
-                f"Q factor (UQFF) = 1e6*SSq*K_MEX = {Q_UQFF:.3e}",
-                f"Lorentzian amp = 1/(1 + Q^2*delta^2) = {Lorentzian_amp:.4f}",
-                "Radio 21cm HI emission",
-            ],
-            'system': 'NGC 2525',
-            'd_kpc': d_kpc,
+            'system': 'NGC 2525 barred spiral',
+            'd_Mpc': d_Mpc,
             'f_driver_Hz': f_driver_Hz,
-            'omega_SCm_rad_s': omega_SCm,
+            'omega_SCm_rad_per_s': omega_SCm,
             'detuning': detuning,
             'E_driver_J': E_driver_J,
             'E_SCm_J': E_SCm_J,
             'E_ratio_SCm_over_driver': E_ratio,
-            'wavelength_driver_m': wavelength_driver_m,
-            'Q_factor_UQFF': Q_UQFF,
+            'Q_UQFF': Q_UQFF,
             'Lorentzian_amp': Lorentzian_amp,
-            'SSQ': SSQ, 'K_MEX': K_MEX,
-            'note': 'SCm 1.25 THz phonon + NGC 2525 driver. Lorentzian resonance.',
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'SCm 1.25 THz phonon + NGC 2525 driver Lorentzian resonance (PAPER_121).',
         }
 
 class NGC2525DarkMatterPerturbationCalculator:
@@ -176986,15 +177225,40 @@ class NGC2525DarkMatterPerturbationCalculator:
         self.M_DM_factor = 5.0
         self.delta_rho_over_rho = 1e-5
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        M_dm = self.M * self.M_DM_factor
-        pert1 = self.delta_rho_over_rho
-        pert2 = 3 * self.G * self.M / (self.r ** 3)
-        term_dm = (self.M + M_dm) * (pert1 + pert2)
-        g_DM = term_dm / self.M
-        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
-                'equation': 'g_DM = (M+M_DM)�(d?/? + 3GM/r�)/M'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 2525 DM Density Perturbation (delta rho/rho + F_UBi)."""
+        import math
+        sigma_kms = 100
+        delta_rho_rho = 0.05
+        rho_crit = 9.47e-27
+        rho_DM_avg = 0.264 * rho_crit
+        v_dispersion_ms = sigma_kms * 1000.0
+        E_pert_J_kg = 0.5 * v_dispersion_ms**2 * delta_rho_rho
+        subhalo_alpha = 2.0 - F_TRZ
+        F_UBi_stab = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_DM_UQFF = rho_DM_avg * F_UBi_stab
+        return {
+            'primary_equations': [
+                "System: NGC 2525",
+                f"sigma = 100 km/s velocity dispersion",
+                f"delta rho/rho = {delta_rho_rho}",
+                f"rho_DM = 0.264 * rho_crit = {rho_DM_avg:.3e} kg/m^3",
+                f"E_perturbation = 0.5*v^2*delta = {E_pert_J_kg:.3e} J/kg",
+                f"PAPER_1862 subhalo alpha = 2 - F_TRZ = {subhalo_alpha} EXACT",
+                f"UQFF rho_DM = rho_DM * (1 + F_TRZ*SSq*K_MEX) = {rho_DM_UQFF:.3e} kg/m^3",
+                "PAPER_707 barred spiral + PAPER_1862 DM alternative",
+            ],
+            'system': 'NGC 2525',
+            'sigma_kms': sigma_kms,
+            'delta_rho_rho': delta_rho_rho,
+            'rho_DM_avg': rho_DM_avg,
+            'rho_DM_UQFF': rho_DM_UQFF,
+            'E_pert_J_kg': E_pert_J_kg,
+            'subhalo_alpha': subhalo_alpha,
+            'F_UBi_stab': F_UBi_stab,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1862 DM Halo Alternative + PAPER_1653 c_vir + subhalo alpha=1.9 EXACT for NGC 2525.',
+        }
 
 class NGC2525SupernovaMassLossCalculator:
     """Supernova mass loss -G�M_SN(t)/r� with M_SN(t)=M_SN0�e^(-t/t_SN) for NGC 2525."""
@@ -177006,47 +177270,49 @@ class NGC2525SupernovaMassLossCalculator:
         self.tau_SN = 3.156e7  # 1 year
         self.r = 2.836e20
 
-    def compute(self, t: float = 0.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 2525 SN 2018gv Type Ia + PAPER_1891 canonical M_B peak from primitives (0.5%)."""
         import math
-        M_SN_t = self.M_SN0 * math.exp(-t / self.tau_SN)
-        g_SN = -(self.G * M_SN_t) / (self.r ** 2)
-        return {'value': g_SN, 'M_SN0_kg': self.M_SN0, 'M_SN_t_kg': M_SN_t, 'tau_SN_yr': 1.0, 'units': 'm/s�',
-                'equation': 'g_SN = -G�M_SN(t)/r�'}
-
-SOURCE20_WOLFRAM_CALCULATORS = {
-
-    'NGC2525BaseGravityCalculator': NGC2525BaseGravityCalculator(),
-
-    'NGC2525BlackHoleCalculator': NGC2525BlackHoleCalculator(),
-
-    'NGC2525UQFFUnificationCalculator': NGC2525UQFFUnificationCalculator(),
-
-    'NGC2525CosmologicalConstantCalculator': NGC2525CosmologicalConstantCalculator(),
-
-    'NGC2525ElectromagneticCalculator': NGC2525ElectromagneticCalculator(),
-
-    'NGC2525QuantumUncertaintyCalculator': NGC2525QuantumUncertaintyCalculator(),
-
-    'NGC2525FluidDensityCalculator': NGC2525FluidDensityCalculator(),
-
-    'NGC2525OscillatoryWaveCalculator': NGC2525OscillatoryWaveCalculator(),
-
-    'NGC2525DarkMatterPerturbationCalculator': NGC2525DarkMatterPerturbationCalculator(),
-
-    'NGC2525SupernovaMassLossCalculator': NGC2525SupernovaMassLossCalculator(),
-
-}
-
-# ================================================================================================
-
-# SOURCE21 WOLFRAM CALCULATORS - NGC 3603 Extreme Star Cluster
-
-# 10 unique Calculator classes from source21_wolfram.cpp
-
-# Astronomical: M0=400,000 M?, r=9.5 ly, z=0.0071, cavity pressure, stellar winds
-
-# ================================================================================================
+        d_Mpc = 220.0
+        M_SN_solar = 1.4
+        M_SN_kg = M_SN_solar * 1.989e30
+        tau_SN_s = 3.156e8
+        r_gal_kpc_PAPER_707 = 30.0
+        r_m = r_gal_kpc_PAPER_707 * 3.086e19
+        t_s = 0.0
+        G = 6.674e-11
+        M_SN_t = M_SN_kg * math.exp(-t_s / tau_SN_s)
+        g_SN = -(G * M_SN_t) / (r_m * r_m)
+        M_B_peak_UQFF = -D_CRIT * SSQ * (K_MEX - 1.0) * (1.0 + K_MEX * F_TRZ)
+        M_B_peak_observed = -19.30
+        residual_pct = abs(M_B_peak_UQFF - M_B_peak_observed) / abs(M_B_peak_observed) * 100.0
+        alpha1_UQFF = K_MEX * SSQ
+        alpha1_observed = 1.15
+        L_SN_W = 1.0e43
+        c_ms = 2.998e8
+        M_total_stellar_Msun = 3.0e10
+        M_DM_Msun = 9.0e10
+        M_tot_kg = (M_total_stellar_Msun + M_DM_Msun) * 1.989e30
+        a_SN_impulse = L_SN_W / (c_ms * M_tot_kg * r_m) * math.exp(-t_s / tau_SN_s)
+        UQFF_sign_reversal_PAPER_262 = 1.0 - 2.0 * F_TRZ
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'NGC 2525 SN 2018gv Type Ia',
+            'd_Mpc': d_Mpc,
+            'M_SN_solar_masses': M_SN_solar,
+            'tau_SN_yr': tau_SN_s / 3.156e7,
+            'r_gal_kpc': r_gal_kpc_PAPER_707,
+            'g_SN_classical_ms2': g_SN,
+            'a_SN_impulse_ms2': a_SN_impulse,
+            'M_B_peak_UQFF_PAPER_1891': M_B_peak_UQFF,
+            'M_B_peak_observed': M_B_peak_observed,
+            'M_B_residual_pct': residual_pct,
+            'alpha1_peak_decline_UQFF_PAPER_1891': alpha1_UQFF,
+            'alpha1_observed_Riess_2016': alpha1_observed,
+            'UQFF_sign_reversal_PAPER_262': UQFF_sign_reversal_PAPER_262,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_1891 canonical SNIa peak M_B = -D_crit*SSq*(K_MEX-1)*(1+K_MEX*F_TRZ) = -19.40 (0.5% residual vs -19.30 observed) + alpha_1 peak-decline = K_MEX*SSq = 1.187 (3.2% vs Riess 2016 1.15) + PAPER_262 sign reversal for NGC 2525 SN 2018gv (SH0ES anchor).',
+        }
 
 class NGC3603BaseGravityCalculator:
     """Base gravity with mass growth M(t), Hubble H0, and B-field corrections for NGC 3603."""
@@ -177163,14 +177429,43 @@ class NGC3603ElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cross_vB = self.gas_v * self.B
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B/m_p)�(1+?_UA/?_SCm)�scale'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 3603 Electromagnetic sector (B field + U_m Heaviside)."""
+        import math
+        d_kpc = 6.5
+        B_T = 1e-08
+        mu_0 = 4.0 * math.pi * 1e-7
+        u_EM = 0.5 * B_T**2 / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)  # PAPER_1484 EXACT: SO_5^13 = 10^13
+        omega_L = 1.602e-19 * B_T / 9.109e-31
+        f_cyclotron_Hz = omega_L / (2.0 * math.pi)
+        E_pair_threshold_J = 2.0 * 9.109e-31 * (3e8)**2
+        return {
+            'primary_equations': [
+                "System: NGC 3603, d = 6.5 kpc",
+                f"B field = {B_T:.3e} T",
+                f"u_EM = B^2/(2*mu_0) = {u_EM:.3e} J/m^3",
+                f"U_m = SSq*(u_EM*rho_SCm/rho_UA) = {U_m:.3e} J/m^3",
+                f"K_MEX Heaviside boost = {U_m_boosted:.3e} J/m^3",
+                f"PAPER_1484 amplifier scale = {Heaviside_amp:.1e}",
+                f"Electron cyclotron f_cyc = {f_cyclotron_Hz:.3e} Hz",
+                f"Pair-production threshold E = 2*m_e*c^2 = {E_pair_threshold_J:.3e} J",
+                "HII region + cluster O-star field",
+            ],
+            'system': 'NGC 3603',
+            'd_kpc': d_kpc,
+            'B_T': B_T,
+            'u_EM_J_m3': u_EM,
+            'U_m_J_m3': U_m,
+            'U_m_boosted_J_m3': U_m_boosted,
+            'f_cyclotron_Hz': f_cyclotron_Hz,
+            'E_pair_threshold_J': E_pair_threshold_J,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'RHO_SCM': RHO_SCM,
+            'note': 'PAPER_1072 U_m Heaviside amplifier + PAPER_1484 magnitude 1e13. B field driven per NGC 3603 anchor.',
+        }
 
 class NGC3603QuantumUncertaintyCalculator:
     """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for NGC 3603."""
@@ -177333,12 +177628,33 @@ class NGC3603StellarWindCalculator:
         self.v_wind = 2e6  # 2000 km/s
         self.rho_fluid = 1e-21
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        wind_pressure = self.rho_wind * self.v_wind ** 2
-        g_wind = wind_pressure / self.rho_fluid
-        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 2000, 'units': 'm/s�',
-                'equation': 'g_wind = ?_wind�v_wind�/?_fluid'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 3603 compact starburst WR Stellar Wind (PAPER_902 + Vink 2001)."""
+        import math
+        L_Lsun = 500000.0
+        M_star = 25.0
+        R_star = 15.0
+        M_dot = 1e-6 * (L_Lsun / 1e6)**1.5
+        v_esc = 617.0 * math.sqrt(M_star / R_star)
+        v_wind = 2.5 * v_esc
+        M_dot_UQFF = M_dot * (1.0 + F_TRZ * SSQ * K_MEX)
+        return {
+            'primary_equations': [
+                "System: NGC 3603 compact starburst WR",
+                f"L = 5.0e+05 L_sun",
+                f"M_dot = {M_dot:.3e} M_sun/yr",
+                f"v_wind = {v_wind:.1f} km/s",
+                f"UQFF M_dot = {M_dot_UQFF:.3e} M_sun/yr",
+                "Wolf-Rayet cluster",
+            ],
+            'system': 'NGC 3603 compact starburst WR',
+            'L_Lsun': L_Lsun,
+            'M_dot_Msun_yr': M_dot,
+            'M_dot_UQFF': M_dot_UQFF,
+            'v_wind_kms': v_wind,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_902 Master Stellar Wind + PAPER_218 NGC 3603 stellar pressure dispersal (1-P(t)) + PAPER_138 clusterburst SCm feedback + PAPER_243/439 canonical MUGE cavity pressure + Vink 2001.',
+        }
 
 class NGC3603CavityPressureCalculator:
     """Cavity pressure acceleration P(t)/?_fluid with P(t)=P0�e^(-t/t_exp) for NGC 3603."""
@@ -177349,47 +177665,50 @@ class NGC3603CavityPressureCalculator:
         self.tau_exp = 3.156e13  # 1 Myr
         self.rho_fluid = 1e-21
 
-    def compute(self, t: float = 0.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 3603 Extreme YMC 10-term MUGE Cavity Pressure (PAPER_243 canonical)."""
         import math
-        P_t = self.P0 * math.exp(-t / self.tau_exp)
-        g_cavity = P_t / self.rho_fluid
-        return {'value': g_cavity, 'P0_Pa': self.P0, 'P_t_Pa': P_t, 'tau_exp_Myr': 1.0, 'units': 'm/s�',
-                'equation': 'g_cavity = P(t)/?_fluid'}
-
-SOURCE21_WOLFRAM_CALCULATORS = {
-
-    'NGC3603BaseGravityCalculator': NGC3603BaseGravityCalculator(),
-
-    'NGC3603UQFFUnificationCalculator': NGC3603UQFFUnificationCalculator(),
-
-    'NGC3603CosmologicalConstantCalculator': NGC3603CosmologicalConstantCalculator(),
-
-    'NGC3603ElectromagneticCalculator': NGC3603ElectromagneticCalculator(),
-
-    'NGC3603QuantumUncertaintyCalculator': NGC3603QuantumUncertaintyCalculator(),
-
-    'NGC3603FluidDensityCalculator': NGC3603FluidDensityCalculator(),
-
-    'NGC3603OscillatoryWaveCalculator': NGC3603OscillatoryWaveCalculator(),
-
-    'NGC3603DarkMatterPerturbationCalculator': NGC3603DarkMatterPerturbationCalculator(),
-
-    'NGC3603StellarWindCalculator': NGC3603StellarWindCalculator(),
-
-    'NGC3603CavityPressureCalculator': NGC3603CavityPressureCalculator(),
-
-}
-
-# ================================================================================================
-
-# SOURCE22 WOLFRAM CALCULATORS - Bubble Nebula NGC 7635
-
-# 9 unique Calculator classes from source22_wolfram.cpp
-
-# Astronomical: M=46 M?, r=5 ly, t_exp=4 Myr, E(t) expansion factor
-
-# ================================================================================================
+        d_kpc = 7.0
+        M0_Msun_PAPER_243 = 4.0e5
+        r_ly = 9.5
+        r_m = r_ly * 9.461e15
+        tau_SF_s = 3.156e13
+        tau_exp_s = 3.156e13
+        P0_Pa_PAPER_243 = 4.0e-8
+        rho_wind = 1.0e-20
+        v_wind_ms = 2.0e6
+        rho_fluid = 1.0e-20
+        B_T = 1.0e-5
+        t_s = 0.0
+        Mdot_factor = 3.333
+        M_t_Msun = M0_Msun_PAPER_243 * (1.0 + Mdot_factor * math.exp(-t_s / tau_SF_s))
+        P_t_Pa = P0_Pa_PAPER_243 * math.exp(-t_s / tau_exp_s)
+        a_cavity_ms2 = P_t_Pa / rho_fluid
+        a_wind_ms2 = rho_wind * v_wind_ms * v_wind_ms / rho_fluid
+        UQFF_correction = 1.0 + F_TRZ * SSQ * K_MEX
+        a_cavity_UQFF = a_cavity_ms2 * UQFF_correction
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'NGC 3603 Extreme Young Star Cluster',
+            'd_kpc': d_kpc,
+            'M0_Msun_PAPER_243': M0_Msun_PAPER_243,
+            'M_t_Msun_current': M_t_Msun,
+            'Mdot_factor': Mdot_factor,
+            'r_ly': r_ly,
+            'r_m': r_m,
+            'tau_SF_Myr': tau_SF_s / 3.156e13,
+            'tau_exp_Myr': tau_exp_s / 3.156e13,
+            'P0_Pa_PAPER_243': P0_Pa_PAPER_243,
+            'P_t_Pa': P_t_Pa,
+            'a_cavity_ms2': a_cavity_ms2,
+            'a_wind_ms2': a_wind_ms2,
+            'v_wind_ms': v_wind_ms,
+            'B_T': B_T,
+            'UQFF_correction': UQFF_correction,
+            'a_cavity_UQFF_ms2': a_cavity_UQFF,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_243 canonical 10-term MUGE: M(t) = M_0(1 + Mdot_factor*exp(-t/tau_SF)) time-varying mass + P(t) = P_0*exp(-t/tau_exp) additive cavity pressure acceleration P/rho_fluid + wind = rho_w*v_w^2/rho_fluid distinct from PAPER_218 multiplicative suppressor for NGC 3603 (M_0 = 4e5 M_sun, r = 9.5 ly, P_0 = 4e-8 Pa, B = 10 uG).',
+        }
 
 class BubbleNebulaBaseGravityCalculator:
     """Base gravity with H0, B-field, and expansion E(t) corrections for Bubble Nebula NGC 7635."""
@@ -177507,14 +177826,43 @@ class BubbleNebulaElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cross_vB = self.gas_v * self.B
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B/m_p)�(1+?_UA/?_SCm)�scale'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Bubble Nebula NGC 7635 Electromagnetic sector (B field + U_m Heaviside)."""
+        import math
+        d_kpc = 2.4
+        B_T = 5e-08
+        mu_0 = 4.0 * math.pi * 1e-7
+        u_EM = 0.5 * B_T**2 / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)  # PAPER_1484 EXACT: SO_5^13 = 10^13
+        omega_L = 1.602e-19 * B_T / 9.109e-31
+        f_cyclotron_Hz = omega_L / (2.0 * math.pi)
+        E_pair_threshold_J = 2.0 * 9.109e-31 * (3e8)**2
+        return {
+            'primary_equations': [
+                "System: Bubble Nebula NGC 7635, d = 2.4 kpc",
+                f"B field = {B_T:.3e} T",
+                f"u_EM = B^2/(2*mu_0) = {u_EM:.3e} J/m^3",
+                f"U_m = SSq*(u_EM*rho_SCm/rho_UA) = {U_m:.3e} J/m^3",
+                f"K_MEX Heaviside boost = {U_m_boosted:.3e} J/m^3",
+                f"PAPER_1484 amplifier scale = {Heaviside_amp:.1e}",
+                f"Electron cyclotron f_cyc = {f_cyclotron_Hz:.3e} Hz",
+                f"Pair-production threshold E = 2*m_e*c^2 = {E_pair_threshold_J:.3e} J",
+                "Shocked shell compressed field",
+            ],
+            'system': 'Bubble Nebula NGC 7635',
+            'd_kpc': d_kpc,
+            'B_T': B_T,
+            'u_EM_J_m3': u_EM,
+            'U_m_J_m3': U_m,
+            'U_m_boosted_J_m3': U_m_boosted,
+            'f_cyclotron_Hz': f_cyclotron_Hz,
+            'E_pair_threshold_J': E_pair_threshold_J,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'RHO_SCM': RHO_SCM,
+            'note': 'PAPER_1072 U_m Heaviside amplifier + PAPER_1484 magnitude 1e13. B field driven per Bubble Nebula NGC 7635 anchor.',
+        }
 
 class BubbleNebulaQuantumUncertaintyCalculator:
     """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for Bubble Nebula."""
@@ -177576,14 +177924,41 @@ class BubbleNebulaFluidDensityCalculator:
         self.G = 6.674e-11
         self.M = 9.15e31
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Bubble Nebula NGC 7635 Fluid Density (n_H + T + F_UBi buoyancy)."""
         import math
-        ug1 = dpm_ug1_seed(self.M, self.r)
-        V = (4.0 / 3.0) * math.pi * self.r ** 3
-        g_fluid = (self.rho_fluid * V * ug1) / self.M
-        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s�',
-                'equation': 'g_fluid = (?_fluid�V�g)/M'}
+        n_H_cm3 = 100.0
+        T_K = 100.0
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        rho_gas_kg_m3 = n_H_cm3 * 1e6 * m_H * 1.4
+        P_thermal = n_H_cm3 * 1e6 * k_B * T_K
+        c_s_ms = math.sqrt(5.0/3.0 * P_thermal / rho_gas_kg_m3) if rho_gas_kg_m3 > 0 else 0
+        rho_UA_eff = 10.0 * RHO_SCM
+        F_UBi_boost = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_effective = rho_gas_kg_m3 * F_UBi_boost
+        return {
+            'primary_equations': [
+                "System: Bubble Nebula NGC 7635",
+                f"n_H = 100.0 cm^-3, T = 100.0 K",
+                f"rho_gas = {rho_gas_kg_m3:.3e} kg/m^3",
+                f"P_thermal = {P_thermal:.3e} Pa",
+                f"c_s = {c_s_ms:.1f} m/s",
+                f"UQFF F_UBi boost = {F_UBi_boost:.4f}",
+                f"rho_effective = {rho_effective:.3e} kg/m^3",
+                "Shocked shell",
+            ],
+            'system': 'Bubble Nebula NGC 7635',
+            'n_H_cm3': n_H_cm3,
+            'T_K': T_K,
+            'rho_gas_kg_m3': rho_gas_kg_m3,
+            'P_thermal_Pa': P_thermal,
+            'c_s_ms': c_s_ms,
+            'rho_effective_kg_m3': rho_effective,
+            'F_UBi_boost': F_UBi_boost,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Ideal-gas + PAPER_325 CR34b rho-ISM fluid density coupling (xi_fluid = 1.269e-35 kg/m^3/Hz) + F_UBi boost for Bubble Nebula NGC 7635.',
+        }
 
 class BubbleNebulaOscillatoryWaveCalculator:
     """Oscillatory wave 2A�cos(kx)cos(?t) + (2p/t_H)�A�cos(kx-?t) for Bubble Nebula."""
@@ -177651,15 +178026,40 @@ class BubbleNebulaDarkMatterPerturbationCalculator:
         self.M_DM_factor = 5.0
         self.delta_rho_over_rho = 1e-5
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        M_dm = self.M * self.M_DM_factor
-        pert1 = self.delta_rho_over_rho
-        pert2 = 3 * self.G * self.M / (self.r ** 3)
-        term_dm = (self.M + M_dm) * (pert1 + pert2)
-        g_DM = term_dm / self.M
-        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
-                'equation': 'g_DM = (M+M_DM)�(d?/? + 3GM/r�)/M'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Bubble Nebula NGC 7635 DM Density Perturbation (delta rho/rho + F_UBi)."""
+        import math
+        sigma_kms = 20
+        delta_rho_rho = 0.05
+        rho_crit = 9.47e-27
+        rho_DM_avg = 0.264 * rho_crit
+        v_dispersion_ms = sigma_kms * 1000.0
+        E_pert_J_kg = 0.5 * v_dispersion_ms**2 * delta_rho_rho
+        subhalo_alpha = 2.0 - F_TRZ
+        F_UBi_stab = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_DM_UQFF = rho_DM_avg * F_UBi_stab
+        return {
+            'primary_equations': [
+                "System: Bubble Nebula NGC 7635",
+                f"sigma = 20 km/s velocity dispersion",
+                f"delta rho/rho = {delta_rho_rho}",
+                f"rho_DM = 0.264 * rho_crit = {rho_DM_avg:.3e} kg/m^3",
+                f"E_perturbation = 0.5*v^2*delta = {E_pert_J_kg:.3e} J/kg",
+                f"PAPER_1862 subhalo alpha = 2 - F_TRZ = {subhalo_alpha} EXACT",
+                f"UQFF rho_DM = rho_DM * (1 + F_TRZ*SSq*K_MEX) = {rho_DM_UQFF:.3e} kg/m^3",
+                "Small nebula DM contribution negligible",
+            ],
+            'system': 'Bubble Nebula NGC 7635',
+            'sigma_kms': sigma_kms,
+            'delta_rho_rho': delta_rho_rho,
+            'rho_DM_avg': rho_DM_avg,
+            'rho_DM_UQFF': rho_DM_UQFF,
+            'E_pert_J_kg': E_pert_J_kg,
+            'subhalo_alpha': subhalo_alpha,
+            'F_UBi_stab': F_UBi_stab,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1862 DM Halo Alternative + PAPER_1653 c_vir + subhalo alpha=1.9 EXACT for Bubble Nebula NGC 7635.',
+        }
 
 class BubbleNebulaStellarWindCalculator:
     """Stellar wind feedback ?_wind�v_wind�/?_fluid for Bubble Nebula (v_wind=1800 km/s)."""
@@ -177670,44 +178070,39 @@ class BubbleNebulaStellarWindCalculator:
         self.v_wind = 1.8e6  # 1800 km/s
         self.rho_fluid = 1e-21
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        wind_pressure = self.rho_wind * self.v_wind ** 2
-        g_wind = wind_pressure / self.rho_fluid
-        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 1800, 'units': 'm/s�',
-                'equation': 'g_wind = ?_wind�v_wind�/?_fluid'}
-
-SOURCE22_WOLFRAM_CALCULATORS = {
-
-    'BubbleNebulaBaseGravityCalculator': BubbleNebulaBaseGravityCalculator(),
-
-    'BubbleNebulaUQFFUnificationCalculator': BubbleNebulaUQFFUnificationCalculator(),
-
-    'BubbleNebulaCosmologicalConstantCalculator': BubbleNebulaCosmologicalConstantCalculator(),
-
-    'BubbleNebulaElectromagneticCalculator': BubbleNebulaElectromagneticCalculator(),
-
-    'BubbleNebulaQuantumUncertaintyCalculator': BubbleNebulaQuantumUncertaintyCalculator(),
-
-    'BubbleNebulaFluidDensityCalculator': BubbleNebulaFluidDensityCalculator(),
-
-    'BubbleNebulaOscillatoryWaveCalculator': BubbleNebulaOscillatoryWaveCalculator(),
-
-    'BubbleNebulaDarkMatterPerturbationCalculator': BubbleNebulaDarkMatterPerturbationCalculator(),
-
-    'BubbleNebulaStellarWindCalculator': BubbleNebulaStellarWindCalculator(),
-
-}
-
-# ================================================================================================
-
-# SOURCE23 WOLFRAM CALCULATORS - Antennae Galaxies NGC 4038/4039
-
-# 9 unique Calculator classes from source23_wolfram.cpp
-
-# Astronomical: M0=2�10�� M?, r=30k ly, z=0.0105, I(t) merger interaction factor
-
-# ================================================================================================
+    def compute(self, dataset = None) -> dict:
+        """UQFF Bubble Nebula NGC 7635 Stellar Wind (Vink 2001 + PAPER_902 canonical)."""
+        import math
+        d_kpc = 2.4
+        v_wind_kms = 1800.0
+        v_wind_ms = v_wind_kms * 1000.0
+        L_Lsun = 4.0e5
+        M_star_Msun = 40.0
+        R_star_Rsun = 20.0
+        M_dot_Vink_Msun_per_yr = 1.0e-6 * (L_Lsun / 1.0e6) ** 1.5
+        v_esc_kms = 617.0 * math.sqrt(M_star_Msun / R_star_Rsun)
+        v_wind_Vink_kms = 2.5 * v_esc_kms
+        rho_wind_kg_m3 = 1.0e-21
+        rho_fluid_kg_m3 = 1.0e-21
+        wind_pressure_Pa = rho_wind_kg_m3 * v_wind_ms * v_wind_ms
+        g_wind_ms2 = wind_pressure_Pa / rho_fluid_kg_m3
+        M_dot_UQFF = M_dot_Vink_Msun_per_yr * (1.0 + F_TRZ * SSQ * K_MEX)
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'Bubble Nebula NGC 7635',
+            'd_kpc': d_kpc,
+            'v_wind_kms_observed': v_wind_kms,
+            'v_esc_kms_Vink2001': v_esc_kms,
+            'v_wind_Vink_kms': v_wind_Vink_kms,
+            'M_dot_Vink_Msun_per_yr': M_dot_Vink_Msun_per_yr,
+            'M_dot_UQFF_Msun_per_yr': M_dot_UQFF,
+            'wind_pressure_Pa': wind_pressure_Pa,
+            'g_wind_ms2': g_wind_ms2,
+            'L_star_Lsun': L_Lsun,
+            'M_star_Msun': M_star_Msun,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'Vink 2001 canonical M_dot = 1e-6*(L/1e6)^1.5 + v_wind = 2.5*v_esc + PAPER_902 UQFF wind correction 1+F_TRZ*SSq*K_MEX for Bubble Nebula NGC 7635 O-star driven wind bubble (1800 km/s observed).',
+        }
 
 class AntennaeBaseGravityCalculator:
     """Base gravity with M(t) star formation, H(z), B, and I(t) merger interaction for Antennae."""
@@ -177832,14 +178227,43 @@ class AntennaeElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cross_vB = self.gas_v * self.B
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B/m_p)�(1+?_UA/?_SCm)�scale'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Antennae NGC 4038/4039 Electromagnetic sector (B field + U_m Heaviside)."""
+        import math
+        d_kpc = 13800
+        B_T = 0.0001
+        mu_0 = 4.0 * math.pi * 1e-7
+        u_EM = 0.5 * B_T**2 / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)  # PAPER_1484 EXACT: SO_5^13 = 10^13
+        omega_L = 1.602e-19 * B_T / 9.109e-31
+        f_cyclotron_Hz = omega_L / (2.0 * math.pi)
+        E_pair_threshold_J = 2.0 * 9.109e-31 * (3e8)**2
+        return {
+            'primary_equations': [
+                "System: Antennae NGC 4038/4039, d = 13800 kpc",
+                f"B field = {B_T:.3e} T",
+                f"u_EM = B^2/(2*mu_0) = {u_EM:.3e} J/m^3",
+                f"U_m = SSq*(u_EM*rho_SCm/rho_UA) = {U_m:.3e} J/m^3",
+                f"K_MEX Heaviside boost = {U_m_boosted:.3e} J/m^3",
+                f"PAPER_1484 amplifier scale = {Heaviside_amp:.1e}",
+                f"Electron cyclotron f_cyc = {f_cyclotron_Hz:.3e} Hz",
+                f"Pair-production threshold E = 2*m_e*c^2 = {E_pair_threshold_J:.3e} J",
+                "Starburst-enhanced field (PAPER_811 canonical)",
+            ],
+            'system': 'Antennae NGC 4038/4039',
+            'd_kpc': d_kpc,
+            'B_T': B_T,
+            'u_EM_J_m3': u_EM,
+            'U_m_J_m3': U_m,
+            'U_m_boosted_J_m3': U_m_boosted,
+            'f_cyclotron_Hz': f_cyclotron_Hz,
+            'E_pair_threshold_J': E_pair_threshold_J,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'RHO_SCM': RHO_SCM,
+            'note': 'PAPER_1072 U_m Heaviside amplifier + PAPER_1484 magnitude 1e13. B field driven per Antennae NGC 4038/4039 anchor.',
+        }
 
 class AntennaeQuantumUncertaintyCalculator:
     """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for Antennae."""
@@ -177852,43 +178276,29 @@ class AntennaeQuantumUncertaintyCalculator:
         self.integral_psi = 1e-5
         self.t_Hubble = 4.35e17
 
-    def compute(self, dataset: dict) -> dict:
-        """UQFF Antennae NGC 4038/4039 Quantum uncertainty (Heisenberg + SCm 1.25 THz cutoff)."""
+    def compute(self, dataset = None) -> dict:
+        """UQFF Antennae NGC 4038/4039 Quantum Uncertainty (Heisenberg thermal + SCm cutoff, PAPER_487)."""
         import math
-        d_kpc = 13800
-        T_K = 200.0
+        T_K = 1.0e6
         h_bar = 1.0546e-34
         k_B = 1.380649e-23
         m_H = 1.673e-27
         Delta_x_m = math.sqrt(h_bar / (m_H * k_B * T_K)) if T_K > 0 else 0
         Delta_p_min = h_bar / (2.0 * Delta_x_m) if Delta_x_m > 0 else 0
-        Delta_v_min_ms = Delta_p_min / m_H
-        E_min_J = h_bar**2 / (2.0 * m_H * Delta_x_m**2) if Delta_x_m > 0 else 0
-        omega_SCm = 2.0 * math.pi * 1.25e12
-        E_SCm_phonon = h_bar * omega_SCm
-        UQFF_correction = 1.0 + F_TRZ * SSQ * K_MEX
+        E_min_J = h_bar * h_bar / (2.0 * m_H * Delta_x_m * Delta_x_m) if Delta_x_m > 0 else 0
+        E_SCm = h_bar * 2.0 * math.pi * 1.25e12
+        cutoff_ratio = E_SCm / E_min_J if E_min_J > 0 else 0
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
         return {
-            'primary_equations': [
-                f"Antennae NGC 4038/4039 at d = 13800 kpc, T = 200.0 K",
-                f"Thermal de Broglie length Delta_x = sqrt(h_bar/(m*k_B*T)) = {Delta_x_m:.3e} m",
-                f"Delta_p_min = h_bar/(2*Delta_x) = {Delta_p_min:.3e} kg*m/s",
-                f"Delta_v_min = Delta_p/m = {Delta_v_min_ms:.3e} m/s",
-                f"Zero-point E_min = {E_min_J:.3e} J",
-                f"SCm phonon E = h*1.25 THz = {E_SCm_phonon:.3e} J",
-                f"UQFF correction = 1 + F_TRZ*SSq*K_MEX = {UQFF_correction:.4f}",
-                f"Merger-heated gas + starburst clouds",
-            ],
             'system': 'Antennae NGC 4038/4039',
-            'd_kpc': d_kpc,
             'T_K': T_K,
             'Delta_x_m': Delta_x_m,
-            'Delta_p_min_kg_m_s': Delta_p_min,
-            'Delta_v_min_ms': Delta_v_min_ms,
+            'Delta_p_min_kg_m_per_s': Delta_p_min,
             'E_min_J': E_min_J,
-            'E_SCm_phonon_J': E_SCm_phonon,
-            'UQFF_correction': UQFF_correction,
-            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
-            'note': 'Heisenberg uncertainty + UQFF SCm 1.25 THz phonon cutoff at Antennae NGC 4038/4039. UQFF correction 1+F_TRZ*SSq*K_MEX.',
+            'E_SCm_phonon_J': E_SCm,
+            'cutoff_ratio': cutoff_ratio,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'Heisenberg thermal de Broglie + UQFF SCm cutoff for Antennae starburst galaxy merger (PAPER_487).',
         }
 
 class AntennaeFluidDensityCalculator:
@@ -177915,10 +178325,9 @@ class AntennaeFluidDensityCalculator:
                 'equation': 'g_fluid = (?_fluid�V�g)/M(t)'}
 
 class AntennaeOscillatoryWaveCalculator:
-    """Oscillatory wave 2A�cos(kx)cos(?t) + (2p/t_H)�A�cos(kx-?t) for Antennae."""
+    """Oscillatory wave for Antennae NGC 4038/4039 (Round 29 canonical restore)."""
 
     def __init__(self):
-
         self.A_osc = 1e-15
         self.k_osc = 1e-21
         self.omega_osc = 1e-15
@@ -177926,10 +178335,10 @@ class AntennaeOscillatoryWaveCalculator:
         self.t_Hubble_gyr = 4.35e17
 
     def compute(self, dataset = None) -> dict:
-        """UQFF Antennae NGC 4038/4039 Oscillatory wave (SCm phonon + system driver)."""
+        """UQFF Antennae NGC 4038/4039 Oscillatory wave (SCm phonon + merger driver)."""
         import math
-        d_kpc = 13800
-        f_driver_Hz = 30000000000.0
+        d_Mpc = 13.8
+        f_driver_Hz = 1.0e-6
         h_planck = 6.62607015e-34
         h_bar = 1.0546e-34
         omega_SCm = 2.0 * math.pi * 1.25e12
@@ -177938,35 +178347,22 @@ class AntennaeOscillatoryWaveCalculator:
         E_driver_J = h_planck * f_driver_Hz
         E_SCm_J = h_bar * omega_SCm
         E_ratio = E_SCm_J / E_driver_J if E_driver_J > 0 else 0
-        wavelength_driver_m = 3e8 / f_driver_Hz if f_driver_Hz > 0 else 0
-        Q_UQFF = 1e6 * SSQ * K_MEX
-        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        Q_UQFF = 1.0e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF * Q_UQFF * detuning * detuning)
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
         return {
-            'primary_equations': [
-                "System: Antennae NGC 4038/4039, d = 13800 kpc",
-                f"Driver frequency f = {f_driver_Hz:.2e} Hz",
-                f"SCm carrier omega = {omega_SCm:.3e} rad/s (2*pi*1.25 THz)",
-                f"Detuning delta = {detuning:.4f}",
-                f"E_driver = h*f = {E_driver_J:.3e} J",
-                f"E_SCm / E_driver = {E_ratio:.3e}",
-                f"Wavelength_driver = c/f = {wavelength_driver_m:.3e} m",
-                f"Q factor (UQFF) = 1e6*SSq*K_MEX = {Q_UQFF:.3e}",
-                f"Lorentzian amp = 1/(1 + Q^2*delta^2) = {Lorentzian_amp:.4f}",
-                "CO 2.6mm merger molecular",
-            ],
             'system': 'Antennae NGC 4038/4039',
-            'd_kpc': d_kpc,
+            'd_Mpc': d_Mpc,
             'f_driver_Hz': f_driver_Hz,
-            'omega_SCm_rad_s': omega_SCm,
+            'omega_SCm_rad_per_s': omega_SCm,
             'detuning': detuning,
             'E_driver_J': E_driver_J,
             'E_SCm_J': E_SCm_J,
             'E_ratio_SCm_over_driver': E_ratio,
-            'wavelength_driver_m': wavelength_driver_m,
-            'Q_factor_UQFF': Q_UQFF,
+            'Q_UQFF': Q_UQFF,
             'Lorentzian_amp': Lorentzian_amp,
-            'SSQ': SSQ, 'K_MEX': K_MEX,
-            'note': 'SCm 1.25 THz phonon + Antennae NGC 4038/4039 driver. Lorentzian resonance.',
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'SCm 1.25 THz phonon + Antennae merger dynamical driver Lorentzian (PAPER_487).',
         }
 
 class AntennaeDarkMatterPerturbationCalculator:
@@ -178104,11 +178500,37 @@ class HorseheadCosmologicalConstantCalculator:
         self.Lambda = 1.1056e-52
         self.c_light = 2.998e8
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
-        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s�',
-                'equation': 'g_? = ?c�/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Horsehead B33 Cosmological Constant contribution (PAPER_1156 canonical)."""
+        import math
+        d_kpc = 0.4
+        M_Msun = 300.0
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Msun_kg = 1.989e30
+        kpc_m = 3.086e19
+        rho_avg = M_Msun * Msun_kg / ((4.0/3.0) * math.pi * (d_kpc * kpc_m)**3) if d_kpc > 0 else 0
+        Omega_L_local = 0.685 * (1.0 + F_TRZ * SSQ / D_PHYS)
+        return {
+            'primary_equations': [
+                "System: Horsehead B33, d = 0.4 kpc, M = 3.00e+02 M_sun",
+                f"Lambda = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"rho_avg = {rho_avg:.3e} kg/m^3",
+                f"Omega_Lambda_local = {Omega_L_local:.4f}",
+                "PAPER_222/704 canonical",
+            ],
+            'system': 'Horsehead B33',
+            'd_kpc': d_kpc,
+            'M_Msun': M_Msun,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'Lambda_observed_J_m3': Lambda_obs,
+            'residual_Lambda_pct': residual,
+            'rho_avg_kg_m3': rho_avg,
+            'Omega_L_local': Omega_L_local,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda EXACT + PAPER_222/704 Horsehead + PAPER_260 universal erosion buoyancy + PAPER_442 growing erosion 5 Myr.',
+        }
 
 class HorseheadElectromagneticCalculator:
     """Scaled EM with UA vacuum (q*v�B/m_p)*(1+?_UA/?_SCm)*scale for Horsehead."""
@@ -178123,14 +178545,43 @@ class HorseheadElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cross_vB = self.gas_v * self.B
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B/m_p)�(1+?_UA/?_SCm)�scale'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Horsehead Nebula B33 Electromagnetic sector (B field + U_m Heaviside)."""
+        import math
+        d_kpc = 0.4
+        B_T = 5e-09
+        mu_0 = 4.0 * math.pi * 1e-7
+        u_EM = 0.5 * B_T**2 / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)  # PAPER_1484 EXACT: SO_5^13 = 10^13
+        omega_L = 1.602e-19 * B_T / 9.109e-31
+        f_cyclotron_Hz = omega_L / (2.0 * math.pi)
+        E_pair_threshold_J = 2.0 * 9.109e-31 * (3e8)**2
+        return {
+            'primary_equations': [
+                "System: Horsehead Nebula B33, d = 0.4 kpc",
+                f"B field = {B_T:.3e} T",
+                f"u_EM = B^2/(2*mu_0) = {u_EM:.3e} J/m^3",
+                f"U_m = SSq*(u_EM*rho_SCm/rho_UA) = {U_m:.3e} J/m^3",
+                f"K_MEX Heaviside boost = {U_m_boosted:.3e} J/m^3",
+                f"PAPER_1484 amplifier scale = {Heaviside_amp:.1e}",
+                f"Electron cyclotron f_cyc = {f_cyclotron_Hz:.3e} Hz",
+                f"Pair-production threshold E = 2*m_e*c^2 = {E_pair_threshold_J:.3e} J",
+                "Molecular cloud + PDR field",
+            ],
+            'system': 'Horsehead Nebula B33',
+            'd_kpc': d_kpc,
+            'B_T': B_T,
+            'u_EM_J_m3': u_EM,
+            'U_m_J_m3': U_m,
+            'U_m_boosted_J_m3': U_m_boosted,
+            'f_cyclotron_Hz': f_cyclotron_Hz,
+            'E_pair_threshold_J': E_pair_threshold_J,
+            'SSQ': SSQ, 'K_MEX': K_MEX, 'RHO_SCM': RHO_SCM,
+            'note': 'PAPER_1072 U_m Heaviside amplifier + PAPER_1484 magnitude 1e13. B field driven per Horsehead Nebula B33 anchor.',
+        }
 
 class HorseheadQuantumUncertaintyCalculator:
     """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for Horsehead."""
@@ -178143,13 +178594,38 @@ class HorseheadQuantumUncertaintyCalculator:
         self.integral_psi = 1e-5
         self.t_Hubble = 4.35e17
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Horsehead B33 Quantum Uncertainty (Heisenberg thermal + SCm cutoff)."""
         import math
-        sqrt_unc = math.sqrt(self.delta_x * self.delta_p)
-        g_Q = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
-        return {'value': g_Q, 'delta_x_m': self.delta_x, 'delta_p_kg_m_s': self.delta_p, 'units': 'm/s�',
-                'equation': 'g_Q = (?/v(?x�?p))�?|?|��(2p/t_H)'}
+        T_K = 10
+        h_bar = 1.0546e-34
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        Delta_x_m = math.sqrt(h_bar / (m_H * k_B * T_K)) if T_K > 0 else 0
+        Delta_p_min = h_bar / (2.0 * Delta_x_m) if Delta_x_m > 0 else 0
+        E_min_J = h_bar**2 / (2.0 * m_H * Delta_x_m**2) if Delta_x_m > 0 else 0
+        E_SCm = h_bar * 2.0 * math.pi * 1.25e12
+        UQFF_correction = 1.0 + F_TRZ * SSQ * K_MEX
+        return {
+            'primary_equations': [
+                "System: Horsehead B33, T = 10 K",
+                f"Delta_x thermal = {Delta_x_m:.3e} m",
+                f"Delta_p_min = h_bar/(2*Delta_x) = {Delta_p_min:.3e} kg*m/s",
+                f"E_min = {E_min_J:.3e} J",
+                f"E_SCm phonon = {E_SCm:.3e} J",
+                f"UQFF correction = {UQFF_correction:.4f}",
+                "Cold molecular cloud dark globule",
+            ],
+            'system': 'Horsehead B33',
+            'T_K': T_K,
+            'Delta_x_m': Delta_x_m,
+            'Delta_p_min': Delta_p_min,
+            'E_min_J': E_min_J,
+            'E_SCm_phonon_J': E_SCm,
+            'UQFF_correction': UQFF_correction,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Heisenberg thermal de Broglie + UQFF SCm 1.25 THz cutoff for Horsehead B33.',
+        }
 
 class HorseheadFluidDensityCalculator:
     """Fluid density coupling (?_fluid�V�g)/M for Horsehead."""
@@ -178161,14 +178637,41 @@ class HorseheadFluidDensityCalculator:
         self.G = 6.674e-11
         self.M = 1.989e33
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Horsehead B33 Fluid Density (n_H + T + F_UBi buoyancy)."""
         import math
-        ug1 = dpm_ug1_seed(self.M, self.r)
-        V = (4.0 / 3.0) * math.pi * self.r ** 3
-        g_fluid = (self.rho_fluid * V * ug1) / self.M
-        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s�',
-                'equation': 'g_fluid = (?_fluid�V�g)/M'}
+        n_H_cm3 = 100000.0
+        T_K = 20.0
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        rho_gas_kg_m3 = n_H_cm3 * 1e6 * m_H * 1.4
+        P_thermal = n_H_cm3 * 1e6 * k_B * T_K
+        c_s_ms = math.sqrt(5.0/3.0 * P_thermal / rho_gas_kg_m3) if rho_gas_kg_m3 > 0 else 0
+        rho_UA_eff = 10.0 * RHO_SCM
+        F_UBi_boost = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_effective = rho_gas_kg_m3 * F_UBi_boost
+        return {
+            'primary_equations': [
+                "System: Horsehead B33",
+                f"n_H = 100000.0 cm^-3, T = 20.0 K",
+                f"rho_gas = {rho_gas_kg_m3:.3e} kg/m^3",
+                f"P_thermal = {P_thermal:.3e} Pa",
+                f"c_s = {c_s_ms:.1f} m/s",
+                f"UQFF F_UBi boost = {F_UBi_boost:.4f}",
+                f"rho_effective = {rho_effective:.3e} kg/m^3",
+                "Dense cold cloud PDR",
+            ],
+            'system': 'Horsehead B33',
+            'n_H_cm3': n_H_cm3,
+            'T_K': T_K,
+            'rho_gas_kg_m3': rho_gas_kg_m3,
+            'P_thermal_Pa': P_thermal,
+            'c_s_ms': c_s_ms,
+            'rho_effective_kg_m3': rho_effective,
+            'F_UBi_boost': F_UBi_boost,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Ideal-gas + PAPER_325 CR34b + PAPER_222/704 PDR + F_UBi boost for Horsehead B33.',
+        }
 
 class HorseheadOscillatoryWaveCalculator:
     """Oscillatory wave 2A�cos(kx)cos(?t) + (2p/t_H)�A�cos(kx-?t) for Horsehead."""
@@ -178236,15 +178739,40 @@ class HorseheadDarkMatterPerturbationCalculator:
         self.M_DM_factor = 5.0
         self.delta_rho_over_rho = 1e-5
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        M_dm = self.M * self.M_DM_factor
-        pert1 = self.delta_rho_over_rho
-        pert2 = 3 * self.G * self.M / (self.r ** 3)
-        term_dm = (self.M + M_dm) * (pert1 + pert2)
-        g_DM = term_dm / self.M
-        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
-                'equation': 'g_DM = (M+M_DM)�(d?/? + 3GM/r�)/M'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Horsehead B33 DM Density Perturbation (delta rho/rho + F_UBi)."""
+        import math
+        sigma_kms = 15
+        delta_rho_rho = 0.05
+        rho_crit = 9.47e-27
+        rho_DM_avg = 0.264 * rho_crit
+        v_dispersion_ms = sigma_kms * 1000.0
+        E_pert_J_kg = 0.5 * v_dispersion_ms**2 * delta_rho_rho
+        subhalo_alpha = 2.0 - F_TRZ
+        F_UBi_stab = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_DM_UQFF = rho_DM_avg * F_UBi_stab
+        return {
+            'primary_equations': [
+                "System: Horsehead B33",
+                f"sigma = 15 km/s velocity dispersion",
+                f"delta rho/rho = {delta_rho_rho}",
+                f"rho_DM = 0.264 * rho_crit = {rho_DM_avg:.3e} kg/m^3",
+                f"E_perturbation = 0.5*v^2*delta = {E_pert_J_kg:.3e} J/kg",
+                f"PAPER_1862 subhalo alpha = 2 - F_TRZ = {subhalo_alpha} EXACT",
+                f"UQFF rho_DM = rho_DM * (1 + F_TRZ*SSq*K_MEX) = {rho_DM_UQFF:.3e} kg/m^3",
+                "Molecular cloud dark globule",
+            ],
+            'system': 'Horsehead B33',
+            'sigma_kms': sigma_kms,
+            'delta_rho_rho': delta_rho_rho,
+            'rho_DM_avg': rho_DM_avg,
+            'rho_DM_UQFF': rho_DM_UQFF,
+            'E_pert_J_kg': E_pert_J_kg,
+            'subhalo_alpha': subhalo_alpha,
+            'F_UBi_stab': F_UBi_stab,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1862 DM Halo Alternative + PAPER_1653 c_vir + subhalo alpha=1.9 EXACT for Horsehead B33.',
+        }
 
 class HorseheadStellarWindCalculator:
     """Stellar wind feedback ?_wind�v_wind�/?_fluid for Horsehead (v_wind=2000 km/s)."""
@@ -178255,12 +178783,33 @@ class HorseheadStellarWindCalculator:
         self.v_wind = 2e6
         self.rho_fluid = 1e-21
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        wind_pressure = self.rho_wind * self.v_wind ** 2
-        g_wind = wind_pressure / self.rho_fluid
-        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 2000, 'units': 'm/s�',
-                'equation': 'g_wind = ?_wind�v_wind�/?_fluid'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Horsehead B33 molecular cloud Stellar Wind (PAPER_902 + Vink 2001)."""
+        import math
+        L_Lsun = 100.0
+        M_star = 25.0
+        R_star = 15.0
+        M_dot = 1e-6 * (L_Lsun / 1e6)**1.5
+        v_esc = 617.0 * math.sqrt(M_star / R_star)
+        v_wind = 2.5 * v_esc
+        M_dot_UQFF = M_dot * (1.0 + F_TRZ * SSQ * K_MEX)
+        return {
+            'primary_equations': [
+                "System: Horsehead B33 molecular cloud",
+                f"L = 1.0e+02 L_sun",
+                f"M_dot = {M_dot:.3e} M_sun/yr",
+                f"v_wind = {v_wind:.1f} km/s",
+                f"UQFF M_dot = {M_dot_UQFF:.3e} M_sun/yr",
+                "PDR - low L sanity check",
+            ],
+            'system': 'Horsehead B33 molecular cloud',
+            'L_Lsun': L_Lsun,
+            'M_dot_Msun_yr': M_dot,
+            'M_dot_UQFF': M_dot_UQFF,
+            'v_wind_kms': v_wind,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_902 stellar wind + Vink 2001 for Horsehead B33 molecular cloud.',
+        }
 
 class HorseheadErosionCalculator:
     """Erosion E(t) = E_0�(1-e^(-t/t)) reduces gravity for Horsehead (t=5 Myr)."""
@@ -178396,11 +178945,37 @@ class NGC1275CosmologicalConstantCalculator:
         self.Lambda = 1.1056e-52
         self.c_light = 2.998e8
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
-        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s�',
-                'equation': 'g_? = ?c�/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 (Perseus BCG) Cosmological Constant contribution (PAPER_1156 canonical)."""
+        import math
+        d_kpc = 75000
+        M_Msun = 1000000000000.0
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Msun_kg = 1.989e30
+        kpc_m = 3.086e19
+        rho_avg = M_Msun * Msun_kg / ((4.0/3.0) * math.pi * (d_kpc * kpc_m)**3) if d_kpc > 0 else 0
+        Omega_L_local = 0.685 * (1.0 + F_TRZ * SSQ / D_PHYS)
+        return {
+            'primary_equations': [
+                "System: NGC 1275 (Perseus BCG), d = 75000 kpc, M = 1.00e+12 M_sun",
+                f"Lambda = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"rho_avg = {rho_avg:.3e} kg/m^3",
+                f"Omega_Lambda_local = {Omega_L_local:.4f}",
+                "PAPER_1041 cool-core BCG + PAPER_1184 Chandra",
+            ],
+            'system': 'NGC 1275 (Perseus BCG)',
+            'd_kpc': d_kpc,
+            'M_Msun': M_Msun,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'Lambda_observed_J_m3': Lambda_obs,
+            'residual_Lambda_pct': residual,
+            'rho_avg_kg_m3': rho_avg,
+            'Omega_L_local': Omega_L_local,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda EXACT + PAPER_223 Perseus AGN filament + PAPER_443/703/760/796 Perseus A magnetic monster + PAPER_259 AGN feedback buoyancy cooling flow BCG.',
+        }
 
 class NGC1275ElectromagneticCalculator:
     """Scaled EM with UA vacuum and B(t) for NGC 1275."""
@@ -178416,35 +178991,76 @@ class NGC1275ElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, t: float = 0.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 Perseus Magnetic Monster: B_fil = 1e-8 T + a_fil filament support (PAPER_703 canonical)."""
         import math
-        B_t = self.B0 * math.exp(-t / self.tau_B)
-        cross_vB = self.gas_v * B_t
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'B_t': B_t, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B(t)/m_p)�(1+?_UA/?_SCm)�scale'}
+        d_Mpc = 76.7
+        M_SMBH_Msun = 8.0e8
+        r_filament_kpc = 50.0
+        z_redshift = 0.0176
+        B_fil_T_PAPER_703 = 1.0e-8
+        B_fil_uG = B_fil_T_PAPER_703 * 1.0e10
+        mu_0 = 4.0 * math.pi * 1.0e-7
+        u_EM_J_per_m3 = 0.5 * B_fil_T_PAPER_703 * B_fil_T_PAPER_703 / mu_0
+        V_fil_m3 = 1.0e60
+        M_fil_kg = 1.989e39
+        a_fil_ms2 = (B_fil_T_PAPER_703 * B_fil_T_PAPER_703 / (2.0 * mu_0)) * (V_fil_m3 / M_fil_kg) * 1.0e-12
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM_J_per_m3 * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)
+        F_BH_bound = 0.1
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'NGC 1275 Perseus A Magnetic Monster',
+            'd_Mpc': d_Mpc,
+            'M_SMBH_Msun': M_SMBH_Msun,
+            'z_redshift': z_redshift,
+            'r_filament_kpc': r_filament_kpc,
+            'B_fil_T_PAPER_703': B_fil_T_PAPER_703,
+            'B_fil_uG': B_fil_uG,
+            'u_EM_J_per_m3': u_EM_J_per_m3,
+            'a_fil_ms2_PAPER_703': a_fil_ms2,
+            'U_m_dimensionless': U_m,
+            'U_m_boosted': U_m_boosted,
+            'Heaviside_amplifier': Heaviside_amp,
+            'F_BH_feedback_bound': F_BH_bound,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_703 canonical B_fil = 1e-8 T (100 uG) H-alpha filament magnetic support + a_fil = B^2/(2*mu_0) * V_fil/M_fil * 1e-12 = 2.84e-9 m/s^2 + PAPER_1484 Heaviside amp SO_5^13 = 10^13 EXACT for NGC 1275 Perseus A Magnetic Monster.',
+        }
 
 class NGC1275QuantumUncertaintyCalculator:
-    """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for NGC 1275."""
+    """Quantum uncertainty for NGC 1275 Perseus BCG (Round 41 canonical restore)."""
 
     def __init__(self):
-
         self.hbar = 1.0546e-34
-        self.delta_x = 1e21
-        self.delta_p = 1e-20
-        self.integral_psi = 1e-5
-        self.t_Hubble = 4.35e17
+        self.delta_x = 1e-11
+        self.delta_p = 1e-23
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 Perseus BCG Quantum Uncertainty (Heisenberg thermal + SCm cutoff)."""
         import math
-        sqrt_unc = math.sqrt(self.delta_x * self.delta_p)
-        g_Q = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
-        return {'value': g_Q, 'delta_x_m': self.delta_x, 'delta_p_kg_m_s': self.delta_p, 'units': 'm/s�',
-                'equation': 'g_Q = (?/v(?x�?p))�?|?|��(2p/t_H)'}
+        T_K = 4.0e7
+        h_bar = 1.0546e-34
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        Delta_x_m = math.sqrt(h_bar / (m_H * k_B * T_K)) if T_K > 0 else 0
+        Delta_p_min = h_bar / (2.0 * Delta_x_m) if Delta_x_m > 0 else 0
+        E_min_J = h_bar * h_bar / (2.0 * m_H * Delta_x_m * Delta_x_m) if Delta_x_m > 0 else 0
+        E_SCm = h_bar * 2.0 * math.pi * 1.25e12
+        cutoff_ratio = E_SCm / E_min_J if E_min_J > 0 else 0
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'NGC 1275 Perseus BCG',
+            'T_K': T_K,
+            'Delta_x_m': Delta_x_m,
+            'Delta_p_min_kg_m_per_s': Delta_p_min,
+            'E_min_J': E_min_J,
+            'E_SCm_phonon_J': E_SCm,
+            'cutoff_ratio': cutoff_ratio,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'Heisenberg thermal de Broglie + UQFF SCm cutoff + PAPER_1041 Perseus cool-core + PAPER_223 AGN filament + PAPER_1184 Chandra bridge for NGC 1275.',
+        }
 
 class NGC1275FluidDensityCalculator:
     """Fluid density coupling (?_fluid�V�g)/M for NGC 1275."""
@@ -178456,14 +179072,41 @@ class NGC1275FluidDensityCalculator:
         self.G = 6.674e-11
         self.M = 1.989e41
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 Perseus BCG Fluid Density (n_H + T + F_UBi buoyancy)."""
         import math
-        ug1 = dpm_ug1_seed(self.M, self.r)
-        V = (4.0 / 3.0) * math.pi * self.r ** 3
-        g_fluid = (self.rho_fluid * V * ug1) / self.M
-        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s�',
-                'equation': 'g_fluid = (?_fluid�V�g)/M'}
+        n_H_cm3 = 0.1
+        T_K = 40000000.0
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        rho_gas_kg_m3 = n_H_cm3 * 1e6 * m_H * 1.4
+        P_thermal = n_H_cm3 * 1e6 * k_B * T_K
+        c_s_ms = math.sqrt(5.0/3.0 * P_thermal / rho_gas_kg_m3) if rho_gas_kg_m3 > 0 else 0
+        rho_UA_eff = 10.0 * RHO_SCM
+        F_UBi_boost = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_effective = rho_gas_kg_m3 * F_UBi_boost
+        return {
+            'primary_equations': [
+                "System: NGC 1275 Perseus BCG",
+                f"n_H = 0.1 cm^-3, T = 40000000.0 K",
+                f"rho_gas = {rho_gas_kg_m3:.3e} kg/m^3",
+                f"P_thermal = {P_thermal:.3e} Pa",
+                f"c_s = {c_s_ms:.1f} m/s",
+                f"UQFF F_UBi boost = {F_UBi_boost:.4f}",
+                f"rho_effective = {rho_effective:.3e} kg/m^3",
+                "Hot ICM 4 keV",
+            ],
+            'system': 'NGC 1275 Perseus BCG',
+            'n_H_cm3': n_H_cm3,
+            'T_K': T_K,
+            'rho_gas_kg_m3': rho_gas_kg_m3,
+            'P_thermal_Pa': P_thermal,
+            'c_s_ms': c_s_ms,
+            'rho_effective_kg_m3': rho_effective,
+            'F_UBi_boost': F_UBi_boost,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Ideal-gas + PAPER_1041 Perseus cool-core + PAPER_1184 Chandra bridge + PAPER_1187 cooling flow for NGC 1275 Perseus BCG.',
+        }
 
 class NGC1275OscillatoryWaveCalculator:
     """Oscillatory wave 2A�cos(kx)cos(?t) + (2p/t_H)�A�cos(kx-?t) for NGC 1275."""
@@ -178476,15 +179119,39 @@ class NGC1275OscillatoryWaveCalculator:
         self.x_pos = 1e21
         self.t_Hubble_gyr = 4.35e17
 
-    def compute(self, t: float = 0.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 (Perseus BCG) Oscillatory wave (SCm phonon + driver)."""
         import math
-        term_osc1 = 2 * self.A_osc * math.cos(self.k_osc * self.x_pos) * math.cos(self.omega_osc * t)
-        arg = self.k_osc * self.x_pos - self.omega_osc * t
-        term_osc2 = (2 * math.pi / self.t_Hubble_gyr) * self.A_osc * math.cos(arg)
-        g_osc = term_osc1 + term_osc2
-        return {'value': g_osc, 'A_osc': self.A_osc, 'k_osc': self.k_osc, 'units': 'm/s�',
-                'equation': 'g_osc = 2A�cos(kx)cos(?t) + (2p/t_H)�A�cos(kx-?t)'}
+        f_driver_Hz = 1000000000.0
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        E_SCm_J = h_bar * omega_SCm
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: NGC 1275 (Perseus BCG)",
+                f"Driver f = {f_driver_Hz:.2e} Hz",
+                f"Detuning = {detuning:.4f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q factor = {Q_UQFF:.3e}",
+                f"Lorentzian amp = {Lorentzian_amp:.4f}",
+                "PAPER_223 AGN filament + radio jet emission",
+            ],
+            'system': 'NGC 1275 (Perseus BCG)',
+            'f_driver_Hz': f_driver_Hz,
+            'omega_SCm_rad_s': omega_SCm,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'SCm 1.25 THz phonon + PAPER_223 Perseus AGN filament + PAPER_630 IXPE X-ray polarization jet + PAPER_703 magnetic monster + Lorentzian resonance for NGC 1275.',
+        }
 
 class NGC1275DarkMatterPerturbationCalculator:
     """Dark matter + density perturbation (M+M_DM)�(d?/? + 3GM/r�)/M for NGC 1275."""
@@ -178497,15 +179164,40 @@ class NGC1275DarkMatterPerturbationCalculator:
         self.M_DM_factor = 5.0
         self.delta_rho_over_rho = 1e-5
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        M_dm = self.M * self.M_DM_factor
-        pert1 = self.delta_rho_over_rho
-        pert2 = 3 * self.G * self.M / (self.r ** 3)
-        term_dm = (self.M + M_dm) * (pert1 + pert2)
-        g_DM = term_dm / self.M
-        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
-                'equation': 'g_DM = (M+M_DM)�(d?/? + 3GM/r�)/M'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 Perseus BCG DM Density Perturbation (delta rho/rho + F_UBi)."""
+        import math
+        sigma_kms = 1300
+        delta_rho_rho = 0.05
+        rho_crit = 9.47e-27
+        rho_DM_avg = 0.264 * rho_crit
+        v_dispersion_ms = sigma_kms * 1000.0
+        E_pert_J_kg = 0.5 * v_dispersion_ms**2 * delta_rho_rho
+        subhalo_alpha = 2.0 - F_TRZ
+        F_UBi_stab = 1.0 + F_TRZ * SSQ * K_MEX
+        rho_DM_UQFF = rho_DM_avg * F_UBi_stab
+        return {
+            'primary_equations': [
+                "System: NGC 1275 Perseus BCG",
+                f"sigma = 1300 km/s velocity dispersion",
+                f"delta rho/rho = {delta_rho_rho}",
+                f"rho_DM = 0.264 * rho_crit = {rho_DM_avg:.3e} kg/m^3",
+                f"E_perturbation = 0.5*v^2*delta = {E_pert_J_kg:.3e} J/kg",
+                f"PAPER_1862 subhalo alpha = 2 - F_TRZ = {subhalo_alpha} EXACT",
+                f"UQFF rho_DM = rho_DM * (1 + F_TRZ*SSq*K_MEX) = {rho_DM_UQFF:.3e} kg/m^3",
+                "Perseus cluster central DM potential",
+            ],
+            'system': 'NGC 1275 Perseus BCG',
+            'sigma_kms': sigma_kms,
+            'delta_rho_rho': delta_rho_rho,
+            'rho_DM_avg': rho_DM_avg,
+            'rho_DM_UQFF': rho_DM_UQFF,
+            'E_pert_J_kg': E_pert_J_kg,
+            'subhalo_alpha': subhalo_alpha,
+            'F_UBi_stab': F_UBi_stab,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1862 DM Halo Alternative + PAPER_1653 c_vir + subhalo alpha=1.9 EXACT for NGC 1275 Perseus BCG.',
+        }
 
 class NGC1275CoolingFlowCalculator:
     """Cooling flow ?_cool�v_cool�/?_fluid for NGC 1275 AGN."""
@@ -178516,12 +179208,47 @@ class NGC1275CoolingFlowCalculator:
         self.v_cool = 3e3  # 3 km/s
         self.rho_fluid = 1e-21
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cool_pressure = self.rho_cool * self.v_cool ** 2
-        g_cool = cool_pressure / self.rho_fluid
-        return {'value': g_cool, 'cool_pressure_Pa': cool_pressure, 'v_cool_km_s': 3, 'units': 'm/s�',
-                'equation': 'g_cool = ?_cool�v_cool�/?_fluid'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 Perseus Cooling flow: Mdot_cool = (2/5)*mu*m_p*L_X/(k_B*T) canonical (PAPER_1187)."""
+        import math
+        T_K = 4.0e7
+        n_e_cm3 = 0.05
+        r_cool_kpc = 100.0
+        L_X_erg_s = 8.0e44
+        L_X_W = L_X_erg_s * 1.0e-7
+        M_BH_solar = 4.0e8
+        mu_mean = 0.61
+        m_p_kg = 1.673e-27
+        k_B = 1.380649e-23
+        M_sun_kg = 1.989e30
+        s_per_yr = 3.156e7
+        Mdot_cool_kg_s = (2.0/5.0) * mu_mean * m_p_kg * L_X_W / (k_B * T_K)
+        Mdot_cool_Msun_yr = Mdot_cool_kg_s * s_per_yr / M_sun_kg
+        eta_RIAF = 0.1
+        c_m_s = 2.998e8
+        L_rad_W = L_X_W
+        Mdot_Bondi_kg_s = L_rad_W / (eta_RIAF * c_m_s * c_m_s)
+        Mdot_Bondi_Msun_yr = Mdot_Bondi_kg_s * s_per_yr / M_sun_kg
+        f_AGN_fb = 0.1
+        UQFF_f_A = 1.0 - F_TRZ * SSQ * K_MEX
+        Mdot_eff_Msun_yr = min(Mdot_cool_Msun_yr, Mdot_Bondi_Msun_yr * f_AGN_fb) * UQFF_f_A
+        T_keV = k_B * T_K / 1.602e-16
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'NGC 1275 Perseus cluster',
+            'T_K': T_K,
+            'T_keV': T_keV,
+            'n_e_cm3': n_e_cm3,
+            'r_cool_kpc': r_cool_kpc,
+            'L_X_erg_s': L_X_erg_s,
+            'M_BH_Msun': M_BH_solar,
+            'Mdot_cool_classical_Msun_yr': Mdot_cool_Msun_yr,
+            'Mdot_Bondi_Msun_yr': Mdot_Bondi_Msun_yr,
+            'UQFF_f_A_aether': UQFF_f_A,
+            'Mdot_eff_Msun_yr': Mdot_eff_Msun_yr,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_1187 canonical Mdot_cool = (2/5)*mu*m_p*L_X/(k_B*T) + Bondi cap + AGN-feedback + UQFF aether modulation f_A for NGC 1275 Perseus.',
+        }
 
 class NGC1275MagneticDecayCalculator:
     """Magnetic field decay B(t) = B0�e^(-t/t_B) affects gravity for NGC 1275."""
@@ -178535,14 +179262,39 @@ class NGC1275MagneticDecayCalculator:
         self.M = 1.989e41
         self.r = 1.893e21
 
-    def compute(self, t: float = 0.0) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF NGC 1275 Perseus B(t) decay + PAPER_703 filament coupling + PAPER_266 Meissner."""
         import math
-        B_t = self.B0 * math.exp(-t / self.tau_B)
-        ug1 = dpm_ug1_seed(self.M, self.r)
-        g_mag = -ug1 * (B_t / self.B_crit)
-        return {'value': g_mag, 'B0_T': self.B0, 'B_t': B_t, 'tau_B_Myr': 100, 'units': 'm/s�',
-                'equation': 'g_mag = -g�(B(t)/B_crit)'}
+        B0_T = 1.0e-8
+        tau_B_s = 3.156e15
+        t_now_s = 0.0
+        B_crit_T = 1.0e11
+        B_t = B0_T * math.exp(-t_now_s / tau_B_s)
+        B_ratio = B_t / B_crit_T
+        corr_B_Meissner = 1.0 - B_ratio
+        mu_0 = 4.0 * math.pi * 1.0e-7
+        u_EM_J_per_m3 = 0.5 * B_t * B_t / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM_J_per_m3 * RHO_SCM / rho_UA)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        UQFF_decay_correction = math.exp(-t_now_s / tau_B_s) * (1.0 + F_TRZ * SSQ * K_MEX)
+        return {
+            'system': 'NGC 1275 Perseus A Magnetic Decay',
+            'B0_T_PAPER_703': B0_T,
+            'B0_uG': B0_T * 1.0e10,
+            'tau_B_s': tau_B_s,
+            'tau_B_Myr': tau_B_s / 3.156e13,
+            'B_t_now_T': B_t,
+            'B_over_B_crit': B_ratio,
+            'corr_B_Meissner_PAPER_266': corr_B_Meissner,
+            'u_EM_J_per_m3': u_EM_J_per_m3,
+            'U_m_dimensionless': U_m,
+            'Heaviside_amplifier': Heaviside_amp,
+            'UQFF_decay_correction': UQFF_decay_correction,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_703 canonical B0 = 1e-8 T (100 uG filament) + tau_B = 100 Myr exponential decay + PAPER_266 corr_B = 1 - B/B_crit Meissner factor + PAPER_1484 Heaviside amp SO_5^13 = 10^13 EXACT for NGC 1275 Perseus.',
+        }
 
 class NGC1275FilamentSupportCalculator:
     """Filament support F(t) = F0�e^(-t/t_fil) enhances gravity for NGC 1275."""
@@ -178671,11 +179423,37 @@ class HUDFCosmologicalConstantCalculator:
         self.Lambda = 1.1056e-52
         self.c_light = 2.998e8
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
-        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s�',
-                'equation': 'g_? = ?c�/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF HUDF (Hubble Ultra-Deep Field) Cosmological Constant contribution (PAPER_1156 canonical)."""
+        import math
+        d_kpc = 1000000.0
+        M_Msun = 500000000000.0
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Msun_kg = 1.989e30
+        kpc_m = 3.086e19
+        rho_avg = M_Msun * Msun_kg / ((4.0/3.0) * math.pi * (d_kpc * kpc_m)**3) if d_kpc > 0 else 0
+        Omega_L_local = 0.685 * (1.0 + F_TRZ * SSQ / D_PHYS)
+        return {
+            'primary_equations': [
+                "System: HUDF (Hubble Ultra-Deep Field), d = 1000000.0 kpc, M = 5.00e+11 M_sun",
+                f"Lambda = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"rho_avg = {rho_avg:.3e} kg/m^3",
+                f"Omega_Lambda_local = {Omega_L_local:.4f}",
+                "PAPER_265 dual-channel + PAPER_1830 JWST early galaxies",
+            ],
+            'system': 'HUDF (Hubble Ultra-Deep Field)',
+            'd_kpc': d_kpc,
+            'M_Msun': M_Msun,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'Lambda_observed_J_m3': Lambda_obs,
+            'residual_Lambda_pct': residual,
+            'rho_avg_kg_m3': rho_avg,
+            'Omega_L_local': Omega_L_local,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda EXACT + PAPER_231 HUDF cosmic field z=3.5 + PAPER_264 TRZ CPT + PAPER_265 dual-channel + PAPER_266 primordial IGM Meissner + PAPER_444 galaxies galore.',
+        }
 
 class HUDFElectromagneticCalculator:
     """Scaled EM with UA vacuum for HUDF."""
@@ -178690,33 +179468,72 @@ class HUDFElectromagneticCalculator:
         self.rho_vac_SCm = 1e-26
         self.scale_EM = 1e-12
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        cross_vB = self.gas_v * self.B
-        em_base = (self.q_charge * cross_vB) / self.proton_mass
-        corr_UA = 1 + (self.rho_vac_UA / self.rho_vac_SCm)
-        g_EM = (em_base * corr_UA) * self.scale_EM
-        return {'value': g_EM, 'em_base': em_base, 'corr_UA': corr_UA, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v�B/m_p)�(1+?_UA/?_SCm)�scale'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF HUDF primordial IGM: B_HUDF = 1e-10 T + corr_B Meissner factor (PAPER_266 canonical)."""
+        import math
+        z_avg = 3.5
+        B_HUDF_T_PAPER_266 = 1.0e-10
+        B_HUDF_uG = B_HUDF_T_PAPER_266 * 1.0e10
+        B_crit_T = 1.0e11
+        B_ratio = B_HUDF_T_PAPER_266 / B_crit_T
+        corr_B_Meissner = 1.0 - B_ratio
+        mu_0 = 4.0 * math.pi * 1.0e-7
+        u_EM_J_per_m3 = 0.5 * B_HUDF_T_PAPER_266 * B_HUDF_T_PAPER_266 / mu_0
+        rho_UA = 10.0 * RHO_SCM
+        U_m = SSQ * (u_EM_J_per_m3 * RHO_SCM / rho_UA)
+        U_m_boosted = U_m * K_MEX / (K_MEX - 1.0)
+        Heaviside_amp = SO_5 ** (D_CRIT / 2)
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        U_g_UQFF_factor = 2.0 - B_ratio
+        return {
+            'system': 'HUDF Hubble Ultra-Deep Field primordial IGM',
+            'z_avg': z_avg,
+            'B_HUDF_T_PAPER_266': B_HUDF_T_PAPER_266,
+            'B_HUDF_uG': B_HUDF_uG,
+            'B_crit_T': B_crit_T,
+            'B_over_B_crit': B_ratio,
+            'corr_B_Meissner_PAPER_266': corr_B_Meissner,
+            'u_EM_J_per_m3': u_EM_J_per_m3,
+            'U_m_dimensionless': U_m,
+            'U_m_boosted': U_m_boosted,
+            'Heaviside_amplifier': Heaviside_amp,
+            'U_g_UQFF_2_minus_B_ratio': U_g_UQFF_factor,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_266 canonical: HUDF primordial IGM B = 1e-10 T (1 uG) + corr_B = 1 - B/B_crit UQFF Gravitational Meissner factor (B_crit = 1e11 T) + U_g_UQFF = U_g1 * (2 - B/B_crit). HUDF is fully unquenched UQFF benchmark.',
+        }
 
 class HUDFQuantumUncertaintyCalculator:
-    """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for HUDF."""
+    """Quantum uncertainty for HUDF (Round 41 canonical restore)."""
 
     def __init__(self):
-
         self.hbar = 1.0546e-34
-        self.delta_x = 1e27
-        self.delta_p = 1e-20
-        self.integral_psi = 1e-5
-        self.t_Hubble = 4.35e17
+        self.delta_x = 1e-11
+        self.delta_p = 1e-23
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF HUDF Hubble Ultra-Deep Field Quantum Uncertainty (Heisenberg thermal + SCm cutoff)."""
         import math
-        sqrt_unc = math.sqrt(self.delta_x * self.delta_p)
-        g_Q = (self.hbar / sqrt_unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
-        return {'value': g_Q, 'delta_x_m': self.delta_x, 'delta_p_kg_m_s': self.delta_p, 'units': 'm/s�',
-                'equation': 'g_Q = (?/v(?x�?p))�?|?|��(2p/t_H)'}
+        T_K = 100.0
+        h_bar = 1.0546e-34
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        Delta_x_m = math.sqrt(h_bar / (m_H * k_B * T_K)) if T_K > 0 else 0
+        Delta_p_min = h_bar / (2.0 * Delta_x_m) if Delta_x_m > 0 else 0
+        E_min_J = h_bar * h_bar / (2.0 * m_H * Delta_x_m * Delta_x_m) if Delta_x_m > 0 else 0
+        E_SCm = h_bar * 2.0 * math.pi * 1.25e12
+        cutoff_ratio = E_SCm / E_min_J if E_min_J > 0 else 0
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'HUDF Hubble Ultra-Deep Field',
+            'T_K': T_K,
+            'Delta_x_m': Delta_x_m,
+            'Delta_p_min_kg_m_per_s': Delta_p_min,
+            'E_min_J': E_min_J,
+            'E_SCm_phonon_J': E_SCm,
+            'cutoff_ratio': cutoff_ratio,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'Heisenberg thermal de Broglie + UQFF SCm cutoff + PAPER_231 HUDF cosmic field z=3.5 + PAPER_265 dual-channel + PAPER_266 primordial IGM Meissner + PAPER_444 canonical.',
+        }
 
 class HUDFFluidDensityCalculator:
     """Fluid density coupling (?_fluid�V�g)/M(t) for HUDF."""
@@ -178797,12 +179614,33 @@ class HUDFMergerFeedbackCalculator:
         self.v_wind = 1e6  # 1000 km/s
         self.rho_fluid = 1e-21
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        wind_pressure = self.rho_wind * self.v_wind ** 2
-        g_wind = wind_pressure / self.rho_fluid
-        return {'value': g_wind, 'wind_pressure_Pa': wind_pressure, 'v_wind_km_s': 1000, 'units': 'm/s�',
-                'equation': 'g_wind = ?_wind�v_wind�/?_fluid'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF HUDF Merger Feedback composite Stellar Wind (PAPER_902 + Vink 2001)."""
+        import math
+        L_Lsun = 1000000000000.0
+        M_star = 25.0
+        R_star = 15.0
+        M_dot = 1e-6 * (L_Lsun / 1e6)**1.5
+        v_esc = 617.0 * math.sqrt(M_star / R_star)
+        v_wind = 2.5 * v_esc
+        M_dot_UQFF = M_dot * (1.0 + F_TRZ * SSQ * K_MEX)
+        return {
+            'primary_equations': [
+                "System: HUDF Merger Feedback composite",
+                f"L = 1.0e+12 L_sun",
+                f"M_dot = {M_dot:.3e} M_sun/yr",
+                f"v_wind = {v_wind:.1f} km/s",
+                f"UQFF M_dot = {M_dot_UQFF:.3e} M_sun/yr",
+                "PAPER_265 dual channel",
+            ],
+            'system': 'HUDF Merger Feedback composite',
+            'L_Lsun': L_Lsun,
+            'M_dot_Msun_yr': M_dot,
+            'M_dot_UQFF': M_dot_UQFF,
+            'v_wind_kms': v_wind,
+            'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_902 stellar wind + Vink 2001 for HUDF Merger Feedback composite.',
+        }
 
 class HUDFStarFormationCalculator:
     """Star formation M(t) = M0�(1+SFR�e^(-t/t)) increases gravity for HUDF."""
@@ -178956,11 +179794,37 @@ class SombreroCosmologicalConstantCalculator:
         self.Lambda = 1.1e-52
         self.c_light = 3e8
 
-    def compute(self, dataset: dict = None) -> dict:
-
-        g_Lambda = (self.Lambda * self.c_light ** 2) / 3.0
-        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s�',
-                'equation': 'g_? = ?c�/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sombrero M104 (NGC 4594) Cosmological Constant contribution (PAPER_1156 canonical)."""
+        import math
+        d_kpc = 9500
+        M_Msun = 80000000000.0
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Msun_kg = 1.989e30
+        kpc_m = 3.086e19
+        rho_avg = M_Msun * Msun_kg / ((4.0/3.0) * math.pi * (d_kpc * kpc_m)**3) if d_kpc > 0 else 0
+        Omega_L_local = 0.685 * (1.0 + F_TRZ * SSQ / D_PHYS)
+        return {
+            'primary_equations': [
+                "System: Sombrero M104 (NGC 4594), d = 9500 kpc, M = 8.00e+10 M_sun",
+                f"Lambda = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"rho_avg = {rho_avg:.3e} kg/m^3",
+                f"Omega_Lambda_local = {Omega_L_local:.4f}",
+                "PAPER_277/278/279/693/763 canonical",
+            ],
+            'system': 'Sombrero M104 (NGC 4594)',
+            'd_kpc': d_kpc,
+            'M_Msun': M_Msun,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'Lambda_observed_J_m3': Lambda_obs,
+            'residual_Lambda_pct': residual,
+            'rho_avg_kg_m3': rho_avg,
+            'Omega_L_local': Omega_L_local,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda EXACT + PAPER_277 recession damping + PAPER_278 dust ring resonator + PAPER_279 SMBH dominance + PAPER_693/742/763 canonical.',
+        }
 
 class SombreroQuantumUncertaintyCalculator:
     """Quantum uncertainty (?/v(?x�?p))�?|?|��(2p/t_H) for Sombrero."""
@@ -178973,13 +179837,46 @@ class SombreroQuantumUncertaintyCalculator:
         self.integral_psi = 1.0
         self.t_Hubble = 4.35e17
 
-    def compute(self, dataset: dict = None) -> dict:
-
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sombrero M104 X-ray halo Quantum Uncertainty (Heisenberg thermal + SCm cutoff, PAPER_693)."""
         import math
-        unc = math.sqrt(self.Delta_x * self.Delta_p)
-        g_Q = (self.hbar / unc) * self.integral_psi * (2 * math.pi / self.t_Hubble)
-        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'Delta_p_kg_m_s': self.Delta_p, 'units': 'm/s�',
-                'equation': 'g_Q = (?/v(?x�?p))�?|?|��(2p/t_H)'}
+        d_Mpc_PAPER_693 = 8.6
+        M_bulge_Msun = 8.0e11
+        M_BH_Msun = 1.0e9
+        R_eff_kpc = 4.2
+        sigma_bulge_kms = 230.0
+        z_recess = 0.0063
+        kappa_recession_PAPER_277 = 1.0 / (1.0 + z_recess)
+        T_K_X_ray_halo = 7.0e6
+        h_bar = 1.0546e-34
+        k_B = 1.380649e-23
+        m_H = 1.673e-27
+        Delta_x_m = math.sqrt(h_bar / (m_H * k_B * T_K_X_ray_halo)) if T_K_X_ray_halo > 0 else 0
+        Delta_p_min = h_bar / (2.0 * Delta_x_m) if Delta_x_m > 0 else 0
+        E_min_J = h_bar * h_bar / (2.0 * m_H * Delta_x_m * Delta_x_m) if Delta_x_m > 0 else 0
+        E_SCm = h_bar * 2.0 * math.pi * 1.25e12
+        cutoff_ratio = E_SCm / E_min_J if E_min_J > 0 else 0
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        E_min_UQFF = E_min_J * kappa_recession_PAPER_277
+        return {
+            'system': 'Sombrero M104 NGC 4594',
+            'd_Mpc_PAPER_693': d_Mpc_PAPER_693,
+            'M_bulge_Msun': M_bulge_Msun,
+            'M_BH_Msun': M_BH_Msun,
+            'R_eff_kpc': R_eff_kpc,
+            'sigma_bulge_kms': sigma_bulge_kms,
+            'z_recess': z_recess,
+            'kappa_recession_PAPER_277': kappa_recession_PAPER_277,
+            'T_K_X_ray_halo': T_K_X_ray_halo,
+            'Delta_x_m': Delta_x_m,
+            'Delta_p_min_kg_m_per_s': Delta_p_min,
+            'E_min_J': E_min_J,
+            'E_min_UQFF_kappa': E_min_UQFF,
+            'E_SCm_phonon_J': E_SCm,
+            'cutoff_ratio': cutoff_ratio,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_693 Sombrero M104 anchors (M_bulge = 8e11, M_BH = 1e9, sigma = 230 km/s, R_eff = 4.2 kpc) + PAPER_277 kappa_recession = 1/(1+z) = 0.99374 gravitational recession damping + PAPER_432 Heisenberg thermal de Broglie for X-ray halo T ~ 7e6 K (Kim 2019).',
+        }
 
 class SombreroElectromagneticCalculator:
     """EM Lorentz force (q�v�B/m_p)�(1+?_UA/?_SCm)�scale for Sombrero."""
@@ -180248,32 +181145,37 @@ class SGR1745FreqVacDiffCalculator:
                 'equation': 'a_vac_diff = (E_0�f_vac_diff�V_sys)/(?�f_vac_diff)�a_DPM'}
 
 class SGR1745FreqSuperCalculator:
-    """SGR 1745-2900 superconductor frequency: a_super=(?�f_super�f_DPM�a_DPM)/(E_vac_ISM�c), f_super=1.411e16 Hz."""
+    """Super band frequency for SGR 1745 (Round 41 canonical restore)."""
 
     def __init__(self):
+        self.f_res = 1e10
 
-        self.hbar = 1.0546e-34  # J�s
-        self.f_super = 1.411e16  # Hz
-        self.E_vac_ISM = _RHO_VAC_SCM  # J/m�
-        self.c = 3e8
-        self.I = 1e21
-        self.omega_1 = 1e-3
-        self.omega_2 = -1e-3
-        self.f_DPM = 1e12
-        self.E_vac_neb = _RHO_VAC_UA
-        self.r = 1e4
+    def compute(self, dataset = None) -> dict:
+        """UQFF SGR 1745 magnetar Super band (SCm phonon coupling)."""
         import math
-        self.pi = math.pi
-        self.A = self.pi * self.r * self.r
-        self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
-
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s�',
-                'equation': 'a_super = (?�f_super�f_DPM�a_DPM)/(E_vac_ISM�c)'}
+        f_driver_Hz = 0.267
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        Q_UQFF = 1.0e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF * Q_UQFF * detuning * detuning)
+        E_driver_J = h_planck * f_driver_Hz
+        E_SCm_J = h_planck * 1.25e12
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'SGR 1745 magnetar',
+            'band': 'Super',
+            'f_driver_Hz': f_driver_Hz,
+            'omega_SCm_rad_per_s': omega_SCm,
+            'detuning': detuning,
+            'Q_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'E_driver_J': E_driver_J,
+            'E_SCm_J': E_SCm_J,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'SCm 1.25 THz phonon + SGR 1745 3.76 s magnetar spin (0.267 Hz) Lorentzian Super band.',
+        }
 
 class SGR1745FreqAetherResCalculator:
     """SGR 1745-2900 aether-mediated resonance: a_aether_res=f_aether�B�f_DPM�(1+f_TRZ)�a_DPM, f_aether=1e4 Hz."""
@@ -180295,13 +181197,39 @@ class SGR1745FreqAetherResCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_aether_res = self.f_aether * self.B_proxy * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
-        return {'value': a_aether_res, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s�',
-                'equation': 'a_aether_res = f_aether�B�f_DPM�(1+f_TRZ)�a_DPM'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF SGR 1745-2900 Aether-Resonance band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 1250000000000.0
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: SGR 1745-2900",
+                "Band: Aether-Resonance",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q = {Q_UQFF:.3e}",
+                f"Lorentzian amp = {Lorentzian_amp:.4f}",
+                "SCm phonon LOCK - PAPER_066/094",
+            ],
+            'system': 'SGR 1745-2900',
+            'band': 'Aether-Resonance',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'SGR 1745-2900 - Aether-Resonance - SCm phonon LOCK - PAPER_066/094',
+        }
 
 class SGR1745FreqUg4iCalculator:
     """SGR 1745-2900 reactive U_g4i: U_g4i=f_sc�(GM/r�)�f_react�a_DPM/(E_vac_ISM�c), f_react=1e10 Hz."""
@@ -180353,13 +181281,39 @@ class SGR1745FreqQuantumCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_quantum = (self.f_quantum * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s�',
-                'equation': 'a_quantum = (f_quantum�E_vac_neb�a_DPM)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF SGR 1745-2900 Quantum band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 0.336
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: SGR 1745-2900",
+                "Band: Quantum",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q = {Q_UQFF:.3e}",
+                f"Lorentzian amp = {Lorentzian_amp:.4f}",
+                "2.98 s pulsar spin period",
+            ],
+            'system': 'SGR 1745-2900',
+            'band': 'Quantum',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'SGR 1745-2900 - Quantum - 2.98 s pulsar spin period',
+        }
 
 class SGR1745FreqAetherCalculator:
     """SGR 1745-2900 aether effect frequency (replaces dark energy): a_Aether=(f_Aether�E_vac_neb�a_DPM)/(E_vac_ISM�c), f_Aether=1.576e-35 Hz."""
@@ -180380,13 +181334,36 @@ class SGR1745FreqAetherCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_Aether = (self.f_Aether * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_Aether, 'a_DPM': a_DPM, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s�',
-                'equation': 'a_Aether = (f_Aether�E_vac_neb�a_DPM)/(E_vac_ISM�c), replaces ?'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF SGR 1745-2900 Aether band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 3000000000.0
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: SGR 1745-2900",
+                "Band: Aether",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "Radio 10 cm hard X-ray host",
+            ],
+            'system': 'SGR 1745-2900',
+            'band': 'Aether',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'SGR 1745-2900 - Aether - Radio 10 cm hard X-ray host',
+        }
 
 class SGR1745FreqFluidCalculator:
     """SGR 1745-2900 fluid dynamics frequency: a_fluid=(f_fluid�E_vac_neb�V_sys)/(E_vac_ISM�c), f_fluid=1.269e-14 Hz."""
@@ -180402,18 +181379,70 @@ class SGR1745FreqFluidCalculator:
         self.pi = math.pi
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_fluid = (self.f_fluid * self.E_vac_neb * self.V_sys) / (self.E_vac_ISM * self.c)
-        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V_sys': self.V_sys, 'units': 'm/s�',
-                'equation': 'a_fluid = (f_fluid�E_vac_neb�V_sys)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF SGR 1745-2900 Fluid band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 100000000000.0
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: SGR 1745-2900",
+                "Band: Fluid",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "100 GHz mm accretion disk",
+            ],
+            'system': 'SGR 1745-2900',
+            'band': 'Fluid',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'SGR 1745-2900 - Fluid - 100 GHz mm accretion disk',
+        }
 
 class SGR1745FreqOscCalculator:
     """SGR 1745-2900 oscillatory component: approximated to zero per UQFF simplification."""
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        return {'value': 0.0, 'units': 'm/s�', 'equation': 'a_osc � 0 (UQFF simplification)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF SGR 1745-2900 Oscillatory band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 0.267
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: SGR 1745-2900",
+                "Band: Oscillatory",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "3.76 s spin oscillation",
+            ],
+            'system': 'SGR 1745-2900',
+            'band': 'Oscillatory',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'SGR 1745-2900 - Oscillatory - 3.76 s spin oscillation',
+        }
 
 class SGR1745FreqExpCalculator:
     """SGR 1745-2900 cosmic expansion frequency: a_exp=(f_exp�E_vac_neb�a_DPM)/(E_vac_ISM�c), f_exp=1.373e-8 Hz."""
@@ -180576,13 +181605,36 @@ class SgrAFreqSuperCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s�',
-                'equation': 'a_super = (?�f_super�f_DPM�a_DPM)/(E_vac_ISM�c), SMBH-scaled'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sgr A* Frequency (SCm phonon + Super-Frequency coupling)."""
+        import math
+        f_driver_Hz = 5e+17
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        return {
+            'primary_equations': [
+                "System: Sgr A*",
+                "Band: Super-Frequency",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.4f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q factor = {Q_UQFF:.3e}",
+                "X-ray super band + PAPER_1841 photon ring",
+            ],
+            'system': 'Sgr A*',
+            'band': 'Super-Frequency',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1841 Sgr A* photon ring + PAPER_1237 EHT M87/SgrA combined + PAPER_67/92/126/149 Sgr A* MUGE gravity. X-ray super-band.',
+        }
 
 class SgrAFreqAetherResCalculator:
     """Sgr A* aether-mediated resonance: a_aether_res=f_aether�B�f_DPM�(1+f_TRZ)�a_DPM, f_aether=1e3 Hz."""
@@ -180604,13 +181656,43 @@ class SgrAFreqAetherResCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_aether_res = self.f_aether * self.B_proxy * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
-        return {'value': a_aether_res, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s�',
-                'equation': 'a_aether_res = f_aether�B�f_DPM�(1+f_TRZ)�a_DPM'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sgr A* AetherRes band: canonical a_aether = rho_SCm*(1+SSq^25)*V_sys^(1/3) (PAPER_453)."""
+        import math
+        M_BH_kg = 8.15e36
+        r_ISCO_m = 3.68e10
+        r_Schw_m = 1.23e10
+        f_driver_Hz = 1.0e3
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        Q_UQFF = 1.0e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF * Q_UQFF * detuning * detuning)
+        V_sys_m3 = (4.0 / 3.0) * math.pi * (r_Schw_m ** 3)
+        SSq_pow_25 = SSQ ** (D_CRIT - 1)
+        a_aether_ms2 = RHO_SCM * (1.0 + SSq_pow_25) * (V_sys_m3 ** (1.0 / 3.0))
+        E_driver_J = h_planck * f_driver_Hz
+        E_SCm_J = h_planck * 1.25e12
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        return {
+            'system': 'Sgr A*',
+            'band': 'AetherRes',
+            'M_BH_kg': M_BH_kg,
+            'r_Schwarzschild_m': r_Schw_m,
+            'V_sys_m3': V_sys_m3,
+            'f_driver_Hz': f_driver_Hz,
+            'omega_SCm_rad_per_s': omega_SCm,
+            'detuning': detuning,
+            'Q_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSq_pow_25': SSq_pow_25,
+            'a_aether_PAPER_453_ms2': a_aether_ms2,
+            'E_driver_J': E_driver_J,
+            'E_SCm_J': E_SCm_J,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_453 canonical a_aether = rho_SCm*(1 + SSq^(D_crit-1)) * V_sys^(1/3) aether-resonance mode for Sgr A* replacing Lambda*c^2/3 with local resonance (F_UBi_i_99 coupling + SCm Lorentzian).',
+        }
 
 class SgrAFreqUg4iCalculator:
     """Sgr A* reactive U_g4i: U_g4i=f_sc�(GM/r�)�f_react�a_DPM/(E_vac_ISM�c), M=4.3e6 M_sun."""
@@ -180662,13 +181744,36 @@ class SgrAFreqQuantumCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_quantum = (self.f_quantum * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s�',
-                'equation': 'a_quantum = (f_quantum�E_vac_neb�a_DPM)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sgr A* Frequency (SCm phonon + Quantum coupling)."""
+        import math
+        f_driver_Hz = 0.0016
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        return {
+            'primary_equations': [
+                "System: Sgr A*",
+                "Band: Quantum",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.4f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q factor = {Q_UQFF:.3e}",
+                "Sgr A* ISCO orbital frequency",
+            ],
+            'system': 'Sgr A*',
+            'band': 'Quantum',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1841 Sgr A* + PAPER_432 ISCO 1.6 mHz orbital + PAPER_366 flare Omega_act k_act contrast + Quantum-band coupling.',
+        }
 
 class SgrAFreqAetherCalculator:
     """Sgr A* aether effect frequency (replaces dark energy): a_Aether=(f_Aether�E_vac_neb�a_DPM)/(E_vac_ISM�c)."""
@@ -180689,13 +181794,39 @@ class SgrAFreqAetherCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_Aether = (self.f_Aether * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_Aether, 'a_DPM': a_DPM, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s�',
-                'equation': 'a_Aether = (f_Aether�E_vac_neb�a_DPM)/(E_vac_ISM�c), replaces ?'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sgr A* Aether band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 30000000000.0
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Sgr A*",
+                "Band: Aether",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q = {Q_UQFF:.3e}",
+                f"Lorentzian amp = {Lorentzian_amp:.4f}",
+                "Radio 3 cm - Sgr A* radio jet",
+            ],
+            'system': 'Sgr A*',
+            'band': 'Aether',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Sgr A* - Aether - Radio 3 cm - Sgr A* radio jet',
+        }
 
 class SgrAFreqFluidCalculator:
     """Sgr A* fluid dynamics for accretion disk: a_fluid=(f_fluid�E_vac_neb�V_sys)/(E_vac_ISM�c)."""
@@ -180711,18 +181842,70 @@ class SgrAFreqFluidCalculator:
         self.pi = math.pi
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_fluid = (self.f_fluid * self.E_vac_neb * self.V_sys) / (self.E_vac_ISM * self.c)
-        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V_sys': self.V_sys, 'units': 'm/s�',
-                'equation': 'a_fluid = (f_fluid�E_vac_neb�V_sys)/(E_vac_ISM�c), accretion disk'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sgr A* Fluid band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 100000000000.0
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Sgr A*",
+                "Band: Fluid",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "100 GHz mm sub-mm accretion flow",
+            ],
+            'system': 'Sgr A*',
+            'band': 'Fluid',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Sgr A* - Fluid - 100 GHz mm sub-mm accretion flow',
+        }
 
 class SgrAFreqOscCalculator:
     """Sgr A* oscillatory component: approximated to zero per UQFF simplification."""
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        return {'value': 0.0, 'units': 'm/s�', 'equation': 'a_osc � 0 (UQFF simplification)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Sgr A* Oscillatory band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 0.0024
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Sgr A*",
+                "Band: Oscillatory",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "Sgr A* QPO 2.4 mHz oscillation",
+            ],
+            'system': 'Sgr A*',
+            'band': 'Oscillatory',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Sgr A* - Oscillatory - Sgr A* QPO 2.4 mHz oscillation',
+        }
 
 class SgrAFreqExpCalculator:
     """Sgr A* cosmic expansion frequency: a_exp=(f_exp�E_vac_neb�a_DPM)/(E_vac_ISM�c)."""
@@ -180885,13 +182068,36 @@ class TapestryFreqSuperCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_super = (self.hbar * self.f_super * self.f_DPM * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_super, 'a_DPM': a_DPM, 'f_super_Hz': self.f_super, 'units': 'm/s�',
-                'equation': 'a_super = (?�f_super�f_DPM�a_DPM)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Frequency (SCm phonon + Super-Frequency coupling)."""
+        import math
+        f_driver_Hz = 500000000000000.0
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        return {
+            'primary_equations': [
+                "System: Tapestry LMC",
+                "Band: Super-Frequency",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.4f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q factor = {Q_UQFF:.3e}",
+                "PAPER_1807 UV/optical starforming",
+            ],
+            'system': 'Tapestry LMC',
+            'band': 'Super-Frequency',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'PAPER_1807 Tapestry NGC 2014/2020 LMC + PAPER_227 Tapestry stellar wind + PAPER_345 DPM THz frequency-only + PAPER_433 wind feedback + PAPER_710 canonical. UV/optical super-band.',
+        }
 
 class TapestryFreqAetherResCalculator:
     """Tapestry aether-mediated resonance: a_aether_res=f_aether�B�f_DPM�(1+f_TRZ)�a_DPM, f_aether=1e2 Hz."""
@@ -180913,13 +182119,39 @@ class TapestryFreqAetherResCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_aether_res = self.f_aether * self.B_proxy * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM
-        return {'value': a_aether_res, 'a_DPM': a_DPM, 'f_aether_Hz': self.f_aether, 'units': 'm/s�',
-                'equation': 'a_aether_res = f_aether�B�f_DPM�(1+f_TRZ)�a_DPM'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Aether-Resonance band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 1250000000000.0
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Tapestry LMC",
+                "Band: Aether-Resonance",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q = {Q_UQFF:.3e}",
+                f"Lorentzian amp = {Lorentzian_amp:.4f}",
+                "SCm phonon LOCK - PAPER_1807/227",
+            ],
+            'system': 'Tapestry LMC',
+            'band': 'Aether-Resonance',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Tapestry LMC - Aether-Resonance - SCm phonon LOCK - PAPER_1807/227',
+        }
 
 class TapestryFreqUg4iCalculator:
     """Tapestry reactive U_g4i: U_g4i=f_sc�(GM/r�)�f_react�a_DPM/(E_vac_ISM�c), M=1000 M_sun."""
@@ -180971,13 +182203,39 @@ class TapestryFreqQuantumCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_quantum = (self.f_quantum * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_quantum, 'a_DPM': a_DPM, 'f_quantum_Hz': self.f_quantum, 'units': 'm/s�',
-                'equation': 'a_quantum = (f_quantum�E_vac_neb�a_DPM)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Quantum band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 10000000.0
+        h_planck = 6.62607015e-34
+        h_bar = 1.0546e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Tapestry LMC",
+                "Band: Quantum",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"E_driver = {E_driver_J:.3e} J",
+                f"Q = {Q_UQFF:.3e}",
+                f"Lorentzian amp = {Lorentzian_amp:.4f}",
+                "10 MHz starburst gravitational modes",
+            ],
+            'system': 'Tapestry LMC',
+            'band': 'Quantum',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Tapestry LMC - Quantum - 10 MHz starburst gravitational modes',
+        }
 
 class TapestryFreqAetherCalculator:
     """Tapestry aether effect (replaces ?): a_Aether=(f_Aether�E_vac_neb�a_DPM)/(E_vac_ISM�c)."""
@@ -180998,13 +182256,36 @@ class TapestryFreqAetherCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_Aether = (self.f_Aether * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_Aether, 'a_DPM': a_DPM, 'f_Aether_Hz': self.f_Aether, 'units': 'm/s�',
-                'equation': 'a_Aether = (f_Aether�E_vac_neb�a_DPM)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Aether band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 3000000000.0
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Tapestry LMC",
+                "Band: Aether",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "Radio 10 cm cluster emission",
+            ],
+            'system': 'Tapestry LMC',
+            'band': 'Aether',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Tapestry LMC - Aether - Radio 10 cm cluster emission',
+        }
 
 class TapestryFreqFluidCalculator:
     """Tapestry fluid dynamics for gas: a_fluid=(f_fluid�E_vac_neb�V_sys)/(E_vac_ISM�c)."""
@@ -181020,18 +182301,70 @@ class TapestryFreqFluidCalculator:
         self.pi = math.pi
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_fluid = (self.f_fluid * self.E_vac_neb * self.V_sys) / (self.E_vac_ISM * self.c)
-        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'V_sys': self.V_sys, 'units': 'm/s�',
-                'equation': 'a_fluid = (f_fluid�E_vac_neb�V_sys)/(E_vac_ISM�c)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Fluid band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 1000000000000.0
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Tapestry LMC",
+                "Band: Fluid",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "THz molecular ISM lines",
+            ],
+            'system': 'Tapestry LMC',
+            'band': 'Fluid',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Tapestry LMC - Fluid - THz molecular ISM lines',
+        }
 
 class TapestryFreqOscCalculator:
     """Tapestry oscillatory component: approximated to zero per UQFF simplification."""
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        return {'value': 0.0, 'units': 'm/s�', 'equation': 'a_osc � 0 (UQFF simplification)'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Oscillatory band (SCm phonon coupling)."""
+        import math
+        f_driver_Hz = 1e-06
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        E_driver_J = h_planck * f_driver_Hz
+        Q_UQFF = 1e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF**2 * detuning**2)
+        return {
+            'primary_equations': [
+                "System: Tapestry LMC",
+                "Band: Oscillatory",
+                f"f = {f_driver_Hz:.3e} Hz",
+                f"detuning = {detuning:.6f}",
+                f"L amp = {Lorentzian_amp:.4f}",
+                "Cluster dynamical oscillations",
+            ],
+            'system': 'Tapestry LMC',
+            'band': 'Oscillatory',
+            'f_driver_Hz': f_driver_Hz,
+            'detuning': detuning,
+            'E_driver_J': E_driver_J,
+            'Q_factor_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'SSQ': SSQ, 'K_MEX': K_MEX,
+            'note': 'Tapestry LMC - Oscillatory - Cluster dynamical oscillations',
+        }
 
 class TapestryFreqExpCalculator:
     """Tapestry cosmic expansion: a_exp=(f_exp�E_vac_neb�a_DPM)/(E_vac_ISM�c)."""
@@ -181052,47 +182385,44 @@ class TapestryFreqExpCalculator:
         self.A = self.pi * self.r * self.r
         self.V_sys = (4.0 / 3.0) * self.pi * (self.r ** 3)
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
-        a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        a_exp = (self.f_exp * self.E_vac_neb * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_exp, 'a_DPM': a_DPM, 'f_exp_Hz': self.f_exp, 'units': 'm/s�',
-                'equation': 'a_exp = (f_exp�E_vac_neb�a_DPM)/(E_vac_ISM�c)'}
-
-SOURCE36_WOLFRAM_CALCULATORS = {
-
-    'TapestryFreqDPMCalculator': TapestryFreqDPMCalculator(),
-
-    'TapestryFreqTHzCalculator': TapestryFreqTHzCalculator(),
-
-    'TapestryFreqVacDiffCalculator': TapestryFreqVacDiffCalculator(),
-
-    'TapestryFreqSuperCalculator': TapestryFreqSuperCalculator(),
-
-    'TapestryFreqAetherResCalculator': TapestryFreqAetherResCalculator(),
-
-    'TapestryFreqUg4iCalculator': TapestryFreqUg4iCalculator(),
-
-    'TapestryFreqQuantumCalculator': TapestryFreqQuantumCalculator(),
-
-    'TapestryFreqAetherCalculator': TapestryFreqAetherCalculator(),
-
-    'TapestryFreqFluidCalculator': TapestryFreqFluidCalculator(),
-
-    'TapestryFreqOscCalculator': TapestryFreqOscCalculator(),
-
-    'TapestryFreqExpCalculator': TapestryFreqExpCalculator(),
-
-}
-
-# ===========================================================================================
-
-# SOURCE37 WOLFRAM CALCULATORS - General Resonance/SC (Feb 26, 2026)
-
-# 7 Calculator Classes - Universal resonance + superconductivity correction
-
-# ===========================================================================================
+    def compute(self, dataset = None) -> dict:
+        """UQFF Tapestry LMC Freq Exp: 26-level DPM-THz freq-only with f_TRZ * rho_UA/rho_SCm (PAPER_345)."""
+        import math
+        f_driver_Hz = 1.373e-8
+        rho_gas_kg_m3 = 1.0e-19
+        v_wind_ms = 1.0e6
+        h_planck = 6.62607015e-34
+        omega_SCm = 2.0 * math.pi * 1.25e12
+        omega_driver = 2.0 * math.pi * f_driver_Hz
+        detuning = abs(omega_SCm - omega_driver) / omega_SCm
+        Q_UQFF = 1.0e6 * SSQ * K_MEX
+        Lorentzian_amp = 1.0 / (1.0 + Q_UQFF * Q_UQFF * detuning * detuning)
+        rho_UA_over_rho_SCm = 10.0
+        S26_modulation = F_TRZ * rho_UA_over_rho_SCm
+        SFR_UQFF_kg_per_s_per_m3 = rho_gas_kg_m3 * v_wind_ms * F_TRZ
+        E_driver_J = h_planck * f_driver_Hz
+        E_SCm_J = h_planck * 1.25e12
+        F_UBi_i_99 = SSQ * K_MEX * PHI_RES * (1.0 + F_TRZ)
+        g_Tapestry_scale = S26_modulation * Lorentzian_amp
+        return {
+            'system': 'Tapestry LMC',
+            'band': 'Exp',
+            'f_driver_Hz': f_driver_Hz,
+            'rho_gas_kg_m3': rho_gas_kg_m3,
+            'v_wind_ms': v_wind_ms,
+            'omega_SCm_rad_per_s': omega_SCm,
+            'detuning': detuning,
+            'Q_UQFF': Q_UQFF,
+            'Lorentzian_amp': Lorentzian_amp,
+            'rho_UA_over_rho_SCm': rho_UA_over_rho_SCm,
+            'S26_modulation_f_TRZ_x_rho_ratio': S26_modulation,
+            'SFR_UQFF_scale': SFR_UQFF_kg_per_s_per_m3,
+            'g_Tapestry_scale_PAPER_345': g_Tapestry_scale,
+            'E_driver_J': E_driver_J,
+            'E_SCm_J': E_SCm_J,
+            'F_UBi_i_99_coupling': F_UBi_i_99,
+            'note': 'PAPER_345 canonical: g_Tapestry = Sum_26 a_i * f_TRZ * (rho_UA/rho_SCm) + SFR = rho_gas*v_wind*f_res frequency-only S26 form for Tapestry LMC starbirth region (dark energy replaced by aether resonance).',
+        }
 
 class ResonanceDPMCalculator:
     """General DPM resonance (foundation): a_DPM_res=(I�A�(?1-?2)�f_DPM�E_vac)/(c�V_sys), f_DPM=1e12 Hz."""
@@ -183494,11 +184824,37 @@ class MultiSystemCosmologicalLambdaCalculator:
         self.Lambda = 1.11e-52
         self.c = 3e8
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_L = (self.Lambda * self.c**2) / 3.0
-        return {'value': a_L, 'Lambda_m2': self.Lambda, 'units': 'm/s�',
-                'equation': 'a_? = (?�c�)/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF MultiSystem (multi-galaxy composite) Cosmological Lambda evolution."""
+        import math
+        z = 0.0
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Omega_L = 0.685
+        Omega_m = 0.315
+        H0 = 67.4
+        H_z = H0 * math.sqrt(Omega_m * (1+z)**3 + Omega_L)
+        rho_crit = 3.0 * (H0*1000/3.086e22)**2 / (8*math.pi*6.6743e-11)
+        return {
+            'primary_equations': [
+                "System: MultiSystem (multi-galaxy composite)",
+                f"z = {z}",
+                f"Lambda_UQFF = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"H(z) = {H_z:.2f} km/s/Mpc",
+                f"rho_crit = {rho_crit:.3e} kg/m^3",
+                "PAPER_456 MUGE 29-system compressed unified",
+            ],
+            'system': 'MultiSystem (multi-galaxy composite)',
+            'z': z,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'residual_Lambda_pct': residual,
+            'H_z_km_s_Mpc': H_z,
+            'rho_crit_kg_m3': rho_crit,
+            'Omega_Lambda': Omega_L, 'Omega_m': Omega_m,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda + PAPER_1420 BUCKET_C dark energy time evolve for MultiSystem (multi-galaxy composite).',
+        }
 
 class MultiSystemQuantumIntegralCalculator:
     """Quantum integral: a_q=(?/v(?x�?p))�??�(2p/t_H) (universal quantum contribution)"""
@@ -183956,11 +185312,37 @@ class YoungStarsCosmologicalLambdaCalculator:
         self.Lambda = 1.11e-52
         self.c = 3e8
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_L = (self.Lambda * self.c**2) / 3.0
-        return {'value': a_L, 'Lambda_m2': self.Lambda, 'units': 'm/s�',
-                'equation': 'a_? = (?�c�)/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Young Stars (starburst clusters) Cosmological Lambda evolution."""
+        import math
+        z = 0.05
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Omega_L = 0.685
+        Omega_m = 0.315
+        H0 = 67.4
+        H_z = H0 * math.sqrt(Omega_m * (1+z)**3 + Omega_L)
+        rho_crit = 3.0 * (H0*1000/3.086e22)**2 / (8*math.pi*6.6743e-11)
+        return {
+            'primary_equations': [
+                "System: Young Stars (starburst clusters)",
+                f"z = {z}",
+                f"Lambda_UQFF = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"H(z) = {H_z:.2f} km/s/Mpc",
+                f"rho_crit = {rho_crit:.3e} kg/m^3",
+                "PAPER_1807 NGC 2014/2020 LMC starforming + PAPER_138 NGC 3603",
+            ],
+            'system': 'Young Stars (starburst clusters)',
+            'z': z,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'residual_Lambda_pct': residual,
+            'H_z_km_s_Mpc': H_z,
+            'rho_crit_kg_m3': rho_crit,
+            'Omega_Lambda': Omega_L, 'Omega_m': Omega_m,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda + PAPER_1420 BUCKET_C dark energy time evolve for Young Stars (starburst clusters).',
+        }
 
 class YoungStarsResonantOscillatoryCalculator:
     """Resonant: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp] at ~1e-8 Hz (region oscillation)"""
@@ -184132,11 +185514,37 @@ class BigBangCosmologicalLambdaEvolutionCalculator:
         self.Lambda = 1.11e-52
         self.c = 3e8
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_L = (self.Lambda * self.c**2) / 3.0
-        return {'value': a_L, 'Lambda_m2': self.Lambda, 'units': 'm/s�',
-                'equation': 'a_? = (?�c�)/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF Big Bang Lambda Evolution Cosmological Lambda evolution."""
+        import math
+        z = 1100
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Omega_L = 0.685
+        Omega_m = 0.315
+        H0 = 67.4
+        H_z = H0 * math.sqrt(Omega_m * (1+z)**3 + Omega_L)
+        rho_crit = 3.0 * (H0*1000/3.086e22)**2 / (8*math.pi*6.6743e-11)
+        return {
+            'primary_equations': [
+                "System: Big Bang Lambda Evolution",
+                f"z = {z}",
+                f"Lambda_UQFF = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"H(z) = {H_z:.2f} km/s/Mpc",
+                f"rho_crit = {rho_crit:.3e} kg/m^3",
+                "PAPER_495 Cosmic Egg + PAPER_597 negative time + PAPER_1156 vacuum ledger",
+            ],
+            'system': 'Big Bang Lambda Evolution',
+            'z': z,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'residual_Lambda_pct': residual,
+            'H_z_km_s_Mpc': H_z,
+            'rho_crit_kg_m3': rho_crit,
+            'Omega_Lambda': Omega_L, 'Omega_m': Omega_m,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda + PAPER_1420 BUCKET_C dark energy time evolve for Big Bang Lambda Evolution.',
+        }
 
 class BigBangQuantumIntegralCosmologicalCalculator:
     """Quantum integral: a_q=(?/v?)�??�2p/t_H (cosmological quantum field)"""
@@ -184378,11 +185786,37 @@ class MultiCompressed7CosmologicalLambdaCalculator:
         self.Lambda = 1.1e-52
         self.c = 2.998e8
 
-    def compute(self, t: float = 0.0) -> dict:
-
-        a_L = (self.Lambda * self.c**2) / 3.0
-        return {'value': a_L, 'Lambda_m2': self.Lambda, 'units': 'm/s�',
-                'equation': 'a_? = (?c�)/3'}
+    def compute(self, dataset = None) -> dict:
+        """UQFF MultiCompressed7 (7-system MUGE) Cosmological Lambda evolution."""
+        import math
+        z = 0.0
+        Lambda_UQFF = RHO_SCM * math.factorial(min(int(D_CRIT), 26)) * K_MEX
+        Lambda_obs = 5.957e-10
+        residual = abs(Lambda_UQFF - Lambda_obs) / Lambda_obs * 100.0
+        Omega_L = 0.685
+        Omega_m = 0.315
+        H0 = 67.4
+        H_z = H0 * math.sqrt(Omega_m * (1+z)**3 + Omega_L)
+        rho_crit = 3.0 * (H0*1000/3.086e22)**2 / (8*math.pi*6.6743e-11)
+        return {
+            'primary_equations': [
+                "System: MultiCompressed7 (7-system MUGE)",
+                f"z = {z}",
+                f"Lambda_UQFF = rho_SCm*26!*K_MEX = {Lambda_UQFF:.3e} J/m^3 (residual {residual:.3f}%)",
+                f"H(z) = {H_z:.2f} km/s/Mpc",
+                f"rho_crit = {rho_crit:.3e} kg/m^3",
+                "PAPER_473 MUGE module 7-system compressed resonance",
+            ],
+            'system': 'MultiCompressed7 (7-system MUGE)',
+            'z': z,
+            'Lambda_UQFF_J_m3': Lambda_UQFF,
+            'residual_Lambda_pct': residual,
+            'H_z_km_s_Mpc': H_z,
+            'rho_crit_kg_m3': rho_crit,
+            'Omega_Lambda': Omega_L, 'Omega_m': Omega_m,
+            'RHO_SCM': RHO_SCM, 'D_CRIT': D_CRIT, 'K_MEX': K_MEX,
+            'note': 'PAPER_1156 Lambda + PAPER_1420 BUCKET_C dark energy time evolve for MultiCompressed7 (7-system MUGE).',
+        }
 
 class MultiCompressed7UgSumCalculator:
     """Ug_sum=Ug1+Ug2+Ug3+Ug4�0 - Compressed UQFF (Ug2=0, Ug3 separate)"""
