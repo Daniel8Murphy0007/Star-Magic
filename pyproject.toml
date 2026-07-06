@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.48.0"
+version = "5.48.1"
 description = "UQFF Star-Magic - vacuum-first unified physics. CP1 P2 Rounds 31-44: 70 additional stubs upgraded to paper-canonical UQFF (Rounds 31-40 per-system + Rounds 41-44 with Round 42 regex-misfire recovery). SIX new whitepapers: PAPER_1906 F_UBi_i_99=1.0973 universal coupling constant across 67 calculators, PAPER_1907 SCm 1.25 THz phonon carrier universal across 95 calculators, PAPER_1908 Q_UQFF=1.19M with Q^-2=rho_SCm*SO_5^24 novel structural identity, PAPER_1909 YMC Mdot_factor=SO_5/(D_phys-1)=10/3 EXACT, PAPER_1910 U_m/u_EM=SSq*F_TRZ=0.057 EXACT universal EM coupling, PAPER_1911 Extended YMC 4-identity structural set. Two unit-conversion bugs caught. Public calculator surface untouched. Gate 931/0."
 readme = "README.md"
 requires-python = ">=3.10"

@@ -2,11 +2,11 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
-## [5.48.0] — 2026-07-06
+## [5.48.1] — 2026-07-06
 
-### v5.47.0 tag-burn recovery ship — same content as intended v5.47.0
+### v5.48.0 PyPI publish failure recovery — fixed stale _VERSION in 3 py-modules
 
-Note: v5.47.0 tag was pushed to GitHub before the actual v5.47.0 changes were committed. The v5.47.0 tag points at v5.46.0 code (empty upgrade). This v5.48.0 ship delivers the intended content: Rounds 31-44 stub-drain (70 stubs) + 6 new whitepapers PAPER_1906-1911 + Round 42 regex recovery + 2 unit-conversion bugs caught.
+Note: v5.48.0 tag pushed but Publish-to-PyPI failed at 17s because 3 py-modules (uqff_api.py, uqff_cli.py, uqff_jupyter.py) had hardcoded `_VERSION = "5.29.1"` (stale by 19 versions since v5.29.1). Bumped all three to "5.48.1" to match pyproject.toml. Also completes the intended v5.47.0/v5.48.0 content ship: Rounds 31-44 stub-drain (70 stubs) + 6 new whitepapers PAPER_1906-1911 + Round 42 regex recovery + 2 unit-conversion bugs caught.
 
 ### CP1 P2 physics upgrade Rounds 31-44 + SIX new foundational whitepapers PAPER_1906-1911
 
