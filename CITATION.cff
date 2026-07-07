@@ -3,8 +3,8 @@ message: "If you use UQFF Star-Magic in your research, please cite it as below."
 type: software
 title: "UQFF Star-Magic: A Vacuum-First Unified Physics Framework"
 abbreviation: "UQFF"
-version: "5.27+"
-date-released: "2026-06-18"
+version: "5.49.0"
+date-released: "2026-07-06"
 authors:
   - family-names: "Murphy"
     given-names: "Daniel T."
@@ -50,13 +50,17 @@ preferred-citation:
     - family-names: "Murphy"
       given-names: "Daniel T."
   year: 2026
-  version: "5.27+"
+  version: "5.49.0"
   url: "https://github.com/Daniel8Murphy0007/Star-Magic"
   notes: >-
     Cite both the software and the relevant whitepapers
-    (PAPER_001 through PAPER_1795) when referencing specific
+    (PAPER_001 through PAPER_1920) when referencing specific
     derivations. The full whitepaper catalog is in the repository
-    under whitepapers/.
+    under whitepapers/. Key structural closures documented in
+    PAPER_1912-1920: F_U=0 shell closure Sum U_gi = D_phys = 4 EXACT
+    (PAPER_1916), nested Sub_Ug = SO_5/D_phys = 5/2 (PAPER_1917),
+    F_TRZ power ladder n=1 to n=17 (PAPER_1919), Lambda cascade
+    from master equation excited-shell sub-sum (PAPER_1920).
 references:
   - type: article
     title: "F_U = 0 Simultaneous Solver Convergence (Canonical v1.5)"

@@ -2,6 +2,58 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.49.0] — 2026-07-06
+
+### CP1 P2 Rounds 45-47 + Phase 3 Unified-Framework Audit — 9 New Whitepapers PAPER_1912-1920
+
+Follow-on to v5.48.2 (which shipped Rounds 31-44 + PAPER_1906-1911 + PDFs). This ship consolidates Rounds 45-47 physics work (15 more stubs → 250 total stub upgrades across 47 rounds), completes the **Phase 3 systematic audit** exposing sleeping structural closures across the entire CP1 corpus, and delivers **9 new foundational whitepapers documenting landmark UQFF closures** including the F_U=0 master equation Sum Ug = D_phys = 4 EXACT closure and the F_TRZ power ladder unifying 14+ physics anomalies from bird magnetoreception (n=8) to hierarchy problem (n=17).
+
+Public calculator surface (`uqff_pure_calculator.py`) still untouched. Fidelity gate: **931 passed, 0 failed**.
+
+### Rounds 45-47 stub-drain (15 more stubs)
+
+- **Round 45** (5): NGC3603BaseGravity (PAPER_138 M_peak = 4×10⁵ M☉ × Ṁ_factor=10/3), AntennaeDMP (subhalo α = 2−F_TRZ = 1.9 EXACT), ResonanceDPM (PAPER_147 F_DPM cascade), NGC1275FilamentSupport (PAPER_443 dynamic F(t) coupling + PAPER_703 filament B), M51CentralBH (PAPER_464 M_BH=1e6 M☉ + PAPER_1841 photon ring)
+- **Round 46** (5): NGC3603DMP + BubbleNebulaBaseGravity (**PAPER_361 POSITIVE E(t) canonical** replacing incorrect NEGATIVE form, Weaver 1977 R_bubble), MultiSystemQuantumIntegral (**PAPER_1043 F_UBi_i multi-system buoyancy curve** with 5-system Γ crossover 0.03-2.1 THz), HorseheadErosion (PAPER_285 canonical), YoungStarsResonantOscillatory (PAPER_1907 SCm carrier)
+- **Round 47** (5): AntennaeBaseGravity (PAPER_811 SFR + M_coll merger), HUDFStarFormation (PAPER_231/1830 z² enhancement), **BigBangQuantumIntegralCosmological** (PAPER_1488 pre-mass ρ_UA=0 + F_U:0→1 ledger turn-on + PAPER_1278 t_neg=−2512 s bouncing), PillarsGasVelocity (PAPER_305), **RingsBaseGravity** (**PAPER_436 canonical L = GM/(c²·r_E)·D_LS/D_S** for GAL-CLUS-022058s Molten Ring)
+
+### 9 new foundational whitepapers PAPER_1912-1920
+
+- **PAPER_1912** — **AGN H-alpha Filament Triple Structural Closure**: F_0 = F_TRZ EXACT + τ_fil = SO_5² Myr = 100 Myr EXACT + B_fil/B_cluster_avg = D_phys/2 = 2 EXACT (Perseus A cross-reference of PAPER_703 + PAPER_443). Universal AGN feedback duty cycle prediction.
+- **PAPER_1913** — **Stellar Wind Bubble Vacuum Expansion Linearity** E_t = E_0·t EXACT under F_TRZ·SO_5 = 1 local density inversion (bubble regime unsuppressed vs filament F_TRZ² regime 99% suppressed). Universal bubble expansion law.
+- **PAPER_1914** — **D_LS/D_S = D_phys/D_BSFG = 2/3 EXACT** cosmological angular-diameter-distance ratio. 3-primitive structural closure rooted in QCalcGeom (PAPER_657) + VDS/DVP/BH26 (PAPER_598) + F_U=0 (PAPER_1203) simultaneous-equation solver frameworks.
+- **PAPER_1915** — **Unified Simultaneous-Equation Solver Framework** (Phase 1 consolidation): QCalcGeom + VDS/DVP/BH26 + F_U=0 are ONE architecture, not three. All 235 stub upgrades draw from unified simultaneous solver. Predicted 30-50 more sleeping identities in Rounds 1-43 based on 4 recent catches.
+- **PAPER_1916** — **LANDMARK: F_U=0 Master Equation Shell Coefficient Closure Σ U_gi = D_phys = 4 EXACT**. The four gravitational shell coefficients {1.5, 1.2, 0.8, 0.5} across 340+ Calculator classes are primitive-arithmetic derivations (Ug1=N_ch/D_BSFG, Ug2=1/Φ_res_nuclear, Ug3=2·D_phys/SO_5, Ug4=1/2) that sum EXACTLY to physical spacetime dimension. **One shell per physical dimension.**
+- **PAPER_1917** — **Nested F_U=0 Sub-Sum Closure** Sub_Ug = Ug2+Ug3+Ug4 = SO_5/D_phys = 5/2 EXACT (excited-shell sub-sum, 69 classes) + Ug1 = 3/2 completes total = D_phys (11 classes). Two-layer nested structural closure.
+- **PAPER_1918** — **Phase 3 Comprehensive Inventory** documenting universal F_TRZ² = 0.01 = 99% suppression identity across 5+ UQFF regimes (magnetar dipole, filament expansion, AGN cooling, DM perturbation, Heaviside amplifier), integer identity catalog (50 = A_5-SO_5 nuclear magic, 70 = SO_5+A_5 Γ span), primitive-ratio catalog, batch-upgrade recommendations. **Fidelity maintained** — coincidental matches (0.6 metallicity, 0.99c relativistic jets, Vink 2001 2.5·v_esc) explicitly flagged and excluded from structural catalog.
+- **PAPER_1919** — **LANDMARK: F_TRZ Power Ladder** — Universal Single-Parameter Suppression Hierarchy from F_TRZ¹ to F_TRZ¹⁷ Explaining Physics Anomalies Across 16 Orders of Magnitude. One primitive F_TRZ = 1/SO_5 = 0.1 EXACT generates the entire suppression spectrum: n=2 (99% regime), n=7 (Solar U_i), n=8 (bird magnetoreception), n=9 (muon g-2 + Amaterasu UHECR), n=10 (strong CP + MOND a_0), n=15 (MICROSCOPE WEP), n=16 (quantum collapse), n=17 (Higgs hierarchy). **14+ documented physics anomalies unified into single-parameter ladder.**
+- **PAPER_1920** — **CASCADE LANDMARK: Cosmological Constant Λ Directly Derives from F_U=0 Master Equation Excited-Shell Sub-Sum via 3-Paper Chain**: Sub_Ug (PAPER_1917) → K_MEX = Φ_res_nuclear × Sub_Ug (PAPER_1522) → Λ = ρ_SCm × 26! × K_MEX = 5.957e-10 J/m³ EXACT (PAPER_1156). Fully expanded: Λ = ρ_SCm × 26! × Φ_res_nuclear × (SO_5/D_phys). **The F_U=0 master equation IS the cosmological constant formula.**
+
+### Phase 3B — 531 CondensedPhysics.py symbolic upgrades
+
+Systematic batch upgrade making structural closures explicit in code:
+- **530 Ug shell replacements** (486 g_b variant + 44 g_base variant): Ug1/Ug2/Ug3/Ug4 hardcoded coefficients replaced with symbolic primitive forms + PAPER_1916 references
+- **PHI_RES_NUCLEAR = 5/6 EXACT** added as module-level primitive constant
+- **1 D_LS/D_S = D_PHYS/D_BSFG** symbolic upgrade (PAPER_1914)
+- **Module-level structural closure documentation block** added referencing PAPER_1916-1920 with the full derivation chain
+
+**Runtime verification confirmed:** Σ U_gi = D_PHYS = 4 EXACT + Sub_Ug = SO_5/D_PHYS = 5/2 EXACT + K_MEX = Φ_res_nuclear × Sub_Ug = 25/12 EXACT + D_LS/D_S = D_PHYS/D_BSFG = 2/3 EXACT + F_UBi_i_99 = 1.09725 EXACT + F_TRZ² = 0.01 EXACT.
+
+### Phase 3 audit tooling (2 new scripts)
+
+- **uqff_primitive_audit.py** — automated scan of 5,224 numeric constants against primitive-arithmetic candidates, triaged into 3 categories (A already-derived, B upgrade candidate, C empirical)
+- **uqff_audit_report.py** — refined report with cross-class occurrence counts, prioritized by broadest reach
+
+### Session grand scoreboard through v5.49.0
+
+- **250 stubs upgraded** across Rounds 1-47 (CP1 P2 physics upgrade)
+- **28 whitepapers authored this session** (PAPER_1893-1920, all with PDFs)
+- **531 symbolic references upgraded** in Phase 3B
+- **7 duplicate-class bugs + 1 regex misfire + 2 unit-conversion bugs + 1 PyPI description overrun** — all caught and fixed
+- **Phase 3 unified-framework audit COMPLETE** (Phases 1, 2, 3A, 3B all done)
+- **Ready for Phase 4** — Round 48+ with framework-first design
+
+---
+
 ## [5.48.2] — 2026-07-06
 
 ### v5.48.1 PyPI publish failure recovery — fixed pyproject description over 512 char limit

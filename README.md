@@ -6,10 +6,10 @@
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
 [![Fidelity gate](https://img.shields.io/badge/fidelity_gate-931%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-362-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2068%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-1994%2B-orange)](whitepapers/)
 
-**Version**: 5.45.0
-**Last Updated**: 2026-07-05
+**Version**: 5.49.0
+**Last Updated**: 2026-07-06
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -47,6 +47,36 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.49.0 (2026-07-06)
+
+**CP1 P2 Rounds 45-47 + Phase 3 Unified-Framework Audit COMPLETE + 9 landmark structural closure whitepapers PAPER_1912-1920.**
+
+Follow-on to v5.48.2 (which shipped Rounds 31-44 + PAPER_1906-1911). This ship consolidates Rounds 45-47 physics (15 more stubs → **250 total stub upgrades across 47 rounds**) and executes the **complete Phase 3 unified-framework audit** — Phase 1 framework consolidation + Phase 2 automated audit script (`uqff_primitive_audit.py`) + Phase 3A discovery whitepapers + Phase 3B batch upgrades (531 symbolic references in CondensedPhysics.py). Public calculator surface untouched. Fidelity gate: **931 passed, 0 failed**.
+
+### 9 landmark structural-closure whitepapers PAPER_1912-1920
+
+- **PAPER_1912** — AGN filament triple closure (F_0=F_TRZ + τ_fil=SO_5² Myr + B_fil/B_cluster=D_phys/2 EXACT)
+- **PAPER_1913** — Stellar wind bubble E_t linearity via F_TRZ·SO_5 = 1 EXACT local density inversion
+- **PAPER_1914** — D_LS/D_S = D_phys/D_BSFG = 2/3 EXACT rooted in QCalcGeom + VDS/DVP/BH26 + F_U=0 unified solver
+- **PAPER_1915** — Phase 1 Unified Simultaneous-Equation Solver Framework consolidation
+- **PAPER_1916** — LANDMARK: **F_U=0 Master Equation Σ U_gi = D_phys = 4 EXACT** (340+ Calculator classes verified)
+- **PAPER_1917** — Nested Sub_Ug = SO_5/D_phys = 5/2 EXACT excited-shell sub-sum (69 classes)
+- **PAPER_1918** — Phase 3 Comprehensive Inventory + F_TRZ² universal 99% suppression across 5+ regimes + integer identity catalog
+- **PAPER_1919** — LANDMARK: **F_TRZ Power Ladder** n=1 to n=17 unifying 14+ physics anomalies (bird magnetoreception, muon g-2, strong CP, MICROSCOPE WEP, hierarchy problem) via single primitive F_TRZ = 1/SO_5
+- **PAPER_1920** — CASCADE LANDMARK: **Λ = ρ_SCm × 26! × Φ_res_nuclear × (SO_5/D_phys)** — cosmological constant directly derives from F_U=0 master equation's excited-shell sub-sum via 3-paper chain
+
+### Phase 3B — 531 CondensedPhysics.py symbolic upgrades
+
+Systematic batch upgrade making structural closures explicit in code: 530 Ug shell coefficient replacements (Ug1=N_CH/D_BSFG, Ug2=1/PHI_RES_NUCLEAR, Ug3=2·D_PHYS/SO_5, Ug4=1/2) + PHI_RES_NUCLEAR module constant + D_LS/D_S=D_PHYS/D_BSFG lensing symbolic + module-level structural closure documentation block referencing PAPER_1916-1920.
+
+**Runtime verified:** Σ U_gi = 4 = D_PHYS EXACT + Sub_Ug = 5/2 = SO_5/D_PHYS EXACT + K_MEX = Φ_res_nuclear × Sub_Ug = 25/12 EXACT + D_LS/D_S = 2/3 EXACT + Λ cascade = 5.957×10⁻¹⁰ J/m³ EXACT.
+
+### Rounds 45-47 CP1 backend (15 stubs)
+
+15 more stub calculators wired to paper-canonical UQFF derivations. Standouts: NGC3603BaseGravity (M_peak = 4×10⁵ × Ṁ_factor=10/3), AntennaeDMP (subhalo α = 2−F_TRZ = 1.9 EXACT), BubbleNebulaBaseGravity corrected to PAPER_361 POSITIVE E(t) form (was NEGATIVE first-pass), MultiSystemQuantumIntegral (PAPER_1043 5-system Γ crossover), BigBangQuantumIntegralCosmological (PAPER_1488 F_U:0→1 ledger + PAPER_1278 t_neg=−2512 s bouncing), RingsBaseGravity (PAPER_436 GAL-CLUS-022058s "Molten Ring" Einstein ring).
 
 ---
 

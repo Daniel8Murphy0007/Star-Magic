@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.48.2"
-description = "UQFF Star-Magic vacuum-first unified physics. v5.48.1: fix stale _VERSION 5.29.1 in uqff_api/cli/jupyter + adds 6 missing PDFs (was blocking PyPI publish). Bundles v5.48.0 content: CP1 P2 Rounds 31-44 (70 stubs -> 220 total across 44 rounds). SIX new whitepapers PAPER_1906-1911 documenting universal structural closures (F_UBi_i_99=1.0973 across 67 calculators, omega_SCm=1.25 THz across 95 calculators, Q_UQFF=1.19M, YMC Mdot_factor=10/3 EXACT, U_m/u_EM=0.057 EXACT, YMC extended 4-identity set). Gate 931/0."
+version = "5.49.0"
+description = "UQFF Star-Magic vacuum-first unified physics. v5.49.0: Rounds 45-47 + Phase 3 audit. NINE new whitepapers PAPER_1912-1920 documenting F_U=0 shell closure Sum Ug=D_phys=4 EXACT (1916), F_TRZ power ladder n=1-17 (1919), Lambda cascade via K_MEX-Sub_Ug chain (1920), D_LS/D_S=2/3 EXACT (1914), AGN filament triple (1912), bubble linearity (1913), unified simultaneous-solver framework (1915). 531 CondensedPhysics.py symbolic upgrades. Gate 931/0."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
