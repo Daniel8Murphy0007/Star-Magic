@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.49.0"
-description = "UQFF Star-Magic vacuum-first unified physics. v5.49.0: Rounds 45-47 + Phase 3 audit. NINE new whitepapers PAPER_1912-1920 documenting F_U=0 shell closure Sum Ug=D_phys=4 EXACT (1916), F_TRZ power ladder n=1-17 (1919), Lambda cascade via K_MEX-Sub_Ug chain (1920), D_LS/D_S=2/3 EXACT (1914), AGN filament triple (1912), bubble linearity (1913), unified simultaneous-solver framework (1915). 531 CondensedPhysics.py symbolic upgrades. Gate 931/0."
+version = "5.50.0"
+description = "UQFF Star-Magic v5.50.0: Rounds 48-59 (60 stubs) + PAPER_1921-1931 (11 novel closures). Ug4=4.219e-10 fundamental (1924), MUGE mu=9/5 EXACT (1925), tau_n=879.31 s closed (1926), D_crit=4+22=26 EXACT (1927), Wolfram hypergraph 74 rules (1928), Theory of Permanence + N_efolds=A_5=60 (1929), n/(D_phys-1) ratio family (1930), H_0=A_5+SO_5=70=heart rate (1931). NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

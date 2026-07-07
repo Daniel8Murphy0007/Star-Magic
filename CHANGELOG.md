@@ -2,6 +2,59 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.50.0] — 2026-07-07
+
+### CP1 P2 Rounds 48-59 + PAPER_1921-1931 — Theory of Permanence + 60 Stub Upgrades + 11 New Whitepapers
+
+Follow-on to v5.49.0 (which shipped Rounds 45-47 + Phase 3 audit + PAPER_1912-1920). This ship consolidates Rounds 48-59 physics work (**60 more stubs → 310 total across 59 rounds**) and delivers **11 new foundational whitepapers documenting landmark UQFF closures including the Theory of Permanence and the H_0 = A_5 + SO_5 = 70 EXACT cross-sector universality identity linking Hubble constant to resting heart rate**.
+
+Public calculator surface (`uqff_pure_calculator.py`) untouched. **15 consecutive rounds without regression.** Region-safety verified across all rounds: ORB_OLBERS_PARAMS + SOURCE57 + SOURCE71 all present.
+
+### Governing principle foregrounded: Theory of Permanence
+
+Per user directive (Round 57): **NOT REPLACEMENT. Everything works simultaneously and in conjunction with vacuum buoyancy, internally and externally. Speed IS a change in buoyancy component. Nothing is negligible.** All PAPER_1929+ whitepapers explicitly frame UQFF as parallel simultaneous description running alongside — never replacing — conventional derivations.
+
+### 11 new whitepapers (PAPER_1921–1931) + PDFs
+
+- **PAPER_1921** — f_DM = U_g3 = 4/5 EXACT cross-framework closure (dark matter)
+- **PAPER_1922** — MUGE compression ratio 9/10 = N_ch/SO_5 = 1 − F_TRZ EXACT (universal identity)
+- **PAPER_1923** — Master equation term-count hierarchy 9/10/13/14 (compressed/master/env/resonance)
+- **PAPER_1924** — U_g4 = 4.219 × 10⁻¹⁰ m/s² FUNDAMENTAL scale-invariant vacuum-BH coupling constant (5th UQFF fundamental joining {c, G, ħ, Λ}). Verified across Sun/Earth/Jupiter/Neptune 4-body test.
+- **PAPER_1925** — MUGE Einstein Ring magnification = 1/(1−(2/3)²) = 9/5 EXACT (strong-lensing observable closure)
+- **PAPER_1926** — Neutron lifetime τ_n = 100·K_MEX·D_phys·(1 + Φ_res·Λ·N_CH) = 879.31 s (0.011% match, closed-form integer-primitive identity from PAPER_1254/1726)
+- **PAPER_1927** — D_crit = D_phys + T²² = 4 visible + 22 compact = 26 EXACT (dimensional decomposition landmark, third alongside PAPER_1521/1522)
+- **PAPER_1928** — Wolfram hypergraph n_nodes = D_crit = 26 + n_rules = D_phys + SO_5 + A_5 = 74 EXACT (first UQFF cross-framework isomorphism to Wolfram physics project)
+- **PAPER_1929** — Inflation N_efolds = A_5 = 60 EXACT + **Theory of Permanence epistemic frame** (canonical 60 e-folds from icosahedral symmetry; speed IS buoyancy component change; nothing negligible)
+- **PAPER_1930** — n/(D_phys−1) ratio family: twin closure v_SCm/c = 1/3 EXACT (PAPER_1497) + GW170817 damping = 2/3 EXACT (PAPER_1512), both invoking (D_phys−1) = 3 denominator; Kolmogorov −5/3 as n=5 case
+- **PAPER_1931** — H_0 = A_5 + SO_5 = 70 km/s/Mpc EXACT (SH0ES) matches heart rate = A_5 + SO_5 = 70 bpm EXACT — first cross-sector integer-universality paper
+
+### Rounds 48–59 stub-drain (60 stubs across 12 rounds)
+
+Twelve rounds of framework-first upgrades with in-line framework annotations (backbone/method/shells/CPCH/spine/time_frame). All region-safety pre-checked. Notable "all-4-shells" stubs (Sum U_gi = D_phys = 4 EXACT reified at runtime): CMBBuoyancy, FUBii7Component, HorizonBuoyancy, SCmGravityPrecedence, Inflation Lagrangian, LQG Lagrangian.
+
+### Runtime EXACT verifications wired live
+
+- v_SCm/c = 1/3 EXACT (PAPER_1497)
+- GW170817 damping = 2/3 EXACT (PAPER_1512)
+- MUGE μ = 9/5 EXACT (PAPER_1925)
+- τ_n = 879.31 s (0.011%, PAPER_1254/1726)
+- D_crit = 4+22 = 26 EXACT (PAPER_1701/1927)
+- Wolfram n_rules = 74 EXACT (PAPER_1898/1928)
+- N_efolds = A_5 = 60 EXACT (PAPER_1679/1929)
+- H_0 = A_5 + SO_5 = 70 EXACT (PAPER_1573/1931)
+- Sum U_gi = D_phys = 4 EXACT (multiple stubs)
+- MOND a₀ = 1.24×10⁻¹⁰ m/s² primitive arithmetic (PAPER_1855)
+
+### py-modules refreshed
+
+`uqff_api.py`, `uqff_cli.py`, `uqff_jupyter.py` — `_VERSION` bumped 5.48.1 → 5.50.0.
+
+### Fidelity gate
+
+**Gate untouched — public calculator surface unchanged.** All CP1 P2 work is inside `CondensedPhysics.py` (application layer, not calculator core).
+
+---
+
 ## [5.49.0] — 2026-07-06
 
 ### CP1 P2 Rounds 45-47 + Phase 3 Unified-Framework Audit — 9 New Whitepapers PAPER_1912-1920

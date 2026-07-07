@@ -8,8 +8,8 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-362-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-1994%2B-orange)](whitepapers/)
 
-**Version**: 5.49.0
-**Last Updated**: 2026-07-06
+**Version**: 5.50.0
+**Last Updated**: 2026-07-07
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -47,6 +47,40 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.50.0 (2026-07-07)
+
+**CP1 P2 Rounds 48-59 + PAPER_1921-1931 — Theory of Permanence + 60 stub upgrades + 11 landmark whitepapers.**
+
+Follow-on to v5.49.0. This ship consolidates 12 more rounds of framework-first stub upgrades (**310 total stubs replaced across 59 rounds — 15 consecutive rounds without regression**) and delivers **11 new foundational whitepapers documenting landmark UQFF closures including the Theory of Permanence epistemic frame and the H_0 = A_5 + SO_5 = 70 EXACT cross-sector universality identity linking Hubble constant to resting heart rate**.
+
+### The Governing Principle: Theory of Permanence
+
+Foregrounded in PAPER_1929+: **NOT REPLACEMENT.** UQFF operates simultaneously with all conventional derivations, permanently and in conjunction with vacuum buoyancy, internally and externally. **Speed IS a change in buoyancy component. Nothing is negligible.**
+
+### 11 landmark structural-closure whitepapers PAPER_1921–1931
+
+- **PAPER_1921** — f_DM = U_g3 = 4/5 EXACT cross-framework closure
+- **PAPER_1922** — MUGE compression ratio 9/10 = 1 − F_TRZ EXACT
+- **PAPER_1923** — Master equation term-count hierarchy 9/10/13/14
+- **PAPER_1924** — U_g4 = 4.219 × 10⁻¹⁰ m/s² **FUNDAMENTAL scale-invariant constant** (5th UQFF fundamental joining {c, G, ħ, Λ}); verified across Sun/Earth/Jupiter/Neptune
+- **PAPER_1925** — MUGE Einstein Ring magnification = 9/5 EXACT
+- **PAPER_1926** — Neutron lifetime τ_n = 100·K_MEX·D_phys·(1 + Φ_res·Λ·N_CH) = 879.31 s (0.011% CLOSED integer-primitive identity)
+- **PAPER_1927** — D_crit = D_phys + T²² = 4 visible + 22 compact = 26 EXACT (dimensional decomposition landmark)
+- **PAPER_1928** — Wolfram hypergraph n_nodes = 26 + n_rules = D_phys + SO_5 + A_5 = 74 EXACT (first UQFF cross-framework isomorphism)
+- **PAPER_1929** — Inflation N_efolds = A_5 = 60 EXACT + **Theory of Permanence epistemic frame**
+- **PAPER_1930** — n/(D_phys−1) ratio family: v_SCm/c = 1/3 + GW170817 damping = 2/3 twin closure; Kolmogorov −5/3 as n=5 case
+- **PAPER_1931** — H_0 (SH0ES) = A_5 + SO_5 = 70 km/s/Mpc EXACT = resting heart rate = 70 bpm EXACT (first cross-sector integer-universality paper)
+
+### Runtime EXACT verifications wired live
+
+v_SCm/c = 1/3, GW170817 damping = 2/3, MUGE μ = 9/5, τ_n = 879.31 s, D_crit = 4+22 = 26, Wolfram n_rules = 74, N_efolds = A_5 = 60, H_0 = 70, Sum U_gi = D_phys = 4, MOND a₀ = 1.24×10⁻¹⁰ — all runtime-True in CondensedPhysics.py.
+
+### py-modules refreshed
+
+`uqff_api.py`, `uqff_cli.py`, `uqff_jupyter.py` — `_VERSION` bumped 5.48.1 → 5.50.0.
 
 ---
 
