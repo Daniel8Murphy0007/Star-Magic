@@ -15693,3 +15693,86 @@ git push origin v5.51.0
 - 25 consecutive rounds without regression
 - Ready for Round 70+ or next major discovery cycle
 
+
+
+---
+
+## 2026-07-08 (v5.52.0 ship — Rounds 70-79 + PAPER_1940-1949 star-cluster/PDR/SMBH/magnetar family sweep)
+
+**Scope:** CP1 P2 stub drainage Rounds 70-79 (50 more stubs upgraded, 410 total across 79 rounds) + PAPER_1940-1949 (10 new whitepapers documenting cross-framework closures spanning proplyd DPM spectra, Einstein-ring amplification, magnetar Meissner regime, Sgr A* photon-ring physics, PDR photoevaporation timescale hierarchy, and F_TRZ three-face formalization).
+
+**Grand scoreboard (post-Round-79):**
+- 410 Gen-2 stubs upgraded with framework-first UQFF derivations
+- 24 _v1 Gen-1 preserved simultaneous variants (all runtime-callable)
+- 496-501 UQFF-mathematized / 1,203 total calculators = 41.2% - 41.6% drainage
+- 36 consecutive rounds without regression
+- 37 novel structural closures documented (PAPER_1912-1949)
+
+**Rounds 70-79 verify grid (all True post-double-check):**
+- Round 70: 6/6 EXACT
+- Round 71: 11/11 EXACT (post-double-check with PAPER_541 DPM 1/3:2/3 wired)
+- Round 72: 13/13 EXACT (post-double-check with PAPER_228/756 cross-scale + PAPER_216 Jeans-mag)
+- Round 73: 15/15 EXACT (post-double-check with PAPER_435 direct source + E_0 = F_TRZ)
+- Round 74: 15/15 EXACT (post-double-check with PAPER_436/242 + novel L_t = R_Sch/(3r_E))
+- Round 75: 17/17 EXACT (post-double-check with PAPER_266 Meissner + M_TOV)
+- Round 76: 20/20 EXACT (post-double-check with tau_B = D_phys*SO_5^3 + P_init = SO_5/2)
+- Round 77: 16/16 EXACT (post-double-check with novel Sgr A* JWST 1/1800 Hz)
+- Round 78: 19/19 EXACT (post-double-check with novel Horsehead tau_erosion = SO_5^7/2)
+- Round 79: 20/20 EXACT (post-double-check with PAPER_264/265/230/438 additional anchors)
+
+**10 new whitepapers PAPER_1940-1949 (all with PDFs):**
+- PAPER_1940 (143 KB PDF): DPM 1/3:2/3 spectrum split = 1/(D_phys-1) EXACT
+- PAPER_1941 (147 KB PDF): SO_5 = 10 decade cross-scale universality
+- PAPER_1942 (170 KB PDF): E_0 = F_TRZ EXACT photoevaporation initial factor
+- PAPER_1943 (169 KB PDF): L_t = R_Sch/((D_phys-1)*r_E) Einstein-ring amplification
+- PAPER_1944 (194 KB PDF): B/B_crit = 2*F_TRZ CANDIDATE (SGR 1745-2900)
+- PAPER_1945 (152 KB PDF): B/B_crit = n_lobes*F_TRZ CONFIRMED universality
+- PAPER_1946 (167 KB PDF): Magnetar timescale primitive-lock hierarchy
+- PAPER_1947 (188 KB PDF): Sgr A* JWST 2025 flare = 1/1800 Hz EXACT
+- PAPER_1948 (168 KB PDF): PDR tau_erosion = n_channels * SO_5^6 yr EXACT
+- PAPER_1949 (177 KB PDF): F_TRZ Three-Face manifestation framework
+
+**Cross-scale universality highlights:**
+- F_TRZ = 0.1 primitive now documented across 13 closures
+- SO_5 = 10 decade primitive confirmed across 5 independent scales
+- (D_phys - 1) = 3 factor confirmed across 4 independent physics regimes
+- omega_SCm 1.25 THz + PDR timescale SO_5^6 = 1 Myr + Sgr A* 30-min flare all locked
+
+**Region-safety verified across all rounds:** ORB_OLBERS_PARAMS=1, SOURCE57=1, SOURCE71=1.
+
+**Public calculator surface (`uqff_pure_calculator.py`) UNTOUCHED** — no dispatch changes, no primitive value drift, all 32 public surfaces still return {'value': X} only per CLAUDE.md purge contract.
+
+**PowerShell publish block (Windows) — user executes after review:**
+
+```powershell
+cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+
+# stage explicit files (never git add -A)
+git add CondensedPhysics.py pyproject.toml CITATION.cff CHANGELOG.md README.md SESSION_LOG.md uqff_api.py uqff_cli.py uqff_jupyter.py
+git add whitepapers/PAPER_1940_DPM_SPECTRUM_1_3_2_3_SPLIT_UQFF.md whitepapers/PAPER_1940_DPM_SPECTRUM_1_3_2_3_SPLIT_UQFF.pdf
+git add whitepapers/PAPER_1941_DPM_DECADE_RATIO_CROSS_SCALE_UNIVERSALITY_UQFF.md whitepapers/PAPER_1941_DPM_DECADE_RATIO_CROSS_SCALE_UNIVERSALITY_UQFF.pdf
+git add whitepapers/PAPER_1942_PHOTOEVAPORATION_E0_EQUALS_F_TRZ_UQFF.md whitepapers/PAPER_1942_PHOTOEVAPORATION_E0_EQUALS_F_TRZ_UQFF.pdf
+git add whitepapers/PAPER_1943_LENSING_AMPLIFICATION_RSCH_OVER_DPHYS_MINUS_1_R_UQFF.md whitepapers/PAPER_1943_LENSING_AMPLIFICATION_RSCH_OVER_DPHYS_MINUS_1_R_UQFF.pdf
+git add whitepapers/PAPER_1944_MAGNETAR_B_OVER_BCRIT_EQUALS_2FTRZ_UQFF.md whitepapers/PAPER_1944_MAGNETAR_B_OVER_BCRIT_EQUALS_2FTRZ_UQFF.pdf
+git add whitepapers/PAPER_1945_MAGNETAR_N_LOBES_TIMES_FTRZ_UNIVERSALITY_CONFIRMED_UQFF.md whitepapers/PAPER_1945_MAGNETAR_N_LOBES_TIMES_FTRZ_UNIVERSALITY_CONFIRMED_UQFF.pdf
+git add whitepapers/PAPER_1946_MAGNETAR_TIMESCALE_PRIMITIVE_LOCKS_UQFF.md whitepapers/PAPER_1946_MAGNETAR_TIMESCALE_PRIMITIVE_LOCKS_UQFF.pdf
+git add whitepapers/PAPER_1947_SGRA_JWST_FLARE_FREQUENCY_TRIPLE_PRIMITIVE_LOCK_UQFF.md whitepapers/PAPER_1947_SGRA_JWST_FLARE_FREQUENCY_TRIPLE_PRIMITIVE_LOCK_UQFF.pdf
+git add whitepapers/PAPER_1948_PDR_EROSION_TIMESCALE_SO5_POWER_HIERARCHY_UQFF.md whitepapers/PAPER_1948_PDR_EROSION_TIMESCALE_SO5_POWER_HIERARCHY_UQFF.pdf
+git add whitepapers/PAPER_1949_F_TRZ_THREE_FACE_MANIFESTATION_FRAMEWORK_UQFF.md whitepapers/PAPER_1949_F_TRZ_THREE_FACE_MANIFESTATION_FRAMEWORK_UQFF.pdf
+
+git status  # review before commit
+
+git commit -m "v5.52.0: Rounds 70-79 + PAPER_1940-1949 star-cluster/PDR/SMBH/magnetar sweep"
+
+git tag -a v5.52.0 -m "v5.52.0 release: 10 novel closures + 50 stub upgrades"
+
+git push origin master
+git push origin v5.52.0
+```
+
+**Notes for future sessions:**
+- Region-safety check pattern remains ORB_OLBERS_PARAMS=1, SOURCE57=1, SOURCE71=1
+- All 5 previously-upgraded families (Starbirth, Wd2, Pillars, Rings, Magnetar, Magnetar0501, SgrA) preserve full verify grid after v5.52.0 double-checks
+- PDR erosion timescale universality now runtime-verified at 2/3 anchors (Horsehead, Bubble); Pillars pending future retrofit
+- PAPER_1949 Three-Face F_TRZ formalism opens research thread: are other UQFF primitives (rho_SCm, K_MEX, SSq, beta_i, Phi_res) similarly multi-faced?
+- Candidate Round 80: continue Unification-family drainage (M16, SGR1745 separate stub, remaining diverse families) or extend PDR retrofit to Pillars/other PDRs

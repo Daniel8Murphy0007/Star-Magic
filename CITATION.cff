@@ -3,7 +3,7 @@ message: "If you use UQFF Star-Magic in your research, please cite it as below."
 type: software
 title: "UQFF Star-Magic: A Vacuum-First Unified Physics Framework"
 abbreviation: "UQFF"
-version: "5.51.0"
+version: "5.52.0"
 date-released: "2026-07-08"
 authors:
   - family-names: "Murphy"
@@ -50,17 +50,27 @@ preferred-citation:
     - family-names: "Murphy"
       given-names: "Daniel T."
   year: 2026
-  version: "5.51.0"
+  version: "5.52.0"
   url: "https://github.com/Daniel8Murphy0007/Star-Magic"
   notes: >-
     Cite both the software and the relevant whitepapers
-    (PAPER_001 through PAPER_1939) when referencing specific
+    (PAPER_001 through PAPER_1949) when referencing specific
     derivations. The full whitepaper catalog is in the repository
     under whitepapers/. Key structural closures documented in
-    PAPER_1912-1939: F_U=0 shell closure Sum U_gi = D_phys = 4 EXACT
+    PAPER_1912-1949: F_U=0 shell closure Sum U_gi = D_phys = 4 EXACT
     (PAPER_1916), nested Sub_Ug = SO_5/D_phys = 5/2 (PAPER_1917),
     F_TRZ power ladder n=1 to n=17 (PAPER_1919), Lambda cascade
     from master equation excited-shell sub-sum (PAPER_1920).
+    PAPER_1940-1949 (v5.52.0): DPM 1/3:2/3 spectrum split = 1/(D_phys-1)
+    EXACT (PAPER_1940), SO_5 = 10 decade cross-scale universality across
+    vacuum + cluster ISM + cluster gravity (PAPER_1941), photoevaporation
+    E_0 = F_TRZ EXACT + form-independence (PAPER_1942), Einstein-ring
+    L_t = R_Sch/((D_phys-1)*r_E) (PAPER_1943), magnetar B/B_crit =
+    n_lobes*F_TRZ CONFIRMED for full+half magnetars (PAPER_1944, 1945),
+    magnetar timescale primitive-locks (PAPER_1946), Sgr A* JWST 2025
+    flare = 1/((D_phys-1)*A_5*SO_5) = 1/1800 Hz EXACT (PAPER_1947),
+    PDR erosion timescale n*SO_5^6 hierarchy (PAPER_1948), and F_TRZ
+    three-face manifestation framework (PAPER_1949).
 references:
   - type: article
     title: "F_U = 0 Simultaneous Solver Convergence (Canonical v1.5)"
@@ -89,11 +99,4 @@ references:
       - family-names: "Murphy"
         given-names: "Daniel T."
     year: 2026
-    notes: "PAPER_1521 — D_BSFG = D_crit - 2*SO_5 = 6 EXACT"
-  - type: article
-    title: "K_MEX Derivative from Phi_5/6 — Primitive Reduction"
-    authors:
-      - family-names: "Murphy"
-        given-names: "Daniel T."
-    year: 2026
-    notes: "PAPER_1522 — K_MEX = (5/6)*SO_5/D_phys = 25/12 EXACT"
+    note
