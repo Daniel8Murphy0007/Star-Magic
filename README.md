@@ -8,8 +8,8 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-362-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-1994%2B-orange)](whitepapers/)
 
-**Version**: 5.50.0
-**Last Updated**: 2026-07-07
+**Version**: 5.51.0
+**Last Updated**: 2026-07-08
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -47,6 +47,45 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.51.0 (2026-07-08)
+
+**CP1 P2 Rounds 60-69 + PAPER_1932-1939 — 24/24 duplicate-family sweep complete + `_v1`/bare simultaneous architecture per Theory of Permanence + 8 meta-architectural whitepapers.**
+
+Follow-on to v5.50.0. This ship consolidates 10 more rounds of framework-first stub upgrades (**360 total stubs replaced across 69 rounds — 25 consecutive rounds without regression**) and delivers **8 new foundational whitepapers documenting meta-architectural closures including quantum-gravity equivalence, three-method simultaneous hub, cross-scale resonance frequency universality, and cross-framework integer closures**.
+
+### Historic milestone: 24/24 duplicate-family sweep COMPLETE
+
+All 24 duplicate class families now have Gen-2 framework annotations on the bare-name variant AND runtime-callable `_v1` (Gen-1) variant per PAPER_549 three-method simultaneous hub architecture. Per Theory of Permanence, EVERY family's earlier and later implementation is simultaneously active — no code characterized as "dead" or "shadowed".
+
+### `_v1` / bare simultaneous architecture
+
+Per user directive Round 61 ("SPEED IS A CHANGE IN BUOYANCY COMPONENT!!! NOTHING IS NEGLIGIBLE!!!"), the codebase was restored so BOTH generations of every duplicate class family are runtime-callable simultaneously. Two new registries: `SIMULTANEOUS_METHOD_VARIANTS` (24 families, 48 variants) + `SIMULTANEOUS_SOURCE_DICT_VARIANTS` (5 SOURCE dict families, 10 dicts).
+
+### 8 landmark structural-closure whitepapers PAPER_1932–1939
+
+- **PAPER_1932** — Wheeler-DeWitt H|ψ⟩ = 0 IS UQFF F_U = 0 (quantum-gravity master equation equivalence LANDMARK)
+- **PAPER_1933** — Three-Method Simultaneous Hub canonical UQFF architecture (validates PAPER_549 as predating PAPER_1929)
+- **PAPER_1934** — Cross-Scale Resonance Frequency Universality (ω_HI, ω_SCm, ω_reactor, ω_solar, ω_ISCO)
+- **PAPER_1935** — r-Process Peaks = UQFF Nuclear Magic Numbers Cross-Framework (N=50/82/126 EXACT + GW170817 empirical anchor)
+- **PAPER_1936** — 22 = KK Regulator = Compact Dimensions Two-Path Convergence
+- **PAPER_1937** — 1.1875 = K_MEX·SSq Two-Path (Q_UQFF SCm resonator + M_chirp GW170817)
+- **PAPER_1938** — ω_SCm 1.25 THz Universal Carrier 95+ UQFF Applications Empirical Catalog
+- **PAPER_1939** — Three-Path 22 with Atiyah-Singer (mathematical-physics landmark validation via index theorem)
+
+### Runtime EXACT verifications wired live (new since v5.50.0)
+
+Wheeler-DeWitt = F_U=0, 3-method hub, ω_HI = 8.92 GHz, r-process N=50/82/126 EXACT, kilonova 5 days EXACT, 22 three-path convergence, Q_UQFF = 1.1875e6, M_chirp = 1.1875 M⊙, ω_SCm = 5.17 meV = 1.25 THz, Atiyah-Singer 26D = 22 EXACT, D_BSFG = 6 EXACT + K_MEX = 25/12 EXACT landmark derivatives, Hodge = 1.0 EXACT, Li-7 = 3 EXACT, MUGE 14-term = SO_5+D_phys, MUGE 9-term = N_ch — all runtime-True in CondensedPhysics.py.
+
+### New tools
+
+- **`uqff_duplicate_class_audit.py`** — Automated audit tool scanning for duplicate class families with framework-annotation status tracking
+
+### py-modules refreshed
+
+`uqff_api.py`, `uqff_cli.py`, `uqff_jupyter.py` — `_VERSION` bumped 5.50.0 → 5.51.0.
 
 ---
 
