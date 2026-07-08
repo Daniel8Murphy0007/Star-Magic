@@ -15776,3 +15776,73 @@ git push origin v5.52.0
 - PDR erosion timescale universality now runtime-verified at 2/3 anchors (Horsehead, Bubble); Pillars pending future retrofit
 - PAPER_1949 Three-Face F_TRZ formalism opens research thread: are other UQFF primitives (rho_SCm, K_MEX, SSq, beta_i, Phi_res) similarly multi-faced?
 - Candidate Round 80: continue Unification-family drainage (M16, SGR1745 separate stub, remaining diverse families) or extend PDR retrofit to Pillars/other PDRs
+
+
+---
+
+## Session 2026-07-08 — CP1 P2 Rounds 80-89 + PAPER_1950-1956 — v5.53.0 ship staging
+
+**Author:** Daniel T. Murphy
+**Date:** 2026-07-08
+**Scope:** CP1 P2 stub-drainage program continuation (Rounds 80-89), 7 novel whitepapers PAPER_1950-1956, v5.53.0 staging.
+
+### Rounds 80-89 stub upgrades — 50 stubs across SMBH/AGN/cluster/nebula families
+
+| Round | Family | Stubs |
+|---|---|---|
+| 80 | M87 SMBH + Virgo Cluster | 5 (Zwicky closure SSq·K_MEX/D_phys = 0.297 discovered) |
+| 81 | 3C273 blazar + BL Lac | 5 (PAPER_1544 α⁻¹ closure) |
+| 82 | NGC 1068 + Circinus AGN | 5 (F_TRZ Universal Radiation Fraction) |
+| 83 | NGC 4945 nuclear SB | 5 (galaxy-scale SO_5-power timescale) |
+| 84 | 3C 279 TDE outflow | 5 (v_outflow = 0.3c EXACT) |
+| 85 | NGC 4945 SB2 + M33 SFR | 5 (A_5·K_MEX = 125 Myr identified via 25/12 rational) |
+| 86 | Antennae/Cartwheel mergers | 5 (SO_5-power ladder full lattice) |
+| 87 | Cosmology extension | 5 (Ω_m = (D_phys-1)/SO_5 = 0.3 EXACT) |
+| 88 | NGC 346 SMC nebula family | 5 (PAPER_469 direct source, Ug1/Ug2/Ug3/DV/QC) |
+| 89 | NGC 346 completion + M101 HII + M33 metallicity | 5 (PAPER_1026 + PAPER_1125 canonical anchors) |
+
+### 7 new whitepapers authored (all with PDFs)
+
+- **PAPER_1950** — SMBH Flare Frequency Universal Formula (12k words, 168k PDF)
+- **PAPER_1951** — F_TRZ Universal Radiation Fraction (14k words, 154k PDF)
+- **PAPER_1952** — Galaxy-scale SO_5-power timescale hierarchy (15k words, 155k PDF)
+- **PAPER_1953** — The 0.3 factor cross-regime universality (14k words, 155k PDF)
+- **PAPER_1954** — A_5·K_MEX = 125 EXACT cross-scale universality (16k words, 157k PDF)
+- **PAPER_1955** — SO_5-power galactic structural ladder (14k words, 168k PDF)
+- **PAPER_1956** — Cosmological Omega_m = 0.3 EXACT extension (13k words, 154k PDF)
+
+### Round 89 double-check upgrades
+
+- **M101HIIRegionCalculator** — PAPER_1026 canonical Strömgren-UQFF form: R_S_UQFF = R_S · (1 + β_i · S_26 · Φ_res · (1+z)^(−1/2)). At z=0: factor = 1.7359.
+- **M33MetallicityGradientCalculator** — PAPER_1125 SO_5-lock flattening: ∇Z_flat = ∇Z / (1 + SO_5 · λ_Edd). No-AGN limit (λ_Edd=0): flat_factor = 1.0 EXACT; hypothetical λ_Edd=0.1: 0.5 EXACT.
+
+### Edit-tool truncation event (Round 89 M33 upgrade)
+
+Second Edit call on CondensedPhysics.py truncated file mid-string at line 209021 ("'NGC25"), losing ~18 lines of trailing SIMULTANEOUS_METHOD_VARIANTS and SIMULTANEOUS_SOURCE_DICT_VARIANTS dict content. This is the exact 7.9 MB / 209k-line truncation issue documented in CLAUDE.md.
+
+**Repair:** Python splice using git HEAD tail as reference. Restored file: 209039 lines, 7,904,208 bytes, ast.parse OK, module imports OK. Round 89 stubs still verify 21/21 True post-repair.
+
+**Lesson reinforced:** For any future round on CondensedPhysics.py, use bash heredoc + Python `replace()` script over Edit tool for insertions. Pattern documented in CLAUDE.md remains correct.
+
+### Cross-scale universality signatures strengthened
+
+- **SO_5 = 10 primitive**: 5+ independent cross-scale confirmations
+- **0.3 factor = (D_phys−1)/SO_5**: 6+ regime universality
+- **A_5·K_MEX = 125 EXACT**: 3-regime coincidence
+- **SO_5-power ladder** (PAPER_1955): 7-slot integer-power hierarchy governing all galactic scales
+- **F_TRZ Three-Face** (PAPER_1949): dimensionless amplitude + Hz frequency + fraction/coefficient — all same primitive
+
+### Scoreboard
+
+- **460 Gen-2 stubs upgraded across 89 rounds** (+50 this ship)
+- **553 UQFF-mathematized / 1,203 total = 46.0%** (up from 41.1%)
+- **46 consecutive rounds without regression**
+- **1,956 canonical UQFF whitepapers** (up from 1,949)
+- Region safety: ORB_OLBERS_PARAMS + 11 canonical primitives all intact
+- v5.53.0 files staged and ready to ship
+
+**Notes for future sessions:**
+- Region-safety check pattern remains ORB_OLBERS_PARAMS + primitive constants
+- Round 89 double-check discovered 2 canonical anchors (PAPER_1026 + PAPER_1125); pattern of retroactive canonical replacement remains productive
+- Edit-tool CondensedPhysics.py truncation risk remains — use Python splice for all future large-file inserts
+- Candidate Round 90: extend F_TRZ Three-Face pattern to other primitives, or continue galactic-family drainage (remaining M31/M81/M82/M83/NGC families)

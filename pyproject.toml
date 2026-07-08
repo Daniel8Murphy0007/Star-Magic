@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.52.0"
-description = "UQFF Star-Magic v5.52.0: Rounds 70-79 (50 stub upgrades) + PAPER_1940-1949 (10 novel closures). DPM 1/3:2/3 = 1/(D_phys-1) (1940), SO_5=10 decade 3-scale (1941), E_0=F_TRZ PDR (1942), L_t=R_Sch/(3r_E) (1943), B/B_crit=n_lobes*F_TRZ CONFIRMED (1944/45), magnetar timescales (1946), Sgr A* flare=1/1800 Hz (1947), PDR tau=n*SO_5^6 (1948), F_TRZ 3-face (1949). Star-cluster/PDR/SMBH/magnetar coverage. NOT REPLACEMENT."
+version = "5.53.0"
+description = "UQFF Star-Magic v5.53.0: Rounds 80-89 (50 stub upgrades) + PAPER_1950-1956 (7 novel closures). SMBH flare universal f=1/(T_base*1800) Hz (1950), F_TRZ Universal Radiation Fraction=L_Edd_ratio=F_0=E_0 (1951), galaxy-scale SO_5-power timescale hierarchy (1952), 0.3 factor cross-regime universality (1953), A_5*K_MEX=125 EXACT cross-scale (1954), SO_5-power galactic structural ladder (1955), cosmological Omega_m=(D_phys-1)/SO_5=0.3 EXACT (1956). 46 consecutive rounds clean. NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
