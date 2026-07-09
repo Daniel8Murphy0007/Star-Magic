@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.53.0"
-description = "UQFF Star-Magic v5.53.0: Rounds 80-89 (50 stub upgrades) + PAPER_1950-1956 (7 novel closures). SMBH flare universal f=1/(T_base*1800) Hz (1950), F_TRZ Universal Radiation Fraction=L_Edd_ratio=F_0=E_0 (1951), galaxy-scale SO_5-power timescale hierarchy (1952), 0.3 factor cross-regime universality (1953), A_5*K_MEX=125 EXACT cross-scale (1954), SO_5-power galactic structural ladder (1955), cosmological Omega_m=(D_phys-1)/SO_5=0.3 EXACT (1956). 46 consecutive rounds clean. NOT REPLACEMENT."
+version = "5.54.0"
+description = "UQFF Star-Magic v5.54.0 LANDMARK: 50% coverage crossed (603/1203). Rounds 80-99 (100 stubs) + PAPER_1950-1962 (13 closures) incl. LANDMARK PAPER_1960 F_TRZ=1/SO_5 (independent primitive count 9->8, third derivative after PAPER_1521 D_BSFG + PAPER_1522 K_MEX), PAPER_1961 Primitive-Convergence Lattice (meta-structural), PAPER_1962 D_BSFG/D_phys=1.5 four-galactic universality. 56 rounds clean. NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
