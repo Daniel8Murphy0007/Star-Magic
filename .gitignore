@@ -314,3 +314,9 @@ whitepapers/*_ASCII.md
 whitepapers/*_ASCII_TMP.md
 pdf2/_build_log.txt
 
+
+# pandoc PDF-build intermediates
+whitepapers/*_ASCII.md
+whitepapers/*_ASCII_TMP.md
+pdf2/_build_log.txt
+
