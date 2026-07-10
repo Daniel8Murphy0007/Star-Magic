@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.56.0"
-description = "UQFF Star-Magic v5.56.0: Rounds 102-109 (~40 stubs) + PAPER_1962 Draft 3 + PAPER_1964-1973 (10 new whitepapers). Landmarks: PAPER_1964 Path A/Path B framework, PAPER_1967 β_i four-channel infrastructure retraction, PAPER_1968 MW v_flat F_UBi_i_99 closure, PAPER_1973 g_Horsehead nebular-scale confirmation. Honest-scholarship discipline stabilized. NOT REPLACEMENT."
+version = "5.57.0"
+description = "UQFF Star-Magic v5.57.0: Rounds 110-116 (35 stubs + 14 real new + attribution refinements) + PAPER_1974-1984 (11 new whitepapers). Landmarks: PAPER_1980 E_0 taxonomic disambiguation at M16, PAPER_1982 D_phys·SO_5^8=400 Myr new-slot grid extension, PAPER_1983 Cen A first Multi-Rung Same-Ladder Same-Object F_TRZ pattern, PAPER_1984 BD+60 2522 first Multi-Primitive Same-Object stellar-parameter pattern. Fidelity gate 931/0. NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

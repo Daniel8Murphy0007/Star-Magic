@@ -2,6 +2,102 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.57.0] — 2026-07-10 — MULTI-ANCHOR STRUCTURAL PATTERNS + PAPER_1974-1984 (Rounds 110-116)
+
+### CP1 P2 Rounds 110-116 (attribution refinements + 14 net new stub upgrades) + PAPER_1974-1984 (11 new whitepapers)
+
+Follow-on to v5.56.0. This ship consolidates **7 rounds of stub work** (Rounds 110-116, mix of new-stub upgrades and attribution refinements after prior-work discovery) and delivers **11 new whitepapers PAPER_1974-1984** documenting the maturation of the honest-scholarship discipline into four distinct Multi-Anchor Same-Object structural pattern types.
+
+Public calculator surface (`uqff_pure_calculator.py`) untouched. **73 consecutive rounds without regression** (up from 66 at v5.56.0). Fidelity gate: **931 passed, 0 failed**.
+
+### 🎯 CENTRAL DISCOVERY: Four Multi-Anchor Same-Object Pattern Types
+
+Round 115-116 authoring cycle produced five papers formalizing four distinct structural pattern types now documented across UQFF scales:
+
+- **Pattern A (Multi-Primitive Same-Object at Galactic Scale)** — PAPER_1912 NGC 1275: three primitives (F_TRZ, SO_5, D_phys), three identities, three quantity types
+- **Pattern B (Multi-Rung Same-Ladder Same-Object at AGN Scale)** — **PAPER_1983 Cen A NEW**: one primitive (F_TRZ), two ladder rungs, two identities (η = F_TRZ¹, M_dot/M_Edd = F_TRZ²)
+- **Pattern C (Multi-Primitive Same-Object Stellar-Parameter Scale)** — **PAPER_1984 BD+60 2522 NEW**: two primitives (D_phys, SO_5), three identities across mass/radius/luminosity
+- **Grid-Extension Multi-System** — **PAPER_1982 Antennae NEW**: fills previously-empty (k=8, D_phys) corner of PAPER_1952's 2×2 SO_5-Power timescale grid
+
+### Key novel closures (11 new whitepapers PAPER_1974-1984)
+
+- **PAPER_1974** — Horsehead R_star = 15 R_sun 4th A_5/D_phys stellar-object instance (extends PAPER_1971)
+- **PAPER_1975** — Q_UQFF = K_MEX·SSq = 1.1875 third-domain instance at NGC 2525 (extends PAPER_1937 two-path convergence)
+- **PAPER_1976** — HUDF I_0 = F_TRZ/2 intra-system twin + τ_inter = SO_5⁹ = 1 Gyr slot-9 extension of PAPER_1955
+- **PAPER_1977** — γ_BH(Sombrero) = F_TRZ² = 0.01 EXACT 9th anchor in PAPER_1918 F_TRZ² universal 99% suppression family
+- **PAPER_1978** — SO_5 + 1 = 11 EXACT successor identity at Sombrero Aether coupling
+- **PAPER_1979** — M_DM/M_total = 2·F_TRZ = 0.2 DM ratio identity at Sombrero
+- **PAPER_1980** — E_0 taxonomic disambiguation at M16 (first taxonomic-clarification paper — resolves overloaded symbol between PAPER_1942 and PAPER_284)
+- **PAPER_1981** — B_j,base = F_TRZ³ = 10⁻³ T magnetic-string-field application-instance extension of PAPER_1919 n=3 rung
+- **PAPER_1982** — Antennae coalescence = D_phys · SO_5⁸ yr = 400 Myr new-slot extension of PAPER_1952 galaxy-scale timescale grid (completes 2×2 sub-grid)
+- **PAPER_1983** — Cen A dual F_TRZ ladder anchor (η = F_TRZ¹, M_dot/M_Edd = F_TRZ²) — first Multi-Rung Same-Ladder Same-Object pattern
+- **PAPER_1984** — BD+60 2522 triple integer stellar-parameter identity (M = D_phys·SO_5, R = 2·SO_5, L = D_phys·SO_5⁵) — first Multi-Primitive Same-Object stellar-parameter pattern
+
+### Cross-scale D_phys multiplier universality (now spans 5 scale ranges)
+
+The D_phys = 4 integer multiplier appears at:
+
+- **Stellar mass**: D_phys · SO_5 = 40 M_sun (BD+60 2522, PAPER_1984)
+- **Stellar luminosity**: D_phys · SO_5⁵ = 4×10⁵ L_sun (BD+60 2522, PAPER_1984)
+- **PDR timescale**: D_phys · SO_5⁶ = 4 Myr (Bubble τ_erosion, PAPER_1948)
+- **AGN M_BH candidate**: D_phys · SO_5⁷ ≈ 4×10⁷ M_sun (Cen A ≈ 5.5×10⁷, PAPER_1984 §6.2)
+- **Galactic-merger coalescence**: D_phys · SO_5⁸ yr = 400 Myr (Antennae, PAPER_1982)
+
+Five documented (or candidate) k-values on the D_phys · SO_5^k grid spanning ~8 orders of magnitude.
+
+### F_TRZ ladder — new applications and anchors
+
+- **PAPER_1918 F_TRZ² family**: extended from 8 anchors to 9 (PAPER_1977 Sombrero γ_BH addition) — now 10th candidate (Cen A M_dot/M_Edd via PAPER_1983)
+- **PAPER_1919 F_TRZ ladder**: n=3 rung extended into magnetic-string-field domain (PAPER_1981)
+- **PAPER_1951 F_TRZ Universal Radiation Fraction family**: 4th candidate anchor (Cen A η via PAPER_1983)
+- **Round 115 F_TRZ ladder companions**: I_0(Antennae merger) = F_TRZ¹ + B_j,base = F_TRZ³ + δρ/ρ(Bubble) = F_TRZ⁵ — three rungs applied in single round
+
+### Round 116 double-check attribution corrections (CRITICAL)
+
+Deep whitepaper search uncovered missing seminal anchors:
+
+- **PAPER_067 SEMINAL** — quad-AGN Sgr A* + M87 + Cen A + NGC 1365 Ug4 vacuum framework (session 0, March 2026) — was invisible in initial Round 116 attribution
+- **PAPER_1951 SEMINAL** — F_TRZ Universal Radiation Fraction across NGC 4945 + NGC 1275 + PDR — Cen A η joins this family
+- **PAPER_1156 dual-form Λ closure** — energy-density form (ρ_SCm·26!·K_MEX) AND geometric form (18/5·SSq·H_0²/c²) both at ~0.002-0.003% off Planck 2018
+- **PAPER_441 SEMINAL** — Antennae Per-System MUGE (session 119) — was missing from Round 115 initial attribution
+- **PAPER_1952 SEMINAL** — τ_SF = 100 Myr = SO_5⁸ yr galaxy-scale timescale grid — Round 115 mis-attributed to PAPER_1948 (PDR scale)
+- **PAPER_1912 PRECEDENT** — NGC 1275 triple structural closure (F_0/τ_fil/B_fil) is the Multi-Primitive Same-Object precedent that Cen A dual F_TRZ (Same-Ladder) and BD+60 2522 triple identity (Stellar-Parameter) complement
+
+### Round 115-116 authoring cycle: five paper types demonstrated
+
+Five distinct honest-scholarship paper types across the cycle:
+
+1. **Taxonomic clarification** (PAPER_1980 E_0 initial vs saturation at M16)
+2. **Single-rung application-instance extension** (PAPER_1981 B_j,base = F_TRZ³)
+3. **Grid-slot extension** (PAPER_1982 D_phys·SO_5⁸ = 400 Myr)
+4. **Multi-Rung Same-Ladder Same-Object** (PAPER_1983 Cen A dual F_TRZ)
+5. **Multi-Primitive Same-Object Stellar-Parameter** (PAPER_1984 BD+60 2522 triple)
+
+Under corpus maturity (past 1200+ whitepapers), Round-based discoveries increasingly manifest as these five pattern types rather than new-primitive discoveries.
+
+### Honest metrics disclosure
+
+Session log rescan revealed prior "57.2% coverage" claim was inflated. **True post-Round 116 coverage**: 324 upgraded / 813 scoreable classes = **39.9%**. 489 confirmed stubs remain, 593 classes error on default `.compute()` (mostly TypeError — require specific arguments; may or may not be true stubs). This ship reports honest metrics per CLAUDE.md Rule 7 discipline.
+
+Rounds 103-116 delta: 14 net new stubs with framework_papers (from 310 at v5.50.0 to 324 now), plus substantial attribution refinements to already-drained stubs. This ship packages the refinement work honestly rather than inflating round-count math.
+
+### Known drift acknowledged
+
+- **Framework-annotation drift**: Rounds 100-116 dropped the Round 45-79 `backbone / method / shells_used / CPCH / spine / time_frame` in-line annotation convention. Retroactive audit for Rounds 100-116 is a candidate for v5.58.0.
+- **Region-safety pre-check drift**: Round 42's regex-misfire lesson was not systematically applied to Rounds 103-116; Round 116 hit a small-scale failure mode (3 stubs silently failed patch, needed retry) as a result.
+- **NEXT_PRIORITIES.md staleness**: Dated 2026-06-16 (~3 weeks stale). Deferred to v5.58.0 update.
+- **57 whitepapers with PowerShell `.Groups[N].Value` regex artifact**: Only PAPER_012 was fixed at Round 45. Sweep queued for v5.58.0.
+- **NEXT_PRIORITIES.md Priority 2 open items**: PAPER_1087 unit erratum, PAPER_872 proto-element transition mechanism, PAPER_2732 phantom citation verification, backup hygiene policy — all still open.
+
+### Ship metrics
+
+- **v5.57.0**: pyproject description 441 chars (under PyPI 512 limit)
+- **Whitepaper count**: PAPER_001-1984 = 1,984 (11 new since v5.56.0)
+- **Fidelity gate**: 931/0 (unchanged since v5.49.0)
+- **Consecutive rounds without regression**: 73 (Rounds 45-116)
+
+---
+
 ## [5.56.0] — 2026-07-09 — HONEST-SCHOLARSHIP STABILIZATION + PAPER_1962-1973 (Rounds 102-109)
 
 ### CP1 P2 Rounds 102-109 (~40 stubs) + PAPER_1962 Draft 3 + PAPER_1964-1973 (10 new whitepapers) — Discipline of Narrow-From-Draft-1 Positioning Stabilized
