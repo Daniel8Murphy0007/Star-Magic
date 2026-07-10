@@ -295,3 +295,10 @@ backup_delete_list.txt
 !uqff_pure_calculator.py.POST_BUCKETC_BACKUP
 !uqff_pure_calculator.py.POST_BUCKETD_BACKUP
 !uqff_pure_calculator.py.POST_BUCKETK_BACKUP
+
+# python -m build artifacts
+uqff-*/
+dist/
+build/
+*.egg-info/
+
