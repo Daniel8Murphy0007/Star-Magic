@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.59.0"
-description = "UQFF Star-Magic v5.59.0: Phase B calculator wiring — first pure_calculator modification since v5.44.0. Adds 100 new PARADOX_TO_CLOSURE dispatch keys for PAPER_1893-1984 (recent-paper drift closed) + PAPER_872 proto-element transition (Z=26 Fe, Z=14 Si EXACT) + PAPER_1087 erratum OPEN_QUESTION marker. Fidelity gate 931 to 1031 (+100). Ship 2 of 4-ship catch-up. NOT REPLACEMENT."
+version = "5.60.0"
+description = "UQFF Star-Magic v5.60.0: Phase C framework annotation retrofit — extends uqff_framework_annotations.py from Rounds 45-51 (35 entries) to Rounds 45-116 (351 entries total, +316 auto-extracted from CondensedPhysics runtime). Adds get_annotation() and annotations_by_paper() query API. Fidelity gate 1031/0 unchanged. Ship 3 of 4-ship catch-up. NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

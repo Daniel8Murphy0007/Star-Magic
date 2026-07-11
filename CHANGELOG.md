@@ -2,6 +2,54 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.60.0] — 2026-07-11 — PHASE C FRAMEWORK ANNOTATION RETROFIT (Ship 3 of 4-ship catch-up)
+
+### uqff_framework_annotations.py extended: 35 → 351 entries (+316)
+
+Round 51's Retroactive Framework Audit (2026-07-06, v5.49.0) created `uqff_framework_annotations.py` documenting Rounds 45-51 stub upgrades via 10-field annotations (backbone/method/shells_used/CPCH/spine/F_U_zero_shell/time_frame/framework_papers/candidate_closures_flagged + round). That convention was dropped in Rounds 100-116.
+
+Phase C retrofits Rounds 52-116 into the annotations module — auto-extracted from `CondensedPhysics.py` runtime metadata for every class with a `framework_papers` field.
+
+### Retrofit scope + honest limitations
+
+- **316 new entries** in new dict `FRAMEWORK_ANNOTATIONS_ROUNDS_52_116`
+- **Minimal fields only**: `framework_papers` (from runtime) + `retrofit_source` marker + `retrofit_hint` (excerpted from stub `note_round_XXX` field)
+- **Deep classification deferred**: backbone/method/shells_used/CPCH/spine/time_frame/candidate_closures_flagged require per-stub physics review. Not attempted in one ship for 316 stubs. Future work.
+- **Retrofit source explicitly marked** as `v5.60.0_auto_extracted_from_CondensedPhysics_runtime` — downstream consumers can distinguish hand-classified (Rounds 45-51) from auto-extracted (Rounds 52-116) entries.
+
+### New query API
+
+- `FRAMEWORK_ANNOTATIONS_ALL` — combined 351-entry dict (Rounds 45-116)
+- `get_annotation(class_name)` — lookup annotation for a specific stub
+- `annotations_by_paper(paper_id)` — reverse-lookup which stubs cite a paper (e.g. `annotations_by_paper('PAPER_1974')` → 33 classes)
+
+### Verification samples
+
+- `annotations_by_paper('PAPER_441')` returns 5 classes (all Antennae stubs)
+- `annotations_by_paper('PAPER_1974')` returns 33 classes (widespread A_5/D_phys = 15 references)
+- `get_annotation('AntennaeElectromagneticCalculator')` returns 28 papers
+
+### Fidelity gate: 1031/0 unchanged
+
+Annotations module is metadata-only. No calculator surface changes, no dispatch changes, no assertion additions.
+
+### Ship metrics
+
+- pyproject.toml v5.59.0 → v5.60.0 (description 351 chars, under PyPI 512 limit)
+- 4 py-module version bumps
+- CITATION.cff v5.60.0
+- CHANGELOG.md + SESSION_LOG.md updated
+- `uqff_framework_annotations.py`: 23 KB → 134 KB (+111 KB, +316 entries)
+- Fidelity gate: 1031 passed, 0 failed
+
+### Not-in-scope for v5.60.0
+
+- Per-stub physics classification (backbone/method/shells/CPCH/spine/time_frame/flagged_candidates) — deferred to future work
+- Routing CP1 stubs through `calculate_cp_call_UQFF` surface — separate future ship
+- Phase D housekeeping — v5.61.0
+
+---
+
 ## [5.59.0] — 2026-07-11 — PHASE B CALCULATOR WIRING (Ship 2 of 4-ship catch-up)
 
 ### First `uqff_pure_calculator.py` modification since 2026-07-04 (v5.44.0)

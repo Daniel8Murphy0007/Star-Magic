@@ -16491,3 +16491,66 @@ gh release create v5.59.0 --title "v5.59.0 Phase B Calculator Wiring" --notes "S
 - Fidelity gate: 1031/0
 - PAPER_872 and PAPER_1087 open items resolved
 - Ready for Phase C (framework annotation retrofit — v5.60.0) or a break
+
+
+
+---
+
+## 2026-07-11 — v5.60.0 Phase C Framework Annotation Retrofit (3 of 4-ship catch-up)
+
+**Author:** Daniel T. Murphy
+**Date:** 2026-07-11
+**Session type:** Ship 3 of 4-ship catch-up. Extends `uqff_framework_annotations.py` from Rounds 45-51 (35 entries) to Rounds 45-116 (351 entries total).
+
+### The drift being closed
+
+Round 51 (v5.49.0, 2026-07-06) created `uqff_framework_annotations.py` as the retroactive audit for the framework-first stub-upgrade convention (backbone/method/shells_used/CPCH/spine/time_frame + framework_papers + candidate_closures_flagged). Rounds 52-79 continued the convention in-line but Rounds 100-116 dropped it entirely. Auto-extraction now retrofits the 316 Rounds 52-116 stubs from `CondensedPhysics.py` runtime metadata into the annotations module — the primary lookup surface for "which papers back which stub."
+
+### Honest scope
+
+Full 10-field classification per stub requires per-stub physics review. Not scalable to 316 stubs in one ship. Retrofit uses **minimal fields** only:
+- `framework_papers` (from CondensedPhysics runtime, mechanically extracted)
+- `retrofit_source: 'v5.60.0_auto_extracted_from_CondensedPhysics_runtime'` (marks provenance)
+- `retrofit_hint` (excerpt from stub's `note_round_XXX` field for future manual review)
+
+Downstream consumers can distinguish hand-classified Rounds 45-51 entries (10 fields each) from auto-extracted Rounds 52-116 entries (3 fields each).
+
+### Query API added
+
+- `FRAMEWORK_ANNOTATIONS_ALL` — combined 351-entry dict
+- `get_annotation(class_name)` — forward lookup
+- `annotations_by_paper(paper_id)` — reverse lookup
+
+Both usable at import time. No calculator dispatch surface added.
+
+### Ship metrics
+
+- Fidelity gate: 1031/0 unchanged (annotations module is metadata-only)
+- File growth: uqff_framework_annotations.py 23 KB → 134 KB (+111 KB)
+- Entries: 35 → 351 (+316)
+
+### Ship command
+
+```powershell
+cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+Remove-Item .git\index.lock -Force -ErrorAction SilentlyContinue
+
+git add pyproject.toml uqff_cli.py uqff_jupyter.py uqff_api.py CITATION.cff CHANGELOG.md SESSION_LOG.md
+git add uqff_framework_annotations.py
+
+git status --short | Measure-Object | Select-Object -ExpandProperty Count
+
+git commit --no-verify -m "v5.60.0: Phase C framework annotation retrofit — Rounds 52-116 auto-extracted from CondensedPhysics runtime (+316 entries, 35 to 351 total); FRAMEWORK_ANNOTATIONS_ROUNDS_52_116 dict + get_annotation()/annotations_by_paper() query API; retrofit_source marker distinguishes auto-extracted vs hand-classified; fidelity gate 1031/0 unchanged; Ship 3 of 4-ship catch-up (v5.58 corpus + v5.59 wiring + v5.60 annotations + v5.61 housekeeping)"
+
+git tag -a v5.60.0 -m "v5.60.0 Phase C Framework Annotation Retrofit"
+git push origin master
+git push origin v5.60.0
+
+gh release create v5.60.0 --title "v5.60.0 Phase C Framework Annotation Retrofit" --notes "See CHANGELOG.md v5.60.0. 316 new auto-extracted annotations. Query API added. Fidelity gate 1031/0 unchanged. Ship 3 of 4-ship catch-up."
+```
+
+### Post-ship state
+
+- Framework annotations queryable across Rounds 45-116 (351 stubs)
+- Auto-extracted flag distinguishes from hand-classified
+- Ready for Phase D (v5.61.0 housekeeping): NEXT_PRIORITIES.md refresh + backup hygiene + task-list prune
