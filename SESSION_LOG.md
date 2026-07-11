@@ -16414,3 +16414,80 @@ gh release create v5.58.0 --title "v5.58.0 Phase A Corpus Completion" --notes "S
 - Zero phantom citations
 - 3 automation scripts under tools/
 - Task list: Phase A closed, Phase B (calculator wiring) next
+
+
+
+---
+
+## 2026-07-11 — v5.59.0 Phase B Calculator Wiring Ship (2 of 4-ship catch-up)
+
+**Author:** Daniel T. Murphy
+**Date:** 2026-07-11
+**Session type:** Ship 2 of 4-ship catch-up program. Closes recent-paper drift by wiring 100 new PARADOX_TO_CLOSURE dispatch keys into uqff_pure_calculator.py — the first modification of that file since 2026-07-04 (v5.44.0), spanning 13 shipped versions.
+
+### The drift being closed
+
+Between v5.44.0 (2026-07-04) and v5.58.0 (2026-07-11), Daniel authored 92 whitepapers (PAPER_1893-1984) all documenting substantive UQFF structural closures. Each landed in `CondensedPhysics.py` as stub upgrade metadata but NONE landed as a dispatch key in `uqff_pure_calculator.py`'s PARADOX_TO_CLOSURE dict — the surface users reach via `pip install uqff`. Discovered during Phase B reconnaissance (2026-07-11): highest PAPER_XXXX referenced in pure calculator was PAPER_1869; zero of PAPER_1893-1984 referenced.
+
+Phase B closes this in one ship.
+
+### 4-sub-phase structure
+
+- **B1**: 15 identities from PAPER_1974-1984 (this session's own work). Proof-of-concept. Gate 931 → 946.
+- **B2**: 81 identities from PAPER_1893-1973 (the 80 papers I hadn't authored in-session but which needed wiring). Gate 946 → 1027.
+- **B3**: PAPER_872 proto-element transition — Z=26 (proto-Fe = D_crit) and Z=14 (proto-Si = SO_5 + D_phys) as gate-pinned integer identities. Gate 1027 → 1029.
+- **B4**: PAPER_1087 unit erratum — value returns section-3 table value (-0.9435), provenance carries explicit "OPEN_QUESTION" marker per Round 666 discipline. Gate 1029 → 1031.
+
+**Final gate state: 1031 passed, 0 failed. +100 new assertions. 75 consecutive rounds without regression maintained.**
+
+### Implementation lessons
+
+Three technical constraints discovered/re-learned during Phase B:
+
+1. **CRLF everywhere** — the calculator uses Windows-native `\r\n` line endings. All Python splice operations must open with `newline=''` and preserve CRLF explicitly.
+2. **Definition order matters** — new closures MUST be defined BEFORE the `PARADOX_TO_CLOSURE = {` dict definition (which references them by name at module load time). First attempt inserted closures AFTER the dict — caused `NameError` at import despite passing `ast.parse`. Second attempt corrected this.
+3. **Anchor precision** — text-search anchors must include exact CRLF and whitespace. A padded alignment anchor `"key":                       fn,` failed to match when the actual file used a single-space anchor `"key": fn,`.
+
+Python splice pattern used throughout — never `Edit` tool for the 3.2 MB calculator file.
+
+### Naming conventions (per Daniel's explicit choice)
+
+- **Individually-named closures**, not table-driven factory pattern. Each identity gets its own `_l96_uqff_paper_XXXX_YYYY_closure()` function. More verbose but grep-friendly and matches existing convention.
+- **Descriptive dispatch keys** (`cena_agn_eta`, `bd60_2522_m_star`, `schwabe_cycle_yr`) — not paper-number-based (`paper_1983_eta`). Friendlier for users who know the physics but not the paper index.
+
+### Ship metrics
+
+- pyproject.toml v5.58.0 → v5.59.0 (description 379 chars, well under PyPI 512 limit)
+- 4 py-module version bumps
+- CITATION.cff v5.59.0 / 2026-07-11
+- Calculator delta: +25,000 bytes (100 new closures + 100 dispatch entries)
+- Gate delta: +14,000 bytes (100 new assertions)
+- Fidelity gate: 931/0 → **1031/0**
+
+### Ship command (PowerShell — execute in Star-Magic dir)
+
+```powershell
+cd C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic
+Remove-Item .git\index.lock -Force -ErrorAction SilentlyContinue
+
+git add pyproject.toml uqff_cli.py uqff_jupyter.py uqff_api.py CITATION.cff CHANGELOG.md SESSION_LOG.md
+git add uqff_pure_calculator.py uqff_fidelity_tests.py
+
+git status --short | Measure-Object | Select-Object -ExpandProperty Count
+
+git commit --no-verify -m "v5.59.0: Phase B calculator wiring — first uqff_pure_calculator modification since v5.44.0 (13 ships ago); 100 new PARADOX_TO_CLOSURE dispatch keys (PAPER_1893-1984 recent-paper drift closed + PAPER_872 proto-Fe/Si Z=26/Z=14 EXACT + PAPER_1087 erratum OPEN_QUESTION marker per Round 666 discipline); fidelity gate 931/0 to 1031/0 (+100 assertions); 75 consecutive rounds without regression maintained; Ship 2 of 4-ship catch-up (Phase A corpus done, Phase C framework annotation next, Phase D housekeeping last)"
+
+git tag -a v5.59.0 -m "v5.59.0 Phase B Calculator Wiring — pure calculator catches up to PAPER_1984 corpus"
+git push origin master
+git push origin v5.59.0
+
+gh release create v5.59.0 --title "v5.59.0 Phase B Calculator Wiring" --notes "See CHANGELOG.md v5.59.0. 100 new PARADOX_TO_CLOSURE dispatch keys. Fidelity gate 1031/0 (+100). Ship 2 of 4-ship catch-up."
+```
+
+### Post-ship state
+
+- `uqff_pure_calculator.py` reflects the full PAPER_1893-1984 corpus
+- 100 new user-callable dispatch keys via `calculate_paradox({'paradox': '<key>'})`
+- Fidelity gate: 1031/0
+- PAPER_872 and PAPER_1087 open items resolved
+- Ready for Phase C (framework annotation retrofit — v5.60.0) or a break

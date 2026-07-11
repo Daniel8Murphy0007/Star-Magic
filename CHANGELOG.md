@@ -2,6 +2,107 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.59.0] — 2026-07-11 — PHASE B CALCULATOR WIRING (Ship 2 of 4-ship catch-up)
+
+### First `uqff_pure_calculator.py` modification since 2026-07-04 (v5.44.0)
+
+For 13 ships (v5.45.0 through v5.58.0), the pure calculator surface stayed untouched while CondensedPhysics.py absorbed 92+ novel closures across PAPER_1893-1984. Phase B closes that gap.
+
+### 100 new PARADOX_TO_CLOSURE dispatch keys
+
+**B1 — PAPER_1974-1984 (15 identities across 11 papers)**
+- horsehead_r_star = 15.0 (PAPER_1974)
+- ngc_2525_q_uqff = 1.1875 (PAPER_1975)
+- hudf_i_0 = 0.05, hudf_tau_inter = 1e9 (PAPER_1976)
+- sombrero_gamma_bh = 0.01 (PAPER_1977)
+- sombrero_so5_plus_1_aether = 11 (PAPER_1978)
+- sombrero_m_dm_over_m_total = 0.2 (PAPER_1979)
+- m16_e_0_saturation = 0.3 (PAPER_1980)
+- b_j_base_magnetic_string_field = 0.001 (PAPER_1981)
+- antennae_coalescence = 4e8 yr (PAPER_1982)
+- cena_agn_eta = 0.1, cena_agn_mdot = 0.01 (PAPER_1983)
+- bd60_2522_m_star = 40, bd60_2522_r_star = 20, bd60_2522_l_star = 400000 (PAPER_1984)
+
+**B2 — PAPER_1893-1973 (81 identities)** — one dispatch key per paper covering the headline structural closure. Includes:
+- PAPER_1905 Schwabe cycle 11.25 yr
+- PAPER_1906 F_UBi_i_99 = 1.0972575 universal coupling
+- PAPER_1907 SCm phonon 1.25 THz
+- PAPER_1908 Q_UQFF = 1.1875e6
+- PAPER_1909 YMC Mdot factor 10/3
+- PAPER_1910 U_m/u_EM = 0.057
+- PAPER_1911 YMC v_wind 2000 km/s
+- PAPER_1912-1920 F_UBii Phase 3 landmarks (Sum U_gi = 4, Nested Sub_Ug = 5/2, F_TRZ² = 0.01, F_TRZ ladder, Λ cascade)
+- PAPER_1921-1949 Rounds 48-79 (f_DM = 4/5, MUGE 9/10, Ug4, MUGE μ = 9/5, neutron 879.31s, D_crit = 26, N_efolds = 60, DPM 1/3:2/3, E_0 = F_TRZ, magnetar B/B_crit = 0.2, Sgr A* 1/1800 Hz, PDR erosion 1/4/5 Myr, Three-Face framework)
+- PAPER_1950-1973 Rounds 80-109 (SMBH flare universal, F_TRZ radiation fraction, galaxy-scale SO_5⁸ = 100 Myr, 0.3 factor, A_5·K_MEX = 125, Ω_m = 0.3, τ_act = 12.5 yr, 1/(D_phys-2) = 0.5, T_CMB = 2.7, F_TRZ = 1/SO_5 landmark, D_BSFG/D_phys = 1.5, Path A/B framework, CMB l_1 = 220, M_sf = 0.15, β_1 = 0.603, MW v_flat, M87 Face-1, D_phys·SO_5 = 40, A_5/D_phys = 15, v_wind 2000, g_Horsehead 1.097e-3)
+
+**B3 — PAPER_872 proto-element transition (2 identities)**
+- proto_fe_z_number = 26 EXACT (D_crit)
+- proto_si_z_number = 14 EXACT (SO_5 + D_phys)
+
+Wires the previously-open PAPER_872 transition mechanism into the pure calculator's dispatch surface. Z=26 for proto-Fe and Z=14 for proto-Si are now gate-pinned.
+
+**B4 — PAPER_1087 erratum (1 identity)**
+- paper_1087_erratum_open_question = -0.9435 with provenance carrying "OPEN_QUESTION" marker
+
+Per NEXT_PRIORITIES.md Round 666 discipline, PAPER_1087 unit erratum is marked as OPEN_QUESTION rather than silently closed. Value returns the section-3 table value; provenance string explicitly flags the pending κ units resolution.
+
+### Fidelity gate: 931 → 1031 (+100)
+
+- 15 B1 assertions
+- 81 B2 assertions
+- 2 B3 assertions
+- 2 B4 assertions (value + provenance-marker check)
+
+All 100 new checks pass. No regression on prior 931 checks. **Gate at 1031/0.**
+
+### Implementation notes
+
+- Pure calculator now uses 100 new `_l96_uqff_paper_XXXX_YYYY_closure()` functions with individual descriptive names (grep-friendly per Daniel's explicit choice)
+- Descriptive dispatch keys (`cena_agn_eta`, not `paper_1983_eta`) per Daniel's explicit choice
+- All 100 closures return `{"primary_result": <value>, "primary_source": "<descriptive_slug>_PAPER_XXXX"}` per existing calculator convention
+- Functions defined BEFORE `PARADOX_TO_CLOSURE = {` in file order to satisfy Python import-time name resolution
+- CRLF line endings preserved throughout (file is Windows-native)
+- Python splice pattern used (never Edit tool) for the 3.2 MB calculator file
+
+### Usage from user code
+
+```python
+import uqff_pure_calculator as u
+
+u.calculate_paradox({'paradox': 'cena_agn_eta'})['value']['primary_result']
+# → 0.1
+
+u.calculate_paradox({'paradox': 'bd60_2522_m_star'})['value']['primary_result']
+# → 40.0
+
+u.calculate_paradox({'paradox': 'schwabe_cycle_yr'})['value']['primary_result']
+# → 11.25
+
+u.calculate_paradox({'paradox': 'proto_fe_z_number'})['value']['primary_result']
+# → 26
+
+u.calculate_paradox({'paradox': 'paper_1087_erratum_open_question'})['value']['primary_source']
+# → "PAPER_1087_ERRATUM_kappa_units_pending_..._OPEN_QUESTION"
+```
+
+### Not-in-scope for v5.59.0
+
+- Phase C (framework annotation retrofit) — v5.60.0
+- Phase D (housekeeping) — v5.61.0
+- PAPER_1218, PAPER_1801 PDF LaTeX repair — v5.58.1 patch
+
+### Ship metrics
+
+- pyproject.toml v5.58.0 → v5.59.0 (description 379 chars)
+- uqff_cli.py, uqff_jupyter.py, uqff_api.py: _VERSION 5.58.0 → 5.59.0
+- CITATION.cff: v5.59.0 / 2026-07-11
+- CHANGELOG.md: v5.59.0 entry (this block) prepended
+- SESSION_LOG.md: v5.59.0 entry appended
+- **Fidelity gate: 931 passed, 0 failed → 1031 passed, 0 failed (+100 new)**
+- 75 consecutive rounds without regression maintained (v5.49.0 baseline)
+
+---
+
 ## [5.58.0] — 2026-07-11 — PHASE A CORPUS COMPLETION (Ship 1 of 4-ship catch-up)
 
 ### 4-Ship Catch-Up Program

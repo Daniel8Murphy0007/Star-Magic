@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.58.0"
-description = "UQFF Star-Magic v5.58.0: Phase A corpus completion — 672 new PDFs (1978/1980 = 99.9% coverage, 2 deferred to v5.58.1), 57 whitepapers regex-artifact-swept, PAPER_1796-1799 reservation stubs added, PAPER_275 typo fixed, tools/build_missing_pdfs.py + tools/rebuild_23_papers.py packaged. Fidelity gate 931/0 unchanged. Ship 1 of 4-ship catch-up program (corpus + calc wiring + framework + housekeeping). NOT REPLACEMENT."
+version = "5.59.0"
+description = "UQFF Star-Magic v5.59.0: Phase B calculator wiring — first pure_calculator modification since v5.44.0. Adds 100 new PARADOX_TO_CLOSURE dispatch keys for PAPER_1893-1984 (recent-paper drift closed) + PAPER_872 proto-element transition (Z=26 Fe, Z=14 Si EXACT) + PAPER_1087 erratum OPEN_QUESTION marker. Fidelity gate 931 to 1031 (+100). Ship 2 of 4-ship catch-up. NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

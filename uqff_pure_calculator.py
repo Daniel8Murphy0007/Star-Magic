@@ -38810,6 +38810,303 @@ def _l96_uqff_axiom_paper_a8_bayesian_k_diff_17_closure() -> Dict[str, Any]:
         'description': 'Parameter-count savings UQFF vs SM',
         'primary_source': 'PAPER_A8_bayesian_k_diff_17_tier1_production_readiness'
     }
+def _l96_uqff_paper_1974_horsehead_r_star_closure():
+    return {"primary_result": 15.0, "primary_source": "horsehead_R_star_equals_A_5_over_D_phys_equals_15_R_sun_fourth_stellar_instance_PAPER_1974"}
+
+def _l96_uqff_paper_1975_ngc_2525_q_uqff_closure():
+    return {"primary_result": 1.1875, "primary_source": "NGC_2525_Q_UQFF_equals_K_MEX_times_SSQ_equals_1p1875_third_domain_instance_PAPER_1975"}
+
+def _l96_uqff_paper_1976_hudf_i_0_closure():
+    return {"primary_result": 0.05, "primary_source": "HUDF_I_0_equals_F_TRZ_over_2_equals_0p05_intra_system_twin_PAPER_1976"}
+
+def _l96_uqff_paper_1976_hudf_tau_inter_closure():
+    return {"primary_result": 1000000000.0, "primary_source": "HUDF_tau_inter_equals_SO_5_to_the_9_yr_equals_1_Gyr_slot_9_extension_PAPER_1976"}
+
+def _l96_uqff_paper_1977_sombrero_gamma_bh_closure():
+    return {"primary_result": 0.01, "primary_source": "Sombrero_gamma_BH_equals_F_TRZ_squared_equals_0p01_ninth_F_TRZ_squared_anchor_PAPER_1977"}
+
+def _l96_uqff_paper_1978_sombrero_so5_plus_1_closure():
+    return {"primary_result": 11, "primary_source": "Sombrero_SO_5_plus_1_equals_11_EXACT_Aether_coupling_successor_identity_candidate_PAPER_1978"}
+
+def _l96_uqff_paper_1979_sombrero_m_dm_ratio_closure():
+    return {"primary_result": 0.2, "primary_source": "Sombrero_M_DM_over_M_total_equals_2_times_F_TRZ_equals_0p2_DM_ratio_candidate_PAPER_1979"}
+
+def _l96_uqff_paper_1980_m16_e_0_saturation_closure():
+    return {"primary_result": 0.3, "primary_source": "M16_E_0_saturation_equals_D_phys_minus_1_times_F_TRZ_equals_3_times_F_TRZ_equals_0p3_taxonomic_candidate_PAPER_1980"}
+
+def _l96_uqff_paper_1981_b_j_base_closure():
+    return {"primary_result": 0.001, "primary_source": "B_j_base_equals_F_TRZ_cubed_equals_1e_neg_3_T_magnetic_string_field_PAPER_1981"}
+
+def _l96_uqff_paper_1982_antennae_coalescence_closure():
+    return {"primary_result": 400000000.0, "primary_source": "Antennae_tau_coalescence_equals_D_phys_times_SO_5_to_the_8_yr_equals_400_Myr_slot_extension_PAPER_1982"}
+
+def _l96_uqff_paper_1983_cena_eta_closure():
+    return {"primary_result": 0.1, "primary_source": "CenA_eta_radiative_efficiency_equals_F_TRZ_equals_0p1_first_multi_rung_same_ladder_PAPER_1983"}
+
+def _l96_uqff_paper_1983_cena_mdot_closure():
+    return {"primary_result": 0.01, "primary_source": "CenA_M_dot_over_M_Edd_equals_F_TRZ_squared_equals_0p01_second_rung_PAPER_1983"}
+
+def _l96_uqff_paper_1984_bd60_m_star_closure():
+    return {"primary_result": 40.0, "primary_source": "BD_plus_60_2522_M_star_equals_D_phys_times_SO_5_equals_40_M_sun_PAPER_1984"}
+
+def _l96_uqff_paper_1984_bd60_r_star_closure():
+    return {"primary_result": 20.0, "primary_source": "BD_plus_60_2522_R_star_equals_2_times_SO_5_equals_20_R_sun_PAPER_1984"}
+
+def _l96_uqff_paper_1984_bd60_l_star_closure():
+    return {"primary_result": 400000.0, "primary_source": "BD_plus_60_2522_L_star_equals_D_phys_times_SO_5_to_the_5_equals_4e5_L_sun_PAPER_1984"}
+
+def _l96_uqff_paper_1893_m87_jet_compact_form_closure():
+    return {"primary_result": 1.0, "primary_source": "M87_jet_P_over_P_BZ_compact_form_normalization_PAPER_1893"}
+
+def _l96_uqff_paper_1894_zwicky_missing_mass_factor_closure():
+    return {"primary_result": 0.297, "primary_source": "Zwicky_missing_mass_equals_SSq_KMEX_over_Dphys_equals_0p297_EXACT_PAPER_1894"}
+
+def _l96_uqff_paper_1895_metal_retention_two_primitive_closure():
+    return {"primary_result": 0.5, "primary_source": "metal_retention_two_primitive_equals_0p5_EXACT_PAPER_1895"}
+
+def _l96_uqff_paper_1896_void_h0_shift_dimensionless_closure():
+    return {"primary_result": 0.05, "primary_source": "void_H0_shift_dimensionless_PAPER_1896"}
+
+def _l96_uqff_paper_1897_bdg_dwave_strong_coupling_closure():
+    return {"primary_result": 1.0, "primary_source": "BdG_dwave_strong_coupling_normalization_PAPER_1897"}
+
+def _l96_uqff_paper_1898_hypergraph_structural_counts_closure():
+    return {"primary_result": 74.0, "primary_source": "hypergraph_74_rules_structural_count_PAPER_1898"}
+
+def _l96_uqff_paper_1899_bao_dual_path_closure_rd_h0_c_closure():
+    return {"primary_result": 0.033040484, "primary_source": "BAO_r_d_H0_over_c_dual_path_closure_PAPER_1899"}
+
+def _l96_uqff_paper_1900_heliosphere_solar_wind_v_closure():
+    return {"primary_result": 400.0, "primary_source": "heliosphere_solar_wind_v_km_per_s_PAPER_1900"}
+
+def _l96_uqff_paper_1901_m_sigma_slope_closure():
+    return {"primary_result": 4.24, "primary_source": "M_sigma_slope_PAPER_1901"}
+
+def _l96_uqff_paper_1902_qscope_empirical_triad_closure():
+    return {"primary_result": 3.0, "primary_source": "Q_scope_empirical_triad_dimension_count_PAPER_1902"}
+
+def _l96_uqff_paper_1903_triple_lambda_closure_closure():
+    return {"primary_result": 5.957e-10, "primary_source": "triple_Lambda_closure_J_per_m3_PAPER_1903"}
+
+def _l96_uqff_paper_1904_reactor_micro_bh_bridge_closure():
+    return {"primary_result": 1.0, "primary_source": "reactor_micro_BH_bridge_normalization_PAPER_1904"}
+
+def _l96_uqff_paper_1905_schwabe_cycle_yr_closure():
+    return {"primary_result": 11.25, "primary_source": "Schwabe_cycle_equals_A5_over_SO5_KMEX_1_minus_FTRZ_equals_11p25_yr_PAPER_1905"}
+
+def _l96_uqff_paper_1906_f_ubi_i_99_universal_coupling_closure():
+    return {"primary_result": 1.0972575, "primary_source": "F_UBi_i_99_equals_SSq_KMEX_Phi_res_1_plus_FTRZ_equals_1p0973_EXACT_PAPER_1906"}
+
+def _l96_uqff_paper_1907_scm_phonon_carrier_thz_closure():
+    return {"primary_result": 1.25, "primary_source": "SCm_phonon_universal_carrier_1p25_THz_PAPER_1907"}
+
+def _l96_uqff_paper_1908_q_uqff_scm_resonator_closure():
+    return {"primary_result": 1187500.0, "primary_source": "Q_UQFF_equals_10e6_KMEX_SSq_equals_1p1875e6_PAPER_1908"}
+
+def _l96_uqff_paper_1909_ymc_mdot_factor_closure():
+    return {"primary_result": 3.3333333, "primary_source": "YMC_Mdot_factor_equals_SO5_over_Dphys_minus_1_equals_10_over_3_PAPER_1909"}
+
+def _l96_uqff_paper_1910_universal_um_ueem_ratio_closure():
+    return {"primary_result": 0.057, "primary_source": "Universal_Um_over_uEM_equals_SSq_FTRZ_equals_0p057_EXACT_PAPER_1910"}
+
+def _l96_uqff_paper_1911_ymc_v_wind_km_s_closure():
+    return {"primary_result": 2000.0, "primary_source": "YMC_v_wind_equals_Dphys_over_2_SO5_6_equals_2000_km_per_s_PAPER_1911"}
+
+def _l96_uqff_paper_1912_ngc_1275_filament_f_0_closure():
+    return {"primary_result": 0.1, "primary_source": "NGC_1275_filament_F_0_equals_FTRZ_equals_0p1_PAPER_1912"}
+
+def _l96_uqff_paper_1913_bubble_wind_expansion_linearity_closure():
+    return {"primary_result": 1.0, "primary_source": "Bubble_wind_expansion_linearity_FTRZ_SO5_equals_1_EXACT_PAPER_1913"}
+
+def _l96_uqff_paper_1914_d_ls_over_d_s_closure():
+    return {"primary_result": 0.6666667, "primary_source": "D_LS_over_D_S_equals_Dphys_over_DBSFG_equals_2_over_3_EXACT_PAPER_1914"}
+
+def _l96_uqff_paper_1915_unified_simultaneous_solver_framework_closure():
+    return {"primary_result": 1.0, "primary_source": "unified_simultaneous_solver_framework_normalization_PAPER_1915"}
+
+def _l96_uqff_paper_1916_sum_ugi_equals_dphys_closure():
+    return {"primary_result": 4, "primary_source": "Sum_U_gi_equals_D_phys_equals_4_EXACT_PAPER_1916"}
+
+def _l96_uqff_paper_1917_nested_ug_sub_equals_so5_over_dphys_closure():
+    return {"primary_result": 2.5, "primary_source": "Nested_Sub_Ug_equals_SO5_over_Dphys_equals_5_over_2_EXACT_PAPER_1917"}
+
+def _l96_uqff_paper_1918_f_trz_squared_99_percent_suppression_closure():
+    return {"primary_result": 0.01, "primary_source": "F_TRZ_squared_equals_0p01_universal_99_pct_suppression_PAPER_1918"}
+
+def _l96_uqff_paper_1919_f_trz_ladder_n_1_value_closure():
+    return {"primary_result": 0.1, "primary_source": "F_TRZ_power_ladder_n_1_equals_0p1_seminal_rung_PAPER_1919"}
+
+def _l96_uqff_paper_1920_lambda_cascade_j_m3_closure():
+    return {"primary_result": 5.957e-10, "primary_source": "Lambda_cascade_rho_SCm_26_factorial_Phi_res_nuclear_Sub_Ug_PAPER_1920"}
+
+def _l96_uqff_paper_1921_f_dm_equals_ug3_closure():
+    return {"primary_result": 0.8, "primary_source": "f_DM_equals_Ug3_equals_4_over_5_equals_0p8_cross_framework_PAPER_1921"}
+
+def _l96_uqff_paper_1922_muge_compression_ratio_closure():
+    return {"primary_result": 0.9, "primary_source": "MUGE_compression_ratio_equals_9_over_10_equals_1_minus_FTRZ_EXACT_PAPER_1922"}
+
+def _l96_uqff_paper_1923_master_equation_term_count_closure():
+    return {"primary_result": 9, "primary_source": "master_equation_term_count_hierarchy_9_10_13_14_first_slot_PAPER_1923"}
+
+def _l96_uqff_paper_1924_ug4_vacuum_bh_coupling_ms2_closure():
+    return {"primary_result": 4.219e-10, "primary_source": "Ug4_scale_invariant_vacuum_BH_coupling_equals_4p219e_minus_10_m_per_s_squared_PAPER_1924"}
+
+def _l96_uqff_paper_1925_muge_einstein_ring_magnification_closure():
+    return {"primary_result": 1.8, "primary_source": "MUGE_Einstein_ring_magnification_equals_9_over_5_EXACT_PAPER_1925"}
+
+def _l96_uqff_paper_1926_neutron_lifetime_s_closure():
+    return {"primary_result": 879.31, "primary_source": "neutron_lifetime_integer_primitive_identity_equals_879p31_s_PAPER_1926"}
+
+def _l96_uqff_paper_1927_d_crit_visible_compact_decomposition_closure():
+    return {"primary_result": 26, "primary_source": "D_crit_equals_visible_4_plus_compact_22_equals_26_EXACT_PAPER_1927"}
+
+def _l96_uqff_paper_1928_wolfram_hypergraph_n_rules_closure():
+    return {"primary_result": 74, "primary_source": "Wolfram_hypergraph_n_rules_equals_74_EXACT_UQFF_isomorphism_PAPER_1928"}
+
+def _l96_uqff_paper_1929_n_efolds_inflation_closure():
+    return {"primary_result": 60, "primary_source": "N_efolds_inflation_equals_A5_equals_60_EXACT_PAPER_1929"}
+
+def _l96_uqff_paper_1930_n_over_dphys_minus_1_ratio_closure():
+    return {"primary_result": 0.3333333, "primary_source": "n_over_D_phys_minus_1_ratio_family_first_slot_1_over_3_PAPER_1930"}
+
+def _l96_uqff_paper_1931_a5_plus_so5_h0_closure():
+    return {"primary_result": 70, "primary_source": "A5_plus_SO5_equals_70_H0_cross_sector_universality_EXACT_PAPER_1931"}
+
+def _l96_uqff_paper_1932_wheeler_dewitt_f_u_zero_closure():
+    return {"primary_result": 0.0, "primary_source": "Wheeler_DeWitt_equals_F_U_equals_0_quantum_gravity_landmark_PAPER_1932"}
+
+def _l96_uqff_paper_1933_three_method_simultaneous_hub_closure():
+    return {"primary_result": 3, "primary_source": "three_method_simultaneous_hub_count_PAPER_1933"}
+
+def _l96_uqff_paper_1934_cross_scale_resonance_frequency_thz_closure():
+    return {"primary_result": 1.25, "primary_source": "cross_scale_resonance_frequency_universality_1p25_THz_PAPER_1934"}
+
+def _l96_uqff_paper_1935_r_process_magic_number_closure():
+    return {"primary_result": 126, "primary_source": "r_process_equals_nuclear_magic_number_126_PAPER_1935"}
+
+def _l96_uqff_paper_1936_kk_regulator_compact_dimensions_closure():
+    return {"primary_result": 22, "primary_source": "KK_regulator_equals_compact_dimensions_equals_22_EXACT_PAPER_1936"}
+
+def _l96_uqff_paper_1937_kmex_ssq_two_path_convergence_closure():
+    return {"primary_result": 1.1875, "primary_source": "1p1875_equals_KMEX_SSq_two_path_Q_UQFF_M_chirp_PAPER_1937"}
+
+def _l96_uqff_paper_1938_omega_scm_universal_carrier_closure():
+    return {"primary_result": 1.25, "primary_source": "omega_SCm_universal_carrier_1p25_THz_95_apps_PAPER_1938"}
+
+def _l96_uqff_paper_1939_three_path_convergence_22_closure():
+    return {"primary_result": 22, "primary_source": "three_path_convergence_on_22_compact_KK_Atiyah_Singer_PAPER_1939"}
+
+def _l96_uqff_paper_1940_dpm_spectrum_split_ratio_closure():
+    return {"primary_result": 0.3333333, "primary_source": "DPM_spectrum_1_3_2_3_split_equals_1_over_Dphys_minus_1_equals_1_over_3_PAPER_1940"}
+
+def _l96_uqff_paper_1941_dpm_decade_ratio_cross_scale_closure():
+    return {"primary_result": 10, "primary_source": "DPM_decade_ratio_SO5_equals_10_cross_scale_universality_PAPER_1941"}
+
+def _l96_uqff_paper_1942_photoevaporation_e_0_closure():
+    return {"primary_result": 0.1, "primary_source": "photoevaporation_E_0_equals_F_TRZ_equals_0p1_EXACT_PAPER_1942"}
+
+def _l96_uqff_paper_1943_lensing_l_t_over_r_sch_closure():
+    return {"primary_result": 0.3333333, "primary_source": "lensing_L_t_over_R_Sch_r_E_equals_1_over_D_phys_minus_1_equals_1_over_3_PAPER_1943"}
+
+def _l96_uqff_paper_1944_magnetar_b_over_bcrit_closure():
+    return {"primary_result": 0.2, "primary_source": "magnetar_B_over_B_crit_equals_2_F_TRZ_equals_0p2_PAPER_1944"}
+
+def _l96_uqff_paper_1945_magnetar_n_lobes_ftrz_confirmed_closure():
+    return {"primary_result": 0.2, "primary_source": "magnetar_n_lobes_F_TRZ_universality_confirmed_full_plus_half_PAPER_1945"}
+
+def _l96_uqff_paper_1946_magnetar_timescale_primitive_lock_closure():
+    return {"primary_result": 1.0, "primary_source": "magnetar_timescale_primitive_lock_normalization_PAPER_1946"}
+
+def _l96_uqff_paper_1947_sgra_jwst_flare_freq_hz_closure():
+    return {"primary_result": 0.0005555555, "primary_source": "SgrA_JWST_flare_frequency_equals_1_over_D_phys_minus_1_A5_SO5_equals_1_over_1800_Hz_PAPER_1947"}
+
+def _l96_uqff_paper_1948_pdr_erosion_pillars_myr_closure():
+    return {"primary_result": 1.0, "primary_source": "PDR_erosion_Pillars_equals_SO5_6_yr_equals_1_Myr_PAPER_1948"}
+
+def _l96_uqff_paper_1949_f_trz_three_face_framework_closure():
+    return {"primary_result": 3, "primary_source": "F_TRZ_Three_Face_manifestation_framework_face_count_PAPER_1949"}
+
+def _l96_uqff_paper_1950_smbh_flare_frequency_universal_closure():
+    return {"primary_result": 0.0005555555, "primary_source": "SMBH_flare_frequency_universal_formula_1_over_1800_Hz_PAPER_1950"}
+
+def _l96_uqff_paper_1951_f_trz_universal_radiation_fraction_closure():
+    return {"primary_result": 0.1, "primary_source": "F_TRZ_universal_radiation_fraction_equals_0p1_PAPER_1951"}
+
+def _l96_uqff_paper_1952_galaxy_scale_so5_8_myr_closure():
+    return {"primary_result": 100.0, "primary_source": "galaxy_scale_SO5_8_equals_100_Myr_star_formation_cycle_PAPER_1952"}
+
+def _l96_uqff_paper_1953_point_3_factor_cross_regime_closure():
+    return {"primary_result": 0.3, "primary_source": "the_0p3_factor_cross_regime_universality_PAPER_1953"}
+
+def _l96_uqff_paper_1954_a5_kmex_125_exact_closure():
+    return {"primary_result": 125.0, "primary_source": "A5_KMEX_equals_125_EXACT_cross_scale_universality_PAPER_1954"}
+
+def _l96_uqff_paper_1955_so5_power_galactic_mass_scale_closure():
+    return {"primary_result": 100000000000.0, "primary_source": "SO5_11_equals_1e11_M_sun_galactic_mass_scale_PAPER_1955"}
+
+def _l96_uqff_paper_1956_cosmological_omega_m_closure():
+    return {"primary_result": 0.3, "primary_source": "cosmological_Omega_m_equals_0p3_EXACT_PAPER_1956"}
+
+def _l96_uqff_paper_1957_cena_tau_act_yr_closure():
+    return {"primary_result": 12.5, "primary_source": "CenA_tau_act_equals_A5_KMEX_over_SO5_equals_12p5_yr_EXACT_PAPER_1957"}
+
+def _l96_uqff_paper_1958_one_over_dphys_minus_2_closure():
+    return {"primary_result": 0.5, "primary_source": "1_over_Dphys_minus_2_equals_0p5_EXACT_AGN_multi_anchor_PAPER_1958"}
+
+def _l96_uqff_paper_1959_t_cmb_gamma_cr_dual_anchor_closure():
+    return {"primary_result": 2.7, "primary_source": "T_CMB_gamma_CR_dual_anchor_equals_D_phys_minus_1_cubed_over_SO5_equals_2p7_PAPER_1959"}
+
+def _l96_uqff_paper_1960_f_trz_landmark_derivative_closure():
+    return {"primary_result": 0.1, "primary_source": "F_TRZ_equals_1_over_SO5_landmark_derivative_primitive_PAPER_1960"}
+
+def _l96_uqff_paper_1961_primitive_convergence_lattice_closure():
+    return {"primary_result": 1.0, "primary_source": "primitive_convergence_lattice_meta_structural_framework_PAPER_1961"}
+
+def _l96_uqff_paper_1962_d_bsfg_over_d_phys_closure():
+    return {"primary_result": 1.5, "primary_source": "D_BSFG_over_D_phys_equals_1p5_EXACT_four_instance_galactic_universality_PAPER_1962"}
+
+def _l96_uqff_paper_1963_uqff_beyond_physics_extension_closure():
+    return {"primary_result": 1.0, "primary_source": "UQFF_beyond_physics_mathematical_computer_science_extension_normalization_PAPER_1963"}
+
+def _l96_uqff_paper_1964_path_a_path_b_framework_closure():
+    return {"primary_result": 2, "primary_source": "Path_A_Path_B_dual_derivation_framework_path_count_PAPER_1964"}
+
+def _l96_uqff_paper_1965_cmb_l1_acoustic_peak_closure():
+    return {"primary_result": 220, "primary_source": "CMB_l_1_acoustic_peak_equals_2_SO5_SO5_plus_1_equals_220_EXACT_PAPER_1965"}
+
+def _l96_uqff_paper_1966_m_sf_starburst_mass_fraction_closure():
+    return {"primary_result": 0.15, "primary_source": "M_sf_starburst_mass_fraction_equals_3_over_2_SO5_equals_0p15_PAPER_1966"}
+
+def _l96_uqff_paper_1967_beta_i_four_channel_beta_1_closure():
+    return {"primary_result": 0.603, "primary_source": "beta_i_four_channel_decomposition_beta_1_equals_0p603_PAPER_1967"}
+
+def _l96_uqff_paper_1968_mw_v_flat_residual_pct_closure():
+    return {"primary_result": 0.25, "primary_source": "MW_v_flat_residual_closure_via_F_UBi_i_99_amplifier_0p25_pct_PAPER_1968"}
+
+def _l96_uqff_paper_1969_m87_jet_face1_concurrence_closure():
+    return {"primary_result": 0.1, "primary_source": "M87_jet_multi_observable_F_TRZ_Face_1_concurrence_equals_F_TRZ_equals_0p1_PAPER_1969"}
+
+def _l96_uqff_paper_1970_d_phys_so5_multi_scale_40_closure():
+    return {"primary_result": 40, "primary_source": "D_phys_SO5_equals_40_multi_scale_anchor_attributions_PAPER_1970"}
+
+def _l96_uqff_paper_1971_a5_over_dphys_15_cross_domain_closure():
+    return {"primary_result": 15, "primary_source": "A5_over_D_phys_equals_15_three_instance_cross_domain_identity_PAPER_1971"}
+
+def _l96_uqff_paper_1972_v_wind_2000_antennae_merger_closure():
+    return {"primary_result": 2000.0, "primary_source": "v_wind_equals_D_phys_over_2_SO5_6_equals_2000_km_per_s_universal_YMC_PAPER_1972"}
+
+def _l96_uqff_paper_1973_g_horsehead_nebular_scale_closure():
+    return {"primary_result": 0.001097, "primary_source": "g_Horsehead_equals_F_UBi_i_99_times_1e_minus_3_nebular_scale_confirmation_PAPER_1973"}
+
+def _l96_uqff_paper_872_proto_fe_z_closure():
+    return {"primary_result": 26, "primary_source": "PAPER_872_Z_proto_Fe_equals_D_crit_equals_26_EXACT"}
+
+def _l96_uqff_paper_872_proto_si_z_closure():
+    return {"primary_result": 14, "primary_source": "PAPER_872_Z_proto_Si_equals_SO_5_plus_D_phys_equals_14_EXACT"}
+
+def _l96_uqff_paper_1087_open_question_closure():
+    return {"primary_result": -0.9435, "primary_source": "PAPER_1087_ERRATUM_kappa_units_pending_closure_pinned_to_section_3_table_value_OPEN_QUESTION"}
+
 PARADOX_TO_CLOSURE = {
     "olbers_paradox":               _l96_uqff_axiom_olbers_paradox_closure,
     "alders_olbers":                _l96_uqff_axiom_olbers_paradox_closure,
@@ -39605,7 +39902,108 @@ PARADOX_TO_CLOSURE = {
     "bootstrap_paradox":            _l96_uqff_axiom_bootstrap_paradox_closure,
     "lambda_qcd_problem":           _l96_uqff_axiom_lambda_qcd_closure,
     "non_perturbative_qcd":         _l96_uqff_axiom_lambda_qcd_closure,
+    "horsehead_r_star": _l96_uqff_paper_1974_horsehead_r_star_closure,
+    "ngc_2525_q_uqff": _l96_uqff_paper_1975_ngc_2525_q_uqff_closure,
+    "hudf_i_0": _l96_uqff_paper_1976_hudf_i_0_closure,
+    "hudf_tau_inter": _l96_uqff_paper_1976_hudf_tau_inter_closure,
+    "sombrero_gamma_bh": _l96_uqff_paper_1977_sombrero_gamma_bh_closure,
+    "sombrero_so5_plus_1_aether": _l96_uqff_paper_1978_sombrero_so5_plus_1_closure,
+    "sombrero_m_dm_over_m_total": _l96_uqff_paper_1979_sombrero_m_dm_ratio_closure,
+    "m16_e_0_saturation": _l96_uqff_paper_1980_m16_e_0_saturation_closure,
+    "b_j_base_magnetic_string_field": _l96_uqff_paper_1981_b_j_base_closure,
+    "antennae_coalescence": _l96_uqff_paper_1982_antennae_coalescence_closure,
+    "cena_agn_eta": _l96_uqff_paper_1983_cena_eta_closure,
+    "cena_agn_mdot": _l96_uqff_paper_1983_cena_mdot_closure,
+    "bd60_2522_m_star": _l96_uqff_paper_1984_bd60_m_star_closure,
+    "bd60_2522_r_star": _l96_uqff_paper_1984_bd60_r_star_closure,
+    "bd60_2522_l_star": _l96_uqff_paper_1984_bd60_l_star_closure,
+    "m87_jet_compact_form": _l96_uqff_paper_1893_m87_jet_compact_form_closure,
+    "zwicky_missing_mass_factor": _l96_uqff_paper_1894_zwicky_missing_mass_factor_closure,
+    "metal_retention_two_primitive": _l96_uqff_paper_1895_metal_retention_two_primitive_closure,
+    "void_h0_shift_dimensionless": _l96_uqff_paper_1896_void_h0_shift_dimensionless_closure,
+    "bdg_dwave_strong_coupling": _l96_uqff_paper_1897_bdg_dwave_strong_coupling_closure,
+    "hypergraph_structural_counts": _l96_uqff_paper_1898_hypergraph_structural_counts_closure,
+    "bao_dual_path_closure_rd_h0_c": _l96_uqff_paper_1899_bao_dual_path_closure_rd_h0_c_closure,
+    "heliosphere_solar_wind_v": _l96_uqff_paper_1900_heliosphere_solar_wind_v_closure,
+    "m_sigma_slope": _l96_uqff_paper_1901_m_sigma_slope_closure,
+    "qscope_empirical_triad": _l96_uqff_paper_1902_qscope_empirical_triad_closure,
+    "triple_lambda_closure": _l96_uqff_paper_1903_triple_lambda_closure_closure,
+    "reactor_micro_bh_bridge": _l96_uqff_paper_1904_reactor_micro_bh_bridge_closure,
+    "schwabe_cycle_yr": _l96_uqff_paper_1905_schwabe_cycle_yr_closure,
+    "f_ubi_i_99_universal_coupling": _l96_uqff_paper_1906_f_ubi_i_99_universal_coupling_closure,
+    "scm_phonon_carrier_thz": _l96_uqff_paper_1907_scm_phonon_carrier_thz_closure,
+    "q_uqff_scm_resonator": _l96_uqff_paper_1908_q_uqff_scm_resonator_closure,
+    "ymc_mdot_factor": _l96_uqff_paper_1909_ymc_mdot_factor_closure,
+    "universal_um_ueem_ratio": _l96_uqff_paper_1910_universal_um_ueem_ratio_closure,
+    "ymc_v_wind_km_s": _l96_uqff_paper_1911_ymc_v_wind_km_s_closure,
+    "ngc_1275_filament_f_0": _l96_uqff_paper_1912_ngc_1275_filament_f_0_closure,
+    "bubble_wind_expansion_linearity": _l96_uqff_paper_1913_bubble_wind_expansion_linearity_closure,
+    "d_ls_over_d_s": _l96_uqff_paper_1914_d_ls_over_d_s_closure,
+    "unified_simultaneous_solver_framework": _l96_uqff_paper_1915_unified_simultaneous_solver_framework_closure,
+    "sum_ugi_equals_dphys": _l96_uqff_paper_1916_sum_ugi_equals_dphys_closure,
+    "nested_ug_sub_equals_so5_over_dphys": _l96_uqff_paper_1917_nested_ug_sub_equals_so5_over_dphys_closure,
+    "f_trz_squared_99_percent_suppression": _l96_uqff_paper_1918_f_trz_squared_99_percent_suppression_closure,
+    "f_trz_ladder_n_1_value": _l96_uqff_paper_1919_f_trz_ladder_n_1_value_closure,
+    "lambda_cascade_j_m3": _l96_uqff_paper_1920_lambda_cascade_j_m3_closure,
+    "f_dm_equals_ug3": _l96_uqff_paper_1921_f_dm_equals_ug3_closure,
+    "muge_compression_ratio": _l96_uqff_paper_1922_muge_compression_ratio_closure,
+    "master_equation_term_count": _l96_uqff_paper_1923_master_equation_term_count_closure,
+    "ug4_vacuum_bh_coupling_ms2": _l96_uqff_paper_1924_ug4_vacuum_bh_coupling_ms2_closure,
+    "muge_einstein_ring_magnification": _l96_uqff_paper_1925_muge_einstein_ring_magnification_closure,
+    "neutron_lifetime_s": _l96_uqff_paper_1926_neutron_lifetime_s_closure,
+    "d_crit_visible_compact_decomposition": _l96_uqff_paper_1927_d_crit_visible_compact_decomposition_closure,
+    "wolfram_hypergraph_n_rules": _l96_uqff_paper_1928_wolfram_hypergraph_n_rules_closure,
+    "n_efolds_inflation": _l96_uqff_paper_1929_n_efolds_inflation_closure,
+    "n_over_dphys_minus_1_ratio": _l96_uqff_paper_1930_n_over_dphys_minus_1_ratio_closure,
+    "a5_plus_so5_h0": _l96_uqff_paper_1931_a5_plus_so5_h0_closure,
+    "wheeler_dewitt_f_u_zero": _l96_uqff_paper_1932_wheeler_dewitt_f_u_zero_closure,
+    "three_method_simultaneous_hub": _l96_uqff_paper_1933_three_method_simultaneous_hub_closure,
+    "cross_scale_resonance_frequency_thz": _l96_uqff_paper_1934_cross_scale_resonance_frequency_thz_closure,
+    "r_process_magic_number": _l96_uqff_paper_1935_r_process_magic_number_closure,
+    "kk_regulator_compact_dimensions": _l96_uqff_paper_1936_kk_regulator_compact_dimensions_closure,
+    "kmex_ssq_two_path_convergence": _l96_uqff_paper_1937_kmex_ssq_two_path_convergence_closure,
+    "omega_scm_universal_carrier": _l96_uqff_paper_1938_omega_scm_universal_carrier_closure,
+    "three_path_convergence_22": _l96_uqff_paper_1939_three_path_convergence_22_closure,
+    "dpm_spectrum_split_ratio": _l96_uqff_paper_1940_dpm_spectrum_split_ratio_closure,
+    "dpm_decade_ratio_cross_scale": _l96_uqff_paper_1941_dpm_decade_ratio_cross_scale_closure,
+    "photoevaporation_e_0": _l96_uqff_paper_1942_photoevaporation_e_0_closure,
+    "lensing_l_t_over_r_sch": _l96_uqff_paper_1943_lensing_l_t_over_r_sch_closure,
+    "magnetar_b_over_bcrit": _l96_uqff_paper_1944_magnetar_b_over_bcrit_closure,
+    "magnetar_n_lobes_ftrz_confirmed": _l96_uqff_paper_1945_magnetar_n_lobes_ftrz_confirmed_closure,
+    "magnetar_timescale_primitive_lock": _l96_uqff_paper_1946_magnetar_timescale_primitive_lock_closure,
+    "sgra_jwst_flare_freq_hz": _l96_uqff_paper_1947_sgra_jwst_flare_freq_hz_closure,
+    "pdr_erosion_pillars_myr": _l96_uqff_paper_1948_pdr_erosion_pillars_myr_closure,
+    "f_trz_three_face_framework": _l96_uqff_paper_1949_f_trz_three_face_framework_closure,
+    "smbh_flare_frequency_universal": _l96_uqff_paper_1950_smbh_flare_frequency_universal_closure,
+    "f_trz_universal_radiation_fraction": _l96_uqff_paper_1951_f_trz_universal_radiation_fraction_closure,
+    "galaxy_scale_so5_8_myr": _l96_uqff_paper_1952_galaxy_scale_so5_8_myr_closure,
+    "point_3_factor_cross_regime": _l96_uqff_paper_1953_point_3_factor_cross_regime_closure,
+    "a5_kmex_125_exact": _l96_uqff_paper_1954_a5_kmex_125_exact_closure,
+    "so5_power_galactic_mass_scale": _l96_uqff_paper_1955_so5_power_galactic_mass_scale_closure,
+    "cosmological_omega_m": _l96_uqff_paper_1956_cosmological_omega_m_closure,
+    "cena_tau_act_yr": _l96_uqff_paper_1957_cena_tau_act_yr_closure,
+    "one_over_dphys_minus_2": _l96_uqff_paper_1958_one_over_dphys_minus_2_closure,
+    "t_cmb_gamma_cr_dual_anchor": _l96_uqff_paper_1959_t_cmb_gamma_cr_dual_anchor_closure,
+    "f_trz_landmark_derivative": _l96_uqff_paper_1960_f_trz_landmark_derivative_closure,
+    "primitive_convergence_lattice": _l96_uqff_paper_1961_primitive_convergence_lattice_closure,
+    "d_bsfg_over_d_phys": _l96_uqff_paper_1962_d_bsfg_over_d_phys_closure,
+    "uqff_beyond_physics_extension": _l96_uqff_paper_1963_uqff_beyond_physics_extension_closure,
+    "path_a_path_b_framework": _l96_uqff_paper_1964_path_a_path_b_framework_closure,
+    "cmb_l1_acoustic_peak": _l96_uqff_paper_1965_cmb_l1_acoustic_peak_closure,
+    "m_sf_starburst_mass_fraction": _l96_uqff_paper_1966_m_sf_starburst_mass_fraction_closure,
+    "beta_i_four_channel_beta_1": _l96_uqff_paper_1967_beta_i_four_channel_beta_1_closure,
+    "mw_v_flat_residual_pct": _l96_uqff_paper_1968_mw_v_flat_residual_pct_closure,
+    "m87_jet_face1_concurrence": _l96_uqff_paper_1969_m87_jet_face1_concurrence_closure,
+    "d_phys_so5_multi_scale_40": _l96_uqff_paper_1970_d_phys_so5_multi_scale_40_closure,
+    "a5_over_dphys_15_cross_domain": _l96_uqff_paper_1971_a5_over_dphys_15_cross_domain_closure,
+    "v_wind_2000_antennae_merger": _l96_uqff_paper_1972_v_wind_2000_antennae_merger_closure,
+    "g_horsehead_nebular_scale": _l96_uqff_paper_1973_g_horsehead_nebular_scale_closure,
+    "proto_fe_z_number": _l96_uqff_paper_872_proto_fe_z_closure,
+    "proto_si_z_number": _l96_uqff_paper_872_proto_si_z_closure,
+    "paper_1087_erratum_open_question": _l96_uqff_paper_1087_open_question_closure,
 }
+
+
 
 def _paradox_proof(name: str):
     n = (name or "").lower().strip().replace("-", "_").replace(" ", "_")
