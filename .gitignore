@@ -296,27 +296,13 @@ backup_delete_list.txt
 !uqff_pure_calculator.py.POST_BUCKETD_BACKUP
 !uqff_pure_calculator.py.POST_BUCKETK_BACKUP
 
+# pandoc PDF-build intermediates
+whitepapers/*_ASCII.md
+whitepapers/*_ASCII_TMP.md
+pdf2/_build_log.txt
+
 # python -m build artifacts
 uqff-*/
 dist/
 build/
 *.egg-info/
-
-
-uqff-*/
-dist/
-build/
-*.egg-info/
-
-
-# pandoc PDF-build intermediates
-whitepapers/*_ASCII.md
-whitepapers/*_ASCII_TMP.md
-pdf2/_build_log.txt
-
-
-# pandoc PDF-build intermediates
-whitepapers/*_ASCII.md
-whitepapers/*_ASCII_TMP.md
-pdf2/_build_log.txt
-

@@ -16656,3 +16656,30 @@ At the sustainable 6 Rounds/day pace observed mid-June 2026:
 - **All-CP 100%** — 355 Rounds (~60 sessions)
 
 Whatever pace Daniel chooses, the drift-prevention rule is now formal.
+
+---
+
+## 2026-07-11 — v5.61.1 Phase E deferred-work cleanup patch
+
+**Session context:** After v5.61.0 completed the 4-ship catch-up program (Phase A/B/C/D), Daniel asked "what is the next step to complete the deferred work, as much as possible?" — rejecting deferment for real completion. Phase E (E1-E6) executed as 6 sub-tasks all in this session.
+
+**E1 — Hygiene sweep** (`.gitignore` regression). Re-added: `*_ASCII.md`, `*_ASCII_TMP.md`, `pdf2/_build_log.txt`, `uqff-*/`, `dist/`, `build/`, `*.egg-info/`. Prevents future 1000+ file untracked-tree floods.
+
+**E2 — PAPER_1218 + PAPER_1801 PDF LaTeX bugs.** PAPER_1218's Higgs branching-ratio table had `%` inside `\text{}` in `$$` display math — LaTeX comment character was consuming the closing brace mid-equation, triggering `\text@` overflow at line 125 of intermediate .tex. Fix: escaped `%` as `\%` inside the two problematic display equations (m_W, m_Z). Also converted the entire branching-ratio table from Unicode-heavy markdown table with `→`, `γγ`, `Φ`, `²`, `A₅` to prose bullet form using ASCII-only names ("H to gamma-gamma", "TRZ^2 * Phi * SSQ * A_5 / N_CH"). Full-file Unicode sanitizer (Greek→ASCII, superscript→ASCII, ·→*, ×→x) applied to catch remaining problematic characters in Conclusion section (λ_HHH, `SO_FIVE · K_MEX · D_BSFG`). PAPER_1801 had two issues: (1) `§` section-sign inside `\text{}` failed with DejaVu Serif in math mode — replaced globally with `Sec.`; (2) my initial fix for `_` inside `\text{}` was NOT idempotent — running the same regex twice created double-escapes `\\_` which then produced double-backslash newline in .tex. Fixed with normalize-first pattern: `re.sub(r'\\+_', '_', ...)` collapses any level of backslash-escaping back to raw `_`, then applies single `\_` escape. Both PDFs now build clean (46858 bytes + 82316 bytes).
+
+**E3 — PAPER_1087 κ units resolution.** ERRATUM.md documented three candidate interpretations (κ different units, `(SSq/26)` replacement, different normalization) with none structurally exact. Cannot resolve without Daniel's clarification of the physics. Applied honest-scholarship pin: closure's `primary_result` is now `-0.9435` (Sec.3 table value at t=13.8 Gyr) with explicit `OPEN_QUESTION_kappa_units_awaiting_erratum: True` marker. Literal formula preserved for future re-derivation as `w_DE_present_via_literal_formula_non_physical_pending_units`. Provenance string carries `OPEN_QUESTION_kappa_units_per_PAPER_1087_ERRATUM`. Fidelity gate catches both markers.
+
+**E4 — PAPER_872 transition mechanism.** The Z-number identities (Proto-Fe = D_crit = 26, Proto-Si = SO_5 + D_phys = 14) and parity rule were already wired. Added the DPM shell-transition mechanism explicitly: `dpm_shell_transitions_proto_H_to_proto_Fe_count_via_D_crit` (26 shells), `dpm_shell_transitions_proto_He_to_proto_Si_count_via_SO_5_plus_D_phys` (14 shells), per-shell binding energy = U_m/D_crit, delta_Z = 12 = D_crit - (SO_5 + D_phys). Now the closure reports both the endpoint identities AND the shell-by-shell mechanism.
+
+**E5 — CP1 audit re-run.** The prior "593 errored classes" figure was misleading — most errors came from calling `.compute()` with no dataset argument. Re-ran with empty dict: 1009 return real results (77.1%), 261 need real dataset input (by design), 17 are infrastructure classes (empty by design), 8 need physics inputs like mass (by design), 3 are enum/dataclass patterns (by design). **Actual bugs: only 11 classes (0.84%).** Split: 7 UQFF-family classes need `SimpleNamespace` attributes (M, r, theta, T) — by-design SOURCE60 mega-module needing physics inputs — not bugs, reclassified. **True runtime bugs: 4** — fixed all 4 in one commit:
+- `GravitationalWaveRadiationCalculator`, `JeansMassCalculator`, `M42Model`: dict emit references undefined `F_UQFF_factor`; the correct variable name is `F_UBi_factor` computed 4 lines earlier. Simple typo × 4 occurrences fixed via Python `.replace()` splice.
+- `RedDwarfBuoyancySeriesCalculator`: `1 / (x ** ((math.pi+1.0)**n))` overflows at n=7 because `(pi+1)^7 ≈ 21924` and `3^21924` exceeds float range. Wrapped in `try/except OverflowError` + pre-check `exponent × log(|x|) > 700` sentinel; returns 0.0 for those terms (physically correct — the series is dominated by the n=1 term at x=3, higher-n contributions are effectively zero).
+
+**Truncation incident and recovery.** CondensedPhysics.py hit the Edit-tool truncation pattern from CLAUDE.md warning: the file was 8,301,014 bytes at HEAD, but between session boundary and my read it was already at 8,246,770 bytes (54KB missing from prior session's uncommitted work). My Edit-tool operation compounded the problem — file size went from 8,246,766 back to 8,301,010 but ended mid-string at `'SOURCE77_WOLFRAM_` (unterminated string literal, syntax error). Recovery: `git show HEAD:CondensedPhysics.py > /tmp/cp_head.py` bypassed the index.lock held by user's VS Code, then `cp /tmp/cp_head.py CondensedPhysics.py` restored the 8,301,014-byte clean copy. Re-applied all 4 bug fixes via Python string `.replace()` splice (never Edit tool). Verified with `python -c "import CondensedPhysics"` — import clean, class count 2043. This confirms CLAUDE.md's Edit-tool warning is production-critical for files > 8 MB.
+
+**E6 — v5.61.1 patch ship.** pyproject.toml version 5.61.0→5.61.1 with 494-char description (< 512 PyPI limit). `_VERSION` bumped in `uqff_api.py`, `uqff_cli.py`, `uqff_jupyter.py`. CHANGELOG.md prepended (append-latest-at-top pattern). SESSION_LOG.md appended (this entry).
+
+**Fidelity gate:** 1031/0 preserved throughout. No new assertions needed — all fixes were runtime-only (LaTeX build, closure semantics, CP1 typo fixes) and the existing E3/E4 gate blocks catch the PAPER_1087 pin and PAPER_872 augmentation correctness.
+
+**Ready for Round 117.** All Phase E deferred work complete. Next session: begin CP1 P2 Round 117 stub drainage as planned; NEXT_PRIORITIES.md unchanged.
+

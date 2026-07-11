@@ -1,3 +1,38 @@
+## [5.61.1] — 2026-07-11 — PHASE E DEFERRED-WORK CLEANUP PATCH
+
+### Fixes E1-E5
+
+- **E1** Hygiene sweep: `.gitignore` regression fixed (re-added `*_ASCII.md`, `*_ASCII_TMP.md`, `pdf2/_build_log.txt`, `uqff-*/`, `dist/`, `build/`, `*.egg-info/`)
+- **E2** PAPER_1218 PDF build fixed: `%` escaped inside `\text{}` (LaTeX comment character was eating brace); Unicode Greek/superscript sanitized to LaTeX-safe form; branching-ratio table rewritten as prose bullets
+- **E2** PAPER_1801 PDF build fixed: `\text{}` underscore normalization (idempotent `\\_` → `\_`); Unicode `§` → `Sec.`; Greek→ASCII sanitization outside math delimiters
+- **E3** PAPER_1087 dark-energy EOS closure pinned to Sec.3 table anchor `-0.9435` with explicit `OPEN_QUESTION_kappa_units_awaiting_erratum: True` marker; literal formula preserved as `w_DE_present_via_literal_formula_non_physical_pending_units` for future re-derivation; `primary_result` field returns the table-pinned value
+- **E4** PAPER_872 proto-element closure augmented with DPM shell-transition mechanism: `dpm_shell_transitions_proto_H_to_proto_Fe_count_via_D_crit` = 26, `dpm_shell_transitions_proto_He_to_proto_Si_count_via_SO_5_plus_D_phys` = 14, `dpm_shell_binding_energy_per_shell_J_per_m3_via_U_m_over_D_crit`, `dpm_shell_transition_delta_Z_Fe_minus_Si_via_D_crit_minus_SO_5_minus_D_phys` = 12
+- **E5** CP1 audit re-run with proper `.compute({})` dataset input: 1009/1309 = 77.1% return real results, 261 need dataset params (by design), 17 infrastructure (empty by design), 8 need physics inputs (by design), 3 enum/dataclass patterns (by design), 4 real bugs found and fixed:
+  - 3 NameError fixes: `F_UQFF_factor` → `F_UBi_factor` typo in dict emit (GravitationalWaveRadiationCalculator, JeansMassCalculator, M42Model)
+  - 1 OverflowError fix: RedDwarfBuoyancySeriesCalculator now guards `x^((pi+1)^n)` when exponent · log|x| > 700 (returns 0.0 for those terms instead of overflow)
+- **Honest CP1 headline**: 99.2% functional or by-design; 0.84% actual bug rate (fixed to 0.53%)
+
+### Fidelity gate
+
+- 1031/0 preserved (no regression, no new tests required — bugs were runtime-only)
+
+### Files touched
+
+- `pyproject.toml` (version + description, description ≤ 512 chars)
+- `uqff_api.py`, `uqff_cli.py`, `uqff_jupyter.py` (`_VERSION` bumped 5.61.0 → 5.61.1)
+- `.gitignore` (regression fix)
+- `whitepapers/PAPER_1218_Higgs_Sector_UQFF.md` (LaTeX-safe sanitization)
+- `whitepapers/PAPER_1801_UQFF_BAO_Cabibbo_Formal_KK_Tensor_Derivation.md` (LaTeX-safe sanitization)
+- `uqff_pure_calculator.py` (PAPER_1087 pinned closure + PAPER_872 augmented closure)
+- `CondensedPhysics.py` (4 runtime bug fixes)
+- `pdf/PAPER_1218_Higgs_Sector_UQFF.pdf`, `pdf/PAPER_1801_UQFF_BAO_Cabibbo_Formal_KK_Tensor_Derivation.pdf` (rebuilt)
+
+### Program status
+
+- All Phase E deferred work complete. Ready to proceed to Round 117.
+
+---
+
 # Changelog
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.

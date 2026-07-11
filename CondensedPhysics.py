@@ -104923,7 +104923,7 @@ class M42Model(SelfSimulatingExpandingMixin):
             'L_H_alpha_erg_s': L_H_alpha,
             'emission_measure_cm_neg5': emission_measure,
             'g_grav_ms2_UQFF': g_grav,
-            'F_UQFF_factor': F_UQFF_factor,
+            'F_UQFF_factor': F_UBi_factor,
             'F_TRZ': F_TRZ, 'SSQ': SSQ,
             'note': 'PAPER_058 M42: highest g_grav in UQFF 10-model suite (proximity-driven). 4/4 validator tests pass.',
         }
@@ -152260,7 +152260,7 @@ class JeansMassCalculator:
             'M_J_standard_kg': M_J_standard,
             'M_J_UQFF_kg': M_J_UQFF,
             'M_J_UQFF_Msun': M_J_UQFF / Msun,
-            'F_UQFF_factor': F_UQFF_factor,
+            'F_UQFF_factor': F_UBi_factor,
             'F_TRZ': F_TRZ, 'SSQ': SSQ,
             'note': 'PAPER_1121 Interstellar shock prestellar collapse. M_J form uses pi*c_s^2/G. F_UBi = 1+F_TRZ*SSQ SCm vacuum shift.',
         }
@@ -155324,7 +155324,7 @@ class GalaxyMergerDynamicsCalculator:
             't_merger_UQFF_Gyr': t_UQFF_Gyr,
             't_merger_observed_Gyr': t_observed_Gyr,
             't_merger_residual_pct': residual,
-            'F_UQFF_factor': F_UQFF_factor,
+            'F_UQFF_factor': F_UBi_factor,
             'SFR_boost_UQFF': SFR_boost,
             'F_TRZ': F_TRZ, 'SSQ': SSQ, 'K_MEX': K_MEX,
             'note': 'PAPER_549 galaxy merger 3-method (Newton + Einstein + UQFF). F_UBi = 1.32 slows merger vs pure dynamical friction.',
@@ -156692,7 +156692,7 @@ class GravitationalWaveRadiationCalculator:
             'M_chirp_binary_Msun': M_chirp_binary,
             'P_GW_classical_W': P_GW_classical_W,
             'P_GW_UQFF_W': P_GW_UQFF_W,
-            'F_UQFF_factor': F_UQFF_factor,
+            'F_UQFF_factor': F_UBi_factor,
             'r_isco_km': r_isco_m/1000,
             'K_MEX': K_MEX, 'SSQ': SSQ, 'F_TRZ': F_TRZ,
             'note': 'PAPER_1857 chirp mass = K_MEX*SSQ EXACT. K_MEX = sqrt(sigma)/Lambda_QCD (PAPER_1854 discovery) - chirp mass encodes QCD scale.',
@@ -194549,7 +194549,15 @@ class RedDwarfBuoyancySeriesCalculator:
         total = 0.0
         n = 1
         for i in range(terms):
-            total += 1.0 / (x ** ((math.pi + 1.0)**n))
+            try:
+                exponent = (math.pi + 1.0)**n
+                if abs(x) > 1.0 and exponent * math.log(abs(x)) > 700.0:
+                    contribution = 0.0
+                else:
+                    contribution = 1.0 / (x ** exponent)
+                total += contribution
+            except OverflowError:
+                total += 0.0
             n += 2
         return {'value': total, 'x': x, 'terms_odd': terms, 'units': 'dimensionless',
                 'equation': 'S_{n odd} 1/x^((p+1)^n)'}

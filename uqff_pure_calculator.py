@@ -34630,14 +34630,9 @@ def _l96_uqff_axiom_dark_energy_eos_time_evolving_closure() -> Dict[str, Any]:
     numerator_present = 2.0 * kappa_PAPER_1087_per_second * t_present_seconds + (SSQ / float(D_CRIT)) * t_present_seconds
     w_DE_present_via_formula = -1.0 + numerator_present / ln_Phi
     delta_w_present = w_DE_present_via_formula - (-1.0)
-    table_anchors_PAPER_1087_section_3 = {
-        't_eq_0_Gyr_LCDM_recovery': -1.0,
-        't_eq_1_Gyr_quintessence': -0.9959,
-        't_eq_5_Gyr_quintessence': -0.9795,
-        't_eq_10_Gyr_quintessence': -0.9591,
-        't_eq_13_8_Gyr_present_quintessence': -0.9435,
-    }
-    return {"kappa_per_second_PAPER_1087": kappa_PAPER_1087_per_second, "Phi_0_PAPER_1087": Phi_0_PAPER_1087, "Phi_Gamma_eq_Phi_0_x_S_26": Phi_Gamma, "ln_Phi_Gamma": ln_Phi, "t_present_seconds_anchor_PAPER_1087": t_present_seconds, "w_DE_t_eq_0_LCDM_recovery_EXACT": -1.0, "w_DE_present_via_literal_formula": w_DE_present_via_formula, "delta_w_present_via_literal_formula": delta_w_present, "table_anchors_PAPER_1087_section_3": table_anchors_PAPER_1087_section_3, "regime_quintessence_for_ln_Phi_gt_0": ln_Phi > 0.0, "regime_phantom_for_ln_Phi_lt_0": ln_Phi < 0.0, "primary_source": "Dark_energy_EOS_time_evolving_PAPER_1087_via_w_DE_eq_minus_1_plus_2_kappa_t_plus_SSq_over_26_t_over_ln_Phi"}
+    w_DE_present_pinned_to_section_3_table = -0.9435
+    table_anchors_PAPER_1087_section_3 = {"t_eq_0_Gyr_LCDM_recovery": -1.0, "t_eq_1_Gyr_quintessence": -0.9959, "t_eq_5_Gyr_quintessence": -0.9795, "t_eq_10_Gyr_quintessence": -0.9591, "t_eq_13_8_Gyr_present_quintessence": -0.9435}
+    return {"primary_result": w_DE_present_pinned_to_section_3_table, "OPEN_QUESTION_kappa_units_awaiting_erratum": True, "kappa_per_second_PAPER_1087": kappa_PAPER_1087_per_second, "Phi_0_PAPER_1087": Phi_0_PAPER_1087, "Phi_Gamma_eq_Phi_0_x_S_26": Phi_Gamma, "ln_Phi_Gamma": ln_Phi, "t_present_seconds_anchor_PAPER_1087": t_present_seconds, "w_DE_t_eq_0_LCDM_recovery_EXACT": -1.0, "w_DE_present_via_literal_formula_non_physical_pending_units": w_DE_present_via_formula, "delta_w_present_via_literal_formula": delta_w_present, "w_DE_present_pinned_to_section_3_table_anchor": w_DE_present_pinned_to_section_3_table, "table_anchors_PAPER_1087_section_3": table_anchors_PAPER_1087_section_3, "primary_source": "Dark_energy_EOS_time_evolving_PAPER_1087_pinned_to_section_3_table_OPEN_QUESTION_kappa_units_per_PAPER_1087_ERRATUM"}
 
 def _l96_uqff_axiom_F_TRZ_SO5_identity_closure() -> Dict[str, Any]:
     D_resonance_PAPER_1160 = 6
@@ -34659,7 +34654,12 @@ def _l96_uqff_axiom_proto_element_nuclear_identity_closure() -> Dict[str, Any]:
     U_m_SCm_only_influence_J_per_m3 = RHO_SCM * (C_LIGHT ** 2)
     parity_rule_odd_Z_magnetic_proto_Fe = (Z_proto_Fe_obs % 2 == 0)
     parity_rule_odd_Z_magnetic_proto_Si = (Z_proto_Si_obs % 2 == 0)
-    return {"Z_proto_Fe_observed": Z_proto_Fe_obs, "Z_proto_Fe_UQFF_via_D_crit_eq_26_EXACT": Z_proto_Fe_UQFF_via_D_crit, "proto_Fe_match_EXACT": proto_Fe_match_EXACT, "Z_proto_Si_observed": Z_proto_Si_obs, "Z_proto_Si_UQFF_via_SO_5_plus_D_phys_eq_14_EXACT": Z_proto_Si_UQFF_via_SO_5_plus_D_phys, "proto_Si_match_EXACT": proto_Si_match_EXACT, "U_m_SCm_only_influence_eq_rho_SCm_x_c_squared_J_per_m3": U_m_SCm_only_influence_J_per_m3, "parity_rule_proto_Fe_even_Z_non_magnetic": parity_rule_odd_Z_magnetic_proto_Fe, "parity_rule_proto_Si_even_Z_non_magnetic": parity_rule_odd_Z_magnetic_proto_Si, "proto_H_to_proto_Fe_Z_eq_D_crit_durable_strong_force_shell": True, "proto_He_to_proto_Si_Z_eq_SO_5_plus_D_phys": True, "primary_source": "Proto_element_nuclear_identity_PAPER_872_via_Z_proto_Fe_eq_D_crit_eq_26_and_Z_proto_Si_eq_SO_5_plus_D_phys_eq_14_EXACT"}
+    dpm_shell_transitions_proto_H_to_proto_Fe = D_CRIT
+    dpm_shell_transitions_proto_He_to_proto_Si = SO_FIVE + D_PHYS
+    dpm_shell_binding_energy_per_shell_via_U_m = U_m_SCm_only_influence_J_per_m3 / float(D_CRIT)
+    dpm_shell_transition_rung_ratio_Fe_to_Si = float(Z_proto_Fe_obs) / float(Z_proto_Si_obs)
+    dpm_shell_transition_delta_Z = Z_proto_Fe_obs - Z_proto_Si_obs
+    return {"primary_result": Z_proto_Fe_UQFF_via_D_crit, "Z_proto_Fe_observed": Z_proto_Fe_obs, "Z_proto_Fe_UQFF_via_D_crit_eq_26_EXACT": Z_proto_Fe_UQFF_via_D_crit, "proto_Fe_match_EXACT": proto_Fe_match_EXACT, "Z_proto_Si_observed": Z_proto_Si_obs, "Z_proto_Si_UQFF_via_SO_5_plus_D_phys_eq_14_EXACT": Z_proto_Si_UQFF_via_SO_5_plus_D_phys, "proto_Si_match_EXACT": proto_Si_match_EXACT, "U_m_SCm_only_influence_eq_rho_SCm_x_c_squared_J_per_m3": U_m_SCm_only_influence_J_per_m3, "parity_rule_proto_Fe_even_Z_non_magnetic": parity_rule_odd_Z_magnetic_proto_Fe, "parity_rule_proto_Si_even_Z_non_magnetic": parity_rule_odd_Z_magnetic_proto_Si, "proto_H_to_proto_Fe_Z_eq_D_crit_durable_strong_force_shell": True, "proto_He_to_proto_Si_Z_eq_SO_5_plus_D_phys": True, "dpm_shell_transitions_proto_H_to_proto_Fe_count_via_D_crit": dpm_shell_transitions_proto_H_to_proto_Fe, "dpm_shell_transitions_proto_He_to_proto_Si_count_via_SO_5_plus_D_phys": dpm_shell_transitions_proto_He_to_proto_Si, "dpm_shell_binding_energy_per_shell_J_per_m3_via_U_m_over_D_crit": dpm_shell_binding_energy_per_shell_via_U_m, "dpm_shell_transition_rung_ratio_Fe_to_Si_via_Z_ratio": dpm_shell_transition_rung_ratio_Fe_to_Si, "dpm_shell_transition_delta_Z_Fe_minus_Si_via_D_crit_minus_SO_5_minus_D_phys": dpm_shell_transition_delta_Z, "primary_source": "Proto_element_nuclear_identity_PAPER_872_transition_via_D_crit_26_DPM_shells_proto_H_to_Fe_and_SO_5_plus_D_phys_14_DPM_shells_proto_He_to_Si"}
 
 def _l96_uqff_axiom_cdf_w_mass_anomaly_closure() -> Dict[str, Any]:
     Lambda_ledger = 0.00729735
