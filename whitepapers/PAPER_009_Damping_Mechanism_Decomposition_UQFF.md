@@ -735,7 +735,7 @@ GW event with measured D_total inconsistent with the channel decomposition sugge
 beyond the four-component model.
 
 **Validator:** `validate_gw170817.py`, `validate_gw190425.py`, `validate_ligo_comparison.py`  all
-channels PASSED.Groups[1].Value : Damping Mechanism Decomposition in UQFF Framework
+channels PASSED : Damping Mechanism Decomposition in UQFF Framework
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 

@@ -533,7 +533,7 @@ above is the complete v5.78 impact on this whitepaper.
 4a. Bartelmann, M. & Schneider, P. (2001). *Weak gravitational lensing.* Phys. Rep. **340**, 291 — arXiv:astro-ph/9912508 — doi:10.1016/S0370-1573(00)00082-X  
 5. Bartelmann, M. & Schneider, P. (2001). "Weak gravitational lensing." *Phys. Rep.*, 340, 291.  
 6. UQFF Source Files: `source27.cpp`, `source28.cpp`, `MAIN_{1\_CoAnQi}.cpp`  
-7. UQFF Calibration: $\kappa$ = 0.0005/day, [SSq] = 0.57.Groups[1].Value : Gravitational Lensing
+7. UQFF Calibration: $\kappa$ = 0.0005/day, [SSq] = 0.57 : Gravitational Lensing
 Corrections from UQFF Vacuum Density
 
 **Authors:** Daniel Murphy & UQFF Research Collective  

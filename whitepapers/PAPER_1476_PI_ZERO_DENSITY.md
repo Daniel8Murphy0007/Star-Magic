@@ -2,7 +2,7 @@
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF (Unified Quantum Field Framework) — Star-Magic v5.27+
-**Tier:** Bucket A — derived from F:\Aetheric Propulsion source material
+**Tier:** Bucket A — derived from F:/Aetheric Propulsion source material
 **Date:** June 16, 2026
 **Location:** 41.0997 N, 80.6495 W (Youngstown, OH, USA)
 **Status:** CLOSED — 1/N_CH = 0.111 vs observed 0.108 zero density in 1000 pi dig
@@ -37,7 +37,7 @@ Per CLAUDE.md mandate, UQFF and Standard methods solve this observable by differ
 
 ## Reference
 
-- Source: F:\Aetheric Propulsion (Daniel's reactor + experimental docs, 2025)
+- Source: F:/Aetheric Propulsion (Daniel's reactor + experimental docs, 2025)
 - Related: PAPER_646 (Universal Inertial Operator + Caduceus wave + DPM mechanism), PAPER_062 (DPM vacuum manifold), PAPER_872 (proto-element nuclear identity).
 - Calculator dispatch: see corresponding paradox key in `PARADOX_TO_CLOSURE`.
 

@@ -2,7 +2,7 @@
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF (Unified Quantum Field Framework) — Star-Magic v5.27+
-**Tier:** Bucket C — derived from F:\Aetheric Propulsion source material
+**Tier:** Bucket C — derived from F:/Aetheric Propulsion source material
 **Date:** June 16, 2026
 **Location:** 41.0997 N, 80.6495 W (Youngstown, OH, USA)
 **Status:** CLOSED — ω_Hubble = 2π/13.8 Gyr⁻¹ = 0.4553 rad/Gyr
@@ -37,7 +37,7 @@ Per CLAUDE.md mandate, UQFF and Standard methods solve this observable by differ
 
 ## Reference
 
-- Source: F:\Aetheric Propulsion (Daniel's reactor + experimental docs, 2025-2026)
+- Source: F:/Aetheric Propulsion (Daniel's reactor + experimental docs, 2025-2026)
 - Related: PAPER_646 (Universal Inertial Operator, Caduceus, DPM mechanism), PAPER_872 (proto-element nuclear identity), PAPER_087 (BH thermodynamics), PAPER_1156 (cosmology suite), PAPER_1255 (muonic hydrogen radius).
 
 ---

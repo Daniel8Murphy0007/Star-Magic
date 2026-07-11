@@ -869,7 +869,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | TRZ inversion threshold | f_inv | ~1 \muHz | PTA-LISA transition band |
 | D_total at f_yr | D_total(31.7 nHz) | 1.60 | NANOGrav, PPTA, EPTA, CPTA |
 | Chirp mass inflation factor | ℳ_eff/ℳ_true | 1.32 | PTA amplitude correction |
-.Groups[1].Value : Pulsar Timing Array Anomalies Explained by UQFF
+ : Pulsar Timing Array Anomalies Explained by UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-06  

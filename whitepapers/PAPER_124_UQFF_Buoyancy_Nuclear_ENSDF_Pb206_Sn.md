@@ -213,7 +213,7 @@ signature (vs ?n = 0.20 for ATLAS virtual quarks, PAPER_123) provides cross-doma
 ---
 
 *CP2 Mode: Buoyancy (Nuclear) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Buoyancy Nuclear: ENSDF Pb-206 Separation Energy S_n Ladder
+   UQFF Buoyancy Nuclear: ENSDF Pb-206 Separation Energy S_n Ladder
 
 
 

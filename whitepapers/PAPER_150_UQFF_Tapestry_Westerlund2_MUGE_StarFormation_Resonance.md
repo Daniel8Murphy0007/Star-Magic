@@ -410,7 +410,7 @@ bridge.*
 - PAPER_146 — 12-term MUGE equation
 - PAPER_151 — Pillars of Creation and Rings of Relativity (cascade sequence)
 - `MAIN_{1\_CoAnQi}.cpp` SOURCE4 — tapestry_SOURCE4, westerlund_SOURCE4
-.Groups[1].Value  — UQFF Tapestry and Westerlund 2: MUGE Star Formation Resonance at g~10^27 m/s^2
+  — UQFF Tapestry and Westerlund 2: MUGE Star Formation Resonance at g~10^27 m/s^2
 
 
 ---

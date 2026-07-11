@@ -284,7 +284,7 @@ dark matter in standard models.
 - PAPER_152 — Student's Guide Universe (lower cascade / cosmological)
 - PAPER_146 — 12-term MUGE equation
 - `MAIN_{1\_CoAnQi}.cpp` SOURCE4 — pillars_SOURCE4, rings_SOURCE4
-.Groups[1].Value  — UQFF Pillars of Creation and Rings of Relativity: MUGE Cascade Gravity Sequence
+  — UQFF Pillars of Creation and Rings of Relativity: MUGE Cascade Gravity Sequence
 
 <!-- PKG-AGN-S225 -->
 

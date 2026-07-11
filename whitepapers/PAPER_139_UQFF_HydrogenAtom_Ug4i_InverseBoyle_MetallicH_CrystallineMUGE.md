@@ -263,7 +263,7 @@ and no universe at all.
 ---
 
 *CP2 Mode: Quadratic (Ug4i) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF Hydrogen Atom: Ug4i Inverse Boyle's Law, Metallic H, Crystalline MUGE
+   UQFF Hydrogen Atom: Ug4i Inverse Boyle's Law, Metallic H, Crystalline MUGE
 
 
 

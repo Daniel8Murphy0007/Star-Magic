@@ -27,7 +27,7 @@ U_UA = 1 / SO_5⁴ = 1 / 10⁴ = 1.0 × 10⁻⁴   EXACT
 ## Cross-Domain Pairing
 
 This identity is structurally identical (in dimensionless form) to:
-- **Sun quiet B-field** = 1/SO_5⁴ = 10⁻⁴ T (PAPER_1486 / F:\Aetheric Propulsion)
+- **Sun quiet B-field** = 1/SO_5⁴ = 10⁻⁴ T (PAPER_1486 / F:/Aetheric Propulsion)
 
 Same integer-primitive form, different physical domains (coupling vs. magnetic field), different units. The shared identity reveals SO_5⁴ as a recurring suppression factor across UQFF coupling and field hierarchies.
 

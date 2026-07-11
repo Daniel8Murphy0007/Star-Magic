@@ -228,7 +228,7 @@ dark energy to neutrino background, with N=3 pinpointing the dark matter scale w
 ---
 
 *CP2 Mode: Quadratic (Vacuum Cascade) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Quadratic Vacuum Cascade: JCAP [SSq] Dark Matter Density
+   UQFF Quadratic Vacuum Cascade: JCAP [SSq] Dark Matter Density
 
 <!-- PKG-DM-S225 -->
 

@@ -204,7 +204,7 @@ e^{-0.0005t} expression.
 ---
 
 *CP2 Mode: Superconductive (Merger+Jet) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value  — UQFF Superconductive Merger: GW170817 + Chandra Jets Combined
+  — UQFF Superconductive Merger: GW170817 + Chandra Jets Combined
 
 <!-- PKG-GW-S225 -->
 

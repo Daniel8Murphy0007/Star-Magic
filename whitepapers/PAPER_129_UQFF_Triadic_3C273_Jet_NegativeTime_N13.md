@@ -236,7 +236,7 @@ VLBI surveys.
 ---
 
 *CP2 Mode: Triadic (Negative Time) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Triadic Negative Time: 3C273 Jet N=13 Reversal Model
+   UQFF Triadic Negative Time: 3C273 Jet N=13 Reversal Model
 
 <!-- PKG-AGN-S225 -->
 

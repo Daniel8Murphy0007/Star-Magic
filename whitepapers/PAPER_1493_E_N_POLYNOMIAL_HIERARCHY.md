@@ -2,7 +2,7 @@
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF (Unified Quantum Field Framework) — Star-Magic v5.27+
-**Tier:** Bucket A / D / G — derived from F:\Aetheric Propulsion Millenium Equation Proofs_18April2025
+**Tier:** Bucket A / D / G — derived from F:/Aetheric Propulsion Millenium Equation Proofs_18April2025
 **Date:** June 16, 2026
 **Location:** 41.0997 N, 80.6495 W (Youngstown, OH, USA)
 **Status:** CLOSED — Hierarchical 26-level energy ladder spanning nuclear-to-cosmic scales
@@ -55,7 +55,7 @@ Per CLAUDE.md mandate, UQFF and Standard Model frameworks describe energy scales
 
 ## Reference
 
-- Source: F:\Aetheric Propulsion\Millenium Equation Proofs_18April2025\UQFF proof set for Nuclear Binding Shell Levels_28Sept2025.docx
+- Source: F:/Aetheric Propulsion/Millenium Equation Proofs_18April2025/UQFF proof set for Nuclear Binding Shell Levels_28Sept2025.docx
 - Related: PAPER_062 (DPM 26-level lattice), PAPER_1080 (S_26 compactification), PAPER_872 (proto-element nuclear identity), PAPER_1466 (mass-without-weight), PAPER_034 (Higgs sector), PAPER_1156 (cosmology cluster).
 - Calculator dispatch: `calculate_paradox({"paradox": "e_n_polynomial_hierarchy"})` or `calculate_cosmology({"observable": "e_n_at_8"})`.
 

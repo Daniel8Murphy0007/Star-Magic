@@ -474,7 +474,7 @@ PAPER_064.
 8. Murphy D.T. (2026). *NIMROD-ISiS Alpha Multiplicity: Bose-Einstein Occupancy UQFF*. PAPER_060.
 9. `bose_nuclear_calculator.py`  Star-Magic codebase, added Jan 28, 2026 (Batch 23).
 10. `bose_occupancy_validation.py`  Star-Magic codebase, ?/dof=0.051, ALL PASS.
-.Groups[1].Value   Empirical Proof EP-12: BoseEinstein Nuclear BEC via UQFF
+   Empirical Proof EP-12: BoseEinstein Nuclear BEC via UQFF
 
 
 ---

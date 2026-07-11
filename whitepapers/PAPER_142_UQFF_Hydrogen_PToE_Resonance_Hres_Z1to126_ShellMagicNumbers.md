@@ -263,7 +263,7 @@ energies are fully incorporated through the f_res term.
 ---
 
 *CP2 Mode: Resonant + Quadratic (Shell Corrections) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF Hydrogen PToE Resonance H_res: Z=1126 Complete Shell and Magic Number
+   UQFF Hydrogen PToE Resonance H_res: Z=1126 Complete Shell and Magic Number
 Integration
 
 

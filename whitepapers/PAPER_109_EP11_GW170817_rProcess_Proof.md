@@ -389,7 +389,7 @@ observations*. Astrophys. J. Lett. 848, L19.
 6. Murphy D.T. (2026). *Multi-Messenger GW170817: Kilonova + UQFF Predictions*. PAPER_006.
 7. Murphy D.T. (2026). *F_UBii Buoyancy Force: Proof Variants 26 (Thermodynamic Series)*. PAPER_037.
 8. `validate_gw170817.py`, `validate_gw170817_full.py`  Star-Magic codebase.
-.Groups[1].Value   Empirical Proof EP-11: GW170817 r-Process Abundances via UQFF Ub_i Neutron
+   Empirical Proof EP-11: GW170817 r-Process Abundances via UQFF Ub_i Neutron
 Outflow
 
 

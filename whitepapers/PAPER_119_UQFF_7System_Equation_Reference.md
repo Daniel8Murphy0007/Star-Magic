@@ -291,7 +291,7 @@ variable tables.*
 5. Tohsaki et al. (2001). *Phys. Rev. Lett. 87, 192501.* Alpha BEC (N_B basis).  
 6. IceCube Collaboration (2022). *Science.* Diffuse neutrino SED ($\kappa$_i=0.61 anchor).  
 7. LIGO/Virgo (2017). *Phys. Rev. Lett. 119, 161101.* GW170817 ejecta (Ub_i anchor).  
-.Groups[1].Value   UQFF 7-System Equation Reference: Complete Variable Tables
+   UQFF 7-System Equation Reference: Complete Variable Tables
 
 <!-- PKG-AGN-S225 -->
 

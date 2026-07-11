@@ -526,7 +526,7 @@ individual systems (LLAGNs, nuclear) contribute near-zero floor values.
 8. Gaia Collaboration (2025). *Gaia DR4.* Sgr A* astrometry.  
 9. Fermi LAT Collaboration (2025). *4LAC-DR4.* Blazar catalog.  
 10. Tohsaki et al. (2001). *Phys. Rev. Lett. 87, 192501.* Alpha BEC in 12C.  
-.Groups[1].Value  — UQFF Astronomical Systems Catalog: 24-System Parameter Reference
+  — UQFF Astronomical Systems Catalog: 24-System Parameter Reference
 
 <!-- PKG-AGN-S225 -->
 

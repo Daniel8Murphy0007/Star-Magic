@@ -439,7 +439,7 @@ parameters*. A&A 641, A6.
 6. Murphy D.T. (2026). *EP-05 Fermi-LAT Blazar [SSq] Confirmation*. PAPER_113.
 7. Murphy D.T. (2026). *EP-10 IceCube Neutrino SED $\beta$_i=[SSq] Confirmation*. PAPER_108.
 8. `JCAPDarkMatterVacuumValidator` (CondensedPhysics2.py) — Star-Magic codebase.
-.Groups[1].Value  — Empirical Proof EP-08: JCAP Dark Matter Vacuum Density — [SSq] = 0.57 Ratio
+  — Empirical Proof EP-08: JCAP Dark Matter Vacuum Density — [SSq] = 0.57 Ratio
 Chain Confirmed
 
 

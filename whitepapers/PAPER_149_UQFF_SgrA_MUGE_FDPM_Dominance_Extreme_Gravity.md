@@ -367,7 +367,7 @@ bridge.*
 - PAPER_148 — SGR1745-2900 (contrasting afluid_freq dominant case)
 - PAPER_155 — lim(fTRZ->0) Standard Model gravity recovery
 - `MAIN_{1\_CoAnQi}.cpp` SOURCE4 — sagA_SOURCE4 system, compute_resonance_MUGE_SOURCE4()
-.Groups[1].Value  — UQFF Sagittarius A*: MUGE FDPM Dominance and Extreme Gravity
+  — UQFF Sagittarius A*: MUGE FDPM Dominance and Extreme Gravity
 
 
 ---

@@ -626,7 +626,7 @@ bridge.*
 - Murphy D.T. (2026), PAPER_001132  Phase 1 Star-Magic whitepaper suite
 - `MAIN_{1\_CoAnQi}.cpp`  107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
 - `grok_{share\_07b7f7a635c04b6e90170b8a481ab1b0\_content}.txt`  Thread 07b7f7a6 extraction
-.Groups[1].Value  – UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay
+  – UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay
 Problems
 
 ## 15. Nine-Sector Unified Lagrangian Update (Session 204)

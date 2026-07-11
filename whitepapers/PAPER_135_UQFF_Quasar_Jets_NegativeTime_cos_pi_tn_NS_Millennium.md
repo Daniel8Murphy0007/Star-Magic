@@ -227,7 +227,7 @@ in PAPER_114.
 ---
 
 *CP2 Mode: Superconductive/Resonant | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF Quasar Jets: Negative Time cos(pt_n) Asymmetry and Navier-Stokes Millennium
+   UQFF Quasar Jets: Negative Time cos(pt_n) Asymmetry and Navier-Stokes Millennium
 
 <!-- PKG-GW-S225 -->
 

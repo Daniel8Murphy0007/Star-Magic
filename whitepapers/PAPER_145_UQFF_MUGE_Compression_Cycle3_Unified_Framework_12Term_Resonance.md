@@ -399,7 +399,7 @@ bridge.*
 - PAPER_146 — 12-Term MUGE master derivation
 - PAPER_155 — fTRZ->0 Standard Model recovery proof
 - Star Magic.md — Complete theoretical framework
-.Groups[1].Value  — UQFF MUGE Compression Cycle 3: Unified Framework and 12-Term Resonance
+  — UQFF MUGE Compression Cycle 3: Unified Framework and 12-Term Resonance
 Architecture
 
 

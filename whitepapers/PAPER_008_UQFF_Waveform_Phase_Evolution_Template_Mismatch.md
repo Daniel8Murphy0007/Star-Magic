@@ -677,7 +677,7 @@ the detection margin (SNR = 8.0) under UQFF  events of this type are first detec
 marginal under UQFF. A matched-filter search optimized for UQFF waveforms would recover 3 more
 events at fixed false alarm rate.
 
-**Validator:** `validate_gw170817.py` (phase lag confirmation: 2310.8 rad ?).Groups[1].Value : UQFF
+**Validator:** `validate_gw170817.py` (phase lag confirmation: 2310.8 rad ?) : UQFF
 Waveform Phase Evolution and Template Mismatch
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)

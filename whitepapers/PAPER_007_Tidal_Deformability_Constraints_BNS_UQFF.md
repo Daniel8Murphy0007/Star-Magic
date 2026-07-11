@@ -669,7 +669,7 @@ impact on this whitepaper.
 | 2.5 | 10.0 | 0.368 | 0.022 | 11 | 16 |
 
 **Note:** Values assume intermediate-stiffness EOS (e.g., SLy4). UQFF modifications multiply ? by
-f_SCm(B)..Groups[1].Value : Tidal Deformability Constraints from BNS Mergers in UQFF
+f_SCm(B) : Tidal Deformability Constraints from BNS Mergers in UQFF
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 

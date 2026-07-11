@@ -250,7 +250,7 @@ deviation = 8.1e-8  ?_?_obs.
 ---
 
 *CP2 Mode: Compressed (Energy Ladder) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF 26 Quantum Levels: Universal Energy Ladder E_n = E_0 $\times$ 10n
+   UQFF 26 Quantum Levels: Universal Energy Ladder E_n = E_0 $\times$ 10n
 
 <!-- PKG-AGN-S225 -->
 

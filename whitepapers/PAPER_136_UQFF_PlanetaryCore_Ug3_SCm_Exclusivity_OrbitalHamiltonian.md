@@ -218,7 +218,7 @@ Earth's lunar orbital period, providing independent calibration of k_3 = 1.8.
 ---
 
 *CP2 Mode: Compressed (Ug3) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value  — UQFF Planetary Core Ug3 SCm Exclusivity and Orbital Quantum Hamiltonian
+  — UQFF Planetary Core Ug3 SCm Exclusivity and Orbital Quantum Hamiltonian
 
 <!-- PKG-AGN-S225 -->
 

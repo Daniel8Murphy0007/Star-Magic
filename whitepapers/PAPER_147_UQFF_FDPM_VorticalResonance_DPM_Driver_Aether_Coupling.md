@@ -459,7 +459,7 @@ bridge.*
 - PAPER_149 — Sgr A* (aDPM=4.105e29 dominant)
 - PAPER_140 — [(UA')]:[SCm]=10 dual monopole (Evac_neb/Evac_ISM=10 connection)
 - `MAIN_{1\_CoAnQi}.cpp` SOURCE4 — compute_resonance_MUGE_SOURCE4()
-.Groups[1].Value  — UQFF FDPM Vortical Resonance: DPM Driver Equation and Aether Coupling
+  — UQFF FDPM Vortical Resonance: DPM Driver Equation and Aether Coupling
 
 
 ---

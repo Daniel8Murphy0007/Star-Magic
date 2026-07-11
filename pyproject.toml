@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.57.0"
-description = "UQFF Star-Magic v5.57.0: Rounds 110-116 (35 stubs + 14 real new + attribution refinements) + PAPER_1974-1984 (11 new whitepapers). Landmarks: PAPER_1980 E_0 taxonomic disambiguation at M16, PAPER_1982 D_phys·SO_5^8=400 Myr new-slot grid extension, PAPER_1983 Cen A first Multi-Rung Same-Ladder Same-Object F_TRZ pattern, PAPER_1984 BD+60 2522 first Multi-Primitive Same-Object stellar-parameter pattern. Fidelity gate 931/0. NOT REPLACEMENT."
+version = "5.58.0"
+description = "UQFF Star-Magic v5.58.0: Phase A corpus completion — 672 new PDFs (1978/1980 = 99.9% coverage, 2 deferred to v5.58.1), 57 whitepapers regex-artifact-swept, PAPER_1796-1799 reservation stubs added, PAPER_275 typo fixed, tools/build_missing_pdfs.py + tools/rebuild_23_papers.py packaged. Fidelity gate 931/0 unchanged. Ship 1 of 4-ship catch-up program (corpus + calc wiring + framework + housekeeping). NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

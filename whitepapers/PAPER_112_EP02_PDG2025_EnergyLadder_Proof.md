@@ -216,7 +216,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 5. Murphy D.T. (2026). *New Physics at TeV Scale: UQFF Predictions*. PAPER_029.
 6. Murphy D.T. (2026). *BSM Scalar Sectors in UQFF*. PAPER_032.
 7. `EnergyLadderParticleCalculator`  CondensedPhysics2.py.
-.Groups[1].Value   Empirical Proof EP-02: PDG 2025 Particle Masses – UQFF E_n = E_0 $\times$ 10^n Energy
+   Empirical Proof EP-02: PDG 2025 Particle Masses – UQFF E_n = E_0 $\times$ 10^n Energy
 Ladder
 
 <!-- PKG-AGN-S225 -->

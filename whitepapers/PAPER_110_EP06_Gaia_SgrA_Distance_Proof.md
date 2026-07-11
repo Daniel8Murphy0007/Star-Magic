@@ -402,7 +402,7 @@ Astrophys. J. 837, 30.
 6. Murphy D.T. (2026). *Magnetar SGR1745: UQFF Calibration (?, [SSq])*. PAPER_094.
 7. Murphy D.T. (2026). *Black Hole Interaction Energy in 26D UQFF*. PAPER_048.
 8. Murphy D.T. (2026). *Stellar Parameter Validation: GAIA DR4 vs UQFF*. PAPER_073.
-.Groups[1].Value   Empirical Proof EP-06: Gaia DR3/DR4 Sgr A*  UQFF Galactic Center Distance
+   Empirical Proof EP-06: Gaia DR3/DR4 Sgr A*  UQFF Galactic Center Distance
 Calibration
 
 

@@ -266,7 +266,7 @@ UQFF correction departs.
 ---
 
 *CP2 Mode: Buoyancy + Quadratic (Azeotropic Void) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF H2O Azeotrope and Oceanic Salinity: Buoyancy + Ug4 Azeotropic Void, NOAA
+   UQFF H2O Azeotrope and Oceanic Salinity: Buoyancy + Ug4 Azeotropic Void, NOAA
 Validation
 
 

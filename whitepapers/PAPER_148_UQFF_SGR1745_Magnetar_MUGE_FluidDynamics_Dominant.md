@@ -334,7 +334,7 @@ bridge.*
 - PAPER_147 — FDPM driver (aDPM subdominant for SGR1745)
 - PAPER_149 — Sgr A* aDPM dominance (contrasting system)
 - PAPER_154 — Navier-Stokes SCm bridge (afluid_freq foundation)
-.Groups[1].Value  — UQFF SGR1745-2900 Magnetar: MUGE Fluid Dynamics Dominant Configuration
+  — UQFF SGR1745-2900 Magnetar: MUGE Fluid Dynamics Dominant Configuration
 
 
 ---

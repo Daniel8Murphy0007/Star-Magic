@@ -423,7 +423,7 @@ CMS-EXO-24-006.
 4. Murphy D.T. (2026). *EP-02 PDG 2025 Energy Ladder Proof*. PAPER_112.
 5. Murphy D.T. (2026). *EP-04 ENSDF Pb-206 Nuclear Binding Ladder*. PAPER_117.
 6. `lhc_uqff_validation.py`, `LHCVirtualQuarkValidator`  Star-Magic codebase.
-.Groups[1].Value   Empirical Proof EP-03: LHC ATLAS Run 3 Virtual Quark Exchange – UQFF Energy
+   Empirical Proof EP-03: LHC ATLAS Run 3 Virtual Quark Exchange – UQFF Energy
 Ladder n=4
 
 

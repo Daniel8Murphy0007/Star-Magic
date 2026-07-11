@@ -396,7 +396,7 @@ C 45, 030001.
 4. Murphy D.T. (2026). *EP-03 LHC Virtual Quark UQFF Ladder n=4*. PAPER_116.
 5. Murphy D.T. (2026). *EP-02 PDG 2025 Energy Ladder Proof*. PAPER_112.
 6. `NuclearBindingLadderValidator` (CondensedPhysics2.py)  Star-Magic codebase.
-.Groups[1].Value   Empirical Proof EP-04: ENSDF Pb-206 Nuclear Level Data – UQFF Energy Ladder n=8
+   Empirical Proof EP-04: ENSDF Pb-206 Nuclear Level Data – UQFF Energy Ladder n=8
 Confirmed
 
 

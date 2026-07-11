@@ -231,7 +231,7 @@ dust ram-pressure (a_dust  4$\times$10?? m/s).
 ---
 
 **Watermark:** 2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
-.Groups[1].Value
+
   
 ## Abstract
 
@@ -441,7 +441,7 @@ dust ram-pressure (a_dust  4$\times$10?? m/s).
 ---
 
 **Watermark:** 2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
-.Groups[1].Value 
+ 
 H_UQFF=H(z)*t_H~0.987 [PAPER_276]`
 
 ---
@@ -654,7 +654,7 @@ dust ram-pressure (a_dust  4\times10?? m/s).
 ---
 
 **Watermark:** 2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
-.Groups[1].Value
+
   
 H_UQFF=H(z)*t_H~0.987 [PAPER_276]`
 

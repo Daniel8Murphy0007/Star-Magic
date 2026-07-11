@@ -208,7 +208,7 @@ they briefly access the n=4 [UA] vortex regime before returning to confined stat
 ---
 
 *CP2 Mode: Compressed (Sub-Quantum) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Sub-Quantum Compressed: ATLAS LHC Virtual Quark n=4 Level
+   UQFF Sub-Quantum Compressed: ATLAS LHC Virtual Quark n=4 Level
 
 <!-- PKG-YM-S225 -->
 

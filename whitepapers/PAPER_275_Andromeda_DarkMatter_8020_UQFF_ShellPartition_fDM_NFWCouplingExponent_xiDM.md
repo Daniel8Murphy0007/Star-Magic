@@ -222,7 +222,7 @@ partition
 
 ---
 
-*Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. PAPER_273275 complete the Andromeda
+*Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. PAPER_273 and PAPER_275 complete the Andromeda
 unique physics suite.*
 
 ---

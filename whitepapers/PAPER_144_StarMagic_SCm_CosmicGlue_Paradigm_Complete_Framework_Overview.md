@@ -281,7 +281,7 @@ modes, and direct UQFF predictions for LIGO O5 event detection.
 ---
 
 *CP2 Mode: All Modes (Star Magic Capstone) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   Star Magic SCm as Cosmic Glue: Complete UQFF Framework Paradigm Overview
+   Star Magic SCm as Cosmic Glue: Complete UQFF Framework Paradigm Overview
 
 <!-- PKG-AGN-S225 -->
 

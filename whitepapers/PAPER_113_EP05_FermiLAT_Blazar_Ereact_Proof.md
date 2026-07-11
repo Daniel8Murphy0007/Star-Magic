@@ -391,7 +391,7 @@ Astron. Soc. 485, L98.
 5. Murphy D.T. (2026). *Ug4 AGN Feedback: 8-Parameter UQFF Formula*. PAPER_086.
 6. Murphy D.T. (2026). *Magnetar SGR1745: UQFF Calibration (?, [SSq])*. PAPER_094.
 7. `FermiLATBlazarEreactCalculator`  CondensedPhysics2.py.
-.Groups[1].Value   Empirical Proof EP-05: Fermi-LAT 4LAC Blazar Luminosity  $\kappa$ = 0.0005/day
+   Empirical Proof EP-05: Fermi-LAT 4LAC Blazar Luminosity  $\kappa$ = 0.0005/day
 Confirmation
 
 

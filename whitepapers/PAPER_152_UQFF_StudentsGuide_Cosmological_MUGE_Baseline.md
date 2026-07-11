@@ -346,7 +346,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 - `SOURCE4` namespace, `MAIN_{1\_CoAnQi}.cpp` lines 2562326026 (student_guide_SOURCE4)
 - `grok_{share\_07b7f7a635c04b6e90170b8a481ab1b0\_content}.txt`  Thread 07b7f7a6 extraction
 - Blasi P. & De Marco D. (1999), Astropart. Phys. 12, 169  Cosmological B-field 1 nG bound
-.Groups[1].Value   UQFF Student's Guide Universe: Cosmological MUGE Baseline
+   UQFF Student's Guide Universe: Cosmological MUGE Baseline
 
 <!-- PKG-AGN-S225 -->
 

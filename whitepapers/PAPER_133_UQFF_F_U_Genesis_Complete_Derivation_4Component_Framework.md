@@ -268,7 +268,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 ---
 
 *CP2 Mode: All Modes (Genesis) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF F_U Genesis: Complete 4-Component Unified Field Equation Derivation
+   UQFF F_U Genesis: Complete 4-Component Unified Field Equation Derivation
 
 <!-- PKG-AGN-S225 -->
 

@@ -444,7 +444,7 @@ bridge.*
 - Murphy D.T. (2026), PAPER_152  Cosmological MUGE baseline
 - `SOURCE4` namespace, `MAIN_{1\_CoAnQi}.cpp` lines 2562326026
 - `grok_{share\_07b7f7a635c04b6e90170b8a481ab1b0\_content}.txt`  Thread 07b7f7a6
-.Groups[1].Value   UQFF Standard Model Gravity as MUGE Resonance Equilibrium: The Limiting Case
+   UQFF Standard Model Gravity as MUGE Resonance Equilibrium: The Limiting Case
 
 
 ---

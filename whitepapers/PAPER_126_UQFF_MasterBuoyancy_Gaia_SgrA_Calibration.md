@@ -213,7 +213,7 @@ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s.
 ---
 
 *CP2 Mode: Master Buoyancy | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Master Buoyancy: Gaia Sgr A* Galactic Parameter Calibration
+   UQFF Master Buoyancy: Gaia Sgr A* Galactic Parameter Calibration
 
 <!-- PKG-AGN-S225 -->
 

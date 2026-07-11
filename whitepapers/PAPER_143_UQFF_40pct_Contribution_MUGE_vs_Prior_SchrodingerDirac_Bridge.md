@@ -230,7 +230,7 @@ The UQFF 40% contribution to the MUGE bridge equation provides a quantitative fr
 ---
 
 *CP2 Mode: Compressed (Quantum-Gravity Bridge) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF 40% Contribution to MUGE: Quantum-Gravity Bridge from Schrdinger/Dirac to
+   UQFF 40% Contribution to MUGE: Quantum-Gravity Bridge from Schrdinger/Dirac to
 UQFF
 
 <!-- PKG-AGN-S225 -->

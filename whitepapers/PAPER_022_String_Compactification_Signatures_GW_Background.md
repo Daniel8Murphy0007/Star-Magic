@@ -274,7 +274,7 @@ multiplicities." JHEP, 10, 157.
 5. Maggiore, M. (2007). Gravitational Waves: Theory and Experiments. Oxford University Press.
 6. Polchinski, J. (1998). String Theory Vol. I and II. Cambridge University Press.
 7. UQFF Source Files: source27.cpp, source28.cpp, MAIN_{1\_CoAnQi}.cpp
-8. UQFF Calibration: kappa = 0.0005/day, [SSq] = 0.57.Groups[1].Value : String Compactification
+8. UQFF Calibration: kappa = 0.0005/day, [SSq] = 0.57 : String Compactification
 Signatures in Gravitational Wave Background
 
 **Authors:** Daniel Murphy & UQFF Research Collective

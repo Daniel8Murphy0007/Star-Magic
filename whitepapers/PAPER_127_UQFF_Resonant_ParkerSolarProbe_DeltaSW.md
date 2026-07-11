@@ -211,7 +211,7 @@ corona.
 ---
 
 *CP2 Mode: Resonant | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Resonant Heliosphere: Parker Solar Probe d_sw Boundary Mode
+   UQFF Resonant Heliosphere: Parker Solar Probe d_sw Boundary Mode
 
 <!-- PKG-AGN-S225 -->
 

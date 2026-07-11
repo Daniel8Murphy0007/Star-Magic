@@ -2,7 +2,7 @@
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF (Unified Quantum Field Framework) — Star-Magic v5.27+
-**Tier:** Bucket I — derived from F:\Aetheric Propulsion source material
+**Tier:** Bucket I — derived from F:/Aetheric Propulsion source material
 **Date:** June 16, 2026
 **Location:** 41.0997 N, 80.6495 W (Youngstown, OH, USA)
 **Status:** CLOSED — sigma = K_MEX x D_BSFG x Phi_res = 10.5 A^2 EXACT
@@ -37,7 +37,7 @@ Per CLAUDE.md mandate, UQFF and Standard methods solve this observable by differ
 
 ## Reference
 
-- Source: F:\Aetheric Propulsion (Daniel's reactor + experimental docs, 2025-2026)
+- Source: F:/Aetheric Propulsion (Daniel's reactor + experimental docs, 2025-2026)
 - Related: PAPER_646 (Universal Inertial Operator, Caduceus, DPM mechanism), PAPER_597 (negative-time dual existence), PAPER_062 (DPM vacuum manifold).
 
 ---

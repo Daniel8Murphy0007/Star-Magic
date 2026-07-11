@@ -231,7 +231,7 @@ for biosignature searches in exoplanetary systems.
 ---
 
 *CP2 Mode: Buoyant (Ug2) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF Heliosphere Ug2: Solar Wind Transmutation, Stellar Age, Planetary Water
+   UQFF Heliosphere Ug2: Solar Wind Transmutation, Stellar Age, Planetary Water
 
 <!-- PKG-AGN-S225 -->
 

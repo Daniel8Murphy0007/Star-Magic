@@ -315,7 +315,7 @@ e048.
 3. Murphy D.T. (2026). *Navier-Stokes Existence and Smoothness: UQFF Fluid Proof*. PAPER_102.
 4. Murphy D.T. (2026). *Intracluster Medium Physics via UQFF Buoyancy*. PAPER_041.
 5. Murphy D.T. (2026). *AGN Systems: Sgr A*, M87*, Centaurus A, NGC 1365*. PAPER_067.
-.Groups[1].Value   Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry – Navier-Stokes Ub_i
+   Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry – Navier-Stokes Ub_i
 
 
 ---

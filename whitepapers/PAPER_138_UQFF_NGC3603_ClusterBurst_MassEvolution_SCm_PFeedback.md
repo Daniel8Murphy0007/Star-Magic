@@ -217,7 +217,7 @@ cluster physics with the broader UQFF framework for SCm-mediated astrophysical e
 ---
 
 *CP2 Mode: MasterBuoyancy + Superconductive | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF NGC 3603 Star Cluster Burst: M(t) Evolution, SCm Feedback, P(t) Cavity
+   UQFF NGC 3603 Star Cluster Burst: M(t) Evolution, SCm Feedback, P(t) Cavity
 
 <!-- PKG-AGN-S225 -->
 

@@ -387,7 +387,7 @@ Multiplets of Ultra-High-Energy Cosmic Rays." *ApJL*, 951, L14.
 5. Aloisio, R. et al. (2017). "SimProp v2r4: Monte Carlo simulation of UHECR propagation." *JCAP*,
 11, 009.
 6. UQFF Source Files: `source27.cpp`, `source28.cpp`, `MAIN_{1\_CoAnQi}.cpp`
-7. UQFF Calibration: $\kappa$ = 0.0005/day, [SSq] = 0.57.Groups[1].Value : Cosmic Ray Propagation in UQFF
+7. UQFF Calibration: $\kappa$ = 0.0005/day, [SSq] = 0.57 : Cosmic Ray Propagation in UQFF
 Spacetime
 
 **Authors:** Daniel Murphy & UQFF Research Collective

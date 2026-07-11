@@ -323,7 +323,7 @@ SOURCE4 namespace and validated against 7 astrophysical systems spanning 23 orde
 - PAPER_149 — Sgr A* aDPM dominance
 - PAPER_155 — fTRZ->0 Standard Model proof
 - `MAIN_{1\_CoAnQi}.cpp` SOURCE4 — compute_resonance_MUGE_SOURCE4()
-.Groups[1].Value  — UQFF Superconductive Resonance 12-Term MUGE Master Equation
+  — UQFF Superconductive Resonance 12-Term MUGE Master Equation
 
 <!-- PKG-AGN-S225 -->
 

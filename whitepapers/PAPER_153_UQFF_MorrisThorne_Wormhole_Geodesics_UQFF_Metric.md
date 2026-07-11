@@ -286,7 +286,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 - Murphy D.T. (2026), PAPER_152  Student's Guide cosmological baseline
 - `SOURCE4` namespace, `MAIN_{1\_CoAnQi}.cpp` lines 2562326026
 - `grok_{share\_07b7f7a635c04b6e90170b8a481ab1b0\_content}.txt`  Thread 07b7f7a6
-.Groups[1].Value   UQFF Morris-Thorne Wormhole Geodesics: UQFF Metric Integration
+   UQFF Morris-Thorne Wormhole Geodesics: UQFF Metric Integration
 
 <!-- PKG-AGN-S225 -->
 

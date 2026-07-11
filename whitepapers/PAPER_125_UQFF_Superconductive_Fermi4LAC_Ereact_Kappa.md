@@ -238,7 +238,7 @@ source for all AGN activity in the UQFF framework.
 ---
 
 *CP2 Mode: Superconductive (E_react Calibration) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Superconductive Reactor: Fermi 4LAC $\kappa$ = 0.0005/day Calibration
+   UQFF Superconductive Reactor: Fermi 4LAC $\kappa$ = 0.0005/day Calibration
 
 <!-- PKG-AGN-S225 -->
 

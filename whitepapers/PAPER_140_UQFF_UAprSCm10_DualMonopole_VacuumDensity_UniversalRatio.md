@@ -229,7 +229,7 @@ precision. The 10-mode vacuum structure corresponds naturally to the n=10 fixed 
 ---
 
 *CP2 Mode: All Modes (Calibration Constant) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value   UQFF [(UA')]:[SCm] = 10 Dual Monopole Ratio: Vacuum Density Fundamental Constant
+   UQFF [(UA')]:[SCm] = 10 Dual Monopole Ratio: Vacuum Density Fundamental Constant
 
 <!-- PKG-DM-S225 -->
 

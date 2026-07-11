@@ -378,7 +378,7 @@ quasars*. ApJS 98, 103.
 6. Murphy D.T. (2026). *EP-01 Chandra/RACS Jet Asymmetry*. PAPER_111.
 7. Murphy D.T. (2026). *M87* Relativistic Jet UQFF Framework*. PAPER_067.
 8. `QuasarJetAsymmetryCalculator` (CondensedPhysics2.py), `validate_uqff_muge.py`.
-.Groups[1].Value   Empirical Proof EP-09: 3C 273 Quasar Jet Brightness Asymmetry – UQFF Ub_i
+   Empirical Proof EP-09: 3C 273 Quasar Jet Brightness Asymmetry – UQFF Ub_i
 Buoyancy
 
 

@@ -348,7 +348,7 @@ pp interactions*. Phys. Rev. D 74, 034018.
 6. Murphy D.T. (2026). *Neutrino SED: UQFF Emission Model*. PAPER_088.
 7. Murphy D.T. (2026). *F_U_Bi_i Integral: Complete Derivation*. PAPER_063.
 8. `neutrino_sed_calculator.py`  Star-Magic codebase, 4/4 PASS.
-.Groups[1].Value   Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED – UQFF $\kappa$_i Calibration
+   Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED – UQFF $\kappa$_i Calibration
 
 
 ---
