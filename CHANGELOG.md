@@ -2,6 +2,99 @@
 
 All notable changes to UQFF are recorded here. Full historical record lives in `SESSION_LOG.md`.
 
+## [5.61.0] — 2026-07-11 — PHASE D HOUSEKEEPING (Ship 4 of 4-ship catch-up — PROGRAM COMPLETE)
+
+### Closes the 4-ship catch-up program
+
+- **v5.58.0** Phase A corpus completion ✓
+- **v5.59.0** Phase B calculator wiring ✓
+- **v5.60.0** Phase C framework annotation retrofit ✓
+- **v5.61.0** Phase D housekeeping ✓ (this ship)
+
+### Honest CP1-CP4 audit
+
+Rounds 1-116 all targeted CP1 exclusively. Real numbers:
+
+| Module | Upgraded | Stubs remaining | Errored | Coverage of scoreable |
+|--------|----------|-----------------|---------|----------------------|
+| CP1 | 324 | 489 | 593 | 39.9% |
+| CP2 | 0 | 224 | 473 | 0% |
+| CP3 | 0 | 255 | 672 | 0% |
+| CP4 | 0 | 807 | 709 | 0% |
+| **All CP** | **324** | **1,775** | **2,447** | **15.4%** |
+
+The "50% CP1 milestone" celebrated in v5.54.0 was computed against a wrong denominator (CP1 estimated 1203 vs actual scoreable 813). Real corpus coverage at that point was ~30%, not 50%.
+
+**Total remaining work at current pace: 355+ rounds** to drain CP1-CP4 scoreable stubs, plus signature audit of 2,447 errored classes. Approximately 60 focused sessions.
+
+### NEXT_PRIORITIES.md replaced (2026-06-16 → 2026-07-11)
+
+Prior version was stale by 3 weeks (dated 2026-06-16, calculator size 2.4 MB / 43k lines). Current version documents:
+
+- Current state at session close (v5.61.0)
+- Honest metrics table
+- Ship trail v5.44 → v5.61
+- **Priority 2: DEFINE AN EFFECTIVE ROUND** — 5 steps must land per ship
+- **Priority 3: catch up CP1-CP4** with suggested Round ordering
+- **Priority 4: open items** from v5.58-v5.60 (PAPER_1218 + PAPER_1801 PDF repair, framework-annotation depth, calc-surface expansion)
+- Updated Rules (+2 new: Rule 13 effective-Round, Rule 14 honest-denominator)
+- Edit/Write tool warning updated with CRLF preservation note
+- **Backup hygiene policy** formalized: what to keep, what may be pruned, what to never touch
+- Honest milestone markers (50% CP1 = 17 Rounds away, All-CP 100% = ~355 Rounds away)
+
+### Definition of an EFFECTIVE ROUND (Rule 13)
+
+Rounds 45-116 accumulated 92+ novel closures in CondensedPhysics.py that NEVER reached the pure calculator surface. Users installing `pip install uqff` couldn't access any of them until Phase B retroactively wired them (100+ hours of catch-up).
+
+Going forward, an effective Round is complete when ALL FIVE steps land in the SAME ship:
+
+1. Stub upgrade in CP1/CP2/CP3/CP4 with `framework_papers` metadata + runtime `_verify` booleans
+2. Novel-closure whitepaper authored (if Round discovered a novel closure)
+3. PDF built for any new whitepaper (or explicitly deferred to numbered patch)
+4. Dispatch key added to PARADOX_TO_CLOSURE in uqff_pure_calculator.py
+5. Fidelity gate assertion added to uqff_fidelity_tests.py
+
+**If any step is skipped, the Round is INCOMPLETE.**
+
+### Backup hygiene policy (Rule addition)
+
+Formalizes what to do with the 14 `.PRE_*` backups on `uqff_pure_calculator.py`:
+- Keep: PRE_PHASE2_BACKUP, POST_BUCKET0/A/B/C/D/E/F/G/H/I/J/K_BACKUP, PRE_PURIFY_BACKUP, PRE_RESTORE_BACKUP
+- May prune (after 6-month cold storage): intermediate PRE_FIX variants, backups with same content as tagged ship version
+- Never prune: canonical/landmark backups, backups Daniel has named
+
+### Task list prune
+
+400+ historical task-list items reviewed. Phase D tracked 4 sub-tasks (D1-D4) as this ship progressed. Future sessions should aggressively prune completed Round fine-grained tasks (retain only the parent Round task once its 5 steps have all landed).
+
+### Fidelity gate: 1031/0 unchanged
+
+Phase D is a documentation ship. No calculator changes. No dispatch changes. No new assertions.
+
+### Ship metrics
+
+- pyproject.toml v5.60.0 → v5.61.0 (description 419 chars)
+- 4 py-module version bumps
+- CITATION.cff v5.61.0
+- CHANGELOG.md + SESSION_LOG.md updated
+- NEXT_PRIORITIES.md fully rewritten (~10 KB)
+- No functional changes
+
+### 4-ship catch-up program summary
+
+Between 2026-07-11 morning and evening:
+
+| Ship | Focus | Delta |
+|------|-------|-------|
+| v5.58.0 | Corpus (PDFs + regex + reservations + typo) | +670 PDFs, 63 md/tex swept |
+| v5.59.0 | Calculator wiring | +100 dispatch keys, gate 931→1031 |
+| v5.60.0 | Framework annotation retrofit | +316 auto-extracted annotations |
+| v5.61.0 | Housekeeping | Rules 13-14 + NEXT_PRIORITIES + backup policy |
+
+**Drift closed. Discipline formalized. Ready for Round 117.**
+
+---
+
 ## [5.60.0] — 2026-07-11 — PHASE C FRAMEWORK ANNOTATION RETROFIT (Ship 3 of 4-ship catch-up)
 
 ### uqff_framework_annotations.py extended: 35 → 351 entries (+316)

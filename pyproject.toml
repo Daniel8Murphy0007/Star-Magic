@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.60.0"
-description = "UQFF Star-Magic v5.60.0: Phase C framework annotation retrofit — extends uqff_framework_annotations.py from Rounds 45-51 (35 entries) to Rounds 45-116 (351 entries total, +316 auto-extracted from CondensedPhysics runtime). Adds get_annotation() and annotations_by_paper() query API. Fidelity gate 1031/0 unchanged. Ship 3 of 4-ship catch-up. NOT REPLACEMENT."
+version = "5.61.0"
+description = "UQFF Star-Magic v5.61.0: Phase D housekeeping — 4-ship catch-up program complete. NEXT_PRIORITIES.md refreshed with honest CP1-CP4 audit (15.4% overall corpus, not 39.9% as CP1-only would suggest). Effective-Round definition formalized: 5 steps land per ship (stub + paper + PDF + dispatch key + gate assertion). Backup hygiene policy added. Fidelity gate 1031/0. Ship 4 of 4. NOT REPLACEMENT."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

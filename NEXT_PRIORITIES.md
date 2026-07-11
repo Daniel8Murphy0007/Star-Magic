@@ -10,38 +10,115 @@
 
 ---
 
-## ✅ STATE AT SESSION CLOSE (2026-06-16)
+## STATE AT SESSION CLOSE (2026-07-11 — v5.61.0)
 
-- **Calculator:** 2.4 MB / 43,450 lines / 33 public surfaces / 2,520 def's
-- **PARADOX_TO_CLOSURE:** 527 dispatch keys (was 282 at start of session)
-- **Bucket observables:** 233 across 9 surfaces (C/D/E/F/G/H/I/J/K), was 137
-- **EXACT closures (<0.001%):** 102 of 233
-- **PAPER_XXXX tag coverage:** 100% (441/441 primary_source strings)
-- **Fidelity gate:** 523 tests, 0 failed (was 468 at start)
-- **C++ reference:** `uqff_exact_closures.cpp` — 50 closures, 48/50 self-check pass
-- **Cowork artifact:** `uqff-calculator-dashboard` installed
-- **Whitepapers authored this session:** 96 (PAPER_1375-1470 + PAPER_1087_ERRATUM)
-- **Canonical primitives:** all 11 intact (zero drift)
-- **Pure-calculator discipline:** zero comments, zero docstrings, zero classes, zero datetime/json imports, zero print(), zero file writes in calculator
+### Ship trail
+- **v5.44.0** (2026-07-04) — CP pipeline integration (uqff_pure_calculator dispatchers added)
+- **v5.45.0 through v5.57.0** (2026-07-04 to 2026-07-10) — 13 ships of CP1 P2 stub-drainage rounds. Zero changes to uqff_pure_calculator.py. Drift accumulated.
+- **v5.58.0** (2026-07-11) — Phase A corpus completion: 670 new PDFs (99.9% coverage), 57 regex-artifact-swept, PAPER_1796-1799 reservation stubs, PAPER_275 typo fix
+- **v5.59.0** (2026-07-11) — Phase B calculator wiring: 100 new PARADOX_TO_CLOSURE dispatch keys for PAPER_1893-1984 + PAPER_872 + PAPER_1087 OPEN_QUESTION marker. Gate 931/0 → 1031/0.
+- **v5.60.0** (2026-07-11) — Phase C framework annotation retrofit: 316 auto-extracted annotations for Rounds 52-116
+- **v5.61.0** (2026-07-11) — Phase D housekeeping (this ship): honest CP1-CP4 audit + NEXT_PRIORITIES.md refresh + task-list prune
+
+### Honest metrics
+- **Fidelity gate:** 1031 passed, 0 failed (was 931 pre-Phase-B)
+- **Whitepapers authored:** 1,984 (PAPER_001-PAPER_1984, 4 IDs reserved)
+- **PDF coverage:** 1,978 / 1,980 = 99.9% (PAPER_1218 + PAPER_1801 deferred to v5.58.1)
+- **PARADOX_TO_CLOSURE dispatch keys:** ~11,167 (added 100 in Phase B)
+- **Framework annotations:** 351 (35 hand-classified Rounds 45-51 + 316 auto-extracted Rounds 52-116)
+- **CP1 coverage:** 324/813 scoreable = 39.9%. 489 stubs remain in CP1.
+- **CP2 coverage:** 0/224 = 0%. Never touched by Rounds 1-116.
+- **CP3 coverage:** 0/255 = 0%. Never touched.
+- **CP4 coverage:** 0/807 = 0%. Never touched.
+- **Total scoreable across CP1-CP4:** 2,099 stubs. Upgraded: 324. **Real corpus coverage: 15.4%.**
+- **Errored on default `.compute()` (may include parameterized calculators requiring signature audit):** 593 CP1 + 473 CP2 + 672 CP3 + 709 CP4 = **2,447 classes** with unknown status
+- **Grand total classes with `compute()` method:** 4,579
+
+### What the "50% milestone" (v5.54.0) actually meant
+50% of CP1's estimated 1203 total, computed against a wrong denominator. Actual corpus coverage at that point: ~30%. This document uses honest denominators going forward.
 
 ---
 
-## 🔴 PRIORITY 1 FOR NEXT SESSION — VERIFICATION ONLY
+## PRIORITY 1 — VERIFICATION FIRST
 
-1. Run `python uqff_fidelity_tests.py`. Expect 523/523 PASS, exit 0.
-2. Confirm canonical primitives unchanged in `uqff_pure_calculator.py`.
-3. Sample public surfaces; verify return shape is `{'value': dict}` with no narrative metadata.
-4. **DO NOT MODIFY** Buckets A-K without explicit user request.
+Before any modification:
+
+1. Run `python uqff_fidelity_tests.py`. Expect **1031 passed, 0 failed**, exit 0.
+2. Confirm all 11 canonical primitives + 3 landmark derivative primitives (PAPER_1521 D_BSFG, PAPER_1522 K_MEX, PAPER_1960 F_TRZ) unchanged in `uqff_pure_calculator.py`.
+3. Sample public surfaces; verify return shape `{'value': X}` per CLAUDE.md Rule 5.
+4. **DO NOT MODIFY** existing Bucket A-K wiring without explicit user request.
 
 ---
 
-## 🟡 PRIORITY 2 — OPEN ITEMS (only if Daniel authorizes)
+## PRIORITY 2 — DEFINE AN "EFFECTIVE" ROUND
 
-1. **PAPER_1087 unit erratum** — closure pinned to §3 table value -0.9435 at t=13.8 Gyr; awaiting clarification of κ units (see `whitepapers/PAPER_1087_ERRATUM.md`)
-2. **PAPER_872 proto-element transition dynamics** — Z(proto-Fe)=D_crit=26 and Z(proto-Si)=SO_5+D_phys=14 are EXACT identities; the *transition mechanism* from proto-H to proto-Fe is not yet wired
-3. **"98% remainder" outside-repo physics** — Daniel referenced this earlier; location/contents not yet disclosed
-4. **Backup hygiene policy** — 14 total `.PRE_*` backups accumulated; CLAUDE.md says DO NOT DELETE but consolidation policy worth defining
-5. **Linux mount staleness** — Copilot's sync repair left Linux sandbox with stale git index; a fresh session would clean it
+**Rounds 1-116 lesson: primitive-locking a stub in CondensedPhysics is NOT enough.** Papers accumulated, `framework_papers` metadata accumulated, but users installing `pip install uqff` reached NONE of it because the pure calculator dispatch surface stayed untouched.
+
+**Definition of an effective Round going forward:**
+
+An effective Round is complete when ALL FIVE steps land in the SAME ship:
+
+1. **Stub upgrade** in CP1/CP2/CP3/CP4 with `framework_papers` metadata + runtime `_verify` booleans
+2. **Novel-closure whitepaper** authored (if the Round discovered a novel closure)
+3. **PDF built** for any new whitepaper (or explicitly deferred to a numbered patch)
+4. **Dispatch key added** to `PARADOX_TO_CLOSURE` in `uqff_pure_calculator.py` — user reachable via `calculate_paradox({'paradox': '<key>'})`
+5. **Fidelity gate assertion** added to `uqff_fidelity_tests.py` — pins the identity numerically
+
+**If any step is skipped, the Round is INCOMPLETE.** The Phase B drift (Rounds 45-116 skipped steps 4-5 for 92 papers) took 100+ hours of catch-up work to close retroactively. Do not repeat.
+
+**Round-start ritual (documented by Rounds 45-79, forgotten by Rounds 100-116):**
+- Region-safety pre-check (verify ORB_OLBERS_PARAMS + SOURCE57 + SOURCE71 present)
+- Regex-pattern verified (Round 42 misfire lesson — use `class X\b[^\n]*?:` + explicit next-class-name lookahead)
+- Framework annotations in stub return dict (`backbone / method / shells_used / CPCH / spine / time_frame` — Round 45-79 convention, dropped Rounds 100-116)
+
+---
+
+## PRIORITY 3 — CATCH UP THE REMAINING CP CORPUS
+
+**Scope disclosure:** 1,775 unequivocal stubs across CP1-CP4 remain. Plus 2,447 errored classes needing signature audit. Total unresolved: ~4,222 classes.
+
+At the historical 5-stubs-per-Round pace: **355+ rounds of stub drainage**, or roughly 8-12 months at the historical cadence.
+
+### Suggested ordering
+
+**Round 117 onward — CP1 completion first** (489 stubs remaining):
+- Complete CP1 P2 stub drainage before starting CP2/CP3/CP4
+- Apply the 5-step Effective Round definition every time
+- Ship every 5 rounds (matches v5.47-v5.56 cadence)
+
+**Round ~215 onward — CP2 first pass** (224 stubs):
+- CP2 = `CondensedPhysics2.py` — a separate module Rounds 1-116 never touched
+- Same 5-step discipline
+
+**Round ~260 onward — CP3 first pass** (255 stubs)
+
+**Round ~310 onward — CP4 first pass** (807 stubs — largest)
+
+**Round ~470 onward — 2,447 errored classes audit**:
+- Which are legitimate parameterized calculators (like `AetherMetricQCalcCalculator(M=1e30, r=1e6)`) — they need signature-aware Round work
+- Which are truly broken stubs — bucket into drainage queue
+
+### Whitepaper authoring in parallel
+
+Each Round finding a novel closure produces a whitepaper. Historical pace: ~1 whitepaper per 3-5 Rounds. Extrapolating: **~120 more whitepapers** during CP1-CP4 completion, taking corpus from PAPER_1984 to roughly PAPER_2100.
+
+---
+
+## PRIORITY 4 — OPEN ITEMS FROM v5.58-v5.60
+
+### PAPER-level
+- **PAPER_1218** — PDF not built. LaTeX error: `Paragraph ended before \text@ was complete` from Unicode superscripts in Higgs branching-ratio table. Fix: wrap formula cells in inline math. → **v5.58.1 patch**
+- **PAPER_1801** — PDF not built. LaTeX error: `Missing $ inserted` before `\quad`. Fix: trace unclosed math-mode delimiter earlier in file. → **v5.58.1 patch**
+- **PAPER_1087** — Unit erratum marked OPEN_QUESTION in v5.59.0. Resolution requires clarifying κ units in §3 table vs abstract. → Future work; not blocking
+
+### Framework-annotation depth
+- 316 Phase C auto-extracted annotations have only `framework_papers` field populated. Full 10-field classification (`backbone / method / shells_used / CPCH / spine / F_U_zero_shell / time_frame / candidate_closures_flagged`) requires per-stub physics review. → Future work
+
+### Calculator-surface expansion
+- `calculate_cp_call_UQFF` currently routes to CP1-4 via generic dispatch. Wiring CP1 primitive-locked identities as dedicated `calculate_*` surfaces (instead of only via `PARADOX_TO_CLOSURE`) would provide a second discovery path. → Future work
+
+### Task-list housekeeping
+- Task list has 400+ items, most historical. Phase D pruning was performed for actives. Future sessions should prune completed rounds' fine-grained tasks aggressively.
 
 ---
 
@@ -52,30 +129,71 @@
 3. NO NARRATIVE in calculator.
 4. NO SM ANYWHERE.
 5. PUBLIC SURFACE: `{'value': X}` only.
-6. NO datetime/json/file-writes/__main__/classes in calculator.
+6. NO datetime/json/file-writes/`__main__`/classes in calculator.
 7. NO "0.000% error" without numerical proof.
 8. RUN FIDELITY GATE AFTER EVERY EDIT.
 9. APPEND to SESSION_LOG, never rewrite.
 10. DANIEL PROVIDES INFORMATION. YOU ASSEMBLE IT.
 11. DO NOT MODIFY existing Bucket A-K wiring without explicit user request.
-12. Daniel has been fighting AI drift for 10 months.
+12. Daniel has been fighting AI drift for 10+ months.
+13. **NEW (v5.61.0): DEFINE EFFECTIVE ROUND per Priority 2 above. 5 steps land in same ship or the round is incomplete.**
+14. **NEW (v5.61.0): CP1-CP4 status honestly disclosed. Do not celebrate "50% coverage" against a wrong denominator.**
 
 ---
 
-## ⚠️ EDIT/WRITE TOOL WARNING (updated 2026-06-16)
+## EDIT / WRITE TOOL WARNING
 
-The **Edit tool** AND the **Write tool** BOTH truncate files larger than ~2 MB silently. Confirmed twice in session 2026-06-16:
-- Bucket G splice via Edit truncated `uqff_pure_calculator.py` at line ~43645
-- C++ rewrite via Write truncated `uqff_exact_closures.cpp` at line ~123
-
-For any file > 1 MB, **use Python heredoc + `replace()`** instead of Edit/Write:
+- Edit tool truncates files > ~1 MB silently. Confirmed multiple times.
+- Write tool truncates the same way.
+- For `uqff_pure_calculator.py` (3.2 MB, CRLF line endings), `CondensedPhysics.py` (8.2 MB), and similarly large files: **use Python heredoc + `replace()`** instead:
 
 ```python
 with open('uqff_pure_calculator.py','r',encoding='utf-8',newline='') as f:
     src = f.read()
-# ... mutate src ...
+# ... mutate src via .replace() ...
+# ALWAYS assert tail integrity before write:
+assert src.rstrip().endswith(']')  # or appropriate sentinel
 with open('uqff_pure_calculator.py','w',encoding='utf-8',newline='') as f:
     f.write(src)
 ```
 
-Preserve CRLF endings. Run gate after every edit.
+**Also: preserve CRLF explicitly** — pass `newline=''` to both open() calls or CRLF gets normalized to LF and every line of the file counts as modified.
+
+---
+
+## BACKUP HYGIENE POLICY (v5.61.0 formalization)
+
+Fourteen `.PRE_*` backups accumulated on `uqff_pure_calculator.py` between 2026-06-08 and 2026-06-16. Policy:
+
+**Keep:**
+- `PRE_PHASE2_BACKUP`, `POST_BUCKET0_BACKUP`, `POST_BUCKETA_BACKUP` through `POST_BUCKETK_BACKUP` — reference points for the Bucket A-K wiring
+- `PRE_PURIFY_BACKUP` — pre-narrative-purge state
+- `PRE_RESTORE_BACKUP` — post-purge, pre-canonical-restoration state
+
+**May prune** (after 6-month cold storage):
+- Intermediate `PRE_FIX_BACKUP` variants that predate the current TOTAL PURGE state
+- Any backup where git already has the same commit-tagged state as a ship version (v5.44.0, v5.47.0, etc.)
+
+**Never prune:**
+- Any backup marked "canonical" or "landmark" in its filename
+- Any backup Daniel has explicitly named in a session
+
+Prune only after fresh gate run confirms current state is stable AND Daniel explicitly authorizes each pruned file.
+
+---
+
+## SESSION MILESTONE MARKERS
+
+Historically the project has celebrated milestones. Honest markers going forward:
+
+- **50% CP1** — 407/813 = 407 stubs. Currently at 324. **~83 stubs (~17 Rounds) away.**
+- **75% CP1** — 610/813. **~286 stubs (~57 Rounds) away.**
+- **100% CP1** — 813/813. **~489 stubs (~98 Rounds) away.**
+- **All-CP 50%** — 1,050/2,099. **~726 stubs (~145 Rounds) away.**
+- **All-CP 100%** — 2,099/2,099. **~1,775 stubs (~355 Rounds) away.**
+
+At the sustainable 6 Rounds/day pace observed in the best week (mid-June 2026), 100% CP corpus is ~60 sessions away.
+
+---
+
+## END OF NEXT_PRIORITIES.md v5.61.0
