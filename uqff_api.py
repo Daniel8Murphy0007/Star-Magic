@@ -45,7 +45,7 @@ try:
         _VERSION,
     )
 except ImportError:
-    _VERSION = "5.62.0"
+    _VERSION = "5.62.1"
     def _all_paradox_keys(): return sorted(u.PARADOX_TO_CLOSURE.keys())
     def _all_millennium_keys(): return sorted(getattr(u, "PARADOX_TO_MILLENNIUM", {}).keys())
     def _all_lenr_keys():

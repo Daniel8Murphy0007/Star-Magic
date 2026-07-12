@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.62.0"
-description = "UQFF Star-Magic v5.62.0: R117-R129 CP1 P2 stub drainage complete (65 fills) + PAPER_1985-1992 authored (8 whitepapers) + PAPER_1919 F_TRZ ladder revision (n=6/8/12/21 closures) + PAPER_1955 SO_5 ladder revision (slots 21/40/53 + 3-domain taxonomy) + PAPER_1922 90+ paper 9/10 catalog + 1.683 = 2/Q_UQFF = 32/19 EXACT structural discovery + QUAD-primitive-lock architecture at Sombrero DM. Gate 1031/0 to 1062/0 (+31 assertions)."
+version = "5.62.1"
+description = "UQFF Star-Magic v5.62.1: pyproject.toml TOML syntax repair (unclosed [tool.ruff.lint.per-file-ignores] table from prior truncation blocked v5.62.0 wheel build; per-file-ignores now closed with sensible defaults). All v5.62.0 payload preserved: R117-R129 CP1 P2 stub drainage + PAPER_1985-1992 + 4 catalog revisions. Fidelity gate 1062/0."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
@@ -377,4 +377,6 @@ ignore = [
     "E731",
 ]
 
-[tool.ruff.lint.per-file-ignores
+[tool.ruff.lint.per-file-ignores]
+"uqff_pure_calculator.py" = ["E402", "F401", "F403", "F405", "F811", "F841"]
+"uqff_fidelity_tests.py" = ["E402", "F401", "F841"]

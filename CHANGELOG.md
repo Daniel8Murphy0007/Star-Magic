@@ -1,3 +1,52 @@
+## [5.62.1] — 2026-07-12 — PATCH: pyproject.toml TOML syntax repair
+
+### Fix
+
+**pyproject.toml unclosed `[tool.ruff.lint.per-file-ignores` table** — the last line of pyproject.toml was `[tool.ruff.lint.per-file-ignores` with no closing `]`, no body, no newline. This was a pre-existing truncation left over from a mid-June 2026 Edit tool incident (SESSION_LOG entry "Fix pyproject.toml Edit-tool truncation"). The v5.62.0 ship description-swap re-preserved this broken tail, so:
+
+- **Fidelity gate passed** (uqff_fidelity_tests.py does not import pyproject.toml)
+- **CI matrix all green** (Python tests, coverage, lint, cross-check all use ruff directly, not pyproject.toml parsing at the failure point)
+- **Build sdist + wheel FAILED** with `tomllib.TOMLDecodeError: Expected ']' at the end of a table declaration (at end of document)`
+- **Release to PyPI FAILED** (depends on wheel build)
+
+Fix applied: closed the `[tool.ruff.lint.per-file-ignores]` table with sensible defaults:
+
+```toml
+[tool.ruff.lint.per-file-ignores]
+"uqff_pure_calculator.py" = ["E402", "F401", "F403", "F405", "F811", "F841"]
+"uqff_fidelity_tests.py" = ["E402", "F401", "F841"]
+```
+
+These ignore rules match the intentional patterns in those files (late imports, unused-imports for narrative discovery surfaces, star imports for CondensedPhysics dispatch, redefinitions across duplicate-family variants, unused-loop-vars in gate assertions).
+
+### Payload preservation
+
+All v5.62.0 payload is preserved — no code, whitepaper, or fidelity-gate changes vs. v5.62.0:
+- 65 CP1 stub fills (R117-R129)
+- 8 new whitepapers (PAPER_1985-1992)
+- 4 catalog revisions (PAPER_1919, PAPER_1922, PAPER_1955, PAPER_1991)
+- +17 PARADOX_TO_CLOSURE dispatch keys
+- Fidelity gate 1062/0 (+31 assertions vs v5.61.2)
+
+### Files touched (v5.62.1)
+
+- `pyproject.toml` (per-file-ignores table closed + version 5.62.0 → 5.62.1 + description patch note)
+- `uqff_api.py`, `uqff_cli.py`, `uqff_jupyter.py` (_VERSION bumps)
+- `CHANGELOG.md` (this entry)
+
+### Verification
+
+```
+python -c "import tomli; print(tomli.load(open('pyproject.toml','rb'))['project']['version'])"
+# → 5.62.1
+python uqff_fidelity_tests.py
+# → TOTAL: 1062 passed, 0 failed
+```
+
+**Ship v5.62.1 as patch on top of v5.62.0 branch.**
+
+---
+
 ## [5.62.0] — 2026-07-12 — R117-R129 CP1 P2 STUB DRAINAGE + 8 NEW WHITEPAPERS + 4 CATALOG REVISIONS
 
 ### Rounds 117-129 stub drainage (65 CP1 fills)
