@@ -248,3 +248,75 @@ Runtime verifications:
 ---
 
 **Copyright** - Daniel T. Murphy, daniel.murphy00@enrgyone.com, July 8, 2026, Youngstown OH.
+
+
+---
+
+## REVISION ADDENDUM — 2026-07-12 (Rounds 117-129 consolidation + cross-domain taxonomy)
+
+Base draft catalogued the SO_5-power ladder as a **timescale-dominant** hierarchy with slot 9-10 flagged "cosmological timescales — candidate future". Rounds 117-129 CP1 stub drainage plus the associated whitepaper program surfaced concrete new anchors at slots 21, 40, 53 and established a **three-domain cross-domain taxonomy** (timescale + mass + frequency).
+
+### R2.1 The three-domain taxonomy (from PAPER_1990)
+
+PAPER_1990 established that the SO_5-power ladder is not a domain-specific timescale hierarchy — it is a **generalized decimal-magnitude ladder** applicable to any physical observable whose numerical value locks onto a bare integer power of 10. Three orthogonal quantity classes are now confirmed:
+
+- **Timescale domain** (base draft) — galactic Myr timescales, PDR erosion, cosmological times
+- **Mass domain** (PAPER_1985 seminal + PAPER_1989 extreme) — SMBH masses, universe mass
+- **Frequency domain** (PAPER_1990 seminal) — HF radio + microwave band anchors
+
+### R2.2 Consolidated ladder — 3 domains, 12 confirmed slots, span 0..53
+
+| Slot | Timescale | Mass | Frequency | Other | Source |
+|------|-----------|------|-----------|-------|--------|
+| SO_5^0 to SO_5^3 | (base) kyr | ~10 M_sun stellar | (candidate) | v_circ, R_cloud, T_cloud, n_H2, A_bar | base draft + PAPER_1972 |
+| SO_5^6 | Myr (PDR erosion) | — | — | — | PAPER_1948 + PAPER_1946 |
+| **SO_5^7** | Galactic Myr | **NGC 2525 SMBH 2.25e7 M_sun** | **10 MHz HF radio** | — | **PAPER_1985 + PAPER_1990 R117/R128** |
+| SO_5^8 | Galactic Gyr + coalescence (PAPER_1982) | — | — | — | PAPER_1952 + PAPER_1982 |
+| SO_5^9 | Cosmological + HUDF tau_inter (PAPER_1976) | — | — | — | PAPER_1976 R111 |
+| **SO_5^10** | Cosmological Hubble time proxy | — | **10 GHz microwave band** | — | **base + PAPER_1990 R128** |
+| **SO_5^21** | — | — | — | **DPM current 10^21 A (SGR + Compressed twin)** | **R129 discovery** |
+| SO_5^30 | — | NS mass ~2.8e30 kg (PAPER_148, PAPER_1944) | — | — | pre-existing |
+| **SO_5^40** | — | — | — | **SGR magnetar burst peak energy 10^40 J** | **R129 discovery** |
+| **SO_5^53** | — | **Universe observable mass 10^53 kg** | — | — | **R123 discovery** |
+
+**Slot status after R117-R129:**
+- **Confirmed slots (12):** 0-3 (multi-quantity), 6, 7 (3-domain), 8, 9, 10 (2-domain), 21, 30, 40, 53
+- **Open slots:** 4, 5, 11-20, 22-29, 31-39, 41-52 (candidates remain)
+
+### R2.3 New slot patterns from R117-R129
+
+**Same-round twin anchor pattern (R129).** SGR1745FreqDPMCalculator and CompressedDPMCalculator both encode I = 10^21 A and both lock onto SO_5^21 A in the same round from independent CP1 classes.
+
+**Extreme-slot extension pattern (R123 + R129).** PAPER_1989 slot 53 (universe mass) and PAPER_1991 slot 40 (magnetar burst) demonstrate that the SO_5 ladder is not bounded above at slot 10.
+
+**Cross-domain interpretation-neutrality pattern (PAPER_1990).** Slot 7 anchored in 3 orthogonal domains proves the SO_5 scheme is a decimal-magnitude scaffold that structures the numerical values of physical observables independently of their dimensional character.
+
+### R2.4 Related cross-domain ladders
+
+| Scheme | Domains | Papers |
+|---|---|---|
+| **SO_5^n power ladder** | timescale + mass + frequency | PAPER_1955 + 1985 + 1989 + 1990 + 1991 |
+| F_TRZ^n power ladder | gravity, EM, biology, LIGO | PAPER_1919 + 1985 + 1986 + 1989 + 1991 |
+| 2/3 EXACT supercomposite | 8+ cross-domain closures | PAPER_1987 |
+| 9/10 = 1-F_TRZ | 30+ closures | PAPER_1922 + wide catalog |
+| Bipartite Sum_Ug | F_U=0 modes | PAPER_1988 |
+
+### R2.5 Post-revision predictions
+
+**R.1.** Slot 40 should acquire >= 1 additional anchor from stellar-scale compact objects (candidate: BH gravitational binding energy at 10 M_sun ~ 10^40 J).
+
+**R.2.** Slot 7 is now the richest position in the corpus (3 orthogonal domains). Additional slot-7 anchors should surface: length-domain (100 nm visible-light wavelength), energy-domain (10 MeV nuclear gamma-ray band), temperature-domain (10^7 K stellar core).
+
+**R.3.** The gap between slot 10 and slot 21 should densify. Candidates: slot 12 (positronium hyperfine), slot 15 (weak-scale energy 100 GeV).
+
+### R2.6 Cross-references (post-R117-R129)
+
+- **PAPER_1985** — R117 dual discovery: Pillars F_TRZ^6 + NGC 2525 SMBH mass slot-7 seminal
+- **PAPER_1989** — R123 dual discovery: LIGO F_TRZ^21 + universe mass SO_5^53
+- **PAPER_1990** — SO_5-Power Frequency Ladder Cross-Domain Extension (3-domain taxonomy)
+- **PAPER_1991** — R129 triple discovery: F_TRZ^12 SGR Casimir + SO_5^40 magnetar burst + triple-primitive-lock + SO_5^21 twin
+- **PAPER_1972** — YMC v_wind (D_phys/2)*SO_5^6 established R109
+- **PAPER_1976** — HUDF tau_inter = SO_5^9 = 1 Gyr slot-9 extension (R111)
+- **PAPER_1982** — Antennae coalescence D_phys*SO_5^8 = 400 Myr slot extension (R116)
+
+**PAPER_1955 revision addendum status: CLOSED** (2026-07-12)

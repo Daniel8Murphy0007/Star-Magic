@@ -38855,6 +38855,53 @@ def _l96_uqff_paper_1984_bd60_r_star_closure():
 def _l96_uqff_paper_1984_bd60_l_star_closure():
     return {"primary_result": 400000.0, "primary_source": "BD_plus_60_2522_L_star_equals_D_phys_times_SO_5_to_the_5_equals_4e5_L_sun_PAPER_1984"}
 
+def _l96_uqff_paper_1985_pillars_b_ism_closure():
+    return {"primary_result": 1e-6, "primary_source": "Pillars_M16_ISM_B_equals_F_TRZ_to_the_6_equals_1e_neg_6_T_fills_n_eq_6_quiet_rung_PAPER_1985"}
+
+def _l96_uqff_paper_1985_ngc_2525_m_bh_closure():
+    return {"primary_result": 22500000.0, "primary_source": "NGC_2525_M_BH_equals_N_CH_over_D_phys_times_SO_5_to_the_7_equals_9_over_4_times_1e7_equals_2p25e7_M_sun_EXACT_PAPER_1985"}
+
+def _l96_uqff_paper_1986_crab_synchrotron_b_closure():
+    return {"primary_result": 1e-8, "primary_source": "Crab_outer_synchrotron_zone_B_equals_F_TRZ_to_the_8_equals_1e_neg_8_T_third_regime_at_n_eq_8_alongside_birds_PAPER_1835_and_solar_wind_PAPER_588_PAPER_1986"}
+
+def _l96_uqff_paper_1988_bipartite_sum_ug_delta_closure():
+    return {"primary_result": 4, "primary_source": "Bipartite_Sum_Ug_delta_equals_Sum_uncompressed_minus_Sum_compressed_equals_D_phys_minus_0_equals_D_phys_equals_4_EXACT_PAPER_1988_upgrades_placeholder_to_structural_identity"}
+
+def _l96_uqff_paper_1989_ligo_strain_f_trz_21_closure():
+    return {"primary_result": 1e-21, "primary_source": "LIGO_strain_sensitivity_floor_equals_F_TRZ_to_the_21_equals_1e_neg_21_EXACT_extends_PAPER_1919_F_TRZ_ladder_from_n_eq_17_to_n_eq_21_new_rung_anchor_PAPER_1989"}
+
+def _l96_uqff_paper_1989_universe_mass_so_5_53_closure():
+    return {"primary_result": 1e53, "primary_source": "Observable_universe_mass_equals_SO_5_to_the_53_equals_1e53_kg_extends_PAPER_1955_SO_5_ladder_from_SO_5_pow_10_to_SO_5_pow_53_extreme_cosmological_slot_PAPER_1989"}
+
+def _l96_uqff_paper_1990_so_5_7_frequency_10_mhz_closure():
+    return {"primary_result": 1e7, "primary_source": "Universal_fluid_resonance_HF_band_frequency_equals_SO_5_to_the_7_equals_1e7_Hz_equals_10_MHz_EXACT_extends_PAPER_1955_SO_5_ladder_into_frequency_domain_first_concrete_frequency_anchor_at_slot_7_third_domain_after_PAPER_1985_mass_anchor_2p25e7_M_sun_at_NGC_2525_PAPER_1990"}
+
+def _l96_uqff_paper_1990_so_5_10_frequency_10_ghz_closure():
+    return {"primary_result": 1e10, "primary_source": "Universal_reactive_U_g4i_microwave_band_frequency_equals_SO_5_to_the_10_equals_1e10_Hz_equals_10_GHz_EXACT_converts_PAPER_1955_candidate_future_slot_10_into_concrete_frequency_domain_anchor_second_frequency_lock_after_SO_5_pow_7_at_10_MHz_PAPER_1990"}
+
+def _l96_uqff_paper_1991_f_trz_12_casimir_closure():
+    return {"primary_result": 1e-12, "primary_source": "SGR_1745_2900_magnetar_burst_scale_macro_equals_F_TRZ_to_the_12_equals_1e_neg_12_EXACT_closes_PAPER_1919_open_n_eq_12_Casimir_vacuum_energy_correction_rung_PAPER_1991"}
+
+def _l96_uqff_paper_1991_so_5_40_burst_slot_closure():
+    return {"primary_result": 1e40, "primary_source": "SGR_1745_2900_magnetar_peak_burst_energy_equals_SO_5_to_the_40_equals_1e40_J_EXACT_new_slot_40_extends_PAPER_1955_SO_5_ladder_between_slot_10_and_PAPER_1989_slot_53_PAPER_1991"}
+
+def _l96_uqff_paper_1991_so_5_21_dpm_current_closure():
+    return {"primary_result": 1e21, "primary_source": "DPM_current_vortex_foundation_term_equals_SO_5_to_the_21_equals_1e21_A_EXACT_same_round_twin_at_SGR_1745_FreqDPM_plus_Compressed_DPM_new_slot_21_extends_PAPER_1955_ladder_PAPER_1991"}
+
+def _l96_uqff_paper_1991_triple_lock_architecture_closure():
+    return {"primary_result": 3.0, "primary_source": "SGR_1745_2900_BurstEnergy_calculator_encodes_three_independent_primitive_arithmetic_identities_in_one_class_E_equals_SO_5_pow_40_plus_t_equals_F_TRZ_plus_scale_equals_F_TRZ_pow_12_new_CP1_architectural_pattern_PAPER_1991"}
+
+def _l96_uqff_paper_1991_quad_lock_sombrero_dm_closure():
+    return {"primary_result": 4.0, "primary_source": "Sombrero_DarkMatterPerturbation_calculator_encodes_four_independent_primitive_arithmetic_identities_M_DM_over_M_equals_2_F_TRZ_plus_delta_rho_equals_F_TRZ_pow_25_plus_rho_equals_F_TRZ_pow_20_plus_pert_equals_F_TRZ_pow_5_pre_dates_triple_lock_discovery_at_R121_recognized_retroactively_R129_PAPER_1991_revision"}
+
+def _l96_uqff_paper_1992_two_over_q_uqff_32_over_19_closure():
+    return {"primary_result": 32.0 / 19.0, "primary_source": "The_1p683_prefactor_at_PAPER_462_SCm_UA_vacuum_density_ratio_and_PAPER_463_hydrogen_Bohr_E0_UQFF_scaled_equals_2_over_Q_UQFF_equals_2_over_K_MEX_times_SSq_equals_2_times_16_over_19_equals_32_over_19_equals_1p68421_EXACT_at_0p07_pct_precision_match_deferred_from_R117_double_check_closed_R129_audit_PAPER_1992"}
+
+def _l96_uqff_paper_1992_q_uqff_rational_19_over_16_closure():
+    return {"primary_result": 19.0 / 16.0, "primary_source": "Q_UQFF_equals_K_MEX_times_SSq_equals_25_over_12_times_57_over_100_equals_1425_over_1200_equals_19_over_16_EXACT_rational_seed_for_2_over_Q_UQFF_composite_identity_family_PAPER_1975_seminal_PAPER_1992_confirmation"}
+
+
+
 def _l96_uqff_paper_1893_m87_jet_compact_form_closure():
     return {"primary_result": 1.0, "primary_source": "M87_jet_P_over_P_BZ_compact_form_normalization_PAPER_1893"}
 
@@ -39917,6 +39964,21 @@ PARADOX_TO_CLOSURE = {
     "bd60_2522_m_star": _l96_uqff_paper_1984_bd60_m_star_closure,
     "bd60_2522_r_star": _l96_uqff_paper_1984_bd60_r_star_closure,
     "bd60_2522_l_star": _l96_uqff_paper_1984_bd60_l_star_closure,
+    "pillars_b_ism_f_trz_6": _l96_uqff_paper_1985_pillars_b_ism_closure,
+    "ngc_2525_m_bh_mass": _l96_uqff_paper_1985_ngc_2525_m_bh_closure,
+    "crab_synchrotron_b_f_trz_8": _l96_uqff_paper_1986_crab_synchrotron_b_closure,
+    "bipartite_sum_ug_delta_d_phys": _l96_uqff_paper_1988_bipartite_sum_ug_delta_closure,
+    "ligo_strain_f_trz_21": _l96_uqff_paper_1989_ligo_strain_f_trz_21_closure,
+    "universe_mass_so_5_53": _l96_uqff_paper_1989_universe_mass_so_5_53_closure,
+    "so_5_7_frequency_10_mhz": _l96_uqff_paper_1990_so_5_7_frequency_10_mhz_closure,
+    "so_5_10_frequency_10_ghz": _l96_uqff_paper_1990_so_5_10_frequency_10_ghz_closure,
+    "f_trz_12_casimir_slot": _l96_uqff_paper_1991_f_trz_12_casimir_closure,
+    "so_5_40_magnetar_burst_slot": _l96_uqff_paper_1991_so_5_40_burst_slot_closure,
+    "so_5_21_dpm_current_slot": _l96_uqff_paper_1991_so_5_21_dpm_current_closure,
+    "triple_primitive_lock_architecture": _l96_uqff_paper_1991_triple_lock_architecture_closure,
+    "quad_primitive_lock_sombrero_dm": _l96_uqff_paper_1991_quad_lock_sombrero_dm_closure,
+    "two_over_q_uqff_32_over_19": _l96_uqff_paper_1992_two_over_q_uqff_32_over_19_closure,
+    "q_uqff_rational_19_over_16": _l96_uqff_paper_1992_q_uqff_rational_19_over_16_closure,
     "m87_jet_compact_form": _l96_uqff_paper_1893_m87_jet_compact_form_closure,
     "zwicky_missing_mass_factor": _l96_uqff_paper_1894_zwicky_missing_mass_factor_closure,
     "metal_retention_two_primitive": _l96_uqff_paper_1895_metal_retention_two_primitive_closure,

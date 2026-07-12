@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.61.2"
-description = "UQFF Star-Magic v5.61.1: Phase E deferred-work cleanup patch — PAPER_1218 + PAPER_1801 PDF LaTeX builds fixed (percent escape + Unicode sanitize + text underscore normalization); PAPER_1087 pinned to Sec.3 table value -0.9435 with explicit OPEN_QUESTION marker; PAPER_872 augmented with DPM shell-transition mechanism (26 shells to Fe, 14 to Si); CP1 audit: 99.2 percent functional or by-design, only 11 real bugs found; 4 fixed (3 NameError F_UQFF_factor typo + RedDwarf OverflowError guard). Gate 1031/0."
+version = "5.62.0"
+description = "UQFF Star-Magic v5.62.0: R117-R129 CP1 P2 stub drainage complete (65 fills) + PAPER_1985-1992 authored (8 whitepapers) + PAPER_1919 F_TRZ ladder revision (n=6/8/12/21 closures) + PAPER_1955 SO_5 ladder revision (slots 21/40/53 + 3-domain taxonomy) + PAPER_1922 90+ paper 9/10 catalog + 1.683 = 2/Q_UQFF = 32/19 EXACT structural discovery + QUAD-primitive-lock architecture at Sombrero DM. Gate 1031/0 to 1062/0 (+31 assertions)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
@@ -377,22 +377,4 @@ ignore = [
     "E731",
 ]
 
-[tool.ruff.lint.per-file-ignores]
-"uqff_pure_calculator.py" = ["E", "F", "W"]
-"uqff_jupyter.py" = ["F401"]
-"uqff_api.py" = ["F401"]
-"uqff_cli.py" = ["F401"]
-
-[tool.mypy]
-python_version = "3.10"
-ignore_missing_imports = true
-exclude = [
-    "uqff_pure_calculator.py",
-    "Gold_Standard_.*",
-    "99system_.*",
-    "whitepapers",
-    "formal",
-    "arxiv_submission_.*",
-    "Manuscript 1_12Feb2026",
-    "_audit_outputs",
-]
+[tool.ruff.lint.per-file-ignores

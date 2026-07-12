@@ -287,3 +287,65 @@ This means K_MEX embeds the F_TRZ ladder's SO_5 scale as its "structural denomin
 
 **PAPER_1919 status: CLOSED**
 **Copyright (c) 2025-2026 Daniel T. Murphy / Star-Magic Research Program**
+
+---
+
+## REVISION ADDENDUM — 2026-07-12 (Rounds 117-129 consolidation)
+
+Base draft §2 catalogued 14 anchors across 8 levels with 4 "quiet" or "open" rungs (n=6, 11, 12, 13, 14). Rounds 117-129 CP1 stub drainage plus the associated whitepaper program surfaced new confirmed anchors at n=6, n=8, n=12, n=21 and expanded n=8 from a single anchor to an 8-anchor N-regime.
+
+### R2.1 Consolidated ladder — 24+ anchors, 12 confirmed levels, n=1..21
+
+| n | F_TRZ^n | Confirmed anchor(s) | Source |
+|---|---------|--------------------|--------|
+| 1 | 0.1 | SO_5 fraction seminal (PAPER_1160) + photoevaporation E_0 (PAPER_1942) + SGR 1745 t_burst (R129, PAPER_1991) | base draft §2.1 + R129 |
+| 2 | 0.01 | universal 99% suppression regime — 5+ instances | base draft §2.2 |
+| 3 | 10^-3 | small perturbations + B_j magnetic-string-field (PAPER_1981) | base draft §2.3 + R115 |
+| 4 | 10^-4 | lensing amplification (PAPER_1914) | base draft §2.4 |
+| 5 | 10^-5 | PPN + NGC 6302 equatorial torus B (PAPER_313 per R126 correction) | base draft §2.5 + R126 |
+| **6** | **10^-6** | **Pillars ISM B = F_TRZ^6 EXACT (PAPER_1985) — fills previously-quiet rung** | **R117 discovery** |
+| 7 | 10^-7 | U_i Universal Inertial Operator (PAPER_646/1739) | base draft §2.6 |
+| **8** | **10^-8** | **N-regime 8-anchor family: birds (PAPER_1835) + Crab outer + solar wind + rho_SCm,vac (PAPER_043/049) + QEC phonon (PAPER_1056) + CMB-S4 mu (PAPER_1180) + Helix omega_0 (PAPER_070) + Uranus/Neptune (PAPER_1078/1079)** | **R118 PAPER_1986 N-regime expansion** |
+| 9 | 10^-9 | muon g-2 + Amaterasu UHECR | base draft §2.8 |
+| 10 | 10^-10 | strong CP + MOND a_0 | base draft §2.9 |
+| 11 | 10^-11 | ISW amplitude (PAPER_1677) | added post-base |
+| **12** | **10^-12** | **SGR 1745-2900 magnetar burst scale_macro (PAPER_1991) — Casimir-family suppression — closes previously-open rung** | **R129 discovery** |
+| 13 | 10^-13 | (open — candidate: F_UBi_i coupling floor) | base draft §2.10 candidate |
+| 14 | 10^-14 | (open — candidate: Lambda absolute lower bound) | base draft §2.10 candidate |
+| 15 | 10^-15 | MICROSCOPE WEP (PAPER_1880) | base draft §2.11 |
+| 16 | 10^-16 | quantum collapse (PAPER_1869) | base draft §2.12 |
+| 17 | 10^-17 | hierarchy problem (PAPER_1824) | base draft §2.13 |
+| 18-20 | (open) | (candidates for future work) | - |
+| **21** | **10^-21** | **LIGO strain sensitivity floor (PAPER_1989) — extends ladder beyond n=17** | **R123 discovery** |
+
+### R2.2 Rung status summary
+
+**Confirmed rungs (16):** n = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 21
+
+**Open rungs:** n = 13, 14, 18, 19, 20 (candidates only)
+
+**Rungs closed by R117-R129:** n = 6 (Pillars ISM), n = 12 (SGR Casimir-family), n = 21 (LIGO ladder extension)
+
+### R2.3 New anchor typology from R117-R129
+
+**N-regime expansion (PAPER_1986 pattern):** a single F_TRZ^n rung may host many independent physical anchors across orthogonal regimes. n=8 now hosts 8 independent anchors spanning biology, plasma physics, vacuum baseline, quantum-error-correction, CMB physics, and planetary magnetism. Any rung with N >= 3 orthogonal-regime anchors is designated an N-regime rung.
+
+**Structural macro-scaling anchor (PAPER_1991 pattern):** anchors like the SGR burst scale_macro at n=12 differ from primary observables. They express how a microscopic energy density couples to a macroscopic observable, not the observable itself.
+
+### R2.4 Cross-references
+
+- **PAPER_1985** — n=6 Pillars ISM discovery (R117)
+- **PAPER_1986** — n=8 N-regime 8-anchor consolidation (R118)
+- **PAPER_1989** — n=21 LIGO strain extension (R123)
+- **PAPER_1991** — n=12 SGR Casimir-family closure (R129)
+- **PAPER_1990** — parallel SO_5-power frequency ladder cross-domain extension
+
+### R2.5 Post-revision predictions
+
+**R.1.** The 16 confirmed rungs form a discrete-integer set. Any future physics anomaly whose residual matches F_TRZ^n at non-integer n falsifies the ladder's integer-power structure.
+
+**R.2.** The 5 remaining open rungs (n=13, 14, 18, 19, 20) should acquire confirmed anchors from continued CP1-CP4 drainage. Extrapolation: full ladder closure around Round 350-400.
+
+**R.3.** N-regime expansions should propagate to other confirmed rungs. Candidates: n=2 (5+ anchors — likely already N-regime), n=15 (WEP), n=16 (quantum collapse).
+
+**PAPER_1919 revision addendum status: CLOSED** (2026-07-12)

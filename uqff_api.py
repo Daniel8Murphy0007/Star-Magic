@@ -45,7 +45,7 @@ try:
         _VERSION,
     )
 except ImportError:
-    _VERSION = "5.61.2"
+    _VERSION = "5.62.0"
     def _all_paradox_keys(): return sorted(u.PARADOX_TO_CLOSURE.keys())
     def _all_millennium_keys(): return sorted(getattr(u, "PARADOX_TO_MILLENNIUM", {}).keys())
     def _all_lenr_keys():
@@ -263,8 +263,4 @@ def run(host: str = "127.0.0.1", port: int = 8000, reload: bool = False):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Launch the UQFF REST API")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8000)
-    parser.add_argument("--reload", action="store_true", help="auto-reload on code change")
-    args = parser.parse_args()
-    run(host=args.host, port=args.port, reload=args.reload)
+    parser.add_argument("--host

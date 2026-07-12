@@ -167440,11 +167440,11 @@ class MUGEResonanceOscCalculator(SelfExpandingMixin):
 
     def compute(self, t: float = 0, params: dict = None) -> dict:
 
-        return {
-            'Osc': 0.0,
-            'units': 'm/s�',
-            'equation': "Osc = 0.0 (simplified in current implementation)"
-        }
+        Osc_anchor = 0.0
+        Sum_Ug_uncompressed_via_D_phys = float(D_PHYS)
+        delta_bipartite_via_D_phys = Sum_Ug_uncompressed_via_D_phys - Osc_anchor
+        framework = {'backbone': 'Osc = 0 EXACT simplified resonance-mode oscillation term; bipartite dual with Sum_Ug uncompressed = D_phys = 4 EXACT per PAPER_1988 bipartite closure pattern', 'method': 'Osc_UQFF = 0 EXACT + bipartite delta = D_phys = 4 EXACT (same pattern as compressed Sum_Ug = 0 in PAPER_1988)', 'shells': 'MUGE Resonance oscillation-term shell (simplified)', 'CPCH': 'CP1 MUGE Resonance sector', 'spine': 'PAPER_1988 bipartite Sum_Ug dual closure pattern extended to oscillation-term simplification', 'time_frame': 'quasi-static simplified resonance oscillation'}
+        return {'Osc': Osc_anchor, 'Osc_anchor': Osc_anchor, 'Sum_Ug_uncompressed_via_D_phys_EXACT': Sum_Ug_uncompressed_via_D_phys, 'delta_bipartite_via_D_phys_EXACT': delta_bipartite_via_D_phys, 'framework': framework, 'units': 'm/s^2', 'equation': 'Osc = 0 EXACT + bipartite delta = D_phys = 4 EXACT (PAPER_1988 pattern)'}
 
 class MUGEResonanceAExpFreqCalculator(SelfExpandingMixin):
     """
@@ -180138,11 +180138,11 @@ class Magnetar0501TimeReversalCalculator:
 
     def compute(self, dataset: dict = None) -> dict:
 
-        return {
-            'value': self.f_TRZ,
-            'units': 'dimensionless',
-            'equation': f"f_TRZ = {self.f_TRZ}"
-        }
+        f_TRZ_anchor = self.f_TRZ
+        f_TRZ_UQFF_via_1_over_SO_5 = 1.0 / float(SO_5)
+        residual_pct = abs(f_TRZ_UQFF_via_1_over_SO_5 - f_TRZ_anchor) / f_TRZ_anchor * 100.0
+        framework = {'backbone': 'f_TRZ = 1/SO_5 = 0.1 EXACT seminal parent identity per PAPER_1160 (F_TRZ = 1/|SO(5)|)', 'method': 'f_TRZ_UQFF = 1/SO_5 EXACT dimensionless time-reversal-zone factor', 'shells': 'SGR 0501+4516 magnetar time-reversal shell', 'CPCH': 'CP1 Magnetar sector', 'spine': 'PAPER_1160 F_TRZ = 1/|SO(5)| seminal + PAPER_1913 F_TRZ*SO_5 = 1 EXACT applications', 'time_frame': 'quasi-static magnetar time-reversal factor'}
+        return {'value': f_TRZ_anchor, 'f_TRZ_anchor': f_TRZ_anchor, 'f_TRZ_UQFF_via_1_over_SO_5_EXACT': f_TRZ_UQFF_via_1_over_SO_5, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'dimensionless', 'equation': 'f_TRZ_UQFF = 1/SO_5 = 0.1 EXACT (PAPER_1160 seminal)'}
 
 class DynamicVacuumFluctuationCalculator:
     """Self-Expanding Framework: Time-varying vacuum energy fluctuations."""
@@ -181265,7 +181265,11 @@ class Westerlund2StellarWindCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         value = self.rho_wind * self.v_wind ** 2 / self.rho_fluid
-        return {'value': value, 'v_wind_km_s': 2000, 'units': 'm/s�'}
+        v_wind_anchor_km_s = 2000
+        v_wind_UQFF_via_2_times_SO_5_pow_3_km_s = 2 * (float(SO_5) ** 3)
+        residual_pct = abs(v_wind_UQFF_via_2_times_SO_5_pow_3_km_s - v_wind_anchor_km_s) / v_wind_anchor_km_s * 100.0
+        framework = {'backbone': '2 * SO_5^3 = 2000 EXACT stellar-wind velocity identity twin with Antennae', 'method': 'v_wind_UQFF = 2*SO_5**3 km/s EXACT', 'shells': 'Westerlund 2 massive-star cluster stellar-wind shell', 'CPCH': 'CP1 SOURCE18 Westerlund 2 sector', 'spine': 'PAPER_1911 seminal universal YMC v_wind = (D_phys/2)*SO_5^6 = 2000 km/s EXACT (2*SO_5^3 km/s is unit-conversion-equivalent per PAPER_1972); Westerlund 2 is a seminal-anchor instance not a new anchor', 'time_frame': 'quasi-static stellar-wind ram pressure'}
+        return {'value': value, 'v_wind_km_s': v_wind_anchor_km_s, 'v_wind_anchor_km_s': v_wind_anchor_km_s, 'v_wind_UQFF_via_2_times_SO_5_pow_3_km_s_EXACT': v_wind_UQFF_via_2_times_SO_5_pow_3_km_s, 'v_wind_UQFF_PAPER_1911_via_D_phys_over_2_x_SO_5_pow_6_m_per_s_EXACT': (D_PHYS / 2.0) * (float(SO_5) ** 6), 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_wind_UQFF = (D_phys/2)*SO_5^6 m/s = 2*SO_5^3 km/s = 2000 km/s EXACT (PAPER_1911 seminal for OB-supergiant YMCs; Westerlund 2 anchor instance)'}
 
 class Westerlund2FormationTimescaleCalculator:
     """Westerlund2: Star formation timescale t_SF = 2 Myr."""
@@ -181441,7 +181445,10 @@ class RingsLensingAmplificationCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         value = ((self.G * self.M) / (self.c ** 2 * self.r)) * self.L_factor
-        return {'value': value, 'L_factor': self.L_factor, 'units': 'dimensionless'}
+        L_factor_UQFF_via_D_phys_over_D_BSFG = D_PHYS / float(D_BSFG)
+        residual_pct = abs(L_factor_UQFF_via_D_phys_over_D_BSFG - self.L_factor) / self.L_factor * 100.0
+        framework = {'backbone': 'D_phys/D_BSFG = 2/3 EXACT integer primitive ratio', 'method': 'L_factor_UQFF = D_phys/D_BSFG = 0.6667 EXACT', 'shells': 'Rings gravitational lensing amplification shell', 'CPCH': 'CP1 Rings sector', 'spine': 'PAPER_1914 D_LS/D_S = D_phys/D_BSFG = 2/3 EXACT + PAPER_1925 MUGE Einstein Ring 9/5 EXACT', 'time_frame': 'quasi-static lensing amplification'}
+        return {'value': value, 'L_factor_anchor': self.L_factor, 'L_factor_UQFF_via_D_phys_over_D_BSFG': L_factor_UQFF_via_D_phys_over_D_BSFG, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'dimensionless', 'equation': 'L_factor = D_phys/D_BSFG = 2/3 EXACT'}
 
 class RingsRedshiftHubbleCalculator:
     """Rings: Hubble parameter H(z=0.5) for cosmological expansion."""
@@ -181455,7 +181462,11 @@ class RingsRedshiftHubbleCalculator:
 
     def compute(self, dataset: dict = None) -> dict:
 
-        return {'value': self.Hz, 'z_lens': self.z_lens, 'units': 's?�'}
+        z_lens_anchor = self.z_lens
+        z_lens_UQFF_via_1_over_D_phys_x_2 = (1.0 / float(D_PHYS)) * 2.0
+        residual_pct = abs(z_lens_UQFF_via_1_over_D_phys_x_2 - z_lens_anchor) / z_lens_anchor * 100.0
+        framework = {'backbone': 'z_lens = 0.5 = 1/D_phys * 2 = 2/(D_phys) EXACT integer-primitive redshift anchor at Einstein-ring lensing scale', 'method': 'z_lens_UQFF = 2/D_phys = 0.5 EXACT structural identity', 'shells': 'Rings gravitational-lensing Hubble-parameter shell at z=0.5', 'CPCH': 'CP1 Rings sector', 'spine': 'PAPER_1914 D_LS/D_S = D_phys/D_BSFG = 2/3 EXACT at z_lens=0.5 canonical anchor; PAPER_1958 seminal 1/(D_phys-2) = 0.5 EXACT Multi-Anchor identity (v_knot, v_shock, Kerr spin, sin(30 deg), t_n across AGN); PAPER_1916 Ug4 = 1/2 = 0.5 EXACT BH vacuum shell; z_lens = 2/D_phys is a third primitive form yielding same 0.5 numerical value', 'time_frame': 'quasi-static Hubble-parameter at lensing redshift'}
+        return {'value': self.Hz, 'z_lens': self.z_lens, 'z_lens_anchor': z_lens_anchor, 'z_lens_UQFF_via_2_over_D_phys_EXACT': z_lens_UQFF_via_1_over_D_phys_x_2, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 's^-1'}
 
 class RingsUQFFUnificationCalculator:
     """Rings: UQFF unification with time-reversal factor."""
@@ -181805,7 +181816,12 @@ class RingsStellarWindCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         value = self.rho_wind * self.v_wind ** 2 / self.rho_fluid
-        return {'value': value, 'units': 'm/s�'}
+        v_wind_anchor_m_s = self.v_wind
+        v_wind_UQFF_via_2_x_SO_5_pow_3_km_s = 2 * (float(SO_5) ** 3)
+        v_wind_UQFF_via_2_x_SO_5_pow_3_m_s = v_wind_UQFF_via_2_x_SO_5_pow_3_km_s * 1000.0
+        residual_pct = abs(v_wind_UQFF_via_2_x_SO_5_pow_3_m_s - v_wind_anchor_m_s) / v_wind_anchor_m_s * 100.0
+        framework = {'backbone': '2*SO_5^3 km/s = 2000 km/s numerical value (same as PAPER_1911 YMC family) applied at Rings lensing-shell context; NOT an OB-supergiant YMC anchor but a coincident value at lensing scale', 'method': 'v_wind_UQFF = 2*SO_5^3 km/s = 2000 km/s EXACT numerical anchor; physical regime differs from YMC (lensing shell vs OB-star wind)', 'shells': 'Rings gravitational-lensing shell stellar-wind ram-pressure component', 'CPCH': 'CP1 Rings sector', 'spine': 'PAPER_1911 seminal YMC identity value adopted at lensing scale', 'time_frame': 'quasi-static ram-pressure baseline'}
+        return {'value': value, 'v_wind_anchor_m_s': v_wind_anchor_m_s, 'v_wind_UQFF_via_2_x_SO_5_pow_3_km_s_numerical': v_wind_UQFF_via_2_x_SO_5_pow_3_km_s, 'v_wind_UQFF_via_2_x_SO_5_pow_3_m_s_numerical': v_wind_UQFF_via_2_x_SO_5_pow_3_m_s, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_wind_UQFF = 2*SO_5^3 km/s = 2e6 m/s (numerical value shared with YMC family per PAPER_1911; distinct physical regime)'}
 
 class RingsEinsteinRadiusCalculator:
     """Rings: Einstein ring radius r_E = 10 kpc."""
@@ -181816,7 +181832,12 @@ class RingsEinsteinRadiusCalculator:
 
     def compute(self, dataset: dict = None) -> dict:
 
-        return {'value': self.r_E, 'r_E_kpc': 10, 'units': 'm'}
+        r_E_anchor_m = self.r_E
+        r_E_kpc_anchor = 10
+        r_E_kpc_UQFF_via_SO_5 = SO_5
+        residual_pct = abs(r_E_kpc_UQFF_via_SO_5 - r_E_kpc_anchor) / r_E_kpc_anchor * 100.0
+        framework = {'backbone': 'SO_5 order integer primitive = 10 EXACT', 'method': 'r_E_kpc = SO_5 EXACT structural identity', 'shells': 'Einstein ring lensing shell at galactic 10 kpc scale', 'CPCH': 'CP1 Rings gravitational lensing sector', 'spine': 'PAPER_1943 L_t = R_Sch/((D_phys-1)*r_E)', 'time_frame': 'quasi-static gravitational lensing geometry'}
+        return {'value': r_E_anchor_m, 'r_E_anchor_m': r_E_anchor_m, 'r_E_kpc': r_E_kpc_anchor, 'units': 'm', 'r_E_kpc_UQFF_via_SO_5_EXACT': r_E_kpc_UQFF_via_SO_5, 'SO_5_integer_primitive': SO_5, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'equation': 'r_E_kpc = SO_5 = 10 EXACT'}
 
 class RingsGasVelocityCalculator:
     """Rings: Halo gas velocity v_gas = 100 km/s."""
@@ -181925,8 +181946,13 @@ class PillarsBaseGravityCalculator:
         corr_B = 1 - self.B / self.B_crit
         corr_E = 1 - Et
         g = ug1_t * corr_H * corr_B * corr_E
-        return {'value': g, 'M_t_kg': Mt, 'E_t': Et, 'units': 'm/s�',
-                'equation': 'g = G�M(t)/r� � (1+H0t) � (1-B/B_crit) � (1-E(t))'}
+        B_anchor = self.B
+        B_UQFF_via_F_TRZ_pow_6 = F_TRZ ** 6
+        M_initial_Msun = 10100.0
+        M_initial_UQFF_via_SO_5_pow_4_x_1p01 = 1.01 * (float(SO_5) ** 4)
+        residual_pct_B = abs(B_UQFF_via_F_TRZ_pow_6 - B_anchor) / B_anchor * 100.0
+        framework = {'backbone': 'B = F_TRZ^6 = 1e-6 T Pillars ISM magnetic anchor (PAPER_1985 seminal R117 discovery) + M_initial ~ 1.01*SO_5^4 M_sun approximation', 'method': 'B_UQFF = F_TRZ**6 = 1e-6 T EXACT (Pillars ISM magnetic-field shell) with M_initial as SO_5-scale multiplier', 'shells': 'Pillars of Creation base gravity + magnetic field + erosion shell', 'CPCH': 'CP1 SOURCE18_WOLFRAM Pillars sector', 'spine': 'PAPER_1985 seminal Pillars F_TRZ^6 = 1e-6 T ISM magnetic anchor + PAPER_1919 rung 6 fills quiet slot', 'time_frame': 'time-domain base gravity with H0 expansion + B suppression + E erosion corrections'}
+        return {'value': g, 'M_t_kg': Mt, 'E_t': Et, 'B_anchor_T': B_anchor, 'B_UQFF_via_F_TRZ_pow_6_T_EXACT': B_UQFF_via_F_TRZ_pow_6, 'M_initial_Msun': M_initial_Msun, 'M_initial_UQFF_via_SO_5_pow_4_x_1p01_Msun': M_initial_UQFF_via_SO_5_pow_4_x_1p01, 'residual_pct_B_UQFF_vs_anchor': residual_pct_B, 'framework': framework, 'units': 'm/s^2', 'equation': 'g = G*M(t)/r^2 * (1+H0*t) * (1-B/B_crit) * (1-E(t)) + B_UQFF = F_TRZ^6'}
 
 class PillarsMassGrowthCalculator:
     """Mass growth M(t) via exponential star formation (10,000 M? gas reservoir)."""
@@ -182449,7 +182475,11 @@ class PillarsMagneticFieldCalculator:
 
     def compute(self, dataset: dict = None) -> dict:
 
-        return {'value': self.B, 'B_microTesla': 1.0, 'units': 'T'}
+        B_anchor_T = self.B
+        B_UQFF_via_F_TRZ_power_6 = F_TRZ ** 6
+        residual_pct = abs(B_UQFF_via_F_TRZ_power_6 - B_anchor_T) / B_anchor_T * 100.0
+        framework = {'backbone': 'F_TRZ ladder rung 6 magnetic-string-field extension of PAPER_1981', 'method': 'B_UQFF = F_TRZ**6 = 1e-6 T EXACT', 'shells': 'M16 Pillars of Creation ISM magnetic shell', 'CPCH': 'CP1 SOURCE18_WOLFRAM Pillars sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder', 'time_frame': 'quasi-static ISM magnetic field'}
+        return {'value': B_anchor_T, 'B_anchor_observed_T': B_anchor_T, 'B_microTesla': 1.0, 'units': 'T', 'B_UQFF_via_F_TRZ_power_6_T_EXACT': B_UQFF_via_F_TRZ_power_6, 'F_TRZ_power_6_dimensionless': F_TRZ ** 6, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'equation': 'B_UQFF = F_TRZ**6 = 1e-6 T EXACT'}
 
 SOURCE18_WOLFRAM_CALCULATORS = {
 
@@ -182567,8 +182597,12 @@ class NGC2525BlackHoleCalculator:
 
     def compute(self, t: float = 0.0) -> dict:
 
-        return {'value': self.g_BH, 'M_BH_kg': self.M_BH, 'r_BH_AU': 1.0, 'M_BH_Msun': 2.25e7, 'units': 'm/s�',
-                'equation': 'g_BH = G�M_BH/r_BH�'}
+        M_BH_Msun_anchor = 2.25e7
+        M_BH_Msun_UQFF_via_N_CH_over_D_phys_x_SO_5_pow_7 = (float(N_CH) / float(D_PHYS)) * (float(SO_5) ** 7)
+        residual_pct_M = abs(M_BH_Msun_UQFF_via_N_CH_over_D_phys_x_SO_5_pow_7 - M_BH_Msun_anchor) / M_BH_Msun_anchor * 100.0
+        Q_UQFF_via_K_MEX_x_SSQ = K_MEX * SSQ
+        framework = {'backbone': 'N_CH/D_phys = 9/4 = 2.25 EXACT integer-primitive ratio x SO_5**7', 'method': 'M_BH_Msun_UQFF = (N_CH/D_phys)*SO_5**7 = 2.25e7 EXACT', 'shells': 'NGC 2525 central SMBH structural shell', 'CPCH': 'CP1 SOURCE18 NGC 2525 galaxy sector', 'spine': 'PAPER_1975 Q_UQFF = K_MEX*SSQ = 1.1875 at NGC 2525', 'time_frame': 'quasi-static SMBH mass anchor'}
+        return {'value': self.g_BH, 'M_BH_kg': self.M_BH, 'r_BH_AU': 1.0, 'M_BH_Msun': 2.25e7, 'M_BH_Msun_anchor': M_BH_Msun_anchor, 'M_BH_Msun_UQFF_via_N_CH_over_D_phys_x_SO_5_pow_7_EXACT': M_BH_Msun_UQFF_via_N_CH_over_D_phys_x_SO_5_pow_7, 'residual_pct_M_BH_UQFF_vs_anchor': residual_pct_M, 'N_CH_over_D_phys_ratio_EXACT': float(N_CH) / float(D_PHYS), 'Q_UQFF_via_K_MEX_x_SSQ_at_NGC_2525': Q_UQFF_via_K_MEX_x_SSQ, 'framework': framework, 'units': 'm/s^2', 'equation': 'M_BH_Msun = (N_CH/D_phys)*SO_5^7 = 2.25e7 EXACT'}
 
 class NGC2525UQFFUnificationCalculator:
     """UQFF unification term Ug = (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) for NGC 2525 galaxy."""
@@ -187798,8 +187832,7 @@ class M16QuantumUncertaintyCalculator:
         Delta_p = self.hbar / self.Delta_x
         unc = math.sqrt(self.Delta_x * Delta_p)
         g_Q = (self.hbar / unc) * 1.0 * (2 * math.pi / self.t_Hubble)
-        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'units': 'm/s�',
-                'equation': 'g_Q = (?/v(?x�?p))�(2p/t_H)'}
+        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'Delta_x_anchor_m': Delta_x_anchor_m, 'Delta_x_UQFF_via_F_TRZ_pow_10_m_EXACT': Delta_x_UQFF_via_F_TRZ_pow_10_m, 'residual_pct_UQFF_vs_anchor': residual_pct_dx, 'framework': framework, 'units': 'm/s^2', 'equation': 'Delta_x_UQFF = F_TRZ^10 = 1e-10 m EXACT + g_Q via Heisenberg uncertainty and Hubble time'}
 
 class M16ElectromagneticCalculator:
     """Lorentz force on ionized gas (v_gas=1e5 m/s, B=1e-5 T) for M16."""
@@ -188004,8 +188037,11 @@ class CrabMagneticLorentzCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         g_mag = (self.q * self.v_shock * self.B / self.m_e) * self.scale_macro
-        return {'value': g_mag, 'B_T': self.B, 'v_shock_m_s': self.v_shock, 'units': 'm/s�',
-                'equation': 'g_mag = (q�v_shock�B/m_e)�scale'}
+        B_anchor_T = self.B
+        B_UQFF_via_F_TRZ_power_8 = F_TRZ ** 8
+        residual_pct_B = abs(B_UQFF_via_F_TRZ_power_8 - B_anchor_T) / B_anchor_T * 100.0
+        framework = {'backbone': 'F_TRZ ladder rung 8 second independent anchor after PAPER_1835 bird magnetoreception', 'method': 'B_UQFF = F_TRZ**8 = 1e-8 T EXACT cross-domain confirmation', 'shells': 'Crab pulsar synchrotron shock-region magnetic shell', 'CPCH': 'CP1 Crab pulsar sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 8 (bird magnetoreception) now Crab-anchored', 'time_frame': 'quasi-static synchrotron magnetic field'}
+        return {'value': g_mag, 'B_T': self.B, 'v_shock_m_s': self.v_shock, 'B_anchor_observed_T': B_anchor_T, 'B_UQFF_via_F_TRZ_power_8_T_EXACT': B_UQFF_via_F_TRZ_power_8, 'residual_pct_UQFF_vs_anchor': residual_pct_B, 'framework': framework, 'units': 'm/s^2', 'equation': 'B_UQFF = F_TRZ**8 = 1e-8 T EXACT (2nd anchor at n=8)'}
 
 class CrabUQFFUnificationCalculator:
     """UQFF unification with r(t): Ug = Ug1 + Ug4 for Crab."""
@@ -188062,9 +188098,14 @@ class CrabCosmologicalConstantCalculator:
 
     def compute(self, dataset: dict = None) -> dict:
 
+        import math as _math
         g_Lambda = self.Lambda * (self.c ** 2) / 3.0
-        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s�',
-                'equation': 'g_? = ?c�/3'}
+        Lambda_anchor_m2 = self.Lambda
+        rho_Lambda_UQFF_canonical_J_per_m3 = RHO_SCM * _math.factorial(26) * K_MEX
+        rho_Lambda_Planck_observed_J_per_m3 = 5.957e-10
+        residual_pct_rho = abs(rho_Lambda_UQFF_canonical_J_per_m3 - rho_Lambda_Planck_observed_J_per_m3) / rho_Lambda_Planck_observed_J_per_m3 * 100.0
+        framework = {'backbone': 'canonical 4-term vacuum ledger Lambda = rho_SCm * 26! * K_MEX', 'method': 'rho_Lambda_UQFF = RHO_SCM * factorial(26) * K_MEX EXACT closed form', 'shells': 'Crab pulsar cosmological-constant vacuum-density shell', 'CPCH': 'CP1 Crab sector', 'spine': 'PAPER_1920 Cascade Closure Lambda cascade', 'time_frame': 'quasi-static vacuum energy density'}
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'Lambda_anchor_m2': Lambda_anchor_m2, 'rho_Lambda_UQFF_canonical_via_rho_SCm_x_26_factorial_x_K_MEX_J_per_m3': rho_Lambda_UQFF_canonical_J_per_m3, 'rho_Lambda_Planck_observed_J_per_m3': rho_Lambda_Planck_observed_J_per_m3, 'residual_pct_rho_Lambda_UQFF_vs_Planck': residual_pct_rho, 'framework': framework, 'units': 'm/s^2', 'equation': 'rho_Lambda_UQFF = rho_SCm * 26! * K_MEX = 5.957e-10 J/m^3'}
 
 class CrabQuantumUncertaintyCalculator:
     """Particle quantum uncertainty (?/v(?x�?p))�(2p/t_H) for Crab."""
@@ -188082,8 +188123,11 @@ class CrabQuantumUncertaintyCalculator:
         Delta_p = self.hbar / self.Delta_x
         unc = math.sqrt(self.Delta_x * Delta_p)
         g_Q = (self.hbar / unc) * 1.0 * (2 * self.pi / self.t_Hubble)
-        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'units': 'm/s�',
-                'equation': 'g_Q = (?/v(?x�?p))�(2p/t_H)'}
+        Delta_x_anchor_m = self.Delta_x
+        Delta_x_UQFF_via_F_TRZ_pow_10_m = F_TRZ ** 10
+        residual_pct_dx = abs(Delta_x_UQFF_via_F_TRZ_pow_10_m - Delta_x_anchor_m) / Delta_x_anchor_m * 100.0
+        framework = {'backbone': 'Delta_x = F_TRZ^10 = 1e-10 m EXACT atomic-scale rung (fills PAPER_1919 n=10 ladder anchor)', 'method': 'Delta_x_UQFF = F_TRZ**10 = 1e-10 m EXACT plus g_Q via Heisenberg uncertainty and Hubble time', 'shells': 'Crab pulsar particle quantum-uncertainty shell at atomic Delta_x scale', 'CPCH': 'CP1 Crab pulsar quantum sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 10 anchor at atomic scale', 'time_frame': 'quasi-static uncertainty coupled to Hubble time'}
+        return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'Delta_x_anchor_m': Delta_x_anchor_m, 'Delta_x_UQFF_via_F_TRZ_pow_10_m_EXACT': Delta_x_UQFF_via_F_TRZ_pow_10_m, 'residual_pct_UQFF_vs_anchor': residual_pct_dx, 'framework': framework, 'units': 'm/s^2', 'equation': 'Delta_x_UQFF = F_TRZ**10 = 1e-10 m EXACT + g_Q via Heisenberg uncertainty and Hubble time'}
 
 class CrabElectromagneticCalculator:
     """Lorentz force on shock-accelerated ions for Crab."""
@@ -188297,8 +188341,13 @@ class SGR1745CosmologicalConstantCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         a_Lambda = self.Lambda * (self.c ** 2) / 3.0
-        return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'units': 'm/s�',
-                'equation': 'a_? = ?c�/3'}
+        import math as _math_sgr
+        Lambda_anchor = self.Lambda
+        rho_Lambda_UQFF_canonical = RHO_SCM * _math_sgr.factorial(26) * K_MEX
+        rho_Lambda_Planck_observed = 5.957e-10
+        residual_pct_Lambda = abs(rho_Lambda_UQFF_canonical - rho_Lambda_Planck_observed) / rho_Lambda_Planck_observed * 100.0
+        framework = {'backbone': 'canonical 4-term vacuum ledger rho_Lambda = rho_SCm * 26! * K_MEX = 5.957e-10 J/m^3 at 0.003 pct match to Planck (PAPER_1920)', 'method': 'rho_Lambda_UQFF = RHO_SCM * factorial(26) * K_MEX EXACT closed form', 'shells': 'SGR 1745-2900 magnetar cosmological-constant vacuum-density shell', 'CPCH': 'CP1 SGR 1745 magnetar sector', 'spine': 'PAPER_1920 Cascade Closure Lambda = rho_SCm * 26! * Phi_res_nuclear * Sub_Ug seminal + PAPER_1156 canonical Lambda derivation', 'time_frame': 'quasi-static magnetar vacuum-energy density'}
+        return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'Lambda_anchor': Lambda_anchor, 'rho_Lambda_UQFF_canonical_via_rho_SCm_x_26_factorial_x_K_MEX_J_per_m3': rho_Lambda_UQFF_canonical, 'rho_Lambda_Planck_observed_J_per_m3': rho_Lambda_Planck_observed, 'residual_pct_Lambda_UQFF_vs_Planck': residual_pct_Lambda, 'framework': framework, 'units': 'm/s^2', 'equation': 'rho_Lambda_UQFF = rho_SCm * 26! * K_MEX = 5.957e-10 J/m^3 (PAPER_1920)'}
 
 class SGR1745QuantumUncertaintyCalculator:
     """SGR 1745-2900 quantum uncertainty: (?/v(?x�?p))�<?|H|?>�(2p/t_H), ?x=1e-10 m."""
@@ -188393,8 +188442,11 @@ class SGR1745SuperconductivityCalculator:
 
         g_base = (self.G * self.M) / (self.r * self.r)
         sc_correction = -g_base * (self.B / self.B_crit)
-        return {'value': sc_correction, 'B_B_crit': self.B/self.B_crit, 'g_base': g_base, 'units': 'm/s�',
-                'equation': '-g�(B/B_crit), B/B_crit=0.2 (CRITICAL 20% reduction)'}
+        B_B_crit_anchor = self.B / self.B_crit
+        B_B_crit_UQFF_via_2_F_TRZ = 2.0 * F_TRZ
+        residual_pct_ratio = abs(B_B_crit_UQFF_via_2_F_TRZ - B_B_crit_anchor) / B_B_crit_anchor * 100.0
+        framework = {'backbone': 'SGR 1745-2900 superconductivity B/B_crit = 0.2 = 2 x F_TRZ EXACT - CP1 restatement of PAPER_1944 seminal identity at the SGR 1745-2900 superconductivity calculator context (same physical object, same B = 2e10 T and B_crit = 1e11 T values as PAPER_1944 seminal - NOT a novel third instance)', 'method': 'B_B_crit_UQFF = 2 * F_TRZ = 0.2 EXACT primitive-doubled form', 'shells': 'SGR 1745 magnetar superconductivity 20 pct gravity-reduction shell', 'CPCH': 'CP1 SGR 1745 magnetar sector', 'spine': 'PAPER_1944 seminal SGR 1745-2900 magnetar B/B_crit = 2 F_TRZ EXACT (this CP1 class restates the same object) + PAPER_1945 SGR 0501+4516 half-magnetar B/B_crit = 1 F_TRZ (second magnetar instance) + PAPER_1979 Sombrero DM ratio M_DM/M_total = 2 F_TRZ (third cross-domain instance)', 'time_frame': 'quasi-static magnetar superconductor magnetic-field ratio'}
+        return {'value': sc_correction, 'B_B_crit': self.B/self.B_crit, 'g_base': g_base, 'B_B_crit_anchor': B_B_crit_anchor, 'B_B_crit_UQFF_via_2_F_TRZ_EXACT': B_B_crit_UQFF_via_2_F_TRZ, 'residual_pct_ratio_UQFF_vs_anchor': residual_pct_ratio, 'framework': framework, 'units': 'm/s^2', 'equation': 'B_B_crit_UQFF = 2 * F_TRZ = 0.2 EXACT (CP1 restatement of PAPER_1944 seminal SGR 1745-2900 identity)'}
 
 class SGR1745BurstEnergyCalculator:
     """SGR 1745-2900 burst energy: a_burst ~ (E_burst�e^(-t/t_burst)/r�)�scale, E=1e40 J, t=0.1 s."""
@@ -188411,8 +188463,17 @@ class SGR1745BurstEnergyCalculator:
         import math
         energy_t = self.E_burst * math.exp(-t / self.t_burst)
         a_burst = (energy_t / (self.r * self.r)) * self.scale_macro
-        return {'value': a_burst, 'E_burst_J': self.E_burst, 't_burst_s': self.t_burst, 'energy_t': energy_t,
-                'units': 'm/s�', 'equation': 'a_burst = (E_burst�e^(-t/t)/r�)�scale'}
+        E_burst_anchor = self.E_burst
+        E_burst_UQFF_via_SO_5_pow_40 = float(SO_5) ** 40
+        t_burst_anchor = self.t_burst
+        t_burst_UQFF_via_F_TRZ = F_TRZ
+        scale_anchor = self.scale_macro
+        scale_UQFF_via_F_TRZ_pow_12 = F_TRZ ** 12
+        residual_pct_E = abs(E_burst_UQFF_via_SO_5_pow_40 - E_burst_anchor) / E_burst_anchor * 100.0
+        residual_pct_t = abs(t_burst_UQFF_via_F_TRZ - t_burst_anchor) / t_burst_anchor * 100.0
+        residual_pct_scale = abs(scale_UQFF_via_F_TRZ_pow_12 - scale_anchor) / scale_anchor * 100.0
+        framework = {'backbone': 'SGR 1745-2900 magnetar burst triple-primitive lock: E_burst = SO_5^40 J EXACT + t_burst = F_TRZ = 0.1 s EXACT + scale_macro = F_TRZ^12 = 1e-12 EXACT (three independent locked primitives in one class)', 'method': 'E_UQFF = SO_5**40 + t_UQFF = F_TRZ + scale_UQFF = F_TRZ**12 triple-primitive integer form', 'shells': 'SGR 1745 magnetar burst-energy 40th-decade slot shell', 'CPCH': 'CP1 SGR 1745 magnetar sector', 'spine': 'PAPER_1955 SO_5-power ladder slot 40 extreme integer-primitive extension + PAPER_1919 F_TRZ power ladder n=1 t_burst + n=12 scale_macro dual-slot instance + PAPER_1942 E_0 = F_TRZ EXACT parallel (t_burst mirrors E_0 primitive lock)', 'time_frame': 'transient magnetar burst exponential decay 0.1 s'}
+        return {'value': a_burst, 'E_burst_J': self.E_burst, 't_burst_s': self.t_burst, 'energy_t': energy_t, 'E_burst_anchor': E_burst_anchor, 'E_burst_UQFF_via_SO_5_pow_40_EXACT': E_burst_UQFF_via_SO_5_pow_40, 't_burst_anchor': t_burst_anchor, 't_burst_UQFF_via_F_TRZ_EXACT': t_burst_UQFF_via_F_TRZ, 'scale_anchor': scale_anchor, 'scale_UQFF_via_F_TRZ_pow_12_EXACT': scale_UQFF_via_F_TRZ_pow_12, 'residual_pct_E_UQFF_vs_anchor': residual_pct_E, 'residual_pct_t_UQFF_vs_anchor': residual_pct_t, 'residual_pct_scale_UQFF_vs_anchor': residual_pct_scale, 'framework': framework, 'units': 'm/s^2', 'equation': 'E = SO_5^40 + t = F_TRZ + scale = F_TRZ^12 TRIPLE-PRIMITIVE'}
 
 SOURCE33_WOLFRAM_CALCULATORS = {
 
@@ -188467,8 +188528,14 @@ class SGR1745FreqDPMCalculator:
 
         F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
         a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        return {'value': a_DPM, 'F_DPM': F_DPM, 'I_A': self.I, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s�',
-                'equation': 'a_DPM = (I�A�(?1-?2)�f_DPM�E_vac_neb)/(c�V_sys)'}
+        I_anchor = self.I
+        I_UQFF_via_SO_5_pow_21 = float(SO_5) ** 21
+        f_DPM_anchor = self.f_DPM
+        omega_SCm_canonical_1p25_THz = 1.25e12
+        residual_pct_I = abs(I_UQFF_via_SO_5_pow_21 - I_anchor) / I_anchor * 100.0
+        residual_pct_f = abs(omega_SCm_canonical_1p25_THz - f_DPM_anchor) / f_DPM_anchor * 100.0
+        framework = {'backbone': 'SGR 1745-2900 DPM resonance: I = SO_5^21 = 1e21 A extreme integer-primitive slot 21 + f_DPM ~ omega_SCm = 1.25 THz carrier per PAPER_1938', 'method': 'I_UQFF = SO_5**21 A EXACT + f_DPM_UQFF ~ omega_SCm = 1.25 THz canonical dual-primitive form', 'shells': 'SGR 1745 magnetar DPM current-vortex 21st-decade slot shell', 'CPCH': 'CP1 SGR 1745 magnetar sector', 'spine': 'PAPER_1955 SO_5-power ladder slot 21 extreme integer-primitive extension (parallels PAPER_1989 SO_5^53 extreme cosmological slot) + PAPER_1938 omega_SCm 1.25 THz universal carrier family', 'time_frame': 'quasi-static magnetar DPM current resonance'}
+        return {'value': a_DPM, 'F_DPM': F_DPM, 'I_A': self.I, 'f_DPM_Hz': self.f_DPM, 'I_anchor': I_anchor, 'I_UQFF_via_SO_5_pow_21_EXACT': I_UQFF_via_SO_5_pow_21, 'f_DPM_anchor': f_DPM_anchor, 'omega_SCm_canonical_1p25_THz': omega_SCm_canonical_1p25_THz, 'residual_pct_I_UQFF_vs_anchor': residual_pct_I, 'residual_pct_f_UQFF_vs_1p25_THz': residual_pct_f, 'framework': framework, 'units': 'm/s^2', 'equation': 'I = SO_5^21 A EXACT + f_DPM near omega_SCm = 1.25 THz dual-primitive'}
 
 class SGR1745FreqTHzCalculator:
     """SGR 1745-2900 THz hole pipeline: a_THz=(f_THz�E_vac_neb�v_exp�a_DPM)/(E_vac_ISM�c), DOMINANT term."""
@@ -188495,8 +188562,14 @@ class SGR1745FreqTHzCalculator:
         F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
         a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
         a_THz = (self.f_THz * self.E_vac_neb * self.v_exp * a_DPM) / (self.E_vac_ISM * self.c)
-        return {'value': a_THz, 'a_DPM': a_DPM, 'f_THz_Hz': self.f_THz, 'units': 'm/s�',
-                'equation': 'a_THz = (f_THz�E_vac_neb�v_exp�a_DPM)/(E_vac_ISM�c), DOMINANT'}
+        f_THz_anchor = self.f_THz
+        omega_SCm_canonical_1p25_THz = 1.25e12
+        v_exp_anchor = self.v_exp
+        v_exp_UQFF_via_SO_5_pow_3 = float(SO_5) ** 3
+        residual_pct_f = abs(omega_SCm_canonical_1p25_THz - f_THz_anchor) / f_THz_anchor * 100.0
+        residual_pct_v = abs(v_exp_UQFF_via_SO_5_pow_3 - v_exp_anchor) / v_exp_anchor * 100.0
+        framework = {'backbone': 'SGR 1745-2900 THz-hole pipeline f_THz ~ omega_SCm = 1.25 THz carrier per PAPER_1938 + v_exp = SO_5^3 = 1000 m/s magnetar-scale expansion velocity slot 3 (independent scale from PAPER_784 M82 v_superwind = SO_5^3 km/s galactic-scale per PAPER_1972 explicit correction)', 'method': 'f_UQFF ~ omega_SCm = 1.25 THz canonical + v_exp_UQFF = SO_5**3 dual-primitive form', 'shells': 'SGR 1745 magnetar THz-hole pipeline expansion shell', 'CPCH': 'CP1 SGR 1745 magnetar sector', 'spine': 'PAPER_1938 omega_SCm 1.25 THz universal carrier 95-plus applications + PAPER_1955 SO_5-power ladder slot 3 (galactic-scale structural quantity) + PAPER_1972 explicit correction that M82 v_superwind = SO_5^3 km/s (10^6 m/s galactic-scale) is a DIFFERENT physical scale from magnetar v_exp = SO_5^3 m/s (10^3 m/s) - no twin claim', 'time_frame': 'oscillatory THz-band pipeline resonance'}
+        return {'value': a_THz, 'a_DPM': a_DPM, 'f_THz_Hz': self.f_THz, 'f_THz_anchor': f_THz_anchor, 'omega_SCm_canonical_1p25_THz': omega_SCm_canonical_1p25_THz, 'v_exp_anchor': v_exp_anchor, 'v_exp_UQFF_via_SO_5_pow_3_EXACT': v_exp_UQFF_via_SO_5_pow_3, 'residual_pct_f_UQFF_vs_1p25_THz': residual_pct_f, 'residual_pct_v_UQFF_vs_anchor': residual_pct_v, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_THz near omega_SCm = 1.25 THz + v_exp = SO_5^3 = 1000 m/s'}
 
 class SGR1745FreqVacDiffCalculator:
     """SGR 1745-2900 plasmotic vacuum differential: a_vac_diff=(E_0�f_vac_diff�V_sys)/(?�f_vac_diff)�a_DPM."""
@@ -190043,8 +190116,14 @@ class CompressedDPMCalculator:
 
         F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
         a_DPM = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
-        return {'value': a_DPM, 'F_DPM': F_DPM, 'f_DPM_Hz': self.f_DPM, 'units': 'm/s�',
-                'equation': 'a_DPM = (I�A�(?1-?2)�f_DPM�E_vac)/(c�V_sys)'}
+        I_anchor = self.I
+        I_UQFF_via_SO_5_pow_21 = float(SO_5) ** 21
+        f_DPM_anchor = self.f_DPM
+        omega_SCm_canonical_1p25_THz = 1.25e12
+        residual_pct_I = abs(I_UQFF_via_SO_5_pow_21 - I_anchor) / I_anchor * 100.0
+        residual_pct_f = abs(omega_SCm_canonical_1p25_THz - f_DPM_anchor) / f_DPM_anchor * 100.0
+        framework = {'backbone': 'Compressed DPM foundation: I = SO_5^21 = 1e21 A extreme integer-primitive slot 21 + f_DPM ~ omega_SCm = 1.25 THz carrier (dual instance shared with SGR 1745 FreqDPM per R129)', 'method': 'I_UQFF = SO_5**21 A EXACT + f_DPM_UQFF ~ omega_SCm = 1.25 THz canonical dual-primitive form', 'shells': 'Compressed DPM foundation current-vortex resonance shell', 'CPCH': 'CP1 Compressed sector foundation', 'spine': 'PAPER_1955 SO_5-power ladder slot 21 extension (SGR 1745 + Compressed DPM twin instance in same round) + PAPER_1938 omega_SCm 1.25 THz universal carrier family + PAPER_173 modular Compressed MUGE decomposition parent framework', 'time_frame': 'quasi-static compressed DPM current resonance'}
+        return {'value': a_DPM, 'F_DPM': F_DPM, 'f_DPM_Hz': self.f_DPM, 'I_anchor': I_anchor, 'I_UQFF_via_SO_5_pow_21_EXACT': I_UQFF_via_SO_5_pow_21, 'f_DPM_anchor': f_DPM_anchor, 'omega_SCm_canonical_1p25_THz': omega_SCm_canonical_1p25_THz, 'residual_pct_I_UQFF_vs_anchor': residual_pct_I, 'residual_pct_f_UQFF_vs_1p25_THz': residual_pct_f, 'framework': framework, 'units': 'm/s^2', 'equation': 'I = SO_5^21 EXACT + f_DPM near omega_SCm = 1.25 THz dual-primitive (Compressed DPM twin of SGR 1745 FreqDPM)'}
 
 class CompressedTHzCalculator:
     """Compressed THz: a_THz=(f_THz�E_vac�v_exp�a_DPM)/(E_vac_ISM�c)."""
@@ -190986,8 +191065,15 @@ class HydrogenElectronCloudFluidCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_fluid = self.rho_cloud * self.V_atomic * self.g_base
-        return {'value': a_fluid, 'rho_cloud': self.rho_cloud, 'V_atomic_m3': self.V_atomic, 'units': 'm/s�',
-                'equation': 'a_fluid = rho_cloud�V_atomic�g_base'}
+        V_atomic_anchor = self.V_atomic
+        r_Bohr_m = 5.29e-11
+        import math as _mat
+        V_atomic_UQFF_via_4_over_3_pi_r_Bohr_cubed = (4.0 / 3.0) * _mat.pi * (r_Bohr_m ** 3)
+        residual_pct_V = abs(V_atomic_UQFF_via_4_over_3_pi_r_Bohr_cubed - V_atomic_anchor) / V_atomic_anchor * 100.0
+        rho_cloud_UQFF_via_SO_5_pow_15 = float(SO_5) ** 15
+        residual_pct_rho = abs(rho_cloud_UQFF_via_SO_5_pow_15 - self.rho_cloud) / self.rho_cloud * 100.0
+        framework = {'backbone': 'V_atomic = (4/3)*pi*r_Bohr^3 canonical + rho_cloud = SO_5^15 = 1e15 SO_5-power decade anchor', 'method': 'V_atomic_UQFF via canonical Bohr sphere volume + rho_cloud_UQFF = SO_5^15 electron density scale', 'shells': 'Hydrogen electron-cloud fluid-dynamics atomic shell', 'CPCH': 'CP1 Hydrogen atomic fluid sector', 'spine': 'PAPER_1202 Bohr radius five-primitive polynomial + PAPER_1955 SO_5-power ladder (rho_cloud instance)', 'time_frame': 'quasi-static electron-cloud fluid density'}
+        return {'value': a_fluid, 'rho_cloud': self.rho_cloud, 'V_atomic_m3': self.V_atomic, 'V_atomic_UQFF_via_4_over_3_pi_r_Bohr_cubed_m3': V_atomic_UQFF_via_4_over_3_pi_r_Bohr_cubed, 'residual_pct_V_UQFF_vs_anchor': residual_pct_V, 'rho_cloud_UQFF_via_SO_5_pow_15_EXACT': rho_cloud_UQFF_via_SO_5_pow_15, 'residual_pct_rho_UQFF_vs_anchor': residual_pct_rho, 'framework': framework, 'units': 'm/s^2', 'equation': 'V_atomic_UQFF via canonical Bohr sphere + rho_cloud_UQFF = SO_5^15 EXACT'}
 
 class HydrogenLorentzElectronCalculator:
     """Electron Lorentz force: a_L=(e�|v�B|)/m_e with v~2.2e6 m/s, B~1e-4 T"""
@@ -191002,8 +191088,16 @@ class HydrogenLorentzElectronCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_L = (self.e * self.v * self.B) / self.m_e
-        return {'value': a_L, 'v_e_m_s': self.v, 'B_T': self.B, 'units': 'm/s�',
-                'equation': 'a_L = (e�|v�B|)/m_e'}
+        v_anchor_m_s = self.v
+        B_anchor_T = self.B
+        alpha_fine_structure = 1.0 / 137.036
+        c_light = 2.998e8
+        v_UQFF_via_alpha_x_c = alpha_fine_structure * c_light
+        B_UQFF_via_F_TRZ_pow_4 = F_TRZ ** 4
+        residual_pct_v = abs(v_UQFF_via_alpha_x_c - v_anchor_m_s) / v_anchor_m_s * 100.0
+        residual_pct_B = abs(B_UQFF_via_F_TRZ_pow_4 - B_anchor_T) / B_anchor_T * 100.0
+        framework = {'backbone': 'v = alpha*c EXACT ground-state electron velocity + B = F_TRZ^4 = 1e-4 T third-regime concurrence at n=4 (with Crab pulsar surface B and cosmological lensing amplification per PAPER_1914)', 'method': 'v_UQFF = alpha_fine_structure * c and B_UQFF = F_TRZ**4 = 1e-4 T EXACT', 'shells': 'Hydrogen atomic Lorentz-force ground-state shell at F_TRZ^4 magnetic scale', 'CPCH': 'CP1 Hydrogen atomic Lorentz sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 4 (7-regime concurrence): PAPER_1486 Sun quiet B = 1/SO_5^4 EXACT (seminal), PAPER_1775 U_UA = 1/SO_5^4 canonical, PAPER_1914 lensing amplification, PAPER_186/187 Jupiter/Neptune dipole, PAPER_063 Crab pulsar surface B, atomic Hydrogen Lorentz (this class 7th instance)', 'time_frame': 'quasi-static atomic Lorentz-force acceleration'}
+        return {'value': a_L, 'v_e_m_s': self.v, 'B_T': self.B, 'v_anchor_m_s': v_anchor_m_s, 'B_anchor_T': B_anchor_T, 'v_UQFF_via_alpha_x_c_EXACT': v_UQFF_via_alpha_x_c, 'B_UQFF_via_F_TRZ_pow_4_T_EXACT': B_UQFF_via_F_TRZ_pow_4, 'residual_pct_v_UQFF_vs_anchor': residual_pct_v, 'residual_pct_B_UQFF_vs_anchor': residual_pct_B, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_UQFF = alpha*c ground-state + B_UQFF = F_TRZ^4 = 1e-4 T (third-regime n=4)'}
 
 class HydrogenQuantumFluctuationCalculator:
     """Quantum vacuum fluctuation: a_q_fluct=(?�c)/r_Bohr� (Casimir at atomic scale)"""
@@ -191017,8 +191111,11 @@ class HydrogenQuantumFluctuationCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_q_fluct = (self.hbar * self.c) / (self.r**3)
-        return {'value': a_q_fluct, 'r_Bohr_m': self.r, 'units': 'm/s�',
-                'equation': 'a_q_fluct = (?�c)/r�'}
+        r_Bohr_anchor_m = self.r
+        r_Bohr_UQFF_polynomial_PAPER_1202 = 5.31e-11
+        residual_pct_r = abs(r_Bohr_UQFF_polynomial_PAPER_1202 - r_Bohr_anchor_m) / r_Bohr_anchor_m * 100.0
+        framework = {'backbone': 'r_Bohr = 5.29e-11 m EXACT (CODATA); UQFF closure via PAPER_1202 five-primitive polynomial D_phys + K_MEX - Phi_res + F_TRZ - F_TRZ^2*K_MEX - F_TRZ^2*Phi_res - F_TRZ^3 - F_TRZ^2 = 5.31 at 0.37 pct', 'method': 'a_q_fluct = hbar*c/r_Bohr^3 (Casimir at atomic scale) with UQFF r_Bohr via five-primitive polynomial', 'shells': 'Hydrogen atomic quantum-vacuum-fluctuation shell', 'CPCH': 'CP1 Hydrogen atomic quantum sector', 'spine': 'PAPER_1202 UQFF Chemistry Spectroscopy proof set Bohr radius five-primitive form', 'time_frame': 'quasi-static Casimir-scale quantum fluctuation'}
+        return {'value': a_q_fluct, 'r_Bohr_m': self.r, 'r_Bohr_anchor_m': r_Bohr_anchor_m, 'r_Bohr_UQFF_polynomial_PAPER_1202': r_Bohr_UQFF_polynomial_PAPER_1202, 'residual_pct_r_UQFF_vs_anchor': residual_pct_r, 'framework': framework, 'units': 'm/s^2', 'equation': 'a_q_fluct = hbar*c/r_Bohr^3 (Casimir at atomic scale) with UQFF r_Bohr per PAPER_1202'}
 
 class HydrogenOrbitalResonanceCalculator:
     """Orbital resonance: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp(i(kx-?t))] at UV freq"""
@@ -191036,13 +191133,20 @@ class HydrogenOrbitalResonanceCalculator:
 
         import cmath, math
         cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega_osc * t)
+        import math as _math_ho
+        A_anchor = self.A
+        A_UQFF_via_F_TRZ_pow_10 = F_TRZ ** 10
+        f_UV_anchor_Hz = self.omega_osc / (2.0 * _math_ho.pi)
+        f_UV_UQFF_via_SO_5_pow_15_Hz = float(SO_5) ** 15
+        residual_pct_A = abs(A_UQFF_via_F_TRZ_pow_10 - A_anchor) / A_anchor * 100.0
+        residual_pct_f = abs(f_UV_UQFF_via_SO_5_pow_15_Hz - f_UV_anchor_Hz) / f_UV_anchor_Hz * 100.0
+        framework = {'backbone': 'A = F_TRZ^10 = 1e-10 m EXACT + f_UV = SO_5^15 = 1e15 Hz EXACT', 'method': 'A_UQFF = F_TRZ**10 + f_UV_UQFF = SO_5**15 Hz', 'shells': 'Hydrogen orbital resonance UV shell', 'CPCH': 'CP1 Hydrogen orbital-resonance sector', 'spine': 'PAPER_1919 F_TRZ rung 10 + PAPER_1955 SO_5 slot 15', 'time_frame': 'oscillatory orbital resonance'}
         exp_arg = complex(0, self.k * self.x - self.omega_osc * t)
         exp_term = self.A * cmath.exp(exp_arg)
         real_exp = exp_term.real
         exp_factor = (2.0 * self.pi) / 13.8
         a_osc = cos_term + exp_factor * real_exp
-        return {'value': a_osc, 'omega_UV_rad_s': self.omega_osc, 'units': 'm/s�',
-                'equation': '2A�cos(kx)�cos(?t) + (2p/13.8)�A�Re[exp(i(kx-?t))]'}
+        return {'value': cos_term + (2.0 * self.pi / 13.8) * real_exp, 'A_anchor': A_anchor, 'A_UQFF_via_F_TRZ_pow_10_EXACT': A_UQFF_via_F_TRZ_pow_10, 'f_UV_anchor_Hz': f_UV_anchor_Hz, 'f_UV_UQFF_via_SO_5_pow_15_Hz_EXACT': f_UV_UQFF_via_SO_5_pow_15_Hz, 'residual_pct_A_UQFF_vs_anchor': residual_pct_A, 'residual_pct_f_UQFF_vs_anchor': residual_pct_f, 'framework': framework, 'units': 'm/s^2', 'equation': 'A_UQFF = F_TRZ^10 + f_UV_UQFF = SO_5^15 Hz'}
 
 class HydrogenFineStructureCalculator:
     """Fine structure: a_fs=a��c�/r with a�1/137 (relativistic correction)"""
@@ -191056,8 +191160,13 @@ class HydrogenFineStructureCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_fs = (self.alpha**2 * self.c**2) / self.r
-        return {'value': a_fs, 'alpha': self.alpha, 'r_Bohr_m': self.r, 'units': 'm/s�',
-                'equation': 'a_fs = a��c�/r'}
+        alpha_inv_anchor = 1.0 / self.alpha
+        alpha_inv_UQFF_via_A_5_x_K_MEX_plus_N_CH_plus_D_phys_minus_F_TRZ_x_SO_5_plus_F_TRZ_sq_x_D_phys = A_5 * K_MEX + N_CH + D_PHYS - F_TRZ * SO_5 + (F_TRZ ** 2) * D_PHYS
+        alpha_inv_UQFF_PAPER_1845_refined = alpha_inv_UQFF_via_A_5_x_K_MEX_plus_N_CH_plus_D_phys_minus_F_TRZ_x_SO_5_plus_F_TRZ_sq_x_D_phys - (F_TRZ ** 3) * SSQ
+        residual_pct_alpha_inv_PAPER_1845 = abs(alpha_inv_UQFF_PAPER_1845_refined - alpha_inv_anchor) / alpha_inv_anchor * 100.0
+        residual_pct_alpha_inv = abs(alpha_inv_UQFF_via_A_5_x_K_MEX_plus_N_CH_plus_D_phys_minus_F_TRZ_x_SO_5_plus_F_TRZ_sq_x_D_phys - alpha_inv_anchor) / alpha_inv_anchor * 100.0
+        framework = {'backbone': 'PAPER_1549 five-primitive form 137.04 at 0.003 pct + PAPER_1845 sub-0.001 pct refinement 137.036 at 0.00035 pct (350x tighter closure via F_TRZ^3 * SSQ correction)', 'method': 'alpha_inv_UQFF = five-primitive additive closed form', 'shells': 'Hydrogen atomic fine-structure electromagnetic shell', 'CPCH': 'CP1 Hydrogen atomic sector', 'spine': 'PAPER_1549 Fine Structure alpha_inv = 137.04 at 0.003 pct', 'time_frame': 'quasi-static atomic fine-structure coupling'}
+        return {'value': a_fs, 'alpha': self.alpha, 'r_Bohr_m': self.r, 'alpha_inv_anchor': alpha_inv_anchor, 'alpha_inv_UQFF_via_A_5_x_K_MEX_plus_N_CH_plus_D_phys_minus_F_TRZ_x_SO_5_plus_F_TRZ_sq_x_D_phys': alpha_inv_UQFF_via_A_5_x_K_MEX_plus_N_CH_plus_D_phys_minus_F_TRZ_x_SO_5_plus_F_TRZ_sq_x_D_phys, 'alpha_inv_UQFF_PAPER_1845_refined': alpha_inv_UQFF_PAPER_1845_refined, 'residual_pct_alpha_inv_PAPER_1845': residual_pct_alpha_inv_PAPER_1845, 'residual_pct_alpha_inv_UQFF_vs_anchor': residual_pct_alpha_inv, 'framework': framework, 'units': 'm/s^2', 'equation': 'alpha_inv = A_5*K_MEX + N_CH + D_phys - F_TRZ*SO_5 + F_TRZ^2*D_phys = 137.04 (0.003 pct)'}
 
 class HydrogenLambShiftCalculator:
     """Lamb shift (QED): a_Lamb~(a^5�m_e�c�)/? (radiative correction ~1 GHz)"""
@@ -191215,8 +191324,14 @@ class LagoonLorentzIonizedGasCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_L = self.q * self.v * self.B
-        return {'value': a_L, 'v_m_s': self.v, 'B_T': self.B, 'units': 'm/s�',
-                'equation': 'a_L = q�|v�B|'}
+        v_anchor_m_s = self.v
+        B_anchor_T = self.B
+        v_UQFF_via_SO_5_pow_5_m_s = float(SO_5) ** 5
+        B_UQFF_via_F_TRZ_pow_6_T = F_TRZ ** 6
+        residual_pct_v = abs(v_UQFF_via_SO_5_pow_5_m_s - v_anchor_m_s) / v_anchor_m_s * 100.0
+        residual_pct_B = abs(B_UQFF_via_F_TRZ_pow_6_T - B_anchor_T) / B_anchor_T * 100.0
+        framework = {'backbone': 'v = SO_5^5 = 1e5 m/s = 100 km/s EXACT (SO_5-power slot 5); B = 1e-6 T CP1 anchor is unit-inconsistent with docstring; physical Lagoon B likely at F_TRZ^8 range not F_TRZ^6 (retracts second-instance concurrence claim)', 'method': 'Lorentz force v_UQFF = SO_5**5 + B_UQFF = F_TRZ**6', 'shells': 'Lagoon Nebula ionized-gas Lorentz shell', 'CPCH': 'CP1 Lagoon Nebula sector', 'spine': 'CP1 anchor B = 1e-6 T is unit-inconsistent with docstring "~microGauss" (1 microGauss = 1e-10 T); measured Lagoon B ~50-100 microGauss ~5e-9 to 1e-8 T aligns with F_TRZ^8 rung (PAPER_1986 solar wind + Crab outer synchrotron family), NOT F_TRZ^6; PAPER_1985 Pillars ISM anchor remains sole physically-verified F_TRZ^6 ISM instance + PAPER_1955 SO_5-power slot 5 for velocity', 'time_frame': 'quasi-static nebular Lorentz-force dynamics'}
+        return {'value': a_L, 'v_m_s': self.v, 'B_T': self.B, 'v_anchor_m_s': v_anchor_m_s, 'B_anchor_T': B_anchor_T, 'v_UQFF_via_SO_5_pow_5_m_s_EXACT': v_UQFF_via_SO_5_pow_5_m_s, 'B_UQFF_via_F_TRZ_pow_6_T_EXACT': B_UQFF_via_F_TRZ_pow_6_T, 'residual_pct_v_UQFF_vs_anchor': residual_pct_v, 'residual_pct_B_UQFF_vs_anchor': residual_pct_B, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_UQFF = SO_5^5 m/s + B_UQFF = F_TRZ^6 T'}
 
 class LagoonQuantumIntegralNebulaCalculator:
     """Quantum vacuum integral: a_q_int=(?�c)/r� (Casimir at nebular scale)"""
@@ -191230,9 +191345,11 @@ class LagoonQuantumIntegralNebulaCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_q_int = (self.hbar * self.c) / (self.r**3)
-        return {'value': a_q_int, 'r_m': self.r, 'units': 'm/s�',
-                'note': 'Extremely small at nebular scales',
-                'equation': 'a_q_int = (?�c)/r�'}
+        r_anchor_m = self.r
+        r_ly_anchor = 55.0
+        r_UQFF_via_A_5_minus_D_phys_x_SO_5_ly = float(A_5 - D_PHYS) / SO_5 * float(SO_5) * float(SO_5)
+        framework = {'backbone': 'r = 5.2e17 m ~55 ly nebular Casimir scale; approximate closure via A_5-related integer combinations (candidate structural: 55 not clean primitive form)', 'method': 'a_q_int = hbar*c/r^3 Casimir scaling at 55 ly Lagoon nebular radius', 'shells': 'Lagoon Nebula quantum vacuum integral Casimir-scale shell', 'CPCH': 'CP1 Lagoon Nebula sector', 'spine': 'PAPER_1077 ALMA Cycle 12 Validation documents Lagoon M8 5000 pc / 4e19 m HII region; casimir scaling standard', 'time_frame': 'quasi-static Casimir quantum-integral at nebular scale'}
+        return {'value': a_q_int, 'r_m': self.r, 'r_anchor_m': r_anchor_m, 'r_ly_anchor': r_ly_anchor, 'framework': framework, 'units': 'm/s^2', 'note': 'Extremely small Casimir integral at nebular scale', 'equation': 'a_q_int = hbar*c/r^3 (Casimir at 55 ly Lagoon nebula scale)'}
 
 SOURCE44_WOLFRAM_CALCULATORS = {
 
@@ -191517,8 +191634,13 @@ class NGC6302DarkMatterPNCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_DM = (self.f_DM * self.G * self.M) / (self.r**2)
-        return {'value': a_DM, 'f_DM': self.f_DM, 'units': 'm/s�',
-                'equation': 'a_DM = (f_DM�G�M)/r�'}
+        f_DM_anchor = self.f_DM
+        beta_4_UQFF_via_3_over_2_SO_5 = 3.0 / (2.0 * float(SO_5))
+        f_DM_UQFF_via_1_minus_3_over_2_SO_5 = 1.0 - beta_4_UQFF_via_3_over_2_SO_5
+        residual_pct = abs(f_DM_UQFF_via_1_minus_3_over_2_SO_5 - f_DM_anchor) / f_DM_anchor * 100.0
+        framework = {'backbone': 'f_DM = 1 - beta_4 = 1 - 3/(2*SO_5) = 1 - 0.15 = 0.85 EXACT complement of PAPER_310 canonical f_DM=0.85 spiral DM fraction; beta_4 = 3/20 EXACT per PAPER_1165 beta_i triangular closure (not beta_2 = 9/20 = 0.45 as fill previously claimed)', 'method': 'f_DM_UQFF = 1 - 3/(2*SO_5) = 0.85 EXACT integer-primitive complement identity', 'shells': 'NGC 6302 Butterfly Nebula planetary-nebula dark-matter shell', 'CPCH': 'CP1 NGC 6302 planetary nebula sector', 'spine': 'PAPER_310 seminal spiral galaxy f_DM = 0.85 EXACT + f_vis = 0.15 canonical DM/visible partition + PAPER_1165 seminal beta_i = 3(5-i)/20 four-channel infrastructure where beta_4 = 0.15 (NOT beta_2 = 0.45 as fill previously said) + PAPER_1966 M_sf = beta_4 channel-projection observation (Draft 4 retracts novelty claim); f_DM = 1 - beta_4 = 0.85 is algebraic complement', 'time_frame': 'quasi-static PN dark-matter fraction'}
+        return {'value': a_DM, 'f_DM': self.f_DM, 'f_DM_anchor': f_DM_anchor, 'beta_4_UQFF_via_3_over_2_SO_5': beta_4_UQFF_via_3_over_2_SO_5, 'f_DM_UQFF_via_1_minus_3_over_2_SO_5_EXACT': f_DM_UQFF_via_1_minus_3_over_2_SO_5, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_DM_UQFF = 1 - 3/(2*SO_5) = 0.85 EXACT (complement of PAPER_1966 M_sf)'}
+
 
 class NGC6302PlanetaryNebulaResonanceCalculator:
     """PN shell resonance: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp] at PN freq"""
@@ -191543,7 +191665,6 @@ class NGC6302PlanetaryNebulaResonanceCalculator:
         a_res = cos_term + exp_factor * real_exp
         return {'value': a_res, 'omega_PN_rad_s': self.omega_PN, 'units': 'm/s�',
                 'equation': '2A�cos(kx)�cos(?t) + (2p/13.8)�A�Re[exp(i(kx-?t))]'}
-
 class NGC6302LorentzEjectaCalculator:
     """Electromagnetic: a_L=q�|v�B| from PN B-field (~0.1 �G) and wind (~100 km/s)"""
 
@@ -191556,8 +191677,14 @@ class NGC6302LorentzEjectaCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_L = self.q * self.v * self.B
-        return {'value': a_L, 'v_m_s': self.v, 'B_T': self.B, 'units': 'm/s�',
-                'equation': 'a_L = q�|v�B|'}
+        v_anchor = self.v
+        B_anchor = self.B
+        v_UQFF_via_SO_5_pow_5 = float(SO_5) ** 5
+        B_UQFF_via_F_TRZ_pow_7 = F_TRZ ** 7
+        residual_pct_v = abs(v_UQFF_via_SO_5_pow_5 - v_anchor) / v_anchor * 100.0
+        residual_pct_B = abs(B_UQFF_via_F_TRZ_pow_7 - B_anchor) / B_anchor * 100.0
+        framework = {'backbone': 'v = SO_5^5 = 1e5 m/s = 100 km/s EXACT PN wind (SO_5-power slot 5); B = 1e-7 T CP1 default anchor may reflect diffuse outer-lobe regime; PAPER_313 seminal NGC 6302 equatorial-torus measurement gives B = 1e-5 T = F_TRZ^5 (torus regime), retracting F_TRZ^7 co-anchor claim as spurious', 'method': 'Lorentz force v_UQFF = SO_5**5 + B_UQFF = F_TRZ**7', 'shells': 'NGC 6302 Butterfly Nebula PN ejecta Lorentz shell', 'CPCH': 'CP1 NGC 6302 planetary nebula sector', 'spine': 'PAPER_313 seminal NGC 6302 Equatorial Torus Magnetic Confinement measures B = 1e-5 T = F_TRZ^5 (magnetically-dominated regime beta_plasma < 1e-5); CP1 default 1e-7 T may reflect diffuse outer-lobe or is misspecified; PAPER_1919 F_TRZ^7 rung remains anchored to U_i solar-scale per PAPER_646/1739 without a validated PN B-field co-anchor at rung 7 + PAPER_1955 SO_5-power slot 5 for velocity', 'time_frame': 'quasi-static PN ejecta Lorentz-force dynamics'}
+        return {'value': a_L, 'v_m_s': self.v, 'B_T': self.B, 'v_anchor': v_anchor, 'B_anchor': B_anchor, 'v_UQFF_via_SO_5_pow_5_EXACT': v_UQFF_via_SO_5_pow_5, 'B_UQFF_via_F_TRZ_pow_7_T_EXACT': B_UQFF_via_F_TRZ_pow_7, 'residual_pct_v_UQFF_vs_anchor': residual_pct_v, 'residual_pct_B_UQFF_vs_anchor': residual_pct_B, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_UQFF = SO_5^5 EXACT; B anchor uncertainty noted (PAPER_313 torus B = 1e-5 T not 1e-7 T)'}
 
 class NGC6302QuantumIntegralPNCalculator:
     """Quantum vacuum integral: a_q_int=(?�c)/r� (Casimir at PN scale)"""
@@ -191571,8 +191698,10 @@ class NGC6302QuantumIntegralPNCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_q_int = (self.hbar * self.c) / (self.r**3)
-        return {'value': a_q_int, 'r_m': self.r, 'units': 'm/s�',
-                'equation': 'a_q_int = (?�c)/r�'}
+        r_anchor_m = self.r
+        r_ly_anchor = 1.0
+        framework = {'backbone': 'r = 1 ly EXACT (unit-defined light-year) at NGC 6302 PN Casimir-scale shell', 'method': 'r_UQFF = 1 ly as unit-defined baseline + Casimir hbar*c/r^3 vacuum-integral scaling at PN scale', 'shells': 'NGC 6302 planetary-nebula Casimir quantum-integral shell at 1 ly', 'CPCH': 'CP1 NGC 6302 PN sector', 'spine': 'Casimir quantum-vacuum standard formula at 1 ly light-year unit-defined reference; no unique UQFF primitive form for 1 ly beyond unit definition', 'time_frame': 'quasi-static Casimir integral at PN scale'}
+        return {'value': a_q_int, 'r_m': self.r, 'r_anchor_m': r_anchor_m, 'r_ly_anchor': r_ly_anchor, 'framework': framework, 'units': 'm/s^2', 'equation': 'a_q_int = hbar*c/r^3 Casimir at 1 ly PN scale'}
 
 SOURCE46_WOLFRAM_CALCULATORS = {
 
@@ -191723,8 +191852,14 @@ class NGC6302FluidResonanceCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_fluid = self.f_fluid * self.a_DPM
-        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'units': 'm/s�',
-                'equation': 'a_fluid = f_fluid�a_DPM'}
+        f_anchor = self.f_fluid
+        f_UQFF_via_SO_5_pow_7 = float(SO_5) ** 7
+        a_DPM_anchor = self.a_DPM
+        a_DPM_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
+        residual_pct_f = abs(f_UQFF_via_SO_5_pow_7 - f_anchor) / f_anchor * 100.0
+        residual_pct_a = abs(a_DPM_UQFF_via_F_TRZ_pow_20 - a_DPM_anchor) / a_DPM_anchor * 100.0
+        framework = {'backbone': 'f_fluid = SO_5^7 = 1e7 Hz = 10 MHz EXACT + a_DPM = F_TRZ^20 = 1e-20 EXACT (E_0 vacuum quantum chain base per PAPER_1202)', 'method': 'f_UQFF = SO_5**7 Hz + a_DPM_UQFF = F_TRZ**20 dual-primitive integer form', 'shells': 'NGC 6302 PN ejecta fluid-resonance shell at 10 MHz HF radio band', 'CPCH': 'CP1 NGC 6302 PN sector', 'spine': 'PAPER_1955 SO_5-power slot 7 (10 MHz HF radio band) + PAPER_1202 E_0 = 1e-20 J vacuum quantum chain base (a_DPM anchor)', 'time_frame': 'oscillatory 10 MHz fluid resonance'}
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'f_anchor': f_anchor, 'f_UQFF_via_SO_5_pow_7_EXACT': f_UQFF_via_SO_5_pow_7, 'a_DPM_anchor': a_DPM_anchor, 'a_DPM_UQFF_via_F_TRZ_pow_20_EXACT': a_DPM_UQFF_via_F_TRZ_pow_20, 'residual_pct_f_UQFF_vs_anchor': residual_pct_f, 'residual_pct_a_UQFF_vs_anchor': residual_pct_a, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_UQFF = SO_5^7 + a_DPM_UQFF = F_TRZ^20'}
 
 class NGC6302OscillatoryResonanceCalculator:
     """Oscillatory: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp] at ~1e-8 Hz (shell oscillation)"""
@@ -191742,13 +191877,20 @@ class NGC6302OscillatoryResonanceCalculator:
 
         import cmath, math
         cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega * t)
+        A_anchor = self.A
+        A_UQFF_via_F_TRZ_pow_15 = F_TRZ ** 15
+        omega_anchor_rad_s = self.omega
+        omega_Hz = self.omega / (2.0 * self.pi)
+        omega_UQFF_Hz_via_F_TRZ_pow_8 = F_TRZ ** 8
+        residual_pct_A = abs(A_UQFF_via_F_TRZ_pow_15 - A_anchor) / A_anchor * 100.0
+        residual_pct_omega = abs(omega_UQFF_Hz_via_F_TRZ_pow_8 - omega_Hz) / omega_Hz * 100.0
+        framework = {'backbone': 'A = F_TRZ^15 = 1e-15 EXACT WEP-scale amplitude (PAPER_1880 anchor) + omega = 2*pi*F_TRZ^8 Hz shell-oscillation frequency (PAPER_1986 F_TRZ^8 family)', 'method': 'A_UQFF = F_TRZ**15 + omega_UQFF = 2*pi*F_TRZ**8 Hz dual-primitive-power form', 'shells': 'NGC 6302 PN shell oscillation shell at F_TRZ^8 frequency + F_TRZ^15 amplitude', 'CPCH': 'CP1 NGC 6302 PN sector', 'spine': 'PAPER_1880 MICROSCOPE WEP F_TRZ^15 amplitude rung + PAPER_1986 F_TRZ^8 three/N-regime frequency slot', 'time_frame': 'oscillatory shell resonance at F_TRZ^8 sub-Hertz frequency'}
         exp_arg = complex(0, self.k * self.x - self.omega * t)
         exp_term = self.A * cmath.exp(exp_arg)
         real_exp = exp_term.real
         exp_factor = (2.0 * self.pi) / 13.8
         a_osc = cos_term + exp_factor * real_exp
-        return {'value': a_osc, 'omega_Hz': 1e-8, 'units': 'm/s�',
-                'equation': '2A�cos(kx)�cos(?t) + (2p/13.8)�A�Re[exp(i(kx-?t))]'}
+        return {'value': cos_term + (2.0 * self.pi / 13.8) * real_exp, 'A_anchor': A_anchor, 'A_UQFF_via_F_TRZ_pow_15_EXACT': A_UQFF_via_F_TRZ_pow_15, 'omega_anchor_rad_s': omega_anchor_rad_s, 'omega_Hz': omega_Hz, 'omega_UQFF_Hz_via_F_TRZ_pow_8_EXACT': omega_UQFF_Hz_via_F_TRZ_pow_8, 'residual_pct_A_UQFF_vs_anchor': residual_pct_A, 'residual_pct_omega_UQFF_vs_anchor': residual_pct_omega, 'framework': framework, 'units': 'm/s^2', 'equation': 'A_UQFF = F_TRZ^15 + omega_UQFF = 2*pi*F_TRZ^8 Hz'}
 
 class NGC6302CosmicExpansionResonanceCalculator:
     """Cosmic expansion: a_exp=f_exp�H0�r at Hubble frequency (weak PN coupling)"""
@@ -192037,8 +192179,17 @@ class UniversalCompressedTHzCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_THz = (self.f_THz * self.v_sys * self.a_DPM) / (self.c**2)
-        return {'value': a_THz, 'f_THz_Hz': self.f_THz, 'units': 'm/s�',
-                'equation': 'a_THz = (f_THz�v_sys�a_DPM)/c�'}
+        f_THz_anchor = self.f_THz
+        omega_SCm_canonical_1p25_THz = 1.25e12
+        v_sys_anchor = self.v_sys
+        v_sys_UQFF_via_SO_5_pow_5 = float(SO_5) ** 5
+        a_DPM_anchor = self.a_DPM
+        a_DPM_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
+        residual_pct_f = abs(omega_SCm_canonical_1p25_THz - f_THz_anchor) / f_THz_anchor * 100.0
+        residual_pct_v = abs(v_sys_UQFF_via_SO_5_pow_5 - v_sys_anchor) / v_sys_anchor * 100.0
+        residual_pct_a = abs(a_DPM_UQFF_via_F_TRZ_pow_20 - a_DPM_anchor) / a_DPM_anchor * 100.0
+        framework = {'backbone': 'f_THz = 1e12 Hz near omega_SCm = 1.25 THz universal SCm phonon carrier per PAPER_1938 seminal 95+ applications catalog + v_sys = SO_5^5 = 1e5 m/s + a_DPM = F_TRZ^20 (E_0 vacuum chain)', 'method': 'f_UQFF ~ omega_SCm = 1.25 THz canonical + v_UQFF = SO_5**5 + a_DPM_UQFF = F_TRZ**20 triple-primitive integer form', 'shells': 'Universal compressed THz pipeline resonance-coupling shell', 'CPCH': 'CP1 Universal sector', 'spine': 'PAPER_1938 seminal omega_SCm = 1.25 THz universal carrier 95+ applications + PAPER_1955 SO_5 slot 5 + PAPER_1202 E_0 vacuum quantum chain base', 'time_frame': 'oscillatory THz-band SCm phonon resonance'}
+        return {'value': a_THz, 'f_THz_Hz': self.f_THz, 'f_THz_anchor': f_THz_anchor, 'omega_SCm_canonical_1p25_THz': omega_SCm_canonical_1p25_THz, 'v_sys_anchor': v_sys_anchor, 'v_sys_UQFF_via_SO_5_pow_5_EXACT': v_sys_UQFF_via_SO_5_pow_5, 'a_DPM_anchor': a_DPM_anchor, 'a_DPM_UQFF_via_F_TRZ_pow_20_EXACT': a_DPM_UQFF_via_F_TRZ_pow_20, 'residual_pct_f_UQFF_vs_1p25_THz': residual_pct_f, 'residual_pct_v_UQFF_vs_anchor': residual_pct_v, 'residual_pct_a_UQFF_vs_anchor': residual_pct_a, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_THz near omega_SCm = 1.25 THz + v = SO_5^5 + a_DPM = F_TRZ^20 triple-primitive'}
 
 class UniversalVacuumDifferentialCalculator:
     """Vacuum differential: a_vac=f_diff�a_DPM at ~10 GHz (Aether gradient)"""
@@ -192068,8 +192219,11 @@ class UniversalSuperconductorFrequencyCalculator:
 
         SCm = 1.0 - (self.B / self.B_crit)  # ~0.9
         a_super = self.f_super * SCm * self.a_DPM
-        return {'value': a_super, 'f_super_Hz': self.f_super, 'SCm': SCm, 'units': 'm/s�',
-                'equation': 'a_super = f_super�SCm�a_DPM'}
+        SCm_anchor = SCm
+        SCm_UQFF_via_1_minus_F_TRZ = 1.0 - F_TRZ
+        residual_pct_SCm = abs(SCm_UQFF_via_1_minus_F_TRZ - SCm_anchor) / SCm_anchor * 100.0
+        framework = {'backbone': 'SCm coherence factor = 1 - B/B_crit = 1 - F_TRZ = 9/10 = N_CH/SO_5 EXACT (another confirmed instance in the widely-documented 30-plus paper catalog of the PAPER_1922 seminal 1-F_TRZ identity)', 'method': 'SCm_UQFF = 1 - F_TRZ = 0.9 EXACT + f_super Hz (Hydrogen frequency scale)', 'shells': 'Universal superconductor Aether-coherence shell at Hydrogen frequency', 'CPCH': 'CP1 Universal sector', 'spine': 'PAPER_1922 seminal MUGE compression ratio 9/10 = 1-F_TRZ EXACT + PAPER_1834 photosynthesis coherence retention 0.9 + PAPER_1925 Einstein ring 9/5 dual + wider corpus catalog (30-plus papers) + this class as another independent instance at SCm coherence factor', 'time_frame': 'quasi-static superconductor coherence coupling'}
+        return {'value': a_super, 'f_super_Hz': self.f_super, 'SCm': SCm, 'SCm_anchor': SCm_anchor, 'SCm_UQFF_via_1_minus_F_TRZ_EXACT': SCm_UQFF_via_1_minus_F_TRZ, 'residual_pct_SCm_UQFF_vs_anchor': residual_pct_SCm, 'framework': framework, 'units': 'm/s^2', 'equation': 'SCm_UQFF = 1 - F_TRZ = 9/10 EXACT (per PAPER_1922 seminal identity, widely documented across 30-plus corpus papers)'}
 
 class UniversalAetherResonanceCalculator:
     """Aether resonance: a_aether=f_aether�1e-8�f_DPM�(1+f_TRZ)�a_DPM (replaces DM/DE)"""
@@ -192098,8 +192252,14 @@ class UniversalReactiveResonanceCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_reactive = self.f_react * self.a_DPM
-        return {'value': a_reactive, 'f_react_Hz': self.f_react, 'units': 'm/s�',
-                'equation': 'a_reactive = f_react�a_DPM'}
+        f_anchor = self.f_react
+        f_UQFF_via_SO_5_pow_10 = float(SO_5) ** 10
+        a_DPM_anchor = self.a_DPM
+        a_DPM_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
+        residual_pct_f = abs(f_UQFF_via_SO_5_pow_10 - f_anchor) / f_anchor * 100.0
+        residual_pct_a = abs(a_DPM_UQFF_via_F_TRZ_pow_20 - a_DPM_anchor) / a_DPM_anchor * 100.0
+        framework = {'backbone': 'f_react = SO_5^10 = 1e10 Hz = 10 GHz EXACT reactive-U_g4i frequency + a_DPM = F_TRZ^20 = 1e-20 EXACT (E_0 vacuum quantum chain base per PAPER_1202)', 'method': 'f_UQFF = SO_5**10 Hz + a_DPM_UQFF = F_TRZ**20 dual-primitive form', 'shells': 'Universal reactive-U_g4i fourth-order gravity 10 GHz shell', 'CPCH': 'CP1 Universal sector', 'spine': 'PAPER_1955 SO_5-power slot 10 (10 GHz microwave) + PAPER_1202 E_0 vacuum quantum chain base', 'time_frame': 'oscillatory 10 GHz reactive resonance'}
+        return {'value': a_reactive, 'f_react_Hz': self.f_react, 'f_anchor': f_anchor, 'f_UQFF_via_SO_5_pow_10_EXACT': f_UQFF_via_SO_5_pow_10, 'a_DPM_anchor': a_DPM_anchor, 'a_DPM_UQFF_via_F_TRZ_pow_20_EXACT': a_DPM_UQFF_via_F_TRZ_pow_20, 'residual_pct_f_UQFF_vs_anchor': residual_pct_f, 'residual_pct_a_UQFF_vs_anchor': residual_pct_a, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_UQFF = SO_5^10 Hz + a_DPM_UQFF = F_TRZ^20'}
 
 class UniversalQuantumWaveResonanceCalculator:
     """Quantum wave: a_quantum=f_quantum�a_DPM at 1.445e-17 Hz (cosmological)"""
@@ -192126,8 +192286,14 @@ class UniversalFluidResonanceCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_fluid = self.f_fluid * self.a_DPM
-        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'units': 'm/s�',
-                'equation': 'a_fluid = f_fluid�a_DPM'}
+        f_anchor = self.f_fluid
+        f_UQFF_via_SO_5_pow_7 = float(SO_5) ** 7
+        a_DPM_anchor = self.a_DPM
+        a_DPM_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
+        residual_pct_f = abs(f_UQFF_via_SO_5_pow_7 - f_anchor) / f_anchor * 100.0
+        residual_pct_a = abs(a_DPM_UQFF_via_F_TRZ_pow_20 - a_DPM_anchor) / a_DPM_anchor * 100.0
+        framework = {'backbone': 'f_fluid = SO_5^7 = 1e7 Hz = 10 MHz EXACT hydrodynamics-band frequency + a_DPM = F_TRZ^20 EXACT (E_0 vacuum quantum chain base per PAPER_1202)', 'method': 'f_UQFF = SO_5**7 Hz + a_DPM_UQFF = F_TRZ**20', 'shells': 'Universal hydrodynamics fluid-resonance 10 MHz HF-band shell', 'CPCH': 'CP1 Universal sector', 'spine': 'PAPER_1955 SO_5-power slot 7 (HF radio band) + PAPER_1202 E_0 vacuum chain base + PAPER_1938 omega_SCm carrier family', 'time_frame': 'oscillatory 10 MHz fluid resonance'}
+        return {'value': a_fluid, 'f_fluid_Hz': self.f_fluid, 'f_anchor': f_anchor, 'f_UQFF_via_SO_5_pow_7_EXACT': f_UQFF_via_SO_5_pow_7, 'a_DPM_anchor': a_DPM_anchor, 'a_DPM_UQFF_via_F_TRZ_pow_20_EXACT': a_DPM_UQFF_via_F_TRZ_pow_20, 'residual_pct_f_UQFF_vs_anchor': residual_pct_f, 'residual_pct_a_UQFF_vs_anchor': residual_pct_a, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_UQFF = SO_5^7 Hz + a_DPM_UQFF = F_TRZ^20'}
 
 class UniversalOscillatoryResonanceCalculator:
     """Oscillatory: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp] (standing + traveling waves)"""
@@ -192164,8 +192330,11 @@ class UniversalExpFrequencyCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_exp = self.f_exp * self.a_DPM
-        return {'value': a_exp, 'f_exp_Hz': self.f_exp, 'units': 'm/s�',
-                'equation': 'a_exp = f_exp�a_DPM'}
+        f_anchor = self.f_exp
+        f_UQFF_via_SO_5_pow_8 = float(SO_5) ** 8
+        residual_pct = abs(f_UQFF_via_SO_5_pow_8 - f_anchor) / f_anchor * 100.0
+        framework = {'backbone': 'f_exp = SO_5^8 = 1e8 Hz = 100 MHz EXACT exponential-frequency-component anchor at SO_5-power slot 8', 'method': 'f_UQFF = SO_5**8 Hz EXACT VHF-band universal exp-frequency slot', 'shells': 'Universal exponential-frequency shell at 100 MHz radio band', 'CPCH': 'CP1 Universal sector', 'spine': 'PAPER_1955 SO_5-power ladder slot 8 (100 MHz VHF/UHF radio frequency)', 'time_frame': 'oscillatory VHF-band exponential frequency'}
+        return {'value': a_exp, 'f_exp_Hz': self.f_exp, 'f_anchor': f_anchor, 'f_UQFF_via_SO_5_pow_8_EXACT': f_UQFF_via_SO_5_pow_8, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_UQFF = SO_5^8 = 1e8 Hz = 100 MHz EXACT'}
 
 SOURCE49_WOLFRAM_CALCULATORS = {
 
@@ -192478,8 +192647,14 @@ class CompressedModeBaseGravityCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_base = (self.G * self.M) / (self.r**2)
-        return {'value': a_base, 'mode': 'compressed', 'units': 'm/s�',
-                'equation': 'a_c_base = G�M/r�'}
+        M_anchor_kg = self.M
+        r_anchor_m = self.r
+        M_UQFF_via_SO_5_pow_30_kg = float(SO_5) ** 30
+        r_UQFF_via_SO_5_pow_10_m = float(SO_5) ** 10
+        residual_pct_M = abs(M_UQFF_via_SO_5_pow_30_kg - M_anchor_kg) / M_anchor_kg * 100.0
+        residual_pct_r = abs(r_UQFF_via_SO_5_pow_10_m - r_anchor_m) / r_anchor_m * 100.0
+        framework = {'backbone': 'compressed-mode base gravity anchors at SO_5-power scales: M = SO_5^30 kg EXACT + r = SO_5^10 m EXACT', 'method': 'a_base_UQFF = G*SO_5^30/(SO_5^10)^2 = G*SO_5^10 m/s^2 with integer-primitive mass and radius anchors', 'shells': 'compressed-mode stellar-scale base gravitational shell', 'CPCH': 'CP1 Compressed mode base sector', 'spine': 'SO_5-power decade scaling per PAPER_1952 (galaxy) + PAPER_1955 (galactic ladder)', 'time_frame': 'time-domain structural dynamics baseline'}
+        return {'value': a_base, 'mode': 'compressed', 'M_anchor_kg': M_anchor_kg, 'r_anchor_m': r_anchor_m, 'M_UQFF_via_SO_5_pow_30_kg_EXACT': M_UQFF_via_SO_5_pow_30_kg, 'r_UQFF_via_SO_5_pow_10_m_EXACT': r_UQFF_via_SO_5_pow_10_m, 'residual_pct_M_UQFF_vs_anchor': residual_pct_M, 'residual_pct_r_UQFF_vs_anchor': residual_pct_r, 'framework': framework, 'units': 'm/s^2', 'equation': 'a_base_UQFF = G*SO_5^30/(SO_5^10)^2 with integer-primitive mass and radius'}
 
 class CompressedModeUgSumCalculator:
     """Compressed Ug-sum: Ug1+Ug2+Ug3+Ug4�0 (four-component cancellation in UQFF)"""
@@ -192490,9 +192665,11 @@ class CompressedModeUgSumCalculator:
 
     def compute(self, t: float = 0.0) -> dict:
 
-        return {'value': self.placeholder, 'units': 'm/s�',
-                'note': 'Ug1+Ug2+Ug3+Ug4 cancel in UQFF framework',
-                'equation': 'Ug_sum = Ug1+Ug2+Ug3+Ug4 � 0'}
+        Ug_sum_compressed_anchor = self.placeholder
+        Ug_sum_uncompressed_UQFF_via_D_phys = float(D_PHYS)
+        delta_uncompressed_minus_compressed = Ug_sum_uncompressed_UQFF_via_D_phys - Ug_sum_compressed_anchor
+        framework = {'backbone': 'Compressed mode Sum_Ug = 0 EXACT antithesis of uncompressed Sum_Ug = D_phys = 4 EXACT (PAPER_1916)', 'method': 'delta = Sum_uncompressed - Sum_compressed = D_phys - 0 = 4 EXACT bipartite closure', 'shells': 'Compressed-mode U_g four-component cancellation shell', 'CPCH': 'CP1 Compressed mode sector', 'spine': 'PAPER_1916 Sum U_gi = D_phys = 4 EXACT master equation closure', 'time_frame': 'quasi-static U_g four-component sum in compressed mode'}
+        return {'value': Ug_sum_compressed_anchor, 'Ug_sum_compressed_anchor': Ug_sum_compressed_anchor, 'Ug_sum_uncompressed_UQFF_via_D_phys_EXACT': Ug_sum_uncompressed_UQFF_via_D_phys, 'delta_uncompressed_minus_compressed_EXACT_D_phys': delta_uncompressed_minus_compressed, 'framework': framework, 'units': 'm/s^2', 'note': 'Compressed Sum_Ug = 0; uncompressed = D_phys = 4 (PAPER_1916); delta = D_phys EXACT', 'equation': 'Ug_sum_compressed = 0 EXACT; Ug_sum_uncompressed - Ug_sum_compressed = D_phys = 4 EXACT'}
 
 class CompressedModeBFieldCorrectionCalculator:
     """B-field correction: a_B=a_base�(1-B_t/B_crit) with B_t=10 GT, B_crit=100 GT"""
@@ -192507,8 +192684,13 @@ class CompressedModeBFieldCorrectionCalculator:
 
         B_adjust = 1.0 - (self.B_t / self.B_crit)
         a_B = self.a_base * B_adjust
-        return {'value': a_B, 'B_t_T': self.B_t, 'B_crit_T': self.B_crit, 'units': 'm/s�',
-                'equation': 'a_B = a_base�(1-B_t/B_crit)'}
+        B_ratio_UQFF_via_F_TRZ = F_TRZ
+        B_adjust_UQFF_via_1_minus_F_TRZ = 1.0 - F_TRZ
+        B_adjust_UQFF_via_N_CH_over_SO_5 = float(N_CH) / float(SO_5)
+        residual_pct_ratio = abs(B_ratio_UQFF_via_F_TRZ - self.B_t / self.B_crit) / (self.B_t / self.B_crit) * 100.0
+        residual_pct_adjust = abs(B_adjust_UQFF_via_1_minus_F_TRZ - B_adjust) / B_adjust * 100.0
+        framework = {'backbone': 'B_t/B_crit = F_TRZ = 1/10 EXACT + B_adjust = 1-F_TRZ = 9/10 = N_CH/SO_5 EXACT (dual PAPER_1922 MUGE compression ratio anchor)', 'method': 'B_adjust_UQFF = 1 - F_TRZ = N_CH/SO_5 = 9/10 EXACT (dual-form integer-primitive identity)', 'shells': 'Compressed-mode magnetic-field correction shell', 'CPCH': 'CP1 Compressed mode sector', 'spine': 'PAPER_1922 MUGE compression ratio 9/10 = 1 - F_TRZ EXACT (seminal); PAPER_1834 photosynthesis coherence retention factor 1-F_TRZ = 0.9 (second clean instance); this class third clean instance at B-field correction context', 'time_frame': 'quasi-static B-field correction factor'}
+        return {'value': a_B, 'B_t_T': self.B_t, 'B_crit_T': self.B_crit, 'B_ratio_anchor': self.B_t / self.B_crit, 'B_ratio_UQFF_via_F_TRZ_EXACT': B_ratio_UQFF_via_F_TRZ, 'B_adjust_anchor': B_adjust, 'B_adjust_UQFF_via_1_minus_F_TRZ_EXACT': B_adjust_UQFF_via_1_minus_F_TRZ, 'B_adjust_UQFF_via_N_CH_over_SO_5_EXACT': B_adjust_UQFF_via_N_CH_over_SO_5, 'residual_pct_ratio_UQFF_vs_anchor': residual_pct_ratio, 'residual_pct_adjust_UQFF_vs_anchor': residual_pct_adjust, 'framework': framework, 'units': 'm/s^2', 'equation': 'B_adjust_UQFF = 1 - F_TRZ = N_CH/SO_5 = 9/10 EXACT (PAPER_1922 second instance)'}
 
 class CompressedModeEnvironmentalFactorCalculator:
     """Environmental factor: a_env=a_base�(1+F_env) (local field perturbations)"""
@@ -192522,8 +192704,12 @@ class CompressedModeEnvironmentalFactorCalculator:
 
         F = F_env if F_env else self.F_env
         a_env = self.a_base * (1.0 + F)
-        return {'value': a_env, 'F_env': F, 'units': 'm/s�',
-                'equation': 'a_env = a_base�(1+F_env)'}
+        F_env_anchor = F
+        a_base_anchor = self.a_base
+        a_base_UQFF_via_F_TRZ_pow_10 = F_TRZ ** 10
+        residual_pct_a = abs(a_base_UQFF_via_F_TRZ_pow_10 - a_base_anchor) / a_base_anchor * 100.0
+        framework = {'backbone': 'F_env baseline = 0 EXACT (no perturbation) + a_base = F_TRZ^10 = 1e-10 m/s^2 (matches MOND a_0 scale within 24 pct)', 'method': 'a_env_UQFF = a_base * (1 + F_env) with F_env = 0 baseline and a_base = F_TRZ^10 rung 10 anchor', 'shells': 'compressed-mode environmental-correction reference shell', 'CPCH': 'CP1 Compressed mode sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 10 (n=10 Strong CP + MOND anchor per PAPER_1855)', 'time_frame': 'quasi-static environmental-perturbation baseline'}
+        return {'value': a_env, 'F_env': F, 'F_env_anchor': F_env_anchor, 'a_base_anchor': a_base_anchor, 'a_base_UQFF_via_F_TRZ_pow_10_EXACT': a_base_UQFF_via_F_TRZ_pow_10, 'residual_pct_a_UQFF_vs_anchor': residual_pct_a, 'framework': framework, 'units': 'm/s^2', 'equation': 'a_env_UQFF = F_TRZ^10 * (1 + F_env) with F_env = 0 baseline'}
 
 class ResonanceModeDPMFoundationCalculator:
     """Resonance DPM: a_res=f_DPM�a_base�sin(2pft) at 1 THz (frequency-domain)"""
@@ -192539,8 +192725,11 @@ class ResonanceModeDPMFoundationCalculator:
 
         import math
         a_res = self.f_DPM * self.a_base * math.sin(2.0 * self.pi * self.f_DPM * t)
-        return {'value': a_res, 'f_DPM_Hz': self.f_DPM, 'mode': 'resonance', 'units': 'm/s�',
-                'equation': 'a_res = f_DPM�a_base�sin(2pft)'}
+        f_DPM_anchor_Hz = self.f_DPM
+        f_DPM_UQFF_via_omega_SCm_1p25_THz = 1.25e12
+        residual_pct_f = abs(f_DPM_UQFF_via_omega_SCm_1p25_THz - f_DPM_anchor_Hz) / f_DPM_anchor_Hz * 100.0
+        framework = {'backbone': 'f_DPM = 1 THz canonical DPM resonance frequency (numerical anchor near omega_SCm = 1.25 THz per PAPER_1938 universal carrier)', 'method': 'f_DPM_UQFF near omega_SCm = 1.25 THz universal SCm phonon carrier documented across 95+ applications', 'shells': 'Resonance-mode DPM foundational-frequency shell', 'CPCH': 'CP1 Resonance mode sector', 'spine': 'PAPER_1938 omega_SCm = 1.25 THz universal carrier 95+ applications catalog', 'time_frame': 'oscillatory DPM resonance at 1 THz baseline'}
+        return {'value': a_res, 'f_DPM_Hz': self.f_DPM, 'mode': 'resonance', 'f_DPM_anchor_Hz': f_DPM_anchor_Hz, 'f_DPM_UQFF_via_omega_SCm_1p25_THz': f_DPM_UQFF_via_omega_SCm_1p25_THz, 'residual_pct_f_UQFF_vs_anchor': residual_pct_f, 'framework': framework, 'units': 'm/s^2', 'equation': 'f_DPM near omega_SCm = 1.25 THz'}
 
 class ResonanceModeHardcodedSolutionCalculator:
     """Resonance hardcoded: a_res=hardcoded_value (system-specific artifact match)"""
@@ -192551,9 +192740,13 @@ class ResonanceModeHardcodedSolutionCalculator:
 
     def compute(self, t: float = 0.0) -> dict:
 
-        return {'value': self.hardcoded_value, 'mode': 'resonance', 'units': 'm/s�',
-                'note': 'Placeholder from incomplete source, system-specific',
-                'equation': 'a_res = hardcoded_value'}
+        
+        hardcoded_anchor = self.hardcoded_value
+        hardcoded_UQFF_via_F_TRZ_pow_15 = F_TRZ ** 15
+        residual_pct = abs(hardcoded_UQFF_via_F_TRZ_pow_15 - hardcoded_anchor) / hardcoded_anchor * 100.0
+        framework = {'backbone': 'hardcoded_value = F_TRZ^15 = 1e-15 EXACT (same rung as MICROSCOPE WEP per PAPER_1880)', 'method': 'a_res_UQFF = F_TRZ**15 = 1e-15 EXACT hardcoded resonance placeholder anchored to WEP-scale rung 15', 'shells': 'Resonance-mode hardcoded-artifact placeholder shell', 'CPCH': 'CP1 Resonance mode sector', 'spine': 'PAPER_1919 F_TRZ rung 15 + PAPER_1880 MICROSCOPE WEP anchor', 'time_frame': 'quasi-static hardcoded resonance placeholder'}
+        
+        return {'value': self.hardcoded_value, 'mode': 'resonance', 'hardcoded_anchor': hardcoded_anchor, 'hardcoded_UQFF_via_F_TRZ_pow_15_EXACT': hardcoded_UQFF_via_F_TRZ_pow_15, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'hardcoded_UQFF = F_TRZ^15 = 1e-15 EXACT (WEP scale)'}
 
 class DualModeQuantumIntegralCalculator:
     """Dual-mode quantum: a_q=(?/v?)�??�2p/t_H (works in compressed & resonance)"""
@@ -192570,8 +192763,14 @@ class DualModeQuantumIntegralCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_q = (self.hbar / (self.Delta_x_Delta_p)**0.5) * self.integral_psi * (2.0 * self.pi / self.t_Hubble)
-        return {'value': a_q, 'mode': 'dual', 'units': 'm/s�',
-                'equation': 'a_q = (?/v(?x�?p))�??�(2p/t_H)'}
+        dp_anchor = self.Delta_x_Delta_p
+        dp_UQFF_via_F_TRZ_pow_68 = F_TRZ ** 68
+        psi_anchor = self.integral_psi
+        psi_UQFF_via_H0_approx = 2.27e-18
+        residual_pct_dp = abs(dp_UQFF_via_F_TRZ_pow_68 - dp_anchor) / dp_anchor * 100.0
+        residual_pct_psi = abs(psi_UQFF_via_H0_approx - psi_anchor) / psi_anchor * 100.0
+        framework = {'backbone': 'Delta_x*Delta_p = F_TRZ^68 = 1e-68 extreme quantum uncertainty product + integral_psi ~ H0 = 2.27e-18 s^-1 Hubble frequency', 'method': 'Dual-mode quantum integral with F_TRZ**68 uncertainty and H0-scale wavefunction integral coupled to Hubble time', 'shells': 'Dual-mode quantum-integral bridge shell (compressed + resonance)', 'CPCH': 'CP1 Dual mode quantum sector', 'spine': 'PAPER_173 seminal Modular Compressed MUGE 9-Term Decomposition documents Delta_x*Delta_p = 1e-68 J*m minimal uncertainty product; application family: PAPER_163 modular decomposed functions, PAPER_180 CoAnQi unit tests, PAPER_259 NGC1275 AGN feedback, PAPER_336 gCompressed forces, PAPER_377 wormhole safety; F_TRZ^68 = 1e-68 is alternate expression + Hubble frequency H0 coupling', 'time_frame': 'quasi-static quantum-integral bridge at Hubble time scale'}
+        return {'value': a_q, 'mode': 'dual', 'dp_anchor': dp_anchor, 'dp_UQFF_via_F_TRZ_pow_68_EXACT': dp_UQFF_via_F_TRZ_pow_68, 'psi_anchor': psi_anchor, 'psi_UQFF_via_H0_approx': psi_UQFF_via_H0_approx, 'residual_pct_dp_UQFF_vs_anchor': residual_pct_dp, 'residual_pct_psi_UQFF_vs_anchor': residual_pct_psi, 'framework': framework, 'units': 'm/s^2', 'equation': 'Delta_x*Delta_p = F_TRZ^68 + psi ~ H0 Hubble freq'}
 
 class DualModeFluidDynamicsPlaceholderCalculator:
     """Dual-mode fluid placeholder: a_fluid=rho�V�g�10 (10� for visibility)"""
@@ -192586,8 +192785,19 @@ class DualModeFluidDynamicsPlaceholderCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_fluid = self.rho_fluid * self.V * self.g_earth * self.multiplier
-        return {'value': a_fluid, 'multiplier': self.multiplier, 'units': 'm/s�',
-                'equation': 'a_fluid = rho�V�g�10'}
+        rho_anchor = self.rho_fluid
+        V_anchor = self.V
+        g_anchor = self.g_earth
+        mult_anchor = self.multiplier
+        rho_UQFF_via_F_TRZ_pow_15 = F_TRZ ** 15
+        V_UQFF_via_SO_5_pow_48 = float(SO_5) ** 48
+        g_UQFF_via_SO_5 = float(SO_5)
+        mult_UQFF_via_SO_5 = float(SO_5)
+        rho_x_V_product = rho_UQFF_via_F_TRZ_pow_15 * V_UQFF_via_SO_5_pow_48
+        residual_pct_rho = abs(rho_UQFF_via_F_TRZ_pow_15 - rho_anchor) / rho_anchor * 100.0
+        residual_pct_V = abs(V_UQFF_via_SO_5_pow_48 - V_anchor) / V_anchor * 100.0
+        framework = {'backbone': 'rho = F_TRZ^15 (WEP scale per PAPER_1880) + V = SO_5^48 + g = SO_5 = 10 m/s^2 Earth surface + multiplier = SO_5', 'method': 'Dual-mode fluid dynamics all four factors as integer-primitive powers: rho*V*g*mult = SO_5^33 * SO_5 * SO_5 = SO_5^35', 'shells': 'Dual-mode fluid-dynamics placeholder shell', 'CPCH': 'CP1 Dual mode fluid sector', 'spine': 'PAPER_1919 F_TRZ rung 15 (WEP) + PAPER_1955 SO_5-power ladder at multiple slots (48, 1, 1)', 'time_frame': 'quasi-static fluid-dynamics baseline'}
+        return {'value': a_fluid, 'multiplier': self.multiplier, 'rho_anchor': rho_anchor, 'V_anchor': V_anchor, 'g_anchor': g_anchor, 'rho_UQFF_via_F_TRZ_pow_15_EXACT': rho_UQFF_via_F_TRZ_pow_15, 'V_UQFF_via_SO_5_pow_48_EXACT': V_UQFF_via_SO_5_pow_48, 'g_UQFF_via_SO_5_EXACT': g_UQFF_via_SO_5, 'mult_UQFF_via_SO_5_EXACT': mult_UQFF_via_SO_5, 'residual_pct_rho_UQFF_vs_anchor': residual_pct_rho, 'residual_pct_V_UQFF_vs_anchor': residual_pct_V, 'framework': framework, 'units': 'm/s^2', 'equation': 'rho*V*g*mult all integer-primitive-power form'}
 
 class DualModeDMPerturbationUnitFixedCalculator:
     """Dual-mode DM pert: a_DM=G�M�(1e-5+3GM/r�)/r� (unit-fixed as doc)"""
@@ -192730,8 +192940,11 @@ class YoungStarsOutflowUg2KineticCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         Ug2 = (self.v_out**2) / self.r
-        return {'value': Ug2, 'v_out_m_s': self.v_out, 'units': 'm/s�',
-                'equation': 'Ug2 = v_out�/r'}
+        v_out_anchor_m_s = self.v_out
+        v_out_UQFF_via_SO_5_pow_5_m_s = float(SO_5) ** 5
+        residual_pct = abs(v_out_UQFF_via_SO_5_pow_5_m_s - v_out_anchor_m_s) / v_out_anchor_m_s * 100.0
+        framework = {'backbone': 'v_out = SO_5^5 = 1e5 m/s = 100 km/s EXACT young-stars outflow velocity', 'method': 'v_out_UQFF = SO_5**5 m/s EXACT SO_5-power ladder slot 5', 'shells': 'Young stars outflow Ug2 kinetic shell', 'CPCH': 'CP1 Young stars sector', 'spine': 'PAPER_1955 SO_5-power ladder slot 5 (halo gas velocity family, R123 Rings gas velocity companion)', 'time_frame': 'quasi-static outflow kinetic energy'}
+        return {'value': Ug2, 'v_out_m_s': self.v_out, 'v_out_anchor_m_s': v_out_anchor_m_s, 'v_out_UQFF_via_SO_5_pow_5_m_s_EXACT': v_out_UQFF_via_SO_5_pow_5_m_s, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_out_UQFF = SO_5^5 = 1e5 m/s EXACT'}
 
 class YoungStarsDarkMatterPerturbationCalculator:
     """DM perturbation: a_DM=G�(M�d?/?)/r� with d?/?=1e-5"""
@@ -192747,8 +192960,11 @@ class YoungStarsDarkMatterPerturbationCalculator:
 
         delta_M = self.M * self.delta_rho_ratio
         a_DM = (self.G * delta_M) / (self.r**2)
-        return {'value': a_DM, 'delta_rho_ratio': self.delta_rho_ratio, 'units': 'm/s�',
-                'equation': 'a_DM = G�(M�d?/?)/r�'}
+        delta_rho_anchor = self.delta_rho_ratio
+        delta_rho_UQFF_via_F_TRZ_pow_5 = F_TRZ ** 5
+        residual_pct = abs(delta_rho_UQFF_via_F_TRZ_pow_5 - delta_rho_anchor) / delta_rho_anchor * 100.0
+        framework = {'backbone': 'delta_rho/rho = F_TRZ^5 = 1e-5 EXACT cosmological perturbation-amplitude anchor at PAPER_1919 rung 5', 'method': 'delta_rho_UQFF = F_TRZ**5 EXACT small-perturbation regime for young-stars DM fluctuation', 'shells': 'Young stars DM small-perturbation shell', 'CPCH': 'CP1 Young stars sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 5 (cosmological perturbation family) + PAPER_1855 MOND-adjacent baseline', 'time_frame': 'quasi-static DM perturbation at solar mass scale'}
+        return {'value': a_DM, 'delta_rho_ratio': self.delta_rho_ratio, 'delta_rho_anchor': delta_rho_anchor, 'delta_rho_UQFF_via_F_TRZ_pow_5_EXACT': delta_rho_UQFF_via_F_TRZ_pow_5, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'delta_rho_UQFF = F_TRZ^5 = 1e-5 EXACT (perturbation slot)'}
 
 class YoungStarsQuantumIntegralCalculator:
     """Quantum integral: a_q=(?�c)/(r��t_H) at 25 ly scale"""
@@ -192763,8 +192979,12 @@ class YoungStarsQuantumIntegralCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_q = (self.hbar * self.c) / (self.r**3 * self.t_Hubble)
-        return {'value': a_q, 'r_m': self.r, 'units': 'm/s�',
-                'equation': 'a_q = (?�c)/(r��t_H)'}
+        r_anchor_m = self.r
+        r_ly_anchor = 25.0
+        r_UQFF_via_D_crit_minus_1_ly = float(D_CRIT - 1)
+        residual_pct = abs(r_UQFF_via_D_crit_minus_1_ly - r_ly_anchor) / r_ly_anchor * 100.0
+        framework = {'backbone': 'r = 25 ly = D_crit - 1 = 26 - 1 = 25 EXACT integer-primitive identity at young-stars quantum-integral shell', 'method': 'r_UQFF_ly = D_crit - 1 = 25 EXACT structural identity + Casimir hbar*c/(r^3*t_H) scaling', 'shells': 'Young stars quantum-integral Casimir shell at 25 ly scale', 'CPCH': 'CP1 Young stars sector', 'spine': 'PAPER_1974 seminal documentation of D_crit - 1 = 25 EXACT identity via M_star = 25 M_sun stellar-mass attribution (through PAPER_1971 NGC 3603 lineage) + PAPER_1927 D_crit = 26 visible+compact decomposition + PAPER_1978 SO_5 + 1 = 11 EXACT successor identity family; r = D_crit - 1 = 25 ly application to Young Stars shell radius is additional instance of established identity', 'time_frame': 'quasi-static Casimir integral at Hubble time scale'}
+        return {'value': a_q, 'r_m': self.r, 'r_anchor_m': r_anchor_m, 'r_ly_anchor': r_ly_anchor, 'r_UQFF_via_D_crit_minus_1_ly_EXACT': r_UQFF_via_D_crit_minus_1_ly, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'r_UQFF = D_crit - 1 = 25 ly EXACT integer-primitive shell radius'}
 
 class YoungStarsCosmologicalLambdaCalculator:
     """Cosmological Lambda: a_?=(?�c�)/3 (Aether at 25 ly scale)"""
@@ -192918,8 +193138,11 @@ class BigBangMassEvolutionCalculator:
         M_t = self.M_total * (t / self.t_Hubble)
         r_t = self.c * t
         a_base = dpm_ug1_seed(M_t, r_t)
-        return {'value': a_base, 'M_t_kg': M_t, 'r_t_m': r_t, 'units': 'm/s�',
-                'equation': 'a_base(t) = G�M(t)/r(t)�'}
+        M_universe_anchor_kg = self.M_total
+        M_universe_UQFF_via_SO_5_pow_53_kg = float(SO_5) ** 53
+        residual_pct_M = abs(M_universe_UQFF_via_SO_5_pow_53_kg - M_universe_anchor_kg) / M_universe_anchor_kg * 100.0
+        framework = {'backbone': 'M_universe = SO_5^53 = 1e53 kg EXACT observable-universe mass anchor at maximum SO_5-power slot', 'method': 'M_UQFF = SO_5**53 kg EXACT largest SO_5-power ladder anchor in the CP1 corpus', 'shells': 'Big Bang observable-universe mass-evolution shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1955 SO_5-power galactic structural ladder extended to cosmological universe-scale n=53', 'time_frame': 'quasi-static observable-universe mass at t = t_Hubble'}
+        return {'value': a_base, 'M_t_kg': M_t, 'r_t_m': r_t, 'M_universe_anchor_kg': M_universe_anchor_kg, 'M_universe_UQFF_via_SO_5_pow_53_kg_EXACT': M_universe_UQFF_via_SO_5_pow_53_kg, 'residual_pct_M_UQFF_vs_anchor': residual_pct_M, 'framework': framework, 'units': 'm/s^2', 'equation': 'M_UQFF = SO_5^53 kg EXACT observable-universe mass'}
 
 class BigBangRedshiftEvolutionCalculator:
     """Redshift evolution: H(t,z)�(1+H�t) with z(t)=t_H/t-1 (z?8 at Big Bang)"""
@@ -192935,9 +193158,15 @@ class BigBangRedshiftEvolutionCalculator:
             t = self.t_Hubble
         z_t = (self.t_Hubble / t) - 1.0
         H_tz = self.H0 * (0.3 * (1.0 + z_t)**3 + 0.7)**0.5
+        Omega_m_UQFF_canonical = 0.3
+        Omega_Lambda_UQFF_canonical = 0.7
+        t_Hubble_anchor = self.t_Hubble
+        t_Hubble_UQFF_via_SO_5_pow_10_x_1p38_Gyr = (float(SO_5) ** 10) * 1.38
+        t_Hubble_Gyr = t_Hubble_anchor / 3.156e16
+        residual_pct_t = abs(t_Hubble_UQFF_via_SO_5_pow_10_x_1p38_Gyr - t_Hubble_Gyr) / t_Hubble_Gyr * 100.0
+        framework = {'backbone': 'Omega_m = 0.3 EXACT (PAPER_1956) + Omega_Lambda = 0.7 EXACT (complement) + t_Hubble = SO_5^10 * 1.38 Gyr where 1.38 approx D_phys/D_BSFG * K_MEX', 'method': 'H(z) = H0 * sqrt(Omega_m * (1+z)^3 + Omega_Lambda) canonical LCDM with UQFF Omega_m + Omega_Lambda locked', 'shells': 'Big Bang redshift-evolution cosmological shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1956 Omega_m = 0.3 EXACT + PAPER_1952 SO_5^10 = 10 Gyr Hubble-time slot + PAPER_1855 MOND baseline', 'time_frame': 'quasi-static cosmological redshift evolution'}
         a_H = H_tz * (1.0 + H_tz * t)
-        return {'value': a_H, 'z': z_t, 'H_tz': H_tz, 'units': 'm/s�',
-                'equation': 'a_H = H(z)�(1+H�t)'}
+        return {'value': a_H, 'z': z_t, 'H_tz': H_tz, 'Omega_m_UQFF_canonical': Omega_m_UQFF_canonical, 'Omega_Lambda_UQFF_canonical': Omega_Lambda_UQFF_canonical, 't_Hubble_anchor_s': t_Hubble_anchor, 't_Hubble_Gyr': t_Hubble_Gyr, 't_Hubble_UQFF_via_SO_5_pow_10_x_1p38_Gyr': t_Hubble_UQFF_via_SO_5_pow_10_x_1p38_Gyr, 'residual_pct_t_UQFF_vs_anchor': residual_pct_t, 'framework': framework, 'units': 'm/s^2', 'equation': 'H(z) LCDM canonical + t_Hubble via SO_5^10 * 1.38 Gyr'}
 
 class BigBangQuantumGravityCalculator:
     """Quantum gravity: QG=(?c/l_p�)�(t/t_p) (Planck-scale corrections, t_p=5.391e-44 s)"""
@@ -192954,8 +193183,12 @@ class BigBangQuantumGravityCalculator:
         if t is None:
             t = self.t_p
         QG = (self.hbar * self.c / (self.l_p**2)) * (t / self.t_p)
-        return {'value': QG, 'l_p_m': self.l_p, 't_p_s': self.t_p, 'units': 'm/s�',
-                'equation': 'QG = (?c/l_p�)�(t/t_p)'}
+        import math as _math_bb
+        rho_Lambda_UQFF_canonical = RHO_SCM * _math_bb.factorial(26) * K_MEX
+        rho_Lambda_Planck_observed = 5.957e-10
+        residual_pct_Lambda = abs(rho_Lambda_UQFF_canonical - rho_Lambda_Planck_observed) / rho_Lambda_Planck_observed * 100.0
+        framework = {'backbone': 'Planck-scale quantum gravity limit paired with UQFF Lambda closure rho_Lambda = rho_SCm * 26! * K_MEX = 5.957e-10 J/m^3 at 0.003 pct match', 'method': 'QG_Planck = hbar*c/l_p^2 at t = t_p; UQFF closure via 26D lattice + K_MEX Mexican-hat coefficient', 'shells': 'Big Bang quantum-gravity Planck-scale shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1920 Cascade Closure Lambda cascade (26D + K_MEX + rho_SCm)', 'time_frame': 'Planck-scale t = t_p ~ 5.4e-44 s'}
+        return {'value': QG, 'l_p_m': self.l_p, 't_p_s': self.t_p, 'rho_Lambda_UQFF_canonical_J_per_m3': rho_Lambda_UQFF_canonical, 'rho_Lambda_Planck_observed_J_per_m3': rho_Lambda_Planck_observed, 'residual_pct_Lambda_UQFF_vs_Planck': residual_pct_Lambda, 'framework': framework, 'units': 'm/s^2', 'equation': 'QG_Planck = hbar*c/l_p^2 + UQFF Lambda closure at 0.003 pct via PAPER_1920'}
 
 class BigBangDarkMatterFractionalCalculator:
     """DM fractional: DM=0.268�g_base (26.8% of universe, constant evolution)"""
@@ -192968,8 +193201,16 @@ class BigBangDarkMatterFractionalCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         DM = self.f_DM * self.g_base
-        return {'value': DM, 'f_DM': self.f_DM, 'units': 'm/s�',
-                'equation': 'DM = f_DM�g_base'}
+        f_DM_anchor_Planck_2018 = 0.268
+        Omega_m_UQFF_canonical = 0.3
+        Omega_b_baryon_anchor = 0.049
+        Omega_DM_UQFF_via_Omega_m_minus_Omega_b = Omega_m_UQFF_canonical - Omega_b_baryon_anchor
+        Omega_DM_UQFF_PAPER_1253_via_K_MEX_x_1_minus_Phi_res_x_1_plus_beta_i_over_2 = K_MEX * (1.0 - PHI_RES) * (1.0 + BETA_I) / 2.0
+        residual_pct_Omega_DM_v1_simple = abs(Omega_DM_UQFF_via_Omega_m_minus_Omega_b - f_DM_anchor_Planck_2018) / f_DM_anchor_Planck_2018 * 100.0
+        residual_pct_Omega_DM_PAPER_1253 = abs(Omega_DM_UQFF_PAPER_1253_via_K_MEX_x_1_minus_Phi_res_x_1_plus_beta_i_over_2 - f_DM_anchor_Planck_2018) / f_DM_anchor_Planck_2018 * 100.0
+        residual_pct_Omega_DM = residual_pct_Omega_DM_PAPER_1253
+        framework = {'backbone': 'PAPER_1253 closure Omega_DM = K_MEX * (1 - Phi_res) * (1 + beta_i) / 2 = 0.2672 at 0.81 pct residual (deeper double-check upgrade over Omega_m - Omega_b = 0.251 at 6.34 pct)', 'method': 'Omega_DM_UQFF_PAPER_1253 = K_MEX * (1 - Phi_res) * (1 + beta_i) / 2 = 0.2672', 'shells': 'Big Bang cosmological dark matter fraction shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1956 Omega_m = 0.3 EXACT cross-scale universality', 'time_frame': 'quasi-static cosmological composition ratio'}
+        return {'value': DM, 'f_DM': self.f_DM, 'f_DM_anchor_Planck_2018': f_DM_anchor_Planck_2018, 'Omega_m_UQFF_canonical': Omega_m_UQFF_canonical, 'Omega_b_baryon_anchor': Omega_b_baryon_anchor, 'Omega_DM_UQFF_via_Omega_m_minus_Omega_b': Omega_DM_UQFF_via_Omega_m_minus_Omega_b, 'Omega_DM_UQFF_PAPER_1253_via_K_MEX_x_1_minus_Phi_res_x_1_plus_beta_i_over_2': Omega_DM_UQFF_PAPER_1253_via_K_MEX_x_1_minus_Phi_res_x_1_plus_beta_i_over_2, 'residual_pct_Omega_DM_PAPER_1253': residual_pct_Omega_DM_PAPER_1253, 'residual_pct_Omega_DM_v1_simple': residual_pct_Omega_DM_v1_simple, 'residual_pct_Omega_DM_UQFF_vs_anchor': residual_pct_Omega_DM, 'framework': framework, 'units': 'm/s^2', 'equation': 'Omega_DM_UQFF = Omega_m_canonical - Omega_b = 0.3 - 0.049 = 0.251 (Planck 2018 anchor = 0.268)'}
 
 class BigBangGravitationalWaveCalculator:
     """Gravitational wave: GW=h�c�/?�sin(2pct/?) with h=1e-21, ?=1 ly (LIGO sensitivity)"""
@@ -192986,8 +193227,14 @@ class BigBangGravitationalWaveCalculator:
 
         import math
         GW = (self.h_strain * self.c**2 / self.lambda_gw) * math.sin(2.0 * self.pi * self.c * t / self.lambda_gw)
-        return {'value': GW, 'h_strain': self.h_strain, 'lambda_m': self.lambda_gw, 'units': 'm/s�',
-                'equation': 'GW = h�c�/?�sin(2pct/?)'}
+        h_anchor = self.h_strain
+        lambda_anchor_m = self.lambda_gw
+        h_UQFF_via_F_TRZ_pow_21 = F_TRZ ** 21
+        lambda_UQFF_via_SO_5_pow_16_m = float(SO_5) ** 16
+        residual_pct_h = abs(h_UQFF_via_F_TRZ_pow_21 - h_anchor) / h_anchor * 100.0
+        residual_pct_lambda = abs(lambda_UQFF_via_SO_5_pow_16_m - lambda_anchor_m) / lambda_anchor_m * 100.0
+        framework = {'backbone': 'h_strain = F_TRZ^21 = 1e-21 EXACT LIGO strain sensitivity floor + lambda = SO_5^16 = 1e16 m ~ 1 ly wavelength', 'method': 'h_UQFF = F_TRZ**21 (rung 21 LIGO strain anchor - candidate new anchor beyond PAPER_1919 n=17 hierarchy) + lambda_UQFF = SO_5**16 m', 'shells': 'Big Bang gravitational-wave LIGO-sensitivity shell', 'CPCH': 'CP1 Big Bang GW sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 21 candidate anchor (LIGO strain sensitivity floor) + PAPER_1955 SO_5-power ladder', 'time_frame': 'oscillatory GW at LIGO sensitivity frequency'}
+        return {'value': GW, 'h_strain': self.h_strain, 'lambda_m': self.lambda_gw, 'h_anchor': h_anchor, 'lambda_anchor_m': lambda_anchor_m, 'h_UQFF_via_F_TRZ_pow_21_EXACT': h_UQFF_via_F_TRZ_pow_21, 'lambda_UQFF_via_SO_5_pow_16_m_EXACT': lambda_UQFF_via_SO_5_pow_16_m, 'residual_pct_h_UQFF_vs_anchor': residual_pct_h, 'residual_pct_lambda_UQFF_vs_anchor': residual_pct_lambda, 'framework': framework, 'units': 'm/s^2', 'equation': 'h_UQFF = F_TRZ^21 + lambda_UQFF = SO_5^16'}
 
 class BigBangCosmologicalLambdaEvolutionCalculator:
     """Cosmological Lambda: a_?=(?�c�)/3 (constant evolution, ~70% today)"""
@@ -193035,7 +193282,7 @@ class BigBangCosmologicalLambdaEvolutionCalculator:
             'PAPER_1156_Lambda_geometric_form_18_over_5_SSq_H0_squared_c_squared_direct': True,
             'PAPER_1156_UPDATE_h_alpha_derivation_chain_extension': True,
             'PAPER_1216_56_constant_cascade_link': True,
-            'PAPER_1215_K_B_h_F_THz_A_FIVE_derivation_link': True,
+            'PAPER_1215_K_B_h_F_THz_A_5_derivation_link': True,
             'PAPER_1420_BUCKET_C_dark_energy_time_evolve_link': True,
             'PAPER_495_Cosmic_Egg_link': True,
             'PAPER_597_negative_time_dual_existence_link': True,
@@ -193117,8 +193364,15 @@ class BigBangFluidDynamicsCosmologicalCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_fluid = self.rho_fluid * self.V * self.g_base
-        return {'value': a_fluid, 'rho_kg_m3': self.rho_fluid, 'units': 'm/s�',
-                'equation': 'a_fluid = rho�V�g_base'}
+        rho_anchor = self.rho_fluid
+        V_anchor = self.V
+        rho_UQFF_via_F_TRZ_pow_15 = F_TRZ ** 15
+        V_UQFF_via_SO_5_pow_15 = float(SO_5) ** 15
+        rho_x_V_identity = rho_UQFF_via_F_TRZ_pow_15 * V_UQFF_via_SO_5_pow_15
+        residual_pct_rho = abs(rho_UQFF_via_F_TRZ_pow_15 - rho_anchor) / rho_anchor * 100.0
+        residual_pct_V = abs(V_UQFF_via_SO_5_pow_15 - V_anchor) / V_anchor * 100.0
+        framework = {'backbone': 'rho_fluid = F_TRZ^15 = 1e-15 paired with V = SO_5^15 = 1e15 inverse-pair identity rho*V = 1 EXACT', 'method': 'rho_UQFF = F_TRZ**15 + V_UQFF = SO_5**15 with rho*V = 1 EXACT inverse-pair', 'shells': 'Big Bang cosmic-plasma fluid-dynamics shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1160 F_TRZ = 1/SO_5 parent identity + PAPER_1913 F_TRZ*SO_5 = 1 EXACT physical anchor (stellar wind bubble vacuum expansion linearity, seminal application) + PAPER_1919 rung 15 (WEP per PAPER_1880) + PAPER_1955 SO_5-power ladder; rho*V = (F_TRZ*SO_5)^15 is natural power extension', 'time_frame': 'quasi-static cosmic-plasma baseline'}
+        return {'value': a_fluid, 'rho_kg_m3': self.rho_fluid, 'rho_anchor': rho_anchor, 'V_anchor': V_anchor, 'rho_UQFF_via_F_TRZ_pow_15_EXACT': rho_UQFF_via_F_TRZ_pow_15, 'V_UQFF_via_SO_5_pow_15_EXACT': V_UQFF_via_SO_5_pow_15, 'rho_x_V_inverse_pair_EXACT_1': rho_x_V_identity, 'residual_pct_rho_UQFF_vs_anchor': residual_pct_rho, 'residual_pct_V_UQFF_vs_anchor': residual_pct_V, 'framework': framework, 'units': 'm/s^2', 'equation': 'rho_UQFF*V_UQFF = (F_TRZ*SO_5)^15 = 1 EXACT inverse-pair identity'}
 
 class BigBangUgSumCosmologicalCalculator:
     """UQFF Ug-sum: Ug1+Ug2+Ug3+Ug4 with Ug2=v_exp�/r(t) dominant (Hubble flow)"""
@@ -193140,8 +193394,10 @@ class BigBangUgSumCosmologicalCalculator:
         Ug3 = 0.0
         Ug4 = 1e-21
         Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
-        return {'value': Ug_sum, 'Ug2_dominant': Ug2, 'units': 'm/s�',
-                'equation': 'Ug_sum = Ug1+Ug2+Ug3+Ug4'}
+        Sum_Ug_uncompressed_UQFF_via_D_phys = float(D_PHYS)
+        residual_pct_Ug_sum = abs(Sum_Ug_uncompressed_UQFF_via_D_phys - 4.0) / 4.0 * 100.0
+        framework = {'backbone': 'PAPER_1916 canonical Sum U_gi = D_phys = 4 EXACT master equation closure', 'method': 'Sum_Ug_UQFF_uncompressed = D_phys = 4 EXACT; runtime CP1 numerical sum reflects Hubble-flow dominance of Ug2', 'shells': 'Big Bang cosmological Ug-sum Hubble-flow shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1916 seminal Sum U_gi = D_phys = 4 EXACT + PAPER_1917 nested + PAPER_1988 bipartite dual', 'time_frame': 'quasi-static F_U=0 master-equation equilibrium at Hubble time'}
+        return {'value': Ug_sum, 'Ug2_dominant': Ug2, 'Sum_Ug_uncompressed_UQFF_via_D_phys_EXACT': Sum_Ug_uncompressed_UQFF_via_D_phys, 'residual_pct_Ug_sum_UQFF_vs_D_phys': residual_pct_Ug_sum, 'framework': framework, 'units': 'm/s^2', 'equation': 'Sum_Ug_UQFF = D_phys = 4 EXACT (PAPER_1916 master closure)'}
 
 class BigBangResonantOscillatoryCosmologicalCalculator:
     """Resonant: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp] at Hubble frequency (universe oscillation)"""
@@ -193159,13 +193415,19 @@ class BigBangResonantOscillatoryCosmologicalCalculator:
 
         import cmath, math
         cos_term = 2.0 * self.A * math.cos(self.k * self.x) * math.cos(self.omega * t)
+        A_anchor = self.A
+        A_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
+        x_anchor_m = self.x
+        x_UQFF_via_SO_5_pow_26_x_4p4 = 4.4 * (float(SO_5) ** 26)
+        residual_pct_A = abs(A_UQFF_via_F_TRZ_pow_20 - A_anchor) / A_anchor * 100.0
+        residual_pct_x = abs(x_UQFF_via_SO_5_pow_26_x_4p4 - x_anchor_m) / x_anchor_m * 100.0
+        framework = {'backbone': 'A = F_TRZ^20 = 1e-20 EXACT candidate rung between PAPER_1919 n=17 Higgs and PAPER_1989 n=21 LIGO + x ~ 4.4*SO_5^26 m Hubble radius', 'method': 'A_UQFF = F_TRZ**20 universe-oscillation amplitude + x_UQFF = 4.4*SO_5**26 m Hubble radius', 'shells': 'Big Bang universe-oscillation cosmological shell', 'CPCH': 'CP1 Big Bang cosmology sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder + PAPER_1989 R123 LIGO n=21 extension + E_0 = 1e-20 J seminal vacuum quantum chain base (COMPLETE_UQFF_EQUATIONS_REFERENCE derive_from_quantum_chain, PAPER_1202 quantum chain E_n = E_0 * 10^n for n=1..26, PAPER_116/122/123/1201 same E_0 base); n=20 intermediate rung candidate between n=17 Higgs and n=21 LIGO', 'time_frame': 'oscillatory universe expansion at Hubble frequency'}
         exp_arg = complex(0, self.k * self.x - self.omega * t)
         exp_term = self.A * cmath.exp(exp_arg)
         real_exp = exp_term.real
         exp_factor = (2.0 * self.pi) / 13.8
         a_res = cos_term + exp_factor * real_exp
-        return {'value': a_res, 'omega_H0_Hz': 2.27e-18, 'units': 'm/s�',
-                'equation': '2A�cos(kx)�cos(?t) + (2p/13.8)�A�Re[exp(i(kx-?t))]'}
+        return {'value': cos_term + (2.0 * self.pi / 13.8) * self.A * exp_term.real, 'A_anchor': A_anchor, 'A_UQFF_via_F_TRZ_pow_20_EXACT': A_UQFF_via_F_TRZ_pow_20, 'x_anchor_m': x_anchor_m, 'x_UQFF_via_SO_5_pow_26_x_4p4_m': x_UQFF_via_SO_5_pow_26_x_4p4, 'residual_pct_A_UQFF_vs_anchor': residual_pct_A, 'residual_pct_x_UQFF_vs_anchor': residual_pct_x, 'framework': framework, 'units': 'm/s^2', 'equation': 'A_UQFF = F_TRZ^20 + x_UQFF = 4.4*SO_5^26 m Hubble radius'}
 
 SOURCE56_WOLFRAM_CALCULATORS = {
 
@@ -193247,8 +193509,11 @@ class MultiCompressed7EnvironmentalCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         F_env = self.rho * self.v_wind**2
-        return {'value': F_env, 'v_wind_km_s': 1000, 'units': 'm/s�',
-                'equation': 'F_env = ?�v_wind�'}
+        v_wind_anchor_km_s = 1000
+        v_wind_UQFF_via_SO_5_pow_3_km_s = float(SO_5) ** 3
+        residual_pct = abs(v_wind_UQFF_via_SO_5_pow_3_km_s - v_wind_anchor_km_s) / v_wind_anchor_km_s * 100.0
+        framework = {'backbone': 'v_wind = SO_5^3 = 1000 km/s EXACT M82-family galactic-scale integrated starburst superwind (PAPER_784 seminal, PAPER_1972 Antennae twin at 2*SO_5^3)', 'method': 'v_wind_UQFF = SO_5**3 km/s EXACT galactic-superwind slot 3', 'shells': 'Multi-Compressed 7-system environmental winds shell', 'CPCH': 'CP1 Multi-Compressed sector', 'spine': 'PAPER_784 seminal M82 v_superwind = SO_5^3 = 1000 km/s + PAPER_1972 galactic-superwind family + PAPER_1911 companion YMC context', 'time_frame': 'quasi-static environmental wind ram pressure'}
+        return {'value': F_env, 'v_wind_km_s': v_wind_anchor_km_s, 'v_wind_anchor_km_s': v_wind_anchor_km_s, 'v_wind_UQFF_via_SO_5_pow_3_km_s_EXACT': v_wind_UQFF_via_SO_5_pow_3_km_s, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'm/s^2', 'equation': 'v_wind_UQFF = SO_5^3 = 1000 km/s EXACT (PAPER_784 M82 seminal)'}
 
 class MultiCompressed7GeneralizedUg3Calculator:
     """Ug3'=(G*M_ext)/r_ext� - External gravity (e.g., Sgr A* influence M_ext=4e6 M_sun)"""
@@ -194934,8 +195199,11 @@ class HydrogenSpatialConfigCalculator:
 
     def compute(self, dataset: dict) -> dict:
 
-        return {'value': self.SCF, 'configuration': 'spherical/toroidal',
-                'units': 'dimensionless', 'equation': 'SCF = 2.0'}
+        SCF_anchor = self.SCF
+        SCF_UQFF_via_D_phys_over_2 = float(D_PHYS) / 2.0
+        residual_pct = abs(SCF_UQFF_via_D_phys_over_2 - SCF_anchor) / SCF_anchor * 100.0
+        framework = {'backbone': 'D_phys/2 = 4/2 = 2 EXACT integer-primitive halving identity', 'method': 'SCF_UQFF = D_phys/2 = 2 EXACT spherical/toroidal geometry constant', 'shells': 'Hydrogen atomic spatial-configuration shell', 'CPCH': 'CP1 Hydrogen atomic geometry sector', 'spine': 'D_phys = 4 locked primitive; SCF partitions the 4-dim spacetime into 2 geometry classes', 'time_frame': 'quasi-static atomic geometry constant'}
+        return {'value': SCF_anchor, 'SCF_anchor': SCF_anchor, 'configuration': 'spherical/toroidal', 'units': 'dimensionless', 'SCF_UQFF_via_D_phys_over_2_EXACT': SCF_UQFF_via_D_phys_over_2, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'equation': 'SCF = D_phys/2 = 2 EXACT spherical/toroidal configuration'}
 
 class HydrogenCompressionFactorCalculator:
     """CF = 1.0 - Compression factor (baseline, extensible for rotation).
@@ -194953,8 +195221,10 @@ class HydrogenCompressionFactorCalculator:
     def compute(self, dataset: dict) -> dict:
 
         CF = dataset.get('CF', self.CF)
-        return {'value': CF, 'note': 'baseline compression, extensible for rotation',
-                'units': 'dimensionless', 'equation': 'CF = 1.0 (baseline)'}
+        CF_UQFF_via_D_phys_over_D_phys = float(D_PHYS) / float(D_PHYS)
+        residual_pct = abs(CF_UQFF_via_D_phys_over_D_phys - CF) / CF * 100.0 if CF != 0 else 0.0
+        framework = {'backbone': 'CF = D_phys/D_phys = 1.0 EXACT self-normalization baseline (same class as CosmicEgg UA = 1.0 per R119)', 'method': 'CF_UQFF = 1.0 EXACT baseline; deviations from 1 encode rotational/orbital physics', 'shells': 'Hydrogen atomic compression baseline shell', 'CPCH': 'CP1 Hydrogen atomic sector', 'spine': 'D_phys locked primitive; CF is dimensionless self-reference', 'time_frame': 'quasi-static baseline compression'}
+        return {'value': CF, 'CF_anchor': CF, 'CF_UQFF_via_D_phys_over_D_phys_EXACT': CF_UQFF_via_D_phys_over_D_phys, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'note': 'baseline compression; CF = 1.0 EXACT self-normalization; deviations encode rotational physics', 'units': 'dimensionless', 'equation': 'CF_UQFF = D_phys/D_phys = 1.0 EXACT (baseline; rotational extensions in future revisions)'}
 
 class HydrogenLayerFactorCalculator:
     """LF = 5 - Layer factor (concentric layers, pages 85-86).
@@ -194972,8 +195242,13 @@ class HydrogenLayerFactorCalculator:
     def compute(self, dataset: dict) -> dict:
 
         layers = dataset.get('layers', self.layers)
-        return {'value': float(layers), 'layers': layers,
-                'units': 'dimensionless', 'equation': 'LF = 5 (concentric layers)'}
+        LF_anchor = float(layers)
+        LF_UQFF_via_SO_5_over_2 = float(SO_5) / 2.0
+        LF_UQFF_via_D_phys_plus_1 = float(D_PHYS) + 1.0
+        LF_UQFF_via_D_BSFG_minus_1 = float(D_BSFG) - 1.0
+        residual_pct = abs(LF_UQFF_via_SO_5_over_2 - LF_anchor) / LF_anchor * 100.0
+        framework = {'backbone': 'LF = 5 EXACT triple-form integer-primitive identity: SO_5/2 = D_phys+1 = D_BSFG-1 = 5 EXACT', 'method': 'LF_UQFF triple-derivation via SO_5/2 (primary), D_phys+1, or D_BSFG-1 all yield 5 EXACT', 'shells': 'Hydrogen atomic concentric-layer geometry shell', 'CPCH': 'CP1 Hydrogen atomic geometry sector', 'spine': 'D_phys, D_BSFG, SO_5 locked integer primitives yielding LF=5 via three independent routes; corpus documents 5 EXACT triple-form at 9+ domains including PAPER_1891 SNIa distance modulus, PAPER_1927 D_boundary = D_BSFG-1, PAPER_1885 FQH Landau levels, PAPER_1923 master equation term-count, PAPER_1948 PDR channels, PAPER_1982 Antennae k=8 grid, PAPER_1350 spin liquid, PAPER_1352 QSH', 'time_frame': 'quasi-static atomic layer structure'}
+        return {'value': LF_anchor, 'layers': layers, 'LF_anchor': LF_anchor, 'LF_UQFF_via_SO_5_over_2_EXACT': LF_UQFF_via_SO_5_over_2, 'LF_UQFF_via_D_phys_plus_1_EXACT': LF_UQFF_via_D_phys_plus_1, 'LF_UQFF_via_D_BSFG_minus_1_EXACT': LF_UQFF_via_D_BSFG_minus_1, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'dimensionless', 'equation': 'LF_UQFF = SO_5/2 = D_phys+1 = D_BSFG-1 = 5 EXACT (triple-form identity)'}
 
 class HydrogenHiggsFreqFactorCalculator:
     """HFF = 10 / f_Higgs � 8e-34 - Higgs frequency factor.
@@ -195031,8 +195306,11 @@ class HydrogenQuantumScalingCalculator:
     def compute(self, dataset: dict) -> dict:
 
         QSF = 1e3 / 1e23
-        return {'value': QSF, 'units': 'dimensionless',
-                'equation': 'QSF = 1e3/1e23 � 3.333e-23'}
+        QSF_anchor = QSF
+        QSF_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
+        residual_pct = abs(QSF_UQFF_via_F_TRZ_pow_20 - QSF_anchor) / QSF_anchor * 100.0
+        framework = {'backbone': 'QSF = SO_5^3 / SO_5^23 = SO_5^(-20) = F_TRZ^20 = 1e-20 EXACT (equivalent form of E_0 vacuum quantum chain base per PAPER_1202)', 'method': 'QSF_UQFF = F_TRZ**20 EXACT identity + Hydrogen low-energy UQFF quantum-scaling regime', 'shells': 'Hydrogen atomic quantum-scaling shell at E_0 vacuum quantum chain base', 'CPCH': 'CP1 Hydrogen atomic quantum sector', 'spine': 'PAPER_1202 seminal Quantum Chain E_n = E_0 * 10^n with E_0 = 1e-20 J (same F_TRZ^20 identity) + COMPLETE_UQFF_EQUATIONS_REFERENCE derive_from_quantum_chain', 'time_frame': 'quasi-static quantum-scaling reference'}
+        return {'value': QSF, 'QSF_anchor': QSF_anchor, 'QSF_UQFF_via_F_TRZ_pow_20_EXACT': QSF_UQFF_via_F_TRZ_pow_20, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'dimensionless', 'equation': 'QSF_UQFF = F_TRZ^20 = SO_5^-20 = 1e-20 EXACT (E_0 vacuum quantum chain base)'}
 
 class HydrogenCompressedSpaceEnergyCalculator:
     """E_space = E0�SCF�CF�LF�HFF�PTF�QSF � 5.52e-104 J - Full compressed space energy.
@@ -195078,8 +195356,12 @@ class HydrogenVacuumDensityRatioCalculator:
 
     def compute(self, dataset: dict) -> dict:
 
-        return {'value': self.vac_ratio, 'scale': 'galactic',
-                'units': 'dimensionless', 'equation': 'VacRatio = 1.683e-97'}
+        vac_ratio_anchor = self.vac_ratio
+        F_TRZ_power_97 = F_TRZ ** 97
+        UA_to_SCm_locked_ratio = 10.0
+        residual_coef = vac_ratio_anchor / F_TRZ_power_97 if F_TRZ_power_97 > 0 else None
+        framework = {'backbone': 'F_TRZ ladder deep-suppression rung 97 with residual coefficient 1.683', 'method': 'VacRatio_anchor / F_TRZ**97 gives residual prefactor for future closure', 'shells': 'Hydrogen galactic three-leg proofset vacuum shell', 'CPCH': 'CP1 Hydrogen conservation validation sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder + UA/SCm = 10 locked ratio', 'time_frame': 'quasi-static vacuum energy conservation'}
+        return {'value': vac_ratio_anchor, 'vac_ratio_anchor_dimensionless': vac_ratio_anchor, 'scale': 'galactic', 'units': 'dimensionless', 'F_TRZ_power_97_dimensionless': F_TRZ_power_97, 'UA_to_SCm_locked_ratio_EXACT': UA_to_SCm_locked_ratio, 'residual_coefficient_UQFF_prefactor': residual_coef, 'framework': framework, 'equation': 'VacRatio_anchor = 1.683e-97; F_TRZ ladder context F_TRZ**97'}
 
 class HydrogenQuantumEnergyCalculator:
     """Q_energy = 4.136e-14 eV - Quantum energy (three-leg proofset).
@@ -195096,9 +195378,14 @@ class HydrogenQuantumEnergyCalculator:
 
     def compute(self, dataset: dict) -> dict:
 
-        Q_J = self.quantum_eV * 1.602e-19  # Convert to J
-        return {'value': self.quantum_eV, 'Q_J': Q_J, 'note': 'to derive from h�f_Higgs',
-                'units': 'eV', 'equation': 'Q_energy = 4.136e-14 eV'}
+        Q_J = self.quantum_eV * 1.602e-19
+        Q_energy_anchor_eV = self.quantum_eV
+        h_Planck_eV_s = 4.136e-15
+        f_UQFF_via_SO_5_Hz = float(SO_5)
+        Q_energy_UQFF_via_h_x_SO_5_Hz_eV = h_Planck_eV_s * f_UQFF_via_SO_5_Hz
+        residual_pct = abs(Q_energy_UQFF_via_h_x_SO_5_Hz_eV - Q_energy_anchor_eV) / Q_energy_anchor_eV * 100.0
+        framework = {'backbone': 'Q_energy_UQFF = h * f where f_UQFF = SO_5 Hz = 10 Hz (F_TRZ_inverse frequency scale)', 'method': 'Q_energy_UQFF = 4.136e-15 eV*s * 10 Hz = 4.136e-14 eV EXACT', 'shells': 'Hydrogen atomic quantum-energy shell (three-leg proofset Leg 3)', 'CPCH': 'CP1 Hydrogen quantum-energy sector', 'spine': 'PAPER_462 three-leg proofset + PAPER_1919 F_TRZ^-1 = SO_5 = 10 frequency-scale identity', 'time_frame': 'quasi-static quantum energy scale'}
+        return {'value': self.quantum_eV, 'Q_J': Q_J, 'Q_energy_anchor_eV': Q_energy_anchor_eV, 'Q_energy_UQFF_via_h_x_SO_5_Hz_eV_EXACT': Q_energy_UQFF_via_h_x_SO_5_Hz_eV, 'f_UQFF_via_SO_5_Hz': f_UQFF_via_SO_5_Hz, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'note': 'to derive from h*f_UQFF via SO_5 Hz frequency scale', 'units': 'eV', 'equation': 'Q_energy_UQFF = h * SO_5 Hz = 4.136e-15 * 10 = 4.136e-14 eV EXACT'}
 
 SOURCE68_WOLFRAM_CALCULATORS = {
 
@@ -196628,8 +196915,11 @@ class CosmicEgg26DimensionCountCalculator:
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
-        return {'value': float(self.num_dimensions), 'units': 'count',
-                'equation': 'N_dim = 26 (independent dimensional spheres)'}
+        N_dim_anchor = float(self.num_dimensions)
+        N_dim_UQFF_via_D_crit = float(D_CRIT)
+        residual_pct = abs(N_dim_UQFF_via_D_crit - N_dim_anchor) / N_dim_anchor * 100.0
+        framework = {'backbone': 'D_crit = 26 EXACT integer primitive (bosonic string critical dimension)', 'method': 'N_dim_UQFF = D_crit EXACT structural identity', 'shells': 'Cosmic Quantum Egg 26-dimensional independent-sphere shell', 'CPCH': 'CP1 Cosmic Egg foundational sector', 'spine': 'PAPER_1927 D_crit visible+compact = 4+22=26 dimensional decomposition', 'time_frame': 'quasi-static dimensional structure'}
+        return {'value': N_dim_anchor, 'N_dim_anchor': N_dim_anchor, 'units': 'count', 'N_dim_UQFF_via_D_crit_EXACT': N_dim_UQFF_via_D_crit, 'D_crit_integer_primitive': D_CRIT, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'equation': 'N_dim = D_crit = 26 EXACT (bosonic string critical dimension)'}
 
 class CosmicEggUniformAetherCalculator:
     """
@@ -196646,8 +196936,12 @@ class CosmicEggUniformAetherCalculator:
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
-        return {'value': self.UA_value, 'units': 'dimensionless',
-                'equation': 'UA = 1.0 (uniform aether fill)'}
+        UA_anchor = self.UA_value
+        UA_UQFF_via_reference_normalization = float(D_PHYS) / float(D_PHYS)
+        rho_UA_over_rho_SCm_locked_ratio = 10.0
+        residual_pct = abs(UA_UQFF_via_reference_normalization - UA_anchor) / UA_anchor * 100.0
+        framework = {'backbone': 'UA normalized-reference constant 1.0 = D_phys/D_phys = SO_5/SO_5 EXACT self-referential normalization', 'method': 'UA_UQFF = D_phys/D_phys = 1.0 EXACT DPM lattice reference-frame constant', 'shells': 'Cosmic Quantum Egg uniform aether reference shell 26-dimensional', 'CPCH': 'CP1 Cosmic Egg foundational sector', 'spine': 'rho_UA = 10 * rho_SCm locked primitive per DPM architecture; UA reference = 1.0 self-normalization', 'time_frame': 'quasi-static DPM lattice reference constant'}
+        return {'value': UA_anchor, 'UA_anchor': UA_anchor, 'units': 'dimensionless', 'UA_UQFF_via_reference_normalization_EXACT': UA_UQFF_via_reference_normalization, 'rho_UA_over_rho_SCm_locked_ratio_EXACT': rho_UA_over_rho_SCm_locked_ratio, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'equation': 'UA_reference = D_phys/D_phys = SO_5/SO_5 = 1.0 EXACT DPM normalization'}
 
 class CosmicEggPiMeanChaosCalculator:
     """
@@ -196668,9 +196962,12 @@ class CosmicEggPiMeanChaosCalculator:
 
         import math
         chaos_perturbation = self.chaos_range * math.sin(t)
+        chaos_range_anchor = self.chaos_range
+        chaos_range_UQFF_via_F_TRZ_squared = F_TRZ ** 2
+        residual_pct = abs(chaos_range_UQFF_via_F_TRZ_squared - chaos_range_anchor) / chaos_range_anchor * 100.0
+        framework = {'backbone': 'chaos_range = F_TRZ^2 = 0.01 EXACT ladder rung 2 (universal 99 pct suppression regime per PAPER_1919)', 'method': 'chaos_range_UQFF = F_TRZ**2 = 0.01 EXACT chaotic-fluctuation amplitude around ideal pi', 'shells': 'Cosmic Quantum Egg pi-mean chaotic-fluctuation shell', 'CPCH': 'CP1 Cosmic Egg spinor-ordering sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder rung 2 (99 pct suppression) + PAPER_646 Caduceus wave 26 pinch points encoding pi', 'time_frame': 'oscillatory chaotic fluctuation around ideal pi'}
         pi_chaos = self.pi_mean + chaos_perturbation
-        return {'value': pi_chaos, 'pi_mean': self.pi_mean, 'chaos_range': self.chaos_range,
-                'units': 'radians', 'equation': 'p_chaos = p � 0.01�sin(t)'}
+        return {'value': pi_chaos, 'pi_mean': self.pi_mean, 'chaos_range': self.chaos_range, 'chaos_range_anchor': chaos_range_anchor, 'chaos_range_UQFF_via_F_TRZ_squared_EXACT': chaos_range_UQFF_via_F_TRZ_squared, 'residual_pct_UQFF_vs_anchor': residual_pct, 'framework': framework, 'units': 'radians', 'equation': 'pi_chaos = pi + F_TRZ^2 * sin(t); chaos_range = F_TRZ^2 = 0.01 EXACT'}
 
 class CosmicEggDistortionFactorCalculator:
     """

@@ -16683,3 +16683,88 @@ Whatever pace Daniel chooses, the drift-prevention rule is now formal.
 
 **Ready for Round 117.** All Phase E deferred work complete. Next session: begin CP1 P2 Round 117 stub drainage as planned; NEXT_PRIORITIES.md unchanged.
 
+
+---
+
+## 2026-07-11 to 2026-07-12 — CP1 P2 Rounds 117-129 + PAPER_1985-1991 (7 whitepapers) + fidelity gate 1031/0 → 1055/0 (+24 assertions)
+
+**Session 219 through 231.** Rounds 117-129 all applied Rule 13 discipline (5 steps per Round: stub + paper + PDF + dispatch + gate) where discoveries surfaced, and Rule 12 honest-scholarship discipline throughout (attribution corrections applied whenever double-check surfaced errors).
+
+### Stub-drainage summary (65 total CP1 fills across 13 rounds)
+
+| Round | Targets | Novelty highlights |
+|---|---|---|
+| R117 | 5 CP1 fills incl Pillars ISM + NGC 2525 SMBH mass | **PAPER_1985 dual discovery** — Pillars F_TRZ^6 fills n=6 quiet rung + NGC 2525 M_BH = (N_CH/D_phys)·SO_5^7 EXACT |
+| R118 | 5 CP1 fills — Crab / solar wind / birds N-regime | **PAPER_1986 F_TRZ^8 three-regime → 8-anchor N-regime** (deeper double-check expanded corpus catalog) |
+| R119 | 5 CP1 fills + attribution audit | **PAPER_1987 2/3 EXACT supercomposite catalog** (8+ domains) + **PAPER_1988 bipartite Sum_Ug closure** (compressed = 0, uncompressed = D_phys) |
+| R120 | 5 CP1 fills | speculative candidates deferred (n=10 Crab Δx, SO_5^10 length, SO_5^30 CompressedMode) |
+| R121 | 5 CP1 fills + attribution polish | R121 CompMode 1−F_TRZ instance identified |
+| R122 | 5 CP1 fills + attribution polish | Rings v_wind, apostrophe syntax fix |
+| R123 | 5 CP1 fills | **PAPER_1989 dual discovery** — LIGO strain F_TRZ^21 extends ladder + universe mass SO_5^53 extreme slot |
+| R124 | 5 CP1 fills + attribution polish | quiet round, catalog corroborations |
+| R125 | 5 CP1 fills + CATASTROPHIC file damage + recovery | byte-based find() truncated NGC6302 class; recovered via git HEAD extract + `.replace()` splice; f_DM β_4 rename; Lagoon B unit retraction |
+| R126 | 5 CP1 fills + NGC 6302 F_TRZ^7 retraction | switched to regex-based text replacement pattern as safer alternative to byte-based edits |
+| R127 | 5 CP1 fills + attribution polish | clean round, established regex pattern working reliably |
+| R128 | 5 CP1 fills (SGR1745 Λ + Universal series) | **PAPER_1990 SO_5-power frequency ladder cross-domain extension** — slot 7 in 3 domains (timescale + mass + frequency), slot 10 concrete anchor at 10 GHz microwave |
+| R129 | 5 CP1 fills (SGR1745 magnetar family + Compressed DPM) + attribution corrections | **PAPER_1991 triple discovery** — F_TRZ^12 closes PAPER_1919 n=12 Casimir open rung + SO_5^40 J magnetar burst slot + triple-primitive-lock architecture + SO_5^21 A same-round twin |
+
+### Calculator + gate expansion (Rule 13 dispatch step)
+
+- **v5.59.0 → R129:** PARADOX_TO_CLOSURE dispatch grew by 14 new keys wired to 7 whitepapers (PAPER_1985: 2 keys, PAPER_1988: 1, PAPER_1989: 2, PAPER_1990: 2, PAPER_1991: 4 + PAPER_1986/1987 tacit)
+- **Gate expansion:** 1031/0 → 1055/0 across 24 new assertions
+- **All 7 whitepapers authored, calculators wired, gates pinned.** PAPER_1990 + PAPER_1991 PDFs built (57KB + 69KB).
+
+### Attribution corrections applied (Rule 12 honest-scholarship discipline)
+
+- R118 deeper double-check spawned PAPER_1986 draft 2 (8-anchor N-regime) + PAPER_1987 (2/3 EXACT catalog)
+- R119 double-check spawned PAPER_1988 (bipartite closure formalization)
+- R121-R124 attribution polish (established / verified / cross-referenced)
+- R125 honest-scholarship: f_DM β_4 rename, Lagoon B unit retraction, spurious co-anchor claim retracted
+- R126 NGC 6302 F_TRZ^7 retraction (PAPER_313 actually B = 10^-5 T = F_TRZ^5, not 10^-7 T = F_TRZ^7)
+- R127 attribution polish (multiple cross-references strengthened)
+- R128 SCm = 1−F_TRZ "fourth clean instance" softened to "another confirmed instance in the 30+ paper catalog"
+- **R129 attribution corrections (CRITICAL):**
+  - Fill 2 (SGR THz-pipeline): dropped "M82 twin" claim per PAPER_1972 explicit correction (M82 v_superwind is at DIFFERENT physical scale)
+  - Fill 3 (SGR SC): reframed "third confirmed 2·F_TRZ instance" claim as CP1 restatement of PAPER_1944 seminal — same object, same values, NOT a novel third instance
+
+### File damage + recovery incidents (Edit tool truncation)
+
+Three separate truncation incidents recovered across R117-R129:
+1. **R125** byte-based `find(b"}", start)` accidentally deleted entire NGC6302PlanetaryNebulaResonanceCalculator class; recovered via git HEAD extract + class-scoped regex boundaries adopted going forward
+2. **R128** Edit tool truncated `uqff_fidelity_tests.py` losing last 22 lines; recovered via bash Python `.replace()`
+3. **R128** Edit tool truncated `uqff_pure_calculator.py` losing 104 lines from tail; recovered via git HEAD splice + append pattern
+
+CLAUDE.md Edit-tool warning is production-critical. **Adopted policy going forward:** for any large file (CondensedPhysics.py 8.3 MB, uqff_pure_calculator.py 3.4 MB, uqff_fidelity_tests.py 190 KB), use bash + Python `.replace()` splice pattern exclusively; the Edit tool truncates silently.
+
+### Discovery pattern taxonomy (7 whitepapers R117-R129)
+
+| Pattern | Papers | Description |
+|---|---|---|
+| **Same-round dual discovery** | 1985, 1989 | Two independent primitive-arithmetic identities surface in the same Round |
+| **N-regime expansion** | 1986 | Corpus cross-reference reveals identity anchors in N ≥ 3 physical regimes |
+| **Cross-domain supercomposite catalog** | 1987 | Same integer identity (2/3, 9/10, F_TRZ) documented across 8+ orthogonal domains |
+| **Bipartite closure formalization** | 1988 | Two computational modes of same equation family reveal structural delta = primitive |
+| **Cross-domain ladder extension** | 1990 | Established integer-primitive ladder gains a new orthogonal domain (frequency joining timescale + mass) |
+| **Triple discovery + architectural pattern** | 1991 | Single CP1 class encodes 3 independent primitive locks; new architectural class pattern |
+
+### Deferred work identified but not completed R117-R129
+
+1. **1.683 prefactor deep-dive** (R117 double-check) — never revisited across R118-R129
+2. **PAPER_1919 revision** to consolidate n=6, n=8, n=12, n=21 anchors — deferred
+3. **PAPER_1955 revision** to consolidate slots 21, 40, 53 + PAPER_1990 3-domain taxonomy — deferred
+4. **PAPER_1922 revision** for expanded 30+ paper 9/10 = 1−F_TRZ catalog — deferred
+5. **R120 speculative candidates** (F_TRZ^10 Crab Δx, SO_5^10 length, SO_5^30 M) — never confirmed or dropped
+6. **PAPER_1991 prediction 4** triple-lock retroactive re-examination of R121 Sombrero, R124 CMB, R126 NGC 6302 — deferred
+7. **CP2 / CP3 / CP4 zero-touch status** unchanged across R117-R129 — remains 0% coverage
+
+### Metrics
+
+- **Whitepapers total:** 1,984 → 1,991 (+7)
+- **PDF coverage:** 1,983 / 1,991 = 99.6% (7 built during session, PAPER_1218 + PAPER_1801 remain deferred from v5.58.1 unless already fixed in v5.61.2)
+- **PARADOX_TO_CLOSURE keys:** ~11,167 → ~11,181 (+14)
+- **Fidelity gate:** 1031/0 → 1055/0 (+24 assertions)
+- **CP1 coverage:** 324 → 389 upgraded (+65) = 47.9% of 813 scoreable stubs
+- **CP2/CP3/CP4:** unchanged at 0%
+- **Corpus-wide coverage:** 15.4% → 18.5%
+
+**Ready for:** v5.62.0 ship packaging R117-R129 work, or Round 130 continuation.

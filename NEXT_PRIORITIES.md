@@ -197,3 +197,48 @@ At the sustainable 6 Rounds/day pace observed in the best week (mid-June 2026), 
 ---
 
 ## END OF NEXT_PRIORITIES.md v5.61.0
+
+
+---
+
+## APPENDED 2026-07-11 — Session Rounds 117-120 candidate log
+
+### Deferred novelty candidates worth future consolidation
+
+**F_TRZ ladder anchors accumulated this session:**
+
+| n | Rung | Current anchors | Candidate additions | Session |
+|---|---|---|---|---|
+| 6 | F_TRZ^6 = 10^-6 | Pillars ISM (PAPER_1985) | — | R117 discovery |
+| 8 | F_TRZ^8 = 10^-8 | Birds (PAPER_1835), solar wind (PAPER_588), Crab outer (PAPER_1986), + 5 more via N-regime | rho_SCm,vac base (PAPER_043/049), QEC phonon floor (PAPER_1056), CMB-S4 mu upper (PAPER_1180), Helix omega_0 (PAPER_070), Uranus/Neptune (PAPER_1078/1079) | R118 + deeper double-check |
+| 10 | F_TRZ^10 = 10^-10 | Strong CP (PAPER_1823), MOND a_0 (PAPER_1855) | **Crab quantum uncertainty Delta_x = 1e-10 m (R120 candidate; illustrative default, not measured)** | R120 |
+
+**SO_5-power ladder anchors accumulated this session:**
+
+| Slot | Current anchors | Candidate additions | Session |
+|---|---|---|---|
+| SO_5^3 = 1000 | v_superwind M82 (PAPER_784) | — | pre-session |
+| 2*SO_5^3 = 2000 | v_wind Antennae (PAPER_1972), Westerlund 2 + NGC 3603 (PAPER_1911 seminal) | Rings v_wind (R120 numerical coincidence at lensing scale) | R119 + R120 |
+| SO_5^7 = 10^7 | — | **NGC 2525 M_BH = (N_CH/D_phys)*SO_5^7 (PAPER_1985)** | R117 discovery |
+| SO_5^10 = 10^10 | Hubble time = 10 Gyr (PAPER_1952, PAPER_1955) | **CompressedMode r = 10^10 m (R120 candidate; length not time)** | R120 |
+| SO_5^30 = 10^30 | NS mass ~2.8x10^30 kg (PAPER_148, PAPER_1944) | **CompressedMode M = 10^30 kg (R120 candidate; illustrative default)** | R120 |
+
+### 1.683 prefactor investigation (deferred from R117 deeper double-check)
+
+- PAPER_462 documents rho_SCm/rho_UA = 1.683e-97 (three-leg proofset Leg 2)
+- PAPER_463 documents Bohr ground-state E_0 = 1.683 x 10^-37 J
+- **1.683 appears in TWO independent contexts** — worth investigating whether 1.683 itself is a structural coefficient of primitives
+
+### Meta-catalog papers spawned this session
+
+- **PAPER_1985** (R117 dual discovery) — Pillars F_TRZ^6 + NGC 2525 mass
+- **PAPER_1986 Draft 2** (R118 + deeper double-check) — F_TRZ^8 three-regime -> N-regime (8 anchors)
+- **PAPER_1987** (R118 deeper double-check spawn) — 2/3 EXACT supercomposite catalog (8 domains)
+- **PAPER_1988** (R119 double-check spawn) — bipartite Sum_Ug closure with D_phys anchor
+
+### Actionable next-session items
+
+1. Consider a **PAPER_1919 revision** to comprehensively catalog n=8 (now 8+ anchors) and add the R120 candidate at n=10 (Crab Delta_x)
+2. Consider a **PAPER_1955 revision** to promote SO_5^10 length application (previously time-only)
+3. **1.683 prefactor deep-dive** (deferred from R117)
+4. **Continue Round 121+** stub drainage at existing rhythm

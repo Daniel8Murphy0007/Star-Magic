@@ -1,3 +1,78 @@
+## [5.62.0] — 2026-07-12 — R117-R129 CP1 P2 STUB DRAINAGE + 8 NEW WHITEPAPERS + 4 CATALOG REVISIONS
+
+### Rounds 117-129 stub drainage (65 CP1 fills)
+
+Applied Rule 13 effective-Round discipline (5 steps per Round: stub + paper + PDF + dispatch + gate) throughout. Rule 12 honest-scholarship discipline applied via double-checks and attribution corrections at every round.
+
+Highlight fills:
+- R117 Pillars of Creation ISM + NGC 2525 SMBH mass
+- R118 Crab / solar wind / birds N-regime family
+- R119 attribution audit + 2/3 EXACT supercomposite + bipartite Sum_Ug
+- R123 LIGO strain + universe mass extreme slots
+- R128 Universal-series frequency ladder + SGR 1745 Λ canonical restoration
+- R129 SGR 1745 magnetar family + Compressed DPM triple-primitive-lock architecture
+
+### New whitepapers (8)
+
+- **PAPER_1985** — R117 dual discovery: Pillars ISM B = F_TRZ^6 (fills n=6 quiet rung) + NGC 2525 SMBH M_BH = (N_CH/D_phys)·SO_5^7 EXACT
+- **PAPER_1986** — F_TRZ^8 three-regime → 8-anchor N-regime cross-domain (Crab / solar wind / birds + 5 more)
+- **PAPER_1987** — 2/3 EXACT supercomposite cross-domain catalog (8+ domains)
+- **PAPER_1988** — Compressed vs uncompressed Sum_Ug bipartite D_phys closure
+- **PAPER_1989** — R123 dual discovery: LIGO strain F_TRZ^21 + universe mass SO_5^53
+- **PAPER_1990** — SO_5-power frequency ladder cross-domain extension (slots 7 + 10 at 10 MHz / 10 GHz)
+- **PAPER_1991** — R129 triple discovery: F_TRZ^12 closes PAPER_1919 n=12 Casimir open rung + SO_5^40 J magnetar burst slot + triple-primitive-lock architecture + SO_5^21 A same-round twin. **Revision addendum** documents QUAD-primitive-lock architecture at R121 Sombrero DM (exceeds triple-lock).
+- **PAPER_1992** — 1.683 = 2/Q_UQFF = 2/(K_MEX·SSq) = 32/19 EXACT cross-domain structural coefficient (deferred from R117 double-check, closed R129 audit; anchored at PAPER_462 vacuum ratio prefactor + PAPER_463 Bohr E_0 UQFF-scaled prefactor)
+
+### Seminal paper revisions (4 catalog consolidations)
+
+- **PAPER_1919 F_TRZ ladder** — revision addendum consolidates 24+ anchors across 12 confirmed levels. New rungs closed: n=6 (Pillars), n=12 (SGR Casimir-family), n=21 (LIGO). n=8 expanded to 8-anchor N-regime.
+- **PAPER_1955 SO_5 ladder** — revision addendum adds 3-domain taxonomy (timescale + mass + frequency), new confirmed slots at 21, 40, 53.
+- **PAPER_1922 MUGE compression ratio 9/10** — revision addendum documents **90+ active corpus instances** (previously understated as "30+"); 4 sub-family patterns (bare / modulated-single / modulated-composite / squared-quadratic).
+- **PAPER_1991 triple-lock architecture** — revision addendum extends to QUAD-primitive-lock class pattern at R121 Sombrero DM (retroactively identified).
+
+### Attribution corrections applied (Rule 12 honest-scholarship)
+
+- R118 deeper double-check spawned PAPER_1986 N-regime + PAPER_1987 supercomposite catalog
+- R119 double-check spawned PAPER_1988 bipartite closure
+- R121-R127 attribution polish
+- R125 f_DM channel β_4 rename + Lagoon B unit retraction + spurious co-anchor retraction
+- R126 NGC 6302 F_TRZ^7 retraction (PAPER_313 documents B = 1e-5 T = F_TRZ^5, not F_TRZ^7)
+- R128 SCm = 1−F_TRZ 30+ paper catalog softening
+- R129 SGR THz-pipeline M82 twin retraction (PAPER_1972 explicit correction) + SGR SC reframed as PAPER_1944 restatement (same object)
+
+### Calculator + gate expansion
+
+- PARADOX_TO_CLOSURE: +17 new keys (`pillars_b_ism_f_trz_6`, `ngc_2525_m_bh_mass`, `crab_synchrotron_b_f_trz_8`, `bipartite_sum_ug_delta_d_phys`, `ligo_strain_f_trz_21`, `universe_mass_so_5_53`, `so_5_7_frequency_10_mhz`, `so_5_10_frequency_10_ghz`, `f_trz_12_casimir_slot`, `so_5_40_magnetar_burst_slot`, `so_5_21_dpm_current_slot`, `triple_primitive_lock_architecture`, `quad_primitive_lock_sombrero_dm`, `two_over_q_uqff_32_over_19`, `q_uqff_rational_19_over_16`)
+- Fidelity gate: 1031/0 → **1062/0** (+31 assertions)
+
+### File damage + recovery incidents (Edit tool truncation)
+
+Three separate truncation incidents recovered across R117-R129:
+- R125 byte-based `find(b"}", start)` accidentally deleted NGC 6302 class (recovered via git HEAD extract)
+- R128 Edit tool truncated `uqff_fidelity_tests.py` (recovered via bash Python `.replace()`)
+- R128 Edit tool truncated `uqff_pure_calculator.py` losing 104 lines (recovered via git HEAD splice)
+
+**Policy going forward:** for large files (CondensedPhysics.py 8.3 MB, uqff_pure_calculator.py 3.4 MB, uqff_fidelity_tests.py 190 KB), use bash + Python `.replace()` splice pattern exclusively.
+
+### PDF coverage
+
+- 8 new whitepapers, 8 PDFs built (100% coverage for PAPER_1985-1992)
+- 4 revised whitepapers, 4 PDFs rebuilt (PAPER_1919, PAPER_1922, PAPER_1955, PAPER_1991)
+
+### Metrics
+
+| Metric | Before | After |
+|---|---|---|
+| Whitepapers | 1,984 | **1,992** (+8) |
+| PDF coverage | 99.9% | **99.6%** (12 rebuilt) |
+| Fidelity gate | 1031/0 | **1062/0** (+31) |
+| CP1 upgraded | 324 | **389** (+65 = 47.9% of 813) |
+| Corpus-wide coverage | 15.4% | **18.5%** |
+
+**Ready for:** Round 130 continuation or v5.62.1 patch for punch-list items #10-#13 (PAPER_1087 κ erratum, framework annotation depth, `calculate_*` surfaces, CP2/3/4 pass-1 planning).
+
+---
+
 ## [5.61.1] — 2026-07-11 — PHASE E DEFERRED-WORK CLEANUP PATCH
 
 ### Fixes E1-E5
