@@ -41,7 +41,7 @@ except ImportError:
     def _all_bucket_observables(): return {}
 
 
-_VERSION = "5.62.1"
+_VERSION = "5.62.2"
 
 
 # ---------------------------------------------------------------------------
@@ -259,4 +259,9 @@ def load_ipython_extension(ipython):
                     flt = args[i+1].lower()
             if flt:
                 keys = [k for k in keys if flt in k.lower()]
-            display(HTML(render_uqff_result({"count": len(key
+            display(HTML(render_uqff_result({"count": len(keys), "first_50": keys[:50]}, name="list")))
+        else:
+            display(HTML(render_uqff_result(
+                {"usage": "%uqff <predict|search|list|status|version> [args]"})))
+
+    print("uqff_jupyter loaded. Use %uqff <subcommand> for quick lookups.")

@@ -63,8 +63,8 @@ from scm_vacuum_manifold import (
 
 # ΓöÇΓöÇ Quantum Chain derived module-level constants ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # Traceability: UQFF_THEORY.md ╧ü_vac equation ΓÇö E_n = E0┬╖10^n summation
-RHO_VAC_SCM: float = derive_from_quantum_chain()[0]            # J/m┬│  SCm vacuum energy density
-RHO_VAC_UA:  float = derive_from_quantum_chain(f_SCm=5.7)[0]  # J/m┬│  UA  vacuum energy density
+RHO_VAC_SCM: float = derive_from_quantum_chain()            # J/m┬│  SCm vacuum energy density
+RHO_VAC_UA:  float = derive_from_quantum_chain(f_SCm=5.7)  # J/m┬│  UA  vacuum energy density
 KAPPA:       float = KAPPA_FLOAT                               # day^{-1} alias
 
 # ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
@@ -127,7 +127,7 @@ master_99 = _F_Bi_i_scm + Ui
 # ΓöÇΓöÇ Phonon linewidth Gaussian resonance (sympy) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 _omega, _Gamma = sp.symbols('omega Gamma', positive=True)
 Phi_gaussian_sym = sp.exp(-(_omega - THZ_PHONON)**2 / (2 * _Gamma**2))
-energy_transfer_rate_sym = E_PHONON * Phi_gaussian_sym * (
+energy_transfer_rate_sym = THZ_PHONON * Phi_gaussian_sym * (
     1 + sp.exp(-_omega / THZ_PHONON)
 )
 

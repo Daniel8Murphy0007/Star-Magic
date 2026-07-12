@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.62.1"
-description = "UQFF Star-Magic v5.62.1: pyproject.toml TOML syntax repair (unclosed [tool.ruff.lint.per-file-ignores] table from prior truncation blocked v5.62.0 wheel build; per-file-ignores now closed with sensible defaults). All v5.62.0 payload preserved: R117-R129 CP1 P2 stub drainage + PAPER_1985-1992 + 4 catalog revisions. Fidelity gate 1062/0."
+version = "5.62.2"
+description = "UQFF Star-Magic v5.62.2: SHIP-COMPLETENESS patch — add 15 canonical py-modules that existed on disk but were never in the shipped wheel (dpm_vacuum_manifold, scm_vacuum_manifold, uqff_framework_annotations [Phase C v5.60.0 was never actually shipped], pure_uqff_calculator, UQFF_UNIFIED_CLOSURE_DERIVATIONS, Star-MagicProofEngine, MUGE_equations_module + 8 more); ship 2000+ PDFs via pdf/ as proper package with package_data; all v5.62.0 payload preserved. Gate 1062/0."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
@@ -98,7 +98,7 @@ uqff-api = "uqff_api:run"
 # ===========================================================================
 
 [tool.setuptools]
-py-modules = ["uqff_pure_calculator", "uqff_cli", "uqff_api", "uqff_jupyter", "uqff_fidelity_tests", "run_millennium_proofs", "BuoyancyProofVariants", "first_principles_derivation", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script", "ua_vacuum_manifold", "buoyancy_lagrangian_eom", "buoyancy_lagrangian_eom_enhanced", "_session288_universal_buoyancy_simultaneous_solver", "_session303_universal_buoyancy_solver", "UQFF_SimultaneousProofEngine", "GrokThread_StarMagic_UnifiedFramework", "CondensedPhysics", "CondensedPhysics2", "CondensedPhysics3", "CondensedPhysics4", "CondensedPhysicsAggregator", "CondensedPhysics_InputData", "CondensedPhysics_OutputData", "CondensedPhysics_Validation", "CondensedPhysics_superposition_module", "QCalc"]
+py-modules = ["BuoyancyProofVariants", "CondensedPhysics", "CondensedPhysics2", "CondensedPhysics3", "CondensedPhysics4", "CondensedPhysicsAggregator", "CondensedPhysics_InputData", "CondensedPhysics_OutputData", "CondensedPhysics_Validation", "CondensedPhysics_superposition_module", "FirstPrinciplesCompressor", "Gold_Standard_Validation_Script", "GrokThread_StarMagic_UnifiedFramework", "MUGE_equations_module", "QCalc", "QuantumLevel26Framework", "UQFFAtomicSolverModule", "UQFF_SimultaneousProofEngine", "UQFF_UNIFIED_CLOSURE_DERIVATIONS", "_session288_universal_buoyancy_simultaneous_solver", "_session303_universal_buoyancy_solver", "assimilation_dispatch", "atomic_uqff_framework", "buoyancy_lagrangian_eom", "buoyancy_lagrangian_eom_enhanced", "dpm_helpers", "dpm_vacuum_manifold", "first_principles_derivation", "provenance_recorder", "pure_uqff_calculator", "qcalcgeom_helpers", "qcalcgeom_solver", "run_millennium_proofs", "scm_vacuum_manifold", "ua_vacuum_manifold", "uqff_api", "uqff_cli", "uqff_fidelity_tests", "uqff_framework_annotations", "uqff_jupyter", "uqff_pure_calculator"]
 include-package-data = true
 
 # v5.29.0: bundle the FULL proof corpus as a sub-package.
@@ -107,6 +107,8 @@ include-package-data = true
 where = ["."]
 include = [
     "whitepapers",
+    "pdf",
+    "pdf.*",
     "whitepapers.*",
     "formal",
     "formal.*",
@@ -164,6 +166,7 @@ exclude = [
     "*.json",
 ]
 "whitepapers" = ["*.md", "*.tex"]
+"pdf" = ["*.pdf"]
 "formal" = ["*.lean", "*.toml", "lean-toolchain", "README.md", "**/*.lean"]
 "arxiv_submission_1159_1172" = ["**/*"]
 "arxiv_submission_1173_1176" = ["**/*"]

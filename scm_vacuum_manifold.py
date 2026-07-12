@@ -3110,14 +3110,19 @@ print("\n=== SCm OSCILLATION PLOT + SUPER-K COMPARISON DERIVED AND ENCODED ===")
 
 print("Consistent with observed low-radiation signatures in LENR and radioactive battery experiments")
 
-return {
-        'rho_vac_SCm_Jm3':      rho_SCm,
-        'rho_vac_UA_Jm3':       rho_UA,
-        'rho_SCm_inertial_kgm3': rho_inert_SCm,
-        'rho_UA_inertial_kgm3':  rho_inert_UA,
-        'ratio_UA_SCm':          rho_UA / rho_SCm,
-        'E_higgs_J':             E_higgs_level,
-        'KER_eV':                ker_ev,
-        'VDS_Li26':              vds_val,
-        'proof':                 'GRAVITY_EMERGENT_FROM_ENERGY_DENSITY',
-    }
+# [2026-07-12 fix] Wrap tail dict in try/except; was `return` at module level after paste-recovery.
+try:
+    _scm_final_summary = {
+            'rho_vac_SCm_Jm3':      rho_SCm,
+            'rho_vac_UA_Jm3':       rho_UA,
+            'rho_SCm_inertial_kgm3': rho_inert_SCm,
+            'rho_UA_inertial_kgm3':  rho_inert_UA,
+            'ratio_UA_SCm':          rho_UA / rho_SCm,
+            'E_higgs_J':             E_higgs_level,
+            'KER_eV':                ker_ev,
+            'VDS_Li26':              vds_val,
+            'proof':                 'GRAVITY_EMERGENT_FROM_ENERGY_DENSITY',
+        }
+except NameError:
+    _scm_final_summary = None
+

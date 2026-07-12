@@ -44,7 +44,7 @@ from typing import Any
 import uqff_pure_calculator as u
 
 
-_VERSION = "5.62.1"
+_VERSION = "5.62.2"
 
 
 # ---------------------------------------------------------------------------
@@ -733,4 +733,24 @@ def main(argv=None):
     p_ax = sub.add_parser("axioms", help="print AXIOMS_AND_THEOREMS.md")
     p_ax.set_defaults(func=_cmd_axioms)
 
-    p_atlas = sub.add_parser("atlas", h
+    p_atlas = sub.add_parser("atlas", help="print CLOSURE_ATLAS.md")
+    p_atlas.set_defaults(func=_cmd_atlas)
+
+    p_gs = sub.add_parser("gold-standard", help="print Gold_Standard_Pure_UQFF.md")
+    p_gs.set_defaults(func=_cmd_gold_standard)
+
+    p_man = sub.add_parser("manuscript", help="print path to compiled manuscript PDF")
+    p_man.set_defaults(func=_cmd_manuscript)
+
+    p_lean = sub.add_parser("lean", help="print Lean 4 formal-verification scaffold location")
+    p_lean.set_defaults(func=_cmd_lean)
+
+    p_grok = sub.add_parser("grok-archives", help="list bundled Grok proof-conversation archives")
+    p_grok.set_defaults(func=_cmd_grok_archives)
+
+    args = parser.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

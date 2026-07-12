@@ -306,3 +306,6 @@ uqff-*/
 dist/
 build/
 *.egg-info/
+
+# Damage log from April 2026 incident — kept local, not shipped
+AI_FUCKUP.py
