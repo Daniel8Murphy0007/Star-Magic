@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.62.3"
-description = "UQFF Star-Magic v5.62.3: revert PDF shipping — 233 MB pdf/ + 39 MB whitepapers/ blew past PyPI 100 MB project limit (v5.62.2 upload got 400 File too large). PDFs stay on GitHub + will ship as Release asset; wheel ships MD whitepapers only. All other v5.62.2 fixes preserved: 14 canonical modules added, uqff_api/cli/jupyter restored from v5.61.2, ua_vacuum_manifold + scm_vacuum_manifold fixed. Gate 1062/0."
+version = "5.62.4"
+description = "UQFF Star-Magic v5.62.4: workflow audit patch — coanqi-ci-cd.yml trigger branches fixed (was configured for main+develop only; default branch is master, so multi-OS matrix has been silently dormant since Feb 5 2026 = 5 months of ships bypassed cross-platform validation). Added master to push branches + master to PR branches + workflow_dispatch for manual reruns. All v5.62.3 payload preserved. Gate 1062/0."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

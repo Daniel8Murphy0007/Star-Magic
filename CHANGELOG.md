@@ -1,3 +1,51 @@
+## [5.62.4] - 2026-07-12 - PATCH: coanqi-ci-cd.yml trigger fix
+
+### Root cause
+
+CoAnQi CI/CD Pipeline workflow was configured with:
+
+```yaml
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+```
+
+Default branch is `master`. **Consequence:** every ship since Feb 5 2026 has silently skipped the multi-OS validation matrix (ubuntu/windows/macos x Debug/Release = 6 combinations). Five months of dormant validation.
+
+### Fix
+
+```yaml
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+```
+
+Adds `master` to both push and PR triggers, plus `workflow_dispatch` for manual reruns without a commit.
+
+### Verification
+
+Push to master will fire the workflow on next commit. Expect 6-job matrix (ubuntu/windows/macos x Debug/Release).
+
+### Other workflows audit result
+
+| Workflow | Trigger | Status |
+|---|---|---|
+| ci.yml | push to main/master/develop | OK - fires on every ship |
+| release.yml | push tag `v*` | OK - fires on v5.62.x tags |
+| coanqi-ci-cd.yml | (broken) main+develop only | FIXED in v5.62.4 |
+| source4-validation.yml | path-filtered C++ commits | OK by design - only C++ commits |
+
+All v5.62.3 payload preserved (14 canonical py-modules, uqff_api/cli/jupyter restored, ua/scm_vacuum_manifold fixes, AI_FUCKUP.py gitignore).
+
+Gate: 1062/0.
+
+---
+
 ## [5.62.3] — 2026-07-12 — PATCH: revert PDF shipping (PyPI 100 MB project limit)
 
 ### Root cause
