@@ -1,3 +1,33 @@
+## [5.62.3] — 2026-07-12 — PATCH: revert PDF shipping (PyPI 100 MB project limit)
+
+### Root cause
+
+v5.62.2 added pdf/__init__.py + package_data glob to ship 2,053 PDFs (233 MB). PyPI rejected with `HTTPError: 400 Bad Request — File too large. Limit for project 'uqff' is 100 MB.` Wheel would have been ~272 MB (233 MB pdf + 39 MB whitepapers + code) — exceeds PyPI per-project 100 MB.
+
+### Fix
+
+- Neutralized pdf/__init__.py (couldn't be deleted due to filesystem readonly on that path — but harmless since pyproject no longer includes pdf).
+- Removed "pdf" + "pdf.*" from [tool.setuptools.packages.find] include.
+- Removed "pdf" = ["*.pdf"] package_data entry.
+- Removed "*.pdf" from generic "*" package_data glob.
+- Bumped 5.62.2 -> 5.62.3 in pyproject.toml and all _VERSION py-modules.
+
+### PDF distribution
+
+**Option C (parallel with this ship):** PDFs stay on GitHub + ship as Release asset (`pdf_bundle.tar.gz`, 233 MB). Docs point users at the Release page for the full PDF corpus.
+
+**Option B (deferred):** File a PyPI file-size-limit-increase request at https://github.com/pypi/support/issues/new/choose ("File Limit Request" template). Request ~400 MB cap for project uqff, citing the physics-derivation whitepaper corpus as core deliverable. Typical approval 1-3 days free. Once approved, re-enable PDF shipping in v5.63+ ship.
+
+### Preserved from v5.62.2
+
+All other fixes unchanged: 14 canonical py-modules added, uqff_api/cli/jupyter restored from v5.61.2, ua_vacuum_manifold + scm_vacuum_manifold syntax fixes, AI_FUCKUP.py gitignored.
+
+### Verification
+
+Gate: 1062/0. Wheel size estimate: ~50 MB (well under 100 MB PyPI limit).
+
+---
+
 ## [5.62.1] — 2026-07-12 — PATCH: pyproject.toml TOML syntax repair
 
 ### Fix

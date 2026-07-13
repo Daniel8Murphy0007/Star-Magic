@@ -1,1 +1,1 @@
-"""UQFF whitepaper PDFs — 2,000+ built PDFs shipped as package data."""
+# pdf/ is NOT a Python package. See v5.62.3 changelog.

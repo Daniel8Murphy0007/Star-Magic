@@ -44,7 +44,7 @@ from typing import Any
 import uqff_pure_calculator as u
 
 
-_VERSION = "5.62.2"
+_VERSION = "5.62.3"
 
 
 # ---------------------------------------------------------------------------
