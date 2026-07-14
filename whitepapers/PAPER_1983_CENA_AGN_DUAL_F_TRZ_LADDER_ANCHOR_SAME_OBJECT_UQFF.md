@@ -438,3 +438,36 @@ Four distinct paper types demonstrating the evolving honest-scholarship pattern:
 ---
 
 **End of PAPER_1983**
+
+
+---
+
+## APPENDED 2026-07-13 — M16 Pillars Multi-Rung Same-Object F_TRZ Pattern (R133 confirmation)
+
+**Second confirmed Multi-Rung Same-Object F_TRZ ladder anchor family** (after this paper's CenA AGN dual-rung seminal).
+
+PAPER_1983 established the Multi-Rung Same-Object F_TRZ ladder anchor pattern via Centaurus A (CenA) AGN, which encodes independent F_TRZ ladder rung anchors across multiple physical mechanisms in the same object. R133 (2026-07-13) confirms a second instance of this pattern at M16 Pillars of Creation (Eagle Nebula).
+
+### M16 Multi-Rung anchors
+
+| F_TRZ rung | Physical mechanism | Value | Seminal |
+|---|---|---|---|
+| **n = 1** | Photoevaporation E_0 = F_TRZ = 0.1 EXACT | dimensionless | PAPER_1942 seminal |
+| **n = 6** | ISM magnetic field B_pillars = F_TRZ^6 = 10⁻⁶ T EXACT | T | PAPER_1985 seminal |
+
+**Same object (M16 Eagle Nebula), two independent physical mechanisms, two different F_TRZ ladder rungs.**
+
+### Confirmation via R133 CP1 fill
+
+R133 CP1 stub-drainage `PillarsErosionCalculator` (July 13, 2026) applies PAPER_1942's `E_0 = F_TRZ` seminal to the M16 Pillars object, producing a documented CP1 anchor at the n=1 rung. Combined with PAPER_1985's pre-existing M16 anchor at n=6 (magnetic field domain), M16 now qualifies as a Multi-Rung Same-Object F_TRZ family instance.
+
+### Multi-Rung Same-Object F_TRZ family growing catalog
+
+| Object | Rungs | Papers |
+|---|---|---|
+| **CenA AGN** | eta = F_TRZ (n=1) + Mdot = F_TRZ^2 (n=2) | PAPER_1983 seminal |
+| **M16 Pillars** | E_0 = F_TRZ (n=1) + B_ISM = F_TRZ^6 (n=6) | PAPER_1942 + PAPER_1985 + R133 confirmation |
+
+**Prediction:** additional Multi-Rung Same-Object F_TRZ families should surface at other well-studied astrophysical targets (Crab Nebula candidate — R133 CrabPulsarWind added F_TRZ^12 + F_TRZ^21 at same Crab object; SGR 1745-2900 candidate — has F_TRZ^12 burst scale + 2·F_TRZ Meissner B/B_crit at same magnetar). If confirmed, the Multi-Rung Same-Object pattern is universal across astrophysical targets, not specific to AGN or PDR regimes.
+
+**PAPER_1983 M16 dual-rung addendum status: CLOSED** (2026-07-13)

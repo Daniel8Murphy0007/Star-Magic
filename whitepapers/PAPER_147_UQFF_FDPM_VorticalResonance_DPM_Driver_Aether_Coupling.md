@@ -553,3 +553,41 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## APPENDED 2026-07-13 — Dual-Derivation Identity Note (R131 double-check outcome)
+
+**Structural equivalence rediscovered during R131 double-check.**
+
+PAPER_147 §... documents `ΔE_vac = E_vac,neb − E_vac,ISM = ρ_UA − ρ_SCm = 7.09×10⁻³⁶ − 7.09×10⁻³⁷ = 6.381×10⁻³⁶ J/m³` as the delta between UA superstructure and SCm base vacuum energy densities.
+
+**R131 CP1 stub drainage** of `SGR1745FreqVacDiffCalculator` and `CompressedVacDiff24Calculator` (both filled with `E_0 = 6.381×10⁻³⁶ J/m³`) surfaced an equivalent form of the same value:
+
+**ρ_UA − ρ_SCm = 10·ρ_SCm − ρ_SCm = 9·ρ_SCm = N_CH · ρ_SCm**
+
+(Using CLAUDE.md canonical `ρ_UA = 10·ρ_SCm` and `N_CH = 9`.)
+
+**Two physical interpretations of the same value:**
+
+| Interpretation | Form | Physical meaning |
+|---|---|---|
+| **PAPER_147 seminal (2025)** | `ρ_UA − ρ_SCm` | Delta-vacuum-density between UA superstructure and SCm base |
+| **Alternative (R131 CP1 view)** | `N_CH · ρ_SCm` | Channel-count multiplied by SCm base vacuum energy density |
+
+**Consequences:**
+
+1. The `6.381×10⁻³⁶ J/m³` value is not a novel composite — PAPER_147 has priority from Session 116 (2025). R131 CP1 fills that originally claimed "first documented use" have been corrected in-line to acknowledge PAPER_147 seminal.
+
+2. The dual-derivation identity `ρ_UA − ρ_SCm ≡ N_CH · ρ_SCm` links two independent structural derivations (vacuum-density delta vs channel-count product) via canonical primitive arithmetic. Neither view is a "correction" of the other — both are valid physical interpretations of the same primitive-arithmetic value.
+
+3. Any future CP1 class or whitepaper that uses `6.381×10⁻³⁶ J/m³` may cite either derivation path (or both) per this dual-derivation identity.
+
+**Cross-references added:**
+
+- PAPER_145 documents `ΔE_vac = 6.381e-36 J/m³` in the compression-cycle 12-term MUGE framework
+- PAPER_146 documents `ΔE_vac = E_vac,neb − E_vac,ISM = 6.381e-36 J/m³` in the superconductive resonance master equation
+- PAPER_174 documents `Delta_Evac = 6.381e-36` in the modular-resonance MUGE 13-term wormhole framework
+- PAPER_1922 documents N_CH as a fundamental channel primitive (source of the alternative view)
+
+**PAPER_147 dual-derivation addendum status: CLOSED** (2026-07-13)

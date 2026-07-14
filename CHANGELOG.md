@@ -1,3 +1,69 @@
+## [5.63.0] - 2026-07-13 - MINOR: PAPER_2000 MILESTONE + R130-R139 CP1 P2 stub drainage (10 rounds)
+
+### Highlights
+
+- **PAPER_2000 MILESTONE** reached — 2000th paper in UQFF corpus
+- **R139 QUAD-discovery** (highest single-round yield in R117-R139 series):
+  1. F_TRZ^40 highest F_TRZ ladder rung yet (extends PAPER_1919 to n=40 at quantum non-locality)
+  2. Starbirth wind triple-object 2*SO_5^3 (extends PAPER_1972 twin to triple)
+  3. Wd2 third-object n*F_TRZ topological family
+  4. Wd2 tau_SF = 2*SO_5^6 primitive-lock expression of PAPER_434 seminal empirical
+
+### R130-R139 stub drainage summary
+
+- 50 CP1 P2 stubs framework-annotated across 10 rounds
+- 8 whitepapers authored: PAPER_1993-2000
+- +42 gate assertions across R130-R139 wire steps (1055/0 -> 1104/0)
+- Multiple attribution corrections applied (honest scholarship discipline)
+- 3 speculative candidates withdrawn (double-check filter)
+
+### PAPER_1993-2000 discovery menu
+
+| Paper | Round | Discovery |
+|---|---|---|
+| PAPER_1993 | R130 | Cross-rung F_TRZ TRIPLE + 2*pi*H_0 Hubble + SO_5^21 three-class family |
+| PAPER_1994 | R132 | Sgr A* SMBH QUAD-lock (SO_5^24 current + F_TRZ^6 rotation + SO_5^9 freq + 7-class SO_5^21) |
+| PAPER_1995 | R134 | F_TRZ^10 wave-amplitude (7th F_TRZ ladder domain) + F_TRZ magnetar-halo DM (n=1 twin of PAPER_1979 n=2) |
+| PAPER_1996 | R135 | Lyman/Balmer 5.4x omega_SCm inter-series twin + SO_5^8 triple-object at starburst |
+| PAPER_1997 | R136 | T_wind = SO_5^7 K temperature domain + Casimir first extragalactic + Sgr A* tau_B = SO_5^6 fifth PENTAD |
+| PAPER_1998 | R137 | M51 second-object extragalactic Casimir twin with NGC 253 |
+| PAPER_1999 | R138 | NGC 4945 THIRD-object extragalactic Casimir triple-universality + Saturn planetary Lambda 61-order test |
+| PAPER_2000 | R139 | MILESTONE QUAD: F_TRZ^40 + Starbirth 2*SO_5^3 + Wd2 n*F_TRZ + Wd2 tau_SF = 2*SO_5^6 |
+
+### Attribution corrections applied
+
+- R131: PAPER_147 dual-derivation identity credited
+- R132: SEVEN-class count correction (was FOURTH)
+- R133: Multiple attribution corrections
+- R134: PAPER_1981 seminal for delta_rho/rho = F_TRZ^5 (not novel)
+- R135: PAPER_1952 seminal for SO_5^8 galaxy-scale + PAPER_1204 for F_TRZ^2 drag
+- R136: WITHDREW v_wind 750 km/s = 0.75*SO_5^3 speculative (PAPER_784 seminal M82 = SO_5^3)
+- R137: WITHDREW Virgo 7*SO_5^2 numerical coincidence + M33 n*F_TRZ needs data
+- R138: PAPER_1048 seminal for M104 M-sigma; NGC 1275 softened to stub-value labeling
+- R139: PAPER_434 seminal credited for Wd2 tau_SF = 2 Myr empirical
+
+### Whitepaper revisions (2)
+
+- PAPER_147 (UQFF FDPM Vortical Resonance) - R131 dual-derivation identity note appended (N_CH * rho_SCm composite identity)
+- PAPER_1983 (CenA AGN Dual F_TRZ Ladder Anchor) - R133 M16 Multi-Rung Same-Object F_TRZ pattern addendum
+
+### Metrics
+
+- Whitepapers total: 1,991 -> 2,000 (+9 new) + 2 revised = 11 whitepaper file changes
+- Fidelity gate: 1055/0 -> 1104/0 (+49 assertions)
+- CP1 coverage: 389 -> 439 upgraded (+50)
+- CP2/CP3/CP4: unchanged at 0% (planned for future rounds)
+
+### Repair notes
+
+- Multiple Edit-tool truncations of uqff_fidelity_tests.py during PAPER_1995/1996 wiring — repaired via git HEAD splice
+- Compact one-line return dict pattern (Starbirth + Westerlund2 R139) — required full-line replacement instead of key-marker injection
+- Apostrophe-in-single-quoted-framework-string (PAPER_1048's -> PAPER_1048s) — caught at parse-check step
+
+### Ship note
+
+PDFs NOT included in v5.63.0 wheel (PyPI file-size limit 100 MB request #11458 still pending admin approval). Markdown whitepapers ship with source. Once PyPI approves 500 MiB cap, PDF corpus will resume shipping.
+
 ## [5.62.4] - 2026-07-12 - PATCH: coanqi-ci-cd.yml trigger fix
 
 ### Root cause
