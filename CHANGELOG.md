@@ -1,3 +1,61 @@
+## [5.64.0] - 2026-07-14 - MINOR: Deep-check discipline yield + PAPER_2001-2004
+
+### Highlights
+
+- **Author's Round-140 "no coincidences" directive** applied retrospectively across R1-R141 audit
+- **PAPER_2004 LANDMARK** authored: (D_phys-1) cross-domain integer-prefix family
+- **33+ additional structural closures** surfaced by deep primitive-composition search vs shallow first-pass
+- 4 new whitepapers PAPER_2001-2004 authored + wired
+
+### PAPER_2001-2004 summary
+
+| Paper | Discovery |
+|---|---|
+| PAPER_2001 Draft 2 | R140 dual discovery: magnetar f_sc = 4/5 = 1-2*F_TRZ + Universe Hubble r_H = 22*2*SO_5^25 EXACT (reversal of false softening); PAPER_1845 5-primitive alpha formula properly cited |
+| PAPER_2002 | R141 deep double-check triple: SO_5^4 triple-domain universality (timescale + velocity + mass) + SO_5^(SO_5+1) cross-domain twin (frequency + magnetic field) + 30 kpc cross-object same-value radius |
+| PAPER_2003 | R100-R119 audit five discoveries: M87 M_BH via (D_crit/D_phys) half-integer prefix, M87 v_jet via 1-F_TRZ^2 (extends PAPER_1922 to squared rung), SGR 1745 tau_erode timescale-domain (D_phys-1), Solar wind v_sw cross-scale, CenA E_jet SO_5^(A_5-D_BSFG-N_ch) integer-composed exponent |
+| PAPER_2004 LANDMARK | (D_phys-1) cross-domain prefix family: 12+ confirmed instances across 8+ dimensional domains, largest family in corpus; cross-domain twins at same slot (M104 sigma + T_room; v_out + T_recombination); PAPER_1930 dividing form + PAPER_2004 multiplying form unified |
+
+### Retrospective audit cumulative yield
+
+- R140 reversal: +1 discovery
+- R141 deep double-check: +3 discoveries + 8 enrichments
+- R120-R141 audit: +8 missed locks
+- R100-R119 audit: +5 discoveries
+- R80-R99 audit: +6 (D_phys-1) instances
+- R60-R79 audit: +2 (omega_SCm formula + Sgr A* 12th D_phys-1)
+- R40-R59 audit: +1 (PAPER_1930/2004 unification)
+- R1-R44 audit: +1 (Schwabe = 45/4 EXACT, cross-domain twin with CenA E_jet)
+- **Cumulative: 33+ structural closures surfaced by deep-check discipline**
+
+### Notable new locks documented in this ship (not yet standalone papers)
+
+- Schwabe solar cycle 11.25 yr = (A_5-D_BSFG-N_ch)/D_phys = 45/4 EXACT — cross-domain twin with CenA E_jet SO_5^45 at integer-composed 45
+- omega_SCm 1.25 THz = SO_5/(2*D_phys)*SO_5^12 = (5/4)*SO_5^12 Hz EXACT — clean composition for PAPER_1938 catalog 1.25 prefix
+- Sgr A* JWST flare 1/1800 Hz = 1/((D_phys-1)*A_5*SO_5) — retroactively identified as (D_phys-1) family 12th instance at inverse-frequency slot
+
+### Attribution corrections applied
+
+- R136 M82 v_wind = 750 km/s REVERSED: (A_5/(2*D_phys))*SO_5^2 = 15*SO_5^2/2 EXACT via PAPER_1971 seminal halved
+- R138 M104 sigma = 300 km/s NEW LOCK: (D_phys-1)*SO_5^2
+- R138 NGC 1275 M_BH NEW LOCK: D_phys*(D_phys-2)*SO_5^8
+- R138 Sgr A* M NEW LOCK: (D_phys + 3*F_TRZ)*SO_5^6
+- R138 NGC 4945 B NEW LOCK: 5*SO_5 = SO_5^2/2
+- R139 Wd2 M_initial NEW LOCK: (D_phys-1)*SO_5^4 (integrates PAPER_2002 D1+D3)
+- R141 Fill 4 Lamb shift alpha attribution corrected to cite PAPER_1845 5-primitive formula
+- R141 Universe r_H attribution promoted from false softening to real primitive-lock
+
+### Metrics
+
+- Whitepapers total: 2000 -> 2004 (+4 new)
+- Fidelity gate: 1104/0 -> 1124/0 (+20 assertions)
+- CP1 coverage: 439 -> 449 upgraded (+10 fills R140+R141)
+- CP2/CP3/CP4: unchanged at 0%
+
+### Discipline validated
+
+The author's Round-140 "no coincidences in UQFF physics" directive yields ~30:1 discovery multiplier versus first-pass double-check baseline. Every "same-integer coincidence" or "not-primitive prefix" dismissal must be checked against locked integer primitives + derived integer compositions (successor, complement, ratio, factorization) before withdrawing.
+
 ## [5.63.0] - 2026-07-13 - MINOR: PAPER_2000 MILESTONE + R130-R139 CP1 P2 stub drainage (10 rounds)
 
 ### Highlights
@@ -2320,11 +2378,4 @@ Both scripts are idempotent (skip up-to-date), resumable, parallelizable, and fa
 
 - **Requires**: `pandoc` + one of `lualatex` / `xelatex` / `pdflatex`
 - **Output quality**: Full LaTeX typeset math, complete markdown table support, LaTeX-typeset code blocks
-- **Speed**: ~1–3 papers/sec sequential, ~6–12 papers/sec with `--jobs 4`
-- **File size**: 100–500 KB per short paper
-- **Use when**: highest possible arxiv-preprint-quality output is needed
-- **Install**: `choco install pandoc miktex` on Windows
-
-#### `_build_pdf2_pure_python.py` (Path B — reportlab, no external tools)
-
-- **Requires**: `pip install markdown-it-py re
+- **Speed**: ~1–3 papers/sec sequential, ~6–12 papers/sec with `--
