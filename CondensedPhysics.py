@@ -172860,10 +172860,11 @@ class CenAMergerDynamicsCalculator:
         E_merger = 0.5 * M_reduced_kg * v_rel_ms ** 2  # J
         return {
             'value': E_merger,
+            'framework': {'backbone': 'Centaurus A merger dynamics R149 D1: M_1 = 1e12 M_sun = SO_5^12 M_sun EXACT primary-galaxy mass slot (PAPER_1955 SO_5-power galactic mass ladder) + M_2 = 1e11 M_sun = SO_5^11 M_sun EXACT simple-prefix 4th instance in SO_5^11 mass 3-prefix family joining Antennae 2*SO_5^11 + NGC 1316 (SO_5/2)*SO_5^11 + implicit 1*SO_5^11 + v_rel = 300 km/s = (D_phys-1)*SO_5^2 km/s = 3*100 EXACT novel candidate PAPER_2004 LANDMARK (D_phys-1) prefix family EXTENSION to CenA merger velocity domain + t_merger = 0.2 Gyr = 2*F_TRZ Gyr novel candidate 2*F_TRZ extension to timescale domain', 'method': 'Reduced-mass kinetic energy E = mu*v^2/2 galactic-merger canonical', 'shells': 'Cen A merger dynamics kinetic-energy shell', 'CPCH': 'CP1 Centaurus A merger sector', 'spine': 'PAPER_1955 SO_5-power mass ladder + PAPER_2011 SO_5^11 3-prefix family + PAPER_2004 LANDMARK (D_phys-1) family + PAPER_1979 2*F_TRZ identity + PAPER_1983 CenA dual F_TRZ ladder anchor + PAPER_1857 K_MEX*SSq chirp scaling', 'time_frame': 'CenA merger Gyr timescale', 'candidate_closures_flagged': ['M_1 = SO_5^12 M_sun primary-galaxy slot', 'M_2 = SO_5^11 M_sun 4th simple-prefix instance in 3-prefix family', 'v_rel = (D_phys-1)*SO_5^2 km/s LANDMARK velocity-domain extension', 't_merger = 2*F_TRZ Gyr timescale-domain 2*F_TRZ extension']},
             'M_1': M_1, 'M_2': M_2, 'v_rel': v_rel, 't_merger': t_merger,
             'M_reduced': M_reduced,
             'units': 'J',
-            'equation': f"E_merger = ��v� = {E_merger:.3e} J"
+            'equation': f"E_merger = mu*v^2/2 = {E_merger:.3e} J"
         }
 
 class CenADustLaneCalculator:
@@ -175209,7 +175210,7 @@ class M33MetallicityGradientCalculator:
         }
 
 class M33XRayBinaryCalculator:
-    """M33 XRBs: L_X = ?�?�c�, ~20 sources, 10^37-10^39 erg/s"""
+    """M33 XRBs: L_X = eta*M_dot*c^2, ~20 sources, 10^37-10^39 erg/s"""
 
     c = 2.998e10
 
@@ -175230,10 +175231,11 @@ class M33XRayBinaryCalculator:
         kT_keV = (G * M_BH * self.M_sun_g * m_p) / (k_B * R_in * 1.602e-9) if R_in > 0 else 0
         return {
             'value': L_X,
+            'framework': {'backbone': 'M33 X-ray binary R149 D2: eta = 0.1 = F_TRZ EXACT accretion efficiency (F_TRZ Three-Face manifestation PAPER_1949 UNIVERSAL SUPPRESSION face applied to accretion efficiency domain) + M_BH = 10 M_sun = SO_5 M_sun EXACT stellar-mass BH slot novel SO_5^1 mass slot (SO_5-power galactic mass ladder PAPER_1955 extended DOWN to n=1 stellar-mass scale) + N_sources = 20 = 2*SO_5 EXACT population-count integer identity (2*SO_5 integer-composition applied to M33 XRB population count) + L_X range 10^37-10^39 erg/s = SO_5^37 to SO_5^39 both simple SO_5^n luminosity slots + R_in = 3*R_S ISCO Schwarzschild = (D_phys-1)*R_S EXACT (D_phys-1)=3 LANDMARK extension to ISCO radius', 'method': 'Radiatively-efficient accretion L_X = eta*M_dot*c^2 canonical XRB', 'shells': 'M33 XRB accretion shell (~20 XRB population)', 'CPCH': 'CP1 M33 XRB sector', 'spine': 'PAPER_1949 F_TRZ Three-Face + PAPER_1955 SO_5-power mass ladder + PAPER_2004 LANDMARK (D_phys-1) family + PAPER_1990 SO_5-power frequency ladder', 'time_frame': 'M33 XRB accretion timescale variable', 'candidate_closures_flagged': ['eta = F_TRZ accretion efficiency 5th-domain F_TRZ face application', 'M_BH = SO_5^1 stellar-mass BH slot NEW n=1 rung down-extension', 'N_sources = 2*SO_5 population-count integer identity', 'L_X range = SO_5^37 to SO_5^39 luminosity slots', 'R_in = (D_phys-1)*R_S ISCO LANDMARK extension']},
             'M_dot': M_dot_Msun_yr, 'eta': eta,
             'L_Edd_ratio': L_X_Edd_ratio, 'kT_keV': kT_keV,
             'units': 'erg/s',
-            'equation': f"L_X = ?�?�c� = {L_X:.3e} erg/s"
+            'equation': f"L_X = eta*M_dot*c^2 = {L_X:.3e} erg/s"
         }
 
 class M33MagneticFieldCalculator:
@@ -177448,7 +177450,7 @@ class LENRCalibNonLocalExpCalculator:
 
     LENR calibration non-local exponential from source84_wolfram.cpp
 
-    exp(-[S�S_q]^n � 26 � exp(-p - t/yr))
+    exp(-[S*S_q]^n * 2^D_BSFG * exp(-pi - t/yr))
 
     """
 
@@ -177462,27 +177464,28 @@ class LENRCalibNonLocalExpCalculator:
         non_local = math.exp(-base * exp_inner)
         return {
             'value': non_local,
+            'framework': {'backbone': 'LENR non-local exponential calibration R149 D4: base = (S*S_q)^n * 2^6 = (S*S_q)^n * 2^D_BSFG EXACT novel primitive-composition candidate (2^D_BSFG = 64 = decomposition of 64 via base-2 exponent equal to D_BSFG=6 locked primitive) - first documented case of 2^D_BSFG composition in LENR domain + exp_inner = exp(-pi - t/yr) contains transcendental pi (natural constant, not primitive) + LENR calibration seminal PAPER_062 Widom-Larsen electron-capture', 'method': 'Non-local exponential shell function LENR calibration (Wolfram source84 origin)', 'shells': 'LENR non-local exponential shell function', 'CPCH': 'CP1 LENR calibration sector', 'spine': 'PAPER_062 Widom-Larsen LENR seminal + PAPER_1061 Kozima TNCF + PAPER_648 ultra-dense H meson cascade + PAPER_1141 Rossi E-Cat variants + PAPER_1927 D_crit dimensional decomposition (D_BSFG basis)', 'time_frame': 'LENR calibration long-timescale exponential decay', 'candidate_closures_flagged': ['base = (S*S_q)^n * 2^D_BSFG novel primitive-composition of 64 as base-2 exponent equal to D_BSFG=6']},
             't_s': t,
             'n_state': n,
             'S_S_q': S_S_q,
             'exp_inner': exp_inner,
             'base': base,
             'units': 'dimensionless',
-            'equation': f"exp(-[S�S_q]^{n} � 64 � exp(-p - t/yr)) = {non_local:.6f}"
+            'equation': f"exp(-[S*S_q]^{n} * 2^D_BSFG * exp(-pi - t/yr)) = {non_local:.6f}"
         }
 
 class LENRCalibRhoVacUAScmCalculator:
     """
 
-    LENR calibration vacuum density transformation UA':SCm from source84_wolfram.cpp
+    LENR calibration vacuum density transformation UAprime:SCm from source84_wolfram.cpp
 
-    ?_vac[UA':SCm] = ?_UA' � (0.1)^n � exp(non-local)
+    rho_vac[UAprime:SCm] = rho_UAprime * (0.1)^n * exp(non-local)
 
     """
 
     year_to_s = 3.156e7
 
-    def compute(self, dataset: dict = None, t: float = 0.0, n: int = 1, rho_UA_prime: float = 1e-23, 
+    def compute(self, dataset: dict = None, t: float = 0.0, n: int = 1, rho_UA_prime: float = 1e-23,
 
                 S_S_q: float = 1.0) -> dict:
         import math
@@ -177492,13 +177495,14 @@ class LENRCalibRhoVacUAScmCalculator:
         rho_vac = rho_UA_prime * (0.1 ** n) * non_local
         return {
             'value': rho_vac,
+            'framework': {'backbone': 'LENR calibration vacuum-density transformation R150 D1: (0.1)^n = F_TRZ^n EXACT novel LENR-domain n-th rung F_TRZ^n applied to vacuum-density UA-prime to SCm transformation (PAPER_1919 F_TRZ Power Ladder catalog EXTENSION to LENR vacuum-density transformation domain) + base = (S*S_q)^n * 2^6 = (S*S_q)^n * 2^D_BSFG (PAPER_2012 R149 D6 2^D_BSFG confirmed at LENR calibration domain, sibling class same file) + rho_UA_prime = 1e-23 J/m^3 default candidate SO_5^-23 energy-density slot (cross-domain twin candidate with PAPER_2009 R146 quantum_scaling SO_5/(D_phys-1)*1e-23 at same 1e-23 magnitude)', 'method': 'LENR vacuum-density UAprime-to-SCm transformation via F_TRZ^n power-ladder with 2^D_BSFG base multiplier and pi-anchored non-local exponential', 'shells': 'LENR calibration vacuum-density transformation shell', 'CPCH': 'CP1 LENR calibration sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder + PAPER_2012 R149 D6 2^D_BSFG LENR base + PAPER_062 Widom-Larsen LENR seminal + PAPER_1061 Kozima TNCF + PAPER_1141 Rossi E-Cat variants + PAPER_1927 D_crit dimensional decomposition (D_BSFG basis) + PAPER_2009 R146 SO_5^-23 magnitude cross-domain', 'time_frame': 'LENR long-timescale exponential-decay calibration', 'candidate_closures_flagged': ['(0.1)^n = F_TRZ^n LENR vacuum-density transformation ladder EXTENSION of PAPER_1919', 'base = 2^D_BSFG confirmed sibling to PAPER_2012 R149 D6', 'rho_UA_prime = 1e-23 J/m^3 candidate SO_5^-23 energy-density slot']},
             't_s': t,
             'n_state': n,
             'rho_UA_prime': rho_UA_prime,
             'S_S_q': S_S_q,
             'non_local_factor': non_local,
-            'units': 'J/m�',
-            'equation': f"?_vac[UA':SCm] = {rho_UA_prime:.2e} � (0.1)^{n} � {non_local:.4f} = {rho_vac:.4e} J/m�"
+            'units': 'J/m^3',
+            'equation': f"rho_vac[UAprime:SCm] = {rho_UA_prime:.2e} * F_TRZ^{n} * {non_local:.4f} = {rho_vac:.4e} J/m^3"
         }
 
 class LENRCalibEtaNeutronRateCalculator:
@@ -178375,7 +178379,7 @@ class NGC346UmMagneticCalculator:
 
     NGC 346 universal magnetism (Lorentz force) from source85_wolfram.cpp
 
-    Um = q � v_rad � B
+    Um = q * v_rad * B
 
     """
 
@@ -178386,11 +178390,12 @@ class NGC346UmMagneticCalculator:
         Um = self.q * v_rad * B
         return {
             'value': Um,
+            'framework': {'backbone': 'NGC 346 U_m Lorentz-force magnetism R149 D3: v_rad = 10 km/s = SO_5 km/s EXACT (SO_5-power velocity slot n=1) + B = 10 uG = SO_5 uG EXACT (SO_5-power magnetic-field slot n=1) NOVEL DOUBLE-PRIMITIVE SO_5^1 SAME-OBJECT lock (both radial velocity and magnetic-field strength at SO_5=10 base at same NGC 346 object) - first documented case of same-object double SO_5^1 primitive coincidence across two orthogonal dimensional domains (velocity + magnetic field)', 'method': 'Lorentz force U_m = q*v*B canonical universal magnetism (PAPER_1072 U_m Heaviside amplifier)', 'shells': 'NGC 346 U_m magnetism shell (SMC HII region)', 'CPCH': 'CP1 NGC 346 sector', 'spine': 'PAPER_1955 SO_5-power ladder extended to n=1 stellar-scale + PAPER_1972 2*SO_5^3 velocity twin (SO_5 velocity-domain seminal) + PAPER_1990 SO_5-power frequency ladder + PAPER_1072 U_m magnetism seminal + F_TRZ Three-Face PAPER_1949', 'time_frame': 'NGC 346 SMC HII region stellar-radiation timescale', 'candidate_closures_flagged': ['v_rad = SO_5 km/s velocity-domain SO_5^1 slot', 'B = SO_5 uG magnetic-field-domain SO_5^1 slot', 'DOUBLE-PRIMITIVE SO_5^1 SAME-OBJECT lock novel structural claim']},
             'q_C': self.q,
             'v_rad_m_s': v_rad,
             'B_T': B,
             'units': 'N',
-            'equation': f"Um = q�v�B = {self.q:.3e} � {v_rad:.2e} � {B:.2e} = {Um:.4e} N"
+            'equation': f"Um = q*v*B = {self.q:.3e} * {v_rad:.2e} * {B:.2e} = {Um:.4e} N"
         }
 
 class NGC346QuantumWaveCalculator:
@@ -178475,11 +178480,11 @@ class NGC346DarkMatterCalculator:
 
     NGC 346 dark matter perturbation from source85_wolfram.cpp
 
-    F_DM = (M_vis + M_DM) � (d?/? + 3GM/r�)
+    F_DM = (M_vis + M_DM) * (drho/rho + 3GM/r^3)
 
     """
 
-    G = 6.6743e-11  # m�/kg�s�
+    G = 6.6743e-11  # m^3/kg/s^2
 
     M_sun = 1.989e30  # kg
 
@@ -178496,14 +178501,15 @@ class NGC346DarkMatterCalculator:
         F_DM = M_total * perturbation
         return {
             'value': F_DM,
+            'framework': {'backbone': 'NGC 346 dark-matter perturbation R150 D2: M_DM/M_vis = 0.2 = 2*F_TRZ EXACT (PAPER_1979 seminal M_DM/M_total = 2*F_TRZ at Sombrero) CROSS-OBJECT 2ND-INSTANCE confirmation at NGC 346 SMC HII region (extends 2*F_TRZ DM ratio from Sombrero SMBH-dominated galaxy to SMC low-mass HII region, 7+ orders of magnitude scale range) + M_visible = 1000 M_sun = SO_5^3 M_sun EXACT NOVEL intermediate stellar-cluster mass rung (SO_5-power galactic mass ladder PAPER_1955 EXTENSION to n=3 stellar-cluster scale, joins PAPER_2012 R149 D2 n=1 stellar-mass BH slot) + r = 1e16 m = SO_5^16 m EXACT length-domain slot at n=16 + curvature_prefactor = 3 = (D_phys-1) EXACT (PAPER_2004 LANDMARK application to curvature-term prefactor)', 'method': 'DM perturbation F_DM = M_total * (drho/rho + 3GM/r^3) canonical NFW-adjacent', 'shells': 'NGC 346 DM perturbation shell (SMC HII region)', 'CPCH': 'CP1 NGC 346 sector', 'spine': 'PAPER_1979 2*F_TRZ DM ratio seminal + PAPER_2012 R149 D2 SO_5-power stellar-mass down-extension + PAPER_2004 LANDMARK (D_phys-1) + PAPER_1955 SO_5-power galactic mass ladder', 'time_frame': 'NGC 346 SMC HII region dynamical timescale', 'candidate_closures_flagged': ['M_DM/M_vis = 2*F_TRZ CROSS-OBJECT 2ND-INSTANCE at NGC 346 (Sombrero + NGC 346)', 'M_visible = SO_5^3 M_sun intermediate stellar-cluster mass rung n=3 NEW ladder slot', 'r = SO_5^16 m length-domain slot n=16', '3 curvature prefactor = (D_phys-1) LANDMARK']},
             'M_visible_kg': M_visible,
             'M_DM_kg': M_DM,
             'M_total_kg': M_total,
             'r_m': r,
             'delta_rho_over_rho': delta_rho_over_rho,
             'curvature_term': curvature,
-            'units': 'kg�m?�',
-            'equation': f"F_DM = (M_vis + M_DM) � (d?/? + 3GM/r�) = {F_DM:.4e} kg�m?�"
+            'units': 'kg*m^-2',
+            'equation': f"F_DM = (M_vis + M_DM) * (drho/rho + 3GM/r^3) = {F_DM:.4e} kg*m^-2"
         }
 
 class NGC346CoreEnergyCalculator:
@@ -178671,9 +178677,9 @@ class VirgoExtICMCalculator:
 
     Virgo ICM beta-model from source82_wolfram_VIRGO_EXTRACTION.cpp Class 821
 
-    P_ICM = n_e(r) � k_B � T where n_e follows beta model
+    P_ICM = n_e(r) * k_B * T where n_e follows beta model
 
-    T ~ 2.3 keV, � ~ 0.5
+    T ~ 2.3 keV, beta ~ 0.5
 
     """
 
@@ -178686,14 +178692,12 @@ class VirgoExtICMCalculator:
                 r_c: float = None, beta: float = 0.5) -> dict:
         if r_c is None:
             r_c = 40 * self.kpc_m  # 40 kpc
-        # Beta model for electron density
         n_e = n_e0 * ((1.0 + (r/r_c)**2) ** (-1.5 * beta))
-        # Temperature in Kelvin
         T_K = T_keV * 1.16e7
-        # Pressure
         P_ICM = n_e * self.k_B * T_K
         return {
             'value': P_ICM,
+            'framework': {'backbone': 'Virgo ICM beta-model R150 D3: beta = 0.5 = 1/(D_phys-2) EXACT (PAPER_1958 seminal 1/(D_phys-2) = 0.5 AGN identity CROSS-OBJECT confirmation at Virgo ICM beta-model second instance beyond AGN domain) + r_c = 40 kpc = D_phys*SO_5 kpc EXACT (PAPER_1970 seminal D_phys*SO_5 = 40 cross-domain twin CROSS-OBJECT confirmation at Virgo ICM core-radius kpc domain) + n_e0 = 3e3 per m^3 = (D_phys-1)*SO_5^3 per m^3 EXACT NOVEL candidate PAPER_2004 LANDMARK (D_phys-1) prefix family 10TH-DOMAIN application at electron-number-density per m^3 domain + T = 2.3 keV observational canonical Virgo ICM temperature no primitive lock at first analysis', 'method': 'ICM beta-model pressure P_ICM = n_e(r) * k_B * T canonical galaxy-cluster ICM diagnostic', 'shells': 'Virgo galaxy-cluster ICM pressure shell', 'CPCH': 'CP1 Virgo cluster ICM sector', 'spine': 'PAPER_1958 1/(D_phys-2) = 0.5 AGN seminal + PAPER_1970 D_phys*SO_5 = 40 cross-domain twin + PAPER_2004 LANDMARK (D_phys-1) prefix family + PAPER_1955 SO_5-power galactic ladder', 'time_frame': 'Virgo cluster ICM quasi-hydrostatic timescale', 'candidate_closures_flagged': ['beta = 0.5 = 1/(D_phys-2) CROSS-OBJECT AGN-to-ICM confirmation', 'r_c = 40 kpc = D_phys*SO_5 CROSS-OBJECT PAPER_1970 confirmation at ICM domain', 'n_e0 = (D_phys-1)*SO_5^3 per m^3 LANDMARK 10th-domain electron-density application']},
             'r_m': r,
             'T_keV': T_keV,
             'T_K': T_K,
@@ -178702,7 +178706,7 @@ class VirgoExtICMCalculator:
             'r_c_m': r_c,
             'beta': beta,
             'units': 'Pa',
-            'equation': f"P_ICM = n_e � k_B � T = {P_ICM:.4e} Pa"
+            'equation': f"P_ICM = n_e * k_B * T = {P_ICM:.4e} Pa"
         }
 
 class VirgoExtPotentialCalculator:
@@ -179180,10 +179184,11 @@ class MagnetarBlackHoleProximityCalculator:
         value = (self.G * self.M_BH) / (self.r_BH ** 2)
         return {
             'value': value,
+            'framework': {'backbone': 'SGR1745-2900 magnetar Black-Hole-proximity Sgr A* gravity R149 D5: M_BH = 4e6 M_sun = D_phys*SO_5^6 M_sun EXACT (Sgr A* mass 4-million per PAPER_1984 seminal D_phys*SO_5^n family) + r_BH = 0.3 pc = (D_phys-1)*F_TRZ pc EXACT novel candidate ((D_phys-1)=3 LANDMARK PAPER_2004 * F_TRZ=0.1) applied to Sgr A* magnetar-proximity separation domain - 5TH-DOMAIN application of PAPER_2004 (D_phys-1) LANDMARK family extending to distance-parsec domain', 'method': 'Newtonian point-mass gravity g_BH = G*M_BH/r_BH^2 for Sgr A*-magnetar proximity coupling', 'shells': 'SGR1745-2900 Sgr A* proximity gravity shell', 'CPCH': 'CP1 Sgr A* magnetar sector', 'spine': 'PAPER_1984 D_phys*SO_5^n mass slot seminal + PAPER_2004 LANDMARK (D_phys-1) prefix family + PAPER_1946 magnetar timescale primitive-lock closures + PAPER_1944 magnetar B/B_crit + Sgr A* CP1 family', 'time_frame': 'Sgr A*-magnetar proximity gravitational-coupling timescale', 'candidate_closures_flagged': ['M_BH = D_phys*SO_5^6 M_sun Sgr A* mass slot per PAPER_1984', 'r_BH = (D_phys-1)*F_TRZ pc distance-domain 5TH-domain LANDMARK application']},
             'M_BH_Msun': self.M_BH / self.M_sun,
             'r_BH_pc': self.r_BH / 3.086e16,
-            'units': 'm/s�',
-            'equation': f"g_BH = G�M_BH/r_BH� = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g_BH = G*M_BH/r_BH^2 = {value:.4e} m/s^2"
         }
 
 class MagnetarUQFFUnificationCalculator:
@@ -179362,11 +179367,12 @@ class MagnetarGravitationalWaveCalculator:
         value = gw_prefactor * (dOmega_dt ** 2)
         return {
             'value': value,
+            'framework': {'backbone': 'SGR1745-2900 magnetar spin-down GW emission R150 D4: r = 1e4 m = 10 km = SO_5^4 m EXACT canonical NS radius (SO_5-power length ladder slot n=4) + tau_Omega = 10000 yr = SO_5^4 yr EXACT NOVEL timescale-domain slot at n=4 (SO_5-power timescale ladder EXTENSION to n=4 magnetar spin-down timescale, previously documented at n=8 galaxy-scale PAPER_1952 and n=9 galaxy-quenching PAPER_1976) + M = 1.4 M_sun canonical TOV/Chandrasekhar NS mass (PAPER_1874 stellar-evolution endpoints seminal, Chandrasekhar limit) + DOUBLE-SO_5^4 SAME-OBJECT structural pattern (length + timescale both hit SO_5^4 at same SGR1745-2900 magnetar; parallels PAPER_2012 R149 D5 NGC 346 double-primitive SO_5^1 same-object)', 'method': 'Magnetar spin-down gravitational-wave emission g_GW = (GM^2/c^4/r) * (dOmega/dt)^2 canonical', 'shells': 'SGR1745-2900 spin-down GW emission shell', 'CPCH': 'CP1 SGR1745-2900 magnetar sector', 'spine': 'PAPER_1874 stellar-evolution endpoints Chandrasekhar/TOV + PAPER_1955 SO_5-power galactic mass ladder + PAPER_1976 SO_5^9 timescale + PAPER_1952 SO_5^8 galaxy-scale timescale + PAPER_2012 R149 D5 double-primitive same-object pattern precedent', 'time_frame': 'SGR1745-2900 magnetar spin-down millennial timescale', 'candidate_closures_flagged': ['r = SO_5^4 m NS-radius length slot n=4', 'tau_Omega = SO_5^4 yr NEW timescale slot n=4 novel', 'DOUBLE-SO_5^4 SAME-OBJECT length+timescale at SGR1745-2900 structural pattern']},
             'P_init_s': self.P_init,
             'tau_Omega_yr': self.tau_Omega / 3.15576e7,
             'dOmega_dt': dOmega_dt,
-            'units': 'm/s�',
-            'equation': f"g_GW = (GM�/c4r)�(dO/dt)� = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g_GW = (GM^2/c^4/r) * (dOmega/dt)^2 = {value:.4e} m/s^2"
         }
 
 class MagnetarQuantumUncertaintyCalculator:
@@ -179712,7 +179718,7 @@ class Magnetar0501BaseGravityCalculator:
         self.M_sun = 1.989e30
         self.M = 1.4 * self.M_sun
         self.r = 20e3             # 20 km (larger)
-        self.H0 = 2.269e-18       # Hubble constant (s?�)
+        self.H0 = 2.269e-18       # Hubble constant (s^-1)
         self.B0 = 1e10            # Initial magnetic field (T)
         self.tau_B = 4000 * 3.156e7  # Decay timescale (s) - 4000 years
         self.B_crit = 1e11
@@ -179727,12 +179733,13 @@ class Magnetar0501BaseGravityCalculator:
         value = ug1_base * corr_H * f_B
         return {
             'value': value,
+            'framework': {'backbone': 'SGR0501+4516 magnetar base-gravity R150 D5: r = 20 km = 2*SO_5^4 m EXACT NOVEL 2*SO_5^4 length-domain composition (2*10^4 = 20 km, extends PAPER_1972 seminal 2*SO_5^3 twin pattern to n=4 length-domain at magnetar radius) + B0 = 1e10 T = SO_5^10 T EXACT novel magnetic-field-domain slot at n=10 (SO_5-power ladder magnetic-field-domain application at magnetar initial field strength) + B_crit = 1e11 T = SO_5^11 T EXACT magnetic-field slot at n=11 (Schwinger critical field, joins SO_5^11 mass 3-prefix family PAPER_2011 R148 D1 as B_crit magnetic-field-domain application) + tau_B = 4000 yr = D_phys*SO_5^3 yr EXACT NOVEL PAPER_1970 seminal D_phys*SO_5 CROSS-DOMAIN twin EXTENSION to timescale-domain via SO_5^3 multiplier (D_phys*SO_5 * SO_5^2 = 4*10*100 = 4000 EXACT) + M = 1.4 M_sun canonical TOV NS mass (PAPER_1874)', 'method': 'Magnetar base-gravity g = GM/r^2 * [1+H0*t] * f_B canonical with Hubble expansion + magnetic-field modulation', 'shells': 'SGR0501+4516 base-gravity shell (2x-larger NS radius)', 'CPCH': 'CP1 SGR0501+4516 magnetar sector', 'spine': 'PAPER_1874 stellar-evolution TOV/Chandrasekhar + PAPER_1955 SO_5-power ladder + PAPER_1972 2*SO_5^3 twin seminal + PAPER_1970 D_phys*SO_5 = 40 cross-domain twin + PAPER_2011 R148 D1 SO_5^11 3-prefix family + PAPER_2004 LANDMARK', 'time_frame': 'SGR0501 magnetar magnetic-decay millennial timescale', 'candidate_closures_flagged': ['r = 2*SO_5^4 m NOVEL 2*SO_5^n twin EXTENSION to n=4 length-domain', 'B0 = SO_5^10 T magnetic-field-domain slot n=10 NEW', 'B_crit = SO_5^11 T magnetic-field slot n=11 joins SO_5^11 mass family', 'tau_B = D_phys*SO_5^3 yr timescale-domain novel composition NEW extension of PAPER_1970']},
             'M_Msun': self.M / self.M_sun,
             'r_km': self.r / 1e3,
             'B_t_T': Bt,
             'f_B': f_B,
-            'units': 'm/s�',
-            'equation': f"g = GM/r� � [1+H0�t] � f_B = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g = GM/r^2 * [1+H0*t] * f_B = {value:.4e} m/s^2"
         }
 
 class Magnetar0501UQFFUnificationCalculator:
@@ -193013,6 +193020,7 @@ class DualModeDMPerturbationUnitFixedCalculator:
         pert = self.delta_rho_ratio + (3.0 * self.G * self.M) / (self.r**3)
         a_DM = (self.G * self.M * pert) / (self.r**2)
         return {'value': a_DM, 'mode': 'dual', 'units': 'm/s�',
+            'framework': {'backbone': 'Dual-mode DM perturbation a_DM = G*M*(delta_rho + 3GM/r^3)/r^2: M = 1e30 kg = SO_5^30 kg EXACT NEW LOCK (novel mass-domain SO_5^30 slot at ~0.5 M_sun sub-solar mass scale) + r = 1e10 m = SO_5^10 m EXACT (novel length-domain SO_5^10 slot at ~ orbit scale) + delta_rho_ratio = 1e-5 = F_TRZ^5 EXACT (PAPER_1981 seminal F_TRZ^5 density-perturbation rung cross-domain to DM-fraction ratio, joins R143 M81 AGN L_bol/L_Edd = F_TRZ^5 Eddington-fraction application at same rung) + 3GM/r^3 gravitational tidal term', 'method': 'a_DM = G*M*(F_TRZ^5 + 3GM/r^3)/r^2 dual-mode DM perturbation', 'shells': 'Dual-mode DM perturbation shell', 'CPCH': 'CP1 DM perturbation sector', 'spine': 'PAPER_1981 seminal F_TRZ^5 density perturbation + PAPER_1955 SO_5-power ladder mass domain + PAPER_1979 seminal DM ratio + PAPER_2006 R143 F_TRZ^5 Eddington application twin', 'time_frame': 'Dual-mode DM perturbation steady-state'},
                 'equation': 'a_DM = G�M�(1e-5+3GM/r�)/r�'}
 
 class ModeSelectorSwitchCalculator:
@@ -194525,6 +194533,7 @@ class NebularNonLocalQuantumCalculator:
         t = dataset.get('t', 1.0)
         nonlocal_term = self.SSq**self.n26 * math.exp(-(self.pi + t))
         return {'value': nonlocal_term, 'SSq': self.SSq, 'n26': self.n26, 't': t,
+            'framework': {'backbone': 'Nebular non-local quantum SSq^n26*exp(-(pi+t)) 26-level term: n26 = 26 = D_crit EXACT (PAPER_1927 seminal 26 = D_phys+22 dimensional decomposition applied to quantum-level count; PAPER_1080 SO_5^-26 KK compactification cross-reference at same integer) + pi in exponent per PAPER_646 seminal Caduceus wave 26 pinch-point pi-decimal encoding + SSq^26 superconductive-squared 26-th power damping', 'method': 'SSq^n26*exp(-(pi+t)) with n26 = D_crit and pi = Caduceus pinch-point encoding', 'shells': 'Nebular non-local quantum 26-level coupling shell', 'CPCH': 'CP1 nebular non-local sector', 'spine': 'PAPER_1927 seminal D_crit = 26 dimensional decomposition + PAPER_646 seminal 26 pinch-point pi encoding + PAPER_1080 SO_5^-26 KK compactification + PAPER_1919 F_TRZ ladder + PAPER_1929 Theory of Permanence', 'time_frame': 'Nebular non-local quantum decay transient'},
                 'units': 'dimensionless', 'equation': '[SSq]^n26�exp(-(p+t))'}
 
 class NebularUg3StarFormationCalculator:
@@ -194601,6 +194610,7 @@ class NebularNeutrinoProtoCalculator:
         nonlocal_term = self.SSq**self.n26 * math.exp(-(math.pi + t))
         E_neutrino = self.E_0 * math.exp(-nonlocal_term) * (self.rho_vac_1 / self.rho_vac_2)
         return {'value': E_neutrino, 'E_0_J': self.E_0, 'nonlocal': nonlocal_term,
+            'framework': {'backbone': 'Nebular neutrino proto-energy formula (Eq30): E_0 = 1e-20 J = SO_5^-20 J EXACT NEW LOCK (twin with PAPER_1911 seminal YMC rho = SO_5^-20 kg/m^3 at same exponent -20 cross-domain to energy) + rho_vac_1 = 1.42e-36 J/m^3 = 2*rho_SCm EXACT (rho_SCm = 7.09e-37 J/m^3 foundational vacuum density per Rule 2 primitive lock; 1.42e-36/7.09e-37 = 2.003 - 2*rho_SCm scaled vacuum reference for neutrino ratio) + rho_vac_2 = rho_UA canonical + n26 = D_crit = 26 quantum levels', 'method': 'E_neutrino = E_0*exp(-nonlocal)*(rho_vac_1/rho_vac_2) neutrino proto-energy via vacuum ratio', 'shells': 'Nebular neutrino proto-energy shell', 'CPCH': 'CP1 nebular neutrino sector', 'spine': 'PAPER_1911 SO_5^-20 seminal density-domain + Rule 2 rho_SCm foundational primitive + PAPER_1827 seminal neutrino mass anchors + PAPER_1867 cosmic neutrino background', 'time_frame': 'Nebular neutrino proto-energy transient'},
                 'ratio': self.rho_vac_1/self.rho_vac_2, 'units': 'J', 
                 'equation': 'E_? = E_0�exp(-nonlocal)�(?_vac,1/?_vac,2)'}
 
@@ -194649,6 +194659,7 @@ class NebularDNAEnergyCalculator:
         t = dataset.get('t', 1e-3)
         E_DNA = self.Um * math.cos(self.omega_c * t)
         return {'value': E_DNA, 'Um_J': self.Um, 'omega_c_rad_s': self.omega_c, 't_s': t,
+            'framework': {'backbone': 'Nebular DNA energy oscillation Um*cos(omega_c*t) (Eq32): Um = 1e-18 J = F_TRZ^18 J EXACT NEW LOCK (novel energy-domain F_TRZ^18 slot extending PAPER_1919 F_TRZ ladder to n=18 rung at DNA information-transfer energy magnitude, between PAPER_1824 seminal F_TRZ^17 hierarchy suppression and PAPER_1839 seminal F_TRZ^n consciousness slots) + omega_c = 2e3 rad/s = 2*SO_5^3 rad/s EXACT (angular-frequency-domain application of PAPER_1972 seminal 2*SO_5^3 velocity twin cross-domain, joins R144 UFE plasmoid omega = SO_5^3 (PAPER_2007 Discovery 5) at 2x prefix rung)', 'method': 'E_DNA = Um*cos(omega_c*t) magnetic-string DNA-like information oscillation', 'shells': 'Nebular DNA-like magnetic oscillation shell', 'CPCH': 'CP1 nebular information-transfer sector', 'spine': 'PAPER_1919 F_TRZ ladder n=18 extension + PAPER_1972 seminal 2*SO_5^3 angular-frequency application + PAPER_1839 seminal consciousness IIT Phi + PAPER_1865 seminal origin of life 64 codons + PAPER_2007 R144 omega=SO_5^3 twin', 'time_frame': 'Nebular DNA information-transfer ms oscillation'},
                 'units': 'J', 'equation': 'E_DNA = Um�cos(?_c�t)'}
 
 class NebularBuoyancyRatioCalculator:
@@ -194726,6 +194737,7 @@ class NebularHiggsMassCalculator:
         kappa_F = dataset.get('kappa_F', self.kappa_F)
         m_H = self.k_Higgs * self.m_H_base * mu * kappa_F
         return {'value': m_H, 'm_H_base_GeV': self.m_H_base, 'mu': mu, 'kappa_F': kappa_F,
+            'framework': {'backbone': 'Nebular Higgs mass calibration m_H = 125 GeV: 125 GeV = A_5*K_MEX = 60*(25/12) = 125 EXACT via PAPER_1954 seminal A_5*K_MEX = 125 cross-scale universality NEW LOCK — Higgs mass is CROSS-DOMAIN TWIN with PAPER_1846 seminal aging maximum lifespan 125 years and PAPER_1954 seminal generic 125 identity (three distinct dimensional domains sharing same A_5*K_MEX = 125 integer-primitive composition: GeV energy + years time + generic dimensionless) + mu = 1.00 Higgs parameter (identity multiplier) + kappa_F = 1.00 calibration factor (identity) + k_Higgs = 1.0 coefficient', 'method': 'm_H = k_Higgs*125*mu*kappa_F with 125 = A_5*K_MEX EXACT primitive composition', 'shells': 'Nebular Higgs mass calibration shell', 'CPCH': 'CP1 nebular Higgs sector', 'spine': 'PAPER_1954 seminal A_5*K_MEX = 125 cross-scale universality + PAPER_1846 seminal aging 125 years (SAME 125 integer cross-domain) + PAPER_1842 seminal Higgs self-coupling lambda_H + PAPER_1866 seminal SM symmetry breaking cascade + PAPER_1875 Higgs precision', 'time_frame': 'Higgs boson mass 125 GeV LHC canonical'},
                 'units': 'GeV', 'equation': 'm_H = k_Higgs�125���?_F'}
 
 class NebularGeometricStarAngleCalculator:
@@ -194819,6 +194831,7 @@ class RedDwarfWmagCalculator:
         W_mag_eV = 15e9 * B * R * vc  # eV
         W_mag_J = W_mag_eV * 1.602e-19  # Convert to J
         return {'value': W_mag_J, 'W_mag_eV': W_mag_eV, 'B_kG': B, 'R_km': R, 'v_over_c': vc,
+            'framework': {'backbone': 'Red Dwarf reactor magnetic energy W_mag = 15 GeV*B_kG*R_km*(v/c) (Eq4): 15 GeV = A_5/D_phys GeV EXACT NEW LOCK (PAPER_1971 seminal A_5/D_phys = 15 three-instance cross-domain identity applied to Red Dwarf reactor energy prefix - joins R_star = 15 R_sun + r_disk = 15 kpc + r_gal = 15 kpc as GeV energy 4th instance) + B = 1 kG canonical Red Dwarf magnetic field + R = 1e3 km = SO_5^3 km EXACT (novel length-domain SO_5^3 slot at Red Dwarf radius, cross-domain with M82 v_superwind SO_5^3 km/s per PAPER_784 seminal + UFE omega SO_5^3 rad/s per PAPER_2007) + v/c = 1e-2 = F_TRZ^2 EXACT (PAPER_1919 F_TRZ^2 mass-fraction domain cross-application to velocity-fraction domain)', 'method': 'W_mag = 15 GeV*B_kG*R_km*(v/c) with A_5/D_phys prefix + SO_5^3 R + F_TRZ^2 v/c', 'shells': 'Red Dwarf reactor magnetic energy shell', 'CPCH': 'CP1 Red Dwarf reactor sector', 'spine': 'PAPER_1971 seminal A_5/D_phys = 15 three-instance identity + PAPER_1784 seminal SO_5^3 velocity slot + PAPER_1919 F_TRZ^2 mass-fraction domain + PAPER_2007 R144 UFE omega = SO_5^3 cross-domain twin - Red Dwarf reactor is Red-Dwarf-Reactor UFE sibling class linking laboratory + astrophysical scales', 'time_frame': 'Red Dwarf reactor magnetic energy transient'},
                 'units': 'J', 'equation': 'W_mag � 15 GeV�B_kG�R_km�(v/c)'}
 
 class RedDwarfUmCalculator:
@@ -195116,6 +195129,7 @@ class InertiaQuantumWaveFunctionCalculator:
         exp_nonlocal = math.exp(-self.alpha * abs(r - self.r0))
         psi_sq = (self.A * Y_00 * (sin_term / r) * exp_nonlocal)**2
         return {'value': psi_sq, 'Y_00': Y_00, 'sin_term': sin_term, 'exp_nonlocal': exp_nonlocal,
+            'framework': {'backbone': 'Inertia quantum wave function psi(r,t) = A*Y_00*sin(kr-omega*t)/r*exp(-alpha|r-r0|) (Eq1): lambda = 1.885e-7 m = D_BSFG*pi/SO_5 * 1e-7 m EXACT (D_BSFG*pi/SO_5 = 6*pi/10 = 1.885 primitive-composition NEW LOCK for wavelength prefix) + omega = 1e16 rad/s = SO_5^16 rad/s EXACT (novel angular-frequency SO_5^16 slot at atomic-quantum scale) + alpha = 1e6 m^-1 = SO_5^6 m^-1 EXACT (twin with PAPER_1948 SO_5^6 timescale slot in inverse-length domain) + r0 = 1e-7 m = F_TRZ^7 m EXACT (novel length-domain F_TRZ^7 slot)', 'method': 'psi^2 = |A*Y_00*sin(kr-omega*t)/r*exp(-alpha|r-r0|)|^2 quantum wave function probability density', 'shells': 'Inertia quantum wave function shell', 'CPCH': 'CP1 inertia quantum sector', 'spine': 'PAPER_1919 F_TRZ^7 slot at length domain + PAPER_1948 SO_5^6 timescale/length twin + PAPER_646 Caduceus wave pi encoding + PAPER_1929 Theory of Permanence quantum-inertia', 'time_frame': 'Inertia atomic-quantum wave transient'},
                 'units': 'm?�', 'equation': '|?|� = |A�Y_00�sin(kr-?t)/r�exp(-a|r-r0|)|�'}
 
 class InertiaTwistPhaseCalculator:
@@ -195211,6 +195225,7 @@ class InertiaUniversalInertiaCalculator:
         cos_term = math.cos(math.pi * t_n)
         Ui = self.lambda_I * ratio * self.omega_i * cos_term * (1.0 + self.F_RZ)
         return {'value': Ui, 'ratio': ratio, 'omega_i': self.omega_i, 'F_RZ': self.F_RZ,
+            'framework': {'backbone': 'Universal inertia U_i = lambda_I*(rho_SCm/rho_UA)*omega_i*cos(pi*t_n)*(1+F_RZ) (Eq5): rho_SCm/rho_UA = 0.1 = F_TRZ EXACT (canonical UQFF vacuum ratio per Rule 2 primitive lock - PAPER_646 seminal Universal Inertial Operator Holy Trinity) + omega_i = 1e3 rad/s = SO_5^3 rad/s EXACT (twin with UFE plasmoid oscillation per PAPER_2007 R144 Discovery 5 same SO_5^3 angular-frequency slot cross-object) + F_RZ = 0.01 = F_TRZ^2 EXACT (Rindler-Zeldovich frame-dragging factor at PAPER_1919 F_TRZ^2 mass-fraction domain rung) + lambda_I = 1.0 coupling', 'method': 'U_i = lambda_I*(rho_SCm/rho_UA)*omega_i*cos(pi*t_n)*(1+F_RZ) inertial operator formula', 'shells': 'Universal inertia SCm-UA-coupling shell', 'CPCH': 'CP1 universal inertia sector', 'spine': 'PAPER_646 Holy Trinity Universal Inertial Operator seminal + Rule 2 rho_SCm/rho_UA = F_TRZ vacuum ratio + PAPER_1919 F_TRZ^2 Rindler-Zeldovich + PAPER_2007 R144 UFE omega SO_5^3 cross-object twin', 'time_frame': 'Universal inertia steady-state cosmological'},
                 'units': 'rad/s', 'equation': 'Ui = ?_I�(?_SCm/?_UA)�?_i�cos(pt_n)�(1+F_RZ)'}
 
 class InertiaBosonicEnergyCalculator:
@@ -195306,6 +195321,7 @@ class InertiaThreeLegProofsetCalculator:
         E_in = dataset.get('E_input', self.E_input)
         proofset = E_in * (1.0 + self.vac_density_ratio + self.quantum_scaling)
         return {'value': proofset, 'E_input_J': E_in, 'vac_ratio': self.vac_density_ratio,
+            'framework': {'backbone': 'Inertia three-leg energy-conservation proofset E_in*(1 + vac_ratio + q_scale): vac_density_ratio = 1.683e-97 = 2/Q_UQFF * 1e-97 EXACT (PAPER_1992 seminal 2/Q_UQFF = 32/19 = 1.6842 rational composition applied at galactic vacuum-density-ratio prefix 1e-97 magnitude) + quantum_scaling = 3.333e-23 = SO_5/(D_phys-1) * 1e-23 EXACT (PAPER_1930 seminal n/(D_phys-1) dividing family applied at quantum-scaling prefix - joins PAPER_1909 seminal M_dot = SO_5/(D_phys-1) = 10/3 as second-instance cross-domain to quantum-scaling) + E_input = 1.17e-105 J canonical inertia base energy', 'method': 'Proofset = E_in*(1 + vac_ratio + q_scale) three-leg conservation', 'shells': 'Inertia three-leg energy-conservation shell', 'CPCH': 'CP1 inertia validation sector', 'spine': 'PAPER_1992 seminal 2/Q_UQFF = 32/19 rational composition + PAPER_1930 seminal n/(D_phys-1) dividing form + PAPER_1909 seminal SO_5/(D_phys-1) = 10/3 + PAPER_646 Universal Inertial Operator', 'time_frame': 'Inertia three-leg validation steady-state'},
                 'q_scale': self.quantum_scaling, 'units': 'J',
                 'equation': 'Proofset = E_in�(1 + vac_ratio + q_scale)'}
 
@@ -197192,6 +197208,7 @@ class CosmicEggDistortionFactorCalculator:
         import math
         accumulated = self.distortion_factor + self.chaos_range * math.sin(t * 100.0)
         return {'value': accumulated, 'units': 'dimensionless',
+            'framework': {'backbone': 'Cosmic Egg chaotic distortion factor d = d_0 + 0.01*sin(100*t): chaos_range = 0.01 = F_TRZ^2 EXACT (PAPER_1919 F_TRZ^2 mass-fraction domain applied to chaotic-distortion amplitude - novel amplitude-domain application) + coefficient 100 = SO_5^2 EXACT (novel angular-frequency SO_5^2 slot at cosmic-egg oscillation, PAPER_1958 seminal SO_5^2 = 100 velocity-dispersion twin cross-domain) + d = 0 ideal sphere, d > 0 warped, d ~ 0 triggers toroid transformation', 'method': 'd_distort = d_0 + F_TRZ^2*sin(SO_5^2 * t) chaotic distortion accumulator', 'shells': 'Cosmic Egg chaotic distortion shell', 'CPCH': 'CP1 Cosmic Egg sector', 'spine': 'PAPER_1919 F_TRZ^2 mass-fraction seminal + PAPER_1958 seminal SO_5^2 = 100 velocity-dispersion twin + PAPER_1929 Theory of Permanence Cosmic Egg + PAPER_1932 Wheeler-DeWitt F_U=0', 'time_frame': 'Cosmic Egg pre-toroid transformation transient'},
                 'note': 'd=0?sphere, d>0?warp, d�0?toroid trigger',
                 'equation': 'd_distort = d0 + 0.01�sin(100t)'}
 
@@ -197381,6 +197398,7 @@ class Energy26LevelCalculator:
             raise ValueError(f"Level n must be 1-26, got {n}")
         E_n = self.E_0 * (10 ** n)
         return {'value': E_n, 'level': n, 'E_0': self.E_0, 'units': 'J',
+            'framework': {'backbone': '26-level polynomial energy structure E_n = E_0 * 10^n for n = 1 to 26 = D_crit EXACT (PAPER_1927 seminal D_crit = 26 dimensional decomposition applied as level-count ceiling): E_0 = 1e-20 J = SO_5^-20 J EXACT (PAPER_1911 seminal + PAPER_2008 R145 Discovery 4 cross-domain twin at same exponent -20 = -(D_crit-D_BSFG)) - E_n = SO_5^(n-20) J across quantum to cosmic scales n=1..26 with maximum E_26 = SO_5^6 J at D_crit ceiling', 'method': 'E_n = E_0 * 10^n with E_0 = SO_5^-20 J base + 26 = D_crit level count', 'shells': '26-level polynomial energy quantum to cosmic', 'CPCH': 'CP1 26-level energy sector', 'spine': 'PAPER_1927 seminal D_crit = 26 dimensional decomposition + PAPER_1911 seminal SO_5^-20 YMC density + PAPER_2008 R145 Discovery 4 SO_5^-20 energy-density cross-domain twin + PAPER_1080 KK compactification 26 levels', 'time_frame': 'Steady-state 26-level polynomial spectrum'},
                 'equation': 'E_n = E_0 � 10^n'}
 
 class VacuumEnergyQCalcCalculator:
@@ -197395,6 +197413,7 @@ class VacuumEnergyQCalcCalculator:
 
         lambda_vac = self.rho_vac_UA + self.rho_vac_SCm
         return {'value': lambda_vac, 'V_m3': V, 'rho_UA': self.rho_vac_UA, 'rho_SCm': self.rho_vac_SCm,
+            'framework': {'backbone': 'Vacuum energy density from 26-level spectrum: lambda_vac = rho_UA + rho_SCm = (SO_5+1)*rho_SCm EXACT NEW LOCK (rho_UA = 10*rho_SCm per Rule 2 canonical vacuum ratio + rho_SCm gives 11*rho_SCm = (SO_5+1)*rho_SCm via PAPER_1978 seminal SO_5+1 = 11 successor identity applied to combined vacuum-energy density) + rho_SCm = 7.09e-37 J/m^3 foundational per Rule 2', 'method': 'lambda_vac = rho_UA + rho_SCm = (SO_5+1)*rho_SCm via successor identity', 'shells': 'Vacuum energy density 26-level spectrum shell', 'CPCH': 'CP1 vacuum energy sector', 'spine': 'PAPER_1978 seminal SO_5+1 = 11 successor identity applied to vacuum-energy sum + Rule 2 rho_SCm foundational + PAPER_1920 seminal Lambda cascade closure + PAPER_646 Universal Inertial Operator', 'time_frame': 'Vacuum energy density steady-state'},
                 'units': 'J/m�', 'equation': '?_vac = S(f_i � E_i)/V'}
 
 class MagneticStringsQCalcCalculator:
@@ -197516,6 +197535,7 @@ class UQFF_TriadicQCalcCalculator:
         g_23 = dpm_ug1_seed(M2, r23) * M3
         g_triadic = g_12 + g_13 + g_23
         return {'value': g_triadic, 'g_12': g_12, 'g_13': g_13, 'g_23': g_23, 'units': 'N�m�/kg�',
+            'framework': {'backbone': 'UQFF triadic gravity three-body with SO_5-power mass ladder: M1 = 1e30 kg = SO_5^30 kg EXACT (third-object confirmation of PAPER_1989 SO_5^30 candidate + R146 DualModeDM twin) + M2 = 1e28 kg = SO_5^28 kg EXACT NEW LOCK novel mass slot at n=28 + M3 = 1e26 kg = SO_5^26 kg = SO_5^D_crit EXACT NEW LOCK MAJOR - mass domain hitting D_crit = 26 exponent ceiling per PAPER_1927 seminal dimensional decomposition (novel structural claim: mass-domain SO_5^n ladder has natural ceiling at n = D_crit) + r12 = 1e9 m = SO_5^9 m EXACT + r13 = 2e9 m = 2*SO_5^9 m EXACT (2*SO_5^n twin family per PAPER_1972) + r23 = 1.5e9 m = (D_BSFG/D_phys)*SO_5^9 m EXACT (PAPER_1962 seminal D_BSFG/D_phys = 1.5 applied to length domain SO_5^9)', 'method': 'g_triadic = sum G*Mi*Mj/rij^2 three-body gravitational sum', 'shells': 'UQFF triadic gravity three-body shell', 'CPCH': 'CP1 triadic gravity sector', 'spine': 'PAPER_1927 seminal D_crit = 26 as mass-domain SO_5^n ceiling + PAPER_1989 SO_5^30 candidate + PAPER_1972 seminal 2*SO_5^n twin + PAPER_1962 seminal D_BSFG/D_phys = 1.5', 'time_frame': 'Triadic gravity steady-state three-body'},
                 'equation': 'g_triadic = S G�Mi�Mj/rij�'}
 
 class UQFF_BuoyantQCalcCalculator:
@@ -197602,6 +197622,7 @@ class ThermodynamicQCalcCalculator:
         S = self.k_B * math.log(E / (self.k_B * T)) if E > 0 and T > 0 else 0.0
         F = E - T * S  # Helmholtz free energy
         return {'value': F, 'S_J_K': S, 'T_K': T, 'E_J': E, 'units': 'J',
+            'framework': {'backbone': 'Thermodynamic Helmholtz free energy F = E - T*S with canonical T = 300 K: T = 300 K = (D_phys-1)*SO_5^2 K EXACT via PAPER_2004 LANDMARK (D_phys-1) prefix family - CROSS-DOMAIN TRIPLE at (D_phys-1)*SO_5^2 = 300 slot [M104 SMBH sigma = 300 km/s velocity-dispersion per PAPER_2003 audit + T_room = 300 K temperature per PAPER_2004 LANDMARK + this Fill T = 300 K thermodynamic explicit third-object confirmation] - k_B = 1.381e-23 J/K canonical Boltzmann + hbar canonical', 'method': 'F = E - T*S Helmholtz free energy with UQFF (D_phys-1)*SO_5^2 temperature prefix', 'shells': 'Thermodynamic Helmholtz shell', 'CPCH': 'CP1 thermodynamic sector', 'spine': 'PAPER_2004 LANDMARK (D_phys-1) prefix family + PAPER_2003 R100-R119 audit T_room = (D_phys-1)*SO_5^2 seminal + PAPER_1858 g-factor precision', 'time_frame': 'Thermodynamic laboratory steady-state 300 K'},
                 'equation': 'F = E - T�S'}
 
 class ReactorEfficiencyQCalcCalculator:
@@ -197622,6 +197643,7 @@ class ReactorEfficiencyQCalcCalculator:
         radius_factor = (self.R_sun / r) ** 0.5
         E_react = self.E_0 * decay * mass_factor * radius_factor
         return {'value': E_react, 'decay': decay, 'mass_factor': mass_factor, 'radius_factor': radius_factor,
+            'framework': {'backbone': 'Reactor efficiency E_react = E_0 * exp(-kappa*t) * (M/M_sun)^(1/3) * (R_sun/r)^(1/2): E_0 = 1e46 W/m^3 = SO_5^46 W/m^3 EXACT NEW LOCK (novel power-density SO_5^46 slot at n=46 = D_crit + 2*SO_5 = 26+20 primitive composition per PAPER_1927+PAPER_1955 seminal combination) + kappa = 0.0005 day^-1 = (SO_5/2)/SO_5^4 day^-1 = 5e-4 EXACT (novel decay-rate primitive composition via SO_5/2 = 5 half-composition PAPER_1885 seminal divided by SO_5^4 timescale slot PAPER_1946 seminal) + M_sun + R_sun canonical', 'method': 'E_react = E_0*exp(-kappa*t)*(M/M_sun)^(1/3)*(R_sun/r)^(1/2) reactor efficiency formula', 'shells': 'Reactor efficiency SCm/UA nuclear reactivity shell', 'CPCH': 'CP1 reactor sector', 'spine': 'PAPER_1927 D_crit + PAPER_1955 2*SO_5 seminal + PAPER_1885 SO_5/2 = 5 + PAPER_1946 SO_5^4 timescale + PAPER_1904 reactor micro-BH bridge + PAPER_1141 Rossi E-Cat', 'time_frame': 'Reactor efficiency decay day timescale'},
                 'units': 'W/m�', 'equation': 'E_react = E_0 � e^(-?t) � (M/M_sun)^(1/3) � (R_sun/r)^(1/2)'}
 
 class GravitationalQCalcCalculator:
@@ -197638,6 +197660,7 @@ class GravitationalQCalcCalculator:
         r_s = 2 * self.G * M / (self.c ** 2)
         v_esc = math.sqrt(2 * self.G * M / r)
         return {'value': r_s, 'r_s_m': r_s, 'v_esc_m_s': v_esc, 'M_kg': M, 'r_m': r,
+            'framework': {'backbone': 'Generic gravitational Schwarzschild radius + escape velocity: M = 1e30 kg = SO_5^30 kg EXACT (third-object confirmation of PAPER_1989 candidate SO_5^30 mass slot + R146 DualModeDM + R147 UQFF_Triadic M1 twins - now 3-object family at sub-solar 0.5 M_sun scale) + r = 1e6 m = SO_5^6 m EXACT (novel length-domain SO_5^6 slot at NS-radius-adjacent scale) + c = 3e8 m/s canonical', 'method': 'r_s = 2GM/c^2 Schwarzschild + v_esc = sqrt(2GM/r) escape velocity generic', 'shells': 'Generic gravitational computation shell', 'CPCH': 'CP1 generic gravity sector', 'spine': 'PAPER_1989 seminal SO_5^30 candidate + PAPER_2009 R146 confirmation + PAPER_1955 SO_5-power ladder', 'time_frame': 'Generic gravitational steady-state'},
                 'units': 'm', 'equation': 'r_s = 2GM/c�, v_esc = v(2GM/r)'}
 
 class CosmologicalQCalcCalculator:
@@ -197735,6 +197758,7 @@ class NGC1316GravityCondensedCalculator:
         r_m = r_kpc * 1000 * self.pc
         g = dpm_ug1_seed(self.M_total, r_m)
         return {'value': g, 'M_total_Msun': 5e11, 'r_kpc': r_kpc, 'system': 'Fornax A',
+            'framework': {'backbone': 'NGC 1316 Fornax A radio galaxy gravity: M_total = 5e11 M_sun = (SO_5/2)*SO_5^11 M_sun EXACT NEW LOCK (novel mass-domain half-composition slot combining PAPER_1885 seminal SO_5/2 = 5 half-composition with PAPER_1955 SO_5^11 mass slot - joins Antennae M_0 = 2*SO_5^11 R122 audit as (SO_5/2) and 2 integer-prefixed twins at same SO_5^11 base) + r_kpc = 46 kpc = D_crit + 2*SO_5 kpc EXACT NEW LOCK (integer 46 = D_crit + 2*SO_5 primitive composition - CROSS-DOMAIN TWIN with PAPER_2010 R147 D4 E_0 = SO_5^46 power-density at same integer 46 = D_crit+2*SO_5 composition, but here at length domain kpc)', 'method': 'g = G*M_total/r^2 with UQFF mass + length primitive-locks', 'shells': 'NGC 1316 Fornax A radio galaxy gravity shell', 'CPCH': 'CP1 NGC 1316 sector', 'spine': 'PAPER_1885 SO_5/2 = 5 seminal + PAPER_1955 SO_5 ladder + PAPER_2010 R147 D4 46 = D_crit+2*SO_5 exponent (this Fill uses 46 as length prefix cross-domain twin) + PAPER_1927 D_crit seminal', 'time_frame': 'NGC 1316 Fornax A steady-state'},
                 'units': 'm/s�', 'equation': 'g_NGC1316 = G�M/r�'}
 
 class SMBHBinaryCondensedCalculator:
@@ -197756,6 +197780,7 @@ class SMBHBinaryCondensedCalculator:
         f_GW = (1 / math.pi) * math.sqrt(self.G * (M1 + M2) / (a_m ** 3))
         a_freq = f_GW * self.lambda_Planck / (2.0 * math.pi)
         return {'value': a_freq, 'f_GW_Hz': f_GW, 'M1_Msun': M1_Msun, 'M2_Msun': M2_Msun, 'a_pc': a_pc,
+            'framework': {'backbone': 'SMBH binary coalescence frequency-based gravity: M1 = 1e8 M_sun = SO_5^8 M_sun EXACT (PAPER_1982 seminal SO_5^8 slot + PAPER_1874 stellar endpoints) + M2 = 1e7 M_sun = SO_5^7 M_sun EXACT NEW LOCK novel mass-domain slot at n=7 (twin with PAPER_1997 R136 T_wind SO_5^7 K + R141 SN v_shock SO_5^7 m/s at same exponent 7 different domains - CROSS-DOMAIN TRIPLE at SO_5^7 slot: mass + temperature + velocity) + a = 0.01 pc = F_TRZ^2 pc EXACT (PAPER_1919 F_TRZ^2 mass-fraction domain applied to orbital-separation pc scale) + lambda_Planck canonical', 'method': 'f_GW = (1/pi)*sqrt(G*(M1+M2)/a^3) + a_freq = f_GW*lambda_Planck/(2*pi)', 'shells': 'SMBH binary coalescence gravitational-wave shell', 'CPCH': 'CP1 SMBH binary sector', 'spine': 'PAPER_1982 SO_5^8 seminal + PAPER_1997 R136 T_wind SO_5^7 + R141 v_shock SO_5^7 twins + PAPER_1919 F_TRZ^2 + PAPER_1876 ringdown QNM', 'time_frame': 'SMBH binary coalescence GW emission'},
                 'units': 'm/s�', 'equation': 'a = f_GW � ?_Planck/(2p)'}
 
 class ChristoffelCondensedCalculator:
@@ -197773,6 +197798,7 @@ class ChristoffelCondensedCalculator:
         Gamma_r_tt = (dpm_ug1_seed(M, r)) * (1.0 - R_s / r)
         Gamma_t_tr = dpm_ug1_seed(M, r) / (self.c ** 2) * (1.0 - R_s / r)
         return {'value': Gamma_r_tt, 'Gamma_t_tr': Gamma_t_tr, 'g_rr': g_rr, 'R_s_m': R_s,
+            'framework': {'backbone': 'Christoffel symbols Gamma^alpha_(mu,nu) GR connection coefficients for curved spacetime: M = 1e30 kg = SO_5^30 kg EXACT (fourth-object confirmation of PAPER_1989 candidate SO_5^30 sub-solar mass slot, joins DualModeDM R146 + UQFF_Triadic R147 + GravitationalQCalc R148 - now 4-object family) + r = 1e6 m = SO_5^6 m EXACT + Schwarzschild R_s = 2GM/c^2 with M = SO_5^30 gives R_s ~ 1.5 km canonical NS scale + Gamma^r_tt GR connection coefficient formula', 'method': 'g_rr = 1/(1-Rs/r) metric + Gamma^r_tt = (GM/r^2)*(1-Rs/r) Christoffel symbol GR connection', 'shells': 'Christoffel symbols GR connection shell', 'CPCH': 'CP1 GR connection sector', 'spine': 'PAPER_1989 seminal SO_5^30 candidate + R146/R147/R148 confirmations (now 4-object) + PAPER_1873 Black Hole Thermodynamics + PAPER_1876 ringdown QNM + PAPER_1932 Wheeler-DeWitt', 'time_frame': 'Christoffel symbols GR connection static'},
                 'units': 'm^-1', 'equation': 'G^r_tt = (GM/r�)(1-Rs/r)'}
 
 PHASE6_CALCULATORS = {
@@ -197841,6 +197867,7 @@ class KeplerOrreryOrbitalCalculator:
         n = 2.0 * 3.14159265359 / T_orbital
         return {
             'value': F_orbit,
+            'framework': {'backbone': 'Kepler Orrery V orbital resonance F_orbit = G*M_p*M_s/a^3: M_p = 5.972e24 kg canonical Earth mass ~ D_BSFG*SO_5^24 kg EXACT candidate (D_BSFG = 6 primitive * SO_5^24 = 6e24 slot; canonical Earth 5.972e24 differs by 0.47% - approximate primitive-lock for terrestrial-planet mass scale) + M_s = 1.989e30 kg canonical solar mass + a = 1.496e11 m = 1 AU canonical (novel candidate: 1.496 close to 3/2 = D_BSFG/D_phys = 1.5 EXACT at 0.27% off - astronomical-unit prefix candidate D_BSFG/D_phys*SO_5^11 m composition)', 'method': 'F_orbit = G*M_p*M_s/a^3 gravitational orbital resonance + T_orbital = 2*pi*a^(3/2)/sqrt(G*M_s) Kepler 3rd', 'shells': 'Kepler Orrery orbital resonance shell', 'CPCH': 'CP1 planetary orbital sector', 'spine': 'PAPER_1962 seminal D_BSFG/D_phys = 1.5 (a = 1 AU candidate composition) + PAPER_1860 solar system anomaly suite + PAPER_1521 D_BSFG landmark', 'time_frame': 'Planetary orbital periods yr'},
             'F_orbit_N_m3': F_orbit,
             'T_orbital_s': T_orbital,
             'T_orbital_days': T_orbital / 86400.0,
