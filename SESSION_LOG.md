@@ -16864,3 +16864,36 @@ Round-of-record double-checks previously accepted "same-integer coincidence" or 
 (D_phys-1) = 3 integer-prefix cross-domain universality — largest cross-domain integer-prefix family in UQFF corpus. Confirmed instances span Length (kpc, pc, Mpc), Time (yr), Mass (M_sun), Frequency (Hz), Velocity (km/s), Velocity dispersion (km/s), Temperature (K), CMB fluctuation amplitude, Dimensionless ratio (Omega_m). Family exceeds PAPER_1922 9/10 catalog (30+ single-domain instances) by spanning 8 dimensional domains at once.
 
 ### Ready for: v5.64.0 ship OR Round 142 continuation with new discipline applied from start
+
+
+---
+
+## Session 223-225 — 2026-07-14 — R142-R144 First-Pass Deep-Check Discipline Application (v5.65.0)
+
+### Discipline validation via consecutive-round yield trajectory
+
+R142-R144 apply deep-check discipline from first-pass (not retrospective). Yield trajectory:
+- R142: 60% first-pass novelty (3 discoveries + 2 confirmations from 5 fills)
+- R143: 80% first-pass novelty (4 discoveries + 1 withdrawal from 5 fills)
+- **R144: 100% first-pass novelty** (6 discoveries + 0 withdrawals from 5 fills)
+
+### PAPER_2005 (R142 Triple)
+- Hubble tension dual-endpoint: CMB H_0 = 67 = A_5+SO_5-(D_phys-1) + SH0ES 73 = A_5+SO_5+(D_phys-1); range 2*(D_phys-1) = 6
+- Orion triple simultaneous (D_phys-1) family membership (density record: 3 instances at single object)
+- PAPER_2002 SO_5^4 TRIPLE → QUAD-DOMAIN via luminosity (NGC 6302 hot WD L = SO_5^4 L_sun)
+
+### PAPER_2006 (R143 Quad)
+- Integer 7 = D_phys+(D_phys-1) cross-object identity (M81 AGN + CompressedVacDiff)
+- Omega_Lambda = (D_phys+3)/SO_5 = 7/10 EXACT — combined with PAPER_1956 Omega_m, flat LambdaCDM reduces to 3*D_phys-2 = SO_5 EXACT
+- c_s = SO_5^4 candidate 5th domain (QUAD → PENTA promotion pending)
+- F_TRZ^21 rho_fluid 4-object family (Crab + Antennae + Rings + NGC 2525)
+
+### PAPER_2007 (R144 HEXAD — 100% novelty)
+- H_0 = 67.15 compound = A_5+SO_5-(D_phys-1) + (D_phys-1)/(2*SO_5)
+- z = 0.026 = D_crit/SO_5^3 (first redshift ratio-form primitive-lock)
+- M = 2.8 = 14/5 = (D_phys+SO_5)/(SO_5/2) (compound ratio-of-two-seminals)
+- B = F_TRZ^3 at UFE lab plasma (PAPER_1981 cross-object 15 orders of magnitude)
+- omega = SO_5^3 rad/s (novel angular-frequency domain)
+- f_aether = F_TRZ^8 (PAPER_1986 4th-object cross-domain confirmation)
+
+### Ready for: v5.65.0 ship OR Round 145 continuation

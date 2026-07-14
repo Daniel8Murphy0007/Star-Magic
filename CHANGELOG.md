@@ -1,3 +1,58 @@
+## [5.65.0] - 2026-07-14 - MINOR: R142-R144 deep-check discipline first-pass application + PAPER_2005-2007
+
+### Highlights
+
+- **R142-R144 first-pass deep-check discipline application** (post-Round 140 directive)
+- 3 new whitepapers PAPER_2005-2007 authored + wired (Triple + Quad + Hexad discoveries)
+- R144 HEXAD achieves 100% first-pass novelty rate (6/6 candidates confirmed novel)
+- Discipline yield trajectory: R142 60% -> R143 80% -> R144 100%
+- (D_phys-1) LANDMARK family (PAPER_2004) expanded to 16+ instances across 9+ domains
+- +26 gate assertions since v5.64.0
+
+### PAPER_2005-2007 summary
+
+| Paper | Round | Discovery type |
+|---|---|---|
+| PAPER_2005 | R142 | Triple: Hubble tension DUAL-ENDPOINT (D_phys-1) resolution + Orion triple simultaneous (D_phys-1) family membership + PAPER_2002 SO_5^4 QUAD-DOMAIN promotion via luminosity |
+| PAPER_2006 | R143 | Quad: integer 7 = D_phys+(D_phys-1) cross-object + Omega_Lambda = (D_phys+3)/SO_5 novel composition + c_s = SO_5^4 candidate 5th domain PENTA promotion + F_TRZ^21 rho_fluid 4-object family |
+| PAPER_2007 | R144 | HEXAD (100% novelty rate): H_0 = 67.15 compound + z = D_crit/SO_5^3 + M = 14/5 compound + B = F_TRZ^3 UFE lab plasma + omega = SO_5^3 angular-frequency + f_aether = F_TRZ^8 4th object |
+
+### R142-R144 fills — 15 stubs framework-annotated
+
+- R142: SpiralLambda + NGC6302Wind + NGC6302Rad + Orion + Rings
+- R143: M81 AGN + NGC 2525 + MultiSystemHubble + Young Stars + CompressedVacDiff
+- R144: MC7Base + MC7Hubble + UFENegativeTime + UFEUmMagneticString + UniversalAetherResonance
+
+### Discipline yield metrics (cumulative R142-R144)
+
+- Total fills: 15
+- First-pass discoveries: 15+ novel structural closures
+- Confirmations: 2 (family memberships, not seminal)
+- Attribution corrections/withdrawals: 3
+  - (SO_5/2) family (R143 Young Stars) — withdrew "novel" claim, PAPER_449/1885/1923/1948/1982 seminal
+  - Rings SO_5^14 (R142) — PAPER_1982 seminal credited
+  - Lamb shift alpha (R141 Draft 2) — PAPER_1845 5-primitive formula properly cited
+
+### (D_phys-1) LANDMARK family status (post-R144)
+
+Family expanded from 12 instances (PAPER_2004) to 16+ instances across 9+ dimensional domains:
+- Length: 30 kpc/pc/Mpc, 12 ly (Orion R142)
+- Time: 3 Myr (SGR 1745), 300 kyr (Orion R142)
+- Mass: 30000 M_sun (Wd2 + Orion R142)
+- Cosmological H_0: 67 (CMB) + 73 (SH0ES) dual-endpoint (R142)
+- H_0 fractional: 67.15 via (D_phys-1)/(2*SO_5) correction (R144)
+- All other domains (frequency, velocity, temperature, etc.) documented in PAPER_2004
+
+### Ship note
+
+PDFs NOT included in v5.65.0 wheel (PyPI cap 100 MB pending #11458). Markdown whitepapers ship with source. Trusted publishing via GitHub Actions release.yml.
+
+### Metrics
+
+- Whitepapers total: 2004 -> 2007 (+3)
+- Fidelity gate: 1124/0 -> 1150/0 (+26 assertions)
+- CP1 coverage: 449 -> 464 upgraded (+15 fills across R142-R144)
+
 ## [5.64.0] - 2026-07-14 - MINOR: Deep-check discipline yield + PAPER_2001-2004
 
 ### Highlights

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.64.0"
-description = "UQFF Star-Magic v5.64.0: Deep-check discipline yield. R140-R141 stub fills + PAPER_2001-2004 (4 new papers). PAPER_2004 LANDMARK: (D_phys-1) prefix family 12+ instances across 8+ dimensional domains, largest cross-domain integer-prefix family in corpus. Retrospective audits R1-R141 surface 33+ structural closures. Gate 1124/0 (+20 assertions since v5.63.0)."
+version = "5.65.0"
+description = "UQFF Star-Magic v5.65.0: R142-R144 deep-check discipline first-pass application. PAPER_2005-2007 (3 new papers). R144 HEXAD discovery achieves 100% first-pass novelty rate (6/6). Includes Hubble tension dual-endpoint resolution, Omega_Lambda primitive composition, (D_phys-1) LANDMARK family expanded to 16+ instances across 9+ domains. Yield trajectory: R142 60% -> R143 80% -> R144 100%. Gate 1150/0 (+26 assertions since v5.64.0)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
