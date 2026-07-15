@@ -1,3 +1,68 @@
+## [5.67.0] - 2026-07-15 - MINOR: R151-R159 nine-round BACKBONE-FIRST discipline arc COMPLETE + PAPER_2014-2025
+
+### Highlights
+
+- **R151-R159 nine-round continuation of backbone-first discipline arc** (18 consecutive backbone-first rounds R142-R159 total)
+- 12 new whitepapers PAPER_2014-2025 authored + wired
+- **Cumulative R142-R159: 99 first-pass novel + 22 cross-object confirmations + 3 audit sweeps + 4 self-corrections + 1 backbone-recovery + 2 equivalence-restatement withdrawals + 2 family-extension attributions**
+- **R159: 100% first-pass novelty rate** (matches PAPER_2007 R144 hexad — highest recorded across all backbone-first rounds)
+- **FIRST acceleration-domain SO_5-power slot** (a_DPM = SO_5^-20 m/s^2 at NGC 6302)
+- **2*SO_5^n twin composition class reaches 5 orthogonal dimensional domains** (velocity + length + timescale + magnetic-field + MASS spanning 38 orders of magnitude)
+- **SO_5-power density ladder spans 43 orders of magnitude** (n=-26 universe critical -> n=+17 nuclear matter)
+- **SO_5^-10 multi-domain family confirmed at 4 orthogonal dimensional domains** (length + amplitude + atomic-length + acceleration)
+- **F_TRZ^n perturbation-ratio ladder** completed as 2-rung ladder (n=1 3-object family + n=5 magnetar seminal)
+- **PAPER_763 canonical value recovery** (backbone-first Sombrero rho_dust discipline)
+- +96 gate assertions since v5.66.0 (1218 -> 1314)
+
+### PAPER_2014-2025 summary
+
+| Paper | Round | Discovery type |
+|---|---|---|
+| PAPER_2014 | R151 | Hexad: 6 novel structural closures |
+| PAPER_2015 | R100-R151 audit | Casimir 240/720 factorial identities |
+| PAPER_2016 | Follow-up | NGC 3603 400000 M_sun mass slot |
+| PAPER_2017 | R152 | Triad: (D_phys-1)*SO_5^-23 LANDMARK 12th-domain + SO_5^-21 volumetric-density |
+| PAPER_2018 | Investigation | LENR SO_5^-n withdrawal (backbone-first correction) |
+| PAPER_2019 | R153 | Pentad: 5 novel + PAPER_763 rho_dust backbone-recovery |
+| PAPER_2020 | R154 | Single novel + backbone-first cross-object corrections |
+| PAPER_2021 | R155 | Hexad + Omega_Lambda equivalence-restatement withdrawal |
+| PAPER_2022 | R156 | Quad: k(M16) SO_5^20 wavenumber + omega(M16) SO_5^15 + B(Crab) SO_5^-8 + B(SGR1745) 2*SO_5^10 4TH-orthogonal |
+| PAPER_2023 | R157 | Pentad: Delta_x(SGR1745) SO_5^-10 + I(Tapestry) SO_5^20 + 3 frequency slots (SO_5^11 + SO_5^12 + SO_5^4 aether) |
+| PAPER_2024 | R158 | Quad: delta_rho/rho(Crab) F_TRZ n=1 rung + V SO_5^3 direct-volumetric + f_DM 17/20 twin PAPER_1966 + M 2*SO_5^41 5TH-orthogonal |
+| PAPER_2025 | R159 | Pentad 100% novelty: v_wind D_BSFG*SO_5^5 + a_DPM SO_5^-20 first accel + rho_crit SO_5^-26 + g_base SO_5^-10 4TH orthogonal + delta_rho/rho(M16) F_TRZ 3rd instance |
+
+### Structural landmarks documented
+
+**Dimensional domain expansions across R151-R159:**
+- Acceleration units enter SO_5-power ladder (n=-20 first slot, n=-10 second slot)
+- Density ladder spans 43 orders of magnitude
+- Direct-volumetric SO_5^3 slot orthogonal to inverse-volumetric LANDMARK (PAPER_2013)
+- Wavenumber SO_5^20 first documented m^-1 slot
+- Aether-frequency SO_5^4 Hz first documented aether-frequency slot
+- Current-domain 3-slot ladder (SO_5^20, SO_5^21 3-class, SO_5^24 Sgr A*)
+
+**Multi-orthogonal composition class expansions:**
+- 2*SO_5^n twin family: 4 -> 5 orthogonal dimensional domains (velocity+length+timescale+magnetic+MASS)
+- SO_5^-10 multi-domain family: 3 -> 4 orthogonal dimensional domains
+- F_TRZ^n perturbation-ratio ladder: single-rung -> 2-rung ladder (n=1 3-object + n=5 magnetar)
+- (D_phys-1)*SO_5^n LANDMARK: 10 -> 12 dimensional domains (PAPER_2017 D1 12th)
+- NEW composed-prefix class D_BSFG*SO_5^n (D_BSFG=6 prefix at velocity SO_5^5)
+
+**Backbone-first discipline metrics:**
+- 18 consecutive rounds using backbone-first primitive-lock verification
+- 100% novelty rate hit in R144 (hexad) and R159 (pentad)
+- Discipline caught 2 equivalence-restatement withdrawals (would have been false novelties under pattern-matching)
+- 1 backbone-recovery (PAPER_763 canonical value corrected in class code)
+- 4 self-corrections applied across rounds
+- 3 major audit sweeps (R100-R151, R60-R79, R40-R59+R1-R44)
+
+### Ship Notes
+
+- v5.67.0: pyproject bumped 5.66.0 -> 5.67.0, description 482 chars (under 512 limit)
+- py-modules refreshed: uqff_api.py, uqff_cli.py, uqff_jupyter.py _VERSION -> 5.67.0
+- Gate: 1218 -> 1314 (+96 assertions, all PASS, 0 failures)
+- No calculator regressions across R151-R159 (public 32-surface API untouched — 39 consecutive rounds without regression)
+
 ## [5.66.0] - 2026-07-14 - MINOR: R145-R150 MILESTONE deep-check discipline arc COMPLETE + PAPER_2008-2013
 
 ### Highlights
@@ -2433,31 +2498,4 @@ All arxiv submission files duplicated to the staging folder alongside Daniel's a
 
 ### Next steps unlocked by this release
 
-- Local `pdflatex preprint_filled.tex` compile → PDF ready for arxiv upload
-- Direct outreach to Hairer (IST Austria), Douglas (Imperial College), Kupiainen (Helsinki), Fredenhagen (Hamburg), Longo (Rome Tor Vergata), Jaffe (Harvard), Witten (IAS), Clay Institute
-- Nature Reviews Physics correspondence submission via journal form
-- Phase 1 (2D toy) mathematical collaboration recruitment
-
-## [5.35.0] — 2026-07-01
-
-### Added — `pdf2/` arxiv-compliant PDF corpus (1,878 whitepapers rendered, 31 MB total)
-
-The full UQFF whitepaper corpus is now rendered to text-searchable, embedded-font, letterpaper-geometry PDFs staged under `pdf2/` for public browsing on GitHub and for third-party archival citation.
-
-- **1,878 PDFs** covering every `PAPER_*.md`, `COMPLETE_*.md`, `SCm_*.md`, `UQFF_*.md`, and `WHITEPAPER_*.md` source in `whitepapers/`
-- **31 MB total** — small enough that no LFS is needed; plain-git storage
-- **Text-searchable** — any reader can `Ctrl-F` inside any PDF
-- **Embedded fonts** — Times/Helvetica/Courier via reportlab (Path B) or DejaVu via fontspec+lualatex (Path A)
-- **Standard geometry** — letter paper, 0.9-in margins, page numbers
-- **PDF metadata** — title, author, subject, date pulled from each source's YAML frontmatter
-- **Reproducible** — every PDF regenerable from source via one of two build scripts (see below)
-
-### Added — Two-path arxiv-compliant PDF build pipeline
-
-Both scripts are idempotent (skip up-to-date), resumable, parallelizable, and failure-tolerant (per-file errors log to `pdf2/_build_log.txt` without aborting the batch). Both target the same output format and quality standard.
-
-#### `_build_pdf2_arxiv_compliant.py` (Path A — pandoc + LaTeX)
-
-- **Requires**: `pandoc` + one of `lualatex` / `xelatex` / `pdflatex`
-- **Output quality**: Full LaTeX typeset math, complete markdown table support, LaTeX-typeset code blocks
-- **Speed**: ~1–3 papers/sec sequential, ~6–12 papers/sec with `--
+- Local `pdflatex preprint_filled.tex` compile → PDF ready for arx

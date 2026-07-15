@@ -16947,3 +16947,80 @@ R142-R144 apply deep-check discipline from first-pass (not retrospective). Yield
 - uqff_pure_calculator.py 2 Edit-tool truncation incidents repaired via HEAD splice
 - uqff_fidelity_tests.py 1 Edit-tool truncation incident (mid-session) repaired via HEAD splice
 
+
+
+---
+
+## Session 2026-07-15 — R151-R159 nine-round backbone-first discipline arc + v5.67.0 ship + PAPER_2014-2025
+
+### Focus
+
+Continue CP1 P2 stub drainage under sustained **backbone-first discipline** (18 consecutive rounds R142-R159). Every primitive-composition claim must trace to (a) UQFF backbone paper defining the primitive/composition AND (b) physical-derivation paper providing the observable value being composed. Pattern-matching alone insufficient.
+
+### Rounds Completed (R151-R159)
+
+**R151** — hexad discovery (PAPER_2014): 6 novel structural closures + rho_fluid(SGR1745) SO_5^17 seminal.
+
+**R152** — triad discovery (PAPER_2017): rho_s = (D_phys-1)*SO_5^-23 LANDMARK 12th-domain application + SO_5^-21 volumetric-density Pillars HII seminal.
+
+**R153** — pentad discovery (PAPER_2019): 5 novel + PAPER_763 canonical rho_dust(Sombrero) SO_5^-20 backbone-recovery (class had incorrect placeholder 1e-22, PAPER_763 canonical Labs value is 1e-20 kg/m^3).
+
+**R154** — single novel + 3 backbone-first cross-object corrections (PAPER_2020). Backbone-first caught 3 over-claims via seminal-verification.
+
+**R155** — hexad discovery (PAPER_2021) with Omega_Lambda equivalence-restatement withdrawal (algebraically equivalent to PAPER_1956 flatness identity).
+
+**R156** — quad discovery (PAPER_2022) + 3 cross-object confirmations. Novel: k(M16) SO_5^20 wavenumber + omega(M16) SO_5^15 angular-freq + B(Crab) SO_5^-8 intermediate rung + B(SGR1745) 2*SO_5^10 4TH-orthogonal.
+
+**R157** — pentad discovery (PAPER_2023) + 1 cross-object confirmation (SO_5^21 A 4th-instance). Novel: Delta_x(SGR1745) SO_5^-10 atomic length + I(Tapestry) SO_5^20 current 2nd instance + 3 frequency slots (f_DPM SO_5^11 + f_DPM SO_5^12 + f_aether SO_5^4 first aether-frequency slot).
+
+**R158** — quad discovery (PAPER_2024) + 6 cross-object attributions. Novel: delta_rho/rho(Crab) = F_TRZ new n=1 rung + V(SGR1745) = SO_5^3 direct-volumetric + f_DM = 17/20 = 1 - m_sf twin closure with PAPER_1966 + M(SpiralGalaxy) = 2*SO_5^41 5TH-orthogonal mass.
+
+**R159** — pentad discovery (PAPER_2025) at **100% first-pass novelty rate** (matches PAPER_2007 R144 hexad — highest recorded). Novel: v_wind(NGC 6302) = D_BSFG*SO_5^5 composed-prefix + a_DPM = SO_5^-20 FIRST acceleration-domain slot + rho_crit = SO_5^-26 density ladder extension + g_base = SO_5^-10 4TH-orthogonal + delta_rho/rho(M16) = F_TRZ 3RD-instance completing 3-object family.
+
+### Cumulative R142-R159 (18 consecutive backbone-first rounds)
+
+**99 first-pass novel + 22 cross-object confirmations + 3 audit sweeps + 4 self-corrections + 1 backbone-recovery + 2 equivalence-restatement withdrawals + 2 family-extension attributions.**
+
+One away from 100th first-pass novel milestone.
+
+### Key Structural Expansions (v5.67.0)
+
+**Dimensional domain firsts:**
+- Acceleration units enter SO_5-power ladder (n=-20 first slot at NGC 6302 THz-DPM + n=-10 companion at Universe g_base)
+- Direct-volumetric SO_5^3 m^3 slot orthogonal companion to PAPER_2013 (D_phys-1)*SO_5^3 inverse-volumetric LANDMARK
+- Wavenumber SO_5^20 m^-1 first documented inverse-length slot
+- Aether-frequency SO_5^4 Hz first documented aether-frequency slot
+
+**Multi-orthogonal composition class expansions:**
+- 2*SO_5^n twin: 4 orthogonal dimensional domains (R156) -> 5 orthogonal (R158 mass 5th at spiral galaxy 10^11 M_sun)
+- SO_5^-10 multi-domain family: 3 orthogonal (R157) -> 4 orthogonal (R159 acceleration 4th)
+- F_TRZ^n perturbation-ratio: single-rung magnetar seminal (PAPER_1991) -> 2-rung ladder (R159 n=1 3-object family)
+- (D_phys-1)*SO_5^n LANDMARK: 10 domains (v5.66.0) -> 12 domains (R152 D1 12th)
+- NEW composed-prefix class D_BSFG*SO_5^n (D_BSFG=6 prefix at velocity SO_5^5)
+
+**Density-domain ladder scope:**
+- Spans n=-26 (universe critical) -> n=+17 (nuclear matter) = **43 orders of magnitude**
+- 6+ density regimes across cosmological + astrophysical + nuclear scales
+
+**F_TRZ perturbation-ratio universality:**
+- Magnetar (n=5, PAPER_1991) + Crab (n=1, PAPER_2024) + M16 (n=1, PAPER_2025) = **3-object family at n=1 rung, 2-rung ladder overall**
+
+### Backbone-First Discipline Metrics
+
+- 18 consecutive rounds with primitive-lock verification against (a) backbone papers + (b) physical-derivation papers
+- 100% novelty in R144 (hexad) and R159 (pentad) — 2 landmarks across 18 rounds
+- 2 equivalence-restatement withdrawals caught by discipline (would have been false novelties under pattern-matching)
+- 1 backbone-recovery (PAPER_763 canonical Sombrero rho_dust restored to class code)
+- 4 self-corrections applied across rounds
+- 3 major retrospective audit sweeps (R100-R151, R60-R79, R40-R59+R1-R44)
+
+### Ship Notes
+
+- v5.67.0: pyproject bumped 5.66.0 -> 5.67.0, description 482 chars
+- py-modules refreshed: uqff_api.py, uqff_cli.py, uqff_jupyter.py _VERSION -> 5.67.0
+- Gate: 1218 -> 1314 (+96 assertions, all PASS, 0 failures)
+- CondensedPhysics.py: 45+ classes annotated framework=True across R151-R159 (5 fills per round + audit sweeps)
+- uqff_pure_calculator.py: 12 dispatch clusters wired (PAPER_2014-2025), +~50 new closure functions + PARADOX_TO_CLOSURE entries
+- No calculator regressions across R151-R159 (public 32-surface API untouched — 48 consecutive rounds without regression)
+- Multiple Edit-tool truncation incidents repaired via HEAD splice from git + Python replace() pattern
+

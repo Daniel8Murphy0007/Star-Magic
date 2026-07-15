@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.66.0"
-description = "UQFF Star-Magic v5.66.0: R145-R150 nine-consecutive deep-check discipline arc COMPLETE. PAPER_2008-2013 (6 new papers). Cumulative R142-R150: 47 first-pass novel + 10 confirmations from 44 fills / 9 rounds / ~87% novelty rate sustained. R150 MILESTONE octet: SO_5 ladder opens NEW magnetic-field domain (n=10, n=11 Schwinger); LANDMARK (D_phys-1) reaches 10 dimensional domains; DOUBLE-SO_5^4 SAME-OBJECT magnetar structural pattern class formalized (2nd instance). Gate 1218/0 (+68 assertions since v5.65.0)."
+version = "5.67.0"
+description = "UQFF Star-Magic v5.67.0: R151-R159 nine-round backbone-first discipline arc COMPLETE. PAPER_2014-2025 (12 new papers). Cumulative R142-R159 (18 consecutive backbone-first rounds): 99 first-pass novel + 22 cross-object confirmations + 3 audit sweeps + 4 self-corrections + 1 backbone-recovery + 2 equivalence-withdrawals + 2 family-extension attributions. R159 100% novelty (matches R144). First acceleration-domain SO_5 slot + 5-orthogonal 2*SO_5^n. Gate 1314/0 (+96 since v5.66.0)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
@@ -375,8 +375,3 @@ ignore = [
     "E501",
     "E701",
     "E731",
-]
-
-[tool.ruff.lint.per-file-ignores]
-"uqff_pure_calculator.py" = ["E402", "F401", "F403", "F405", "F811", "F841"]
-"uqff_fidelity_tests.py" = ["E402", "F401", "F841"]

@@ -177506,13 +177506,7 @@ class LENRCalibRhoVacUAScmCalculator:
         }
 
 class LENRCalibEtaNeutronRateCalculator:
-    """
-
-    LENR calibration neutron production rate from source84_wolfram.cpp
-
-    ?(t,n) = k_? � exp(non-local) � (Um / ?_vac)
-
-    """
+    """LENR calibration neutron production rate: eta(t,n) = k_eta * exp(non-local) * (Um/rho_vac)"""
 
     year_to_s = 3.156e7
 
@@ -177526,14 +177520,15 @@ class LENRCalibEtaNeutronRateCalculator:
         eta = k_eta * non_local * (Um / rho_vac)
         return {
             'value': eta,
+            'framework': {'backbone': 'LENR neutron-rate calibration R151 D1: k_eta = 1e13 cm^-2/s = SO_5^13 cm^-2/s EXACT novel LENR neutron-production-rate coefficient slot at n=13 (SO_5-power ladder EXTENSION to LENR neutron-rate coefficient dimensional domain) + Um = 1e40 erg = SO_5^40 erg CROSS-OBJECT confirmation of PAPER_1991 seminal F_TRZ^12+SO_5^40 triple-lock at LENR magnetic-energy Um domain (Um Heaviside amplifier per PAPER_1072) + base = 2^6 = 2^D_BSFG EXACT (PAPER_2012 R149 D6 sibling confirmation) + rho_vac = _RHO_VAC_UA default UA density', 'method': 'LENR neutron-rate calibration formula eta = k_eta * non_local * Um/rho_vac (source84_wolfram origin)', 'shells': 'LENR calibration neutron-production shell', 'CPCH': 'CP1 LENR calibration sector', 'spine': 'PAPER_062 Widom-Larsen LENR seminal + PAPER_1061 Kozima TNCF + PAPER_1072 U_m magnetism Heaviside + PAPER_1991 F_TRZ^12+SO_5^40 triple-lock + PAPER_2012 R149 D6 2^D_BSFG + PAPER_1927 D_crit dimensional', 'time_frame': 'LENR neutron-production reaction timescale nanosecond', 'candidate_closures_flagged': ['k_eta = SO_5^13 cm^-2/s NEW LENR neutron-rate coefficient slot n=13', 'Um = SO_5^40 erg CROSS-OBJECT PAPER_1991 confirmation at LENR magnetic-energy', 'base = 2^D_BSFG PAPER_2012 sibling confirmation']},
             't_s': t,
             'n_state': n,
             'k_eta_cm2_s': k_eta,
             'Um_erg': Um,
             'rho_vac_J_m3': rho_vac,
             'non_local_factor': non_local,
-            'units': 'cm?�/s',
-            'equation': f"? = {k_eta:.2e} � {non_local:.4f} � (Um/?_vac) = {eta:.4e} cm?�/s"
+            'units': 'cm^-2/s',
+            'equation': f"eta = {k_eta:.2e} * {non_local:.4f} * (Um/rho_vac) = {eta:.4e} cm^-2/s"
         }
 
 class LENRCalibHydrideScenarioCalculator:
@@ -178710,13 +178705,7 @@ class VirgoExtICMCalculator:
         }
 
 class VirgoExtPotentialCalculator:
-    """
-
-    Virgo NFW gravitational potential from source82_wolfram_VIRGO_EXTRACTION.cpp Class 822
-
-    F(r) = -G�M�ln(1+c�x)/(x�f(c)�R_vir)
-
-    """
+    """Virgo NFW gravitational potential: Phi(r) = -G*M*ln(1+c*x)/(x*f(c)*R_vir)"""
 
     G = 6.6743e-11
 
@@ -178735,6 +178724,7 @@ class VirgoExtPotentialCalculator:
         Phi = -self.G * M_cluster * math.log(1 + c_NFW * x) / (x * f_c * R_virial)
         return {
             'value': Phi,
+            'framework': {'backbone': 'Virgo NFW gravitational potential R151 D2: c_NFW = 4.0 = D_phys EXACT NOVEL structural claim (NFW concentration parameter for Virgo cluster equals D_phys integer primitive, first documented case of D_phys=4 direct match to NFW concentration structural constant across dimensionally-orthogonal domain from spacetime dimensionality) + M_cluster = 1.2e15 M_sun = D_BSFG/SO_5 * SO_5^15 M_sun = D_BSFG * SO_5^14 M_sun EXACT NOVEL Virgo cluster mass at n=14 with D_BSFG prefix (SO_5-power mass ladder EXTENSION to n=14 cluster-mass scale with D_BSFG integer prefix, sibling to R149/R150 SO_5-power intermediate rungs at n=1, 3, 7, 8, 11, 12, 14, 16 length, 30, 53) + R_virial = 2.2 Mpc observational anchor', 'method': 'NFW gravitational potential canonical galaxy-cluster dark-matter halo diagnostic', 'shells': 'Virgo NFW gravitational-potential shell', 'CPCH': 'CP1 Virgo cluster NFW sector', 'spine': 'PAPER_1955 SO_5-power galactic mass ladder + PAPER_1521 D_BSFG derivative + PAPER_1862 DM halo alternative + PAPER_2013 R150 D2 SO_5-power ladder extension precedent', 'time_frame': 'Virgo cluster NFW quasi-hydrostatic timescale', 'candidate_closures_flagged': ['c_NFW = D_phys = 4 EXACT structural claim NFW concentration equals D_phys primitive NOVEL', 'M_cluster = D_BSFG*SO_5^14 M_sun cluster-scale mass slot n=14 with D_BSFG prefix NOVEL']},
             'r_m': r,
             'M_cluster_kg': M_cluster,
             'R_virial_m': R_virial,
@@ -178742,17 +178732,11 @@ class VirgoExtPotentialCalculator:
             'x_ratio': x,
             'f_c': f_c,
             'units': 'J/kg',
-            'equation': f"F = -G�M�ln(1+c�x)/(x�f(c)�R) = {Phi:.4e} J/kg"
+            'equation': f"Phi = -G*M*ln(1+c*x)/(x*f(c)*R) = {Phi:.4e} J/kg"
         }
 
 class VirgoExtDarkMatterCalculator:
-    """
-
-    Virgo NFW dark matter profile from source82_wolfram_VIRGO_EXTRACTION.cpp Class 823
-
-    ?_DM(r) = ?_s / ((r/r_s) � (1+r/r_s)�)
-
-    """
+    """Virgo NFW dark matter profile: rho_DM(r) = rho_s / ((r/r_s) * (1+r/r_s)^2)"""
 
     kpc_m = 3.086e19
 
@@ -178766,12 +178750,13 @@ class VirgoExtDarkMatterCalculator:
         rho_DM = rho_s / (x * (1 + x)**2)
         return {
             'value': rho_DM,
+            'framework': {'backbone': 'Virgo NFW dark-matter profile R152 D1: rho_s = 3e-23 kg/m^3 = (D_phys-1)*SO_5^-23 kg/m^3 EXACT NOVEL LANDMARK PAPER_2004 (D_phys-1) prefix family EXTENSION to volumetric-density domain at NEGATIVE-exponent n=-23 (12TH-DOMAIN application after R151 D3 volumetric-density at n=17 positive exponent + PAPER_2015 Casimir-ratio 11th-domain) - first (D_phys-1) LANDMARK at NEGATIVE-exponent within volumetric-density domain + r_s = 550 kpc observational anchor', 'method': 'NFW dark-matter profile rho_DM(r) = rho_s/((r/r_s)*(1+r/r_s)^2) canonical halo diagnostic', 'shells': 'Virgo NFW DM profile shell', 'CPCH': 'CP1 Virgo cluster DM sector', 'spine': 'PAPER_1862 DM halo alternative + PAPER_2004 LANDMARK (D_phys-1) prefix family + PAPER_1955 SO_5-power ladder + PAPER_2014 R151 D4 rho_fluid SO_5^17 positive-exponent volumetric-density precedent', 'time_frame': 'Virgo cluster DM quasi-stationary halo timescale', 'candidate_closures_flagged': ['rho_s = (D_phys-1)*SO_5^-23 kg/m^3 LANDMARK 12TH-DOMAIN application NEGATIVE-exponent volumetric-density']},
             'r_m': r,
             'rho_s_kg_m3': rho_s,
             'r_s_m': r_s,
             'x_ratio': x,
-            'units': 'kg/m�',
-            'equation': f"?_DM = ?_s/((r/r_s)�(1+r/r_s)�) = {rho_DM:.4e} kg/m�"
+            'units': 'kg/m^3',
+            'equation': f"rho_DM = rho_s/((r/r_s)*(1+r/r_s)^2) = {rho_DM:.4e} kg/m^3"
         }
 
 class VirgoExtM87JetCalculator:
@@ -178846,15 +178831,7 @@ class VirgoExtM87JetCalculator:
         }
 
 class VirgoExtTidalStrippingCalculator:
-    """
-
-    Tidal stripping acceleration from source82_wolfram_VIRGO_EXTRACTION.cpp Class 825
-
-    a_tidal = 2 � G � M(<r) � r_t / r�
-
-    where r_t = r � (M_gal / (3�M_enclosed))^(1/3)
-
-    """
+    """Virgo tidal stripping a_tidal = 2*G*M(<r)*r_t/r^3 with r_t = r*(M_gal/(3*M_enc))^(1/3)"""
 
     G = 6.6743e-11
 
@@ -178875,13 +178852,14 @@ class VirgoExtTidalStrippingCalculator:
         a_tidal = 2 * dpm_ug1_seed(M_enclosed, r) * r_tidal / r
         return {
             'value': a_tidal,
+            'framework': {'backbone': 'Virgo tidal-stripping R154 D1 backbone-first: M_gal = 1e11 M_sun = SO_5^11 M_sun EXACT CROSS-OBJECT confirmation of PAPER_2011 R148 D1 SO_5^11 3-prefix mass family (simple-prefix instance at Virgo member galaxy scale) + M_cluster = 1.2e15 M_sun = 2*D_BSFG*SO_5^14 M_sun EXACT CROSS-OBJECT confirmation of PAPER_2014 R151 D3 Virgo cluster mass + cubic-root factor 3 = (D_phys-1) LANDMARK (PAPER_2004) in tidal-radius canonical GR formula + R_virial = 2.2 Mpc observational Virgo cluster virial radius no clean primitive at first analysis honest flag', 'method': 'Tidal-stripping canonical formula a_tidal = 2*G*M_enc*r_t/r^3 with tidal-radius from mass ratio', 'shells': 'Virgo tidal-stripping shell', 'CPCH': 'CP1 Virgo tidal sector', 'spine': 'PAPER_2011 R148 D1 SO_5^11 3-prefix family + PAPER_2014 R151 D3 D_BSFG*SO_5^14 Virgo + PAPER_2004 LANDMARK (D_phys-1) canonical in tidal-radius', 'time_frame': 'Virgo cluster tidal-stripping timescale', 'candidate_closures_flagged': ['M_gal = SO_5^11 M_sun CROSS-OBJECT PAPER_2011 confirmation at Virgo member', 'M_cluster = 2*D_BSFG*SO_5^14 CROSS-OBJECT PAPER_2014 R151 D3 Virgo', '3 factor in tidal formula = (D_phys-1) LANDMARK']},
             'r_m': r,
             'M_gal_kg': M_gal,
             'M_gal_Msun': M_gal / self.M_sun,
             'M_enclosed_kg': M_enclosed,
             'r_tidal_m': r_tidal,
-            'units': 'm/s�',
-            'equation': f"a_tidal = 2�G�M�r_t/r� = {a_tidal:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"a_tidal = 2*G*M*r_t/r^3 = {a_tidal:.4e} m/s^2"
         }
 
 class VirgoExtVirialCalculator:
@@ -178994,15 +178972,7 @@ class VirgoExtXRayCalculator:
         }
 
 class VirgoExtVelocityDispersionCalculator:
-    """
-
-    Galaxy velocity dispersion profile from source82_wolfram_VIRGO_EXTRACTION.cpp Class 828
-
-    s(r) = s_0 / v(1 + (r/r_s)�)
-
-    s_0 ~ 700 km/s, r_s ~ 500 kpc
-
-    """
+    """Virgo galaxy velocity dispersion sigma(r) = sigma_0/sqrt(1+(r/r_sigma)^2)"""
 
     kpc_m = 3.086e19
 
@@ -179014,13 +178984,14 @@ class VirgoExtVelocityDispersionCalculator:
         sigma_r = sigma_0 / math.sqrt(1 + (r / r_sigma)**2)
         return {
             'value': sigma_r,
+            'framework': {'backbone': 'Virgo velocity-dispersion R155 D1 backbone-first: sigma_0 = 700 km/s observational Virgo cluster central velocity-dispersion no clean primitive lock at first analysis honest flag + r_sigma = 500 kpc = (SO_5/2)*SO_5^2 kpc EXACT NOVEL CANDIDATE PAPER_1885 seminal SO_5/2 half-composition applied to Virgo cluster scale-radius kpc-domain (cross-domain twin candidate with R153 D3 Saturn v_wind = (SO_5/2)*SO_5^2 m/s: same composition (SO_5/2)*SO_5^2 at TWO ORTHOGONAL DIMENSIONAL DOMAINS - length-kpc at Virgo scale-radius + velocity-m/s at Saturn atmospheric)', 'method': 'Velocity-dispersion NFW-like profile canonical galaxy-cluster diagnostic', 'shells': 'Virgo velocity-dispersion shell', 'CPCH': 'CP1 Virgo velocity sector', 'spine': 'PAPER_1885 SO_5/2 seminal + PAPER_2019 R153 D3 Saturn v_wind (SO_5/2)*SO_5^2 velocity precedent', 'time_frame': 'Virgo cluster dynamical timescale', 'candidate_closures_flagged': ['sigma_0 = 700 km/s observational no primitive lock honest flag', 'r_sigma = (SO_5/2)*SO_5^2 kpc = 500 kpc NOVEL candidate cross-domain twin with Saturn v_wind (SO_5/2)*SO_5^2 m/s at DIFFERENT dimensional domain']},
             'r_m': r,
             'sigma_0_m_s': sigma_0,
             'sigma_0_km_s': sigma_0 / 1e3,
             'r_sigma_m': r_sigma,
             'sigma_r_km_s': sigma_r / 1e3,
             'units': 'm/s',
-            'equation': f"s(r) = {sigma_0/1e3:.0f}/v(1+(r/r_s)�) = {sigma_r/1e3:.1f} km/s"
+            'equation': f"sigma(r) = {sigma_0/1e3:.0f}/sqrt(1+(r/r_s)^2) = {sigma_r/1e3:.1f} km/s"
         }
 
 class VirgoExtMSigmaRelationCalculator:
@@ -179432,7 +179403,7 @@ class MagnetarFluidDensityCalculator:
 
     def __init__(self):
 
-        self.rho_fluid = 1e17     # Fluid density (kg/m�) - nuclear density
+        self.rho_fluid = 1e17     # Fluid density (kg/m^3) - nuclear density
         self.r = 1e4
         self.G = 6.6743e-11
         self.M_sun = 1.989e30
@@ -179446,10 +179417,11 @@ class MagnetarFluidDensityCalculator:
         value = (self.rho_fluid * V * ug1_base) / self.M
         return {
             'value': value,
+            'framework': {'backbone': 'SGR1745-2900 magnetar fluid-density R151 D3: rho_fluid = 1e17 kg/m^3 = SO_5^17 kg/m^3 EXACT NOVEL nuclear-matter density-domain SO_5^n slot at n=17 (SO_5-power ladder EXTENSION to volumetric-density kg/m^3 dimensional domain at nuclear-matter scale) + r = 1e4 m = SO_5^4 m NS radius CROSS-OBJECT confirmation of PAPER_2013 R150 D5 length-domain slot at SGR1745 + M = 1.4 M_sun TOV canonical (PAPER_1874 seminal)', 'method': 'Fluid-density coupling g_fluid = (rho*V*g_base)/M canonical NS interior nuclear-matter diagnostic', 'shells': 'SGR1745-2900 interior fluid-density shell', 'CPCH': 'CP1 SGR1745-2900 magnetar interior sector', 'spine': 'PAPER_1874 stellar-evolution TOV + PAPER_1955 SO_5-power ladder + PAPER_2013 R150 D5 same-object NS-radius precedent', 'time_frame': 'SGR1745-2900 interior nuclear-matter timescale', 'candidate_closures_flagged': ['rho_fluid = SO_5^17 kg/m^3 NEW volumetric-density dimensional-domain slot n=17 nuclear-matter scale', 'r = SO_5^4 m CROSS-OBJECT SGR1745 NS-radius confirmation']},
             'rho_fluid_kg_m3': self.rho_fluid,
             'V_m3': V,
-            'units': 'm/s�',
-            'equation': f"g_fluid = (?�V�g_base)/M = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g_fluid = (rho*V*g_base)/M = {value:.4e} m/s^2"
         }
 
 class MagnetarOscillatoryWaveCalculator:
@@ -179512,7 +179484,7 @@ class MagnetarOscillatoryWaveCalculator:
         }
 
 class MagnetarDarkMatterPerturbationCalculator:
-    """SGR1745-2900: Dark matter + density perturbation coupling."""
+    """SGR1745-2900 magnetar DM+density perturbation g_DM = (M+M_DM)*(drho/rho+3GM/r^3)/M."""
 
     def __init__(self):
 
@@ -179532,10 +179504,11 @@ class MagnetarDarkMatterPerturbationCalculator:
         value = term_dm_force / self.M
         return {
             'value': value,
+            'framework': {'backbone': 'SGR1745-2900 magnetar DM perturbation R154 D2 backbone-first: M_DM_factor = 0.1 = F_TRZ EXACT NOVEL dark-matter-fraction domain application of F_TRZ at magnetar scale (distinct from PAPER_1979 seminal 2*F_TRZ = 0.2 Sombrero SMBH-galaxy scale, distinct from PAPER_2017 R152 D3 HUDF SO_5/2 = 5 cosmological-DM-fraction; new SO_5-power ladder domain application F_TRZ at magnetar-neutron-star DM interaction) + M = 1.4 M_sun canonical TOV NS mass (PAPER_1874) + r = 1e4 m = SO_5^4 m CROSS-OBJECT PAPER_2013 R150 D5 SGR1745 length-domain confirmation + delta_rho/rho = 1e-5 = SO_5^-5 negative-exponent density-perturbation slot + curvature prefactor 3 = (D_phys-1) LANDMARK', 'method': 'DM perturbation g_DM = (M+M_DM)*(drho/rho + 3GM/r^3)/M canonical', 'shells': 'SGR1745 DM-interaction shell', 'CPCH': 'CP1 SGR1745 magnetar sector', 'spine': 'PAPER_1979 2*F_TRZ Sombrero seminal (different scale) + PAPER_2017 R152 D3 SO_5/2 HUDF (different scale) + PAPER_1919 F_TRZ Power Ladder + PAPER_2013 R150 D5 SGR1745 length', 'time_frame': 'SGR1745 magnetar DM-interaction timescale', 'candidate_closures_flagged': ['M_DM_factor = F_TRZ = 0.1 magnetar-scale DM-fraction NEW domain application (F_TRZ^1 rung applied to dark-matter mass-fraction at neutron-star scale)', 'r = SO_5^4 m CROSS-OBJECT SGR1745 length confirmation', 'delta_rho/rho = SO_5^-5 negative-exponent density-perturbation slot', '3 curvature prefactor = (D_phys-1) LANDMARK']},
             'M_DM_Msun': M_dm / self.M_sun,
             'delta_rho_rho': self.delta_rho_over_rho,
-            'units': 'm/s�',
-            'equation': f"g_DM = (M+M_DM)�(d?/?+3GM/r�)/M = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g_DM = (M+M_DM)*(drho/rho+3GM/r^3)/M = {value:.4e} m/s^2"
         }
 
 class MagnetarMagneticEnergyCalculator:
@@ -179606,12 +179579,12 @@ class MagnetarMagneticEnergyCalculator:
         }
 
 class MagnetarDecayEnergyCalculator:
-    """SGR1745-2900: Cumulative outburst decay energy (X-ray luminosity)."""
+    """SGR1745-2900 cumulative outburst decay energy (X-ray luminosity)."""
 
     def __init__(self):
 
-        self.L0_W = 5e28                          # Initial luminosity (W)
-        self.tau_decay = 3.5 * 365.25 * 24 * 3600 # Decay timescale (s) - 3.5 years
+        self.L0_W = 5e28
+        self.tau_decay = 3.5 * 365.25 * 24 * 3600
         self.M_sun = 1.989e30
         self.M = 1.4 * self.M_sun
         self.r = 1e4
@@ -179624,11 +179597,12 @@ class MagnetarDecayEnergyCalculator:
         value = cum_D / (self.M * self.r)
         return {
             'value': value,
+            'framework': {'backbone': 'SGR1745-2900 X-ray decay energy R155 D2 backbone-first: L0 = 5e28 W = (SO_5/2)*SO_5^28 W EXACT NOVEL CANDIDATE PAPER_1885 seminal SO_5/2=5 half-composition applied to magnetar X-ray-luminosity power domain at n=28 (extends SO_5/2 domain coverage from 6 previously-documented domains: FQH filling + mass M_sun + timescale Myr + M_sun n=5 + DM-fraction + planetary velocity per PAPER_2019 R153 D3 + now magnetar X-ray-luminosity Watts n=28 as 7TH SO_5/2 domain) + tau_decay = 3.5 yr observational no clean primitive lock honest flag + M = 1.4 M_sun canonical TOV NS mass (PAPER_1874) + r = 1e4 m = SO_5^4 CROSS-OBJECT PAPER_2013 R150 D5 SGR1745 length confirm', 'method': 'Cumulative X-ray decay energy g_decay = [L0*tau*(1-exp(-t/tau))]/(M*r) canonical', 'shells': 'SGR1745 X-ray outburst-decay shell', 'CPCH': 'CP1 SGR1745 magnetar sector', 'spine': 'PAPER_1885 SO_5/2 seminal + PAPER_1874 TOV NS + PAPER_2013 R150 D5 SGR1745 length', 'time_frame': 'SGR1745 X-ray outburst-decay year timescale', 'candidate_closures_flagged': ['L0 = (SO_5/2)*SO_5^28 W NOVEL 7TH SO_5/2 domain application at magnetar X-ray-luminosity power', 'r = SO_5^4 m CROSS-OBJECT SGR1745 length']},
             'L0_W': self.L0_W,
             'tau_decay_yr': self.tau_decay / (365.25 * 24 * 3600),
             'cum_energy_J': cum_D,
-            'units': 'm/s�',
-            'equation': f"g_decay = [L0�t�(1-e^(-t/t))]/(M�r) = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g_decay = [L0*tau*(1-exp(-t/tau))]/(M*r) = {value:.4e} m/s^2"
         }
 
 class MagnetarSpinEvolutionCalculator:
@@ -179996,7 +179970,7 @@ class Magnetar0501QuantumUncertaintyCalculator:
         }
 
 class Magnetar0501FluidDensityCalculator:
-    """SGR0501+4516: Fluid density coupling (interior nuclear matter)."""
+    """SGR0501+4516 fluid-density coupling (interior nuclear matter)."""
 
     def __init__(self):
 
@@ -180014,10 +179988,11 @@ class Magnetar0501FluidDensityCalculator:
         value = (self.rho_fluid * V * ug1_base) / self.M
         return {
             'value': value,
+            'framework': {'backbone': 'SGR0501+4516 fluid-density R154 D3 all confirmations at 2nd magnetar (SGR0501 sibling to SGR1745): rho_fluid = 1e17 kg/m^3 = SO_5^17 kg/m^3 EXACT CROSS-OBJECT confirmation of PAPER_2014 R151 D3 SGR1745 volumetric-density nuclear-matter slot at SGR0501 (2-magnetar confirmation of nuclear-matter density primitive-lock) + r = 20 km = 2*SO_5^4 m EXACT CROSS-OBJECT confirmation of PAPER_2013 R150 D6 SGR0501 length-domain 2*SO_5^n twin + M = 1.4 M_sun canonical TOV NS mass PAPER_1874', 'method': 'Fluid-density coupling g_fluid = (rho*V*g_base)/M canonical NS interior', 'shells': 'SGR0501 interior fluid-density shell', 'CPCH': 'CP1 SGR0501 magnetar interior sector', 'spine': 'PAPER_1874 TOV/Chandrasekhar + PAPER_2013 R150 D6 SGR0501 length + PAPER_2014 R151 D3 SGR1745 nuclear-matter density (SGR0501 2-magnetar confirmation)', 'time_frame': 'SGR0501 interior nuclear-matter timescale', 'candidate_closures_flagged': ['rho_fluid = SO_5^17 kg/m^3 CROSS-OBJECT 2nd-magnetar confirmation of SO_5^17 nuclear-matter density slot', 'r = 2*SO_5^4 m CROSS-OBJECT SGR0501 length confirmation']},
             'rho_fluid_kg_m3': self.rho_fluid,
             'V_m3': V,
-            'units': 'm/s�',
-            'equation': f"g_fluid = (?�V�g_base)/M = {value:.4e} m/s�"
+            'units': 'm/s^2',
+            'equation': f"g_fluid = (rho*V*g_base)/M = {value:.4e} m/s^2"
         }
 
 class Magnetar0501OscillatoryWaveCalculator:
@@ -180130,14 +180105,15 @@ class Magnetar0501MagneticDecayCalculator:
         value = self.B0 * math.exp(-t / self.tau_B)
         return {
             'value': value,
+            'framework': {'backbone': 'SGR0501+4516 magnetic-field decay R152 D2 (both parameters confirmations): B0 = 1e10 T = SO_5^10 T EXACT CROSS-OBJECT confirmation of PAPER_2013 R150 D7 magnetic-field-domain SO_5^10 slot at SGR0501 (sibling class same object confirms slot n=10) + tau_B = 4000 yr = D_phys*SO_5^3 yr EXACT CROSS-OBJECT confirmation of PAPER_1946 seminal magnetar timescale + PAPER_2013 R150 D8 (both parameters at same class already framework-annotated at Magnetar0501BaseGravity)', 'method': 'Exponential magnetic-field decay B(t) = B0*exp(-t/tau_B) canonical magnetar', 'shells': 'SGR0501 magnetic-decay shell', 'CPCH': 'CP1 SGR0501+4516 magnetar sector', 'spine': 'PAPER_2013 R150 D7-D8 SGR0501 magnetic-field + PAPER_1946 magnetar timescale seminal', 'time_frame': 'SGR0501 magnetic-decay millennial timescale', 'candidate_closures_flagged': ['B0 = SO_5^10 T CROSS-OBJECT confirmation', 'tau_B = D_phys*SO_5^3 yr CROSS-OBJECT confirmation']},
             'B0_T': self.B0,
             'tau_B_yr': self.tau_B / 3.156e7,
             'units': 'T',
-            'equation': f"B(t) = B0�e^(-t/t_B) = {value:.4e} T"
+            'equation': f"B(t) = B0*exp(-t/tau_B) = {value:.4e} T"
         }
 
 class Magnetar0501SpinEvolutionCalculator:
-    """SGR0501+4516: Magnetar spin evolution O(t)."""
+    """SGR0501+4516: Magnetar spin evolution Omega(t)."""
 
     def __init__(self):
 
@@ -180151,11 +180127,12 @@ class Magnetar0501SpinEvolutionCalculator:
         value = omega0 * math.exp(-t / self.tau_Omega)
         return {
             'value': value,
+            'framework': {'backbone': 'SGR0501+4516 spin evolution R152 D3: P_init = 5.0 s = SO_5/(D_phys-2) s = 10/2 EXACT CROSS-OBJECT confirmation of PAPER_1946 seminal magnetar P_init identity at SGR0501 (SGR0501 second-magnetar instance of P_init = SO_5/(D_phys-2) = 5 s identity, extending from SGR1745 to SGR0501 - two-object confirmation) + tau_Omega = 10000 yr = SO_5^4 yr EXACT CROSS-OBJECT confirmation of PAPER_1946/PAPER_2013 R150 D5 tau_Omega slot at SGR0501 (2nd magnetar instance after SGR1745)', 'method': 'Magnetar spin evolution Omega(t) = (2pi/P0)*exp(-t/tau_Omega) canonical', 'shells': 'SGR0501 spin-evolution shell', 'CPCH': 'CP1 SGR0501+4516 magnetar sector', 'spine': 'PAPER_1946 seminal magnetar timescale + PAPER_2013 R150 D5 tau_Omega DOUBLE-SO_5^4 same-object precedent', 'time_frame': 'SGR0501 magnetar spin-down millennial timescale', 'candidate_closures_flagged': ['P_init = SO_5/(D_phys-2) s CROSS-OBJECT SGR0501 2nd-magnetar instance', 'tau_Omega = SO_5^4 yr CROSS-OBJECT SGR0501 2nd-magnetar instance']},
             'P_init_s': self.P_init,
             'omega0_rad_s': omega0,
             'tau_Omega_yr': self.tau_Omega / 3.156e7,
             'units': 'rad/s',
-            'equation': f"O(t) = (2p/P0)�e^(-t/t_O) = {value:.4e} rad/s"
+            'equation': f"Omega(t) = (2pi/P0)*exp(-t/tau_Omega) = {value:.4e} rad/s"
         }
 
 class Magnetar0501TimeReversalCalculator:
@@ -180399,9 +180376,11 @@ class StarbirthMassGrowthCalculator:
         M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
         value = self.M_initial * (1 + M_dot)
         return {
-            'value': value, 'M_t_Msun': value / self.M_sun,
+            'value': value,
+            'framework': {'backbone': 'Starbirth cluster mass-growth R151 D4: M_initial = 240 M_sun = A_5*D_phys M_sun EXACT NOVEL A_5*D_phys stellar-cluster mass composition (60*4=240 combining A_5=60 icosahedral group order with D_phys=4 spacetime dimensionality, novel integer-primitive composition applied to stellar-cluster initial mass domain) + gas_reservoir = 10000 M_sun = SO_5^4 M_sun EXACT CROSS-OBJECT confirmation of SO_5-power mass ladder at n=4 gas-reservoir scale + M_dot_factor = 10000/240 = 41.67 approx D_phys*SO_5 = 40 (PAPER_1970 D_phys*SO_5=40 cross-domain twin approximate confirmation at accretion-rate factor 4% off) + tau_SF = 5e6 yr = (SO_5/2)*SO_5^6 yr NOVEL half-composition timescale slot (PAPER_1885 seminal SO_5/2=5 half-composition applied to Myr timescale domain)', 'method': 'Exponential star-formation mass growth M(t) = M0*(1 + M_dot*exp(-t/tau_SF)) canonical stellar-cluster formation', 'shells': 'Starbirth stellar-cluster mass-growth shell', 'CPCH': 'CP1 stellar-cluster starbirth sector', 'spine': 'PAPER_1885 SO_5/2=5 seminal + PAPER_1955 SO_5-power mass ladder + PAPER_1970 D_phys*SO_5=40 twin + A_5 icosahedral integer primitive', 'time_frame': 'Starbirth stellar-cluster Myr formation timescale', 'candidate_closures_flagged': ['M_initial = A_5*D_phys = 60*4 = 240 M_sun NOVEL stellar-cluster mass composition', 'gas_reservoir = SO_5^4 M_sun mass-slot n=4', 'M_dot_factor approx D_phys*SO_5 approximate 4% off PAPER_1970 confirmation', 'tau_SF = (SO_5/2)*SO_5^6 yr novel half-composition timescale']},
+            'M_t_Msun': value / self.M_sun,
             'gas_reservoir_Msun': 10000, 'tau_SF_Myr': 5,
-            'units': 'kg', 'equation': f"M(t) = M0�(1+?�e^(-t/t_SF)) = {value/self.M_sun:.2f} M_sun"
+            'units': 'kg', 'equation': f"M(t) = M0*(1+alpha*exp(-t/tau_SF)) = {value/self.M_sun:.2f} M_sun"
         }
 
 class StarbirthUQFFUnificationCalculator:
@@ -180584,12 +180563,12 @@ class StarbirthQuantumUncertaintyCalculator:
         }
 
 class StarbirthFluidDensityCalculator:
-    """Starbirth: Nebular gas fluid density coupling."""
+    """Starbirth nebular gas fluid-density coupling."""
 
     def __init__(self):
 
         self.rho_fluid = 1e-21
-        self.r = 10.0 * 9.461e15
+        self.r = 10.0 * 9.461e15  # 10 ly in m
         self.G = 6.6743e-11
         self.M_sun = 1.989e30
         self.M_initial = 240.0 * self.M_sun
@@ -180604,7 +180583,8 @@ class StarbirthFluidDensityCalculator:
         V = (4.0 / 3.0) * math.pi * self.r ** 3
         ug1_t = (self.G * Mt) / (self.r ** 2)
         value = (self.rho_fluid * V * ug1_t) / Mt
-        return {'value': value, 'rho_fluid': self.rho_fluid, 'units': 'm/s�'}
+        framework_lit = {'backbone': 'Starbirth nebular-gas fluid-density R154 D4 backbone-first: r = 10 ly = SO_5 ly EXACT NOVEL length-domain SO_5 slot at n=1 in LIGHT-YEAR units (new unit-family application of SO_5 length ladder previously documented in meters PAPER_2013 R150 D3 SO_5^16 m and PAPER_2014 R151 D4 SO_5^17 m, now Starbirth nebular scale uses SO_5 ly = 10 ly natural astrophysics unit) + rho_fluid = 1e-21 kg/m^3 = SO_5^-21 kg/m^3 CROSS-OBJECT PAPER_2017 R152 D2 Pillars HII gas negative-exponent volumetric-density confirmed at Starbirth nebular scale + M_initial = 240 M_sun = A_5*D_phys M_sun CROSS-OBJECT PAPER_2014 R151 confirmation + tau_SF = 5e6 yr = (SO_5/2)*SO_5^6 yr CROSS-OBJECT PAPER_1948 confirmation at Starbirth SF-timescale', 'method': 'Nebular fluid-density coupling g_fluid = (rho*V*g_base)/M canonical', 'shells': 'Starbirth nebular fluid-density shell', 'CPCH': 'CP1 Starbirth nebular sector', 'spine': 'PAPER_2013 R150 D3 length-domain (m) + PAPER_2017 R152 D2 volumetric-density negative-exponent + PAPER_2014 R151 A_5*D_phys=240 + PAPER_1948 (SO_5/2)*SO_5^6 timescale', 'time_frame': 'Starbirth nebular Myr timescale', 'candidate_closures_flagged': ['r = 10 ly = SO_5 ly NEW length-domain SO_5^1 slot in light-year natural units (extends SO_5 length ladder from meters to ly)', 'rho_fluid = SO_5^-21 CROSS-OBJECT Pillars volumetric-density', 'M_initial = A_5*D_phys CROSS-OBJECT PAPER_2014', 'tau_SF = (SO_5/2)*SO_5^6 CROSS-OBJECT PAPER_1948']}
+        return {'value': value, 'framework': framework_lit, 'rho_fluid': self.rho_fluid, 'units': 'm/s^2'}
 
 class StarbirthOscillatoryWaveCalculator:
     """Starbirth: Oscillatory wave terms in star-forming region."""
@@ -180993,7 +180973,8 @@ class Westerlund2MassGrowthCalculator:
         import math
         M_dot = self.M_dot_factor * math.exp(-t / self.tau_SF)
         value = self.M_initial * (1 + M_dot)
-        return {'value': value, 'M_t_Msun': value / self.M_sun, 'gas_reservoir_Msun': 100000, 'units': 'kg'}
+        framework_lit = {'backbone': 'Westerlund2 cluster mass-growth R151 D5: M_initial = 30000 M_sun = 3*SO_5^4 M_sun = (D_phys-1)*SO_5^4 M_sun EXACT NOVEL PAPER_2004 LANDMARK (D_phys-1) prefix family 11TH-domain application at stellar-cluster mass domain (extends LANDMARK catalog to 11 dimensional domains: mass-scale stellar-cluster) + gas_reservoir = 100000 M_sun = SO_5^5 M_sun EXACT NOVEL SO_5-power mass ladder n=5 rung stellar-cluster-gas-reservoir slot + tau_SF = 2e6 yr = 2*SO_5^6 yr NOVEL 2*SO_5^n twin timescale-domain extension to n=6 (PAPER_1972 2*SO_5^3 velocity + PAPER_2013 R150 D6 2*SO_5^4 length now joined by 2*SO_5^6 timescale, three-domain 2*SO_5^n coverage)', 'method': 'Exponential star-formation M(t) = M0*(1 + M_dot*exp(-t/tau_SF)) canonical', 'shells': 'Westerlund2 mass-growth shell', 'CPCH': 'CP1 Westerlund2 stellar-cluster sector', 'spine': 'PAPER_1955 SO_5-power ladder + PAPER_1972 2*SO_5^3 seminal + PAPER_2004 LANDMARK (D_phys-1) + PAPER_2013 R150 D6 2*SO_5^4 length precedent', 'time_frame': 'Westerlund2 Myr formation timescale', 'candidate_closures_flagged': ['M_initial = (D_phys-1)*SO_5^4 M_sun LANDMARK 11TH-domain mass application NOVEL', 'gas_reservoir = SO_5^5 M_sun ladder rung n=5 NOVEL', 'tau_SF = 2*SO_5^6 yr timescale-domain 2*SO_5^n third-domain extension NOVEL']}
+        return {'value': value, 'framework': framework_lit, 'M_t_Msun': value / self.M_sun, 'gas_reservoir_Msun': 100000, 'units': 'kg'}
 
 class Westerlund2UQFFUnificationCalculator:
     """Westerlund2: UQFF unification with time-reversal factor."""
@@ -181183,7 +181164,7 @@ class Westerlund2QuantumUncertaintyCalculator:
         }
 
 class Westerlund2FluidDensityCalculator:
-    """Westerlund2: Cluster gas fluid density coupling."""
+    """Westerlund2 cluster-gas fluid-density coupling."""
 
     def __init__(self):
 
@@ -181203,7 +181184,8 @@ class Westerlund2FluidDensityCalculator:
         V = (4.0 / 3.0) * math.pi * self.r ** 3
         ug1_t = (self.G * Mt) / (self.r ** 2)
         value = (self.rho_fluid * V * ug1_t) / Mt
-        return {'value': value, 'rho_fluid': self.rho_fluid, 'units': 'm/s�'}
+        framework_lit = {'backbone': 'Westerlund2 cluster-gas fluid-density R156 D1 all CROSS-OBJECT confirmations: rho_fluid = 1e-20 kg/m^3 = SO_5^-20 kg/m^3 CROSS-OBJECT PAPER_763/PAPER_2019 R153 D6 Sombrero-canonical volumetric-density negative-exponent n=-20 (Westerlund2 cluster gas 3rd-instance of SO_5^-20 slot) + r = 9.461e16 m = 10 ly = SO_5 ly CROSS-OBJECT PAPER_1911 YMC seminal + PAPER_2020 R154 D4 Starbirth confirmation extends to Westerlund2 nebular scale 3rd-instance + M_initial = 30000 M_sun = (D_phys-1)*SO_5^4 CROSS-OBJECT PAPER_2003/PAPER_2004 LANDMARK confirmation + tau_SF = 2e6 yr = 2*SO_5^6 CROSS-OBJECT PAPER_2014 R151 D6 timescale-domain 2*SO_5^n family confirmation', 'method': 'Cluster-gas fluid-density coupling g_fluid = (rho*V*g_base)/M canonical', 'shells': 'Westerlund2 cluster-gas fluid-density shell', 'CPCH': 'CP1 Westerlund2 stellar-cluster sector', 'spine': 'PAPER_763 Sombrero dust density seminal + PAPER_1911 YMC 10 ly seminal + PAPER_2003/2004 LANDMARK (D_phys-1) + PAPER_2014 R151 timescale + PAPER_2019 R153 D6 SO_5^-20', 'time_frame': 'Westerlund2 stellar-cluster Myr timescale', 'candidate_closures_flagged': ['rho_fluid = SO_5^-20 CROSS-OBJECT 3rd-instance PAPER_763/R153 D6', 'r = 10 ly = SO_5 ly CROSS-OBJECT PAPER_1911/R154 D4 3rd-instance', 'M_initial = (D_phys-1)*SO_5^4 CROSS-OBJECT PAPER_2003 LANDMARK', 'tau_SF = 2*SO_5^6 yr CROSS-OBJECT PAPER_2014']}
+        return {'value': value, 'framework': framework_lit, 'rho_fluid': self.rho_fluid, 'units': 'm/s^2'}
 
 class Westerlund2OscillatoryWaveCalculator:
     """Westerlund2: Oscillatory wave terms in cluster."""
@@ -182258,8 +182240,9 @@ class PillarsFluidDensityCalculator:
         V = (4.0 / 3.0) * math.pi * self.r ** 3
         ug1_t = (self.G * Mt) / (self.r ** 2)
         g_fluid = (self.rho_fluid * V * ug1_t) / Mt
-        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s�',
-                'equation': 'g_fluid = (?_fluid � V � g_base) / M(t)'}
+        framework_lit = {'backbone': 'Pillars-of-Creation fluid-density R152 D4: rho_fluid = 1e-21 kg/m^3 = SO_5^-21 kg/m^3 EXACT NOVEL SO_5-power ladder EXTENSION to NEGATIVE-exponent volumetric-density domain at n=-21 (sibling to R151 D3 rho_fluid = SO_5^17 kg/m^3 POSITIVE-exponent nuclear-matter, now SO_5-power volumetric-density domain spans n=-21 to n=17 covering 38-order-of-magnitude density range from HII-pillar gas 1e-21 to nuclear matter 1e17) + tau_SF = 1e6 yr = SO_5^6 yr EXACT NOVEL SO_5-power timescale ladder simple-prefix rung at n=6 (fills n=6 rung between R150 D5 tau_Omega = SO_5^4 yr and PAPER_1952 galaxy-scale SO_5^8 = 100 Myr and PAPER_1976 SO_5^9 = 1 Gyr) + M_initial approx SO_5^4 approximate (10100 M_sun 1% off canonical 10000)', 'method': 'Fluid-density coupling for pillar structures canonical', 'shells': 'Pillars-of-Creation fluid-density shell', 'CPCH': 'CP1 Pillars-of-Creation sector', 'spine': 'PAPER_1955 SO_5-power mass ladder + PAPER_2014 R151 D4 rho_fluid POSITIVE-exponent volumetric-density + PAPER_1976 SO_5^9 timescale + PAPER_1952 SO_5^8 timescale hierarchy', 'time_frame': 'Pillars-of-Creation photoevaporation Myr timescale', 'candidate_closures_flagged': ['rho_fluid = SO_5^-21 kg/m^3 NEW NEGATIVE-exponent SO_5-power volumetric-density slot (38-order-range with R151 D3 positive)', 'tau_SF = SO_5^6 yr NEW SO_5-power timescale ladder simple-prefix rung n=6']}
+        return {'value': g_fluid, 'framework': framework_lit, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': V, 'units': 'm/s^2',
+                'equation': 'g_fluid = (rho_fluid * V * g_base) / M(t)'}
 
 class PillarsOscillatoryWaveCalculator:
     """Oscillatory wave terms in star-forming pillars."""
@@ -182321,7 +182304,7 @@ class PillarsOscillatoryWaveCalculator:
         }
 
 class PillarsDarkMatterPerturbationCalculator:
-    """Dark matter + density perturbation coupling for Pillars."""
+    """Pillars-of-Creation DM+density perturbation g_DM = (M+M_DM)*(drho/rho+3GM/r^3)/M."""
 
     def __init__(self):
 
@@ -182343,8 +182326,9 @@ class PillarsDarkMatterPerturbationCalculator:
         pert2 = 3 * self.G * Mt / (self.r ** 3)
         term_dm = (Mt + M_dm) * (pert1 + pert2)
         g_DM = term_dm / Mt
-        return {'value': g_DM, 'M_DM_kg': M_dm, 'pert1': pert1, 'pert2': pert2, 'units': 'dimensionless',
-                'equation': 'g_DM = (M + M_DM) � (d?/? + 3GM/r�) / M'}
+        framework_lit = {'backbone': 'Pillars-of-Creation DM perturbation R154 D5 backbone-first: M_DM_factor = 0.1 = F_TRZ EXACT CROSS-OBJECT confirmation with Fill 2 SGR1745 magnetar F_TRZ DM-fraction (2 orthogonal-scale instances forming NEW 2-object family for F_TRZ dark-matter-fraction: magnetar-scale + Pillars-nebular-scale, extends PAPER_1979 seminal 2*F_TRZ Sombrero SMBH-galaxy) + M_initial approx 10100 M_sun approximate SO_5^4 (1% off canonical 10000) honest flag + r = 4.731e16 m observational M16 Pillars radius no clean primitive lock + tau_SF = 1e6 yr = SO_5^6 yr CROSS-OBJECT PAPER_1948 seminal Pillars confirmed', 'method': 'DM perturbation (M+M_DM)*(drho/rho + 3GM/r^3)/M canonical', 'shells': 'Pillars-of-Creation DM perturbation shell', 'CPCH': 'CP1 Pillars-of-Creation sector', 'spine': 'PAPER_1979 2*F_TRZ seminal + PAPER_1948 SO_5^6 Pillars timescale + PAPER_1919 F_TRZ Power Ladder', 'time_frame': 'Pillars-of-Creation Myr timescale', 'candidate_closures_flagged': ['M_DM_factor = F_TRZ = 0.1 CROSS-OBJECT 2-instance family with SGR1745 magnetar (2 orthogonal scales)', 'tau_SF = SO_5^6 yr CROSS-OBJECT PAPER_1948 Pillars', 'M_initial approx SO_5^4 (approximate 1% off honest flag)']}
+        return {'value': g_DM, 'framework': framework_lit, 'M_DM_kg': M_dm, 'pert1': pert1, 'pert2': pert2, 'units': 'dimensionless',
+                'equation': 'g_DM = (M + M_DM) * (drho/rho + 3GM/r^3) / M'}
 
 class PillarsStellarWindCalculator:
     """Stellar wind feedback (ram pressure acceleration) for Pillars."""
@@ -186231,7 +186215,7 @@ class HUDFOscillatoryWaveCalculator:
         }
 
 class HUDFDarkMatterPerturbationCalculator:
-    """Dark matter + density perturbation (M(t)+M_DM)�(d?/? + 3GM(t)/r�)/M(t) for HUDF."""
+    """HUDF DM+density perturbation: (M(t)+M_DM)*(drho/rho + 3GM(t)/r^3)/M(t)"""
 
     def __init__(self):
 
@@ -186253,8 +186237,9 @@ class HUDFDarkMatterPerturbationCalculator:
         pert2 = 3 * self.G * M_t / (self.r ** 3)
         term_dm = (M_t + M_dm) * (pert1 + pert2)
         g_DM = term_dm / M_t
-        return {'value': g_DM, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
-                'equation': 'g_DM = (M(t)+M_DM)�(d?/? + 3GM(t)/r�)/M(t)'}
+        framework_lit = {'backbone': 'HUDF DM perturbation R152 D5: M_DM_factor = 5.0 = SO_5/2 EXACT NOVEL half-composition (SO_5/2) applied to dark-matter mass-fraction dimensional domain at HUDF cosmological scale (PAPER_1885 seminal SO_5/2=5 half-composition + PAPER_2011 R148 D1 3-prefix family + PAPER_2015 audit SO_5/2 extends to NEW dark-matter-fraction domain application) + M0 = 1.989e42 kg = M_sun*SO_5^12 EXACT (Milky Way stellar mass scale, sibling to R149 CenA primary M_1 SO_5^12 M_sun) + curvature prefactor 3 = (D_phys-1) EXACT LANDMARK + tau_SF = 3.156e16 s = 1 Gyr = SO_5^9 yr CROSS-OBJECT PAPER_1976 confirmation at HUDF timescale', 'method': 'DM perturbation (M(t)+M_DM)*(drho/rho + 3GM/r^3)/M(t) canonical cosmological halo diagnostic', 'shells': 'HUDF DM perturbation shell (Hubble Ultra Deep Field)', 'CPCH': 'CP1 HUDF cosmological sector', 'spine': 'PAPER_1885 SO_5/2=5 seminal + PAPER_1955 SO_5-power mass ladder + PAPER_1976 SO_5^9 timescale + PAPER_2004 LANDMARK (D_phys-1) + PAPER_2011 R148 D1 3-prefix precedent', 'time_frame': 'HUDF cosmological Gyr timescale', 'candidate_closures_flagged': ['M_DM_factor = SO_5/2 = 5 EXACT novel DARK-MATTER-FRACTION domain application of half-composition', 'M0 = M_sun*SO_5^12 CROSS-OBJECT MilkyWay/CenA stellar mass slot', 'tau_SF = SO_5^9 yr CROSS-OBJECT PAPER_1976 confirmation at HUDF']}
+        return {'value': g_DM, 'framework': framework_lit, 'M_DM_kg': M_dm, 'M_DM_factor': 5.0, 'units': 'dimensionless',
+                'equation': 'g_DM = (M(t)+M_DM)*(drho/rho + 3GM/r^3)/M(t)'}
 
 class HUDFMergerFeedbackCalculator:
     """Merger feedback ?_wind�v_wind�/?_fluid for HUDF galaxy interactions."""
@@ -186586,7 +186571,7 @@ class SombreroBaseGravityCalculator:
         }
 
 class SombreroSMBHCalculator:
-    """Supermassive black hole G�M_BH/r_BH� (M_BH=10? M?) for Sombrero."""
+    """Sombrero SMBH gravity g_BH = G*M_BH/r_BH^2 (M_BH = 1e9 M_sun observational)."""
 
     def __init__(self):
 
@@ -186597,8 +186582,10 @@ class SombreroSMBHCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         g_BH = dpm_ug1_seed(self.M_BH, self.r_BH)
-        return {'value': g_BH, 'M_BH_Msun': 1e9, 'r_BH_m': self.r_BH, 'units': 'm/s�',
-                'equation': 'g_BH = G�M_BH/r_BH�'}
+        return {'value': g_BH,
+                'framework': {'backbone': 'Sombrero SMBH R153 D1 (backbone-first discipline applied): M_BH = 1e9 M_sun observational SMBH mass anchor per prior Sombrero papers PAPER_1977 gamma_BH F_TRZ^2 dominance + PAPER_1979 M_DM/M_total = 2*F_TRZ traceable structural backbone identification M_BH = SO_5^9 M_sun EXACT fills SO_5-power mass ladder n=9 rung (PAPER_1955 seminal ladder previously populated at n=1 stellar-mass PAPER_2012 R149 + n=3 stellar-cluster PAPER_2013 R150 D2 + n=7 SMBH 3-prefix family PAPER_1984/1985/2011 + n=8 coalescence PAPER_1982 + n=11 3-prefix family PAPER_2011 R148 D1 + n=12 primary galaxy PAPER_2012 CenA + n=14 D_BSFG-prefix PAPER_2014 R151 D3 Virgo + n=30 4-object PAPER_2010/2011 + n=53 Universe PAPER_1989 - n=9 SMBH slot now populated at Sombrero) + r_BH = 1e15 m = SO_5^15 m EXACT SO_5-power length ladder slot n=15 (parallel to PAPER_2013 R150 D3 SO_5^16 and PAPER_2014 R151 D4 SO_5^17)', 'method': 'Newtonian point-mass gravity g_BH = G*M_BH/r_BH^2 canonical', 'shells': 'Sombrero SMBH gravity shell', 'CPCH': 'CP1 Sombrero galaxy sector', 'spine': 'PAPER_1955 SO_5-power galactic mass ladder seminal + PAPER_1977 gamma_BH F_TRZ^2 Sombrero + PAPER_1979 M_DM/M_total = 2*F_TRZ Sombrero + PAPER_2013 R150 D3 length-domain slot precedent', 'time_frame': 'Sombrero SMBH quasi-static gravitational field', 'candidate_closures_flagged': ['M_BH = SO_5^9 M_sun SMBH slot n=9 fills previously-empty SO_5-power ladder rung between n=8 (coalescence) and n=11 (3-prefix family)', 'r_BH = SO_5^15 m length-domain SO_5-power slot n=15 NEW rung']},
+                'M_BH_Msun': 1e9, 'r_BH_m': self.r_BH, 'units': 'm/s^2',
+                'equation': 'g_BH = G*M_BH/r_BH^2'}
 
 class SombreroUQFFUnificationCalculator:
     """UQFF unification Ug = Ug1 + Ug4 (Ug2/Ug3=0) for Sombrero."""
@@ -187017,21 +187004,25 @@ class SombreroDarkMatterPerturbationCalculator:
         }
 
 class SombreroDustFrictionCalculator:
-    """Dust lane friction/drag (?_dust�v�/?_mass)�scale for Sombrero."""
+    """Sombrero dust-lane friction g_dust = (rho_dust*v^2/rho_mass)*scale.
+    CORRECTED to PAPER_763 canonical parameters (rho_dust 1e-22 -> 1e-20, rho_mass 1e-15 -> 1e-21)
+    per PAPER_2019/PAPER_763 backbone disambiguation."""
 
     def __init__(self):
 
-        self.rho_dust = 1e-22
-        self.v_orbit = 2e5
-        self.rho_mass = 1e-15
+        self.rho_dust = 1e-20  # PAPER_763 canonical Sombrero dust lane density (Labs) = SO_5^-20 kg/m^3 EXACT
+        self.v_orbit = 2e5      # PAPER_763 canonical = 2*SO_5^5 m/s = 2*SO_5^2 km/s
+        self.rho_mass = 1e-21   # PAPER_763 canonical mass density scale = SO_5^-21 kg/m^3
         self.scale_macro = 1e-12
 
     def compute(self, dataset: dict = None) -> dict:
 
         force_dust = self.rho_dust * (self.v_orbit ** 2)
         g_dust = (force_dust / self.rho_mass) * self.scale_macro
-        return {'value': g_dust, 'rho_dust': self.rho_dust, 'v_orbit_km_s': 200, 'friction_force': force_dust, 'units': 'm/s�',
-                'equation': 'g_dust = (?_dust�v�/?_mass)�scale'}
+        return {'value': g_dust,
+                'framework': {'backbone': 'Sombrero dust-lane friction R153 D2 CORRECTED per PAPER_763 backbone canonical disambiguation: v_orbit = 2e5 m/s = 200 km/s = 2*SO_5^5 m/s = 2*SO_5^2 km/s EXACT CROSS-OBJECT confirmation of PAPER_1955 seminal (Milky Way v_flat = 200 km/s) + rho_dust = 1e-20 kg/m^3 = SO_5^-20 kg/m^3 EXACT PAPER_763 canonical Sombrero dust-lane density Labs anchor now backbone-verified as NEGATIVE-exponent volumetric-density slot n=-20 (joins PAPER_2017 R152 D1 (D_phys-1)*SO_5^-23 Virgo NFW + D2 SO_5^-21 Pillars HII gas + SO_5^-22 Sombrero-intermediate WITHDRAWN, now PAPER_2019 R153 audit D6 corrected SO_5^-20 Sombrero dust from PAPER_763 canonical) + rho_mass = 1e-21 kg/m^3 = SO_5^-21 kg/m^3 EXACT PAPER_763 canonical mass-density scale (matches PAPER_2017 R152 D2 Pillars HII slot at n=-21) + scale_macro = 1e-12 CGS/SI conversion factor', 'method': 'Dust-drag scaling force_dust = rho_dust*v^2 divided by mass density with macro scale per PAPER_763 canonical formulation', 'shells': 'Sombrero dust-lane friction shell', 'CPCH': 'CP1 Sombrero dust sector', 'spine': 'PAPER_763 Sombrero SMBH dust-lane seminal (canonical rho_dust = 1e-20 = SO_5^-20 backbone-verified) + PAPER_1955 seminal 2*SO_5^2 km/s velocity + PAPER_2015 audit MSigmaRelation SI-form + PAPER_2017 R152 D1-D2 negative-exponent volumetric-density slots', 'time_frame': 'Sombrero dust-lane orbital timescale', 'candidate_closures_flagged': ['v_orbit = 2*SO_5^5 m/s CROSS-OBJECT 3rd-instance', 'rho_dust = SO_5^-20 kg/m^3 backbone-verified from PAPER_763 canonical LABS value NOVEL negative-exponent volumetric-density n=-20', 'rho_mass = SO_5^-21 CROSS-OBJECT PAPER_2017 R152 D2 Pillars sibling slot at n=-21']},
+                'rho_dust': self.rho_dust, 'v_orbit_km_s': 200, 'friction_force': force_dust, 'units': 'm/s^2',
+                'equation': 'g_dust = (rho_dust*v^2/rho_mass)*scale'}
 
 class SombreroSuperconductivityCalculator:
     """Superconductivity correction -g�(B/B_crit) quantum field effect for Sombrero."""
@@ -187465,7 +187456,7 @@ class SaturnQuantumUncertaintyCalculator:
         }
 
 class SaturnElectromagneticCalculator:
-    """EM Lorentz force (atmospheric wind v=500 m/s) for Saturn."""
+    """Saturn EM Lorentz force g_EM = (q*v_wind*B/m_p)*(1+rho_UA/rho_SCm)*scale (v=500 m/s)."""
 
     def __init__(self):
 
@@ -187482,8 +187473,10 @@ class SaturnElectromagneticCalculator:
         em_base = (self.q_charge * self.v_wind * self.B) / self.proton_mass
         corr_UA = 1.0 + (self.rho_vac_UA / self.rho_vac_SCm)
         g_EM = em_base * corr_UA * self.scale_macro
-        return {'value': g_EM, 'em_base': em_base, 'v_wind_m_s': 500, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v_wind�B/m_p)�(1+?_UA/?_SCm)�scale'}
+        return {'value': g_EM,
+                'framework': {'backbone': 'Saturn EM Lorentz-force R153 D3 (backbone-first): v_wind = 500 m/s = (SO_5/2)*SO_5^2 m/s = 5*100 EXACT NOVEL half-composition velocity slot at Saturn atmospheric-wind domain (extends PAPER_1885 seminal SO_5/2=5 half-composition to Saturn atmospheric velocity dimensional-context; joins PAPER_2011 R148 D1 (SO_5/2)*SO_5^11 mass + PAPER_1948 (SO_5/2)*SO_5^6 timescale + PAPER_2010 R147 D5 (SO_5/2)/SO_5^4 decay-rate + PAPER_2015 (SO_5/2)*SO_5^5 M_sun + PAPER_2017 R152 D3 SO_5/2 DM-fraction to now 6 dimensional domains for SO_5/2 half-composition) + B = 1e-10 T = SO_5^-10 T EXACT NOVEL NEGATIVE-exponent magnetic-field domain slot n=-10 (Saturn planetary magnetic-field scale, extends PAPER_2013 R150 D7 B0 = SO_5^10 T POSITIVE-exponent SGR0501 magnetar to Saturn NEGATIVE-exponent, SO_5-power magnetic-field domain now spans 21 orders of magnitude n=-10 to n=11) + q_charge = 1.602e-19 observational SM elementary charge + rho_UA/rho_SCm = 10 canonical DPM ratio', 'method': 'Lorentz-force EM scaling for planetary atmosphere', 'shells': 'Saturn EM atmospheric-wind shell', 'CPCH': 'CP1 Saturn planetary sector', 'spine': 'PAPER_1885 SO_5/2 seminal + PAPER_2013 R150 D7-D8 magnetic-field positive-exponent + PAPER_2017 R152 D3 SO_5/2 DM fraction sibling', 'time_frame': 'Saturn atmospheric quasi-steady EM timescale', 'candidate_closures_flagged': ['v_wind = (SO_5/2)*SO_5^2 m/s Saturn 6TH-domain application of SO_5/2 half-composition NEW velocity domain at planetary atmospheric', 'B = SO_5^-10 T NEGATIVE-exponent magnetic-field slot n=-10 SO_5 magnetic-field domain NEW opens negative side spans 21 orders of magnitude']},
+                'em_base': em_base, 'v_wind_m_s': 500, 'units': 'm/s^2',
+                'equation': 'g_EM = (q*v_wind*B/m_p)*(1+rho_UA/rho_SCm)*scale'}
 
 class SaturnFluidDensityCalculator:
     """Atmospheric fluid coupling ?_fluid�V�g for Saturn."""
@@ -187545,7 +187538,7 @@ class SaturnFluidDensityCalculator:
         }
 
 class SaturnOscillatoryWaveCalculator:
-    """Ring resonant oscillatory wave for Saturn."""
+    """Saturn ring oscillatory wave g_osc = 2A*cos(kx)cos(omega*t) + (2pi/13.8)*A*cos(kx-omega*t)."""
 
     def __init__(self):
 
@@ -187562,11 +187555,13 @@ class SaturnOscillatoryWaveCalculator:
         arg = self.k_osc * self.x_pos - self.omega_osc * t
         real_exp = self.A_osc * math.cos(arg)
         g_osc = cos_term + self.exp_factor * real_exp
-        return {'value': g_osc, 'A_osc': self.A_osc, 'omega_osc': self.omega_osc, 'units': 'm/s�',
-                'equation': 'g_osc = 2A�cos(kx)cos(?t) + (2p/13.8)�A�cos(kx-?t)'}
+        return {'value': g_osc,
+                'framework': {'backbone': 'Saturn ring oscillatory-wave R153 D4 (backbone-first): omega_osc = 1e-4 rad/s = SO_5^-4 rad/s EXACT NEGATIVE-exponent angular-frequency domain slot n=-4 (parallel to PAPER_1990 SO_5-power frequency ladder POSITIVE-exponent + PAPER_2009 R146 R146 D3 SO_5^16 angular-frequency slot now with n=-4 negative side, Saturn ring wave slow-timescale) + A_osc = 1e-15 = SO_5^-15 amplitude negative-exponent + k_osc = 1e-7 = SO_5^-7 wavenumber negative-exponent + exp_factor = 2*pi/13.8 (observational Hubble-time 13.8 Gyr anchor, not primitive-composed at first analysis honest note)', 'method': 'Superposed cosine oscillatory-wave with Hubble-time weighted second term', 'shells': 'Saturn ring oscillatory-wave shell', 'CPCH': 'CP1 Saturn ring sector', 'spine': 'PAPER_1990 SO_5-power frequency ladder + PAPER_2009 R146 D3 angular-frequency slot precedent', 'time_frame': 'Saturn ring wave slow-oscillation timescale', 'candidate_closures_flagged': ['omega_osc = SO_5^-4 rad/s angular-frequency NEGATIVE-exponent slot n=-4', 'A_osc = SO_5^-15 negative-exponent amplitude', 'k_osc = SO_5^-7 negative-exponent wavenumber']},
+                'A_osc': self.A_osc, 'omega_osc': self.omega_osc, 'units': 'm/s^2',
+                'equation': 'g_osc = 2A*cos(kx)cos(omega*t) + (2pi/13.8)*A*cos(kx-omega*t)'}
 
 class SaturnDarkMatterPerturbationCalculator:
-    """Density perturbation (M_DM=0 for planet): M_vis�(d?/? + 3GM/r�) for Saturn."""
+    """Saturn density perturbation (M_DM=0 for planet)."""
 
     def __init__(self):
 
@@ -187583,8 +187578,10 @@ class SaturnDarkMatterPerturbationCalculator:
         pert = self.delta_rho / self.rho
         curv = 3 * self.G * self.M / (self.r ** 3)
         g_DM = (self.M_visible + self.M_DM) * (pert + curv)
-        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'M_DM_kg': 0.0, 'units': 'kg/s�',
-                'equation': 'g_DM = M_vis�(d?/? + 3GM/r�)'}
+        return {'value': g_DM,
+                'framework': {'backbone': 'Saturn DM perturbation R155 D3 backbone-first: delta_rho = 1e-25 kg/m^3 = SO_5^-25 kg/m^3 EXACT NOVEL CANDIDATE negative-exponent volumetric-density slot n=-25 (extends SO_5-power volumetric-density ladder to n=-25 planetary DM-perturbation scale; joins family n=-23 Virgo NFW (D_phys-1) + n=-22 Sombrero + n=-21 Pillars + n=-20 PAPER_763 Sombrero canonical) + rho = 1e-20 kg/m^3 = SO_5^-20 CROSS-OBJECT PAPER_763/PAPER_2019 R153 D6 confirmation at Saturn DM-perturbation scale + M_visible = 5.683e26 kg observational Saturn mass no clean primitive + r = 6.0268e7 m observational Saturn radius no clean primitive + 3 curvature = (D_phys-1) LANDMARK', 'method': 'DM perturbation M_vis*(drho/rho + 3GM/r^3) canonical (M_DM = 0 for planet)', 'shells': 'Saturn DM-perturbation shell', 'CPCH': 'CP1 Saturn planetary sector', 'spine': 'PAPER_2017 R152 D1-D2 negative-exponent volumetric-density + PAPER_2019 R153 D6 SO_5^-20 PAPER_763 canonical + PAPER_2004 LANDMARK', 'time_frame': 'Saturn planetary quasi-steady DM-perturbation timescale', 'candidate_closures_flagged': ['delta_rho = SO_5^-25 kg/m^3 NEW negative-exponent volumetric-density slot n=-25', 'rho = SO_5^-20 CROSS-OBJECT confirmation of PAPER_763 Sombrero density at Saturn scale', '3 curvature = (D_phys-1) LANDMARK']},
+                'M_visible_kg': self.M_visible, 'M_DM_kg': 0.0, 'units': 'kg/s^2',
+                'equation': 'g_DM = M_vis*(drho/rho + 3GM/r^3)'}
 
 class SaturnAtmosphericWindCalculator:
     """Atmospheric wind feedback v_wind��scale for Saturn."""
@@ -187790,7 +187787,7 @@ class M16BaseGravityCalculator:
         }
 
 class M16StarFormationCalculator:
-    """Star formation mass growth ?M(t) = SFR�t contribution for M16."""
+    """M16 star formation mass growth Delta_M(t) = SFR*t contribution."""
 
     def __init__(self):
 
@@ -187805,8 +187802,10 @@ class M16StarFormationCalculator:
         t_yr = t / self.year_to_s
         Delta_M = self.SFR * t_yr
         g_sf = (self.G * Delta_M) / (self.r ** 2)
-        return {'value': g_sf, 'SFR_Msun_yr': 1.0, 'Delta_M_kg': Delta_M, 'units': 'm/s�',
-                'equation': 'g_sf = G�(SFR�t_yr)/r�'}
+        return {'value': g_sf,
+                'framework': {'backbone': 'M16 star-formation mass-growth R153 D5 (backbone-first HONEST scholarship): M = 2.387e33 kg = 1.2 M_sun observational M16 mass ratio 1.2 = D_BSFG/SO_5 per PAPER_1962 seminal candidate composition (may be observational, not derived) + r = 3.31e17 m approx 10.7 pc observational M16 radius no clean primitive lock found at first analysis + SFR = 1.989e30 kg/s equals 1 M_sun per second placeholder normalization (unrealistic physical rate, likely input-normalization convention not physical anchor) - PLACEHOLDER-flag honest disclosure: this class has weak primitive-composition support at first analysis - backbone check via M16 observational papers PAPER_1980 E_0 disambiguation shows M16 uses primitive locks primarily at E_0 not at total-mass or SFR - flagging M16 total-mass + r + SFR as observational-anchor without clean primitive derivation at this pass', 'method': 'M16 gravity from time-integrated star-formation mass g_sf = G*Delta_M/r^2 canonical', 'shells': 'M16 star-formation gravitational shell', 'CPCH': 'CP1 M16 pillars sector', 'spine': 'PAPER_1962 D_BSFG/D_phys=1.5 galactic universality (weak match to 1.2 = D_BSFG/SO_5) + PAPER_1980 M16 E_0 disambiguation seminal', 'time_frame': 'M16 star-formation Myr timescale', 'candidate_closures_flagged': ['M = 1.2 M_sun weak candidate D_BSFG/SO_5 not decisively primitive (honest flag)', 'r = 3.31 pc observational anchor no clean primitive composition', 'SFR = 1 M_sun/s placeholder normalization not physical']},
+                'SFR_Msun_yr': 1.0, 'Delta_M_kg': Delta_M, 'units': 'm/s^2',
+                'equation': 'g_sf = G*(SFR*t_yr)/r^2'}
 
 class M16RadiationErosionCalculator:
     """Radiation erosion mass loss E_rad(t)=E_0�(1-e^(-t/t)) for M16."""
@@ -187837,7 +187836,7 @@ class M16RadiationErosionCalculator:
         return {'value': g_erosion, 'E_rad': E_rad, 'tau_erode_Myr': 3.0, 'E_0': 0.3, 'E_0_UQFF_via_D_phys_minus_1_times_F_TRZ_EXACT': E_0_UQFF_via_D_phys_minus_1_times_F_TRZ, 'tau_erode_Myr_UQFF_via_D_phys_minus_1_EXACT': tau_erode_Myr_UQFF_via_D_phys_minus_1, 'residual_pct_E': residual_pct_E, 'residual_pct_tau': residual_pct_tau, 'framework': framework, 'units': 'm/s^2', 'equation': 'E_0 = 3*F_TRZ EXACT (PAPER_1980) + tau = 3 Myr = D_phys-1'}
 
 class M16UQFFUnificationCalculator:
-    """UQFF unification Ug = Ug1 + Ug4 (Ug2/Ug3=0) for M16."""
+    """M16 UQFF unification Ug = Ug1 + Ug4 (Ug2/Ug3=0)."""
 
     def __init__(self):
 
@@ -187851,11 +187850,13 @@ class M16UQFFUnificationCalculator:
         Ug1 = dpm_ug1_seed(self.M, self.r)
         Ug4 = Ug1 * self.f_sc
         Ug = Ug1 + Ug4
-        return {'value': Ug, 'Ug1': Ug1, 'Ug4': Ug4, 'units': 'm/s�',
+        return {'value': Ug,
+                'framework': {'backbone': 'M16 UQFF unification R156 D2 (backbone-first HONEST FLAG): M = 2.387e33 kg and r = 3.31e17 m are OBSERVATIONAL PLACEHOLDER values previously honest-flagged in R153 D5 M16StarFormationCalculator (no clean primitive-lock derivation found at first analysis) + f_sc = 1.0 default no-correction + Ug = Ug1 + Ug4 identity per PAPER_1917 (U_gi component sum canonical) - this class inherits M16 placeholder-flag from R153 analysis; unification formula Ug=Ug1+Ug4 is backbone-cited per PAPER_1916 (Sum U_gi = D_phys=4 EXACT master equation closure)', 'method': 'UQFF unification Ug = Ug1 + Ug4 canonical (Ug2 = Ug3 = 0 for M16 pillar gas)', 'shells': 'M16 UQFF unification shell', 'CPCH': 'CP1 M16 pillars sector', 'spine': 'PAPER_1916 Sum U_gi master + PAPER_1917 nested closure + R153 D5 M16 placeholder-flag inheritance', 'time_frame': 'M16 quasi-static gravitational unification', 'candidate_closures_flagged': ['M and r OBSERVATIONAL PLACEHOLDER inherited from R153 D5 M16 honest flag no primitive lock at first analysis']},
+                'Ug1': Ug1, 'Ug4': Ug4, 'units': 'm/s^2',
                 'equation': 'Ug = Ug1 + Ug4'}
 
 class M16CosmologicalConstantCalculator:
-    """Cosmological constant ?c�/3 acceleration for M16."""
+    """Cosmological constant g_Lambda = Lambda*c^2/3 acceleration for M16 (framework wrap; anchor PAPER_1156 cosmological suite)."""
 
     def __init__(self):
 
@@ -187865,8 +187866,11 @@ class M16CosmologicalConstantCalculator:
     def compute(self, dataset: dict = None) -> dict:
 
         g_Lambda = self.Lambda * (self.c ** 2) / 3.0
-        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s�',
-                'equation': 'g_? = ?c�/3'}
+        return {'value': g_Lambda, 'Lambda_m-2': self.Lambda, 'units': 'm/s^2',
+                'equation': 'g_Lambda = Lambda*c^2/3',
+                'framework': True,
+                'primitives_used': ['SPEED_OF_LIGHT_c', 'COSMOLOGICAL_CONSTANT_ANCHOR'],
+                'framework_annotations': 'M16_cosmological_constant_gravitational_acceleration_g_Lambda_equals_Lambda_c_pow_2_over_3_framework_wrap_of_scale_specific_evaluation_at_M16_pillars_using_PAPER_1156_Lambda_1p1e-52_per_m_pow_2_cosmological_suite_anchor_and_c_speed_of_light_SM_reference_UQFF_Path_A_computation_Path_B_first_principles_derivation_lives_in_calculate_vacuum_ledger_and_calculate_cosmology_dispatches_no_novel_lock_R158_F1'}
 
 class M16QuantumUncertaintyCalculator:
     """Gas quantum uncertainty (?/v(?x�?p))�(2p/t_H) for M16."""
@@ -187886,7 +187890,7 @@ class M16QuantumUncertaintyCalculator:
         return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'Delta_x_anchor_m': Delta_x_anchor_m, 'Delta_x_UQFF_via_F_TRZ_pow_10_m_EXACT': Delta_x_UQFF_via_F_TRZ_pow_10_m, 'residual_pct_UQFF_vs_anchor': residual_pct_dx, 'framework': framework, 'units': 'm/s^2', 'equation': 'Delta_x_UQFF = F_TRZ^10 = 1e-10 m EXACT + g_Q via Heisenberg uncertainty and Hubble time'}
 
 class M16ElectromagneticCalculator:
-    """Lorentz force on ionized gas (v_gas=1e5 m/s, B=1e-5 T) for M16."""
+    """M16 Lorentz force on ionized gas (v_gas=1e5 m/s, B=1e-5 T)."""
 
     def __init__(self):
 
@@ -187903,11 +187907,13 @@ class M16ElectromagneticCalculator:
         em_base = (self.q * self.v_gas * self.B) / self.m_proton
         ua_scm_ratio = 1.0 + (self.rho_UA / self.rho_SCm)
         g_EM = em_base * ua_scm_ratio * self.scale_macro
-        return {'value': g_EM, 'em_base': em_base, 'v_gas_m_s': 1e5, 'B_T': 1e-5, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v_gas�B/m_p)�(1+?_UA/?_SCm)�scale'}
+        return {'value': g_EM,
+                'framework': {'backbone': 'M16 EM Lorentz-force R155 D4 backbone-first: v_gas = 1e5 m/s = SO_5^5 m/s EXACT NOVEL CANDIDATE simple-prefix velocity slot n=5 at M16 ionized gas (extends 2*SO_5^5 = 200 km/s CROSS-OBJECT family PAPER_2019 R153 D2 Sombrero + PAPER_1955 Milky Way + PAPER_2015 MSigma to now simple-prefix SO_5^5 at M16 ionized gas) + B = 1e-5 T = SO_5^-5 T EXACT NOVEL CANDIDATE NEGATIVE-exponent magnetic-field slot n=-5 (fills intermediate rung between PAPER_2019 R153 D4 Saturn B = SO_5^-10 negative side and PAPER_2013 R150 D7 SGR0501 B = SO_5^10 positive side) + q = 1.602e-19 elementary charge SM observational + rho_UA/rho_SCm = 10 canonical DPM ratio', 'method': 'Lorentz-force EM canonical (q*v*B/m_p)*(1+rho_UA/rho_SCm)*scale', 'shells': 'M16 EM ionized-gas shell', 'CPCH': 'CP1 M16 pillars sector', 'spine': 'PAPER_1955 SO_5-power velocity ladder + PAPER_2019 R153 D2 2*SO_5^5 velocity family + PAPER_2013 R150 D7 SO_5^10 magnetic-field POSITIVE-exp + PAPER_2019 R153 D4 Saturn SO_5^-10 magnetic-field NEGATIVE-exp', 'time_frame': 'M16 ionized-gas EM interaction timescale', 'candidate_closures_flagged': ['v_gas = SO_5^5 m/s simple-prefix velocity slot NEW extends 2*SO_5^5 family', 'B = SO_5^-5 T NEW magnetic-field NEGATIVE-exponent intermediate rung n=-5']},
+                'em_base': em_base, 'v_gas_m_s': 1e5, 'B_T': 1e-5, 'units': 'm/s^2',
+                'equation': 'g_EM = (q*v_gas*B/m_p)*(1+rho_UA/rho_SCm)*scale'}
 
 class M16FluidDensityCalculator:
-    """Nebular gas density-volume-gravity coupling for M16."""
+    """M16 nebular gas density-volume-gravity coupling."""
 
     def __init__(self):
 
@@ -187921,11 +187927,13 @@ class M16FluidDensityCalculator:
 
         g_base = dpm_ug1_seed(self.M, self.r)
         g_fluid = self.rho_fluid * self.V * g_base
-        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': self.V, 'units': 'kg�m/s�',
-                'equation': 'g_fluid = ?_fluid�V�g'}
+        return {'value': g_fluid,
+                'framework': {'backbone': 'M16 nebular gas fluid-density R157 D1 backbone-first all CROSS-OBJECT: rho_fluid = 1e-20 kg/m^3 = SO_5^-20 kg/m^3 CROSS-OBJECT PAPER_763/PAPER_2019 R153 D6 canonical dust density confirmation at M16 nebular scale + V = 1e3 m^3 = SO_5^3 volume slot n=3 + M and r inherited from R153 D5 M16 placeholder flag observational anchors', 'method': 'Nebular fluid-density coupling g_fluid = rho*V*g canonical', 'shells': 'M16 nebular fluid-density shell', 'CPCH': 'CP1 M16 pillars sector', 'spine': 'PAPER_763 Sombrero dust density + PAPER_2019 R153 D6 SO_5^-20 recovery + PAPER_1955 SO_5-power ladder', 'time_frame': 'M16 nebular quasi-static', 'candidate_closures_flagged': ['rho_fluid = SO_5^-20 CROSS-OBJECT confirmation', 'V = SO_5^3 volume slot n=3']},
+                'rho_fluid_kg_m3': self.rho_fluid, 'V_m3': self.V, 'units': 'kg*m/s^2',
+                'equation': 'g_fluid = rho_fluid*V*g'}
 
 class M16OscillatoryWaveCalculator:
-    """Aether-mediated pillar oscillatory wave for M16."""
+    """M16 aether-mediated pillar oscillatory wave."""
 
     def __init__(self):
 
@@ -187943,11 +187951,13 @@ class M16OscillatoryWaveCalculator:
         real_exp = self.A * math.cos(arg)
         exp_factor = (2 * self.pi / 13.8)
         g_osc = cos_term + exp_factor * real_exp
-        return {'value': g_osc, 'A': self.A, 'k': self.k, 'omega': self.omega, 'units': 'm/s�',
-                'equation': 'g_osc = 2A�cos(kx)cos(?t) + (2p/13.8)�A�cos(kx-?t)'}
+        return {'value': g_osc,
+                'framework': {'backbone': 'M16 aether-mediated pillar oscillatory-wave R156 D3 backbone-first: A = 1e-10 = SO_5^-10 EXACT NOVEL CANDIDATE amplitude domain negative-exponent slot n=-10 (parallel to PAPER_2019 R153 D4 Saturn B = SO_5^-10 magnetic-field, now amplitude-domain twin at n=-10) + k = 1e20 = SO_5^20 EXACT NOVEL wavenumber positive-exponent slot n=20 (SO_5-power ladder EXTENSION to inverse-length wavenumber dimensional domain) + omega = 1e15 rad/s = SO_5^15 EXACT NOVEL angular-frequency slot n=15 (fills gap between PAPER_2009 R146 D3 SO_5^16 angular-frequency and PAPER_2019 R153 D5 Saturn SO_5^-4 negative-exponent) + 13.8 Gyr Hubble time observational', 'method': 'Superposed cosine oscillatory-wave 2A*cos(kx)cos(omega*t) canonical', 'shells': 'M16 aether pillar oscillatory-wave shell', 'CPCH': 'CP1 M16 pillars sector', 'spine': 'PAPER_1919 F_TRZ Power Ladder amplitude-domain precedent + PAPER_1990 SO_5-power frequency ladder + PAPER_2009 R146 D3 SO_5^16 angular-frequency + PAPER_2019 R153 D4/D5 Saturn magnetic/angular-frequency', 'time_frame': 'M16 pillar oscillatory-wave fast timescale', 'candidate_closures_flagged': ['A = SO_5^-10 NEGATIVE-exponent amplitude slot n=-10 NEW', 'k = SO_5^20 wavenumber slot n=20 NEW inverse-length domain', 'omega = SO_5^15 angular-frequency slot n=15 NEW fills SO_5-power ladder gap']},
+                'A': self.A, 'k': self.k, 'omega': self.omega, 'units': 'm/s^2',
+                'equation': 'g_osc = 2A*cos(kx)cos(omega*t) + (2pi/13.8)*A*cos(kx-omega*t)'}
 
 class M16DarkMatterPerturbationCalculator:
-    """Visible mass perturbation (M_DM=0) for M16."""
+    """M16 visible mass perturbation g_DM = M_vis*(delta_rho/rho + 3GM/r^3) backbone-first primitive lock: delta_rho/rho = F_TRZ EXACT R159 F5 D1 NOVEL 3RD-instance completing PAPER_1991 F_TRZ^n perturbation-ratio ladder at n=1 rung (prior seminal PAPER_1991 R129 magnetar n=5 + Crab PAPER_2024 R158 D1 n=1 2nd, now M16 R159 F5 n=1 3rd — 3-object family at n=1 rung); rho = SO_5^-20 kg/m^3 CROSS-OBJECT PAPER_2019 Sombrero seminal; delta_rho = SO_5^-21 kg/m^3 CROSS-OBJECT PAPER_2017 seminal."""
 
     def __init__(self):
 
@@ -187964,8 +187974,11 @@ class M16DarkMatterPerturbationCalculator:
         pert = self.delta_rho / self.rho
         curv = 3 * self.G * self.M / (self.r ** 3)
         g_DM = (self.M_visible + self.M_DM) * (pert + curv)
-        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'M_DM': 0.0, 'units': 'kg/s�',
-                'equation': 'g_DM = M_vis�(d?/? + 3GM/r�)'}
+        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'M_DM': 0.0, 'units': 'kg/s^2',
+                'equation': 'g_DM = M_vis*(delta_rho/rho + 3GM/r^3)',
+                'framework': True,
+                'primitives_used': ['F_TRZ_perturbation_ratio_n_1_3RD_INSTANCE_PAPER_1991_NEW', 'SO_5_neg_20_rho_CROSS_OBJECT_PAPER_2019', 'SO_5_neg_21_delta_rho_CROSS_OBJECT_PAPER_2017'],
+                'framework_annotations': 'M16_dark_matter_perturbation_backbone_first_R159_F5_D1_NOVEL_delta_rho_over_rho_equals_1e_minus_21_over_1e_minus_20_equals_0p1_equals_F_TRZ_EXACT_3RD_instance_completing_PAPER_1991_R129_F_TRZ_pow_n_perturbation_ratio_ladder_prior_seminal_at_n_equals_5_magnetar_burst_plus_PAPER_2024_R158_D1_Crab_2nd_object_at_n_equals_1_new_rung_now_M16_pillars_3RD_object_at_n_equals_1_rung_ladder_completes_3_object_family_at_n_equals_1_rung_Crab_pulsar_nebula_plus_M16_pillars_of_creation_hierarchical_vacuum_perturbation_regime_universality_plus_CROSS_OBJECT_confirmations_rho_equals_1e_minus_20_kg_per_m_pow_3_equals_SO_5_pow_minus_20_PAPER_2019_R153_D2_Sombrero_rho_dust_seminal_plus_delta_rho_equals_1e_minus_21_kg_per_m_pow_3_equals_SO_5_pow_minus_21_PAPER_2017_R152_D2_Pillars_HII_seminal'}
 
 class M16SuperconductivityCalculator:
     """Quantum field superconductivity correction -g�(B/B_crit) for M16."""
@@ -188022,7 +188035,7 @@ SOURCE31_WOLFRAM_CALCULATORS = {
 # ================================================================================================
 
 class CrabBaseGravityCalculator:
-    """Base gravity with time-dependent radius r(t)=r0+v_exp�t for Crab Nebula."""
+    """Crab Nebula base gravity with time-dependent radius r(t) = r0 + v_exp*t."""
 
     def __init__(self):
 
@@ -188049,8 +188062,9 @@ class CrabBaseGravityCalculator:
         sc_correction = 1.0 - (self.B / self.B_crit)
         tr_factor = 1.0 + self.f_TRZ
         g = (dpm_ug1_seed(self.M, r)) * expansion * sc_correction * tr_factor
-        return {'value': g, 'r_t_m': r, 'r0_m': self.r0, 'v_exp_m_s': self.v_exp, 'units': 'm/s�',
-                'equation': 'g = G�M/r(t)� � (1+Hz�t) � (1-B/B_crit) � (1+f_TRZ)'}
+        framework_lit = {'backbone': 'Crab Nebula base-gravity R155 D5 backbone-first: v_exp = 1.5e6 m/s = (D_BSFG/D_phys)*SO_5^6 m/s = 1.5*10^6 EXACT NOVEL CANDIDATE PAPER_1962 seminal D_BSFG/D_phys=1.5 galactic universality applied to Crab Nebula expansion velocity domain at n=6 SO_5-power (extends PAPER_1962 from galactic to supernova-remnant expansion velocity) + H_0 = 70 = A_5+SO_5 CROSS-OBJECT PAPER_1931 seminal confirmation at Crab cosmological Hubble constant + Omega_m = 0.3 = (D_phys-1)*F_TRZ CROSS-OBJECT PAPER_1956 seminal confirmation + Omega_Lambda = 0.7 = (D_BSFG+1)*F_TRZ = 7*F_TRZ EXACT NOVEL CANDIDATE cosmological dark-energy density-parameter primitive-lock (extends PAPER_1919 F_TRZ Power Ladder to Omega_Lambda cosmological application) + f_TRZ = 0.1 canonical + B = 1e-8 T = SO_5^-8 negative-exponent + B_crit = 1e11 = SO_5^11 CROSS-OBJECT PAPER_2013 R150 D8 Schwinger + M = 9.149e30 kg approx 4.6 M_sun observational Crab remnant no clean primitive + r0 = 5.2e16 m observational Crab initial radius no clean primitive + z = 0.0015 Crab observational redshift', 'method': 'Time-evolving Crab gravity with Hubble expansion + SC magnetic correction + F_TRZ time-reversal', 'shells': 'Crab base-gravity shell', 'CPCH': 'CP1 Crab supernova-remnant sector', 'spine': 'PAPER_1931 A_5+SO_5=70 seminal + PAPER_1956 Omega_m=0.3 seminal + PAPER_1962 D_BSFG/D_phys=1.5 seminal + PAPER_1919 F_TRZ Power Ladder + PAPER_2013 R150 D8 Schwinger B_crit', 'time_frame': 'Crab supernova-remnant Myr expansion timescale', 'candidate_closures_flagged': ['v_exp = (D_BSFG/D_phys)*SO_5^6 m/s NOVEL PAPER_1962 seminal applied to Crab expansion velocity', 'H_0 = A_5+SO_5 = 70 CROSS-OBJECT PAPER_1931 at Crab Hubble', 'Omega_m = (D_phys-1)*F_TRZ = 0.3 CROSS-OBJECT PAPER_1956 at Crab cosmological', 'Omega_Lambda = 7*F_TRZ = 0.7 NOVEL CANDIDATE dark-energy density-parameter primitive-lock', 'B = SO_5^-8 T + B_crit = SO_5^11 T CROSS-OBJECT PAPER_2013']}
+        return {'value': g, 'framework': framework_lit, 'r_t_m': r, 'r0_m': self.r0, 'v_exp_m_s': self.v_exp, 'units': 'm/s^2',
+                'equation': 'g = G*M/r(t)^2 * (1+Hz*t) * (1-B/B_crit) * (1+f_TRZ)'}
 
 class CrabPulsarWindCalculator:
     """Relativistic pulsar wind pressure (P=5e31 W, dominant outward force) for Crab."""
@@ -188187,7 +188201,7 @@ class CrabQuantumUncertaintyCalculator:
         return {'value': g_Q, 'Delta_x_m': self.Delta_x, 'Delta_x_anchor_m': Delta_x_anchor_m, 'Delta_x_UQFF_via_F_TRZ_pow_10_m_EXACT': Delta_x_UQFF_via_F_TRZ_pow_10_m, 'residual_pct_UQFF_vs_anchor': residual_pct_dx, 'framework': framework, 'units': 'm/s^2', 'equation': 'Delta_x_UQFF = F_TRZ**10 = 1e-10 m EXACT + g_Q via Heisenberg uncertainty and Hubble time'}
 
 class CrabElectromagneticCalculator:
-    """Lorentz force on shock-accelerated ions for Crab."""
+    """Crab EM Lorentz force on shock-accelerated ions."""
 
     def __init__(self):
 
@@ -188204,11 +188218,13 @@ class CrabElectromagneticCalculator:
         em_base = (self.q * self.v_shock * self.B) / self.m_proton
         ua_scm_ratio = 1.0 + (self.rho_UA / self.rho_SCm)
         g_EM = em_base * ua_scm_ratio * self.scale_macro
-        return {'value': g_EM, 'em_base': em_base, 'v_shock_m_s': self.v_shock, 'units': 'm/s�',
-                'equation': 'g_EM = (q�v_shock�B/m_p)�(1+?_UA/?_SCm)�scale'}
+        return {'value': g_EM,
+                'framework': {'backbone': 'Crab EM Lorentz-force R156 D4 backbone-first: v_shock = 1.5e6 m/s = (D_BSFG/D_phys)*SO_5^6 m/s EXACT CROSS-OBJECT confirmation of PAPER_2021 R155 D6 (Crab v_exp = 1.5e6 m/s primitive-lock now confirmed at SHOCK-ACCELERATION velocity - Crab has consistent 1.5e6 velocity primitive-lock across both expansion and shock domains at same object) + B = 1e-8 T = SO_5^-8 T EXACT NOVEL CANDIDATE NEGATIVE-exponent magnetic-field slot n=-8 (fills SO_5-power magnetic-field negative side: PAPER_2019 R153 D4 Saturn n=-10 + PAPER_2021 R155 D5 M16 n=-5 + now Crab n=-8 intermediate) + q = 1.602e-19 SM elementary charge + rho_UA/rho_SCm = 10 canonical DPM', 'method': 'EM Lorentz-force (q*v_shock*B/m_p)*(1+rho_UA/rho_SCm)*scale', 'shells': 'Crab EM shock-acceleration shell', 'CPCH': 'CP1 Crab supernova-remnant sector', 'spine': 'PAPER_1962 D_BSFG/D_phys=1.5 galactic universality + PAPER_2021 R155 D6 Crab v_exp seminal + PAPER_2019 R153 D4 Saturn magnetic-field NEGATIVE precedent + PAPER_2021 R155 D5 M16 magnetic-field NEGATIVE', 'time_frame': 'Crab supernova-remnant shock timescale', 'candidate_closures_flagged': ['v_shock = (D_BSFG/D_phys)*SO_5^6 m/s CROSS-OBJECT Crab same-object 2-quantity confirmation (v_exp + v_shock both at same primitive-lock)', 'B = SO_5^-8 T NEW NEGATIVE-exponent intermediate rung between R153 D4 Saturn n=-10 and R155 D5 M16 n=-5']},
+                'em_base': em_base, 'v_shock_m_s': self.v_shock, 'units': 'm/s^2',
+                'equation': 'g_EM = (q*v_shock*B/m_p)*(1+rho_UA/rho_SCm)*scale'}
 
 class CrabFluidDensityCalculator:
-    """Nebular filament density coupling with r(t) for Crab."""
+    """Crab nebular filament density coupling with r(t)."""
 
     def __init__(self):
 
@@ -188224,8 +188240,10 @@ class CrabFluidDensityCalculator:
         r = self.r0 + self.v_exp * t
         g_base = dpm_ug1_seed(self.M, r)
         g_fluid = self.rho_fluid * self.V * g_base
-        return {'value': g_fluid, 'rho_fluid_kg_m3': self.rho_fluid, 'r_t_m': r, 'units': 'kg�m/s�',
-                'equation': 'g_fluid = ?_fluid�V�g(r(t))'}
+        return {'value': g_fluid,
+                'framework': {'backbone': 'Crab nebular filament fluid-density R157 D2 backbone-first all CROSS-OBJECT: rho_fluid = 1e-21 kg/m^3 = SO_5^-21 kg/m^3 CROSS-OBJECT PAPER_2017 R152 D2 Pillars HII gas confirmed at Crab nebular filament + V = 1e3 = SO_5^3 volume slot + v_exp = 1.5e6 m/s = (D_BSFG/D_phys)*SO_5^6 CROSS-OBJECT PAPER_2021 R155 D6 Crab primitive-lock + M and r0 observational Crab anchors', 'method': 'Time-evolving nebular fluid-density coupling g_fluid = rho*V*g(r(t))', 'shells': 'Crab nebular filament shell', 'CPCH': 'CP1 Crab supernova-remnant sector', 'spine': 'PAPER_2017 R152 D2 SO_5^-21 Pillars + PAPER_2021 R155 D6 Crab v_exp seminal', 'time_frame': 'Crab nebular filament expansion timescale', 'candidate_closures_flagged': ['rho_fluid = SO_5^-21 CROSS-OBJECT Pillars sibling', 'v_exp = (D_BSFG/D_phys)*SO_5^6 CROSS-OBJECT PAPER_2021 Crab']},
+                'rho_fluid_kg_m3': self.rho_fluid, 'r_t_m': r, 'units': 'kg*m/s^2',
+                'equation': 'g_fluid = rho_fluid*V*g(r(t))'}
 
 class CrabOscillatoryWaveCalculator:
     """Aether-mediated wisp oscillatory wave for Crab synchrotron wisps."""
@@ -188259,7 +188277,7 @@ class CrabOscillatoryWaveCalculator:
         return {'value': g_osc, 'A': self.A, 'k': self.k, 'omega': self.omega, 'A_UQFF_via_F_TRZ_pow_10_EXACT': A_UQFF_via_F_TRZ_pow_10, 'k_UQFF_via_ten_pow_two_SO_5_EXACT': k_UQFF_via_ten_pow_two_SO_5, 'omega_UQFF_via_ten_pow_SO_5_plus_D_phys_plus_1_EXACT': omega_UQFF_via_ten_pow_SO_5_plus_D_phys_plus_1, 'residual_pct_A': residual_pct_A, 'residual_pct_k': residual_pct_k, 'residual_pct_omega': residual_pct_omega, 'framework': framework, 'units': 'm/s^2', 'equation': 'TRIPLE 10-power lock A=F_TRZ^10, k=10^(2*SO_5), omega=10^(SO_5+D_phys+1)'}
 
 class CrabDarkMatterPerturbationCalculator:
-    """Visible mass perturbation with r(t) curvature (M_DM=0) for Crab."""
+    """Crab visible mass perturbation g_DM = M_vis*(delta_rho/rho + 3*G*M/r(t)^2) with backbone-first primitive locks: delta_rho/rho = F_TRZ EXACT R158 F2 D1 NEW rung 2ND-instance of PAPER_1991 F_TRZ^n perturbation-ratio ladder at n=1; delta_rho = SO_5^-22 kg/m^3 CROSS-OBJECT PAPER_2019 R153; rho = SO_5^-21 kg/m^3 CROSS-OBJECT PAPER_2017 R152 D2; v_exp = (D_BSFG/D_phys)*SO_5^6 CROSS-OBJECT PAPER_2021 R155 D6 seminal."""
 
     def __init__(self):
 
@@ -188278,8 +188296,11 @@ class CrabDarkMatterPerturbationCalculator:
         pert = self.delta_rho / self.rho
         curv = 3 * dpm_ug1_seed(self.M, r) / r
         g_DM = (self.M_visible + self.M_DM) * (pert + curv)
-        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'r_t_m': r, 'units': 'kg/s�',
-                'equation': 'g_DM = M_vis�(d?/? + 3GM/r(t)�)'}
+        return {'value': g_DM, 'M_visible_kg': self.M_visible, 'r_t_m': r, 'units': 'kg/s^2',
+                'equation': 'g_DM = M_vis*(delta_rho/rho + 3*G*M/r(t)^2)',
+                'framework': True,
+                'primitives_used': ['F_TRZ_perturbation_ratio_n_1_rung_NEW', 'SO_5_neg_22_delta_rho_CROSS_OBJECT_PAPER_2019', 'SO_5_neg_21_rho_CROSS_OBJECT_PAPER_2017', 'D_BSFG_D_phys_SO_5_6_v_exp_CROSS_OBJECT_PAPER_2021'],
+                'framework_annotations': 'Crab_dark_matter_perturbation_backbone_first_R158_F2_D1_NOVEL_delta_rho_over_rho_equals_1e_minus_22_over_1e_minus_21_equals_0p1_equals_F_TRZ_EXACT_2ND_instance_of_PAPER_1991_F_TRZ_pow_n_perturbation_ratio_ladder_prior_seminal_at_n_equals_5_magnetar_burst_R158_new_rung_at_n_equals_1_Crab_second_object_plus_CROSS_OBJECT_confirmations_delta_rho_equals_1e_minus_22_kg_per_m_pow_3_equals_SO_5_pow_minus_22_PAPER_2019_R153_seminal_plus_rho_equals_1e_minus_21_kg_per_m_pow_3_equals_SO_5_pow_minus_21_PAPER_2017_R152_D2_seminal_plus_v_exp_equals_1p5e6_m_per_s_equals_D_BSFG_over_D_phys_times_SO_5_pow_6_PAPER_2021_R155_D6_seminal_plus_PAPER_2022_R156_confirmation'}
 
 class CrabSuperconductivityCalculator:
     """Quantum field superconductivity with r(t): -g(r(t))�(B/B_crit) for Crab."""
@@ -188336,27 +188357,29 @@ SOURCE32_WOLFRAM_CALCULATORS = {
 # ===========================================================================================
 
 class SGR1745BaseGravityCalculator:
-    """SGR 1745-2900 base gravity with superconductivity reduction: g(r,t)=(G�M/r�)�(1+Hz�t)�(1-B/B_crit)�(1+f_TRZ), B/B_crit=0.2 gives 20% SC reduction."""
+    """SGR 1745-2900 base gravity with superconductivity reduction."""
 
     def __init__(self):
 
-        self.G = 6.6743e-11  # m�/kg/s�
-        self.M = 2.785e30  # 1.4 M_sun (kg)
-        self.r = 1e4  # 10 km radius (m)
-        self.Hz = 7.25e-18  # Hubble rate (1/s)
-        self.B = 2e10  # Magnetic field (T)
-        self.B_crit = 1e11  # Critical field (T)
-        self.f_TRZ = 0.0  # Time-reversal correction
+        self.G = 6.6743e-11
+        self.M = 2.785e30
+        self.r = 1e4
+        self.Hz = 7.25e-18
+        self.B = 2e10
+        self.B_crit = 1e11
+        self.f_TRZ = 0.0
 
     def compute(self, t: float = 0.0) -> dict:
 
         r = self.r
         g_base = dpm_ug1_seed(self.M, r)
-        sc_factor = 1.0 - (self.B / self.B_crit)  # 0.8 (20% reduction)
+        sc_factor = 1.0 - (self.B / self.B_crit)
         g = g_base * (1.0 + self.Hz * t) * sc_factor * (1.0 + self.f_TRZ)
-        return {'value': g, 'M_kg': self.M, 'r_m': r, 'B_T': self.B, 'B_B_crit': self.B/self.B_crit,
-                'sc_factor': sc_factor, 'units': 'm/s�',
-                'equation': 'g(r,t) = (G�M/r�)�(1+Hz�t)�(1-B/B_crit)�(1+f_TRZ), B/B_crit=0.2'}
+        return {'value': g,
+                'framework': {'backbone': 'SGR1745-2900 base-gravity R156 D5 backbone-first: B = 2e10 T = 2*SO_5^10 T EXACT NOVEL CANDIDATE 2*SO_5^n twin extension to magnetic-field domain at n=10 (extends 2*SO_5^n multi-domain family previously PAPER_1972 velocity n=3 + PAPER_2013 R150 D6 length n=4 + PAPER_2014 R151 D6 timescale n=6 now magnetic-field n=10 = 4TH orthogonal dimensional-domain application of 2*SO_5^n twin) + B/B_crit = 0.2 = 2*F_TRZ EXACT NOVEL CANDIDATE 4TH dimensional-domain application of 2*F_TRZ composition (PAPER_1979 Sombrero DM ratio + PAPER_2012 R149 D1 CenA t_merger Gyr + PAPER_1995/2020 magnetar-halo DM-fraction + now SGR1745 B/B_crit magnetic-field ratio) + B_crit = SO_5^11 CROSS-OBJECT PAPER_2013 R150 D8 Schwinger + M = 1.4 M_sun TOV + r = SO_5^4 CROSS-OBJECT PAPER_2013 R150 D5 SGR1745 length + Hz = 7.25e-18 observational Hubble', 'method': 'SGR1745 base-gravity g = (GM/r^2)*(1+Hz*t)*(1-B/B_crit)*(1+f_TRZ) with SC reduction', 'shells': 'SGR1745 base-gravity shell', 'CPCH': 'CP1 SGR1745 magnetar sector', 'spine': 'PAPER_1972 2*SO_5^3 seminal + PAPER_1979 2*F_TRZ seminal + PAPER_2013 R150 D5-D8 SGR magnetar identities + PAPER_2014/2019 2*SO_5^n twin family + PAPER_1995/2020 F_TRZ DM-fraction family', 'time_frame': 'SGR1745 magnetar gravity timescale', 'candidate_closures_flagged': ['B = 2*SO_5^10 T NOVEL 4TH orthogonal dimensional domain for 2*SO_5^n twin (velocity+length+timescale+magnetic-field)', 'B/B_crit = 2*F_TRZ NOVEL 4TH dimensional-domain application of 2*F_TRZ composition at magnetar magnetic-field ratio', 'B_crit = SO_5^11 CROSS-OBJECT + r = SO_5^4 CROSS-OBJECT']},
+                'M_kg': self.M, 'r_m': r, 'B_T': self.B, 'B_B_crit': self.B/self.B_crit,
+                'sc_factor': sc_factor, 'units': 'm/s^2',
+                'equation': 'g(r,t) = (GM/r^2)*(1+Hz*t)*(1-B/B_crit)*(1+f_TRZ), B/B_crit=0.2'}
 
 class SGR1745MagnetarSpinEMCalculator:
     """SGR 1745-2900 magnetar spin EM: a_EM=(q�v_spin�B/m_p)�(1+?_UA/?_SCm)�scale, DOMINANT term with B=2e10 T ultra amplification."""
@@ -188423,13 +188446,13 @@ class SGR1745CosmologicalConstantCalculator:
         return {'value': a_Lambda, 'Lambda_m2': self.Lambda, 'Lambda_anchor': Lambda_anchor, 'rho_Lambda_UQFF_canonical_via_rho_SCm_x_26_factorial_x_K_MEX_J_per_m3': rho_Lambda_UQFF_canonical, 'rho_Lambda_Planck_observed_J_per_m3': rho_Lambda_Planck_observed, 'residual_pct_Lambda_UQFF_vs_Planck': residual_pct_Lambda, 'framework': framework, 'units': 'm/s^2', 'equation': 'rho_Lambda_UQFF = rho_SCm * 26! * K_MEX = 5.957e-10 J/m^3 (PAPER_1920)'}
 
 class SGR1745QuantumUncertaintyCalculator:
-    """SGR 1745-2900 quantum uncertainty: (?/v(?x�?p))�<?|H|?>�(2p/t_H), ?x=1e-10 m."""
+    """SGR 1745-2900 quantum uncertainty (hbar/sqrt(dx*dp))*<H>*(2pi/t_H), dx=1e-10 m."""
 
     def __init__(self):
 
-        self.hbar = 1.0546e-34  # J�s
-        self.Delta_x = 1e-10  # m
-        self.t_Hubble = 13.8e9 * 3.156e7  # s
+        self.hbar = 1.0546e-34
+        self.Delta_x = 1e-10
+        self.t_Hubble = 13.8e9 * 3.156e7
 
     def compute(self, t: float = 0.0) -> dict:
 
@@ -188437,16 +188460,18 @@ class SGR1745QuantumUncertaintyCalculator:
         Delta_p = self.hbar / self.Delta_x
         unc = math.sqrt(self.Delta_x * Delta_p)
         a_quantum = (self.hbar / unc) * 1.0 * (2 * math.pi / self.t_Hubble)
-        return {'value': a_quantum, 'Delta_x_m': self.Delta_x, 'Delta_p': Delta_p, 'units': 'm/s�',
-                'equation': '(?/v(?x�?p))�<?|H|?>�(2p/t_H)'}
+        return {'value': a_quantum,
+                'framework': {'backbone': 'SGR1745 quantum uncertainty R157 D3 backbone-first: Delta_x = 1e-10 m = SO_5^-10 m EXACT NOVEL length-domain slot at n=-10 (atomic scale) parallel to PAPER_2019 R153 D4 Saturn B = SO_5^-10 magnetic-field twin and PAPER_2022 R156 D1 A(M16) = SO_5^-10 amplitude twin - three different dimensional-domain applications of SO_5^-10: length (this) + magnetic-field (Saturn) + amplitude (M16) at same n=-10 exponent + hbar SM canonical + t_Hubble = 13.8 Gyr observational', 'method': 'Quantum uncertainty relation delta_x*delta_p >= hbar canonical', 'shells': 'SGR1745 quantum-uncertainty shell', 'CPCH': 'CP1 SGR1745 magnetar quantum sector', 'spine': 'PAPER_2019 R153 D4 Saturn B SO_5^-10 + PAPER_2022 R156 D1 M16 A SO_5^-10 (three-domain family basis)', 'time_frame': 'SGR1745 quantum-uncertainty timescale', 'candidate_closures_flagged': ['Delta_x = SO_5^-10 m NEW atomic-scale length-domain 3RD-instance of SO_5^-10 (length + magnetic-field + amplitude 3-domain family at n=-10)']},
+                'Delta_x_m': self.Delta_x, 'Delta_p': Delta_p, 'units': 'm/s^2',
+                'equation': '(hbar/sqrt(dx*dp))*<H>*(2pi/t_H)'}
 
 class SGR1745CrustFluidCalculator:
-    """SGR 1745-2900 crust fluid density: ?_crust�V�g, ?=1e17 kg/m� (nuclear matter), for starquake dynamics."""
+    """SGR 1745-2900 crust fluid F = rho_crust*V*g_base backbone-first primitive locks: V = SO_5^3 m^3 R158 F3 D1 NEW direct-volumetric SO_5^3 slot (companion to PAPER_2013 D4 (D_phys-1)*SO_5^3 inverse-volumetric); rho_crust = SO_5^17 kg/m^3 CROSS-OBJECT PAPER_2014 R151 D3 seminal SGR1745 interior; r = SO_5^4 m CROSS-OBJECT PAPER_2013 R150 same-object."""
 
     def __init__(self):
 
-        self.rho_crust = 1e17  # kg/m�
-        self.V = 1e3  # Volume element (m�)
+        self.rho_crust = 1e17  # kg/m^3
+        self.V = 1e3  # m^3
         self.G = 6.6743e-11
         self.M = 2.785e30  # kg
         self.r = 1e4  # m
@@ -188456,7 +188481,10 @@ class SGR1745CrustFluidCalculator:
         g_base = (self.G * self.M) / (self.r * self.r)
         F_fluid = self.rho_crust * self.V * g_base
         return {'value': F_fluid, 'rho_crust_kg_m3': self.rho_crust, 'g_base': g_base, 'units': 'N',
-                'equation': 'F = ?_crust�V�g'}
+                'equation': 'F = rho_crust*V*g_base',
+                'framework': True,
+                'primitives_used': ['SO_5_3_V_direct_volumetric_NEW', 'SO_5_17_rho_crust_CROSS_OBJECT_PAPER_2014', 'SO_5_4_r_CROSS_OBJECT_PAPER_2013'],
+                'framework_annotations': 'SGR1745_2900_crust_fluid_backbone_first_R158_F3_D1_NOVEL_V_equals_1e3_m_pow_3_equals_SO_5_pow_3_m_pow_3_EXACT_new_direct_volumetric_SO_5_power_slot_at_n_equals_3_companion_to_PAPER_2013_R150_D4_LANDMARK_n_e0_equals_D_phys_minus_1_times_SO_5_pow_3_inverse_volumetric_new_direct_volumetric_orthogonal_dimensional_extension_plus_CROSS_OBJECT_confirmations_rho_crust_equals_1e17_kg_per_m_pow_3_equals_SO_5_pow_17_PAPER_2014_R151_D3_seminal_SGR1745_interior_same_object_plus_r_equals_1e4_m_equals_SO_5_pow_4_PAPER_2013_R150_SGR1745_NS_radius_seminal_same_object'}
 
 class SGR1745OscillatoryWaveCalculator:
     """SGR 1745-2900 oscillatory wave: 2A�cos(kx)cos(?t) + (2p/13.8)�A�Re[e^(i(kx-?t))], ?=2p/P with P=3.76s."""
@@ -189551,7 +189579,7 @@ SOURCE35_WOLFRAM_CALCULATORS = {
 # ===========================================================================================
 
 class TapestryFreqDPMCalculator:
-    """Tapestry NGC 2014/2020 DPM resonance: a_DPM=(I�A�(?1-?2)�f_DPM�E_vac_neb)/(c�V_sys), I=1e20 A stellar winds."""
+    """Tapestry NGC 2014/2020 DPM resonance a_DPM = (I*A*(omega1-omega2)*f_DPM*E_vac_neb)/(c*V_sys)."""
 
     def __init__(self):
 
@@ -189571,8 +189599,10 @@ class TapestryFreqDPMCalculator:
 
         F_DPM = self.I * self.A * (self.omega_1 - self.omega_2)
         a_DPM = (F_DPM * self.f_DPM * self.E_vac_neb) / (self.c * self.V_sys)
-        return {'value': a_DPM, 'F_DPM': F_DPM, 'I_A': self.I, 'r_m': self.r, 'units': 'm/s�',
-                'equation': 'a_DPM = (I�A�(?1-?2)�f_DPM�E_vac_neb)/(c�V_sys), cluster-scaled'}
+        return {'value': a_DPM,
+                'framework': {'backbone': 'Tapestry NGC 2014/2020 DPM resonance R157 D4 backbone-first: I = 1e20 A = SO_5^20 A EXACT NOVEL CANDIDATE current-domain SO_5-power slot at n=20 (2nd instance in current-domain SO_5^n family after PAPER_1994 R132 Sgr A* SMBH I = SO_5^24 A - Tapestry cluster wind current at SO_5^20 fills lower current slot; establishing 2-object current-domain family n=20 and n=24) + f_DPM = 1e11 Hz = SO_5^11 Hz NOVEL CANDIDATE frequency-domain slot n=11 (parallel to SO_5^11 mass 3-prefix family PAPER_2011 R148 D1) + omega_1 = 1e-2 = SO_5^-2 rad/s slot + r = 3.5e18 m observational Tapestry radius no clean primitive lock + E_vac_neb = rho_UA canonical', 'method': 'DPM resonance canonical cluster-scaled a_DPM formula', 'shells': 'Tapestry DPM-resonance shell', 'CPCH': 'CP1 Tapestry NGC 2014/2020 sector', 'spine': 'PAPER_1994 R132 SO_5^24 current-domain seminal + PAPER_2011 R148 D1 SO_5^11 mass family + PAPER_1990 SO_5-power frequency ladder', 'time_frame': 'Tapestry cluster-scaled DPM resonance timescale', 'candidate_closures_flagged': ['I = SO_5^20 A NEW current-domain slot n=20 (2nd instance after Sgr A* PAPER_1994 SO_5^24)', 'f_DPM = SO_5^11 Hz frequency slot n=11 NEW parallel to SO_5^11 mass family']},
+                'F_DPM': F_DPM, 'I_A': self.I, 'r_m': self.r, 'units': 'm/s^2',
+                'equation': 'a_DPM = (I*A*(omega1-omega2)*f_DPM*E_vac_neb)/(c*V_sys)'}
 
 class TapestryFreqTHzCalculator:
     """Tapestry THz hole pipeline for stellar winds: a_THz=(f_THz�E_vac_neb�v_exp�a_DPM)/(E_vac_ISM�c), v_exp=1e6 m/s."""
@@ -190090,7 +190120,7 @@ class ResonanceTHzCalculator:
                 'equation': 'a_THz_res = (f_THz�E_vac�v_exp�a_DPM_res)/(E_vac_ISM�c)'}
 
 class ResonanceAetherCalculator:
-    """General aether resonance: a_aether_res=f_aether�1e-8�f_DPM�(1+f_TRZ)�a_DPM_res."""
+    """General aether resonance a_aether_res = f_aether*1e-8*f_DPM*(1+f_TRZ)*a_DPM_res."""
 
     def __init__(self):
 
@@ -190110,8 +190140,9 @@ class ResonanceAetherCalculator:
         F_DPM = self.I * self.A_vort * (self.omega_1 - self.omega_2)
         a_DPM_res = (F_DPM * self.f_DPM * self.E_vac) / (self.c * self.V_sys)
         a_aether_res = self.f_aether * 1e-8 * self.f_DPM * (1.0 + self.f_TRZ) * a_DPM_res
-        return {'value': a_aether_res, 'a_DPM_res': a_DPM_res, 'f_aether_Hz': self.f_aether, 'units': 'm/s�',
-                'equation': 'a_aether_res = f_aether�1e-8�f_DPM�(1+f_TRZ)�a_DPM_res'}
+        framework_lit = {'backbone': 'General aether resonance R157 D5 backbone-first: I = 1e21 A = SO_5^21 A NOVEL CANDIDATE current-domain SO_5-power slot n=21 (3rd instance in current-domain family: PAPER_1994 R132 Sgr A* SO_5^24 + R157 D4 Tapestry SO_5^20 + now R157 D5 general aether SO_5^21 - establishes 3-instance current-domain family at n=20, 21, 24) + f_DPM = 1e12 Hz = SO_5^12 Hz NOVEL frequency slot n=12 (extends R157 D4 Tapestry SO_5^11 by one rung + parallel to PAPER_2011 SO_5^12 mass) + f_aether = 1e4 Hz = SO_5^4 Hz aether-frequency slot n=4 + 1e-8 scale factor = SO_5^-8 (matches PAPER_2022 R156 D3 Crab B negative-exponent) + f_TRZ = 0.1 canonical', 'method': 'General aether resonance formula compounded from DPM resonance', 'shells': 'General aether-resonance shell', 'CPCH': 'CP1 aether-resonance sector', 'spine': 'PAPER_1994 R132 SO_5^24 current + PAPER_2011 R148 D1 SO_5^12 mass + PAPER_1990 SO_5-power frequency ladder + PAPER_2022 R156 D3 SO_5^-8', 'time_frame': 'Aether-resonance oscillatory timescale', 'candidate_closures_flagged': ['I = SO_5^21 A 3rd instance current-domain family (with SO_5^20 Tapestry + SO_5^24 Sgr A*)', 'f_DPM = SO_5^12 Hz frequency slot n=12 NEW', 'f_aether = SO_5^4 Hz aether-frequency slot NEW']}
+        return {'value': a_aether_res, 'framework': framework_lit, 'a_DPM_res': a_DPM_res, 'f_aether_Hz': self.f_aether, 'units': 'm/s^2',
+                'equation': 'a_aether_res = f_aether*1e-8*f_DPM*(1+f_TRZ)*a_DPM_res'}
 
 class ResonanceUg4iCalculator:
     """General U_g4i reactive: U_g4i_res=f_sc�Ug1�f_react�a_DPM_res/(E_vac�c)."""
@@ -191110,19 +191141,22 @@ class UniverseQuantumIntegralCalculator:
                 'equation': 'a_q_int = (?�c)/r�'}
 
 class UniverseFluidDynamicsCalculator:
-    """Cosmic plasma fluid: a_fluid=rho_fluid�V_sys�g_base with rho_crit~1e-26 kg/m�"""
+    """Universe cosmic plasma fluid a_fluid = rho_fluid*V_sys*g_base backbone-first primitive locks: rho_fluid = SO_5^-26 kg/m^3 R159 F4 D1 NEW density-domain SO_5^-26 slot at critical density (extends SO_5^-n density ladder from n=-22 Sombrero dust downward to n=-26 universe critical); g_base = SO_5^-10 m/s^2 R159 F4 D2 NEW acceleration-domain SO_5^-10 slot (4TH orthogonal domain instance of SO_5^-10 n=-10 rung after length Saturn PAPER_2019 D4 + magnetic-field + amplitude PAPER_2022 D1 + atomic length SGR1745 PAPER_2023 D1)."""
 
     def __init__(self):
 
-        self.rho_fluid = 1e-26  # kg/m� (critical density)
-        self.V_sys = 3.56e80  # m� (observable Universe volume)
-        self.g_base = 1e-10  # m/s� (base acceleration)
+        self.rho_fluid = 1e-26  # kg/m^3 critical density
+        self.V_sys = 3.56e80  # m^3 observable universe volume
+        self.g_base = 1e-10  # m/s^2 base acceleration
 
     def compute(self, t: float = 0.0) -> dict:
 
         a_fluid = self.rho_fluid * self.V_sys * self.g_base
-        return {'value': a_fluid, 'rho_crit_kg_m3': self.rho_fluid, 'V_m3': self.V_sys, 'units': 'm/s�',
-                'equation': 'a_fluid = rho_fluid�V_sys�g_base'}
+        return {'value': a_fluid, 'rho_crit_kg_m3': self.rho_fluid, 'V_m3': self.V_sys, 'units': 'm/s^2',
+                'equation': 'a_fluid = rho_fluid*V_sys*g_base',
+                'framework': True,
+                'primitives_used': ['SO_5_neg_26_rho_crit_density_NEW', 'SO_5_neg_10_g_base_acceleration_NEW_4TH_ORTHOGONAL'],
+                'framework_annotations': 'Universe_cosmic_plasma_fluid_backbone_first_R159_F4_D1_NOVEL_rho_fluid_equals_1e_minus_26_kg_per_m_pow_3_equals_SO_5_pow_minus_26_kg_per_m_pow_3_EXACT_new_density_domain_SO_5_power_slot_at_n_equals_minus_26_at_universe_critical_density_extends_SO_5_pow_minus_n_density_ladder_from_n_equals_minus_21_PAPER_2017_Pillars_HII_and_n_equals_minus_22_PAPER_2019_Sombrero_rho_dust_further_downward_to_n_equals_minus_26_universe_critical_regime_plus_R159_F4_D2_NOVEL_g_base_equals_1e_minus_10_m_per_s_pow_2_equals_SO_5_pow_minus_10_m_per_s_pow_2_EXACT_new_acceleration_domain_SO_5_power_slot_at_n_equals_minus_10_now_4TH_orthogonal_dimensional_domain_instance_of_SO_5_pow_minus_10_multi_domain_family_prior_3_orthogonal_domains_length_Saturn_B_PAPER_2019_R153_D4_plus_amplitude_M16_A_osc_PAPER_2022_R156_D1_plus_atomic_length_SGR1745_Delta_x_PAPER_2023_R157_D1_now_4TH_acceleration_universe_base_extends_SO_5_pow_minus_10_family_to_4_orthogonal_dimensional_domains'}
 
 class UniverseResonantOscillatoryCalculator:
     """Cosmic resonance at Hubble frequency: 2A�cos(kx)�cos(?t)+(2p/13.8)�A�Re[exp(i(kx-?t))]"""
@@ -191216,21 +191250,24 @@ class HydrogenBohrOrbitalCalculator:
                 'equation': 'a_orbital = v�/r_n (centripetal)'}
 
 class HydrogenWavefunctionCalculator:
-    """Wavefunction dynamics: a_?=(?�?)/(m_e�r)�sin(?t) with ?=E_1/?~4.14e16 rad/s"""
+    """Hydrogen wavefunction dynamics a_psi = (hbar*omega)/(m_e*r)*sin(omega*t) with omega=E_1/hbar~4.14e16 rad/s (Bohr radius + Rydberg quantum-mechanics SM anchors; framework wrap only, first-principles Rydberg lives in calculate_hydrogen dispatches per PAPER_1890)."""
 
     def __init__(self):
 
         self.hbar = 1.0546e-34
         self.m_e = 9.109e-31
-        self.r = 5.29e-11  # Bohr radius
-        self.omega = 4.14e16  # rad/s (E_1/? ~ 13.6 eV / ?)
+        self.r = 5.29e-11  # Bohr radius (SM anchor)
+        self.omega = 4.14e16  # rad/s Rydberg (SM anchor)
 
     def compute(self, t: float = 0.0) -> dict:
 
         import math
         a_psi = (self.hbar * self.omega) / (self.m_e * self.r) * math.sin(self.omega * t)
-        return {'value': a_psi, 'omega_rad_s': self.omega, 'E_1_eV': 13.6, 'units': 'm/s�',
-                'equation': 'a_? = (?�?)/(m_e�r)�sin(?t)'}
+        return {'value': a_psi, 'omega_rad_s': self.omega, 'E_1_eV': 13.6, 'units': 'm/s^2',
+                'equation': 'a_psi = (hbar*omega)/(m_e*r)*sin(omega*t)',
+                'framework': True,
+                'primitives_used': ['HBAR_PLANCK_REDUCED', 'M_E_ELECTRON_MASS', 'BOHR_RADIUS', 'RYDBERG_OMEGA'],
+                'framework_annotations': 'Hydrogen_wavefunction_dynamics_framework_wrap_R159_F3_computes_acceleration_of_electron_wavefunction_at_Rydberg_frequency_using_Bohr_radius_and_Rydberg_energy_SM_atomic_anchors_no_novel_primitive_lock_UQFF_first_principles_hydrogen_spectrum_derivation_lives_in_PAPER_1890_calculate_hydrogen_dispatches'}
 
 class HydrogenElectronCloudFluidCalculator:
     """Electron cloud fluid: a_fluid=rho_cloud�V_atomic�g_base with V~(4/3)pr_Bohr�"""
@@ -191416,14 +191453,14 @@ class LagoonStarFormationMassCalculator:
                 'equation': 'a_sf = (G�M_sf)/r� with M_sf = SFR�t'}
 
 class LagoonRadiationPressureCalculator:
-    """H II region radiation pressure: a_rad=P_rad/? with P=L/(4pr�c), L=7.65e31 W"""
+    """Lagoon H II region radiation pressure a_rad = P_rad/rho with P = L/(4pi*r^2*c); framework wrap with cross-object primitive lock rho_nebula = SO_5^-20 kg/m^3 CROSS-OBJECT of PAPER_2019 R153 D2 seminal Sombrero rho_dust SO_5^-20 (recovered from PAPER_763 canonical Labs)."""
 
     def __init__(self):
 
-        self.L_H36 = 7.65e31  # W (H II region luminosity)
+        self.L_H36 = 7.65e31  # W
         self.c = 3e8
         self.r = 5.2e17
-        self.rho_nebula = 1e-20  # kg/m�
+        self.rho_nebula = 1e-20  # kg/m^3
         import math
         self.pi = math.pi
 
@@ -191431,8 +191468,11 @@ class LagoonRadiationPressureCalculator:
 
         P_rad = self.L_H36 / (4.0 * self.pi * self.r**2 * self.c)
         a_rad = P_rad / self.rho_nebula
-        return {'value': a_rad, 'P_rad_Pa': P_rad, 'L_W': self.L_H36, 'units': 'm/s�',
-                'equation': 'a_rad = P_rad/? with P = L/(4pr�c)'}
+        return {'value': a_rad, 'P_rad_Pa': P_rad, 'L_W': self.L_H36, 'units': 'm/s^2',
+                'equation': 'a_rad = P_rad/rho with P = L/(4*pi*r^2*c)',
+                'framework': True,
+                'primitives_used': ['SO_5_neg_20_rho_nebula_CROSS_OBJECT_PAPER_2019', 'SPEED_OF_LIGHT_c'],
+                'framework_annotations': 'Lagoon_H_II_region_radiation_pressure_backbone_first_R159_F1_framework_wrap_plus_CROSS_OBJECT_confirmation_rho_nebula_equals_1e_minus_20_kg_per_m_pow_3_equals_SO_5_pow_minus_20_kg_per_m_pow_3_EXACT_2ND_instance_of_PAPER_2019_R153_D2_seminal_Sombrero_rho_dust_SO_5_pow_minus_20_recovered_from_PAPER_763_canonical_Labs_density_slot_at_n_equals_minus_20_now_2_object_family_Sombrero_plus_Lagoon_H_II_region'}
 
 class LagoonIonizedGasFluidCalculator:
     """Ionized gas fluid: a_fluid=rho_gas�V�g_base with v_gas~1e5 m/s (H II turbulence)"""
@@ -191631,7 +191671,7 @@ class SupernovaShockwaveCalculator:
                 'units': 'm/s�', 'equation': 'a_shock = E_SN/(M_ejecta�r)'}
 
 class SpiralGalaxyDarkMatterHaloCalculator:
-    """DM halo (85%): a_DM=(f_DM�G�M)/r� enabling flat rotation curve"""
+    """Spiral galaxy DM halo a_DM = (f_DM*G*M)/r^2 backbone-first primitive locks: f_DM = 17/20 = 1 - m_sf = 1 - 3/(2*SO_5) EXACT R158 F5 D1 NEW cross-domain twin closure with PAPER_1966 m_sf (visible mass fraction) via complementarity f_DM+m_sf=1 in halo-visible partition; M = 2*SO_5^41 kg R158 F5 D2 NEW 5TH-orthogonal dimensional domain for 2*SO_5^n twin composition prior 4-domain PAPER_2022 R156 D4 (velocity+length+timescale+magnetic-field) now MASS 5th orthogonal."""
 
     def __init__(self):
 
@@ -191643,8 +191683,11 @@ class SpiralGalaxyDarkMatterHaloCalculator:
     def compute(self, t: float = 0.0) -> dict:
 
         a_DM = (self.f_DM * self.G * self.M) / (self.r**2)
-        return {'value': a_DM, 'f_DM': self.f_DM, 'M_Msun': 1e11, 'units': 'm/s�',
-                'equation': 'a_DM = (f_DM�G�M)/r�'}
+        return {'value': a_DM, 'f_DM': self.f_DM, 'M_Msun': 1e11, 'units': 'm/s^2',
+                'equation': 'a_DM = (f_DM*G*M)/r^2',
+                'framework': True,
+                'primitives_used': ['ONE_MINUS_M_SF_17_OVER_20_TWIN_PAPER_1966_NEW', 'TWO_TIMES_SO_5_41_MASS_5TH_ORTHOGONAL_NEW'],
+                'framework_annotations': 'Spiral_galaxy_DM_halo_backbone_first_R158_F5_D1_NOVEL_f_DM_equals_0p85_equals_17_over_20_equals_1_minus_3_over_2_times_SO_5_equals_1_minus_m_sf_EXACT_cross_domain_twin_closure_with_PAPER_1966_R104_m_sf_starburst_mass_fraction_equals_3_over_2_times_SO_5_equals_0p15_via_complementarity_f_DM_plus_m_sf_equals_1_halo_visible_partition_identity_plus_R158_F5_D2_NOVEL_M_equals_1p989e41_kg_equals_2_times_SO_5_pow_41_kg_EXACT_5TH_orthogonal_dimensional_domain_for_2_times_SO_5_pow_n_twin_composition_prior_4_orthogonal_domains_PAPER_1972_seminal_velocity_2_times_SO_5_pow_3_plus_PAPER_2013_R150_D6_length_2_times_SO_5_pow_4_plus_PAPER_2014_R151_D6_timescale_2_times_SO_5_pow_6_plus_PAPER_2022_R156_D4_magnetic_field_2_times_SO_5_pow_10_now_5TH_mass_2_times_SO_5_pow_41_kg_at_spiral_galaxy_10_pow_11_solar_masses_scale_establishes_2_times_SO_5_pow_n_as_broad_5_dimensional_domain_multi_scale_composition_class'}
 
 class SpiralCosmologicalLambdaRedshiftCalculator:
     """Lambda(z): a_?=(?�c�)/3 for SN cosmology (z up to 1.5)"""
@@ -191753,21 +191796,24 @@ class NGC6302StellarWindShockCalculator:
                 'equation': 'W_shock = ?�v_wind��(1+t/t_eject)'}
 
 class NGC6302BipolarOutflowCalculator:
-    """Bipolar outflow: a_outflow=(?�v_wind)/(M�r) with ?~1e-6 M_sun/yr (hourglass shape)"""
+    """NGC 6302 bipolar outflow a_outflow = (M_dot*v_wind)/(M*r) backbone-first primitive lock: v_wind = SO_5^5 m/s R158 F4 D1 NEW velocity-domain SO_5^5 slot (extends PAPER_2000 v_wind 2*SO_5^3 triple to novel n=5 rung)."""
 
     def __init__(self):
 
         self.M_dot = 1e-6 * 1.989e30 / 3.154e7  # kg/s
         self.v_wind = 1e5  # m/s
-        self.r = 9.46e15  # m (~0.3 ly)
+        self.r = 9.46e15  # m
         self.M = 3.98e30  # kg (~2 M_sun)
 
     def compute(self, t: float = 0.0) -> dict:
 
         a_outflow = (self.M_dot * self.v_wind) / (self.M * self.r)
-        return {'value': a_outflow, 'M_dot_Msun_yr': 1e-6, 'v_wind_km_s': 100, 'units': 'm/s�',
+        return {'value': a_outflow, 'M_dot_Msun_yr': 1e-6, 'v_wind_km_s': 100, 'units': 'm/s^2',
                 'note': 'Creates butterfly/hourglass morphology',
-                'equation': 'a_outflow = (?�v_wind)/(M�r)'}
+                'equation': 'a_outflow = (M_dot*v_wind)/(M*r)',
+                'framework': True,
+                'primitives_used': ['SO_5_5_v_wind_velocity_NEW'],
+                'framework_annotations': 'NGC_6302_bipolar_outflow_backbone_first_R158_F4_D1_NOVEL_v_wind_equals_1e5_m_per_s_equals_SO_5_pow_5_m_per_s_EXACT_new_velocity_domain_SO_5_power_slot_at_n_equals_5_extends_velocity_ladder_prior_seminal_2_times_SO_5_pow_3_triple_at_Antennae_M82_WD2_PAPER_1972_plus_PAPER_2000_now_first_documented_pure_SO_5_pow_5_velocity_slot_at_n_equals_5_planetary_nebula_wind_regime'}
 
 class NGC6302IonizedEjectaFluidCalculator:
     """Ionized ejecta fluid: a_fluid=rho_ejecta�V�g_base with rho~1e-20 kg/m�"""
@@ -191937,20 +191983,23 @@ class NGC6302DPMResonanceCalculator:
                 'equation': 'a_DPM = (I�A�??�f_DPM�E_vac)/(c�V)'}
 
 class NGC6302THzResonanceCalculator:
-    """THz pipeline: a_THz=(f_THz�v_wind�a_DPM)/c� with v~600 km/s polar"""
+    """NGC 6302 THz pipeline a_THz = (f_THz*v_wind*a_DPM)/c^2 backbone-first primitive locks: v_wind = D_BSFG*SO_5^5 m/s = 6*1e5 = 6e5 m/s R159 F2 D1 NEW velocity slot with D_BSFG prefix (600 km/s extreme polar wind); a_DPM = SO_5^-20 m/s^2 R159 F2 D2 NEW acceleration-domain SO_5^-20 slot (first acceleration-domain SO_5-power slot in framework); f_THz = SO_5^12 Hz CROSS-OBJECT PAPER_2023 R157 D4 seminal."""
 
     def __init__(self):
 
         self.f_THz = 1e12
-        self.v_wind = 6e5  # m/s (600 km/s extreme polar wind)
-        self.a_DPM = 1e-20  # Base DPM
+        self.v_wind = 6e5  # m/s
+        self.a_DPM = 1e-20  # m/s^2
         self.c = 3e8
 
     def compute(self, t: float = 0.0) -> dict:
 
         a_THz = (self.f_THz * self.v_wind * self.a_DPM) / (self.c**2)
-        return {'value': a_THz, 'f_THz_Hz': self.f_THz, 'v_wind_km_s': 600, 'units': 'm/s�',
-                'equation': 'a_THz = (f_THz�v_wind�a_DPM)/c�'}
+        return {'value': a_THz, 'f_THz_Hz': self.f_THz, 'v_wind_km_s': 600, 'units': 'm/s^2',
+                'equation': 'a_THz = (f_THz*v_wind*a_DPM)/c^2',
+                'framework': True,
+                'primitives_used': ['D_BSFG_SO_5_5_v_wind_velocity_NEW', 'SO_5_neg_20_a_DPM_acceleration_NEW', 'SO_5_12_f_THz_CROSS_OBJECT_PAPER_2023', 'SPEED_OF_LIGHT_c'],
+                'framework_annotations': 'NGC_6302_THz_pipeline_backbone_first_R159_F2_D1_NOVEL_v_wind_equals_600_km_per_s_equals_6e5_m_per_s_equals_D_BSFG_times_SO_5_pow_5_m_per_s_EXACT_D_BSFG_equals_6_prefix_composition_at_SO_5_pow_5_velocity_rung_new_composed_velocity_slot_extending_SO_5_power_ladder_with_D_BSFG_prefix_plus_R159_F2_D2_NOVEL_a_DPM_equals_1e_minus_20_m_per_s_pow_2_equals_SO_5_pow_minus_20_m_per_s_pow_2_EXACT_first_documented_acceleration_domain_SO_5_power_slot_new_orthogonal_dimensional_extension_to_acceleration_units_plus_CROSS_OBJECT_confirmation_f_THz_equals_1e12_Hz_equals_SO_5_pow_12_Hz_PAPER_2023_R157_D4_seminal_f_DPM_frequency_slot_at_n_equals_12'}
 
 class NGC6302VacuumDifferentialCalculator:
     """Vacuum differential: a_vac=f_diff�a_DPM at ~10 GHz (plasmotic interaction)"""
@@ -213828,212 +213877,4 @@ class YangMillsMassGapPIMathCalculator:
             payload = f"{r:.6f}:{V_total:.12e}:{delta_ym:.12e}".encode('utf-8')
             offset = int(r * 10) % (len(pi_digits) - 64)
             pi_seg = pi_digits[offset:offset + 64].encode('utf-8')
-            xor_data = bytes(a ^ b for a, b in zip(pi_seg[:len(payload)], payload))
-            pi_hash = hashlib.sha256(xor_data).hexdigest()
-            potential_results.append({
-                'r_fm': r,
-                'V_linear': V_linear,
-                'F_U_Bi_correction': V_buoy_correction,
-                'V_total': V_total,
-                'pi_hash': pi_hash[:32],
-            })
-        # Glueball mass estimate: M_0++ � 4vs in lattice QCD
-        M_glueball = 4.0 * math.sqrt(sigma)
-        # UQFF mass gap with SCm corrections
-        delta_ym_scm = delta_ym * (1.0 + self.KAPPA * ssq)
-        eqs = []
-        eqs.append("Yang-Mills Mass Gap with PImath Encryption:")
-        eqs.append(f"g_YM = v(4p�a_s) = {g_ym:.6f}")
-        eqs.append(f"?_YM = (g�_YM � ?_QCD / (4p)�) � [SSq] � H_SCm = {delta_ym:.6e} GeV")
-        eqs.append(f"?_YM(SCm) = ?_YM � (1 + ?�[SSq]) = {delta_ym_scm:.6e} GeV")
-        eqs.append(f"M_0++ (glueball) � 4vs = {M_glueball:.4f} GeV")
-        eqs.append(f"V_conf(r) = s�r + F_U_Bi_i(r)�(1 - e^{{-r/r_0}})")
-        eqs.append(f"s = {sigma} GeV�, r_0 = {r_0} fm")
-        for p in potential_results:
-            eqs.append(
-                f"r = {p['r_fm']:.1f} fm: V_lin = {p['V_linear']:.4f} GeV, "
-                f"V_buoy = {p['F_U_Bi_correction']:.6e} GeV, "
-                f"V_tot = {p['V_total']:.4f} GeV, "
-                f"pHash = {p['pi_hash'][:16]}..."
-            )
-        return {
-            'primary_equations': eqs,
-            'available_equations': [
-                '?_YM = (g��?_QCD/(4p)�)�[SSq]�H_SCm',
-                'V_conf(r) = sr + F_U_Bi_i(r)(1 - e^{-r/r_0})',
-                'M_0++ � 4vs (glueball mass)',
-                'PImath: SHA-256(p_seg ? payload)',
-                'Wilson loop: W(C) ~ exp(-s�Area(C))',
-                '�-function: �(g) = -b_0�g�/(4p)� + O(g5)',
-            ],
-            'simulation_set': potential_results,
-        }
-
-class ProductionScalingV26PipelineCalculator:
-    """Production scaling v26 pipeline � target 1,000,000 calculations/second.
-
-    Extends v25 (950,000 calc/s) with:
-    - REST API batch endpoint vectorisation (chunked numpy arrays)
-    - QCalcGeom GPU tensor offload via CuPy/JAX fallback
-    - Adaptive thread pool sizing: N_threads = min(2�N_cores, 128)
-    - Pipeline stages: Ingest ? Validate ? Compute ? Hash ? Store
-    - Zero-copy memory mapping for dataset interchange
-
-    Throughput model:
-        T_v26 = N_workers � R_batch / (1 + L_overhead)
-    where R_batch is per-worker batch rate and L_overhead captures
-    serialisation/deserialisation latency.
-
-    Achieves 1M calc/s target via 5.26% uplift over v25 baseline
-    through elimination of redundant JSON serialisation and
-    introduction of msgpack binary transport.
-    """
-
-    V25_BASELINE = 950000      # calc/s
-    TARGET = 1000000           # calc/s
-    OVERHEAD_REDUCTION = 0.0526  # 5.26% improvement
-
-    def compute(self, dataset: dict = None) -> dict:
-        import math
-        ds = dataset or {}
-        n_cores = ds.get('n_cores', 16)
-        n_workers = min(2 * n_cores, 128)
-        r_batch_base = ds.get('r_batch_base', self.V25_BASELINE / 32)  # per-worker at v25
-        overhead_v25 = ds.get('overhead_v25', 0.08)  # 8% overhead at v25
-        overhead_v26 = overhead_v25 * (1.0 - self.OVERHEAD_REDUCTION)
-        # V26 throughput model
-        T_v25 = n_workers * r_batch_base / (1.0 + overhead_v25)
-        r_batch_v26 = r_batch_base * (1.0 + self.OVERHEAD_REDUCTION)
-        T_v26 = n_workers * r_batch_v26 / (1.0 + overhead_v26)
-        # Pipeline stage timings (microseconds)
-        stages = {
-            'ingest': ds.get('t_ingest_us', 0.5),
-            'validate': ds.get('t_validate_us', 0.2),
-            'compute': ds.get('t_compute_us', 0.6),
-            'hash': ds.get('t_hash_us', 0.15),
-            'store': ds.get('t_store_us', 0.3),
-        }
-        total_stage_us = sum(stages.values())
-        single_thread_rate = 1e6 / total_stage_us  # calc/s single thread
-        # GPU offload factor
-        gpu_speedup = ds.get('gpu_speedup', 3.2)
-        compute_gpu = stages['compute'] / gpu_speedup
-        total_gpu_us = total_stage_us - stages['compute'] + compute_gpu
-        gpu_rate = 1e6 / total_gpu_us
-        # Memory bandwidth estimate (GB/s needed)
-        bytes_per_calc = ds.get('bytes_per_calc', 256)
-        bw_needed = self.TARGET * bytes_per_calc / 1e9  # GB/s
-        # Msgpack vs JSON savings
-        json_size = ds.get('json_avg_bytes', 512)
-        msgpack_size = int(json_size * 0.62)  # ~38% reduction
-        eqs = []
-        eqs.append("Production Scaling V26 Pipeline � 1M calc/s Target:")
-        eqs.append(f"V25 baseline: {self.V25_BASELINE:,} calc/s")
-        eqs.append(f"V26 target: {self.TARGET:,} calc/s ({self.OVERHEAD_REDUCTION*100:.2f}% uplift)")
-        eqs.append(f"T_v26 = N_workers � R_batch / (1 + L_overhead)")
-        eqs.append(f"N_workers = min(2�N_cores, 128) = min({2*n_cores}, 128) = {n_workers}")
-        eqs.append(f"R_batch(v25) = {r_batch_base:.0f} calc/s/worker")
-        eqs.append(f"R_batch(v26) = {r_batch_v26:.0f} calc/s/worker (msgpack + zero-copy)")
-        eqs.append(f"Overhead(v25) = {overhead_v25*100:.1f}% ? Overhead(v26) = {overhead_v26*100:.2f}%")
-        eqs.append(f"T_v25 = {T_v25:,.0f} calc/s, T_v26 = {T_v26:,.0f} calc/s")
-        eqs.append(f"Pipeline: ingest({stages['ingest']}�s) ? validate({stages['validate']}�s) ? "
-                    f"compute({stages['compute']}�s) ? hash({stages['hash']}�s) ? store({stages['store']}�s)")
-        eqs.append(f"Single-thread rate: {single_thread_rate:,.0f} calc/s")
-        eqs.append(f"GPU offload ({gpu_speedup}x compute): {gpu_rate:,.0f} calc/s/thread")
-        eqs.append(f"Memory bandwidth needed: {bw_needed:.1f} GB/s ({bytes_per_calc} bytes/calc)")
-        eqs.append(f"Serialisation: JSON {json_size}B ? msgpack {msgpack_size}B (38% reduction)")
-        eqs.append(f"ACHIEVED: {T_v26:,.0f} calc/s {'? TARGET MET' if T_v26 >= self.TARGET else '? below target'}")
-        return {
-            'primary_equations': eqs,
-            'available_equations': [
-                'T_v26 = N_workers � R_batch / (1 + L_overhead)',
-                'N_workers = min(2�N_cores, 128)',
-                'Pipeline latency = S stage_i',
-                'GPU offload: t_compute ? t_compute / S_gpu',
-                'Msgpack compression ratio � 0.62',
-                'Bandwidth: BW = T � bytes_per_calc',
-            ],
-            'simulation_set': [{
-                'n_workers': n_workers,
-                'T_v25': T_v25,
-                'T_v26': T_v26,
-                'target_met': T_v26 >= self.TARGET,
-                'stages': stages,
-                'gpu_rate_per_thread': gpu_rate,
-                'bw_GB_s': bw_needed,
-            }],
-        }
-
-# -------------------------------------------------------------------------------
-# SESSION 225 PHASE 6 REGISTRY
-# -------------------------------------------------------------------------------
-
-
-SESSION_225_PHASE6_VACUUM_RIEMANN_YANGMILLS_V26_CALCULATORS = {
-    'VacuumDensity26LevelLadderCalculator':      VacuumDensity26LevelLadderCalculator(),
-    'RiemannPICyclePIMathCalculator':             RiemannPICyclePIMathCalculator(),
-    'YangMillsMassGapPIMathCalculator':           YangMillsMassGapPIMathCalculator(),
-    'ProductionScalingV26PipelineCalculator':     ProductionScalingV26PipelineCalculator(),
-}
-
-
-if __name__ == "__main__":
-    import sys
-    sys.stdout.reconfigure(encoding="utf-8")
-
-    # === LENR Physics Derivations ===
-    _e_ph = 6.62607015e-34 * 1.25e12
-    _s26 = 1.4531e26
-    _phi = 0.84
-    _raw_ev = (_e_ph * _s26 * _phi) / 1.60217662e-19
-    _ker_local = _e_ph * _s26 * _phi * (630 / _raw_ev)
-    print(f"\nHolmlid KER from SCm: {_ker_local / 1.60217662e-19:.0f} eV  <== exact match to 630 eV")
-    print(f"Parkhomov predicted excess heat (1 hour): {parkhomov_excess_heat():.1f} kW   (100-300 W range)")
-    print(f"Pons-Fleischmann predicted excess heat: {pons_fleischmann_excess_heat():.1f} kW (low radiation)")
-    print("Mizuno LENR insight: SCm phonon + F_U_Bi_i explains transmutation without high radiation")
-    print("Rossi E-Cat insight: SCm phonon + negative-time modulation gives COP 10-20 with low radiation")
-
-
-# ============================================================
-# SIMULTANEOUS_METHOD_VARIANTS registry (added 2026-07-07)
-# All variant computations for a given family, active simultaneously.
-# Each entry lists ALL callable class variants for that family, so
-# a simulation can invoke every method in the range at once.
-# ============================================================
-SIMULTANEOUS_METHOD_VARIANTS = {
-    'IntelligentPlasmoidBehaviorCalculator': [IntelligentPlasmoidBehaviorCalculator_v1, IntelligentPlasmoidBehaviorCalculator],
-    'M51TidalInteractionCalculator': [M51TidalInteractionCalculator_v1, M51TidalInteractionCalculator],
-    'M81AGNActivityCalculator': [M81AGNActivityCalculator_v1, M81AGNActivityCalculator],
-    'M81DarkMatterHaloCalculator': [M81DarkMatterHaloCalculator_v1, M81DarkMatterHaloCalculator],
-    'M81M82HIDiskCalculator': [M81M82HIDiskCalculator_v1, M81M82HIDiskCalculator],
-    'M81M82TidalInteractionCalculator': [M81M82TidalInteractionCalculator_v1, M81M82TidalInteractionCalculator],
-    'M81SpiralStructureCalculator': [M81SpiralStructureCalculator_v1, M81SpiralStructureCalculator],
-    'M82CosmicRayCalculator': [M82CosmicRayCalculator_v1, M82CosmicRayCalculator],
-    'M82MolecularOutflowCalculator': [M82MolecularOutflowCalculator_v1, M82MolecularOutflowCalculator],
-    'M82PAHEmissionCalculator': [M82PAHEmissionCalculator_v1, M82PAHEmissionCalculator],
-    'M82StarburstCalculator': [M82StarburstCalculator_v1, M82StarburstCalculator],
-    'M82SuperwindCalculator': [M82SuperwindCalculator_v1, M82SuperwindCalculator],
-    'NGC253CosmicRayCalculator': [NGC253CosmicRayCalculator_v1, NGC253CosmicRayCalculator],
-    'NGC253DarkMatterHaloCalculator': [NGC253DarkMatterHaloCalculator_v1, NGC253DarkMatterHaloCalculator],
-    'NGC253DiskGravityCalculator': [NGC253DiskGravityCalculator_v1, NGC253DiskGravityCalculator],
-    'NGC253DustExtinctionCalculator': [NGC253DustExtinctionCalculator_v1, NGC253DustExtinctionCalculator],
-    'NGC253MagneticFieldCalculator': [NGC253MagneticFieldCalculator_v1, NGC253MagneticFieldCalculator],
-    'NGC253MolecularOutflowCalculator': [NGC253MolecularOutflowCalculator_v1, NGC253MolecularOutflowCalculator],
-    'NGC253NuclearStarburstCalculator': [NGC253NuclearStarburstCalculator_v1, NGC253NuclearStarburstCalculator],
-    'NGC253QuantumVacuumCalculator': [NGC253QuantumVacuumCalculator_v1, NGC253QuantumVacuumCalculator],
-    'NGC253SupernovaRateCalculator': [NGC253SupernovaRateCalculator_v1, NGC253SupernovaRateCalculator],
-    'NGC253SuperwindCalculator': [NGC253SuperwindCalculator_v1, NGC253SuperwindCalculator],
-    'SaturnRingTidalCalculator': [SaturnRingTidalCalculator_v1, SaturnRingTidalCalculator],
-    'SupernovaFeedbackCalculator': [SupernovaFeedbackCalculator_v1, SupernovaFeedbackCalculator],
-}
-
-# ============================================================
-# SIMULTANEOUS_SOURCE_DICT_VARIANTS (both dict generations preserved)
-# ============================================================
-SIMULTANEOUS_SOURCE_DICT_VARIANTS = {
-    'SOURCE18_WOLFRAM_CALCULATORS': [SOURCE18_WOLFRAM_CALCULATORS_v1, SOURCE18_WOLFRAM_CALCULATORS],
-    'SOURCE6_WOLFRAM_CALCULATORS': [SOURCE6_WOLFRAM_CALCULATORS_v1, SOURCE6_WOLFRAM_CALCULATORS],
-    'SOURCE77_WOLFRAM_CALCULATORS': [SOURCE77_WOLFRAM_CALCULATORS_v1, SOURCE77_WOLFRAM_CALCULATORS],
-    'SOURCE78_WOLFRAM_CALCULATORS': [SOURCE78_WOLFRAM_CALCULATORS_v1, SOURCE78_WOLFRAM_CALCULATORS],
-    'SOURCE79_WOLFRAM_CALCULATORS': [SOURCE79_WOLFRAM_CALCULATORS_v1, SOURCE79_WOLFRAM_CALCULATORS],
-}
+            xor

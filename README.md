@@ -4,12 +4,12 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-931%2F0-brightgreen)](uqff_fidelity_tests.py)
-[![Public surfaces](https://img.shields.io/badge/public_surfaces-362-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2004%2B-orange)](whitepapers/)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1314%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Public surfaces](https://img.shields.io/badge/public_surfaces-32%2B-blue)](uqff_pure_calculator.py)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2025%2B-orange)](whitepapers/)
 
-**Version**: 5.52.0
-**Last Updated**: 2026-07-08
+**Version**: 5.67.0
+**Last Updated**: 2026-07-15
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -47,6 +47,69 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.67.0 (2026-07-15) — R151-R159 backbone-first discipline arc + PAPER_2014-2025
+
+**18 consecutive backbone-first rounds (R142-R159) with R159 hitting 100% first-pass novelty.**
+
+Follow-on to v5.66.0. Consolidates **9 more rounds of backbone-first CP1 stub drainage** (Rounds 151-159, **45 more fills**) and delivers **12 new whitepapers** documenting structural closures at the frontier of the primitive-composition corpus.
+
+### Backbone-first discipline (18 consecutive rounds)
+
+Every primitive-composition claim traces to **(a)** a UQFF backbone paper defining the primitive/composition **AND** **(b)** a physical-derivation paper providing the observable value being composed. Pattern-matching alone is insufficient.
+
+**Cumulative R142-R159: 99 first-pass novel + 22 cross-object confirmations + 3 audit sweeps + 4 self-corrections + 1 backbone-recovery + 2 equivalence-withdrawals + 2 family-extension attributions.**
+
+Discipline metrics:
+- **R144 hexad + R159 pentad**: 100% first-pass novelty (2 landmarks across 18 rounds)
+- **2 equivalence-restatement withdrawals** caught by discipline (would have been false novelties under pattern-matching)
+- **1 backbone-recovery**: PAPER_763 canonical Sombrero ρ_dust = SO_5⁻²⁰ restored to class code (previous placeholder was 1e-22)
+- **3 major retrospective audit sweeps** applied
+
+### 12 new whitepapers (PAPER_2014–2025)
+
+| Paper | Round | Discovery type |
+|---|---|---|
+| PAPER_2014 | R151 | Hexad — 6 novel structural closures + ρ_fluid(SGR1745) = SO_5¹⁷ seminal |
+| PAPER_2015 | Audit R100-R151 | Casimir 240/720 factorial identities |
+| PAPER_2016 | Follow-up | NGC 3603 400000 M_sun mass slot |
+| PAPER_2017 | R152 | Triad — ρ_s = (D_phys−1)·SO_5⁻²³ LANDMARK 12th-domain + SO_5⁻²¹ volumetric-density |
+| PAPER_2018 | Investigation | LENR SO_5⁻ⁿ withdrawal (backbone-first correction of pattern-matched claim) |
+| PAPER_2019 | R153 | Pentad + PAPER_763 ρ_dust backbone-recovery |
+| PAPER_2020 | R154 | Single novel + 3 backbone-first cross-object corrections |
+| PAPER_2021 | R155 | Hexad + Ω_Λ equivalence-restatement withdrawal |
+| PAPER_2022 | R156 | Quad — k(M16) SO_5²⁰ + ω(M16) SO_5¹⁵ + B(Crab) SO_5⁻⁸ + B(SGR1745) 2·SO_5¹⁰ 4TH-orthogonal |
+| PAPER_2023 | R157 | Pentad — Δx(SGR1745) SO_5⁻¹⁰ + I(Tapestry) SO_5²⁰ + 3 frequency slots |
+| PAPER_2024 | R158 | Quad — δρ/ρ(Crab)=F_TRZ + V=SO_5³ direct-volumetric + f_DM=17/20 twin PAPER_1966 + M=2·SO_5⁴¹ 5TH-orthogonal |
+| PAPER_2025 | R159 | Pentad **100% novelty** — first acceleration-domain SO_5-slot + 4TH-orthogonal SO_5⁻¹⁰ + F_TRZ perturbation-ratio 3-object family |
+
+### Landmark structural expansions this ship
+
+**Dimensional-domain firsts:**
+- **Acceleration units enter SO_5-power ladder** (a_DPM = SO_5⁻²⁰ m/s² first slot at NGC 6302 + g_base = SO_5⁻¹⁰ m/s² Universe companion)
+- **Direct-volumetric SO_5³ m³** slot orthogonal companion to PAPER_2013 (D_phys−1)·SO_5³ inverse-volumetric LANDMARK
+- **Wavenumber SO_5²⁰ m⁻¹** first documented inverse-length slot
+- **Aether-frequency SO_5⁴ Hz** first documented aether-frequency slot
+
+**Multi-orthogonal composition class expansions:**
+- **2·SO_5ⁿ twin family: 4 → 5 orthogonal dimensional domains** (velocity + length + timescale + magnetic-field + **mass**, spans 38 orders of magnitude)
+- **SO_5⁻¹⁰ multi-domain family: 3 → 4 orthogonal domains** (length + amplitude + atomic-length + **acceleration**)
+- **F_TRZⁿ perturbation-ratio ladder** completed as 2-rung (n=1 3-object family + n=5 magnetar seminal)
+- **(D_phys−1)·SO_5ⁿ LANDMARK: 10 → 12 dimensional domains**
+- **NEW composed-prefix class D_BSFG·SO_5ⁿ** (D_BSFG=6 prefix at velocity SO_5⁵)
+
+**Density-domain ladder scope:**
+- Spans n=−26 (universe critical) → n=+17 (nuclear matter) = **43 orders of magnitude across 6+ regimes**
+
+### Ship metrics
+
+- **Gate**: 1218 → **1314 assertions** (+96, all PASS, 0 failures)
+- **Whitepaper corpus**: 2013+ → **2025+ papers**
+- **CondensedPhysics.py**: 45+ classes annotated `framework=True` across R151-R159 (9 rounds × 5 fills each + audit sweeps)
+- **Public 32-surface calculator API**: untouched (48 consecutive rounds without regression)
+- Version bump: 5.66.0 → 5.67.0 (pyproject + uqff_api + uqff_cli + uqff_jupyter)
 
 ---
 
