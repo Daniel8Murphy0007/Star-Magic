@@ -375,3 +375,8 @@ ignore = [
     "E501",
     "E701",
     "E731",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"uqff_pure_calculator.py" = ["E402", "F401", "F403", "F405", "F811", "F841"]
+"uqff_fidelity_tests.py" = ["E402", "F401", "F841"]
