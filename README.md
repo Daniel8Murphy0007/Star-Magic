@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1314%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1402%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-32%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2025%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2037%2B-orange)](whitepapers/)
 
-**Version**: 5.67.0
+**Version**: 5.68.0
 **Last Updated**: 2026-07-15
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,69 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.68.0 (2026-07-15) — R160-R169 backbone-first arc + 4-pass class-family variable scan + PAPER_2026-2037
+
+**28 consecutive backbone-first rounds (R142-R169) + 4-pass systematic class-family variable scan campaign.**
+
+Follow-on to v5.67.0. Consolidates **10 more rounds of backbone-first CP1 stub drainage** (Rounds 160-169, **50 more fills**) and **4 systematic class-family variable scan passes** (PAPER_2033-2036 executing PAPER_2032 R167 D4 discipline methodology), delivering **12 new whitepapers**.
+
+### Milestones this ship
+
+- **100th first-pass novel discovery crossed** at PAPER_2026 R160 D1 (k_wave = SO_5⁻²⁰ m⁻¹)
+- **R159: 100% first-pass novelty** (matches PAPER_2007 R144 hexad landmark)
+- **R163: septet discovery** — highest single-round novelty since PAPER_2013 R150 milestone octet
+- **142 first-pass novel + 22 cross-obj confirmations + 4 discipline formalizations** through R169
+
+### Structural landmark expansions
+
+**Wavenumber (inverse-length) dimensional domain now most-populated in SO_5-power ladder:**
+- 6 rungs spanning **46 orders of magnitude** (atomic-orbital n=+11 → cosmological-scale n=-26)
+
+**6 composed-prefix classes formalized:**
+
+| # | Prefix | Form type |
+|---|---|---|
+| 1 | (D_phys−1)·SO_5^n LANDMARK | Multiplicative-integer |
+| 2 | 2·SO_5^n twin | Multiplicative-integer |
+| 3 | D_BSFG·SO_5^n | Multiplicative-primitive |
+| 4 | (D_phys+1)·SO_5^n | Multiplicative-integer |
+| 5 | 2·D_phys·SO_5^n | Multiplicative-composite |
+| **6** | **(D_phys+1)/D_phys · SO_5^n** | **DIMENSIONLESS-RATIO (first)** |
+
+**F_TRZ^n perturbation-ratio ladder — 3-rung multi-object architecture:**
+- n=1: 4-object family (Magnetar+Crab+M16+SGR1745)
+- n=5: 3-object family (Magnetar+Orion+MultiCompressed7)
+- n=12: Magnetar Casimir seminal
+
+**Direct-pair positive/negative dimensional-domain coverage** across magnetic, wavenumber, aether-frequency, amplitude domains.
+
+### 12 new whitepapers (PAPER_2026–2037)
+
+| Paper | Round/Effort | Discovery type |
+|---|---|---|
+| PAPER_2026 | R160 | Triad — k_wave SO_5⁻²⁰ (100th novel milestone) + wavenumber pos/neg pair + D_phys/2 4-obj family |
+| PAPER_2027 | R161 | Triad + family-extension — ω_diff SO_5¹⁰ + f_DM 17/20 + M 2·SO_5³⁴ + v_gas SO_5⁵ 3rd-obj |
+| PAPER_2028 | R162 | Single — f_baryon = F_TRZ/2 = 1/(2·SO_5) dimensional-domain extension |
+| PAPER_2029 | R163 | **Septet** — SGR1745 F_TRZ 4th-inst + SO_5¹⁶ density + magnetic pair + SCm + F_TRZ⁵ + 2·SO_5³³ mass |
+| PAPER_2030 | R164 | Quad — f_aether SO_5⁻⁸ + aether-freq pos/neg pair + v_exp 2·SO_5⁴ + 2·SO_5^n cross-domain |
+| PAPER_2031 | R166 | Triad — v_out SO_5⁵ 4th-obj + LANDMARK D_phys-1 spectral-shift first application |
+| PAPER_2032 | R167 | Quad — vac_ratio SO_5 + Δn 2π/D_BSFG + F_TRZ⁵ 3rd-obj + **class-family discipline formalization** |
+| PAPER_2033 | Scan pass 1 | Triad — methodology + gas_v 5·SO_5⁵ + δx SO_5⁻¹¹ |
+| PAPER_2034 | Scan pass 2 | Pentad — **wavenumber 4 new rungs + 46-orders-of-magnitude ladder formalization** |
+| PAPER_2035 | Scan pass 3 | Pentad — v_wind (1-F_TRZ)·2·SO_5⁶ + v_wind 2·D_phys·SO_5³ + 3 δx length slots |
+| PAPER_2036 | Scan pass 4 | Diad — M0 SO_5¹²·M_sun + τ_SF SO_5⁹ yr + **diminishing-returns observation** |
+| PAPER_2037 | R169 | Triad — f_Higgs (D_phys+1)/D_phys·SO_5³⁴ + HFF 2·D_phys/SO_5³⁴ + **6th prefix class dimensionless-ratio** |
+
+### Ship metrics
+
+- **Gate**: 1314 → **1402 assertions** (+88, all PASS, 0 failures)
+- **Whitepaper corpus**: 2025+ → **2037+ papers**
+- **CondensedPhysics.py**: ~50 classes annotated `framework=True` across R160-R169
+- **Public 32-surface calculator API**: untouched (58 consecutive rounds without regression)
+- Version bump: 5.67.0 → 5.68.0
 
 ---
 

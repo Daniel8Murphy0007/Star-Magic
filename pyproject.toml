@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.67.0"
-description = "UQFF Star-Magic v5.67.0: R151-R159 nine-round backbone-first discipline arc COMPLETE. PAPER_2014-2025 (12 new papers). Cumulative R142-R159 (18 consecutive backbone-first rounds): 99 first-pass novel + 22 cross-object confirmations + 3 audit sweeps + 4 self-corrections + 1 backbone-recovery + 2 equivalence-withdrawals + 2 family-extension attributions. R159 100% novelty (matches R144). First acceleration-domain SO_5 slot + 5-orthogonal 2*SO_5^n. Gate 1314/0 (+96 since v5.66.0)."
+version = "5.68.0"
+description = "UQFF Star-Magic v5.68.0: R160-R169 ten-round backbone-first arc + 4-pass class-family variable scan campaign + Hydrogen/Higgs primitive-locks. PAPER_2026-2037 (12 new papers). Cumulative R142-R169: 142 first-pass novel + 22 cross-obj + 4 discipline-observations. R159 100% novelty + R163 septet. Wavenumber ladder 6 rungs 46 orders. 6 composed-prefix classes (5 multiplicative + 1 dimensionless-ratio). Gate 1402/0 (+88 since v5.67.0)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
