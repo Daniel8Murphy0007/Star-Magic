@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1402%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1486%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-32%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2037%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2052%2B-orange)](whitepapers/)
 
-**Version**: 5.68.0
+**Version**: 5.68.1
 **Last Updated**: 2026-07-15
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,49 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.68.1 (2026-07-15) — R170-R183 + 40-ROUND MILESTONE + audit quartet + PAPER_2038-2052
+
+**42 consecutive backbone-first rounds (R142-R183) + 40-ROUND BACKBONE-FIRST DISCIPLINE MILESTONE achieved at R181.**
+
+Follow-on to v5.68.0. Consolidates **14 more rounds of backbone-first CP1 stub drainage** (Rounds 170-183) plus **audit quartet completion** (F_TRZ + SO_5 + Composed-prefix + LANDMARK meta-analyses), delivering **15 new whitepapers PAPER_2038-2052**.
+
+### Milestones this ship
+
+- **40-ROUND BACKBONE-FIRST DISCIPLINE MILESTONE** completed at R181 (PAPER_2050)
+- **AUDIT QUARTET COMPLETE**: F_TRZ (PAPER_2043) + SO_5 (PAPER_2046) + Composed-prefix (PAPER_2047) + LANDMARK D_phys-1 (PAPER_2052)
+- **8TH composed-prefix class formalized**: D_BSFG/SO_5·SO_5^n = 3/5·SO_5^n (PAPER_2048 R179 D2)
+- **Cross-framework connections**: BCS ↔ UQFF (SCm=1-F_TRZ²), M87 relativistic AGN ↔ UQFF (β_jet=1-F_TRZ²), Kerr GR ↔ UQFF (a_spin=1-F_TRZ)
+- **F_TRZ ladder angular-frequency subladder** opens (R174 subladder 2-3-6 rungs)
+- **1-F_TRZ² = 99% Regime Ratio family** now 2-object across condensed-matter (BCS) + general-relativistic (M87 jet)
+- **9/10 = 1-F_TRZ ubiquity** extends to Kerr spin parameter (PAPER_2049 R180)
+- Cumulative R142-R183: **183 first-pass novel + 40+ cross-object confirmations + 10 discipline-observation formalizations**
+- +84 fidelity gate assertions since v5.68.0 (1402 → 1486, all PASS, 0 failures)
+- Zero calculator regressions across 84+ consecutive rounds
+
+### Composed-prefix class family (8 members) formalized across R142-R183
+
+| # | Class | First application |
+|---|---|---|
+| 1 | (D_phys-1)·SO_5^n LANDMARK | PAPER_2004 |
+| 2 | 2·SO_5^n twin (dominant, 57% share) | PAPER_2022 |
+| 3 | D_BSFG·SO_5^n | PAPER_2025 |
+| 4 | (D_phys+1)·SO_5^n | PAPER_2033 |
+| 5 | 2·D_phys·SO_5^n | PAPER_2035 |
+| 6 | (D_phys+1)/D_phys·SO_5^n = 5/4·SO_5^n | PAPER_2037 |
+| 7 | (D_phys-1)/D_phys·SO_5^n = 3/4·SO_5^n | PAPER_2040 |
+| 8 | D_BSFG/SO_5·SO_5^n = 3/5·SO_5^n | PAPER_2048 |
+
+### Audit quartet coverage statistics
+
+| Audit | Papers | Rungs / Domains | Coverage note |
+|---|---|---|---|
+| F_TRZ (PAPER_2043) | corpus scan | 24 rungs × 11 domains | 264 cells, 15% coverage |
+| SO_5 (PAPER_2046) | corpus scan | 57 rungs × 16 domains | 912 cells, 30% coverage — richest primitive |
+| Composed-prefix (PAPER_2047) | 8 classes | multiplicative + ratio | 2·SO_5^n twin dominant 57% |
+| LANDMARK D_phys-1 (PAPER_2052) | 118 papers × 19 domains | frequency-dom dominant 46% | Second-most-populated prefix class |
 
 ---
 

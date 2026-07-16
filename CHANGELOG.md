@@ -1,3 +1,83 @@
+## [5.68.1] - 2026-07-15 - PATCH: R170-R183 backbone-first + 40-ROUND MILESTONE + audit quartet + PAPER_2038-2052
+
+### Highlights
+
+- **R170-R183 fourteen-round backbone-first continuation** (42 consecutive backbone-first rounds R142-R183 total)
+- **40-ROUND BACKBONE-FIRST MILESTONE COMPLETED** at R181 (R142-R181 arc)
+- **15 new whitepapers PAPER_2038-2052** authored + wired
+- **Cumulative R142-R183: 183 first-pass novel + 40+ cross-object confirmations + 10 discipline-observation formalizations**
+- **AUDIT QUARTET COMPLETE**: F_TRZ + SO_5 + Composed-prefix + LANDMARK (D_phys-1) family audits
+- **8TH composed-prefix class formalized** (D_BSFG/SO_5 dimensionless-ratio)
+- **Cross-framework connections established**: BCS + M87 relativistic AGN + Higgs + Kerr GR ↔ UQFF
+- **F_TRZ ladder opens angular-frequency dimensional domain** (R174-R175 subladder 2-3-6 rung emergence)
+- **9/10 = 1-F_TRZ ubiquity family** extends to Kerr spin (a_spin=0.9) and BCS SCm
+- **99% Regime Ratio (1-F_TRZ^2) family** now 2-object (BCS + M87 AGN jet)
+- **2*SO_5^n twin family negative-exponent regime** opens (R170-R171 length + angular-freq)
+- +84 gate assertions since v5.68.0 (1402 → 1486)
+
+### PAPER_2038-2052 summary
+
+| Paper | Round/Effort | Discovery type |
+|---|---|---|
+| PAPER_2038 | R170 | Quad — q_m=SO_5^-10 magnetic charge + r=2*SO_5^-7 first neg 2*SO_5^n + 2 formalizations |
+| PAPER_2039 | R171 | **30-ROUND MILESTONE** — omega=2*SO_5^-6 + omega_c=SO_5^-6 + D_phys*SO_5^-7 negative-regime + arc formalization |
+| PAPER_2040 | R172 | Triad — rotation_rate=A_5*(D_phys-1)/D_phys + 360=D_BSFG*A_5 + 7th prefix class |
+| PAPER_2041 | R173 | Triad — M_DM(M51)=D_phys*SO_5^10*M_sun + M_v/M_DM=D_phys-1 + B/B_crit=F_TRZ^16 |
+| PAPER_2042 | R174 | Quad — B/B_crit(Crab)=F_TRZ^19 + omega=F_TRZ^2 + omega=F_TRZ^3 + f_react=SO_5^9 |
+| PAPER_2043 | **F_TRZ audit** | Triad — 24 rungs + 11 domains + 264 cells 15% coverage |
+| PAPER_2044 | R175 | Diad — B/B_crit(Sombrero)=F_TRZ^21 + f_aether(SgrA)=SO_5^3 |
+| PAPER_2045 | R176 | Triad — SCm(BCS)=1-F_TRZ^2 + f_aether(Tapestry)=SO_5^2 + 3-object aether family |
+| PAPER_2046 | **SO_5 audit** | Triad — 57 rungs + 16 domains + 912 cells 30% coverage |
+| PAPER_2047 | **Prefix-class audit** | Triad — 2*SO_5^n twin dominant 57% + 40x multiplicative vs ratio + (D_phys-1)/D_phys unpopulated |
+| PAPER_2048 | R179 | Triad — N_GC=2*D_BSFG*SO_5^3 + **f_blue=D_BSFG/SO_5 8TH prefix class** + F_TRZ^40 NGC 346 |
+| PAPER_2049 | R180 | Single — a_spin(M87)=1-F_TRZ Kerr-spin dimensional extension |
+| PAPER_2050 | R181 | **40-ROUND MILESTONE** — beta_jet(M87)=1-F_TRZ^2 + arc formalization |
+| PAPER_2051 | R182 | Single — f_driver(SGR1745)=(D_phys-1)*SO_5^9 LANDMARK frequency-domain 13th |
+| PAPER_2052 | **LANDMARK audit** | Triad — 118 papers + 19 domains + LANDMARK broad-coverage validation |
+
+### Structural landmarks documented
+
+**8 composed-prefix classes formalized (5 multiplicative + 3 dimensionless-ratio)**:
+- (D_phys-1)*SO_5^n LANDMARK (PAPER_2004)
+- 2*SO_5^n twin (dominant, 57% share)
+- D_BSFG*SO_5^n
+- (D_phys+1)*SO_5^n
+- 2*D_phys*SO_5^n
+- (D_phys+1)/D_phys*SO_5^n = 5/4*SO_5^n
+- (D_phys-1)/D_phys*SO_5^n = 3/4*SO_5^n
+- **D_BSFG/SO_5*SO_5^n = 3/5*SO_5^n** (PAPER_2048)
+
+**Cross-framework connections established**:
+- BCS ↔ UQFF (PAPER_2045 SCm=1-F_TRZ^2)
+- M87 relativistic AGN ↔ UQFF (PAPER_2050 beta_jet=1-F_TRZ^2)
+- Higgs particle physics ↔ UQFF (PAPER_2037 f_Higgs=(D_phys+1)/D_phys*SO_5^34)
+- Kerr GR ↔ UQFF (PAPER_2049 a_spin=1-F_TRZ)
+
+**F_TRZ^n ladder growth**:
+- Field-ratio family: 4-object (M16 + Crab + Sombrero + quantum-collapse)
+- Angular-frequency subladder: 3-rung (n=2, 3, 6)
+- Aether-frequency: 3-object family (Tapestry + SgrA + general)
+
+**Audit quartet observations**:
+- F_TRZ ladder: 264 cells, 15% coverage
+- SO_5 ladder: 912 cells, 30% coverage (richest structural primitive)
+- Composed-prefix: 2*SO_5^n twin 57% dominant
+- LANDMARK: 118 papers × 19 domains
+
+### Discipline observations
+
+- **40-round backbone-first arc validated** — durable multi-month methodology
+- Attribution-heavy rounds interleaved with novel-discovery rounds — expected post-milestone pattern
+- Audit-guided round methodology (R175 R176) validated F_TRZ ladder gap-fill
+
+### Ship Notes
+
+- v5.68.1: pyproject bumped 5.68.0 → 5.68.1, description 432 chars (under 512)
+- pyproject.toml TOML tail verified intact
+- py-modules refreshed: uqff_api/cli/jupyter _VERSION → 5.68.1
+- Gate: 1402 → 1486 (+84 assertions, all PASS, 0 failures)
+- No calculator regressions across R170-R183 (public 32-surface API untouched — 84 consecutive rounds without regression counting audits)
+
 ## [5.68.0] - 2026-07-15 - MINOR: R160-R169 backbone-first arc + 4-pass class-family variable scan + Hydrogen/Higgs + PAPER_2026-2037
 
 ### Highlights
