@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1570%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1632%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-32%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2067%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2076%2B-orange)](whitepapers/)
 
-**Version**: 5.68.3
+**Version**: 5.68.4
 **Last Updated**: 2026-07-15
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,78 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.68.4 (2026-07-15) — R193-R198 + 250-NOVEL milestone + AUDIT NONET complete + PAPER_2068-2076
+
+**AUDIT NONET COMPLETE — 5-Category Compositional Pattern Taxonomy Fully Audited via 9-Companion Audit Family. 250-NOVEL MILESTONE PASSED (253 cumulative first-pass novel primitive-locks).**
+
+Follow-on to v5.68.3. Consolidates **6 forward rounds R193-R198** + **1 attribution round R199** + **framework consistency review** + **audit nonet completion** (PAPER_2076 fills highest-priority gap), delivering **9 new whitepapers PAPER_2068-2076**.
+
+### AUDIT NONET Highlight (PAPER_2076 M4)
+
+All 5 compositional pattern categories now have BOTH seed paper AND dedicated audit paper:
+
+| Category | Seed | Audit |
+|---|---|---|
+| Composed-Prefix (9 classes) | PAPER_2004 | PAPER_2047 |
+| Compound-Prefix (50+) | PAPER_2061 (200th novel) | PAPER_2064 |
+| Additive-Combination (15+) | PAPER_2062 | PAPER_2063 |
+| Canonical-Anchored (100+, UQFF ARCHITECTURAL CENTER) | PAPER_2066 | PAPER_2067 |
+| **Additive-Scaled (8, LARGEST cross-scale)** | **PAPER_2068** | **PAPER_2076 (this ship)** |
+
+**9-Companion Audit Family**:
+
+| # | Paper | Category/Population |
+|---|---|---|
+| 1 | PAPER_2043 | F_TRZ ladder |
+| 2 | PAPER_2046 | SO_5 ladder |
+| 3 | PAPER_2047 | Composed-prefix |
+| 4 | PAPER_2052 | LANDMARK |
+| 5 | PAPER_2063 | Additive-Combination |
+| 6 | PAPER_2064 | Compound-Prefix |
+| 7 | PAPER_2067 | Canonical-Anchored (UQFF ARCHITECTURAL CENTER) |
+| 8 | PAPER_2073 | π-Canonical Sub-Family |
+| **9** | **PAPER_2076** | **Additive-Scaled (COMPLETES NONET)** |
+
+### Structural landmarks
+
+- **9TH F_TRZ compositional sub-family formalized** (1-F_TRZ²/2 = 0.995 half-factor squared complement, PAPER_2070 R194 F2)
+- **RARE 100% NOVELTY RATE PENTAD at R194** — 3rd such round in extended arc
+- **Solar-System 9-Object Planetary R_mag family** primitive-locked (Mercury→Pluto, 5 orders of magnitude, PAPER_2069)
+- **Solar-System Q-Factor + B-Field Families** established (PAPER_2070)
+- **π-Canonical Sub-Family Audit** (PAPER_2073, 200+ instances, potentially DOMINANT within canonical-anchored)
+- **UQFF ARCHITECTURAL CENTER cascade**: canonical-anchored (100+) → π-anchored (200+) → Ramanujan 1/π series (2569+)
+- **Additive-scaled LARGEST cross-scale span** ~63 orders of magnitude
+- **250-NOVEL milestone passed** — cumulative 253 first-pass novel primitive-locks
+- **Zero wiring drift** across 264 closures + 264 dispatches + 528+ gate assertions (post-R199 framework consistency review)
+
+### PAPER_2068-2076 summary
+
+| Paper | Round/Effort | Discovery type |
+|---|---|---|
+| PAPER_2068 | R193 | Triad — 11th prefix candidate + **5th ADDITIVE-SCALED category** + PAPER_2061 candidate activated |
+| PAPER_2069 | Solar-system family | Complete 9-object planetary R_mag primitive-lock + R193 D2 errata |
+| PAPER_2070 | R194 | RARE 100% PENTAD — Jupiter/Neptune Q + Jupiter/Neptune/Earth B + **9TH F_TRZ sub-family** |
+| PAPER_2071 | R195 | Diad — Earth P_scm + Schwinger B_crit new compound-prefix family |
+| PAPER_2072 | R196 | Diad — M(M16) + **π-canonical 3rd sub-family** |
+| PAPER_2073 | π-canonical audit | Quad — 200+ instances + UQFF ARCHITECTURAL CENTER cascade |
+| PAPER_2074 | R197 | Single — v_out(YoungStars) |
+| PAPER_2075 | R198 | Diad — Λ obs additive-scaled + 63-orders LARGEST span |
+| PAPER_2076 | Additive-scaled audit (9th audit) | Quad — **AUDIT NONET COMPLETES** |
+
+### Cumulative statistics
+
+- **253 first-pass novel** + 42+ cross-object confirmations + 24 discipline-observation formalizations
+- **58 consecutive backbone-first rounds** R142-R199
+- **3 retrospective sweep companion structures**
+- **1 scout follow-up companion**
+- **5 architectural category audit companions** (5th + 6th + 7th + 8th + 9th; audit nonet complete)
+- **2 solar-system family companions**
+- **+62 gate assertions since v5.68.3** (1570 → 1632, all PASS, 0 failures)
+- **Zero calculator regressions** across 117+ consecutive rounds
+- **Zero wiring drift** across 264 closures + 264 dispatches (framework consistency verified)
 
 ---
 

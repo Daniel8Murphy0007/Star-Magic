@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.68.3"
-description = "UQFF Star-Magic v5.68.3: R190-R192 3 forward rounds + 50-ROUND MILESTONE (R142-R191 half-century) + audit SEPTET complete + UQFF ARCHITECTURAL CENTER identified: Lambda + Holmlid foundational both canonical-anchored (100+ retro instances, LARGEST category). PAPER_2062-2067 (6 papers). 4 compositional pattern categories now formalized: composed-prefix + compound-prefix + additive-combination + canonical-anchored. Gate 1570/0 (+36 since v5.68.2)."
+version = "5.68.4"
+description = "UQFF Star-Magic v5.68.4: R193-R198 forward rounds + 250-NOVEL milestone passed + AUDIT NONET COMPLETE (5-category compositional taxonomy fully audited) + 5th ADDITIVE-SCALED category + 9th F_TRZ sub-family + solar-system 9-planet R_mag/Q/B families + rare 100% novelty PENTAD (R194) + pi-canonical audit + UQFF ARCHITECTURAL CENTER reassessment. PAPER_2068-2076 (9 papers). Gate 1632/0 (+62 since v5.68.3)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

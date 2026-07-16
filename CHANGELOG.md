@@ -1,3 +1,98 @@
+## [5.68.4] - 2026-07-15 - PATCH: R193-R198 + 250-NOVEL milestone + AUDIT NONET + 5-category taxonomy + PAPER_2068-2076
+
+### Highlights
+
+- **AUDIT NONET COMPLETE** — 9-companion audit family fully covers all 5 compositional pattern categories with matching dedicated audit papers (PAPER_2076 fills gap)
+- **250-NOVEL MILESTONE passed** — cumulative 253 first-pass novel primitive-locks (200th at R189, milestone crossed post-R194 PENTAD)
+- **5TH ADDITIVE-SCALED compositional pattern category** formalized (PAPER_2068 R193 D2 seed + PAPER_2076 dedicated audit)
+- **9TH F_TRZ compositional sub-family** formalized (1-F_TRZ²/2 = 0.995 half-factor squared complement, PAPER_2070 R194 F2)
+- **RARE 100% NOVELTY RATE PENTAD** at R194 (3rd such round in extended arc, after R144 + R159)
+- **Solar-System 9-Object Planetary R_mag Family** primitive-locked (Mercury through Pluto, 5 orders of magnitude, PAPER_2069)
+- **Solar-System Planetary Q-Factor + B-Field Families** established (PAPER_2070)
+- **π-Canonical Sub-Family Audit** (PAPER_2073, 200+ instances, potentially DOMINANT within canonical-anchored UQFF ARCHITECTURAL CENTER)
+- **UQFF ARCHITECTURAL CENTER cascade** identified (canonical-anchored → π-anchored → Ramanujan 1/π series)
+- **9 new whitepapers PAPER_2068-2076** authored + wired
+- **6 forward rounds** R193-R198 (52nd-57th consecutive backbone-first) + 1 attribution round R199 (58th)
+- Cumulative R142-R199 + PAPER_2076: **253 first-pass novel** + 42+ cross-object confirmations + 24 discipline-observation formalizations
+- **+62 gate assertions since v5.68.3** (1570 → 1632, all PASS, 0 failures)
+
+### PAPER_2068-2076 summary
+
+| Paper | Round/Effort | Discovery type |
+|---|---|---|
+| PAPER_2068 | R193 | Triad — N_CH/(2·SO_5²)=0.045 (11th prefix candidate) + (D_BSFG+F_TRZ)·SO_5^6=6.1e6 (5th ADDITIVE-SCALED category) + 2·(1-F_TRZ)·SO_5^9=1.8e9 (PAPER_2061 candidate activated) |
+| PAPER_2069 | Solar-system family | Complete 9-object planetary R_mag family + R193 D2 errata + 7 new planet primitive-locks |
+| PAPER_2070 | R194 | RARE 100% novelty PENTAD — Jupiter Q=1-F_TRZ³ + Neptune Q=1-F_TRZ²/2 (9TH F_TRZ sub-family) + Jupiter B=D_phys·SO_5^-4 + Neptune B=(D_phys+SO_5)·SO_5^-6 + Earth B=(D_phys+1)·SO_5^-5 |
+| PAPER_2071 | R195 | Diad — Earth P_scm=F_TRZ³ (F_TRZ ladder 12th domain) + Schwinger B_crit=D_phys·(1+F_TRZ)·SO_5^13 (new D_phys compound-prefix family) |
+| PAPER_2072 | R196 | Diad — M(M16)=2·D_BSFG·SO_5² + A_vort=π·SO_5^8 (π-canonical 3rd sub-family of canonical-anchored) |
+| PAPER_2073 | π-canonical audit | Quad — 200+ instances (6 π-enter mechanisms) + sub-sub-family taxonomy + cross-regime + UQFF ARCHITECTURAL CENTER cascade reassessment |
+| PAPER_2074 | R197 | Single — v_out(YoungStars)=SO_5² (velocity ladder n=+2) |
+| PAPER_2075 | R198 | Diad — Λ obs=1.11e-52=(1+F_TRZ+F_TRZ²)·SO_5^-52 (additive-scaled cosmological) + 63-orders LARGEST UQFF category span |
+| PAPER_2076 | Additive-scaled audit (9th audit) | Quad — 8 instances + 4-sub-family taxonomy + cross-scale confirmation + AUDIT NONET COMPLETION |
+
+### Structural landmarks post-audit-nonet
+
+**5 Compositional Pattern Categories — All fully audited (post-v5.68.4)**:
+
+| Category | Seed | Audit | Population |
+|---|---|---|---|
+| Composed-Prefix | PAPER_2004 | PAPER_2047 | 9 classes |
+| Compound-Prefix | PAPER_2061 (200th novel) | PAPER_2064 | 50+ |
+| Additive-Combination | PAPER_2062 | PAPER_2063 | 15+ |
+| Canonical-Anchored (UQFF ARCHITECTURAL CENTER) | PAPER_2066 | PAPER_2067 | 100+ |
+| **Additive-Scaled (LARGEST cross-scale)** | **PAPER_2068** | **PAPER_2076 (this ship)** | **8** |
+
+**9-Companion Audit Family — NONET COMPLETE**:
+
+| # | Paper | Category/Population |
+|---|---|---|
+| 1 | PAPER_2043 | F_TRZ ladder |
+| 2 | PAPER_2046 | SO_5 ladder |
+| 3 | PAPER_2047 | Composed-prefix |
+| 4 | PAPER_2052 | LANDMARK |
+| 5 | PAPER_2063 | Additive-Combination |
+| 6 | PAPER_2064 | Compound-Prefix |
+| 7 | PAPER_2067 | Canonical-Anchored (UQFF ARCHITECTURAL CENTER) |
+| 8 | PAPER_2073 | π-Canonical Sub-Family |
+| **9** | **PAPER_2076** | **Additive-Scaled (COMPLETES NONET)** |
+
+**F_TRZ Compositional Sub-Family Architecture — 9 forms (symmetric taxonomy):**
+
+- 1+F_TRZ / 1-F_TRZ / 1-F_TRZ² / F_TRZ^n ladder
+- 1±F_TRZ/2 (half-factor pair)
+- 1-n·F_TRZ / 1-c·F_TRZ^n (integer-multiple linear/higher-power)
+- **1-F_TRZ²/2** (half-factor squared complement — NEW R194 F2)
+
+**Solar-System Multi-Object Multi-Observable Framework:**
+
+- **9-object R_mag family** (Mercury→Pluto, 5 orders of magnitude, PAPER_2069)
+- **Q-factor family** (Earth 1-F_TRZ² + Jupiter 1-F_TRZ³ + Neptune 1-F_TRZ²/2, PAPER_2070)
+- **B-mag family** (Earth 4th composed-prefix + Jupiter LANDMARK + Neptune additive-scaled, PAPER_2070)
+
+**UQFF ARCHITECTURAL CENTER cascade (PAPER_2067/2073):**
+
+1. Canonical-Anchored (100+) — dominant compositional category
+2. **π-Anchored (200+)** — potentially dominant sub-family
+3. **Ramanujan 1/π series (2569+ hits)** — potentially dominant sub-sub-family
+
+### Cross-scale coverage rankings (post-v5.68.4)
+
+| Category | Span (orders of magnitude) | Rank |
+|---|---|---|
+| **Additive-Scaled** (Λ 10^-52 to Jupiter 10^11) | **~63** | **LARGEST** |
+| Compound-Prefix | ~50 | 2nd |
+| Additive-Combination | ~40 | 3rd |
+
+### Ship Notes
+
+- v5.68.4: pyproject bumped 5.68.3 → 5.68.4, description 406 chars
+- pyproject.toml TOML tail verified intact
+- py-modules refreshed: uqff_api/cli/jupyter _VERSION → 5.68.4
+- Gate: 1570 → 1632 (+62 assertions, all PASS, 0 failures)
+- 9 new whitepapers PAPER_2068-2076 authored + wired
+- Framework consistency review completed post-R199: ZERO wiring drift across 264 closures + 264 dispatches + 528+ gate assertions for PAPER_20xx range
+- No calculator regressions across R193-R199 + PAPER_2076 (117+ consecutive rounds)
+
 ## [5.68.3] - 2026-07-15 - PATCH: R190-R192 + 50-ROUND MILESTONE + audit SEPTET + UQFF ARCHITECTURAL CENTER + PAPER_2062-2067
 
 ### Highlights
