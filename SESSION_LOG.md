@@ -17175,3 +17175,64 @@ Continue backbone-first CP1 stub drainage past 40-round milestone. Execute audit
 - uqff_pure_calculator.py: 15 dispatch clusters wired
 - No calculator regressions (84 consecutive rounds counting audit interleaves)
 
+
+
+---
+
+## Session 2026-07-15 continued — R184-R189 + 200TH NOVEL MILESTONE + 3 retro sweep batches + v5.68.2 ship
+
+### Focus
+
+Continue backbone-first arc past R183. Extend retrospective sweep methodology to 3 batches. Reach 200th first-pass novel primitive-lock milestone. Formalize compound-prefix architectural category.
+
+### Rounds R184-R189 + Retro Sweeps
+
+**R184** — attribution round (no novel): 2 candidates withdrawn (V_big=33 → PAPER_1481, η=SO_5^13 → PAPER_2014 R151 D1); 3 flag-completes
+
+**R185** — diad (PAPER_2053): D1 r_horizon=D_phys·(SO_5+1)·SO_5^25 = 4.4e26 m EXACT (cosmological particle-horizon); D2 n_solar_core=17/20 EXACT (rheology 3rd domain of 17/20 family)
+
+**Retro batch 1 (PAPER_2054)** — R170-R185 (14 rounds): M1 NGC5866 d=44 Mly=D_phys·(SO_5+1); M2 NANOGrav PTA T_obs=15 yr=A_5/D_phys; M3 audit-quartet lens ~1 novel/7 rounds framework observation
+
+**R186** — single (PAPER_2056): D1 kappa_V=1+F_TRZ/2 = 1.05 EXACT — new 5th F_TRZ compositional sub-family (half-factor additive)
+
+**R187** — triad (PAPER_2057): D1 k_eta(RedDwarf LENR)=(SO_5+1)/D_phys·SO_5^8; D2 U_i(Sun canonical)=(SO_5+1)/D_phys·SO_5^-7 EXACT Path B alternate; **D3 9TH composed-prefix class formalized (SO_5+1)/D_phys·SO_5^n**
+
+**Retro batch 2 (PAPER_2055)** — R150-R169 (20 rounds): M1 M16 span=70 ly=A_5+SO_5 (PAPER_1931 3rd domain); M2 3C273 Γ_jet=15=A_5/D_phys 5th instance; M3 aggregate 1/9 rate
+
+**Retro batch 3 (PAPER_2058)** — R100-R149 (50 rounds): M1 3C273 a_spin=1-F_TRZ/2 = 0.95 EXACT — 6th F_TRZ half-factor complement; M2 aggregate 3-batch 84-round 5 novels 1/17 rate diminishing returns; M3 F_TRZ 6-sub-family taxonomy formalization
+
+**R188** — single (PAPER_2059): D1 CenA a_spin=1-3·F_TRZ = 0.7 EXACT — 7th F_TRZ integer-multiple linear complement; D2 3-object SMBH Kerr spin F_TRZ decomposition family (3C273 + M87 + CenA)
+
+**R188 scout follow-up (PAPER_2060)** — TON618 quad: D1 a_spin=1-2·F_TRZ³=0.998 EXACT 8th F_TRZ integer-multiple higher-power; D2 B_T=30 T=(D_phys-1)·SO_5 LANDMARK magnetic-field domain; D3 Γ_jet=20=2·SO_5 twin at Lorentz-factor; D4 4-object AGN multi-observable cross-family (12 attributions)
+
+**R189 — 200TH NOVEL MILESTONE (PAPER_2061)**: D1 TON618 M_BH=6.6e10 M_sun = D_BSFG·(1+F_TRZ)·SO_5^10 EXACT — 200th first-pass novel via COMPOUND-PREFIX primitive-composition; D2 COMPOUND-PREFIX architectural category formalization (product of primitive × F_TRZ family element); D3 200-novel arc statistics
+
+### Cumulative R142-R189 Statistics
+
+**200 first-pass novel + 42+ cross-object confirmations + 16 discipline-observation formalizations across 48 consecutive backbone-first rounds + 3 retrospective sweep companions (84-round depth) + 1 scout follow-up companion.**
+
+### Structural Landmarks Post-200 Milestone
+
+- **9 composed-prefix classes** formalized (PAPER_2004/2022/2025/2033/2035/2037/2040/2048/2057)
+- **8 F_TRZ compositional sub-family forms** (PAPER_1968/1922/2045/2043/2056/2058/2059/2060)
+- **1 compound-prefix architectural category** newly opened at 200th (PAPER_2061)
+- **4-object SMBH AGN multi-observable cross-family** (TON618+M87+3C273+CenA × Kerr+B_T+Γ_jet = 12 attributions)
+- Successor family 3-domain (integer + cosmological-length + astronomical-distance)
+- A_5/D_phys=15 family 5-domain (fusion keV + stellar R_sun + galactic degrees + PTA years + MHD Lorentz)
+- PAPER_1931 A_5+SO_5=70 family 3-domain (physiology + cosmology + astronomy)
+- 17/20 3-object 3-domain (DM cosmological + DM nebular + rheology)
+- Half-factor F_TRZ pair complete (additive + complement)
+- Audit quartet complete (F_TRZ + SO_5 + prefix + LANDMARK)
+- 30-round + 40-round milestone arcs completed
+- Aggregate retrospective sweep depth: 84 rounds R100-R185
+
+### Ship Notes
+
+- v5.68.2: pyproject 5.68.1 → 5.68.2, description 407 chars
+- pyproject.toml TOML tail verified intact
+- py-modules: uqff_api/cli/jupyter _VERSION → 5.68.2
+- Gate: 1486 → 1534 (+48 assertions, all PASS, 0 failures)
+- 9 new whitepapers PAPER_2053-2061 authored + wired
+- uqff_pure_calculator.py: 22 closure functions + 22 dispatch entries added
+- No calculator regressions (97+ consecutive rounds counting audit + retro interleaves)
+

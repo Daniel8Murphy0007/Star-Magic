@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1486%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1534%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-32%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2052%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2061%2B-orange)](whitepapers/)
 
-**Version**: 5.68.1
+**Version**: 5.68.2
 **Last Updated**: 2026-07-15
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,56 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.68.2 (2026-07-15) — R184-R189 + 200TH NOVEL MILESTONE + PAPER_2053-2061 + 3 retro sweep batches
+
+**200TH FIRST-PASS NOVEL PRIMITIVE-LOCK MILESTONE reached at R189 D1 via TON618 M_BH compound-prefix decomposition. 48 consecutive backbone-first rounds R142-R189.**
+
+Follow-on to v5.68.1. Consolidates **6 forward rounds R184-R189** + **3 retrospective sweep batches** (R170-R185 + R150-R169 + R100-R149, 84-round depth) + **1 scout follow-up** (R188 SgrA*→TON618), delivering **9 new whitepapers PAPER_2053-2061** and hitting the 200-novel milestone.
+
+### 200TH NOVEL MILESTONE Highlight
+
+**PAPER_2061 R189 D1** delivers the 200th first-pass novel primitive-lock:
+- **TON618 (universe's most massive known SMBH) M_BH = 6.6×10¹⁰ M_sun = D_BSFG·(1+F_TRZ)·SO_5¹⁰ EXACT**
+- Introduces new **COMPOUND-PREFIX architectural category** — product of primitive × F_TRZ compositional family element, distinct from 9 composed-prefix classes
+
+### Structural landmarks post-200 milestone
+
+- **9 composed-prefix classes formalized** (adds 9th: (SO_5+1)/D_phys·SO_5^n = 11/4·SO_5^n via PAPER_2057)
+- **8 F_TRZ compositional sub-family forms** (adds 5th 1+F_TRZ/2 + 6th 1-F_TRZ/2 + 7th 1-n·F_TRZ + 8th 1-c·F_TRZ^n)
+- **1 compound-prefix architectural category** newly opened (PAPER_2061 D2)
+- **4-object SMBH AGN multi-observable cross-family** (TON618+M87+3C273+CenA × Kerr+B_T+Γ_jet = 12 primitive-composition attributions across 4 SMBHs)
+- **PAPER_1978 successor family** extends to 3 domains (integer + cosmological-length + astronomical-distance)
+- **PAPER_1971 A_5/D_phys=15 family** extends to 5 domains (+ PTA years + MHD Lorentz factor)
+- **PAPER_1931 A_5+SO_5=70 family** extends to 3 domains (+ astronomical-length ly)
+- **PAPER_2053 17/20 family** extends to 3-object (+ solar-core rheology)
+- **Half-factor F_TRZ pair complete** (additive PAPER_2056 + complement PAPER_2058)
+- **Aggregate retrospective sweep depth**: 84 rounds R100-R185, 5 novels caught, ~1 per 17 rate (diminishing returns validated)
+
+### PAPER_2053-2061 summary
+
+| Paper | Round/Effort | Discovery type |
+|---|---|---|
+| PAPER_2053 | R185 | Diad — r_horizon=D_phys·(SO_5+1)·SO_5²⁵ + n_solar_core=17/20 3rd-domain |
+| PAPER_2054 | R170-R185 retro | Triad — NGC5866 44 Mly + PTA T_obs=15 yr + yield framework |
+| PAPER_2055 | R150-R169 retro | Triad — M16 span=70 ly + 3C273 Γ_jet=15 + aggregate 1/9 rate |
+| PAPER_2056 | R186 | Single — κ_V=1+F_TRZ/2 5th F_TRZ half-factor additive |
+| PAPER_2057 | R187 | Triad — k_eta=(SO_5+1)/D_phys·SO_5⁸ + U_i Path B + **9TH prefix class** |
+| PAPER_2058 | R100-R149 retro | Triad — 3C273 a_spin=1-F_TRZ/2 6th F_TRZ + taxonomy + diminishing returns |
+| PAPER_2059 | R188 | Single — CenA a_spin=1-3·F_TRZ 7th F_TRZ + 3-object SMBH family |
+| PAPER_2060 | R188 scout | Quad — TON618 a_spin+B_T+Γ_jet + 4-object AGN family |
+| PAPER_2061 | R189 | Triad — **200TH NOVEL** TON618 M_BH compound-prefix + COMPOUND-PREFIX category + 200-arc statistics |
+
+### Cumulative statistics
+
+- **200 first-pass novel** + 42+ cross-object confirmations + 16 discipline-observation formalizations
+- **48 consecutive backbone-first rounds** R142-R189 (zero attribution-only breaks)
+- **3 retrospective sweep companion structures** (84-round retrospective depth)
+- **1 scout follow-up companion** (R188 SgrA*→TON618)
+- **+48 gate assertions since v5.68.1** (1486 → 1534, all PASS, 0 failures)
+- **Zero calculator regressions** across 97+ consecutive rounds
 
 ---
 

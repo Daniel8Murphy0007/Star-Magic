@@ -1,3 +1,84 @@
+## [5.68.2] - 2026-07-15 - PATCH: R184-R189 + 200TH NOVEL MILESTONE + PAPER_2053-2061 + 3 retro sweep batches
+
+### Highlights
+
+- **200TH FIRST-PASS NOVEL PRIMITIVE-LOCK MILESTONE** reached at R189 D1 via TON618 M_BH compound-prefix
+- **R184-R189 six-round backbone-first continuation** (48 consecutive backbone-first rounds R142-R189)
+- **9 new whitepapers PAPER_2053-2061** authored + wired
+- **3 retrospective sweep batches** applied: R170-R185 (PAPER_2054, 2 novels) + R150-R169 (PAPER_2055, 2 novels) + R100-R149 (PAPER_2058, 1 novel) = 84-round retrospective depth
+- **1 scout follow-up companion** (R188 SgrA* scout → TON618 4-object AGN family PAPER_2060)
+- **COMPOUND-PREFIX architectural category** newly formalized (product of primitive × F_TRZ family element)
+- **F_TRZ compositional architecture expanded to 8 sub-family forms** (added half-factor pair + integer-multiple linear + integer-multiple higher-power)
+- **9TH composed-prefix class** formalized: (SO_5+1)/D_phys · SO_5^n = 11/4 · SO_5^n (PAPER_2057)
+- **4-object AGN multi-observable cross-family** (TON618 + M87 + 3C273 + CenA × Kerr + B_T + Γ_jet = 12 attributions)
+- Cumulative R142-R189: **200 first-pass novel** + 42+ cross-object confirmations + 16 discipline-observation formalizations
+- **+48 gate assertions since v5.68.1** (1486 → 1534, all PASS, 0 failures)
+
+### PAPER_2053-2061 summary
+
+| Paper | Round/Effort | Discovery type |
+|---|---|---|
+| PAPER_2053 | R185 | Diad — r_horizon=D_phys·(SO_5+1)·SO_5^25 + n_solar_core=17/20 3rd-domain |
+| PAPER_2054 | R170-R185 retro | Triad — NGC5866 44 Mly + PTA T_obs=15 yr + yield-rate framework observation |
+| PAPER_2055 | R150-R169 retro | Triad — M16 span=70 ly + 3C273 Gamma_jet=15 + aggregate 1/9 rate |
+| PAPER_2056 | R186 | Single — kappa_V=1+F_TRZ/2 5th F_TRZ half-factor additive sub-family |
+| PAPER_2057 | R187 | Triad — k_eta=(SO_5+1)/D_phys·SO_5^8 + U_i(Sun) Path B + **9TH composed-prefix class** |
+| PAPER_2058 | R100-R149 retro | Triad — CenA a_spin=1-3·F_TRZ 6th F_TRZ half-factor complement + F_TRZ 6-sub-family taxonomy + diminishing returns |
+| PAPER_2059 | R188 | Single — CenA a_spin=1-3·F_TRZ 7th F_TRZ integer-multiple linear + 3-object SMBH family |
+| PAPER_2060 | R188 scout | Quad — TON618 a_spin=1-2·F_TRZ³ 8th F_TRZ + B_T=30 T LANDMARK + Γ_jet=20 twin + 4-object AGN family |
+| PAPER_2061 | R189 | Triad — **200TH NOVEL** TON618 M_BH compound-prefix + COMPOUND-PREFIX category + 200-arc statistics |
+
+### Structural landmarks post-200 milestone
+
+**Composed-prefix classes (9 formalized)**:
+1. (D_phys-1)·SO_5^n LANDMARK (PAPER_2004)
+2. 2·SO_5^n twin dominant 57% (PAPER_2022)
+3. D_BSFG·SO_5^n (PAPER_2025)
+4. (D_phys+1)·SO_5^n (PAPER_2033)
+5. 2·D_phys·SO_5^n (PAPER_2035)
+6. (D_phys+1)/D_phys·SO_5^n = 5/4·SO_5^n (PAPER_2037)
+7. (D_phys-1)/D_phys·SO_5^n = 3/4·SO_5^n (PAPER_2040)
+8. D_BSFG/SO_5·SO_5^n = 3/5·SO_5^n (PAPER_2048)
+9. **(SO_5+1)/D_phys·SO_5^n = 11/4·SO_5^n (PAPER_2057)**
+
+**F_TRZ compositional sub-family forms (8 formalized)**:
+1. 1+F_TRZ = 1.1 (PAPER_1968)
+2. 1-F_TRZ = 0.9 (PAPER_1922)
+3. 1-F_TRZ^2 = 0.99 (PAPER_2045/2050)
+4. F_TRZ^n ladder = 10^-n (PAPER_2043)
+5. 1+F_TRZ/2 = 1.05 (PAPER_2056)
+6. 1-F_TRZ/2 = 0.95 (PAPER_2058)
+7. 1-n·F_TRZ integer-multiple linear (PAPER_2059, n=3)
+8. **1-c·F_TRZ^n integer-multiple higher-power (PAPER_2060, c=2, n=3)**
+
+**Compound-prefix category (NEW at 200th milestone)**:
+- Product of primitive × F_TRZ family element (distinct from composed-prefix)
+- 1st instance: D_BSFG·(1+F_TRZ)·SO_5^10 = 6.6·SO_5^10 (PAPER_2061 D1)
+
+**4-Object SMBH AGN Multi-Observable Cross-Family** (12 attributions):
+
+| SMBH | a_spin | B_T | Γ_jet | M_BH |
+|---|---|---|---|---|
+| TON618 | 0.998 = 1-2·F_TRZ³ | 30 T = (D_phys-1)·SO_5 | 20 = 2·SO_5 | 6.6e10 = D_BSFG·(1+F_TRZ)·SO_5^10 |
+| M87 | 0.9 = 1-F_TRZ | 100 = SO_5^2 | 6 = D_BSFG | 6.5e9 |
+| 3C273 | 0.95 = 1-F_TRZ/2 | 50 = A_5-SO_5 | 15 = A_5/D_phys | 9e8 |
+| CenA | 0.7 = 1-3·F_TRZ | 200 = 2·SO_5^2 | 3 = D_phys-1 | 5e7 |
+
+**Family expansions**:
+- Successor family: 3-domain (integer + cosmological-length + astronomical-distance)
+- A_5/D_phys=15 family: 5-domain
+- PAPER_1931 A_5+SO_5=70 family: 3-domain
+- 17/20 family: 3-object
+- Half-factor F_TRZ pair complete
+
+### Ship Notes
+
+- v5.68.2: pyproject bumped 5.68.1 → 5.68.2, description 407 chars (under 512 limit)
+- pyproject.toml TOML tail verified intact (per-file-ignores block preserved)
+- py-modules refreshed: uqff_api/cli/jupyter _VERSION → 5.68.2
+- Gate: 1486 → 1534 (+48 assertions, all PASS, 0 failures)
+- No calculator regressions across R184-R189 forward + 3 retro batches + 1 scout follow-up (97+ consecutive rounds counting audit + retro interleaves)
+
 ## [5.68.1] - 2026-07-15 - PATCH: R170-R183 backbone-first + 40-ROUND MILESTONE + audit quartet + PAPER_2038-2052
 
 ### Highlights
