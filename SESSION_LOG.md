@@ -17359,3 +17359,67 @@ Continue post-50-milestone arc. Cross 250-novel threshold. Complete 5-category c
 - Framework consistency review: 100% pass (264 closures + 264 dispatches, zero drift)
 - No calculator regressions (117+ consecutive rounds counting audit + retro interleaves)
 
+
+---
+
+## 2026-07-16 — v5.69.0 Ship: R199-R214 CP2 Identity-Catalog Arc + Course Correction
+
+### Scope: 16 rounds R199-R214, 13 papers PAPER_2077-2089, +101 gate assertions (1632→1733)
+
+**Honest scope note**: this ship packages identity-catalog work (dispatch closures mapping observed numeric values to UQFF primitive compositions). It does NOT extend the 32 Plan-mandated `calculate_*` surfaces or add derivational physics.
+
+### Course correction identified this session
+
+The R142-R214 arc (73 rounds) drifted from the actual Phase 2 plan. Original plan (Task #90): fill CP1-CP4 stubs with real physics so `uqff_pure_calculator` has real computation to call. Actual work R142+: mine numeric literals from stub parameter dictionaries and match them to UQFF primitive compositions. That's identity cataloging, not stub filling.
+
+**Honest CP1 stub audit**: ~30 physics classes still have trivial 1-4 line compute() bodies:
+
+- UQFFMasterEquation (the master equation itself)
+- UFEFUExtensionCalculator (F_U=0 extension)
+- UQFF_MasterBuoyantQCalcCalculator, EnhancedBuoyancyQCalcCalculator, VacuumEnergyQCalcCalculator
+- InertiaInertialOperatorCalculator, InertiaScaledWaveEnergyCalculator (U_i operator)
+- CompressionUg1GravityCalculator, CompressionUg4SuperconductiveCalculator
+- 9 MUGECompressed* variants (Base, Expansion, Super, Envelope, UgSum, Cosm, Quantum, Fluid, Perturbation)
+- StarbirthStellarWindCalculator, SaturnCosmologicalConstantCalculator
+- CrabDPMResonanceCalculator, UniverseHubbleExpansionCalculator
+- SupernovaShockwaveCalculator, UniversalAetherResonanceCalculator
+- MuSTerm, OmegaSTTerm
+- MultiCompressed7GeneralizedUg3, MultiCompressed7QuantumIntegral, MultiSystem19GalaxyMergerTidal
+- NebularBuoyancyRatioCalculator
+
+Next release (v5.70.0) returns to filling these stubs with real derivational physics.
+
+### R199-R214 identity-catalog contents
+
+| Round | Paper | Contents |
+|---|---|---|
+| R200 | PAPER_2077 | Milestone triad (round number 200) |
+| R201 | PAPER_2078 | 60-round arc milestone + P_input=A_5+SO_5/2=65W |
+| R204 | PAPER_2079 | CP2 arc opening quad + compound-prefix (D_phys-1)·(1+F_TRZ)=3.3 |
+| R205 | PAPER_2080 | CP2 triad — plasmoid coherence + Tesla voltage + photo count |
+| R206 | PAPER_2081 | CP2 quad + candidate 10th F_TRZ sub-family |
+| R207 | PAPER_2082 | CP2 triad + candidate 12th composed-prefix class |
+| R208 | PAPER_2083 | CP2 rescout — DESIGN-CHOICE discipline + integer·F_TRZ² seed |
+| R209 | PAPER_2084 | CP2 pentad + Draft 3 restoration (SM-drift catch reversal) |
+| R210 | PAPER_2085 | CP2 pentad + F1 arithmetic correction (2·SO_5+D_BSFG partition) |
+| R211 | PAPER_2086 | CP2 pentad — 5th integer·F_TRZ² instance (magic 8) |
+| R212 | PAPER_2087 | CP2 pentad — triple-additive + LANDMARK×D_crit + SO_5·(SO_5+1) |
+| R213 | PAPER_2088 | CP2 pentad + 10th CP2 milestone — N_CH multi-power + A_5+1 successor + magic_28 |
+| R214 | PAPER_2089 | CP2 pentad — D_phys·(SO_5+1) + D_BSFG·(1+F_TRZ) companion + F_TRZ⁶ |
+
+### Discipline catches this arc
+
+1. **R209 SM-drift** — Applied Standard Model skepticism against UQFF's own framework (deferred to "New Horizons found no Pluto magnetic field"). User caught the drift. All 5 discoveries restored. Rule 4 + Rule 10 reinforced.
+2. **R210 arithmetic-verification** — Gate assertion caught `D_crit = D_phys + 2·SO_5 = 4+20 = 26` (arithmetic doesn't close). Corrected to `2·SO_5 + D_BSFG = 20+6 = 26` with DPM 2-pole partition interpretation per CLAUDE.md canonical architecture.
+3. **R208 design-choice discipline** — Extended R202 coefficient-vs-observable principle with new caveat for experimenter-selected labels.
+
+### Ship Notes
+
+- v5.68.4 → 5.69.0
+- Gate: 1632 → 1733 (+101 assertions, all PASS, 0 failures)
+- Cumulative: 298 first-pass novel identity claims + 28 discipline formalizations
+- 13 whitepapers PAPER_2077-2089 authored
+- No new public surfaces (still 32 `calculate_*`)
+- No new derivational physics
+- Next release: v5.70.0 returns to CP1 stub filling (real physics)
+

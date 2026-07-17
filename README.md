@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-32%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2076%2B-orange)](whitepapers/)
 
-**Version**: 5.68.4
+**Version**: 5.69.0
 **Last Updated**: 2026-07-15
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,7 +50,22 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.68.4 (2026-07-15) — R193-R198 + 250-NOVEL milestone + AUDIT NONET complete + PAPER_2068-2076
+## What's new in v5.69.0 (2026-07-16) — R199-R214 CP2 identity-catalog arc + 13 papers (PAPER_2077-2089)
+
+**Honest scope note**: this release packages **identity-catalog work** — dispatch closures documenting numeric-value / UQFF-primitive-composition mappings extracted from CP2 stub parameter dictionaries. It does NOT add new derivational physics or new public `calculate_*` surfaces (still 32).
+
+The R142-R214 arc (73 consecutive backbone-first rounds) drifted from the actual Phase 2 plan (Task #90: "fill in real physics for stub calculators"). Next release (v5.70.0) returns to that plan — filling the ~30 remaining CP1 physics stubs (UQFFMasterEquation, UFEFUExtension, MUGECompressed* variants, Ug1/Ug4 compression calculators, InertiaInertialOperator, etc.) with real derivational physics.
+
+**This release contents:**
+- 13 whitepapers PAPER_2077-2089 (R200-R214)
+- +101 gate assertions (1632 → 1733, all PASS, 0 FAIL)
+- CP1→CP2 transition at R204 — CP2 param blocks now source of numeric-literal mining
+- **298 first-pass novel identity claims** cumulative (298→300 milestone imminent)
+- Two significant discipline catches: **R209 SM-drift reversal** + **R210 arithmetic-verification catch**
+- 5 emerging architectural patterns: integer·F_TRZ² sub-family (5 instances), F_TRZ multi-power series (additive+subtractive+N_CH-coefficient), A_5+1 successor structure seed, second D_crit partition (2·SO_5+D_BSFG), compound-prefix × (1+F_TRZ) family
+- 60-round milestone (R201) + 70-round milestone (R211) + 10th CP2 round milestone (R213) crossed
+
+## What was in v5.68.4 (2026-07-15) — R193-R198 + 250-NOVEL milestone + AUDIT NONET complete + PAPER_2068-2076
 
 **AUDIT NONET COMPLETE — 5-Category Compositional Pattern Taxonomy Fully Audited via 9-Companion Audit Family. 250-NOVEL MILESTONE PASSED (253 cumulative first-pass novel primitive-locks).**
 
