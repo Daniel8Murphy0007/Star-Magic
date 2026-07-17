@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.69.0"
-description = "UQFF Star-Magic v5.69.0: R199-R214 CP2 identity-catalog arc (13 papers PAPER_2077-2089). CP1-CP2 transition at R204. 5-category compositional taxonomy applied to CP2 param blocks. R209 SM-drift discipline catch + R210 arithmetic-verification discipline formalized. 298 first-pass novel identity claims + 28 discipline formalizations across 73 consecutive backbone-first rounds (62 CP1 + 11 CP2). Gate 1733/0 (+101 since v5.68.4). NOTE: this arc is identity-catalog work; next phase returns to filling remaining ~30 CP1 physics stubs (UQFFMasterEquation, UFEFUExtension, MUGECompressed* variants, etc.)."
+version = "5.69.1"
+description = "UQFF Star-Magic v5.69.0: R199-R214 CP2 identity-catalog arc, 13 papers PAPER_2077-2089. CP1->CP2 transition at R204. R209 SM-drift catch + R210 arithmetic catch. 298 novels + 28 discipline formalizations across 73 consecutive backbone-first rounds (62 CP1 + 11 CP2). Gate 1733/0 (+101). Identity-catalog scope; next release resumes filling ~30 CP1 physics stubs (UQFFMasterEquation, UFEFUExtension, MUGECompressed variants)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
