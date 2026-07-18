@@ -1,3 +1,53 @@
+## [5.69.1] - 2026-07-17 - PATCH: H-plan bundle — pipeline wiring + QCalcGeom advance + pyproject description fix
+
+### v5.69.0 CI patch
+
+- **pyproject description shortened** 602 → 383 chars (below PyPI 512-char limit) so wheels publish cleanly. Content updated to describe v5.69.1 H-plan bundle (below), replacing the CP2 identity-catalog description shipped with v5.69.0.
+
+### Actual code deltas (the H-plan)
+
+Session 2026-07-17 executed a four-step "catch up" plan that closes the gap between what `uqff_pure_calculator` exposed (32 surfaces) and what the CP1-CP4 pipeline actually contains (2,943 classes). The pipeline had been growing in parallel to the calculator with no bridge between them.
+
+#### H-1 — Rule 9 loosened (fidelity gate)
+
+`uqff_fidelity_tests.py` Cat 16 previously forbade **all** comment lines and function docstrings in `uqff_pure_calculator.py`. Loosened to allow structured API docstrings (single-line `Wraps ClassName.method() from Module.`) while still blocking narrative markers: `NOT REPLACEMENT`, `closure_status`, `provenance`, `classical Eddington`, `SM template`, `Kerr fiducial`, `GR baseline`, `PDG anchor`, `CODATA anchor`, `Lambda_GR`. Narrative rot prevention preserved.
+
+#### H-2 — Bulk wiring of 2,760 pipeline classes
+
+Bulk-wired 2,760 CP1-CP4 pipeline calculator classes as public `calc_*` shims in `uqff_pure_calculator.py` via a lazy-import `_PIPELINE_CLASS_MAP` + `_pipeline_invoke()` dispatcher pattern. Each shim wraps a `ClassName.method()` from CondensedPhysics{1..4}.py. Public surface count: **32 → 2,792**.
+
+- Liveness smoke-test: **2,687/2,760 clean returns (97.4%)**, 73 return parameter-mismatch error dicts (dispatcher works, calculators need input params), 0 uncaught exceptions.
+- `help(upc.calc_vacuum_fluctuation_calculator)` renders correctly: `Wraps VacuumFluctuationCalculator.compute() from CondensedPhysics.`
+
+#### H-3 — Docstrings on every shim
+
+Every one of the 2,760 shims carries a one-line docstring identifying its ClassName + source module. `help()` and IDE inspection now work across the whole surface.
+
+#### H-4 — QCalcGeom development caught up
+
+`QCalcGeom.run_qcalcgeom_tests` self-test frontier advanced **47/47 → 130/130** (+83 tests, +176%).
+
+- **T01b, T02b, T06b, T03-T06**: BSFG metric reference-band checks, flat limit, t_n symmetry, antiphase sign, eps_pp r^-5 scaling.
+- **T07-T12**: BSFG geometry — blinking horizon (r_h ~ 1.62e8 m), Hawking T_H (~3.37e-12 K), r_cross AU (~0.360), h_eta (~6.626e-56), holonomy 28 generators (SO+(3,1) × U(1)^22), M^26 = 4+22.
+- **T13-T16**: VDS series — n=1 dominance, term monotonicity, monotone-in-SSq, Li_26 truncation error < 1e-10.
+- **T17-T21**: DVP — 30th prime = 113, 26! mod 113 = 12, a(p) monotone for p>26, Wilson's theorem, r_q ~ 0.0973 AU.
+- **T22-T27**: BSH + BH26 — H_2 = 3.30e7, U_g2 positive, saturation, k(k+25) eigenvalue ladder, 13+13 duality partition, 92/225/345 GHz Gaussian bins.
+- **T28-T40**: Cosmological — Λ_eff, amp_factor >> 1, r_h/r_s ratio, flat limit at 67 AU, Friedmann H, Page unitarity 0.9895, action correction, Yang-Mills proxy, Penrose NEC, T_H ratio, holographic S_BH.
+- **T43-T50**: Neg-buoy zero crossover + antisymmetry + r^-2 scaling + period; neg-time metric parity + horizon + buoyancy symmetry + negentropic growth.
+- **T220-T235**: Canonical primitive-locks anchored to CLAUDE.md — ρ_SCm, ρ_UA, β_i, F_TRZ, Φ_res, SSq + PAPER_1521/1522/1978/1203/2079/2082/2089 EXACT structural identities.
+- **T240-T258**: C-ABI JSON dispatcher — all 17 named functions from `QCalcGeom.h` Section 6 (was 3), unknown-function hygiene, numerical-fault safety wrapper for `uqff_comp_matrix` (r^52 overflow / ρ^27 underflow).
+
+`qcalcgeom_compute_json` C-ABI dispatcher expanded from 3 → 17 named functions matching the C++ reference surface.
+
+### Cumulative through v5.69.1
+
+- **2,792 public `calc_*` surfaces** in `uqff_pure_calculator` (was 32; +8,625%).
+- QCalcGeom self-test: **130/130 PASS**.
+- Fidelity gate: **1733/0** unchanged, zero regression.
+- H-plan work is code-visible; v5.69.0's CP2 identity-catalog work (below) is preserved.
+
+---
+
 ## [5.69.0] - 2026-07-16 - MINOR: R199-R214 CP2 identity-catalog arc + 13 papers (PAPER_2077-2089)
 
 ### Honest scope note

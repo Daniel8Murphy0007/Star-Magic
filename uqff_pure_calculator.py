@@ -62214,3 +62214,11068 @@ def _io_ports_info() -> Dict[str, Any]:
         info["opdata_error"] = f"{type(ex).__name__}: {ex}"
     return info
 
+
+
+
+_PIPELINE_CLASS_MAP = {
+    'ACEDCEEventCounterCalculator': ('CondensedPhysics', 'compute'),
+    'ACEDCEFieldGeneratorCalculator': ('CondensedPhysics2', 'compute'),
+    'ACEDCEModulatedEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'ACPCalculator': ('CondensedPhysics', 'compute'),
+    'ACPQwaveTHzHoleUBmiCalculator': ('CondensedPhysics4', 'compute'),
+    'ACPStageTracker': ('CondensedPhysics', 'compute'),
+    'ACPUniversalCycleNotesPhysicsCalculator': ('CondensedPhysics4', 'compute'),
+    'ADDGravitonLeakageNegBuoyancySgrAExtCalc': ('CondensedPhysics4', 'compute'),
+    'ADDLargeExtraDimensionsFLEDUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'AFGL5180MassiveSFRThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'AGCarinaeModel': ('CondensedPhysics', 'compute'),
+    'AGCarinaeNebulaUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'AGNCoolingFlowCalculator': ('CondensedPhysics', 'compute'),
+    'AGNFeedbackFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'AGNFeedbackMSigmaScalingCalculator': ('CondensedPhysics4', 'compute'),
+    'AGNFeedbackModel': ('CondensedPhysics', 'compute'),
+    'AGNJetDynamicsBlandfordZnajek': ('CondensedPhysics4', 'compute'),
+    'ALICECentralityMultiplicityCalc': ('CondensedPhysics4', 'compute'),
+    'ALICEMultiplicityCentralityRhoVacRatioCalculator': ('CondensedPhysics4', 'compute'),
+    'ASASSN14liTDEOutflowFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'ASKAPUltraLongPeriodTransientFUBiCalculator': ('CondensedPhysics4', 'compute'),
+    'AT2024tvdWanderingMBHTDECalculator': ('CondensedPhysics4', 'compute'),
+    'ATLASLHCQuarkEnergyLowNLevelCalculator': ('CondensedPhysics3', 'compute'),
+    'ATLASOffShellHiggsWidthCalculator': ('CondensedPhysics4', 'compute'),
+    'AccretionDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'AetherBlueQualitiesModel': ('CondensedPhysics', 'compute'),
+    'AetherCouplingCalculator': ('CondensedPhysics2', 'compute'),
+    'AetherCouplingMasterCalculator': ('CondensedPhysics2', 'compute'),
+    'AetherFieldDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'AetherFluxRootingCalculator': ('CondensedPhysics2', 'compute'),
+    'AetherImpedanceQEDCalculator': ('CondensedPhysics', 'compute'),
+    'AetherIonConcentrationUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'AetherMetricCalculator': ('CondensedPhysics2', 'compute'),
+    'AetherMetricQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'AetherMetricTensorPerturbationCalculator': ('CondensedPhysics4', 'compute'),
+    'AetherResistanceFullUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'AetherStressEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'AetherSuperconductiveCalculator': ('CondensedPhysics', 'compute'),
+    'AetherSuperfluidDynamicsCalculator': ('CondensedPhysics2', 'compute'),
+    'AetherSuperfluidUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'AetherVacuumEnergyModel': ('CondensedPhysics', 'compute'),
+    'AethericDensityScaledCalculator': ('CondensedPhysics2', 'compute'),
+    'AlcoholCombustionEnthalpyCalculator': ('CondensedPhysics2', 'compute'),
+    'AldersOlbersBSFGMetricGapAnalysisCalculator': ('CondensedPhysics4', 'compute'),
+    'AldersOlbersParadoxDPMShellFluxCalculator': ('CondensedPhysics4', 'compute'),
+    'AldersOlbersVDSNumberSystemResolutionCalculator': ('CondensedPhysics4', 'compute'),
+    'AlphaBECCalculator': ('CondensedPhysics2', 'compute'),
+    'AlphaBECNuclearCalculator': ('CondensedPhysics2', 'compute'),
+    'AlphaBECNuclearLENREnhancementCalculator': ('CondensedPhysics3', 'compute'),
+    'AlternatingCurrentEffectCalculator': ('CondensedPhysics2', 'compute'),
+    'Am241DecayEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'AmericiumAlphaIonizationCalculator': ('CondensedPhysics2', 'compute'),
+    'AmplitudeStabilityModel': ('CondensedPhysics', 'compute'),
+    'AndromedaBlueshiftApproachAmplifierCalculator': ('CondensedPhysics3', 'compute'),
+    'AndromedaDMShellPartitionCalculator': ('CondensedPhysics3', 'compute'),
+    'AndromedaFriedmannHzExpansionCalculator': ('CondensedPhysics3', 'compute'),
+    'AndromedaHI21cmUQFFResonanceCalculator': ('CondensedPhysics3', 'compute'),
+    'AndromedaUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'AngularFrequencyCalculator': ('CondensedPhysics2', 'compute'),
+    'AngularVelocityFieldCalculator': ('CondensedPhysics2', 'compute'),
+    'AntennaeBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeGalaxiesMergerInteractionCalculator': ('CondensedPhysics3', 'compute'),
+    'AntennaeGalaxiesModel': ('CondensedPhysics', 'compute'),
+    'AntennaeMergerNGC4038CleanUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'AntennaeMergerNGC4038NGC4039': ('CondensedPhysics4', 'compute'),
+    'AntennaeOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeStellarFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'AntennaeUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'ArXiv24PaperBatch4FquarkFneutrinoFALPFdarkCalc': ('CondensedPhysics4', 'compute'),
+    'AssemblyDisassemblyCalculator': ('CondensedPhysics2', 'compute'),
+    'AstronomicalAPIFetcher': ('CondensedPhysics', 'compute'),
+    'AstropyEphemerisCalculator': ('CondensedPhysics2', 'compute'),
+    'AsymptoticFreedomCalculator': ('CondensedPhysics', 'compute'),
+    'AtomicCreationProcessCalculator': ('CondensedPhysics2', 'compute'),
+    'AtomicModelUQFF': ('CondensedPhysics', 'compute'),
+    'AtomicScalePressureTermCalculator': ('CondensedPhysics4', 'compute'),
+    'AtomicTransmutationCalculator': ('CondensedPhysics2', 'compute'),
+    'BAOCalculator': ('CondensedPhysics', 'compute'),
+    'BBDTFeynmanClusterCalculator': ('CondensedPhysics2', 'compute'),
+    'BCSCriticalTemperatureCalc': ('CondensedPhysics4', 'compute'),
+    'BCSGapEquationCalc': ('CondensedPhysics4', 'compute'),
+    'BCSPhononResonanceCalc': ('CondensedPhysics4', 'compute'),
+    'BCSSpectralLadderMasterCouplingCalc': ('CondensedPhysics4', 'compute'),
+    'BCSSuperconductivityCalculator': ('CondensedPhysics', 'compute'),
+    'BECCondensateFractionCalculator': ('CondensedPhysics2', 'compute'),
+    'BH26BSHResonanceCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'BH26BranchCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'BHJetModulationFactorLinewidthCalc': ('CondensedPhysics4', 'compute'),
+    'BHMFEvolutionModel': ('CondensedPhysics', 'compute'),
+    'BHPhononErgosphereSuperradianceCalc': ('CondensedPhysics4', 'compute'),
+    'BSDLFunctionCalculator': ('CondensedPhysics', 'compute'),
+    'BSFG26DLineElementFactorialCompactificationCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGBlackHoleSolutionHorizonCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGBohrSommerfeldAetherQuantizationCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGEinsteinTensorFieldEquationsCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGGeodesicMetricCompatibilityCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGHolonomyGroupParallelTransportCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGMetricCalculator': ('QCalcGeom', 'compute'),
+    'BSFGRiemannCurvatureAetherMetricCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGSymmetryGroupIsometryAnalysisCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGUnificationAtlasTheoremHubCalculator': ('CondensedPhysics4', 'compute'),
+    'BSFGUnificationMetricCalculator': ('CondensedPhysics', 'compute'),
+    'BSFGWormholeTraversabilityCalculator': ('CondensedPhysics2', 'compute'),
+    'BSMParticleObservablesCalculator': ('CondensedPhysics2', 'compute'),
+    'BSMUQFFMultiExperimentCouplingCalculator': ('CondensedPhysics3', 'compute'),
+    'BackgroundMetricCalculator': ('CondensedPhysics2', 'compute'),
+    'BalmerSeriesCalculator': ('CondensedPhysics', 'compute'),
+    'Batch25FrameTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch32CompleteAnalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch32FrameTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch34FrameTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch35CompleteAnalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch35FrameTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch36FrameTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch36ProgressCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch37ProgressCalculator': ('CondensedPhysics2', 'compute'),
+    'Batch40PartialAnalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'BatchAnalysis39CompleteCalculator': ('CondensedPhysics2', 'compute'),
+    'BatchAnalysisProgressCalculator': ('CondensedPhysics2', 'compute'),
+    'BatchStructureTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Benchmark2ProgressCalculator': ('CondensedPhysics2', 'compute'),
+    'BiPolarPNUVRadiationPressureCalculator': ('CondensedPhysics3', 'compute'),
+    'BiPolarPNWindShockGravitationalDominanceCalculator': ('CondensedPhysics3', 'compute'),
+    'BigBangCosmicEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangCosmicQGDMGWCalculator': ('CondensedPhysics4', 'compute'),
+    'BigBangCosmologicalLambdaEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangDarkMatterFractionalCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangFluidDynamicsCosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangGravitationalWaveCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangHypergraphOriginCalculator': ('CondensedPhysics4', 'compute'),
+    'BigBangMassEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangOriginModel': ('CondensedPhysics', 'compute'),
+    'BigBangQuantumGravityCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangQuantumIntegralCosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangRedshiftEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangResonantOscillatoryCosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'BigBangUgSumCosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'BioQuantumResonanceCalculator': ('CondensedPhysics2', 'compute'),
+    'BipolarPNLobeResonanceDPMMacroAntennaCalculator': ('CondensedPhysics3', 'compute'),
+    'BipolarWindShockCalculator': ('CondensedPhysics', 'compute'),
+    'BirchSwinnertonDyerUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'BjTerm': ('CondensedPhysics', 'compute'),
+    'BjTimeCalculator': ('CondensedPhysics', 'compute'),
+    'BlackHoleBounceUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'BlackHoleJetAnalogCalculator': ('CondensedPhysics', 'compute'),
+    'BlackHoleJetFluidAsymmetryRatioCalculator': ('CondensedPhysics3', 'compute'),
+    'BlackHolePhasesModel': ('CondensedPhysics', 'compute'),
+    'BlackHolePseudoMonopoleResonanceModel': ('CondensedPhysics', 'compute'),
+    'BlackHoleTriangulationModel': ('CondensedPhysics', 'compute'),
+    'BlackHoleUg4GalacticFeedbackCalculator': ('CondensedPhysics3', 'compute'),
+    'BlackToWhiteHoleUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'BlandfordZnajekPowerCalculator': ('CondensedPhysics2', 'compute'),
+    'BlazarErgospherePhononResonanceCalc': ('CondensedPhysics4', 'compute'),
+    'BlazarMultiMessengerPhononCorrelationCalc': ('CondensedPhysics4', 'compute'),
+    'BlockchainECDSACalculator': ('CondensedPhysics', 'compute'),
+    'BlockchainECDSAS8Calculator': ('CondensedPhysics2', 'compute'),
+    'BogoliubovDeGennesModel': ('CondensedPhysics', 'compute'),
+    'BondiAccretionModel': ('CondensedPhysics', 'compute'),
+    'BoseEinsteinAlphaClusteringCalculator': ('CondensedPhysics2', 'compute'),
+    'BoseEinsteinCondensateUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'BowShockISMChemistryCalculator': ('CondensedPhysics4', 'compute'),
+    'BoyleLawBuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaExpansionEnhancementCalculator': ('CondensedPhysics3', 'compute'),
+    'BubbleNebulaFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaModel': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaNGC7635CleanUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'BubbleNebulaOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaPositiveExpansionFUBiCalculator': ('CondensedPhysics4', 'compute'),
+    'BubbleNebulaQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaStellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleNebulaUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'BubbleShatteringCalculator': ('CondensedPhysics2', 'compute'),
+    'BulbDrivenPlasmaEnergeticsCalculator': ('CondensedPhysics', 'compute'),
+    'BulbResonanceCalculator': ('CondensedPhysics2', 'compute'),
+    'BuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'BuoyancyCatalogueCalculator': ('CondensedPhysics', 'compute'),
+    'BuoyancyCouplingCalculator': ('CondensedPhysics2', 'compute'),
+    'BuoyancyKleinGordonScalarFieldEOMCalc': ('CondensedPhysics4', 'compute'),
+    'BuoyancyLagrangianEOMCalculator': ('CondensedPhysics2', 'compute'),
+    'BuoyancyMassRelationship': ('CondensedPhysics', 'compute'),
+    'BuoyancyModulationCalculator': ('CondensedPhysics2', 'compute'),
+    'BuoyancyReversalSignFlipResonanceCalc': ('CondensedPhysics4', 'compute'),
+    'BuoyantGravityHypergraphCalculator_84A767D3': ('CondensedPhysics2', 'compute'),
+    'CGMBaryonCalculator': ('CondensedPhysics2', 'compute'),
+    'CGMBaryonFractionModel': ('CondensedPhysics', 'compute'),
+    'CGMDwarfGalaxyMetalRetentionCalculator': ('CondensedPhysics4', 'compute'),
+    'CGMMetalGradientCalculator': ('CondensedPhysics2', 'compute'),
+    'CGMMetalRetentionModel': ('CondensedPhysics', 'compute'),
+    'CGMMetalRetentionUQFFTheoremCalculator': ('CondensedPhysics4', 'compute'),
+    'CMBAnisotropyBuoyancyModulationCalculator': ('CondensedPhysics', 'compute'),
+    'CMBAnomalyUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'CMBBuoyancySectorLagrangianCalculator': ('CondensedPhysics', 'compute'),
+    'CMBPlanckCalculator': ('CondensedPhysics', 'compute'),
+    'CMBPolarizationCalculator': ('CondensedPhysics2', 'compute'),
+    'CMESolarFlareFUPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'CMSDifferentialHiggsKappaCalculator': ('CondensedPhysics4', 'compute'),
+    'CR24CompressedCooperSuperSeedingCalculator': ('CondensedPhysics3', 'compute'),
+    'CR24DualChannelArchitectureCalculator': ('CondensedPhysics3', 'compute'),
+    'CR24VacuumDifferentialHarmonicCalculator': ('CondensedPhysics3', 'compute'),
+    'CR34CrossChannelDominanceCrossoverCalculator': ('CondensedPhysics3', 'compute'),
+    'CR34DPMForceDensitySpectralAtlasCalculator': ('CondensedPhysics3', 'compute'),
+    'CR34HiIRegionTHzGeometricDifferentialCalculator': ('CondensedPhysics3', 'compute'),
+    'CR34bRhoISMFluidDensityCouplingCalculator': ('CondensedPhysics3', 'compute'),
+    'CR34bSaturnFirstPlanetaryDualChannelCalculator': ('CondensedPhysics3', 'compute'),
+    'CR34bVacuumAetherFrequencyModeCalculator': ('CondensedPhysics3', 'compute'),
+    'CRPNeutrinoSEDCalculator': ('CondensedPhysics2', 'compute'),
+    'CaduceusQuantumWaveCalculator': ('CondensedPhysics2', 'compute'),
+    'CaduceusQuantumWaveModel': ('CondensedPhysics', 'compute'),
+    'CalabiYau12DIntegrationCalculator': ('CondensedPhysics', 'compute'),
+    'CarinaNebulaNGC3324UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'CassiniRingGapsThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'CassiniSaturnUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'CassiopeiaASNRFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'CatalyticPhaseTransformCalculator': ('CondensedPhysics2', 'compute'),
+    'CategoryFunctorCalculator': ('CondensedPhysics', 'compute'),
+    'CategoryFunctorOrb61Calculator': ('CondensedPhysics2', 'compute'),
+    'CategoryFunctorS8Calculator': ('CondensedPhysics2', 'compute'),
+    'CausalGraph': ('CondensedPhysics', 'compute'),
+    'CavityPressureCalculator': ('CondensedPhysics', 'compute'),
+    'CelestialBuoyancyCalculator': ('CondensedPhysics2', 'compute'),
+    'CelestialDynamicsComparisonCalculator': ('CondensedPhysics2', 'compute'),
+    'CelestialDynamicsMimicryCalculator': ('CondensedPhysics', 'compute'),
+    'CelestialMimicryDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'CenAAGNAccretionDiskCalculator': ('CondensedPhysics', 'compute'),
+    'CenACosmicRayCalculator': ('CondensedPhysics', 'compute'),
+    'CenADustLaneCalculator': ('CondensedPhysics', 'compute'),
+    'CenAGravitationalWaveCalculator': ('CondensedPhysics', 'compute'),
+    'CenAMergerDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'CenAQuantumVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'CenARadioLobeCalculator': ('CondensedPhysics', 'compute'),
+    'CenARelativisticJetCalculator': ('CondensedPhysics', 'compute'),
+    'CenAStarburstCalculator': ('CondensedPhysics', 'compute'),
+    'CenAXRayEmissionCalculator': ('CondensedPhysics', 'compute'),
+    'CentaurusAFUBiJetVshapeCalculator': ('CondensedPhysics3', 'compute'),
+    'CentaurusAJetPowerCurvesCalc': ('CondensedPhysics4', 'compute'),
+    'CentripetalUQFFEncompassmentCalculator': ('CondensedPhysics4', 'compute'),
+    'Chandra25thAnniversaryCrabOrionNGC6334Calc': ('CondensedPhysics4', 'compute'),
+    'ChandraArchiveMultiSystemFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'ChandraDeathStar16SMBHGCVentTimelapseCalc': ('CondensedPhysics4', 'compute'),
+    'ChandraSNRNebulaeUQFFBatch2Calculator': ('CondensedPhysics4', 'compute'),
+    'ChandraSurveyMACSJ0416LensExoSMBHCalc': ('CondensedPhysics4', 'compute'),
+    'ChandraXRayBatch1GCEagleHBC672NGC7469VirgoCalc': ('CondensedPhysics4', 'compute'),
+    'ChaosCoherenceCalculator': ('CondensedPhysics2', 'compute'),
+    'CharacteristicPolynomialCalculator': ('CondensedPhysics2', 'compute'),
+    'CheckpointSummaryCalculator': ('CondensedPhysics2', 'compute'),
+    'ChiralSCmGraphenePairingCalculator': ('CondensedPhysics4', 'compute'),
+    'ChirpMassStrainCalculator': ('CondensedPhysics2', 'compute'),
+    'ChristoffelCondensedCalculator': ('CondensedPhysics', 'compute'),
+    'ChronicleChapterTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'ChronicleStorylineGeneratorCalculator': ('CondensedPhysics2', 'compute'),
+    'CircleAreaCalculator': ('CondensedPhysics2', 'compute'),
+    'CirculationPatternExp2Calculator': ('CondensedPhysics2', 'compute'),
+    'ClusterBuoyancyLagrangianCalculator': ('CondensedPhysics', 'compute'),
+    'ClusterXRayEmissivityCalculator': ('CondensedPhysics', 'compute'),
+    'CoAnQi26LevelEnergyDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiAntlr4UnitCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiArchitectureCalculator': ('CondensedPhysics', 'compute'),
+    'CoAnQiCalculator': ('CondensedPhysics', 'compute'),
+    'CoAnQiCanonicalMUGESystemCatalogCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiCelestialBodyFUCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiCollaborativeMathProtocolCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiDataLoaderFrameworkCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiModularCompressedMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiModularResonanceMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiODEIntegrationCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiPiCycleRiemannCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiQuasarJetFluidCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiQuasarNegativeTimeFluidCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiReactorEfficiencyCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiSolarSystemReferenceCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiSymbolicIntegrationCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiUQFFVariableReferenceCalculator': ('CondensedPhysics2', 'compute'),
+    'CoAnQiYangMillsHamiltonianCalculator': ('CondensedPhysics2', 'compute'),
+    'CoherentScatteringCalculator': ('CondensedPhysics2', 'compute'),
+    'CohesiveUQFFIntegrationCalculator': ('CondensedPhysics4', 'compute'),
+    'CollimationPowerMappingCalc': ('CondensedPhysics4', 'compute'),
+    'ColmanGillespieFieldGeneratorLENRUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'ColorDeconfinementPhaseCalc': ('CondensedPhysics4', 'compute'),
+    'ColorGlassCondensateCalculator': ('CondensedPhysics2', 'compute'),
+    'CompleteUnifiedFieldModel': ('CondensedPhysics', 'compute'),
+    'ComponentFocusCalculator': ('CondensedPhysics2', 'compute'),
+    'CompressedDPM24Calculator': ('CondensedPhysics', 'compute'),
+    'CompressedDPMCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedMUGECalculator': ('CondensedPhysics', 'compute'),
+    'CompressedMUGEDetailedCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedMUGEModularCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedModeBFieldCorrectionCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedModeBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedModeEnvironmentalFactorCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedModeUgSumCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedResonanceUQFF24GravityCalculator': ('CondensedPhysics2', 'compute'),
+    'CompressedResonanceUQFF34MultiSystemCalculator': ('CondensedPhysics2', 'compute'),
+    'CompressedResonanceUQFF34bMultiSystemCalculator': ('CondensedPhysics2', 'compute'),
+    'CompressedSuper24Calculator': ('CondensedPhysics', 'compute'),
+    'CompressedSuperCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedTHz24Calculator': ('CondensedPhysics', 'compute'),
+    'CompressedTHzCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedUQFFBcritSuperconductivityCalculator': ('CondensedPhysics4', 'compute'),
+    'CompressedUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'CompressedUQFFEnvModularCalculator': ('CondensedPhysics4', 'compute'),
+    'CompressedUQFFMasterCalculator': ('CondensedPhysics', 'compute'),
+    'CompressedVacDiff24Calculator': ('CondensedPhysics', 'compute'),
+    'CompressedVacDiffCalculator': ('CondensedPhysics', 'compute'),
+    'CompressibleNSUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionCycleF_envCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionEnvironmentalForceCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionExpansionFactorCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionFluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionMassEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionQuantumWaveCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionSuperconductiveCorrectionCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionUg1GravityCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionUg3ExternalGravityCalculator': ('CondensedPhysics', 'compute'),
+    'CompressionUg4SuperconductiveCalculator': ('CondensedPhysics', 'compute'),
+    'ConeVolumeCalculator': ('CondensedPhysics2', 'compute'),
+    'ConsciousnessCloud': ('CondensedPhysics', 'compute'),
+    'ConsciousnessFluctuationQFECalculator': ('CondensedPhysics2', 'compute'),
+    'ConsciousnessResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'ConsolidatedFcosmoEnvelopeCalculator': ('CondensedPhysics4', 'compute'),
+    'ConsolidatedUFEQFECalculator': ('CondensedPhysics2', 'compute'),
+    'ConvectionCycleTrackerCalculator': ('CondensedPhysics', 'compute'),
+    'ConvectivePatternTrackingCalculator': ('CondensedPhysics', 'compute'),
+    'CooperDPMf1THz_AscConfirmationCalculator': ('CondensedPhysics3', 'compute'),
+    'CooperPairLagrangianCalc': ('CondensedPhysics4', 'compute'),
+    'CooperPairPhononCouplingCalc': ('CondensedPhysics4', 'compute'),
+    'CorotationResonanceModel': ('CondensedPhysics', 'compute'),
+    'CosmicDynamicsIntegrationModel': ('CondensedPhysics', 'compute'),
+    'CosmicEgg26DCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEgg26DimensionCountCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmicEggDistortionFactorCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggHypergraphModel': ('CondensedPhysics', 'compute'),
+    'CosmicEggModel': ('CondensedPhysics', 'compute'),
+    'CosmicEggOmnidirectionalRotationCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggPiMeanChaosCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggQuantumFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggRadiusInversionCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggSphericalOutlineCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggToroidPillarCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggUniformAetherCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEggVoidVolumeCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicGravityEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicModelingValidationCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmicPhotonDecelerationCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmicRayEscapeTimeCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmicRayPropagationUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'CosmicRaysWHIMFermiCalculator': ('CondensedPhysics3', 'compute'),
+    'CosmicStringTensionCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmicWindDiskStabilityCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmicWindInteractionCalculator': ('CondensedPhysics2', 'compute'),
+    'CosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'CosmologicalLineFluximeSFRIntegralCalculator': ('CondensedPhysics3', 'compute'),
+    'CosmologicalQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'CounterClockwiseDiagonalCycleCalculator': ('CondensedPhysics', 'compute'),
+    'CrabAetherResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'CrabCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'CrabDPMResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'CrabElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'CrabExpansionResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabFilamentSpectralTriadCalculator': ('CondensedPhysics3', 'compute'),
+    'CrabFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'CrabFluidResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabMagneticLorentzCalculator': ('CondensedPhysics', 'compute'),
+    'CrabNebulaExpandingMUGECalculator': ('CondensedPhysics4', 'compute'),
+    'CrabNebulaM1FUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'CrabNebulaModel': ('CondensedPhysics', 'compute'),
+    'CrabNebulaPWNUQFF': ('CondensedPhysics4', 'compute'),
+    'CrabNebulaPulsarWindUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'CrabOscillatoryResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'CrabPWNUQFFCalculator': ('CondensedPhysics3', 'compute'),
+    'CrabPulsarOscResonanceWindowCalculator': ('CondensedPhysics3', 'compute'),
+    'CrabPulsarWindCalculator': ('CondensedPhysics', 'compute'),
+    'CrabQuantumResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'CrabResonanceUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'CrabSNRDPMDilutionCalculator': ('CondensedPhysics3', 'compute'),
+    'CrabSuperconductivityCalculator': ('CondensedPhysics', 'compute'),
+    'CrabTHzResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrabUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'CrabUg4iResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'CrystallineGalaxyModel': ('CondensedPhysics', 'compute'),
+    'CumulativeEnergyAnalyzerCalculator': ('CondensedPhysics2', 'compute'),
+    'CumulativeEnergyProgressCalculator': ('CondensedPhysics2', 'compute'),
+    'CycleDynamicsCalculator': ('CondensedPhysics2', 'compute'),
+    'CycleDynamicsOrb33Calculator': ('CondensedPhysics2', 'compute'),
+    'CyclicConvectionPatternCalculator': ('CondensedPhysics2', 'compute'),
+    'CyclicalConvectionOrb12Calculator': ('CondensedPhysics2', 'compute'),
+    'CyclicalConvectionOrb14Calculator': ('CondensedPhysics2', 'compute'),
+    'CyclicalConvectionPatternCalculator': ('CondensedPhysics', 'compute'),
+    'CyclotronFrequencyOrb51Calculator': ('CondensedPhysics2', 'compute'),
+    'CylinderVolumeCalculator': ('CondensedPhysics2', 'compute'),
+    'D2OEnrichmentFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'DCEACEReversalNdFeBCaduceusMotorCalc': ('CondensedPhysics4', 'compute'),
+    'DEPowerTransformCalculator': ('CondensedPhysics2', 'compute'),
+    'DEPowerVacuumCalculator': ('CondensedPhysics2', 'compute'),
+    'DEVacuumPowerModel': ('CondensedPhysics', 'compute'),
+    'DPMAmplification26LayerCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'DPMAtomicCreationProcessACPCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMCoherentConsciousnessSpookyActionCalc': ('CondensedPhysics4', 'compute'),
+    'DPMCosmogenesisCalculator': ('CondensedPhysics', 'compute'),
+    'DPMDualismCalculator': ('CondensedPhysics2', 'compute'),
+    'DPMEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'DPMExtendedPeriodicTableProportionCalc': ('CondensedPhysics4', 'compute'),
+    'DPMFourComponentCorrelationCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMFrequencyDriveReRingingVacuumGradCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMFullFormulationCalculator': ('CondensedPhysics2', 'compute'),
+    'DPMGravityProjections': ('CondensedPhysics', 'compute'),
+    'DPMGrindingPolesCalculator': ('CondensedPhysics', 'compute'),
+    'DPMHarmonicBuoyancySeriesCalculator': ('CondensedPhysics3', 'compute'),
+    'DPMLayeredShellEnergyRadianceCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMModel': ('CondensedPhysics', 'compute'),
+    'DPMProplydBidirectionalEncompassmentCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMPyramidSumNuclearBindingPeriodicTableCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMQuantumChainCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'DPMResonanceFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'DPMSpeciesIndexACPCreationScenarioCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMSplitMonopoleMHDProplydCalculator': ('CondensedPhysics4', 'compute'),
+    'DPMSummationForceCalculator': ('CondensedPhysics2', 'compute'),
+    'DPMTHzFrequencyMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'DPMUnifiedInertiaCentripetCentrifugCalculator': ('CondensedPhysics4', 'compute'),
+    'DPM_8Tuple': ('CondensedPhysics', 'compute'),
+    'DUniverseSpatialCurvatureFifthFactorCalculator': ('CondensedPhysics3', 'compute'),
+    'DVPBranchCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'DarkEnergyBuoyancySectorLagrangianCalculator': ('CondensedPhysics', 'compute'),
+    'DarkEnergyEOSTimeEvolvingCalculator': ('CondensedPhysics', 'compute'),
+    'DarkEnergyEquationOfStateCalculator': ('CondensedPhysics2', 'compute'),
+    'DarkEnergyPowerCalculator': ('CondensedPhysics', 'compute'),
+    'DarkMatterHaloNFWCalculator': ('CondensedPhysics', 'compute'),
+    'DarkMatterHaloUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'DecayRateVacuumRhoRatioDoubleExpCalculator': ('CondensedPhysics3', 'compute'),
+    'DeepFieldG359ShearNISPConstraintCalculator': ('CondensedPhysics3', 'compute'),
+    'DeepFieldShearDeltaTauConstraintCalculator': ('CondensedPhysics3', 'compute'),
+    'DefectFactorCalculator': ('CondensedPhysics', 'compute'),
+    'DensityWaveCrystallineCouplingModel': ('CondensedPhysics', 'compute'),
+    'DensityWaveModel': ('CondensedPhysics', 'compute'),
+    'DepletionFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'DeuteratedEthanolCalculator': ('CondensedPhysics2', 'compute'),
+    'DiPseudoMonopoleBigBangCalculator': ('CondensedPhysics2', 'compute'),
+    'DiPseudoMonopoleBirthCalculator': ('CondensedPhysics2', 'compute'),
+    'DiPseudoMonopoleDPMTheoryCalculator': ('CondensedPhysics', 'compute'),
+    'DiPseudoMonopoleOriginCalculator': ('CondensedPhysics2', 'compute'),
+    'DiagonalConcentrationShiftCalculator': ('CondensedPhysics', 'compute'),
+    'DiagonalShiftOrb13Calculator': ('CondensedPhysics2', 'compute'),
+    'DifferentialRotationDiskCalculator': ('CondensedPhysics2', 'compute'),
+    'DiffusionCoefficientKolmogorovCalculator': ('CondensedPhysics2', 'compute'),
+    'DimensionalAnalysisCalculator': ('CondensedPhysics', 'compute'),
+    'DimensionalAnalysisOrb58Calculator': ('CondensedPhysics2', 'compute'),
+    'DimensionalAnalysisS8Calculator': ('CondensedPhysics2', 'compute'),
+    'DipoleVortexPrimeEncodingCalculator': ('CondensedPhysics3', 'compute'),
+    'DiskUnitVectorCalculator': ('CondensedPhysics', 'compute'),
+    'Doc43dInertiaAetherSuperconductiveCalculator': ('CondensedPhysics4', 'compute'),
+    'DualModeDMPerturbationUnitFixedCalculator': ('CondensedPhysics', 'compute'),
+    'DualModeFluidDynamicsPlaceholderCalculator': ('CondensedPhysics', 'compute'),
+    'DualModeQuantumIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'DualModelMUGEComparisonCalculator': ('CondensedPhysics4', 'compute'),
+    'DualNatureSCmCalculator': ('CondensedPhysics2', 'compute'),
+    'DustDragCalculator': ('CondensedPhysics', 'compute'),
+    'DustExtinctionAVCalculator': ('CondensedPhysics2', 'compute'),
+    'DustExtinctionCalculator': ('CondensedPhysics2', 'compute'),
+    'DustFrictionCalculator': ('CondensedPhysics', 'compute'),
+    'DustLaneAttenuationCalculator': ('CondensedPhysics2', 'compute'),
+    'DustYieldCalculator': ('CondensedPhysics2', 'compute'),
+    'DustYieldMetallicityCalculator': ('CondensedPhysics2', 'compute'),
+    'DynamicResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'DynamicVacuumFluctuationCalculator': ('CondensedPhysics', 'compute'),
+    'EDMSO10BSMRefinedFuCalculator': ('CondensedPhysics3', 'compute'),
+    'EDPMCalculator': ('CondensedPhysics', 'compute'),
+    'EHTngEHTBHEXNewSMBHPhotonRingCalculator': ('CondensedPhysics4', 'compute'),
+    'ERBridgeStateTransitionModel': ('CondensedPhysics', 'compute'),
+    'ESO391_12LenticularThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'ESO510G13WarpedSpiralThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'EagleNebulaWindRadiationCalculator': ('CondensedPhysics4', 'compute'),
+    'EddingtonLuminosityCalculator': ('CondensedPhysics2', 'compute'),
+    'EddingtonRatioModel': ('CondensedPhysics', 'compute'),
+    'EggProliferatedHubbleCalculator': ('CondensedPhysics2', 'compute'),
+    'EigenstateThermalizationCalculator': ('CondensedPhysics2', 'compute'),
+    'EightSystemUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'EighteenAstroSystemsMUGECalculator': ('CondensedPhysics4', 'compute'),
+    'EinastoDarkMatterProfileCalculator': ('CondensedPhysics2', 'compute'),
+    'EinsteinMassEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'EinsteinRingGALCLUS022058s': ('CondensedPhysics4', 'compute'),
+    'ElGordoACTCLJ0102MergerFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'ElectricalPowerCalculator': ('CondensedPhysics2', 'compute'),
+    'ElectrolysisGibbsEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'ElectronFractionRProcessCalculator': ('CondensedPhysics2', 'compute'),
+    'ElectroweakAxionStringSCSCalculator': ('CondensedPhysics4', 'compute'),
+    'ElevenDomainUnifiedSCmBuoyancyValidator': ('CondensedPhysics', 'compute'),
+    'ElevenSystemDPMCalculator': ('CondensedPhysics', 'compute'),
+    'EmergentMetrics': ('CondensedPhysics', 'compute'),
+    'EmissionLineFluxIntegralCalculator': ('CondensedPhysics2', 'compute'),
+    'Energy26LevelCalculator': ('CondensedPhysics', 'compute'),
+    'EnergyDensityDecayCalculator': ('CondensedPhysics2', 'compute'),
+    'EnergyStabilizationCalculator': ('CondensedPhysics2', 'compute'),
+    'EnhancedBuoyancyQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'EnvironmentalInteractionsCalculator': ('CondensedPhysics', 'compute'),
+    'EquationFamily': ('CondensedPhysics', 'compute'),
+    'EquationOfStateUCFCalculator': ('CondensedPhysics2', 'compute'),
+    'EquatorialTorusMagneticConfinementCalculator': ('CondensedPhysics3', 'compute'),
+    'EreactSCmReactivityAetherDensityReactorEfficiencyCalculator': ('CondensedPhysics4', 'compute'),
+    'ErosionLagrangianEulerLagrangeCalc': ('CondensedPhysics4', 'compute'),
+    'ErrorPropagationCalculator': ('CondensedPhysics2', 'compute'),
+    'ErrorPropagationFormulasCalculator': ('CondensedPhysics2', 'compute'),
+    'ErrorReductionProgressCalculator': ('CondensedPhysics2', 'compute'),
+    'ErrorReductionValidatorCalculator': ('CondensedPhysics2', 'compute'),
+    'EtFullLagrangianUnifiedDerivationCalc': ('CondensedPhysics4', 'compute'),
+    'EtLinewidthModulationCalc': ('CondensedPhysics4', 'compute'),
+    'EtVsKEssenceScherrerModelContrastCalc': ('CondensedPhysics4', 'compute'),
+    'EtVsLambdaCDMDarkEnergyContrastCalc': ('CondensedPhysics4', 'compute'),
+    'EtVsQuintessenceScalarFieldContrastCalc': ('CondensedPhysics4', 'compute'),
+    'EtaCarinaBuoyantPCRCalculator': ('CondensedPhysics2', 'compute'),
+    'EtaCarinaeHomuculusFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'ExoplanetAtmosphericMassLossUbCalculator': ('CondensedPhysics3', 'compute'),
+    'ExoplanetResonanceOrbitalTidalCalculator': ('CondensedPhysics4', 'compute'),
+    'Exp2Batch1EnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'Exp2PreviewCalculator': ('CondensedPhysics2', 'compute'),
+    'ExpandedRamanujan26DCalc': ('CondensedPhysics4', 'compute'),
+    'ExpansionLagrangianEulerLagrangeCalc': ('CondensedPhysics4', 'compute'),
+    'ExperimentBenchmarkCalculator': ('CondensedPhysics2', 'compute'),
+    'ExponentialDecayFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'ExponentialStrainPhononEvolutionCalc': ('CondensedPhysics4', 'compute'),
+    'Extended18SystemCalculator': ('CondensedPhysics', 'compute'),
+    'ExtendedAGNThreePointJetPowerCalc': ('CondensedPhysics4', 'compute'),
+    'ExtendedCentripetalNSResidualCalculator': ('CondensedPhysics4', 'compute'),
+    'ExtendedCyclePatternAnalyzerCalculator': ('CondensedPhysics', 'compute'),
+    'ExtendedEnergyAccumulationCalculator': ('CondensedPhysics', 'compute'),
+    'ExtendedEnvironmentalForcesCalculator': ('CondensedPhysics', 'compute'),
+    'ExtendedFrameSequenceCalculator': ('CondensedPhysics', 'compute'),
+    'ExtendedPeriodicTableCalculator': ('CondensedPhysics2', 'compute'),
+    'ExtendedSequenceCalculator': ('CondensedPhysics2', 'compute'),
+    'ExtendedSequenceEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'ExtendedUPRefinementCalculator': ('CondensedPhysics2', 'compute'),
+    'ExternalGravityUg3PrimeCalculator': ('CondensedPhysics2', 'compute'),
+    'FEnvModularCalculator': ('CondensedPhysics2', 'compute'),
+    'FSCSuperconductiveMaterialCalculator': ('CondensedPhysics2', 'compute'),
+    'FU4BodySolarSystemNumericalVerificationCalculator': ('CondensedPhysics4', 'compute'),
+    'FUBi12TermExplicitIntegrandCalculator': ('CondensedPhysics3', 'compute'),
+    'FUBi26thGaussianTruncatedPolynomialBoundCalculator': ('CondensedPhysics2', 'compute'),
+    'FUBiCollapsePreventionEigenproofCalculator': ('CondensedPhysics4', 'compute'),
+    'FUBiMasterBuoyancyCalc': ('CondensedPhysics4', 'compute'),
+    'FUBiVariationalDerivationCalc': ('CondensedPhysics4', 'compute'),
+    'FUBiiCrossSystemSolarConvergenceValidator': ('CondensedPhysics', 'compute'),
+    'FUBiiExtendedIntegralCalculator': ('CondensedPhysics3', 'compute'),
+    'FUBiiFullDPMPolynomialIntegralCalculator': ('CondensedPhysics3', 'compute'),
+    'FUBiiIntegralCalculator': ('CondensedPhysics2', 'compute'),
+    'FUBiiSevenComponentDecompositionCalculator': ('CondensedPhysics', 'compute'),
+    'FUBiiTaxonomyCompactObjectCalculator': ('CondensedPhysics3', 'compute'),
+    'FUBiiTaxonomyCosmologicalCalculator': ('CondensedPhysics3', 'compute'),
+    'FUBiiUmUniversalCompanionCatalogCalculator': ('CondensedPhysics4', 'compute'),
+    'FUCompleteLambdaI4thDissipationSumCalculator': ('CondensedPhysics4', 'compute'),
+    'FUPiNegativeTimeCanonicalCalculator': ('CondensedPhysics2', 'compute'),
+    'FUSunCompleteSCmSolarCycleFinalCalibrationCalculator': ('CondensedPhysics4', 'compute'),
+    'FUThreeTermStarMagicMasterCalculator': ('CondensedPhysics4', 'compute'),
+    'FalseVacuumDecayCalculator': ('CondensedPhysics2', 'compute'),
+    'FastRadioBurstModel': ('CondensedPhysics', 'compute'),
+    'FastRadioBurstUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'FederatedLearningCalculator': ('CondensedPhysics', 'compute'),
+    'FederatedLearningS8Calculator': ('CondensedPhysics2', 'compute'),
+    'FeedbackFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'FieldGeneratorCorrelationCalculator': ('CondensedPhysics2', 'compute'),
+    'FieldGeneratorCorrelationV2Calculator': ('CondensedPhysics2', 'compute'),
+    'FieldGeneratorCorrelationV3Calculator': ('CondensedPhysics2', 'compute'),
+    'FieldGeneratorResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'FieldGeneratorResonanceCouplingCalculator': ('CondensedPhysics', 'compute'),
+    'FieldGeneratorSpookyNonLocalTempDropCalc': ('CondensedPhysics4', 'compute'),
+    'FilamentErosionBuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'FinalParsecCalculator': ('CondensedPhysics2', 'compute'),
+    'FinalParsecProblemCalculator': ('CondensedPhysics2', 'compute'),
+    'FinalParsecProblemModel': ('CondensedPhysics', 'compute'),
+    'FinalizedFURefinementCalculator': ('CondensedPhysics2', 'compute'),
+    'FiniteElementMethod': ('CondensedPhysics', 'compute'),
+    'FiveDimensionalHubbleAnalogCalculator': ('CondensedPhysics2', 'compute'),
+    'FiveHundredFrameDatasetCalculator': ('CondensedPhysics2', 'compute'),
+    'FiveQuantumVariableSetsCalculator': ('CondensedPhysics4', 'compute'),
+    'FiveUniversalTimeCyclesModel': ('CondensedPhysics', 'compute'),
+    'FloydSweetVTA6DocumentPCVTMotionalEfieldCalc': ('CondensedPhysics4', 'compute'),
+    'FloydSweetVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'FokkerPlanckCRPCalculator': ('CondensedPhysics2', 'compute'),
+    'FornaxClusterGravitational': ('CondensedPhysics4', 'compute'),
+    'FornaxConstellationUHDF': ('CondensedPhysics4', 'compute'),
+    'FortyFourFrameSequenceCalculator': ('CondensedPhysics2', 'compute'),
+    'FortySevenFrameSequenceCalculator': ('CondensedPhysics2', 'compute'),
+    'FortyTwoFrameSequenceCalculator': ('CondensedPhysics2', 'compute'),
+    'FourProjectionResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'FquarkFneutrinoFalpFdarkArXivBridgeCalculator': ('CondensedPhysics4', 'compute'),
+    'FrameContinuityStabilityCalculator': ('CondensedPhysics', 'compute'),
+    'FrameIncrementalAnalysisCalculator': ('CondensedPhysics', 'compute'),
+    'FrameOrderingReconstructorCalculator': ('CondensedPhysics2', 'compute'),
+    'FrameRangeValidatorCalculator': ('CondensedPhysics2', 'compute'),
+    'FrameRateTemporalResolutionCalculator': ('CondensedPhysics', 'compute'),
+    'FrameSequenceProgressionCalculator': ('CondensedPhysics2', 'compute'),
+    'FrameTimestampCalculator': ('CondensedPhysics2', 'compute'),
+    'FreeRotation360Model': ('CondensedPhysics', 'compute'),
+    'FrozenPlanetSolarWindCalculator': ('CondensedPhysics2', 'compute'),
+    'FrozenPlanetSolarWindPowerCalculator': ('CondensedPhysics', 'compute'),
+    'FullSequenceQuadrantTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'G359FilamentGalacticCenterFUBiCalculator': ('CondensedPhysics4', 'compute'),
+    'GRMHD3DBHISCOStressAccretionEfficiencyCalculator': ('CondensedPhysics4', 'compute'),
+    'GRMHDBinaryBHMergerAccretionModulationCalculator': ('CondensedPhysics4', 'compute'),
+    'GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator': ('CondensedPhysics4', 'compute'),
+    'GRMHDUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'GW150914PCRCalculator': ('CondensedPhysics2', 'compute'),
+    'GW170817EjectaCalculator': ('CondensedPhysics2', 'compute'),
+    'GW170817InspiralPhaseLagCalc': ('CondensedPhysics4', 'compute'),
+    'GW170817PhononStrainDampingCalc': ('CondensedPhysics4', 'compute'),
+    'GW170817PhononSuppressedStrainCalc': ('CondensedPhysics4', 'compute'),
+    'GW170817TidalDeformabilityPhononCalc': ('CondensedPhysics4', 'compute'),
+    'GW190425MassGapPhononCalc': ('CondensedPhysics4', 'compute'),
+    'GW190425MassGapPhononSuppressionCalc': ('CondensedPhysics4', 'compute'),
+    'GW190425PhononSuppressedStrainCalc': ('CondensedPhysics4', 'compute'),
+    'GW190425WavelengthPhononCorrectionCalc': ('CondensedPhysics4', 'compute'),
+    'GW231123MassGapUQFFCalculator': ('CondensedPhysics3', 'compute'),
+    'GWDampingErosion66PercentCalc': ('CondensedPhysics4', 'compute'),
+    'GaiaSgrADistanceErrorAnalysisCalculator': ('CondensedPhysics3', 'compute'),
+    'GalacticCenterDistanceCalculator': ('CondensedPhysics', 'compute'),
+    'GalacticCenterRotationCalculator': ('CondensedPhysics2', 'compute'),
+    'GalacticCenterUg4KappaDecayCalibrationCalculator': ('CondensedPhysics3', 'compute'),
+    'GalacticDarkMatterNFWCouplingCalculator': ('CondensedPhysics4', 'compute'),
+    'GalacticDistanceCalculator': ('CondensedPhysics2', 'compute'),
+    'GalacticMotionUFTCalculator': ('CondensedPhysics2', 'compute'),
+    'GalacticOmegaSVelocityDispersionCalibrationCalculator': ('CondensedPhysics4', 'compute'),
+    'GalacticRedBlueShiftCalculator': ('CondensedPhysics2', 'compute'),
+    'GalacticSpinRateCalculator': ('CondensedPhysics', 'compute'),
+    'GalaxyClusterPLCKDoubleRelicShearCalculator': ('CondensedPhysics3', 'compute'),
+    'GalaxyClusterPSZ2UmTurbulenceCalculator': ('CondensedPhysics3', 'compute'),
+    'GalaxyCollisionMUGECalculator': ('CondensedPhysics', 'compute'),
+    'GalaxyEquationOfStateUCFCalculator': ('CondensedPhysics3', 'compute'),
+    'GalaxyIMFNucleosynthesisIndexCalculator': ('CondensedPhysics3', 'compute'),
+    'GalaxyInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'GalaxyMergerDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'GalaxyMergerSpecificCalculator': ('CondensedPhysics', 'compute'),
+    'GalaxyMergerUQFFVsNewtonEinsteinCalculator': ('CondensedPhysics4', 'compute'),
+    'GalaxyNGC1792StarburstForgeCalculator': ('CondensedPhysics3', 'compute'),
+    'GalaxyNGC2525SNMassLossCalculator': ('CondensedPhysics3', 'compute'),
+    'GammaLinewidthCurvesCalc': ('CondensedPhysics4', 'compute'),
+    'GeneralizedHydrogenResonanceAllElementsCalculator': ('CondensedPhysics4', 'compute'),
+    'GeodeticPrecessionCalculator': ('CondensedPhysics2', 'compute'),
+    'GeometricFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'GinzburgLandauCoherenceCalculator': ('CondensedPhysics2', 'compute'),
+    'GinzburgLandauFieldModel': ('CondensedPhysics', 'compute'),
+    'GlobularClusterLayerCalculator': ('CondensedPhysics2', 'compute'),
+    'GlobularClusterStructureModel': ('CondensedPhysics', 'compute'),
+    'GluonEnergyDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'GoalValidationCalculator': ('CondensedPhysics2', 'compute'),
+    'GoalsValidationCheckpointCalculator': ('CondensedPhysics2', 'compute'),
+    'GradMsRCalculator': ('CondensedPhysics', 'compute'),
+    'GradMsRTerm': ('CondensedPhysics', 'compute'),
+    'GravitationalCalculator': ('CondensedPhysics', 'compute'),
+    'GravitationalConstantKCalculator': ('CondensedPhysics2', 'compute'),
+    'GravitationalForceCalculator': ('CondensedPhysics2', 'compute'),
+    'GravitationalLensingCalculator': ('CondensedPhysics', 'compute'),
+    'GravitationalLensingUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'GravitationalPotentialCalculator': ('CondensedPhysics2', 'compute'),
+    'GravitationalQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'GravitationalRedshiftModel': ('CondensedPhysics', 'compute'),
+    'GravitationalTimeDilationModel': ('CondensedPhysics', 'compute'),
+    'GravitationalWaveRadiationCalculator': ('CondensedPhysics', 'compute'),
+    'GravitationalWaveRadiationTermCalculator': ('CondensedPhysics4', 'compute'),
+    'GravitationalWaveUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'GravityProjectionShapeCalculator': ('CondensedPhysics2', 'compute'),
+    'GravitySinceBigBangCalculator': ('CondensedPhysics2', 'compute'),
+    'GravitySinceBigBangQGDMGWTermsUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'GrokThread31b5c807DeepReanalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'GrokThread31b5c807TriadicSystemsCalculator': ('CondensedPhysics2', 'compute'),
+    'GrossPitaevskiiVortexSimulationCalculator': ('CondensedPhysics2', 'compute'),
+    'H2OH2RotorPhillipsCSCrossSectionCalculator': ('CondensedPhysics4', 'compute'),
+    'H2OMaserJShockEmissionCalculator': ('CondensedPhysics4', 'compute'),
+    'H2TransitionRateCalculator': ('CondensedPhysics2', 'compute'),
+    'HResDUniverseMasterCalculator': ('CondensedPhysics3', 'compute'),
+    'HResNuclear6EquationDipolekNucCalculator': ('CondensedPhysics3', 'compute'),
+    'HResPeriodicTableUniversalNuclearCorrelationCalculator': ('CondensedPhysics4', 'compute'),
+    'HUDFBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFGalaxiesCosmicFieldCalculator': ('CondensedPhysics3', 'compute'),
+    'HUDFGalaxiesFUBiICalculator': ('CondensedPhysics2', 'compute'),
+    'HUDFGalaxyInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFGravitationalMeissnerCalculator': ('CondensedPhysics3', 'compute'),
+    'HUDFInteractionCascadeBuoyancyCalculator': ('CondensedPhysics3', 'compute'),
+    'HUDFMergerFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFModel': ('CondensedPhysics', 'compute'),
+    'HUDFOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFStarFormationCalculator': ('CondensedPhysics', 'compute'),
+    'HUDFTRZCPTPhaseCalculator': ('CondensedPhysics3', 'compute'),
+    'HUDFUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'HabitableZoneCalculator': ('QCalcGeom', 'compute'),
+    'HalfCycleOscillationCalculator': ('CondensedPhysics2', 'compute'),
+    'HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator': ('CondensedPhysics4', 'compute'),
+    'HawkingRadiationUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'HawkingSpinOffCalculator': ('CondensedPhysics2', 'compute'),
+    'HawkingTemperatureUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'HeavisideComponentModel': ('CondensedPhysics', 'compute'),
+    'HeavisideFractionCalculator': ('CondensedPhysics', 'compute'),
+    'HeavyWaterDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'HeavyWaterElectrolysisCalculator': ('CondensedPhysics2', 'compute'),
+    'HeisenbergVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'HelicalQuantumTensionCalculator': ('CondensedPhysics2', 'compute'),
+    'HeliopausalBoundaryStepFunctionCalculator': ('CondensedPhysics3', 'compute'),
+    'HeliosphereHydrogenComplexSCmStellarAgeCalculator': ('CondensedPhysics4', 'compute'),
+    'HeliosphereLiquidVolumeCalculator': ('CondensedPhysics2', 'compute'),
+    'HeliosphereStellarAgeCorrelationCalculator': ('CondensedPhysics2', 'compute'),
+    'HeliosphereThicknessCalculator': ('CondensedPhysics', 'compute'),
+    'HeliosphereThicknessModel': ('CondensedPhysics', 'compute'),
+    'HiggsEmergentLevel18UQFFStratumCalculator': ('CondensedPhysics4', 'compute'),
+    'HiggsFieldCalculator': ('CondensedPhysics', 'compute'),
+    'HiggsFieldUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'HiggsInertialGradientCalculator': ('CondensedPhysics2', 'compute'),
+    'HiggsPotentialCalculator': ('CondensedPhysics2', 'compute'),
+    'HiggsProductionDecayModeCalculator': ('CondensedPhysics4', 'compute'),
+    'HiggsSCmIntegrationModel': ('CondensedPhysics', 'compute'),
+    'HiggsStabilityCalculator': ('CondensedPhysics2', 'compute'),
+    'HiggsUIAOOperatorCalculator': ('CondensedPhysics2', 'compute'),
+    'HiggsVacuumUHExcitationKHiggsUQFFCalc': ('CondensedPhysics4', 'compute'),
+    'HighEnergyDatasetValidationCalculator': ('CondensedPhysics3', 'compute'),
+    'HighRedshiftJWSTQWaveDeepFieldCalculator': ('CondensedPhysics3', 'compute'),
+    'HigherCurvatureGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'HillSphereModel': ('CondensedPhysics', 'compute'),
+    'HodgeUQFFAlgebraicCycleCalculator': ('CondensedPhysics2', 'compute'),
+    'HolmlidKERReactorValidationCalculator': ('CondensedPhysics4', 'compute'),
+    'HolmlidParkhomovPonsFleischmannUpgradeCalculator': ('CondensedPhysics4', 'compute'),
+    'HolmlidRossiParkhomovValidationCalculator': ('CondensedPhysics4', 'compute'),
+    'HolmlidRydbergSCmBridgeCalculator': ('CondensedPhysics4', 'compute'),
+    'HolonomyGroupCurvatureCalculator': ('CondensedPhysics', 'compute'),
+    'HorizonBuoyancySectorLagrangianCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadErosionCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadNebulaBarnard33UQFF': ('CondensedPhysics4', 'compute'),
+    'HorseheadNebulaBarnard33UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'HorseheadNebulaModel': ('CondensedPhysics', 'compute'),
+    'HorseheadNebulaPradBlackbodyCalculator': ('CondensedPhysics3', 'compute'),
+    'HorseheadOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadStellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'HorseheadUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'HubbleParameterUCFCalculator': ('CondensedPhysics2', 'compute'),
+    'HubbleUltraDeepFieldUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'HybridMUGEBlendingCalculator': ('CondensedPhysics3', 'compute'),
+    'HybridMUGEMeissnerBlendingModelCalculator': ('CondensedPhysics4', 'compute'),
+    'HydrogenAtomLorentzEMDominanceCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenAtomLymanCosmosBridgeCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenAtomProtonGRSpectralMinimumCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenAtomUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenBaseEnergyE0Calculator': ('CondensedPhysics', 'compute'),
+    'HydrogenBohrOrbitalCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenBubbleAnchoringCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenBubbleConfinementCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenBubbleLatticeCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenBubbleMagneticCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenBubblePathAnchorCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenCompressedSpaceEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenCompressedSpaceEspaceThreeLegCalculator': ('CondensedPhysics4', 'compute'),
+    'HydrogenCompressionFactorCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenDPMResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenElectronCloudFluidCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenEthanolExperiment1UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'HydrogenEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenEvolutionModel': ('CondensedPhysics', 'compute'),
+    'HydrogenFineStructureCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenHiggsFreqFactorCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenLambShiftCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenLayerFactorCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenLorentzElectronCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenNuclearShellResonanceCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenOrbitalResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenOxygenGasStorageCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenPToEAetherGravitationalDominanceCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenPToEResonanceUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenPToETHzQuantumDegeneracyCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenPToEUg4iResonanceBridgeCalculator': ('CondensedPhysics3', 'compute'),
+    'HydrogenPrecessionFactorCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenQuantumEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenQuantumFluctuationCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenQuantumScalingCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenResonanceOrb36Calculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenResonanceShellCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenResonanceUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenStoragePressureCalculator': ('CondensedPhysics2', 'compute'),
+    'HydrogenUniverseDual3DMUGECalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenVacuumDensityRatioCalculator': ('CondensedPhysics', 'compute'),
+    'HydrogenWavefunctionCalculator': ('CondensedPhysics', 'compute'),
+    'HypergraphDimensionCalculator_84A767D3': ('CondensedPhysics2', 'compute'),
+    'HypergraphEngine': ('CondensedPhysics', 'compute'),
+    'ISCOCalculator': ('CondensedPhysics2', 'compute'),
+    'IdealGasCompressedStorageCalculator': ('CondensedPhysics2', 'compute'),
+    'ImaginaryQuantumStateCalculator': ('CondensedPhysics2', 'compute'),
+    'IndividualFrameAnalyzerCalculator': ('CondensedPhysics2', 'compute'),
+    'IndividualSystemUQFF18Calculator': ('CondensedPhysics2', 'compute'),
+    'InertiaBosonicEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaInertialOperatorCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaMagneticHamiltonianCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaNonLocalExponentialCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaPseudoMonopoleBCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaQuantumWaveFunctionCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaScaledWaveEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaThreeLegProofsetCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaTwistPhaseCalculator': ('CondensedPhysics', 'compute'),
+    'InertiaUQFFWaveEnergyThreeLegProofsetCalculator': ('CondensedPhysics4', 'compute'),
+    'InertiaUniversalInertiaCalculator': ('CondensedPhysics', 'compute'),
+    'InertialForceOperatorCalculator': ('CondensedPhysics2', 'compute'),
+    'InertialOperatorEnhancedCalculator': ('CondensedPhysics2', 'compute'),
+    'InertialOperatorModel': ('CondensedPhysics', 'compute'),
+    'InertialPapersCalculator': ('CondensedPhysics', 'compute'),
+    'InflationBuoyancySectorLagrangianCalculator': ('CondensedPhysics', 'compute'),
+    'InflationEpochStructureCalculator': ('CondensedPhysics2', 'compute'),
+    'InflationForceCoreCalculator': ('CondensedPhysics2', 'compute'),
+    'InfraredSpectrumTemperatureCalculator': ('CondensedPhysics', 'compute'),
+    'InitialMassFunctionCalculator': ('CondensedPhysics2', 'compute'),
+    'InitialMassFunctionOrb42Calculator': ('CondensedPhysics2', 'compute'),
+    'InspiralPhaseLagPhononIntegralCalc': ('CondensedPhysics4', 'compute'),
+    'IntelligentPlasmoidBehaviorCalculator': ('CondensedPhysics', 'compute'),
+    'IntelligentPlasmoidBehaviorOrb11Calculator': ('CondensedPhysics2', 'compute'),
+    'IntelligentQuantumPlasmoidCalculator': ('CondensedPhysics2', 'compute'),
+    'InterferenceFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'InterferenceFactorComplexCalculator': ('CondensedPhysics2', 'compute'),
+    'InterstellarShockPrestellarCollapseCalculator': ('CondensedPhysics4', 'compute'),
+    'IntraclusterMediumCalculator': ('CondensedPhysics', 'compute'),
+    'IrregularOrbEnergyStateCalculator': ('CondensedPhysics2', 'compute'),
+    'IslandOfStability5thEpochSuperheavyElementsCalculator': ('CondensedPhysics4', 'compute'),
+    'IsotopicBoilingPointCalculator': ('CondensedPhysics2', 'compute'),
+    'IsotopicKineticEnrichmentCalculator': ('CondensedPhysics2', 'compute'),
+    'J1610HighZQuasarJetFUBiCalculator': ('CondensedPhysics4', 'compute'),
+    'J1610QuasarRelativisticSCmCalculator': ('CondensedPhysics3', 'compute'),
+    'J1610RelativisticQuasarJetUQFFNSCalculator': ('CondensedPhysics4', 'compute'),
+    'JCAPDarkMatterVacuumValidator': ('CondensedPhysics2', 'compute'),
+    'JarqueBeraQWaveCalculator': ('CondensedPhysics2', 'compute'),
+    'JeansMassCalculator': ('CondensedPhysics', 'compute'),
+    'JetAsymmetryRatioCalculator': ('CondensedPhysics2', 'compute'),
+    'JetCollimationLinewidthGammaCalc': ('CondensedPhysics4', 'compute'),
+    'JumpAmplificationFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'JumpProbabilityDetailedCalculator': ('CondensedPhysics2', 'compute'),
+    'June20_2025_RareMathOcc10SystemFUBiiCalculator': ('CondensedPhysics4', 'compute'),
+    'KennicuttSchmidtSFRCalculator': ('CondensedPhysics', 'compute'),
+    'KeplerOrreryFrameAnalyzerCalculator': ('CondensedPhysics', 'compute'),
+    'KeplerOrreryGalacticCalculator': ('CondensedPhysics', 'compute'),
+    'KeplerOrreryOrbitalCalculator': ('CondensedPhysics', 'compute'),
+    'KeplerOrreryTidalCalculator': ('CondensedPhysics', 'compute'),
+    'KeplerOrreryV35FrameIterativeUbCalc': ('CondensedPhysics4', 'compute'),
+    'KeplerOrreryV_Ub_UQFF_Calculator': ('CondensedPhysics4', 'compute'),
+    'KeplerSNR1604FUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'KerrNewmanMetricCalculator': ('CondensedPhysics2', 'compute'),
+    'KiNormalizedSolarCalculator': ('CondensedPhysics2', 'compute'),
+    'KilonovaTransientQWaveParameterCalculator': ('CondensedPhysics3', 'compute'),
+    'KinematicMotionCalculator': ('CondensedPhysics2', 'compute'),
+    'KineticEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'KineticSZEffectCalculator': ('CondensedPhysics2', 'compute'),
+    'KozimaExpansionNeutronDropCouplingCalc': ('CondensedPhysics4', 'compute'),
+    'KozimaLENRNeutronDropFneutronCalculator': ('CondensedPhysics4', 'compute'),
+    'KozimaNeutronDropDensityScaled8SystemCalc': ('CondensedPhysics4', 'compute'),
+    'KozimaSCmCrossSectionCalculator': ('CondensedPhysics2', 'compute'),
+    'LENRCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibCoronaScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibDeltaNCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibDynamicVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibEReactCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibElectricFieldCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibEtaNeutronRateCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibHeavisideCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibHydrideScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibMuJCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibNonLocalExpCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibPolarizationCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibQuantumCouplingCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibQuasiCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibRhoVacUAScmCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibUmCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibWiresScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCalibratedCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCatalystMechanismCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCoronaScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LENRCriticalTemperatureCalculator': ('CondensedPhysics2', 'compute'),
+    'LENRDynamicVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'LENREReactEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'LENRElectricFieldCalculator': ('CondensedPhysics', 'compute'),
+    'LENRElectronDensityCalculator': ('CondensedPhysics', 'compute'),
+    'LENREnergyDensityCalculator': ('CondensedPhysics', 'compute'),
+    'LENRFermiConstantCalculator': ('CondensedPhysics', 'compute'),
+    'LENRHydrideScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LENRKetaCalibration3EnvironmentDeltaKCalc': ('CondensedPhysics4', 'compute'),
+    'LENRKnScenarioCalibrationCalculator': ('CondensedPhysics4', 'compute'),
+    'LENRMassRenormalizationCalculator': ('CondensedPhysics', 'compute'),
+    'LENRNeutronRateCalculator': ('CondensedPhysics', 'compute'),
+    'LENRNextStepsExperimentalDesignPSRJ0030Calc': ('CondensedPhysics4', 'compute'),
+    'LENRPlasmaFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'LENRQuantumCouplingCalculator': ('CondensedPhysics', 'compute'),
+    'LENRScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LENRThresholdEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'LENRTransmutationRateCalculator': ('CondensedPhysics', 'compute'),
+    'LENRUg1GravityCalculator': ('CondensedPhysics', 'compute'),
+    'LENRUiInertialCalculator': ('CondensedPhysics', 'compute'),
+    'LENRUmMagneticCalculator': ('CondensedPhysics', 'compute'),
+    'LENRWiresScenarioCalculator': ('CondensedPhysics', 'compute'),
+    'LIGOO4Calculator': ('CondensedPhysics', 'compute'),
+    'LISAVsLIGOComparisonsCalculator': ('CondensedPhysics2', 'compute'),
+    'LLVMJITCompilerCalculator': ('CondensedPhysics', 'compute'),
+    'LLVMJITCompilerS8Calculator': ('CondensedPhysics2', 'compute'),
+    'LQGBuoyancySectorLagrangianVariationCalculator': ('CondensedPhysics', 'compute'),
+    'LRCCircuitPseudoMonopoleCalculator': ('CondensedPhysics2', 'compute'),
+    'LRCPseudoMonopoleSparkGapResonanceCalc': ('CondensedPhysics4', 'compute'),
+    'LaTeXDualBlockUQFFMasterEquationCalculator': ('CondensedPhysics4', 'compute'),
+    'LagoonDarkMatterNebulaCalculator': ('CondensedPhysics', 'compute'),
+    'LagoonHIIRegionResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'LagoonIonizedGasFluidCalculator': ('CondensedPhysics', 'compute'),
+    'LagoonLorentzIonizedGasCalculator': ('CondensedPhysics', 'compute'),
+    'LagoonNebulaDualRadiationEMBarrierCalculator': ('CondensedPhysics3', 'compute'),
+    'LagoonNebulaHerschelRadiationErosionCalculator': ('CondensedPhysics3', 'compute'),
+    'LagoonNebulaMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'LagoonNebulaSFRMassRunawayCalculator': ('CondensedPhysics3', 'compute'),
+    'LagoonNebulaUQFFHIIRegionCalculator': ('CondensedPhysics2', 'compute'),
+    'LagoonQuantumIntegralNebulaCalculator': ('CondensedPhysics', 'compute'),
+    'LagoonRadiationPressureCalculator': ('CondensedPhysics', 'compute'),
+    'LagoonStarFormationMassCalculator': ('CondensedPhysics', 'compute'),
+    'LandeGFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'LaneEmdenStellarStructureCalculator': ('CondensedPhysics2', 'compute'),
+    'LargeMagellanicCloudThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'LarmorPrecessionCalculator': ('CondensedPhysics2', 'compute'),
+    'LatticeYangMillsCalculator': ('CondensedPhysics', 'compute'),
+    'Layer26DGravityCoupling': ('CondensedPhysics', 'compute'),
+    'LenseThirringPrecessionCalculator': ('CondensedPhysics2', 'compute'),
+    'LineFluxSFRCalculator': ('CondensedPhysics2', 'compute'),
+    'LinearRegressionCalculator': ('CondensedPhysics2', 'compute'),
+    'LinewidthJetModulationSweepCalc': ('CondensedPhysics4', 'compute'),
+    'LiveImageUQFFApplicatorCalculator': ('CondensedPhysics2', 'compute'),
+    'LoopQuantumGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'LorentzRegaugingVacuumEnergyCalculator': ('CondensedPhysics4', 'compute'),
+    'LymanSeriesCalculator': ('CondensedPhysics', 'compute'),
+    'M101AsymmetryCalculator': ('CondensedPhysics', 'compute'),
+    'M101DifferentialRotationCalculator': ('CondensedPhysics', 'compute'),
+    'M101HIIRegionCalculator': ('CondensedPhysics', 'compute'),
+    'M101MagnetohydrodynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'M101MolecularCloudCalculator': ('CondensedPhysics', 'compute'),
+    'M101QuantumTurbulenceCalculator': ('CondensedPhysics', 'compute'),
+    'M101SpiralDensityWaveCalculator': ('CondensedPhysics', 'compute'),
+    'M101StarFormationRateCalculator': ('CondensedPhysics', 'compute'),
+    'M101SupernovaRemnantCalculator': ('CondensedPhysics', 'compute'),
+    'M101TidalPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'M104BulgeDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'M104CentralBlackHoleCalculator': ('CondensedPhysics', 'compute'),
+    'M104CosmicRayPropagationCalculator': ('CondensedPhysics', 'compute'),
+    'M104DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'M104DustLaneExtinctionCalculator': ('CondensedPhysics', 'compute'),
+    'M104GlobularClusterSystemCalculator': ('CondensedPhysics', 'compute'),
+    'M104MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'M104QuantumGravityCalculator': ('CondensedPhysics', 'compute'),
+    'M104StellarKinematicsCalculator': ('CondensedPhysics', 'compute'),
+    'M104XRayBinaryCalculator': ('CondensedPhysics', 'compute'),
+    'M16BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'M16CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'M16DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'M16DualMassCoActionProductCalculator': ('CondensedPhysics3', 'compute'),
+    'M16EagleNebulaModel': ('CondensedPhysics', 'compute'),
+    'M16EagleNebulaRadiationMUGECalculator': ('CondensedPhysics4', 'compute'),
+    'M16EagleNebulaRadiationSFRCalculator': ('CondensedPhysics3', 'compute'),
+    'M16EagleNebulaStarsUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'M16ElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'M16ErosionSaturationHalfTimeCalculator': ('CondensedPhysics3', 'compute'),
+    'M16FluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'M16NebularFriedmannRedshiftCalculator': ('CondensedPhysics3', 'compute'),
+    'M16OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'M16QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'M16RadiationErosionCalculator': ('CondensedPhysics', 'compute'),
+    'M16StarFormationCalculator': ('CondensedPhysics', 'compute'),
+    'M16SuperconductivityCalculator': ('CondensedPhysics', 'compute'),
+    'M16UQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'M16UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'M31CentralBlackHoleCalculator': ('CondensedPhysics', 'compute'),
+    'M31DarkMatterNFWProfileCalculator': ('CondensedPhysics', 'compute'),
+    'M31DiskWarpCalculator': ('CondensedPhysics', 'compute'),
+    'M31MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'M31QuantumDarkMatterCalculator': ('CondensedPhysics', 'compute'),
+    'M31RotationCurveCalculator': ('CondensedPhysics', 'compute'),
+    'M31SatelliteInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'M31StarFormationRateCalculator': ('CondensedPhysics', 'compute'),
+    'M31StellarHaloDensityCalculator': ('CondensedPhysics', 'compute'),
+    'M31TidalStreamCalculator': ('CondensedPhysics', 'compute'),
+    'M33DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'M33DiskMassSurfaceDensityCalculator': ('CondensedPhysics', 'compute'),
+    'M33HIIRegionDistributionCalculator': ('CondensedPhysics', 'compute'),
+    'M33MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'M33MetallicityGradientCalculator': ('CondensedPhysics', 'compute'),
+    'M33QuantumDarkMatterCalculator': ('CondensedPhysics', 'compute'),
+    'M33RotationCurveCalculator': ('CondensedPhysics', 'compute'),
+    'M33StarFormationRateCalculator': ('CondensedPhysics', 'compute'),
+    'M33TidalInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'M33XRayBinaryCalculator': ('CondensedPhysics', 'compute'),
+    'M42Model': ('CondensedPhysics', 'compute'),
+    'M42OrionNebulaUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'M51CentralBlackHoleCalculator': ('CondensedPhysics', 'compute'),
+    'M51DarkMatterCurvatureCalculator': ('CondensedPhysics', 'compute'),
+    'M51DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'M51DipoleMagneticCalculator': ('CondensedPhysics', 'compute'),
+    'M51DustExtinctionCalculator': ('CondensedPhysics', 'compute'),
+    'M51ExternalTidalCalculator': ('CondensedPhysics', 'compute'),
+    'M51GravityCondensedCalculator': ('CondensedPhysics', 'compute'),
+    'M51InertialVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'M51MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'M51MolecularCloudCalculator': ('CondensedPhysics', 'compute'),
+    'M51NGC1316MUGESimulationCalculator': ('CondensedPhysics4', 'compute'),
+    'M51QuantumSpiralIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'M51QuantumVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'M51ReactionEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'M51SpiralArmDensityWaveCalculator': ('CondensedPhysics', 'compute'),
+    'M51SpiralArmWaveCalculator': ('CondensedPhysics', 'compute'),
+    'M51StarFormationForceCalculator': ('CondensedPhysics', 'compute'),
+    'M51StarFormationRateCalculator': ('CondensedPhysics', 'compute'),
+    'M51SuperconductorEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'M51SupernovaFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'M51TidalForceCalculator': ('CondensedPhysics', 'compute'),
+    'M51TidalInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'M51WhirlpoolTidalInteraction': ('CondensedPhysics4', 'compute'),
+    'M57RingNebulaThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'M74PhantomGalaxyUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'M81AGNActivityCalculator': ('CondensedPhysics', 'compute'),
+    'M81DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'M81M82HIDiskCalculator': ('CondensedPhysics', 'compute'),
+    'M81M82TidalInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'M81SpiralStructureCalculator': ('CondensedPhysics', 'compute'),
+    'M82CigarStarburstUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'M82CosmicRayCalculator': ('CondensedPhysics', 'compute'),
+    'M82MolecularOutflowCalculator': ('CondensedPhysics', 'compute'),
+    'M82PAHEmissionCalculator': ('CondensedPhysics', 'compute'),
+    'M82StarburstCalculator': ('CondensedPhysics', 'compute'),
+    'M82SuperwindCalculator': ('CondensedPhysics', 'compute'),
+    'M87AGNFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'M87DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'M87GlobularClusterCalculator': ('CondensedPhysics', 'compute'),
+    'M87JetBZModelFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'M87JetEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'M87JetPowerCurveGammaMatchCalc': ('CondensedPhysics4', 'compute'),
+    'M87MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'M87MassEvolutionSimulationCalculator': ('CondensedPhysics2', 'compute'),
+    'M87QuantumVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'M87RelativisticJetCalculator': ('CondensedPhysics', 'compute'),
+    'M87StellarDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'M87SupermassiveBlackHoleCalculator': ('CondensedPhysics', 'compute'),
+    'M87UltradiffuseGalaxyCalculator': ('CondensedPhysics', 'compute'),
+    'MHDClustersJetsAccretionCalculator': ('CondensedPhysics3', 'compute'),
+    'MHDUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'MIPSOpcodePhysicsCalculator': ('CondensedPhysics2', 'compute'),
+    'MONDGravityCalculator': ('CondensedPhysics', 'compute'),
+    'MPIDistributedCalculator': ('CondensedPhysics', 'compute'),
+    'MPIDistributedS8Calculator': ('CondensedPhysics2', 'compute'),
+    'MSigmaPhononCorrectedRelationCalculator': ('CondensedPhysics', 'compute'),
+    'MSigmaRelationCalculator': ('CondensedPhysics', 'compute'),
+    'MSigmaRelationModel': ('CondensedPhysics', 'compute'),
+    'MUGE26StateFrequencyBasisProofIdentitiesCalculator': ('CondensedPhysics3', 'compute'),
+    'MUGECalculator': ('CondensedPhysics', 'compute'),
+    'MUGECluster3DSimCalc': ('CondensedPhysics4', 'compute'),
+    'MUGECompressed29SystemUnifiedGravityCalculator': ('CondensedPhysics4', 'compute'),
+    'MUGECompressed38SystemExtendedEnvCalculator': ('CondensedPhysics4', 'compute'),
+    'MUGECompressedBase': ('CondensedPhysics', 'compute'),
+    'MUGECompressedBaseCalculator': ('CondensedPhysics', 'compute'),
+    'MUGECompressedCosm': ('CondensedPhysics', 'compute'),
+    'MUGECompressedEnvelope': ('CondensedPhysics', 'compute'),
+    'MUGECompressedExpansion': ('CondensedPhysics', 'compute'),
+    'MUGECompressedFluid': ('CondensedPhysics', 'compute'),
+    'MUGECompressedNineTermCalculator': ('CondensedPhysics2', 'compute'),
+    'MUGECompressedPerturbation': ('CondensedPhysics', 'compute'),
+    'MUGECompressedQuantum': ('CondensedPhysics', 'compute'),
+    'MUGECompressedSuper': ('CondensedPhysics', 'compute'),
+    'MUGECompressedUgSum': ('CondensedPhysics', 'compute'),
+    'MUGECosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEDualModeOscillatoryGravityCalculator': ('CondensedPhysics3', 'compute'),
+    'MUGEEnvelopeCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEExpansionCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEFUBiiUnifiedNineSystemSynthesisCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEFinal7SystemResonanceAccelerationsCalculator': ('CondensedPhysics4', 'compute'),
+    'MUGEFluidCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEFluidSelfGravityTermCalculator': ('CondensedPhysics3', 'compute'),
+    'MUGEMergerInteractionModulationCalculator': ('CondensedPhysics3', 'compute'),
+    'MUGEPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEQuantumCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEQuantumUncertaintyTermCalculator': ('CondensedPhysics3', 'compute'),
+    'MUGEResonanceAAetherFreqCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceAAetherResCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceADPMCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceAExpFreqCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceAFluidFreqCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceAQuantumFreqCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceASuperFreqCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceATHzCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceAvacDiffCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceFTRZCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceOscCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceThirteenModeCalculator': ('CondensedPhysics2', 'compute'),
+    'MUGEResonanceUg4iCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEResonanceWormholeCalculator': ('CondensedPhysics', 'compute'),
+    'MUGESuperAdjustmentCalculator': ('CondensedPhysics', 'compute'),
+    'MUGESuperconductive12TermResonanceCalculator': ('CondensedPhysics4', 'compute'),
+    'MUGEUgSumCalculator': ('CondensedPhysics', 'compute'),
+    'MUGEUnificationCalculator': ('CondensedPhysics2', 'compute'),
+    'MadelungTransformCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501ElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501FluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501GravitationalWaveCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501MagneticDecayCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501SpinEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501TimeReversalCalculator': ('CondensedPhysics', 'compute'),
+    'Magnetar0501UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarBlackHoleProximityCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarDPMTHzFrequencyFormCalculator': ('CondensedPhysics3', 'compute'),
+    'MagnetarDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarDecayEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarDualModeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'MagnetarElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarEvolutionUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'MagnetarFiveFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarGravitationalWaveCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarMUGECalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarMagneticEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarMmagOutburstTimescaleCalculator': ('CondensedPhysics4', 'compute'),
+    'MagnetarOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarSGR0501MUGEFullCalculator': ('CondensedPhysics3', 'compute'),
+    'MagnetarSGR1745DynamicModulationCalculator': ('CondensedPhysics3', 'compute'),
+    'MagnetarSpinDownPhononTimescaleCalc': ('CondensedPhysics4', 'compute'),
+    'MagnetarSpinEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarSuperConductivityCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarSystemMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'MagnetarUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetarVortexAvalancheCalculator': ('CondensedPhysics3', 'compute'),
+    'MagneticBubbleConfinementCalculator': ('CondensedPhysics', 'compute'),
+    'MagneticBubbleConfinementOrb10Calculator': ('CondensedPhysics2', 'compute'),
+    'MagneticCalculator': ('CondensedPhysics', 'compute'),
+    'MagneticChordResonanceModelCalculator': ('CondensedPhysics4', 'compute'),
+    'MagneticConstantMuCalculator': ('CondensedPhysics2', 'compute'),
+    'MagneticDampeningCalculator': ('CondensedPhysics', 'compute'),
+    'MagneticDipoleMomentCalculator': ('CondensedPhysics2', 'compute'),
+    'MagneticFilamentCalculator': ('CondensedPhysics', 'compute'),
+    'MagneticMonopoleCalculator': ('CondensedPhysics', 'compute'),
+    'MagneticPotentialCalculator': ('CondensedPhysics2', 'compute'),
+    'MagneticReconnectionEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'MagneticStringModel': ('CondensedPhysics', 'compute'),
+    'MagneticStringsQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'MagnetismStringDynamicsCalculator': ('CondensedPhysics2', 'compute'),
+    'MagnetohydrodynamicsJetCalculator': ('CondensedPhysics', 'compute'),
+    'MassIndependentUFEQFECalculator': ('CondensedPhysics2', 'compute'),
+    'MassWithoutWeightFUbCalibrationCalculator': ('CondensedPhysics4', 'compute'),
+    'MasterBuoyancyCalculator': ('CondensedPhysics2', 'compute'),
+    'MasterBuoyancyExtendedCalculator': ('CondensedPhysics2', 'compute'),
+    'MasterBuoyancyIntegrandCalculator': ('CondensedPhysics', 'compute'),
+    'MasterStellarWindPhononEtCalc': ('CondensedPhysics4', 'compute'),
+    'MasterUBiBuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'MatchedFilterSNRPhononDampingCalc': ('CondensedPhysics4', 'compute'),
+    'MaxwellComponentFormModel': ('CondensedPhysics', 'compute'),
+    'MayanTimingCalculator': ('QCalcGeom', 'compute'),
+    'MergerLagrangianVariationCalc': ('CondensedPhysics4', 'compute'),
+    'MergerPhaseLagCalc': ('CondensedPhysics4', 'compute'),
+    'MergerStrainDampingCalc': ('CondensedPhysics4', 'compute'),
+    'MergerTimescaleCalculator': ('CondensedPhysics2', 'compute'),
+    'MetalRetentionCGMCalculator': ('CondensedPhysics', 'compute'),
+    'MetalRetentionCalculator': ('CondensedPhysics2', 'compute'),
+    'MicroPlasmoid25umLENRBuoyancyReversalCalc': ('CondensedPhysics4', 'compute'),
+    'MilkyWay82DayStarTrackingUFTAnalysisCalc': ('CondensedPhysics4', 'compute'),
+    'MilkyWayGalacticSpinUb_iCouplingCalculator': ('CondensedPhysics3', 'compute'),
+    'MillenniumPrizeUQFFHubCalculator': ('CondensedPhysics2', 'compute'),
+    'MinkowskiMetricPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'MockThetaFamily26DConvergenceCalculator': ('CondensedPhysics', 'compute'),
+    'ModeSelectorSwitchCalculator': ('CondensedPhysics', 'compute'),
+    'MomentumCalculator': ('CondensedPhysics2', 'compute'),
+    'MomentumForceCalculator': ('CondensedPhysics2', 'compute'),
+    'MonteCarloJetPowerSamplingCalc': ('CondensedPhysics4', 'compute'),
+    'MonteCarloStochasticWrapper': ('CondensedPhysics2', 'compute'),
+    'MorrisThorneWormholeNullGeodesicsCalculator': ('CondensedPhysics4', 'compute'),
+    'MosquitoBioThermalEfficiencyBenchmarkCalc': ('CondensedPhysics4', 'compute'),
+    'MuJTerm': ('CondensedPhysics', 'compute'),
+    'MuJTimeCalculator': ('CondensedPhysics', 'compute'),
+    'MuSTerm': ('CondensedPhysics', 'compute'),
+    'MuSTimeCalculator': ('CondensedPhysics', 'compute'),
+    'MultiAGNJetPowerMonteCarloBatchCalc': ('CondensedPhysics4', 'compute'),
+    'MultiAxialRotationCalculator': ('CondensedPhysics', 'compute'),
+    'MultiBodySolarPcorePlanetaryScalingCalculator': ('CondensedPhysics4', 'compute'),
+    'MultiCompressed7BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7CosmologicalLambdaCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7EnvironmentalCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7FluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7GeneralizedUg3Calculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7HubbleUnifiedCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7MagneticFieldCorrectionCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7QuantumIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'MultiCompressed7UgSumCalculator': ('CondensedPhysics', 'compute'),
+    'MultiManifoldTransitionCalculator': ('CondensedPhysics', 'compute'),
+    'MultiMessengerUQFFValidator': ('CondensedPhysics3', 'compute'),
+    'MultiScaleDataFetcher': ('CondensedPhysics', 'compute'),
+    'MultiScaleGravityModel': ('CondensedPhysics', 'compute'),
+    'MultiSystem19AGNFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19ComprehensiveUgSumCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19DeepFieldCosmologicalCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19DustAbsorptionCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19EnvironmentalSumCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19GalaxyMergerTidalCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19GravitationalLensingCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19PhotoevaporationCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19StarFormationRateDensityCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystem19SupernovaMassLossCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemAetherFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemChandraSurvey35NegativeBuoyancyCalc': ('CondensedPhysics4', 'compute'),
+    'MultiSystemCompressionCycle2Calculator': ('CondensedPhysics4', 'compute'),
+    'MultiSystemCosmologicalLambdaCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemDPMResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemFluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemFluidResonanceFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemHubbleExpansionCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemQuantumFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemQuantumIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'MultiSystemUQFFCompilerCalculator': ('CondensedPhysics2', 'compute'),
+    'MultiSystemUQFFCoreCalculator': ('CondensedPhysics4', 'compute'),
+    'MusSCmAugmentedMagneticDipoleOmegaCCalculator': ('CondensedPhysics4', 'compute'),
+    'MysticMountainCarinaUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'MysticMountainModel': ('CondensedPhysics', 'compute'),
+    'NASAThoriumMagneticBuoyancyAetherVortexCalculator': ('CondensedPhysics4', 'compute'),
+    'NBodySimulation3D': ('CondensedPhysics4', 'compute'),
+    'NFWDarkMatterProfileCalculator': ('CondensedPhysics2', 'compute'),
+    'NGC1275BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275BlackHoleCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275CoolingFlowCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275ElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275FilamentSupportCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275FluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275MagneticDecayCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275MagneticMonsterPerseusACalculator': ('CondensedPhysics4', 'compute'),
+    'NGC1275MagneticMonsterUQFF': ('CondensedPhysics4', 'compute'),
+    'NGC1275Model': ('CondensedPhysics', 'compute'),
+    'NGC1275OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275PerseusAGNFilamentCalculator': ('CondensedPhysics3', 'compute'),
+    'NGC1275PerseusAGNFilamentaryUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC1275QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1275UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1277HypergraphDimCalculator': ('CondensedPhysics2', 'compute'),
+    'NGC1316GravityCondensedCalculator': ('CondensedPhysics', 'compute'),
+    'NGC1316MUGECalculation': ('CondensedPhysics4', 'compute'),
+    'NGC1316MergerEvolutionCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC1672BarredSpiralUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC1792HubbleSlowModeOscillatorCalculator': ('CondensedPhysics3', 'compute'),
+    'NGC1792Model': ('CondensedPhysics', 'compute'),
+    'NGC1792RamPressureDegeneracyCalculator': ('CondensedPhysics3', 'compute'),
+    'NGC1792StarburstBuoyancyCoherenceCalculator': ('CondensedPhysics3', 'compute'),
+    'NGC1792StarburstFUBiCalculator': ('CondensedPhysics2', 'compute'),
+    'NGC1792StellarForgeStarburstUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC1792StellarForgeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC1805LMCClusterThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'NGC1961SpiralThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC2014NGC2020StarformingUQFF': ('CondensedPhysics4', 'compute'),
+    'NGC2014NGC2020Variant2UQFF': ('CondensedPhysics4', 'compute'),
+    'NGC2174MonkeyHeadNebulaThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC2264ConeNebulaUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC2264Model': ('CondensedPhysics', 'compute'),
+    'NGC2525BarredSpiral2UQFF': ('CondensedPhysics4', 'compute'),
+    'NGC2525BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525BlackHoleCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525ElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525FluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525SN2018gvBarredSpiralUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC2525SupernovaMassLossCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2525WithSupernovaeSN2018gv': ('CondensedPhysics4', 'compute'),
+    'NGC253CosmicRayCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253DiskGravityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253DustExtinctionCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253MolecularOutflowCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253NuclearStarburstCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253QuantumVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253SupernovaRateCalculator': ('CondensedPhysics', 'compute'),
+    'NGC253SuperwindCalculator': ('CondensedPhysics', 'compute'),
+    'NGC2841Model': ('CondensedPhysics', 'compute'),
+    'NGC2841QuietSpiralUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3372EtaCarinaeNebulaUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3372Model': ('CondensedPhysics', 'compute'),
+    'NGC346CoreEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346DarkMatterCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346DynamicVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346EnvelopeForceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346FluidTermCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346HubbleExpansionCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346MassSFRCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346QuantumCouplingCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346QuantumWaveCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346StarFormationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346SuperconductorCorrectionCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346Ug1DipoleCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346Ug2SuperconductorCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346Ug3MagneticStringsCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346Ug3StarFormationTempVradCalc': ('CondensedPhysics4', 'compute'),
+    'NGC346Ug4ReactionCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346UiInertialCalculator': ('CondensedPhysics', 'compute'),
+    'NGC346UmMagneticCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3507SpiralThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3511SpiralCraterThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3596GasSpiralThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3603BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603CavityPressureCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603CleanUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3603CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603ElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603ExtremeStarClusterUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC3603FluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603FullMUGECavityPressureCalculator': ('CondensedPhysics3', 'compute'),
+    'NGC3603OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603StarCluster2UQFF': ('CondensedPhysics4', 'compute'),
+    'NGC3603StarClusterModel': ('CondensedPhysics', 'compute'),
+    'NGC3603StarClusterPrimaryUQFF': ('CondensedPhysics4', 'compute'),
+    'NGC3603StellarPressureModulationCalculator': ('CondensedPhysics3', 'compute'),
+    'NGC3603StellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'NGC3603UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4676MiceGalaxiesDualMergerCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC4676Model': ('CondensedPhysics', 'compute'),
+    'NGC4826BlackEyeGalaxyThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'NGC4945AGNCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945BarStructureCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945DarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945MagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945MegamaserCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945MolecularDiskCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945NuclearStarburstCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945QuantumVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945SupernovaRateCalculator': ('CondensedPhysics', 'compute'),
+    'NGC4945XRayBinaryCalculator': ('CondensedPhysics', 'compute'),
+    'NGC5335SpiralThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC5866EdgeOnLenticularUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC6217BarredSpiralUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC6302AetherResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302BipolarOutflowCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC6302CentralStarRadiationCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302CosmicExpansionResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302DPMResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302DarkMatterPNCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302FluidResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302IonizedEjectaFluidCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302LorentzEjectaCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302OscillatoryResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302PlanetaryNebulaResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302QuantumIntegralPNCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302QuantumWaveResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302ReactiveResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302ResonanceUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'NGC6302StellarWindShockCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302SuperconductorFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302THzResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6302UQFFBipolarPNCalculator': ('CondensedPhysics2', 'compute'),
+    'NGC6302VacuumDifferentialCalculator': ('CondensedPhysics', 'compute'),
+    'NGC6307NGC7027PNPairThreeUQFF': ('CondensedPhysics4', 'compute'),
+    'NGC685BarredSpiralThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC7049LenticularUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NGC7635BubbleNebula': ('CondensedPhysics4', 'compute'),
+    'NOMADMonophotonNeutrinoVacuumCouplingCalculator': ('CondensedPhysics4', 'compute'),
+    'NSHypergraphDiscreteRegularityCalculator': ('CondensedPhysics2', 'compute'),
+    'NSPhononSpindownCorrectionCalc': ('CondensedPhysics4', 'compute'),
+    'NavierStokesPlasmaFlowCalculator': ('CondensedPhysics2', 'compute'),
+    'NavierStokesQuasarJetCalculator': ('CondensedPhysics', 'compute'),
+    'NavierStokesRelativisticJetCalculator': ('CondensedPhysics2', 'compute'),
+    'NavierStokesStableFluidUQFFQuasarJetCalculator': ('CondensedPhysics4', 'compute'),
+    'NavierStokesUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'NavierStokesUQFFEncompassmentCalculator': ('CondensedPhysics4', 'compute'),
+    'NavierStokesUQFFRegularizationCalculator': ('CondensedPhysics2', 'compute'),
+    'NebulaObservationComparisonUQFFCalc': ('CondensedPhysics4', 'compute'),
+    'NebularBlueshiftVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'NebularBuoyancyRatioCalculator': ('CondensedPhysics', 'compute'),
+    'NebularDNAEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'NebularGeometricStarAngleCalculator': ('CondensedPhysics', 'compute'),
+    'NebularHiggsMassCalculator': ('CondensedPhysics', 'compute'),
+    'NebularLENREFieldCalculator': ('CondensedPhysics', 'compute'),
+    'NebularNeutrinoProtoCalculator': ('CondensedPhysics', 'compute'),
+    'NebularNonLocalQuantumCalculator': ('CondensedPhysics', 'compute'),
+    'NebularUQFFDrawing32LENRHiggsCalculator': ('CondensedPhysics4', 'compute'),
+    'NebularUg3StarFormationCalculator': ('CondensedPhysics', 'compute'),
+    'NebularUniversalDecayCalculator': ('CondensedPhysics', 'compute'),
+    'NegativeEtBuoyancyErosionMasterCalc': ('CondensedPhysics4', 'compute'),
+    'NegativeMassTrappingModel': ('CondensedPhysics', 'compute'),
+    'NegativeTimeCalculator': ('CondensedPhysics', 'compute'),
+    'NegativeTimeDilationSpookyDistanceCalculator': ('CondensedPhysics4', 'compute'),
+    'NegativeTimeFrameSeriesCalculator': ('CondensedPhysics2', 'compute'),
+    'NegativeTimeModel': ('CondensedPhysics', 'compute'),
+    'NegativeTimeOperatorCalculator': ('CondensedPhysics', 'compute'),
+    'NegativeTimeOperatorExpCalculator': ('CondensedPhysics2', 'compute'),
+    'NegativeTimeOrb61Calculator': ('CondensedPhysics2', 'compute'),
+    'NegativeTimeParameterCalculator': ('CondensedPhysics2', 'compute'),
+    'NegativeTimeUPCalculator': ('CondensedPhysics2', 'compute'),
+    'NetEnergyEplusEminusEvolutionCalc': ('CondensedPhysics4', 'compute'),
+    'NeuralSymbolicEvalCalculator': ('CondensedPhysics', 'compute'),
+    'NeuralSymbolicEvalS8Calculator': ('CondensedPhysics2', 'compute'),
+    'NeuromorphicAcceleratorCalculator': ('CondensedPhysics', 'compute'),
+    'NeuromorphicAcceleratorS8Calculator': ('CondensedPhysics2', 'compute'),
+    'NeutrinoCooledDiskDynamo20msCycleCalculator': ('CondensedPhysics4', 'compute'),
+    'NeutrinoEnergyUQFFVacuumRatioCalc': ('CondensedPhysics4', 'compute'),
+    'NeutrinoPolarizabilityCalculator': ('CondensedPhysics2', 'compute'),
+    'NeutrinoPushCalculator': ('CondensedPhysics', 'compute'),
+    'NeutrinoSEDFluxCalculator': ('CondensedPhysics2', 'compute'),
+    'NeutronCalibrationConstantCalculator': ('CondensedPhysics2', 'compute'),
+    'NeutronCaptureRateCalculator': ('CondensedPhysics2', 'compute'),
+    'NeutronProductionRateCalculator': ('CondensedPhysics', 'compute'),
+    'NeutronProductionRateOrb49Calculator': ('CondensedPhysics2', 'compute'),
+    'NeutronStarCRPIceCubeFluxVerificationCalculator': ('CondensedPhysics3', 'compute'),
+    'NeutronStarEOSUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'NeutronStarMergerUbOutflowF_UCalculator': ('CondensedPhysics3', 'compute'),
+    'NewSystemsBatchF_rel_im_UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NewtonRaphsonCalculator': ('CondensedPhysics2', 'compute'),
+    'NewtonSecondLawCalculator': ('CondensedPhysics2', 'compute'),
+    'NineAstroSystemsThreeUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'NineSystemSepAstroParameterCatalogueCalculator': ('CondensedPhysics3', 'compute'),
+    'NinetyNineSystemAggregateCalc': ('CondensedPhysics4', 'compute'),
+    'NinetyNineSystemMasterCalc': ('CondensedPhysics4', 'compute'),
+    'NoMassEnergyOnlyDynamicsCalculator': ('CondensedPhysics2', 'compute'),
+    'NoThermalExpansionCalculator': ('CondensedPhysics2', 'compute'),
+    'NonCommutativeGeometryCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLinearTimeEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalEmissionCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalJumpInferenceCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalJumpProbabilityCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalNetworkEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalPlasmoidFlowCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalityDecayCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalityNoiseCalculator': ('CondensedPhysics2', 'compute'),
+    'NonLocalityPeakCalculator': ('CondensedPhysics2', 'compute'),
+    'NonNewtonianUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'NorthNeutralStateCalculator': ('CondensedPhysics2', 'compute'),
+    'NuclearBindingCalculator': ('CondensedPhysics', 'compute'),
+    'NuclearBindingLadderValidator': ('CondensedPhysics2', 'compute'),
+    'NuclearPolynomialFitCalculator': ('CondensedPhysics2', 'compute'),
+    'NuclearResonanceZ118Calculator': ('CondensedPhysics', 'compute'),
+    'NuclearUmJWSTSynthesisCalculator': ('CondensedPhysics2', 'compute'),
+    'NumericalMethods': ('CondensedPhysics', 'compute'),
+    'OTOCScamblingCalculator': ('CondensedPhysics2', 'compute'),
+    'OilMediumViscosityCalculator': ('CondensedPhysics', 'compute'),
+    'Olbers26DPolynomialResolutionCalculator': ('CondensedPhysics', 'compute'),
+    'OlbersGapAnalysisCalculator': ('CondensedPhysics', 'compute'),
+    'OlbersParadoxFluxCalculator': ('CondensedPhysics', 'compute'),
+    'OlbersUQFFResolutionCalculator': ('CondensedPhysics', 'compute'),
+    'OmegaSTTerm': ('CondensedPhysics', 'compute'),
+    'OmegaSTTimeCalculator': ('CondensedPhysics', 'compute'),
+    'OortCloudBoundaryModel': ('CondensedPhysics', 'compute'),
+    'OperationalTransformCalculator': ('CondensedPhysics', 'compute'),
+    'OperationalTransformS8Calculator': ('CondensedPhysics2', 'compute'),
+    'OpticalNonDistortionCalculator': ('CondensedPhysics2', 'compute'),
+    'OpticalStressReductionCalculator': ('CondensedPhysics2', 'compute'),
+    'Orb10RefinedFUCalculator': ('CondensedPhysics', 'compute'),
+    'Orb11RefinedFUCalculator': ('CondensedPhysics', 'compute'),
+    'Orb12RefinedFUCalculator': ('CondensedPhysics2', 'compute'),
+    'Orb13EnergyProgressionCalculator': ('CondensedPhysics2', 'compute'),
+    'Orb13RefinedFUCalculator': ('CondensedPhysics2', 'compute'),
+    'Orb14EnergyEfficiencyCalculator': ('CondensedPhysics2', 'compute'),
+    'Orb14RefinedFUCalculator': ('CondensedPhysics2', 'compute'),
+    'Orb7RefinedFUCalculator': ('CondensedPhysics', 'compute'),
+    'Orb8RefinedFUCalculator': ('CondensedPhysics', 'compute'),
+    'Orb9RefinedFUCalculator': ('CondensedPhysics', 'compute'),
+    'OrbitalAngularMomentumCalculator': ('CondensedPhysics2', 'compute'),
+    'OrbitalPositionInterpolationCalculator': ('CondensedPhysics2', 'compute'),
+    'OrionCompactHIISFRBindingCrossoverCalculator': ('CondensedPhysics3', 'compute'),
+    'OrionCosmologicalLambdaCalculator': ('CondensedPhysics', 'compute'),
+    'OrionDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'OrionFluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'OrionLorentzForceCalculator': ('CondensedPhysics', 'compute'),
+    'OrionNebulaHAlphaUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'OrionNebulaMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'OrionQuantumIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'OrionResonantOscillatoryCalculator': ('CondensedPhysics', 'compute'),
+    'OrionStarFormationMassCalculator': ('CondensedPhysics', 'compute'),
+    'OrionStellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'OrionTrapeziumOBUVRadiationChampagneFlowCalculator': ('CondensedPhysics3', 'compute'),
+    'OrionTrapeziumRadiationPressureCalculator': ('CondensedPhysics', 'compute'),
+    'OrionTrapeziumWindRamPressureDominanceCalculator': ('CondensedPhysics3', 'compute'),
+    'OrionUQFFHIIRegionCalculator': ('CondensedPhysics2', 'compute'),
+    'OrionUgSumCalculator': ('CondensedPhysics', 'compute'),
+    'OscilloscopeEnergyDensityCalculator': ('CondensedPhysics4', 'compute'),
+    'OscilloscopeSignalBundleCalculator': ('CondensedPhysics', 'compute'),
+    'OutburstDecayCalculator': ('CondensedPhysics', 'compute'),
+    'OutflowPressureCalculator': ('CondensedPhysics2', 'compute'),
+    'OutflowRamPressureCalculator': ('CondensedPhysics2', 'compute'),
+    'OxyhydrogenImplosionCalculator': ('CondensedPhysics2', 'compute'),
+    'PDGNuclearPolynomialFitVerificationCalculator': ('CondensedPhysics3', 'compute'),
+    'PIInfinityDecoderCalculator_84A767D3': ('CondensedPhysics2', 'compute'),
+    'PIMathEncryptionCalculator': ('CondensedPhysics', 'compute'),
+    'PI_Infinity_Decoder': ('CondensedPhysics', 'compute'),
+    'PLCKClusterG287MergerRelicTriadicCalculator': ('CondensedPhysics4', 'compute'),
+    'PSRJ0030NeutronStarBuoyancyCalculator': ('CondensedPhysics4', 'compute'),
+    'PSRJ0030NeutronStarFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'PSRJ0437SacredOrbitCalculator': ('CondensedPhysics2', 'compute'),
+    'PSZ2G181MergerRelicTriadicFUBiCalculator': ('CondensedPhysics4', 'compute'),
+    'PSZ2G181Stroe2025XrayMachUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'PWMElectrolysisEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'ParaffinGasBubbleBalancerCalculator': ('CondensedPhysics2', 'compute'),
+    'ParaffinWaxCapCalculator': ('CondensedPhysics', 'compute'),
+    'ParallelComputation': ('CondensedPhysics', 'compute'),
+    'ParametricMotionCalculator': ('CondensedPhysics2', 'compute'),
+    'PathIntegrals': ('CondensedPhysics', 'compute'),
+    'PenroseProcessCalculator': ('CondensedPhysics2', 'compute'),
+    'PeriodicTableResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'PerlinNoiseCalculator': ('CondensedPhysics2', 'compute'),
+    'Phase2Calculator': ('CondensedPhysics', 'compute'),
+    'PhononErgosphereSuperradianceCalc': ('CondensedPhysics4', 'compute'),
+    'PhononJetLaunchingM87SgrACalc': ('CondensedPhysics4', 'compute'),
+    'PhononLagrangianPhiS26DerivationCalc': ('CondensedPhysics4', 'compute'),
+    'PhononMediatedQubitGateFidelityCalculator': ('CondensedPhysics', 'compute'),
+    'PhononModifiedChristoffelGeodesicCalc': ('CondensedPhysics4', 'compute'),
+    'PhononModulatedEnergyEnetPhononCalc': ('CondensedPhysics4', 'compute'),
+    'PhononModulatedHawkingTemperatureCalc': ('CondensedPhysics4', 'compute'),
+    'PhononModulatedHolonomySCmCalculator': ('CondensedPhysics', 'compute'),
+    'PhononModulatedHubbleParameterCalculator': ('CondensedPhysics', 'compute'),
+    'PhononModulationFactor125THzGaussianCalc': ('CondensedPhysics4', 'compute'),
+    'PhononNSSpinDownMagneticDipoleCalc': ('CondensedPhysics4', 'compute'),
+    'PhononQPOAccretionDiskCalc': ('CondensedPhysics4', 'compute'),
+    'PhotoTwentyOneAnalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'PhotoevaporationErosionCalculator': ('CondensedPhysics', 'compute'),
+    'PhotonEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'PhotonLatticeProjectionCalculator': ('CondensedPhysics2', 'compute'),
+    'PhotonSphereCalculator': ('CondensedPhysics2', 'compute'),
+    'PiCycleEncoderCalculator': ('CondensedPhysics2', 'compute'),
+    'PiCycleModulationCalculator': ('CondensedPhysics2', 'compute'),
+    'PiCyclesNegativeTimeCosineTemporalReversalCalculator': ('CondensedPhysics4', 'compute'),
+    'PiDigitPatternCalculator': ('CondensedPhysics2', 'compute'),
+    'PiEncodingCalculator': ('CondensedPhysics2', 'compute'),
+    'PiMeanChaosGradientCalculator': ('CondensedPhysics', 'compute'),
+    'PiPhiConvergenceSeriesCalculator': ('CondensedPhysics4', 'compute'),
+    'PiSeriesAccelerationCalculator': ('CondensedPhysics2', 'compute'),
+    'PiSolfeggioHarmonicsCalculator': ('CondensedPhysics2', 'compute'),
+    'PillarErosionCalculator': ('CondensedPhysics', 'compute'),
+    'PillarGravityCalculator': ('CondensedPhysics', 'compute'),
+    'PillarMassGrowthCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsCreationCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsErosionCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsErosionTimescaleCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsFormationTimescaleCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsGasVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsMagneticFieldCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsMassGrowthCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsOfCreationErosionMUGECalculator': ('CondensedPhysics3', 'compute'),
+    'PillarsOfCreationM16ErosionCalculator': ('CondensedPhysics4', 'compute'),
+    'PillarsOfCreationM16UQFF': ('CondensedPhysics4', 'compute'),
+    'PillarsOfCreationM16v2UQFF': ('CondensedPhysics4', 'compute'),
+    'PillarsOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsStellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'PillarsUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'PlanckBlackbodyValidatorCalculator': ('CondensedPhysics2', 'compute'),
+    'PlanetaryCoreHamiltonianCalculator': ('CondensedPhysics2', 'compute'),
+    'PlanetaryCoreUg3PenetrationScalingCalculator': ('CondensedPhysics3', 'compute'),
+    'PlanetaryCoreWindMaintenanceCalculator': ('CondensedPhysics', 'compute'),
+    'PlanetaryRingDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmaConvectionCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmaConvectionVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmaInstabilityUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmaIntensityEnergyFlowCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmaOrbEmergenceThresholdCalculator': ('CondensedPhysics4', 'compute'),
+    'PlasmaOrbMassCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmaPIOperatorCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmaRefractiveIndexCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmaShieldCaptureModel': ('CondensedPhysics', 'compute'),
+    'PlasmaShieldingDefenseCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidConcentrationShiftCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmoidDensityEvolutionCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidDynamicsCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidDynamicsValidatorCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidFrameAnalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidGravitationalPotentialCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidIntelligenceMetricsCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidMassEstimateCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidPathAnchoringCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmoidSettlingDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmoidShapeShiftingCalculator': ('CondensedPhysics', 'compute'),
+    'PlasmoidSpeciesClassifierCalculator': ('CondensedPhysics2', 'compute'),
+    'PlasmoidSpinRateCalculator': ('CondensedPhysics2', 'compute'),
+    'PolarityGenerationsCalculator': ('CondensedPhysics2', 'compute'),
+    'Polynomial26RootCalculator': ('CondensedPhysics2', 'compute'),
+    'PolyolCombustionCalculator': ('CondensedPhysics2', 'compute'),
+    'PolyolMolecularFormulaCalculator': ('CondensedPhysics2', 'compute'),
+    'PonderomotiveForceCalculator': ('CondensedPhysics2', 'compute'),
+    'PositiveEtBuoyancyExpansionMasterCalc': ('CondensedPhysics4', 'compute'),
+    'PotentialEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'PowerIntegrationCalculator': ('CondensedPhysics2', 'compute'),
+    'PreFertilizationEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'PrecessionalResonanceCalculator': ('CondensedPhysics2', 'compute'),
+    'PrimordialGWCalculator': ('CondensedPhysics', 'compute'),
+    'PrimordialHydrogenCalculator': ('CondensedPhysics2', 'compute'),
+    'PrimordialTimingFunctionCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'ProductionKernelFUBiCompleteCalc': ('CondensedPhysics4', 'compute'),
+    'ProductionScalingV10BenchmarkCalc': ('CondensedPhysics4', 'compute'),
+    'ProductionScalingV12BenchmarkCalc': ('CondensedPhysics4', 'compute'),
+    'ProductionScalingV23BenchmarkCalculator': ('CondensedPhysics', 'compute'),
+    'ProductionScalingV24VectorizedCalculator': ('CondensedPhysics', 'compute'),
+    'ProductionScalingV25PipelineCalculator': ('CondensedPhysics', 'compute'),
+    'ProductionScalingV7BenchmarkCalc': ('CondensedPhysics4', 'compute'),
+    'ProductionScalingV8BenchmarkCalc': ('CondensedPhysics4', 'compute'),
+    'ProductionScalingV9BenchmarkCalc': ('CondensedPhysics4', 'compute'),
+    'ProtoHydrogen26ShellCalculator': ('CondensedPhysics2', 'compute'),
+    'ProtoIronProtoSiliconNuclearIdentityCalc': ('CondensedPhysics4', 'compute'),
+    'ProtoIronSiliconShellCalculator': ('CondensedPhysics2', 'compute'),
+    'ProtoNucleusShellModel': ('CondensedPhysics', 'compute'),
+    'ProtonSaturationLevelsModel': ('CondensedPhysics', 'compute'),
+    'PseudoMonopole26StateVacuumDensityCalc': ('CondensedPhysics4', 'compute'),
+    'PseudoMonopoleFieldCalculator': ('CondensedPhysics', 'compute'),
+    'PseudoMonopoleGyroCalculator': ('CondensedPhysics2', 'compute'),
+    'PseudoMonopoleModel': ('CondensedPhysics', 'compute'),
+    'PseudoMonopoleStateCalculator': ('CondensedPhysics', 'compute'),
+    'PseudoMonopoleStateOrb49Calculator': ('CondensedPhysics2', 'compute'),
+    'PsiTotalWaveFunctionCalculator': ('CondensedPhysics2', 'compute'),
+    'PulsarTimingArrayUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'PulsarWindNebulaCalculator': ('CondensedPhysics', 'compute'),
+    'PvsNPUQFFComplexityCalculator': ('CondensedPhysics2', 'compute'),
+    'PymanderSphereOrderFromChaosCalculator': ('CondensedPhysics4', 'compute'),
+    'PythagoreanTheoremCalculator': ('CondensedPhysics2', 'compute'),
+    'QAOAOptimizationCalculator': ('CondensedPhysics', 'compute'),
+    'QAOAOptimizationS8Calculator': ('CondensedPhysics2', 'compute'),
+    'QCDVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'QCalcGeomCABIReferenceCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'QCalcGeomVDSDVPBSHCalculator': ('CondensedPhysics2', 'compute'),
+    'QCalcGeomVectorizedPipelineCalc': ('CondensedPhysics4', 'compute'),
+    'QGPMultiplicityBuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'QGPVacuumDensityCalc': ('CondensedPhysics4', 'compute'),
+    'QScopeFrequencyResonanceUQFFCalculator': ('CondensedPhysics3', 'compute'),
+    'QWave47NonGaussianDistributionCalculator': ('CondensedPhysics3', 'compute'),
+    'QWave47StatisticsCalculator': ('CondensedPhysics2', 'compute'),
+    'QWave81PhaseSeparationValidationCalculator': ('CondensedPhysics3', 'compute'),
+    'QWaveResonanceModel': ('CondensedPhysics', 'compute'),
+    'QWaveStatisticsCalculator': ('CondensedPhysics2', 'compute'),
+    'QuTiPQuantumEntanglementCalculator': ('CondensedPhysics3', 'compute'),
+    'QuTiPQuantumStateCalculator': ('CondensedPhysics2', 'compute'),
+    'QuadrantConcentrationTrackerCalculator': ('CondensedPhysics', 'compute'),
+    'QuadrantSequenceOrb15Calculator': ('CondensedPhysics2', 'compute'),
+    'QuadrantTransitionTrackerCalculator': ('CondensedPhysics', 'compute'),
+    'QuadraticFormulaCalculator': ('CondensedPhysics2', 'compute'),
+    'QuadriadicUQFFNANOGravAGNCoEvolutionCalculator': ('CondensedPhysics4', 'compute'),
+    'QualityShiftFunctionCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumAtomSimulatorCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumCalculator': ('CondensedPhysics', 'compute'),
+    'QuantumCoherenceIntegralCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumEggFrequencyNumericalSimCalculator': ('CondensedPhysics4', 'compute'),
+    'QuantumErrorCorrectionTopoCodeCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumLevel26Calculator': ('CondensedPhysics2', 'compute'),
+    'QuantumNonLocalCouplingCalculator': ('CondensedPhysics', 'compute'),
+    'QuantumOpenEnergyIntegralProtoShellACPCalculator': ('CondensedPhysics4', 'compute'),
+    'QuantumPIMathCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumPlasmaOrbUSorbCalculator': ('CondensedPhysics4', 'compute'),
+    'QuantumRippleULFCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumShiftMeasurementCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumSignatureSuppressionCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumState26GravityCalculator': ('CondensedPhysics', 'compute'),
+    'QuantumState26PolynomialCalculator': ('CondensedPhysics', 'compute'),
+    'QuantumStatePhaseCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumToMassGradientCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumVacuumEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'QuantumVariableSets5to9Calculator': ('CondensedPhysics4', 'compute'),
+    'QuantumWaveFunctionCalculator': ('CondensedPhysics', 'compute'),
+    'QuasarBlazerLuminosityEreactVerificationCalculator': ('CondensedPhysics3', 'compute'),
+    'QuasarEddingtonExcessJetVelocityCalculator': ('CondensedPhysics3', 'compute'),
+    'QuasarJetAsymmetryCosRatioCalculator': ('CondensedPhysics3', 'compute'),
+    'QuasarJetNavierStokesCalculator': ('CondensedPhysics2', 'compute'),
+    'QuasarJetPhononModulationCalc': ('CondensedPhysics4', 'compute'),
+    'RAquariiSymbioticBinaryFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'RESTFUBiEndpointCalc': ('CondensedPhysics4', 'compute'),
+    'RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator': ('CondensedPhysics4', 'compute'),
+    'RProcessAbundanceCalculator': ('CondensedPhysics2', 'compute'),
+    'RadiationErosionCalculator': ('CondensedPhysics2', 'compute'),
+    'RadiationPressureCalculator': ('CondensedPhysics', 'compute'),
+    'RadioactiveDecayUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'RamanujanAccelerationCalc': ('CondensedPhysics4', 'compute'),
+    'RamanujanPolynomialsQ26Calculator': ('CondensedPhysics3', 'compute'),
+    'RandallSundrumExtraDimensionCalculator': ('CondensedPhysics', 'compute'),
+    'ReactivityEnergyDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'ReactorEfficiencyCalculator': ('CondensedPhysics', 'compute'),
+    'ReactorEfficiencyOrb61Calculator': ('CondensedPhysics2', 'compute'),
+    'ReactorEfficiencyQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'ReactorEfficiencyUQFFCanonicalCalculator': ('CondensedPhysics2', 'compute'),
+    'ReactorEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'ReactorEnergyS6Calculator': ('CondensedPhysics2', 'compute'),
+    'ReactorRadiusCalculator': ('CondensedPhysics2', 'compute'),
+    'ReactorRefinedFUCalculator': ('CondensedPhysics', 'compute'),
+    'ReactorThermalDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfBaselSeriesCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfBuoyancySeriesCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfCoreAnalogCalculator': ('CondensedPhysics2', 'compute'),
+    'RedDwarfLENREFieldCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfLENRPiSeriesHiggsCalculator': ('CondensedPhysics4', 'compute'),
+    'RedDwarfNeutronRateCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfPlasmaAccumulatorCalculator': ('CondensedPhysics2', 'compute'),
+    'RedDwarfPseudoMonopoleDeltaNCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorAetherCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorJetDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorMasterCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorOrbitalStabilityCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorPlasmoidCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorUbiCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorUg1Calculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorUg2Calculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorUg3Calculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfReactorUmCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfTransmutationQCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfUHCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfUg3Calculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfUmCalculator': ('CondensedPhysics', 'compute'),
+    'RedDwarfWmagCalculator': ('CondensedPhysics', 'compute'),
+    'RedMercurySuperconductorCalculator': ('CondensedPhysics2', 'compute'),
+    'RedSpiderNebulaModel': ('CondensedPhysics', 'compute'),
+    'RedSpiderNebulaNG6537UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'RedshiftDependentHubbleCalculator': ('CondensedPhysics2', 'compute'),
+    'ReferenceSystem': ('CondensedPhysics', 'compute'),
+    'ReferenceSystemLibrary': ('CondensedPhysics', 'compute'),
+    'RelativisticJetVelocityCalculator': ('CondensedPhysics2', 'compute'),
+    'ResonanceAether24Calculator': ('CondensedPhysics', 'compute'),
+    'ResonanceAetherCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceAetherCompCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceDPMCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceExpansion24Calculator': ('CondensedPhysics', 'compute'),
+    'ResonanceExpansionCompCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceFluid24Calculator': ('CondensedPhysics', 'compute'),
+    'ResonanceFluidCompCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceMUGE14TermCompleteWormholeSumCalculator': ('CondensedPhysics4', 'compute'),
+    'ResonanceMUGEDetailedCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceModeDPMFoundationCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceModeHardcodedSolutionCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceOscillatory24Calculator': ('CondensedPhysics', 'compute'),
+    'ResonanceOscillatoryCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceOscillatoryCompCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceQuantum24Calculator': ('CondensedPhysics', 'compute'),
+    'ResonanceQuantumCompCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceSCCooperDPMFreqSynthesisCalculator': ('CondensedPhysics3', 'compute'),
+    'ResonanceSCCosmicAgeStandingWaveCalculator': ('CondensedPhysics3', 'compute'),
+    'ResonanceSCDPMTHzCascadeCalculator': ('CondensedPhysics3', 'compute'),
+    'ResonanceSCFreqCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceSCUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'ResonanceSuperconductive': ('CondensedPhysics', 'compute'),
+    'ResonanceTHzCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceUg4i24Calculator': ('CondensedPhysics', 'compute'),
+    'ResonanceUg4iCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceUg4iCompCalculator': ('CondensedPhysics', 'compute'),
+    'ResonanceVacDiffTHzCrossoverRadiusCalculator': ('CondensedPhysics3', 'compute'),
+    'ResummationEffectiveCouplingCalculator': ('CondensedPhysics2', 'compute'),
+    'RetrocausalModel': ('CondensedPhysics', 'compute'),
+    'ReynoldsNumberTurbulenceCalculator': ('CondensedPhysics2', 'compute'),
+    'RiemannHypothesisCosmicCorrelationCalculator': ('CondensedPhysics2', 'compute'),
+    'RiemannPICyclePIMathCalculator': ('CondensedPhysics', 'compute'),
+    'RingsBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'RingsCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'RingsDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'RingsEinsteinRadiusCalculator': ('CondensedPhysics', 'compute'),
+    'RingsElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'RingsFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'RingsGasVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'RingsLensingAmplificationCalculator': ('CondensedPhysics', 'compute'),
+    'RingsOfRelativityEinsteinLensingMUGECalculator': ('CondensedPhysics3', 'compute'),
+    'RingsOfRelativityEinsteinRingCalculator': ('CondensedPhysics4', 'compute'),
+    'RingsOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'RingsQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'RingsRedshiftHubbleCalculator': ('CondensedPhysics', 'compute'),
+    'RingsRelativityCalculator': ('CondensedPhysics', 'compute'),
+    'RingsStellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'RingsUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'RocketFuelTuningCalculator': ('CondensedPhysics2', 'compute'),
+    'RosetteNebulaNGC2237UQFFCalc': ('CondensedPhysics4', 'compute'),
+    'RotorMolecularCrossSectionCalculator': ('CondensedPhysics2', 'compute'),
+    'RyuTakayangiEntropyCalculator': ('CondensedPhysics2', 'compute'),
+    'SCSConstraints21cmDarkAgesCalculator': ('CondensedPhysics4', 'compute'),
+    'SCSSpectralSignaturesRadioCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmActivationFunctionCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmBetaDecayCalculator': ('CondensedPhysics', 'compute'),
+    'SCmBetaDecayUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmCMBPhononPowerSpectrumCalculator': ('CondensedPhysics', 'compute'),
+    'SCmCMBTemperatureFluctuationCalculator': ('CondensedPhysics', 'compute'),
+    'SCmCosmicRayCalculator': ('CondensedPhysics', 'compute'),
+    'SCmCosmicRayUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmDarkEnergyDensityGammaCoupledCalculator': ('CondensedPhysics', 'compute'),
+    'SCmDarkMatterCalculator': ('CondensedPhysics', 'compute'),
+    'SCmDarkMatterUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmDensityPlanetaryScalingLawCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmDerivativeHierarchyCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmDipoleAmplifiedCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmEggDispersalWaveCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmEpochStateCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmEtLagrangianVariationCalc': ('CondensedPhysics4', 'compute'),
+    'SCmFirstAxiomValidatorCalc': ('CondensedPhysics4', 'compute'),
+    'SCmGaussianActivationBFieldSuppressionCalc': ('CondensedPhysics4', 'compute'),
+    'SCmGravitationalWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SCmGravitationalWaveUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmGravityPrecedenceProofCalculator': ('CondensedPhysics', 'compute'),
+    'SCmHiddenElementUndetectableQsQuasarIgnitionCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmHolographicEntropyCalculator': ('CondensedPhysics', 'compute'),
+    'SCmHolographicEntropyUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmICMPhononDensityCalculator': ('CondensedPhysics', 'compute'),
+    'SCmKozimaPhononResonanceCouplingCalc': ('CondensedPhysics4', 'compute'),
+    'SCmLQGAreaOperatorDerivationCalculator': ('CondensedPhysics', 'compute'),
+    'SCmMizunoLENRTransmutationCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmMuonDecayCalculator': ('CondensedPhysics', 'compute'),
+    'SCmMuonDecayUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmNetEnergyBuoyancyRegimeCalc': ('CondensedPhysics4', 'compute'),
+    'SCmNeutrinoOscParamCalculator': ('CondensedPhysics', 'compute'),
+    'SCmNeutrinoOscParamUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmNeutrinoOscSimulationCalculator': ('CondensedPhysics', 'compute'),
+    'SCmNeutrinoOscSimulationUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmNeutrinoOscillationCalculator': ('CondensedPhysics', 'compute'),
+    'SCmNeutrinoOscillationUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmPhononInflationaryScaleFactorCalculator': ('CondensedPhysics', 'compute'),
+    'SCmPhononLinewidthEnetEvolutionCalc': ('CondensedPhysics4', 'compute'),
+    'SCmPhononModulatedEnergyPhiCalc': ('CondensedPhysics4', 'compute'),
+    'SCmPhononResonanceAccelerationCalc': ('CondensedPhysics4', 'compute'),
+    'SCmPonsFleischmannDerivationCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmPrimeMasslessFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmPrimordialSplit26DLadderCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmQubitT2CoherenceFUBiRatioCalculator': ('CondensedPhysics', 'compute'),
+    'SCmReactorEfficiencyCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmReactorEfficiencyDecayCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmRiemannHypothesisClosureCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmSUSYBreakingCalculator': ('CondensedPhysics', 'compute'),
+    'SCmSUSYBreakingUQFFCalculator': ('CondensedPhysics2', 'compute'),
+    'SCmStringTheory26DActionCalculator': ('CondensedPhysics', 'compute'),
+    'SCmVacuumDensityEvolutionCalc': ('CondensedPhysics4', 'compute'),
+    'SCmVacuumManifoldHubCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmVacuumManifoldPrimordialCalculator': ('CondensedPhysics4', 'compute'),
+    'SCmVelocityBoundComparisonCalculator': ('CondensedPhysics', 'compute'),
+    'SCmVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'SGR17452900SCmLxFreqFormCalculator': ('CondensedPhysics3', 'compute'),
+    'SGR1745BHProximityMagEnergyCalculator': ('CondensedPhysics3', 'compute'),
+    'SGR1745BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745BurstEnergyCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745CompressedMUGESpectralTermDecompositionCalculator': ('CondensedPhysics4', 'compute'),
+    'SGR1745CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745CrustFluidCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqAetherCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqAetherResCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqDPMCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqExpCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqFluidCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqOscCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqQuantumCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqSuperCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqTHzCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqUg4iCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745FreqVacDiffCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745MagnetarSpinEMCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745SuperconductivityCalculator': ('CondensedPhysics', 'compute'),
+    'SGR1745UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'SIDimensionalAnalysisCalculator': ('CondensedPhysics2', 'compute'),
+    'SIMDVacuumDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'SMAtomicQuantumGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'SMBHBinaryCoalescenceCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHBinaryCondensedCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHBinaryMergerCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHBinaryMergerPhononCalc': ('CondensedPhysics4', 'compute'),
+    'SMBHBulgeGravityModel': ('CondensedPhysics', 'compute'),
+    'SMBHCosmicTimeModel': ('CondensedPhysics', 'compute'),
+    'SMBHDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHFiveFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHGravityCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHGrowthRateCalculator': ('CondensedPhysics2', 'compute'),
+    'SMBHMassSigmaDispersionRelationUQFFAnchorCalculator': ('CondensedPhysics4', 'compute'),
+    'SMBHOmegaSGalacticModel': ('CondensedPhysics', 'compute'),
+    'SMBHPseudoMonopoleCalculator': ('CondensedPhysics', 'compute'),
+    'SMBHSpinEvolutionModel': ('CondensedPhysics', 'compute'),
+    'SMBHUg1Model': ('CondensedPhysics', 'compute'),
+    'SMBHUg2Model': ('CondensedPhysics', 'compute'),
+    'SMBHUg3Model': ('CondensedPhysics', 'compute'),
+    'SMBHUg4Model': ('CondensedPhysics', 'compute'),
+    'SMMagSurfaceConductionFragmentAssemblyCalc': ('CondensedPhysics4', 'compute'),
+    'SN1006TypeIaSNRFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'SNIaHubbleTensionImprintCalculator': ('CondensedPhysics3', 'compute'),
+    'SNRNebulaVelaTychoHelixSNR1181NGC6543Calc': ('CondensedPhysics4', 'compute'),
+    'SPTClJ2215CoolCoreStarburstCalculator': ('CondensedPhysics3', 'compute'),
+    'SSqExponentScalingCalculator': ('CondensedPhysics2', 'compute'),
+    'SSqFirstPrinciplesCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'SSqQuantumStateCalculator': ('CondensedPhysics2', 'compute'),
+    'SUSYBreakingSoftTermCalculator': ('CondensedPhysics2', 'compute'),
+    'SUVATEquationCalculator': ('CondensedPhysics2', 'compute'),
+    'SacredTime': ('CondensedPhysics', 'compute'),
+    'SacredTimeConstantsCalculator': ('CondensedPhysics', 'compute'),
+    'SacredTimePhaseCalculator_84A767D3': ('CondensedPhysics2', 'compute'),
+    'SagAStarFullResonanceTermDecompositionCalculator': ('CondensedPhysics4', 'compute'),
+    'Saturn26DUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'SaturnAtmosphericWindCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnAtmosphericWindKineticPressureCalculator': ('CondensedPhysics3', 'compute'),
+    'SaturnCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnDualGravityRingTensionCalculator': ('CondensedPhysics3', 'compute'),
+    'SaturnElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnModel': ('CondensedPhysics', 'compute'),
+    'SaturnOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnRingSystemUQFF': ('CondensedPhysics4', 'compute'),
+    'SaturnRingTidalCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnRingTidalGravityResonanceCalculator': ('CondensedPhysics3', 'compute'),
+    'SaturnRingTidalMUGECalculator': ('CondensedPhysics4', 'compute'),
+    'SaturnSelfGravityCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnSolarTidalHubbleExpansionCalculator': ('CondensedPhysics3', 'compute'),
+    'SaturnSolarTidalPerturbationCalculator': ('CondensedPhysics3', 'compute'),
+    'SaturnSunGravityCalculator': ('CondensedPhysics', 'compute'),
+    'SaturnUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'SaturnUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'ScaleRangeValidatorCalculator': ('CondensedPhysics2', 'compute'),
+    'SchwarzschildProtonCalculator': ('CondensedPhysics2', 'compute'),
+    'ScramblingTimeCalculator': ('CondensedPhysics2', 'compute'),
+    'SelfSimilarQuotientCalculator': ('CondensedPhysics2', 'compute'),
+    'SequenceProgressionFUCalculator': ('CondensedPhysics', 'compute'),
+    'SequentialUploadTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'Session107CfdcAd2f5HubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session108CfdcAd2f5OctConstructionFileHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session110Grok755feea7StarMagicBookPhysicsHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session111Grok755feea7ExhaustiveReanalysisHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session112GrokC020496d9ExhaustiveAuditHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session113GrokC020496d9ReAnalysisHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session114GrokC020496d9DeepPhysicsHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session115GrokShare5fa36e4eHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session116GrokShareE70525FaHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session140GrokShare0f5d4c91f2cHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session141ProplydDPMSpectraHubCalculator': ('CondensedPhysics4', 'compute'),
+    'Session142MillenniumEquationsHubCalculator': ('CondensedPhysics2', 'compute'),
+    'SgrACenterNegativeBuoyancyCalculator': ('CondensedPhysics3', 'compute'),
+    'SgrAFlareContrastPhononGammaCalc': ('CondensedPhysics4', 'compute'),
+    'SgrAFreqAetherCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqAetherResCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqDPMCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqExpCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqFluidCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqOscCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqQuantumCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqSuperCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqTHzCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqUg4iCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAFreqVacDiffCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarAccretionPrecessionCalculator': ('CondensedPhysics3', 'compute'),
+    'SgrAStarAccretionRateCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarEvolutionUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'SgrAStarGWPrecessionSquaredCalculator': ('CondensedPhysics3', 'compute'),
+    'SgrAStarGravitationalWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'SgrAStarGravityModel': ('CondensedPhysics', 'compute'),
+    'SgrAStarJWST2025FlareOmegaActDerivationCalculator': ('CondensedPhysics4', 'compute'),
+    'SgrAStarMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'SgrAStarMagneticDecayCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarMassGrowthCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarSchwarzschildRadiusCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarSpinDragUQFFCalculator': ('CondensedPhysics3', 'compute'),
+    'SgrAStarSpinEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'SgrAStarUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'ShadowTearingCalculator': ('CondensedPhysics2', 'compute'),
+    'ShapiroTimeDelayCalculator': ('CondensedPhysics2', 'compute'),
+    'ShapiroWilkQWaveNormalityCalculator': ('CondensedPhysics2', 'compute'),
+    'ShearMapChiSquaredCalculator': ('CondensedPhysics2', 'compute'),
+    'ShearMapChiSquaredOrb42Calculator': ('CondensedPhysics2', 'compute'),
+    'ShellCorrectionFenvCalculator': ('CondensedPhysics4', 'compute'),
+    'ShellExpansionErosionCalculator': ('CondensedPhysics', 'compute'),
+    'ShellFragmentOrganizationCalculator': ('CondensedPhysics2', 'compute'),
+    'ShellRadiancePrototypeEquationCalculator': ('CondensedPhysics4', 'compute'),
+    'SilverMercuryPropulsionCalculator': ('CondensedPhysics2', 'compute'),
+    'SimultaneousMultiMethodEquivalenceHubCalculator': ('CondensedPhysics4', 'compute'),
+    'SlowRollInflationCalculator': ('CondensedPhysics2', 'compute'),
+    'SolarAetherStressTensorCalculator': ('CondensedPhysics2', 'compute'),
+    'SolarBodyProplydLegacyCalculator': ('CondensedPhysics4', 'compute'),
+    'SolarCycleCoupledFUCalculator': ('CondensedPhysics2', 'compute'),
+    'SolarCycleModulatorCalculator': ('CondensedPhysics', 'compute'),
+    'SolarDomainModel': ('CondensedPhysics', 'compute'),
+    'SolarFUAssemblyCalculator': ('CondensedPhysics2', 'compute'),
+    'SolarSurfaceBuoyancyCalc': ('CondensedPhysics4', 'compute'),
+    'SolarSystemEvolvingProplydDVPCalculator': ('CondensedPhysics4', 'compute'),
+    'SolarSystemFUValidatorCalculator': ('CondensedPhysics3', 'compute'),
+    'SolarSystemUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'SolarWindBubbleVerificationCalculator': ('CondensedPhysics3', 'compute'),
+    'SolarWindFluxPartitionCalculator': ('CondensedPhysics', 'compute'),
+    'SolarWindUbiModulatorCalculator': ('CondensedPhysics2', 'compute'),
+    'SolarWindVacuumDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'SolfeggioFrequencyPiEncodingResonanceCalc': ('CondensedPhysics4', 'compute'),
+    'SombreroBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroDustFrictionCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroGalaxyDustCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroGalaxyDustMUGECalculator': ('CondensedPhysics4', 'compute'),
+    'SombreroGalaxyM104NGC4594': ('CondensedPhysics4', 'compute'),
+    'SombreroGalaxyM104UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'SombreroGalaxyModel': ('CondensedPhysics', 'compute'),
+    'SombreroOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroRecessionDampingKappaCalculator': ('CondensedPhysics3', 'compute'),
+    'SombreroRingResonatorDustRingCalculator': ('CondensedPhysics3', 'compute'),
+    'SombreroSMBHCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroSMBHDominanceRatioCalculator': ('CondensedPhysics3', 'compute'),
+    'SombreroSuperconductivityCalculator': ('CondensedPhysics', 'compute'),
+    'SombreroUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'SombreroUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'SonificationCompositeH1821IC443M74MSH1552Calc': ('CondensedPhysics4', 'compute'),
+    'SonoElectrochemistryCalculator': ('CondensedPhysics2', 'compute'),
+    'SonochemistryRadicalYieldCalculator': ('CondensedPhysics2', 'compute'),
+    'SoundHorizonBAOCalculator': ('CondensedPhysics2', 'compute'),
+    'Source10CatalogueFUBiCalculator': ('CondensedPhysics2', 'compute'),
+    'Source10DPMResonanceAmplificationCalculator': ('CondensedPhysics3', 'compute'),
+    'Source10GPUDPMSpectralAtlasCalculator': ('CondensedPhysics', 'compute'),
+    'Source10GravitationalVacuumDragCalculator': ('CondensedPhysics3', 'compute'),
+    'Source10THzDoubleGateConduitCalculator': ('CondensedPhysics3', 'compute'),
+    'Source7DVPBridgeCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'Source7TriplePointCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'Source7VDSBridgeCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'SpaceImpedanceCalculator': ('CondensedPhysics2', 'compute'),
+    'SpacetimeMetricCalculator': ('CondensedPhysics', 'compute'),
+    'SpeciesClassificationCalculator': ('CondensedPhysics2', 'compute'),
+    'SpectralDecomposition': ('CondensedPhysics', 'compute'),
+    'SpectralLadder26StateCalc': ('CondensedPhysics4', 'compute'),
+    'SpectralLadderPhononMappingCalc': ('CondensedPhysics4', 'compute'),
+    'SphaleronCalculator': ('CondensedPhysics', 'compute'),
+    'SphereVolumeCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbDynamicsCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbEmergenceTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbFilamentCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbPersistenceCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbSpeciesCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleOrbThresholdCalculator': ('CondensedPhysics2', 'compute'),
+    'SpindleSubCycleCalculator': ('CondensedPhysics2', 'compute'),
+    'SpiralArmDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralArmTorqueCalculator': ('CondensedPhysics2', 'compute'),
+    'SpiralArmTorqueGravitationalAmplifierCalculator': ('CondensedPhysics3', 'compute'),
+    'SpiralCosmologicalLambdaRedshiftCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralDMVisiblePartitionRotationCalculator': ('CondensedPhysics3', 'compute'),
+    'SpiralDensityWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralGalaxyDarkMatterHaloCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralGalaxyDensityWaveCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralGalaxyISMFluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralGalaxyResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralGalaxyRotationCurveFlatCalculator': ('CondensedPhysics', 'compute'),
+    'SpiralSupernovaeUQFFGalacticCalculator': ('CondensedPhysics2', 'compute'),
+    'SpiralTorqueCalculator': ('CondensedPhysics2', 'compute'),
+    'SpiralsAndSupernovaeMUGECalculator': ('CondensedPhysics2', 'compute'),
+    'SpiralsAndSupernovaeTspiralSNTermUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'SpirographNebulaIC418UQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'SpookyActionNonLocalCalculator': ('CondensedPhysics', 'compute'),
+    'SpookyActionNonLocalTransferCalculator': ('CondensedPhysics', 'compute'),
+    'SpookyActionWavelessCalculator': ('CondensedPhysics', 'compute'),
+    'StabilizationPhaseCalculator': ('CondensedPhysics2', 'compute'),
+    'StabilizationPhaseTrackerCalculator': ('CondensedPhysics2', 'compute'),
+    'StandardModelUQFFModel': ('CondensedPhysics', 'compute'),
+    'StandardPhysicsApproximationCalculator': ('CondensedPhysics2', 'compute'),
+    'StandardPhysicsComparisonCalculator': ('CondensedPhysics2', 'compute'),
+    'StandardPhysicsDeviationCalculator': ('CondensedPhysics2', 'compute'),
+    'StarFormationGravityCalculator': ('CondensedPhysics', 'compute'),
+    'StarMagic09SeptUQFFMultiBodyNSCalculator': ('CondensedPhysics4', 'compute'),
+    'StarMagic11254865MUGESessionHubCalculator': ('CondensedPhysics4', 'compute'),
+    'StarMagic11254865Session102HubCalculator': ('CondensedPhysics4', 'compute'),
+    'StarMagic11254865Session103HubCalculator': ('CondensedPhysics4', 'compute'),
+    'StarMagicBlackHoleInteraction': ('CondensedPhysics', 'compute'),
+    'StarMagicEnergyStructure': ('CondensedPhysics', 'compute'),
+    'StarMagicVacuumEnergy': ('CondensedPhysics', 'compute'),
+    'StarSystemTableCalculator': ('CondensedPhysics2', 'compute'),
+    'StarbirthBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthCosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthFluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthFormationTimescaleCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthGasVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthMassGrowthCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthOscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthQuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthStellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'StarbirthTapestryLMCUQFFCalculator': ('CondensedPhysics3', 'compute'),
+    'StarbirthUQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'StarburstBaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'StaticSinkFieldCalculator': ('CondensedPhysics2', 'compute'),
+    'StellarAgeHelioCorrelationCalculator': ('CondensedPhysics2', 'compute'),
+    'StellarClusterUg3DiskTurbulenceCalculator': ('CondensedPhysics3', 'compute'),
+    'StellarEquilibriumModel': ('CondensedPhysics', 'compute'),
+    'StellarHollowStructureCalculator': ('CondensedPhysics2', 'compute'),
+    'StellarReferenceComparisonCalculator': ('CondensedPhysics2', 'compute'),
+    'StellarUg1DipoleDefectCalculator': ('CondensedPhysics3', 'compute'),
+    'StellarWindBuoyancyLagrangianCalc': ('CondensedPhysics4', 'compute'),
+    'StellarWindFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'StellarWindShockCalculator': ('CondensedPhysics2', 'compute'),
+    'StepFunctionBoundaryCalculator': ('CondensedPhysics', 'compute'),
+    'StepFunctionCalculator': ('CondensedPhysics', 'compute'),
+    'StephansQuintetGalaxyGroupUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'StephansQuintetShockRidgeFUBiCalculator': ('CondensedPhysics3', 'compute'),
+    'StressEnergyAMunuCouplingCalculator': ('CondensedPhysics3', 'compute'),
+    'StressEnergyQuadraticCalculator': ('CondensedPhysics2', 'compute'),
+    'StressEnergyTensorCalculator': ('CondensedPhysics2', 'compute'),
+    'StringDimensionAlgebraCalculator': ('CondensedPhysics2', 'compute'),
+    'StringDistanceCalculator': ('CondensedPhysics2', 'compute'),
+    'StringGWPlanarFrequencyReboundDiskFormationCalculator': ('CondensedPhysics4', 'compute'),
+    'StringTheoryCompactificationCalculator': ('CondensedPhysics', 'compute'),
+    'StudentGuideUniverseCalculator': ('CondensedPhysics', 'compute'),
+    'SunyaevZeldovichYParameterCalculator': ('CondensedPhysics2', 'compute'),
+    'SuperSaturatedQuantumOverlayCalculator': ('CondensedPhysics2', 'compute'),
+    'SuperconductingCoherenceModel': ('CondensedPhysics', 'compute'),
+    'SuperconductiveAtomicCorrectionCalculator': ('CondensedPhysics', 'compute'),
+    'SuperconductiveCalculator': ('CondensedPhysics', 'compute'),
+    'SuperconductiveComplexUiDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'SuperconductiveCorrectionCalculator': ('CondensedPhysics', 'compute'),
+    'SuperconductiveMaterialVacuumModel': ('CondensedPhysics', 'compute'),
+    'SuperconductiveStateQuantumCalculator': ('CondensedPhysics2', 'compute'),
+    'SuperfluidAetherDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'SupernovaFeedbackCalculator': ('CondensedPhysics', 'compute'),
+    'SupernovaFeedbackSpecificCalculator': ('CondensedPhysics', 'compute'),
+    'SupernovaLuminosityRadiationCalculator': ('CondensedPhysics', 'compute'),
+    'SupernovaProgenitorNegativeTimeZoneCalculator': ('CondensedPhysics3', 'compute'),
+    'SupernovaShockwaveCalculator': ('CondensedPhysics', 'compute'),
+    'SupernovaTermCalculator': ('CondensedPhysics2', 'compute'),
+    'SuperradianceAmplificationCalculator': ('CondensedPhysics2', 'compute'),
+    'SurfaceGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'SwamplandConjectureCalculator': ('CondensedPhysics2', 'compute'),
+    'SweetVacuumEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'SymbolicIntegratorCalculator': ('CondensedPhysics2', 'compute'),
+    'SystemSpecificTermsCalculator': ('CondensedPhysics2', 'compute'),
+    'THzHoleOscilloscopeAnalyzer': ('CondensedPhysics', 'compute'),
+    'THzHoleResonanceFormulaCalculator': ('CondensedPhysics4', 'compute'),
+    'THzQScopeEarthCoreSig1to50Calculator': ('CondensedPhysics4', 'compute'),
+    'THzResonanceBundleCalculator': ('CondensedPhysics', 'compute'),
+    'TOI1227bYoungNeptuneExoplanetFUBiCalculator': ('CondensedPhysics4', 'compute'),
+    'TON618SacredPhaseCalculator': ('CondensedPhysics2', 'compute'),
+    'TQFTAnyonBraidingCalculator': ('CondensedPhysics2', 'compute'),
+    'TRZModel': ('CondensedPhysics', 'compute'),
+    'TXS0506JetPowerCurvesCalc': ('CondensedPhysics4', 'compute'),
+    'TXS0506PICoSumCalculator': ('CondensedPhysics2', 'compute'),
+    'Tapestry26DThreeSystemSimultaneousCalculator': ('CondensedPhysics4', 'compute'),
+    'TapestryBlazingStarbirthNGC2014Calculator': ('CondensedPhysics4', 'compute'),
+    'TapestryFreqAetherCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqAetherResCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqDPMCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqExpCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqFluidCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqOscCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqQuantumCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqSuperCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqTHzCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqUg4iCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryFreqVacDiffCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryStarbirthCalculator': ('CondensedPhysics', 'compute'),
+    'TapestryStarbirthDPMTHzFreqCalculator': ('CondensedPhysics3', 'compute'),
+    'TarantulaNebula30DorUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'TarantulaNebulaModel': ('CondensedPhysics', 'compute'),
+    'TaylorSeriesCalculator': ('CondensedPhysics2', 'compute'),
+    'TechnologicalFieldFenvCalculator': ('CondensedPhysics4', 'compute'),
+    'TemperatureStressEnergyCalculator': ('CondensedPhysics2', 'compute'),
+    'TemporalDynamicsModel': ('CondensedPhysics', 'compute'),
+    'TenAstroSystemsMUGECalculator': ('CondensedPhysics4', 'compute'),
+    'TensorAlgebra': ('CondensedPhysics', 'compute'),
+    'TerahertzHolesModel': ('CondensedPhysics', 'compute'),
+    'TeslaPhenomenonCalculator': ('CondensedPhysics2', 'compute'),
+    'ThermalConvectionCycleCalculator': ('CondensedPhysics2', 'compute'),
+    'ThermalGradientConvectionCalculator': ('CondensedPhysics', 'compute'),
+    'ThermalGradientDrivenDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'ThermalGradientEvolutionCalculator': ('CondensedPhysics2', 'compute'),
+    'ThermalGradientFUCalculator': ('CondensedPhysics', 'compute'),
+    'ThermalLensLightBendingCalculator': ('CondensedPhysics2', 'compute'),
+    'ThermodynamicQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'ThirtyFrameSequenceCalculator': ('CondensedPhysics', 'compute'),
+    'ThirtyNineFrameSequenceCalculator': ('CondensedPhysics', 'compute'),
+    'ThirtySixFrameSequenceCalculator': ('CondensedPhysics', 'compute'),
+    'ThirtyThreeFrameSequenceCalculator': ('CondensedPhysics', 'compute'),
+    'ThreeAssumptionUQFFCosmogenesisCalc': ('CondensedPhysics4', 'compute'),
+    'ThreeDIPOCalculator': ('CondensedPhysics2', 'compute'),
+    'ThreeDIPONonLinearProgressionCalculator': ('CondensedPhysics4', 'compute'),
+    'ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator': ('CondensedPhysics4', 'compute'),
+    'ThreeUQFFModeCalculator': ('CondensedPhysics', 'compute'),
+    'TidalDeformabilityPhononCorrectionCalc': ('CondensedPhysics4', 'compute'),
+    'TidalDisruptionEventModel': ('CondensedPhysics', 'compute'),
+    'TidalDisruptionFallbackCalculator': ('CondensedPhysics2', 'compute'),
+    'TidalForceModel': ('CondensedPhysics', 'compute'),
+    'TidalInteractionCalculator': ('CondensedPhysics', 'compute'),
+    'TidalRingEffectCalculator': ('CondensedPhysics2', 'compute'),
+    'TidalStrippingCalculator': ('CondensedPhysics', 'compute'),
+    'TimeReversalZoneCalculator': ('CondensedPhysics2', 'compute'),
+    'TimeReversalZoneDynamicCalculator': ('CondensedPhysics2', 'compute'),
+    'TimeReversalZoneModel': ('CondensedPhysics', 'compute'),
+    'TimeVaryingVacuumModel': ('CondensedPhysics', 'compute'),
+    'TimestampAssignmentCalculator': ('CondensedPhysics2', 'compute'),
+    'TopoconductorQuantumCoolingComparisonCalc': ('CondensedPhysics4', 'compute'),
+    'ToroidPillarReboundCalculator': ('CondensedPhysics', 'compute'),
+    'TotalEnergyAccumulationCalculator': ('CondensedPhysics', 'compute'),
+    'TotalEnergyBudgetCalculator': ('CondensedPhysics', 'compute'),
+    'TotalEnergyBudgetOrb11Calculator': ('CondensedPhysics2', 'compute'),
+    'TransitionZoneCalculator': ('CondensedPhysics2', 'compute'),
+    'TriadicCalculator': ('CondensedPhysics', 'compute'),
+    'TriadicClone38SystemCalculator': ('CondensedPhysics', 'compute'),
+    'TriadicGeometricMeanCalculator': ('CondensedPhysics2', 'compute'),
+    'TriadicGravityCalculator': ('CondensedPhysics', 'compute'),
+    'TriadicMasterEquationCalculator': ('CondensedPhysics3', 'compute'),
+    'TriadicMasterFUg1R26StateRamanujanCalculator': ('CondensedPhysics3', 'compute'),
+    'TriadicMasterGeometricCalculator': ('CondensedPhysics2', 'compute'),
+    'TriadicQGPValidationCalc': ('CondensedPhysics4', 'compute'),
+    'TriadicSSqFeedbackEnhancedCalculator': ('CondensedPhysics3', 'compute'),
+    'TriadicUQFFFramework': ('CondensedPhysics', 'compute'),
+    'TriangleAreaCalculator': ('CondensedPhysics2', 'compute'),
+    'TrigIdentityCalculator': ('CondensedPhysics2', 'compute'),
+    'Ts00TwoComponentStressEnergyDecompositionCalculator': ('CondensedPhysics4', 'compute'),
+    'TsUniverse5ComponentStressEnergyDecompositionCalculator': ('CondensedPhysics4', 'compute'),
+    'TurbulenceUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'TwentySixDPolynomialCalculator': ('CondensedPhysics', 'compute'),
+    'TwentySixDProjectionCalculator': ('CondensedPhysics2', 'compute'),
+    'TwentySixDResonanceLayerAmplitudeFrequencyCalculator': ('CondensedPhysics4', 'compute'),
+    'TwentySixLevelEnergyScaleCalculator': ('CondensedPhysics2', 'compute'),
+    'TwentySixLevelPolynomialCalculator': ('CondensedPhysics2', 'compute'),
+    'TwentySixLevelPolynomialHierarchyFullCalculator': ('CondensedPhysics3', 'compute'),
+    'TwentySixQuantumShellsCalculator': ('CondensedPhysics2', 'compute'),
+    'TwentySixQuantumStateCalculator': ('CondensedPhysics2', 'compute'),
+    'TwoStageFURefinementValidator': ('CondensedPhysics', 'compute'),
+    'TypeIaxSupernovaBuoyancyReversalCalculator': ('CondensedPhysics', 'compute'),
+    'UAScmJWSTALMACERNValidationTableCalculator': ('CondensedPhysics4', 'compute'),
+    'UBiBuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'UFEFUExtensionCalculator': ('CondensedPhysics', 'compute'),
+    'UFEMetricStressCalculator': ('CondensedPhysics', 'compute'),
+    'UFENegativeTimeCalculator': ('CondensedPhysics', 'compute'),
+    'UFEOrbPlasmoidDynamicsRedDwarfCalculator': ('CondensedPhysics4', 'compute'),
+    'UFEPlasmoidCountCalculator': ('CondensedPhysics', 'compute'),
+    'UFEPlasmoidSpinTempFieldCalculator': ('CondensedPhysics', 'compute'),
+    'UFEQFETenComponentCalculator': ('CondensedPhysics2', 'compute'),
+    'UFEReactorGeometryCalculator': ('CondensedPhysics', 'compute'),
+    'UFESCmUAVacuumCalculator': ('CondensedPhysics', 'compute'),
+    'UFEUbBuoyancyCalculator': ('CondensedPhysics', 'compute'),
+    'UFEUgGravityModeCalculator': ('CondensedPhysics', 'compute'),
+    'UFEUmMagneticStringCalculator': ('CondensedPhysics', 'compute'),
+    'UGC10214Model': ('CondensedPhysics', 'compute'),
+    'UGC10214TadpoleGalaxyTidalCalculator': ('CondensedPhysics4', 'compute'),
+    'UPEquationVariableCalculator': ('CondensedPhysics2', 'compute'),
+    'UPEvolutionCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFF': ('CondensedPhysics', 'compute'),
+    'UQFF12TermSpectralLadderSGR1745Calculator': ('CondensedPhysics4', 'compute'),
+    'UQFF2027JointFalsifierCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF2027QuadrupleFalsifierCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF26DEggTotalEnergyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF26DGeometricFoldingOperatorCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF26DSimultaneousGeometricInfinitySculptingCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF26thOrderFactorialBoundsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF29SystemCrossValidationMatrixCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF38SystemCompressedMasterCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF3DIPODegree26TensorOverlayCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF48ScaleMolecularRotorCIACalculator': ('CondensedPhysics3', 'compute'),
+    'UQFF99SystemCompressionCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFALICERunThreeSqrtS13p6TeVMultiplicityCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFAdSCFTDualityCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFAdaptiveFramework': ('CondensedPhysics', 'compute'),
+    'UQFFAdvancementsAndTHzHolesCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFAllFormsEvolutionCatalogueCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFAtomicMassStandardModelErrorFactorCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBESIIIDCSCabibboDipoleContributionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBSDConjectureRankCohomologyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBetaITriangularCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBigBangExpansionDynamicsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBlackHoleAccretionModelCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBlackHoleEntropyCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFBlackHoleFiniteBoundCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBlackHoleInversionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBlackHoleMergerDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFBlackHoleStabilityCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFBlackHoleStabilityProofsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBuoyancyAstroCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFBuoyancyCNBCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFBuoyancyHarmonicsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFBuoyancyMasterIntegralCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFBuoyant': ('CondensedPhysics', 'compute'),
+    'UQFFCGMSSqMetallicityCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFCKMVcbFlavorVacuumCouplingCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCMBStructureGrowthCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFCMBmuDistortionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCUDAGPUOptimizationPatternCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFCentaurusAKnottedJetVHEHypergraphCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCentrifugal26DShellCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCentripetal26DShellCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCollatzConvergence26DCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFComp26DTensorOffDiag13NSYMHubCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCompEigenvalueQuantumGravityLinkageCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCompSpectralMatrixEigenvalueCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCompTensorFull26D13DCrossCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFComparedToGW150914Calculator': ('CondensedPhysics4', 'compute'),
+    'UQFFComparedToGW170817Calculator': ('CondensedPhysics2', 'compute'),
+    'UQFFComparedToGW190425Calculator': ('CondensedPhysics2', 'compute'),
+    'UQFFComparedToLIGODataCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFCompressed': ('CondensedPhysics', 'compute'),
+    'UQFFCompressedFriedmannCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFCompressionCycle2DerivationMethodCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFConductivitySpectrumCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFConstantMapper': ('CondensedPhysics', 'compute'),
+    'UQFFCosmicEggPreFertilizationEnergyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFCosmologicalConstantDerivedCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFDMDtDerivationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFDPMSO2LightConeCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFDarkEnergySecondDerivativeCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFDarkEnergyVoidBuoyancyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFDarkMatterNFWSIDMCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFDipoleVortexPrimesCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFERequalsEPRCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFEarlyUniverseRelativisticUVCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFElectroweakSinThetaWSCmVacuumConnectionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFEntanglementEntropyCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFEntanglementSpectrumCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFEquationMathematicalDerivation': ('CondensedPhysics4', 'compute'),
+    'UQFFEulerEquationsInviscidProofCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFEvaporationTimescaleCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFExoticPocketedShellQuantumFrequencyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFTRZSO5Calculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFUComplete26DProjectionOperatorCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFactorialBarrierPochhammerCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFalsifiablePredictionsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFineSC_QEDPrecisionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFineStructureConstantDerivedCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFFrameworkCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFGWAmplitudeLambdaCDMEmergenceCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFGWSuppressionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFGWWaveformsCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFGalacticDiscreteBandSimulatorCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFGrantProposalDatasetCompressionFrameworkCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFGravitationalConstantVoidCouplingCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFGravitationalWaveChirpQNMCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFH0AnchorAsymmetryCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFHawkingDerivationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFHawkingTemperatureModulationCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFHiggsMass125GeVVEVBuoyancyCouplingCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFHodgeConjectureAlgebraicCyclesCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFHolographicSCCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFIPCChainStatusCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFInertia26DShellForceCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFInflationaryEpochDetailsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFInstantonExtension': ('CondensedPhysics', 'compute'),
+    'UQFFKKTowerHbarRegulatorCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFKKTowerModeByModeCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFKKTowerRegulatorCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBase7Calculator': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB10': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB11': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB12': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB13': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB14': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB15': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB16': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB17': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB18': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB19': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB2': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB3': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB4': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB5': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB6': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB8': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseKB9': ('CondensedPhysics4', 'compute'),
+    'UQFFKnowledgeBaseRedDwarf': ('CondensedPhysics4', 'compute'),
+    'UQFFLFVBDecayTimeReversalConstraintCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFLQGLambdaCDMTripleSystemComparisonCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFLagrangianDerivationCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFLagrangianFullClosureCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFLearningAdvancementCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFLensingModulationRingsCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFLightEchoEvolutionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFLuminosityCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFM87JetNineDHypergraphPocketShellSimulationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFMS073567421ClusterAGNJetVoidPocketCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFMUGECalculator': ('CondensedPhysics', 'compute'),
+    'UQFFMagneticGatewayCosmicFluxCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFMasterBuoyant': ('CondensedPhysics', 'compute'),
+    'UQFFMasterEngine': ('CondensedPhysics', 'compute'),
+    'UQFFMasterEquation': ('CondensedPhysics', 'compute'),
+    'UQFFMasterFramework': ('CondensedPhysics', 'compute'),
+    'UQFFMasterLagrangian': ('CondensedPhysics', 'compute'),
+    'UQFFMaxwellPowerLarge26thOrderCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFMayanCalendarNucleiEpochCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFMillenniumPrizeApplicationsCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFModulationForM87Calculator': ('CondensedPhysics2', 'compute'),
+    'UQFFMultiFactorEvolutionMergerCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFMultiSystemJetHypergraphComparisonCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFNASAATPGrantFrameworkValidationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFNGC6278DwarfGalaxyVoidPocketShellCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFNegativeTimeDualExistenceCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFNeutrinoDecayRateCouplingCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFNineDimensionalWolframForceTroadProjectionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFObservableUniverseDiameterCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFOffDiagProplydOrionFitCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFOrionEncompassFitCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFOverdeterminationEpistemologyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPBHDarkMatterCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPBHDarkMatterImplicationsCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFPerseusClusterIXPEXRayPolarizationJetCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPhiResCodimensionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPiWaveEnergyCorrespondenceCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPipeline': ('CondensedPhysics', 'compute'),
+    'UQFFPlanckConstantDerivedCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPlasmaConvectionCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFPredictionsForLISACalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFPredictiveAlgorithmCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFPrimordialBHEvaporationCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFProbabilityOfOrderPartitionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFProtoHydrogenShellAlignmentCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFProtonDecayKappaRateComparisonCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFPymanderSphere26DPyramidThreadCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFQuadratic': ('CondensedPhysics', 'compute'),
+    'UQFFQuadraticApproximationCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFQuantumGravityUnificationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFReionizationBBNCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFRelativisticHierarchyDecayIntegralCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFRelativisticSCmJetCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFResonanceFormalProofSetCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFResonant': ('CondensedPhysics', 'compute'),
+    'UQFFResonantCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFRiemannHypothesisCriticalLineCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFRingdownSpectralOffsetCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSCmLaurentSeries26DExpansionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSMParameterBridgeMasterComparisonCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFScale': ('CondensedPhysics', 'compute'),
+    'UQFFSchwarzschildProtonVacuumCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSgrAStarBoundApplicationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSigma8WeakLensingCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSolarCycleOmegaCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFSolarSystemProplydLegacyCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSolvableEquationSetCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSombreroDustIntegratedCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFSource10BatchProfiledCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFSource10CatalogueCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFSpeedOfLightTriadEquilibriumCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSpookyActionDPMCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFStabilityNumericallyForSgrACalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFStabilityPrimordialBHCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFSuperconductive': ('CondensedPhysics', 'compute'),
+    'UQFFSupernovaFeedbackCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFSupernovaFeedbackMassLossCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFSupplementCalibration3VarCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFSuppressionEquationsHawkingCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFT22ModuliStabilizationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFTHzConduitShockCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFTauLeptonG2SMBridgeCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFTemperatureCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFThreeSystemSimultaneousFrameworkCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFTriadic': ('CondensedPhysics', 'compute'),
+    'UQFFTriadicMasterCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFUbDensityGradient26thDerivativeCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFUg26DPolynomialDefectExpansionCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFUg4AGNFeedbackCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFUltraDenseHydrogenLENRCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFUmDPMTimeDerivative26thOrderCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFUniversalInertialOperatorCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFUniverseDiameterCalculator': ('CondensedPhysics2', 'compute'),
+    'UQFFUniverseDiameterEstimationCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFVDSDVPBH26IntegrationReferenceCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFVUAPolynomialCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFVacuumDensitySeriesCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFVacuumEnergyLedgerCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFVacuumRepulsionCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFValidationDataset': ('CondensedPhysics', 'compute'),
+    'UQFFValidationTestSuite': ('CondensedPhysics', 'compute'),
+    'UQFFVariableCalibrationCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFVectorLikeQuarkKappaHeavyModeCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFVelocityStarFormationCollisionCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFVsStringTheory10AspectComparisonCalc': ('CondensedPhysics4', 'compute'),
+    'UQFFWaveformSimulateCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFWhiteHoleFormationCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFWormholeFormationCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFWormholeMeissnerRelativisticGammaCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFFWormholeTransverseTimeCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFZeroMassAetherVacuumGradientReformulationCalculator': ('CondensedPhysics4', 'compute'),
+    'UQFF_BaseQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_BuoyantQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_CompressedQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_MasterBuoyantQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_QuadraticQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_ResonantQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_SuperconductiveQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFF_TriadicQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'UQFFvsLambdaCDMComparisonCalculator': ('CondensedPhysics3', 'compute'),
+    'UQFFvsMONDComparisonCalculator': ('CondensedPhysics3', 'compute'),
+    'USPRModel': ('CondensedPhysics', 'compute'),
+    'USPRStellarConnectionModel': ('CondensedPhysics', 'compute'),
+    'U_bModelMasterCalculator': ('CondensedPhysics', 'compute'),
+    'Ubi4TermSolarWindBuoyancyEpsilonSwCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug1DPMGeophysicalGeometrySummationCalc': ('CondensedPhysics4', 'compute'),
+    'Ug1MagneticDipoleCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug1SolarDipoleCycleCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug26DFactorialAntiCollapseUg4SplitCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug2ChargeReactivityCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug2ElectronShellEnergyCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug2HeliosphereBubbleChargeCoupledEreactCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug2SolarWindTransmutationCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug2StellarBubbleCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug3ElectronTaggingCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug3ElectronTaggingTHzCirculationCalc': ('CondensedPhysics4', 'compute'),
+    'Ug3MagneticDiskFullCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug3MagneticStringsDiskPcoreCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug3PrimeExternalGravityCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug3StringRotationCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug4BHTidalTimereversalCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug4GalacticNonInteractiveCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug4SMBHVacuumInteractionCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug4VacuumBHFeedbackCconcentrationCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug4VacuumConcentrationCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator': ('CondensedPhysics4', 'compute'),
+    'Ug4VacuumMediatedCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug4iCentralControlCalculator': ('CondensedPhysics2', 'compute'),
+    'Ug4iTransientAgeDecayLawCalculator': ('CondensedPhysics4', 'compute'),
+    'UgCouplingCalculator': ('CondensedPhysics2', 'compute'),
+    'UgUbBoundaryOverlapDisplacementCalculator': ('CondensedPhysics4', 'compute'),
+    'UiComplexSuperconductiveVacuumDensityCalculator': ('CondensedPhysics3', 'compute'),
+    'UltraCleanMediumCalculator': ('CondensedPhysics2', 'compute'),
+    'UltrasonicCavitationCalculator': ('CondensedPhysics2', 'compute'),
+    'UltrasonicNebulizationCalculator': ('CondensedPhysics2', 'compute'),
+    'Um26DPolyQuantizationDPMConfinementCalculator': ('CondensedPhysics4', 'compute'),
+    'UmBilinearHeavisideNeutrinoVacuumCascadeCalculator': ('CondensedPhysics3', 'compute'),
+    'UmCompleteSSqVacuumThermalDampingCalculator': ('CondensedPhysics4', 'compute'),
+    'UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator': ('CondensedPhysics4', 'compute'),
+    'UmRotorStringTorqueIntegrationCalculator': ('CondensedPhysics3', 'compute'),
+    'UmUniversalMagnetismTaxonomyCalculator': ('CondensedPhysics3', 'compute'),
+    'UnifiedFUBiSMBHMergerDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'UnifiedFieldCalculator': ('CondensedPhysics2', 'compute'),
+    'UnifiedFieldEquation': ('CondensedPhysics', 'compute'),
+    'UnifiedFieldFullCalculator': ('CondensedPhysics', 'compute'),
+    'UnifiedFieldSimulatorCalculator': ('CondensedPhysics2', 'compute'),
+    'UnifiedFieldTimeSeriesCalculator': ('CondensedPhysics2', 'compute'),
+    'UnifiedUQFF': ('CondensedPhysics', 'compute'),
+    'UnifiedWaveFunctionCalculator': ('CondensedPhysics', 'compute'),
+    'UnitConversionCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalAetherCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalAetherChargeCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalAetherResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalBackgroundDecayCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalBuoyancyCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalBuoyancyDetailedCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalBuoyancyInteractionModel': ('CondensedPhysics', 'compute'),
+    'UniversalBuoyancyNegativeTimeLinkageCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalCompressedDPMCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalCompressedTHzCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalCycleTracker': ('CondensedPhysics', 'compute'),
+    'UniversalDualitySCmUASynthesisTheoremCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalEpoch3DIPONuclearConvergenceCalculator': ('CondensedPhysics4', 'compute'),
+    'UniversalExpFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalFieldDecompositionCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalFluidResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalGravity1Calculator': ('CondensedPhysics', 'compute'),
+    'UniversalGravity2Calculator': ('CondensedPhysics', 'compute'),
+    'UniversalGravity3Calculator': ('CondensedPhysics', 'compute'),
+    'UniversalGravity4Calculator': ('CondensedPhysics', 'compute'),
+    'UniversalGravityCalculator': ('QCalcGeom', 'compute'),
+    'UniversalGravityModel': ('CondensedPhysics', 'compute'),
+    'UniversalGravityWallCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalInertiaCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalInertiaModel': ('CondensedPhysics', 'compute'),
+    'UniversalInertiaOrb60Calculator': ('CondensedPhysics2', 'compute'),
+    'UniversalInertiaTRZOrb41Calculator': ('CondensedPhysics2', 'compute'),
+    'UniversalInertiaVacuumModel': ('CondensedPhysics', 'compute'),
+    'UniversalInertialOperator': ('CondensedPhysics', 'compute'),
+    'UniversalMagnetismCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalMagnetismDetailedCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalMagnetismFormsCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalMagnetismLENRCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalMagnetismModel': ('CondensedPhysics', 'compute'),
+    'UniversalMagnetismOrb61Calculator': ('CondensedPhysics2', 'compute'),
+    'UniversalMagnetismUmMasterEquationCalc': ('CondensedPhysics4', 'compute'),
+    'UniversalOscillatoryResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalPermanenceCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalPermanenceEquationCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalPermanenceFullCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalPermanenceMultiplicativeCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalQuantumWaveResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalReactiveResonanceCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalSpectrumSpectralDivisionsCalculator': ('CondensedPhysics4', 'compute'),
+    'UniversalSpeedRangeCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalSpeedRangeCosmicPhotonDecelerationCalc': ('CondensedPhysics4', 'compute'),
+    'UniversalSuperconductorFrequencyCalculator': ('CondensedPhysics', 'compute'),
+    'UniversalTimeCalculator': ('CondensedPhysics2', 'compute'),
+    'UniversalVacuumDifferentialCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseBaryonicMatterCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseCosmologicalLambdaCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseDarkMatterCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseDiameterCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseDiameterEstimatorCalculator': ('CondensedPhysics2', 'compute'),
+    'UniverseDiameterGRCurvatureDominanceCalculator': ('CondensedPhysics3', 'compute'),
+    'UniverseDiameterLambdaVacuumAccelerationCalculator': ('CondensedPhysics3', 'compute'),
+    'UniverseDiameterSuperluminalHubbleRatioCalculator': ('CondensedPhysics3', 'compute'),
+    'UniverseDiameterUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'UniverseDiameterUQFFGravityCalculator': ('CondensedPhysics2', 'compute'),
+    'UniverseFluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseHubbleExpansionCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseLorentzForceCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseQuantumIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'UniverseResonantOscillatoryCalculator': ('CondensedPhysics', 'compute'),
+    'UnruhTemperatureCalculator': ('CondensedPhysics2', 'compute'),
+    'UpdatedUQFFCalculator': ('CondensedPhysics', 'compute'),
+    'UpperQuadrantConcentrationCalculator': ('CondensedPhysics', 'compute'),
+    'UpwardConvectionFlowCalculator': ('CondensedPhysics', 'compute'),
+    'UpwardConvectionPatternCalculator': ('CondensedPhysics', 'compute'),
+    'V838MonLightEchoUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'V838MonocerotisLightEchoCalculator': ('CondensedPhysics', 'compute'),
+    'VDFGSMFSMBHMassFunctionVelocityDispersionCalculator': ('CondensedPhysics4', 'compute'),
+    'VDSBranchCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'VDSDVPBHNumberSystemsCatalogueCalculator': ('CondensedPhysics4', 'compute'),
+    'VDSDVPBHUnifiedNumberSystemCalculator': ('CondensedPhysics', 'compute'),
+    'VDSDVPBSHHybridBlendCalculator': ('CondensedPhysics2', 'compute'),
+    'VDSDVPCoupledCalculator_S234': ('CondensedPhysics4', 'compute'),
+    'VDSLENRIsotopicEvolutionCalculator': ('CondensedPhysics2', 'compute'),
+    'VDSPartitionFunctionCalculator': ('CondensedPhysics', 'compute'),
+    'VacuumDensity26LevelLadderCalculator': ('CondensedPhysics', 'compute'),
+    'VacuumDensityFieldCalculator': ('CondensedPhysics2', 'compute'),
+    'VacuumDensityLambdaCalculator': ('CondensedPhysics2', 'compute'),
+    'VacuumEnergyCapacitanceCalculator': ('CondensedPhysics2', 'compute'),
+    'VacuumEnergyComponentDensityCalculator': ('CondensedPhysics2', 'compute'),
+    'VacuumEnergyComponentRatioCalculator': ('CondensedPhysics3', 'compute'),
+    'VacuumEnergyDensityCalculator': ('CondensedPhysics', 'compute'),
+    'VacuumEnergyDensitySummaryModel': ('CondensedPhysics', 'compute'),
+    'VacuumEnergyDifferentialCalculator': ('CondensedPhysics2', 'compute'),
+    'VacuumEnergyFluctuationCalculator': ('CondensedPhysics', 'compute'),
+    'VacuumEnergyFluctuationOrb48Calculator': ('CondensedPhysics2', 'compute'),
+    'VacuumEnergyQCalcCalculator': ('CondensedPhysics', 'compute'),
+    'VacuumFluctuationCalculator': ('CondensedPhysics', 'compute'),
+    'VacuumStressCalculator': ('CondensedPhysics2', 'compute'),
+    'VacuumStressEnergyTensorCalculator': ('CondensedPhysics2', 'compute'),
+    'ValidationCoverageFramework': ('CondensedPhysics', 'compute'),
+    'VelocityTimeRelationCalculator': ('CondensedPhysics2', 'compute'),
+    'VideoAnalysisSpotDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'VideoFrameSettingsCalculator': ('CondensedPhysics2', 'compute'),
+    'VideoIntegratedFUCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoClusterDarkMatterModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterGravPotentialModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterICMModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterM87JetModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterMassCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoClusterMassModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterTidalStrippingModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterVelocityDispersionModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterVirialModel': ('CondensedPhysics', 'compute'),
+    'VirgoClusterXRayModel': ('CondensedPhysics', 'compute'),
+    'VirgoExtClusterMassCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtDarkMatterCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtICMCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtM87JetCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtMSigmaRelationCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtPotentialCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtTidalStrippingCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtVelocityDispersionCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtVirialCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoExtXRayCalculator': ('CondensedPhysics', 'compute'),
+    'VirgoICMCalculator': ('CondensedPhysics', 'compute'),
+    'VoidOscillationModel': ('CondensedPhysics', 'compute'),
+    'VolumeCubedVacuumFocusCalculator': ('CondensedPhysics', 'compute'),
+    'VortexQuantizationCalculator': ('CondensedPhysics2', 'compute'),
+    'WSTPBridgeValidationCalculator_84A767D3': ('CondensedPhysics2', 'compute'),
+    'WSTPFUBiSymbolicExportCalc': ('CondensedPhysics4', 'compute'),
+    'WaterFormationEnthalpyCalculator': ('CondensedPhysics2', 'compute'),
+    'WaterRadiolysisCalculator': ('CondensedPhysics2', 'compute'),
+    'WaterReactorBirkelandH2ElectrolysisEfficiencyCalc': ('CondensedPhysics4', 'compute'),
+    'WaterReactorH2O2Calculator': ('CondensedPhysics2', 'compute'),
+    'WavelengthCalculator': ('CondensedPhysics2', 'compute'),
+    'WavelessCommunicationApplicationCalculator': ('CondensedPhysics', 'compute'),
+    'WavelessCommunicationTHzCalculator': ('CondensedPhysics2', 'compute'),
+    'WavelessCommunicationValidationCalculator': ('CondensedPhysics2', 'compute'),
+    'WaxCapCoolingDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'WaxCapCoolingSCMCalculator': ('CondensedPhysics2', 'compute'),
+    'Westerlund2BaseGravityCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2ClusterCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2CosmologicalConstantCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2DarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2ElectromagneticCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2FluidDensityCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2FormationTimescaleCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2GasVelocityCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2MUGEStellarWindCalculator': ('CondensedPhysics3', 'compute'),
+    'Westerlund2MassGrowthCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2OscillatoryWaveCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2QuadriadicRealImaginaryCalc': ('CondensedPhysics4', 'compute'),
+    'Westerlund2QuantumUncertaintyCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2StarClusterUQFF': ('CondensedPhysics4', 'compute'),
+    'Westerlund2StellarWindCalculator': ('CondensedPhysics', 'compute'),
+    'Westerlund2SuperClusterUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'Westerlund2UQFFUnificationCalculator': ('CondensedPhysics', 'compute'),
+    'WhiteDwarfDegenerateElectronUiCalculator': ('CondensedPhysics3', 'compute'),
+    'WhiteDwarfUQFFGravitationalDecayCalculator': ('CondensedPhysics3', 'compute'),
+    'WhiteHoleRadiationUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'WhiteHoleStabilityUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'WhittakerDecompositionModel': ('CondensedPhysics', 'compute'),
+    'WignerFunctionDecoherenceCalculator': ('CondensedPhysics2', 'compute'),
+    'WindShockCalculator': ('CondensedPhysics2', 'compute'),
+    'WolfRayetEvolutionCalculator': ('CondensedPhysics', 'compute'),
+    'WolframExtractedPhysicsBridgeCalculator': ('CondensedPhysics2', 'compute'),
+    'WolframFieldUnityCalculator_84A767D3': ('CondensedPhysics2', 'compute'),
+    'WolframFieldUnityEngine': ('CondensedPhysics', 'compute'),
+    'WolframFoldingFactorCalculator': ('CondensedPhysics2', 'compute'),
+    'WolframHypergraphCalculator': ('CondensedPhysics', 'compute'),
+    'WormholeGeodesicCalculator': ('CondensedPhysics', 'compute'),
+    'WormholeMUGE13thTermCalculator': ('CondensedPhysics3', 'compute'),
+    'WormholeMUGETermImplSafetyCalculator': ('CondensedPhysics4', 'compute'),
+    'WormholeUQFFResonanceAccelerationCalculator': ('CondensedPhysics4', 'compute'),
+    'WstellarPtermOrionEagleHydrogenAtomUQFFCalculator': ('CondensedPhysics4', 'compute'),
+    'X86VectorOpCalculator': ('CondensedPhysics2', 'compute'),
+    'YMDPMGaugeFieldMassGapProofCalculator': ('CondensedPhysics2', 'compute'),
+    'YangMillsDPMQuantizationHubCalculator': ('CondensedPhysics2', 'compute'),
+    'YangMillsDVPMassGapCalculator': ('CondensedPhysics2', 'compute'),
+    'YangMillsInstantonCalculator': ('CondensedPhysics', 'compute'),
+    'YangMillsMassGapCalc': ('CondensedPhysics4', 'compute'),
+    'YangMillsMassGapCalculator': ('CondensedPhysics2', 'compute'),
+    'YangMillsMassGapPIMathCalculator': ('CondensedPhysics', 'compute'),
+    'YangMillsMassGapVacuumDensityEvolutionCalculator': ('CondensedPhysics4', 'compute'),
+    'YangMillsStringSpectrumCalculator': ('CondensedPhysics2', 'compute'),
+    'YeRProcessCalculator': ('CondensedPhysics2', 'compute'),
+    'YoungStarsCosmologicalLambdaCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsDarkMatterPerturbationCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsOutflowLorentzForceCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsOutflowPressureCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsOutflowUg2KineticCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsOutflowsPressureCalculator': ('CondensedPhysics4', 'compute'),
+    'YoungStarsQuantumIntegralCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsResonantOscillatoryCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsStarFormationMassCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsTurbulentFluidDynamicsCalculator': ('CondensedPhysics', 'compute'),
+    'YoungStarsUgSumCalculator': ('CondensedPhysics', 'compute'),
+    'YukawaCouplingMassCalculator': ('CondensedPhysics2', 'compute'),
+    'ZeissIRCaptureCalculator': ('CondensedPhysics2', 'compute'),
+    'ZeroBoundaryCalculator': ('CondensedPhysics2', 'compute'),
+    'ZeroPointEnergyHarvestCalculator': ('CondensedPhysics2', 'compute'),
+    'ZeroReflectionPlasmoidCalculator': ('CondensedPhysics2', 'compute'),
+    'ZetaPiWaveCalculator': ('CondensedPhysics2', 'compute'),
+    '_CP3Calculator': ('CondensedPhysics3', 'compute'),
+    '_CP4Calculator': ('CondensedPhysics4', 'compute'),
+    'cMERAEntanglementRGCalculator': ('CondensedPhysics2', 'compute'),
+    'gCompressedAllForcesR26ComponentCalculator': ('CondensedPhysics3', 'compute'),
+    'kkREBTrdicRamanujanFUBiBuoyancyKernelCalculator': ('CondensedPhysics3', 'compute'),
+    'vSCmRelativisticParameterUpdateCalculator': ('CondensedPhysics4', 'compute'),
+}
+
+def _pipeline_invoke(class_name, dataset=None):
+    if class_name not in _PIPELINE_CLASS_MAP:
+        return {"error": f"Pipeline class {class_name} not registered"}
+    mod_name, method_name = _PIPELINE_CLASS_MAP[class_name]
+    try:
+        import importlib
+        mod = importlib.import_module(mod_name)
+        cls = getattr(mod, class_name)
+        instance = cls()
+        method = getattr(instance, method_name)
+        if dataset is None:
+            dataset = {}
+        try:
+            return method(dataset)
+        except TypeError:
+            return method()
+    except Exception as e:
+        return {"error": str(e), "class": class_name, "module": mod_name}
+
+def calc_a_c_e_d_c_e_event_counter_calculator(dataset=None):
+    """Wraps ACEDCEEventCounterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ACEDCEEventCounterCalculator', dataset)
+def calc_a_c_e_d_c_e_field_generator_calculator(dataset=None):
+    """Wraps ACEDCEFieldGeneratorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ACEDCEFieldGeneratorCalculator', dataset)
+def calc_a_c_e_d_c_e_modulated_energy_calculator(dataset=None):
+    """Wraps ACEDCEModulatedEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ACEDCEModulatedEnergyCalculator', dataset)
+def calc_a_c_p_calculator(dataset=None):
+    """Wraps ACPCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ACPCalculator', dataset)
+def calc_a_c_p_qwave_t_hz_hole_u_bmi_calculator(dataset=None):
+    """Wraps ACPQwaveTHzHoleUBmiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ACPQwaveTHzHoleUBmiCalculator', dataset)
+def calc_a_c_p_stage_tracker(dataset=None):
+    """Wraps ACPStageTracker.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ACPStageTracker', dataset)
+def calc_a_c_p_universal_cycle_notes_physics_calculator(dataset=None):
+    """Wraps ACPUniversalCycleNotesPhysicsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ACPUniversalCycleNotesPhysicsCalculator', dataset)
+def calc_a_d_d_graviton_leakage_neg_buoyancy_sgr_a_ext_calc(dataset=None):
+    """Wraps ADDGravitonLeakageNegBuoyancySgrAExtCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ADDGravitonLeakageNegBuoyancySgrAExtCalc', dataset)
+def calc_a_d_d_large_extra_dimensions_f_l_e_d_u_q_f_f_calculator(dataset=None):
+    """Wraps ADDLargeExtraDimensionsFLEDUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ADDLargeExtraDimensionsFLEDUQFFCalculator', dataset)
+def calc_a_f_g_l5180_massive_s_f_r_three_u_q_f_f_calculator(dataset=None):
+    """Wraps AFGL5180MassiveSFRThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AFGL5180MassiveSFRThreeUQFFCalculator', dataset)
+def calc_a_g_carinae_model(dataset=None):
+    """Wraps AGCarinaeModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AGCarinaeModel', dataset)
+def calc_a_g_carinae_nebula_u_q_f_f_calculator(dataset=None):
+    """Wraps AGCarinaeNebulaUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AGCarinaeNebulaUQFFCalculator', dataset)
+def calc_a_g_n_cooling_flow_calculator(dataset=None):
+    """Wraps AGNCoolingFlowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AGNCoolingFlowCalculator', dataset)
+def calc_a_g_n_feedback_factor_calculator(dataset=None):
+    """Wraps AGNFeedbackFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AGNFeedbackFactorCalculator', dataset)
+def calc_a_g_n_feedback_m_sigma_scaling_calculator(dataset=None):
+    """Wraps AGNFeedbackMSigmaScalingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AGNFeedbackMSigmaScalingCalculator', dataset)
+def calc_a_g_n_feedback_model(dataset=None):
+    """Wraps AGNFeedbackModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AGNFeedbackModel', dataset)
+def calc_a_g_n_jet_dynamics_blandford_znajek(dataset=None):
+    """Wraps AGNJetDynamicsBlandfordZnajek.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AGNJetDynamicsBlandfordZnajek', dataset)
+def calc_a_l_i_c_e_centrality_multiplicity_calc(dataset=None):
+    """Wraps ALICECentralityMultiplicityCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ALICECentralityMultiplicityCalc', dataset)
+def calc_a_l_i_c_e_multiplicity_centrality_rho_vac_ratio_calculator(dataset=None):
+    """Wraps ALICEMultiplicityCentralityRhoVacRatioCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ALICEMultiplicityCentralityRhoVacRatioCalculator', dataset)
+def calc_a_s_a_s_s_n14li_t_d_e_outflow_f_u_bi_calculator(dataset=None):
+    """Wraps ASASSN14liTDEOutflowFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ASASSN14liTDEOutflowFUBiCalculator', dataset)
+def calc_a_s_k_a_p_ultra_long_period_transient_f_u_bi_calculator(dataset=None):
+    """Wraps ASKAPUltraLongPeriodTransientFUBiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ASKAPUltraLongPeriodTransientFUBiCalculator', dataset)
+def calc_a_t2024tvd_wandering_m_b_h_t_d_e_calculator(dataset=None):
+    """Wraps AT2024tvdWanderingMBHTDECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AT2024tvdWanderingMBHTDECalculator', dataset)
+def calc_a_t_l_a_s_l_h_c_quark_energy_low_n_level_calculator(dataset=None):
+    """Wraps ATLASLHCQuarkEnergyLowNLevelCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ATLASLHCQuarkEnergyLowNLevelCalculator', dataset)
+def calc_a_t_l_a_s_off_shell_higgs_width_calculator(dataset=None):
+    """Wraps ATLASOffShellHiggsWidthCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ATLASOffShellHiggsWidthCalculator', dataset)
+def calc_accretion_dynamics_calculator(dataset=None):
+    """Wraps AccretionDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AccretionDynamicsCalculator', dataset)
+def calc_aether_blue_qualities_model(dataset=None):
+    """Wraps AetherBlueQualitiesModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherBlueQualitiesModel', dataset)
+def calc_aether_coupling_calculator(dataset=None):
+    """Wraps AetherCouplingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AetherCouplingCalculator', dataset)
+def calc_aether_coupling_master_calculator(dataset=None):
+    """Wraps AetherCouplingMasterCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AetherCouplingMasterCalculator', dataset)
+def calc_aether_field_density_calculator(dataset=None):
+    """Wraps AetherFieldDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AetherFieldDensityCalculator', dataset)
+def calc_aether_flux_rooting_calculator(dataset=None):
+    """Wraps AetherFluxRootingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AetherFluxRootingCalculator', dataset)
+def calc_aether_impedance_q_e_d_calculator(dataset=None):
+    """Wraps AetherImpedanceQEDCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherImpedanceQEDCalculator', dataset)
+def calc_aether_ion_concentration_u_q_f_f_calculator(dataset=None):
+    """Wraps AetherIonConcentrationUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AetherIonConcentrationUQFFCalculator', dataset)
+def calc_aether_metric_calculator(dataset=None):
+    """Wraps AetherMetricCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AetherMetricCalculator', dataset)
+def calc_aether_metric_q_calc_calculator(dataset=None):
+    """Wraps AetherMetricQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherMetricQCalcCalculator', dataset)
+def calc_aether_metric_tensor_perturbation_calculator(dataset=None):
+    """Wraps AetherMetricTensorPerturbationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AetherMetricTensorPerturbationCalculator', dataset)
+def calc_aether_resistance_full_u_q_f_f_calculator(dataset=None):
+    """Wraps AetherResistanceFullUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AetherResistanceFullUQFFCalculator', dataset)
+def calc_aether_stress_energy_calculator(dataset=None):
+    """Wraps AetherStressEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherStressEnergyCalculator', dataset)
+def calc_aether_superconductive_calculator(dataset=None):
+    """Wraps AetherSuperconductiveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherSuperconductiveCalculator', dataset)
+def calc_aether_superfluid_dynamics_calculator(dataset=None):
+    """Wraps AetherSuperfluidDynamicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AetherSuperfluidDynamicsCalculator', dataset)
+def calc_aether_superfluid_u_q_f_f_calculator(dataset=None):
+    """Wraps AetherSuperfluidUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherSuperfluidUQFFCalculator', dataset)
+def calc_aether_vacuum_energy_model(dataset=None):
+    """Wraps AetherVacuumEnergyModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AetherVacuumEnergyModel', dataset)
+def calc_aetheric_density_scaled_calculator(dataset=None):
+    """Wraps AethericDensityScaledCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AethericDensityScaledCalculator', dataset)
+def calc_alcohol_combustion_enthalpy_calculator(dataset=None):
+    """Wraps AlcoholCombustionEnthalpyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AlcoholCombustionEnthalpyCalculator', dataset)
+def calc_alders_olbers_b_s_f_g_metric_gap_analysis_calculator(dataset=None):
+    """Wraps AldersOlbersBSFGMetricGapAnalysisCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AldersOlbersBSFGMetricGapAnalysisCalculator', dataset)
+def calc_alders_olbers_paradox_d_p_m_shell_flux_calculator(dataset=None):
+    """Wraps AldersOlbersParadoxDPMShellFluxCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AldersOlbersParadoxDPMShellFluxCalculator', dataset)
+def calc_alders_olbers_v_d_s_number_system_resolution_calculator(dataset=None):
+    """Wraps AldersOlbersVDSNumberSystemResolutionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AldersOlbersVDSNumberSystemResolutionCalculator', dataset)
+def calc_alpha_b_e_c_calculator(dataset=None):
+    """Wraps AlphaBECCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AlphaBECCalculator', dataset)
+def calc_alpha_b_e_c_nuclear_calculator(dataset=None):
+    """Wraps AlphaBECNuclearCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AlphaBECNuclearCalculator', dataset)
+def calc_alpha_b_e_c_nuclear_l_e_n_r_enhancement_calculator(dataset=None):
+    """Wraps AlphaBECNuclearLENREnhancementCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('AlphaBECNuclearLENREnhancementCalculator', dataset)
+def calc_alternating_current_effect_calculator(dataset=None):
+    """Wraps AlternatingCurrentEffectCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AlternatingCurrentEffectCalculator', dataset)
+def calc_am241_decay_energy_calculator(dataset=None):
+    """Wraps Am241DecayEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Am241DecayEnergyCalculator', dataset)
+def calc_americium_alpha_ionization_calculator(dataset=None):
+    """Wraps AmericiumAlphaIonizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AmericiumAlphaIonizationCalculator', dataset)
+def calc_amplitude_stability_model(dataset=None):
+    """Wraps AmplitudeStabilityModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AmplitudeStabilityModel', dataset)
+def calc_andromeda_blueshift_approach_amplifier_calculator(dataset=None):
+    """Wraps AndromedaBlueshiftApproachAmplifierCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('AndromedaBlueshiftApproachAmplifierCalculator', dataset)
+def calc_andromeda_d_m_shell_partition_calculator(dataset=None):
+    """Wraps AndromedaDMShellPartitionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('AndromedaDMShellPartitionCalculator', dataset)
+def calc_andromeda_friedmann_hz_expansion_calculator(dataset=None):
+    """Wraps AndromedaFriedmannHzExpansionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('AndromedaFriedmannHzExpansionCalculator', dataset)
+def calc_andromeda_h_i21cm_u_q_f_f_resonance_calculator(dataset=None):
+    """Wraps AndromedaHI21cmUQFFResonanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('AndromedaHI21cmUQFFResonanceCalculator', dataset)
+def calc_andromeda_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps AndromedaUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AndromedaUQFFGravityCalculator', dataset)
+def calc_angular_frequency_calculator(dataset=None):
+    """Wraps AngularFrequencyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AngularFrequencyCalculator', dataset)
+def calc_angular_velocity_field_calculator(dataset=None):
+    """Wraps AngularVelocityFieldCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AngularVelocityFieldCalculator', dataset)
+def calc_antennae_base_gravity_calculator(dataset=None):
+    """Wraps AntennaeBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeBaseGravityCalculator', dataset)
+def calc_antennae_cosmological_constant_calculator(dataset=None):
+    """Wraps AntennaeCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeCosmologicalConstantCalculator', dataset)
+def calc_antennae_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps AntennaeDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeDarkMatterPerturbationCalculator', dataset)
+def calc_antennae_electromagnetic_calculator(dataset=None):
+    """Wraps AntennaeElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeElectromagneticCalculator', dataset)
+def calc_antennae_fluid_density_calculator(dataset=None):
+    """Wraps AntennaeFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeFluidDensityCalculator', dataset)
+def calc_antennae_galaxies_merger_interaction_calculator(dataset=None):
+    """Wraps AntennaeGalaxiesMergerInteractionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('AntennaeGalaxiesMergerInteractionCalculator', dataset)
+def calc_antennae_galaxies_model(dataset=None):
+    """Wraps AntennaeGalaxiesModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeGalaxiesModel', dataset)
+def calc_antennae_merger_n_g_c4038_clean_u_q_f_f_calculator(dataset=None):
+    """Wraps AntennaeMergerNGC4038CleanUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AntennaeMergerNGC4038CleanUQFFCalculator', dataset)
+def calc_antennae_merger_n_g_c4038_n_g_c4039(dataset=None):
+    """Wraps AntennaeMergerNGC4038NGC4039.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AntennaeMergerNGC4038NGC4039', dataset)
+def calc_antennae_oscillatory_wave_calculator(dataset=None):
+    """Wraps AntennaeOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeOscillatoryWaveCalculator', dataset)
+def calc_antennae_quantum_uncertainty_calculator(dataset=None):
+    """Wraps AntennaeQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeQuantumUncertaintyCalculator', dataset)
+def calc_antennae_stellar_feedback_calculator(dataset=None):
+    """Wraps AntennaeStellarFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeStellarFeedbackCalculator', dataset)
+def calc_antennae_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps AntennaeUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AntennaeUQFFUnificationCalculator', dataset)
+def calc_ar_xiv24_paper_batch4_fquark_fneutrino_f_a_l_p_fdark_calc(dataset=None):
+    """Wraps ArXiv24PaperBatch4FquarkFneutrinoFALPFdarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ArXiv24PaperBatch4FquarkFneutrinoFALPFdarkCalc', dataset)
+def calc_assembly_disassembly_calculator(dataset=None):
+    """Wraps AssemblyDisassemblyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AssemblyDisassemblyCalculator', dataset)
+def calc_astronomical_a_p_i_fetcher(dataset=None):
+    """Wraps AstronomicalAPIFetcher.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AstronomicalAPIFetcher', dataset)
+def calc_astropy_ephemeris_calculator(dataset=None):
+    """Wraps AstropyEphemerisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AstropyEphemerisCalculator', dataset)
+def calc_asymptotic_freedom_calculator(dataset=None):
+    """Wraps AsymptoticFreedomCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AsymptoticFreedomCalculator', dataset)
+def calc_atomic_creation_process_calculator(dataset=None):
+    """Wraps AtomicCreationProcessCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AtomicCreationProcessCalculator', dataset)
+def calc_atomic_model_u_q_f_f(dataset=None):
+    """Wraps AtomicModelUQFF.compute() from CondensedPhysics."""
+    return _pipeline_invoke('AtomicModelUQFF', dataset)
+def calc_atomic_scale_pressure_term_calculator(dataset=None):
+    """Wraps AtomicScalePressureTermCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('AtomicScalePressureTermCalculator', dataset)
+def calc_atomic_transmutation_calculator(dataset=None):
+    """Wraps AtomicTransmutationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('AtomicTransmutationCalculator', dataset)
+def calc_b_a_o_calculator(dataset=None):
+    """Wraps BAOCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BAOCalculator', dataset)
+def calc_b_b_d_t_feynman_cluster_calculator(dataset=None):
+    """Wraps BBDTFeynmanClusterCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BBDTFeynmanClusterCalculator', dataset)
+def calc_b_c_s_critical_temperature_calc(dataset=None):
+    """Wraps BCSCriticalTemperatureCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BCSCriticalTemperatureCalc', dataset)
+def calc_b_c_s_gap_equation_calc(dataset=None):
+    """Wraps BCSGapEquationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BCSGapEquationCalc', dataset)
+def calc_b_c_s_phonon_resonance_calc(dataset=None):
+    """Wraps BCSPhononResonanceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BCSPhononResonanceCalc', dataset)
+def calc_b_c_s_spectral_ladder_master_coupling_calc(dataset=None):
+    """Wraps BCSSpectralLadderMasterCouplingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BCSSpectralLadderMasterCouplingCalc', dataset)
+def calc_b_c_s_superconductivity_calculator(dataset=None):
+    """Wraps BCSSuperconductivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BCSSuperconductivityCalculator', dataset)
+def calc_b_e_c_condensate_fraction_calculator(dataset=None):
+    """Wraps BECCondensateFractionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BECCondensateFractionCalculator', dataset)
+def calc_b_h26_b_s_h_resonance_calculator_s234(dataset=None):
+    """Wraps BH26BSHResonanceCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BH26BSHResonanceCalculator_S234', dataset)
+def calc_b_h26_branch_calculator_s234(dataset=None):
+    """Wraps BH26BranchCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BH26BranchCalculator_S234', dataset)
+def calc_b_h_jet_modulation_factor_linewidth_calc(dataset=None):
+    """Wraps BHJetModulationFactorLinewidthCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BHJetModulationFactorLinewidthCalc', dataset)
+def calc_b_h_m_f_evolution_model(dataset=None):
+    """Wraps BHMFEvolutionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BHMFEvolutionModel', dataset)
+def calc_b_h_phonon_ergosphere_superradiance_calc(dataset=None):
+    """Wraps BHPhononErgosphereSuperradianceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BHPhononErgosphereSuperradianceCalc', dataset)
+def calc_b_s_d_l_function_calculator(dataset=None):
+    """Wraps BSDLFunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BSDLFunctionCalculator', dataset)
+def calc_b_s_f_g26_d_line_element_factorial_compactification_calculator(dataset=None):
+    """Wraps BSFG26DLineElementFactorialCompactificationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFG26DLineElementFactorialCompactificationCalculator', dataset)
+def calc_b_s_f_g_black_hole_solution_horizon_calculator(dataset=None):
+    """Wraps BSFGBlackHoleSolutionHorizonCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGBlackHoleSolutionHorizonCalculator', dataset)
+def calc_b_s_f_g_bohr_sommerfeld_aether_quantization_calculator(dataset=None):
+    """Wraps BSFGBohrSommerfeldAetherQuantizationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGBohrSommerfeldAetherQuantizationCalculator', dataset)
+def calc_b_s_f_g_einstein_tensor_field_equations_calculator(dataset=None):
+    """Wraps BSFGEinsteinTensorFieldEquationsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGEinsteinTensorFieldEquationsCalculator', dataset)
+def calc_b_s_f_g_geodesic_metric_compatibility_calculator(dataset=None):
+    """Wraps BSFGGeodesicMetricCompatibilityCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGGeodesicMetricCompatibilityCalculator', dataset)
+def calc_b_s_f_g_holonomy_group_parallel_transport_calculator(dataset=None):
+    """Wraps BSFGHolonomyGroupParallelTransportCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGHolonomyGroupParallelTransportCalculator', dataset)
+def calc_b_s_f_g_metric_calculator(dataset=None):
+    """Wraps BSFGMetricCalculator.compute() from QCalcGeom."""
+    return _pipeline_invoke('BSFGMetricCalculator', dataset)
+def calc_b_s_f_g_riemann_curvature_aether_metric_calculator(dataset=None):
+    """Wraps BSFGRiemannCurvatureAetherMetricCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGRiemannCurvatureAetherMetricCalculator', dataset)
+def calc_b_s_f_g_symmetry_group_isometry_analysis_calculator(dataset=None):
+    """Wraps BSFGSymmetryGroupIsometryAnalysisCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGSymmetryGroupIsometryAnalysisCalculator', dataset)
+def calc_b_s_f_g_unification_atlas_theorem_hub_calculator(dataset=None):
+    """Wraps BSFGUnificationAtlasTheoremHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BSFGUnificationAtlasTheoremHubCalculator', dataset)
+def calc_b_s_f_g_unification_metric_calculator(dataset=None):
+    """Wraps BSFGUnificationMetricCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BSFGUnificationMetricCalculator', dataset)
+def calc_b_s_f_g_wormhole_traversability_calculator(dataset=None):
+    """Wraps BSFGWormholeTraversabilityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BSFGWormholeTraversabilityCalculator', dataset)
+def calc_b_s_m_particle_observables_calculator(dataset=None):
+    """Wraps BSMParticleObservablesCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BSMParticleObservablesCalculator', dataset)
+def calc_b_s_m_u_q_f_f_multi_experiment_coupling_calculator(dataset=None):
+    """Wraps BSMUQFFMultiExperimentCouplingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BSMUQFFMultiExperimentCouplingCalculator', dataset)
+def calc_background_metric_calculator(dataset=None):
+    """Wraps BackgroundMetricCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BackgroundMetricCalculator', dataset)
+def calc_balmer_series_calculator(dataset=None):
+    """Wraps BalmerSeriesCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BalmerSeriesCalculator', dataset)
+def calc_batch25_frame_tracker_calculator(dataset=None):
+    """Wraps Batch25FrameTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch25FrameTrackerCalculator', dataset)
+def calc_batch32_complete_analysis_calculator(dataset=None):
+    """Wraps Batch32CompleteAnalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch32CompleteAnalysisCalculator', dataset)
+def calc_batch32_frame_tracker_calculator(dataset=None):
+    """Wraps Batch32FrameTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch32FrameTrackerCalculator', dataset)
+def calc_batch34_frame_tracker_calculator(dataset=None):
+    """Wraps Batch34FrameTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch34FrameTrackerCalculator', dataset)
+def calc_batch35_complete_analysis_calculator(dataset=None):
+    """Wraps Batch35CompleteAnalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch35CompleteAnalysisCalculator', dataset)
+def calc_batch35_frame_tracker_calculator(dataset=None):
+    """Wraps Batch35FrameTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch35FrameTrackerCalculator', dataset)
+def calc_batch36_frame_tracker_calculator(dataset=None):
+    """Wraps Batch36FrameTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch36FrameTrackerCalculator', dataset)
+def calc_batch36_progress_calculator(dataset=None):
+    """Wraps Batch36ProgressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch36ProgressCalculator', dataset)
+def calc_batch37_progress_calculator(dataset=None):
+    """Wraps Batch37ProgressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch37ProgressCalculator', dataset)
+def calc_batch40_partial_analysis_calculator(dataset=None):
+    """Wraps Batch40PartialAnalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Batch40PartialAnalysisCalculator', dataset)
+def calc_batch_analysis39_complete_calculator(dataset=None):
+    """Wraps BatchAnalysis39CompleteCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BatchAnalysis39CompleteCalculator', dataset)
+def calc_batch_analysis_progress_calculator(dataset=None):
+    """Wraps BatchAnalysisProgressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BatchAnalysisProgressCalculator', dataset)
+def calc_batch_structure_tracker_calculator(dataset=None):
+    """Wraps BatchStructureTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BatchStructureTrackerCalculator', dataset)
+def calc_benchmark2_progress_calculator(dataset=None):
+    """Wraps Benchmark2ProgressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Benchmark2ProgressCalculator', dataset)
+def calc_bi_polar_p_n_u_v_radiation_pressure_calculator(dataset=None):
+    """Wraps BiPolarPNUVRadiationPressureCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BiPolarPNUVRadiationPressureCalculator', dataset)
+def calc_bi_polar_p_n_wind_shock_gravitational_dominance_calculator(dataset=None):
+    """Wraps BiPolarPNWindShockGravitationalDominanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BiPolarPNWindShockGravitationalDominanceCalculator', dataset)
+def calc_big_bang_cosmic_evolution_calculator(dataset=None):
+    """Wraps BigBangCosmicEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangCosmicEvolutionCalculator', dataset)
+def calc_big_bang_cosmic_q_g_d_m_g_w_calculator(dataset=None):
+    """Wraps BigBangCosmicQGDMGWCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BigBangCosmicQGDMGWCalculator', dataset)
+def calc_big_bang_cosmological_lambda_evolution_calculator(dataset=None):
+    """Wraps BigBangCosmologicalLambdaEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangCosmologicalLambdaEvolutionCalculator', dataset)
+def calc_big_bang_dark_matter_fractional_calculator(dataset=None):
+    """Wraps BigBangDarkMatterFractionalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangDarkMatterFractionalCalculator', dataset)
+def calc_big_bang_fluid_dynamics_cosmological_calculator(dataset=None):
+    """Wraps BigBangFluidDynamicsCosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangFluidDynamicsCosmologicalCalculator', dataset)
+def calc_big_bang_gravitational_wave_calculator(dataset=None):
+    """Wraps BigBangGravitationalWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangGravitationalWaveCalculator', dataset)
+def calc_big_bang_hypergraph_origin_calculator(dataset=None):
+    """Wraps BigBangHypergraphOriginCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BigBangHypergraphOriginCalculator', dataset)
+def calc_big_bang_mass_evolution_calculator(dataset=None):
+    """Wraps BigBangMassEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangMassEvolutionCalculator', dataset)
+def calc_big_bang_origin_model(dataset=None):
+    """Wraps BigBangOriginModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangOriginModel', dataset)
+def calc_big_bang_quantum_gravity_calculator(dataset=None):
+    """Wraps BigBangQuantumGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangQuantumGravityCalculator', dataset)
+def calc_big_bang_quantum_integral_cosmological_calculator(dataset=None):
+    """Wraps BigBangQuantumIntegralCosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangQuantumIntegralCosmologicalCalculator', dataset)
+def calc_big_bang_redshift_evolution_calculator(dataset=None):
+    """Wraps BigBangRedshiftEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangRedshiftEvolutionCalculator', dataset)
+def calc_big_bang_resonant_oscillatory_cosmological_calculator(dataset=None):
+    """Wraps BigBangResonantOscillatoryCosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangResonantOscillatoryCosmologicalCalculator', dataset)
+def calc_big_bang_ug_sum_cosmological_calculator(dataset=None):
+    """Wraps BigBangUgSumCosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BigBangUgSumCosmologicalCalculator', dataset)
+def calc_bio_quantum_resonance_calculator(dataset=None):
+    """Wraps BioQuantumResonanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BioQuantumResonanceCalculator', dataset)
+def calc_bipolar_p_n_lobe_resonance_d_p_m_macro_antenna_calculator(dataset=None):
+    """Wraps BipolarPNLobeResonanceDPMMacroAntennaCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BipolarPNLobeResonanceDPMMacroAntennaCalculator', dataset)
+def calc_bipolar_wind_shock_calculator(dataset=None):
+    """Wraps BipolarWindShockCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BipolarWindShockCalculator', dataset)
+def calc_birch_swinnerton_dyer_u_q_f_f_calculator(dataset=None):
+    """Wraps BirchSwinnertonDyerUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BirchSwinnertonDyerUQFFCalculator', dataset)
+def calc_bj_term(dataset=None):
+    """Wraps BjTerm.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BjTerm', dataset)
+def calc_bj_time_calculator(dataset=None):
+    """Wraps BjTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BjTimeCalculator', dataset)
+def calc_black_hole_bounce_u_q_f_f_calculator(dataset=None):
+    """Wraps BlackHoleBounceUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BlackHoleBounceUQFFCalculator', dataset)
+def calc_black_hole_jet_analog_calculator(dataset=None):
+    """Wraps BlackHoleJetAnalogCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BlackHoleJetAnalogCalculator', dataset)
+def calc_black_hole_jet_fluid_asymmetry_ratio_calculator(dataset=None):
+    """Wraps BlackHoleJetFluidAsymmetryRatioCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BlackHoleJetFluidAsymmetryRatioCalculator', dataset)
+def calc_black_hole_phases_model(dataset=None):
+    """Wraps BlackHolePhasesModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BlackHolePhasesModel', dataset)
+def calc_black_hole_pseudo_monopole_resonance_model(dataset=None):
+    """Wraps BlackHolePseudoMonopoleResonanceModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BlackHolePseudoMonopoleResonanceModel', dataset)
+def calc_black_hole_triangulation_model(dataset=None):
+    """Wraps BlackHoleTriangulationModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BlackHoleTriangulationModel', dataset)
+def calc_black_hole_ug4_galactic_feedback_calculator(dataset=None):
+    """Wraps BlackHoleUg4GalacticFeedbackCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BlackHoleUg4GalacticFeedbackCalculator', dataset)
+def calc_black_to_white_hole_u_q_f_f_calculator(dataset=None):
+    """Wraps BlackToWhiteHoleUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BlackToWhiteHoleUQFFCalculator', dataset)
+def calc_blandford_znajek_power_calculator(dataset=None):
+    """Wraps BlandfordZnajekPowerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BlandfordZnajekPowerCalculator', dataset)
+def calc_blazar_ergosphere_phonon_resonance_calc(dataset=None):
+    """Wraps BlazarErgospherePhononResonanceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BlazarErgospherePhononResonanceCalc', dataset)
+def calc_blazar_multi_messenger_phonon_correlation_calc(dataset=None):
+    """Wraps BlazarMultiMessengerPhononCorrelationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BlazarMultiMessengerPhononCorrelationCalc', dataset)
+def calc_blockchain_e_c_d_s_a_calculator(dataset=None):
+    """Wraps BlockchainECDSACalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BlockchainECDSACalculator', dataset)
+def calc_blockchain_e_c_d_s_a_s8_calculator(dataset=None):
+    """Wraps BlockchainECDSAS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BlockchainECDSAS8Calculator', dataset)
+def calc_bogoliubov_de_gennes_model(dataset=None):
+    """Wraps BogoliubovDeGennesModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BogoliubovDeGennesModel', dataset)
+def calc_bondi_accretion_model(dataset=None):
+    """Wraps BondiAccretionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BondiAccretionModel', dataset)
+def calc_bose_einstein_alpha_clustering_calculator(dataset=None):
+    """Wraps BoseEinsteinAlphaClusteringCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BoseEinsteinAlphaClusteringCalculator', dataset)
+def calc_bose_einstein_condensate_u_q_f_f_calculator(dataset=None):
+    """Wraps BoseEinsteinCondensateUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BoseEinsteinCondensateUQFFCalculator', dataset)
+def calc_bow_shock_i_s_m_chemistry_calculator(dataset=None):
+    """Wraps BowShockISMChemistryCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BowShockISMChemistryCalculator', dataset)
+def calc_boyle_law_buoyancy_calculator(dataset=None):
+    """Wraps BoyleLawBuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BoyleLawBuoyancyCalculator', dataset)
+def calc_bubble_nebula_base_gravity_calculator(dataset=None):
+    """Wraps BubbleNebulaBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaBaseGravityCalculator', dataset)
+def calc_bubble_nebula_cosmological_constant_calculator(dataset=None):
+    """Wraps BubbleNebulaCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaCosmologicalConstantCalculator', dataset)
+def calc_bubble_nebula_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps BubbleNebulaDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaDarkMatterPerturbationCalculator', dataset)
+def calc_bubble_nebula_electromagnetic_calculator(dataset=None):
+    """Wraps BubbleNebulaElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaElectromagneticCalculator', dataset)
+def calc_bubble_nebula_expansion_enhancement_calculator(dataset=None):
+    """Wraps BubbleNebulaExpansionEnhancementCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('BubbleNebulaExpansionEnhancementCalculator', dataset)
+def calc_bubble_nebula_fluid_density_calculator(dataset=None):
+    """Wraps BubbleNebulaFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaFluidDensityCalculator', dataset)
+def calc_bubble_nebula_model(dataset=None):
+    """Wraps BubbleNebulaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaModel', dataset)
+def calc_bubble_nebula_n_g_c7635_clean_u_q_f_f_calculator(dataset=None):
+    """Wraps BubbleNebulaNGC7635CleanUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BubbleNebulaNGC7635CleanUQFFCalculator', dataset)
+def calc_bubble_nebula_oscillatory_wave_calculator(dataset=None):
+    """Wraps BubbleNebulaOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaOscillatoryWaveCalculator', dataset)
+def calc_bubble_nebula_positive_expansion_f_u_bi_calculator(dataset=None):
+    """Wraps BubbleNebulaPositiveExpansionFUBiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BubbleNebulaPositiveExpansionFUBiCalculator', dataset)
+def calc_bubble_nebula_quantum_uncertainty_calculator(dataset=None):
+    """Wraps BubbleNebulaQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaQuantumUncertaintyCalculator', dataset)
+def calc_bubble_nebula_stellar_wind_calculator(dataset=None):
+    """Wraps BubbleNebulaStellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaStellarWindCalculator', dataset)
+def calc_bubble_nebula_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps BubbleNebulaUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BubbleNebulaUQFFUnificationCalculator', dataset)
+def calc_bubble_shattering_calculator(dataset=None):
+    """Wraps BubbleShatteringCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BubbleShatteringCalculator', dataset)
+def calc_bulb_driven_plasma_energetics_calculator(dataset=None):
+    """Wraps BulbDrivenPlasmaEnergeticsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BulbDrivenPlasmaEnergeticsCalculator', dataset)
+def calc_bulb_resonance_calculator(dataset=None):
+    """Wraps BulbResonanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BulbResonanceCalculator', dataset)
+def calc_buoyancy_calculator(dataset=None):
+    """Wraps BuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BuoyancyCalculator', dataset)
+def calc_buoyancy_catalogue_calculator(dataset=None):
+    """Wraps BuoyancyCatalogueCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BuoyancyCatalogueCalculator', dataset)
+def calc_buoyancy_coupling_calculator(dataset=None):
+    """Wraps BuoyancyCouplingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BuoyancyCouplingCalculator', dataset)
+def calc_buoyancy_klein_gordon_scalar_field_e_o_m_calc(dataset=None):
+    """Wraps BuoyancyKleinGordonScalarFieldEOMCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BuoyancyKleinGordonScalarFieldEOMCalc', dataset)
+def calc_buoyancy_lagrangian_e_o_m_calculator(dataset=None):
+    """Wraps BuoyancyLagrangianEOMCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BuoyancyLagrangianEOMCalculator', dataset)
+def calc_buoyancy_mass_relationship(dataset=None):
+    """Wraps BuoyancyMassRelationship.compute() from CondensedPhysics."""
+    return _pipeline_invoke('BuoyancyMassRelationship', dataset)
+def calc_buoyancy_modulation_calculator(dataset=None):
+    """Wraps BuoyancyModulationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BuoyancyModulationCalculator', dataset)
+def calc_buoyancy_reversal_sign_flip_resonance_calc(dataset=None):
+    """Wraps BuoyancyReversalSignFlipResonanceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('BuoyancyReversalSignFlipResonanceCalc', dataset)
+def calc_buoyant_gravity_hypergraph_calculator_84_a767_d3(dataset=None):
+    """Wraps BuoyantGravityHypergraphCalculator_84A767D3.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('BuoyantGravityHypergraphCalculator_84A767D3', dataset)
+def calc_c_g_m_baryon_calculator(dataset=None):
+    """Wraps CGMBaryonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CGMBaryonCalculator', dataset)
+def calc_c_g_m_baryon_fraction_model(dataset=None):
+    """Wraps CGMBaryonFractionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CGMBaryonFractionModel', dataset)
+def calc_c_g_m_dwarf_galaxy_metal_retention_calculator(dataset=None):
+    """Wraps CGMDwarfGalaxyMetalRetentionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CGMDwarfGalaxyMetalRetentionCalculator', dataset)
+def calc_c_g_m_metal_gradient_calculator(dataset=None):
+    """Wraps CGMMetalGradientCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CGMMetalGradientCalculator', dataset)
+def calc_c_g_m_metal_retention_model(dataset=None):
+    """Wraps CGMMetalRetentionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CGMMetalRetentionModel', dataset)
+def calc_c_g_m_metal_retention_u_q_f_f_theorem_calculator(dataset=None):
+    """Wraps CGMMetalRetentionUQFFTheoremCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CGMMetalRetentionUQFFTheoremCalculator', dataset)
+def calc_c_m_b_anisotropy_buoyancy_modulation_calculator(dataset=None):
+    """Wraps CMBAnisotropyBuoyancyModulationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CMBAnisotropyBuoyancyModulationCalculator', dataset)
+def calc_c_m_b_anomaly_u_q_f_f_calculator(dataset=None):
+    """Wraps CMBAnomalyUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CMBAnomalyUQFFCalculator', dataset)
+def calc_c_m_b_buoyancy_sector_lagrangian_calculator(dataset=None):
+    """Wraps CMBBuoyancySectorLagrangianCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CMBBuoyancySectorLagrangianCalculator', dataset)
+def calc_c_m_b_planck_calculator(dataset=None):
+    """Wraps CMBPlanckCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CMBPlanckCalculator', dataset)
+def calc_c_m_b_polarization_calculator(dataset=None):
+    """Wraps CMBPolarizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CMBPolarizationCalculator', dataset)
+def calc_c_m_e_solar_flare_f_u_perturbation_calculator(dataset=None):
+    """Wraps CMESolarFlareFUPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CMESolarFlareFUPerturbationCalculator', dataset)
+def calc_c_m_s_differential_higgs_kappa_calculator(dataset=None):
+    """Wraps CMSDifferentialHiggsKappaCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CMSDifferentialHiggsKappaCalculator', dataset)
+def calc_c_r24_compressed_cooper_super_seeding_calculator(dataset=None):
+    """Wraps CR24CompressedCooperSuperSeedingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR24CompressedCooperSuperSeedingCalculator', dataset)
+def calc_c_r24_dual_channel_architecture_calculator(dataset=None):
+    """Wraps CR24DualChannelArchitectureCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR24DualChannelArchitectureCalculator', dataset)
+def calc_c_r24_vacuum_differential_harmonic_calculator(dataset=None):
+    """Wraps CR24VacuumDifferentialHarmonicCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR24VacuumDifferentialHarmonicCalculator', dataset)
+def calc_c_r34_cross_channel_dominance_crossover_calculator(dataset=None):
+    """Wraps CR34CrossChannelDominanceCrossoverCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR34CrossChannelDominanceCrossoverCalculator', dataset)
+def calc_c_r34_d_p_m_force_density_spectral_atlas_calculator(dataset=None):
+    """Wraps CR34DPMForceDensitySpectralAtlasCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR34DPMForceDensitySpectralAtlasCalculator', dataset)
+def calc_c_r34_hi_i_region_t_hz_geometric_differential_calculator(dataset=None):
+    """Wraps CR34HiIRegionTHzGeometricDifferentialCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR34HiIRegionTHzGeometricDifferentialCalculator', dataset)
+def calc_c_r34b_rho_i_s_m_fluid_density_coupling_calculator(dataset=None):
+    """Wraps CR34bRhoISMFluidDensityCouplingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR34bRhoISMFluidDensityCouplingCalculator', dataset)
+def calc_c_r34b_saturn_first_planetary_dual_channel_calculator(dataset=None):
+    """Wraps CR34bSaturnFirstPlanetaryDualChannelCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR34bSaturnFirstPlanetaryDualChannelCalculator', dataset)
+def calc_c_r34b_vacuum_aether_frequency_mode_calculator(dataset=None):
+    """Wraps CR34bVacuumAetherFrequencyModeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CR34bVacuumAetherFrequencyModeCalculator', dataset)
+def calc_c_r_p_neutrino_s_e_d_calculator(dataset=None):
+    """Wraps CRPNeutrinoSEDCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CRPNeutrinoSEDCalculator', dataset)
+def calc_caduceus_quantum_wave_calculator(dataset=None):
+    """Wraps CaduceusQuantumWaveCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CaduceusQuantumWaveCalculator', dataset)
+def calc_caduceus_quantum_wave_model(dataset=None):
+    """Wraps CaduceusQuantumWaveModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CaduceusQuantumWaveModel', dataset)
+def calc_calabi_yau12_d_integration_calculator(dataset=None):
+    """Wraps CalabiYau12DIntegrationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CalabiYau12DIntegrationCalculator', dataset)
+def calc_carina_nebula_n_g_c3324_u_q_f_f_calculator(dataset=None):
+    """Wraps CarinaNebulaNGC3324UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CarinaNebulaNGC3324UQFFCalculator', dataset)
+def calc_cassini_ring_gaps_three_u_q_f_f_calculator(dataset=None):
+    """Wraps CassiniRingGapsThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CassiniRingGapsThreeUQFFCalculator', dataset)
+def calc_cassini_saturn_u_q_f_f_calculator(dataset=None):
+    """Wraps CassiniSaturnUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CassiniSaturnUQFFCalculator', dataset)
+def calc_cassiopeia_a_s_n_r_f_u_bi_calculator(dataset=None):
+    """Wraps CassiopeiaASNRFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CassiopeiaASNRFUBiCalculator', dataset)
+def calc_catalytic_phase_transform_calculator(dataset=None):
+    """Wraps CatalyticPhaseTransformCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CatalyticPhaseTransformCalculator', dataset)
+def calc_category_functor_calculator(dataset=None):
+    """Wraps CategoryFunctorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CategoryFunctorCalculator', dataset)
+def calc_category_functor_orb61_calculator(dataset=None):
+    """Wraps CategoryFunctorOrb61Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CategoryFunctorOrb61Calculator', dataset)
+def calc_category_functor_s8_calculator(dataset=None):
+    """Wraps CategoryFunctorS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CategoryFunctorS8Calculator', dataset)
+def calc_causal_graph(dataset=None):
+    """Wraps CausalGraph.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CausalGraph', dataset)
+def calc_cavity_pressure_calculator(dataset=None):
+    """Wraps CavityPressureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CavityPressureCalculator', dataset)
+def calc_celestial_buoyancy_calculator(dataset=None):
+    """Wraps CelestialBuoyancyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CelestialBuoyancyCalculator', dataset)
+def calc_celestial_dynamics_comparison_calculator(dataset=None):
+    """Wraps CelestialDynamicsComparisonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CelestialDynamicsComparisonCalculator', dataset)
+def calc_celestial_dynamics_mimicry_calculator(dataset=None):
+    """Wraps CelestialDynamicsMimicryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CelestialDynamicsMimicryCalculator', dataset)
+def calc_celestial_mimicry_dynamics_calculator(dataset=None):
+    """Wraps CelestialMimicryDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CelestialMimicryDynamicsCalculator', dataset)
+def calc_cen_a_a_g_n_accretion_disk_calculator(dataset=None):
+    """Wraps CenAAGNAccretionDiskCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenAAGNAccretionDiskCalculator', dataset)
+def calc_cen_a_cosmic_ray_calculator(dataset=None):
+    """Wraps CenACosmicRayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenACosmicRayCalculator', dataset)
+def calc_cen_a_dust_lane_calculator(dataset=None):
+    """Wraps CenADustLaneCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenADustLaneCalculator', dataset)
+def calc_cen_a_gravitational_wave_calculator(dataset=None):
+    """Wraps CenAGravitationalWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenAGravitationalWaveCalculator', dataset)
+def calc_cen_a_merger_dynamics_calculator(dataset=None):
+    """Wraps CenAMergerDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenAMergerDynamicsCalculator', dataset)
+def calc_cen_a_quantum_vacuum_calculator(dataset=None):
+    """Wraps CenAQuantumVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenAQuantumVacuumCalculator', dataset)
+def calc_cen_a_radio_lobe_calculator(dataset=None):
+    """Wraps CenARadioLobeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenARadioLobeCalculator', dataset)
+def calc_cen_a_relativistic_jet_calculator(dataset=None):
+    """Wraps CenARelativisticJetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenARelativisticJetCalculator', dataset)
+def calc_cen_a_starburst_calculator(dataset=None):
+    """Wraps CenAStarburstCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenAStarburstCalculator', dataset)
+def calc_cen_a_x_ray_emission_calculator(dataset=None):
+    """Wraps CenAXRayEmissionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CenAXRayEmissionCalculator', dataset)
+def calc_centaurus_a_f_u_bi_jet_vshape_calculator(dataset=None):
+    """Wraps CentaurusAFUBiJetVshapeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CentaurusAFUBiJetVshapeCalculator', dataset)
+def calc_centaurus_a_jet_power_curves_calc(dataset=None):
+    """Wraps CentaurusAJetPowerCurvesCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CentaurusAJetPowerCurvesCalc', dataset)
+def calc_centripetal_u_q_f_f_encompassment_calculator(dataset=None):
+    """Wraps CentripetalUQFFEncompassmentCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CentripetalUQFFEncompassmentCalculator', dataset)
+def calc_chandra25th_anniversary_crab_orion_n_g_c6334_calc(dataset=None):
+    """Wraps Chandra25thAnniversaryCrabOrionNGC6334Calc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Chandra25thAnniversaryCrabOrionNGC6334Calc', dataset)
+def calc_chandra_archive_multi_system_f_u_bi_calculator(dataset=None):
+    """Wraps ChandraArchiveMultiSystemFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ChandraArchiveMultiSystemFUBiCalculator', dataset)
+def calc_chandra_death_star16_s_m_b_h_g_c_vent_timelapse_calc(dataset=None):
+    """Wraps ChandraDeathStar16SMBHGCVentTimelapseCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ChandraDeathStar16SMBHGCVentTimelapseCalc', dataset)
+def calc_chandra_s_n_r_nebulae_u_q_f_f_batch2_calculator(dataset=None):
+    """Wraps ChandraSNRNebulaeUQFFBatch2Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ChandraSNRNebulaeUQFFBatch2Calculator', dataset)
+def calc_chandra_survey_m_a_c_s_j0416_lens_exo_s_m_b_h_calc(dataset=None):
+    """Wraps ChandraSurveyMACSJ0416LensExoSMBHCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ChandraSurveyMACSJ0416LensExoSMBHCalc', dataset)
+def calc_chandra_x_ray_batch1_g_c_eagle_h_b_c672_n_g_c7469_virgo_calc(dataset=None):
+    """Wraps ChandraXRayBatch1GCEagleHBC672NGC7469VirgoCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ChandraXRayBatch1GCEagleHBC672NGC7469VirgoCalc', dataset)
+def calc_chaos_coherence_calculator(dataset=None):
+    """Wraps ChaosCoherenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ChaosCoherenceCalculator', dataset)
+def calc_characteristic_polynomial_calculator(dataset=None):
+    """Wraps CharacteristicPolynomialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CharacteristicPolynomialCalculator', dataset)
+def calc_checkpoint_summary_calculator(dataset=None):
+    """Wraps CheckpointSummaryCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CheckpointSummaryCalculator', dataset)
+def calc_chiral_s_cm_graphene_pairing_calculator(dataset=None):
+    """Wraps ChiralSCmGraphenePairingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ChiralSCmGraphenePairingCalculator', dataset)
+def calc_chirp_mass_strain_calculator(dataset=None):
+    """Wraps ChirpMassStrainCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ChirpMassStrainCalculator', dataset)
+def calc_christoffel_condensed_calculator(dataset=None):
+    """Wraps ChristoffelCondensedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ChristoffelCondensedCalculator', dataset)
+def calc_chronicle_chapter_tracker_calculator(dataset=None):
+    """Wraps ChronicleChapterTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ChronicleChapterTrackerCalculator', dataset)
+def calc_chronicle_storyline_generator_calculator(dataset=None):
+    """Wraps ChronicleStorylineGeneratorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ChronicleStorylineGeneratorCalculator', dataset)
+def calc_circle_area_calculator(dataset=None):
+    """Wraps CircleAreaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CircleAreaCalculator', dataset)
+def calc_circulation_pattern_exp2_calculator(dataset=None):
+    """Wraps CirculationPatternExp2Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CirculationPatternExp2Calculator', dataset)
+def calc_cluster_buoyancy_lagrangian_calculator(dataset=None):
+    """Wraps ClusterBuoyancyLagrangianCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ClusterBuoyancyLagrangianCalculator', dataset)
+def calc_cluster_x_ray_emissivity_calculator(dataset=None):
+    """Wraps ClusterXRayEmissivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ClusterXRayEmissivityCalculator', dataset)
+def calc_co_an_qi26_level_energy_density_calculator(dataset=None):
+    """Wraps CoAnQi26LevelEnergyDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQi26LevelEnergyDensityCalculator', dataset)
+def calc_co_an_qi_antlr4_unit_calculator(dataset=None):
+    """Wraps CoAnQiAntlr4UnitCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiAntlr4UnitCalculator', dataset)
+def calc_co_an_qi_architecture_calculator(dataset=None):
+    """Wraps CoAnQiArchitectureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CoAnQiArchitectureCalculator', dataset)
+def calc_co_an_qi_calculator(dataset=None):
+    """Wraps CoAnQiCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CoAnQiCalculator', dataset)
+def calc_co_an_qi_canonical_m_u_g_e_system_catalog_calculator(dataset=None):
+    """Wraps CoAnQiCanonicalMUGESystemCatalogCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiCanonicalMUGESystemCatalogCalculator', dataset)
+def calc_co_an_qi_celestial_body_f_u_calculator(dataset=None):
+    """Wraps CoAnQiCelestialBodyFUCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiCelestialBodyFUCalculator', dataset)
+def calc_co_an_qi_collaborative_math_protocol_calculator(dataset=None):
+    """Wraps CoAnQiCollaborativeMathProtocolCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiCollaborativeMathProtocolCalculator', dataset)
+def calc_co_an_qi_data_loader_framework_calculator(dataset=None):
+    """Wraps CoAnQiDataLoaderFrameworkCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiDataLoaderFrameworkCalculator', dataset)
+def calc_co_an_qi_modular_compressed_m_u_g_e_calculator(dataset=None):
+    """Wraps CoAnQiModularCompressedMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiModularCompressedMUGECalculator', dataset)
+def calc_co_an_qi_modular_resonance_m_u_g_e_calculator(dataset=None):
+    """Wraps CoAnQiModularResonanceMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiModularResonanceMUGECalculator', dataset)
+def calc_co_an_qi_o_d_e_integration_calculator(dataset=None):
+    """Wraps CoAnQiODEIntegrationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiODEIntegrationCalculator', dataset)
+def calc_co_an_qi_pi_cycle_riemann_calculator(dataset=None):
+    """Wraps CoAnQiPiCycleRiemannCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiPiCycleRiemannCalculator', dataset)
+def calc_co_an_qi_quasar_jet_fluid_calculator(dataset=None):
+    """Wraps CoAnQiQuasarJetFluidCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiQuasarJetFluidCalculator', dataset)
+def calc_co_an_qi_quasar_negative_time_fluid_calculator(dataset=None):
+    """Wraps CoAnQiQuasarNegativeTimeFluidCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiQuasarNegativeTimeFluidCalculator', dataset)
+def calc_co_an_qi_reactor_efficiency_calculator(dataset=None):
+    """Wraps CoAnQiReactorEfficiencyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiReactorEfficiencyCalculator', dataset)
+def calc_co_an_qi_solar_system_reference_calculator(dataset=None):
+    """Wraps CoAnQiSolarSystemReferenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiSolarSystemReferenceCalculator', dataset)
+def calc_co_an_qi_symbolic_integration_calculator(dataset=None):
+    """Wraps CoAnQiSymbolicIntegrationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiSymbolicIntegrationCalculator', dataset)
+def calc_co_an_qi_u_q_f_f_variable_reference_calculator(dataset=None):
+    """Wraps CoAnQiUQFFVariableReferenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiUQFFVariableReferenceCalculator', dataset)
+def calc_co_an_qi_yang_mills_hamiltonian_calculator(dataset=None):
+    """Wraps CoAnQiYangMillsHamiltonianCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoAnQiYangMillsHamiltonianCalculator', dataset)
+def calc_coherent_scattering_calculator(dataset=None):
+    """Wraps CoherentScatteringCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CoherentScatteringCalculator', dataset)
+def calc_cohesive_u_q_f_f_integration_calculator(dataset=None):
+    """Wraps CohesiveUQFFIntegrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CohesiveUQFFIntegrationCalculator', dataset)
+def calc_collimation_power_mapping_calc(dataset=None):
+    """Wraps CollimationPowerMappingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CollimationPowerMappingCalc', dataset)
+def calc_colman_gillespie_field_generator_l_e_n_r_u_q_f_f_calculator(dataset=None):
+    """Wraps ColmanGillespieFieldGeneratorLENRUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ColmanGillespieFieldGeneratorLENRUQFFCalculator', dataset)
+def calc_color_deconfinement_phase_calc(dataset=None):
+    """Wraps ColorDeconfinementPhaseCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ColorDeconfinementPhaseCalc', dataset)
+def calc_color_glass_condensate_calculator(dataset=None):
+    """Wraps ColorGlassCondensateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ColorGlassCondensateCalculator', dataset)
+def calc_complete_unified_field_model(dataset=None):
+    """Wraps CompleteUnifiedFieldModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompleteUnifiedFieldModel', dataset)
+def calc_component_focus_calculator(dataset=None):
+    """Wraps ComponentFocusCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ComponentFocusCalculator', dataset)
+def calc_compressed_d_p_m24_calculator(dataset=None):
+    """Wraps CompressedDPM24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedDPM24Calculator', dataset)
+def calc_compressed_d_p_m_calculator(dataset=None):
+    """Wraps CompressedDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedDPMCalculator', dataset)
+def calc_compressed_m_u_g_e_calculator(dataset=None):
+    """Wraps CompressedMUGECalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedMUGECalculator', dataset)
+def calc_compressed_m_u_g_e_detailed_calculator(dataset=None):
+    """Wraps CompressedMUGEDetailedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedMUGEDetailedCalculator', dataset)
+def calc_compressed_m_u_g_e_modular_calculator(dataset=None):
+    """Wraps CompressedMUGEModularCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedMUGEModularCalculator', dataset)
+def calc_compressed_mode_b_field_correction_calculator(dataset=None):
+    """Wraps CompressedModeBFieldCorrectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedModeBFieldCorrectionCalculator', dataset)
+def calc_compressed_mode_base_gravity_calculator(dataset=None):
+    """Wraps CompressedModeBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedModeBaseGravityCalculator', dataset)
+def calc_compressed_mode_environmental_factor_calculator(dataset=None):
+    """Wraps CompressedModeEnvironmentalFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedModeEnvironmentalFactorCalculator', dataset)
+def calc_compressed_mode_ug_sum_calculator(dataset=None):
+    """Wraps CompressedModeUgSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedModeUgSumCalculator', dataset)
+def calc_compressed_resonance_u_q_f_f24_gravity_calculator(dataset=None):
+    """Wraps CompressedResonanceUQFF24GravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CompressedResonanceUQFF24GravityCalculator', dataset)
+def calc_compressed_resonance_u_q_f_f34_multi_system_calculator(dataset=None):
+    """Wraps CompressedResonanceUQFF34MultiSystemCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CompressedResonanceUQFF34MultiSystemCalculator', dataset)
+def calc_compressed_resonance_u_q_f_f34b_multi_system_calculator(dataset=None):
+    """Wraps CompressedResonanceUQFF34bMultiSystemCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CompressedResonanceUQFF34bMultiSystemCalculator', dataset)
+def calc_compressed_super24_calculator(dataset=None):
+    """Wraps CompressedSuper24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedSuper24Calculator', dataset)
+def calc_compressed_super_calculator(dataset=None):
+    """Wraps CompressedSuperCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedSuperCalculator', dataset)
+def calc_compressed_t_hz24_calculator(dataset=None):
+    """Wraps CompressedTHz24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedTHz24Calculator', dataset)
+def calc_compressed_t_hz_calculator(dataset=None):
+    """Wraps CompressedTHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedTHzCalculator', dataset)
+def calc_compressed_u_q_f_f_bcrit_superconductivity_calculator(dataset=None):
+    """Wraps CompressedUQFFBcritSuperconductivityCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CompressedUQFFBcritSuperconductivityCalculator', dataset)
+def calc_compressed_u_q_f_f_calculator(dataset=None):
+    """Wraps CompressedUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CompressedUQFFCalculator', dataset)
+def calc_compressed_u_q_f_f_env_modular_calculator(dataset=None):
+    """Wraps CompressedUQFFEnvModularCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CompressedUQFFEnvModularCalculator', dataset)
+def calc_compressed_u_q_f_f_master_calculator(dataset=None):
+    """Wraps CompressedUQFFMasterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedUQFFMasterCalculator', dataset)
+def calc_compressed_vac_diff24_calculator(dataset=None):
+    """Wraps CompressedVacDiff24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedVacDiff24Calculator', dataset)
+def calc_compressed_vac_diff_calculator(dataset=None):
+    """Wraps CompressedVacDiffCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressedVacDiffCalculator', dataset)
+def calc_compressible_n_s_u_q_f_f_calculator(dataset=None):
+    """Wraps CompressibleNSUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressibleNSUQFFCalculator', dataset)
+def calc_compression_cycle_f_env_calculator(dataset=None):
+    """Wraps CompressionCycleF_envCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionCycleF_envCalculator', dataset)
+def calc_compression_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps CompressionDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionDarkMatterPerturbationCalculator', dataset)
+def calc_compression_environmental_force_calculator(dataset=None):
+    """Wraps CompressionEnvironmentalForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionEnvironmentalForceCalculator', dataset)
+def calc_compression_expansion_factor_calculator(dataset=None):
+    """Wraps CompressionExpansionFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionExpansionFactorCalculator', dataset)
+def calc_compression_fluid_dynamics_calculator(dataset=None):
+    """Wraps CompressionFluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionFluidDynamicsCalculator', dataset)
+def calc_compression_mass_evolution_calculator(dataset=None):
+    """Wraps CompressionMassEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionMassEvolutionCalculator', dataset)
+def calc_compression_quantum_wave_calculator(dataset=None):
+    """Wraps CompressionQuantumWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionQuantumWaveCalculator', dataset)
+def calc_compression_superconductive_correction_calculator(dataset=None):
+    """Wraps CompressionSuperconductiveCorrectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionSuperconductiveCorrectionCalculator', dataset)
+def calc_compression_ug1_gravity_calculator(dataset=None):
+    """Wraps CompressionUg1GravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionUg1GravityCalculator', dataset)
+def calc_compression_ug3_external_gravity_calculator(dataset=None):
+    """Wraps CompressionUg3ExternalGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionUg3ExternalGravityCalculator', dataset)
+def calc_compression_ug4_superconductive_calculator(dataset=None):
+    """Wraps CompressionUg4SuperconductiveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CompressionUg4SuperconductiveCalculator', dataset)
+def calc_cone_volume_calculator(dataset=None):
+    """Wraps ConeVolumeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ConeVolumeCalculator', dataset)
+def calc_consciousness_cloud(dataset=None):
+    """Wraps ConsciousnessCloud.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ConsciousnessCloud', dataset)
+def calc_consciousness_fluctuation_q_f_e_calculator(dataset=None):
+    """Wraps ConsciousnessFluctuationQFECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ConsciousnessFluctuationQFECalculator', dataset)
+def calc_consciousness_resonance_calculator(dataset=None):
+    """Wraps ConsciousnessResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ConsciousnessResonanceCalculator', dataset)
+def calc_consolidated_fcosmo_envelope_calculator(dataset=None):
+    """Wraps ConsolidatedFcosmoEnvelopeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ConsolidatedFcosmoEnvelopeCalculator', dataset)
+def calc_consolidated_u_f_e_q_f_e_calculator(dataset=None):
+    """Wraps ConsolidatedUFEQFECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ConsolidatedUFEQFECalculator', dataset)
+def calc_convection_cycle_tracker_calculator(dataset=None):
+    """Wraps ConvectionCycleTrackerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ConvectionCycleTrackerCalculator', dataset)
+def calc_convective_pattern_tracking_calculator(dataset=None):
+    """Wraps ConvectivePatternTrackingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ConvectivePatternTrackingCalculator', dataset)
+def calc_cooper_d_p_mf1_t_hz_asc_confirmation_calculator(dataset=None):
+    """Wraps CooperDPMf1THz_AscConfirmationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CooperDPMf1THz_AscConfirmationCalculator', dataset)
+def calc_cooper_pair_lagrangian_calc(dataset=None):
+    """Wraps CooperPairLagrangianCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CooperPairLagrangianCalc', dataset)
+def calc_cooper_pair_phonon_coupling_calc(dataset=None):
+    """Wraps CooperPairPhononCouplingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CooperPairPhononCouplingCalc', dataset)
+def calc_corotation_resonance_model(dataset=None):
+    """Wraps CorotationResonanceModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CorotationResonanceModel', dataset)
+def calc_cosmic_dynamics_integration_model(dataset=None):
+    """Wraps CosmicDynamicsIntegrationModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicDynamicsIntegrationModel', dataset)
+def calc_cosmic_egg26_d_calculator(dataset=None):
+    """Wraps CosmicEgg26DCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEgg26DCalculator', dataset)
+def calc_cosmic_egg26_dimension_count_calculator(dataset=None):
+    """Wraps CosmicEgg26DimensionCountCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEgg26DimensionCountCalculator', dataset)
+def calc_cosmic_egg_density_calculator(dataset=None):
+    """Wraps CosmicEggDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicEggDensityCalculator', dataset)
+def calc_cosmic_egg_distortion_factor_calculator(dataset=None):
+    """Wraps CosmicEggDistortionFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggDistortionFactorCalculator', dataset)
+def calc_cosmic_egg_hypergraph_model(dataset=None):
+    """Wraps CosmicEggHypergraphModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggHypergraphModel', dataset)
+def calc_cosmic_egg_model(dataset=None):
+    """Wraps CosmicEggModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggModel', dataset)
+def calc_cosmic_egg_omnidirectional_rotation_calculator(dataset=None):
+    """Wraps CosmicEggOmnidirectionalRotationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggOmnidirectionalRotationCalculator', dataset)
+def calc_cosmic_egg_pi_mean_chaos_calculator(dataset=None):
+    """Wraps CosmicEggPiMeanChaosCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggPiMeanChaosCalculator', dataset)
+def calc_cosmic_egg_quantum_frequency_calculator(dataset=None):
+    """Wraps CosmicEggQuantumFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggQuantumFrequencyCalculator', dataset)
+def calc_cosmic_egg_radius_inversion_calculator(dataset=None):
+    """Wraps CosmicEggRadiusInversionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggRadiusInversionCalculator', dataset)
+def calc_cosmic_egg_spherical_outline_calculator(dataset=None):
+    """Wraps CosmicEggSphericalOutlineCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggSphericalOutlineCalculator', dataset)
+def calc_cosmic_egg_toroid_pillar_calculator(dataset=None):
+    """Wraps CosmicEggToroidPillarCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggToroidPillarCalculator', dataset)
+def calc_cosmic_egg_uniform_aether_calculator(dataset=None):
+    """Wraps CosmicEggUniformAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggUniformAetherCalculator', dataset)
+def calc_cosmic_egg_void_volume_calculator(dataset=None):
+    """Wraps CosmicEggVoidVolumeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEggVoidVolumeCalculator', dataset)
+def calc_cosmic_evolution_calculator(dataset=None):
+    """Wraps CosmicEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicEvolutionCalculator', dataset)
+def calc_cosmic_gravity_evolution_calculator(dataset=None):
+    """Wraps CosmicGravityEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicGravityEvolutionCalculator', dataset)
+def calc_cosmic_modeling_validation_calculator(dataset=None):
+    """Wraps CosmicModelingValidationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicModelingValidationCalculator', dataset)
+def calc_cosmic_photon_deceleration_calculator(dataset=None):
+    """Wraps CosmicPhotonDecelerationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicPhotonDecelerationCalculator', dataset)
+def calc_cosmic_ray_escape_time_calculator(dataset=None):
+    """Wraps CosmicRayEscapeTimeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicRayEscapeTimeCalculator', dataset)
+def calc_cosmic_ray_propagation_u_q_f_f_calculator(dataset=None):
+    """Wraps CosmicRayPropagationUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmicRayPropagationUQFFCalculator', dataset)
+def calc_cosmic_rays_w_h_i_m_fermi_calculator(dataset=None):
+    """Wraps CosmicRaysWHIMFermiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CosmicRaysWHIMFermiCalculator', dataset)
+def calc_cosmic_string_tension_calculator(dataset=None):
+    """Wraps CosmicStringTensionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicStringTensionCalculator', dataset)
+def calc_cosmic_wind_disk_stability_calculator(dataset=None):
+    """Wraps CosmicWindDiskStabilityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicWindDiskStabilityCalculator', dataset)
+def calc_cosmic_wind_interaction_calculator(dataset=None):
+    """Wraps CosmicWindInteractionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CosmicWindInteractionCalculator', dataset)
+def calc_cosmological_calculator(dataset=None):
+    """Wraps CosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmologicalCalculator', dataset)
+def calc_cosmological_line_fluxime_s_f_r_integral_calculator(dataset=None):
+    """Wraps CosmologicalLineFluximeSFRIntegralCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CosmologicalLineFluximeSFRIntegralCalculator', dataset)
+def calc_cosmological_q_calc_calculator(dataset=None):
+    """Wraps CosmologicalQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CosmologicalQCalcCalculator', dataset)
+def calc_counter_clockwise_diagonal_cycle_calculator(dataset=None):
+    """Wraps CounterClockwiseDiagonalCycleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CounterClockwiseDiagonalCycleCalculator', dataset)
+def calc_crab_aether_resonance_calculator(dataset=None):
+    """Wraps CrabAetherResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabAetherResonanceCalculator', dataset)
+def calc_crab_base_gravity_calculator(dataset=None):
+    """Wraps CrabBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabBaseGravityCalculator', dataset)
+def calc_crab_cosmological_constant_calculator(dataset=None):
+    """Wraps CrabCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabCosmologicalConstantCalculator', dataset)
+def calc_crab_d_p_m_resonance_calculator(dataset=None):
+    """Wraps CrabDPMResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabDPMResonanceCalculator', dataset)
+def calc_crab_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps CrabDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabDarkMatterPerturbationCalculator', dataset)
+def calc_crab_electromagnetic_calculator(dataset=None):
+    """Wraps CrabElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabElectromagneticCalculator', dataset)
+def calc_crab_expansion_resonance_calculator(dataset=None):
+    """Wraps CrabExpansionResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabExpansionResonanceCalculator', dataset)
+def calc_crab_filament_spectral_triad_calculator(dataset=None):
+    """Wraps CrabFilamentSpectralTriadCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CrabFilamentSpectralTriadCalculator', dataset)
+def calc_crab_fluid_density_calculator(dataset=None):
+    """Wraps CrabFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabFluidDensityCalculator', dataset)
+def calc_crab_fluid_resonance_calculator(dataset=None):
+    """Wraps CrabFluidResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabFluidResonanceCalculator', dataset)
+def calc_crab_magnetic_lorentz_calculator(dataset=None):
+    """Wraps CrabMagneticLorentzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabMagneticLorentzCalculator', dataset)
+def calc_crab_nebula_expanding_m_u_g_e_calculator(dataset=None):
+    """Wraps CrabNebulaExpandingMUGECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CrabNebulaExpandingMUGECalculator', dataset)
+def calc_crab_nebula_m1_f_u_bi_calculator(dataset=None):
+    """Wraps CrabNebulaM1FUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CrabNebulaM1FUBiCalculator', dataset)
+def calc_crab_nebula_model(dataset=None):
+    """Wraps CrabNebulaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabNebulaModel', dataset)
+def calc_crab_nebula_p_w_n_u_q_f_f(dataset=None):
+    """Wraps CrabNebulaPWNUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CrabNebulaPWNUQFF', dataset)
+def calc_crab_nebula_pulsar_wind_u_q_f_f_calculator(dataset=None):
+    """Wraps CrabNebulaPulsarWindUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('CrabNebulaPulsarWindUQFFCalculator', dataset)
+def calc_crab_oscillatory_resonance_calculator(dataset=None):
+    """Wraps CrabOscillatoryResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabOscillatoryResonanceCalculator', dataset)
+def calc_crab_oscillatory_wave_calculator(dataset=None):
+    """Wraps CrabOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabOscillatoryWaveCalculator', dataset)
+def calc_crab_p_w_n_u_q_f_f_calculator(dataset=None):
+    """Wraps CrabPWNUQFFCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CrabPWNUQFFCalculator', dataset)
+def calc_crab_pulsar_osc_resonance_window_calculator(dataset=None):
+    """Wraps CrabPulsarOscResonanceWindowCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CrabPulsarOscResonanceWindowCalculator', dataset)
+def calc_crab_pulsar_wind_calculator(dataset=None):
+    """Wraps CrabPulsarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabPulsarWindCalculator', dataset)
+def calc_crab_quantum_resonance_calculator(dataset=None):
+    """Wraps CrabQuantumResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabQuantumResonanceCalculator', dataset)
+def calc_crab_quantum_uncertainty_calculator(dataset=None):
+    """Wraps CrabQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabQuantumUncertaintyCalculator', dataset)
+def calc_crab_resonance_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps CrabResonanceUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CrabResonanceUQFFGravityCalculator', dataset)
+def calc_crab_s_n_r_d_p_m_dilution_calculator(dataset=None):
+    """Wraps CrabSNRDPMDilutionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('CrabSNRDPMDilutionCalculator', dataset)
+def calc_crab_superconductivity_calculator(dataset=None):
+    """Wraps CrabSuperconductivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabSuperconductivityCalculator', dataset)
+def calc_crab_t_hz_resonance_calculator(dataset=None):
+    """Wraps CrabTHzResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabTHzResonanceCalculator', dataset)
+def calc_crab_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps CrabUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabUQFFUnificationCalculator', dataset)
+def calc_crab_ug4i_resonance_calculator(dataset=None):
+    """Wraps CrabUg4iResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrabUg4iResonanceCalculator', dataset)
+def calc_crystalline_galaxy_model(dataset=None):
+    """Wraps CrystallineGalaxyModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CrystallineGalaxyModel', dataset)
+def calc_cumulative_energy_analyzer_calculator(dataset=None):
+    """Wraps CumulativeEnergyAnalyzerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CumulativeEnergyAnalyzerCalculator', dataset)
+def calc_cumulative_energy_progress_calculator(dataset=None):
+    """Wraps CumulativeEnergyProgressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CumulativeEnergyProgressCalculator', dataset)
+def calc_cycle_dynamics_calculator(dataset=None):
+    """Wraps CycleDynamicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CycleDynamicsCalculator', dataset)
+def calc_cycle_dynamics_orb33_calculator(dataset=None):
+    """Wraps CycleDynamicsOrb33Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CycleDynamicsOrb33Calculator', dataset)
+def calc_cyclic_convection_pattern_calculator(dataset=None):
+    """Wraps CyclicConvectionPatternCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CyclicConvectionPatternCalculator', dataset)
+def calc_cyclical_convection_orb12_calculator(dataset=None):
+    """Wraps CyclicalConvectionOrb12Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CyclicalConvectionOrb12Calculator', dataset)
+def calc_cyclical_convection_orb14_calculator(dataset=None):
+    """Wraps CyclicalConvectionOrb14Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CyclicalConvectionOrb14Calculator', dataset)
+def calc_cyclical_convection_pattern_calculator(dataset=None):
+    """Wraps CyclicalConvectionPatternCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('CyclicalConvectionPatternCalculator', dataset)
+def calc_cyclotron_frequency_orb51_calculator(dataset=None):
+    """Wraps CyclotronFrequencyOrb51Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CyclotronFrequencyOrb51Calculator', dataset)
+def calc_cylinder_volume_calculator(dataset=None):
+    """Wraps CylinderVolumeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('CylinderVolumeCalculator', dataset)
+def calc_d2_o_enrichment_factor_calculator(dataset=None):
+    """Wraps D2OEnrichmentFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('D2OEnrichmentFactorCalculator', dataset)
+def calc_d_c_e_a_c_e_reversal_nd_fe_b_caduceus_motor_calc(dataset=None):
+    """Wraps DCEACEReversalNdFeBCaduceusMotorCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DCEACEReversalNdFeBCaduceusMotorCalc', dataset)
+def calc_d_e_power_transform_calculator(dataset=None):
+    """Wraps DEPowerTransformCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DEPowerTransformCalculator', dataset)
+def calc_d_e_power_vacuum_calculator(dataset=None):
+    """Wraps DEPowerVacuumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DEPowerVacuumCalculator', dataset)
+def calc_d_e_vacuum_power_model(dataset=None):
+    """Wraps DEVacuumPowerModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DEVacuumPowerModel', dataset)
+def calc_d_p_m_amplification26_layer_calculator_s234(dataset=None):
+    """Wraps DPMAmplification26LayerCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMAmplification26LayerCalculator_S234', dataset)
+def calc_d_p_m_atomic_creation_process_a_c_p_calculator(dataset=None):
+    """Wraps DPMAtomicCreationProcessACPCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMAtomicCreationProcessACPCalculator', dataset)
+def calc_d_p_m_coherent_consciousness_spooky_action_calc(dataset=None):
+    """Wraps DPMCoherentConsciousnessSpookyActionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMCoherentConsciousnessSpookyActionCalc', dataset)
+def calc_d_p_m_cosmogenesis_calculator(dataset=None):
+    """Wraps DPMCosmogenesisCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DPMCosmogenesisCalculator', dataset)
+def calc_d_p_m_dualism_calculator(dataset=None):
+    """Wraps DPMDualismCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DPMDualismCalculator', dataset)
+def calc_d_p_m_energy_calculator(dataset=None):
+    """Wraps DPMEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DPMEnergyCalculator', dataset)
+def calc_d_p_m_extended_periodic_table_proportion_calc(dataset=None):
+    """Wraps DPMExtendedPeriodicTableProportionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMExtendedPeriodicTableProportionCalc', dataset)
+def calc_d_p_m_four_component_correlation_calculator(dataset=None):
+    """Wraps DPMFourComponentCorrelationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMFourComponentCorrelationCalculator', dataset)
+def calc_d_p_m_frequency_drive_re_ringing_vacuum_grad_calculator(dataset=None):
+    """Wraps DPMFrequencyDriveReRingingVacuumGradCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMFrequencyDriveReRingingVacuumGradCalculator', dataset)
+def calc_d_p_m_full_formulation_calculator(dataset=None):
+    """Wraps DPMFullFormulationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DPMFullFormulationCalculator', dataset)
+def calc_d_p_m_gravity_projections(dataset=None):
+    """Wraps DPMGravityProjections.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DPMGravityProjections', dataset)
+def calc_d_p_m_grinding_poles_calculator(dataset=None):
+    """Wraps DPMGrindingPolesCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DPMGrindingPolesCalculator', dataset)
+def calc_d_p_m_harmonic_buoyancy_series_calculator(dataset=None):
+    """Wraps DPMHarmonicBuoyancySeriesCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('DPMHarmonicBuoyancySeriesCalculator', dataset)
+def calc_d_p_m_layered_shell_energy_radiance_calculator(dataset=None):
+    """Wraps DPMLayeredShellEnergyRadianceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMLayeredShellEnergyRadianceCalculator', dataset)
+def calc_d_p_m_model(dataset=None):
+    """Wraps DPMModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DPMModel', dataset)
+def calc_d_p_m_proplyd_bidirectional_encompassment_calculator(dataset=None):
+    """Wraps DPMProplydBidirectionalEncompassmentCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMProplydBidirectionalEncompassmentCalculator', dataset)
+def calc_d_p_m_pyramid_sum_nuclear_binding_periodic_table_calculator(dataset=None):
+    """Wraps DPMPyramidSumNuclearBindingPeriodicTableCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMPyramidSumNuclearBindingPeriodicTableCalculator', dataset)
+def calc_d_p_m_quantum_chain_calculator_s234(dataset=None):
+    """Wraps DPMQuantumChainCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMQuantumChainCalculator_S234', dataset)
+def calc_d_p_m_resonance_factor_calculator(dataset=None):
+    """Wraps DPMResonanceFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DPMResonanceFactorCalculator', dataset)
+def calc_d_p_m_species_index_a_c_p_creation_scenario_calculator(dataset=None):
+    """Wraps DPMSpeciesIndexACPCreationScenarioCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMSpeciesIndexACPCreationScenarioCalculator', dataset)
+def calc_d_p_m_split_monopole_m_h_d_proplyd_calculator(dataset=None):
+    """Wraps DPMSplitMonopoleMHDProplydCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMSplitMonopoleMHDProplydCalculator', dataset)
+def calc_d_p_m_summation_force_calculator(dataset=None):
+    """Wraps DPMSummationForceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DPMSummationForceCalculator', dataset)
+def calc_d_p_m_t_hz_frequency_m_u_g_e_calculator(dataset=None):
+    """Wraps DPMTHzFrequencyMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DPMTHzFrequencyMUGECalculator', dataset)
+def calc_d_p_m_unified_inertia_centripet_centrifug_calculator(dataset=None):
+    """Wraps DPMUnifiedInertiaCentripetCentrifugCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DPMUnifiedInertiaCentripetCentrifugCalculator', dataset)
+def calc_d_p_m_8_tuple(dataset=None):
+    """Wraps DPM_8Tuple.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DPM_8Tuple', dataset)
+def calc_d_universe_spatial_curvature_fifth_factor_calculator(dataset=None):
+    """Wraps DUniverseSpatialCurvatureFifthFactorCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('DUniverseSpatialCurvatureFifthFactorCalculator', dataset)
+def calc_d_v_p_branch_calculator_s234(dataset=None):
+    """Wraps DVPBranchCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DVPBranchCalculator_S234', dataset)
+def calc_dark_energy_buoyancy_sector_lagrangian_calculator(dataset=None):
+    """Wraps DarkEnergyBuoyancySectorLagrangianCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DarkEnergyBuoyancySectorLagrangianCalculator', dataset)
+def calc_dark_energy_e_o_s_time_evolving_calculator(dataset=None):
+    """Wraps DarkEnergyEOSTimeEvolvingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DarkEnergyEOSTimeEvolvingCalculator', dataset)
+def calc_dark_energy_equation_of_state_calculator(dataset=None):
+    """Wraps DarkEnergyEquationOfStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DarkEnergyEquationOfStateCalculator', dataset)
+def calc_dark_energy_power_calculator(dataset=None):
+    """Wraps DarkEnergyPowerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DarkEnergyPowerCalculator', dataset)
+def calc_dark_matter_halo_n_f_w_calculator(dataset=None):
+    """Wraps DarkMatterHaloNFWCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DarkMatterHaloNFWCalculator', dataset)
+def calc_dark_matter_halo_u_q_f_f_calculator(dataset=None):
+    """Wraps DarkMatterHaloUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DarkMatterHaloUQFFCalculator', dataset)
+def calc_decay_rate_vacuum_rho_ratio_double_exp_calculator(dataset=None):
+    """Wraps DecayRateVacuumRhoRatioDoubleExpCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('DecayRateVacuumRhoRatioDoubleExpCalculator', dataset)
+def calc_deep_field_g359_shear_n_i_s_p_constraint_calculator(dataset=None):
+    """Wraps DeepFieldG359ShearNISPConstraintCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('DeepFieldG359ShearNISPConstraintCalculator', dataset)
+def calc_deep_field_shear_delta_tau_constraint_calculator(dataset=None):
+    """Wraps DeepFieldShearDeltaTauConstraintCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('DeepFieldShearDeltaTauConstraintCalculator', dataset)
+def calc_defect_factor_calculator(dataset=None):
+    """Wraps DefectFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DefectFactorCalculator', dataset)
+def calc_density_wave_crystalline_coupling_model(dataset=None):
+    """Wraps DensityWaveCrystallineCouplingModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DensityWaveCrystallineCouplingModel', dataset)
+def calc_density_wave_model(dataset=None):
+    """Wraps DensityWaveModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DensityWaveModel', dataset)
+def calc_depletion_factor_calculator(dataset=None):
+    """Wraps DepletionFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DepletionFactorCalculator', dataset)
+def calc_deuterated_ethanol_calculator(dataset=None):
+    """Wraps DeuteratedEthanolCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DeuteratedEthanolCalculator', dataset)
+def calc_di_pseudo_monopole_big_bang_calculator(dataset=None):
+    """Wraps DiPseudoMonopoleBigBangCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DiPseudoMonopoleBigBangCalculator', dataset)
+def calc_di_pseudo_monopole_birth_calculator(dataset=None):
+    """Wraps DiPseudoMonopoleBirthCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DiPseudoMonopoleBirthCalculator', dataset)
+def calc_di_pseudo_monopole_d_p_m_theory_calculator(dataset=None):
+    """Wraps DiPseudoMonopoleDPMTheoryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DiPseudoMonopoleDPMTheoryCalculator', dataset)
+def calc_di_pseudo_monopole_origin_calculator(dataset=None):
+    """Wraps DiPseudoMonopoleOriginCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DiPseudoMonopoleOriginCalculator', dataset)
+def calc_diagonal_concentration_shift_calculator(dataset=None):
+    """Wraps DiagonalConcentrationShiftCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DiagonalConcentrationShiftCalculator', dataset)
+def calc_diagonal_shift_orb13_calculator(dataset=None):
+    """Wraps DiagonalShiftOrb13Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DiagonalShiftOrb13Calculator', dataset)
+def calc_differential_rotation_disk_calculator(dataset=None):
+    """Wraps DifferentialRotationDiskCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DifferentialRotationDiskCalculator', dataset)
+def calc_diffusion_coefficient_kolmogorov_calculator(dataset=None):
+    """Wraps DiffusionCoefficientKolmogorovCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DiffusionCoefficientKolmogorovCalculator', dataset)
+def calc_dimensional_analysis_calculator(dataset=None):
+    """Wraps DimensionalAnalysisCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DimensionalAnalysisCalculator', dataset)
+def calc_dimensional_analysis_orb58_calculator(dataset=None):
+    """Wraps DimensionalAnalysisOrb58Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DimensionalAnalysisOrb58Calculator', dataset)
+def calc_dimensional_analysis_s8_calculator(dataset=None):
+    """Wraps DimensionalAnalysisS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DimensionalAnalysisS8Calculator', dataset)
+def calc_dipole_vortex_prime_encoding_calculator(dataset=None):
+    """Wraps DipoleVortexPrimeEncodingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('DipoleVortexPrimeEncodingCalculator', dataset)
+def calc_disk_unit_vector_calculator(dataset=None):
+    """Wraps DiskUnitVectorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DiskUnitVectorCalculator', dataset)
+def calc_doc43d_inertia_aether_superconductive_calculator(dataset=None):
+    """Wraps Doc43dInertiaAetherSuperconductiveCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Doc43dInertiaAetherSuperconductiveCalculator', dataset)
+def calc_dual_mode_d_m_perturbation_unit_fixed_calculator(dataset=None):
+    """Wraps DualModeDMPerturbationUnitFixedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DualModeDMPerturbationUnitFixedCalculator', dataset)
+def calc_dual_mode_fluid_dynamics_placeholder_calculator(dataset=None):
+    """Wraps DualModeFluidDynamicsPlaceholderCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DualModeFluidDynamicsPlaceholderCalculator', dataset)
+def calc_dual_mode_quantum_integral_calculator(dataset=None):
+    """Wraps DualModeQuantumIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DualModeQuantumIntegralCalculator', dataset)
+def calc_dual_model_m_u_g_e_comparison_calculator(dataset=None):
+    """Wraps DualModelMUGEComparisonCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('DualModelMUGEComparisonCalculator', dataset)
+def calc_dual_nature_s_cm_calculator(dataset=None):
+    """Wraps DualNatureSCmCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DualNatureSCmCalculator', dataset)
+def calc_dust_drag_calculator(dataset=None):
+    """Wraps DustDragCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DustDragCalculator', dataset)
+def calc_dust_extinction_a_v_calculator(dataset=None):
+    """Wraps DustExtinctionAVCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DustExtinctionAVCalculator', dataset)
+def calc_dust_extinction_calculator(dataset=None):
+    """Wraps DustExtinctionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DustExtinctionCalculator', dataset)
+def calc_dust_friction_calculator(dataset=None):
+    """Wraps DustFrictionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DustFrictionCalculator', dataset)
+def calc_dust_lane_attenuation_calculator(dataset=None):
+    """Wraps DustLaneAttenuationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DustLaneAttenuationCalculator', dataset)
+def calc_dust_yield_calculator(dataset=None):
+    """Wraps DustYieldCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DustYieldCalculator', dataset)
+def calc_dust_yield_metallicity_calculator(dataset=None):
+    """Wraps DustYieldMetallicityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('DustYieldMetallicityCalculator', dataset)
+def calc_dynamic_resonance_calculator(dataset=None):
+    """Wraps DynamicResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DynamicResonanceCalculator', dataset)
+def calc_dynamic_vacuum_fluctuation_calculator(dataset=None):
+    """Wraps DynamicVacuumFluctuationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('DynamicVacuumFluctuationCalculator', dataset)
+def calc_e_d_m_s_o10_b_s_m_refined_fu_calculator(dataset=None):
+    """Wraps EDMSO10BSMRefinedFuCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('EDMSO10BSMRefinedFuCalculator', dataset)
+def calc_e_d_p_m_calculator(dataset=None):
+    """Wraps EDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EDPMCalculator', dataset)
+def calc_e_h_tng_e_h_t_b_h_e_x_new_s_m_b_h_photon_ring_calculator(dataset=None):
+    """Wraps EHTngEHTBHEXNewSMBHPhotonRingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EHTngEHTBHEXNewSMBHPhotonRingCalculator', dataset)
+def calc_e_r_bridge_state_transition_model(dataset=None):
+    """Wraps ERBridgeStateTransitionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ERBridgeStateTransitionModel', dataset)
+def calc_e_s_o391_12_lenticular_three_u_q_f_f(dataset=None):
+    """Wraps ESO391_12LenticularThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ESO391_12LenticularThreeUQFF', dataset)
+def calc_e_s_o510_g13_warped_spiral_three_u_q_f_f(dataset=None):
+    """Wraps ESO510G13WarpedSpiralThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ESO510G13WarpedSpiralThreeUQFF', dataset)
+def calc_eagle_nebula_wind_radiation_calculator(dataset=None):
+    """Wraps EagleNebulaWindRadiationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EagleNebulaWindRadiationCalculator', dataset)
+def calc_eddington_luminosity_calculator(dataset=None):
+    """Wraps EddingtonLuminosityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EddingtonLuminosityCalculator', dataset)
+def calc_eddington_ratio_model(dataset=None):
+    """Wraps EddingtonRatioModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EddingtonRatioModel', dataset)
+def calc_egg_proliferated_hubble_calculator(dataset=None):
+    """Wraps EggProliferatedHubbleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EggProliferatedHubbleCalculator', dataset)
+def calc_eigenstate_thermalization_calculator(dataset=None):
+    """Wraps EigenstateThermalizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EigenstateThermalizationCalculator', dataset)
+def calc_eight_system_u_q_f_f_calculator(dataset=None):
+    """Wraps EightSystemUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EightSystemUQFFCalculator', dataset)
+def calc_eighteen_astro_systems_m_u_g_e_calculator(dataset=None):
+    """Wraps EighteenAstroSystemsMUGECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EighteenAstroSystemsMUGECalculator', dataset)
+def calc_einasto_dark_matter_profile_calculator(dataset=None):
+    """Wraps EinastoDarkMatterProfileCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EinastoDarkMatterProfileCalculator', dataset)
+def calc_einstein_mass_energy_calculator(dataset=None):
+    """Wraps EinsteinMassEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EinsteinMassEnergyCalculator', dataset)
+def calc_einstein_ring_g_a_l_c_l_u_s022058s(dataset=None):
+    """Wraps EinsteinRingGALCLUS022058s.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EinsteinRingGALCLUS022058s', dataset)
+def calc_el_gordo_a_c_t_c_l_j0102_merger_f_u_bi_calculator(dataset=None):
+    """Wraps ElGordoACTCLJ0102MergerFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ElGordoACTCLJ0102MergerFUBiCalculator', dataset)
+def calc_electrical_power_calculator(dataset=None):
+    """Wraps ElectricalPowerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ElectricalPowerCalculator', dataset)
+def calc_electrolysis_gibbs_energy_calculator(dataset=None):
+    """Wraps ElectrolysisGibbsEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ElectrolysisGibbsEnergyCalculator', dataset)
+def calc_electron_fraction_r_process_calculator(dataset=None):
+    """Wraps ElectronFractionRProcessCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ElectronFractionRProcessCalculator', dataset)
+def calc_electroweak_axion_string_s_c_s_calculator(dataset=None):
+    """Wraps ElectroweakAxionStringSCSCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ElectroweakAxionStringSCSCalculator', dataset)
+def calc_eleven_domain_unified_s_cm_buoyancy_validator(dataset=None):
+    """Wraps ElevenDomainUnifiedSCmBuoyancyValidator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ElevenDomainUnifiedSCmBuoyancyValidator', dataset)
+def calc_eleven_system_d_p_m_calculator(dataset=None):
+    """Wraps ElevenSystemDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ElevenSystemDPMCalculator', dataset)
+def calc_emergent_metrics(dataset=None):
+    """Wraps EmergentMetrics.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EmergentMetrics', dataset)
+def calc_emission_line_flux_integral_calculator(dataset=None):
+    """Wraps EmissionLineFluxIntegralCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EmissionLineFluxIntegralCalculator', dataset)
+def calc_energy26_level_calculator(dataset=None):
+    """Wraps Energy26LevelCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Energy26LevelCalculator', dataset)
+def calc_energy_density_decay_calculator(dataset=None):
+    """Wraps EnergyDensityDecayCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EnergyDensityDecayCalculator', dataset)
+def calc_energy_stabilization_calculator(dataset=None):
+    """Wraps EnergyStabilizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EnergyStabilizationCalculator', dataset)
+def calc_enhanced_buoyancy_q_calc_calculator(dataset=None):
+    """Wraps EnhancedBuoyancyQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EnhancedBuoyancyQCalcCalculator', dataset)
+def calc_environmental_interactions_calculator(dataset=None):
+    """Wraps EnvironmentalInteractionsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EnvironmentalInteractionsCalculator', dataset)
+def calc_equation_family(dataset=None):
+    """Wraps EquationFamily.compute() from CondensedPhysics."""
+    return _pipeline_invoke('EquationFamily', dataset)
+def calc_equation_of_state_u_c_f_calculator(dataset=None):
+    """Wraps EquationOfStateUCFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EquationOfStateUCFCalculator', dataset)
+def calc_equatorial_torus_magnetic_confinement_calculator(dataset=None):
+    """Wraps EquatorialTorusMagneticConfinementCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('EquatorialTorusMagneticConfinementCalculator', dataset)
+def calc_ereact_s_cm_reactivity_aether_density_reactor_efficiency_calculator(dataset=None):
+    """Wraps EreactSCmReactivityAetherDensityReactorEfficiencyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EreactSCmReactivityAetherDensityReactorEfficiencyCalculator', dataset)
+def calc_erosion_lagrangian_euler_lagrange_calc(dataset=None):
+    """Wraps ErosionLagrangianEulerLagrangeCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ErosionLagrangianEulerLagrangeCalc', dataset)
+def calc_error_propagation_calculator(dataset=None):
+    """Wraps ErrorPropagationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ErrorPropagationCalculator', dataset)
+def calc_error_propagation_formulas_calculator(dataset=None):
+    """Wraps ErrorPropagationFormulasCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ErrorPropagationFormulasCalculator', dataset)
+def calc_error_reduction_progress_calculator(dataset=None):
+    """Wraps ErrorReductionProgressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ErrorReductionProgressCalculator', dataset)
+def calc_error_reduction_validator_calculator(dataset=None):
+    """Wraps ErrorReductionValidatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ErrorReductionValidatorCalculator', dataset)
+def calc_et_full_lagrangian_unified_derivation_calc(dataset=None):
+    """Wraps EtFullLagrangianUnifiedDerivationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EtFullLagrangianUnifiedDerivationCalc', dataset)
+def calc_et_linewidth_modulation_calc(dataset=None):
+    """Wraps EtLinewidthModulationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EtLinewidthModulationCalc', dataset)
+def calc_et_vs_k_essence_scherrer_model_contrast_calc(dataset=None):
+    """Wraps EtVsKEssenceScherrerModelContrastCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EtVsKEssenceScherrerModelContrastCalc', dataset)
+def calc_et_vs_lambda_c_d_m_dark_energy_contrast_calc(dataset=None):
+    """Wraps EtVsLambdaCDMDarkEnergyContrastCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EtVsLambdaCDMDarkEnergyContrastCalc', dataset)
+def calc_et_vs_quintessence_scalar_field_contrast_calc(dataset=None):
+    """Wraps EtVsQuintessenceScalarFieldContrastCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('EtVsQuintessenceScalarFieldContrastCalc', dataset)
+def calc_eta_carina_buoyant_p_c_r_calculator(dataset=None):
+    """Wraps EtaCarinaBuoyantPCRCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('EtaCarinaBuoyantPCRCalculator', dataset)
+def calc_eta_carinae_homuculus_f_u_bi_calculator(dataset=None):
+    """Wraps EtaCarinaeHomuculusFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('EtaCarinaeHomuculusFUBiCalculator', dataset)
+def calc_exoplanet_atmospheric_mass_loss_ub_calculator(dataset=None):
+    """Wraps ExoplanetAtmosphericMassLossUbCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ExoplanetAtmosphericMassLossUbCalculator', dataset)
+def calc_exoplanet_resonance_orbital_tidal_calculator(dataset=None):
+    """Wraps ExoplanetResonanceOrbitalTidalCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ExoplanetResonanceOrbitalTidalCalculator', dataset)
+def calc_exp2_batch1_energy_calculator(dataset=None):
+    """Wraps Exp2Batch1EnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Exp2Batch1EnergyCalculator', dataset)
+def calc_exp2_preview_calculator(dataset=None):
+    """Wraps Exp2PreviewCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Exp2PreviewCalculator', dataset)
+def calc_expanded_ramanujan26_d_calc(dataset=None):
+    """Wraps ExpandedRamanujan26DCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ExpandedRamanujan26DCalc', dataset)
+def calc_expansion_lagrangian_euler_lagrange_calc(dataset=None):
+    """Wraps ExpansionLagrangianEulerLagrangeCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ExpansionLagrangianEulerLagrangeCalc', dataset)
+def calc_experiment_benchmark_calculator(dataset=None):
+    """Wraps ExperimentBenchmarkCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ExperimentBenchmarkCalculator', dataset)
+def calc_exponential_decay_factor_calculator(dataset=None):
+    """Wraps ExponentialDecayFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ExponentialDecayFactorCalculator', dataset)
+def calc_exponential_strain_phonon_evolution_calc(dataset=None):
+    """Wraps ExponentialStrainPhononEvolutionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ExponentialStrainPhononEvolutionCalc', dataset)
+def calc_extended18_system_calculator(dataset=None):
+    """Wraps Extended18SystemCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Extended18SystemCalculator', dataset)
+def calc_extended_a_g_n_three_point_jet_power_calc(dataset=None):
+    """Wraps ExtendedAGNThreePointJetPowerCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ExtendedAGNThreePointJetPowerCalc', dataset)
+def calc_extended_centripetal_n_s_residual_calculator(dataset=None):
+    """Wraps ExtendedCentripetalNSResidualCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ExtendedCentripetalNSResidualCalculator', dataset)
+def calc_extended_cycle_pattern_analyzer_calculator(dataset=None):
+    """Wraps ExtendedCyclePatternAnalyzerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ExtendedCyclePatternAnalyzerCalculator', dataset)
+def calc_extended_energy_accumulation_calculator(dataset=None):
+    """Wraps ExtendedEnergyAccumulationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ExtendedEnergyAccumulationCalculator', dataset)
+def calc_extended_environmental_forces_calculator(dataset=None):
+    """Wraps ExtendedEnvironmentalForcesCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ExtendedEnvironmentalForcesCalculator', dataset)
+def calc_extended_frame_sequence_calculator(dataset=None):
+    """Wraps ExtendedFrameSequenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ExtendedFrameSequenceCalculator', dataset)
+def calc_extended_periodic_table_calculator(dataset=None):
+    """Wraps ExtendedPeriodicTableCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ExtendedPeriodicTableCalculator', dataset)
+def calc_extended_sequence_calculator(dataset=None):
+    """Wraps ExtendedSequenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ExtendedSequenceCalculator', dataset)
+def calc_extended_sequence_energy_calculator(dataset=None):
+    """Wraps ExtendedSequenceEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ExtendedSequenceEnergyCalculator', dataset)
+def calc_extended_u_p_refinement_calculator(dataset=None):
+    """Wraps ExtendedUPRefinementCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ExtendedUPRefinementCalculator', dataset)
+def calc_external_gravity_ug3_prime_calculator(dataset=None):
+    """Wraps ExternalGravityUg3PrimeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ExternalGravityUg3PrimeCalculator', dataset)
+def calc_f_env_modular_calculator(dataset=None):
+    """Wraps FEnvModularCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FEnvModularCalculator', dataset)
+def calc_f_s_c_superconductive_material_calculator(dataset=None):
+    """Wraps FSCSuperconductiveMaterialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FSCSuperconductiveMaterialCalculator', dataset)
+def calc_f_u4_body_solar_system_numerical_verification_calculator(dataset=None):
+    """Wraps FU4BodySolarSystemNumericalVerificationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FU4BodySolarSystemNumericalVerificationCalculator', dataset)
+def calc_f_u_bi12_term_explicit_integrand_calculator(dataset=None):
+    """Wraps FUBi12TermExplicitIntegrandCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('FUBi12TermExplicitIntegrandCalculator', dataset)
+def calc_f_u_bi26th_gaussian_truncated_polynomial_bound_calculator(dataset=None):
+    """Wraps FUBi26thGaussianTruncatedPolynomialBoundCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FUBi26thGaussianTruncatedPolynomialBoundCalculator', dataset)
+def calc_f_u_bi_collapse_prevention_eigenproof_calculator(dataset=None):
+    """Wraps FUBiCollapsePreventionEigenproofCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUBiCollapsePreventionEigenproofCalculator', dataset)
+def calc_f_u_bi_master_buoyancy_calc(dataset=None):
+    """Wraps FUBiMasterBuoyancyCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUBiMasterBuoyancyCalc', dataset)
+def calc_f_u_bi_variational_derivation_calc(dataset=None):
+    """Wraps FUBiVariationalDerivationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUBiVariationalDerivationCalc', dataset)
+def calc_f_u_bii_cross_system_solar_convergence_validator(dataset=None):
+    """Wraps FUBiiCrossSystemSolarConvergenceValidator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FUBiiCrossSystemSolarConvergenceValidator', dataset)
+def calc_f_u_bii_extended_integral_calculator(dataset=None):
+    """Wraps FUBiiExtendedIntegralCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('FUBiiExtendedIntegralCalculator', dataset)
+def calc_f_u_bii_full_d_p_m_polynomial_integral_calculator(dataset=None):
+    """Wraps FUBiiFullDPMPolynomialIntegralCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('FUBiiFullDPMPolynomialIntegralCalculator', dataset)
+def calc_f_u_bii_integral_calculator(dataset=None):
+    """Wraps FUBiiIntegralCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FUBiiIntegralCalculator', dataset)
+def calc_f_u_bii_seven_component_decomposition_calculator(dataset=None):
+    """Wraps FUBiiSevenComponentDecompositionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FUBiiSevenComponentDecompositionCalculator', dataset)
+def calc_f_u_bii_taxonomy_compact_object_calculator(dataset=None):
+    """Wraps FUBiiTaxonomyCompactObjectCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('FUBiiTaxonomyCompactObjectCalculator', dataset)
+def calc_f_u_bii_taxonomy_cosmological_calculator(dataset=None):
+    """Wraps FUBiiTaxonomyCosmologicalCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('FUBiiTaxonomyCosmologicalCalculator', dataset)
+def calc_f_u_bii_um_universal_companion_catalog_calculator(dataset=None):
+    """Wraps FUBiiUmUniversalCompanionCatalogCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUBiiUmUniversalCompanionCatalogCalculator', dataset)
+def calc_f_u_complete_lambda_i4th_dissipation_sum_calculator(dataset=None):
+    """Wraps FUCompleteLambdaI4thDissipationSumCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUCompleteLambdaI4thDissipationSumCalculator', dataset)
+def calc_f_u_pi_negative_time_canonical_calculator(dataset=None):
+    """Wraps FUPiNegativeTimeCanonicalCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FUPiNegativeTimeCanonicalCalculator', dataset)
+def calc_f_u_sun_complete_s_cm_solar_cycle_final_calibration_calculator(dataset=None):
+    """Wraps FUSunCompleteSCmSolarCycleFinalCalibrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUSunCompleteSCmSolarCycleFinalCalibrationCalculator', dataset)
+def calc_f_u_three_term_star_magic_master_calculator(dataset=None):
+    """Wraps FUThreeTermStarMagicMasterCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FUThreeTermStarMagicMasterCalculator', dataset)
+def calc_false_vacuum_decay_calculator(dataset=None):
+    """Wraps FalseVacuumDecayCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FalseVacuumDecayCalculator', dataset)
+def calc_fast_radio_burst_model(dataset=None):
+    """Wraps FastRadioBurstModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FastRadioBurstModel', dataset)
+def calc_fast_radio_burst_u_q_f_f_calculator(dataset=None):
+    """Wraps FastRadioBurstUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FastRadioBurstUQFFCalculator', dataset)
+def calc_federated_learning_calculator(dataset=None):
+    """Wraps FederatedLearningCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FederatedLearningCalculator', dataset)
+def calc_federated_learning_s8_calculator(dataset=None):
+    """Wraps FederatedLearningS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FederatedLearningS8Calculator', dataset)
+def calc_feedback_factor_calculator(dataset=None):
+    """Wraps FeedbackFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FeedbackFactorCalculator', dataset)
+def calc_field_generator_correlation_calculator(dataset=None):
+    """Wraps FieldGeneratorCorrelationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FieldGeneratorCorrelationCalculator', dataset)
+def calc_field_generator_correlation_v2_calculator(dataset=None):
+    """Wraps FieldGeneratorCorrelationV2Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FieldGeneratorCorrelationV2Calculator', dataset)
+def calc_field_generator_correlation_v3_calculator(dataset=None):
+    """Wraps FieldGeneratorCorrelationV3Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FieldGeneratorCorrelationV3Calculator', dataset)
+def calc_field_generator_resonance_calculator(dataset=None):
+    """Wraps FieldGeneratorResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FieldGeneratorResonanceCalculator', dataset)
+def calc_field_generator_resonance_coupling_calculator(dataset=None):
+    """Wraps FieldGeneratorResonanceCouplingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FieldGeneratorResonanceCouplingCalculator', dataset)
+def calc_field_generator_spooky_non_local_temp_drop_calc(dataset=None):
+    """Wraps FieldGeneratorSpookyNonLocalTempDropCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FieldGeneratorSpookyNonLocalTempDropCalc', dataset)
+def calc_filament_erosion_buoyancy_calculator(dataset=None):
+    """Wraps FilamentErosionBuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FilamentErosionBuoyancyCalculator', dataset)
+def calc_final_parsec_calculator(dataset=None):
+    """Wraps FinalParsecCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FinalParsecCalculator', dataset)
+def calc_final_parsec_problem_calculator(dataset=None):
+    """Wraps FinalParsecProblemCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FinalParsecProblemCalculator', dataset)
+def calc_final_parsec_problem_model(dataset=None):
+    """Wraps FinalParsecProblemModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FinalParsecProblemModel', dataset)
+def calc_finalized_f_u_refinement_calculator(dataset=None):
+    """Wraps FinalizedFURefinementCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FinalizedFURefinementCalculator', dataset)
+def calc_finite_element_method(dataset=None):
+    """Wraps FiniteElementMethod.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FiniteElementMethod', dataset)
+def calc_five_dimensional_hubble_analog_calculator(dataset=None):
+    """Wraps FiveDimensionalHubbleAnalogCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FiveDimensionalHubbleAnalogCalculator', dataset)
+def calc_five_hundred_frame_dataset_calculator(dataset=None):
+    """Wraps FiveHundredFrameDatasetCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FiveHundredFrameDatasetCalculator', dataset)
+def calc_five_quantum_variable_sets_calculator(dataset=None):
+    """Wraps FiveQuantumVariableSetsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FiveQuantumVariableSetsCalculator', dataset)
+def calc_five_universal_time_cycles_model(dataset=None):
+    """Wraps FiveUniversalTimeCyclesModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FiveUniversalTimeCyclesModel', dataset)
+def calc_floyd_sweet_v_t_a6_document_p_c_v_t_motional_efield_calc(dataset=None):
+    """Wraps FloydSweetVTA6DocumentPCVTMotionalEfieldCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FloydSweetVTA6DocumentPCVTMotionalEfieldCalc', dataset)
+def calc_floyd_sweet_vacuum_calculator(dataset=None):
+    """Wraps FloydSweetVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FloydSweetVacuumCalculator', dataset)
+def calc_fokker_planck_c_r_p_calculator(dataset=None):
+    """Wraps FokkerPlanckCRPCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FokkerPlanckCRPCalculator', dataset)
+def calc_fornax_cluster_gravitational(dataset=None):
+    """Wraps FornaxClusterGravitational.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FornaxClusterGravitational', dataset)
+def calc_fornax_constellation_u_h_d_f(dataset=None):
+    """Wraps FornaxConstellationUHDF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FornaxConstellationUHDF', dataset)
+def calc_forty_four_frame_sequence_calculator(dataset=None):
+    """Wraps FortyFourFrameSequenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FortyFourFrameSequenceCalculator', dataset)
+def calc_forty_seven_frame_sequence_calculator(dataset=None):
+    """Wraps FortySevenFrameSequenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FortySevenFrameSequenceCalculator', dataset)
+def calc_forty_two_frame_sequence_calculator(dataset=None):
+    """Wraps FortyTwoFrameSequenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FortyTwoFrameSequenceCalculator', dataset)
+def calc_four_projection_resonance_calculator(dataset=None):
+    """Wraps FourProjectionResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FourProjectionResonanceCalculator', dataset)
+def calc_fquark_fneutrino_falp_fdark_ar_xiv_bridge_calculator(dataset=None):
+    """Wraps FquarkFneutrinoFalpFdarkArXivBridgeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('FquarkFneutrinoFalpFdarkArXivBridgeCalculator', dataset)
+def calc_frame_continuity_stability_calculator(dataset=None):
+    """Wraps FrameContinuityStabilityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FrameContinuityStabilityCalculator', dataset)
+def calc_frame_incremental_analysis_calculator(dataset=None):
+    """Wraps FrameIncrementalAnalysisCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FrameIncrementalAnalysisCalculator', dataset)
+def calc_frame_ordering_reconstructor_calculator(dataset=None):
+    """Wraps FrameOrderingReconstructorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FrameOrderingReconstructorCalculator', dataset)
+def calc_frame_range_validator_calculator(dataset=None):
+    """Wraps FrameRangeValidatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FrameRangeValidatorCalculator', dataset)
+def calc_frame_rate_temporal_resolution_calculator(dataset=None):
+    """Wraps FrameRateTemporalResolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FrameRateTemporalResolutionCalculator', dataset)
+def calc_frame_sequence_progression_calculator(dataset=None):
+    """Wraps FrameSequenceProgressionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FrameSequenceProgressionCalculator', dataset)
+def calc_frame_timestamp_calculator(dataset=None):
+    """Wraps FrameTimestampCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FrameTimestampCalculator', dataset)
+def calc_free_rotation360_model(dataset=None):
+    """Wraps FreeRotation360Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FreeRotation360Model', dataset)
+def calc_frozen_planet_solar_wind_calculator(dataset=None):
+    """Wraps FrozenPlanetSolarWindCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FrozenPlanetSolarWindCalculator', dataset)
+def calc_frozen_planet_solar_wind_power_calculator(dataset=None):
+    """Wraps FrozenPlanetSolarWindPowerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('FrozenPlanetSolarWindPowerCalculator', dataset)
+def calc_full_sequence_quadrant_tracker_calculator(dataset=None):
+    """Wraps FullSequenceQuadrantTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('FullSequenceQuadrantTrackerCalculator', dataset)
+def calc_g359_filament_galactic_center_f_u_bi_calculator(dataset=None):
+    """Wraps G359FilamentGalacticCenterFUBiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('G359FilamentGalacticCenterFUBiCalculator', dataset)
+def calc_g_r_m_h_d3_d_b_h_i_s_c_o_stress_accretion_efficiency_calculator(dataset=None):
+    """Wraps GRMHD3DBHISCOStressAccretionEfficiencyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GRMHD3DBHISCOStressAccretionEfficiencyCalculator', dataset)
+def calc_g_r_m_h_d_binary_b_h_merger_accretion_modulation_calculator(dataset=None):
+    """Wraps GRMHDBinaryBHMergerAccretionModulationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GRMHDBinaryBHMergerAccretionModulationCalculator', dataset)
+def calc_g_r_m_h_d_n_s_merger_disk_g_w170817_extended_kilonova_calculator(dataset=None):
+    """Wraps GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator', dataset)
+def calc_g_r_m_h_d_u_q_f_f_calculator(dataset=None):
+    """Wraps GRMHDUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GRMHDUQFFCalculator', dataset)
+def calc_g_w150914_p_c_r_calculator(dataset=None):
+    """Wraps GW150914PCRCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GW150914PCRCalculator', dataset)
+def calc_g_w170817_ejecta_calculator(dataset=None):
+    """Wraps GW170817EjectaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GW170817EjectaCalculator', dataset)
+def calc_g_w170817_inspiral_phase_lag_calc(dataset=None):
+    """Wraps GW170817InspiralPhaseLagCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW170817InspiralPhaseLagCalc', dataset)
+def calc_g_w170817_phonon_strain_damping_calc(dataset=None):
+    """Wraps GW170817PhononStrainDampingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW170817PhononStrainDampingCalc', dataset)
+def calc_g_w170817_phonon_suppressed_strain_calc(dataset=None):
+    """Wraps GW170817PhononSuppressedStrainCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW170817PhononSuppressedStrainCalc', dataset)
+def calc_g_w170817_tidal_deformability_phonon_calc(dataset=None):
+    """Wraps GW170817TidalDeformabilityPhononCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW170817TidalDeformabilityPhononCalc', dataset)
+def calc_g_w190425_mass_gap_phonon_calc(dataset=None):
+    """Wraps GW190425MassGapPhononCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW190425MassGapPhononCalc', dataset)
+def calc_g_w190425_mass_gap_phonon_suppression_calc(dataset=None):
+    """Wraps GW190425MassGapPhononSuppressionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW190425MassGapPhononSuppressionCalc', dataset)
+def calc_g_w190425_phonon_suppressed_strain_calc(dataset=None):
+    """Wraps GW190425PhononSuppressedStrainCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW190425PhononSuppressedStrainCalc', dataset)
+def calc_g_w190425_wavelength_phonon_correction_calc(dataset=None):
+    """Wraps GW190425WavelengthPhononCorrectionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GW190425WavelengthPhononCorrectionCalc', dataset)
+def calc_g_w231123_mass_gap_u_q_f_f_calculator(dataset=None):
+    """Wraps GW231123MassGapUQFFCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GW231123MassGapUQFFCalculator', dataset)
+def calc_g_w_damping_erosion66_percent_calc(dataset=None):
+    """Wraps GWDampingErosion66PercentCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GWDampingErosion66PercentCalc', dataset)
+def calc_gaia_sgr_a_distance_error_analysis_calculator(dataset=None):
+    """Wraps GaiaSgrADistanceErrorAnalysisCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GaiaSgrADistanceErrorAnalysisCalculator', dataset)
+def calc_galactic_center_distance_calculator(dataset=None):
+    """Wraps GalacticCenterDistanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GalacticCenterDistanceCalculator', dataset)
+def calc_galactic_center_rotation_calculator(dataset=None):
+    """Wraps GalacticCenterRotationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GalacticCenterRotationCalculator', dataset)
+def calc_galactic_center_ug4_kappa_decay_calibration_calculator(dataset=None):
+    """Wraps GalacticCenterUg4KappaDecayCalibrationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalacticCenterUg4KappaDecayCalibrationCalculator', dataset)
+def calc_galactic_dark_matter_n_f_w_coupling_calculator(dataset=None):
+    """Wraps GalacticDarkMatterNFWCouplingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GalacticDarkMatterNFWCouplingCalculator', dataset)
+def calc_galactic_distance_calculator(dataset=None):
+    """Wraps GalacticDistanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GalacticDistanceCalculator', dataset)
+def calc_galactic_motion_u_f_t_calculator(dataset=None):
+    """Wraps GalacticMotionUFTCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GalacticMotionUFTCalculator', dataset)
+def calc_galactic_omega_s_velocity_dispersion_calibration_calculator(dataset=None):
+    """Wraps GalacticOmegaSVelocityDispersionCalibrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GalacticOmegaSVelocityDispersionCalibrationCalculator', dataset)
+def calc_galactic_red_blue_shift_calculator(dataset=None):
+    """Wraps GalacticRedBlueShiftCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GalacticRedBlueShiftCalculator', dataset)
+def calc_galactic_spin_rate_calculator(dataset=None):
+    """Wraps GalacticSpinRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GalacticSpinRateCalculator', dataset)
+def calc_galaxy_cluster_p_l_c_k_double_relic_shear_calculator(dataset=None):
+    """Wraps GalaxyClusterPLCKDoubleRelicShearCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalaxyClusterPLCKDoubleRelicShearCalculator', dataset)
+def calc_galaxy_cluster_p_s_z2_um_turbulence_calculator(dataset=None):
+    """Wraps GalaxyClusterPSZ2UmTurbulenceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalaxyClusterPSZ2UmTurbulenceCalculator', dataset)
+def calc_galaxy_collision_m_u_g_e_calculator(dataset=None):
+    """Wraps GalaxyCollisionMUGECalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GalaxyCollisionMUGECalculator', dataset)
+def calc_galaxy_equation_of_state_u_c_f_calculator(dataset=None):
+    """Wraps GalaxyEquationOfStateUCFCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalaxyEquationOfStateUCFCalculator', dataset)
+def calc_galaxy_i_m_f_nucleosynthesis_index_calculator(dataset=None):
+    """Wraps GalaxyIMFNucleosynthesisIndexCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalaxyIMFNucleosynthesisIndexCalculator', dataset)
+def calc_galaxy_interaction_calculator(dataset=None):
+    """Wraps GalaxyInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GalaxyInteractionCalculator', dataset)
+def calc_galaxy_merger_dynamics_calculator(dataset=None):
+    """Wraps GalaxyMergerDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GalaxyMergerDynamicsCalculator', dataset)
+def calc_galaxy_merger_specific_calculator(dataset=None):
+    """Wraps GalaxyMergerSpecificCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GalaxyMergerSpecificCalculator', dataset)
+def calc_galaxy_merger_u_q_f_f_vs_newton_einstein_calculator(dataset=None):
+    """Wraps GalaxyMergerUQFFVsNewtonEinsteinCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GalaxyMergerUQFFVsNewtonEinsteinCalculator', dataset)
+def calc_galaxy_n_g_c1792_starburst_forge_calculator(dataset=None):
+    """Wraps GalaxyNGC1792StarburstForgeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalaxyNGC1792StarburstForgeCalculator', dataset)
+def calc_galaxy_n_g_c2525_s_n_mass_loss_calculator(dataset=None):
+    """Wraps GalaxyNGC2525SNMassLossCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('GalaxyNGC2525SNMassLossCalculator', dataset)
+def calc_gamma_linewidth_curves_calc(dataset=None):
+    """Wraps GammaLinewidthCurvesCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GammaLinewidthCurvesCalc', dataset)
+def calc_generalized_hydrogen_resonance_all_elements_calculator(dataset=None):
+    """Wraps GeneralizedHydrogenResonanceAllElementsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GeneralizedHydrogenResonanceAllElementsCalculator', dataset)
+def calc_geodetic_precession_calculator(dataset=None):
+    """Wraps GeodeticPrecessionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GeodeticPrecessionCalculator', dataset)
+def calc_geometric_factor_calculator(dataset=None):
+    """Wraps GeometricFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GeometricFactorCalculator', dataset)
+def calc_ginzburg_landau_coherence_calculator(dataset=None):
+    """Wraps GinzburgLandauCoherenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GinzburgLandauCoherenceCalculator', dataset)
+def calc_ginzburg_landau_field_model(dataset=None):
+    """Wraps GinzburgLandauFieldModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GinzburgLandauFieldModel', dataset)
+def calc_globular_cluster_layer_calculator(dataset=None):
+    """Wraps GlobularClusterLayerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GlobularClusterLayerCalculator', dataset)
+def calc_globular_cluster_structure_model(dataset=None):
+    """Wraps GlobularClusterStructureModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GlobularClusterStructureModel', dataset)
+def calc_gluon_energy_density_calculator(dataset=None):
+    """Wraps GluonEnergyDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GluonEnergyDensityCalculator', dataset)
+def calc_goal_validation_calculator(dataset=None):
+    """Wraps GoalValidationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GoalValidationCalculator', dataset)
+def calc_goals_validation_checkpoint_calculator(dataset=None):
+    """Wraps GoalsValidationCheckpointCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GoalsValidationCheckpointCalculator', dataset)
+def calc_grad_ms_r_calculator(dataset=None):
+    """Wraps GradMsRCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GradMsRCalculator', dataset)
+def calc_grad_ms_r_term(dataset=None):
+    """Wraps GradMsRTerm.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GradMsRTerm', dataset)
+def calc_gravitational_calculator(dataset=None):
+    """Wraps GravitationalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalCalculator', dataset)
+def calc_gravitational_constant_k_calculator(dataset=None):
+    """Wraps GravitationalConstantKCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GravitationalConstantKCalculator', dataset)
+def calc_gravitational_force_calculator(dataset=None):
+    """Wraps GravitationalForceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GravitationalForceCalculator', dataset)
+def calc_gravitational_lensing_calculator(dataset=None):
+    """Wraps GravitationalLensingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalLensingCalculator', dataset)
+def calc_gravitational_lensing_u_q_f_f_calculator(dataset=None):
+    """Wraps GravitationalLensingUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalLensingUQFFCalculator', dataset)
+def calc_gravitational_potential_calculator(dataset=None):
+    """Wraps GravitationalPotentialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GravitationalPotentialCalculator', dataset)
+def calc_gravitational_q_calc_calculator(dataset=None):
+    """Wraps GravitationalQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalQCalcCalculator', dataset)
+def calc_gravitational_redshift_model(dataset=None):
+    """Wraps GravitationalRedshiftModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalRedshiftModel', dataset)
+def calc_gravitational_time_dilation_model(dataset=None):
+    """Wraps GravitationalTimeDilationModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalTimeDilationModel', dataset)
+def calc_gravitational_wave_radiation_calculator(dataset=None):
+    """Wraps GravitationalWaveRadiationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalWaveRadiationCalculator', dataset)
+def calc_gravitational_wave_radiation_term_calculator(dataset=None):
+    """Wraps GravitationalWaveRadiationTermCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GravitationalWaveRadiationTermCalculator', dataset)
+def calc_gravitational_wave_u_q_f_f_calculator(dataset=None):
+    """Wraps GravitationalWaveUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('GravitationalWaveUQFFCalculator', dataset)
+def calc_gravity_projection_shape_calculator(dataset=None):
+    """Wraps GravityProjectionShapeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GravityProjectionShapeCalculator', dataset)
+def calc_gravity_since_big_bang_calculator(dataset=None):
+    """Wraps GravitySinceBigBangCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GravitySinceBigBangCalculator', dataset)
+def calc_gravity_since_big_bang_q_g_d_m_g_w_terms_u_q_f_f_calculator(dataset=None):
+    """Wraps GravitySinceBigBangQGDMGWTermsUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('GravitySinceBigBangQGDMGWTermsUQFFCalculator', dataset)
+def calc_grok_thread31b5c807_deep_reanalysis_calculator(dataset=None):
+    """Wraps GrokThread31b5c807DeepReanalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GrokThread31b5c807DeepReanalysisCalculator', dataset)
+def calc_grok_thread31b5c807_triadic_systems_calculator(dataset=None):
+    """Wraps GrokThread31b5c807TriadicSystemsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GrokThread31b5c807TriadicSystemsCalculator', dataset)
+def calc_gross_pitaevskii_vortex_simulation_calculator(dataset=None):
+    """Wraps GrossPitaevskiiVortexSimulationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('GrossPitaevskiiVortexSimulationCalculator', dataset)
+def calc_h2_o_h2_rotor_phillips_c_s_cross_section_calculator(dataset=None):
+    """Wraps H2OH2RotorPhillipsCSCrossSectionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('H2OH2RotorPhillipsCSCrossSectionCalculator', dataset)
+def calc_h2_o_maser_j_shock_emission_calculator(dataset=None):
+    """Wraps H2OMaserJShockEmissionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('H2OMaserJShockEmissionCalculator', dataset)
+def calc_h2_transition_rate_calculator(dataset=None):
+    """Wraps H2TransitionRateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('H2TransitionRateCalculator', dataset)
+def calc_h_res_d_universe_master_calculator(dataset=None):
+    """Wraps HResDUniverseMasterCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HResDUniverseMasterCalculator', dataset)
+def calc_h_res_nuclear6_equation_dipolek_nuc_calculator(dataset=None):
+    """Wraps HResNuclear6EquationDipolekNucCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HResNuclear6EquationDipolekNucCalculator', dataset)
+def calc_h_res_periodic_table_universal_nuclear_correlation_calculator(dataset=None):
+    """Wraps HResPeriodicTableUniversalNuclearCorrelationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HResPeriodicTableUniversalNuclearCorrelationCalculator', dataset)
+def calc_h_u_d_f_base_gravity_calculator(dataset=None):
+    """Wraps HUDFBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFBaseGravityCalculator', dataset)
+def calc_h_u_d_f_cosmological_constant_calculator(dataset=None):
+    """Wraps HUDFCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFCosmologicalConstantCalculator', dataset)
+def calc_h_u_d_f_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps HUDFDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFDarkMatterPerturbationCalculator', dataset)
+def calc_h_u_d_f_electromagnetic_calculator(dataset=None):
+    """Wraps HUDFElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFElectromagneticCalculator', dataset)
+def calc_h_u_d_f_fluid_density_calculator(dataset=None):
+    """Wraps HUDFFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFFluidDensityCalculator', dataset)
+def calc_h_u_d_f_galaxies_cosmic_field_calculator(dataset=None):
+    """Wraps HUDFGalaxiesCosmicFieldCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HUDFGalaxiesCosmicFieldCalculator', dataset)
+def calc_h_u_d_f_galaxies_f_u_bi_i_calculator(dataset=None):
+    """Wraps HUDFGalaxiesFUBiICalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HUDFGalaxiesFUBiICalculator', dataset)
+def calc_h_u_d_f_galaxy_interaction_calculator(dataset=None):
+    """Wraps HUDFGalaxyInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFGalaxyInteractionCalculator', dataset)
+def calc_h_u_d_f_gravitational_meissner_calculator(dataset=None):
+    """Wraps HUDFGravitationalMeissnerCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HUDFGravitationalMeissnerCalculator', dataset)
+def calc_h_u_d_f_interaction_cascade_buoyancy_calculator(dataset=None):
+    """Wraps HUDFInteractionCascadeBuoyancyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HUDFInteractionCascadeBuoyancyCalculator', dataset)
+def calc_h_u_d_f_merger_feedback_calculator(dataset=None):
+    """Wraps HUDFMergerFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFMergerFeedbackCalculator', dataset)
+def calc_h_u_d_f_model(dataset=None):
+    """Wraps HUDFModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFModel', dataset)
+def calc_h_u_d_f_oscillatory_wave_calculator(dataset=None):
+    """Wraps HUDFOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFOscillatoryWaveCalculator', dataset)
+def calc_h_u_d_f_quantum_uncertainty_calculator(dataset=None):
+    """Wraps HUDFQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFQuantumUncertaintyCalculator', dataset)
+def calc_h_u_d_f_star_formation_calculator(dataset=None):
+    """Wraps HUDFStarFormationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFStarFormationCalculator', dataset)
+def calc_h_u_d_f_t_r_z_c_p_t_phase_calculator(dataset=None):
+    """Wraps HUDFTRZCPTPhaseCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HUDFTRZCPTPhaseCalculator', dataset)
+def calc_h_u_d_f_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps HUDFUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HUDFUQFFUnificationCalculator', dataset)
+def calc_habitable_zone_calculator(dataset=None):
+    """Wraps HabitableZoneCalculator.compute() from QCalcGeom."""
+    return _pipeline_invoke('HabitableZoneCalculator', dataset)
+def calc_half_cycle_oscillation_calculator(dataset=None):
+    """Wraps HalfCycleOscillationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HalfCycleOscillationCalculator', dataset)
+def calc_hamiltonian_planetary_core_h_ug3_h_s_cm_h_u_a_yang_mills_mass_gap_calculator(dataset=None):
+    """Wraps HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator', dataset)
+def calc_hawking_radiation_u_q_f_f_calculator(dataset=None):
+    """Wraps HawkingRadiationUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HawkingRadiationUQFFCalculator', dataset)
+def calc_hawking_spin_off_calculator(dataset=None):
+    """Wraps HawkingSpinOffCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HawkingSpinOffCalculator', dataset)
+def calc_hawking_temperature_u_q_f_f_calculator(dataset=None):
+    """Wraps HawkingTemperatureUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HawkingTemperatureUQFFCalculator', dataset)
+def calc_heaviside_component_model(dataset=None):
+    """Wraps HeavisideComponentModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HeavisideComponentModel', dataset)
+def calc_heaviside_fraction_calculator(dataset=None):
+    """Wraps HeavisideFractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HeavisideFractionCalculator', dataset)
+def calc_heavy_water_density_calculator(dataset=None):
+    """Wraps HeavyWaterDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HeavyWaterDensityCalculator', dataset)
+def calc_heavy_water_electrolysis_calculator(dataset=None):
+    """Wraps HeavyWaterElectrolysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HeavyWaterElectrolysisCalculator', dataset)
+def calc_heisenberg_vacuum_calculator(dataset=None):
+    """Wraps HeisenbergVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HeisenbergVacuumCalculator', dataset)
+def calc_helical_quantum_tension_calculator(dataset=None):
+    """Wraps HelicalQuantumTensionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HelicalQuantumTensionCalculator', dataset)
+def calc_heliopausal_boundary_step_function_calculator(dataset=None):
+    """Wraps HeliopausalBoundaryStepFunctionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HeliopausalBoundaryStepFunctionCalculator', dataset)
+def calc_heliosphere_hydrogen_complex_s_cm_stellar_age_calculator(dataset=None):
+    """Wraps HeliosphereHydrogenComplexSCmStellarAgeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HeliosphereHydrogenComplexSCmStellarAgeCalculator', dataset)
+def calc_heliosphere_liquid_volume_calculator(dataset=None):
+    """Wraps HeliosphereLiquidVolumeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HeliosphereLiquidVolumeCalculator', dataset)
+def calc_heliosphere_stellar_age_correlation_calculator(dataset=None):
+    """Wraps HeliosphereStellarAgeCorrelationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HeliosphereStellarAgeCorrelationCalculator', dataset)
+def calc_heliosphere_thickness_calculator(dataset=None):
+    """Wraps HeliosphereThicknessCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HeliosphereThicknessCalculator', dataset)
+def calc_heliosphere_thickness_model(dataset=None):
+    """Wraps HeliosphereThicknessModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HeliosphereThicknessModel', dataset)
+def calc_higgs_emergent_level18_u_q_f_f_stratum_calculator(dataset=None):
+    """Wraps HiggsEmergentLevel18UQFFStratumCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HiggsEmergentLevel18UQFFStratumCalculator', dataset)
+def calc_higgs_field_calculator(dataset=None):
+    """Wraps HiggsFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HiggsFieldCalculator', dataset)
+def calc_higgs_field_u_q_f_f_calculator(dataset=None):
+    """Wraps HiggsFieldUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HiggsFieldUQFFCalculator', dataset)
+def calc_higgs_inertial_gradient_calculator(dataset=None):
+    """Wraps HiggsInertialGradientCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HiggsInertialGradientCalculator', dataset)
+def calc_higgs_potential_calculator(dataset=None):
+    """Wraps HiggsPotentialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HiggsPotentialCalculator', dataset)
+def calc_higgs_production_decay_mode_calculator(dataset=None):
+    """Wraps HiggsProductionDecayModeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HiggsProductionDecayModeCalculator', dataset)
+def calc_higgs_s_cm_integration_model(dataset=None):
+    """Wraps HiggsSCmIntegrationModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HiggsSCmIntegrationModel', dataset)
+def calc_higgs_stability_calculator(dataset=None):
+    """Wraps HiggsStabilityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HiggsStabilityCalculator', dataset)
+def calc_higgs_u_i_a_o_operator_calculator(dataset=None):
+    """Wraps HiggsUIAOOperatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HiggsUIAOOperatorCalculator', dataset)
+def calc_higgs_vacuum_u_h_excitation_k_higgs_u_q_f_f_calc(dataset=None):
+    """Wraps HiggsVacuumUHExcitationKHiggsUQFFCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HiggsVacuumUHExcitationKHiggsUQFFCalc', dataset)
+def calc_high_energy_dataset_validation_calculator(dataset=None):
+    """Wraps HighEnergyDatasetValidationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HighEnergyDatasetValidationCalculator', dataset)
+def calc_high_redshift_j_w_s_t_q_wave_deep_field_calculator(dataset=None):
+    """Wraps HighRedshiftJWSTQWaveDeepFieldCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HighRedshiftJWSTQWaveDeepFieldCalculator', dataset)
+def calc_higher_curvature_gravity_calculator(dataset=None):
+    """Wraps HigherCurvatureGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HigherCurvatureGravityCalculator', dataset)
+def calc_hill_sphere_model(dataset=None):
+    """Wraps HillSphereModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HillSphereModel', dataset)
+def calc_hodge_u_q_f_f_algebraic_cycle_calculator(dataset=None):
+    """Wraps HodgeUQFFAlgebraicCycleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HodgeUQFFAlgebraicCycleCalculator', dataset)
+def calc_holmlid_k_e_r_reactor_validation_calculator(dataset=None):
+    """Wraps HolmlidKERReactorValidationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HolmlidKERReactorValidationCalculator', dataset)
+def calc_holmlid_parkhomov_pons_fleischmann_upgrade_calculator(dataset=None):
+    """Wraps HolmlidParkhomovPonsFleischmannUpgradeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HolmlidParkhomovPonsFleischmannUpgradeCalculator', dataset)
+def calc_holmlid_rossi_parkhomov_validation_calculator(dataset=None):
+    """Wraps HolmlidRossiParkhomovValidationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HolmlidRossiParkhomovValidationCalculator', dataset)
+def calc_holmlid_rydberg_s_cm_bridge_calculator(dataset=None):
+    """Wraps HolmlidRydbergSCmBridgeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HolmlidRydbergSCmBridgeCalculator', dataset)
+def calc_holonomy_group_curvature_calculator(dataset=None):
+    """Wraps HolonomyGroupCurvatureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HolonomyGroupCurvatureCalculator', dataset)
+def calc_horizon_buoyancy_sector_lagrangian_calculator(dataset=None):
+    """Wraps HorizonBuoyancySectorLagrangianCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorizonBuoyancySectorLagrangianCalculator', dataset)
+def calc_horsehead_base_gravity_calculator(dataset=None):
+    """Wraps HorseheadBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadBaseGravityCalculator', dataset)
+def calc_horsehead_cosmological_constant_calculator(dataset=None):
+    """Wraps HorseheadCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadCosmologicalConstantCalculator', dataset)
+def calc_horsehead_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps HorseheadDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadDarkMatterPerturbationCalculator', dataset)
+def calc_horsehead_electromagnetic_calculator(dataset=None):
+    """Wraps HorseheadElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadElectromagneticCalculator', dataset)
+def calc_horsehead_erosion_calculator(dataset=None):
+    """Wraps HorseheadErosionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadErosionCalculator', dataset)
+def calc_horsehead_fluid_density_calculator(dataset=None):
+    """Wraps HorseheadFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadFluidDensityCalculator', dataset)
+def calc_horsehead_nebula_barnard33_u_q_f_f(dataset=None):
+    """Wraps HorseheadNebulaBarnard33UQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HorseheadNebulaBarnard33UQFF', dataset)
+def calc_horsehead_nebula_barnard33_u_q_f_f_calculator(dataset=None):
+    """Wraps HorseheadNebulaBarnard33UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HorseheadNebulaBarnard33UQFFCalculator', dataset)
+def calc_horsehead_nebula_model(dataset=None):
+    """Wraps HorseheadNebulaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadNebulaModel', dataset)
+def calc_horsehead_nebula_prad_blackbody_calculator(dataset=None):
+    """Wraps HorseheadNebulaPradBlackbodyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HorseheadNebulaPradBlackbodyCalculator', dataset)
+def calc_horsehead_oscillatory_wave_calculator(dataset=None):
+    """Wraps HorseheadOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadOscillatoryWaveCalculator', dataset)
+def calc_horsehead_quantum_uncertainty_calculator(dataset=None):
+    """Wraps HorseheadQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadQuantumUncertaintyCalculator', dataset)
+def calc_horsehead_stellar_wind_calculator(dataset=None):
+    """Wraps HorseheadStellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadStellarWindCalculator', dataset)
+def calc_horsehead_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps HorseheadUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HorseheadUQFFUnificationCalculator', dataset)
+def calc_hubble_parameter_u_c_f_calculator(dataset=None):
+    """Wraps HubbleParameterUCFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HubbleParameterUCFCalculator', dataset)
+def calc_hubble_ultra_deep_field_u_q_f_f_calculator(dataset=None):
+    """Wraps HubbleUltraDeepFieldUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HubbleUltraDeepFieldUQFFCalculator', dataset)
+def calc_hybrid_m_u_g_e_blending_calculator(dataset=None):
+    """Wraps HybridMUGEBlendingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HybridMUGEBlendingCalculator', dataset)
+def calc_hybrid_m_u_g_e_meissner_blending_model_calculator(dataset=None):
+    """Wraps HybridMUGEMeissnerBlendingModelCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HybridMUGEMeissnerBlendingModelCalculator', dataset)
+def calc_hydrogen_atom_lorentz_e_m_dominance_calculator(dataset=None):
+    """Wraps HydrogenAtomLorentzEMDominanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenAtomLorentzEMDominanceCalculator', dataset)
+def calc_hydrogen_atom_lyman_cosmos_bridge_calculator(dataset=None):
+    """Wraps HydrogenAtomLymanCosmosBridgeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenAtomLymanCosmosBridgeCalculator', dataset)
+def calc_hydrogen_atom_proton_g_r_spectral_minimum_calculator(dataset=None):
+    """Wraps HydrogenAtomProtonGRSpectralMinimumCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenAtomProtonGRSpectralMinimumCalculator', dataset)
+def calc_hydrogen_atom_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps HydrogenAtomUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenAtomUQFFGravityCalculator', dataset)
+def calc_hydrogen_base_energy_e0_calculator(dataset=None):
+    """Wraps HydrogenBaseEnergyE0Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenBaseEnergyE0Calculator', dataset)
+def calc_hydrogen_bohr_orbital_calculator(dataset=None):
+    """Wraps HydrogenBohrOrbitalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenBohrOrbitalCalculator', dataset)
+def calc_hydrogen_bubble_anchoring_calculator(dataset=None):
+    """Wraps HydrogenBubbleAnchoringCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenBubbleAnchoringCalculator', dataset)
+def calc_hydrogen_bubble_confinement_calculator(dataset=None):
+    """Wraps HydrogenBubbleConfinementCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenBubbleConfinementCalculator', dataset)
+def calc_hydrogen_bubble_lattice_calculator(dataset=None):
+    """Wraps HydrogenBubbleLatticeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenBubbleLatticeCalculator', dataset)
+def calc_hydrogen_bubble_magnetic_calculator(dataset=None):
+    """Wraps HydrogenBubbleMagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenBubbleMagneticCalculator', dataset)
+def calc_hydrogen_bubble_path_anchor_calculator(dataset=None):
+    """Wraps HydrogenBubblePathAnchorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenBubblePathAnchorCalculator', dataset)
+def calc_hydrogen_compressed_space_energy_calculator(dataset=None):
+    """Wraps HydrogenCompressedSpaceEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenCompressedSpaceEnergyCalculator', dataset)
+def calc_hydrogen_compressed_space_espace_three_leg_calculator(dataset=None):
+    """Wraps HydrogenCompressedSpaceEspaceThreeLegCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HydrogenCompressedSpaceEspaceThreeLegCalculator', dataset)
+def calc_hydrogen_compression_factor_calculator(dataset=None):
+    """Wraps HydrogenCompressionFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenCompressionFactorCalculator', dataset)
+def calc_hydrogen_d_p_m_resonance_calculator(dataset=None):
+    """Wraps HydrogenDPMResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenDPMResonanceCalculator', dataset)
+def calc_hydrogen_electron_cloud_fluid_calculator(dataset=None):
+    """Wraps HydrogenElectronCloudFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenElectronCloudFluidCalculator', dataset)
+def calc_hydrogen_ethanol_experiment1_u_q_f_f_calculator(dataset=None):
+    """Wraps HydrogenEthanolExperiment1UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('HydrogenEthanolExperiment1UQFFCalculator', dataset)
+def calc_hydrogen_evolution_calculator(dataset=None):
+    """Wraps HydrogenEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenEvolutionCalculator', dataset)
+def calc_hydrogen_evolution_model(dataset=None):
+    """Wraps HydrogenEvolutionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenEvolutionModel', dataset)
+def calc_hydrogen_fine_structure_calculator(dataset=None):
+    """Wraps HydrogenFineStructureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenFineStructureCalculator', dataset)
+def calc_hydrogen_higgs_freq_factor_calculator(dataset=None):
+    """Wraps HydrogenHiggsFreqFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenHiggsFreqFactorCalculator', dataset)
+def calc_hydrogen_lamb_shift_calculator(dataset=None):
+    """Wraps HydrogenLambShiftCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenLambShiftCalculator', dataset)
+def calc_hydrogen_layer_factor_calculator(dataset=None):
+    """Wraps HydrogenLayerFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenLayerFactorCalculator', dataset)
+def calc_hydrogen_lorentz_electron_calculator(dataset=None):
+    """Wraps HydrogenLorentzElectronCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenLorentzElectronCalculator', dataset)
+def calc_hydrogen_nuclear_shell_resonance_calculator(dataset=None):
+    """Wraps HydrogenNuclearShellResonanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenNuclearShellResonanceCalculator', dataset)
+def calc_hydrogen_orbital_resonance_calculator(dataset=None):
+    """Wraps HydrogenOrbitalResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenOrbitalResonanceCalculator', dataset)
+def calc_hydrogen_oxygen_gas_storage_calculator(dataset=None):
+    """Wraps HydrogenOxygenGasStorageCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenOxygenGasStorageCalculator', dataset)
+def calc_hydrogen_p_to_e_aether_gravitational_dominance_calculator(dataset=None):
+    """Wraps HydrogenPToEAetherGravitationalDominanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenPToEAetherGravitationalDominanceCalculator', dataset)
+def calc_hydrogen_p_to_e_resonance_u_q_f_f_calculator(dataset=None):
+    """Wraps HydrogenPToEResonanceUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenPToEResonanceUQFFCalculator', dataset)
+def calc_hydrogen_p_to_e_t_hz_quantum_degeneracy_calculator(dataset=None):
+    """Wraps HydrogenPToETHzQuantumDegeneracyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenPToETHzQuantumDegeneracyCalculator', dataset)
+def calc_hydrogen_p_to_e_ug4i_resonance_bridge_calculator(dataset=None):
+    """Wraps HydrogenPToEUg4iResonanceBridgeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('HydrogenPToEUg4iResonanceBridgeCalculator', dataset)
+def calc_hydrogen_precession_factor_calculator(dataset=None):
+    """Wraps HydrogenPrecessionFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenPrecessionFactorCalculator', dataset)
+def calc_hydrogen_quantum_energy_calculator(dataset=None):
+    """Wraps HydrogenQuantumEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenQuantumEnergyCalculator', dataset)
+def calc_hydrogen_quantum_fluctuation_calculator(dataset=None):
+    """Wraps HydrogenQuantumFluctuationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenQuantumFluctuationCalculator', dataset)
+def calc_hydrogen_quantum_scaling_calculator(dataset=None):
+    """Wraps HydrogenQuantumScalingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenQuantumScalingCalculator', dataset)
+def calc_hydrogen_resonance_calculator(dataset=None):
+    """Wraps HydrogenResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenResonanceCalculator', dataset)
+def calc_hydrogen_resonance_orb36_calculator(dataset=None):
+    """Wraps HydrogenResonanceOrb36Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenResonanceOrb36Calculator', dataset)
+def calc_hydrogen_resonance_shell_calculator(dataset=None):
+    """Wraps HydrogenResonanceShellCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenResonanceShellCalculator', dataset)
+def calc_hydrogen_resonance_u_q_f_f_calculator(dataset=None):
+    """Wraps HydrogenResonanceUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenResonanceUQFFCalculator', dataset)
+def calc_hydrogen_storage_pressure_calculator(dataset=None):
+    """Wraps HydrogenStoragePressureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HydrogenStoragePressureCalculator', dataset)
+def calc_hydrogen_universe_dual3_d_m_u_g_e_calculator(dataset=None):
+    """Wraps HydrogenUniverseDual3DMUGECalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenUniverseDual3DMUGECalculator', dataset)
+def calc_hydrogen_vacuum_density_ratio_calculator(dataset=None):
+    """Wraps HydrogenVacuumDensityRatioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenVacuumDensityRatioCalculator', dataset)
+def calc_hydrogen_wavefunction_calculator(dataset=None):
+    """Wraps HydrogenWavefunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HydrogenWavefunctionCalculator', dataset)
+def calc_hypergraph_dimension_calculator_84_a767_d3(dataset=None):
+    """Wraps HypergraphDimensionCalculator_84A767D3.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('HypergraphDimensionCalculator_84A767D3', dataset)
+def calc_hypergraph_engine(dataset=None):
+    """Wraps HypergraphEngine.compute() from CondensedPhysics."""
+    return _pipeline_invoke('HypergraphEngine', dataset)
+def calc_i_s_c_o_calculator(dataset=None):
+    """Wraps ISCOCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ISCOCalculator', dataset)
+def calc_ideal_gas_compressed_storage_calculator(dataset=None):
+    """Wraps IdealGasCompressedStorageCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IdealGasCompressedStorageCalculator', dataset)
+def calc_imaginary_quantum_state_calculator(dataset=None):
+    """Wraps ImaginaryQuantumStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ImaginaryQuantumStateCalculator', dataset)
+def calc_individual_frame_analyzer_calculator(dataset=None):
+    """Wraps IndividualFrameAnalyzerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IndividualFrameAnalyzerCalculator', dataset)
+def calc_individual_system_u_q_f_f18_calculator(dataset=None):
+    """Wraps IndividualSystemUQFF18Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IndividualSystemUQFF18Calculator', dataset)
+def calc_inertia_bosonic_energy_calculator(dataset=None):
+    """Wraps InertiaBosonicEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaBosonicEnergyCalculator', dataset)
+def calc_inertia_inertial_operator_calculator(dataset=None):
+    """Wraps InertiaInertialOperatorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaInertialOperatorCalculator', dataset)
+def calc_inertia_magnetic_hamiltonian_calculator(dataset=None):
+    """Wraps InertiaMagneticHamiltonianCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaMagneticHamiltonianCalculator', dataset)
+def calc_inertia_non_local_exponential_calculator(dataset=None):
+    """Wraps InertiaNonLocalExponentialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaNonLocalExponentialCalculator', dataset)
+def calc_inertia_pseudo_monopole_b_calculator(dataset=None):
+    """Wraps InertiaPseudoMonopoleBCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaPseudoMonopoleBCalculator', dataset)
+def calc_inertia_quantum_wave_function_calculator(dataset=None):
+    """Wraps InertiaQuantumWaveFunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaQuantumWaveFunctionCalculator', dataset)
+def calc_inertia_scaled_wave_energy_calculator(dataset=None):
+    """Wraps InertiaScaledWaveEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaScaledWaveEnergyCalculator', dataset)
+def calc_inertia_three_leg_proofset_calculator(dataset=None):
+    """Wraps InertiaThreeLegProofsetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaThreeLegProofsetCalculator', dataset)
+def calc_inertia_twist_phase_calculator(dataset=None):
+    """Wraps InertiaTwistPhaseCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaTwistPhaseCalculator', dataset)
+def calc_inertia_u_q_f_f_wave_energy_three_leg_proofset_calculator(dataset=None):
+    """Wraps InertiaUQFFWaveEnergyThreeLegProofsetCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('InertiaUQFFWaveEnergyThreeLegProofsetCalculator', dataset)
+def calc_inertia_universal_inertia_calculator(dataset=None):
+    """Wraps InertiaUniversalInertiaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertiaUniversalInertiaCalculator', dataset)
+def calc_inertial_force_operator_calculator(dataset=None):
+    """Wraps InertialForceOperatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InertialForceOperatorCalculator', dataset)
+def calc_inertial_operator_enhanced_calculator(dataset=None):
+    """Wraps InertialOperatorEnhancedCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InertialOperatorEnhancedCalculator', dataset)
+def calc_inertial_operator_model(dataset=None):
+    """Wraps InertialOperatorModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertialOperatorModel', dataset)
+def calc_inertial_papers_calculator(dataset=None):
+    """Wraps InertialPapersCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InertialPapersCalculator', dataset)
+def calc_inflation_buoyancy_sector_lagrangian_calculator(dataset=None):
+    """Wraps InflationBuoyancySectorLagrangianCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InflationBuoyancySectorLagrangianCalculator', dataset)
+def calc_inflation_epoch_structure_calculator(dataset=None):
+    """Wraps InflationEpochStructureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InflationEpochStructureCalculator', dataset)
+def calc_inflation_force_core_calculator(dataset=None):
+    """Wraps InflationForceCoreCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InflationForceCoreCalculator', dataset)
+def calc_infrared_spectrum_temperature_calculator(dataset=None):
+    """Wraps InfraredSpectrumTemperatureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('InfraredSpectrumTemperatureCalculator', dataset)
+def calc_initial_mass_function_calculator(dataset=None):
+    """Wraps InitialMassFunctionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InitialMassFunctionCalculator', dataset)
+def calc_initial_mass_function_orb42_calculator(dataset=None):
+    """Wraps InitialMassFunctionOrb42Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InitialMassFunctionOrb42Calculator', dataset)
+def calc_inspiral_phase_lag_phonon_integral_calc(dataset=None):
+    """Wraps InspiralPhaseLagPhononIntegralCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('InspiralPhaseLagPhononIntegralCalc', dataset)
+def calc_intelligent_plasmoid_behavior_calculator(dataset=None):
+    """Wraps IntelligentPlasmoidBehaviorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('IntelligentPlasmoidBehaviorCalculator', dataset)
+def calc_intelligent_plasmoid_behavior_orb11_calculator(dataset=None):
+    """Wraps IntelligentPlasmoidBehaviorOrb11Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IntelligentPlasmoidBehaviorOrb11Calculator', dataset)
+def calc_intelligent_quantum_plasmoid_calculator(dataset=None):
+    """Wraps IntelligentQuantumPlasmoidCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IntelligentQuantumPlasmoidCalculator', dataset)
+def calc_interference_factor_calculator(dataset=None):
+    """Wraps InterferenceFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InterferenceFactorCalculator', dataset)
+def calc_interference_factor_complex_calculator(dataset=None):
+    """Wraps InterferenceFactorComplexCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('InterferenceFactorComplexCalculator', dataset)
+def calc_interstellar_shock_prestellar_collapse_calculator(dataset=None):
+    """Wraps InterstellarShockPrestellarCollapseCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('InterstellarShockPrestellarCollapseCalculator', dataset)
+def calc_intracluster_medium_calculator(dataset=None):
+    """Wraps IntraclusterMediumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('IntraclusterMediumCalculator', dataset)
+def calc_irregular_orb_energy_state_calculator(dataset=None):
+    """Wraps IrregularOrbEnergyStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IrregularOrbEnergyStateCalculator', dataset)
+def calc_island_of_stability5th_epoch_superheavy_elements_calculator(dataset=None):
+    """Wraps IslandOfStability5thEpochSuperheavyElementsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('IslandOfStability5thEpochSuperheavyElementsCalculator', dataset)
+def calc_isotopic_boiling_point_calculator(dataset=None):
+    """Wraps IsotopicBoilingPointCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IsotopicBoilingPointCalculator', dataset)
+def calc_isotopic_kinetic_enrichment_calculator(dataset=None):
+    """Wraps IsotopicKineticEnrichmentCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('IsotopicKineticEnrichmentCalculator', dataset)
+def calc_j1610_high_z_quasar_jet_f_u_bi_calculator(dataset=None):
+    """Wraps J1610HighZQuasarJetFUBiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('J1610HighZQuasarJetFUBiCalculator', dataset)
+def calc_j1610_quasar_relativistic_s_cm_calculator(dataset=None):
+    """Wraps J1610QuasarRelativisticSCmCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('J1610QuasarRelativisticSCmCalculator', dataset)
+def calc_j1610_relativistic_quasar_jet_u_q_f_f_n_s_calculator(dataset=None):
+    """Wraps J1610RelativisticQuasarJetUQFFNSCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('J1610RelativisticQuasarJetUQFFNSCalculator', dataset)
+def calc_j_c_a_p_dark_matter_vacuum_validator(dataset=None):
+    """Wraps JCAPDarkMatterVacuumValidator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('JCAPDarkMatterVacuumValidator', dataset)
+def calc_jarque_bera_q_wave_calculator(dataset=None):
+    """Wraps JarqueBeraQWaveCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('JarqueBeraQWaveCalculator', dataset)
+def calc_jeans_mass_calculator(dataset=None):
+    """Wraps JeansMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('JeansMassCalculator', dataset)
+def calc_jet_asymmetry_ratio_calculator(dataset=None):
+    """Wraps JetAsymmetryRatioCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('JetAsymmetryRatioCalculator', dataset)
+def calc_jet_collimation_linewidth_gamma_calc(dataset=None):
+    """Wraps JetCollimationLinewidthGammaCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('JetCollimationLinewidthGammaCalc', dataset)
+def calc_jump_amplification_factor_calculator(dataset=None):
+    """Wraps JumpAmplificationFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('JumpAmplificationFactorCalculator', dataset)
+def calc_jump_probability_detailed_calculator(dataset=None):
+    """Wraps JumpProbabilityDetailedCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('JumpProbabilityDetailedCalculator', dataset)
+def calc_june20_2025_rare_math_occ10_system_f_u_bii_calculator(dataset=None):
+    """Wraps June20_2025_RareMathOcc10SystemFUBiiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('June20_2025_RareMathOcc10SystemFUBiiCalculator', dataset)
+def calc_kennicutt_schmidt_s_f_r_calculator(dataset=None):
+    """Wraps KennicuttSchmidtSFRCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('KennicuttSchmidtSFRCalculator', dataset)
+def calc_kepler_orrery_frame_analyzer_calculator(dataset=None):
+    """Wraps KeplerOrreryFrameAnalyzerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('KeplerOrreryFrameAnalyzerCalculator', dataset)
+def calc_kepler_orrery_galactic_calculator(dataset=None):
+    """Wraps KeplerOrreryGalacticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('KeplerOrreryGalacticCalculator', dataset)
+def calc_kepler_orrery_orbital_calculator(dataset=None):
+    """Wraps KeplerOrreryOrbitalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('KeplerOrreryOrbitalCalculator', dataset)
+def calc_kepler_orrery_tidal_calculator(dataset=None):
+    """Wraps KeplerOrreryTidalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('KeplerOrreryTidalCalculator', dataset)
+def calc_kepler_orrery_v35_frame_iterative_ub_calc(dataset=None):
+    """Wraps KeplerOrreryV35FrameIterativeUbCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('KeplerOrreryV35FrameIterativeUbCalc', dataset)
+def calc_kepler_orrery_v_ub_u_q_f_f_calculator(dataset=None):
+    """Wraps KeplerOrreryV_Ub_UQFF_Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('KeplerOrreryV_Ub_UQFF_Calculator', dataset)
+def calc_kepler_s_n_r1604_f_u_bi_calculator(dataset=None):
+    """Wraps KeplerSNR1604FUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('KeplerSNR1604FUBiCalculator', dataset)
+def calc_kerr_newman_metric_calculator(dataset=None):
+    """Wraps KerrNewmanMetricCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('KerrNewmanMetricCalculator', dataset)
+def calc_ki_normalized_solar_calculator(dataset=None):
+    """Wraps KiNormalizedSolarCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('KiNormalizedSolarCalculator', dataset)
+def calc_kilonova_transient_q_wave_parameter_calculator(dataset=None):
+    """Wraps KilonovaTransientQWaveParameterCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('KilonovaTransientQWaveParameterCalculator', dataset)
+def calc_kinematic_motion_calculator(dataset=None):
+    """Wraps KinematicMotionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('KinematicMotionCalculator', dataset)
+def calc_kinetic_energy_calculator(dataset=None):
+    """Wraps KineticEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('KineticEnergyCalculator', dataset)
+def calc_kinetic_s_z_effect_calculator(dataset=None):
+    """Wraps KineticSZEffectCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('KineticSZEffectCalculator', dataset)
+def calc_kozima_expansion_neutron_drop_coupling_calc(dataset=None):
+    """Wraps KozimaExpansionNeutronDropCouplingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('KozimaExpansionNeutronDropCouplingCalc', dataset)
+def calc_kozima_l_e_n_r_neutron_drop_fneutron_calculator(dataset=None):
+    """Wraps KozimaLENRNeutronDropFneutronCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('KozimaLENRNeutronDropFneutronCalculator', dataset)
+def calc_kozima_neutron_drop_density_scaled8_system_calc(dataset=None):
+    """Wraps KozimaNeutronDropDensityScaled8SystemCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('KozimaNeutronDropDensityScaled8SystemCalc', dataset)
+def calc_kozima_s_cm_cross_section_calculator(dataset=None):
+    """Wraps KozimaSCmCrossSectionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('KozimaSCmCrossSectionCalculator', dataset)
+def calc_l_e_n_r_calculator(dataset=None):
+    """Wraps LENRCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalculator', dataset)
+def calc_l_e_n_r_calib_corona_scenario_calculator(dataset=None):
+    """Wraps LENRCalibCoronaScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibCoronaScenarioCalculator', dataset)
+def calc_l_e_n_r_calib_delta_n_calculator(dataset=None):
+    """Wraps LENRCalibDeltaNCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibDeltaNCalculator', dataset)
+def calc_l_e_n_r_calib_dynamic_vacuum_calculator(dataset=None):
+    """Wraps LENRCalibDynamicVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibDynamicVacuumCalculator', dataset)
+def calc_l_e_n_r_calib_e_react_calculator(dataset=None):
+    """Wraps LENRCalibEReactCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibEReactCalculator', dataset)
+def calc_l_e_n_r_calib_electric_field_calculator(dataset=None):
+    """Wraps LENRCalibElectricFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibElectricFieldCalculator', dataset)
+def calc_l_e_n_r_calib_eta_neutron_rate_calculator(dataset=None):
+    """Wraps LENRCalibEtaNeutronRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibEtaNeutronRateCalculator', dataset)
+def calc_l_e_n_r_calib_heaviside_calculator(dataset=None):
+    """Wraps LENRCalibHeavisideCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibHeavisideCalculator', dataset)
+def calc_l_e_n_r_calib_hydride_scenario_calculator(dataset=None):
+    """Wraps LENRCalibHydrideScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibHydrideScenarioCalculator', dataset)
+def calc_l_e_n_r_calib_mu_j_calculator(dataset=None):
+    """Wraps LENRCalibMuJCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibMuJCalculator', dataset)
+def calc_l_e_n_r_calib_non_local_exp_calculator(dataset=None):
+    """Wraps LENRCalibNonLocalExpCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibNonLocalExpCalculator', dataset)
+def calc_l_e_n_r_calib_polarization_calculator(dataset=None):
+    """Wraps LENRCalibPolarizationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibPolarizationCalculator', dataset)
+def calc_l_e_n_r_calib_quantum_coupling_calculator(dataset=None):
+    """Wraps LENRCalibQuantumCouplingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibQuantumCouplingCalculator', dataset)
+def calc_l_e_n_r_calib_quasi_calculator(dataset=None):
+    """Wraps LENRCalibQuasiCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibQuasiCalculator', dataset)
+def calc_l_e_n_r_calib_rho_vac_u_a_scm_calculator(dataset=None):
+    """Wraps LENRCalibRhoVacUAScmCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibRhoVacUAScmCalculator', dataset)
+def calc_l_e_n_r_calib_um_calculator(dataset=None):
+    """Wraps LENRCalibUmCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibUmCalculator', dataset)
+def calc_l_e_n_r_calib_wires_scenario_calculator(dataset=None):
+    """Wraps LENRCalibWiresScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibWiresScenarioCalculator', dataset)
+def calc_l_e_n_r_calibrated_calculator(dataset=None):
+    """Wraps LENRCalibratedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCalibratedCalculator', dataset)
+def calc_l_e_n_r_catalyst_mechanism_calculator(dataset=None):
+    """Wraps LENRCatalystMechanismCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCatalystMechanismCalculator', dataset)
+def calc_l_e_n_r_corona_scenario_calculator(dataset=None):
+    """Wraps LENRCoronaScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRCoronaScenarioCalculator', dataset)
+def calc_l_e_n_r_critical_temperature_calculator(dataset=None):
+    """Wraps LENRCriticalTemperatureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LENRCriticalTemperatureCalculator', dataset)
+def calc_l_e_n_r_dynamic_vacuum_calculator(dataset=None):
+    """Wraps LENRDynamicVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRDynamicVacuumCalculator', dataset)
+def calc_l_e_n_r_e_react_energy_calculator(dataset=None):
+    """Wraps LENREReactEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENREReactEnergyCalculator', dataset)
+def calc_l_e_n_r_electric_field_calculator(dataset=None):
+    """Wraps LENRElectricFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRElectricFieldCalculator', dataset)
+def calc_l_e_n_r_electron_density_calculator(dataset=None):
+    """Wraps LENRElectronDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRElectronDensityCalculator', dataset)
+def calc_l_e_n_r_energy_density_calculator(dataset=None):
+    """Wraps LENREnergyDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENREnergyDensityCalculator', dataset)
+def calc_l_e_n_r_fermi_constant_calculator(dataset=None):
+    """Wraps LENRFermiConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRFermiConstantCalculator', dataset)
+def calc_l_e_n_r_hydride_scenario_calculator(dataset=None):
+    """Wraps LENRHydrideScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRHydrideScenarioCalculator', dataset)
+def calc_l_e_n_r_keta_calibration3_environment_delta_k_calc(dataset=None):
+    """Wraps LENRKetaCalibration3EnvironmentDeltaKCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LENRKetaCalibration3EnvironmentDeltaKCalc', dataset)
+def calc_l_e_n_r_kn_scenario_calibration_calculator(dataset=None):
+    """Wraps LENRKnScenarioCalibrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LENRKnScenarioCalibrationCalculator', dataset)
+def calc_l_e_n_r_mass_renormalization_calculator(dataset=None):
+    """Wraps LENRMassRenormalizationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRMassRenormalizationCalculator', dataset)
+def calc_l_e_n_r_neutron_rate_calculator(dataset=None):
+    """Wraps LENRNeutronRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRNeutronRateCalculator', dataset)
+def calc_l_e_n_r_next_steps_experimental_design_p_s_r_j0030_calc(dataset=None):
+    """Wraps LENRNextStepsExperimentalDesignPSRJ0030Calc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LENRNextStepsExperimentalDesignPSRJ0030Calc', dataset)
+def calc_l_e_n_r_plasma_frequency_calculator(dataset=None):
+    """Wraps LENRPlasmaFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRPlasmaFrequencyCalculator', dataset)
+def calc_l_e_n_r_quantum_coupling_calculator(dataset=None):
+    """Wraps LENRQuantumCouplingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRQuantumCouplingCalculator', dataset)
+def calc_l_e_n_r_scenario_calculator(dataset=None):
+    """Wraps LENRScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRScenarioCalculator', dataset)
+def calc_l_e_n_r_threshold_energy_calculator(dataset=None):
+    """Wraps LENRThresholdEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRThresholdEnergyCalculator', dataset)
+def calc_l_e_n_r_transmutation_rate_calculator(dataset=None):
+    """Wraps LENRTransmutationRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRTransmutationRateCalculator', dataset)
+def calc_l_e_n_r_ug1_gravity_calculator(dataset=None):
+    """Wraps LENRUg1GravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRUg1GravityCalculator', dataset)
+def calc_l_e_n_r_ui_inertial_calculator(dataset=None):
+    """Wraps LENRUiInertialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRUiInertialCalculator', dataset)
+def calc_l_e_n_r_um_magnetic_calculator(dataset=None):
+    """Wraps LENRUmMagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRUmMagneticCalculator', dataset)
+def calc_l_e_n_r_wires_scenario_calculator(dataset=None):
+    """Wraps LENRWiresScenarioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LENRWiresScenarioCalculator', dataset)
+def calc_l_i_g_o_o4_calculator(dataset=None):
+    """Wraps LIGOO4Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LIGOO4Calculator', dataset)
+def calc_l_i_s_a_vs_l_i_g_o_comparisons_calculator(dataset=None):
+    """Wraps LISAVsLIGOComparisonsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LISAVsLIGOComparisonsCalculator', dataset)
+def calc_l_l_v_m_j_i_t_compiler_calculator(dataset=None):
+    """Wraps LLVMJITCompilerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LLVMJITCompilerCalculator', dataset)
+def calc_l_l_v_m_j_i_t_compiler_s8_calculator(dataset=None):
+    """Wraps LLVMJITCompilerS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LLVMJITCompilerS8Calculator', dataset)
+def calc_l_q_g_buoyancy_sector_lagrangian_variation_calculator(dataset=None):
+    """Wraps LQGBuoyancySectorLagrangianVariationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LQGBuoyancySectorLagrangianVariationCalculator', dataset)
+def calc_l_r_c_circuit_pseudo_monopole_calculator(dataset=None):
+    """Wraps LRCCircuitPseudoMonopoleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LRCCircuitPseudoMonopoleCalculator', dataset)
+def calc_l_r_c_pseudo_monopole_spark_gap_resonance_calc(dataset=None):
+    """Wraps LRCPseudoMonopoleSparkGapResonanceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LRCPseudoMonopoleSparkGapResonanceCalc', dataset)
+def calc_la_te_x_dual_block_u_q_f_f_master_equation_calculator(dataset=None):
+    """Wraps LaTeXDualBlockUQFFMasterEquationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LaTeXDualBlockUQFFMasterEquationCalculator', dataset)
+def calc_lagoon_dark_matter_nebula_calculator(dataset=None):
+    """Wraps LagoonDarkMatterNebulaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonDarkMatterNebulaCalculator', dataset)
+def calc_lagoon_h_i_i_region_resonance_calculator(dataset=None):
+    """Wraps LagoonHIIRegionResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonHIIRegionResonanceCalculator', dataset)
+def calc_lagoon_ionized_gas_fluid_calculator(dataset=None):
+    """Wraps LagoonIonizedGasFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonIonizedGasFluidCalculator', dataset)
+def calc_lagoon_lorentz_ionized_gas_calculator(dataset=None):
+    """Wraps LagoonLorentzIonizedGasCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonLorentzIonizedGasCalculator', dataset)
+def calc_lagoon_nebula_dual_radiation_e_m_barrier_calculator(dataset=None):
+    """Wraps LagoonNebulaDualRadiationEMBarrierCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('LagoonNebulaDualRadiationEMBarrierCalculator', dataset)
+def calc_lagoon_nebula_herschel_radiation_erosion_calculator(dataset=None):
+    """Wraps LagoonNebulaHerschelRadiationErosionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('LagoonNebulaHerschelRadiationErosionCalculator', dataset)
+def calc_lagoon_nebula_m_u_g_e_calculator(dataset=None):
+    """Wraps LagoonNebulaMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LagoonNebulaMUGECalculator', dataset)
+def calc_lagoon_nebula_s_f_r_mass_runaway_calculator(dataset=None):
+    """Wraps LagoonNebulaSFRMassRunawayCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('LagoonNebulaSFRMassRunawayCalculator', dataset)
+def calc_lagoon_nebula_u_q_f_f_h_i_i_region_calculator(dataset=None):
+    """Wraps LagoonNebulaUQFFHIIRegionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LagoonNebulaUQFFHIIRegionCalculator', dataset)
+def calc_lagoon_quantum_integral_nebula_calculator(dataset=None):
+    """Wraps LagoonQuantumIntegralNebulaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonQuantumIntegralNebulaCalculator', dataset)
+def calc_lagoon_radiation_pressure_calculator(dataset=None):
+    """Wraps LagoonRadiationPressureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonRadiationPressureCalculator', dataset)
+def calc_lagoon_star_formation_mass_calculator(dataset=None):
+    """Wraps LagoonStarFormationMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LagoonStarFormationMassCalculator', dataset)
+def calc_lande_g_factor_calculator(dataset=None):
+    """Wraps LandeGFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LandeGFactorCalculator', dataset)
+def calc_lane_emden_stellar_structure_calculator(dataset=None):
+    """Wraps LaneEmdenStellarStructureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LaneEmdenStellarStructureCalculator', dataset)
+def calc_large_magellanic_cloud_three_u_q_f_f(dataset=None):
+    """Wraps LargeMagellanicCloudThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LargeMagellanicCloudThreeUQFF', dataset)
+def calc_larmor_precession_calculator(dataset=None):
+    """Wraps LarmorPrecessionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LarmorPrecessionCalculator', dataset)
+def calc_lattice_yang_mills_calculator(dataset=None):
+    """Wraps LatticeYangMillsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LatticeYangMillsCalculator', dataset)
+def calc_layer26_d_gravity_coupling(dataset=None):
+    """Wraps Layer26DGravityCoupling.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Layer26DGravityCoupling', dataset)
+def calc_lense_thirring_precession_calculator(dataset=None):
+    """Wraps LenseThirringPrecessionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LenseThirringPrecessionCalculator', dataset)
+def calc_line_flux_s_f_r_calculator(dataset=None):
+    """Wraps LineFluxSFRCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LineFluxSFRCalculator', dataset)
+def calc_linear_regression_calculator(dataset=None):
+    """Wraps LinearRegressionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LinearRegressionCalculator', dataset)
+def calc_linewidth_jet_modulation_sweep_calc(dataset=None):
+    """Wraps LinewidthJetModulationSweepCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LinewidthJetModulationSweepCalc', dataset)
+def calc_live_image_u_q_f_f_applicator_calculator(dataset=None):
+    """Wraps LiveImageUQFFApplicatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LiveImageUQFFApplicatorCalculator', dataset)
+def calc_loop_quantum_gravity_calculator(dataset=None):
+    """Wraps LoopQuantumGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('LoopQuantumGravityCalculator', dataset)
+def calc_lorentz_regauging_vacuum_energy_calculator(dataset=None):
+    """Wraps LorentzRegaugingVacuumEnergyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('LorentzRegaugingVacuumEnergyCalculator', dataset)
+def calc_lyman_series_calculator(dataset=None):
+    """Wraps LymanSeriesCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('LymanSeriesCalculator', dataset)
+def calc_m101_asymmetry_calculator(dataset=None):
+    """Wraps M101AsymmetryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101AsymmetryCalculator', dataset)
+def calc_m101_differential_rotation_calculator(dataset=None):
+    """Wraps M101DifferentialRotationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101DifferentialRotationCalculator', dataset)
+def calc_m101_h_i_i_region_calculator(dataset=None):
+    """Wraps M101HIIRegionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101HIIRegionCalculator', dataset)
+def calc_m101_magnetohydrodynamics_calculator(dataset=None):
+    """Wraps M101MagnetohydrodynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101MagnetohydrodynamicsCalculator', dataset)
+def calc_m101_molecular_cloud_calculator(dataset=None):
+    """Wraps M101MolecularCloudCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101MolecularCloudCalculator', dataset)
+def calc_m101_quantum_turbulence_calculator(dataset=None):
+    """Wraps M101QuantumTurbulenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101QuantumTurbulenceCalculator', dataset)
+def calc_m101_spiral_density_wave_calculator(dataset=None):
+    """Wraps M101SpiralDensityWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101SpiralDensityWaveCalculator', dataset)
+def calc_m101_star_formation_rate_calculator(dataset=None):
+    """Wraps M101StarFormationRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101StarFormationRateCalculator', dataset)
+def calc_m101_supernova_remnant_calculator(dataset=None):
+    """Wraps M101SupernovaRemnantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101SupernovaRemnantCalculator', dataset)
+def calc_m101_tidal_perturbation_calculator(dataset=None):
+    """Wraps M101TidalPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M101TidalPerturbationCalculator', dataset)
+def calc_m104_bulge_dynamics_calculator(dataset=None):
+    """Wraps M104BulgeDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104BulgeDynamicsCalculator', dataset)
+def calc_m104_central_black_hole_calculator(dataset=None):
+    """Wraps M104CentralBlackHoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104CentralBlackHoleCalculator', dataset)
+def calc_m104_cosmic_ray_propagation_calculator(dataset=None):
+    """Wraps M104CosmicRayPropagationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104CosmicRayPropagationCalculator', dataset)
+def calc_m104_dark_matter_halo_calculator(dataset=None):
+    """Wraps M104DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104DarkMatterHaloCalculator', dataset)
+def calc_m104_dust_lane_extinction_calculator(dataset=None):
+    """Wraps M104DustLaneExtinctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104DustLaneExtinctionCalculator', dataset)
+def calc_m104_globular_cluster_system_calculator(dataset=None):
+    """Wraps M104GlobularClusterSystemCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104GlobularClusterSystemCalculator', dataset)
+def calc_m104_magnetic_field_calculator(dataset=None):
+    """Wraps M104MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104MagneticFieldCalculator', dataset)
+def calc_m104_quantum_gravity_calculator(dataset=None):
+    """Wraps M104QuantumGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104QuantumGravityCalculator', dataset)
+def calc_m104_stellar_kinematics_calculator(dataset=None):
+    """Wraps M104StellarKinematicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104StellarKinematicsCalculator', dataset)
+def calc_m104_x_ray_binary_calculator(dataset=None):
+    """Wraps M104XRayBinaryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M104XRayBinaryCalculator', dataset)
+def calc_m16_base_gravity_calculator(dataset=None):
+    """Wraps M16BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16BaseGravityCalculator', dataset)
+def calc_m16_cosmological_constant_calculator(dataset=None):
+    """Wraps M16CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16CosmologicalConstantCalculator', dataset)
+def calc_m16_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps M16DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16DarkMatterPerturbationCalculator', dataset)
+def calc_m16_dual_mass_co_action_product_calculator(dataset=None):
+    """Wraps M16DualMassCoActionProductCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('M16DualMassCoActionProductCalculator', dataset)
+def calc_m16_eagle_nebula_model(dataset=None):
+    """Wraps M16EagleNebulaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16EagleNebulaModel', dataset)
+def calc_m16_eagle_nebula_radiation_m_u_g_e_calculator(dataset=None):
+    """Wraps M16EagleNebulaRadiationMUGECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M16EagleNebulaRadiationMUGECalculator', dataset)
+def calc_m16_eagle_nebula_radiation_s_f_r_calculator(dataset=None):
+    """Wraps M16EagleNebulaRadiationSFRCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('M16EagleNebulaRadiationSFRCalculator', dataset)
+def calc_m16_eagle_nebula_stars_u_q_f_f_calculator(dataset=None):
+    """Wraps M16EagleNebulaStarsUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M16EagleNebulaStarsUQFFCalculator', dataset)
+def calc_m16_electromagnetic_calculator(dataset=None):
+    """Wraps M16ElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16ElectromagneticCalculator', dataset)
+def calc_m16_erosion_saturation_half_time_calculator(dataset=None):
+    """Wraps M16ErosionSaturationHalfTimeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('M16ErosionSaturationHalfTimeCalculator', dataset)
+def calc_m16_fluid_density_calculator(dataset=None):
+    """Wraps M16FluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16FluidDensityCalculator', dataset)
+def calc_m16_nebular_friedmann_redshift_calculator(dataset=None):
+    """Wraps M16NebularFriedmannRedshiftCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('M16NebularFriedmannRedshiftCalculator', dataset)
+def calc_m16_oscillatory_wave_calculator(dataset=None):
+    """Wraps M16OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16OscillatoryWaveCalculator', dataset)
+def calc_m16_quantum_uncertainty_calculator(dataset=None):
+    """Wraps M16QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16QuantumUncertaintyCalculator', dataset)
+def calc_m16_radiation_erosion_calculator(dataset=None):
+    """Wraps M16RadiationErosionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16RadiationErosionCalculator', dataset)
+def calc_m16_star_formation_calculator(dataset=None):
+    """Wraps M16StarFormationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16StarFormationCalculator', dataset)
+def calc_m16_superconductivity_calculator(dataset=None):
+    """Wraps M16SuperconductivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16SuperconductivityCalculator', dataset)
+def calc_m16_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps M16UQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('M16UQFFGravityCalculator', dataset)
+def calc_m16_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps M16UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M16UQFFUnificationCalculator', dataset)
+def calc_m31_central_black_hole_calculator(dataset=None):
+    """Wraps M31CentralBlackHoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31CentralBlackHoleCalculator', dataset)
+def calc_m31_dark_matter_n_f_w_profile_calculator(dataset=None):
+    """Wraps M31DarkMatterNFWProfileCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31DarkMatterNFWProfileCalculator', dataset)
+def calc_m31_disk_warp_calculator(dataset=None):
+    """Wraps M31DiskWarpCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31DiskWarpCalculator', dataset)
+def calc_m31_magnetic_field_calculator(dataset=None):
+    """Wraps M31MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31MagneticFieldCalculator', dataset)
+def calc_m31_quantum_dark_matter_calculator(dataset=None):
+    """Wraps M31QuantumDarkMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31QuantumDarkMatterCalculator', dataset)
+def calc_m31_rotation_curve_calculator(dataset=None):
+    """Wraps M31RotationCurveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31RotationCurveCalculator', dataset)
+def calc_m31_satellite_interaction_calculator(dataset=None):
+    """Wraps M31SatelliteInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31SatelliteInteractionCalculator', dataset)
+def calc_m31_star_formation_rate_calculator(dataset=None):
+    """Wraps M31StarFormationRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31StarFormationRateCalculator', dataset)
+def calc_m31_stellar_halo_density_calculator(dataset=None):
+    """Wraps M31StellarHaloDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31StellarHaloDensityCalculator', dataset)
+def calc_m31_tidal_stream_calculator(dataset=None):
+    """Wraps M31TidalStreamCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M31TidalStreamCalculator', dataset)
+def calc_m33_dark_matter_halo_calculator(dataset=None):
+    """Wraps M33DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33DarkMatterHaloCalculator', dataset)
+def calc_m33_disk_mass_surface_density_calculator(dataset=None):
+    """Wraps M33DiskMassSurfaceDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33DiskMassSurfaceDensityCalculator', dataset)
+def calc_m33_h_i_i_region_distribution_calculator(dataset=None):
+    """Wraps M33HIIRegionDistributionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33HIIRegionDistributionCalculator', dataset)
+def calc_m33_magnetic_field_calculator(dataset=None):
+    """Wraps M33MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33MagneticFieldCalculator', dataset)
+def calc_m33_metallicity_gradient_calculator(dataset=None):
+    """Wraps M33MetallicityGradientCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33MetallicityGradientCalculator', dataset)
+def calc_m33_quantum_dark_matter_calculator(dataset=None):
+    """Wraps M33QuantumDarkMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33QuantumDarkMatterCalculator', dataset)
+def calc_m33_rotation_curve_calculator(dataset=None):
+    """Wraps M33RotationCurveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33RotationCurveCalculator', dataset)
+def calc_m33_star_formation_rate_calculator(dataset=None):
+    """Wraps M33StarFormationRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33StarFormationRateCalculator', dataset)
+def calc_m33_tidal_interaction_calculator(dataset=None):
+    """Wraps M33TidalInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33TidalInteractionCalculator', dataset)
+def calc_m33_x_ray_binary_calculator(dataset=None):
+    """Wraps M33XRayBinaryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M33XRayBinaryCalculator', dataset)
+def calc_m42_model(dataset=None):
+    """Wraps M42Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M42Model', dataset)
+def calc_m42_orion_nebula_u_q_f_f_calculator(dataset=None):
+    """Wraps M42OrionNebulaUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M42OrionNebulaUQFFCalculator', dataset)
+def calc_m51_central_black_hole_calculator(dataset=None):
+    """Wraps M51CentralBlackHoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51CentralBlackHoleCalculator', dataset)
+def calc_m51_dark_matter_curvature_calculator(dataset=None):
+    """Wraps M51DarkMatterCurvatureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51DarkMatterCurvatureCalculator', dataset)
+def calc_m51_dark_matter_halo_calculator(dataset=None):
+    """Wraps M51DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51DarkMatterHaloCalculator', dataset)
+def calc_m51_dipole_magnetic_calculator(dataset=None):
+    """Wraps M51DipoleMagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51DipoleMagneticCalculator', dataset)
+def calc_m51_dust_extinction_calculator(dataset=None):
+    """Wraps M51DustExtinctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51DustExtinctionCalculator', dataset)
+def calc_m51_external_tidal_calculator(dataset=None):
+    """Wraps M51ExternalTidalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51ExternalTidalCalculator', dataset)
+def calc_m51_gravity_condensed_calculator(dataset=None):
+    """Wraps M51GravityCondensedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51GravityCondensedCalculator', dataset)
+def calc_m51_inertial_vacuum_calculator(dataset=None):
+    """Wraps M51InertialVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51InertialVacuumCalculator', dataset)
+def calc_m51_magnetic_field_calculator(dataset=None):
+    """Wraps M51MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51MagneticFieldCalculator', dataset)
+def calc_m51_molecular_cloud_calculator(dataset=None):
+    """Wraps M51MolecularCloudCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51MolecularCloudCalculator', dataset)
+def calc_m51_n_g_c1316_m_u_g_e_simulation_calculator(dataset=None):
+    """Wraps M51NGC1316MUGESimulationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M51NGC1316MUGESimulationCalculator', dataset)
+def calc_m51_quantum_spiral_integral_calculator(dataset=None):
+    """Wraps M51QuantumSpiralIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51QuantumSpiralIntegralCalculator', dataset)
+def calc_m51_quantum_vacuum_calculator(dataset=None):
+    """Wraps M51QuantumVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51QuantumVacuumCalculator', dataset)
+def calc_m51_reaction_energy_calculator(dataset=None):
+    """Wraps M51ReactionEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51ReactionEnergyCalculator', dataset)
+def calc_m51_spiral_arm_density_wave_calculator(dataset=None):
+    """Wraps M51SpiralArmDensityWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51SpiralArmDensityWaveCalculator', dataset)
+def calc_m51_spiral_arm_wave_calculator(dataset=None):
+    """Wraps M51SpiralArmWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51SpiralArmWaveCalculator', dataset)
+def calc_m51_star_formation_force_calculator(dataset=None):
+    """Wraps M51StarFormationForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51StarFormationForceCalculator', dataset)
+def calc_m51_star_formation_rate_calculator(dataset=None):
+    """Wraps M51StarFormationRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51StarFormationRateCalculator', dataset)
+def calc_m51_superconductor_energy_calculator(dataset=None):
+    """Wraps M51SuperconductorEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51SuperconductorEnergyCalculator', dataset)
+def calc_m51_supernova_feedback_calculator(dataset=None):
+    """Wraps M51SupernovaFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51SupernovaFeedbackCalculator', dataset)
+def calc_m51_tidal_force_calculator(dataset=None):
+    """Wraps M51TidalForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51TidalForceCalculator', dataset)
+def calc_m51_tidal_interaction_calculator(dataset=None):
+    """Wraps M51TidalInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M51TidalInteractionCalculator', dataset)
+def calc_m51_whirlpool_tidal_interaction(dataset=None):
+    """Wraps M51WhirlpoolTidalInteraction.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M51WhirlpoolTidalInteraction', dataset)
+def calc_m57_ring_nebula_three_u_q_f_f(dataset=None):
+    """Wraps M57RingNebulaThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M57RingNebulaThreeUQFF', dataset)
+def calc_m74_phantom_galaxy_u_q_f_f_calculator(dataset=None):
+    """Wraps M74PhantomGalaxyUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M74PhantomGalaxyUQFFCalculator', dataset)
+def calc_m81_a_g_n_activity_calculator(dataset=None):
+    """Wraps M81AGNActivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M81AGNActivityCalculator', dataset)
+def calc_m81_dark_matter_halo_calculator(dataset=None):
+    """Wraps M81DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M81DarkMatterHaloCalculator', dataset)
+def calc_m81_m82_h_i_disk_calculator(dataset=None):
+    """Wraps M81M82HIDiskCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M81M82HIDiskCalculator', dataset)
+def calc_m81_m82_tidal_interaction_calculator(dataset=None):
+    """Wraps M81M82TidalInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M81M82TidalInteractionCalculator', dataset)
+def calc_m81_spiral_structure_calculator(dataset=None):
+    """Wraps M81SpiralStructureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M81SpiralStructureCalculator', dataset)
+def calc_m82_cigar_starburst_u_q_f_f_calculator(dataset=None):
+    """Wraps M82CigarStarburstUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M82CigarStarburstUQFFCalculator', dataset)
+def calc_m82_cosmic_ray_calculator(dataset=None):
+    """Wraps M82CosmicRayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M82CosmicRayCalculator', dataset)
+def calc_m82_molecular_outflow_calculator(dataset=None):
+    """Wraps M82MolecularOutflowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M82MolecularOutflowCalculator', dataset)
+def calc_m82_p_a_h_emission_calculator(dataset=None):
+    """Wraps M82PAHEmissionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M82PAHEmissionCalculator', dataset)
+def calc_m82_starburst_calculator(dataset=None):
+    """Wraps M82StarburstCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M82StarburstCalculator', dataset)
+def calc_m82_superwind_calculator(dataset=None):
+    """Wraps M82SuperwindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M82SuperwindCalculator', dataset)
+def calc_m87_a_g_n_feedback_calculator(dataset=None):
+    """Wraps M87AGNFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87AGNFeedbackCalculator', dataset)
+def calc_m87_dark_matter_halo_calculator(dataset=None):
+    """Wraps M87DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87DarkMatterHaloCalculator', dataset)
+def calc_m87_globular_cluster_calculator(dataset=None):
+    """Wraps M87GlobularClusterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87GlobularClusterCalculator', dataset)
+def calc_m87_jet_b_z_model_f_u_bi_calculator(dataset=None):
+    """Wraps M87JetBZModelFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('M87JetBZModelFUBiCalculator', dataset)
+def calc_m87_jet_energy_calculator(dataset=None):
+    """Wraps M87JetEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87JetEnergyCalculator', dataset)
+def calc_m87_jet_power_curve_gamma_match_calc(dataset=None):
+    """Wraps M87JetPowerCurveGammaMatchCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('M87JetPowerCurveGammaMatchCalc', dataset)
+def calc_m87_magnetic_field_calculator(dataset=None):
+    """Wraps M87MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87MagneticFieldCalculator', dataset)
+def calc_m87_mass_evolution_simulation_calculator(dataset=None):
+    """Wraps M87MassEvolutionSimulationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('M87MassEvolutionSimulationCalculator', dataset)
+def calc_m87_quantum_vacuum_calculator(dataset=None):
+    """Wraps M87QuantumVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87QuantumVacuumCalculator', dataset)
+def calc_m87_relativistic_jet_calculator(dataset=None):
+    """Wraps M87RelativisticJetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87RelativisticJetCalculator', dataset)
+def calc_m87_stellar_dynamics_calculator(dataset=None):
+    """Wraps M87StellarDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87StellarDynamicsCalculator', dataset)
+def calc_m87_supermassive_black_hole_calculator(dataset=None):
+    """Wraps M87SupermassiveBlackHoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87SupermassiveBlackHoleCalculator', dataset)
+def calc_m87_ultradiffuse_galaxy_calculator(dataset=None):
+    """Wraps M87UltradiffuseGalaxyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('M87UltradiffuseGalaxyCalculator', dataset)
+def calc_m_h_d_clusters_jets_accretion_calculator(dataset=None):
+    """Wraps MHDClustersJetsAccretionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MHDClustersJetsAccretionCalculator', dataset)
+def calc_m_h_d_u_q_f_f_calculator(dataset=None):
+    """Wraps MHDUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MHDUQFFCalculator', dataset)
+def calc_m_i_p_s_opcode_physics_calculator(dataset=None):
+    """Wraps MIPSOpcodePhysicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MIPSOpcodePhysicsCalculator', dataset)
+def calc_m_o_n_d_gravity_calculator(dataset=None):
+    """Wraps MONDGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MONDGravityCalculator', dataset)
+def calc_m_p_i_distributed_calculator(dataset=None):
+    """Wraps MPIDistributedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MPIDistributedCalculator', dataset)
+def calc_m_p_i_distributed_s8_calculator(dataset=None):
+    """Wraps MPIDistributedS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MPIDistributedS8Calculator', dataset)
+def calc_m_sigma_phonon_corrected_relation_calculator(dataset=None):
+    """Wraps MSigmaPhononCorrectedRelationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MSigmaPhononCorrectedRelationCalculator', dataset)
+def calc_m_sigma_relation_calculator(dataset=None):
+    """Wraps MSigmaRelationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MSigmaRelationCalculator', dataset)
+def calc_m_sigma_relation_model(dataset=None):
+    """Wraps MSigmaRelationModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MSigmaRelationModel', dataset)
+def calc_m_u_g_e26_state_frequency_basis_proof_identities_calculator(dataset=None):
+    """Wraps MUGE26StateFrequencyBasisProofIdentitiesCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MUGE26StateFrequencyBasisProofIdentitiesCalculator', dataset)
+def calc_m_u_g_e_calculator(dataset=None):
+    """Wraps MUGECalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECalculator', dataset)
+def calc_m_u_g_e_cluster3_d_sim_calc(dataset=None):
+    """Wraps MUGECluster3DSimCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MUGECluster3DSimCalc', dataset)
+def calc_m_u_g_e_compressed29_system_unified_gravity_calculator(dataset=None):
+    """Wraps MUGECompressed29SystemUnifiedGravityCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MUGECompressed29SystemUnifiedGravityCalculator', dataset)
+def calc_m_u_g_e_compressed38_system_extended_env_calculator(dataset=None):
+    """Wraps MUGECompressed38SystemExtendedEnvCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MUGECompressed38SystemExtendedEnvCalculator', dataset)
+def calc_m_u_g_e_compressed_base(dataset=None):
+    """Wraps MUGECompressedBase.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedBase', dataset)
+def calc_m_u_g_e_compressed_base_calculator(dataset=None):
+    """Wraps MUGECompressedBaseCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedBaseCalculator', dataset)
+def calc_m_u_g_e_compressed_cosm(dataset=None):
+    """Wraps MUGECompressedCosm.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedCosm', dataset)
+def calc_m_u_g_e_compressed_envelope(dataset=None):
+    """Wraps MUGECompressedEnvelope.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedEnvelope', dataset)
+def calc_m_u_g_e_compressed_expansion(dataset=None):
+    """Wraps MUGECompressedExpansion.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedExpansion', dataset)
+def calc_m_u_g_e_compressed_fluid(dataset=None):
+    """Wraps MUGECompressedFluid.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedFluid', dataset)
+def calc_m_u_g_e_compressed_nine_term_calculator(dataset=None):
+    """Wraps MUGECompressedNineTermCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MUGECompressedNineTermCalculator', dataset)
+def calc_m_u_g_e_compressed_perturbation(dataset=None):
+    """Wraps MUGECompressedPerturbation.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedPerturbation', dataset)
+def calc_m_u_g_e_compressed_quantum(dataset=None):
+    """Wraps MUGECompressedQuantum.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedQuantum', dataset)
+def calc_m_u_g_e_compressed_super(dataset=None):
+    """Wraps MUGECompressedSuper.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedSuper', dataset)
+def calc_m_u_g_e_compressed_ug_sum(dataset=None):
+    """Wraps MUGECompressedUgSum.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECompressedUgSum', dataset)
+def calc_m_u_g_e_cosmological_calculator(dataset=None):
+    """Wraps MUGECosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGECosmologicalCalculator', dataset)
+def calc_m_u_g_e_dual_mode_oscillatory_gravity_calculator(dataset=None):
+    """Wraps MUGEDualModeOscillatoryGravityCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MUGEDualModeOscillatoryGravityCalculator', dataset)
+def calc_m_u_g_e_envelope_calculator(dataset=None):
+    """Wraps MUGEEnvelopeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEEnvelopeCalculator', dataset)
+def calc_m_u_g_e_expansion_calculator(dataset=None):
+    """Wraps MUGEExpansionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEExpansionCalculator', dataset)
+def calc_m_u_g_e_f_u_bii_unified_nine_system_synthesis_calculator(dataset=None):
+    """Wraps MUGEFUBiiUnifiedNineSystemSynthesisCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEFUBiiUnifiedNineSystemSynthesisCalculator', dataset)
+def calc_m_u_g_e_final7_system_resonance_accelerations_calculator(dataset=None):
+    """Wraps MUGEFinal7SystemResonanceAccelerationsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MUGEFinal7SystemResonanceAccelerationsCalculator', dataset)
+def calc_m_u_g_e_fluid_calculator(dataset=None):
+    """Wraps MUGEFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEFluidCalculator', dataset)
+def calc_m_u_g_e_fluid_self_gravity_term_calculator(dataset=None):
+    """Wraps MUGEFluidSelfGravityTermCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MUGEFluidSelfGravityTermCalculator', dataset)
+def calc_m_u_g_e_merger_interaction_modulation_calculator(dataset=None):
+    """Wraps MUGEMergerInteractionModulationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MUGEMergerInteractionModulationCalculator', dataset)
+def calc_m_u_g_e_perturbation_calculator(dataset=None):
+    """Wraps MUGEPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEPerturbationCalculator', dataset)
+def calc_m_u_g_e_quantum_calculator(dataset=None):
+    """Wraps MUGEQuantumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEQuantumCalculator', dataset)
+def calc_m_u_g_e_quantum_uncertainty_term_calculator(dataset=None):
+    """Wraps MUGEQuantumUncertaintyTermCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MUGEQuantumUncertaintyTermCalculator', dataset)
+def calc_m_u_g_e_resonance_a_aether_freq_calculator(dataset=None):
+    """Wraps MUGEResonanceAAetherFreqCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceAAetherFreqCalculator', dataset)
+def calc_m_u_g_e_resonance_a_aether_res_calculator(dataset=None):
+    """Wraps MUGEResonanceAAetherResCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceAAetherResCalculator', dataset)
+def calc_m_u_g_e_resonance_a_d_p_m_calculator(dataset=None):
+    """Wraps MUGEResonanceADPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceADPMCalculator', dataset)
+def calc_m_u_g_e_resonance_a_exp_freq_calculator(dataset=None):
+    """Wraps MUGEResonanceAExpFreqCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceAExpFreqCalculator', dataset)
+def calc_m_u_g_e_resonance_a_fluid_freq_calculator(dataset=None):
+    """Wraps MUGEResonanceAFluidFreqCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceAFluidFreqCalculator', dataset)
+def calc_m_u_g_e_resonance_a_quantum_freq_calculator(dataset=None):
+    """Wraps MUGEResonanceAQuantumFreqCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceAQuantumFreqCalculator', dataset)
+def calc_m_u_g_e_resonance_a_super_freq_calculator(dataset=None):
+    """Wraps MUGEResonanceASuperFreqCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceASuperFreqCalculator', dataset)
+def calc_m_u_g_e_resonance_a_t_hz_calculator(dataset=None):
+    """Wraps MUGEResonanceATHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceATHzCalculator', dataset)
+def calc_m_u_g_e_resonance_avac_diff_calculator(dataset=None):
+    """Wraps MUGEResonanceAvacDiffCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceAvacDiffCalculator', dataset)
+def calc_m_u_g_e_resonance_f_t_r_z_calculator(dataset=None):
+    """Wraps MUGEResonanceFTRZCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceFTRZCalculator', dataset)
+def calc_m_u_g_e_resonance_osc_calculator(dataset=None):
+    """Wraps MUGEResonanceOscCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceOscCalculator', dataset)
+def calc_m_u_g_e_resonance_thirteen_mode_calculator(dataset=None):
+    """Wraps MUGEResonanceThirteenModeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MUGEResonanceThirteenModeCalculator', dataset)
+def calc_m_u_g_e_resonance_ug4i_calculator(dataset=None):
+    """Wraps MUGEResonanceUg4iCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceUg4iCalculator', dataset)
+def calc_m_u_g_e_resonance_wormhole_calculator(dataset=None):
+    """Wraps MUGEResonanceWormholeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEResonanceWormholeCalculator', dataset)
+def calc_m_u_g_e_super_adjustment_calculator(dataset=None):
+    """Wraps MUGESuperAdjustmentCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGESuperAdjustmentCalculator', dataset)
+def calc_m_u_g_e_superconductive12_term_resonance_calculator(dataset=None):
+    """Wraps MUGESuperconductive12TermResonanceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MUGESuperconductive12TermResonanceCalculator', dataset)
+def calc_m_u_g_e_ug_sum_calculator(dataset=None):
+    """Wraps MUGEUgSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MUGEUgSumCalculator', dataset)
+def calc_m_u_g_e_unification_calculator(dataset=None):
+    """Wraps MUGEUnificationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MUGEUnificationCalculator', dataset)
+def calc_madelung_transform_calculator(dataset=None):
+    """Wraps MadelungTransformCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MadelungTransformCalculator', dataset)
+def calc_magnetar0501_base_gravity_calculator(dataset=None):
+    """Wraps Magnetar0501BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501BaseGravityCalculator', dataset)
+def calc_magnetar0501_cosmological_constant_calculator(dataset=None):
+    """Wraps Magnetar0501CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501CosmologicalConstantCalculator', dataset)
+def calc_magnetar0501_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps Magnetar0501DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501DarkMatterPerturbationCalculator', dataset)
+def calc_magnetar0501_electromagnetic_calculator(dataset=None):
+    """Wraps Magnetar0501ElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501ElectromagneticCalculator', dataset)
+def calc_magnetar0501_fluid_density_calculator(dataset=None):
+    """Wraps Magnetar0501FluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501FluidDensityCalculator', dataset)
+def calc_magnetar0501_gravitational_wave_calculator(dataset=None):
+    """Wraps Magnetar0501GravitationalWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501GravitationalWaveCalculator', dataset)
+def calc_magnetar0501_magnetic_decay_calculator(dataset=None):
+    """Wraps Magnetar0501MagneticDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501MagneticDecayCalculator', dataset)
+def calc_magnetar0501_oscillatory_wave_calculator(dataset=None):
+    """Wraps Magnetar0501OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501OscillatoryWaveCalculator', dataset)
+def calc_magnetar0501_quantum_uncertainty_calculator(dataset=None):
+    """Wraps Magnetar0501QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501QuantumUncertaintyCalculator', dataset)
+def calc_magnetar0501_spin_evolution_calculator(dataset=None):
+    """Wraps Magnetar0501SpinEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501SpinEvolutionCalculator', dataset)
+def calc_magnetar0501_time_reversal_calculator(dataset=None):
+    """Wraps Magnetar0501TimeReversalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501TimeReversalCalculator', dataset)
+def calc_magnetar0501_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps Magnetar0501UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Magnetar0501UQFFUnificationCalculator', dataset)
+def calc_magnetar_base_gravity_calculator(dataset=None):
+    """Wraps MagnetarBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarBaseGravityCalculator', dataset)
+def calc_magnetar_black_hole_proximity_calculator(dataset=None):
+    """Wraps MagnetarBlackHoleProximityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarBlackHoleProximityCalculator', dataset)
+def calc_magnetar_cosmological_constant_calculator(dataset=None):
+    """Wraps MagnetarCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarCosmologicalConstantCalculator', dataset)
+def calc_magnetar_d_p_m_t_hz_frequency_form_calculator(dataset=None):
+    """Wraps MagnetarDPMTHzFrequencyFormCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MagnetarDPMTHzFrequencyFormCalculator', dataset)
+def calc_magnetar_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps MagnetarDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarDarkMatterPerturbationCalculator', dataset)
+def calc_magnetar_decay_energy_calculator(dataset=None):
+    """Wraps MagnetarDecayEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarDecayEnergyCalculator', dataset)
+def calc_magnetar_dual_mode_u_q_f_f_calculator(dataset=None):
+    """Wraps MagnetarDualModeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MagnetarDualModeUQFFCalculator', dataset)
+def calc_magnetar_electromagnetic_calculator(dataset=None):
+    """Wraps MagnetarElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarElectromagneticCalculator', dataset)
+def calc_magnetar_evolution_u_q_f_f_calculator(dataset=None):
+    """Wraps MagnetarEvolutionUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MagnetarEvolutionUQFFCalculator', dataset)
+def calc_magnetar_five_frequency_calculator(dataset=None):
+    """Wraps MagnetarFiveFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarFiveFrequencyCalculator', dataset)
+def calc_magnetar_fluid_density_calculator(dataset=None):
+    """Wraps MagnetarFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarFluidDensityCalculator', dataset)
+def calc_magnetar_gravitational_wave_calculator(dataset=None):
+    """Wraps MagnetarGravitationalWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarGravitationalWaveCalculator', dataset)
+def calc_magnetar_m_u_g_e_calculator(dataset=None):
+    """Wraps MagnetarMUGECalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarMUGECalculator', dataset)
+def calc_magnetar_magnetic_energy_calculator(dataset=None):
+    """Wraps MagnetarMagneticEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarMagneticEnergyCalculator', dataset)
+def calc_magnetar_mmag_outburst_timescale_calculator(dataset=None):
+    """Wraps MagnetarMmagOutburstTimescaleCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MagnetarMmagOutburstTimescaleCalculator', dataset)
+def calc_magnetar_oscillatory_wave_calculator(dataset=None):
+    """Wraps MagnetarOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarOscillatoryWaveCalculator', dataset)
+def calc_magnetar_quantum_uncertainty_calculator(dataset=None):
+    """Wraps MagnetarQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarQuantumUncertaintyCalculator', dataset)
+def calc_magnetar_s_g_r0501_m_u_g_e_full_calculator(dataset=None):
+    """Wraps MagnetarSGR0501MUGEFullCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MagnetarSGR0501MUGEFullCalculator', dataset)
+def calc_magnetar_s_g_r1745_dynamic_modulation_calculator(dataset=None):
+    """Wraps MagnetarSGR1745DynamicModulationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MagnetarSGR1745DynamicModulationCalculator', dataset)
+def calc_magnetar_spin_down_phonon_timescale_calc(dataset=None):
+    """Wraps MagnetarSpinDownPhononTimescaleCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MagnetarSpinDownPhononTimescaleCalc', dataset)
+def calc_magnetar_spin_evolution_calculator(dataset=None):
+    """Wraps MagnetarSpinEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarSpinEvolutionCalculator', dataset)
+def calc_magnetar_super_conductivity_calculator(dataset=None):
+    """Wraps MagnetarSuperConductivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarSuperConductivityCalculator', dataset)
+def calc_magnetar_system_m_u_g_e_calculator(dataset=None):
+    """Wraps MagnetarSystemMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagnetarSystemMUGECalculator', dataset)
+def calc_magnetar_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps MagnetarUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetarUQFFUnificationCalculator', dataset)
+def calc_magnetar_vortex_avalanche_calculator(dataset=None):
+    """Wraps MagnetarVortexAvalancheCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MagnetarVortexAvalancheCalculator', dataset)
+def calc_magnetic_bubble_confinement_calculator(dataset=None):
+    """Wraps MagneticBubbleConfinementCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticBubbleConfinementCalculator', dataset)
+def calc_magnetic_bubble_confinement_orb10_calculator(dataset=None):
+    """Wraps MagneticBubbleConfinementOrb10Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagneticBubbleConfinementOrb10Calculator', dataset)
+def calc_magnetic_calculator(dataset=None):
+    """Wraps MagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticCalculator', dataset)
+def calc_magnetic_chord_resonance_model_calculator(dataset=None):
+    """Wraps MagneticChordResonanceModelCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MagneticChordResonanceModelCalculator', dataset)
+def calc_magnetic_constant_mu_calculator(dataset=None):
+    """Wraps MagneticConstantMuCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagneticConstantMuCalculator', dataset)
+def calc_magnetic_dampening_calculator(dataset=None):
+    """Wraps MagneticDampeningCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticDampeningCalculator', dataset)
+def calc_magnetic_dipole_moment_calculator(dataset=None):
+    """Wraps MagneticDipoleMomentCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagneticDipoleMomentCalculator', dataset)
+def calc_magnetic_filament_calculator(dataset=None):
+    """Wraps MagneticFilamentCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticFilamentCalculator', dataset)
+def calc_magnetic_monopole_calculator(dataset=None):
+    """Wraps MagneticMonopoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticMonopoleCalculator', dataset)
+def calc_magnetic_potential_calculator(dataset=None):
+    """Wraps MagneticPotentialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagneticPotentialCalculator', dataset)
+def calc_magnetic_reconnection_energy_calculator(dataset=None):
+    """Wraps MagneticReconnectionEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagneticReconnectionEnergyCalculator', dataset)
+def calc_magnetic_string_model(dataset=None):
+    """Wraps MagneticStringModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticStringModel', dataset)
+def calc_magnetic_strings_q_calc_calculator(dataset=None):
+    """Wraps MagneticStringsQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagneticStringsQCalcCalculator', dataset)
+def calc_magnetism_string_dynamics_calculator(dataset=None):
+    """Wraps MagnetismStringDynamicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MagnetismStringDynamicsCalculator', dataset)
+def calc_magnetohydrodynamics_jet_calculator(dataset=None):
+    """Wraps MagnetohydrodynamicsJetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MagnetohydrodynamicsJetCalculator', dataset)
+def calc_mass_independent_u_f_e_q_f_e_calculator(dataset=None):
+    """Wraps MassIndependentUFEQFECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MassIndependentUFEQFECalculator', dataset)
+def calc_mass_without_weight_f_ub_calibration_calculator(dataset=None):
+    """Wraps MassWithoutWeightFUbCalibrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MassWithoutWeightFUbCalibrationCalculator', dataset)
+def calc_master_buoyancy_calculator(dataset=None):
+    """Wraps MasterBuoyancyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MasterBuoyancyCalculator', dataset)
+def calc_master_buoyancy_extended_calculator(dataset=None):
+    """Wraps MasterBuoyancyExtendedCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MasterBuoyancyExtendedCalculator', dataset)
+def calc_master_buoyancy_integrand_calculator(dataset=None):
+    """Wraps MasterBuoyancyIntegrandCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MasterBuoyancyIntegrandCalculator', dataset)
+def calc_master_stellar_wind_phonon_et_calc(dataset=None):
+    """Wraps MasterStellarWindPhononEtCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MasterStellarWindPhononEtCalc', dataset)
+def calc_master_u_bi_buoyancy_calculator(dataset=None):
+    """Wraps MasterUBiBuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MasterUBiBuoyancyCalculator', dataset)
+def calc_matched_filter_s_n_r_phonon_damping_calc(dataset=None):
+    """Wraps MatchedFilterSNRPhononDampingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MatchedFilterSNRPhononDampingCalc', dataset)
+def calc_maxwell_component_form_model(dataset=None):
+    """Wraps MaxwellComponentFormModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MaxwellComponentFormModel', dataset)
+def calc_mayan_timing_calculator(dataset=None):
+    """Wraps MayanTimingCalculator.compute() from QCalcGeom."""
+    return _pipeline_invoke('MayanTimingCalculator', dataset)
+def calc_merger_lagrangian_variation_calc(dataset=None):
+    """Wraps MergerLagrangianVariationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MergerLagrangianVariationCalc', dataset)
+def calc_merger_phase_lag_calc(dataset=None):
+    """Wraps MergerPhaseLagCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MergerPhaseLagCalc', dataset)
+def calc_merger_strain_damping_calc(dataset=None):
+    """Wraps MergerStrainDampingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MergerStrainDampingCalc', dataset)
+def calc_merger_timescale_calculator(dataset=None):
+    """Wraps MergerTimescaleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MergerTimescaleCalculator', dataset)
+def calc_metal_retention_c_g_m_calculator(dataset=None):
+    """Wraps MetalRetentionCGMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MetalRetentionCGMCalculator', dataset)
+def calc_metal_retention_calculator(dataset=None):
+    """Wraps MetalRetentionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MetalRetentionCalculator', dataset)
+def calc_micro_plasmoid25um_l_e_n_r_buoyancy_reversal_calc(dataset=None):
+    """Wraps MicroPlasmoid25umLENRBuoyancyReversalCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MicroPlasmoid25umLENRBuoyancyReversalCalc', dataset)
+def calc_milky_way82_day_star_tracking_u_f_t_analysis_calc(dataset=None):
+    """Wraps MilkyWay82DayStarTrackingUFTAnalysisCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MilkyWay82DayStarTrackingUFTAnalysisCalc', dataset)
+def calc_milky_way_galactic_spin_ub_i_coupling_calculator(dataset=None):
+    """Wraps MilkyWayGalacticSpinUb_iCouplingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MilkyWayGalacticSpinUb_iCouplingCalculator', dataset)
+def calc_millennium_prize_u_q_f_f_hub_calculator(dataset=None):
+    """Wraps MillenniumPrizeUQFFHubCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MillenniumPrizeUQFFHubCalculator', dataset)
+def calc_minkowski_metric_perturbation_calculator(dataset=None):
+    """Wraps MinkowskiMetricPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MinkowskiMetricPerturbationCalculator', dataset)
+def calc_mock_theta_family26_d_convergence_calculator(dataset=None):
+    """Wraps MockThetaFamily26DConvergenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MockThetaFamily26DConvergenceCalculator', dataset)
+def calc_mode_selector_switch_calculator(dataset=None):
+    """Wraps ModeSelectorSwitchCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ModeSelectorSwitchCalculator', dataset)
+def calc_momentum_calculator(dataset=None):
+    """Wraps MomentumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MomentumCalculator', dataset)
+def calc_momentum_force_calculator(dataset=None):
+    """Wraps MomentumForceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MomentumForceCalculator', dataset)
+def calc_monte_carlo_jet_power_sampling_calc(dataset=None):
+    """Wraps MonteCarloJetPowerSamplingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MonteCarloJetPowerSamplingCalc', dataset)
+def calc_monte_carlo_stochastic_wrapper(dataset=None):
+    """Wraps MonteCarloStochasticWrapper.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MonteCarloStochasticWrapper', dataset)
+def calc_morris_thorne_wormhole_null_geodesics_calculator(dataset=None):
+    """Wraps MorrisThorneWormholeNullGeodesicsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MorrisThorneWormholeNullGeodesicsCalculator', dataset)
+def calc_mosquito_bio_thermal_efficiency_benchmark_calc(dataset=None):
+    """Wraps MosquitoBioThermalEfficiencyBenchmarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MosquitoBioThermalEfficiencyBenchmarkCalc', dataset)
+def calc_mu_j_term(dataset=None):
+    """Wraps MuJTerm.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MuJTerm', dataset)
+def calc_mu_j_time_calculator(dataset=None):
+    """Wraps MuJTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MuJTimeCalculator', dataset)
+def calc_mu_s_term(dataset=None):
+    """Wraps MuSTerm.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MuSTerm', dataset)
+def calc_mu_s_time_calculator(dataset=None):
+    """Wraps MuSTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MuSTimeCalculator', dataset)
+def calc_multi_a_g_n_jet_power_monte_carlo_batch_calc(dataset=None):
+    """Wraps MultiAGNJetPowerMonteCarloBatchCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MultiAGNJetPowerMonteCarloBatchCalc', dataset)
+def calc_multi_axial_rotation_calculator(dataset=None):
+    """Wraps MultiAxialRotationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiAxialRotationCalculator', dataset)
+def calc_multi_body_solar_pcore_planetary_scaling_calculator(dataset=None):
+    """Wraps MultiBodySolarPcorePlanetaryScalingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MultiBodySolarPcorePlanetaryScalingCalculator', dataset)
+def calc_multi_compressed7_base_gravity_calculator(dataset=None):
+    """Wraps MultiCompressed7BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7BaseGravityCalculator', dataset)
+def calc_multi_compressed7_cosmological_lambda_calculator(dataset=None):
+    """Wraps MultiCompressed7CosmologicalLambdaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7CosmologicalLambdaCalculator', dataset)
+def calc_multi_compressed7_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps MultiCompressed7DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7DarkMatterPerturbationCalculator', dataset)
+def calc_multi_compressed7_environmental_calculator(dataset=None):
+    """Wraps MultiCompressed7EnvironmentalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7EnvironmentalCalculator', dataset)
+def calc_multi_compressed7_fluid_dynamics_calculator(dataset=None):
+    """Wraps MultiCompressed7FluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7FluidDynamicsCalculator', dataset)
+def calc_multi_compressed7_generalized_ug3_calculator(dataset=None):
+    """Wraps MultiCompressed7GeneralizedUg3Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7GeneralizedUg3Calculator', dataset)
+def calc_multi_compressed7_hubble_unified_calculator(dataset=None):
+    """Wraps MultiCompressed7HubbleUnifiedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7HubbleUnifiedCalculator', dataset)
+def calc_multi_compressed7_magnetic_field_correction_calculator(dataset=None):
+    """Wraps MultiCompressed7MagneticFieldCorrectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7MagneticFieldCorrectionCalculator', dataset)
+def calc_multi_compressed7_quantum_integral_calculator(dataset=None):
+    """Wraps MultiCompressed7QuantumIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7QuantumIntegralCalculator', dataset)
+def calc_multi_compressed7_ug_sum_calculator(dataset=None):
+    """Wraps MultiCompressed7UgSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiCompressed7UgSumCalculator', dataset)
+def calc_multi_manifold_transition_calculator(dataset=None):
+    """Wraps MultiManifoldTransitionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiManifoldTransitionCalculator', dataset)
+def calc_multi_messenger_u_q_f_f_validator(dataset=None):
+    """Wraps MultiMessengerUQFFValidator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('MultiMessengerUQFFValidator', dataset)
+def calc_multi_scale_data_fetcher(dataset=None):
+    """Wraps MultiScaleDataFetcher.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiScaleDataFetcher', dataset)
+def calc_multi_scale_gravity_model(dataset=None):
+    """Wraps MultiScaleGravityModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiScaleGravityModel', dataset)
+def calc_multi_system19_a_g_n_feedback_calculator(dataset=None):
+    """Wraps MultiSystem19AGNFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19AGNFeedbackCalculator', dataset)
+def calc_multi_system19_comprehensive_ug_sum_calculator(dataset=None):
+    """Wraps MultiSystem19ComprehensiveUgSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19ComprehensiveUgSumCalculator', dataset)
+def calc_multi_system19_deep_field_cosmological_calculator(dataset=None):
+    """Wraps MultiSystem19DeepFieldCosmologicalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19DeepFieldCosmologicalCalculator', dataset)
+def calc_multi_system19_dust_absorption_calculator(dataset=None):
+    """Wraps MultiSystem19DustAbsorptionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19DustAbsorptionCalculator', dataset)
+def calc_multi_system19_environmental_sum_calculator(dataset=None):
+    """Wraps MultiSystem19EnvironmentalSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19EnvironmentalSumCalculator', dataset)
+def calc_multi_system19_galaxy_merger_tidal_calculator(dataset=None):
+    """Wraps MultiSystem19GalaxyMergerTidalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19GalaxyMergerTidalCalculator', dataset)
+def calc_multi_system19_gravitational_lensing_calculator(dataset=None):
+    """Wraps MultiSystem19GravitationalLensingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19GravitationalLensingCalculator', dataset)
+def calc_multi_system19_photoevaporation_calculator(dataset=None):
+    """Wraps MultiSystem19PhotoevaporationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19PhotoevaporationCalculator', dataset)
+def calc_multi_system19_star_formation_rate_density_calculator(dataset=None):
+    """Wraps MultiSystem19StarFormationRateDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19StarFormationRateDensityCalculator', dataset)
+def calc_multi_system19_supernova_mass_loss_calculator(dataset=None):
+    """Wraps MultiSystem19SupernovaMassLossCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystem19SupernovaMassLossCalculator', dataset)
+def calc_multi_system_aether_frequency_calculator(dataset=None):
+    """Wraps MultiSystemAetherFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemAetherFrequencyCalculator', dataset)
+def calc_multi_system_base_gravity_calculator(dataset=None):
+    """Wraps MultiSystemBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemBaseGravityCalculator', dataset)
+def calc_multi_system_chandra_survey35_negative_buoyancy_calc(dataset=None):
+    """Wraps MultiSystemChandraSurvey35NegativeBuoyancyCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MultiSystemChandraSurvey35NegativeBuoyancyCalc', dataset)
+def calc_multi_system_compression_cycle2_calculator(dataset=None):
+    """Wraps MultiSystemCompressionCycle2Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MultiSystemCompressionCycle2Calculator', dataset)
+def calc_multi_system_cosmological_lambda_calculator(dataset=None):
+    """Wraps MultiSystemCosmologicalLambdaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemCosmologicalLambdaCalculator', dataset)
+def calc_multi_system_d_p_m_resonance_calculator(dataset=None):
+    """Wraps MultiSystemDPMResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemDPMResonanceCalculator', dataset)
+def calc_multi_system_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps MultiSystemDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemDarkMatterPerturbationCalculator', dataset)
+def calc_multi_system_fluid_dynamics_calculator(dataset=None):
+    """Wraps MultiSystemFluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemFluidDynamicsCalculator', dataset)
+def calc_multi_system_fluid_resonance_frequency_calculator(dataset=None):
+    """Wraps MultiSystemFluidResonanceFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemFluidResonanceFrequencyCalculator', dataset)
+def calc_multi_system_hubble_expansion_calculator(dataset=None):
+    """Wraps MultiSystemHubbleExpansionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemHubbleExpansionCalculator', dataset)
+def calc_multi_system_quantum_frequency_calculator(dataset=None):
+    """Wraps MultiSystemQuantumFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemQuantumFrequencyCalculator', dataset)
+def calc_multi_system_quantum_integral_calculator(dataset=None):
+    """Wraps MultiSystemQuantumIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MultiSystemQuantumIntegralCalculator', dataset)
+def calc_multi_system_u_q_f_f_compiler_calculator(dataset=None):
+    """Wraps MultiSystemUQFFCompilerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('MultiSystemUQFFCompilerCalculator', dataset)
+def calc_multi_system_u_q_f_f_core_calculator(dataset=None):
+    """Wraps MultiSystemUQFFCoreCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MultiSystemUQFFCoreCalculator', dataset)
+def calc_mus_s_cm_augmented_magnetic_dipole_omega_c_calculator(dataset=None):
+    """Wraps MusSCmAugmentedMagneticDipoleOmegaCCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MusSCmAugmentedMagneticDipoleOmegaCCalculator', dataset)
+def calc_mystic_mountain_carina_u_q_f_f_calculator(dataset=None):
+    """Wraps MysticMountainCarinaUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('MysticMountainCarinaUQFFCalculator', dataset)
+def calc_mystic_mountain_model(dataset=None):
+    """Wraps MysticMountainModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('MysticMountainModel', dataset)
+def calc_n_a_s_a_thorium_magnetic_buoyancy_aether_vortex_calculator(dataset=None):
+    """Wraps NASAThoriumMagneticBuoyancyAetherVortexCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NASAThoriumMagneticBuoyancyAetherVortexCalculator', dataset)
+def calc_n_body_simulation3_d(dataset=None):
+    """Wraps NBodySimulation3D.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NBodySimulation3D', dataset)
+def calc_n_f_w_dark_matter_profile_calculator(dataset=None):
+    """Wraps NFWDarkMatterProfileCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NFWDarkMatterProfileCalculator', dataset)
+def calc_n_g_c1275_base_gravity_calculator(dataset=None):
+    """Wraps NGC1275BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275BaseGravityCalculator', dataset)
+def calc_n_g_c1275_black_hole_calculator(dataset=None):
+    """Wraps NGC1275BlackHoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275BlackHoleCalculator', dataset)
+def calc_n_g_c1275_cooling_flow_calculator(dataset=None):
+    """Wraps NGC1275CoolingFlowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275CoolingFlowCalculator', dataset)
+def calc_n_g_c1275_cosmological_constant_calculator(dataset=None):
+    """Wraps NGC1275CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275CosmologicalConstantCalculator', dataset)
+def calc_n_g_c1275_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps NGC1275DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275DarkMatterPerturbationCalculator', dataset)
+def calc_n_g_c1275_electromagnetic_calculator(dataset=None):
+    """Wraps NGC1275ElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275ElectromagneticCalculator', dataset)
+def calc_n_g_c1275_filament_support_calculator(dataset=None):
+    """Wraps NGC1275FilamentSupportCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275FilamentSupportCalculator', dataset)
+def calc_n_g_c1275_fluid_density_calculator(dataset=None):
+    """Wraps NGC1275FluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275FluidDensityCalculator', dataset)
+def calc_n_g_c1275_magnetic_decay_calculator(dataset=None):
+    """Wraps NGC1275MagneticDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275MagneticDecayCalculator', dataset)
+def calc_n_g_c1275_magnetic_monster_perseus_a_calculator(dataset=None):
+    """Wraps NGC1275MagneticMonsterPerseusACalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1275MagneticMonsterPerseusACalculator', dataset)
+def calc_n_g_c1275_magnetic_monster_u_q_f_f(dataset=None):
+    """Wraps NGC1275MagneticMonsterUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1275MagneticMonsterUQFF', dataset)
+def calc_n_g_c1275_model(dataset=None):
+    """Wraps NGC1275Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275Model', dataset)
+def calc_n_g_c1275_oscillatory_wave_calculator(dataset=None):
+    """Wraps NGC1275OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275OscillatoryWaveCalculator', dataset)
+def calc_n_g_c1275_perseus_a_g_n_filament_calculator(dataset=None):
+    """Wraps NGC1275PerseusAGNFilamentCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NGC1275PerseusAGNFilamentCalculator', dataset)
+def calc_n_g_c1275_perseus_a_g_n_filamentary_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC1275PerseusAGNFilamentaryUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1275PerseusAGNFilamentaryUQFFCalculator', dataset)
+def calc_n_g_c1275_quantum_uncertainty_calculator(dataset=None):
+    """Wraps NGC1275QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275QuantumUncertaintyCalculator', dataset)
+def calc_n_g_c1275_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps NGC1275UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1275UQFFUnificationCalculator', dataset)
+def calc_n_g_c1277_hypergraph_dim_calculator(dataset=None):
+    """Wraps NGC1277HypergraphDimCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NGC1277HypergraphDimCalculator', dataset)
+def calc_n_g_c1316_gravity_condensed_calculator(dataset=None):
+    """Wraps NGC1316GravityCondensedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1316GravityCondensedCalculator', dataset)
+def calc_n_g_c1316_m_u_g_e_calculation(dataset=None):
+    """Wraps NGC1316MUGECalculation.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1316MUGECalculation', dataset)
+def calc_n_g_c1316_merger_evolution_calculator(dataset=None):
+    """Wraps NGC1316MergerEvolutionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1316MergerEvolutionCalculator', dataset)
+def calc_n_g_c1672_barred_spiral_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC1672BarredSpiralUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1672BarredSpiralUQFFCalculator', dataset)
+def calc_n_g_c1792_hubble_slow_mode_oscillator_calculator(dataset=None):
+    """Wraps NGC1792HubbleSlowModeOscillatorCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NGC1792HubbleSlowModeOscillatorCalculator', dataset)
+def calc_n_g_c1792_model(dataset=None):
+    """Wraps NGC1792Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC1792Model', dataset)
+def calc_n_g_c1792_ram_pressure_degeneracy_calculator(dataset=None):
+    """Wraps NGC1792RamPressureDegeneracyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NGC1792RamPressureDegeneracyCalculator', dataset)
+def calc_n_g_c1792_starburst_buoyancy_coherence_calculator(dataset=None):
+    """Wraps NGC1792StarburstBuoyancyCoherenceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NGC1792StarburstBuoyancyCoherenceCalculator', dataset)
+def calc_n_g_c1792_starburst_f_u_bi_calculator(dataset=None):
+    """Wraps NGC1792StarburstFUBiCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NGC1792StarburstFUBiCalculator', dataset)
+def calc_n_g_c1792_stellar_forge_starburst_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC1792StellarForgeStarburstUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1792StellarForgeStarburstUQFFCalculator', dataset)
+def calc_n_g_c1792_stellar_forge_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC1792StellarForgeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1792StellarForgeUQFFCalculator', dataset)
+def calc_n_g_c1805_l_m_c_cluster_three_u_q_f_f(dataset=None):
+    """Wraps NGC1805LMCClusterThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1805LMCClusterThreeUQFF', dataset)
+def calc_n_g_c1961_spiral_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC1961SpiralThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC1961SpiralThreeUQFFCalculator', dataset)
+def calc_n_g_c2014_n_g_c2020_starforming_u_q_f_f(dataset=None):
+    """Wraps NGC2014NGC2020StarformingUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2014NGC2020StarformingUQFF', dataset)
+def calc_n_g_c2014_n_g_c2020_variant2_u_q_f_f(dataset=None):
+    """Wraps NGC2014NGC2020Variant2UQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2014NGC2020Variant2UQFF', dataset)
+def calc_n_g_c2174_monkey_head_nebula_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC2174MonkeyHeadNebulaThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2174MonkeyHeadNebulaThreeUQFFCalculator', dataset)
+def calc_n_g_c2264_cone_nebula_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC2264ConeNebulaUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2264ConeNebulaUQFFCalculator', dataset)
+def calc_n_g_c2264_model(dataset=None):
+    """Wraps NGC2264Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2264Model', dataset)
+def calc_n_g_c2525_barred_spiral2_u_q_f_f(dataset=None):
+    """Wraps NGC2525BarredSpiral2UQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2525BarredSpiral2UQFF', dataset)
+def calc_n_g_c2525_base_gravity_calculator(dataset=None):
+    """Wraps NGC2525BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525BaseGravityCalculator', dataset)
+def calc_n_g_c2525_black_hole_calculator(dataset=None):
+    """Wraps NGC2525BlackHoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525BlackHoleCalculator', dataset)
+def calc_n_g_c2525_cosmological_constant_calculator(dataset=None):
+    """Wraps NGC2525CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525CosmologicalConstantCalculator', dataset)
+def calc_n_g_c2525_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps NGC2525DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525DarkMatterPerturbationCalculator', dataset)
+def calc_n_g_c2525_electromagnetic_calculator(dataset=None):
+    """Wraps NGC2525ElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525ElectromagneticCalculator', dataset)
+def calc_n_g_c2525_fluid_density_calculator(dataset=None):
+    """Wraps NGC2525FluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525FluidDensityCalculator', dataset)
+def calc_n_g_c2525_oscillatory_wave_calculator(dataset=None):
+    """Wraps NGC2525OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525OscillatoryWaveCalculator', dataset)
+def calc_n_g_c2525_quantum_uncertainty_calculator(dataset=None):
+    """Wraps NGC2525QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525QuantumUncertaintyCalculator', dataset)
+def calc_n_g_c2525_s_n2018gv_barred_spiral_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC2525SN2018gvBarredSpiralUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2525SN2018gvBarredSpiralUQFFCalculator', dataset)
+def calc_n_g_c2525_supernova_mass_loss_calculator(dataset=None):
+    """Wraps NGC2525SupernovaMassLossCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525SupernovaMassLossCalculator', dataset)
+def calc_n_g_c2525_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps NGC2525UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2525UQFFUnificationCalculator', dataset)
+def calc_n_g_c2525_with_supernovae_s_n2018gv(dataset=None):
+    """Wraps NGC2525WithSupernovaeSN2018gv.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2525WithSupernovaeSN2018gv', dataset)
+def calc_n_g_c253_cosmic_ray_calculator(dataset=None):
+    """Wraps NGC253CosmicRayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253CosmicRayCalculator', dataset)
+def calc_n_g_c253_dark_matter_halo_calculator(dataset=None):
+    """Wraps NGC253DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253DarkMatterHaloCalculator', dataset)
+def calc_n_g_c253_disk_gravity_calculator(dataset=None):
+    """Wraps NGC253DiskGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253DiskGravityCalculator', dataset)
+def calc_n_g_c253_dust_extinction_calculator(dataset=None):
+    """Wraps NGC253DustExtinctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253DustExtinctionCalculator', dataset)
+def calc_n_g_c253_magnetic_field_calculator(dataset=None):
+    """Wraps NGC253MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253MagneticFieldCalculator', dataset)
+def calc_n_g_c253_molecular_outflow_calculator(dataset=None):
+    """Wraps NGC253MolecularOutflowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253MolecularOutflowCalculator', dataset)
+def calc_n_g_c253_nuclear_starburst_calculator(dataset=None):
+    """Wraps NGC253NuclearStarburstCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253NuclearStarburstCalculator', dataset)
+def calc_n_g_c253_quantum_vacuum_calculator(dataset=None):
+    """Wraps NGC253QuantumVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253QuantumVacuumCalculator', dataset)
+def calc_n_g_c253_supernova_rate_calculator(dataset=None):
+    """Wraps NGC253SupernovaRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253SupernovaRateCalculator', dataset)
+def calc_n_g_c253_superwind_calculator(dataset=None):
+    """Wraps NGC253SuperwindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC253SuperwindCalculator', dataset)
+def calc_n_g_c2841_model(dataset=None):
+    """Wraps NGC2841Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC2841Model', dataset)
+def calc_n_g_c2841_quiet_spiral_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC2841QuietSpiralUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC2841QuietSpiralUQFFCalculator', dataset)
+def calc_n_g_c3372_eta_carinae_nebula_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC3372EtaCarinaeNebulaUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3372EtaCarinaeNebulaUQFFCalculator', dataset)
+def calc_n_g_c3372_model(dataset=None):
+    """Wraps NGC3372Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3372Model', dataset)
+def calc_n_g_c346_core_energy_calculator(dataset=None):
+    """Wraps NGC346CoreEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346CoreEnergyCalculator', dataset)
+def calc_n_g_c346_dark_matter_calculator(dataset=None):
+    """Wraps NGC346DarkMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346DarkMatterCalculator', dataset)
+def calc_n_g_c346_dynamic_vacuum_calculator(dataset=None):
+    """Wraps NGC346DynamicVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346DynamicVacuumCalculator', dataset)
+def calc_n_g_c346_envelope_force_calculator(dataset=None):
+    """Wraps NGC346EnvelopeForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346EnvelopeForceCalculator', dataset)
+def calc_n_g_c346_fluid_term_calculator(dataset=None):
+    """Wraps NGC346FluidTermCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346FluidTermCalculator', dataset)
+def calc_n_g_c346_hubble_expansion_calculator(dataset=None):
+    """Wraps NGC346HubbleExpansionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346HubbleExpansionCalculator', dataset)
+def calc_n_g_c346_mass_s_f_r_calculator(dataset=None):
+    """Wraps NGC346MassSFRCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346MassSFRCalculator', dataset)
+def calc_n_g_c346_quantum_coupling_calculator(dataset=None):
+    """Wraps NGC346QuantumCouplingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346QuantumCouplingCalculator', dataset)
+def calc_n_g_c346_quantum_wave_calculator(dataset=None):
+    """Wraps NGC346QuantumWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346QuantumWaveCalculator', dataset)
+def calc_n_g_c346_star_formation_calculator(dataset=None):
+    """Wraps NGC346StarFormationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346StarFormationCalculator', dataset)
+def calc_n_g_c346_superconductor_correction_calculator(dataset=None):
+    """Wraps NGC346SuperconductorCorrectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346SuperconductorCorrectionCalculator', dataset)
+def calc_n_g_c346_ug1_dipole_calculator(dataset=None):
+    """Wraps NGC346Ug1DipoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346Ug1DipoleCalculator', dataset)
+def calc_n_g_c346_ug2_superconductor_calculator(dataset=None):
+    """Wraps NGC346Ug2SuperconductorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346Ug2SuperconductorCalculator', dataset)
+def calc_n_g_c346_ug3_magnetic_strings_calculator(dataset=None):
+    """Wraps NGC346Ug3MagneticStringsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346Ug3MagneticStringsCalculator', dataset)
+def calc_n_g_c346_ug3_star_formation_temp_vrad_calc(dataset=None):
+    """Wraps NGC346Ug3StarFormationTempVradCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC346Ug3StarFormationTempVradCalc', dataset)
+def calc_n_g_c346_ug4_reaction_calculator(dataset=None):
+    """Wraps NGC346Ug4ReactionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346Ug4ReactionCalculator', dataset)
+def calc_n_g_c346_ui_inertial_calculator(dataset=None):
+    """Wraps NGC346UiInertialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346UiInertialCalculator', dataset)
+def calc_n_g_c346_um_magnetic_calculator(dataset=None):
+    """Wraps NGC346UmMagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC346UmMagneticCalculator', dataset)
+def calc_n_g_c3507_spiral_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC3507SpiralThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3507SpiralThreeUQFFCalculator', dataset)
+def calc_n_g_c3511_spiral_crater_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC3511SpiralCraterThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3511SpiralCraterThreeUQFFCalculator', dataset)
+def calc_n_g_c3596_gas_spiral_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC3596GasSpiralThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3596GasSpiralThreeUQFFCalculator', dataset)
+def calc_n_g_c3603_base_gravity_calculator(dataset=None):
+    """Wraps NGC3603BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603BaseGravityCalculator', dataset)
+def calc_n_g_c3603_cavity_pressure_calculator(dataset=None):
+    """Wraps NGC3603CavityPressureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603CavityPressureCalculator', dataset)
+def calc_n_g_c3603_clean_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC3603CleanUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3603CleanUQFFCalculator', dataset)
+def calc_n_g_c3603_cosmological_constant_calculator(dataset=None):
+    """Wraps NGC3603CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603CosmologicalConstantCalculator', dataset)
+def calc_n_g_c3603_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps NGC3603DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603DarkMatterPerturbationCalculator', dataset)
+def calc_n_g_c3603_electromagnetic_calculator(dataset=None):
+    """Wraps NGC3603ElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603ElectromagneticCalculator', dataset)
+def calc_n_g_c3603_extreme_star_cluster_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC3603ExtremeStarClusterUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3603ExtremeStarClusterUQFFCalculator', dataset)
+def calc_n_g_c3603_fluid_density_calculator(dataset=None):
+    """Wraps NGC3603FluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603FluidDensityCalculator', dataset)
+def calc_n_g_c3603_full_m_u_g_e_cavity_pressure_calculator(dataset=None):
+    """Wraps NGC3603FullMUGECavityPressureCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NGC3603FullMUGECavityPressureCalculator', dataset)
+def calc_n_g_c3603_oscillatory_wave_calculator(dataset=None):
+    """Wraps NGC3603OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603OscillatoryWaveCalculator', dataset)
+def calc_n_g_c3603_quantum_uncertainty_calculator(dataset=None):
+    """Wraps NGC3603QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603QuantumUncertaintyCalculator', dataset)
+def calc_n_g_c3603_star_cluster2_u_q_f_f(dataset=None):
+    """Wraps NGC3603StarCluster2UQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3603StarCluster2UQFF', dataset)
+def calc_n_g_c3603_star_cluster_model(dataset=None):
+    """Wraps NGC3603StarClusterModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603StarClusterModel', dataset)
+def calc_n_g_c3603_star_cluster_primary_u_q_f_f(dataset=None):
+    """Wraps NGC3603StarClusterPrimaryUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC3603StarClusterPrimaryUQFF', dataset)
+def calc_n_g_c3603_stellar_pressure_modulation_calculator(dataset=None):
+    """Wraps NGC3603StellarPressureModulationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NGC3603StellarPressureModulationCalculator', dataset)
+def calc_n_g_c3603_stellar_wind_calculator(dataset=None):
+    """Wraps NGC3603StellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603StellarWindCalculator', dataset)
+def calc_n_g_c3603_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps NGC3603UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC3603UQFFUnificationCalculator', dataset)
+def calc_n_g_c4676_mice_galaxies_dual_merger_calculator(dataset=None):
+    """Wraps NGC4676MiceGalaxiesDualMergerCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC4676MiceGalaxiesDualMergerCalculator', dataset)
+def calc_n_g_c4676_model(dataset=None):
+    """Wraps NGC4676Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4676Model', dataset)
+def calc_n_g_c4826_black_eye_galaxy_three_u_q_f_f(dataset=None):
+    """Wraps NGC4826BlackEyeGalaxyThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC4826BlackEyeGalaxyThreeUQFF', dataset)
+def calc_n_g_c4945_a_g_n_calculator(dataset=None):
+    """Wraps NGC4945AGNCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945AGNCalculator', dataset)
+def calc_n_g_c4945_bar_structure_calculator(dataset=None):
+    """Wraps NGC4945BarStructureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945BarStructureCalculator', dataset)
+def calc_n_g_c4945_dark_matter_halo_calculator(dataset=None):
+    """Wraps NGC4945DarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945DarkMatterHaloCalculator', dataset)
+def calc_n_g_c4945_magnetic_field_calculator(dataset=None):
+    """Wraps NGC4945MagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945MagneticFieldCalculator', dataset)
+def calc_n_g_c4945_megamaser_calculator(dataset=None):
+    """Wraps NGC4945MegamaserCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945MegamaserCalculator', dataset)
+def calc_n_g_c4945_molecular_disk_calculator(dataset=None):
+    """Wraps NGC4945MolecularDiskCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945MolecularDiskCalculator', dataset)
+def calc_n_g_c4945_nuclear_starburst_calculator(dataset=None):
+    """Wraps NGC4945NuclearStarburstCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945NuclearStarburstCalculator', dataset)
+def calc_n_g_c4945_quantum_vacuum_calculator(dataset=None):
+    """Wraps NGC4945QuantumVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945QuantumVacuumCalculator', dataset)
+def calc_n_g_c4945_supernova_rate_calculator(dataset=None):
+    """Wraps NGC4945SupernovaRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945SupernovaRateCalculator', dataset)
+def calc_n_g_c4945_x_ray_binary_calculator(dataset=None):
+    """Wraps NGC4945XRayBinaryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC4945XRayBinaryCalculator', dataset)
+def calc_n_g_c5335_spiral_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC5335SpiralThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC5335SpiralThreeUQFFCalculator', dataset)
+def calc_n_g_c5866_edge_on_lenticular_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC5866EdgeOnLenticularUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC5866EdgeOnLenticularUQFFCalculator', dataset)
+def calc_n_g_c6217_barred_spiral_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC6217BarredSpiralUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC6217BarredSpiralUQFFCalculator', dataset)
+def calc_n_g_c6302_aether_resonance_calculator(dataset=None):
+    """Wraps NGC6302AetherResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302AetherResonanceCalculator', dataset)
+def calc_n_g_c6302_bipolar_outflow_calculator(dataset=None):
+    """Wraps NGC6302BipolarOutflowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302BipolarOutflowCalculator', dataset)
+def calc_n_g_c6302_bipolar_wshock_young_stars_poutflow_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator', dataset)
+def calc_n_g_c6302_central_star_radiation_calculator(dataset=None):
+    """Wraps NGC6302CentralStarRadiationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302CentralStarRadiationCalculator', dataset)
+def calc_n_g_c6302_cosmic_expansion_resonance_calculator(dataset=None):
+    """Wraps NGC6302CosmicExpansionResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302CosmicExpansionResonanceCalculator', dataset)
+def calc_n_g_c6302_d_p_m_resonance_calculator(dataset=None):
+    """Wraps NGC6302DPMResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302DPMResonanceCalculator', dataset)
+def calc_n_g_c6302_dark_matter_p_n_calculator(dataset=None):
+    """Wraps NGC6302DarkMatterPNCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302DarkMatterPNCalculator', dataset)
+def calc_n_g_c6302_fluid_resonance_calculator(dataset=None):
+    """Wraps NGC6302FluidResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302FluidResonanceCalculator', dataset)
+def calc_n_g_c6302_ionized_ejecta_fluid_calculator(dataset=None):
+    """Wraps NGC6302IonizedEjectaFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302IonizedEjectaFluidCalculator', dataset)
+def calc_n_g_c6302_lorentz_ejecta_calculator(dataset=None):
+    """Wraps NGC6302LorentzEjectaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302LorentzEjectaCalculator', dataset)
+def calc_n_g_c6302_oscillatory_resonance_calculator(dataset=None):
+    """Wraps NGC6302OscillatoryResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302OscillatoryResonanceCalculator', dataset)
+def calc_n_g_c6302_planetary_nebula_resonance_calculator(dataset=None):
+    """Wraps NGC6302PlanetaryNebulaResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302PlanetaryNebulaResonanceCalculator', dataset)
+def calc_n_g_c6302_quantum_integral_p_n_calculator(dataset=None):
+    """Wraps NGC6302QuantumIntegralPNCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302QuantumIntegralPNCalculator', dataset)
+def calc_n_g_c6302_quantum_wave_resonance_calculator(dataset=None):
+    """Wraps NGC6302QuantumWaveResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302QuantumWaveResonanceCalculator', dataset)
+def calc_n_g_c6302_reactive_resonance_calculator(dataset=None):
+    """Wraps NGC6302ReactiveResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302ReactiveResonanceCalculator', dataset)
+def calc_n_g_c6302_resonance_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC6302ResonanceUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NGC6302ResonanceUQFFCalculator', dataset)
+def calc_n_g_c6302_stellar_wind_shock_calculator(dataset=None):
+    """Wraps NGC6302StellarWindShockCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302StellarWindShockCalculator', dataset)
+def calc_n_g_c6302_superconductor_frequency_calculator(dataset=None):
+    """Wraps NGC6302SuperconductorFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302SuperconductorFrequencyCalculator', dataset)
+def calc_n_g_c6302_t_hz_resonance_calculator(dataset=None):
+    """Wraps NGC6302THzResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302THzResonanceCalculator', dataset)
+def calc_n_g_c6302_u_q_f_f_bipolar_p_n_calculator(dataset=None):
+    """Wraps NGC6302UQFFBipolarPNCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NGC6302UQFFBipolarPNCalculator', dataset)
+def calc_n_g_c6302_vacuum_differential_calculator(dataset=None):
+    """Wraps NGC6302VacuumDifferentialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NGC6302VacuumDifferentialCalculator', dataset)
+def calc_n_g_c6307_n_g_c7027_p_n_pair_three_u_q_f_f(dataset=None):
+    """Wraps NGC6307NGC7027PNPairThreeUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC6307NGC7027PNPairThreeUQFF', dataset)
+def calc_n_g_c685_barred_spiral_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC685BarredSpiralThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC685BarredSpiralThreeUQFFCalculator', dataset)
+def calc_n_g_c7049_lenticular_u_q_f_f_calculator(dataset=None):
+    """Wraps NGC7049LenticularUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC7049LenticularUQFFCalculator', dataset)
+def calc_n_g_c7635_bubble_nebula(dataset=None):
+    """Wraps NGC7635BubbleNebula.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NGC7635BubbleNebula', dataset)
+def calc_n_o_m_a_d_monophoton_neutrino_vacuum_coupling_calculator(dataset=None):
+    """Wraps NOMADMonophotonNeutrinoVacuumCouplingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NOMADMonophotonNeutrinoVacuumCouplingCalculator', dataset)
+def calc_n_s_hypergraph_discrete_regularity_calculator(dataset=None):
+    """Wraps NSHypergraphDiscreteRegularityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NSHypergraphDiscreteRegularityCalculator', dataset)
+def calc_n_s_phonon_spindown_correction_calc(dataset=None):
+    """Wraps NSPhononSpindownCorrectionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NSPhononSpindownCorrectionCalc', dataset)
+def calc_navier_stokes_plasma_flow_calculator(dataset=None):
+    """Wraps NavierStokesPlasmaFlowCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NavierStokesPlasmaFlowCalculator', dataset)
+def calc_navier_stokes_quasar_jet_calculator(dataset=None):
+    """Wraps NavierStokesQuasarJetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NavierStokesQuasarJetCalculator', dataset)
+def calc_navier_stokes_relativistic_jet_calculator(dataset=None):
+    """Wraps NavierStokesRelativisticJetCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NavierStokesRelativisticJetCalculator', dataset)
+def calc_navier_stokes_stable_fluid_u_q_f_f_quasar_jet_calculator(dataset=None):
+    """Wraps NavierStokesStableFluidUQFFQuasarJetCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NavierStokesStableFluidUQFFQuasarJetCalculator', dataset)
+def calc_navier_stokes_u_q_f_f_calculator(dataset=None):
+    """Wraps NavierStokesUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NavierStokesUQFFCalculator', dataset)
+def calc_navier_stokes_u_q_f_f_encompassment_calculator(dataset=None):
+    """Wraps NavierStokesUQFFEncompassmentCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NavierStokesUQFFEncompassmentCalculator', dataset)
+def calc_navier_stokes_u_q_f_f_regularization_calculator(dataset=None):
+    """Wraps NavierStokesUQFFRegularizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NavierStokesUQFFRegularizationCalculator', dataset)
+def calc_nebula_observation_comparison_u_q_f_f_calc(dataset=None):
+    """Wraps NebulaObservationComparisonUQFFCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NebulaObservationComparisonUQFFCalc', dataset)
+def calc_nebular_blueshift_velocity_calculator(dataset=None):
+    """Wraps NebularBlueshiftVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularBlueshiftVelocityCalculator', dataset)
+def calc_nebular_buoyancy_ratio_calculator(dataset=None):
+    """Wraps NebularBuoyancyRatioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularBuoyancyRatioCalculator', dataset)
+def calc_nebular_d_n_a_energy_calculator(dataset=None):
+    """Wraps NebularDNAEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularDNAEnergyCalculator', dataset)
+def calc_nebular_geometric_star_angle_calculator(dataset=None):
+    """Wraps NebularGeometricStarAngleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularGeometricStarAngleCalculator', dataset)
+def calc_nebular_higgs_mass_calculator(dataset=None):
+    """Wraps NebularHiggsMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularHiggsMassCalculator', dataset)
+def calc_nebular_l_e_n_r_e_field_calculator(dataset=None):
+    """Wraps NebularLENREFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularLENREFieldCalculator', dataset)
+def calc_nebular_neutrino_proto_calculator(dataset=None):
+    """Wraps NebularNeutrinoProtoCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularNeutrinoProtoCalculator', dataset)
+def calc_nebular_non_local_quantum_calculator(dataset=None):
+    """Wraps NebularNonLocalQuantumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularNonLocalQuantumCalculator', dataset)
+def calc_nebular_u_q_f_f_drawing32_l_e_n_r_higgs_calculator(dataset=None):
+    """Wraps NebularUQFFDrawing32LENRHiggsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NebularUQFFDrawing32LENRHiggsCalculator', dataset)
+def calc_nebular_ug3_star_formation_calculator(dataset=None):
+    """Wraps NebularUg3StarFormationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularUg3StarFormationCalculator', dataset)
+def calc_nebular_universal_decay_calculator(dataset=None):
+    """Wraps NebularUniversalDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NebularUniversalDecayCalculator', dataset)
+def calc_negative_et_buoyancy_erosion_master_calc(dataset=None):
+    """Wraps NegativeEtBuoyancyErosionMasterCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NegativeEtBuoyancyErosionMasterCalc', dataset)
+def calc_negative_mass_trapping_model(dataset=None):
+    """Wraps NegativeMassTrappingModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NegativeMassTrappingModel', dataset)
+def calc_negative_time_calculator(dataset=None):
+    """Wraps NegativeTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NegativeTimeCalculator', dataset)
+def calc_negative_time_dilation_spooky_distance_calculator(dataset=None):
+    """Wraps NegativeTimeDilationSpookyDistanceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NegativeTimeDilationSpookyDistanceCalculator', dataset)
+def calc_negative_time_frame_series_calculator(dataset=None):
+    """Wraps NegativeTimeFrameSeriesCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NegativeTimeFrameSeriesCalculator', dataset)
+def calc_negative_time_model(dataset=None):
+    """Wraps NegativeTimeModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NegativeTimeModel', dataset)
+def calc_negative_time_operator_calculator(dataset=None):
+    """Wraps NegativeTimeOperatorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NegativeTimeOperatorCalculator', dataset)
+def calc_negative_time_operator_exp_calculator(dataset=None):
+    """Wraps NegativeTimeOperatorExpCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NegativeTimeOperatorExpCalculator', dataset)
+def calc_negative_time_orb61_calculator(dataset=None):
+    """Wraps NegativeTimeOrb61Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NegativeTimeOrb61Calculator', dataset)
+def calc_negative_time_parameter_calculator(dataset=None):
+    """Wraps NegativeTimeParameterCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NegativeTimeParameterCalculator', dataset)
+def calc_negative_time_u_p_calculator(dataset=None):
+    """Wraps NegativeTimeUPCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NegativeTimeUPCalculator', dataset)
+def calc_net_energy_eplus_eminus_evolution_calc(dataset=None):
+    """Wraps NetEnergyEplusEminusEvolutionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NetEnergyEplusEminusEvolutionCalc', dataset)
+def calc_neural_symbolic_eval_calculator(dataset=None):
+    """Wraps NeuralSymbolicEvalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NeuralSymbolicEvalCalculator', dataset)
+def calc_neural_symbolic_eval_s8_calculator(dataset=None):
+    """Wraps NeuralSymbolicEvalS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeuralSymbolicEvalS8Calculator', dataset)
+def calc_neuromorphic_accelerator_calculator(dataset=None):
+    """Wraps NeuromorphicAcceleratorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NeuromorphicAcceleratorCalculator', dataset)
+def calc_neuromorphic_accelerator_s8_calculator(dataset=None):
+    """Wraps NeuromorphicAcceleratorS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeuromorphicAcceleratorS8Calculator', dataset)
+def calc_neutrino_cooled_disk_dynamo20ms_cycle_calculator(dataset=None):
+    """Wraps NeutrinoCooledDiskDynamo20msCycleCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NeutrinoCooledDiskDynamo20msCycleCalculator', dataset)
+def calc_neutrino_energy_u_q_f_f_vacuum_ratio_calc(dataset=None):
+    """Wraps NeutrinoEnergyUQFFVacuumRatioCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NeutrinoEnergyUQFFVacuumRatioCalc', dataset)
+def calc_neutrino_polarizability_calculator(dataset=None):
+    """Wraps NeutrinoPolarizabilityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeutrinoPolarizabilityCalculator', dataset)
+def calc_neutrino_push_calculator(dataset=None):
+    """Wraps NeutrinoPushCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NeutrinoPushCalculator', dataset)
+def calc_neutrino_s_e_d_flux_calculator(dataset=None):
+    """Wraps NeutrinoSEDFluxCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeutrinoSEDFluxCalculator', dataset)
+def calc_neutron_calibration_constant_calculator(dataset=None):
+    """Wraps NeutronCalibrationConstantCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeutronCalibrationConstantCalculator', dataset)
+def calc_neutron_capture_rate_calculator(dataset=None):
+    """Wraps NeutronCaptureRateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeutronCaptureRateCalculator', dataset)
+def calc_neutron_production_rate_calculator(dataset=None):
+    """Wraps NeutronProductionRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NeutronProductionRateCalculator', dataset)
+def calc_neutron_production_rate_orb49_calculator(dataset=None):
+    """Wraps NeutronProductionRateOrb49Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NeutronProductionRateOrb49Calculator', dataset)
+def calc_neutron_star_c_r_p_ice_cube_flux_verification_calculator(dataset=None):
+    """Wraps NeutronStarCRPIceCubeFluxVerificationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NeutronStarCRPIceCubeFluxVerificationCalculator', dataset)
+def calc_neutron_star_e_o_s_u_q_f_f_calculator(dataset=None):
+    """Wraps NeutronStarEOSUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NeutronStarEOSUQFFCalculator', dataset)
+def calc_neutron_star_merger_ub_outflow_f_u_calculator(dataset=None):
+    """Wraps NeutronStarMergerUbOutflowF_UCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NeutronStarMergerUbOutflowF_UCalculator', dataset)
+def calc_new_systems_batch_f_rel_im_u_q_f_f_calculator(dataset=None):
+    """Wraps NewSystemsBatchF_rel_im_UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NewSystemsBatchF_rel_im_UQFFCalculator', dataset)
+def calc_newton_raphson_calculator(dataset=None):
+    """Wraps NewtonRaphsonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NewtonRaphsonCalculator', dataset)
+def calc_newton_second_law_calculator(dataset=None):
+    """Wraps NewtonSecondLawCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NewtonSecondLawCalculator', dataset)
+def calc_nine_astro_systems_three_u_q_f_f_calculator(dataset=None):
+    """Wraps NineAstroSystemsThreeUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NineAstroSystemsThreeUQFFCalculator', dataset)
+def calc_nine_system_sep_astro_parameter_catalogue_calculator(dataset=None):
+    """Wraps NineSystemSepAstroParameterCatalogueCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('NineSystemSepAstroParameterCatalogueCalculator', dataset)
+def calc_ninety_nine_system_aggregate_calc(dataset=None):
+    """Wraps NinetyNineSystemAggregateCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NinetyNineSystemAggregateCalc', dataset)
+def calc_ninety_nine_system_master_calc(dataset=None):
+    """Wraps NinetyNineSystemMasterCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('NinetyNineSystemMasterCalc', dataset)
+def calc_no_mass_energy_only_dynamics_calculator(dataset=None):
+    """Wraps NoMassEnergyOnlyDynamicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NoMassEnergyOnlyDynamicsCalculator', dataset)
+def calc_no_thermal_expansion_calculator(dataset=None):
+    """Wraps NoThermalExpansionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NoThermalExpansionCalculator', dataset)
+def calc_non_commutative_geometry_calculator(dataset=None):
+    """Wraps NonCommutativeGeometryCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonCommutativeGeometryCalculator', dataset)
+def calc_non_linear_time_energy_calculator(dataset=None):
+    """Wraps NonLinearTimeEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLinearTimeEnergyCalculator', dataset)
+def calc_non_local_emission_calculator(dataset=None):
+    """Wraps NonLocalEmissionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalEmissionCalculator', dataset)
+def calc_non_local_jump_inference_calculator(dataset=None):
+    """Wraps NonLocalJumpInferenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalJumpInferenceCalculator', dataset)
+def calc_non_local_jump_probability_calculator(dataset=None):
+    """Wraps NonLocalJumpProbabilityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalJumpProbabilityCalculator', dataset)
+def calc_non_local_network_energy_calculator(dataset=None):
+    """Wraps NonLocalNetworkEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalNetworkEnergyCalculator', dataset)
+def calc_non_local_plasmoid_flow_calculator(dataset=None):
+    """Wraps NonLocalPlasmoidFlowCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalPlasmoidFlowCalculator', dataset)
+def calc_non_locality_decay_calculator(dataset=None):
+    """Wraps NonLocalityDecayCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalityDecayCalculator', dataset)
+def calc_non_locality_noise_calculator(dataset=None):
+    """Wraps NonLocalityNoiseCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalityNoiseCalculator', dataset)
+def calc_non_locality_peak_calculator(dataset=None):
+    """Wraps NonLocalityPeakCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NonLocalityPeakCalculator', dataset)
+def calc_non_newtonian_u_q_f_f_calculator(dataset=None):
+    """Wraps NonNewtonianUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NonNewtonianUQFFCalculator', dataset)
+def calc_north_neutral_state_calculator(dataset=None):
+    """Wraps NorthNeutralStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NorthNeutralStateCalculator', dataset)
+def calc_nuclear_binding_calculator(dataset=None):
+    """Wraps NuclearBindingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NuclearBindingCalculator', dataset)
+def calc_nuclear_binding_ladder_validator(dataset=None):
+    """Wraps NuclearBindingLadderValidator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NuclearBindingLadderValidator', dataset)
+def calc_nuclear_polynomial_fit_calculator(dataset=None):
+    """Wraps NuclearPolynomialFitCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NuclearPolynomialFitCalculator', dataset)
+def calc_nuclear_resonance_z118_calculator(dataset=None):
+    """Wraps NuclearResonanceZ118Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NuclearResonanceZ118Calculator', dataset)
+def calc_nuclear_um_j_w_s_t_synthesis_calculator(dataset=None):
+    """Wraps NuclearUmJWSTSynthesisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('NuclearUmJWSTSynthesisCalculator', dataset)
+def calc_numerical_methods(dataset=None):
+    """Wraps NumericalMethods.compute() from CondensedPhysics."""
+    return _pipeline_invoke('NumericalMethods', dataset)
+def calc_o_t_o_c_scambling_calculator(dataset=None):
+    """Wraps OTOCScamblingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OTOCScamblingCalculator', dataset)
+def calc_oil_medium_viscosity_calculator(dataset=None):
+    """Wraps OilMediumViscosityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OilMediumViscosityCalculator', dataset)
+def calc_olbers26_d_polynomial_resolution_calculator(dataset=None):
+    """Wraps Olbers26DPolynomialResolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Olbers26DPolynomialResolutionCalculator', dataset)
+def calc_olbers_gap_analysis_calculator(dataset=None):
+    """Wraps OlbersGapAnalysisCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OlbersGapAnalysisCalculator', dataset)
+def calc_olbers_paradox_flux_calculator(dataset=None):
+    """Wraps OlbersParadoxFluxCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OlbersParadoxFluxCalculator', dataset)
+def calc_olbers_u_q_f_f_resolution_calculator(dataset=None):
+    """Wraps OlbersUQFFResolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OlbersUQFFResolutionCalculator', dataset)
+def calc_omega_s_t_term(dataset=None):
+    """Wraps OmegaSTTerm.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OmegaSTTerm', dataset)
+def calc_omega_s_t_time_calculator(dataset=None):
+    """Wraps OmegaSTTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OmegaSTTimeCalculator', dataset)
+def calc_oort_cloud_boundary_model(dataset=None):
+    """Wraps OortCloudBoundaryModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OortCloudBoundaryModel', dataset)
+def calc_operational_transform_calculator(dataset=None):
+    """Wraps OperationalTransformCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OperationalTransformCalculator', dataset)
+def calc_operational_transform_s8_calculator(dataset=None):
+    """Wraps OperationalTransformS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OperationalTransformS8Calculator', dataset)
+def calc_optical_non_distortion_calculator(dataset=None):
+    """Wraps OpticalNonDistortionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OpticalNonDistortionCalculator', dataset)
+def calc_optical_stress_reduction_calculator(dataset=None):
+    """Wraps OpticalStressReductionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OpticalStressReductionCalculator', dataset)
+def calc_orb10_refined_f_u_calculator(dataset=None):
+    """Wraps Orb10RefinedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Orb10RefinedFUCalculator', dataset)
+def calc_orb11_refined_f_u_calculator(dataset=None):
+    """Wraps Orb11RefinedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Orb11RefinedFUCalculator', dataset)
+def calc_orb12_refined_f_u_calculator(dataset=None):
+    """Wraps Orb12RefinedFUCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Orb12RefinedFUCalculator', dataset)
+def calc_orb13_energy_progression_calculator(dataset=None):
+    """Wraps Orb13EnergyProgressionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Orb13EnergyProgressionCalculator', dataset)
+def calc_orb13_refined_f_u_calculator(dataset=None):
+    """Wraps Orb13RefinedFUCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Orb13RefinedFUCalculator', dataset)
+def calc_orb14_energy_efficiency_calculator(dataset=None):
+    """Wraps Orb14EnergyEfficiencyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Orb14EnergyEfficiencyCalculator', dataset)
+def calc_orb14_refined_f_u_calculator(dataset=None):
+    """Wraps Orb14RefinedFUCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Orb14RefinedFUCalculator', dataset)
+def calc_orb7_refined_f_u_calculator(dataset=None):
+    """Wraps Orb7RefinedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Orb7RefinedFUCalculator', dataset)
+def calc_orb8_refined_f_u_calculator(dataset=None):
+    """Wraps Orb8RefinedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Orb8RefinedFUCalculator', dataset)
+def calc_orb9_refined_f_u_calculator(dataset=None):
+    """Wraps Orb9RefinedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Orb9RefinedFUCalculator', dataset)
+def calc_orbital_angular_momentum_calculator(dataset=None):
+    """Wraps OrbitalAngularMomentumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OrbitalAngularMomentumCalculator', dataset)
+def calc_orbital_position_interpolation_calculator(dataset=None):
+    """Wraps OrbitalPositionInterpolationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OrbitalPositionInterpolationCalculator', dataset)
+def calc_orion_compact_h_i_i_s_f_r_binding_crossover_calculator(dataset=None):
+    """Wraps OrionCompactHIISFRBindingCrossoverCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('OrionCompactHIISFRBindingCrossoverCalculator', dataset)
+def calc_orion_cosmological_lambda_calculator(dataset=None):
+    """Wraps OrionCosmologicalLambdaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionCosmologicalLambdaCalculator', dataset)
+def calc_orion_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps OrionDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionDarkMatterPerturbationCalculator', dataset)
+def calc_orion_fluid_dynamics_calculator(dataset=None):
+    """Wraps OrionFluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionFluidDynamicsCalculator', dataset)
+def calc_orion_lorentz_force_calculator(dataset=None):
+    """Wraps OrionLorentzForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionLorentzForceCalculator', dataset)
+def calc_orion_nebula_h_alpha_u_q_f_f_calculator(dataset=None):
+    """Wraps OrionNebulaHAlphaUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('OrionNebulaHAlphaUQFFCalculator', dataset)
+def calc_orion_nebula_m_u_g_e_calculator(dataset=None):
+    """Wraps OrionNebulaMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OrionNebulaMUGECalculator', dataset)
+def calc_orion_quantum_integral_calculator(dataset=None):
+    """Wraps OrionQuantumIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionQuantumIntegralCalculator', dataset)
+def calc_orion_resonant_oscillatory_calculator(dataset=None):
+    """Wraps OrionResonantOscillatoryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionResonantOscillatoryCalculator', dataset)
+def calc_orion_star_formation_mass_calculator(dataset=None):
+    """Wraps OrionStarFormationMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionStarFormationMassCalculator', dataset)
+def calc_orion_stellar_wind_calculator(dataset=None):
+    """Wraps OrionStellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionStellarWindCalculator', dataset)
+def calc_orion_trapezium_o_b_u_v_radiation_champagne_flow_calculator(dataset=None):
+    """Wraps OrionTrapeziumOBUVRadiationChampagneFlowCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('OrionTrapeziumOBUVRadiationChampagneFlowCalculator', dataset)
+def calc_orion_trapezium_radiation_pressure_calculator(dataset=None):
+    """Wraps OrionTrapeziumRadiationPressureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionTrapeziumRadiationPressureCalculator', dataset)
+def calc_orion_trapezium_wind_ram_pressure_dominance_calculator(dataset=None):
+    """Wraps OrionTrapeziumWindRamPressureDominanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('OrionTrapeziumWindRamPressureDominanceCalculator', dataset)
+def calc_orion_u_q_f_f_h_i_i_region_calculator(dataset=None):
+    """Wraps OrionUQFFHIIRegionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OrionUQFFHIIRegionCalculator', dataset)
+def calc_orion_ug_sum_calculator(dataset=None):
+    """Wraps OrionUgSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OrionUgSumCalculator', dataset)
+def calc_oscilloscope_energy_density_calculator(dataset=None):
+    """Wraps OscilloscopeEnergyDensityCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('OscilloscopeEnergyDensityCalculator', dataset)
+def calc_oscilloscope_signal_bundle_calculator(dataset=None):
+    """Wraps OscilloscopeSignalBundleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OscilloscopeSignalBundleCalculator', dataset)
+def calc_outburst_decay_calculator(dataset=None):
+    """Wraps OutburstDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('OutburstDecayCalculator', dataset)
+def calc_outflow_pressure_calculator(dataset=None):
+    """Wraps OutflowPressureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OutflowPressureCalculator', dataset)
+def calc_outflow_ram_pressure_calculator(dataset=None):
+    """Wraps OutflowRamPressureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OutflowRamPressureCalculator', dataset)
+def calc_oxyhydrogen_implosion_calculator(dataset=None):
+    """Wraps OxyhydrogenImplosionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('OxyhydrogenImplosionCalculator', dataset)
+def calc_p_d_g_nuclear_polynomial_fit_verification_calculator(dataset=None):
+    """Wraps PDGNuclearPolynomialFitVerificationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('PDGNuclearPolynomialFitVerificationCalculator', dataset)
+def calc_p_i_infinity_decoder_calculator_84_a767_d3(dataset=None):
+    """Wraps PIInfinityDecoderCalculator_84A767D3.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PIInfinityDecoderCalculator_84A767D3', dataset)
+def calc_p_i_math_encryption_calculator(dataset=None):
+    """Wraps PIMathEncryptionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PIMathEncryptionCalculator', dataset)
+def calc_p_i_infinity_decoder(dataset=None):
+    """Wraps PI_Infinity_Decoder.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PI_Infinity_Decoder', dataset)
+def calc_p_l_c_k_cluster_g287_merger_relic_triadic_calculator(dataset=None):
+    """Wraps PLCKClusterG287MergerRelicTriadicCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PLCKClusterG287MergerRelicTriadicCalculator', dataset)
+def calc_p_s_r_j0030_neutron_star_buoyancy_calculator(dataset=None):
+    """Wraps PSRJ0030NeutronStarBuoyancyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PSRJ0030NeutronStarBuoyancyCalculator', dataset)
+def calc_p_s_r_j0030_neutron_star_f_u_bi_calculator(dataset=None):
+    """Wraps PSRJ0030NeutronStarFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('PSRJ0030NeutronStarFUBiCalculator', dataset)
+def calc_p_s_r_j0437_sacred_orbit_calculator(dataset=None):
+    """Wraps PSRJ0437SacredOrbitCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PSRJ0437SacredOrbitCalculator', dataset)
+def calc_p_s_z2_g181_merger_relic_triadic_f_u_bi_calculator(dataset=None):
+    """Wraps PSZ2G181MergerRelicTriadicFUBiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PSZ2G181MergerRelicTriadicFUBiCalculator', dataset)
+def calc_p_s_z2_g181_stroe2025_xray_mach_u_q_f_f_calculator(dataset=None):
+    """Wraps PSZ2G181Stroe2025XrayMachUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PSZ2G181Stroe2025XrayMachUQFFCalculator', dataset)
+def calc_p_w_m_electrolysis_energy_calculator(dataset=None):
+    """Wraps PWMElectrolysisEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PWMElectrolysisEnergyCalculator', dataset)
+def calc_paraffin_gas_bubble_balancer_calculator(dataset=None):
+    """Wraps ParaffinGasBubbleBalancerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ParaffinGasBubbleBalancerCalculator', dataset)
+def calc_paraffin_wax_cap_calculator(dataset=None):
+    """Wraps ParaffinWaxCapCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ParaffinWaxCapCalculator', dataset)
+def calc_parallel_computation(dataset=None):
+    """Wraps ParallelComputation.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ParallelComputation', dataset)
+def calc_parametric_motion_calculator(dataset=None):
+    """Wraps ParametricMotionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ParametricMotionCalculator', dataset)
+def calc_path_integrals(dataset=None):
+    """Wraps PathIntegrals.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PathIntegrals', dataset)
+def calc_penrose_process_calculator(dataset=None):
+    """Wraps PenroseProcessCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PenroseProcessCalculator', dataset)
+def calc_periodic_table_resonance_calculator(dataset=None):
+    """Wraps PeriodicTableResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PeriodicTableResonanceCalculator', dataset)
+def calc_perlin_noise_calculator(dataset=None):
+    """Wraps PerlinNoiseCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PerlinNoiseCalculator', dataset)
+def calc_phase2_calculator(dataset=None):
+    """Wraps Phase2Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Phase2Calculator', dataset)
+def calc_phonon_ergosphere_superradiance_calc(dataset=None):
+    """Wraps PhononErgosphereSuperradianceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononErgosphereSuperradianceCalc', dataset)
+def calc_phonon_jet_launching_m87_sgr_a_calc(dataset=None):
+    """Wraps PhononJetLaunchingM87SgrACalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononJetLaunchingM87SgrACalc', dataset)
+def calc_phonon_lagrangian_phi_s26_derivation_calc(dataset=None):
+    """Wraps PhononLagrangianPhiS26DerivationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononLagrangianPhiS26DerivationCalc', dataset)
+def calc_phonon_mediated_qubit_gate_fidelity_calculator(dataset=None):
+    """Wraps PhononMediatedQubitGateFidelityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PhononMediatedQubitGateFidelityCalculator', dataset)
+def calc_phonon_modified_christoffel_geodesic_calc(dataset=None):
+    """Wraps PhononModifiedChristoffelGeodesicCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononModifiedChristoffelGeodesicCalc', dataset)
+def calc_phonon_modulated_energy_enet_phonon_calc(dataset=None):
+    """Wraps PhononModulatedEnergyEnetPhononCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononModulatedEnergyEnetPhononCalc', dataset)
+def calc_phonon_modulated_hawking_temperature_calc(dataset=None):
+    """Wraps PhononModulatedHawkingTemperatureCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononModulatedHawkingTemperatureCalc', dataset)
+def calc_phonon_modulated_holonomy_s_cm_calculator(dataset=None):
+    """Wraps PhononModulatedHolonomySCmCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PhononModulatedHolonomySCmCalculator', dataset)
+def calc_phonon_modulated_hubble_parameter_calculator(dataset=None):
+    """Wraps PhononModulatedHubbleParameterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PhononModulatedHubbleParameterCalculator', dataset)
+def calc_phonon_modulation_factor125_t_hz_gaussian_calc(dataset=None):
+    """Wraps PhononModulationFactor125THzGaussianCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononModulationFactor125THzGaussianCalc', dataset)
+def calc_phonon_n_s_spin_down_magnetic_dipole_calc(dataset=None):
+    """Wraps PhononNSSpinDownMagneticDipoleCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononNSSpinDownMagneticDipoleCalc', dataset)
+def calc_phonon_q_p_o_accretion_disk_calc(dataset=None):
+    """Wraps PhononQPOAccretionDiskCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PhononQPOAccretionDiskCalc', dataset)
+def calc_photo_twenty_one_analysis_calculator(dataset=None):
+    """Wraps PhotoTwentyOneAnalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PhotoTwentyOneAnalysisCalculator', dataset)
+def calc_photoevaporation_erosion_calculator(dataset=None):
+    """Wraps PhotoevaporationErosionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PhotoevaporationErosionCalculator', dataset)
+def calc_photon_energy_calculator(dataset=None):
+    """Wraps PhotonEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PhotonEnergyCalculator', dataset)
+def calc_photon_lattice_projection_calculator(dataset=None):
+    """Wraps PhotonLatticeProjectionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PhotonLatticeProjectionCalculator', dataset)
+def calc_photon_sphere_calculator(dataset=None):
+    """Wraps PhotonSphereCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PhotonSphereCalculator', dataset)
+def calc_pi_cycle_encoder_calculator(dataset=None):
+    """Wraps PiCycleEncoderCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PiCycleEncoderCalculator', dataset)
+def calc_pi_cycle_modulation_calculator(dataset=None):
+    """Wraps PiCycleModulationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PiCycleModulationCalculator', dataset)
+def calc_pi_cycles_negative_time_cosine_temporal_reversal_calculator(dataset=None):
+    """Wraps PiCyclesNegativeTimeCosineTemporalReversalCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PiCyclesNegativeTimeCosineTemporalReversalCalculator', dataset)
+def calc_pi_digit_pattern_calculator(dataset=None):
+    """Wraps PiDigitPatternCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PiDigitPatternCalculator', dataset)
+def calc_pi_encoding_calculator(dataset=None):
+    """Wraps PiEncodingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PiEncodingCalculator', dataset)
+def calc_pi_mean_chaos_gradient_calculator(dataset=None):
+    """Wraps PiMeanChaosGradientCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PiMeanChaosGradientCalculator', dataset)
+def calc_pi_phi_convergence_series_calculator(dataset=None):
+    """Wraps PiPhiConvergenceSeriesCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PiPhiConvergenceSeriesCalculator', dataset)
+def calc_pi_series_acceleration_calculator(dataset=None):
+    """Wraps PiSeriesAccelerationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PiSeriesAccelerationCalculator', dataset)
+def calc_pi_solfeggio_harmonics_calculator(dataset=None):
+    """Wraps PiSolfeggioHarmonicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PiSolfeggioHarmonicsCalculator', dataset)
+def calc_pillar_erosion_calculator(dataset=None):
+    """Wraps PillarErosionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarErosionCalculator', dataset)
+def calc_pillar_gravity_calculator(dataset=None):
+    """Wraps PillarGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarGravityCalculator', dataset)
+def calc_pillar_mass_growth_calculator(dataset=None):
+    """Wraps PillarMassGrowthCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarMassGrowthCalculator', dataset)
+def calc_pillars_base_gravity_calculator(dataset=None):
+    """Wraps PillarsBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsBaseGravityCalculator', dataset)
+def calc_pillars_cosmological_constant_calculator(dataset=None):
+    """Wraps PillarsCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsCosmologicalConstantCalculator', dataset)
+def calc_pillars_creation_calculator(dataset=None):
+    """Wraps PillarsCreationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsCreationCalculator', dataset)
+def calc_pillars_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps PillarsDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsDarkMatterPerturbationCalculator', dataset)
+def calc_pillars_electromagnetic_calculator(dataset=None):
+    """Wraps PillarsElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsElectromagneticCalculator', dataset)
+def calc_pillars_erosion_calculator(dataset=None):
+    """Wraps PillarsErosionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsErosionCalculator', dataset)
+def calc_pillars_erosion_timescale_calculator(dataset=None):
+    """Wraps PillarsErosionTimescaleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsErosionTimescaleCalculator', dataset)
+def calc_pillars_fluid_density_calculator(dataset=None):
+    """Wraps PillarsFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsFluidDensityCalculator', dataset)
+def calc_pillars_formation_timescale_calculator(dataset=None):
+    """Wraps PillarsFormationTimescaleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsFormationTimescaleCalculator', dataset)
+def calc_pillars_gas_velocity_calculator(dataset=None):
+    """Wraps PillarsGasVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsGasVelocityCalculator', dataset)
+def calc_pillars_magnetic_field_calculator(dataset=None):
+    """Wraps PillarsMagneticFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsMagneticFieldCalculator', dataset)
+def calc_pillars_mass_growth_calculator(dataset=None):
+    """Wraps PillarsMassGrowthCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsMassGrowthCalculator', dataset)
+def calc_pillars_of_creation_erosion_m_u_g_e_calculator(dataset=None):
+    """Wraps PillarsOfCreationErosionMUGECalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('PillarsOfCreationErosionMUGECalculator', dataset)
+def calc_pillars_of_creation_m16_erosion_calculator(dataset=None):
+    """Wraps PillarsOfCreationM16ErosionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PillarsOfCreationM16ErosionCalculator', dataset)
+def calc_pillars_of_creation_m16_u_q_f_f(dataset=None):
+    """Wraps PillarsOfCreationM16UQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PillarsOfCreationM16UQFF', dataset)
+def calc_pillars_of_creation_m16v2_u_q_f_f(dataset=None):
+    """Wraps PillarsOfCreationM16v2UQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PillarsOfCreationM16v2UQFF', dataset)
+def calc_pillars_oscillatory_wave_calculator(dataset=None):
+    """Wraps PillarsOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsOscillatoryWaveCalculator', dataset)
+def calc_pillars_quantum_uncertainty_calculator(dataset=None):
+    """Wraps PillarsQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsQuantumUncertaintyCalculator', dataset)
+def calc_pillars_stellar_wind_calculator(dataset=None):
+    """Wraps PillarsStellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsStellarWindCalculator', dataset)
+def calc_pillars_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps PillarsUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PillarsUQFFUnificationCalculator', dataset)
+def calc_planck_blackbody_validator_calculator(dataset=None):
+    """Wraps PlanckBlackbodyValidatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlanckBlackbodyValidatorCalculator', dataset)
+def calc_planetary_core_hamiltonian_calculator(dataset=None):
+    """Wraps PlanetaryCoreHamiltonianCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlanetaryCoreHamiltonianCalculator', dataset)
+def calc_planetary_core_ug3_penetration_scaling_calculator(dataset=None):
+    """Wraps PlanetaryCoreUg3PenetrationScalingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('PlanetaryCoreUg3PenetrationScalingCalculator', dataset)
+def calc_planetary_core_wind_maintenance_calculator(dataset=None):
+    """Wraps PlanetaryCoreWindMaintenanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlanetaryCoreWindMaintenanceCalculator', dataset)
+def calc_planetary_ring_dynamics_calculator(dataset=None):
+    """Wraps PlanetaryRingDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlanetaryRingDynamicsCalculator', dataset)
+def calc_plasma_convection_calculator(dataset=None):
+    """Wraps PlasmaConvectionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmaConvectionCalculator', dataset)
+def calc_plasma_convection_velocity_calculator(dataset=None):
+    """Wraps PlasmaConvectionVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmaConvectionVelocityCalculator', dataset)
+def calc_plasma_instability_u_q_f_f_calculator(dataset=None):
+    """Wraps PlasmaInstabilityUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmaInstabilityUQFFCalculator', dataset)
+def calc_plasma_intensity_energy_flow_calculator(dataset=None):
+    """Wraps PlasmaIntensityEnergyFlowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmaIntensityEnergyFlowCalculator', dataset)
+def calc_plasma_orb_emergence_threshold_calculator(dataset=None):
+    """Wraps PlasmaOrbEmergenceThresholdCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PlasmaOrbEmergenceThresholdCalculator', dataset)
+def calc_plasma_orb_mass_calculator(dataset=None):
+    """Wraps PlasmaOrbMassCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmaOrbMassCalculator', dataset)
+def calc_plasma_p_i_operator_calculator(dataset=None):
+    """Wraps PlasmaPIOperatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmaPIOperatorCalculator', dataset)
+def calc_plasma_refractive_index_calculator(dataset=None):
+    """Wraps PlasmaRefractiveIndexCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmaRefractiveIndexCalculator', dataset)
+def calc_plasma_shield_capture_model(dataset=None):
+    """Wraps PlasmaShieldCaptureModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmaShieldCaptureModel', dataset)
+def calc_plasma_shielding_defense_calculator(dataset=None):
+    """Wraps PlasmaShieldingDefenseCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmaShieldingDefenseCalculator', dataset)
+def calc_plasmoid_concentration_shift_calculator(dataset=None):
+    """Wraps PlasmoidConcentrationShiftCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmoidConcentrationShiftCalculator', dataset)
+def calc_plasmoid_density_evolution_calculator(dataset=None):
+    """Wraps PlasmoidDensityEvolutionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidDensityEvolutionCalculator', dataset)
+def calc_plasmoid_dynamics_calculator(dataset=None):
+    """Wraps PlasmoidDynamicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidDynamicsCalculator', dataset)
+def calc_plasmoid_dynamics_validator_calculator(dataset=None):
+    """Wraps PlasmoidDynamicsValidatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidDynamicsValidatorCalculator', dataset)
+def calc_plasmoid_frame_analysis_calculator(dataset=None):
+    """Wraps PlasmoidFrameAnalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidFrameAnalysisCalculator', dataset)
+def calc_plasmoid_gravitational_potential_calculator(dataset=None):
+    """Wraps PlasmoidGravitationalPotentialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidGravitationalPotentialCalculator', dataset)
+def calc_plasmoid_intelligence_metrics_calculator(dataset=None):
+    """Wraps PlasmoidIntelligenceMetricsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidIntelligenceMetricsCalculator', dataset)
+def calc_plasmoid_mass_estimate_calculator(dataset=None):
+    """Wraps PlasmoidMassEstimateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidMassEstimateCalculator', dataset)
+def calc_plasmoid_path_anchoring_calculator(dataset=None):
+    """Wraps PlasmoidPathAnchoringCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmoidPathAnchoringCalculator', dataset)
+def calc_plasmoid_settling_dynamics_calculator(dataset=None):
+    """Wraps PlasmoidSettlingDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmoidSettlingDynamicsCalculator', dataset)
+def calc_plasmoid_shape_shifting_calculator(dataset=None):
+    """Wraps PlasmoidShapeShiftingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PlasmoidShapeShiftingCalculator', dataset)
+def calc_plasmoid_species_classifier_calculator(dataset=None):
+    """Wraps PlasmoidSpeciesClassifierCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidSpeciesClassifierCalculator', dataset)
+def calc_plasmoid_spin_rate_calculator(dataset=None):
+    """Wraps PlasmoidSpinRateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PlasmoidSpinRateCalculator', dataset)
+def calc_polarity_generations_calculator(dataset=None):
+    """Wraps PolarityGenerationsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PolarityGenerationsCalculator', dataset)
+def calc_polynomial26_root_calculator(dataset=None):
+    """Wraps Polynomial26RootCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Polynomial26RootCalculator', dataset)
+def calc_polyol_combustion_calculator(dataset=None):
+    """Wraps PolyolCombustionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PolyolCombustionCalculator', dataset)
+def calc_polyol_molecular_formula_calculator(dataset=None):
+    """Wraps PolyolMolecularFormulaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PolyolMolecularFormulaCalculator', dataset)
+def calc_ponderomotive_force_calculator(dataset=None):
+    """Wraps PonderomotiveForceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PonderomotiveForceCalculator', dataset)
+def calc_positive_et_buoyancy_expansion_master_calc(dataset=None):
+    """Wraps PositiveEtBuoyancyExpansionMasterCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PositiveEtBuoyancyExpansionMasterCalc', dataset)
+def calc_potential_energy_calculator(dataset=None):
+    """Wraps PotentialEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PotentialEnergyCalculator', dataset)
+def calc_power_integration_calculator(dataset=None):
+    """Wraps PowerIntegrationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PowerIntegrationCalculator', dataset)
+def calc_pre_fertilization_energy_calculator(dataset=None):
+    """Wraps PreFertilizationEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PreFertilizationEnergyCalculator', dataset)
+def calc_precessional_resonance_calculator(dataset=None):
+    """Wraps PrecessionalResonanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PrecessionalResonanceCalculator', dataset)
+def calc_primordial_g_w_calculator(dataset=None):
+    """Wraps PrimordialGWCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PrimordialGWCalculator', dataset)
+def calc_primordial_hydrogen_calculator(dataset=None):
+    """Wraps PrimordialHydrogenCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PrimordialHydrogenCalculator', dataset)
+def calc_primordial_timing_function_calculator_s234(dataset=None):
+    """Wraps PrimordialTimingFunctionCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PrimordialTimingFunctionCalculator_S234', dataset)
+def calc_production_kernel_f_u_bi_complete_calc(dataset=None):
+    """Wraps ProductionKernelFUBiCompleteCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProductionKernelFUBiCompleteCalc', dataset)
+def calc_production_scaling_v10_benchmark_calc(dataset=None):
+    """Wraps ProductionScalingV10BenchmarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProductionScalingV10BenchmarkCalc', dataset)
+def calc_production_scaling_v12_benchmark_calc(dataset=None):
+    """Wraps ProductionScalingV12BenchmarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProductionScalingV12BenchmarkCalc', dataset)
+def calc_production_scaling_v23_benchmark_calculator(dataset=None):
+    """Wraps ProductionScalingV23BenchmarkCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ProductionScalingV23BenchmarkCalculator', dataset)
+def calc_production_scaling_v24_vectorized_calculator(dataset=None):
+    """Wraps ProductionScalingV24VectorizedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ProductionScalingV24VectorizedCalculator', dataset)
+def calc_production_scaling_v25_pipeline_calculator(dataset=None):
+    """Wraps ProductionScalingV25PipelineCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ProductionScalingV25PipelineCalculator', dataset)
+def calc_production_scaling_v7_benchmark_calc(dataset=None):
+    """Wraps ProductionScalingV7BenchmarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProductionScalingV7BenchmarkCalc', dataset)
+def calc_production_scaling_v8_benchmark_calc(dataset=None):
+    """Wraps ProductionScalingV8BenchmarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProductionScalingV8BenchmarkCalc', dataset)
+def calc_production_scaling_v9_benchmark_calc(dataset=None):
+    """Wraps ProductionScalingV9BenchmarkCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProductionScalingV9BenchmarkCalc', dataset)
+def calc_proto_hydrogen26_shell_calculator(dataset=None):
+    """Wraps ProtoHydrogen26ShellCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ProtoHydrogen26ShellCalculator', dataset)
+def calc_proto_iron_proto_silicon_nuclear_identity_calc(dataset=None):
+    """Wraps ProtoIronProtoSiliconNuclearIdentityCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ProtoIronProtoSiliconNuclearIdentityCalc', dataset)
+def calc_proto_iron_silicon_shell_calculator(dataset=None):
+    """Wraps ProtoIronSiliconShellCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ProtoIronSiliconShellCalculator', dataset)
+def calc_proto_nucleus_shell_model(dataset=None):
+    """Wraps ProtoNucleusShellModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ProtoNucleusShellModel', dataset)
+def calc_proton_saturation_levels_model(dataset=None):
+    """Wraps ProtonSaturationLevelsModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ProtonSaturationLevelsModel', dataset)
+def calc_pseudo_monopole26_state_vacuum_density_calc(dataset=None):
+    """Wraps PseudoMonopole26StateVacuumDensityCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PseudoMonopole26StateVacuumDensityCalc', dataset)
+def calc_pseudo_monopole_field_calculator(dataset=None):
+    """Wraps PseudoMonopoleFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PseudoMonopoleFieldCalculator', dataset)
+def calc_pseudo_monopole_gyro_calculator(dataset=None):
+    """Wraps PseudoMonopoleGyroCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PseudoMonopoleGyroCalculator', dataset)
+def calc_pseudo_monopole_model(dataset=None):
+    """Wraps PseudoMonopoleModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PseudoMonopoleModel', dataset)
+def calc_pseudo_monopole_state_calculator(dataset=None):
+    """Wraps PseudoMonopoleStateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PseudoMonopoleStateCalculator', dataset)
+def calc_pseudo_monopole_state_orb49_calculator(dataset=None):
+    """Wraps PseudoMonopoleStateOrb49Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PseudoMonopoleStateOrb49Calculator', dataset)
+def calc_psi_total_wave_function_calculator(dataset=None):
+    """Wraps PsiTotalWaveFunctionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PsiTotalWaveFunctionCalculator', dataset)
+def calc_pulsar_timing_array_u_q_f_f_calculator(dataset=None):
+    """Wraps PulsarTimingArrayUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PulsarTimingArrayUQFFCalculator', dataset)
+def calc_pulsar_wind_nebula_calculator(dataset=None):
+    """Wraps PulsarWindNebulaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('PulsarWindNebulaCalculator', dataset)
+def calc_pvs_n_p_u_q_f_f_complexity_calculator(dataset=None):
+    """Wraps PvsNPUQFFComplexityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PvsNPUQFFComplexityCalculator', dataset)
+def calc_pymander_sphere_order_from_chaos_calculator(dataset=None):
+    """Wraps PymanderSphereOrderFromChaosCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('PymanderSphereOrderFromChaosCalculator', dataset)
+def calc_pythagorean_theorem_calculator(dataset=None):
+    """Wraps PythagoreanTheoremCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('PythagoreanTheoremCalculator', dataset)
+def calc_q_a_o_a_optimization_calculator(dataset=None):
+    """Wraps QAOAOptimizationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QAOAOptimizationCalculator', dataset)
+def calc_q_a_o_a_optimization_s8_calculator(dataset=None):
+    """Wraps QAOAOptimizationS8Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QAOAOptimizationS8Calculator', dataset)
+def calc_q_c_d_vacuum_calculator(dataset=None):
+    """Wraps QCDVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QCDVacuumCalculator', dataset)
+def calc_q_calc_geom_c_a_b_i_reference_calculator_s234(dataset=None):
+    """Wraps QCalcGeomCABIReferenceCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QCalcGeomCABIReferenceCalculator_S234', dataset)
+def calc_q_calc_geom_v_d_s_d_v_p_b_s_h_calculator(dataset=None):
+    """Wraps QCalcGeomVDSDVPBSHCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QCalcGeomVDSDVPBSHCalculator', dataset)
+def calc_q_calc_geom_vectorized_pipeline_calc(dataset=None):
+    """Wraps QCalcGeomVectorizedPipelineCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QCalcGeomVectorizedPipelineCalc', dataset)
+def calc_q_g_p_multiplicity_buoyancy_calculator(dataset=None):
+    """Wraps QGPMultiplicityBuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QGPMultiplicityBuoyancyCalculator', dataset)
+def calc_q_g_p_vacuum_density_calc(dataset=None):
+    """Wraps QGPVacuumDensityCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QGPVacuumDensityCalc', dataset)
+def calc_q_scope_frequency_resonance_u_q_f_f_calculator(dataset=None):
+    """Wraps QScopeFrequencyResonanceUQFFCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QScopeFrequencyResonanceUQFFCalculator', dataset)
+def calc_q_wave47_non_gaussian_distribution_calculator(dataset=None):
+    """Wraps QWave47NonGaussianDistributionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QWave47NonGaussianDistributionCalculator', dataset)
+def calc_q_wave47_statistics_calculator(dataset=None):
+    """Wraps QWave47StatisticsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QWave47StatisticsCalculator', dataset)
+def calc_q_wave81_phase_separation_validation_calculator(dataset=None):
+    """Wraps QWave81PhaseSeparationValidationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QWave81PhaseSeparationValidationCalculator', dataset)
+def calc_q_wave_resonance_model(dataset=None):
+    """Wraps QWaveResonanceModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QWaveResonanceModel', dataset)
+def calc_q_wave_statistics_calculator(dataset=None):
+    """Wraps QWaveStatisticsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QWaveStatisticsCalculator', dataset)
+def calc_qu_ti_p_quantum_entanglement_calculator(dataset=None):
+    """Wraps QuTiPQuantumEntanglementCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QuTiPQuantumEntanglementCalculator', dataset)
+def calc_qu_ti_p_quantum_state_calculator(dataset=None):
+    """Wraps QuTiPQuantumStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuTiPQuantumStateCalculator', dataset)
+def calc_quadrant_concentration_tracker_calculator(dataset=None):
+    """Wraps QuadrantConcentrationTrackerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuadrantConcentrationTrackerCalculator', dataset)
+def calc_quadrant_sequence_orb15_calculator(dataset=None):
+    """Wraps QuadrantSequenceOrb15Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuadrantSequenceOrb15Calculator', dataset)
+def calc_quadrant_transition_tracker_calculator(dataset=None):
+    """Wraps QuadrantTransitionTrackerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuadrantTransitionTrackerCalculator', dataset)
+def calc_quadratic_formula_calculator(dataset=None):
+    """Wraps QuadraticFormulaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuadraticFormulaCalculator', dataset)
+def calc_quadriadic_u_q_f_f_n_a_n_o_grav_a_g_n_co_evolution_calculator(dataset=None):
+    """Wraps QuadriadicUQFFNANOGravAGNCoEvolutionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QuadriadicUQFFNANOGravAGNCoEvolutionCalculator', dataset)
+def calc_quality_shift_function_calculator(dataset=None):
+    """Wraps QualityShiftFunctionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QualityShiftFunctionCalculator', dataset)
+def calc_quantum_atom_simulator_calculator(dataset=None):
+    """Wraps QuantumAtomSimulatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumAtomSimulatorCalculator', dataset)
+def calc_quantum_calculator(dataset=None):
+    """Wraps QuantumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuantumCalculator', dataset)
+def calc_quantum_coherence_integral_calculator(dataset=None):
+    """Wraps QuantumCoherenceIntegralCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumCoherenceIntegralCalculator', dataset)
+def calc_quantum_egg_frequency_numerical_sim_calculator(dataset=None):
+    """Wraps QuantumEggFrequencyNumericalSimCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QuantumEggFrequencyNumericalSimCalculator', dataset)
+def calc_quantum_error_correction_topo_code_calculator(dataset=None):
+    """Wraps QuantumErrorCorrectionTopoCodeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumErrorCorrectionTopoCodeCalculator', dataset)
+def calc_quantum_level26_calculator(dataset=None):
+    """Wraps QuantumLevel26Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumLevel26Calculator', dataset)
+def calc_quantum_non_local_coupling_calculator(dataset=None):
+    """Wraps QuantumNonLocalCouplingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuantumNonLocalCouplingCalculator', dataset)
+def calc_quantum_open_energy_integral_proto_shell_a_c_p_calculator(dataset=None):
+    """Wraps QuantumOpenEnergyIntegralProtoShellACPCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QuantumOpenEnergyIntegralProtoShellACPCalculator', dataset)
+def calc_quantum_p_i_math_calculator(dataset=None):
+    """Wraps QuantumPIMathCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumPIMathCalculator', dataset)
+def calc_quantum_plasma_orb_u_sorb_calculator(dataset=None):
+    """Wraps QuantumPlasmaOrbUSorbCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QuantumPlasmaOrbUSorbCalculator', dataset)
+def calc_quantum_ripple_u_l_f_calculator(dataset=None):
+    """Wraps QuantumRippleULFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumRippleULFCalculator', dataset)
+def calc_quantum_shift_measurement_calculator(dataset=None):
+    """Wraps QuantumShiftMeasurementCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumShiftMeasurementCalculator', dataset)
+def calc_quantum_signature_suppression_calculator(dataset=None):
+    """Wraps QuantumSignatureSuppressionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumSignatureSuppressionCalculator', dataset)
+def calc_quantum_state26_gravity_calculator(dataset=None):
+    """Wraps QuantumState26GravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuantumState26GravityCalculator', dataset)
+def calc_quantum_state26_polynomial_calculator(dataset=None):
+    """Wraps QuantumState26PolynomialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuantumState26PolynomialCalculator', dataset)
+def calc_quantum_state_phase_calculator(dataset=None):
+    """Wraps QuantumStatePhaseCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumStatePhaseCalculator', dataset)
+def calc_quantum_to_mass_gradient_calculator(dataset=None):
+    """Wraps QuantumToMassGradientCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumToMassGradientCalculator', dataset)
+def calc_quantum_vacuum_energy_calculator(dataset=None):
+    """Wraps QuantumVacuumEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuantumVacuumEnergyCalculator', dataset)
+def calc_quantum_variable_sets5to9_calculator(dataset=None):
+    """Wraps QuantumVariableSets5to9Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QuantumVariableSets5to9Calculator', dataset)
+def calc_quantum_wave_function_calculator(dataset=None):
+    """Wraps QuantumWaveFunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('QuantumWaveFunctionCalculator', dataset)
+def calc_quasar_blazer_luminosity_ereact_verification_calculator(dataset=None):
+    """Wraps QuasarBlazerLuminosityEreactVerificationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QuasarBlazerLuminosityEreactVerificationCalculator', dataset)
+def calc_quasar_eddington_excess_jet_velocity_calculator(dataset=None):
+    """Wraps QuasarEddingtonExcessJetVelocityCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QuasarEddingtonExcessJetVelocityCalculator', dataset)
+def calc_quasar_jet_asymmetry_cos_ratio_calculator(dataset=None):
+    """Wraps QuasarJetAsymmetryCosRatioCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('QuasarJetAsymmetryCosRatioCalculator', dataset)
+def calc_quasar_jet_navier_stokes_calculator(dataset=None):
+    """Wraps QuasarJetNavierStokesCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('QuasarJetNavierStokesCalculator', dataset)
+def calc_quasar_jet_phonon_modulation_calc(dataset=None):
+    """Wraps QuasarJetPhononModulationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('QuasarJetPhononModulationCalc', dataset)
+def calc_r_aquarii_symbiotic_binary_f_u_bi_calculator(dataset=None):
+    """Wraps RAquariiSymbioticBinaryFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('RAquariiSymbioticBinaryFUBiCalculator', dataset)
+def calc_r_e_s_t_f_u_bi_endpoint_calc(dataset=None):
+    """Wraps RESTFUBiEndpointCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RESTFUBiEndpointCalc', dataset)
+def calc_r_i_a_f_c_r_p_ice_cube_neutrino_background_l_l_a_g_n_calculator(dataset=None):
+    """Wraps RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator', dataset)
+def calc_r_process_abundance_calculator(dataset=None):
+    """Wraps RProcessAbundanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RProcessAbundanceCalculator', dataset)
+def calc_radiation_erosion_calculator(dataset=None):
+    """Wraps RadiationErosionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RadiationErosionCalculator', dataset)
+def calc_radiation_pressure_calculator(dataset=None):
+    """Wraps RadiationPressureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RadiationPressureCalculator', dataset)
+def calc_radioactive_decay_u_q_f_f_calculator(dataset=None):
+    """Wraps RadioactiveDecayUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RadioactiveDecayUQFFCalculator', dataset)
+def calc_ramanujan_acceleration_calc(dataset=None):
+    """Wraps RamanujanAccelerationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RamanujanAccelerationCalc', dataset)
+def calc_ramanujan_polynomials_q26_calculator(dataset=None):
+    """Wraps RamanujanPolynomialsQ26Calculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('RamanujanPolynomialsQ26Calculator', dataset)
+def calc_randall_sundrum_extra_dimension_calculator(dataset=None):
+    """Wraps RandallSundrumExtraDimensionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RandallSundrumExtraDimensionCalculator', dataset)
+def calc_reactivity_energy_density_calculator(dataset=None):
+    """Wraps ReactivityEnergyDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ReactivityEnergyDensityCalculator', dataset)
+def calc_reactor_efficiency_calculator(dataset=None):
+    """Wraps ReactorEfficiencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReactorEfficiencyCalculator', dataset)
+def calc_reactor_efficiency_orb61_calculator(dataset=None):
+    """Wraps ReactorEfficiencyOrb61Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ReactorEfficiencyOrb61Calculator', dataset)
+def calc_reactor_efficiency_q_calc_calculator(dataset=None):
+    """Wraps ReactorEfficiencyQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReactorEfficiencyQCalcCalculator', dataset)
+def calc_reactor_efficiency_u_q_f_f_canonical_calculator(dataset=None):
+    """Wraps ReactorEfficiencyUQFFCanonicalCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ReactorEfficiencyUQFFCanonicalCalculator', dataset)
+def calc_reactor_energy_calculator(dataset=None):
+    """Wraps ReactorEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReactorEnergyCalculator', dataset)
+def calc_reactor_energy_s6_calculator(dataset=None):
+    """Wraps ReactorEnergyS6Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ReactorEnergyS6Calculator', dataset)
+def calc_reactor_radius_calculator(dataset=None):
+    """Wraps ReactorRadiusCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ReactorRadiusCalculator', dataset)
+def calc_reactor_refined_f_u_calculator(dataset=None):
+    """Wraps ReactorRefinedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReactorRefinedFUCalculator', dataset)
+def calc_reactor_thermal_dynamics_calculator(dataset=None):
+    """Wraps ReactorThermalDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReactorThermalDynamicsCalculator', dataset)
+def calc_red_dwarf_basel_series_calculator(dataset=None):
+    """Wraps RedDwarfBaselSeriesCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfBaselSeriesCalculator', dataset)
+def calc_red_dwarf_buoyancy_series_calculator(dataset=None):
+    """Wraps RedDwarfBuoyancySeriesCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfBuoyancySeriesCalculator', dataset)
+def calc_red_dwarf_core_analog_calculator(dataset=None):
+    """Wraps RedDwarfCoreAnalogCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RedDwarfCoreAnalogCalculator', dataset)
+def calc_red_dwarf_l_e_n_r_e_field_calculator(dataset=None):
+    """Wraps RedDwarfLENREFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfLENREFieldCalculator', dataset)
+def calc_red_dwarf_l_e_n_r_pi_series_higgs_calculator(dataset=None):
+    """Wraps RedDwarfLENRPiSeriesHiggsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RedDwarfLENRPiSeriesHiggsCalculator', dataset)
+def calc_red_dwarf_neutron_rate_calculator(dataset=None):
+    """Wraps RedDwarfNeutronRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfNeutronRateCalculator', dataset)
+def calc_red_dwarf_plasma_accumulator_calculator(dataset=None):
+    """Wraps RedDwarfPlasmaAccumulatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RedDwarfPlasmaAccumulatorCalculator', dataset)
+def calc_red_dwarf_pseudo_monopole_delta_n_calculator(dataset=None):
+    """Wraps RedDwarfPseudoMonopoleDeltaNCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfPseudoMonopoleDeltaNCalculator', dataset)
+def calc_red_dwarf_reactor_aether_calculator(dataset=None):
+    """Wraps RedDwarfReactorAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorAetherCalculator', dataset)
+def calc_red_dwarf_reactor_jet_dynamics_calculator(dataset=None):
+    """Wraps RedDwarfReactorJetDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorJetDynamicsCalculator', dataset)
+def calc_red_dwarf_reactor_master_calculator(dataset=None):
+    """Wraps RedDwarfReactorMasterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorMasterCalculator', dataset)
+def calc_red_dwarf_reactor_orbital_stability_calculator(dataset=None):
+    """Wraps RedDwarfReactorOrbitalStabilityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorOrbitalStabilityCalculator', dataset)
+def calc_red_dwarf_reactor_plasmoid_calculator(dataset=None):
+    """Wraps RedDwarfReactorPlasmoidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorPlasmoidCalculator', dataset)
+def calc_red_dwarf_reactor_ubi_calculator(dataset=None):
+    """Wraps RedDwarfReactorUbiCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorUbiCalculator', dataset)
+def calc_red_dwarf_reactor_ug1_calculator(dataset=None):
+    """Wraps RedDwarfReactorUg1Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorUg1Calculator', dataset)
+def calc_red_dwarf_reactor_ug2_calculator(dataset=None):
+    """Wraps RedDwarfReactorUg2Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorUg2Calculator', dataset)
+def calc_red_dwarf_reactor_ug3_calculator(dataset=None):
+    """Wraps RedDwarfReactorUg3Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorUg3Calculator', dataset)
+def calc_red_dwarf_reactor_um_calculator(dataset=None):
+    """Wraps RedDwarfReactorUmCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfReactorUmCalculator', dataset)
+def calc_red_dwarf_transmutation_q_calculator(dataset=None):
+    """Wraps RedDwarfTransmutationQCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfTransmutationQCalculator', dataset)
+def calc_red_dwarf_u_h_calculator(dataset=None):
+    """Wraps RedDwarfUHCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfUHCalculator', dataset)
+def calc_red_dwarf_ug3_calculator(dataset=None):
+    """Wraps RedDwarfUg3Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfUg3Calculator', dataset)
+def calc_red_dwarf_um_calculator(dataset=None):
+    """Wraps RedDwarfUmCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfUmCalculator', dataset)
+def calc_red_dwarf_wmag_calculator(dataset=None):
+    """Wraps RedDwarfWmagCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedDwarfWmagCalculator', dataset)
+def calc_red_mercury_superconductor_calculator(dataset=None):
+    """Wraps RedMercurySuperconductorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RedMercurySuperconductorCalculator', dataset)
+def calc_red_spider_nebula_model(dataset=None):
+    """Wraps RedSpiderNebulaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RedSpiderNebulaModel', dataset)
+def calc_red_spider_nebula_n_g6537_u_q_f_f_calculator(dataset=None):
+    """Wraps RedSpiderNebulaNG6537UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RedSpiderNebulaNG6537UQFFCalculator', dataset)
+def calc_redshift_dependent_hubble_calculator(dataset=None):
+    """Wraps RedshiftDependentHubbleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RedshiftDependentHubbleCalculator', dataset)
+def calc_reference_system(dataset=None):
+    """Wraps ReferenceSystem.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReferenceSystem', dataset)
+def calc_reference_system_library(dataset=None):
+    """Wraps ReferenceSystemLibrary.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ReferenceSystemLibrary', dataset)
+def calc_relativistic_jet_velocity_calculator(dataset=None):
+    """Wraps RelativisticJetVelocityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RelativisticJetVelocityCalculator', dataset)
+def calc_resonance_aether24_calculator(dataset=None):
+    """Wraps ResonanceAether24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceAether24Calculator', dataset)
+def calc_resonance_aether_calculator(dataset=None):
+    """Wraps ResonanceAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceAetherCalculator', dataset)
+def calc_resonance_aether_comp_calculator(dataset=None):
+    """Wraps ResonanceAetherCompCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceAetherCompCalculator', dataset)
+def calc_resonance_calculator(dataset=None):
+    """Wraps ResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceCalculator', dataset)
+def calc_resonance_d_p_m_calculator(dataset=None):
+    """Wraps ResonanceDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceDPMCalculator', dataset)
+def calc_resonance_expansion24_calculator(dataset=None):
+    """Wraps ResonanceExpansion24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceExpansion24Calculator', dataset)
+def calc_resonance_expansion_comp_calculator(dataset=None):
+    """Wraps ResonanceExpansionCompCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceExpansionCompCalculator', dataset)
+def calc_resonance_fluid24_calculator(dataset=None):
+    """Wraps ResonanceFluid24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceFluid24Calculator', dataset)
+def calc_resonance_fluid_comp_calculator(dataset=None):
+    """Wraps ResonanceFluidCompCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceFluidCompCalculator', dataset)
+def calc_resonance_m_u_g_e14_term_complete_wormhole_sum_calculator(dataset=None):
+    """Wraps ResonanceMUGE14TermCompleteWormholeSumCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ResonanceMUGE14TermCompleteWormholeSumCalculator', dataset)
+def calc_resonance_m_u_g_e_detailed_calculator(dataset=None):
+    """Wraps ResonanceMUGEDetailedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceMUGEDetailedCalculator', dataset)
+def calc_resonance_mode_d_p_m_foundation_calculator(dataset=None):
+    """Wraps ResonanceModeDPMFoundationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceModeDPMFoundationCalculator', dataset)
+def calc_resonance_mode_hardcoded_solution_calculator(dataset=None):
+    """Wraps ResonanceModeHardcodedSolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceModeHardcodedSolutionCalculator', dataset)
+def calc_resonance_oscillatory24_calculator(dataset=None):
+    """Wraps ResonanceOscillatory24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceOscillatory24Calculator', dataset)
+def calc_resonance_oscillatory_calculator(dataset=None):
+    """Wraps ResonanceOscillatoryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceOscillatoryCalculator', dataset)
+def calc_resonance_oscillatory_comp_calculator(dataset=None):
+    """Wraps ResonanceOscillatoryCompCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceOscillatoryCompCalculator', dataset)
+def calc_resonance_quantum24_calculator(dataset=None):
+    """Wraps ResonanceQuantum24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceQuantum24Calculator', dataset)
+def calc_resonance_quantum_comp_calculator(dataset=None):
+    """Wraps ResonanceQuantumCompCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceQuantumCompCalculator', dataset)
+def calc_resonance_s_c_cooper_d_p_m_freq_synthesis_calculator(dataset=None):
+    """Wraps ResonanceSCCooperDPMFreqSynthesisCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ResonanceSCCooperDPMFreqSynthesisCalculator', dataset)
+def calc_resonance_s_c_cosmic_age_standing_wave_calculator(dataset=None):
+    """Wraps ResonanceSCCosmicAgeStandingWaveCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ResonanceSCCosmicAgeStandingWaveCalculator', dataset)
+def calc_resonance_s_c_d_p_m_t_hz_cascade_calculator(dataset=None):
+    """Wraps ResonanceSCDPMTHzCascadeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ResonanceSCDPMTHzCascadeCalculator', dataset)
+def calc_resonance_s_c_freq_calculator(dataset=None):
+    """Wraps ResonanceSCFreqCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceSCFreqCalculator', dataset)
+def calc_resonance_s_c_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps ResonanceSCUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ResonanceSCUQFFGravityCalculator', dataset)
+def calc_resonance_superconductive(dataset=None):
+    """Wraps ResonanceSuperconductive.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceSuperconductive', dataset)
+def calc_resonance_t_hz_calculator(dataset=None):
+    """Wraps ResonanceTHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceTHzCalculator', dataset)
+def calc_resonance_ug4i24_calculator(dataset=None):
+    """Wraps ResonanceUg4i24Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceUg4i24Calculator', dataset)
+def calc_resonance_ug4i_calculator(dataset=None):
+    """Wraps ResonanceUg4iCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceUg4iCalculator', dataset)
+def calc_resonance_ug4i_comp_calculator(dataset=None):
+    """Wraps ResonanceUg4iCompCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ResonanceUg4iCompCalculator', dataset)
+def calc_resonance_vac_diff_t_hz_crossover_radius_calculator(dataset=None):
+    """Wraps ResonanceVacDiffTHzCrossoverRadiusCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('ResonanceVacDiffTHzCrossoverRadiusCalculator', dataset)
+def calc_resummation_effective_coupling_calculator(dataset=None):
+    """Wraps ResummationEffectiveCouplingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ResummationEffectiveCouplingCalculator', dataset)
+def calc_retrocausal_model(dataset=None):
+    """Wraps RetrocausalModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RetrocausalModel', dataset)
+def calc_reynolds_number_turbulence_calculator(dataset=None):
+    """Wraps ReynoldsNumberTurbulenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ReynoldsNumberTurbulenceCalculator', dataset)
+def calc_riemann_hypothesis_cosmic_correlation_calculator(dataset=None):
+    """Wraps RiemannHypothesisCosmicCorrelationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RiemannHypothesisCosmicCorrelationCalculator', dataset)
+def calc_riemann_p_i_cycle_p_i_math_calculator(dataset=None):
+    """Wraps RiemannPICyclePIMathCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RiemannPICyclePIMathCalculator', dataset)
+def calc_rings_base_gravity_calculator(dataset=None):
+    """Wraps RingsBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsBaseGravityCalculator', dataset)
+def calc_rings_cosmological_constant_calculator(dataset=None):
+    """Wraps RingsCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsCosmologicalConstantCalculator', dataset)
+def calc_rings_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps RingsDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsDarkMatterPerturbationCalculator', dataset)
+def calc_rings_einstein_radius_calculator(dataset=None):
+    """Wraps RingsEinsteinRadiusCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsEinsteinRadiusCalculator', dataset)
+def calc_rings_electromagnetic_calculator(dataset=None):
+    """Wraps RingsElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsElectromagneticCalculator', dataset)
+def calc_rings_fluid_density_calculator(dataset=None):
+    """Wraps RingsFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsFluidDensityCalculator', dataset)
+def calc_rings_gas_velocity_calculator(dataset=None):
+    """Wraps RingsGasVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsGasVelocityCalculator', dataset)
+def calc_rings_lensing_amplification_calculator(dataset=None):
+    """Wraps RingsLensingAmplificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsLensingAmplificationCalculator', dataset)
+def calc_rings_of_relativity_einstein_lensing_m_u_g_e_calculator(dataset=None):
+    """Wraps RingsOfRelativityEinsteinLensingMUGECalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('RingsOfRelativityEinsteinLensingMUGECalculator', dataset)
+def calc_rings_of_relativity_einstein_ring_calculator(dataset=None):
+    """Wraps RingsOfRelativityEinsteinRingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RingsOfRelativityEinsteinRingCalculator', dataset)
+def calc_rings_oscillatory_wave_calculator(dataset=None):
+    """Wraps RingsOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsOscillatoryWaveCalculator', dataset)
+def calc_rings_quantum_uncertainty_calculator(dataset=None):
+    """Wraps RingsQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsQuantumUncertaintyCalculator', dataset)
+def calc_rings_redshift_hubble_calculator(dataset=None):
+    """Wraps RingsRedshiftHubbleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsRedshiftHubbleCalculator', dataset)
+def calc_rings_relativity_calculator(dataset=None):
+    """Wraps RingsRelativityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsRelativityCalculator', dataset)
+def calc_rings_stellar_wind_calculator(dataset=None):
+    """Wraps RingsStellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsStellarWindCalculator', dataset)
+def calc_rings_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps RingsUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('RingsUQFFUnificationCalculator', dataset)
+def calc_rocket_fuel_tuning_calculator(dataset=None):
+    """Wraps RocketFuelTuningCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RocketFuelTuningCalculator', dataset)
+def calc_rosette_nebula_n_g_c2237_u_q_f_f_calc(dataset=None):
+    """Wraps RosetteNebulaNGC2237UQFFCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('RosetteNebulaNGC2237UQFFCalc', dataset)
+def calc_rotor_molecular_cross_section_calculator(dataset=None):
+    """Wraps RotorMolecularCrossSectionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RotorMolecularCrossSectionCalculator', dataset)
+def calc_ryu_takayangi_entropy_calculator(dataset=None):
+    """Wraps RyuTakayangiEntropyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('RyuTakayangiEntropyCalculator', dataset)
+def calc_s_c_s_constraints21cm_dark_ages_calculator(dataset=None):
+    """Wraps SCSConstraints21cmDarkAgesCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCSConstraints21cmDarkAgesCalculator', dataset)
+def calc_s_c_s_spectral_signatures_radio_calculator(dataset=None):
+    """Wraps SCSSpectralSignaturesRadioCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCSSpectralSignaturesRadioCalculator', dataset)
+def calc_s_cm_activation_function_calculator(dataset=None):
+    """Wraps SCmActivationFunctionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmActivationFunctionCalculator', dataset)
+def calc_s_cm_beta_decay_calculator(dataset=None):
+    """Wraps SCmBetaDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmBetaDecayCalculator', dataset)
+def calc_s_cm_beta_decay_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmBetaDecayUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmBetaDecayUQFFCalculator', dataset)
+def calc_s_cm_c_m_b_phonon_power_spectrum_calculator(dataset=None):
+    """Wraps SCmCMBPhononPowerSpectrumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmCMBPhononPowerSpectrumCalculator', dataset)
+def calc_s_cm_c_m_b_temperature_fluctuation_calculator(dataset=None):
+    """Wraps SCmCMBTemperatureFluctuationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmCMBTemperatureFluctuationCalculator', dataset)
+def calc_s_cm_cosmic_ray_calculator(dataset=None):
+    """Wraps SCmCosmicRayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmCosmicRayCalculator', dataset)
+def calc_s_cm_cosmic_ray_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmCosmicRayUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmCosmicRayUQFFCalculator', dataset)
+def calc_s_cm_dark_energy_density_gamma_coupled_calculator(dataset=None):
+    """Wraps SCmDarkEnergyDensityGammaCoupledCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmDarkEnergyDensityGammaCoupledCalculator', dataset)
+def calc_s_cm_dark_matter_calculator(dataset=None):
+    """Wraps SCmDarkMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmDarkMatterCalculator', dataset)
+def calc_s_cm_dark_matter_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmDarkMatterUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmDarkMatterUQFFCalculator', dataset)
+def calc_s_cm_density_planetary_scaling_law_calculator(dataset=None):
+    """Wraps SCmDensityPlanetaryScalingLawCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmDensityPlanetaryScalingLawCalculator', dataset)
+def calc_s_cm_derivative_hierarchy_calculator(dataset=None):
+    """Wraps SCmDerivativeHierarchyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmDerivativeHierarchyCalculator', dataset)
+def calc_s_cm_dipole_amplified_calculator(dataset=None):
+    """Wraps SCmDipoleAmplifiedCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmDipoleAmplifiedCalculator', dataset)
+def calc_s_cm_egg_dispersal_wave_calculator(dataset=None):
+    """Wraps SCmEggDispersalWaveCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmEggDispersalWaveCalculator', dataset)
+def calc_s_cm_epoch_state_calculator(dataset=None):
+    """Wraps SCmEpochStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmEpochStateCalculator', dataset)
+def calc_s_cm_et_lagrangian_variation_calc(dataset=None):
+    """Wraps SCmEtLagrangianVariationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmEtLagrangianVariationCalc', dataset)
+def calc_s_cm_first_axiom_validator_calc(dataset=None):
+    """Wraps SCmFirstAxiomValidatorCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmFirstAxiomValidatorCalc', dataset)
+def calc_s_cm_gaussian_activation_b_field_suppression_calc(dataset=None):
+    """Wraps SCmGaussianActivationBFieldSuppressionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmGaussianActivationBFieldSuppressionCalc', dataset)
+def calc_s_cm_gravitational_wave_calculator(dataset=None):
+    """Wraps SCmGravitationalWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmGravitationalWaveCalculator', dataset)
+def calc_s_cm_gravitational_wave_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmGravitationalWaveUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmGravitationalWaveUQFFCalculator', dataset)
+def calc_s_cm_gravity_precedence_proof_calculator(dataset=None):
+    """Wraps SCmGravityPrecedenceProofCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmGravityPrecedenceProofCalculator', dataset)
+def calc_s_cm_hidden_element_undetectable_qs_quasar_ignition_calculator(dataset=None):
+    """Wraps SCmHiddenElementUndetectableQsQuasarIgnitionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmHiddenElementUndetectableQsQuasarIgnitionCalculator', dataset)
+def calc_s_cm_holographic_entropy_calculator(dataset=None):
+    """Wraps SCmHolographicEntropyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmHolographicEntropyCalculator', dataset)
+def calc_s_cm_holographic_entropy_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmHolographicEntropyUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmHolographicEntropyUQFFCalculator', dataset)
+def calc_s_cm_i_c_m_phonon_density_calculator(dataset=None):
+    """Wraps SCmICMPhononDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmICMPhononDensityCalculator', dataset)
+def calc_s_cm_kozima_phonon_resonance_coupling_calc(dataset=None):
+    """Wraps SCmKozimaPhononResonanceCouplingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmKozimaPhononResonanceCouplingCalc', dataset)
+def calc_s_cm_l_q_g_area_operator_derivation_calculator(dataset=None):
+    """Wraps SCmLQGAreaOperatorDerivationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmLQGAreaOperatorDerivationCalculator', dataset)
+def calc_s_cm_mizuno_l_e_n_r_transmutation_calculator(dataset=None):
+    """Wraps SCmMizunoLENRTransmutationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmMizunoLENRTransmutationCalculator', dataset)
+def calc_s_cm_muon_decay_calculator(dataset=None):
+    """Wraps SCmMuonDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmMuonDecayCalculator', dataset)
+def calc_s_cm_muon_decay_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmMuonDecayUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmMuonDecayUQFFCalculator', dataset)
+def calc_s_cm_net_energy_buoyancy_regime_calc(dataset=None):
+    """Wraps SCmNetEnergyBuoyancyRegimeCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmNetEnergyBuoyancyRegimeCalc', dataset)
+def calc_s_cm_neutrino_osc_param_calculator(dataset=None):
+    """Wraps SCmNeutrinoOscParamCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmNeutrinoOscParamCalculator', dataset)
+def calc_s_cm_neutrino_osc_param_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmNeutrinoOscParamUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmNeutrinoOscParamUQFFCalculator', dataset)
+def calc_s_cm_neutrino_osc_simulation_calculator(dataset=None):
+    """Wraps SCmNeutrinoOscSimulationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmNeutrinoOscSimulationCalculator', dataset)
+def calc_s_cm_neutrino_osc_simulation_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmNeutrinoOscSimulationUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmNeutrinoOscSimulationUQFFCalculator', dataset)
+def calc_s_cm_neutrino_oscillation_calculator(dataset=None):
+    """Wraps SCmNeutrinoOscillationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmNeutrinoOscillationCalculator', dataset)
+def calc_s_cm_neutrino_oscillation_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmNeutrinoOscillationUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmNeutrinoOscillationUQFFCalculator', dataset)
+def calc_s_cm_phonon_inflationary_scale_factor_calculator(dataset=None):
+    """Wraps SCmPhononInflationaryScaleFactorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmPhononInflationaryScaleFactorCalculator', dataset)
+def calc_s_cm_phonon_linewidth_enet_evolution_calc(dataset=None):
+    """Wraps SCmPhononLinewidthEnetEvolutionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmPhononLinewidthEnetEvolutionCalc', dataset)
+def calc_s_cm_phonon_modulated_energy_phi_calc(dataset=None):
+    """Wraps SCmPhononModulatedEnergyPhiCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmPhononModulatedEnergyPhiCalc', dataset)
+def calc_s_cm_phonon_resonance_acceleration_calc(dataset=None):
+    """Wraps SCmPhononResonanceAccelerationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmPhononResonanceAccelerationCalc', dataset)
+def calc_s_cm_pons_fleischmann_derivation_calculator(dataset=None):
+    """Wraps SCmPonsFleischmannDerivationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmPonsFleischmannDerivationCalculator', dataset)
+def calc_s_cm_prime_massless_factor_calculator(dataset=None):
+    """Wraps SCmPrimeMasslessFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmPrimeMasslessFactorCalculator', dataset)
+def calc_s_cm_primordial_split26_d_ladder_calculator(dataset=None):
+    """Wraps SCmPrimordialSplit26DLadderCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmPrimordialSplit26DLadderCalculator', dataset)
+def calc_s_cm_qubit_t2_coherence_f_u_bi_ratio_calculator(dataset=None):
+    """Wraps SCmQubitT2CoherenceFUBiRatioCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmQubitT2CoherenceFUBiRatioCalculator', dataset)
+def calc_s_cm_reactor_efficiency_calculator(dataset=None):
+    """Wraps SCmReactorEfficiencyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmReactorEfficiencyCalculator', dataset)
+def calc_s_cm_reactor_efficiency_decay_calculator(dataset=None):
+    """Wraps SCmReactorEfficiencyDecayCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmReactorEfficiencyDecayCalculator', dataset)
+def calc_s_cm_riemann_hypothesis_closure_calculator(dataset=None):
+    """Wraps SCmRiemannHypothesisClosureCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmRiemannHypothesisClosureCalculator', dataset)
+def calc_s_cm_s_u_s_y_breaking_calculator(dataset=None):
+    """Wraps SCmSUSYBreakingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmSUSYBreakingCalculator', dataset)
+def calc_s_cm_s_u_s_y_breaking_u_q_f_f_calculator(dataset=None):
+    """Wraps SCmSUSYBreakingUQFFCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SCmSUSYBreakingUQFFCalculator', dataset)
+def calc_s_cm_string_theory26_d_action_calculator(dataset=None):
+    """Wraps SCmStringTheory26DActionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmStringTheory26DActionCalculator', dataset)
+def calc_s_cm_vacuum_density_evolution_calc(dataset=None):
+    """Wraps SCmVacuumDensityEvolutionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmVacuumDensityEvolutionCalc', dataset)
+def calc_s_cm_vacuum_manifold_hub_calculator(dataset=None):
+    """Wraps SCmVacuumManifoldHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmVacuumManifoldHubCalculator', dataset)
+def calc_s_cm_vacuum_manifold_primordial_calculator(dataset=None):
+    """Wraps SCmVacuumManifoldPrimordialCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SCmVacuumManifoldPrimordialCalculator', dataset)
+def calc_s_cm_velocity_bound_comparison_calculator(dataset=None):
+    """Wraps SCmVelocityBoundComparisonCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmVelocityBoundComparisonCalculator', dataset)
+def calc_s_cm_velocity_calculator(dataset=None):
+    """Wraps SCmVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SCmVelocityCalculator', dataset)
+def calc_s_g_r17452900_s_cm_lx_freq_form_calculator(dataset=None):
+    """Wraps SGR17452900SCmLxFreqFormCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SGR17452900SCmLxFreqFormCalculator', dataset)
+def calc_s_g_r1745_b_h_proximity_mag_energy_calculator(dataset=None):
+    """Wraps SGR1745BHProximityMagEnergyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SGR1745BHProximityMagEnergyCalculator', dataset)
+def calc_s_g_r1745_base_gravity_calculator(dataset=None):
+    """Wraps SGR1745BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745BaseGravityCalculator', dataset)
+def calc_s_g_r1745_burst_energy_calculator(dataset=None):
+    """Wraps SGR1745BurstEnergyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745BurstEnergyCalculator', dataset)
+def calc_s_g_r1745_compressed_m_u_g_e_spectral_term_decomposition_calculator(dataset=None):
+    """Wraps SGR1745CompressedMUGESpectralTermDecompositionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SGR1745CompressedMUGESpectralTermDecompositionCalculator', dataset)
+def calc_s_g_r1745_cosmological_constant_calculator(dataset=None):
+    """Wraps SGR1745CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745CosmologicalConstantCalculator', dataset)
+def calc_s_g_r1745_crust_fluid_calculator(dataset=None):
+    """Wraps SGR1745CrustFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745CrustFluidCalculator', dataset)
+def calc_s_g_r1745_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps SGR1745DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745DarkMatterPerturbationCalculator', dataset)
+def calc_s_g_r1745_freq_aether_calculator(dataset=None):
+    """Wraps SGR1745FreqAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqAetherCalculator', dataset)
+def calc_s_g_r1745_freq_aether_res_calculator(dataset=None):
+    """Wraps SGR1745FreqAetherResCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqAetherResCalculator', dataset)
+def calc_s_g_r1745_freq_d_p_m_calculator(dataset=None):
+    """Wraps SGR1745FreqDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqDPMCalculator', dataset)
+def calc_s_g_r1745_freq_exp_calculator(dataset=None):
+    """Wraps SGR1745FreqExpCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqExpCalculator', dataset)
+def calc_s_g_r1745_freq_fluid_calculator(dataset=None):
+    """Wraps SGR1745FreqFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqFluidCalculator', dataset)
+def calc_s_g_r1745_freq_osc_calculator(dataset=None):
+    """Wraps SGR1745FreqOscCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqOscCalculator', dataset)
+def calc_s_g_r1745_freq_quantum_calculator(dataset=None):
+    """Wraps SGR1745FreqQuantumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqQuantumCalculator', dataset)
+def calc_s_g_r1745_freq_super_calculator(dataset=None):
+    """Wraps SGR1745FreqSuperCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqSuperCalculator', dataset)
+def calc_s_g_r1745_freq_t_hz_calculator(dataset=None):
+    """Wraps SGR1745FreqTHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqTHzCalculator', dataset)
+def calc_s_g_r1745_freq_ug4i_calculator(dataset=None):
+    """Wraps SGR1745FreqUg4iCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqUg4iCalculator', dataset)
+def calc_s_g_r1745_freq_vac_diff_calculator(dataset=None):
+    """Wraps SGR1745FreqVacDiffCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745FreqVacDiffCalculator', dataset)
+def calc_s_g_r1745_magnetar_spin_e_m_calculator(dataset=None):
+    """Wraps SGR1745MagnetarSpinEMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745MagnetarSpinEMCalculator', dataset)
+def calc_s_g_r1745_oscillatory_wave_calculator(dataset=None):
+    """Wraps SGR1745OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745OscillatoryWaveCalculator', dataset)
+def calc_s_g_r1745_quantum_uncertainty_calculator(dataset=None):
+    """Wraps SGR1745QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745QuantumUncertaintyCalculator', dataset)
+def calc_s_g_r1745_superconductivity_calculator(dataset=None):
+    """Wraps SGR1745SuperconductivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745SuperconductivityCalculator', dataset)
+def calc_s_g_r1745_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps SGR1745UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SGR1745UQFFUnificationCalculator', dataset)
+def calc_s_i_dimensional_analysis_calculator(dataset=None):
+    """Wraps SIDimensionalAnalysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SIDimensionalAnalysisCalculator', dataset)
+def calc_s_i_m_d_vacuum_density_calculator(dataset=None):
+    """Wraps SIMDVacuumDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SIMDVacuumDensityCalculator', dataset)
+def calc_s_m_atomic_quantum_gravity_calculator(dataset=None):
+    """Wraps SMAtomicQuantumGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SMAtomicQuantumGravityCalculator', dataset)
+def calc_s_m_b_h_binary_coalescence_calculator(dataset=None):
+    """Wraps SMBHBinaryCoalescenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHBinaryCoalescenceCalculator', dataset)
+def calc_s_m_b_h_binary_condensed_calculator(dataset=None):
+    """Wraps SMBHBinaryCondensedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHBinaryCondensedCalculator', dataset)
+def calc_s_m_b_h_binary_merger_calculator(dataset=None):
+    """Wraps SMBHBinaryMergerCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHBinaryMergerCalculator', dataset)
+def calc_s_m_b_h_binary_merger_phonon_calc(dataset=None):
+    """Wraps SMBHBinaryMergerPhononCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SMBHBinaryMergerPhononCalc', dataset)
+def calc_s_m_b_h_bulge_gravity_model(dataset=None):
+    """Wraps SMBHBulgeGravityModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHBulgeGravityModel', dataset)
+def calc_s_m_b_h_cosmic_time_model(dataset=None):
+    """Wraps SMBHCosmicTimeModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHCosmicTimeModel', dataset)
+def calc_s_m_b_h_dynamics_calculator(dataset=None):
+    """Wraps SMBHDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHDynamicsCalculator', dataset)
+def calc_s_m_b_h_five_frequency_calculator(dataset=None):
+    """Wraps SMBHFiveFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHFiveFrequencyCalculator', dataset)
+def calc_s_m_b_h_gravity_calculator(dataset=None):
+    """Wraps SMBHGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHGravityCalculator', dataset)
+def calc_s_m_b_h_growth_rate_calculator(dataset=None):
+    """Wraps SMBHGrowthRateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SMBHGrowthRateCalculator', dataset)
+def calc_s_m_b_h_mass_sigma_dispersion_relation_u_q_f_f_anchor_calculator(dataset=None):
+    """Wraps SMBHMassSigmaDispersionRelationUQFFAnchorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SMBHMassSigmaDispersionRelationUQFFAnchorCalculator', dataset)
+def calc_s_m_b_h_omega_s_galactic_model(dataset=None):
+    """Wraps SMBHOmegaSGalacticModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHOmegaSGalacticModel', dataset)
+def calc_s_m_b_h_pseudo_monopole_calculator(dataset=None):
+    """Wraps SMBHPseudoMonopoleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHPseudoMonopoleCalculator', dataset)
+def calc_s_m_b_h_spin_evolution_model(dataset=None):
+    """Wraps SMBHSpinEvolutionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHSpinEvolutionModel', dataset)
+def calc_s_m_b_h_ug1_model(dataset=None):
+    """Wraps SMBHUg1Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHUg1Model', dataset)
+def calc_s_m_b_h_ug2_model(dataset=None):
+    """Wraps SMBHUg2Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHUg2Model', dataset)
+def calc_s_m_b_h_ug3_model(dataset=None):
+    """Wraps SMBHUg3Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHUg3Model', dataset)
+def calc_s_m_b_h_ug4_model(dataset=None):
+    """Wraps SMBHUg4Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SMBHUg4Model', dataset)
+def calc_s_m_mag_surface_conduction_fragment_assembly_calc(dataset=None):
+    """Wraps SMMagSurfaceConductionFragmentAssemblyCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SMMagSurfaceConductionFragmentAssemblyCalc', dataset)
+def calc_s_n1006_type_ia_s_n_r_f_u_bi_calculator(dataset=None):
+    """Wraps SN1006TypeIaSNRFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SN1006TypeIaSNRFUBiCalculator', dataset)
+def calc_s_n_ia_hubble_tension_imprint_calculator(dataset=None):
+    """Wraps SNIaHubbleTensionImprintCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SNIaHubbleTensionImprintCalculator', dataset)
+def calc_s_n_r_nebula_vela_tycho_helix_s_n_r1181_n_g_c6543_calc(dataset=None):
+    """Wraps SNRNebulaVelaTychoHelixSNR1181NGC6543Calc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SNRNebulaVelaTychoHelixSNR1181NGC6543Calc', dataset)
+def calc_s_p_t_cl_j2215_cool_core_starburst_calculator(dataset=None):
+    """Wraps SPTClJ2215CoolCoreStarburstCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SPTClJ2215CoolCoreStarburstCalculator', dataset)
+def calc_s_sq_exponent_scaling_calculator(dataset=None):
+    """Wraps SSqExponentScalingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SSqExponentScalingCalculator', dataset)
+def calc_s_sq_first_principles_calculator_s234(dataset=None):
+    """Wraps SSqFirstPrinciplesCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SSqFirstPrinciplesCalculator_S234', dataset)
+def calc_s_sq_quantum_state_calculator(dataset=None):
+    """Wraps SSqQuantumStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SSqQuantumStateCalculator', dataset)
+def calc_s_u_s_y_breaking_soft_term_calculator(dataset=None):
+    """Wraps SUSYBreakingSoftTermCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SUSYBreakingSoftTermCalculator', dataset)
+def calc_s_u_v_a_t_equation_calculator(dataset=None):
+    """Wraps SUVATEquationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SUVATEquationCalculator', dataset)
+def calc_sacred_time(dataset=None):
+    """Wraps SacredTime.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SacredTime', dataset)
+def calc_sacred_time_constants_calculator(dataset=None):
+    """Wraps SacredTimeConstantsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SacredTimeConstantsCalculator', dataset)
+def calc_sacred_time_phase_calculator_84_a767_d3(dataset=None):
+    """Wraps SacredTimePhaseCalculator_84A767D3.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SacredTimePhaseCalculator_84A767D3', dataset)
+def calc_sag_a_star_full_resonance_term_decomposition_calculator(dataset=None):
+    """Wraps SagAStarFullResonanceTermDecompositionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SagAStarFullResonanceTermDecompositionCalculator', dataset)
+def calc_saturn26_d_u_q_f_f_calculator(dataset=None):
+    """Wraps Saturn26DUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Saturn26DUQFFCalculator', dataset)
+def calc_saturn_atmospheric_wind_calculator(dataset=None):
+    """Wraps SaturnAtmosphericWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnAtmosphericWindCalculator', dataset)
+def calc_saturn_atmospheric_wind_kinetic_pressure_calculator(dataset=None):
+    """Wraps SaturnAtmosphericWindKineticPressureCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SaturnAtmosphericWindKineticPressureCalculator', dataset)
+def calc_saturn_cosmological_constant_calculator(dataset=None):
+    """Wraps SaturnCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnCosmologicalConstantCalculator', dataset)
+def calc_saturn_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps SaturnDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnDarkMatterPerturbationCalculator', dataset)
+def calc_saturn_dual_gravity_ring_tension_calculator(dataset=None):
+    """Wraps SaturnDualGravityRingTensionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SaturnDualGravityRingTensionCalculator', dataset)
+def calc_saturn_electromagnetic_calculator(dataset=None):
+    """Wraps SaturnElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnElectromagneticCalculator', dataset)
+def calc_saturn_fluid_density_calculator(dataset=None):
+    """Wraps SaturnFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnFluidDensityCalculator', dataset)
+def calc_saturn_model(dataset=None):
+    """Wraps SaturnModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnModel', dataset)
+def calc_saturn_oscillatory_wave_calculator(dataset=None):
+    """Wraps SaturnOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnOscillatoryWaveCalculator', dataset)
+def calc_saturn_quantum_uncertainty_calculator(dataset=None):
+    """Wraps SaturnQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnQuantumUncertaintyCalculator', dataset)
+def calc_saturn_ring_system_u_q_f_f(dataset=None):
+    """Wraps SaturnRingSystemUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SaturnRingSystemUQFF', dataset)
+def calc_saturn_ring_tidal_calculator(dataset=None):
+    """Wraps SaturnRingTidalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnRingTidalCalculator', dataset)
+def calc_saturn_ring_tidal_gravity_resonance_calculator(dataset=None):
+    """Wraps SaturnRingTidalGravityResonanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SaturnRingTidalGravityResonanceCalculator', dataset)
+def calc_saturn_ring_tidal_m_u_g_e_calculator(dataset=None):
+    """Wraps SaturnRingTidalMUGECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SaturnRingTidalMUGECalculator', dataset)
+def calc_saturn_self_gravity_calculator(dataset=None):
+    """Wraps SaturnSelfGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnSelfGravityCalculator', dataset)
+def calc_saturn_solar_tidal_hubble_expansion_calculator(dataset=None):
+    """Wraps SaturnSolarTidalHubbleExpansionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SaturnSolarTidalHubbleExpansionCalculator', dataset)
+def calc_saturn_solar_tidal_perturbation_calculator(dataset=None):
+    """Wraps SaturnSolarTidalPerturbationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SaturnSolarTidalPerturbationCalculator', dataset)
+def calc_saturn_sun_gravity_calculator(dataset=None):
+    """Wraps SaturnSunGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnSunGravityCalculator', dataset)
+def calc_saturn_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps SaturnUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SaturnUQFFGravityCalculator', dataset)
+def calc_saturn_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps SaturnUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SaturnUQFFUnificationCalculator', dataset)
+def calc_scale_range_validator_calculator(dataset=None):
+    """Wraps ScaleRangeValidatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ScaleRangeValidatorCalculator', dataset)
+def calc_schwarzschild_proton_calculator(dataset=None):
+    """Wraps SchwarzschildProtonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SchwarzschildProtonCalculator', dataset)
+def calc_scrambling_time_calculator(dataset=None):
+    """Wraps ScramblingTimeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ScramblingTimeCalculator', dataset)
+def calc_self_similar_quotient_calculator(dataset=None):
+    """Wraps SelfSimilarQuotientCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SelfSimilarQuotientCalculator', dataset)
+def calc_sequence_progression_f_u_calculator(dataset=None):
+    """Wraps SequenceProgressionFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SequenceProgressionFUCalculator', dataset)
+def calc_sequential_upload_tracker_calculator(dataset=None):
+    """Wraps SequentialUploadTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SequentialUploadTrackerCalculator', dataset)
+def calc_session107_cfdc_ad2f5_hub_calculator(dataset=None):
+    """Wraps Session107CfdcAd2f5HubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session107CfdcAd2f5HubCalculator', dataset)
+def calc_session108_cfdc_ad2f5_oct_construction_file_hub_calculator(dataset=None):
+    """Wraps Session108CfdcAd2f5OctConstructionFileHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session108CfdcAd2f5OctConstructionFileHubCalculator', dataset)
+def calc_session109_cfdc_ad2f5_refactoring_section_exhaustion_hub_calculator(dataset=None):
+    """Wraps Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator', dataset)
+def calc_session110_grok755feea7_star_magic_book_physics_hub_calculator(dataset=None):
+    """Wraps Session110Grok755feea7StarMagicBookPhysicsHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session110Grok755feea7StarMagicBookPhysicsHubCalculator', dataset)
+def calc_session111_grok755feea7_exhaustive_reanalysis_hub_calculator(dataset=None):
+    """Wraps Session111Grok755feea7ExhaustiveReanalysisHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session111Grok755feea7ExhaustiveReanalysisHubCalculator', dataset)
+def calc_session112_grok_c020496d9_exhaustive_audit_hub_calculator(dataset=None):
+    """Wraps Session112GrokC020496d9ExhaustiveAuditHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session112GrokC020496d9ExhaustiveAuditHubCalculator', dataset)
+def calc_session113_grok_c020496d9_re_analysis_hub_calculator(dataset=None):
+    """Wraps Session113GrokC020496d9ReAnalysisHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session113GrokC020496d9ReAnalysisHubCalculator', dataset)
+def calc_session114_grok_c020496d9_deep_physics_hub_calculator(dataset=None):
+    """Wraps Session114GrokC020496d9DeepPhysicsHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session114GrokC020496d9DeepPhysicsHubCalculator', dataset)
+def calc_session115_grok_share5fa36e4e_hub_calculator(dataset=None):
+    """Wraps Session115GrokShare5fa36e4eHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session115GrokShare5fa36e4eHubCalculator', dataset)
+def calc_session116_grok_share_e70525_fa_hub_calculator(dataset=None):
+    """Wraps Session116GrokShareE70525FaHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session116GrokShareE70525FaHubCalculator', dataset)
+def calc_session140_grok_share0f5d4c91f2c_hub_calculator(dataset=None):
+    """Wraps Session140GrokShare0f5d4c91f2cHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session140GrokShare0f5d4c91f2cHubCalculator', dataset)
+def calc_session141_proplyd_d_p_m_spectra_hub_calculator(dataset=None):
+    """Wraps Session141ProplydDPMSpectraHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Session141ProplydDPMSpectraHubCalculator', dataset)
+def calc_session142_millennium_equations_hub_calculator(dataset=None):
+    """Wraps Session142MillenniumEquationsHubCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Session142MillenniumEquationsHubCalculator', dataset)
+def calc_sgr_a_center_negative_buoyancy_calculator(dataset=None):
+    """Wraps SgrACenterNegativeBuoyancyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SgrACenterNegativeBuoyancyCalculator', dataset)
+def calc_sgr_a_flare_contrast_phonon_gamma_calc(dataset=None):
+    """Wraps SgrAFlareContrastPhononGammaCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SgrAFlareContrastPhononGammaCalc', dataset)
+def calc_sgr_a_freq_aether_calculator(dataset=None):
+    """Wraps SgrAFreqAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqAetherCalculator', dataset)
+def calc_sgr_a_freq_aether_res_calculator(dataset=None):
+    """Wraps SgrAFreqAetherResCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqAetherResCalculator', dataset)
+def calc_sgr_a_freq_d_p_m_calculator(dataset=None):
+    """Wraps SgrAFreqDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqDPMCalculator', dataset)
+def calc_sgr_a_freq_exp_calculator(dataset=None):
+    """Wraps SgrAFreqExpCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqExpCalculator', dataset)
+def calc_sgr_a_freq_fluid_calculator(dataset=None):
+    """Wraps SgrAFreqFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqFluidCalculator', dataset)
+def calc_sgr_a_freq_osc_calculator(dataset=None):
+    """Wraps SgrAFreqOscCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqOscCalculator', dataset)
+def calc_sgr_a_freq_quantum_calculator(dataset=None):
+    """Wraps SgrAFreqQuantumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqQuantumCalculator', dataset)
+def calc_sgr_a_freq_super_calculator(dataset=None):
+    """Wraps SgrAFreqSuperCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqSuperCalculator', dataset)
+def calc_sgr_a_freq_t_hz_calculator(dataset=None):
+    """Wraps SgrAFreqTHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqTHzCalculator', dataset)
+def calc_sgr_a_freq_ug4i_calculator(dataset=None):
+    """Wraps SgrAFreqUg4iCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqUg4iCalculator', dataset)
+def calc_sgr_a_freq_vac_diff_calculator(dataset=None):
+    """Wraps SgrAFreqVacDiffCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAFreqVacDiffCalculator', dataset)
+def calc_sgr_a_star_accretion_precession_calculator(dataset=None):
+    """Wraps SgrAStarAccretionPrecessionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SgrAStarAccretionPrecessionCalculator', dataset)
+def calc_sgr_a_star_accretion_rate_calculator(dataset=None):
+    """Wraps SgrAStarAccretionRateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarAccretionRateCalculator', dataset)
+def calc_sgr_a_star_base_gravity_calculator(dataset=None):
+    """Wraps SgrAStarBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarBaseGravityCalculator', dataset)
+def calc_sgr_a_star_calculator(dataset=None):
+    """Wraps SgrAStarCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarCalculator', dataset)
+def calc_sgr_a_star_cosmological_constant_calculator(dataset=None):
+    """Wraps SgrAStarCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarCosmologicalConstantCalculator', dataset)
+def calc_sgr_a_star_evolution_u_q_f_f_calculator(dataset=None):
+    """Wraps SgrAStarEvolutionUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SgrAStarEvolutionUQFFCalculator', dataset)
+def calc_sgr_a_star_g_w_precession_squared_calculator(dataset=None):
+    """Wraps SgrAStarGWPrecessionSquaredCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SgrAStarGWPrecessionSquaredCalculator', dataset)
+def calc_sgr_a_star_gravitational_wave_calculator(dataset=None):
+    """Wraps SgrAStarGravitationalWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarGravitationalWaveCalculator', dataset)
+def calc_sgr_a_star_gravity_calculator(dataset=None):
+    """Wraps SgrAStarGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SgrAStarGravityCalculator', dataset)
+def calc_sgr_a_star_gravity_model(dataset=None):
+    """Wraps SgrAStarGravityModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarGravityModel', dataset)
+def calc_sgr_a_star_j_w_s_t2025_flare_omega_act_derivation_calculator(dataset=None):
+    """Wraps SgrAStarJWST2025FlareOmegaActDerivationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SgrAStarJWST2025FlareOmegaActDerivationCalculator', dataset)
+def calc_sgr_a_star_m_u_g_e_calculator(dataset=None):
+    """Wraps SgrAStarMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SgrAStarMUGECalculator', dataset)
+def calc_sgr_a_star_magnetic_decay_calculator(dataset=None):
+    """Wraps SgrAStarMagneticDecayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarMagneticDecayCalculator', dataset)
+def calc_sgr_a_star_mass_growth_calculator(dataset=None):
+    """Wraps SgrAStarMassGrowthCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarMassGrowthCalculator', dataset)
+def calc_sgr_a_star_schwarzschild_radius_calculator(dataset=None):
+    """Wraps SgrAStarSchwarzschildRadiusCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarSchwarzschildRadiusCalculator', dataset)
+def calc_sgr_a_star_spin_drag_u_q_f_f_calculator(dataset=None):
+    """Wraps SgrAStarSpinDragUQFFCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SgrAStarSpinDragUQFFCalculator', dataset)
+def calc_sgr_a_star_spin_evolution_calculator(dataset=None):
+    """Wraps SgrAStarSpinEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarSpinEvolutionCalculator', dataset)
+def calc_sgr_a_star_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps SgrAStarUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SgrAStarUQFFUnificationCalculator', dataset)
+def calc_shadow_tearing_calculator(dataset=None):
+    """Wraps ShadowTearingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ShadowTearingCalculator', dataset)
+def calc_shapiro_time_delay_calculator(dataset=None):
+    """Wraps ShapiroTimeDelayCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ShapiroTimeDelayCalculator', dataset)
+def calc_shapiro_wilk_q_wave_normality_calculator(dataset=None):
+    """Wraps ShapiroWilkQWaveNormalityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ShapiroWilkQWaveNormalityCalculator', dataset)
+def calc_shear_map_chi_squared_calculator(dataset=None):
+    """Wraps ShearMapChiSquaredCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ShearMapChiSquaredCalculator', dataset)
+def calc_shear_map_chi_squared_orb42_calculator(dataset=None):
+    """Wraps ShearMapChiSquaredOrb42Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ShearMapChiSquaredOrb42Calculator', dataset)
+def calc_shell_correction_fenv_calculator(dataset=None):
+    """Wraps ShellCorrectionFenvCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ShellCorrectionFenvCalculator', dataset)
+def calc_shell_expansion_erosion_calculator(dataset=None):
+    """Wraps ShellExpansionErosionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ShellExpansionErosionCalculator', dataset)
+def calc_shell_fragment_organization_calculator(dataset=None):
+    """Wraps ShellFragmentOrganizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ShellFragmentOrganizationCalculator', dataset)
+def calc_shell_radiance_prototype_equation_calculator(dataset=None):
+    """Wraps ShellRadiancePrototypeEquationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ShellRadiancePrototypeEquationCalculator', dataset)
+def calc_silver_mercury_propulsion_calculator(dataset=None):
+    """Wraps SilverMercuryPropulsionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SilverMercuryPropulsionCalculator', dataset)
+def calc_simultaneous_multi_method_equivalence_hub_calculator(dataset=None):
+    """Wraps SimultaneousMultiMethodEquivalenceHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SimultaneousMultiMethodEquivalenceHubCalculator', dataset)
+def calc_slow_roll_inflation_calculator(dataset=None):
+    """Wraps SlowRollInflationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SlowRollInflationCalculator', dataset)
+def calc_solar_aether_stress_tensor_calculator(dataset=None):
+    """Wraps SolarAetherStressTensorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SolarAetherStressTensorCalculator', dataset)
+def calc_solar_body_proplyd_legacy_calculator(dataset=None):
+    """Wraps SolarBodyProplydLegacyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SolarBodyProplydLegacyCalculator', dataset)
+def calc_solar_cycle_coupled_f_u_calculator(dataset=None):
+    """Wraps SolarCycleCoupledFUCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SolarCycleCoupledFUCalculator', dataset)
+def calc_solar_cycle_modulator_calculator(dataset=None):
+    """Wraps SolarCycleModulatorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SolarCycleModulatorCalculator', dataset)
+def calc_solar_domain_model(dataset=None):
+    """Wraps SolarDomainModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SolarDomainModel', dataset)
+def calc_solar_f_u_assembly_calculator(dataset=None):
+    """Wraps SolarFUAssemblyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SolarFUAssemblyCalculator', dataset)
+def calc_solar_surface_buoyancy_calc(dataset=None):
+    """Wraps SolarSurfaceBuoyancyCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SolarSurfaceBuoyancyCalc', dataset)
+def calc_solar_system_evolving_proplyd_d_v_p_calculator(dataset=None):
+    """Wraps SolarSystemEvolvingProplydDVPCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SolarSystemEvolvingProplydDVPCalculator', dataset)
+def calc_solar_system_f_u_validator_calculator(dataset=None):
+    """Wraps SolarSystemFUValidatorCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SolarSystemFUValidatorCalculator', dataset)
+def calc_solar_system_u_q_f_f_calculator(dataset=None):
+    """Wraps SolarSystemUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SolarSystemUQFFCalculator', dataset)
+def calc_solar_wind_bubble_verification_calculator(dataset=None):
+    """Wraps SolarWindBubbleVerificationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SolarWindBubbleVerificationCalculator', dataset)
+def calc_solar_wind_flux_partition_calculator(dataset=None):
+    """Wraps SolarWindFluxPartitionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SolarWindFluxPartitionCalculator', dataset)
+def calc_solar_wind_ubi_modulator_calculator(dataset=None):
+    """Wraps SolarWindUbiModulatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SolarWindUbiModulatorCalculator', dataset)
+def calc_solar_wind_vacuum_density_calculator(dataset=None):
+    """Wraps SolarWindVacuumDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SolarWindVacuumDensityCalculator', dataset)
+def calc_solfeggio_frequency_pi_encoding_resonance_calc(dataset=None):
+    """Wraps SolfeggioFrequencyPiEncodingResonanceCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SolfeggioFrequencyPiEncodingResonanceCalc', dataset)
+def calc_sombrero_base_gravity_calculator(dataset=None):
+    """Wraps SombreroBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroBaseGravityCalculator', dataset)
+def calc_sombrero_cosmological_constant_calculator(dataset=None):
+    """Wraps SombreroCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroCosmologicalConstantCalculator', dataset)
+def calc_sombrero_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps SombreroDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroDarkMatterPerturbationCalculator', dataset)
+def calc_sombrero_dust_friction_calculator(dataset=None):
+    """Wraps SombreroDustFrictionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroDustFrictionCalculator', dataset)
+def calc_sombrero_electromagnetic_calculator(dataset=None):
+    """Wraps SombreroElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroElectromagneticCalculator', dataset)
+def calc_sombrero_fluid_density_calculator(dataset=None):
+    """Wraps SombreroFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroFluidDensityCalculator', dataset)
+def calc_sombrero_galaxy_dust_calculator(dataset=None):
+    """Wraps SombreroGalaxyDustCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroGalaxyDustCalculator', dataset)
+def calc_sombrero_galaxy_dust_m_u_g_e_calculator(dataset=None):
+    """Wraps SombreroGalaxyDustMUGECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SombreroGalaxyDustMUGECalculator', dataset)
+def calc_sombrero_galaxy_m104_n_g_c4594(dataset=None):
+    """Wraps SombreroGalaxyM104NGC4594.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SombreroGalaxyM104NGC4594', dataset)
+def calc_sombrero_galaxy_m104_u_q_f_f_calculator(dataset=None):
+    """Wraps SombreroGalaxyM104UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SombreroGalaxyM104UQFFCalculator', dataset)
+def calc_sombrero_galaxy_model(dataset=None):
+    """Wraps SombreroGalaxyModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroGalaxyModel', dataset)
+def calc_sombrero_oscillatory_wave_calculator(dataset=None):
+    """Wraps SombreroOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroOscillatoryWaveCalculator', dataset)
+def calc_sombrero_quantum_uncertainty_calculator(dataset=None):
+    """Wraps SombreroQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroQuantumUncertaintyCalculator', dataset)
+def calc_sombrero_recession_damping_kappa_calculator(dataset=None):
+    """Wraps SombreroRecessionDampingKappaCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SombreroRecessionDampingKappaCalculator', dataset)
+def calc_sombrero_ring_resonator_dust_ring_calculator(dataset=None):
+    """Wraps SombreroRingResonatorDustRingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SombreroRingResonatorDustRingCalculator', dataset)
+def calc_sombrero_s_m_b_h_calculator(dataset=None):
+    """Wraps SombreroSMBHCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroSMBHCalculator', dataset)
+def calc_sombrero_s_m_b_h_dominance_ratio_calculator(dataset=None):
+    """Wraps SombreroSMBHDominanceRatioCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SombreroSMBHDominanceRatioCalculator', dataset)
+def calc_sombrero_superconductivity_calculator(dataset=None):
+    """Wraps SombreroSuperconductivityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroSuperconductivityCalculator', dataset)
+def calc_sombrero_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps SombreroUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SombreroUQFFGravityCalculator', dataset)
+def calc_sombrero_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps SombreroUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SombreroUQFFUnificationCalculator', dataset)
+def calc_sonification_composite_h1821_i_c443_m74_m_s_h1552_calc(dataset=None):
+    """Wraps SonificationCompositeH1821IC443M74MSH1552Calc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SonificationCompositeH1821IC443M74MSH1552Calc', dataset)
+def calc_sono_electrochemistry_calculator(dataset=None):
+    """Wraps SonoElectrochemistryCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SonoElectrochemistryCalculator', dataset)
+def calc_sonochemistry_radical_yield_calculator(dataset=None):
+    """Wraps SonochemistryRadicalYieldCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SonochemistryRadicalYieldCalculator', dataset)
+def calc_sound_horizon_b_a_o_calculator(dataset=None):
+    """Wraps SoundHorizonBAOCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SoundHorizonBAOCalculator', dataset)
+def calc_source10_catalogue_f_u_bi_calculator(dataset=None):
+    """Wraps Source10CatalogueFUBiCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Source10CatalogueFUBiCalculator', dataset)
+def calc_source10_d_p_m_resonance_amplification_calculator(dataset=None):
+    """Wraps Source10DPMResonanceAmplificationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('Source10DPMResonanceAmplificationCalculator', dataset)
+def calc_source10_g_p_u_d_p_m_spectral_atlas_calculator(dataset=None):
+    """Wraps Source10GPUDPMSpectralAtlasCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Source10GPUDPMSpectralAtlasCalculator', dataset)
+def calc_source10_gravitational_vacuum_drag_calculator(dataset=None):
+    """Wraps Source10GravitationalVacuumDragCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('Source10GravitationalVacuumDragCalculator', dataset)
+def calc_source10_t_hz_double_gate_conduit_calculator(dataset=None):
+    """Wraps Source10THzDoubleGateConduitCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('Source10THzDoubleGateConduitCalculator', dataset)
+def calc_source7_d_v_p_bridge_calculator_s234(dataset=None):
+    """Wraps Source7DVPBridgeCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Source7DVPBridgeCalculator_S234', dataset)
+def calc_source7_triple_point_calculator_s234(dataset=None):
+    """Wraps Source7TriplePointCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Source7TriplePointCalculator_S234', dataset)
+def calc_source7_v_d_s_bridge_calculator_s234(dataset=None):
+    """Wraps Source7VDSBridgeCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Source7VDSBridgeCalculator_S234', dataset)
+def calc_space_impedance_calculator(dataset=None):
+    """Wraps SpaceImpedanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpaceImpedanceCalculator', dataset)
+def calc_spacetime_metric_calculator(dataset=None):
+    """Wraps SpacetimeMetricCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpacetimeMetricCalculator', dataset)
+def calc_species_classification_calculator(dataset=None):
+    """Wraps SpeciesClassificationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpeciesClassificationCalculator', dataset)
+def calc_spectral_decomposition(dataset=None):
+    """Wraps SpectralDecomposition.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpectralDecomposition', dataset)
+def calc_spectral_ladder26_state_calc(dataset=None):
+    """Wraps SpectralLadder26StateCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SpectralLadder26StateCalc', dataset)
+def calc_spectral_ladder_phonon_mapping_calc(dataset=None):
+    """Wraps SpectralLadderPhononMappingCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SpectralLadderPhononMappingCalc', dataset)
+def calc_sphaleron_calculator(dataset=None):
+    """Wraps SphaleronCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SphaleronCalculator', dataset)
+def calc_sphere_volume_calculator(dataset=None):
+    """Wraps SphereVolumeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SphereVolumeCalculator', dataset)
+def calc_spindle_orb_dynamics_calculator(dataset=None):
+    """Wraps SpindleOrbDynamicsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbDynamicsCalculator', dataset)
+def calc_spindle_orb_emergence_tracker_calculator(dataset=None):
+    """Wraps SpindleOrbEmergenceTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbEmergenceTrackerCalculator', dataset)
+def calc_spindle_orb_energy_calculator(dataset=None):
+    """Wraps SpindleOrbEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbEnergyCalculator', dataset)
+def calc_spindle_orb_filament_calculator(dataset=None):
+    """Wraps SpindleOrbFilamentCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbFilamentCalculator', dataset)
+def calc_spindle_orb_persistence_calculator(dataset=None):
+    """Wraps SpindleOrbPersistenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbPersistenceCalculator', dataset)
+def calc_spindle_orb_species_calculator(dataset=None):
+    """Wraps SpindleOrbSpeciesCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbSpeciesCalculator', dataset)
+def calc_spindle_orb_threshold_calculator(dataset=None):
+    """Wraps SpindleOrbThresholdCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleOrbThresholdCalculator', dataset)
+def calc_spindle_sub_cycle_calculator(dataset=None):
+    """Wraps SpindleSubCycleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpindleSubCycleCalculator', dataset)
+def calc_spiral_arm_dynamics_calculator(dataset=None):
+    """Wraps SpiralArmDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralArmDynamicsCalculator', dataset)
+def calc_spiral_arm_torque_calculator(dataset=None):
+    """Wraps SpiralArmTorqueCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpiralArmTorqueCalculator', dataset)
+def calc_spiral_arm_torque_gravitational_amplifier_calculator(dataset=None):
+    """Wraps SpiralArmTorqueGravitationalAmplifierCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SpiralArmTorqueGravitationalAmplifierCalculator', dataset)
+def calc_spiral_cosmological_lambda_redshift_calculator(dataset=None):
+    """Wraps SpiralCosmologicalLambdaRedshiftCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralCosmologicalLambdaRedshiftCalculator', dataset)
+def calc_spiral_d_m_visible_partition_rotation_calculator(dataset=None):
+    """Wraps SpiralDMVisiblePartitionRotationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SpiralDMVisiblePartitionRotationCalculator', dataset)
+def calc_spiral_density_wave_calculator(dataset=None):
+    """Wraps SpiralDensityWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralDensityWaveCalculator', dataset)
+def calc_spiral_galaxy_dark_matter_halo_calculator(dataset=None):
+    """Wraps SpiralGalaxyDarkMatterHaloCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralGalaxyDarkMatterHaloCalculator', dataset)
+def calc_spiral_galaxy_density_wave_calculator(dataset=None):
+    """Wraps SpiralGalaxyDensityWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralGalaxyDensityWaveCalculator', dataset)
+def calc_spiral_galaxy_i_s_m_fluid_dynamics_calculator(dataset=None):
+    """Wraps SpiralGalaxyISMFluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralGalaxyISMFluidDynamicsCalculator', dataset)
+def calc_spiral_galaxy_resonance_calculator(dataset=None):
+    """Wraps SpiralGalaxyResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralGalaxyResonanceCalculator', dataset)
+def calc_spiral_galaxy_rotation_curve_flat_calculator(dataset=None):
+    """Wraps SpiralGalaxyRotationCurveFlatCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpiralGalaxyRotationCurveFlatCalculator', dataset)
+def calc_spiral_supernovae_u_q_f_f_galactic_calculator(dataset=None):
+    """Wraps SpiralSupernovaeUQFFGalacticCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpiralSupernovaeUQFFGalacticCalculator', dataset)
+def calc_spiral_torque_calculator(dataset=None):
+    """Wraps SpiralTorqueCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpiralTorqueCalculator', dataset)
+def calc_spirals_and_supernovae_m_u_g_e_calculator(dataset=None):
+    """Wraps SpiralsAndSupernovaeMUGECalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SpiralsAndSupernovaeMUGECalculator', dataset)
+def calc_spirals_and_supernovae_tspiral_s_n_term_u_q_f_f_calculator(dataset=None):
+    """Wraps SpiralsAndSupernovaeTspiralSNTermUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SpiralsAndSupernovaeTspiralSNTermUQFFCalculator', dataset)
+def calc_spirograph_nebula_i_c418_u_q_f_f_calculator(dataset=None):
+    """Wraps SpirographNebulaIC418UQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('SpirographNebulaIC418UQFFCalculator', dataset)
+def calc_spooky_action_non_local_calculator(dataset=None):
+    """Wraps SpookyActionNonLocalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpookyActionNonLocalCalculator', dataset)
+def calc_spooky_action_non_local_transfer_calculator(dataset=None):
+    """Wraps SpookyActionNonLocalTransferCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpookyActionNonLocalTransferCalculator', dataset)
+def calc_spooky_action_waveless_calculator(dataset=None):
+    """Wraps SpookyActionWavelessCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SpookyActionWavelessCalculator', dataset)
+def calc_stabilization_phase_calculator(dataset=None):
+    """Wraps StabilizationPhaseCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StabilizationPhaseCalculator', dataset)
+def calc_stabilization_phase_tracker_calculator(dataset=None):
+    """Wraps StabilizationPhaseTrackerCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StabilizationPhaseTrackerCalculator', dataset)
+def calc_standard_model_u_q_f_f_model(dataset=None):
+    """Wraps StandardModelUQFFModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StandardModelUQFFModel', dataset)
+def calc_standard_physics_approximation_calculator(dataset=None):
+    """Wraps StandardPhysicsApproximationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StandardPhysicsApproximationCalculator', dataset)
+def calc_standard_physics_comparison_calculator(dataset=None):
+    """Wraps StandardPhysicsComparisonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StandardPhysicsComparisonCalculator', dataset)
+def calc_standard_physics_deviation_calculator(dataset=None):
+    """Wraps StandardPhysicsDeviationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StandardPhysicsDeviationCalculator', dataset)
+def calc_star_formation_gravity_calculator(dataset=None):
+    """Wraps StarFormationGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarFormationGravityCalculator', dataset)
+def calc_star_magic09_sept_u_q_f_f_multi_body_n_s_calculator(dataset=None):
+    """Wraps StarMagic09SeptUQFFMultiBodyNSCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StarMagic09SeptUQFFMultiBodyNSCalculator', dataset)
+def calc_star_magic11254865_m_u_g_e_session_hub_calculator(dataset=None):
+    """Wraps StarMagic11254865MUGESessionHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StarMagic11254865MUGESessionHubCalculator', dataset)
+def calc_star_magic11254865_session102_hub_calculator(dataset=None):
+    """Wraps StarMagic11254865Session102HubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StarMagic11254865Session102HubCalculator', dataset)
+def calc_star_magic11254865_session103_hub_calculator(dataset=None):
+    """Wraps StarMagic11254865Session103HubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StarMagic11254865Session103HubCalculator', dataset)
+def calc_star_magic_black_hole_interaction(dataset=None):
+    """Wraps StarMagicBlackHoleInteraction.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarMagicBlackHoleInteraction', dataset)
+def calc_star_magic_energy_structure(dataset=None):
+    """Wraps StarMagicEnergyStructure.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarMagicEnergyStructure', dataset)
+def calc_star_magic_vacuum_energy(dataset=None):
+    """Wraps StarMagicVacuumEnergy.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarMagicVacuumEnergy', dataset)
+def calc_star_system_table_calculator(dataset=None):
+    """Wraps StarSystemTableCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StarSystemTableCalculator', dataset)
+def calc_starbirth_base_gravity_calculator(dataset=None):
+    """Wraps StarbirthBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthBaseGravityCalculator', dataset)
+def calc_starbirth_cosmological_constant_calculator(dataset=None):
+    """Wraps StarbirthCosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthCosmologicalConstantCalculator', dataset)
+def calc_starbirth_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps StarbirthDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthDarkMatterPerturbationCalculator', dataset)
+def calc_starbirth_electromagnetic_calculator(dataset=None):
+    """Wraps StarbirthElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthElectromagneticCalculator', dataset)
+def calc_starbirth_fluid_density_calculator(dataset=None):
+    """Wraps StarbirthFluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthFluidDensityCalculator', dataset)
+def calc_starbirth_formation_timescale_calculator(dataset=None):
+    """Wraps StarbirthFormationTimescaleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthFormationTimescaleCalculator', dataset)
+def calc_starbirth_gas_velocity_calculator(dataset=None):
+    """Wraps StarbirthGasVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthGasVelocityCalculator', dataset)
+def calc_starbirth_mass_growth_calculator(dataset=None):
+    """Wraps StarbirthMassGrowthCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthMassGrowthCalculator', dataset)
+def calc_starbirth_oscillatory_wave_calculator(dataset=None):
+    """Wraps StarbirthOscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthOscillatoryWaveCalculator', dataset)
+def calc_starbirth_quantum_uncertainty_calculator(dataset=None):
+    """Wraps StarbirthQuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthQuantumUncertaintyCalculator', dataset)
+def calc_starbirth_stellar_wind_calculator(dataset=None):
+    """Wraps StarbirthStellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthStellarWindCalculator', dataset)
+def calc_starbirth_tapestry_l_m_c_u_q_f_f_calculator(dataset=None):
+    """Wraps StarbirthTapestryLMCUQFFCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('StarbirthTapestryLMCUQFFCalculator', dataset)
+def calc_starbirth_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps StarbirthUQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarbirthUQFFUnificationCalculator', dataset)
+def calc_starburst_base_gravity_calculator(dataset=None):
+    """Wraps StarburstBaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StarburstBaseGravityCalculator', dataset)
+def calc_static_sink_field_calculator(dataset=None):
+    """Wraps StaticSinkFieldCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StaticSinkFieldCalculator', dataset)
+def calc_stellar_age_helio_correlation_calculator(dataset=None):
+    """Wraps StellarAgeHelioCorrelationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StellarAgeHelioCorrelationCalculator', dataset)
+def calc_stellar_cluster_ug3_disk_turbulence_calculator(dataset=None):
+    """Wraps StellarClusterUg3DiskTurbulenceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('StellarClusterUg3DiskTurbulenceCalculator', dataset)
+def calc_stellar_equilibrium_model(dataset=None):
+    """Wraps StellarEquilibriumModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StellarEquilibriumModel', dataset)
+def calc_stellar_hollow_structure_calculator(dataset=None):
+    """Wraps StellarHollowStructureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StellarHollowStructureCalculator', dataset)
+def calc_stellar_reference_comparison_calculator(dataset=None):
+    """Wraps StellarReferenceComparisonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StellarReferenceComparisonCalculator', dataset)
+def calc_stellar_ug1_dipole_defect_calculator(dataset=None):
+    """Wraps StellarUg1DipoleDefectCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('StellarUg1DipoleDefectCalculator', dataset)
+def calc_stellar_wind_buoyancy_lagrangian_calc(dataset=None):
+    """Wraps StellarWindBuoyancyLagrangianCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StellarWindBuoyancyLagrangianCalc', dataset)
+def calc_stellar_wind_feedback_calculator(dataset=None):
+    """Wraps StellarWindFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StellarWindFeedbackCalculator', dataset)
+def calc_stellar_wind_shock_calculator(dataset=None):
+    """Wraps StellarWindShockCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StellarWindShockCalculator', dataset)
+def calc_step_function_boundary_calculator(dataset=None):
+    """Wraps StepFunctionBoundaryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StepFunctionBoundaryCalculator', dataset)
+def calc_step_function_calculator(dataset=None):
+    """Wraps StepFunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StepFunctionCalculator', dataset)
+def calc_stephans_quintet_galaxy_group_u_q_f_f_calculator(dataset=None):
+    """Wraps StephansQuintetGalaxyGroupUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StephansQuintetGalaxyGroupUQFFCalculator', dataset)
+def calc_stephans_quintet_shock_ridge_f_u_bi_calculator(dataset=None):
+    """Wraps StephansQuintetShockRidgeFUBiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('StephansQuintetShockRidgeFUBiCalculator', dataset)
+def calc_stress_energy_a_munu_coupling_calculator(dataset=None):
+    """Wraps StressEnergyAMunuCouplingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('StressEnergyAMunuCouplingCalculator', dataset)
+def calc_stress_energy_quadratic_calculator(dataset=None):
+    """Wraps StressEnergyQuadraticCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StressEnergyQuadraticCalculator', dataset)
+def calc_stress_energy_tensor_calculator(dataset=None):
+    """Wraps StressEnergyTensorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StressEnergyTensorCalculator', dataset)
+def calc_string_dimension_algebra_calculator(dataset=None):
+    """Wraps StringDimensionAlgebraCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StringDimensionAlgebraCalculator', dataset)
+def calc_string_distance_calculator(dataset=None):
+    """Wraps StringDistanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('StringDistanceCalculator', dataset)
+def calc_string_g_w_planar_frequency_rebound_disk_formation_calculator(dataset=None):
+    """Wraps StringGWPlanarFrequencyReboundDiskFormationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('StringGWPlanarFrequencyReboundDiskFormationCalculator', dataset)
+def calc_string_theory_compactification_calculator(dataset=None):
+    """Wraps StringTheoryCompactificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StringTheoryCompactificationCalculator', dataset)
+def calc_student_guide_universe_calculator(dataset=None):
+    """Wraps StudentGuideUniverseCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('StudentGuideUniverseCalculator', dataset)
+def calc_sunyaev_zeldovich_y_parameter_calculator(dataset=None):
+    """Wraps SunyaevZeldovichYParameterCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SunyaevZeldovichYParameterCalculator', dataset)
+def calc_super_saturated_quantum_overlay_calculator(dataset=None):
+    """Wraps SuperSaturatedQuantumOverlayCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SuperSaturatedQuantumOverlayCalculator', dataset)
+def calc_superconducting_coherence_model(dataset=None):
+    """Wraps SuperconductingCoherenceModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SuperconductingCoherenceModel', dataset)
+def calc_superconductive_atomic_correction_calculator(dataset=None):
+    """Wraps SuperconductiveAtomicCorrectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SuperconductiveAtomicCorrectionCalculator', dataset)
+def calc_superconductive_calculator(dataset=None):
+    """Wraps SuperconductiveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SuperconductiveCalculator', dataset)
+def calc_superconductive_complex_ui_density_calculator(dataset=None):
+    """Wraps SuperconductiveComplexUiDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SuperconductiveComplexUiDensityCalculator', dataset)
+def calc_superconductive_correction_calculator(dataset=None):
+    """Wraps SuperconductiveCorrectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SuperconductiveCorrectionCalculator', dataset)
+def calc_superconductive_material_vacuum_model(dataset=None):
+    """Wraps SuperconductiveMaterialVacuumModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SuperconductiveMaterialVacuumModel', dataset)
+def calc_superconductive_state_quantum_calculator(dataset=None):
+    """Wraps SuperconductiveStateQuantumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SuperconductiveStateQuantumCalculator', dataset)
+def calc_superfluid_aether_dynamics_calculator(dataset=None):
+    """Wraps SuperfluidAetherDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SuperfluidAetherDynamicsCalculator', dataset)
+def calc_supernova_feedback_calculator(dataset=None):
+    """Wraps SupernovaFeedbackCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SupernovaFeedbackCalculator', dataset)
+def calc_supernova_feedback_specific_calculator(dataset=None):
+    """Wraps SupernovaFeedbackSpecificCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SupernovaFeedbackSpecificCalculator', dataset)
+def calc_supernova_luminosity_radiation_calculator(dataset=None):
+    """Wraps SupernovaLuminosityRadiationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SupernovaLuminosityRadiationCalculator', dataset)
+def calc_supernova_progenitor_negative_time_zone_calculator(dataset=None):
+    """Wraps SupernovaProgenitorNegativeTimeZoneCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('SupernovaProgenitorNegativeTimeZoneCalculator', dataset)
+def calc_supernova_shockwave_calculator(dataset=None):
+    """Wraps SupernovaShockwaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('SupernovaShockwaveCalculator', dataset)
+def calc_supernova_term_calculator(dataset=None):
+    """Wraps SupernovaTermCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SupernovaTermCalculator', dataset)
+def calc_superradiance_amplification_calculator(dataset=None):
+    """Wraps SuperradianceAmplificationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SuperradianceAmplificationCalculator', dataset)
+def calc_surface_gravity_calculator(dataset=None):
+    """Wraps SurfaceGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SurfaceGravityCalculator', dataset)
+def calc_swampland_conjecture_calculator(dataset=None):
+    """Wraps SwamplandConjectureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SwamplandConjectureCalculator', dataset)
+def calc_sweet_vacuum_energy_calculator(dataset=None):
+    """Wraps SweetVacuumEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SweetVacuumEnergyCalculator', dataset)
+def calc_symbolic_integrator_calculator(dataset=None):
+    """Wraps SymbolicIntegratorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SymbolicIntegratorCalculator', dataset)
+def calc_system_specific_terms_calculator(dataset=None):
+    """Wraps SystemSpecificTermsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('SystemSpecificTermsCalculator', dataset)
+def calc_t_hz_hole_oscilloscope_analyzer(dataset=None):
+    """Wraps THzHoleOscilloscopeAnalyzer.compute() from CondensedPhysics."""
+    return _pipeline_invoke('THzHoleOscilloscopeAnalyzer', dataset)
+def calc_t_hz_hole_resonance_formula_calculator(dataset=None):
+    """Wraps THzHoleResonanceFormulaCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('THzHoleResonanceFormulaCalculator', dataset)
+def calc_t_hz_q_scope_earth_core_sig1to50_calculator(dataset=None):
+    """Wraps THzQScopeEarthCoreSig1to50Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('THzQScopeEarthCoreSig1to50Calculator', dataset)
+def calc_t_hz_resonance_bundle_calculator(dataset=None):
+    """Wraps THzResonanceBundleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('THzResonanceBundleCalculator', dataset)
+def calc_t_o_i1227b_young_neptune_exoplanet_f_u_bi_calculator(dataset=None):
+    """Wraps TOI1227bYoungNeptuneExoplanetFUBiCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TOI1227bYoungNeptuneExoplanetFUBiCalculator', dataset)
+def calc_t_o_n618_sacred_phase_calculator(dataset=None):
+    """Wraps TON618SacredPhaseCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TON618SacredPhaseCalculator', dataset)
+def calc_t_q_f_t_anyon_braiding_calculator(dataset=None):
+    """Wraps TQFTAnyonBraidingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TQFTAnyonBraidingCalculator', dataset)
+def calc_t_r_z_model(dataset=None):
+    """Wraps TRZModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TRZModel', dataset)
+def calc_t_x_s0506_jet_power_curves_calc(dataset=None):
+    """Wraps TXS0506JetPowerCurvesCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TXS0506JetPowerCurvesCalc', dataset)
+def calc_t_x_s0506_p_i_co_sum_calculator(dataset=None):
+    """Wraps TXS0506PICoSumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TXS0506PICoSumCalculator', dataset)
+def calc_tapestry26_d_three_system_simultaneous_calculator(dataset=None):
+    """Wraps Tapestry26DThreeSystemSimultaneousCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Tapestry26DThreeSystemSimultaneousCalculator', dataset)
+def calc_tapestry_blazing_starbirth_n_g_c2014_calculator(dataset=None):
+    """Wraps TapestryBlazingStarbirthNGC2014Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TapestryBlazingStarbirthNGC2014Calculator', dataset)
+def calc_tapestry_freq_aether_calculator(dataset=None):
+    """Wraps TapestryFreqAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqAetherCalculator', dataset)
+def calc_tapestry_freq_aether_res_calculator(dataset=None):
+    """Wraps TapestryFreqAetherResCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqAetherResCalculator', dataset)
+def calc_tapestry_freq_d_p_m_calculator(dataset=None):
+    """Wraps TapestryFreqDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqDPMCalculator', dataset)
+def calc_tapestry_freq_exp_calculator(dataset=None):
+    """Wraps TapestryFreqExpCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqExpCalculator', dataset)
+def calc_tapestry_freq_fluid_calculator(dataset=None):
+    """Wraps TapestryFreqFluidCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqFluidCalculator', dataset)
+def calc_tapestry_freq_osc_calculator(dataset=None):
+    """Wraps TapestryFreqOscCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqOscCalculator', dataset)
+def calc_tapestry_freq_quantum_calculator(dataset=None):
+    """Wraps TapestryFreqQuantumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqQuantumCalculator', dataset)
+def calc_tapestry_freq_super_calculator(dataset=None):
+    """Wraps TapestryFreqSuperCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqSuperCalculator', dataset)
+def calc_tapestry_freq_t_hz_calculator(dataset=None):
+    """Wraps TapestryFreqTHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqTHzCalculator', dataset)
+def calc_tapestry_freq_ug4i_calculator(dataset=None):
+    """Wraps TapestryFreqUg4iCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqUg4iCalculator', dataset)
+def calc_tapestry_freq_vac_diff_calculator(dataset=None):
+    """Wraps TapestryFreqVacDiffCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryFreqVacDiffCalculator', dataset)
+def calc_tapestry_starbirth_calculator(dataset=None):
+    """Wraps TapestryStarbirthCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TapestryStarbirthCalculator', dataset)
+def calc_tapestry_starbirth_d_p_m_t_hz_freq_calculator(dataset=None):
+    """Wraps TapestryStarbirthDPMTHzFreqCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('TapestryStarbirthDPMTHzFreqCalculator', dataset)
+def calc_tarantula_nebula30_dor_u_q_f_f_calculator(dataset=None):
+    """Wraps TarantulaNebula30DorUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TarantulaNebula30DorUQFFCalculator', dataset)
+def calc_tarantula_nebula_model(dataset=None):
+    """Wraps TarantulaNebulaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TarantulaNebulaModel', dataset)
+def calc_taylor_series_calculator(dataset=None):
+    """Wraps TaylorSeriesCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TaylorSeriesCalculator', dataset)
+def calc_technological_field_fenv_calculator(dataset=None):
+    """Wraps TechnologicalFieldFenvCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TechnologicalFieldFenvCalculator', dataset)
+def calc_temperature_stress_energy_calculator(dataset=None):
+    """Wraps TemperatureStressEnergyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TemperatureStressEnergyCalculator', dataset)
+def calc_temporal_dynamics_model(dataset=None):
+    """Wraps TemporalDynamicsModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TemporalDynamicsModel', dataset)
+def calc_ten_astro_systems_m_u_g_e_calculator(dataset=None):
+    """Wraps TenAstroSystemsMUGECalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TenAstroSystemsMUGECalculator', dataset)
+def calc_tensor_algebra(dataset=None):
+    """Wraps TensorAlgebra.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TensorAlgebra', dataset)
+def calc_terahertz_holes_model(dataset=None):
+    """Wraps TerahertzHolesModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TerahertzHolesModel', dataset)
+def calc_tesla_phenomenon_calculator(dataset=None):
+    """Wraps TeslaPhenomenonCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TeslaPhenomenonCalculator', dataset)
+def calc_thermal_convection_cycle_calculator(dataset=None):
+    """Wraps ThermalConvectionCycleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ThermalConvectionCycleCalculator', dataset)
+def calc_thermal_gradient_convection_calculator(dataset=None):
+    """Wraps ThermalGradientConvectionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThermalGradientConvectionCalculator', dataset)
+def calc_thermal_gradient_driven_dynamics_calculator(dataset=None):
+    """Wraps ThermalGradientDrivenDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThermalGradientDrivenDynamicsCalculator', dataset)
+def calc_thermal_gradient_evolution_calculator(dataset=None):
+    """Wraps ThermalGradientEvolutionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ThermalGradientEvolutionCalculator', dataset)
+def calc_thermal_gradient_f_u_calculator(dataset=None):
+    """Wraps ThermalGradientFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThermalGradientFUCalculator', dataset)
+def calc_thermal_lens_light_bending_calculator(dataset=None):
+    """Wraps ThermalLensLightBendingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ThermalLensLightBendingCalculator', dataset)
+def calc_thermodynamic_q_calc_calculator(dataset=None):
+    """Wraps ThermodynamicQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThermodynamicQCalcCalculator', dataset)
+def calc_thirty_frame_sequence_calculator(dataset=None):
+    """Wraps ThirtyFrameSequenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThirtyFrameSequenceCalculator', dataset)
+def calc_thirty_nine_frame_sequence_calculator(dataset=None):
+    """Wraps ThirtyNineFrameSequenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThirtyNineFrameSequenceCalculator', dataset)
+def calc_thirty_six_frame_sequence_calculator(dataset=None):
+    """Wraps ThirtySixFrameSequenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThirtySixFrameSequenceCalculator', dataset)
+def calc_thirty_three_frame_sequence_calculator(dataset=None):
+    """Wraps ThirtyThreeFrameSequenceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThirtyThreeFrameSequenceCalculator', dataset)
+def calc_three_assumption_u_q_f_f_cosmogenesis_calc(dataset=None):
+    """Wraps ThreeAssumptionUQFFCosmogenesisCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ThreeAssumptionUQFFCosmogenesisCalc', dataset)
+def calc_three_d_i_p_o_calculator(dataset=None):
+    """Wraps ThreeDIPOCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ThreeDIPOCalculator', dataset)
+def calc_three_d_i_p_o_non_linear_progression_calculator(dataset=None):
+    """Wraps ThreeDIPONonLinearProgressionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ThreeDIPONonLinearProgressionCalculator', dataset)
+def calc_three_new_number_systems_vacuum_dipole_buoyancy_calculator(dataset=None):
+    """Wraps ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator', dataset)
+def calc_three_u_q_f_f_mode_calculator(dataset=None):
+    """Wraps ThreeUQFFModeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ThreeUQFFModeCalculator', dataset)
+def calc_tidal_deformability_phonon_correction_calc(dataset=None):
+    """Wraps TidalDeformabilityPhononCorrectionCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TidalDeformabilityPhononCorrectionCalc', dataset)
+def calc_tidal_disruption_event_model(dataset=None):
+    """Wraps TidalDisruptionEventModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TidalDisruptionEventModel', dataset)
+def calc_tidal_disruption_fallback_calculator(dataset=None):
+    """Wraps TidalDisruptionFallbackCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TidalDisruptionFallbackCalculator', dataset)
+def calc_tidal_force_model(dataset=None):
+    """Wraps TidalForceModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TidalForceModel', dataset)
+def calc_tidal_interaction_calculator(dataset=None):
+    """Wraps TidalInteractionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TidalInteractionCalculator', dataset)
+def calc_tidal_ring_effect_calculator(dataset=None):
+    """Wraps TidalRingEffectCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TidalRingEffectCalculator', dataset)
+def calc_tidal_stripping_calculator(dataset=None):
+    """Wraps TidalStrippingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TidalStrippingCalculator', dataset)
+def calc_time_reversal_zone_calculator(dataset=None):
+    """Wraps TimeReversalZoneCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TimeReversalZoneCalculator', dataset)
+def calc_time_reversal_zone_dynamic_calculator(dataset=None):
+    """Wraps TimeReversalZoneDynamicCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TimeReversalZoneDynamicCalculator', dataset)
+def calc_time_reversal_zone_model(dataset=None):
+    """Wraps TimeReversalZoneModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TimeReversalZoneModel', dataset)
+def calc_time_varying_vacuum_model(dataset=None):
+    """Wraps TimeVaryingVacuumModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TimeVaryingVacuumModel', dataset)
+def calc_timestamp_assignment_calculator(dataset=None):
+    """Wraps TimestampAssignmentCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TimestampAssignmentCalculator', dataset)
+def calc_topoconductor_quantum_cooling_comparison_calc(dataset=None):
+    """Wraps TopoconductorQuantumCoolingComparisonCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TopoconductorQuantumCoolingComparisonCalc', dataset)
+def calc_toroid_pillar_rebound_calculator(dataset=None):
+    """Wraps ToroidPillarReboundCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ToroidPillarReboundCalculator', dataset)
+def calc_total_energy_accumulation_calculator(dataset=None):
+    """Wraps TotalEnergyAccumulationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TotalEnergyAccumulationCalculator', dataset)
+def calc_total_energy_budget_calculator(dataset=None):
+    """Wraps TotalEnergyBudgetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TotalEnergyBudgetCalculator', dataset)
+def calc_total_energy_budget_orb11_calculator(dataset=None):
+    """Wraps TotalEnergyBudgetOrb11Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TotalEnergyBudgetOrb11Calculator', dataset)
+def calc_transition_zone_calculator(dataset=None):
+    """Wraps TransitionZoneCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TransitionZoneCalculator', dataset)
+def calc_triadic_calculator(dataset=None):
+    """Wraps TriadicCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TriadicCalculator', dataset)
+def calc_triadic_clone38_system_calculator(dataset=None):
+    """Wraps TriadicClone38SystemCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TriadicClone38SystemCalculator', dataset)
+def calc_triadic_geometric_mean_calculator(dataset=None):
+    """Wraps TriadicGeometricMeanCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TriadicGeometricMeanCalculator', dataset)
+def calc_triadic_gravity_calculator(dataset=None):
+    """Wraps TriadicGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TriadicGravityCalculator', dataset)
+def calc_triadic_master_equation_calculator(dataset=None):
+    """Wraps TriadicMasterEquationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('TriadicMasterEquationCalculator', dataset)
+def calc_triadic_master_f_ug1_r26_state_ramanujan_calculator(dataset=None):
+    """Wraps TriadicMasterFUg1R26StateRamanujanCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('TriadicMasterFUg1R26StateRamanujanCalculator', dataset)
+def calc_triadic_master_geometric_calculator(dataset=None):
+    """Wraps TriadicMasterGeometricCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TriadicMasterGeometricCalculator', dataset)
+def calc_triadic_q_g_p_validation_calc(dataset=None):
+    """Wraps TriadicQGPValidationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TriadicQGPValidationCalc', dataset)
+def calc_triadic_s_sq_feedback_enhanced_calculator(dataset=None):
+    """Wraps TriadicSSqFeedbackEnhancedCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('TriadicSSqFeedbackEnhancedCalculator', dataset)
+def calc_triadic_u_q_f_f_framework(dataset=None):
+    """Wraps TriadicUQFFFramework.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TriadicUQFFFramework', dataset)
+def calc_triangle_area_calculator(dataset=None):
+    """Wraps TriangleAreaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TriangleAreaCalculator', dataset)
+def calc_trig_identity_calculator(dataset=None):
+    """Wraps TrigIdentityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TrigIdentityCalculator', dataset)
+def calc_ts00_two_component_stress_energy_decomposition_calculator(dataset=None):
+    """Wraps Ts00TwoComponentStressEnergyDecompositionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ts00TwoComponentStressEnergyDecompositionCalculator', dataset)
+def calc_ts_universe5_component_stress_energy_decomposition_calculator(dataset=None):
+    """Wraps TsUniverse5ComponentStressEnergyDecompositionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TsUniverse5ComponentStressEnergyDecompositionCalculator', dataset)
+def calc_turbulence_u_q_f_f_calculator(dataset=None):
+    """Wraps TurbulenceUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TurbulenceUQFFCalculator', dataset)
+def calc_twenty_six_d_polynomial_calculator(dataset=None):
+    """Wraps TwentySixDPolynomialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TwentySixDPolynomialCalculator', dataset)
+def calc_twenty_six_d_projection_calculator(dataset=None):
+    """Wraps TwentySixDProjectionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TwentySixDProjectionCalculator', dataset)
+def calc_twenty_six_d_resonance_layer_amplitude_frequency_calculator(dataset=None):
+    """Wraps TwentySixDResonanceLayerAmplitudeFrequencyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('TwentySixDResonanceLayerAmplitudeFrequencyCalculator', dataset)
+def calc_twenty_six_level_energy_scale_calculator(dataset=None):
+    """Wraps TwentySixLevelEnergyScaleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TwentySixLevelEnergyScaleCalculator', dataset)
+def calc_twenty_six_level_polynomial_calculator(dataset=None):
+    """Wraps TwentySixLevelPolynomialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TwentySixLevelPolynomialCalculator', dataset)
+def calc_twenty_six_level_polynomial_hierarchy_full_calculator(dataset=None):
+    """Wraps TwentySixLevelPolynomialHierarchyFullCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('TwentySixLevelPolynomialHierarchyFullCalculator', dataset)
+def calc_twenty_six_quantum_shells_calculator(dataset=None):
+    """Wraps TwentySixQuantumShellsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TwentySixQuantumShellsCalculator', dataset)
+def calc_twenty_six_quantum_state_calculator(dataset=None):
+    """Wraps TwentySixQuantumStateCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('TwentySixQuantumStateCalculator', dataset)
+def calc_two_stage_f_u_refinement_validator(dataset=None):
+    """Wraps TwoStageFURefinementValidator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TwoStageFURefinementValidator', dataset)
+def calc_type_iax_supernova_buoyancy_reversal_calculator(dataset=None):
+    """Wraps TypeIaxSupernovaBuoyancyReversalCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('TypeIaxSupernovaBuoyancyReversalCalculator', dataset)
+def calc_u_a_scm_j_w_s_t_a_l_m_a_c_e_r_n_validation_table_calculator(dataset=None):
+    """Wraps UAScmJWSTALMACERNValidationTableCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UAScmJWSTALMACERNValidationTableCalculator', dataset)
+def calc_u_bi_buoyancy_calculator(dataset=None):
+    """Wraps UBiBuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UBiBuoyancyCalculator', dataset)
+def calc_u_f_e_f_u_extension_calculator(dataset=None):
+    """Wraps UFEFUExtensionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEFUExtensionCalculator', dataset)
+def calc_u_f_e_metric_stress_calculator(dataset=None):
+    """Wraps UFEMetricStressCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEMetricStressCalculator', dataset)
+def calc_u_f_e_negative_time_calculator(dataset=None):
+    """Wraps UFENegativeTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFENegativeTimeCalculator', dataset)
+def calc_u_f_e_orb_plasmoid_dynamics_red_dwarf_calculator(dataset=None):
+    """Wraps UFEOrbPlasmoidDynamicsRedDwarfCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UFEOrbPlasmoidDynamicsRedDwarfCalculator', dataset)
+def calc_u_f_e_plasmoid_count_calculator(dataset=None):
+    """Wraps UFEPlasmoidCountCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEPlasmoidCountCalculator', dataset)
+def calc_u_f_e_plasmoid_spin_temp_field_calculator(dataset=None):
+    """Wraps UFEPlasmoidSpinTempFieldCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEPlasmoidSpinTempFieldCalculator', dataset)
+def calc_u_f_e_q_f_e_ten_component_calculator(dataset=None):
+    """Wraps UFEQFETenComponentCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UFEQFETenComponentCalculator', dataset)
+def calc_u_f_e_reactor_geometry_calculator(dataset=None):
+    """Wraps UFEReactorGeometryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEReactorGeometryCalculator', dataset)
+def calc_u_f_e_s_cm_u_a_vacuum_calculator(dataset=None):
+    """Wraps UFESCmUAVacuumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFESCmUAVacuumCalculator', dataset)
+def calc_u_f_e_ub_buoyancy_calculator(dataset=None):
+    """Wraps UFEUbBuoyancyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEUbBuoyancyCalculator', dataset)
+def calc_u_f_e_ug_gravity_mode_calculator(dataset=None):
+    """Wraps UFEUgGravityModeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEUgGravityModeCalculator', dataset)
+def calc_u_f_e_um_magnetic_string_calculator(dataset=None):
+    """Wraps UFEUmMagneticStringCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UFEUmMagneticStringCalculator', dataset)
+def calc_u_g_c10214_model(dataset=None):
+    """Wraps UGC10214Model.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UGC10214Model', dataset)
+def calc_u_g_c10214_tadpole_galaxy_tidal_calculator(dataset=None):
+    """Wraps UGC10214TadpoleGalaxyTidalCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UGC10214TadpoleGalaxyTidalCalculator', dataset)
+def calc_u_p_equation_variable_calculator(dataset=None):
+    """Wraps UPEquationVariableCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UPEquationVariableCalculator', dataset)
+def calc_u_p_evolution_calculator(dataset=None):
+    """Wraps UPEvolutionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UPEvolutionCalculator', dataset)
+def calc_u_q_f_f(dataset=None):
+    """Wraps UQFF.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF', dataset)
+def calc_u_q_f_f12_term_spectral_ladder_s_g_r1745_calculator(dataset=None):
+    """Wraps UQFF12TermSpectralLadderSGR1745Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF12TermSpectralLadderSGR1745Calculator', dataset)
+def calc_u_q_f_f2027_joint_falsifier_calculator(dataset=None):
+    """Wraps UQFF2027JointFalsifierCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF2027JointFalsifierCalculator', dataset)
+def calc_u_q_f_f2027_quadruple_falsifier_calculator(dataset=None):
+    """Wraps UQFF2027QuadrupleFalsifierCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF2027QuadrupleFalsifierCalculator', dataset)
+def calc_u_q_f_f26_d_egg_total_energy_calculator(dataset=None):
+    """Wraps UQFF26DEggTotalEnergyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF26DEggTotalEnergyCalculator', dataset)
+def calc_u_q_f_f26_d_geometric_folding_operator_calculator(dataset=None):
+    """Wraps UQFF26DGeometricFoldingOperatorCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF26DGeometricFoldingOperatorCalculator', dataset)
+def calc_u_q_f_f26_d_simultaneous_geometric_infinity_sculpting_calculator(dataset=None):
+    """Wraps UQFF26DSimultaneousGeometricInfinitySculptingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF26DSimultaneousGeometricInfinitySculptingCalculator', dataset)
+def calc_u_q_f_f26th_order_factorial_bounds_calculator(dataset=None):
+    """Wraps UQFF26thOrderFactorialBoundsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF26thOrderFactorialBoundsCalculator', dataset)
+def calc_u_q_f_f29_system_cross_validation_matrix_calculator(dataset=None):
+    """Wraps UQFF29SystemCrossValidationMatrixCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF29SystemCrossValidationMatrixCalculator', dataset)
+def calc_u_q_f_f38_system_compressed_master_calculator(dataset=None):
+    """Wraps UQFF38SystemCompressedMasterCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF38SystemCompressedMasterCalculator', dataset)
+def calc_u_q_f_f3_d_i_p_o_degree26_tensor_overlay_calculator(dataset=None):
+    """Wraps UQFF3DIPODegree26TensorOverlayCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFF3DIPODegree26TensorOverlayCalculator', dataset)
+def calc_u_q_f_f48_scale_molecular_rotor_c_i_a_calculator(dataset=None):
+    """Wraps UQFF48ScaleMolecularRotorCIACalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFF48ScaleMolecularRotorCIACalculator', dataset)
+def calc_u_q_f_f99_system_compression_calculator(dataset=None):
+    """Wraps UQFF99SystemCompressionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFF99SystemCompressionCalculator', dataset)
+def calc_u_q_f_f_a_l_i_c_e_run_three_sqrt_s13p6_te_v_multiplicity_calculator(dataset=None):
+    """Wraps UQFFALICERunThreeSqrtS13p6TeVMultiplicityCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFALICERunThreeSqrtS13p6TeVMultiplicityCalculator', dataset)
+def calc_u_q_f_f_ad_s_c_f_t_duality_calculator(dataset=None):
+    """Wraps UQFFAdSCFTDualityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFAdSCFTDualityCalculator', dataset)
+def calc_u_q_f_f_adaptive_framework(dataset=None):
+    """Wraps UQFFAdaptiveFramework.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFAdaptiveFramework', dataset)
+def calc_u_q_f_f_advancements_and_t_hz_holes_calculator(dataset=None):
+    """Wraps UQFFAdvancementsAndTHzHolesCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFAdvancementsAndTHzHolesCalculator', dataset)
+def calc_u_q_f_f_all_forms_evolution_catalogue_calculator(dataset=None):
+    """Wraps UQFFAllFormsEvolutionCatalogueCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFAllFormsEvolutionCatalogueCalculator', dataset)
+def calc_u_q_f_f_atomic_mass_standard_model_error_factor_calculator(dataset=None):
+    """Wraps UQFFAtomicMassStandardModelErrorFactorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFAtomicMassStandardModelErrorFactorCalculator', dataset)
+def calc_u_q_f_f_b_e_s_i_i_i_d_c_s_cabibbo_dipole_contribution_calculator(dataset=None):
+    """Wraps UQFFBESIIIDCSCabibboDipoleContributionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBESIIIDCSCabibboDipoleContributionCalculator', dataset)
+def calc_u_q_f_f_b_s_d_conjecture_rank_cohomology_calculator(dataset=None):
+    """Wraps UQFFBSDConjectureRankCohomologyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBSDConjectureRankCohomologyCalculator', dataset)
+def calc_u_q_f_f_beta_i_triangular_calculator(dataset=None):
+    """Wraps UQFFBetaITriangularCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBetaITriangularCalculator', dataset)
+def calc_u_q_f_f_big_bang_expansion_dynamics_calculator(dataset=None):
+    """Wraps UQFFBigBangExpansionDynamicsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBigBangExpansionDynamicsCalculator', dataset)
+def calc_u_q_f_f_black_hole_accretion_model_calculator(dataset=None):
+    """Wraps UQFFBlackHoleAccretionModelCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBlackHoleAccretionModelCalculator', dataset)
+def calc_u_q_f_f_black_hole_entropy_calculator(dataset=None):
+    """Wraps UQFFBlackHoleEntropyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFBlackHoleEntropyCalculator', dataset)
+def calc_u_q_f_f_black_hole_finite_bound_calculator(dataset=None):
+    """Wraps UQFFBlackHoleFiniteBoundCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBlackHoleFiniteBoundCalculator', dataset)
+def calc_u_q_f_f_black_hole_inversion_calculator(dataset=None):
+    """Wraps UQFFBlackHoleInversionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBlackHoleInversionCalculator', dataset)
+def calc_u_q_f_f_black_hole_merger_dynamics_calculator(dataset=None):
+    """Wraps UQFFBlackHoleMergerDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFBlackHoleMergerDynamicsCalculator', dataset)
+def calc_u_q_f_f_black_hole_stability_calculator(dataset=None):
+    """Wraps UQFFBlackHoleStabilityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFBlackHoleStabilityCalculator', dataset)
+def calc_u_q_f_f_black_hole_stability_proofs_calculator(dataset=None):
+    """Wraps UQFFBlackHoleStabilityProofsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBlackHoleStabilityProofsCalculator', dataset)
+def calc_u_q_f_f_buoyancy_astro_calculator(dataset=None):
+    """Wraps UQFFBuoyancyAstroCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFBuoyancyAstroCalculator', dataset)
+def calc_u_q_f_f_buoyancy_c_n_b_calculator(dataset=None):
+    """Wraps UQFFBuoyancyCNBCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFBuoyancyCNBCalculator', dataset)
+def calc_u_q_f_f_buoyancy_harmonics_calculator(dataset=None):
+    """Wraps UQFFBuoyancyHarmonicsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFBuoyancyHarmonicsCalculator', dataset)
+def calc_u_q_f_f_buoyancy_master_integral_calculator(dataset=None):
+    """Wraps UQFFBuoyancyMasterIntegralCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFBuoyancyMasterIntegralCalculator', dataset)
+def calc_u_q_f_f_buoyant(dataset=None):
+    """Wraps UQFFBuoyant.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFBuoyant', dataset)
+def calc_u_q_f_f_c_g_m_s_sq_metallicity_calculator(dataset=None):
+    """Wraps UQFFCGMSSqMetallicityCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFCGMSSqMetallicityCalculator', dataset)
+def calc_u_q_f_f_c_k_m_vcb_flavor_vacuum_coupling_calculator(dataset=None):
+    """Wraps UQFFCKMVcbFlavorVacuumCouplingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCKMVcbFlavorVacuumCouplingCalculator', dataset)
+def calc_u_q_f_f_c_m_b_structure_growth_calculator(dataset=None):
+    """Wraps UQFFCMBStructureGrowthCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFCMBStructureGrowthCalculator', dataset)
+def calc_u_q_f_f_c_m_bmu_distortion_calculator(dataset=None):
+    """Wraps UQFFCMBmuDistortionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCMBmuDistortionCalculator', dataset)
+def calc_u_q_f_f_c_u_d_a_g_p_u_optimization_pattern_calculator(dataset=None):
+    """Wraps UQFFCUDAGPUOptimizationPatternCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFCUDAGPUOptimizationPatternCalculator', dataset)
+def calc_u_q_f_f_centaurus_a_knotted_jet_v_h_e_hypergraph_calculator(dataset=None):
+    """Wraps UQFFCentaurusAKnottedJetVHEHypergraphCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCentaurusAKnottedJetVHEHypergraphCalculator', dataset)
+def calc_u_q_f_f_centrifugal26_d_shell_calculator(dataset=None):
+    """Wraps UQFFCentrifugal26DShellCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCentrifugal26DShellCalculator', dataset)
+def calc_u_q_f_f_centripetal26_d_shell_calculator(dataset=None):
+    """Wraps UQFFCentripetal26DShellCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCentripetal26DShellCalculator', dataset)
+def calc_u_q_f_f_collatz_convergence26_d_calculator(dataset=None):
+    """Wraps UQFFCollatzConvergence26DCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCollatzConvergence26DCalculator', dataset)
+def calc_u_q_f_f_comp26_d_tensor_off_diag13_n_s_y_m_hub_calculator(dataset=None):
+    """Wraps UQFFComp26DTensorOffDiag13NSYMHubCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFComp26DTensorOffDiag13NSYMHubCalculator', dataset)
+def calc_u_q_f_f_comp_eigenvalue_quantum_gravity_linkage_calculator(dataset=None):
+    """Wraps UQFFCompEigenvalueQuantumGravityLinkageCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCompEigenvalueQuantumGravityLinkageCalculator', dataset)
+def calc_u_q_f_f_comp_spectral_matrix_eigenvalue_calculator(dataset=None):
+    """Wraps UQFFCompSpectralMatrixEigenvalueCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCompSpectralMatrixEigenvalueCalculator', dataset)
+def calc_u_q_f_f_comp_tensor_full26_d13_d_cross_calculator(dataset=None):
+    """Wraps UQFFCompTensorFull26D13DCrossCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCompTensorFull26D13DCrossCalculator', dataset)
+def calc_u_q_f_f_compared_to_g_w150914_calculator(dataset=None):
+    """Wraps UQFFComparedToGW150914Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFComparedToGW150914Calculator', dataset)
+def calc_u_q_f_f_compared_to_g_w170817_calculator(dataset=None):
+    """Wraps UQFFComparedToGW170817Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFComparedToGW170817Calculator', dataset)
+def calc_u_q_f_f_compared_to_g_w190425_calculator(dataset=None):
+    """Wraps UQFFComparedToGW190425Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFComparedToGW190425Calculator', dataset)
+def calc_u_q_f_f_compared_to_l_i_g_o_data_calculator(dataset=None):
+    """Wraps UQFFComparedToLIGODataCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFComparedToLIGODataCalculator', dataset)
+def calc_u_q_f_f_compressed(dataset=None):
+    """Wraps UQFFCompressed.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFCompressed', dataset)
+def calc_u_q_f_f_compressed_friedmann_calculator(dataset=None):
+    """Wraps UQFFCompressedFriedmannCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFCompressedFriedmannCalculator', dataset)
+def calc_u_q_f_f_compression_cycle2_derivation_method_calculator(dataset=None):
+    """Wraps UQFFCompressionCycle2DerivationMethodCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCompressionCycle2DerivationMethodCalculator', dataset)
+def calc_u_q_f_f_conductivity_spectrum_calculator(dataset=None):
+    """Wraps UQFFConductivitySpectrumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFConductivitySpectrumCalculator', dataset)
+def calc_u_q_f_f_constant_mapper(dataset=None):
+    """Wraps UQFFConstantMapper.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFConstantMapper', dataset)
+def calc_u_q_f_f_cosmic_egg_pre_fertilization_energy_calculator(dataset=None):
+    """Wraps UQFFCosmicEggPreFertilizationEnergyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCosmicEggPreFertilizationEnergyCalculator', dataset)
+def calc_u_q_f_f_cosmological_constant_derived_calculator(dataset=None):
+    """Wraps UQFFCosmologicalConstantDerivedCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFCosmologicalConstantDerivedCalculator', dataset)
+def calc_u_q_f_f_d_m_dt_derivation_calculator(dataset=None):
+    """Wraps UQFFDMDtDerivationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFDMDtDerivationCalculator', dataset)
+def calc_u_q_f_f_d_p_m_s_o2_light_cone_calculator(dataset=None):
+    """Wraps UQFFDPMSO2LightConeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFDPMSO2LightConeCalculator', dataset)
+def calc_u_q_f_f_dark_energy_second_derivative_calculator(dataset=None):
+    """Wraps UQFFDarkEnergySecondDerivativeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFDarkEnergySecondDerivativeCalculator', dataset)
+def calc_u_q_f_f_dark_energy_void_buoyancy_calculator(dataset=None):
+    """Wraps UQFFDarkEnergyVoidBuoyancyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFDarkEnergyVoidBuoyancyCalculator', dataset)
+def calc_u_q_f_f_dark_matter_n_f_w_s_i_d_m_calculator(dataset=None):
+    """Wraps UQFFDarkMatterNFWSIDMCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFDarkMatterNFWSIDMCalculator', dataset)
+def calc_u_q_f_f_dipole_vortex_primes_calculator(dataset=None):
+    """Wraps UQFFDipoleVortexPrimesCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFDipoleVortexPrimesCalculator', dataset)
+def calc_u_q_f_f_e_requals_e_p_r_calculator(dataset=None):
+    """Wraps UQFFERequalsEPRCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFERequalsEPRCalculator', dataset)
+def calc_u_q_f_f_early_universe_relativistic_u_v_calculator(dataset=None):
+    """Wraps UQFFEarlyUniverseRelativisticUVCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFEarlyUniverseRelativisticUVCalculator', dataset)
+def calc_u_q_f_f_electroweak_sin_theta_w_s_cm_vacuum_connection_calculator(dataset=None):
+    """Wraps UQFFElectroweakSinThetaWSCmVacuumConnectionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFElectroweakSinThetaWSCmVacuumConnectionCalculator', dataset)
+def calc_u_q_f_f_entanglement_entropy_calculator(dataset=None):
+    """Wraps UQFFEntanglementEntropyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFEntanglementEntropyCalculator', dataset)
+def calc_u_q_f_f_entanglement_spectrum_calculator(dataset=None):
+    """Wraps UQFFEntanglementSpectrumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFEntanglementSpectrumCalculator', dataset)
+def calc_u_q_f_f_equation_mathematical_derivation(dataset=None):
+    """Wraps UQFFEquationMathematicalDerivation.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFEquationMathematicalDerivation', dataset)
+def calc_u_q_f_f_euler_equations_inviscid_proof_calculator(dataset=None):
+    """Wraps UQFFEulerEquationsInviscidProofCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFEulerEquationsInviscidProofCalculator', dataset)
+def calc_u_q_f_f_evaporation_timescale_calculator(dataset=None):
+    """Wraps UQFFEvaporationTimescaleCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFEvaporationTimescaleCalculator', dataset)
+def calc_u_q_f_f_exotic_pocketed_shell_quantum_frequency_calculator(dataset=None):
+    """Wraps UQFFExoticPocketedShellQuantumFrequencyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFExoticPocketedShellQuantumFrequencyCalculator', dataset)
+def calc_u_q_f_f_f_t_r_z_s_o5_calculator(dataset=None):
+    """Wraps UQFFFTRZSO5Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFFTRZSO5Calculator', dataset)
+def calc_u_q_f_f_f_u_complete26_d_projection_operator_calculator(dataset=None):
+    """Wraps UQFFFUComplete26DProjectionOperatorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFFUComplete26DProjectionOperatorCalculator', dataset)
+def calc_u_q_f_f_factorial_barrier_pochhammer_calculator(dataset=None):
+    """Wraps UQFFFactorialBarrierPochhammerCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFFactorialBarrierPochhammerCalculator', dataset)
+def calc_u_q_f_f_falsifiable_predictions_calculator(dataset=None):
+    """Wraps UQFFFalsifiablePredictionsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFFalsifiablePredictionsCalculator', dataset)
+def calc_u_q_f_f_fine_s_c_q_e_d_precision_calculator(dataset=None):
+    """Wraps UQFFFineSC_QEDPrecisionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFFineSC_QEDPrecisionCalculator', dataset)
+def calc_u_q_f_f_fine_structure_constant_derived_calculator(dataset=None):
+    """Wraps UQFFFineStructureConstantDerivedCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFFineStructureConstantDerivedCalculator', dataset)
+def calc_u_q_f_f_framework_calculator(dataset=None):
+    """Wraps UQFFFrameworkCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFFrameworkCalculator', dataset)
+def calc_u_q_f_f_g_w_amplitude_lambda_c_d_m_emergence_calculator(dataset=None):
+    """Wraps UQFFGWAmplitudeLambdaCDMEmergenceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFGWAmplitudeLambdaCDMEmergenceCalculator', dataset)
+def calc_u_q_f_f_g_w_suppression_calculator(dataset=None):
+    """Wraps UQFFGWSuppressionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFGWSuppressionCalculator', dataset)
+def calc_u_q_f_f_g_w_waveforms_calculator(dataset=None):
+    """Wraps UQFFGWWaveformsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFGWWaveformsCalculator', dataset)
+def calc_u_q_f_f_galactic_discrete_band_simulator_calculator(dataset=None):
+    """Wraps UQFFGalacticDiscreteBandSimulatorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFGalacticDiscreteBandSimulatorCalculator', dataset)
+def calc_u_q_f_f_grant_proposal_dataset_compression_framework_calculator(dataset=None):
+    """Wraps UQFFGrantProposalDatasetCompressionFrameworkCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFGrantProposalDatasetCompressionFrameworkCalculator', dataset)
+def calc_u_q_f_f_gravitational_constant_void_coupling_calculator(dataset=None):
+    """Wraps UQFFGravitationalConstantVoidCouplingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFGravitationalConstantVoidCouplingCalculator', dataset)
+def calc_u_q_f_f_gravitational_wave_chirp_q_n_m_calculator(dataset=None):
+    """Wraps UQFFGravitationalWaveChirpQNMCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFGravitationalWaveChirpQNMCalculator', dataset)
+def calc_u_q_f_f_h0_anchor_asymmetry_calculator(dataset=None):
+    """Wraps UQFFH0AnchorAsymmetryCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFH0AnchorAsymmetryCalculator', dataset)
+def calc_u_q_f_f_hawking_derivation_calculator(dataset=None):
+    """Wraps UQFFHawkingDerivationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFHawkingDerivationCalculator', dataset)
+def calc_u_q_f_f_hawking_temperature_modulation_calculator(dataset=None):
+    """Wraps UQFFHawkingTemperatureModulationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFHawkingTemperatureModulationCalculator', dataset)
+def calc_u_q_f_f_higgs_mass125_ge_v_v_e_v_buoyancy_coupling_calculator(dataset=None):
+    """Wraps UQFFHiggsMass125GeVVEVBuoyancyCouplingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFHiggsMass125GeVVEVBuoyancyCouplingCalculator', dataset)
+def calc_u_q_f_f_hodge_conjecture_algebraic_cycles_calculator(dataset=None):
+    """Wraps UQFFHodgeConjectureAlgebraicCyclesCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFHodgeConjectureAlgebraicCyclesCalculator', dataset)
+def calc_u_q_f_f_holographic_s_c_calculator(dataset=None):
+    """Wraps UQFFHolographicSCCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFHolographicSCCalculator', dataset)
+def calc_u_q_f_f_i_p_c_chain_status_calculator(dataset=None):
+    """Wraps UQFFIPCChainStatusCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFIPCChainStatusCalculator', dataset)
+def calc_u_q_f_f_inertia26_d_shell_force_calculator(dataset=None):
+    """Wraps UQFFInertia26DShellForceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFInertia26DShellForceCalculator', dataset)
+def calc_u_q_f_f_inflationary_epoch_details_calculator(dataset=None):
+    """Wraps UQFFInflationaryEpochDetailsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFInflationaryEpochDetailsCalculator', dataset)
+def calc_u_q_f_f_instanton_extension(dataset=None):
+    """Wraps UQFFInstantonExtension.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFInstantonExtension', dataset)
+def calc_u_q_f_f_k_k_tower_hbar_regulator_calculator(dataset=None):
+    """Wraps UQFFKKTowerHbarRegulatorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKKTowerHbarRegulatorCalculator', dataset)
+def calc_u_q_f_f_k_k_tower_mode_by_mode_calculator(dataset=None):
+    """Wraps UQFFKKTowerModeByModeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKKTowerModeByModeCalculator', dataset)
+def calc_u_q_f_f_k_k_tower_regulator_calculator(dataset=None):
+    """Wraps UQFFKKTowerRegulatorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKKTowerRegulatorCalculator', dataset)
+def calc_u_q_f_f_knowledge_base7_calculator(dataset=None):
+    """Wraps UQFFKnowledgeBase7Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBase7Calculator', dataset)
+def calc_u_q_f_f_knowledge_base_k_b10(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB10.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB10', dataset)
+def calc_u_q_f_f_knowledge_base_k_b11(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB11.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB11', dataset)
+def calc_u_q_f_f_knowledge_base_k_b12(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB12.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB12', dataset)
+def calc_u_q_f_f_knowledge_base_k_b13(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB13.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB13', dataset)
+def calc_u_q_f_f_knowledge_base_k_b14(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB14.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB14', dataset)
+def calc_u_q_f_f_knowledge_base_k_b15(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB15.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB15', dataset)
+def calc_u_q_f_f_knowledge_base_k_b16(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB16.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB16', dataset)
+def calc_u_q_f_f_knowledge_base_k_b17(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB17.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB17', dataset)
+def calc_u_q_f_f_knowledge_base_k_b18(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB18.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB18', dataset)
+def calc_u_q_f_f_knowledge_base_k_b19(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB19.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB19', dataset)
+def calc_u_q_f_f_knowledge_base_k_b2(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB2.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB2', dataset)
+def calc_u_q_f_f_knowledge_base_k_b3(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB3.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB3', dataset)
+def calc_u_q_f_f_knowledge_base_k_b4(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB4.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB4', dataset)
+def calc_u_q_f_f_knowledge_base_k_b5(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB5.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB5', dataset)
+def calc_u_q_f_f_knowledge_base_k_b6(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB6.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB6', dataset)
+def calc_u_q_f_f_knowledge_base_k_b8(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB8.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB8', dataset)
+def calc_u_q_f_f_knowledge_base_k_b9(dataset=None):
+    """Wraps UQFFKnowledgeBaseKB9.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseKB9', dataset)
+def calc_u_q_f_f_knowledge_base_red_dwarf(dataset=None):
+    """Wraps UQFFKnowledgeBaseRedDwarf.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFKnowledgeBaseRedDwarf', dataset)
+def calc_u_q_f_f_l_f_v_b_decay_time_reversal_constraint_calculator(dataset=None):
+    """Wraps UQFFLFVBDecayTimeReversalConstraintCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFLFVBDecayTimeReversalConstraintCalculator', dataset)
+def calc_u_q_f_f_l_q_g_lambda_c_d_m_triple_system_comparison_calculator(dataset=None):
+    """Wraps UQFFLQGLambdaCDMTripleSystemComparisonCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFLQGLambdaCDMTripleSystemComparisonCalculator', dataset)
+def calc_u_q_f_f_lagrangian_derivation_calculator(dataset=None):
+    """Wraps UQFFLagrangianDerivationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFLagrangianDerivationCalculator', dataset)
+def calc_u_q_f_f_lagrangian_full_closure_calculator(dataset=None):
+    """Wraps UQFFLagrangianFullClosureCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFLagrangianFullClosureCalculator', dataset)
+def calc_u_q_f_f_learning_advancement_calculator(dataset=None):
+    """Wraps UQFFLearningAdvancementCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFLearningAdvancementCalculator', dataset)
+def calc_u_q_f_f_lensing_modulation_rings_calculator(dataset=None):
+    """Wraps UQFFLensingModulationRingsCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFLensingModulationRingsCalculator', dataset)
+def calc_u_q_f_f_light_echo_evolution_calculator(dataset=None):
+    """Wraps UQFFLightEchoEvolutionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFLightEchoEvolutionCalculator', dataset)
+def calc_u_q_f_f_luminosity_calculator(dataset=None):
+    """Wraps UQFFLuminosityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFLuminosityCalculator', dataset)
+def calc_u_q_f_f_m87_jet_nine_d_hypergraph_pocket_shell_simulation_calculator(dataset=None):
+    """Wraps UQFFM87JetNineDHypergraphPocketShellSimulationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFM87JetNineDHypergraphPocketShellSimulationCalculator', dataset)
+def calc_u_q_f_f_m_s073567421_cluster_a_g_n_jet_void_pocket_calculator(dataset=None):
+    """Wraps UQFFMS073567421ClusterAGNJetVoidPocketCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFMS073567421ClusterAGNJetVoidPocketCalculator', dataset)
+def calc_u_q_f_f_m_u_g_e_calculator(dataset=None):
+    """Wraps UQFFMUGECalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFMUGECalculator', dataset)
+def calc_u_q_f_f_magnetic_gateway_cosmic_flux_calculator(dataset=None):
+    """Wraps UQFFMagneticGatewayCosmicFluxCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFMagneticGatewayCosmicFluxCalculator', dataset)
+def calc_u_q_f_f_master_buoyant(dataset=None):
+    """Wraps UQFFMasterBuoyant.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFMasterBuoyant', dataset)
+def calc_u_q_f_f_master_engine(dataset=None):
+    """Wraps UQFFMasterEngine.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFMasterEngine', dataset)
+def calc_u_q_f_f_master_equation(dataset=None):
+    """Wraps UQFFMasterEquation.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFMasterEquation', dataset)
+def calc_u_q_f_f_master_framework(dataset=None):
+    """Wraps UQFFMasterFramework.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFMasterFramework', dataset)
+def calc_u_q_f_f_master_lagrangian(dataset=None):
+    """Wraps UQFFMasterLagrangian.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFMasterLagrangian', dataset)
+def calc_u_q_f_f_maxwell_power_large26th_order_calculator(dataset=None):
+    """Wraps UQFFMaxwellPowerLarge26thOrderCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFMaxwellPowerLarge26thOrderCalculator', dataset)
+def calc_u_q_f_f_mayan_calendar_nuclei_epoch_calculator(dataset=None):
+    """Wraps UQFFMayanCalendarNucleiEpochCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFMayanCalendarNucleiEpochCalculator', dataset)
+def calc_u_q_f_f_millennium_prize_applications_calculator(dataset=None):
+    """Wraps UQFFMillenniumPrizeApplicationsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFMillenniumPrizeApplicationsCalculator', dataset)
+def calc_u_q_f_f_modulation_for_m87_calculator(dataset=None):
+    """Wraps UQFFModulationForM87Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFModulationForM87Calculator', dataset)
+def calc_u_q_f_f_multi_factor_evolution_merger_calculator(dataset=None):
+    """Wraps UQFFMultiFactorEvolutionMergerCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFMultiFactorEvolutionMergerCalculator', dataset)
+def calc_u_q_f_f_multi_system_jet_hypergraph_comparison_calculator(dataset=None):
+    """Wraps UQFFMultiSystemJetHypergraphComparisonCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFMultiSystemJetHypergraphComparisonCalculator', dataset)
+def calc_u_q_f_f_n_a_s_a_a_t_p_grant_framework_validation_calculator(dataset=None):
+    """Wraps UQFFNASAATPGrantFrameworkValidationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFNASAATPGrantFrameworkValidationCalculator', dataset)
+def calc_u_q_f_f_n_g_c6278_dwarf_galaxy_void_pocket_shell_calculator(dataset=None):
+    """Wraps UQFFNGC6278DwarfGalaxyVoidPocketShellCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFNGC6278DwarfGalaxyVoidPocketShellCalculator', dataset)
+def calc_u_q_f_f_negative_time_dual_existence_calculator(dataset=None):
+    """Wraps UQFFNegativeTimeDualExistenceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFNegativeTimeDualExistenceCalculator', dataset)
+def calc_u_q_f_f_neutrino_decay_rate_coupling_calculator(dataset=None):
+    """Wraps UQFFNeutrinoDecayRateCouplingCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFNeutrinoDecayRateCouplingCalculator', dataset)
+def calc_u_q_f_f_nine_dimensional_wolfram_force_troad_projection_calculator(dataset=None):
+    """Wraps UQFFNineDimensionalWolframForceTroadProjectionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFNineDimensionalWolframForceTroadProjectionCalculator', dataset)
+def calc_u_q_f_f_observable_universe_diameter_calculator(dataset=None):
+    """Wraps UQFFObservableUniverseDiameterCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFObservableUniverseDiameterCalculator', dataset)
+def calc_u_q_f_f_off_diag_proplyd_orion_fit_calculator(dataset=None):
+    """Wraps UQFFOffDiagProplydOrionFitCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFOffDiagProplydOrionFitCalculator', dataset)
+def calc_u_q_f_f_orion_encompass_fit_calculator(dataset=None):
+    """Wraps UQFFOrionEncompassFitCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFOrionEncompassFitCalculator', dataset)
+def calc_u_q_f_f_overdetermination_epistemology_calculator(dataset=None):
+    """Wraps UQFFOverdeterminationEpistemologyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFOverdeterminationEpistemologyCalculator', dataset)
+def calc_u_q_f_f_p_b_h_dark_matter_calculator(dataset=None):
+    """Wraps UQFFPBHDarkMatterCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFPBHDarkMatterCalculator', dataset)
+def calc_u_q_f_f_p_b_h_dark_matter_implications_calculator(dataset=None):
+    """Wraps UQFFPBHDarkMatterImplicationsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFPBHDarkMatterImplicationsCalculator', dataset)
+def calc_u_q_f_f_perseus_cluster_i_x_p_e_x_ray_polarization_jet_calculator(dataset=None):
+    """Wraps UQFFPerseusClusterIXPEXRayPolarizationJetCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFPerseusClusterIXPEXRayPolarizationJetCalculator', dataset)
+def calc_u_q_f_f_phi_res_codimension_calculator(dataset=None):
+    """Wraps UQFFPhiResCodimensionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFPhiResCodimensionCalculator', dataset)
+def calc_u_q_f_f_pi_wave_energy_correspondence_calculator(dataset=None):
+    """Wraps UQFFPiWaveEnergyCorrespondenceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFPiWaveEnergyCorrespondenceCalculator', dataset)
+def calc_u_q_f_f_pipeline(dataset=None):
+    """Wraps UQFFPipeline.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFPipeline', dataset)
+def calc_u_q_f_f_planck_constant_derived_calculator(dataset=None):
+    """Wraps UQFFPlanckConstantDerivedCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFPlanckConstantDerivedCalculator', dataset)
+def calc_u_q_f_f_plasma_convection_calculator(dataset=None):
+    """Wraps UQFFPlasmaConvectionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFPlasmaConvectionCalculator', dataset)
+def calc_u_q_f_f_predictions_for_l_i_s_a_calculator(dataset=None):
+    """Wraps UQFFPredictionsForLISACalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFPredictionsForLISACalculator', dataset)
+def calc_u_q_f_f_predictive_algorithm_calculator(dataset=None):
+    """Wraps UQFFPredictiveAlgorithmCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFPredictiveAlgorithmCalculator', dataset)
+def calc_u_q_f_f_primordial_b_h_evaporation_calculator(dataset=None):
+    """Wraps UQFFPrimordialBHEvaporationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFPrimordialBHEvaporationCalculator', dataset)
+def calc_u_q_f_f_probability_of_order_partition_calculator(dataset=None):
+    """Wraps UQFFProbabilityOfOrderPartitionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFProbabilityOfOrderPartitionCalculator', dataset)
+def calc_u_q_f_f_proto_hydrogen_shell_alignment_calculator(dataset=None):
+    """Wraps UQFFProtoHydrogenShellAlignmentCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFProtoHydrogenShellAlignmentCalculator', dataset)
+def calc_u_q_f_f_proton_decay_kappa_rate_comparison_calculator(dataset=None):
+    """Wraps UQFFProtonDecayKappaRateComparisonCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFProtonDecayKappaRateComparisonCalculator', dataset)
+def calc_u_q_f_f_pymander_sphere26_d_pyramid_thread_calculator(dataset=None):
+    """Wraps UQFFPymanderSphere26DPyramidThreadCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFPymanderSphere26DPyramidThreadCalculator', dataset)
+def calc_u_q_f_f_quadratic(dataset=None):
+    """Wraps UQFFQuadratic.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFQuadratic', dataset)
+def calc_u_q_f_f_quadratic_approximation_calculator(dataset=None):
+    """Wraps UQFFQuadraticApproximationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFQuadraticApproximationCalculator', dataset)
+def calc_u_q_f_f_quantum_gravity_unification_calculator(dataset=None):
+    """Wraps UQFFQuantumGravityUnificationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFQuantumGravityUnificationCalculator', dataset)
+def calc_u_q_f_f_reionization_b_b_n_calculator(dataset=None):
+    """Wraps UQFFReionizationBBNCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFReionizationBBNCalculator', dataset)
+def calc_u_q_f_f_relativistic_hierarchy_decay_integral_calculator(dataset=None):
+    """Wraps UQFFRelativisticHierarchyDecayIntegralCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFRelativisticHierarchyDecayIntegralCalculator', dataset)
+def calc_u_q_f_f_relativistic_s_cm_jet_calculator(dataset=None):
+    """Wraps UQFFRelativisticSCmJetCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFRelativisticSCmJetCalculator', dataset)
+def calc_u_q_f_f_resonance_formal_proof_set_calculator(dataset=None):
+    """Wraps UQFFResonanceFormalProofSetCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFResonanceFormalProofSetCalculator', dataset)
+def calc_u_q_f_f_resonant(dataset=None):
+    """Wraps UQFFResonant.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFResonant', dataset)
+def calc_u_q_f_f_resonant_calculator(dataset=None):
+    """Wraps UQFFResonantCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFResonantCalculator', dataset)
+def calc_u_q_f_f_riemann_hypothesis_critical_line_calculator(dataset=None):
+    """Wraps UQFFRiemannHypothesisCriticalLineCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFRiemannHypothesisCriticalLineCalculator', dataset)
+def calc_u_q_f_f_ringdown_spectral_offset_calculator(dataset=None):
+    """Wraps UQFFRingdownSpectralOffsetCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFRingdownSpectralOffsetCalculator', dataset)
+def calc_u_q_f_f_s_cm_laurent_series26_d_expansion_calculator(dataset=None):
+    """Wraps UQFFSCmLaurentSeries26DExpansionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSCmLaurentSeries26DExpansionCalculator', dataset)
+def calc_u_q_f_f_s_m_parameter_bridge_master_comparison_calculator(dataset=None):
+    """Wraps UQFFSMParameterBridgeMasterComparisonCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSMParameterBridgeMasterComparisonCalculator', dataset)
+def calc_u_q_f_f_scale(dataset=None):
+    """Wraps UQFFScale.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFScale', dataset)
+def calc_u_q_f_f_schwarzschild_proton_vacuum_calculator(dataset=None):
+    """Wraps UQFFSchwarzschildProtonVacuumCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSchwarzschildProtonVacuumCalculator', dataset)
+def calc_u_q_f_f_sgr_a_star_bound_application_calculator(dataset=None):
+    """Wraps UQFFSgrAStarBoundApplicationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSgrAStarBoundApplicationCalculator', dataset)
+def calc_u_q_f_f_sigma8_weak_lensing_calculator(dataset=None):
+    """Wraps UQFFSigma8WeakLensingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSigma8WeakLensingCalculator', dataset)
+def calc_u_q_f_f_solar_cycle_omega_calculator(dataset=None):
+    """Wraps UQFFSolarCycleOmegaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFSolarCycleOmegaCalculator', dataset)
+def calc_u_q_f_f_solar_system_proplyd_legacy_calculator(dataset=None):
+    """Wraps UQFFSolarSystemProplydLegacyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSolarSystemProplydLegacyCalculator', dataset)
+def calc_u_q_f_f_solvable_equation_set_calculator(dataset=None):
+    """Wraps UQFFSolvableEquationSetCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSolvableEquationSetCalculator', dataset)
+def calc_u_q_f_f_sombrero_dust_integrated_calculator(dataset=None):
+    """Wraps UQFFSombreroDustIntegratedCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFSombreroDustIntegratedCalculator', dataset)
+def calc_u_q_f_f_source10_batch_profiled_calculator(dataset=None):
+    """Wraps UQFFSource10BatchProfiledCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFSource10BatchProfiledCalculator', dataset)
+def calc_u_q_f_f_source10_catalogue_calculator(dataset=None):
+    """Wraps UQFFSource10CatalogueCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFSource10CatalogueCalculator', dataset)
+def calc_u_q_f_f_speed_of_light_triad_equilibrium_calculator(dataset=None):
+    """Wraps UQFFSpeedOfLightTriadEquilibriumCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSpeedOfLightTriadEquilibriumCalculator', dataset)
+def calc_u_q_f_f_spooky_action_d_p_m_calculator(dataset=None):
+    """Wraps UQFFSpookyActionDPMCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFSpookyActionDPMCalculator', dataset)
+def calc_u_q_f_f_stability_numerically_for_sgr_a_calculator(dataset=None):
+    """Wraps UQFFStabilityNumericallyForSgrACalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFStabilityNumericallyForSgrACalculator', dataset)
+def calc_u_q_f_f_stability_primordial_b_h_calculator(dataset=None):
+    """Wraps UQFFStabilityPrimordialBHCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFStabilityPrimordialBHCalculator', dataset)
+def calc_u_q_f_f_superconductive(dataset=None):
+    """Wraps UQFFSuperconductive.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFSuperconductive', dataset)
+def calc_u_q_f_f_supernova_feedback_calculator(dataset=None):
+    """Wraps UQFFSupernovaFeedbackCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFSupernovaFeedbackCalculator', dataset)
+def calc_u_q_f_f_supernova_feedback_mass_loss_calculator(dataset=None):
+    """Wraps UQFFSupernovaFeedbackMassLossCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFSupernovaFeedbackMassLossCalculator', dataset)
+def calc_u_q_f_f_supplement_calibration3_var_calculator(dataset=None):
+    """Wraps UQFFSupplementCalibration3VarCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFSupplementCalibration3VarCalculator', dataset)
+def calc_u_q_f_f_suppression_equations_hawking_calculator(dataset=None):
+    """Wraps UQFFSuppressionEquationsHawkingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFSuppressionEquationsHawkingCalculator', dataset)
+def calc_u_q_f_f_t22_moduli_stabilization_calculator(dataset=None):
+    """Wraps UQFFT22ModuliStabilizationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFT22ModuliStabilizationCalculator', dataset)
+def calc_u_q_f_f_t_hz_conduit_shock_calculator(dataset=None):
+    """Wraps UQFFTHzConduitShockCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFTHzConduitShockCalculator', dataset)
+def calc_u_q_f_f_tau_lepton_g2_s_m_bridge_calculator(dataset=None):
+    """Wraps UQFFTauLeptonG2SMBridgeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFTauLeptonG2SMBridgeCalculator', dataset)
+def calc_u_q_f_f_temperature_calculator(dataset=None):
+    """Wraps UQFFTemperatureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFTemperatureCalculator', dataset)
+def calc_u_q_f_f_three_system_simultaneous_framework_calculator(dataset=None):
+    """Wraps UQFFThreeSystemSimultaneousFrameworkCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFThreeSystemSimultaneousFrameworkCalculator', dataset)
+def calc_u_q_f_f_triadic(dataset=None):
+    """Wraps UQFFTriadic.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFTriadic', dataset)
+def calc_u_q_f_f_triadic_master_calculator(dataset=None):
+    """Wraps UQFFTriadicMasterCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFTriadicMasterCalculator', dataset)
+def calc_u_q_f_f_ub_density_gradient26th_derivative_calculator(dataset=None):
+    """Wraps UQFFUbDensityGradient26thDerivativeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFUbDensityGradient26thDerivativeCalculator', dataset)
+def calc_u_q_f_f_ug26_d_polynomial_defect_expansion_calculator(dataset=None):
+    """Wraps UQFFUg26DPolynomialDefectExpansionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFUg26DPolynomialDefectExpansionCalculator', dataset)
+def calc_u_q_f_f_ug4_a_g_n_feedback_calculator(dataset=None):
+    """Wraps UQFFUg4AGNFeedbackCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFUg4AGNFeedbackCalculator', dataset)
+def calc_u_q_f_f_ultra_dense_hydrogen_l_e_n_r_calculator(dataset=None):
+    """Wraps UQFFUltraDenseHydrogenLENRCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFUltraDenseHydrogenLENRCalculator', dataset)
+def calc_u_q_f_f_um_d_p_m_time_derivative26th_order_calculator(dataset=None):
+    """Wraps UQFFUmDPMTimeDerivative26thOrderCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFUmDPMTimeDerivative26thOrderCalculator', dataset)
+def calc_u_q_f_f_universal_inertial_operator_calculator(dataset=None):
+    """Wraps UQFFUniversalInertialOperatorCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFUniversalInertialOperatorCalculator', dataset)
+def calc_u_q_f_f_universe_diameter_calculator(dataset=None):
+    """Wraps UQFFUniverseDiameterCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UQFFUniverseDiameterCalculator', dataset)
+def calc_u_q_f_f_universe_diameter_estimation_calculator(dataset=None):
+    """Wraps UQFFUniverseDiameterEstimationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFUniverseDiameterEstimationCalculator', dataset)
+def calc_u_q_f_f_v_d_s_d_v_p_b_h26_integration_reference_calculator(dataset=None):
+    """Wraps UQFFVDSDVPBH26IntegrationReferenceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFVDSDVPBH26IntegrationReferenceCalculator', dataset)
+def calc_u_q_f_f_v_u_a_polynomial_calculator(dataset=None):
+    """Wraps UQFFVUAPolynomialCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFVUAPolynomialCalculator', dataset)
+def calc_u_q_f_f_vacuum_density_series_calculator(dataset=None):
+    """Wraps UQFFVacuumDensitySeriesCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFVacuumDensitySeriesCalculator', dataset)
+def calc_u_q_f_f_vacuum_energy_ledger_calculator(dataset=None):
+    """Wraps UQFFVacuumEnergyLedgerCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFVacuumEnergyLedgerCalculator', dataset)
+def calc_u_q_f_f_vacuum_repulsion_calculator(dataset=None):
+    """Wraps UQFFVacuumRepulsionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFVacuumRepulsionCalculator', dataset)
+def calc_u_q_f_f_validation_dataset(dataset=None):
+    """Wraps UQFFValidationDataset.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFValidationDataset', dataset)
+def calc_u_q_f_f_validation_test_suite(dataset=None):
+    """Wraps UQFFValidationTestSuite.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFValidationTestSuite', dataset)
+def calc_u_q_f_f_variable_calibration_calculator(dataset=None):
+    """Wraps UQFFVariableCalibrationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFVariableCalibrationCalculator', dataset)
+def calc_u_q_f_f_vector_like_quark_kappa_heavy_mode_calculator(dataset=None):
+    """Wraps UQFFVectorLikeQuarkKappaHeavyModeCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFVectorLikeQuarkKappaHeavyModeCalculator', dataset)
+def calc_u_q_f_f_velocity_star_formation_collision_calculator(dataset=None):
+    """Wraps UQFFVelocityStarFormationCollisionCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFVelocityStarFormationCollisionCalculator', dataset)
+def calc_u_q_f_f_vs_string_theory10_aspect_comparison_calc(dataset=None):
+    """Wraps UQFFVsStringTheory10AspectComparisonCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFVsStringTheory10AspectComparisonCalc', dataset)
+def calc_u_q_f_f_waveform_simulate_calculator(dataset=None):
+    """Wraps UQFFWaveformSimulateCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFWaveformSimulateCalculator', dataset)
+def calc_u_q_f_f_white_hole_formation_calculator(dataset=None):
+    """Wraps UQFFWhiteHoleFormationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFWhiteHoleFormationCalculator', dataset)
+def calc_u_q_f_f_wormhole_formation_calculator(dataset=None):
+    """Wraps UQFFWormholeFormationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFWormholeFormationCalculator', dataset)
+def calc_u_q_f_f_wormhole_meissner_relativistic_gamma_calculator(dataset=None):
+    """Wraps UQFFWormholeMeissnerRelativisticGammaCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFWormholeMeissnerRelativisticGammaCalculator', dataset)
+def calc_u_q_f_f_wormhole_transverse_time_calculator(dataset=None):
+    """Wraps UQFFWormholeTransverseTimeCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFFWormholeTransverseTimeCalculator', dataset)
+def calc_u_q_f_f_zero_mass_aether_vacuum_gradient_reformulation_calculator(dataset=None):
+    """Wraps UQFFZeroMassAetherVacuumGradientReformulationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UQFFZeroMassAetherVacuumGradientReformulationCalculator', dataset)
+def calc_u_q_f_f_base_q_calc_calculator(dataset=None):
+    """Wraps UQFF_BaseQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_BaseQCalcCalculator', dataset)
+def calc_u_q_f_f_buoyant_q_calc_calculator(dataset=None):
+    """Wraps UQFF_BuoyantQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_BuoyantQCalcCalculator', dataset)
+def calc_u_q_f_f_compressed_q_calc_calculator(dataset=None):
+    """Wraps UQFF_CompressedQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_CompressedQCalcCalculator', dataset)
+def calc_u_q_f_f_master_buoyant_q_calc_calculator(dataset=None):
+    """Wraps UQFF_MasterBuoyantQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_MasterBuoyantQCalcCalculator', dataset)
+def calc_u_q_f_f_quadratic_q_calc_calculator(dataset=None):
+    """Wraps UQFF_QuadraticQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_QuadraticQCalcCalculator', dataset)
+def calc_u_q_f_f_resonant_q_calc_calculator(dataset=None):
+    """Wraps UQFF_ResonantQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_ResonantQCalcCalculator', dataset)
+def calc_u_q_f_f_superconductive_q_calc_calculator(dataset=None):
+    """Wraps UQFF_SuperconductiveQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_SuperconductiveQCalcCalculator', dataset)
+def calc_u_q_f_f_triadic_q_calc_calculator(dataset=None):
+    """Wraps UQFF_TriadicQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UQFF_TriadicQCalcCalculator', dataset)
+def calc_u_q_f_fvs_lambda_c_d_m_comparison_calculator(dataset=None):
+    """Wraps UQFFvsLambdaCDMComparisonCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFvsLambdaCDMComparisonCalculator', dataset)
+def calc_u_q_f_fvs_m_o_n_d_comparison_calculator(dataset=None):
+    """Wraps UQFFvsMONDComparisonCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UQFFvsMONDComparisonCalculator', dataset)
+def calc_u_s_p_r_model(dataset=None):
+    """Wraps USPRModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('USPRModel', dataset)
+def calc_u_s_p_r_stellar_connection_model(dataset=None):
+    """Wraps USPRStellarConnectionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('USPRStellarConnectionModel', dataset)
+def calc_u_b_model_master_calculator(dataset=None):
+    """Wraps U_bModelMasterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('U_bModelMasterCalculator', dataset)
+def calc_ubi4_term_solar_wind_buoyancy_epsilon_sw_calculator(dataset=None):
+    """Wraps Ubi4TermSolarWindBuoyancyEpsilonSwCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ubi4TermSolarWindBuoyancyEpsilonSwCalculator', dataset)
+def calc_ug1_d_p_m_di_pseudo_monopole_solar_calibration_calculator(dataset=None):
+    """Wraps Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator', dataset)
+def calc_ug1_d_p_m_geophysical_geometry_summation_calc(dataset=None):
+    """Wraps Ug1DPMGeophysicalGeometrySummationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug1DPMGeophysicalGeometrySummationCalc', dataset)
+def calc_ug1_magnetic_dipole_calculator(dataset=None):
+    """Wraps Ug1MagneticDipoleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug1MagneticDipoleCalculator', dataset)
+def calc_ug1_solar_dipole_cycle_calculator(dataset=None):
+    """Wraps Ug1SolarDipoleCycleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug1SolarDipoleCycleCalculator', dataset)
+def calc_ug26_d_factorial_anti_collapse_ug4_split_calculator(dataset=None):
+    """Wraps Ug26DFactorialAntiCollapseUg4SplitCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug26DFactorialAntiCollapseUg4SplitCalculator', dataset)
+def calc_ug2_charge_reactivity_calculator(dataset=None):
+    """Wraps Ug2ChargeReactivityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug2ChargeReactivityCalculator', dataset)
+def calc_ug2_electron_shell_energy_calculator(dataset=None):
+    """Wraps Ug2ElectronShellEnergyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug2ElectronShellEnergyCalculator', dataset)
+def calc_ug2_heliosphere_bubble_charge_coupled_ereact_calculator(dataset=None):
+    """Wraps Ug2HeliosphereBubbleChargeCoupledEreactCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug2HeliosphereBubbleChargeCoupledEreactCalculator', dataset)
+def calc_ug2_solar_wind_transmutation_calculator(dataset=None):
+    """Wraps Ug2SolarWindTransmutationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug2SolarWindTransmutationCalculator', dataset)
+def calc_ug2_stellar_bubble_calculator(dataset=None):
+    """Wraps Ug2StellarBubbleCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug2StellarBubbleCalculator', dataset)
+def calc_ug3_c_c_w_c_w_differential_rotation_s_cm_planetary_core_calculator(dataset=None):
+    """Wraps Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator', dataset)
+def calc_ug3_electron_tagging_calculator(dataset=None):
+    """Wraps Ug3ElectronTaggingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug3ElectronTaggingCalculator', dataset)
+def calc_ug3_electron_tagging_t_hz_circulation_calc(dataset=None):
+    """Wraps Ug3ElectronTaggingTHzCirculationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug3ElectronTaggingTHzCirculationCalc', dataset)
+def calc_ug3_magnetic_disk_full_calculator(dataset=None):
+    """Wraps Ug3MagneticDiskFullCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug3MagneticDiskFullCalculator', dataset)
+def calc_ug3_magnetic_strings_disk_pcore_calculator(dataset=None):
+    """Wraps Ug3MagneticStringsDiskPcoreCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug3MagneticStringsDiskPcoreCalculator', dataset)
+def calc_ug3_prime_external_gravity_calculator(dataset=None):
+    """Wraps Ug3PrimeExternalGravityCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug3PrimeExternalGravityCalculator', dataset)
+def calc_ug3_string_rotation_calculator(dataset=None):
+    """Wraps Ug3StringRotationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug3StringRotationCalculator', dataset)
+def calc_ug4_b_h_tidal_timereversal_calculator(dataset=None):
+    """Wraps Ug4BHTidalTimereversalCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug4BHTidalTimereversalCalculator', dataset)
+def calc_ug4_galactic_non_interactive_calculator(dataset=None):
+    """Wraps Ug4GalacticNonInteractiveCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug4GalacticNonInteractiveCalculator', dataset)
+def calc_ug4_s_m_b_h_vacuum_interaction_calculator(dataset=None):
+    """Wraps Ug4SMBHVacuumInteractionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug4SMBHVacuumInteractionCalculator', dataset)
+def calc_ug4_vacuum_b_h_feedback_cconcentration_calculator(dataset=None):
+    """Wraps Ug4VacuumBHFeedbackCconcentrationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug4VacuumBHFeedbackCconcentrationCalculator', dataset)
+def calc_ug4_vacuum_concentration_calculator(dataset=None):
+    """Wraps Ug4VacuumConcentrationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug4VacuumConcentrationCalculator', dataset)
+def calc_ug4_vacuum_energy_lambda_c_d_m_galactic_b_h_coupling_calculator(dataset=None):
+    """Wraps Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator', dataset)
+def calc_ug4_vacuum_mediated_calculator(dataset=None):
+    """Wraps Ug4VacuumMediatedCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug4VacuumMediatedCalculator', dataset)
+def calc_ug4i_central_control_calculator(dataset=None):
+    """Wraps Ug4iCentralControlCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('Ug4iCentralControlCalculator', dataset)
+def calc_ug4i_transient_age_decay_law_calculator(dataset=None):
+    """Wraps Ug4iTransientAgeDecayLawCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Ug4iTransientAgeDecayLawCalculator', dataset)
+def calc_ug_coupling_calculator(dataset=None):
+    """Wraps UgCouplingCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UgCouplingCalculator', dataset)
+def calc_ug_ub_boundary_overlap_displacement_calculator(dataset=None):
+    """Wraps UgUbBoundaryOverlapDisplacementCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UgUbBoundaryOverlapDisplacementCalculator', dataset)
+def calc_ui_complex_superconductive_vacuum_density_calculator(dataset=None):
+    """Wraps UiComplexSuperconductiveVacuumDensityCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UiComplexSuperconductiveVacuumDensityCalculator', dataset)
+def calc_ultra_clean_medium_calculator(dataset=None):
+    """Wraps UltraCleanMediumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UltraCleanMediumCalculator', dataset)
+def calc_ultrasonic_cavitation_calculator(dataset=None):
+    """Wraps UltrasonicCavitationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UltrasonicCavitationCalculator', dataset)
+def calc_ultrasonic_nebulization_calculator(dataset=None):
+    """Wraps UltrasonicNebulizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UltrasonicNebulizationCalculator', dataset)
+def calc_um26_d_poly_quantization_d_p_m_confinement_calculator(dataset=None):
+    """Wraps Um26DPolyQuantizationDPMConfinementCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Um26DPolyQuantizationDPMConfinementCalculator', dataset)
+def calc_um_bilinear_heaviside_neutrino_vacuum_cascade_calculator(dataset=None):
+    """Wraps UmBilinearHeavisideNeutrinoVacuumCascadeCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UmBilinearHeavisideNeutrinoVacuumCascadeCalculator', dataset)
+def calc_um_complete_s_sq_vacuum_thermal_damping_calculator(dataset=None):
+    """Wraps UmCompleteSSqVacuumThermalDampingCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UmCompleteSSqVacuumThermalDampingCalculator', dataset)
+def calc_um_heaviside_quasi_periodic_s_cm_phase_transition_amplifier_calculator(dataset=None):
+    """Wraps UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator', dataset)
+def calc_um_rotor_string_torque_integration_calculator(dataset=None):
+    """Wraps UmRotorStringTorqueIntegrationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UmRotorStringTorqueIntegrationCalculator', dataset)
+def calc_um_universal_magnetism_taxonomy_calculator(dataset=None):
+    """Wraps UmUniversalMagnetismTaxonomyCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UmUniversalMagnetismTaxonomyCalculator', dataset)
+def calc_unified_f_u_bi_s_m_b_h_merger_dynamics_calculator(dataset=None):
+    """Wraps UnifiedFUBiSMBHMergerDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UnifiedFUBiSMBHMergerDynamicsCalculator', dataset)
+def calc_unified_field_calculator(dataset=None):
+    """Wraps UnifiedFieldCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UnifiedFieldCalculator', dataset)
+def calc_unified_field_equation(dataset=None):
+    """Wraps UnifiedFieldEquation.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UnifiedFieldEquation', dataset)
+def calc_unified_field_full_calculator(dataset=None):
+    """Wraps UnifiedFieldFullCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UnifiedFieldFullCalculator', dataset)
+def calc_unified_field_simulator_calculator(dataset=None):
+    """Wraps UnifiedFieldSimulatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UnifiedFieldSimulatorCalculator', dataset)
+def calc_unified_field_time_series_calculator(dataset=None):
+    """Wraps UnifiedFieldTimeSeriesCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UnifiedFieldTimeSeriesCalculator', dataset)
+def calc_unified_u_q_f_f(dataset=None):
+    """Wraps UnifiedUQFF.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UnifiedUQFF', dataset)
+def calc_unified_wave_function_calculator(dataset=None):
+    """Wraps UnifiedWaveFunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UnifiedWaveFunctionCalculator', dataset)
+def calc_unit_conversion_calculator(dataset=None):
+    """Wraps UnitConversionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UnitConversionCalculator', dataset)
+def calc_universal_aether_calculator(dataset=None):
+    """Wraps UniversalAetherCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalAetherCalculator', dataset)
+def calc_universal_aether_charge_calculator(dataset=None):
+    """Wraps UniversalAetherChargeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalAetherChargeCalculator', dataset)
+def calc_universal_aether_resonance_calculator(dataset=None):
+    """Wraps UniversalAetherResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalAetherResonanceCalculator', dataset)
+def calc_universal_background_decay_calculator(dataset=None):
+    """Wraps UniversalBackgroundDecayCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalBackgroundDecayCalculator', dataset)
+def calc_universal_buoyancy_calculator(dataset=None):
+    """Wraps UniversalBuoyancyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalBuoyancyCalculator', dataset)
+def calc_universal_buoyancy_detailed_calculator(dataset=None):
+    """Wraps UniversalBuoyancyDetailedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalBuoyancyDetailedCalculator', dataset)
+def calc_universal_buoyancy_interaction_model(dataset=None):
+    """Wraps UniversalBuoyancyInteractionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalBuoyancyInteractionModel', dataset)
+def calc_universal_buoyancy_negative_time_linkage_calculator(dataset=None):
+    """Wraps UniversalBuoyancyNegativeTimeLinkageCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalBuoyancyNegativeTimeLinkageCalculator', dataset)
+def calc_universal_compressed_d_p_m_calculator(dataset=None):
+    """Wraps UniversalCompressedDPMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalCompressedDPMCalculator', dataset)
+def calc_universal_compressed_t_hz_calculator(dataset=None):
+    """Wraps UniversalCompressedTHzCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalCompressedTHzCalculator', dataset)
+def calc_universal_cycle_tracker(dataset=None):
+    """Wraps UniversalCycleTracker.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalCycleTracker', dataset)
+def calc_universal_duality_s_cm_u_a_synthesis_theorem_calculator(dataset=None):
+    """Wraps UniversalDualitySCmUASynthesisTheoremCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalDualitySCmUASynthesisTheoremCalculator', dataset)
+def calc_universal_epoch3_d_i_p_o_nuclear_convergence_calculator(dataset=None):
+    """Wraps UniversalEpoch3DIPONuclearConvergenceCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UniversalEpoch3DIPONuclearConvergenceCalculator', dataset)
+def calc_universal_exp_frequency_calculator(dataset=None):
+    """Wraps UniversalExpFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalExpFrequencyCalculator', dataset)
+def calc_universal_field_decomposition_calculator(dataset=None):
+    """Wraps UniversalFieldDecompositionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalFieldDecompositionCalculator', dataset)
+def calc_universal_fluid_resonance_calculator(dataset=None):
+    """Wraps UniversalFluidResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalFluidResonanceCalculator', dataset)
+def calc_universal_gravity1_calculator(dataset=None):
+    """Wraps UniversalGravity1Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalGravity1Calculator', dataset)
+def calc_universal_gravity2_calculator(dataset=None):
+    """Wraps UniversalGravity2Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalGravity2Calculator', dataset)
+def calc_universal_gravity3_calculator(dataset=None):
+    """Wraps UniversalGravity3Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalGravity3Calculator', dataset)
+def calc_universal_gravity4_calculator(dataset=None):
+    """Wraps UniversalGravity4Calculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalGravity4Calculator', dataset)
+def calc_universal_gravity_calculator(dataset=None):
+    """Wraps UniversalGravityCalculator.compute() from QCalcGeom."""
+    return _pipeline_invoke('UniversalGravityCalculator', dataset)
+def calc_universal_gravity_model(dataset=None):
+    """Wraps UniversalGravityModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalGravityModel', dataset)
+def calc_universal_gravity_wall_calculator(dataset=None):
+    """Wraps UniversalGravityWallCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalGravityWallCalculator', dataset)
+def calc_universal_inertia_calculator(dataset=None):
+    """Wraps UniversalInertiaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalInertiaCalculator', dataset)
+def calc_universal_inertia_model(dataset=None):
+    """Wraps UniversalInertiaModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalInertiaModel', dataset)
+def calc_universal_inertia_orb60_calculator(dataset=None):
+    """Wraps UniversalInertiaOrb60Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalInertiaOrb60Calculator', dataset)
+def calc_universal_inertia_t_r_z_orb41_calculator(dataset=None):
+    """Wraps UniversalInertiaTRZOrb41Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalInertiaTRZOrb41Calculator', dataset)
+def calc_universal_inertia_vacuum_model(dataset=None):
+    """Wraps UniversalInertiaVacuumModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalInertiaVacuumModel', dataset)
+def calc_universal_inertial_operator(dataset=None):
+    """Wraps UniversalInertialOperator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalInertialOperator', dataset)
+def calc_universal_magnetism_calculator(dataset=None):
+    """Wraps UniversalMagnetismCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalMagnetismCalculator', dataset)
+def calc_universal_magnetism_detailed_calculator(dataset=None):
+    """Wraps UniversalMagnetismDetailedCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalMagnetismDetailedCalculator', dataset)
+def calc_universal_magnetism_forms_calculator(dataset=None):
+    """Wraps UniversalMagnetismFormsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalMagnetismFormsCalculator', dataset)
+def calc_universal_magnetism_l_e_n_r_calculator(dataset=None):
+    """Wraps UniversalMagnetismLENRCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalMagnetismLENRCalculator', dataset)
+def calc_universal_magnetism_model(dataset=None):
+    """Wraps UniversalMagnetismModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalMagnetismModel', dataset)
+def calc_universal_magnetism_orb61_calculator(dataset=None):
+    """Wraps UniversalMagnetismOrb61Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalMagnetismOrb61Calculator', dataset)
+def calc_universal_magnetism_um_master_equation_calc(dataset=None):
+    """Wraps UniversalMagnetismUmMasterEquationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UniversalMagnetismUmMasterEquationCalc', dataset)
+def calc_universal_oscillatory_resonance_calculator(dataset=None):
+    """Wraps UniversalOscillatoryResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalOscillatoryResonanceCalculator', dataset)
+def calc_universal_permanence_calculator(dataset=None):
+    """Wraps UniversalPermanenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalPermanenceCalculator', dataset)
+def calc_universal_permanence_equation_calculator(dataset=None):
+    """Wraps UniversalPermanenceEquationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalPermanenceEquationCalculator', dataset)
+def calc_universal_permanence_full_calculator(dataset=None):
+    """Wraps UniversalPermanenceFullCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalPermanenceFullCalculator', dataset)
+def calc_universal_permanence_multiplicative_calculator(dataset=None):
+    """Wraps UniversalPermanenceMultiplicativeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalPermanenceMultiplicativeCalculator', dataset)
+def calc_universal_quantum_wave_resonance_calculator(dataset=None):
+    """Wraps UniversalQuantumWaveResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalQuantumWaveResonanceCalculator', dataset)
+def calc_universal_reactive_resonance_calculator(dataset=None):
+    """Wraps UniversalReactiveResonanceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalReactiveResonanceCalculator', dataset)
+def calc_universal_spectrum_spectral_divisions_calculator(dataset=None):
+    """Wraps UniversalSpectrumSpectralDivisionsCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UniversalSpectrumSpectralDivisionsCalculator', dataset)
+def calc_universal_speed_range_calculator(dataset=None):
+    """Wraps UniversalSpeedRangeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalSpeedRangeCalculator', dataset)
+def calc_universal_speed_range_cosmic_photon_deceleration_calc(dataset=None):
+    """Wraps UniversalSpeedRangeCosmicPhotonDecelerationCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UniversalSpeedRangeCosmicPhotonDecelerationCalc', dataset)
+def calc_universal_superconductor_frequency_calculator(dataset=None):
+    """Wraps UniversalSuperconductorFrequencyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalSuperconductorFrequencyCalculator', dataset)
+def calc_universal_time_calculator(dataset=None):
+    """Wraps UniversalTimeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniversalTimeCalculator', dataset)
+def calc_universal_vacuum_differential_calculator(dataset=None):
+    """Wraps UniversalVacuumDifferentialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniversalVacuumDifferentialCalculator', dataset)
+def calc_universe_baryonic_matter_calculator(dataset=None):
+    """Wraps UniverseBaryonicMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseBaryonicMatterCalculator', dataset)
+def calc_universe_cosmological_lambda_calculator(dataset=None):
+    """Wraps UniverseCosmologicalLambdaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseCosmologicalLambdaCalculator', dataset)
+def calc_universe_dark_matter_calculator(dataset=None):
+    """Wraps UniverseDarkMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseDarkMatterCalculator', dataset)
+def calc_universe_diameter_calculator(dataset=None):
+    """Wraps UniverseDiameterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseDiameterCalculator', dataset)
+def calc_universe_diameter_estimator_calculator(dataset=None):
+    """Wraps UniverseDiameterEstimatorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniverseDiameterEstimatorCalculator', dataset)
+def calc_universe_diameter_g_r_curvature_dominance_calculator(dataset=None):
+    """Wraps UniverseDiameterGRCurvatureDominanceCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UniverseDiameterGRCurvatureDominanceCalculator', dataset)
+def calc_universe_diameter_lambda_vacuum_acceleration_calculator(dataset=None):
+    """Wraps UniverseDiameterLambdaVacuumAccelerationCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UniverseDiameterLambdaVacuumAccelerationCalculator', dataset)
+def calc_universe_diameter_superluminal_hubble_ratio_calculator(dataset=None):
+    """Wraps UniverseDiameterSuperluminalHubbleRatioCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('UniverseDiameterSuperluminalHubbleRatioCalculator', dataset)
+def calc_universe_diameter_u_q_f_f_calculator(dataset=None):
+    """Wraps UniverseDiameterUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('UniverseDiameterUQFFCalculator', dataset)
+def calc_universe_diameter_u_q_f_f_gravity_calculator(dataset=None):
+    """Wraps UniverseDiameterUQFFGravityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UniverseDiameterUQFFGravityCalculator', dataset)
+def calc_universe_fluid_dynamics_calculator(dataset=None):
+    """Wraps UniverseFluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseFluidDynamicsCalculator', dataset)
+def calc_universe_hubble_expansion_calculator(dataset=None):
+    """Wraps UniverseHubbleExpansionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseHubbleExpansionCalculator', dataset)
+def calc_universe_lorentz_force_calculator(dataset=None):
+    """Wraps UniverseLorentzForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseLorentzForceCalculator', dataset)
+def calc_universe_quantum_integral_calculator(dataset=None):
+    """Wraps UniverseQuantumIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseQuantumIntegralCalculator', dataset)
+def calc_universe_resonant_oscillatory_calculator(dataset=None):
+    """Wraps UniverseResonantOscillatoryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UniverseResonantOscillatoryCalculator', dataset)
+def calc_unruh_temperature_calculator(dataset=None):
+    """Wraps UnruhTemperatureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('UnruhTemperatureCalculator', dataset)
+def calc_updated_u_q_f_f_calculator(dataset=None):
+    """Wraps UpdatedUQFFCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UpdatedUQFFCalculator', dataset)
+def calc_upper_quadrant_concentration_calculator(dataset=None):
+    """Wraps UpperQuadrantConcentrationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UpperQuadrantConcentrationCalculator', dataset)
+def calc_upward_convection_flow_calculator(dataset=None):
+    """Wraps UpwardConvectionFlowCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UpwardConvectionFlowCalculator', dataset)
+def calc_upward_convection_pattern_calculator(dataset=None):
+    """Wraps UpwardConvectionPatternCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('UpwardConvectionPatternCalculator', dataset)
+def calc_v838_mon_light_echo_u_q_f_f_calculator(dataset=None):
+    """Wraps V838MonLightEchoUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('V838MonLightEchoUQFFCalculator', dataset)
+def calc_v838_monocerotis_light_echo_calculator(dataset=None):
+    """Wraps V838MonocerotisLightEchoCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('V838MonocerotisLightEchoCalculator', dataset)
+def calc_v_d_f_g_s_m_f_s_m_b_h_mass_function_velocity_dispersion_calculator(dataset=None):
+    """Wraps VDFGSMFSMBHMassFunctionVelocityDispersionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('VDFGSMFSMBHMassFunctionVelocityDispersionCalculator', dataset)
+def calc_v_d_s_branch_calculator_s234(dataset=None):
+    """Wraps VDSBranchCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('VDSBranchCalculator_S234', dataset)
+def calc_v_d_s_d_v_p_b_h_number_systems_catalogue_calculator(dataset=None):
+    """Wraps VDSDVPBHNumberSystemsCatalogueCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('VDSDVPBHNumberSystemsCatalogueCalculator', dataset)
+def calc_v_d_s_d_v_p_b_h_unified_number_system_calculator(dataset=None):
+    """Wraps VDSDVPBHUnifiedNumberSystemCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VDSDVPBHUnifiedNumberSystemCalculator', dataset)
+def calc_v_d_s_d_v_p_b_s_h_hybrid_blend_calculator(dataset=None):
+    """Wraps VDSDVPBSHHybridBlendCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VDSDVPBSHHybridBlendCalculator', dataset)
+def calc_v_d_s_d_v_p_coupled_calculator_s234(dataset=None):
+    """Wraps VDSDVPCoupledCalculator_S234.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('VDSDVPCoupledCalculator_S234', dataset)
+def calc_v_d_s_l_e_n_r_isotopic_evolution_calculator(dataset=None):
+    """Wraps VDSLENRIsotopicEvolutionCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VDSLENRIsotopicEvolutionCalculator', dataset)
+def calc_v_d_s_partition_function_calculator(dataset=None):
+    """Wraps VDSPartitionFunctionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VDSPartitionFunctionCalculator', dataset)
+def calc_vacuum_density26_level_ladder_calculator(dataset=None):
+    """Wraps VacuumDensity26LevelLadderCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VacuumDensity26LevelLadderCalculator', dataset)
+def calc_vacuum_density_field_calculator(dataset=None):
+    """Wraps VacuumDensityFieldCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumDensityFieldCalculator', dataset)
+def calc_vacuum_density_lambda_calculator(dataset=None):
+    """Wraps VacuumDensityLambdaCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumDensityLambdaCalculator', dataset)
+def calc_vacuum_energy_capacitance_calculator(dataset=None):
+    """Wraps VacuumEnergyCapacitanceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumEnergyCapacitanceCalculator', dataset)
+def calc_vacuum_energy_component_density_calculator(dataset=None):
+    """Wraps VacuumEnergyComponentDensityCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumEnergyComponentDensityCalculator', dataset)
+def calc_vacuum_energy_component_ratio_calculator(dataset=None):
+    """Wraps VacuumEnergyComponentRatioCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('VacuumEnergyComponentRatioCalculator', dataset)
+def calc_vacuum_energy_density_calculator(dataset=None):
+    """Wraps VacuumEnergyDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VacuumEnergyDensityCalculator', dataset)
+def calc_vacuum_energy_density_summary_model(dataset=None):
+    """Wraps VacuumEnergyDensitySummaryModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VacuumEnergyDensitySummaryModel', dataset)
+def calc_vacuum_energy_differential_calculator(dataset=None):
+    """Wraps VacuumEnergyDifferentialCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumEnergyDifferentialCalculator', dataset)
+def calc_vacuum_energy_fluctuation_calculator(dataset=None):
+    """Wraps VacuumEnergyFluctuationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VacuumEnergyFluctuationCalculator', dataset)
+def calc_vacuum_energy_fluctuation_orb48_calculator(dataset=None):
+    """Wraps VacuumEnergyFluctuationOrb48Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumEnergyFluctuationOrb48Calculator', dataset)
+def calc_vacuum_energy_q_calc_calculator(dataset=None):
+    """Wraps VacuumEnergyQCalcCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VacuumEnergyQCalcCalculator', dataset)
+def calc_vacuum_fluctuation_calculator(dataset=None):
+    """Wraps VacuumFluctuationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VacuumFluctuationCalculator', dataset)
+def calc_vacuum_stress_calculator(dataset=None):
+    """Wraps VacuumStressCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumStressCalculator', dataset)
+def calc_vacuum_stress_energy_tensor_calculator(dataset=None):
+    """Wraps VacuumStressEnergyTensorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VacuumStressEnergyTensorCalculator', dataset)
+def calc_validation_coverage_framework(dataset=None):
+    """Wraps ValidationCoverageFramework.compute() from CondensedPhysics."""
+    return _pipeline_invoke('ValidationCoverageFramework', dataset)
+def calc_velocity_time_relation_calculator(dataset=None):
+    """Wraps VelocityTimeRelationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VelocityTimeRelationCalculator', dataset)
+def calc_video_analysis_spot_dynamics_calculator(dataset=None):
+    """Wraps VideoAnalysisSpotDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VideoAnalysisSpotDynamicsCalculator', dataset)
+def calc_video_frame_settings_calculator(dataset=None):
+    """Wraps VideoFrameSettingsCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VideoFrameSettingsCalculator', dataset)
+def calc_video_integrated_f_u_calculator(dataset=None):
+    """Wraps VideoIntegratedFUCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VideoIntegratedFUCalculator', dataset)
+def calc_virgo_cluster_dark_matter_model(dataset=None):
+    """Wraps VirgoClusterDarkMatterModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterDarkMatterModel', dataset)
+def calc_virgo_cluster_grav_potential_model(dataset=None):
+    """Wraps VirgoClusterGravPotentialModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterGravPotentialModel', dataset)
+def calc_virgo_cluster_i_c_m_model(dataset=None):
+    """Wraps VirgoClusterICMModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterICMModel', dataset)
+def calc_virgo_cluster_m87_jet_model(dataset=None):
+    """Wraps VirgoClusterM87JetModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterM87JetModel', dataset)
+def calc_virgo_cluster_mass_calculator(dataset=None):
+    """Wraps VirgoClusterMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterMassCalculator', dataset)
+def calc_virgo_cluster_mass_model(dataset=None):
+    """Wraps VirgoClusterMassModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterMassModel', dataset)
+def calc_virgo_cluster_tidal_stripping_model(dataset=None):
+    """Wraps VirgoClusterTidalStrippingModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterTidalStrippingModel', dataset)
+def calc_virgo_cluster_velocity_dispersion_model(dataset=None):
+    """Wraps VirgoClusterVelocityDispersionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterVelocityDispersionModel', dataset)
+def calc_virgo_cluster_virial_model(dataset=None):
+    """Wraps VirgoClusterVirialModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterVirialModel', dataset)
+def calc_virgo_cluster_x_ray_model(dataset=None):
+    """Wraps VirgoClusterXRayModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoClusterXRayModel', dataset)
+def calc_virgo_ext_cluster_mass_calculator(dataset=None):
+    """Wraps VirgoExtClusterMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtClusterMassCalculator', dataset)
+def calc_virgo_ext_dark_matter_calculator(dataset=None):
+    """Wraps VirgoExtDarkMatterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtDarkMatterCalculator', dataset)
+def calc_virgo_ext_i_c_m_calculator(dataset=None):
+    """Wraps VirgoExtICMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtICMCalculator', dataset)
+def calc_virgo_ext_m87_jet_calculator(dataset=None):
+    """Wraps VirgoExtM87JetCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtM87JetCalculator', dataset)
+def calc_virgo_ext_m_sigma_relation_calculator(dataset=None):
+    """Wraps VirgoExtMSigmaRelationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtMSigmaRelationCalculator', dataset)
+def calc_virgo_ext_potential_calculator(dataset=None):
+    """Wraps VirgoExtPotentialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtPotentialCalculator', dataset)
+def calc_virgo_ext_tidal_stripping_calculator(dataset=None):
+    """Wraps VirgoExtTidalStrippingCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtTidalStrippingCalculator', dataset)
+def calc_virgo_ext_velocity_dispersion_calculator(dataset=None):
+    """Wraps VirgoExtVelocityDispersionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtVelocityDispersionCalculator', dataset)
+def calc_virgo_ext_virial_calculator(dataset=None):
+    """Wraps VirgoExtVirialCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtVirialCalculator', dataset)
+def calc_virgo_ext_x_ray_calculator(dataset=None):
+    """Wraps VirgoExtXRayCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoExtXRayCalculator', dataset)
+def calc_virgo_i_c_m_calculator(dataset=None):
+    """Wraps VirgoICMCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VirgoICMCalculator', dataset)
+def calc_void_oscillation_model(dataset=None):
+    """Wraps VoidOscillationModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VoidOscillationModel', dataset)
+def calc_volume_cubed_vacuum_focus_calculator(dataset=None):
+    """Wraps VolumeCubedVacuumFocusCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('VolumeCubedVacuumFocusCalculator', dataset)
+def calc_vortex_quantization_calculator(dataset=None):
+    """Wraps VortexQuantizationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('VortexQuantizationCalculator', dataset)
+def calc_w_s_t_p_bridge_validation_calculator_84_a767_d3(dataset=None):
+    """Wraps WSTPBridgeValidationCalculator_84A767D3.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WSTPBridgeValidationCalculator_84A767D3', dataset)
+def calc_w_s_t_p_f_u_bi_symbolic_export_calc(dataset=None):
+    """Wraps WSTPFUBiSymbolicExportCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WSTPFUBiSymbolicExportCalc', dataset)
+def calc_water_formation_enthalpy_calculator(dataset=None):
+    """Wraps WaterFormationEnthalpyCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WaterFormationEnthalpyCalculator', dataset)
+def calc_water_radiolysis_calculator(dataset=None):
+    """Wraps WaterRadiolysisCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WaterRadiolysisCalculator', dataset)
+def calc_water_reactor_birkeland_h2_electrolysis_efficiency_calc(dataset=None):
+    """Wraps WaterReactorBirkelandH2ElectrolysisEfficiencyCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WaterReactorBirkelandH2ElectrolysisEfficiencyCalc', dataset)
+def calc_water_reactor_h2_o2_calculator(dataset=None):
+    """Wraps WaterReactorH2O2Calculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WaterReactorH2O2Calculator', dataset)
+def calc_wavelength_calculator(dataset=None):
+    """Wraps WavelengthCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WavelengthCalculator', dataset)
+def calc_waveless_communication_application_calculator(dataset=None):
+    """Wraps WavelessCommunicationApplicationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WavelessCommunicationApplicationCalculator', dataset)
+def calc_waveless_communication_t_hz_calculator(dataset=None):
+    """Wraps WavelessCommunicationTHzCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WavelessCommunicationTHzCalculator', dataset)
+def calc_waveless_communication_validation_calculator(dataset=None):
+    """Wraps WavelessCommunicationValidationCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WavelessCommunicationValidationCalculator', dataset)
+def calc_wax_cap_cooling_dynamics_calculator(dataset=None):
+    """Wraps WaxCapCoolingDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WaxCapCoolingDynamicsCalculator', dataset)
+def calc_wax_cap_cooling_s_c_m_calculator(dataset=None):
+    """Wraps WaxCapCoolingSCMCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WaxCapCoolingSCMCalculator', dataset)
+def calc_westerlund2_base_gravity_calculator(dataset=None):
+    """Wraps Westerlund2BaseGravityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2BaseGravityCalculator', dataset)
+def calc_westerlund2_cluster_calculator(dataset=None):
+    """Wraps Westerlund2ClusterCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2ClusterCalculator', dataset)
+def calc_westerlund2_cosmological_constant_calculator(dataset=None):
+    """Wraps Westerlund2CosmologicalConstantCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2CosmologicalConstantCalculator', dataset)
+def calc_westerlund2_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps Westerlund2DarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2DarkMatterPerturbationCalculator', dataset)
+def calc_westerlund2_electromagnetic_calculator(dataset=None):
+    """Wraps Westerlund2ElectromagneticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2ElectromagneticCalculator', dataset)
+def calc_westerlund2_fluid_density_calculator(dataset=None):
+    """Wraps Westerlund2FluidDensityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2FluidDensityCalculator', dataset)
+def calc_westerlund2_formation_timescale_calculator(dataset=None):
+    """Wraps Westerlund2FormationTimescaleCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2FormationTimescaleCalculator', dataset)
+def calc_westerlund2_gas_velocity_calculator(dataset=None):
+    """Wraps Westerlund2GasVelocityCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2GasVelocityCalculator', dataset)
+def calc_westerlund2_m_u_g_e_stellar_wind_calculator(dataset=None):
+    """Wraps Westerlund2MUGEStellarWindCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('Westerlund2MUGEStellarWindCalculator', dataset)
+def calc_westerlund2_mass_growth_calculator(dataset=None):
+    """Wraps Westerlund2MassGrowthCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2MassGrowthCalculator', dataset)
+def calc_westerlund2_oscillatory_wave_calculator(dataset=None):
+    """Wraps Westerlund2OscillatoryWaveCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2OscillatoryWaveCalculator', dataset)
+def calc_westerlund2_quadriadic_real_imaginary_calc(dataset=None):
+    """Wraps Westerlund2QuadriadicRealImaginaryCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Westerlund2QuadriadicRealImaginaryCalc', dataset)
+def calc_westerlund2_quantum_uncertainty_calculator(dataset=None):
+    """Wraps Westerlund2QuantumUncertaintyCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2QuantumUncertaintyCalculator', dataset)
+def calc_westerlund2_star_cluster_u_q_f_f(dataset=None):
+    """Wraps Westerlund2StarClusterUQFF.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Westerlund2StarClusterUQFF', dataset)
+def calc_westerlund2_stellar_wind_calculator(dataset=None):
+    """Wraps Westerlund2StellarWindCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2StellarWindCalculator', dataset)
+def calc_westerlund2_super_cluster_u_q_f_f_calculator(dataset=None):
+    """Wraps Westerlund2SuperClusterUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('Westerlund2SuperClusterUQFFCalculator', dataset)
+def calc_westerlund2_u_q_f_f_unification_calculator(dataset=None):
+    """Wraps Westerlund2UQFFUnificationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('Westerlund2UQFFUnificationCalculator', dataset)
+def calc_white_dwarf_degenerate_electron_ui_calculator(dataset=None):
+    """Wraps WhiteDwarfDegenerateElectronUiCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('WhiteDwarfDegenerateElectronUiCalculator', dataset)
+def calc_white_dwarf_u_q_f_f_gravitational_decay_calculator(dataset=None):
+    """Wraps WhiteDwarfUQFFGravitationalDecayCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('WhiteDwarfUQFFGravitationalDecayCalculator', dataset)
+def calc_white_hole_radiation_u_q_f_f_calculator(dataset=None):
+    """Wraps WhiteHoleRadiationUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WhiteHoleRadiationUQFFCalculator', dataset)
+def calc_white_hole_stability_u_q_f_f_calculator(dataset=None):
+    """Wraps WhiteHoleStabilityUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WhiteHoleStabilityUQFFCalculator', dataset)
+def calc_whittaker_decomposition_model(dataset=None):
+    """Wraps WhittakerDecompositionModel.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WhittakerDecompositionModel', dataset)
+def calc_wigner_function_decoherence_calculator(dataset=None):
+    """Wraps WignerFunctionDecoherenceCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WignerFunctionDecoherenceCalculator', dataset)
+def calc_wind_shock_calculator(dataset=None):
+    """Wraps WindShockCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WindShockCalculator', dataset)
+def calc_wolf_rayet_evolution_calculator(dataset=None):
+    """Wraps WolfRayetEvolutionCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WolfRayetEvolutionCalculator', dataset)
+def calc_wolfram_extracted_physics_bridge_calculator(dataset=None):
+    """Wraps WolframExtractedPhysicsBridgeCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WolframExtractedPhysicsBridgeCalculator', dataset)
+def calc_wolfram_field_unity_calculator_84_a767_d3(dataset=None):
+    """Wraps WolframFieldUnityCalculator_84A767D3.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WolframFieldUnityCalculator_84A767D3', dataset)
+def calc_wolfram_field_unity_engine(dataset=None):
+    """Wraps WolframFieldUnityEngine.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WolframFieldUnityEngine', dataset)
+def calc_wolfram_folding_factor_calculator(dataset=None):
+    """Wraps WolframFoldingFactorCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('WolframFoldingFactorCalculator', dataset)
+def calc_wolfram_hypergraph_calculator(dataset=None):
+    """Wraps WolframHypergraphCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WolframHypergraphCalculator', dataset)
+def calc_wormhole_geodesic_calculator(dataset=None):
+    """Wraps WormholeGeodesicCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('WormholeGeodesicCalculator', dataset)
+def calc_wormhole_m_u_g_e13th_term_calculator(dataset=None):
+    """Wraps WormholeMUGE13thTermCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('WormholeMUGE13thTermCalculator', dataset)
+def calc_wormhole_m_u_g_e_term_impl_safety_calculator(dataset=None):
+    """Wraps WormholeMUGETermImplSafetyCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WormholeMUGETermImplSafetyCalculator', dataset)
+def calc_wormhole_u_q_f_f_resonance_acceleration_calculator(dataset=None):
+    """Wraps WormholeUQFFResonanceAccelerationCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WormholeUQFFResonanceAccelerationCalculator', dataset)
+def calc_wstellar_pterm_orion_eagle_hydrogen_atom_u_q_f_f_calculator(dataset=None):
+    """Wraps WstellarPtermOrionEagleHydrogenAtomUQFFCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('WstellarPtermOrionEagleHydrogenAtomUQFFCalculator', dataset)
+def calc_x86_vector_op_calculator(dataset=None):
+    """Wraps X86VectorOpCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('X86VectorOpCalculator', dataset)
+def calc_y_m_d_p_m_gauge_field_mass_gap_proof_calculator(dataset=None):
+    """Wraps YMDPMGaugeFieldMassGapProofCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YMDPMGaugeFieldMassGapProofCalculator', dataset)
+def calc_yang_mills_d_p_m_quantization_hub_calculator(dataset=None):
+    """Wraps YangMillsDPMQuantizationHubCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YangMillsDPMQuantizationHubCalculator', dataset)
+def calc_yang_mills_d_v_p_mass_gap_calculator(dataset=None):
+    """Wraps YangMillsDVPMassGapCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YangMillsDVPMassGapCalculator', dataset)
+def calc_yang_mills_instanton_calculator(dataset=None):
+    """Wraps YangMillsInstantonCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YangMillsInstantonCalculator', dataset)
+def calc_yang_mills_mass_gap_calc(dataset=None):
+    """Wraps YangMillsMassGapCalc.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('YangMillsMassGapCalc', dataset)
+def calc_yang_mills_mass_gap_calculator(dataset=None):
+    """Wraps YangMillsMassGapCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YangMillsMassGapCalculator', dataset)
+def calc_yang_mills_mass_gap_p_i_math_calculator(dataset=None):
+    """Wraps YangMillsMassGapPIMathCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YangMillsMassGapPIMathCalculator', dataset)
+def calc_yang_mills_mass_gap_vacuum_density_evolution_calculator(dataset=None):
+    """Wraps YangMillsMassGapVacuumDensityEvolutionCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('YangMillsMassGapVacuumDensityEvolutionCalculator', dataset)
+def calc_yang_mills_string_spectrum_calculator(dataset=None):
+    """Wraps YangMillsStringSpectrumCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YangMillsStringSpectrumCalculator', dataset)
+def calc_ye_r_process_calculator(dataset=None):
+    """Wraps YeRProcessCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YeRProcessCalculator', dataset)
+def calc_young_stars_cosmological_lambda_calculator(dataset=None):
+    """Wraps YoungStarsCosmologicalLambdaCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsCosmologicalLambdaCalculator', dataset)
+def calc_young_stars_dark_matter_perturbation_calculator(dataset=None):
+    """Wraps YoungStarsDarkMatterPerturbationCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsDarkMatterPerturbationCalculator', dataset)
+def calc_young_stars_outflow_lorentz_force_calculator(dataset=None):
+    """Wraps YoungStarsOutflowLorentzForceCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsOutflowLorentzForceCalculator', dataset)
+def calc_young_stars_outflow_pressure_calculator(dataset=None):
+    """Wraps YoungStarsOutflowPressureCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsOutflowPressureCalculator', dataset)
+def calc_young_stars_outflow_ug2_kinetic_calculator(dataset=None):
+    """Wraps YoungStarsOutflowUg2KineticCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsOutflowUg2KineticCalculator', dataset)
+def calc_young_stars_outflows_pressure_calculator(dataset=None):
+    """Wraps YoungStarsOutflowsPressureCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('YoungStarsOutflowsPressureCalculator', dataset)
+def calc_young_stars_quantum_integral_calculator(dataset=None):
+    """Wraps YoungStarsQuantumIntegralCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsQuantumIntegralCalculator', dataset)
+def calc_young_stars_resonant_oscillatory_calculator(dataset=None):
+    """Wraps YoungStarsResonantOscillatoryCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsResonantOscillatoryCalculator', dataset)
+def calc_young_stars_star_formation_mass_calculator(dataset=None):
+    """Wraps YoungStarsStarFormationMassCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsStarFormationMassCalculator', dataset)
+def calc_young_stars_turbulent_fluid_dynamics_calculator(dataset=None):
+    """Wraps YoungStarsTurbulentFluidDynamicsCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsTurbulentFluidDynamicsCalculator', dataset)
+def calc_young_stars_ug_sum_calculator(dataset=None):
+    """Wraps YoungStarsUgSumCalculator.compute() from CondensedPhysics."""
+    return _pipeline_invoke('YoungStarsUgSumCalculator', dataset)
+def calc_yukawa_coupling_mass_calculator(dataset=None):
+    """Wraps YukawaCouplingMassCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('YukawaCouplingMassCalculator', dataset)
+def calc_zeiss_i_r_capture_calculator(dataset=None):
+    """Wraps ZeissIRCaptureCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ZeissIRCaptureCalculator', dataset)
+def calc_zero_boundary_calculator(dataset=None):
+    """Wraps ZeroBoundaryCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ZeroBoundaryCalculator', dataset)
+def calc_zero_point_energy_harvest_calculator(dataset=None):
+    """Wraps ZeroPointEnergyHarvestCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ZeroPointEnergyHarvestCalculator', dataset)
+def calc_zero_reflection_plasmoid_calculator(dataset=None):
+    """Wraps ZeroReflectionPlasmoidCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ZeroReflectionPlasmoidCalculator', dataset)
+def calc_zeta_pi_wave_calculator(dataset=None):
+    """Wraps ZetaPiWaveCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('ZetaPiWaveCalculator', dataset)
+def calc_c_p3_calculator(dataset=None):
+    """Wraps _CP3Calculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('_CP3Calculator', dataset)
+def calc_c_p4_calculator(dataset=None):
+    """Wraps _CP4Calculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('_CP4Calculator', dataset)
+def calc_c_m_e_r_a_entanglement_r_g_calculator(dataset=None):
+    """Wraps cMERAEntanglementRGCalculator.compute() from CondensedPhysics2."""
+    return _pipeline_invoke('cMERAEntanglementRGCalculator', dataset)
+def calc_g_compressed_all_forces_r26_component_calculator(dataset=None):
+    """Wraps gCompressedAllForcesR26ComponentCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('gCompressedAllForcesR26ComponentCalculator', dataset)
+def calc_kk_r_e_b_trdic_ramanujan_f_u_bi_buoyancy_kernel_calculator(dataset=None):
+    """Wraps kkREBTrdicRamanujanFUBiBuoyancyKernelCalculator.compute() from CondensedPhysics3."""
+    return _pipeline_invoke('kkREBTrdicRamanujanFUBiBuoyancyKernelCalculator', dataset)
+def calc_v_s_cm_relativistic_parameter_update_calculator(dataset=None):
+    """Wraps vSCmRelativisticParameterUpdateCalculator.compute() from CondensedPhysics4."""
+    return _pipeline_invoke('vSCmRelativisticParameterUpdateCalculator', dataset)

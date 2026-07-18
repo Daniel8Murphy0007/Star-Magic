@@ -17423,3 +17423,74 @@ Next release (v5.70.0) returns to filling these stubs with real derivational phy
 - No new derivational physics
 - Next release: v5.70.0 returns to CP1 stub filling (real physics)
 
+---
+
+## 2026-07-17 — H-4 QCalcGeom advance (T220-T235 canonical primitive-locks)
+
+Phase H-4 catch-up: added 16 primitive-lock assertions to `QCalcGeom.run_qcalcgeom_tests`, all
+anchored to canonical CLAUDE.md facts and whitepaper landmarks (no new physics — asserts
+Daniel's already-codified structural identities against QCalcGeom's imported dpm constants).
+
+New T-numbers:
+- **T220-T225**: primitive-lock band checks — RHO_VAC_SCM (0.5%), RHO_VAC_UA = 10·RHO_VAC_SCM,
+  BETA_I in [0.6, 0.6029], F_TRZ = 0.1 EXACT, PHI_RES = 0.84 EXACT, SSQ = 0.57 EXACT.
+- **T226**: PAPER_1521 landmark — D_BSFG = D_crit − 2·SO_5 = 6 EXACT (derivative primitive).
+- **T227**: PAPER_1522 landmark — K_MEX = (5/6)·SO_5/D_phys = 25/12 EXACT (derivative primitive).
+- **T228**: PAPER_1978 — SO_5 + 1 = 11 EXACT successor identity.
+- **T229**: PAPER_1203 — A_5 − SO_5 = 50 EXACT (nuclear magic 50 subtractive form).
+- **T230**: PAPER_2089 R214 F3 — D_BSFG·(1+F_TRZ) = 6.6 EXACT (full-cycle time).
+- **T231**: PAPER_2089 R214 F2 — D_BSFG·(F_TRZ+F_TRZ²) = 0.66 EXACT (half-cycle time).
+- **T232**: PAPER_2089 R214 F1 — D_phys·(SO_5+1) = 44 EXACT (frame count).
+- **T233**: PAPER_2082 R207 F3 — (D_phys+1)·N_CH = 45 EXACT (composed-prefix candidate).
+- **T234**: PAPER_2089 R214 F5 — (D_phys+1)·N_CH·F_TRZ⁶ = 4.5×10⁻⁵ EXACT.
+- **T235**: PAPER_2079 R204 F2 — (D_phys−1)·(1+F_TRZ) = 3.3 EXACT (compound-prefix predecessor).
+
+Results:
+- `run_qcalcgeom_tests` frontier: **47/47 → 63/63 PASSED** (+16).
+- Fidelity gate: **1733/0** (unchanged, no regression).
+- All ties trace back to Daniel-codified whitepaper closures — no invented physics.
+
+---
+
+## 2026-07-17 — H-4 CONTINUED — Full legacy C++ port + C-ABI dispatcher expansion
+
+Second-half of H-4 (per Daniel's "Do It!"): ported the full T07-T50 legacy fidelity range
+from `qcalcgeom_tests.cpp` into `run_qcalcgeom_tests`, and expanded the C-ABI JSON
+dispatcher (`qcalcgeom_compute_json`) to cover all 17 named functions from
+`QCalcGeom.h` Section 6 (previously only 3: bsfg_metric, solve_habitable_zone, compute_F_U).
+
+New T-numbers added (67 total this pass):
+- **T01b, T02b**: reference-band checks against EPS_PRIME_REF / R_R0R0_REF.
+- **T03-T06b**: metric flat-limit + t_n symmetry/antiphase/eps_pp r^-5 scaling.
+- **T07-T12**: blinking horizon, Hawking T_H, r_cross AU, h_eta, holonomy 28,
+  M^26 = 4+22.
+- **T13-T16**: VDS n=1 dominance, term-decrease monotonicity, monotone-in-SSq,
+  Li_26 truncation error.
+- **T17-T21**: 30th prime = 113, 26! mod 113 = 12, a(p) monotone for p>26, Wilson's
+  theorem (112)!≡112 mod 113, r_q ~ 0.0973 AU.
+- **T22-T24**: BSH H_2 = 3.30e7, U_g2 > 0 canonical, saturation (1-e^{-11.4}) > 0.9999.
+- **T25-T27**: BH26 eigenvalue ladder k(k+25), 13+13 duality partition,
+  92/225/345 GHz Gaussian bins.
+- **T28-T40**: Cosmological — Lambda_eff, amp_factor >> 1, r_h/r_s ratio, flat-limit
+  at 67 AU, Friedmann H, Page unitarity 0.9895, action correction at 1 AU, YM proxy,
+  Penrose NEC, T_H ratio, 26D critical dim, NS regularity, holographic S_BH.
+- **T43-T46**: Ubi zero-crossover at t_n=0.5, antisymmetry, r^-2 scaling, period recovery.
+- **T47-T50**: neg-time metric parity, horizon at t_n=-1, buoyancy neg-time symmetry,
+  negentropic growth 1-exp(0.05) = -0.051.
+- **T240-T258**: C-ABI JSON dispatcher tests — 17 named functions × dispatch + unknown
+  function returns clean error. Numerical-fault wrapper added for uqff_comp_matrix
+  (r^52 overflow at r=R_SUN, rho^27 underflow at rho=RHO_VAC_SCM) — dispatcher returns
+  clean `numerical_fault:...` error rather than uncaught OverflowError/ZeroDivisionError.
+
+Results:
+- `run_qcalcgeom_tests` frontier: **63/63 → 130/130 PASSED** (+67 tests).
+- Fidelity gate: **1733/0** (unchanged, zero regression).
+- C-ABI JSON bridge now dispatches all 17 named functions from QCalcGeom.h Section 6
+  (was 3). Aligns Python-side ABI with C++ reference surface.
+- Summary line updated to reflect actual coverage bands:
+  "T01-T50 C++ port + T61-T91 Mayan/Inertia/Buoy + T201-T212 calculators + T220-T235 canonical primitive-locks".
+- All legacy port assertions match the C++ source-of-truth formulas in
+  `qcalcgeom_tests.cpp` T01-T50 verbatim.
+
+**Cumulative H-4 delta:** QCalcGeom self-test frontier **47/47 → 130/130** (+83 tests, +176%).
+

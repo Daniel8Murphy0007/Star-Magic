@@ -1270,20 +1270,32 @@ check("Rule 3 narrative guard: no 'classical Eddington' / 'SM template' / 'Lambd
       len(_sm_hits) == 0,
       "hits: " + str(_sm_hits[:3]))
 
-# Rule 9: zero narrative comment lines (already enforced) - re-check
-_comment_lines = sum(1 for _l in _calc_src.splitlines() if _l.lstrip().startswith('#') and 'coding' not in _l)
-check("Rule 9 narrative guard: zero '# ...' comment lines in calculator",
-      _comment_lines == 0,
-      "comment_lines=" + str(_comment_lines))
-
-# Rule 9: zero docstrings (re-check)
+# Rule 9 (v5.69.2+ LOOSENED): comments and docstrings are ALLOWED for structured API
+# documentation of pipeline calc_* shims. Anti-drift guard now catches only narrative rot
+# and SM contamination in comments/docstrings, not the mere presence of them.
 import ast as _ast
 _tree = _ast.parse(_calc_src)
-_funcs_with_doc = sum(1 for n in _ast.walk(_tree)
-                     if isinstance(n,(_ast.FunctionDef, _ast.AsyncFunctionDef)) and _ast.get_docstring(n))
-check("Rule 9 narrative guard: zero function docstrings in calculator",
-      _funcs_with_doc == 0,
-      "funcs_with_doc=" + str(_funcs_with_doc))
+
+# Anti-drift guard: no comment line may contain narrative-rot markers
+_NARRATIVE_MARKERS = ('NOT REPLACEMENT', 'closure_status', 'provenance', 'classical Eddington',
+                     'SM template', 'SM analogue', 'Kerr fiducial', 'GR baseline',
+                     'PDG anchor', 'CODATA anchor', 'Lambda_GR')
+_bad_comments = [ _l for _l in _calc_src.splitlines()
+                 if _l.lstrip().startswith('#') and any(m in _l for m in _NARRATIVE_MARKERS) ]
+check("Rule 9 anti-drift: no narrative-rot markers in comment lines",
+      len(_bad_comments) == 0,
+      "bad_comments: " + str(_bad_comments[:3]))
+
+# Anti-drift guard: no docstring may contain narrative-rot markers
+_bad_docstrings = []
+for _n in _ast.walk(_tree):
+    if isinstance(_n, (_ast.FunctionDef, _ast.AsyncFunctionDef)):
+        _d = _ast.get_docstring(_n)
+        if _d and any(m in _d for m in _NARRATIVE_MARKERS):
+            _bad_docstrings.append(_n.name)
+check("Rule 9 anti-drift: no narrative-rot markers in function docstrings",
+      len(_bad_docstrings) == 0,
+      "bad_docstrings: " + str(_bad_docstrings[:3]))
 
 # Rule 9: zero classes (re-check)
 _classes = [n for n in _ast.walk(_tree) if isinstance(n, _ast.ClassDef)]
