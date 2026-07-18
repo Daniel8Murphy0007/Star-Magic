@@ -41,7 +41,7 @@ except ImportError:
     def _all_bucket_observables(): return {}
 
 
-_VERSION = "5.69.1"
+_VERSION = "5.69.2"
 
 
 # ---------------------------------------------------------------------------

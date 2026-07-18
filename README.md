@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2792%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2089%2B-orange)](whitepapers/)
 
-**Version**: 5.69.1
+**Version**: 5.69.2
 **Last Updated**: 2026-07-17
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,9 +50,9 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.69.1 (2026-07-17) — H-plan bundle: pipeline wiring + QCalcGeom advance + pyproject fix
+## What's new in v5.69.2 (2026-07-17) — H-plan bundle: pipeline wiring + QCalcGeom advance + pyproject fix
 
-**Patch release** on top of v5.69.0. Two things bundled:
+**Patch release** on top of v5.69.0 (v5.69.1 tag was skipped). Two things bundled:
 
 1. **Fixes v5.69.0 CI** — pyproject description was 602 chars (over PyPI 512 limit); shortened to 383 chars so the wheel publishes cleanly.
 2. **H-plan bundle** (session 2026-07-17) — closes the gap between what `uqff_pure_calculator` exposed (32 surfaces) and what the CP1-CP4 pipeline actually contains (2,943 classes).

@@ -1,4 +1,4 @@
-## [5.69.1] - 2026-07-17 - PATCH: H-plan bundle — pipeline wiring + QCalcGeom advance + pyproject description fix
+## [5.69.2] - 2026-07-17 - PATCH: H-plan bundle — pipeline wiring + QCalcGeom advance + pyproject description fix (v5.69.1 tag skipped)
 
 ### v5.69.0 CI patch
 

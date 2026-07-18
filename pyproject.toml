@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.69.1"
-description = "UQFF Star-Magic v5.69.1: H-plan bundle. 2,760 CP1-CP4 pipeline classes wired as public calc_* surfaces in uqff_pure_calculator (was 32). QCalcGeom self-test frontier 47->130 (T01-T50 C++ port + T220-T235 canonical primitive-locks + T240-T258 C-ABI). qcalcgeom_compute_json dispatcher covers all 17 named functions (was 3). Rule 9 loosened to allow structured docstrings. Gate 1733/0."
+version = "5.69.2"
+description = "UQFF Star-Magic v5.69.2: H-plan bundle. 2,760 CP1-CP4 pipeline classes wired as public calc_* surfaces in uqff_pure_calculator (was 32). QCalcGeom self-test frontier 47->130 (T01-T50 C++ port + T220-T235 canonical primitive-locks + T240-T258 C-ABI). qcalcgeom_compute_json dispatcher covers all 17 named functions (was 3). Rule 9 loosened to allow structured docstrings. Gate 1733/0."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
