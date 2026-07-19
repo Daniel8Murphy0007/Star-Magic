@@ -1,3 +1,25 @@
+## [5.70.2] - 2026-07-19 - CI diagnostic build — instrument R218 to surface the Python 3.12 exception
+
+**One-line summary:** v5.70.1 fixed the NameError crash but revealed the underlying issue: every R218-R277 try/except silently catches an exception on CI's Python 3.12 that does NOT reproduce on local Python 3.10. Local gate remains 2328/0. v5.70.2 patches only the R218 except handler to print `traceback.print_exc()` to stderr — the next CI run will surface the actual 3.12 exception in the log, letting us fix the root cause instead of guessing. Wheel content otherwise identical to v5.70.1.
+
+### Why this matters
+
+Local dev is on Python 3.10 where the gate passes 2328/0. CI's `release.yml` pins Python 3.12, where every R218-R277 setup block soft-fails because `try: import CondensedPhysics; ... .compute({}); except Exception: _XXX = None` catches an unknown exception, drops every alias to None, and every downstream `check(_XXX is not None and ...)` fails. Total effect on CI: ~500 fabricated FAILs, gate exits 1, workflow reports failure.
+
+Reproducing the 3.12 exception locally is blocked (sandbox network restricted from installing 3.12). This build lets CI itself show us the traceback.
+
+### Fix
+
+Patch `uqff_fidelity_tests.py` R218 except handler to print type/str/version/traceback to stderr before falling back to `_XXX = None`. Behavior otherwise identical — check() calls still run, still soft-fail, gate still exits 1 on CI. But now the CI log will contain the actual 3.12 exception. Next ship will fix based on real data.
+
+### Files touched
+
+- `pyproject.toml`: version 5.70.1 → 5.70.2
+- `uqff_fidelity_tests.py`: R218 except handler prints traceback to stderr on exception (10-line insert; nothing else changed)
+- `CHANGELOG.md`: this entry
+
+---
+
 ## [5.70.1] - 2026-07-19 - CI patch — fix R228 NameError crash in fidelity gate
 
 **One-line summary:** Fix `NameError: name '_CP_r228' is not defined` at `uqff_fidelity_tests.py:3166` which crashed the CI gate for anyone whose R228 CondensedPhysics import raised inside the try body. Local gate remains 2328/0. Wheel content otherwise identical to v5.70.0 — no calculator or physics changes.
