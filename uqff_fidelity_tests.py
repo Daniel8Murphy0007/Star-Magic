@@ -3158,12 +3158,13 @@ try:
     _r228_res = _CUM.compute()
     _r228_omega_vac = _r228_res.get('omega_vac_rad_s')
 except Exception:
+    _CP_r228 = None
     _r228_lambda = None
     _r228_c = None
 check("R228 CompressedUQFFMasterCalculator Lambda = (SO_5+1)*F_TRZ^53 = 11*1e-53 = 1.1e-52 EXACT (PAPER_1978 successor identity x F_TRZ^53 ladder)", _r228_lambda is not None and abs(_r228_lambda - 11 * (0.1 ** 53)) < 1e-70)
 check("R228 CompressedUQFFMasterCalculator Lambda cosmological-constant value matches stub literal 1.1e-52 m^-2", _r228_lambda is not None and abs(_r228_lambda - 1.1e-52) < 1e-65)
 check("R228 CompressedUQFFMasterCalculator c = dpm._C_LIGHT canonical (was hardcoded 2.998e8, now sourced)", _r228_c is not None and abs(_r228_c - 2.998e8) < 1e6)
-check("R228 CompressedUQFFMasterCalculator LAMBDA_PRIMITIVE class attr = (SO_5+1)*F_TRZ^53 EXACT", abs(_CP_r228.CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE - 11 * (0.1 ** 53)) < 1e-70)
+check("R228 CompressedUQFFMasterCalculator LAMBDA_PRIMITIVE class attr = (SO_5+1)*F_TRZ^53 EXACT", _CP_r228 is not None and abs(_CP_r228.CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE - 11 * (0.1 ** 53)) < 1e-70)
 check("R228 eleventh real stub-fill after R218-R227 — CompressedUQFFMasterCalculator now has 10 primitive-derived defaults (Lambda + omega_vac + nu + grad2_v + delta_rho_DM + rho_0 + delta_SC + delta_envelope + kappa + c)", _r228_lambda is not None)
 
 # --- PAPER_2094 COMPANION: Lambda simple form = (SO_5+1)*F_TRZ^53 = 11*10^-53 = 1.1e-52 m^-2 EXACT ---
@@ -3171,7 +3172,7 @@ check("R228 eleventh real stub-fill after R218-R227 — CompressedUQFFMasterCalc
 # This simple form matches the R228 stub literal 1.1e-52 EXACTLY, is ~1% off observed value.
 check("PAPER_2094 COMPANION Lambda_simple = (SO_5+1)*F_TRZ^53 = 1.1e-52 m^-2 EXACT (matches R228 stub literal; ~1% off observed Lambda)", (_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") is not None) and abs(_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") - 1.1e-52) < 1e-65)
 check("PAPER_2094 arithmetic: (10+1)*(0.1**53) = 11*1e-53 = 1.1e-52 EXACT (relative tolerance)", (_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") is not None) and abs(_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") / (11 * (0.1 ** 53)) - 1.0) < 1e-10)
-check("PAPER_2094 dispatch matches R228 CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE (cross-verify companion form <-> stub-fill code)", (_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") is not None) and abs(_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") / _CP_r228.CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE - 1.0) < 1e-10)
+check("PAPER_2094 dispatch matches R228 CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE (cross-verify companion form <-> stub-fill code)", _CP_r228 is not None and (_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") is not None) and abs(_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") / _CP_r228.CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE - 1.0) < 1e-10)
 check("PAPER_2094 companion positioning honest — ~1% off observed Lambda (Lambda_simple = 1.1e-52 vs Lambda_obs ~ 1.089e-52; ratio ~ 1.010)", (_b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") is not None) and 1.005 < _b1_val("lambda_cosmological_simple_form_so_5_plus_1_times_f_trz_53_paper_2094_companion_to_paper_1156_canonical") / 1.089e-52 < 1.015)
 check("PAPER_2094 acknowledges PAPER_1156 canonical (18/5)*SSq*H_0^2/c^2 as primary derivation for physical Lambda citations (99.998% Planck 2018 match)", True)
 

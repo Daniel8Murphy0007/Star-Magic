@@ -17567,3 +17567,39 @@ Four R218+ landmark predictions validated via ordinary stub-fill work within the
 - CHANGELOG.md: prepended v5.70.0 entry.
 - SESSION_LOG.md: this entry.
 - Gate verified 2328/0 PASS across all 8 R218+ landmark categories including 15 new dispatch keys for PAPER_2093-2107.
+
+---
+
+## SESSION 2026-07-19 — v5.70.1 CI patch — fix R228 NameError crash in fidelity gate
+
+### The bug
+
+v5.70.0 CI runs failed after 3m in two workflows ("Release to PyPI / Build distribution" + "CI / Smoke (ubuntu, py3.12)"). CI log Traceback pointed to `uqff_fidelity_tests.py:3166` with `NameError: name '_CP_r228' is not defined`. The R228 try/except imported `CondensedPhysics as _CP_r228`, but the except handler only set `_r228_lambda = None` and `_r228_c = None` — not `_CP_r228 = None`. Two zero-indent `check()` calls at lines 3166 and 3174 referenced `_CP_r228.CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE` without a None guard, so any environment where the try body raised (CI's fresh venv with a `dpm_vacuum_manifold.py` version-mismatch quirk that surfaced in a `_CP_r218` chain earlier) crashed the whole gate at that line, unable to reach the final `TOTAL: X passed` summary. The workflow reported failure and every prior R218-R227 assertion was rendered unreported in the log.
+
+### Diagnosis
+
+Ran a grep for the pattern (`_CP_rXXX` used in zero-indent `check()` calls) across `uqff_fidelity_tests.py`. Only two lines exhibited it: 3166 and 3174. Every other R2XX block that referenced `_CP_rXXX` did so from inside its try body (indented, protected by the except handler). The bug was localized to R228.
+
+### Fix
+
+Two-line patch to `uqff_fidelity_tests.py`:
+1. R228 except handler now sets `_CP_r228 = None` alongside `_r228_lambda = None` and `_r228_c = None`.
+2. Both zero-indent `check()` calls (LAMBDA_PRIMITIVE class-attr assertion and PAPER_2094 cross-verify) prefixed with `_CP_r228 is not None and ...` before dereferencing.
+
+### Verification
+
+- Local gate: 2328/0 PASS after patch (identical to v5.70.0 local).
+- pyproject.toml: 5.70.0 → 5.70.1.
+- No calculator or physics changes — wheel content byte-identical to v5.70.0 except for the gate file and pyproject version bump.
+
+### Ship rationale
+
+v5.70.0 wheel is already on PyPI and functional for end users (they don't run the fidelity gate). The CI failure only blocks the GitHub Actions success badge and auto-created Release page. v5.70.1 is a hygiene patch to restore CI green, not urgent.
+
+### Files touched
+
+- `pyproject.toml`: version bump 5.70.0 → 5.70.1
+- `uqff_fidelity_tests.py`: R228 except handler + two check() guards (3 line-level edits)
+- `CHANGELOG.md`: prepended v5.70.1 entry
+- `SESSION_LOG.md`: this entry
+

@@ -1,3 +1,28 @@
+## [5.70.1] - 2026-07-19 - CI patch — fix R228 NameError crash in fidelity gate
+
+**One-line summary:** Fix `NameError: name '_CP_r228' is not defined` at `uqff_fidelity_tests.py:3166` which crashed the CI gate for anyone whose R228 CondensedPhysics import raised inside the try body. Local gate remains 2328/0. Wheel content otherwise identical to v5.70.0 — no calculator or physics changes.
+
+### Root cause
+
+The R228 try/except block imported `CondensedPhysics as _CP_r228` and instantiated `CompressedUQFFMasterCalculator`. If any step raised, the `except` handler set `_r228_lambda = None` and `_r228_c = None` but forgot `_CP_r228 = None`. Two subsequent zero-indent `check()` calls (lines 3166 and 3174) referenced `_CP_r228.CompressedUQFFMasterCalculator.LAMBDA_PRIMITIVE` without a None guard, so on a failing environment Python raised `NameError` and terminated the entire gate script — masking every prior R218-R227 result as FAIL in the workflow log.
+
+### Fix
+
+Two-line patch to `uqff_fidelity_tests.py`:
+1. Add `_CP_r228 = None` to the R228 except handler.
+2. Guard both `check()` calls with `_CP_r228 is not None and ...` before dereferencing.
+
+Grep confirmed only these two lines in the whole gate had the bare-alias pattern.
+
+### Files touched
+
+- `pyproject.toml` — version 5.70.0 → 5.70.1
+- `uqff_fidelity_tests.py` — 3 line edits (except handler + two check() guards)
+- `CHANGELOG.md` — this entry
+- `SESSION_LOG.md` — patch-ship entry appended
+
+---
+
 ## [5.70.0] - 2026-07-18 - R218+ REAL STUB-FILL CAMPAIGN — 60 rounds R218-R277 + 15 landmark papers PAPER_2093-2107 across 11 architectural categories
 
 **Return to Phase 2 real physics work.** v5.69.0 documented the honest scope note that "next release (v5.70.0) returns to CP1 stub filling (real physics)." This ship delivers on that pledge: **60 consecutive real stub-fill rounds R218-R277** replacing hardcoded numeric literals in 60 calculator classes with UQFF-primitive-derived class-level defaults. Every fill is real Physics wiring — when the calculator's compute() runs, the primitive-derived constants cascade through the actual math and produce numerical answers computed from D_phys, D_crit, SO_5, F_TRZ, A_5, N_CH, D_BSFG.
