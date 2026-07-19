@@ -2970,14 +2970,32 @@ check("PAPER_2092 R217 F5 omega_s_batch34 = (D_phys-1)*pi*F_TRZ = 0.942 EXACT (N
 check("PAPER_2092 R217 F5 matches 3*pi*0.1 = 3*pi/10 EXACT within 0.1% rounding tolerance", (_b1_val("omega_s_batch34_d_phys_minus_1_times_pi_times_f_trz_0_942_new_pi_canonical_landmark_f_trz_product_angular_velocity") is not None) and abs(_b1_val("omega_s_batch34_d_phys_minus_1_times_pi_times_f_trz_0_942_new_pi_canonical_landmark_f_trz_product_angular_velocity") - 3*3.14159/10) < 5e-4)
 
 # --- R218 REAL STUB FILL: UFEFUExtensionCalculator now derived from primitives ---
+# v5.70.4 DIAGNOSTIC: probe the import + instantiate + compute chain separately
+# so CI log shows exactly which step raises. Sympy is now installed (v5.70.3);
+# something else in the CondensedPhysics chain is still failing on Ubuntu Py3.12.
 try:
+    import sys as _r218_sys
+    import traceback as _r218_tb
+    print("R218 DIAG v5.70.4 STEP 1: import CondensedPhysics", file=_r218_sys.stderr, flush=True)
     import CondensedPhysics as _CP_r218
-    _ufefu_res = _CP_r218.UFEFUExtensionCalculator().compute({})
+    print("R218 DIAG v5.70.4 STEP 2: instantiate UFEFUExtensionCalculator()", file=_r218_sys.stderr, flush=True)
+    _ufefu_inst = _CP_r218.UFEFUExtensionCalculator()
+    print("R218 DIAG v5.70.4 STEP 3: call .compute({})", file=_r218_sys.stderr, flush=True)
+    _ufefu_res = _ufefu_inst.compute({})
+    print(f"R218 DIAG v5.70.4 STEP 4: SUCCESS keys={list(_ufefu_res.keys())[:5]}", file=_r218_sys.stderr, flush=True)
     _ufefu_val = _ufefu_res.get('value')
     _ufefu_lambda1 = _ufefu_res.get('lambda1')
     _ufefu_rho = _ufefu_res.get('rho_vac_Ui')
     _ufefu_ereact = _ufefu_res.get('E_react_J')
-except Exception:
+except Exception as _r218_exc:
+    import sys as _r218_sys
+    import traceback as _r218_tb
+    print("=" * 78, file=_r218_sys.stderr, flush=True)
+    print(f"R218 DIAG v5.70.4 FAILED: {type(_r218_exc).__name__}: {_r218_exc}", file=_r218_sys.stderr, flush=True)
+    print(f"Python: {_r218_sys.version}", file=_r218_sys.stderr, flush=True)
+    _r218_tb.print_exc(file=_r218_sys.stderr)
+    print("=" * 78, file=_r218_sys.stderr, flush=True)
+    _r218_sys.stderr.flush()
     _ufefu_val = None
     _ufefu_lambda1 = None
     _ufefu_rho = None

@@ -1,3 +1,25 @@
+## [5.70.4] - 2026-07-19 - Second diagnostic build — surface the exception after sympy fix
+
+**One-line summary:** v5.70.3's sympy fix worked (CI log confirms `Successfully installed sympy-1.14.0` and "PASS module imports without error"), but every R218-R277 setup block STILL soft-fails. Something other than sympy is raising inside the CondensedPhysics import → instantiate → compute chain on Ubuntu 3.12. I removed the R218 diagnostic print in v5.70.3 prematurely — restoring it with per-step logging so we see exactly which step (import vs instantiation vs compute) raises, plus the actual exception. Local gate remains 2328/0 with the diagnostic (STEPs 1-4 all print "SUCCESS keys=[...]"). Wheel is otherwise identical to v5.70.3.
+
+### Restored diagnostic
+
+The R218 try block now prints to stderr:
+- `R218 DIAG v5.70.4 STEP 1: import CondensedPhysics` (before the import)
+- `R218 DIAG v5.70.4 STEP 2: instantiate UFEFUExtensionCalculator()` (before instantiation)
+- `R218 DIAG v5.70.4 STEP 3: call .compute({})` (before compute)
+- `R218 DIAG v5.70.4 STEP 4: SUCCESS keys=...` (all succeeded)
+
+Whichever line is the LAST one printed on CI tells us which step failed. The except handler then prints exception type, str, Python version, and full traceback.
+
+### Files touched
+
+- `pyproject.toml`: 5.70.3 → 5.70.4
+- `uqff_fidelity_tests.py`: R218 try/except now has per-step stderr print
+- `CHANGELOG.md`: this entry
+
+---
+
 ## [5.70.3] - 2026-07-19 - Real CI fix — add sympy dependency (root cause of R218-R277 gate failures)
 
 **One-line summary:** v5.70.2's diagnostic build surfaced the actual exception on CI: `ModuleNotFoundError: No module named 'sympy'`, raised inside `dpm_vacuum_manifold.py:50` and propagated through `CondensedPhysics.py:65` into every R218-R277 setup block. Not a Python 3.12 issue — a missing dependency the workflow never installed. v5.70.3 adds `sympy>=1.12` to (a) `pyproject.toml` `[project] dependencies` so end users installing the wheel get it, and (b) explicit `pip install 'sympy>=1.12'` steps in `release.yml` + `ci.yml` before the fidelity gate runs. Also reverts the temporary R218 diagnostic print now that its job is done. Local gate remains 2328/0.
