@@ -30,7 +30,7 @@ jobs:
       - name: Install build tooling
         run: |
           python -m pip install --upgrade pip
-          python -m pip install 'build>=1.0' 'twine>=5.0' 'setuptools>=77'
+          python -m pip install 'build>=1.0' 'twine>=5.0' 'setuptools>=77' 'sympy>=1.12'
 
       - name: Strip null bytes from test file
         run: python -c "import pathlib; p=pathlib.Path('uqff_fidelity_tests.py'); d=p.read_bytes(); p.write_bytes(d.replace(b'\x00',b''))"

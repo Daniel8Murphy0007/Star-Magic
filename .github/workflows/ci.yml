@@ -55,6 +55,9 @@ jobs:
             exit 1
           fi
 
+      - name: Install runtime dependencies
+        run: pip install 'sympy>=1.12'
+
       - name: Strip trailing null bytes from test file (if any)
         run: python scripts/ci_strip_nulls.py
 
@@ -86,6 +89,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install runtime dependencies
+        run: pip install 'sympy>=1.12'
+
       - name: Strip trailing null bytes
         run: python scripts/ci_strip_nulls.py
 
@@ -107,7 +113,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - run: pip install 'coverage>=7.0'
+      - run: pip install 'coverage>=7.0' 'sympy>=1.12'
 
       - name: Strip trailing null bytes
         run: python scripts/ci_strip_nulls.py

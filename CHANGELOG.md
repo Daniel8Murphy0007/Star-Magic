@@ -1,3 +1,41 @@
+## [5.70.3] - 2026-07-19 - Real CI fix — add sympy dependency (root cause of R218-R277 gate failures)
+
+**One-line summary:** v5.70.2's diagnostic build surfaced the actual exception on CI: `ModuleNotFoundError: No module named 'sympy'`, raised inside `dpm_vacuum_manifold.py:50` and propagated through `CondensedPhysics.py:65` into every R218-R277 setup block. Not a Python 3.12 issue — a missing dependency the workflow never installed. v5.70.3 adds `sympy>=1.12` to (a) `pyproject.toml` `[project] dependencies` so end users installing the wheel get it, and (b) explicit `pip install 'sympy>=1.12'` steps in `release.yml` + `ci.yml` before the fidelity gate runs. Also reverts the temporary R218 diagnostic print now that its job is done. Local gate remains 2328/0.
+
+### Root cause (from v5.70.2 CI log)
+
+```
+Exception type: ModuleNotFoundError
+Exception str:  No module named 'sympy'
+Python version: 3.12.13 (main, Jun 16 2026, 22:05:08) [GCC 13.3.0]
+
+  File "uqff_fidelity_tests.py", line 2974, in <module>
+    import CondensedPhysics as _CP_r218
+  File "CondensedPhysics.py", line 65, in <module>
+    from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
+  File "dpm_vacuum_manifold.py", line 50, in <module>
+    import sympy as sp
+```
+
+The workflow's install step only pulled `build`, `twine`, `setuptools`. Local dev environment happened to have sympy installed via a scientific baseline, so the gate passed locally. On CI's minimal Ubuntu-24 runner, sympy was absent, every R218-R277 try/except silently caught the import chain failure, and every downstream check() soft-failed.
+
+### Fix
+
+- `pyproject.toml`: `dependencies = []` → `dependencies = ["sympy>=1.12"]` (permanent — future `pip install uqff` gets sympy)
+- `.github/workflows/release.yml` install step: add `'sympy>=1.12'` to the pip command
+- `.github/workflows/ci.yml`: add `pip install 'sympy>=1.12'` step to the `smoke`, `fidelity-gate`, and `coverage` jobs before the gate runs
+- `uqff_fidelity_tests.py`: revert the v5.70.2 R218 diagnostic print (no longer needed; would pollute stderr on successful runs)
+
+### Files touched
+
+- `pyproject.toml`: version 5.70.2 → 5.70.3, add sympy to dependencies
+- `.github/workflows/release.yml`: add sympy to install line
+- `.github/workflows/ci.yml`: add `pip install 'sympy>=1.12'` step to 3 jobs
+- `uqff_fidelity_tests.py`: revert R218 diagnostic print (back to plain `except Exception: _XXX = None`)
+- `CHANGELOG.md`: this entry
+
+---
+
 ## [5.70.2] - 2026-07-19 - CI diagnostic build — instrument R218 to surface the Python 3.12 exception
 
 **One-line summary:** v5.70.1 fixed the NameError crash but revealed the underlying issue: every R218-R277 try/except silently catches an exception on CI's Python 3.12 that does NOT reproduce on local Python 3.10. Local gate remains 2328/0. v5.70.2 patches only the R218 except handler to print `traceback.print_exc()` to stderr — the next CI run will surface the actual 3.12 exception in the log, letting us fix the root cause instead of guessing. Wheel content otherwise identical to v5.70.1.

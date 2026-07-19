@@ -2977,18 +2977,7 @@ try:
     _ufefu_lambda1 = _ufefu_res.get('lambda1')
     _ufefu_rho = _ufefu_res.get('rho_vac_Ui')
     _ufefu_ereact = _ufefu_res.get('E_react_J')
-except Exception as _r218_exc:
-    import sys as _r218_sys
-    import traceback as _r218_tb
-    print("=" * 78, file=_r218_sys.stderr)
-    print("R218 DIAGNOSTIC v5.70.2: uncaught exception in R218 setup block", file=_r218_sys.stderr)
-    print(f"Exception type: {type(_r218_exc).__name__}", file=_r218_sys.stderr)
-    print(f"Exception str:  {_r218_exc}", file=_r218_sys.stderr)
-    print(f"Python version: {_r218_sys.version}", file=_r218_sys.stderr)
-    print("Full traceback:", file=_r218_sys.stderr)
-    _r218_tb.print_exc(file=_r218_sys.stderr)
-    print("=" * 78, file=_r218_sys.stderr)
-    _r218_sys.stderr.flush()
+except Exception:
     _ufefu_val = None
     _ufefu_lambda1 = None
     _ufefu_rho = None
