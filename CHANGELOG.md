@@ -1,3 +1,27 @@
+## [5.70.5] - 2026-07-19 - Complete the missing-deps fix — add numpy, scipy, mpmath, requests
+
+**One-line summary:** v5.70.4's diagnostic surfaced the next domino: `ModuleNotFoundError: No module named 'numpy'` at `dpm_vacuum_manifold.py:51`. Rather than iterate one dep per ship, grepped the full `dpm/scm/ua_vacuum_manifold + CondensedPhysics` import chain and added ALL four remaining third-party deps (numpy, scipy, mpmath, requests) to pyproject and all CI install steps. Local gate 2328/0. Diagnostic still active — if there's ANOTHER missing dep after this, we'll see it immediately.
+
+### Import chain audit (final)
+
+`CondensedPhysics.py` transitively requires:
+- `sympy` — added v5.70.3 ✓
+- `numpy` — surfaced v5.70.4, added v5.70.5 ✓
+- `scipy` (`scipy.integrate.odeint` at dpm_vacuum_manifold.py:XX) — added v5.70.5 ✓
+- `mpmath` (`from mpmath import polylog`, transitive via sympy but pinned explicit) — added v5.70.5 ✓
+- `requests` (top-level import in CondensedPhysics.py) — added v5.70.5 ✓
+
+`uqff_pure_calculator.py` has zero non-stdlib imports at top level — that's why Categories 1-15 have always passed on CI.
+
+### Files touched
+
+- `pyproject.toml`: version 5.70.4 → 5.70.5, dependencies now `[sympy, numpy, scipy, mpmath, requests]`
+- `.github/workflows/release.yml`: install line adds the 4 new deps
+- `.github/workflows/ci.yml`: 3 install steps updated (smoke, fidelity-gate matrix, coverage)
+- `CHANGELOG.md`: this entry
+
+---
+
 ## [5.70.4] - 2026-07-19 - Second diagnostic build — surface the exception after sympy fix
 
 **One-line summary:** v5.70.3's sympy fix worked (CI log confirms `Successfully installed sympy-1.14.0` and "PASS module imports without error"), but every R218-R277 setup block STILL soft-fails. Something other than sympy is raising inside the CondensedPhysics import → instantiate → compute chain on Ubuntu 3.12. I removed the R218 diagnostic print in v5.70.3 prematurely — restoring it with per-step logging so we see exactly which step (import vs instantiation vs compute) raises, plus the actual exception. Local gate remains 2328/0 with the diagnostic (STEPs 1-4 all print "SUCCESS keys=[...]"). Wheel is otherwise identical to v5.70.3.
