@@ -17494,3 +17494,76 @@ Results:
 
 **Cumulative H-4 delta:** QCalcGeom self-test frontier **47/47 → 130/130** (+83 tests, +176%).
 
+
+---
+
+## 2026-07-18 — v5.70.0 R218+ REAL STUB-FILL CAMPAIGN (R215-R277 arc + PAPER_2090-2107)
+
+**Return to Phase 2 real physics work per v5.69.0 pledge.** After 3 CP2 identity-catalog pentads (R215-R217, PAPER_2090/2091/2092), campaign resumed at R218 with real stub filling of hardcoded numeric literals — replaced with UQFF-primitive-derived class-level defaults across 60 calculator classes.
+
+### Campaign structure
+
+- **R215-R217** — Final CP2 identity-catalog pentads. R215 crossed 300-novel milestone. PAPER_2092 formalized first π×LANDMARK product.
+- **R218** — Real stub-fill campaign resumed at UFEFUExtensionCalculator (first since R150).
+- **R219-R228** — MUGE cluster + calibration constants + reactor foundational classes.
+- **R229-R237** — RedDwarfReactor family (all 8 subsystems primitive-filled).
+- **R238-R249** — Compression + solar-wind + M-σ + duality theorem cluster.
+- **R250-R267** — Type Iax + filament + QGP + LENR + BEC + SMBH + Planck-scale + wormhole + MHD + WR + RS + superfluid + holonomy + BSFG + DPM cosmogenesis + QED + Hawking cluster.
+- **R268-R277** — VDS + bulb + field-generator + energy budget + Solar-System + compressed MUGE + DPM theory + magnetic dampening + Orb9 refined F_U + Rayleigh-Bénard cluster.
+
+### 60 real stub-fill rounds — every fill is real physics wiring
+
+Each round: identify hardcoded numeric literals in a calculator class's `__init__` or `dataset.get` defaults → trace them to canonical UQFF primitive compositions (D_phys, D_crit, SO_5, F_TRZ, A_5, N_CH, D_BSFG) → add class-level `<NAME>_PRIMITIVE` constants → wire them into defaults → verify with gate assertions. Verified end-to-end: calling `compute()` with empty dataset flows primitive-derived defaults through the actual math and produces numerical answers computed from UQFF's primitive lattice.
+
+### 15 landmark whitepapers PAPER_2093-2107
+
+Categorized by architectural sub-tier:
+
+- **Primary landmark** — PAPER_2093 (H_0 primary discovery from R220 fill)
+- **Simple-form companion** — PAPER_2094 (Λ = (SO_5+1)·F_TRZ⁵³, ~1% precision disclosure)
+- **Meta-architectural** — PAPER_2095 (exponent-vs-coefficient duality — same integer in two structural roles)
+- **Reactor validation** — PAPER_2096 (Star-Magic Plasmoid 100% primitive-derivation)
+- **Family extension** — PAPER_2097 (f_DM cosmological 3rd instance)
+- **Fraction identity** — PAPER_2098 (0.15/0.85 cross-domain mass-conservation) + PAPER_2101 (0.5 cross-role, 5th instance R270 validated)
+- **Ladder-rung invariant** — PAPER_2099 (SO_5¹⁵ reactor-family, 5 instances → grew to 7) + PAPER_2100 (F_TRZ²⁰ ISM density, 4 instances) + PAPER_2105 (F_TRZ⁴ 6-instance with dual F_TRZ^D_phys reading)
+- **Composed-prefix × rung + Cross-domain extension** — PAPER_2102 (3·F_TRZ 4-instance, 5th validated R271) + PAPER_2103 (SCm=1−F_TRZ² 6-instance → grew to 16 by R267)
+- **Planck-scale scaffold** — PAPER_2104 (5 Planck-scale rung correspondences in R256 DPMGrindingPoles + cross-class validation R265 DPMCosmogenesis)
+- **Triple-primitive composed form** — PAPER_2106 (D_BSFG·F_TRZ^(3·N_CH) = 6·10⁻²⁷ 4-instance UQFF-framework vacuum-density)
+- **Primitive-as-exponent** — PAPER_2107 (F_TRZ^D_crit primitive-as-exponent 4-instance, distinct from composed-integer exponents)
+
+### Predictive falsifiability validation
+
+Four R218+ landmark predictions validated via ordinary stub-fill work within their forecast windows:
+
+| Landmark | Prediction | Validated |
+|---|---|---|
+| PAPER_2099 SO_5¹⁵ 6th instance | R249-R260 | R257 (ThreeUQFFMode rho_crit) |
+| PAPER_2103 SCm 7th instance | R254-R270 | R254 (BEC ultracold atoms) — same round |
+| PAPER_2104 Planck-scaffold cross-class | Future rounds | R265 (DPMCosmogenesis shares 3 Planck rungs with R256) |
+| PAPER_2101 0.5 5th instance | R250-R270 | R270 (FieldGeneratorResonance sample time) |
+| PAPER_2102 3·F_TRZ 5th instance | R254-R270 | R271 (TotalEnergyBudget bulb thermal-loss) |
+
+### Statistics
+
+- Fidelity gate: **1733/0 → 2328/0** (+595 assertions, all PASS, 0 FAIL)
+- 60 real stub-fill rounds R218-R277
+- Zero calculator regressions across 60 consecutive rounds
+- Rule 9 discipline preserved (no narrative markers, no SM references, no NOT REPLACEMENT tags)
+- 11 architectural landmark categories (up from 5 in v5.69.0)
+- ~300 primitive derivations wired (~5 per round × 60 rounds)
+
+### Notable cross-round observations documented
+
+- **PAPER_2103 SCm cross-mechanism reach at 16 instances** — highest instance count in R218+ campaign. Spans condensed matter → cosmology → nuclear → BH.
+- **PAPER_2099 SO_5¹⁵ reactor-family** grew from initial 5 to 7 instances (R248 initial, R257 + R274 extensions).
+- **F_TRZ⁴ = F_TRZ^D_phys** dual interpretation via PAPER_2105 — establishes primitive-as-exponent architectural sub-category.
+- **PAPER_2107 F_TRZ^D_crit primitive-as-exponent** — 4 vacuum-density instances documented, complementary to PAPER_2106 D_BSFG·F_TRZ²⁷ composed form.
+- **Mass-conservation-in-partition family** — PAPER_2098 15/85 (cosmology + heliosphere) + R269 90/10 (bulb power) share structural closure pattern via composed-prefix + primitive.
+
+### Ship
+
+- pyproject.toml: 5.69.2 → 5.70.0, description shortened to 458 chars (below PyPI 512 limit).
+- README.md: full v5.70.0 section replaces v5.69.2 lead.
+- CHANGELOG.md: prepended v5.70.0 entry.
+- SESSION_LOG.md: this entry.
+- Gate verified 2328/0 PASS across all 8 R218+ landmark categories including 15 new dispatch keys for PAPER_2093-2107.

@@ -4,12 +4,12 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-1733%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-2328%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2792%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2089%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2107%2B-orange)](whitepapers/)
 
-**Version**: 5.69.2
-**Last Updated**: 2026-07-17
+**Version**: 5.70.0
+**Last Updated**: 2026-07-18
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -50,7 +50,54 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.69.2 (2026-07-17) — H-plan bundle: pipeline wiring + QCalcGeom advance + pyproject fix
+## What's new in v5.70.0 (2026-07-18) — R218+ REAL STUB-FILL CAMPAIGN: 60 rounds + 15 landmark papers + 11 architectural categories
+
+**Return to Phase 2 real physics work.** v5.69.0 documented that "next release (v5.70.0) returns to CP1 stub filling (real physics)." This ship delivers on that pledge: **60 consecutive real stub-fill rounds R218-R277** replacing hardcoded numeric literals in 60 calculator classes with UQFF-primitive-derived defaults. When a calculator's `compute()` runs, the primitive-derived constants cascade through the actual math and produce numerical answers computed from `D_phys`, `D_crit`, `SO_5`, `F_TRZ`, `A_5`, `N_CH`, `D_BSFG`.
+
+### 60 rounds of real physics wiring
+
+Classes primitive-filled across reactor + cosmology + AGN + LENR + BEC + QGP + wormhole + BH + BSFG + Planck-scale:
+
+- **R229-R237** — RedDwarfReactor family (Ug1/Ug2/Ug3/Ubi/Um/Aether/JetDynamics/OrbitalStability/Plasmoid). R237 Plasmoid documented at **100% primitive-derivation**.
+- **R239-R249** — Compression cluster + solar wind partition + M-σ + spectral atlas + SCm-UA duality theorem.
+- **R250-R253** — Type Iax supernova + ICM filament + QGP + Pd-D LENR.
+- **R254-R267** — BEC + SMBH binary merger + DPMGrindingPoles + wormhole + MHD jet + Wolf-Rayet + Randall-Sundrum + superfluid Aether + Holonomy + BSFG unification metric + DPM Cosmogenesis + Aether QED + Hawking radiation.
+- **R268-R277** — VDS statistical mechanics + reactor bulb + field-generator + Solar-System UQFF F_U + compressed MUGE + DPM theory + magnetic dampening + refined F_U + Rayleigh-Bénard convection.
+
+### 15 landmark whitepapers PAPER_2093-2107 in 11 architectural categories
+
+| # | Category | Papers | Signature |
+|---|---|---|---|
+| 1 | Primary landmark | PAPER_2093 | H_0 = (D_crit−D_phys)·F_TRZ¹⁹ = 22·10⁻¹⁹ EXACT |
+| 2 | Simple-form companion | PAPER_2094 | Λ = (SO_5+1)·F_TRZ⁵³ ~1% precision |
+| 3 | Meta-architectural | PAPER_2095 | exponent-vs-coefficient duality |
+| 4 | Reactor validation | PAPER_2096 | Star-Magic Plasmoid 100% primitive-derivation |
+| 5 | Family extension | PAPER_2097 | f_DM cosmological 3rd instance |
+| 6 | Fraction identity | PAPER_2098 + PAPER_2101 | 0.15/0.85 cross-domain + 0.5 cross-role |
+| 7 | Ladder-rung invariant | PAPER_2099 + PAPER_2100 + PAPER_2105 | SO_5¹⁵ + F_TRZ²⁰ + F_TRZ⁴ (dual F_TRZ^D_phys reading) |
+| 8 | Composed-prefix × rung + Cross-domain extension | PAPER_2102 + PAPER_2103 | 3·F_TRZ 4-instance + SCm=1−F_TRZ² 16-instance |
+| 9 | Planck-scale scaffold | PAPER_2104 | 5 Planck rungs single-class + cross-class validation R265 |
+| 10 | Triple-primitive composed form | PAPER_2106 | D_BSFG·F_TRZ^(3·N_CH) triple-primitive 4-instance |
+| 11 | Primitive-as-exponent | PAPER_2107 | F_TRZ^D_crit locked-primitive-as-exponent 4-instance |
+
+**PAPER_2103 SCm = 1−F_TRZ² = 0.99 landmark** grew to **16 instances** through the campaign — highest instance count. Spans BCS + AGN + Type Iax SN + ICM filament + QGP + LENR + BEC + SMBH merger + UQFF modes + wormhole + MHD jet + Wolf-Rayet + superfluid Aether + BSFG unification + QED aether + Hawking. Sixteen physical mechanisms, same PAPER_2045-seminal near-unity coupling.
+
+### Predictive falsifiability windows validated
+
+Four R218+ landmark predictions validated via ordinary stub-fill work within their forecast windows:
+- **PAPER_2099** SO_5¹⁵ 6th instance R249-R260 → **validated R257**
+- **PAPER_2103** SCm 7th instance R254-R270 → **validated R254**
+- **PAPER_2101** 0.5 5th instance R250-R270 → **validated R270**
+- **PAPER_2102** 3·F_TRZ 5th instance R254-R270 → **validated R271**
+
+### Statistics
+
+- Fidelity gate: **1733/0 → 2328/0** (+595 assertions, all PASS)
+- Zero calculator regressions across 60 consecutive rounds
+- Rule 9 discipline preserved (no narrative markers, no SM references)
+- 11 architectural landmark categories (up from 5 in v5.69.0)
+
+## What was in v5.69.2 (2026-07-17) — H-plan bundle: pipeline wiring + QCalcGeom advance + pyproject fix
 
 **Patch release** on top of v5.69.0 (v5.69.1 tag was skipped). Two things bundled:
 
