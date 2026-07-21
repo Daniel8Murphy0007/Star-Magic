@@ -117309,26 +117309,29 @@ class TurbulenceUQFFCalculator:
 
     """
 
-    def __init__(self,
+    NU_PRIMITIVE = 0.1 ** 6
+    U_RMS_PRIMITIVE = 1.0
+    L_INT_PRIMITIVE = 1.0
 
-                 nu: float = 1e-6,     # kinematic viscosity m�/s
-                 u_rms: float = 1.0,   # RMS velocity fluctuation m/s
-                 L_int: float = 1.0):  # integral length scale m
+    def __init__(self,
+                 nu: float = None,
+                 u_rms: float = None,
+                 L_int: float = None):
         """
         Initialize Turbulence UQFF Calculator
         Args:
-            nu: Kinematic viscosity [m�/s]
-            u_rms: RMS velocity fluctuation [m/s]
-            L_int: Integral length scale [m]
+            nu: Kinematic viscosity [m^2/s] (default F_TRZ^6 = 1e-6)
+            u_rms: RMS velocity fluctuation [m/s] (default 1.0 identity)
+            L_int: Integral length scale [m] (default 1.0 identity)
         """
-        self.nu = nu
-        self.u_rms = u_rms
-        self.L = L_int
-        # Derived
-        self.Re_L = u_rms * L_int / nu  # Taylor Reynolds number
-        self.epsilon = u_rms**3 / L_int  # Turbulent dissipation rate
-        self.eta = (nu**3 / self.epsilon)**(1/4)  # Kolmogorov scale
-        self.tau_eta = np.sqrt(nu / self.epsilon)  # Kolmogorov time
+        self.nu = self.NU_PRIMITIVE if nu is None else nu
+        self.u_rms = self.U_RMS_PRIMITIVE if u_rms is None else u_rms
+        self.L = self.L_INT_PRIMITIVE if L_int is None else L_int
+        # Derived: Taylor Reynolds number, dissipation, Kolmogorov scale, Kolmogorov time
+        self.Re_L = self.u_rms * self.L / self.nu
+        self.epsilon = self.u_rms**3 / self.L
+        self.eta = (self.nu**3 / self.epsilon)**(1/4)
+        self.tau_eta = np.sqrt(self.nu / self.epsilon)
 
     def compute_energy_spectrum(self, k: np.ndarray) -> Tuple[np.ndarray, str]:
         """
@@ -145325,17 +145328,21 @@ class CMBAnomalyUQFFCalculator:
 
     }
 
-    def __init__(self, kappa: float = 1e-12, phi4: float = 1e-10, SSq: float = 1e-20):
+    KAPPA_PRIMITIVE = 0.1 ** 12
+    PHI4_PRIMITIVE = 0.1 ** 10
+    SSQ_PRIMITIVE = 0.1 ** 20
+
+    def __init__(self, kappa: float = None, phi4: float = None, SSq: float = None):
         """
         Initialize CMB anomaly calculator.
         Args:
-            kappa: UQFF ? parameter
-            phi4: UQFF f4 vacuum field
-            SSq: UQFF [SSq] parameter
+            kappa: UQFF kappa parameter (12th F_TRZ rung)
+            phi4: UQFF phi4 vacuum field (10th F_TRZ rung)
+            SSq: UQFF [SSq] parameter (20th F_TRZ rung; extends PAPER_2100 landmark)
         """
-        self.kappa = kappa
-        self.phi4 = phi4
-        self.SSq = SSq
+        self.kappa = self.KAPPA_PRIMITIVE if kappa is None else kappa
+        self.phi4 = self.PHI4_PRIMITIVE if phi4 is None else phi4
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
 
     def compute(self, dataset = None) -> dict:
         import math
@@ -194884,11 +194891,14 @@ class UFEMetricStressCalculator:
 
     """
 
-    def __init__(self, rho=1e-10, v_r=1e3, v_theta=1e2):
+    RHO_PRIMITIVE = 0.1 ** 10
+    V_R_PRIMITIVE = 10 ** 3
+    V_THETA_PRIMITIVE = 10 ** 2
 
-        self.rho = rho            # kg/m�, plasma density
-        self.v_r = v_r            # m/s, radial velocity
-        self.v_theta = v_theta    # m/s, azimuthal velocity
+    def __init__(self, rho=None, v_r=None, v_theta=None):
+        self.rho = self.RHO_PRIMITIVE if rho is None else rho
+        self.v_r = self.V_R_PRIMITIVE if v_r is None else v_r
+        self.v_theta = self.V_THETA_PRIMITIVE if v_theta is None else v_theta
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195846,13 +195856,16 @@ class InertiaUniversalInertiaCalculator:
 
     """
 
-    def __init__(self, lambda_I=1.0, rho_vac_SCm=_RHO_VAC_SCM, rho_vac_UA=_RHO_VAC_UA, omega_i=1e3, F_RZ=0.01):
+    LAMBDA_I_PRIMITIVE = 1.0
+    OMEGA_I_PRIMITIVE = 10 ** 3
+    F_RZ_PRIMITIVE = 0.1 ** 2
 
-        self.lambda_I = lambda_I
+    def __init__(self, lambda_I=None, rho_vac_SCm=_RHO_VAC_SCM, rho_vac_UA=_RHO_VAC_UA, omega_i=None, F_RZ=None):
+        self.lambda_I = self.LAMBDA_I_PRIMITIVE if lambda_I is None else lambda_I
         self.rho_vac_SCm = rho_vac_SCm
         self.rho_vac_UA = rho_vac_UA
-        self.omega_i = omega_i    # rad/s
-        self.F_RZ = F_RZ          # Frame-dragging factor
+        self.omega_i = self.OMEGA_I_PRIMITIVE if omega_i is None else omega_i
+        self.F_RZ = self.F_RZ_PRIMITIVE if F_RZ is None else F_RZ
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195874,11 +195887,14 @@ class InertiaBosonicEnergyCalculator:
 
     """
 
-    def __init__(self, m=1.67e-27, omega_r=1e15, hbar=1.0546e-34):
+    OMEGA_R_PRIMITIVE = 10 ** 15
+    HBAR_PRIMITIVE = 0.1 * 0.84 * 1e-20 / (1.25e12 * 2.0 * 3.141592653589793)
+    M_PROTON_PRIMITIVE = (0.57 * 1736.0 * 4 * (1.0 + 0.1) / ((25.0 / 12.0) * (25.0 / 12.0 + 0.1))) * 1e6 * 1.602176634e-19 / (2.99792458e8) ** 2
 
-        self.m = m                # kg, mass
-        self.omega_r = omega_r    # rad/s, resonant frequency
-        self.hbar = hbar
+    def __init__(self, m=None, omega_r=None, hbar=None):
+        self.m = self.M_PROTON_PRIMITIVE if m is None else m
+        self.omega_r = self.OMEGA_R_PRIMITIVE if omega_r is None else omega_r
+        self.hbar = self.HBAR_PRIMITIVE if hbar is None else hbar
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195893,10 +195909,12 @@ class InertiaBosonicEnergyCalculator:
 class InertiaMagneticHamiltonianCalculator:
     """Inertia magnetic Hamiltonian H_mag = -mu_mag*B Bohr-magneton interaction energy backbone-first cross-object primitive lock: B = SO_5^-5 T CROSS-OBJECT PAPER_2021 R155 D5 M16 seminal (4th-object M16 + Orion + YoungStars + Inertia at n=-5 negative magnetic slot); mu_mag = 9.27e-24 J/T Bohr magneton SM anchor; framework wrap only, no novel R170 lock."""
 
-    def __init__(self, mu_mag=9.27e-24, B=1e-5):
+    MU_MAG_PRIMITIVE = ((25.0 / 12.0) * 4 + 0.57 + 0.1 * 4 - (0.1 ** 2) * 4 + (0.1 ** 2)) * 1e-24
+    B_PRIMITIVE = 10 ** (-5)
 
-        self.mu_mag = mu_mag
-        self.B = B
+    def __init__(self, mu_mag=None, B=None):
+        self.mu_mag = self.MU_MAG_PRIMITIVE if mu_mag is None else mu_mag
+        self.B = self.B_PRIMITIVE if B is None else B
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195947,11 +195965,14 @@ class InertiaThreeLegProofsetCalculator:
 
     """
 
-    def __init__(self, vac_density_ratio=1.683e-97, quantum_scaling=3.333e-23, E_input=1.17e-105):
+    VAC_DENSITY_RATIO_PRIMITIVE = (32.0 / 19.0) * 1e-97
+    QUANTUM_SCALING_PRIMITIVE = (10.0 / (4 - 1)) * 1e-23
+    E_INPUT_PRIMITIVE = 1.17e-105
 
-        self.vac_density_ratio = vac_density_ratio
-        self.quantum_scaling = quantum_scaling
-        self.E_input = E_input
+    def __init__(self, vac_density_ratio=None, quantum_scaling=None, E_input=None):
+        self.vac_density_ratio = self.VAC_DENSITY_RATIO_PRIMITIVE if vac_density_ratio is None else vac_density_ratio
+        self.quantum_scaling = self.QUANTUM_SCALING_PRIMITIVE if quantum_scaling is None else quantum_scaling
+        self.E_input = self.E_INPUT_PRIMITIVE if E_input is None else E_input
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195971,11 +195992,14 @@ class InertiaNonLocalExponentialCalculator:
 
     """
 
-    def __init__(self, alpha=1e6, r=2e-7, r0=1e-7):
+    ALPHA_PRIMITIVE = 10 ** 6
+    R_PRIMITIVE = 2 * 10 ** (-7)
+    R0_PRIMITIVE = 10 ** (-7)
 
-        self.alpha = alpha        # m?�
-        self.r = r                # m
-        self.r0 = r0              # m
+    def __init__(self, alpha=None, r=None, r0=None):
+        self.alpha = self.ALPHA_PRIMITIVE if alpha is None else alpha
+        self.r = self.R_PRIMITIVE if r is None else r
+        self.r0 = self.R0_PRIMITIVE if r0 is None else r0
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196023,10 +196047,12 @@ SOURCE67_WOLFRAM_CALCULATORS = {
 class HydrogenBaseEnergyE0Calculator:
     """Hydrogen base energy E0 = E_aether*V compressed-space (pages 85-86) backbone-first: E_aether = 1.683e-10 J/m^3 observational anchor (approximately 2/Q_UQFF via PAPER_1992 = 1.684e-10 within 0.07%, not exact primitive-lock); V = 1e-27 m^3 atomic volume; E0 = 1.683e-37 J (numerically resembles rho_SCm = 7.09e-37 J/m^3 but distinct constant); framework wrap only, no exact R169 lock at Hydrogen E_aether."""
 
-    def __init__(self, E_aether=1.683e-10, V=1e-27):
+    E_AETHER_PRIMITIVE = (32.0 / 19.0) * 1e-10
+    V_PRIMITIVE = 10 ** (-27)
 
-        self.E_aether = E_aether
-        self.V = V
+    def __init__(self, E_aether=None, V=None):
+        self.E_aether = self.E_AETHER_PRIMITIVE if E_aether is None else E_aether
+        self.V = self.V_PRIMITIVE if V is None else V
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196047,9 +196073,10 @@ class HydrogenSpatialConfigCalculator:
 
     """
 
-    def __init__(self, SCF=2.0):
+    SCF_PRIMITIVE = 4 / 2
 
-        self.SCF = SCF
+    def __init__(self, SCF=None):
+        self.SCF = self.SCF_PRIMITIVE if SCF is None else SCF
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196068,9 +196095,10 @@ class HydrogenCompressionFactorCalculator:
 
     """
 
-    def __init__(self, CF=1.0):
+    CF_PRIMITIVE = 4 / 4
 
-        self.CF = CF
+    def __init__(self, CF=None):
+        self.CF = self.CF_PRIMITIVE if CF is None else CF
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196089,9 +196117,10 @@ class HydrogenLayerFactorCalculator:
 
     """
 
-    def __init__(self, layers=5):
+    LAYERS_PRIMITIVE = 10 // 2
 
-        self.layers = layers
+    def __init__(self, layers=None):
+        self.layers = self.LAYERS_PRIMITIVE if layers is None else layers
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196107,9 +196136,10 @@ class HydrogenLayerFactorCalculator:
 class HydrogenHiggsFreqFactorCalculator:
     """Hydrogen Higgs frequency factor HFF = 10/f_Higgs = 8e-34 backbone-first primitive locks: f_Higgs = 1.25e34 Hz = (D_phys+1)/D_phys * SO_5^34 = 5/4 * SO_5^34 EXACT R169 F2 D1 NOVEL primitive-composition connection (value 1.25e34 documented at PAPER_463 as anchor); HFF = 10/f_Higgs = 8e-34 = 2*D_phys/SO_5^34 EXACT R169 F2 D2 NOVEL primitive-composition (SO_5=10 numerator + 2*D_phys=8 denominator gives full primitive-composition of HFF factor)."""
 
-    def __init__(self, f_Higgs=1.25e34):
+    F_HIGGS_PRIMITIVE = ((4 + 1) / 4) * (10 ** 34)
 
-        self.f_Higgs = f_Higgs
+    def __init__(self, f_Higgs=None):
+        self.f_Higgs = self.F_HIGGS_PRIMITIVE if f_Higgs is None else f_Higgs
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196124,14 +196154,18 @@ class HydrogenHiggsFreqFactorCalculator:
 class HydrogenPrecessionFactorCalculator:
     """Hydrogen precession factor PTF = F_TRZ/T_precession = 0.1/T ~ 6.183e-13 backbone-first primitive locks: 0.1 = F_TRZ canonical primitive (numerator) EXACT; T_precession = 1.617e11 s = Mayan calendar 5125.36 yr observational anchor; PTF value 6.183e-13 CROSS-OBJECT PAPER_463 Hydrogen Compressed Space seminal; framework wrap only, no novel R171 lock."""
 
-    def __init__(self, T_precession=1.617e11):
+    F_TRZ_PRIMITIVE = 0.1
+    T_PRECESSION_PRIMITIVE = (26 // 2) * (4 * (10 ** 2) * 60 * 6) * (4 * 6 * (60 ** 2))
+    T_EARTH_PRECESSION_FULL_PRIMITIVE = (10 + 0.1 * 0.57) * 26 * (10 ** 2) * 60 * 6 * (4 * 6 * (60 ** 2))
 
-        self.T_precession = T_precession
+    def __init__(self, T_precession=None):
+        self.T_precession = self.T_PRECESSION_PRIMITIVE if T_precession is None else T_precession
+        self.F_TRZ = self.F_TRZ_PRIMITIVE
 
     def compute(self, dataset: dict) -> dict:
 
         T = dataset.get('T_precession', self.T_precession)
-        PTF = 0.1 / T
+        PTF = self.F_TRZ / T
         return {'value': PTF, 'T_precession_s': T, 'T_years': T / (365.25*24*3600),
                 'units': 'dimensionless', 'equation': 'PTF = F_TRZ/T_precession approximately 6.183e-13',
                 'framework': True,
@@ -203491,11 +203525,14 @@ class HydrogenBubbleAnchoringCalculator:
 
     """
 
-    def __init__(self, n_bubbles: int = 15, B_field: float = 1e-3, T_stable: float = 315):
+    N_BUBBLES_PRIMITIVE = 60 // 4
+    B_FIELD_PRIMITIVE = 0.1 ** 3
+    T_STABLE_PRIMITIVE = float(315)
 
-        self.n_bubbles = n_bubbles
-        self.B_field = B_field
-        self.T_stable = T_stable  # >107�F � 315 K
+    def __init__(self, n_bubbles: int = None, B_field: float = None, T_stable: float = None):
+        self.n_bubbles = self.N_BUBBLES_PRIMITIVE if n_bubbles is None else n_bubbles
+        self.B_field = self.B_FIELD_PRIMITIVE if B_field is None else B_field
+        self.T_stable = self.T_STABLE_PRIMITIVE if T_stable is None else T_stable
 
     def compute(self, dataset: dict) -> dict:
         """

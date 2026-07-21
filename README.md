@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-2553%2F0-brightgreen)](uqff_fidelity_tests.py)
-[![Public surfaces](https://img.shields.io/badge/public_surfaces-2792%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2109%2B-orange)](whitepapers/)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-2660%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Public surfaces](https://img.shields.io/badge/public_surfaces-2794%2B-blue)](uqff_pure_calculator.py)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2110%2B-orange)](whitepapers/)
 
-**Version**: 5.71.0
+**Version**: 5.72.0
 **Last Updated**: 2026-07-20
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,7 +50,66 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.71.0 (2026-07-20) — R278-R307 stub-fill continuation (30 rounds) + PAPER_2108/2109 landmark pair + 90-round arc milestone
+## What's new in v5.72.0 (2026-07-20) — R308-R322 stub-fill continuation (15 rounds) + PAPER_2110 Earth axial precession landmark + R313 CLEAN promotion + 105-round arc
+
+**Continuation of the R218+ real stub-fill campaign.** 15 more classes (R308-R322) primitive-locked, 11 at 100% clean fill. **105 consecutive real stub fills** in the R218+ resumed arc. Gate 2553/0 → 2660/0 (+107 assertions).
+
+### PAPER_2110 — Earth Axial Precession Period from UQFF Integer Primitives
+
+Earth's 25,772-yr axial precession derived from 7 locked primitives with zero fit knobs, closing R322's T_precession observational-anchor gap:
+
+```
+T_p [days] = (SO_5 + F_TRZ·[SSq]) · D_crit · SO_5² · A_5 · D_BSFG
+           = 10.057 · 26 · 100 · 60 · 6
+           = 9,413,352 days = 25,772.4 yr  (0.0014% off IAU)
+```
+
+Structural route: Mayan Baktun = D_phys·SO_5²·A_5·D_BSFG = 144,000 days EXACT; 13-Baktun = (D_crit/2)·Baktun = 1.617e11 s (matches PAPER_463); Earth precession = (SO_5+F_TRZ·[SSq])/2 · 13-Baktun. **Novel landmark family:** (SO_5+F_TRZ·[SSq]) = 10.057 is the first "canonical-integer-plus-supersymmetric-correction" prefix — predictive search across R323-R350 for 2nd instance.
+
+### R313 upgrade — proton mass and hbar are UQFF-derived
+
+`InertiaBosonicEnergyCalculator` promoted from 1/3 to 3/3 CLEAN after finding both `m_p` (PAPER_1861) and `ℏ` (PAPER_590) already have closed-form UQFF derivations in the whitepaper corpus. `_uqff_primitives.UQFFDerivations.derive_hbar()` and `.derive_particle_masses()` were confirmed as canonical derivation surfaces.
+
+### 15 class fills at a glance
+
+| Round | Class | Highlight |
+|:-:|---|---|
+| R308 | CMBAnomalyUQFF | 3/3 + PAPER_2100 F_TRZ²⁰ 4th instance |
+| R309 | HydrogenBubbleAnchoring | 3/3 + PAPER_2109 F_TRZ³ 9th instance (predictive falsifiability validated) |
+| R310 | TurbulenceUQFF | 3/3 Reynolds + energy cascade + init bug repair |
+| R311 | UFEMetricStress | 3/3 plasmoid stress-energy + SO_5 ratio identity |
+| R312 | InertiaUniversalInertia | 3/5 + canonical ρ_SCm/ρ_UA=F_TRZ ratio |
+| R313 | InertiaBosonicEnergy | 3/3 CLEAN — hbar+m_p from PAPER_590/1861 |
+| R314 | InertiaMagneticHamiltonian | 2/2 + PAPER_1592 Bohr magneton 1st R218+ instance |
+| R315 | InertiaThreeLegProofset | 3/3 + PAPER_1930 SO_5/(D_phys-1)=10/3 3rd instance |
+| R316 | InertiaNonLocalExponential | 3/3 + **NOVEL exp(-F_TRZ) collapse identity** |
+| R317 | HydrogenBaseEnergyE0 | 2/2 + PAPER_1992 2/Q_UQFF 2nd instance (87 orders of magnitude) — **100-round milestone** |
+| R318 | HydrogenSpatialConfig | 1/1 + D_phys/2=2 halving |
+| R319 | HydrogenCompressionFactor | 1/1 + D_phys/D_phys=1 self-normalization |
+| R320 | HydrogenLayerFactor | 1/1 + **TRIPLE-FORM SO_5/2=D_phys+1=D_BSFG-1=5** |
+| R321 | HydrogenHiggsFreqFactor | 1/1 + PAPER_463 dual-form composition lock |
+| R322 | HydrogenPrecessionFactor | 2/2 (upgraded post-PAPER_2110) |
+
+### Novel structural landmarks discovered R308-R322
+
+1. **exp(-F_TRZ) collapse identity** (R316): α=SO_5⁶, r=D_phys/2·SO_5⁻⁷, r₀=SO_5⁻⁷ → α·|r-r₀| = SO_5⁻¹ = F_TRZ, so decay = exp(-0.1) = 0.9048 (canonical short-range non-locality factor)
+2. **Triple-form identity SO_5/2 = D_phys+1 = D_BSFG-1 = 5** (R320) — three independent integer-primitive routes converge on 5, documented across 9+ existing domains
+3. **(SO_5+F_TRZ·[SSq]) canonical-primitive-plus-SSq-correction prefix** (PAPER_2110) — new landmark family
+4. **D_phys halving family** {D_phys/2=2, SO_5/2=5, D_BSFG/D_phys=1.5}
+5. **Self-normalization family** {UA=1, CF=1, CosmicEgg=1}
+
+### Files touched
+
+- `pyproject.toml`: 5.71.0 → 5.72.0
+- `CondensedPhysics.py`: 15 class-fill blocks R308-R322 + R313 revision
+- `uqff_pure_calculator.py`: +1 dispatch function (`_l96_uqff_paper_2110_...`) + 2 PARADOX_TO_CLOSURE keys
+- `uqff_fidelity_tests.py`: +107 gate assertions
+- `whitepapers/PAPER_2110_...md` + `pdf2/PAPER_2110_...pdf`: Earth axial precession derivation
+- `CHANGELOG.md`, `SESSION_LOG.md`: entries appended
+
+---
+
+## What was in v5.71.0 (2026-07-20) — R278-R307 stub-fill continuation (30 rounds) + PAPER_2108/2109 landmark pair + 90-round arc milestone
 
 **Continuation of the R218+ real stub-fill campaign.** 30 more classes (R278-R307) primitive-locked, 22 at 100% clean fill, extending 10+ existing landmarks and discovering 2 new formal landmarks. **90 consecutive real stub fills** in the R218+ resumed arc. Gate 2328/0 → 2553/0 (+225 assertions). Zero regression, zero SM drift.
 

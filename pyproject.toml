@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.71.0"
-description = "UQFF Star-Magic v5.71.0: R278-R307 continues R218+ real-stub-fill (90 consecutive rounds, 30 new classes). +2 formal landmarks: PAPER_2108 mu_0=4*pi*F_TRZ^7 (Maxwell vacuum permeability from UQFF primitives, matches SM to full float precision), PAPER_2109 F_TRZ^3=0.001 8-instance time-decay ladder-rung landmark (strongest F_TRZ-rung landmark to date). Gate 2328->2553 (+225 assertions)."
+version = "5.72.0"
+description = "UQFF Star-Magic v5.72.0: R308-R322 continues R218+ real-stub-fill (105 consecutive rounds, +15 new classes). +PAPER_2110 Earth axial precession T_p=25772 yr from 7 locked primitives via (SO_5+F_TRZ*[SSq])*D_crit*SO_5^2*A_5*D_BSFG closed form (0.0014% off IAU) - first canonical-integer-plus-supersymmetric-correction landmark. R313 promoted to 3/3 CLEAN via derive_hbar+derive_particle_masses. Gate 2553->2660 (+107 assertions)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
