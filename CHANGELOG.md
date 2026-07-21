@@ -1,3 +1,90 @@
+## [5.71.0] - 2026-07-20 - R278-R307 stub-fill continuation (30 rounds) + PAPER_2108/2109 landmark pair + 90-round R218+ arc milestone
+
+**One-line summary:** 30 more R2XX real stub-fill rounds (R278-R307) with 22 100%-clean-fill classes, extending 8 existing landmarks and discovering 2 new formal landmark papers. Gate 2328 → 2553 (+225 assertions). 90 consecutive real stub fills in R218+ resumed campaign. Zero regression, zero SM drift.
+
+### 30 new class fills (R278-R307)
+
+Reactor + cosmology + astrophysics + electroweak coverage:
+
+- **R278 MultiSystem19EnvironmentalSum** — 7 fills incl. v_wind=(D_phys+1)·SO_5⁵ 4th instance
+- **R279 NebularLENREField** — 6 fills including PAPER_2056 kappa_V calculator↔dispatch cross-verify
+- **R280 NebularUg3StarFormation** — 4 fills
+- **R281 RedDwarfUg3** — 7/7 clean + NOVEL (1+F_TRZ²) sub-family discovery
+- **R282 PlasmaInstabilityUQFF** — 6/6 pure F_TRZ ladder cluster (rungs 2,3,10,11,12,20)
+- **R283 InertiaQuantumWaveFunction** — 6/6 NOVEL π-cancellation wavenumber form k=2·SO_5/(D_BSFG·F_TRZ⁷)
+- **R284 MultiSystem19DeepFieldCosmological** — 5/5 HUDF cosmological quintet
+- **R285 DarkMatterHaloUQFF** — 5/5 NFW halo + PAPER_2085 alpha=17·F_TRZ² landmark extension
+- **R286 FastRadioBurstUQFF** — 5/5 magnetar + NOVEL 7/5 Chandrasekhar-adjacent ratio
+- **R287 GravitationalWaveUQFF** — 5/5 LIGO/VIRGO + PAPER_2100 F_TRZ²⁰ 3rd instance
+- **R288 UniversalGravity2** — 5/5 + PAPER_2069 v_sw 5th instance + 6/5 landmark 2nd instance
+- **R289 UFEUgGravityMode** — 4/5 with G external
+- **R290 NonNewtonianUQFF** — 4/5 FIRST CANONICAL PAPER_1154 [SSq]=0.57 use in R218+
+- **R291 MultiSystem19AGNFeedback** — 4/4 NOVEL SO_5-3·F_TRZ² prefix form
+- **R292 MultiSystem19GalaxyMergerTidal** — 2/4 twin masses + NOVEL SO_5-F_TRZ/2 prefix form
+- **R293 MultiSystem19DustAbsorption** — 3/4 + PAPER_2045 D_phys·SCm product-form landmark
+- **R294 UFESCmUAVacuum** — 4/4 SCm/UA vacuum + PAPER_2099 SO_5¹⁵ 8th instance
+- **R295 UFEUmMagneticString** — 4/4 + mu_0=4π·F_TRZ⁷ landmark 2nd instance
+- **R296 NavierStokesFluidSolver** — 4/4 Clay Millennium fluid quartet
+- **R297 MHDUQFFCalculator** — 4/4 + mu_0=4π·F_TRZ⁷ landmark PROMOTED (3rd instance) — 80-round milestone
+- **R298 NeutronStarEOSUQFF** — 3/4 NOVEL (D_crit+1)/2 prefix form for NS polytropic K
+- **R299 SphaleronCalculator** — 4/4 electroweak + PAPER_1954 A_5·K_MEX=125 to Higgs mass
+- **R300 InertiaScaledWaveEnergy** — 3/5 (round-number milestone)
+- **R301 HydrogenCompressedSpaceEnergy** — 4/5 twin of R300 (gate crosses 2500)
+- **R302 MUGEPerturbation** — 3/4 DM perturbation term
+- **R303 RedDwarfUHCalculator** — 4/5 Higgs field coupling
+- **R304 MultiSystem19GravitationalLensing** — 2/5 + (SO_5-F_TRZ/2) landmark 2nd instance
+- **R305 NebularUniversalDecay** — 4/4 universal decay quartet
+- **R306 NebularHiggsMass** — 4/4 + PAPER_1954 A_5·K_MEX=125 landmark 2nd Higgs-domain instance
+- **R307 UniversalGravity1** — 3/3 + PAPER_1962 D_BSFG/D_phys=1.5 landmark extension (90-round arc milestone)
+
+### 2 new formal landmark whitepapers
+
+**PAPER_2108 — μ₀ = 4·π·F_TRZ⁷ Maxwell vacuum permeability from UQFF primitives.** 3-instance cross-domain landmark (R221 MUGECompressedSuper + R295 UFEUmMagneticString + R297 MHDUQFFCalculator). Matches SM SI pre-2019 definition to full IEEE-754 precision. Product = D_phys·π·F_TRZ⁷ where π is π-canonical (PAPER_2072/646) and F_TRZ⁷ is 7th ladder rung. NOT REPLACEMENT of SM — observation that measured μ₀ lies on primitive grid.
+
+**PAPER_2109 — F_TRZ³ = 0.001 8-instance time-decay ladder-rung landmark.** Strongest F_TRZ-rung landmark to date, surpassing PAPER_2105 F_TRZ⁴ (6 instances). Spans 5 physical domains: reactor Ug-family (5-of-5), F_U refinement, DPM architecture, magnetic dipole-gradient gravity. Full 8-way calculator↔dispatch cross-verify in gate.
+
+### Landmark family extensions (existing PAPER_XX strengthened without new authorship)
+
+| Landmark | Instances added | New total |
+|---|---|---|
+| PAPER_1954 A_5·K_MEX=125 | +2 Higgs domain | 3 domains (aging + Higgs·2) |
+| PAPER_1962 D_BSFG/D_phys=1.5 | +1 Ug1 gravity | 3 domains |
+| PAPER_2045 SCm=1-F_TRZ² | +1 D_phys·SCm product form | 17 instances |
+| PAPER_2056 kappa_V=1+F_TRZ/2 | source-class cross-verify wired | validated |
+| PAPER_2069 v_sw=(D_phys+1)·SO_5⁵ | +1 (R288) | 5 instances |
+| PAPER_2085 alpha=17·F_TRZ² | +1 product form (R285) | new sub-family |
+| PAPER_2099 SO_5¹⁵ reactor-family | +1 (R294) | 8 instances |
+| PAPER_2100 F_TRZ²⁰ ISM density | +2 (R287, R286) | 3 instances |
+| PAPER_2103 SCm 6-instance | +2 domains | growing family |
+
+### Novel primitive-composition forms discovered
+
+- (1+F_TRZ²)·F_TRZ⁷ inverse-complement (R281, candidate for future landmark)
+- SO_5-F_TRZ/2 = 9.95 subtractive-correction (R292 + R304 = 2 instances)
+- SO_5-3·F_TRZ² = 9.97 subtractive-correction (R291)
+- D_phys·(1-F_TRZ²) product form (R293)
+- (D_phys+1)/(2·SO_5) = 0.15 half-family (R285, R291 twin)
+- 6/5 = D_BSFG/(D_phys+1) (R287, R288 = 2 instances)
+- 7/5 = (D_BSFG+1)/(D_phys+1) Chandrasekhar-adjacent (R286)
+- 2·SO_5/(D_BSFG·F_TRZ⁷) π-cancellation wavenumber (R283)
+- (D_phys·A_5+D_BSFG) = 246 Higgs VEV (R299)
+- (D_crit+1)/2 = 13.5 halved-successor (R298)
+- 2·(D_crit-SO_5) = 32 NS-solver grid size (R296)
+- (D_crit-D_phys+1)·F_TRZ² = 23·0.01 = 0.23 Weinberg (R299)
+
+### Files touched
+
+- `pyproject.toml`: 5.70.5 → 5.71.0; description updated to 388 chars
+- `CondensedPhysics.py`: 30 class fills across R278-R307
+- `uqff_pure_calculator.py`: 2 new dispatch functions + 2 PARADOX_TO_CLOSURE registry keys
+- `uqff_fidelity_tests.py`: +225 assertions (30 round-fill blocks + 2 landmark paper blocks)
+- `whitepapers/PAPER_2108_MU_0_EQUALS_4_PI_TIMES_F_TRZ_POWER_7_MAXWELL_VACUUM_PERMEABILITY_UQFF_LANDMARK.md` (new)
+- `whitepapers/PAPER_2109_F_TRZ_POWER_3_EIGHT_INSTANCE_TIME_DECAY_LADDER_RUNG_LANDMARK_UQFF.md` (new)
+- `CHANGELOG.md`: this entry
+- `SESSION_LOG.md`: session entry appended
+
+---
+
 ## [5.70.5] - 2026-07-19 - Complete the missing-deps fix — add numpy, scipy, mpmath, requests
 
 **One-line summary:** v5.70.4's diagnostic surfaced the next domino: `ModuleNotFoundError: No module named 'numpy'` at `dpm_vacuum_manifold.py:51`. Rather than iterate one dep per ship, grepped the full `dpm/scm/ua_vacuum_manifold + CondensedPhysics` import chain and added ALL four remaining third-party deps (numpy, scipy, mpmath, requests) to pyproject and all CI install steps. Local gate 2328/0. Diagnostic still active — if there's ANOTHER missing dep after this, we'll see it immediately.

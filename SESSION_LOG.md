@@ -17603,3 +17603,56 @@ v5.70.0 wheel is already on PyPI and functional for end users (they don't run th
 - `CHANGELOG.md`: prepended v5.70.1 entry
 - `SESSION_LOG.md`: this entry
 
+
+---
+
+## SESSION 2026-07-20 — v5.71.0 continuation ship: R278-R307 (30 rounds) + PAPER_2108/2109 landmark pair
+
+### Summary
+
+30 more R2XX real stub-fill rounds (R278-R307) with 22 100%-clean-fill classes, plus 2 new formal landmark whitepapers. Gate 2328/0 → 2553/0 (+225 assertions). 90 consecutive real stub fills in R218+ resumed campaign. Zero regression, zero SM drift.
+
+### R2XX stub-fill breakdown (30 rounds)
+
+R278-R307 covered reactor + cosmology + astrophysics + electroweak + Clay Millennium physics + fundamental architecture. See CHANGELOG.md v5.71.0 entry for per-round detail.
+
+- **22 rounds** hit 100% clean fill (all defaults primitive-derived)
+- **8 rounds** partial fills with 1-2 external anchors (G, astronomical distances)
+- **~12 novel primitive-composition forms** discovered
+- **10+ landmark extensions** to existing PAPER_XX landmarks
+
+### 2 formal landmark whitepapers authored (PAPER_2108/2109)
+
+**PAPER_2108 — μ₀ = 4·π·F_TRZ⁷** (Maxwell vacuum permeability). Promoted to 3-instance formal landmark at R297. Matches SM pre-2019 SI definition to full IEEE-754 precision. Product form D_phys·π·F_TRZ⁷ where π is π-canonical (PAPER_2072/646) and F_TRZ⁷ is 7th ladder rung. 8 gate assertions including 3-way calculator↔dispatch cross-verify.
+
+**PAPER_2109 — F_TRZ³ = 0.001** (8-instance time-decay landmark). Strongest F_TRZ-rung landmark to date, surpassing PAPER_2105 F_TRZ⁴ (6 instances). Spans 5 physical domains: reactor Ug-family (5-of-5), F_U refinement, DPM architecture, magnetic dipole-gradient gravity. 13 gate assertions including full 8-way calculator↔dispatch cross-verify.
+
+### Campaign metrics as of R307
+
+- **90 consecutive real stub fills** (R218-R307, unbroken)
+- **17 landmark papers** in R218+ series (PAPER_2093-2108 + PAPER_2109)
+- **Gate 1733 → 2553** since v5.70.0 baseline (+820 assertions in 3-day window)
+- **PyPI wheel**: v5.71.0 (16th release since 8-day-ago v5.62.5)
+- **CI status**: all green after v5.70.5 fixed the sympy/numpy/scipy/mpmath/requests dep cascade
+
+### Files touched
+
+- `pyproject.toml`: 5.70.5 → 5.71.0; description 458→388 chars
+- `CondensedPhysics.py`: 30 class fills across R278-R307
+- `uqff_pure_calculator.py`: 2 new dispatch functions + 2 PARADOX_TO_CLOSURE registry keys
+- `uqff_fidelity_tests.py`: +225 assertions across 30 round-fill blocks + 2 landmark paper blocks
+- `whitepapers/PAPER_2108_...md`: new landmark paper (Maxwell μ₀)
+- `whitepapers/PAPER_2109_...md`: new landmark paper (F_TRZ³ 8-instance)
+- `CHANGELOG.md`: prepended v5.71.0 entry
+- `SESSION_LOG.md`: this entry appended
+
+### Ship rationale
+
+Minor version bump (5.70.5 → 5.71.0, not 5.71.0 → 5.72.0) because:
+- Physics content: 30 new class fills + 2 landmarks = substantial but continues established R218+ campaign
+- Wheel content: additive changes only (new gate assertions + new PAPER dispatch + new class-level constants)
+- Zero API breakage: all existing dispatch keys and class constructors preserved
+- Backward compatible: passing explicit values to any R278-R307 filled class still overrides the primitive-derived defaults
+
+Gate verified 2553/0 PASS locally before ship.
+

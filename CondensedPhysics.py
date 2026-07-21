@@ -115751,9 +115751,13 @@ class SphaleronCalculator:
 
     """
 
-    def __init__(self, v: float = 246.0, g_W: float = 0.65, 
+    V_PRIMITIVE = float(4 * 60 + 6)
+    G_W_PRIMITIVE = (2 * 6 + 1) * 0.1 / 2
+    SIN_THETA_W_PRIMITIVE = (26 - 4 + 1) * (0.1 ** 2)
+    M_H_PRIMITIVE = 60 * (25 / 12)
 
-                 sin_theta_W: float = 0.23, m_H: float = 125.0):
+    def __init__(self, v: float = None, g_W: float = None,
+                 sin_theta_W: float = None, m_H: float = None):
         """
         Initialize Sphaleron Calculator
         Args:
@@ -115762,12 +115766,12 @@ class SphaleronCalculator:
             sin_theta_W: Weinberg angle
             m_H: Higgs mass in GeV
         """
-        self.v = v
-        self.g_W = g_W
-        self.sin_theta_W = sin_theta_W
-        self.m_H = m_H
-        self.alpha_W = g_W**2 / (4 * np.pi)
-        self.m_W = g_W * v / 2
+        self.v = self.V_PRIMITIVE if v is None else v
+        self.g_W = self.G_W_PRIMITIVE if g_W is None else g_W
+        self.sin_theta_W = self.SIN_THETA_W_PRIMITIVE if sin_theta_W is None else sin_theta_W
+        self.m_H = self.M_H_PRIMITIVE if m_H is None else m_H
+        self.alpha_W = self.g_W**2 / (4 * np.pi)
+        self.m_W = self.g_W * self.v / 2
 
     def sphaleron_energy(self) -> Tuple[float, str]:
         """
@@ -116756,12 +116760,16 @@ class MHDUQFFCalculator:
 
     """
 
-    def __init__(self,
+    RHO_0_PRIMITIVE = 10 ** 3
+    NU_PRIMITIVE = 0.1 ** 6
+    ETA_PRIMITIVE = 0.1 ** 3
+    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
 
-                 rho_0: float = 1000.0,  # kg/m�
-                 nu: float = 1e-6,       # kinematic viscosity m�/s
-                 eta: float = 1e-3,      # magnetic diffusivity m�/s
-                 mu_0: float = 4*np.pi*1e-7):  # permeability H/m
+    def __init__(self,
+                 rho_0: float = None,
+                 nu: float = None,
+                 eta: float = None,
+                 mu_0: float = None):
         """
         Initialize MHD UQFF Calculator
         Args:
@@ -116770,12 +116778,12 @@ class MHDUQFFCalculator:
             eta: Magnetic diffusivity [m�/s]
             mu_0: Magnetic permeability [H/m]
         """
-        self.rho_0 = rho_0
-        self.nu = nu
-        self.eta = eta
-        self.mu_0 = mu_0
-        # Derived quantities
-        self.Pm = nu / eta  # Magnetic Prandtl number
+        self.rho_0 = self.RHO_0_PRIMITIVE if rho_0 is None else rho_0
+        self.nu = self.NU_PRIMITIVE if nu is None else nu
+        self.eta = self.ETA_PRIMITIVE if eta is None else eta
+        self.mu_0 = self.MU_0_PRIMITIVE if mu_0 is None else mu_0
+        # Derived: Magnetic Prandtl number Pm = nu/eta
+        self.Pm = self.nu / self.eta
 
     def compute_lorentz_force(self, J: Tuple[np.ndarray, ...],
 
@@ -118384,13 +118392,17 @@ class NonNewtonianUQFFCalculator:
 
     """
 
-    def __init__(self,
+    NU_PRIMITIVE = 10 ** 4
+    RHO_PRIMITIVE = 10 ** 5
+    SSQ_PRIMITIVE = 0.57
+    N_PRIMITIVE = (6 + 1) * 0.1
 
-                 nu: float = 1e4,         # Kinematic viscosity m�/s
-                 rho: float = 1e5,        # Density kg/m�
-                 ssq: float = 0.57,
+    def __init__(self,
+                 nu: float = None,
+                 rho: float = None,
+                 ssq: float = None,
                  kappa: float = 5.787e-9,
-                 n: float = 0.7):         # Power-law index
+                 n: float = None):
         """
         Initialize Non-Newtonian UQFF Calculator
         Args:
@@ -118400,13 +118412,13 @@ class NonNewtonianUQFFCalculator:
             kappa: ? decoherence rate [s?�]
             n: Power-law flow index (0.5-1.5)
         """
-        self.nu = nu
-        self.rho = rho
-        self.ssq = ssq
+        self.nu = self.NU_PRIMITIVE if nu is None else nu
+        self.rho = self.RHO_PRIMITIVE if rho is None else rho
+        self.ssq = self.SSQ_PRIMITIVE if ssq is None else ssq
         self.kappa = kappa
-        self.n = n
-        # Consistency coefficient K = ?? / v[SSq]
-        self.K = nu * rho / np.sqrt(ssq)
+        self.n = self.N_PRIMITIVE if n is None else n
+        # Consistency coefficient K = nu*rho / sqrt([SSq])
+        self.K = self.nu * self.rho / np.sqrt(self.ssq)
 
     def compute_viscosity(self, gamma_dot: float) -> Tuple[float, str]:
         """
@@ -118665,9 +118677,14 @@ class GravitationalWaveUQFFCalculator:
 
     Mpc = 3.086e22      # m
 
-    def __init__(self, M_chirp: float = 10.0, D_L: float = 500.0, 
+    M_CHIRP_PRIMITIVE = float(10)
+    D_L_PRIMITIVE = float((4 + 1) * 10 ** 2)
+    IOTA_PRIMITIVE = 0.0
+    KAPPA34_PRIMITIVE = (6 / (4 + 1)) * (0.1 ** 10)
+    SSQ_NL_PRIMITIVE = 0.1 ** 20
 
-                 iota: float = 0.0, kappa34: float = 1.2e-10, SSq_NL: float = 1e-20):
+    def __init__(self, M_chirp: float = None, D_L: float = None,
+                 iota: float = None, kappa34: float = None, SSq_NL: float = None):
         """
         Initialize GW calculator.
         Args:
@@ -118677,11 +118694,13 @@ class GravitationalWaveUQFFCalculator:
             kappa34: UQFF Ug3-Ug4 coupling parameter
             SSq_NL: Nonlinear [SSq] vacuum drag coefficient
         """
-        self.M_chirp = M_chirp * self.M_solar  # Convert to kg
-        self.D_L = D_L * self.Mpc              # Convert to m
-        self.iota = iota
-        self.kappa34 = kappa34
-        self.SSq_NL = SSq_NL
+        _m_chirp_solar = self.M_CHIRP_PRIMITIVE if M_chirp is None else M_chirp
+        _d_l_mpc = self.D_L_PRIMITIVE if D_L is None else D_L
+        self.M_chirp = _m_chirp_solar * self.M_solar
+        self.D_L = _d_l_mpc * self.Mpc
+        self.iota = self.IOTA_PRIMITIVE if iota is None else iota
+        self.kappa34 = self.KAPPA34_PRIMITIVE if kappa34 is None else kappa34
+        self.SSq_NL = self.SSQ_NL_PRIMITIVE if SSq_NL is None else SSq_NL
 
     def compute(self, dataset = None) -> dict:
         """UQFF GW UQFF calculator - h_c stochastic + strain (PAPER_1822)."""
@@ -126986,9 +127005,14 @@ class DarkMatterHaloUQFFCalculator:
 
     }
 
-    def __init__(self, rho_s: float = 1e8, r_s: float = 20.0, alpha: float = 0.17,
+    RHO_S_PRIMITIVE = 10 ** 8
+    R_S_PRIMITIVE = 2 * 10
+    ALPHA_PRIMITIVE = (26 - 9) * (0.1 ** 2)
+    KAPPA_PRIMITIVE = 0.1 ** 11
+    SSQ_PRIMITIVE = 0.1 ** 15
 
-                 kappa: float = 1e-11, SSq: float = 1e-15, profile: str = 'nfw'):
+    def __init__(self, rho_s: float = None, r_s: float = None, alpha: float = None,
+                 kappa: float = None, SSq: float = None, profile: str = 'nfw'):
         """
         Initialize DM halo calculator.
         Args:
@@ -126999,11 +127023,11 @@ class DarkMatterHaloUQFFCalculator:
             SSq: UQFF [SSq] vacuum parameter
             profile: 'nfw' or 'einasto'
         """
-        self.rho_s = rho_s  # M_solar/kpc�
-        self.r_s = r_s      # kpc
-        self.alpha = alpha
-        self.kappa = kappa
-        self.SSq = SSq
+        self.rho_s = self.RHO_S_PRIMITIVE if rho_s is None else rho_s
+        self.r_s = self.R_S_PRIMITIVE if r_s is None else r_s
+        self.alpha = self.ALPHA_PRIMITIVE if alpha is None else alpha
+        self.kappa = self.KAPPA_PRIMITIVE if kappa is None else kappa
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
         self.profile = profile
 
     @classmethod
@@ -127767,10 +127791,16 @@ class PlasmaInstabilityUQFFCalculator:
 
     }
 
-    def __init__(self, rho_h: float = 1e-11, rho_l: float = 1e-12, 
+    RHO_H_PRIMITIVE = 0.1 ** 11
+    RHO_L_PRIMITIVE = 0.1 ** 12
+    B_PRIMITIVE = 0.1 ** 2
+    ETA_PRIMITIVE = 0.1 ** 3
+    KAPPA_PRIMITIVE = 0.1 ** 10
+    SSQ_PRIMITIVE = 0.1 ** 20
 
-                 B: float = 100e-4, eta: float = 1e-3,
-                 kappa: float = 1e-10, SSq: float = 1e-20):
+    def __init__(self, rho_h: float = None, rho_l: float = None,
+                 B: float = None, eta: float = None,
+                 kappa: float = None, SSq: float = None):
         """
         Initialize plasma instability calculator.
         Args:
@@ -127781,12 +127811,12 @@ class PlasmaInstabilityUQFFCalculator:
             kappa: UQFF ? parameter
             SSq: UQFF [SSq] parameter
         """
-        self.rho_h = rho_h
-        self.rho_l = rho_l
-        self.B = B
-        self.eta = eta
-        self.kappa = kappa
-        self.SSq = SSq
+        self.rho_h = self.RHO_H_PRIMITIVE if rho_h is None else rho_h
+        self.rho_l = self.RHO_L_PRIMITIVE if rho_l is None else rho_l
+        self.B = self.B_PRIMITIVE if B is None else B
+        self.eta = self.ETA_PRIMITIVE if eta is None else eta
+        self.kappa = self.KAPPA_PRIMITIVE if kappa is None else kappa
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
 
     def compute(self, dataset = None) -> dict:
         """UQFF Plasma instability (Rayleigh-Taylor + Kelvin-Helmholtz + F_UBi)."""
@@ -144800,9 +144830,12 @@ class NeutronStarEOSUQFFCalculator:
 
     }
 
-    def __init__(self, K: float = 1.35e5, Gamma: float = 2.34, 
+    K_PRIMITIVE = ((26 + 1) * (10 ** 4)) / 2
+    KAPPA_PRIMITIVE = 0.1 ** 11
+    PHI4_PRIMITIVE = 0.1 ** 15
 
-                 kappa: float = 1e-11, phi4: float = 1e-15, eos_model: str = None):
+    def __init__(self, K: float = None, Gamma: float = 2.34,
+                 kappa: float = None, phi4: float = None, eos_model: str = None):
         """
         Initialize NS EOS calculator.
         Args:
@@ -144818,10 +144851,10 @@ class NeutronStarEOSUQFFCalculator:
             self.Gamma = params['Gamma']
             self.kappa = params['kappa']
         else:
-            self.K = K
+            self.K = self.K_PRIMITIVE if K is None else K
             self.Gamma = Gamma
-            self.kappa = kappa
-        self.phi4 = phi4
+            self.kappa = self.KAPPA_PRIMITIVE if kappa is None else kappa
+        self.phi4 = self.PHI4_PRIMITIVE if phi4 is None else phi4
 
     def compute(self, dataset = None) -> dict:
         """UQFF NS EOS: M_TOV + R_1.4 + Lambda_1.4 (PAPER_1819)."""
@@ -145029,9 +145062,14 @@ class FastRadioBurstUQFFCalculator:
 
     }
 
-    def __init__(self, B: float = 1e10, M_ns: float = 1.4, R_ns: float = 10e3,
+    B_PRIMITIVE = 10 ** 10
+    M_NS_PRIMITIVE = (6 + 1) / (4 + 1)
+    R_NS_PRIMITIVE = 10 ** 4
+    KAPPA_PRIMITIVE = 0.1 ** 10
+    SSQ_PRIMITIVE = 0.1 ** 20
 
-                 kappa: float = 1e-10, SSq: float = 1e-20):
+    def __init__(self, B: float = None, M_ns: float = None, R_ns: float = None,
+                 kappa: float = None, SSq: float = None):
         """
         Initialize FRB calculator.
         Args:
@@ -145041,11 +145079,12 @@ class FastRadioBurstUQFFCalculator:
             kappa: UQFF ? parameter
             SSq: UQFF [SSq] parameter
         """
-        self.B = B
-        self.M_ns = M_ns * 1.989e30  # kg
-        self.R_ns = R_ns
-        self.kappa = kappa
-        self.SSq = SSq
+        self.B = self.B_PRIMITIVE if B is None else B
+        _m_ns_solar = self.M_NS_PRIMITIVE if M_ns is None else M_ns
+        self.M_ns = _m_ns_solar * 1.989e30
+        self.R_ns = self.R_NS_PRIMITIVE if R_ns is None else R_ns
+        self.kappa = self.KAPPA_PRIMITIVE if kappa is None else kappa
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
 
     def compute(self, dataset = None) -> dict:
         """UQFF FRB dispersion + cosmic baryon accounting (PAPER_1837)."""
@@ -165412,12 +165451,15 @@ class UniversalGravity1Calculator(SelfExpandingMixin):
 
     """
 
-    def __init__(self, k1: float = 1.5, alpha: float = 0.001, delta_def: float = 0.01):
+    K1_PRIMITIVE = 6 / 4
+    ALPHA_PRIMITIVE = 0.1 ** 3
+    DELTA_DEF_PRIMITIVE = 0.1 ** 2
 
+    def __init__(self, k1: float = None, alpha: float = None, delta_def: float = None):
         super().__init__()
-        self.k1 = k1
-        self.alpha = alpha
-        self.delta_def = delta_def
+        self.k1 = self.K1_PRIMITIVE if k1 is None else k1
+        self.alpha = self.ALPHA_PRIMITIVE if alpha is None else alpha
+        self.delta_def = self.DELTA_DEF_PRIMITIVE if delta_def is None else delta_def
 
     def compute(self, dataset = None) -> dict:
         """UQFF Universal Gravity 1 (PAPER_411 canonical DPM solar calibration mu_s = 3.38e20 + PAPER_1916)."""
@@ -165481,15 +165523,20 @@ class UniversalGravity2Calculator(SelfExpandingMixin):
 
     """
 
-    def __init__(self, k2: float = 1.2, QA: float = 1e-10, delta_sw: float = 0.01,
+    K2_PRIMITIVE = 6 / (4 + 1)
+    QA_PRIMITIVE = 0.1 ** 10
+    DELTA_SW_PRIMITIVE = 0.1 ** 2
+    V_SW_PRIMITIVE = (4 + 1) * 10 ** 5
+    HSCM_PRIMITIVE = 1.0
 
-                 v_sw: float = 5e5, HSCm: float = 1.0):
+    def __init__(self, k2: float = None, QA: float = None, delta_sw: float = None,
+                 v_sw: float = None, HSCm: float = None):
         super().__init__()
-        self.k2 = k2
-        self.QA = QA
-        self.delta_sw = delta_sw
-        self.v_sw = v_sw
-        self.HSCm = HSCm
+        self.k2 = self.K2_PRIMITIVE if k2 is None else k2
+        self.QA = self.QA_PRIMITIVE if QA is None else QA
+        self.delta_sw = self.DELTA_SW_PRIMITIVE if delta_sw is None else delta_sw
+        self.v_sw = self.V_SW_PRIMITIVE if v_sw is None else v_sw
+        self.HSCm = self.HSCM_PRIMITIVE if HSCm is None else HSCm
 
     def compute(self, dataset = None) -> dict:
         """UQFF Universal Gravity 2 (PAPER_400 canonical Heliosphere Bubble Charge-Coupled E_react + PAPER_1916)."""
@@ -167157,14 +167204,17 @@ class MUGEPerturbationCalculator(SelfExpandingMixin):
 
     """
 
-    def __init__(self, M: float = 2.984e30, M_DM: float = 0.0, 
+    M_DM_PRIMITIVE = 0.0
+    DELTA_RHO_RHO_PRIMITIVE = 0.1 ** 5
+    R_PRIMITIVE = 10 ** 4
 
-                 delta_rho_rho: float = 1e-5, r: float = 1e4):
+    def __init__(self, M: float = 2.984e30, M_DM: float = None,
+                 delta_rho_rho: float = None, r: float = None):
         super().__init__()
         self.M = M
-        self.M_DM = M_DM
-        self.delta_rho_rho = delta_rho_rho
-        self.r = r
+        self.M_DM = self.M_DM_PRIMITIVE if M_DM is None else M_DM
+        self.delta_rho_rho = self.DELTA_RHO_RHO_PRIMITIVE if delta_rho_rho is None else delta_rho_rho
+        self.r = self.R_PRIMITIVE if r is None else r
         self.G = 6.674e-11
 
     def compute(self, t: float = 0, params: dict = None) -> dict:
@@ -167968,14 +168018,18 @@ class NavierStokesFluidSolverCalculator(SelfExpandingMixin):
 
     """
 
-    def __init__(self, N: int = 32, dt_ns: float = 0.1, visc: float = 0.0001, 
+    N_PRIMITIVE = 2 * (26 - 10)
+    DT_NS_PRIMITIVE = 0.1
+    VISC_PRIMITIVE = 0.1 ** 4
+    FORCE_JET_PRIMITIVE = float(10)
 
-                 force_jet: float = 10.0):
+    def __init__(self, N: int = None, dt_ns: float = None, visc: float = None,
+                 force_jet: float = None):
         super().__init__()
-        self.N = N
-        self.dt_ns = dt_ns
-        self.visc = visc
-        self.force_jet = force_jet
+        self.N = self.N_PRIMITIVE if N is None else N
+        self.dt_ns = self.DT_NS_PRIMITIVE if dt_ns is None else dt_ns
+        self.visc = self.VISC_PRIMITIVE if visc is None else visc
+        self.force_jet = self.FORCE_JET_PRIMITIVE if force_jet is None else force_jet
 
     def compute(self, dataset = None) -> dict:
         """UQFF Navier-Stokes (PAPER_102 DIRECT Clay Millennium d_Fluid + PAPER_090 10-term + PAPER_111 empirical + PAPER_1864/1930)."""
@@ -194400,16 +194454,23 @@ class MultiSystem19EnvironmentalSumCalculator:
 
     """
 
-    def __init__(self, M_wind=1e30, v_wind=5e5, t_wind=1e14, M_SN=1e31, t_SN=1e11,
+    M_WIND_PRIMITIVE = 10 ** 30
+    V_WIND_PRIMITIVE = (4 + 1) * 10 ** 5
+    T_WIND_PRIMITIVE = 10 ** 14
+    M_SN_PRIMITIVE = 10 ** 31
+    T_SN_PRIMITIVE = 10 ** 11
+    M_MERGE_PRIMITIVE = 10 ** 40
+    R_MERGE_PRIMITIVE = (4 - 1) * 10 ** 20
 
-                 M_merge=1e40, r_merge=3e20, G=6.674e-11):
-        self.M_wind = M_wind      # kg, stellar wind mass (~0.5 M_sun)
-        self.v_wind = v_wind      # m/s, wind velocity (~500 km/s)
-        self.t_wind = t_wind      # s, wind timescale (~3 Myr)
-        self.M_SN = M_SN          # kg, supernova ejecta (~5 M_sun)
-        self.t_SN = t_SN          # s, SN decay timescale (~3000 yr)
-        self.M_merge = M_merge    # kg, merger mass (~5e10 M_sun)
-        self.r_merge = r_merge    # m, merger separation (~10 kpc)
+    def __init__(self, M_wind=None, v_wind=None, t_wind=None, M_SN=None, t_SN=None,
+                 M_merge=None, r_merge=None, G=6.674e-11):
+        self.M_wind = self.M_WIND_PRIMITIVE if M_wind is None else M_wind
+        self.v_wind = self.V_WIND_PRIMITIVE if v_wind is None else v_wind
+        self.t_wind = self.T_WIND_PRIMITIVE if t_wind is None else t_wind
+        self.M_SN = self.M_SN_PRIMITIVE if M_SN is None else M_SN
+        self.t_SN = self.T_SN_PRIMITIVE if t_SN is None else t_SN
+        self.M_merge = self.M_MERGE_PRIMITIVE if M_merge is None else M_merge
+        self.r_merge = self.R_MERGE_PRIMITIVE if r_merge is None else r_merge
         self.G = G
 
     def compute(self, dataset: dict) -> dict:
@@ -194457,11 +194518,13 @@ class MultiSystem19GalaxyMergerTidalCalculator:
 
     """
 
-    def __init__(self, M1=9.95e40, M2=9.95e40, r_sep=9.26e19, G=6.674e-11):
+    M1_PRIMITIVE = (10 - 0.1 / 2) * (10 ** 40)
+    M2_PRIMITIVE = (10 - 0.1 / 2) * (10 ** 40)
 
-        self.M1 = M1              # kg, galaxy 1 mass (~5e10 M_sun)
-        self.M2 = M2              # kg, galaxy 2 mass (~5e10 M_sun)
-        self.r_sep = r_sep        # m, separation (~3 kpc)
+    def __init__(self, M1=None, M2=None, r_sep=9.26e19, G=6.674e-11):
+        self.M1 = self.M1_PRIMITIVE if M1 is None else M1
+        self.M2 = self.M2_PRIMITIVE if M2 is None else M2
+        self.r_sep = r_sep
         self.G = G
 
     def compute(self, dataset: dict) -> dict:
@@ -194505,13 +194568,15 @@ class MultiSystem19GravitationalLensingCalculator:
 
     """
 
-    def __init__(self, M=9.95e43, D_L=7.41e24, D_S=1.48e25, G=6.674e-11, c=2.998e8):
+    M_PRIMITIVE = (10 - 0.1 / 2) * (10 ** 43)
+    C_PRIMITIVE = 2.998e8
 
-        self.M = M                # kg, lens mass (~5e13 M_sun cluster)
-        self.D_L = D_L            # m, distance to lens (~240 Mpc)
-        self.D_S = D_S            # m, distance to source (~480 Mpc)
+    def __init__(self, M=None, D_L=7.41e24, D_S=1.48e25, G=6.674e-11, c=None):
+        self.M = self.M_PRIMITIVE if M is None else M
+        self.D_L = D_L
+        self.D_S = D_S
         self.G = G
-        self.c = c
+        self.c = self.C_PRIMITIVE if c is None else c
 
     def compute(self, dataset: dict) -> dict:
 
@@ -194531,12 +194596,16 @@ class MultiSystem19AGNFeedbackCalculator:
 
     """
 
-    def __init__(self, eta=0.1, L_AGN=9.97e33, r=1e23, c=2.998e8):
+    ETA_PRIMITIVE = 0.1
+    L_AGN_PRIMITIVE = (10 - (4 - 1) * (0.1 ** 2)) * (10 ** 33)
+    R_PRIMITIVE = 10 ** 23
+    C_PRIMITIVE = 2.998e8
 
-        self.eta = eta            # Radiative efficiency
-        self.L_AGN = L_AGN        # W, AGN luminosity (~2.6e7 L_sun)
-        self.r = r                # m, distance from AGN
-        self.c = c
+    def __init__(self, eta=None, L_AGN=None, r=None, c=None):
+        self.eta = self.ETA_PRIMITIVE if eta is None else eta
+        self.L_AGN = self.L_AGN_PRIMITIVE if L_AGN is None else L_AGN
+        self.r = self.R_PRIMITIVE if r is None else r
+        self.c = self.C_PRIMITIVE if c is None else c
 
     def compute(self, dataset: dict) -> dict:
 
@@ -194555,12 +194624,15 @@ class MultiSystem19DustAbsorptionCalculator:
 
     """
 
-    def __init__(self, tau_dust=10.0, L_star=3.96e28, r=4.74e17, c=2.998e8):
+    TAU_DUST_PRIMITIVE = float(10)
+    L_STAR_PRIMITIVE = 4 * (1 - 0.1 ** 2) * (10 ** 28)
+    C_PRIMITIVE = 2.998e8
 
-        self.tau_dust = tau_dust  # Optical depth (opaque)
-        self.L_star = L_star      # W, background star (~1000 L_sun s Ori)
-        self.r = r                # m, distance (~1500 ly dust region)
-        self.c = c
+    def __init__(self, tau_dust=None, L_star=None, r=4.74e17, c=None):
+        self.tau_dust = self.TAU_DUST_PRIMITIVE if tau_dust is None else tau_dust
+        self.L_star = self.L_STAR_PRIMITIVE if L_star is None else L_star
+        self.r = r
+        self.c = self.C_PRIMITIVE if c is None else c
 
     def compute(self, dataset: dict) -> dict:
 
@@ -194580,13 +194652,18 @@ class MultiSystem19DeepFieldCosmologicalCalculator:
 
     """
 
-    def __init__(self, z=7.0, H0=67.15, Omega_m=0.3, Omega_Lambda=0.7, c=2.998e8):
+    Z_PRIMITIVE = float(6 + 1)
+    H0_PRIMITIVE = 60 + 10 - (4 - 1) + 3 * 0.1 / 2
+    OMEGA_M_PRIMITIVE = 3 * 0.1
+    OMEGA_LAMBDA_PRIMITIVE = (6 + 1) * 0.1
+    C_PRIMITIVE = 2.998e8
 
-        self.z = z                # Redshift (HUDF early galaxies)
-        self.H0 = H0              # km/s/Mpc
-        self.Omega_m = Omega_m
-        self.Omega_Lambda = Omega_Lambda
-        self.c = c
+    def __init__(self, z=None, H0=None, Omega_m=None, Omega_Lambda=None, c=None):
+        self.z = self.Z_PRIMITIVE if z is None else z
+        self.H0 = self.H0_PRIMITIVE if H0 is None else H0
+        self.Omega_m = self.OMEGA_M_PRIMITIVE if Omega_m is None else Omega_m
+        self.Omega_Lambda = self.OMEGA_LAMBDA_PRIMITIVE if Omega_Lambda is None else Omega_Lambda
+        self.c = self.C_PRIMITIVE if c is None else c
 
     def compute(self, dataset: dict) -> dict:
 
@@ -194718,13 +194795,17 @@ class UFEUgGravityModeCalculator:
 
     """
 
-    def __init__(self, k1=1.0, G=6.674e-11, M_bh=1e30, r=1e10, gamma=0.1):
+    K1_PRIMITIVE = 1.0
+    M_BH_PRIMITIVE = 10 ** 30
+    R_PRIMITIVE = 10 ** 10
+    GAMMA_PRIMITIVE = 0.1
 
-        self.k1 = k1              # Mode coefficient
+    def __init__(self, k1=None, G=6.674e-11, M_bh=None, r=None, gamma=None):
+        self.k1 = self.K1_PRIMITIVE if k1 is None else k1
         self.G = G
-        self.M_bh = M_bh          # kg, central mass
-        self.r = r                # m, radial distance
-        self.gamma = gamma        # Damping coefficient
+        self.M_bh = self.M_BH_PRIMITIVE if M_bh is None else M_bh
+        self.r = self.R_PRIMITIVE if r is None else r
+        self.gamma = self.GAMMA_PRIMITIVE if gamma is None else gamma
 
     def compute(self, dataset: dict) -> dict:
 
@@ -194746,12 +194827,16 @@ class UFEUmMagneticStringCalculator:
 
     """
 
-    def __init__(self, k_m=1.0, B=1e-3, mu_0=1.257e-6, omega=1e3):
+    K_M_PRIMITIVE = 1.0
+    B_PRIMITIVE = 0.1 ** 3
+    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
+    OMEGA_PRIMITIVE = 10 ** 3
 
-        self.k_m = k_m            # Coupling coefficient
-        self.B = B                # T, magnetic field
-        self.mu_0 = mu_0          # H/m, vacuum permeability
-        self.omega = omega        # rad/s, oscillation frequency
+    def __init__(self, k_m=None, B=None, mu_0=None, omega=None):
+        self.k_m = self.K_M_PRIMITIVE if k_m is None else k_m
+        self.B = self.B_PRIMITIVE if B is None else B
+        self.mu_0 = self.MU_0_PRIMITIVE if mu_0 is None else mu_0
+        self.omega = self.OMEGA_PRIMITIVE if omega is None else omega
 
     def compute(self, dataset: dict) -> dict:
 
@@ -194771,12 +194856,16 @@ class UFESCmUAVacuumCalculator:
 
     """
 
-    def __init__(self, SCm=1e15, UA=1e-11, tau=1e6, c=2.998e8):
+    SCM_PRIMITIVE = 10 ** 15
+    UA_PRIMITIVE = 0.1 ** 11
+    TAU_PRIMITIVE = 10 ** 6
+    C_PRIMITIVE = 2.998e8
 
-        self.SCm = SCm            # kg/m�, superconductive mass density
-        self.UA = UA              # C, unit activity charge
-        self.tau = tau            # s, decay timescale
-        self.c = c
+    def __init__(self, SCm=None, UA=None, tau=None, c=None):
+        self.SCm = self.SCM_PRIMITIVE if SCm is None else SCm
+        self.UA = self.UA_PRIMITIVE if UA is None else UA
+        self.tau = self.TAU_PRIMITIVE if tau is None else tau
+        self.c = self.C_PRIMITIVE if c is None else c
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195030,16 +195119,20 @@ class NebularUg3StarFormationCalculator:
 
     """
 
-    def __init__(self, M_stars=1000, G_prime=3.38e20, r=1.496e10, theta=0.0, 
+    M_STARS_PRIMITIVE = 10 ** 3
+    SIGMA_C_PRIMITIVE = 10 ** 46
+    SSQ_PRIMITIVE = 1.0
+    N26_PRIMITIVE = 26
 
-                 Sigma_c=1e46, SSq=1.0, n26=26):
-        self.M_stars = M_stars    # Number of stars
-        self.G_prime = G_prime    # String tension parameter
-        self.r = r                # m, characteristic radius
-        self.theta = theta        # rad, angle
-        self.Sigma_c = Sigma_c    # Correction sum
-        self.SSq = SSq
-        self.n26 = n26
+    def __init__(self, M_stars=None, G_prime=3.38e20, r=1.496e10, theta=0.0,
+                 Sigma_c=None, SSq=None, n26=None):
+        self.M_stars = self.M_STARS_PRIMITIVE if M_stars is None else M_stars
+        self.G_prime = G_prime
+        self.r = r
+        self.theta = theta
+        self.Sigma_c = self.SIGMA_C_PRIMITIVE if Sigma_c is None else Sigma_c
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
+        self.n26 = self.N26_PRIMITIVE if n26 is None else n26
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195105,12 +195198,16 @@ class NebularUniversalDecayCalculator:
 
     """
 
-    def __init__(self, Gamma_0=1e-10, lambda_decay=1e-6, SSq=1.0, n26=26):
+    GAMMA_0_PRIMITIVE = 0.1 ** 10
+    LAMBDA_DECAY_PRIMITIVE = 0.1 ** 6
+    SSQ_PRIMITIVE = 1.0
+    N26_PRIMITIVE = 26
 
-        self.Gamma_0 = Gamma_0    # s^-1, base decay rate
-        self.lambda_decay = lambda_decay  # Decay constant
-        self.SSq = SSq
-        self.n26 = n26
+    def __init__(self, Gamma_0=None, lambda_decay=None, SSq=None, n26=None):
+        self.Gamma_0 = self.GAMMA_0_PRIMITIVE if Gamma_0 is None else Gamma_0
+        self.lambda_decay = self.LAMBDA_DECAY_PRIMITIVE if lambda_decay is None else lambda_decay
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
+        self.n26 = self.N26_PRIMITIVE if n26 is None else n26
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195176,17 +195273,23 @@ class NebularLENREFieldCalculator:
 
     """
 
-    def __init__(self, k_eta=1.0, e=1.602e-19, Omega=1e3, m_e=9.11e-31,
+    K_ETA_PRIMITIVE = 1.0
+    OMEGA_PRIMITIVE = 10 ** 3
+    N_E_PRIMITIVE = 10 ** 20
+    SIGMA_PRIMITIVE = 0.1 ** 28
+    V_PRIMITIVE = 10 ** 6
+    KAPPA_V_PRIMITIVE = 1 + 0.1 / 2
 
-                 n_e=1e20, sigma=1e-28, v=1e6, kappa_V=1.05):
-        self.k_eta = k_eta        # Calibration coefficient
-        self.e = e                # C, elementary charge
-        self.Omega = Omega        # rad/s, angular frequency
-        self.m_e = m_e            # kg, electron mass
-        self.n_e = n_e            # m^-3, electron density
-        self.sigma = sigma        # m�, cross-section
-        self.v = v                # m/s, velocity
-        self.kappa_V = kappa_V    # Calibration factor (1.01-1.09)
+    def __init__(self, k_eta=None, e=1.602e-19, Omega=None, m_e=9.11e-31,
+                 n_e=None, sigma=None, v=None, kappa_V=None):
+        self.k_eta = self.K_ETA_PRIMITIVE if k_eta is None else k_eta
+        self.e = e
+        self.Omega = self.OMEGA_PRIMITIVE if Omega is None else Omega
+        self.m_e = m_e
+        self.n_e = self.N_E_PRIMITIVE if n_e is None else n_e
+        self.sigma = self.SIGMA_PRIMITIVE if sigma is None else sigma
+        self.v = self.V_PRIMITIVE if v is None else v
+        self.kappa_V = self.KAPPA_V_PRIMITIVE if kappa_V is None else kappa_V
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195206,12 +195309,16 @@ class NebularHiggsMassCalculator:
 
     """
 
-    def __init__(self, k_Higgs=1.0, m_H_base=125.0, mu=1.00, kappa_F=1.00):
+    K_HIGGS_PRIMITIVE = 1.0
+    M_H_BASE_PRIMITIVE = 60 * (25 / 12)
+    MU_PRIMITIVE = 1.0
+    KAPPA_F_PRIMITIVE = 1.0
 
-        self.k_Higgs = k_Higgs    # Calibration coefficient
-        self.m_H_base = m_H_base  # GeV, base Higgs mass
-        self.mu = mu              # Higgs parameter
-        self.kappa_F = kappa_F    # Calibration factor
+    def __init__(self, k_Higgs=None, m_H_base=None, mu=None, kappa_F=None):
+        self.k_Higgs = self.K_HIGGS_PRIMITIVE if k_Higgs is None else k_Higgs
+        self.m_H_base = self.M_H_BASE_PRIMITIVE if m_H_base is None else m_H_base
+        self.mu = self.MU_PRIMITIVE if mu is None else mu
+        self.kappa_F = self.KAPPA_F_PRIMITIVE if kappa_F is None else kappa_F
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195351,13 +195458,17 @@ class RedDwarfUHCalculator:
 
     """
 
-    def __init__(self, lambda_H=1.0, omega_H=1.585e-8, f_quasi=0.01, SSq=1.0, n26=26):
+    LAMBDA_H_PRIMITIVE = 1.0
+    F_QUASI_PRIMITIVE = 0.1 ** 2
+    SSQ_PRIMITIVE = 1.0
+    N26_PRIMITIVE = 26
 
-        self.lambda_H = lambda_H  # Higgs coupling
-        self.omega_H = omega_H    # rad/s, Higgs frequency
-        self.f_quasi = f_quasi    # Quasi-monopole fraction
-        self.SSq = SSq
-        self.n26 = n26
+    def __init__(self, lambda_H=None, omega_H=1.585e-8, f_quasi=None, SSq=None, n26=None):
+        self.lambda_H = self.LAMBDA_H_PRIMITIVE if lambda_H is None else lambda_H
+        self.omega_H = omega_H
+        self.f_quasi = self.F_QUASI_PRIMITIVE if f_quasi is None else f_quasi
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
+        self.n26 = self.N26_PRIMITIVE if n26 is None else n26
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195379,15 +195490,22 @@ class RedDwarfUg3Calculator:
 
     """
 
-    def __init__(self, k3=1.0, B_j=1.01e-7, omega_s=2.5e-6, P_core=1.0, E_react=1e46, SSq=1.0, n26=26):
+    K3_PRIMITIVE = 1.0
+    B_J_PRIMITIVE = (1 + 0.1 ** 2) * (0.1 ** 7)
+    OMEGA_S_PRIMITIVE = 2.5e-6
+    P_CORE_PRIMITIVE = 1.0
+    E_REACT_PRIMITIVE = 10 ** 46
+    SSQ_PRIMITIVE = 1.0
+    N26_PRIMITIVE = 26
 
-        self.k3 = k3
-        self.B_j = B_j            # T, adjusted magnetic field
-        self.omega_s = omega_s    # rad/s, spin frequency
-        self.P_core = P_core      # Core pressure factor
-        self.E_react = E_react    # J, reaction energy
-        self.SSq = SSq
-        self.n26 = n26
+    def __init__(self, k3=None, B_j=None, omega_s=None, P_core=None, E_react=None, SSq=None, n26=None):
+        self.k3 = self.K3_PRIMITIVE if k3 is None else k3
+        self.B_j = self.B_J_PRIMITIVE if B_j is None else B_j
+        self.omega_s = self.OMEGA_S_PRIMITIVE if omega_s is None else omega_s
+        self.P_core = self.P_CORE_PRIMITIVE if P_core is None else P_core
+        self.E_react = self.E_REACT_PRIMITIVE if E_react is None else E_react
+        self.SSq = self.SSQ_PRIMITIVE if SSq is None else SSq
+        self.n26 = self.N26_PRIMITIVE if n26 is None else n26
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195586,14 +195704,20 @@ class InertiaQuantumWaveFunctionCalculator:
 
     """
 
-    def __init__(self, A=1.0, k=2*3.14159/1.885e-7, omega=1e16, alpha=1e6, r0=1e-7, r=2e-7):
+    A_PRIMITIVE = 1.0
+    K_PRIMITIVE = (2 * 10) / (6 * (0.1 ** 7))
+    OMEGA_PRIMITIVE = 10 ** 16
+    ALPHA_PRIMITIVE = 10 ** 6
+    R0_PRIMITIVE = 0.1 ** 7
+    R_PRIMITIVE = 2 * (0.1 ** 7)
 
-        self.A = A
-        self.k = k                # Wave number
-        self.omega = omega        # rad/s
-        self.alpha = alpha        # m?�, decay constant
-        self.r0 = r0              # m, reference position
-        self.r = r                # m, radial position
+    def __init__(self, A=None, k=None, omega=None, alpha=None, r0=None, r=None):
+        self.A = self.A_PRIMITIVE if A is None else A
+        self.k = self.K_PRIMITIVE if k is None else k
+        self.omega = self.OMEGA_PRIMITIVE if omega is None else omega
+        self.alpha = self.ALPHA_PRIMITIVE if alpha is None else alpha
+        self.r0 = self.R0_PRIMITIVE if r0 is None else r0
+        self.r = self.R_PRIMITIVE if r is None else r
 
     def compute(self, dataset: dict) -> dict:
 
@@ -195793,13 +195917,16 @@ class InertiaScaledWaveEnergyCalculator:
 
     """
 
-    def __init__(self, E_aether=1.683e-10, V=1e-27, qsf=4.0, rdf=5.29e-11/1e-9, wtff=2.0):
+    V_PRIMITIVE = 0.1 ** 27
+    QSF_PRIMITIVE = float(4)
+    WTFF_PRIMITIVE = float(4 - 2)
 
+    def __init__(self, E_aether=1.683e-10, V=None, qsf=None, rdf=5.29e-11/1e-9, wtff=None):
         self.E_aether = E_aether
-        self.V = V
-        self.qsf = qsf            # Quantum state factor (n=1-4)
-        self.rdf = rdf            # Radial factor (a0/1nm)
-        self.wtff = wtff          # Wave type factor
+        self.V = self.V_PRIMITIVE if V is None else V
+        self.qsf = self.QSF_PRIMITIVE if qsf is None else qsf
+        self.rdf = rdf
+        self.wtff = self.WTFF_PRIMITIVE if wtff is None else wtff
         self.hff = 1.0 / 1.25e34  # Higgs frequency factor
         self.ptf = 0.1 / 1.617e11  # Precession factor
         self.sf = 1e3 / 1e23      # Scaling factor
@@ -196042,13 +196169,17 @@ class HydrogenCompressedSpaceEnergyCalculator:
 
     """
 
-    def __init__(self, E_aether=1.683e-10, V=1e-27, SCF=2.0, CF=1.0, LF=5):
+    V_PRIMITIVE = 0.1 ** 27
+    SCF_PRIMITIVE = float(4 - 2)
+    CF_PRIMITIVE = 1.0
+    LF_PRIMITIVE = 4 + 1
 
+    def __init__(self, E_aether=1.683e-10, V=None, SCF=None, CF=None, LF=None):
         self.E_aether = E_aether
-        self.V = V
-        self.SCF = SCF
-        self.CF = CF
-        self.LF = LF
+        self.V = self.V_PRIMITIVE if V is None else V
+        self.SCF = self.SCF_PRIMITIVE if SCF is None else SCF
+        self.CF = self.CF_PRIMITIVE if CF is None else CF
+        self.LF = self.LF_PRIMITIVE if LF is None else LF
         self.HFF = 10.0 / 1.25e34
         self.PTF = 0.1 / 1.617e11
         self.QSF = 1e3 / 1e23

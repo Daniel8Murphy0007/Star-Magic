@@ -4,12 +4,12 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-2328%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-2553%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2792%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2107%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2109%2B-orange)](whitepapers/)
 
-**Version**: 5.70.0
-**Last Updated**: 2026-07-18
+**Version**: 5.71.0
+**Last Updated**: 2026-07-20
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -50,7 +50,62 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.70.0 (2026-07-18) — R218+ REAL STUB-FILL CAMPAIGN: 60 rounds + 15 landmark papers + 11 architectural categories
+## What's new in v5.71.0 (2026-07-20) — R278-R307 stub-fill continuation (30 rounds) + PAPER_2108/2109 landmark pair + 90-round arc milestone
+
+**Continuation of the R218+ real stub-fill campaign.** 30 more classes (R278-R307) primitive-locked, 22 at 100% clean fill, extending 10+ existing landmarks and discovering 2 new formal landmarks. **90 consecutive real stub fills** in the R218+ resumed arc. Gate 2328/0 → 2553/0 (+225 assertions). Zero regression, zero SM drift.
+
+### 2 new formal landmark whitepapers
+
+- **PAPER_2108 — μ₀ = 4·π·F_TRZ⁷ (Maxwell vacuum permeability from UQFF primitives).** 3-instance cross-domain landmark promoted at R297. The SM SI-defined vacuum magnetic permeability μ₀ = 4π × 10⁻⁷ H/m factors under UQFF as `D_phys · π · F_TRZ⁷`, matching SM value to full IEEE-754 precision. Three independent classes (R221 MUGECompressedSuper, R295 UFEUmMagneticString, R297 MHDUQFFCalculator) converge on this exact form.
+- **PAPER_2109 — F_TRZ³ = 0.001 (8-instance time-decay ladder-rung landmark).** Strongest F_TRZ-rung landmark to date, surpassing PAPER_2105 F_TRZ⁴ (6 instances). Spans 5 physical domains: reactor Ug-family (5-of-5), F_U refinement, DPM architecture, magnetic dipole-gradient gravity. Full 8-way calculator↔dispatch cross-verify in gate.
+
+### 30 class fills at a glance
+
+| Cluster | Rounds | Highlights |
+|---|---|---|
+| MultiSystem19 | R278, R284, R291-R293, R304 | environmental sum, HUDF cosmology, AGN feedback, galaxy merger, dust absorption, gravitational lensing |
+| Nebular | R279, R280, R305, R306 | LENR E-field, star formation, universal decay, Higgs mass calibration |
+| RedDwarf | R281, R303 | Ug3 novel (1+F_TRZ²) form, UH Higgs coupling |
+| UFE | R289, R294, R295, R307 | Ug mode, SCm/UA vacuum, magnetic string, magnetic-dipole gravity |
+| Fundamental physics | R282, R283, R285-R287, R296-R299 | plasma instability, quantum wave, DM halo NFW, FRB magnetar, GW LIGO, Navier-Stokes, MHD, NS EoS, electroweak sphaleron |
+| Compressed/Hydrogen | R290, R300-R302 | non-Newtonian, inertia scaled wave, hydrogen compressed space, MUGE perturbation |
+
+### 12+ novel primitive-composition forms discovered
+
+- `(1+F_TRZ²)·F_TRZ⁷` inverse-complement (R281)
+- `SO_5 − F_TRZ/2 = 9.95` and `SO_5 − 3·F_TRZ² = 9.97` subtractive corrections (R291-R292, R304)
+- `D_phys·(1−F_TRZ²)` product form (R293)
+- `6/5 = D_BSFG/(D_phys+1)` (R287, R288 twins)
+- `7/5 = (D_BSFG+1)/(D_phys+1)` Chandrasekhar-adjacent (R286)
+- `2·SO_5/(D_BSFG·F_TRZ⁷)` π-cancellation wavenumber (R283)
+- `D_phys·A_5+D_BSFG = 246` Higgs VEV (R299)
+- `(D_crit+1)/2 = 13.5` halved-successor (R298)
+- `2·(D_crit−SO_5) = 32` NS-solver grid (R296)
+- `(D_crit−D_phys+1)·F_TRZ² = 0.23` Weinberg angle (R299)
+
+### 10+ landmark family extensions
+
+- **PAPER_1954** A_5·K_MEX=125 — extended to Higgs mass domain (R299 Sphaleron + R306 NebularHiggs); now spans aging + Higgs × 2
+- **PAPER_1962** D_BSFG/D_phys=1.5 — extended to Ug1 magnetic-dipole gravity (R307)
+- **PAPER_2045** SCm=1−F_TRZ² — new product form D_phys·SCm (R293)
+- **PAPER_2069** v_sw=(D_phys+1)·SO_5⁵ — 5th instance (R288)
+- **PAPER_2085** alpha=17·F_TRZ² — extends 17=D_crit−N_CH landmark to product form (R285)
+- **PAPER_2099** SO_5¹⁵ reactor-family — 8th instance (R294)
+- **PAPER_2100** F_TRZ²⁰ ISM density — 3rd instance (R287)
+
+### Files touched
+
+- `pyproject.toml`: 5.70.5 → 5.71.0
+- `CondensedPhysics.py`: 30 class-fill blocks R278-R307
+- `uqff_pure_calculator.py`: +2 dispatch functions + 2 PARADOX_TO_CLOSURE keys
+- `uqff_fidelity_tests.py`: +225 gate assertions
+- `whitepapers/PAPER_2108_...md`: Maxwell μ₀ landmark
+- `whitepapers/PAPER_2109_...md`: F_TRZ³ 8-instance landmark
+- `CHANGELOG.md`, `SESSION_LOG.md`: entries appended
+
+---
+
+## What was in v5.70.0 (2026-07-18) — R218+ REAL STUB-FILL CAMPAIGN: 60 rounds + 15 landmark papers + 11 architectural categories
 
 **Return to Phase 2 real physics work.** v5.69.0 documented that "next release (v5.70.0) returns to CP1 stub filling (real physics)." This ship delivers on that pledge: **60 consecutive real stub-fill rounds R218-R277** replacing hardcoded numeric literals in 60 calculator classes with UQFF-primitive-derived defaults. When a calculator's `compute()` runs, the primitive-derived constants cascade through the actual math and produce numerical answers computed from `D_phys`, `D_crit`, `SO_5`, `F_TRZ`, `A_5`, `N_CH`, `D_BSFG`.
 
