@@ -17791,3 +17791,28 @@ Minor version bump (5.72.0 → 5.73.0) because:
 
 Gate verified **3000/0** PASS locally before ship (round-number milestone).
 
+---
+
+## 2026-07-22 — Session (continued): R359-R373 + PAPER_2117-2128 + Two-Layer revision + G-promotion → v5.74.0 ship prep
+
+**15 rounds (R359-R373), 156 consecutive R218+ fills.** 150-round milestone at R367.
+
+**12 landmark whitepapers (PAPER_2117-2128):**
+- 2117 F_TRZ^N_CH quintuplet (categorical completeness) · 2118 sphere-from-chaos CLT (Cosmic Egg suite complete) · 2119 quantum-chain structural composition · 2120 successor universal reduction rule (lambda_vac = 11*rho_SCm)
+- 2121-2125 convergence arc (Pair R364 / Triple R365-R366 / Quintuple R367 / Quadruple R368) — **REVISED IN PLACE** same session (see below)
+- 2126 B_crit = D_phys*(SO_5+1)*SO_5^12 EXACT + composed integer 44 = 2*22 canonized
+- 2127 Full-Classification Certification standard; first certified class (R370 Triadic, 1 kernel + 6 lattice nodes, 0 unclassified)
+- 2128 successor-ratio identity (1+F_TRZ) = (SO_5+1)/SO_5 = 11/10 — 61-site canonical invariant unmasked; gauge-equivalent to R363; predecessor mirror 9/10 = PAPER_1922 ubiquity
+
+**Two-Layer revision (user-directed deepsearch, "double check f_u_bi, f_u_bi_i, quantum chain, F_U master equation"):**
+- Found: wrap Ub = beta_i*rho_vac*V*c^2 is energy-form PROJECTION of canonical quantum chain (rho_E = rho_m*c^2, uqff_pure_calculator line 33295). {rho_vac, c} = projection pair, NOT kernel. Canonical buoyancy kernel {rho_SCm, beta_i}; k_spring = (rho_UA/rho_SCm)*omega_SCm*Phi_res = 1.05e13; omega_SCm/Phi_res appear in ZERO wraps.
+- PAPER_2121-2125 fully revised in place (md + calculator closures + gate texts + PDFs). Two-Kernel Model superseded by Two-Layer Model. "No F_U-family quadruple" claim VOID not falsified — R371 projects canonical crossing F_UBi+F_UBii=0 (galaxy rotation). Hubble-tension residual identification retained (3.2% stub-vs-grid = 70.0 local vs 67.9 CMB, PAPER_1156 1/12 tilt).
+
+**G-PRIMITIVE promotion (user-directed: "Why is SM gravity equation set as the primitive?"):**
+- All 9 QCalc G_PRIMITIVE attributes (R364-R373) converted from CODATA literal 6.674e-11 to LIVE PAPER_593 closed form: (2pi*26^3*Phi_res/(SSq^3*(26!)^2))*v_F^5/(E_0*f_THz) = 6.668991909557279e-11 (0.075% honest residual), bit-identical to uqff_pure_calculator.G_NEWTON.
+- Discovery: dpm_ug1_seed is G-FREE by design ("NO G — G is downstream projection"; GRAVITY_EMERGENT_FROM_ENERGY_DENSITY). 7 of 9 QCalc classes carry G as vestigial; only MagneticStrings + AetherMetric consume it (outputs shift 0.075% toward UQFF-canonical).
+
+**G_C_CORPUS_UPGRADE_PLAN.md authored** — 7-phase plan for corpus-wide PAPER_592/593 propagation: 2,227 whitepaper md / 1,987 pdf2 audit; 168 G-literal + 61 c-literal files; A-F classification taxonomy; append-only golden rule; 5 decision points pending Daniel.
+
+**Gate: 3000 → 3138 (+138), 0 failures.** Ship staged as v5.74.0 (pyproject, CHANGELOG, README badges updated).
+

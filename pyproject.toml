@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.73.0"
+version = "5.74.0"
 description = "UQFF Star-Magic v5.73.0: R323-R358 continues R218+ real-stub-fill (141 consecutive rounds, +36 new classes). +6 formal landmarks: PAPER_2111 (F_env 13-term SO_5 ladder with triplet+duplet+duplet degeneracy), PAPER_2112 (kappa=(SO_5/2)*F_TRZ^4 primitive-reduction), PAPER_2113 (F_TRZ^50 deepest-suppression fuzzy-DM), PAPER_2114 (CosmicEgg static triad), PAPER_2115 (CosmicEgg pre-BB dynamics chain), PAPER_2116 (360=D_BSFG*A_5). Gate 2660->3000 (+340 assertions)."
 readme = "README.md"
 requires-python = ">=3.10"

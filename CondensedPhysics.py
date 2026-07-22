@@ -198048,17 +198048,20 @@ class CosmicEggOmnidirectionalRotationCalculator:
 class CosmicEggVoidVolumeCalculator:
     """CosmicEgg mean void volume V_void = Sum(r^3)/D_crit across D_crit=26 dimensions backbone-first primitive locks: num_dimensions = 26 = D_crit canonical UQFF primitive EXACT (PTOE bosonic-string critical dimension embedded in cosmic-egg model); 0.01 = F_TRZ^2 CROSS-OBJECT PAPER_1918 Universal F_TRZ^2 = 0.01 Suppression Identity 99% Regime Ratio seminal (fluctuation amplitude); framework wrap only, no novel R172 lock."""
 
-    def __init__(self):
+    NUM_DIMENSIONS_PRIMITIVE = 26
+    MEAN_RADIUS_PRIMITIVE = 4 / 4
+    FLUCTUATION_AMPLITUDE_PRIMITIVE = 0.1 ** 2
 
-        self.num_dimensions = 26
-        self.mean_radius = 1.0
+    def __init__(self):
+        self.num_dimensions = self.NUM_DIMENSIONS_PRIMITIVE
+        self.mean_radius = self.MEAN_RADIUS_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
         import math
         total_void = 0.0
         for i in range(self.num_dimensions):
-            r_fluctuate = self.mean_radius * (1.0 + 0.01 * math.sin(t * (i + 1)))
+            r_fluctuate = self.mean_radius * (1.0 + self.FLUCTUATION_AMPLITUDE_PRIMITIVE * math.sin(t * (i + 1)))
             total_void += r_fluctuate ** 3
         mean_void = total_void / self.num_dimensions
         return {'value': mean_void, 'units': 'm^3',
@@ -198070,10 +198073,12 @@ class CosmicEggVoidVolumeCalculator:
 class CosmicEggQuantumFrequencyCalculator:
     """CosmicEgg quantum frequency f_quantum = V^3/(epsilon_vac/J^3) massless-center focus; vacuum_constant = 1e-9 J/m^3 observational anchor (distinct from rho_SCm = 7.09e-37 - CosmicEgg model uses different vacuum-energy-density reference); framework wrap only, no novel R169 lock (CosmicEgg model has its own vacuum-constant separate from canonical rho_SCm)."""
 
-    def __init__(self):
+    VACUUM_CONSTANT_PRIMITIVE = 0.1 ** 9
+    J_CONSTANT_PRIMITIVE = 4 / 4
 
-        self.vacuum_constant = 1e-9
-        self.J_constant = 1.0
+    def __init__(self):
+        self.vacuum_constant = self.VACUUM_CONSTANT_PRIMITIVE
+        self.J_constant = self.J_CONSTANT_PRIMITIVE
 
     def compute(self, t: float = 0.0, V_void: float = 1.0, **params) -> dict:
 
@@ -198094,9 +198099,11 @@ class CosmicEggSphericalOutlineCalculator:
 
     """
 
-    def __init__(self):
+    NUM_DIMENSIONS_PRIMITIVE = 26
+    OFFSET_AMPLITUDE_PRIMITIVE = 0.1 ** 2
 
-        self.num_dimensions = 26
+    def __init__(self):
+        self.num_dimensions = self.NUM_DIMENSIONS_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
@@ -198105,7 +198112,7 @@ class CosmicEggSphericalOutlineCalculator:
         for i in range(self.num_dimensions):
             dim_dist = 0.0
             for j in range(self.num_dimensions):
-                offset = 0.01 * math.sin(t * (i + j + 1))
+                offset = self.OFFSET_AMPLITUDE_PRIMITIVE * math.sin(t * (i + j + 1))
                 dim_dist += offset ** 2
             outline_radius += math.sqrt(dim_dist)
         mean_outline = outline_radius / self.num_dimensions
@@ -198148,9 +198155,10 @@ SOURCE200_WOLFRAM_CALCULATORS = {
 class Energy26LevelCalculator:
     """26-level polynomial energy structure: E_n = E_0 � 10^n spanning quantum to cosmic scales."""
 
-    def __init__(self):
+    E_0_PRIMITIVE = 0.1 ** 20
 
-        self.E_0 = 1e-20  # J (base quantum energy)
+    def __init__(self):
+        self.E_0 = self.E_0_PRIMITIVE
 
     def compute(self, n: int = 1, t: float = 0.0, **params) -> dict:
 
@@ -198164,10 +198172,13 @@ class Energy26LevelCalculator:
 class VacuumEnergyQCalcCalculator:
     """Vacuum energy density from 26-level spectrum: ?_vac = S(f_i � E_i)/V."""
 
-    def __init__(self):
+    RHO_VAC_UA_PRIMITIVE = _RHO_VAC_UA
+    RHO_VAC_SCM_PRIMITIVE = _RHO_VAC_SCM
+    LAMBDA_VAC_SUCCESSOR_MULTIPLIER_PRIMITIVE = 10 + 1
 
-        self.rho_vac_UA = _RHO_VAC_UA  # J/m�
-        self.rho_vac_SCm = _RHO_VAC_SCM  # J/m�
+    def __init__(self):
+        self.rho_vac_UA = self.RHO_VAC_UA_PRIMITIVE
+        self.rho_vac_SCm = self.RHO_VAC_SCM_PRIMITIVE
 
     def compute(self, V: float = 1.0, t: float = 0.0, **params) -> dict:
 
@@ -198179,10 +198190,12 @@ class VacuumEnergyQCalcCalculator:
 class MagneticStringsQCalcCalculator:
     """Ug3 magnetic strings rotating closed strings with mass/spin/charge Ug3 = G*M*omega/(c*r) backbone-first: SM Newton + light-speed anchors + parametric M/r/omega; framework wrap only, no novel R171 lock (UQFF U_g3 canonical PAPER_1921 f_DM = U_g3 = 4/5 cross-framework closure lives in dedicated dispatches)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    C_PRIMITIVE = 3e8
 
-        self.G = 6.674e-11
-        self.c = 3e8
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
+        self.c = self.C_PRIMITIVE
 
     def compute(self, M: float = 1e30, r: float = 1e6, omega: float = 1.0, t: float = 0.0, **params) -> dict:
 
@@ -198196,11 +198209,14 @@ class MagneticStringsQCalcCalculator:
 class EnhancedBuoyancyQCalcCalculator:
     """Enhanced buoyancy Ubi with superconductivity: Ubi = �_i�?_vac�V�c��SCm."""
 
-    def __init__(self):
+    BETA_I_PRIMITIVE = 0.6029
+    RHO_VAC_PRIMITIVE = _RHO_VAC_UA
+    C_PRIMITIVE = 3e8
 
-        self.beta_i = 0.6
-        self.rho_vac = _RHO_VAC_UA
-        self.c = 3e8
+    def __init__(self):
+        self.beta_i = self.BETA_I_PRIMITIVE
+        self.rho_vac = self.RHO_VAC_PRIMITIVE
+        self.c = self.C_PRIMITIVE
 
     def compute(self, V: float = 1e15, SCm: float = 0.99, t: float = 0.0, **params) -> dict:
 
@@ -198211,11 +198227,14 @@ class EnhancedBuoyancyQCalcCalculator:
 class AetherMetricQCalcCalculator:
     """Aether metric tensor A_00 from vacuum density and spacetime curvature A_00 = -(1 - R_s/r)*rho_vac backbone-first: rho_vac = rho_SCm/rho_UA anchor + Schwarzschild-metric geometry; framework wrap only, no novel R171 lock (aether metric derivation lives in PAPER_1051 two-component rho aether)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    C_PRIMITIVE = 3e8
+    RHO_VAC_PRIMITIVE = _RHO_VAC_UA
 
-        self.G = 6.674e-11
-        self.c = 3e8
-        self.rho_vac = _RHO_VAC_UA
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
+        self.c = self.C_PRIMITIVE
+        self.rho_vac = self.RHO_VAC_PRIMITIVE
 
     def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, **params) -> dict:
 
@@ -198230,13 +198249,18 @@ class AetherMetricQCalcCalculator:
 class UQFF_BaseQCalcCalculator:
     """UQFF Master #1: F_U = Ug - Ub + Um (base unified field)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    C_PRIMITIVE = 3e8
+    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
+    BETA_I_PRIMITIVE = 0.6029
+    RHO_VAC_PRIMITIVE = _RHO_VAC_UA
 
-        self.G = 6.674e-11
-        self.c = 3e8
-        self.mu_0 = 1.2566e-6
-        self.beta_i = 0.6
-        self.rho_vac = _RHO_VAC_UA
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
+        self.c = self.C_PRIMITIVE
+        self.mu_0 = self.MU_0_PRIMITIVE
+        self.beta_i = self.BETA_I_PRIMITIVE
+        self.rho_vac = self.RHO_VAC_PRIMITIVE
 
     def compute(self, M: float = 1e30, r: float = 1e6, B: float = 0.0, t: float = 0.0, **params) -> dict:
 
@@ -198252,12 +198276,16 @@ class UQFF_BaseQCalcCalculator:
 class UQFF_CompressedQCalcCalculator:
     """UQFF Master #2: Compressed gravity (Newtonian + 9 corrections)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    C_PRIMITIVE = 3e8
+    H0_PRIMITIVE = 2.27e-18
+    LAMBDA_PRIMITIVE = 1.11e-52
 
-        self.G = 6.674e-11
-        self.c = 3e8
-        self.H0 = 2.27e-18  # s^-1
-        self.Lambda = 1.11e-52  # m^-2
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
+        self.c = self.C_PRIMITIVE
+        self.H0 = self.H0_PRIMITIVE
+        self.Lambda = self.LAMBDA_PRIMITIVE
 
     def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, B: float = 0.0,
 
@@ -198273,10 +198301,12 @@ class UQFF_CompressedQCalcCalculator:
 class UQFF_SuperconductiveQCalcCalculator:
     """UQFF Master #3 Superconductivity corrections (B < B_crit Meissner) backbone-first: SCm = 1 - B/B_crit generic superconductor-fraction formalism (see R163 F3 SCm=1-F_TRZ=9/10 NGC 6302 primitive-lock for specific application); B_crit = 4.4e13 T Schwinger magnetar critical field SM anchor; framework wrap only, no novel R172 lock (superconductor-fraction primitive-lock lives in PAPER_2029 R163 D5 + PAPER_1922 9/10 = 1-F_TRZ ubiquity)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    B_CRIT_PRIMITIVE = 4.4e13
 
-        self.G = 6.674e-11
-        self.B_crit = 4.4e13
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
+        self.B_crit = self.B_CRIT_PRIMITIVE
 
     def compute(self, M: float = 1e30, r: float = 1e6, B: float = 1e8, t: float = 0.0, **params) -> dict:
 
@@ -198292,9 +198322,10 @@ class UQFF_SuperconductiveQCalcCalculator:
 class UQFF_TriadicQCalcCalculator:
     """UQFF Master #4: Triadic gravity (3-body, resonance, interference)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
 
-        self.G = 6.674e-11
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
 
     def compute(self, M1: float = 1e30, M2: float = 1e28, M3: float = 1e26,
 
@@ -198310,12 +198341,16 @@ class UQFF_TriadicQCalcCalculator:
 class UQFF_BuoyantQCalcCalculator:
     """UQFF Master #5: Buoyancy-dominated (Ubi > Ug, explains galaxy rotation)."""
 
-    def __init__(self):
+    BETA_I_PRIMITIVE = 0.6029
+    RHO_VAC_PRIMITIVE = _RHO_VAC_UA
+    C_PRIMITIVE = 3e8
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
 
-        self.beta_i = 0.6
-        self.rho_vac = _RHO_VAC_UA
-        self.c = 3e8
-        self.G = 6.674e-11
+    def __init__(self):
+        self.beta_i = self.BETA_I_PRIMITIVE
+        self.rho_vac = self.RHO_VAC_PRIMITIVE
+        self.c = self.C_PRIMITIVE
+        self.G = self.G_PRIMITIVE
 
     def compute(self, M: float = 1e42, r: float = 1e21, V: float = None, t: float = 0.0, **params) -> dict:
 
@@ -198376,10 +198411,13 @@ class UQFF_MasterBuoyantQCalcCalculator:
 class UQFF_ResonantQCalcCalculator:
     """UQFF Master #7 Resonance physics oscillatory gravity g_res = g_base*(1 + F_TRZ*cos(omega*t)) backbone-first: 0.1 = F_TRZ canonical primitive embedded in resonance amplitude modulation (cross-obj F_TRZ canonical); framework wrap only, no novel R172 lock."""
 
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    F_TRZ_PRIMITIVE = 0.1
+
     def __init__(self):
 
         import math
-        self.G = 6.674e-11
+        self.G = self.G_PRIMITIVE
         self.pi = math.pi
 
     def compute(self, M: float = 1e30, r: float = 1e6, omega: float = 1.0, t: float = 0.0, **params) -> dict:
@@ -198387,7 +198425,7 @@ class UQFF_ResonantQCalcCalculator:
         import math
         g_base = dpm_ug1_seed(M, r)
         resonance_factor = math.cos(omega * t)
-        g_resonant = g_base * (1.0 + 0.1 * resonance_factor)
+        g_resonant = g_base * (1.0 + self.F_TRZ_PRIMITIVE * resonance_factor)
         return {'value': g_resonant, 'g_base': g_base, 'omega_rad_s': omega, 'resonance_factor': resonance_factor,
                 'units': 'm/s^2', 'equation': 'g_res = g_base * (1 + F_TRZ*cos(omega*t))',
                 'framework': True,
@@ -198397,9 +198435,10 @@ class UQFF_ResonantQCalcCalculator:
 class UQFF_QuadraticQCalcCalculator:
     """UQFF Master #8 Quadratic dual-root solutions g_+/- = +/- sqrt(GM/r^2) disambiguation (positive and negative gravity branches per PAPER_597 negative-time dual existence framework); framework wrap only, no novel R172 lock (dual-root architecture lives in calculate_negative_time_dual_existence + PAPER_597 CW/CCW dual branches)."""
 
-    def __init__(self):
+    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
 
-        self.G = 6.674e-11
+    def __init__(self):
+        self.G = self.G_PRIMITIVE
 
     def compute(self, M: float = 1e30, r: float = 1e6, t: float = 0.0, **params) -> dict:
 

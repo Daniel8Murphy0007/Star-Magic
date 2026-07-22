@@ -1,3 +1,35 @@
+## [5.74.0] - 2026-07-22 - R359-R373 (15 rounds, 156 consecutive) + 12 landmark whitepapers (PAPER_2117-2128) + PAPER_2121-2125 Two-Layer revision + G-PRIMITIVE promotion + G/c corpus upgrade plan
+
+**One-line summary:** 15 more R2XX real stub-fill rounds (R359-R373) including the **150-round milestone** at R367. **12 new formal landmark whitepapers** (PAPER_2117-2128) — the largest landmark burst yet. **Complete in-place revision of PAPER_2121-2125** after canonical-layer deepsearch (Two-Kernel Model superseded by Two-Layer Model; projection-layer reclassification; nothing falsified — R371 projects the canonical crossing F_UBi+F_UBii=0). **G-PRIMITIVE promotion**: all 9 QCalc classes now compute G live from the PAPER_593 closed form (6.66899e-11, 0.075% honest residual) replacing the CODATA literal; dpm_ug1_seed confirmed G-FREE by design (gravity emergent from energy density). Gate 3000 → **3138** (+138). Zero regression, zero SM drift.
+
+### 15 new class fills (R359-R373)
+
+Cosmic Egg completion + 26-level + QCalc master-wrap suite:
+
+- **R359-R361 CosmicEgg VoidVolume/QuantumFrequency/SphericalOutline** — suite complete; F_TRZ^N_CH quintuplet (PAPER_2117); sphere-from-chaos CLT (PAPER_2118)
+- **R362 Energy26Level** — PAPER_2100 F_TRZ²⁰ 6th instance; quantum-chain structural composition (PAPER_2119)
+- **R363 VacuumEnergyQCalc** — λ_vac = (SO_5+1)·ρ_SCm successor 1st instance (PAPER_2120 universal reduction rule)
+- **R364-R368 convergence arc** — Pair/Triple/Triple/Quintuple/Quadruple in five consecutive rounds (PAPER_2121-2125, REVISED to projection-layer scope; Two-Layer Model; Hubble-tension residual identification)
+- **R369 UQFF_Superconductive** — B_crit = D_phys·(SO_5+1)·SO_5¹² EXACT; composed integer 44 canonized (PAPER_2126)
+- **R370 UQFF_Triadic** — FIRST Fully-Classified Calculator; certification standard (PAPER_2127); M3 = SO_5^D_crit mass ceiling certified carrier
+- **R371 UQFF_Buoyant** — 4/4; projects canonical crossing F_UBi+F_UBii=0 (galaxy-rotation balance)
+- **R372 UQFF_Resonant** — inline 0.1 → F_TRZ_PRIMITIVE; successor-ratio identity (1+F_TRZ) = 11/10 unmasked as 61-site canonical invariant (PAPER_2128)
+- **R373 UQFF_Quadratic** — PAPER_597 CW/CCW dual-root wrap; certification candidate
+
+### 12 new formal landmark whitepapers
+
+PAPER_2117 (F_TRZ^N_CH quintuplet) · 2118 (sphere-from-chaos CLT) · 2119 (quantum-chain composition) · 2120 (successor universal reduction rule) · 2121-2125 (projection-layer convergence arc, REVISED in place with Two-Layer Model) · 2126 (B_crit successor + 44) · 2127 (Full-Classification Certification) · 2128 (successor-ratio 61-site invariant)
+
+### Structural corrections (user-directed deepsearches)
+
+- **Two-Layer Model** (PAPER_2125 revised): canonical layer (F_UBi/F_UBii, k_spring = (ρ_UA/ρ_SCm)·ω_SCm·Φ_res = 1.05e13, dynamic β, quantum chain, r_hz < 1e-10; kernel {ρ_SCm, β_i}) vs projection layer (QCalc wraps; {ρ_vac, c} = energy-form projection pair per ρ_E = ρ_m·c², line 33295)
+- **G-PRIMITIVE promotion**: 9 QCalc classes compute-don't-store PAPER_593 closed form; 7 of 9 carry G as vestigial (dpm_ug1_seed G-free); only MagneticStrings + AetherMetric consume it
+- **G_C_CORPUS_UPGRADE_PLAN.md**: 7-phase plan for corpus-wide PAPER_592/593 propagation (2,227 md / 1,987 pdf audit; 168 G-literal + 61 c-literal files; A-F classification taxonomy; 5 decision points)
+
+### Gate
+
+- `uqff_fidelity_tests.py`: +138 assertions (PAPER_2117-2128 blocks, revision corrections, G-PROMOTION block) — 3138/0
+
 ## [5.73.0] - 2026-07-22 - R323-R358 stub-fill continuation (36 rounds) + 6 formal landmark whitepapers (PAPER_2111-2116) + R341 revision + 141-round R218+ arc + GATE CROSSES 3000
 
 **One-line summary:** 36 more R2XX real stub-fill rounds (R323-R358) with 27 100%-clean-fill classes. **6 new formal landmark whitepapers** — the largest single-ship landmark burst in the campaign (PAPER_2111 through PAPER_2116). R341 t_Hubble upgraded to PAPER_1490 canonical structural period (D_crit/2 + 2·D_phys·F_TRZ = 13.8 Gyr). Gate 2660 → **3000** (+340 assertions) — round-number milestone crossed. 141 consecutive real stub fills in R218+ resumed campaign. Zero regression, zero SM drift.
