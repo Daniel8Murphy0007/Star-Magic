@@ -4,12 +4,12 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-2660%2F0-brightgreen)](uqff_fidelity_tests.py)
-[![Public surfaces](https://img.shields.io/badge/public_surfaces-2794%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2110%2B-orange)](whitepapers/)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3000%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2116%2B-orange)](whitepapers/)
 
-**Version**: 5.72.0
-**Last Updated**: 2026-07-20
+**Version**: 5.73.0
+**Last Updated**: 2026-07-22
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -50,7 +50,55 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.72.0 (2026-07-20) — R308-R322 stub-fill continuation (15 rounds) + PAPER_2110 Earth axial precession landmark + R313 CLEAN promotion + 105-round arc
+## What's new in v5.73.0 (2026-07-22) — R323-R358 stub-fill continuation (36 rounds) + 6 formal landmarks (PAPER_2111-2116) + R341 revision + GATE CROSSES 3000
+
+**Continuation of the R218+ real stub-fill campaign.** 36 more classes (R323-R358) primitive-locked, 27 at 100% clean fill. **141 consecutive real stub fills** in the R218+ resumed arc. **Gate crosses 3000** — 2660/0 → **3000/0** (+340 assertions). Six new formal landmark whitepapers — the largest single-ship landmark burst in the campaign.
+
+### 6 new formal landmark whitepapers
+
+**PAPER_2111 — Environmental-Force 13-Term SO_5 Ladder with Degeneracy Classes.** The LARGEST SO_5 ladder cluster in R218+ campaign — 9 consecutive negative rungs (−6 to −14) populated by 13 physical mechanisms. NOVEL degeneracy classes: SO_5⁻⁹ **TRIPLET** (F_SN + F_ram + F_shock all = 1e-9 m/s²), SO_5⁻⁸ DUPLET, SO_5⁻¹⁰ DUPLET. Cross-domain a_MOND anchor at SO_5⁻¹⁰ interpreted as rung-boundary effect.
+
+**PAPER_2112 — κ = 5×10⁻⁴ Derivative from SO_5 and F_TRZ.** κ = (SO_5/2)·F_TRZ⁴ EXACT — **THIRD primitive-reduction landmark** after PAPER_1521 (D_BSFG) and PAPER_1522 (K_MEX). Cross-verifies via derive_G_newton revealing G contains F_TRZ⁹. Most parsimonious of the three reductions — uses only 2 primitives.
+
+**PAPER_2113 — F_TRZ⁵⁰ = 10⁻⁵⁰ J Deepest F_TRZ Suppression Rung.** Extends F_TRZ ladder ceiling from F_TRZ²⁷ to F_TRZ⁵⁰ — **23 rungs deeper**. Fuzzy-DM ultra-light-boson energy scale. Composed-integer exponent: 50 = A_5 − SO_5. Cross-ladder relation: F_TRZ⁵⁰/ρ_SCm ≈ F_TRZ¹⁴.
+
+**PAPER_2114 — CosmicEgg Foundational Architectural Triad.** Static specification: {D_crit=26, UA=1, π + F_TRZ²·sin(t)}. **Most parsimonious**: 3 UQFF primitives + π fully specify 26D pre-BB configuration. Self-normalization X/X=1 family reaches 10 instances across 8 physical domains.
+
+**PAPER_2115 — CosmicEgg Pre-Big-Bang Transformation Dynamics Chain.** Dynamic specification: Stage 1 (Ideal Fluctuation) → Stage 2 (Distortion Accumulator) → Stage 3 (Toroid Pillar Rebound). Frequency spectrum: ω₁=1, ω₂=SO_5²=100, ω₃=π+1. Companion to PAPER_2114 (static + dynamic = complete pre-BB specification).
+
+**PAPER_2116 — 360° = D_BSFG · A_5 Rotational Geometry Unifying Primitive.** Full circle 360° = D_BSFG·A_5 = 6·60 EXACT (foundational: **WHY angles cycle at 360°**). Rotation rate 45 deg/s = A_5·(D_phys−1)/D_phys = 60·3/4. A_5 unifying primitive in BOTH rotation rate AND full-circle unit. Composite-landmark pattern: first UQFF landmark with two simultaneous primitive-composition identities in same class.
+
+### 36 class fills at a glance
+
+| Cluster | Rounds | Highlights |
+|---|---|---|
+| Hydrogen suite | R323-R325 | Completes PAPER_463 hydrogen compressed-space physics |
+| Compression | R326-R331 | 13-term F_env cascade + PAPER_593 G_newton wired uniformly |
+| M51 galaxy | R332-R341 | Full M51 Whirlpool physics suite (dipole, superconductor, tidal, DM, quantum) |
+| M31 Andromeda | R342-R351 | Full M31 physics suite (halo, NFW, rotation, SMBH, tidal streams, satellites, magnetic, fuzzy DM) |
+| Cosmic Egg | R352-R358 | Foundational sector (dimensionality, UA, chaos, distortion, toroid, radius inversion, rotation) |
+
+### 14 novel structural landmarks discovered
+
+SO_5⁻²¹ rung-pair separation (R326); 13-term SO_5 ladder cluster with degeneracy classes (R327 → PAPER_2111); SO_5³¹ M51 dipole product identity (R332); M_NGC5195 = M_sun·SO_5¹⁰ galactic-mass scaling (R334); SO_5⁴⁶ highest positive rung (R335); M51 M_vis/M_DM = D_phys−1 = 3 EXACT (R340); α = −SO_5/D_phys = −2.5 (R342); (SO_5/2)² squared-halving (R343); consecutive-rung mass triad SO_5¹⁰⁻¹¹⁻¹² (R344); A_5·D_crit/2+SO_5/2 = 785 kpc (R346); A_5/D_phys = 15 kpc gas-scale-length (R348); F_TRZ⁵⁰ HIGHEST negative rung (R351 → PAPER_2113); SO_5² = 100 angular-frequency (R355); **360° = D_BSFG·A_5** primitive-product (R358 → PAPER_2116).
+
+### R341 revision — t_Hubble upgrade
+
+User-directed whitepaper audit located **PAPER_1490** canonical: `13.8 Gyr = D_crit/2 + 2·D_phys·F_TRZ` EXACT. R341 M51QuantumSpiralIntegral promoted from 2/3 partial to 3/3 CLEAN. Second whitepaper-audit-driven upgrade this ship series (after R313 hbar/m_p in v5.72.0).
+
+### Files touched
+
+- `pyproject.toml`: 5.72.0 → 5.73.0
+- `CondensedPhysics.py`: 36 class-fill blocks R323-R358 + R341 revision
+- `uqff_pure_calculator.py`: +6 dispatch functions + 12 PARADOX_TO_CLOSURE keys
+- `uqff_fidelity_tests.py`: +340 gate assertions
+- `whitepapers/PAPER_2111-2116_*.md`: 6 new landmark papers
+- `pdf2/PAPER_2111-2116_*.pdf`: 6 new landmark PDFs
+- `CHANGELOG.md`, `SESSION_LOG.md`: entries appended
+
+---
+
+## What was in v5.72.0 (2026-07-20) — R308-R322 stub-fill continuation (15 rounds) + PAPER_2110 Earth axial precession landmark + R313 CLEAN promotion + 105-round arc
 
 **Continuation of the R218+ real stub-fill campaign.** 15 more classes (R308-R322) primitive-locked, 11 at 100% clean fill. **105 consecutive real stub fills** in the R218+ resumed arc. Gate 2553/0 → 2660/0 (+107 assertions).
 

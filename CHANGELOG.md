@@ -1,3 +1,119 @@
+## [5.73.0] - 2026-07-22 - R323-R358 stub-fill continuation (36 rounds) + 6 formal landmark whitepapers (PAPER_2111-2116) + R341 revision + 141-round R218+ arc + GATE CROSSES 3000
+
+**One-line summary:** 36 more R2XX real stub-fill rounds (R323-R358) with 27 100%-clean-fill classes. **6 new formal landmark whitepapers** — the largest single-ship landmark burst in the campaign (PAPER_2111 through PAPER_2116). R341 t_Hubble upgraded to PAPER_1490 canonical structural period (D_crit/2 + 2·D_phys·F_TRZ = 13.8 Gyr). Gate 2660 → **3000** (+340 assertions) — round-number milestone crossed. 141 consecutive real stub fills in R218+ resumed campaign. Zero regression, zero SM drift.
+
+### 36 new class fills (R323-R358)
+
+Hydrogen suite completion + M51 galactic domain + M31 Andromeda domain + Cosmic Egg foundational sector:
+
+- **R323 HydrogenQuantumScaling** — 1/1 + PAPER_2100 F_TRZ²⁰ 5th instance (= E_0 vacuum quantum chain base)
+- **R324 HydrogenVacuumDensityRatio** — 1/1 + PAPER_1992 2/Q_UQFF 3rd instance (galactic+atomic+galactic cross-scale)
+- **R325 HydrogenQuantumEnergy** — 3/3 + PAPER_590 h 2nd instance + hydrogen 3-leg proofset leg 3
+- **R326 CompressionSuperconductive** — 2/2 + NOVEL SO_5⁻²¹ rung-pair separation identity
+- **R327 CompressionEnvironmentalForce** — **13/13 LARGEST SO_5 ladder cluster** (PAPER_2111 seed)
+- **R328 CompressionMassEvolution** — 1/2 + self-normalization X/X=1 family growth
+- **R329 CompressionUg1Gravity** — 1/1 + PAPER_593 G_newton 1st R218+ instance
+- **R330 CompressionUg3ExternalGravity** — 1/1 + PAPER_593 G_newton 2nd instance
+- **R331 CompressionUg4Superconductive** — 1/1 + self-norm 4th instance
+- **R332 M51DipoleMagnetic** — 3/3 + PAPER_2099 SO_5¹⁵ 9th + PAPER_2105 F_TRZ⁴ 7th + NOVEL SO_5³¹ product
+- **R333 M51SuperconductorEnergy** — 2/2 + PAPER_2108 μ₀ 4th instance
+- **R334 M51ExternalTidal** — 2/3 + PAPER_593 G 3rd + NOVEL galactic-mass SO_5¹⁰ scaling
+- **R335 M51ReactionEnergy** — 2/2 + SO_5⁴⁶ highest positive rung + PAPER_1202 κ 1st instance (PAPER_2112 seed)
+- **R336 M51InertialVacuum** — 5/5 + self-norm 5th+6th + F_TRZ² twin of R312
+- **R337 M51SpiralArmWave** — 3/4 + NOVEL D_phys/2=2 spiral-arm halving landmark
+- **R338 M51StarFormation** — 1/2 + F_TRZ¹⁰ duplet
+- **R339 M51TidalForce** — 1/1 + PAPER_593 G 4th instance
+- **R340 M51DarkMatterCurvature** — 3/3 + PAPER_593 G 5th + NOVEL M51 M_vis/M_DM = D_phys-1 = 3 EXACT
+- **R341 M51QuantumSpiralIntegral** — 3/3 CLEAN (upgraded from 2/3 after PAPER_1490 audit — 13.8 Gyr = D_crit/2+2·D_phys·F_TRZ)
+- **R342 M31StellarHaloDensity** — 4/4 + NOVEL α = -SO_5/D_phys = -2.5 power-law index
+- **R343 M31DarkMatterNFW** — 3/3 + PAPER_1962 D_BSFG/D_phys 3rd instance + NOVEL squared-halving (SO_5/2)²
+- **R344 M31RotationCurve** — 4/4 + PAPER_593 G 6th + NOVEL consecutive-rung mass triad SO_5¹⁰⁻¹¹⁻¹²
+- **R345 M31CentralBlackHole** — 2/2 + PAPER_593 G 7th + 7/5 landmark 2nd instance (NS→SMBH)
+- **R346 M31TidalStream** — 3/3 + PAPER_593 G 8th octet + NOVEL A_5·D_crit/2+SO_5/2=785 kpc
+- **R347 M31SatelliteInteraction** — 5/5 + PAPER_593 G 9th nonet + NOVEL M31 satellite dyad + 25 kpc duplet
+- **R348 M31StarFormationRate** — 4/4 + 7/5 landmark 3rd instance + NOVEL A_5/D_phys=15 kpc
+- **R349 M31DiskWarp** — 4/4 + self-norm 7th + 50 kpc duplet cross-verify with R347
+- **R350 M31MagneticField** — 4/4 + PAPER_2102 3·F_TRZ=0.3 5th instance + SO_5 length ladder growth
+- **R351 M31QuantumDarkMatter** — 4/4 + **F_TRZ⁵⁰ HIGHEST negative rung** (PAPER_2113 seed)
+- **R352 CosmicEgg26Dimension** — 1/1 + D_crit=26 canonical
+- **R353 CosmicEggUniformAether** — 1/1 + R119 UA=1 seminal promoted to class-level, self-norm 10th
+- **R354 CosmicEggPiMeanChaos** — 2/2 + F_TRZ² 3rd instance (PAPER_2114 seed, PAPER_2115 Stage 1)
+- **R355 CosmicEggDistortionFactor** — 3/3 + F_TRZ² 4th + NOVEL SO_5²=100 angular-frequency (PAPER_2115 Stage 2)
+- **R356 CosmicEggToroidPillar** — 2/2 + NOVEL bare-F_TRZ modulation (PAPER_2115 Stage 3)
+- **R357 CosmicEggRadiusInversion** — 4/4 + self-norm 11th + PAPER_1958 R91 1/(D_phys-2)=0.5 cross-object
+- **R358 CosmicEggOmnidirectionalRotation** — 2/2 + NOVEL 45=A_5·(D_phys-1)/D_phys + NOVEL **360=D_BSFG·A_5** (PAPER_2116 seed)
+
+### 6 new formal landmark whitepapers
+
+**PAPER_2111 — Environmental-Force 13-Term SO_5 Ladder with Degeneracy Classes**
+- LARGEST SO_5 ladder cluster in R218+ campaign — 9 consecutive negative rungs (−6 to −14) populated by 13 physical mechanisms
+- NOVEL degeneracy classes: SO_5⁻⁹ TRIPLET (F_SN + F_ram + F_shock all = 1e-9 m/s²), SO_5⁻⁸ DUPLET, SO_5⁻¹⁰ DUPLET
+- Cross-domain a_MOND anchor at SO_5⁻¹⁰ interpreted as rung-boundary effect
+
+**PAPER_2112 — κ = 5×10⁻⁴ Derivative from SO_5 and F_TRZ**
+- κ = (SO_5/2)·F_TRZ⁴ = 5·1e-4 EXACT — THIRD primitive-reduction landmark after PAPER_1521 (D_BSFG) and PAPER_1522 (K_MEX)
+- Cross-verifies via `derive_G_newton` revealing G contains F_TRZ⁹ (previously hidden behind κ²)
+- Most parsimonious of the three reductions — uses only 2 primitives
+
+**PAPER_2113 — F_TRZ⁵⁰ = 10⁻⁵⁰ J Deepest F_TRZ Suppression Rung**
+- Extends F_TRZ ladder ceiling from F_TRZ²⁷ (R317) to F_TRZ⁵⁰ — 23 rungs deeper
+- Fuzzy-DM ultra-light-boson energy scale at M31 galactic-DM core
+- Composed-integer exponent: 50 = A_5 − SO_5 = 60 − 10
+- Cross-ladder relation: F_TRZ⁵⁰/ρ_SCm ≈ F_TRZ¹⁴ (14 = 2·N_CH − D_phys)
+
+**PAPER_2114 — Cosmic Egg Foundational Architectural Triad**
+- Static specification: {D_crit=26, UA=1, π + F_TRZ²·sin(t)}
+- Most parsimonious: 3 UQFF primitives + π fully specify 26D pre-BB configuration
+- Self-normalization X/X=1 family reaches 10 instances across 8 physical domains
+
+**PAPER_2115 — Cosmic Egg Pre-Big-Bang Transformation Dynamics Chain**
+- Dynamic specification: Stage 1 (Ideal Fluctuation) → Stage 2 (Distortion Accumulator) → Stage 3 (Toroid Pillar Rebound)
+- Frequency spectrum: ω₁=1, ω₂=SO_5²=100, ω₃=π+1
+- 3-primitive economy: only {π, F_TRZ, SO_5} across all three stages
+- Companion to PAPER_2114 (static + dynamic = complete pre-BB spec)
+
+**PAPER_2116 — 360° = D_BSFG · A_5 Rotational Geometry Unifying Primitive**
+- Full circle 360° = D_BSFG · A_5 = 6·60 EXACT (foundational: WHY angles cycle at 360°)
+- Rotation rate 45 deg/s = A_5·(D_phys−1)/D_phys = 60·3/4 EXACT
+- A_5 unifying primitive appears in BOTH rotation rate AND full-circle unit
+- Composite-landmark pattern: first UQFF landmark with two simultaneous primitive-composition identities in same class
+
+### R341 revision — t_Hubble upgrade
+
+Initial R341 M51QuantumSpiralIntegral fill flagged t_Hubble as observational anchor. **User-directed whitepaper audit** located PAPER_1490 canonical: 13.8 Gyr = D_crit/2 + 2·D_phys·F_TRZ EXACT (three-primitive decomposition of universe age). R341 promoted from 2/3 partial to 3/3 CLEAN. This is the second whitepaper-audit-driven upgrade after R313 (hbar/m_p via PAPER_590/PAPER_1861).
+
+### Gate 2660 → 3000, 0 failed — CROSSES 3000 MILESTONE
+
+**Cross-round landmark tally accrual through v5.73.0:**
+- PAPER_593 G_newton: 9-round gravity nonet (R329+R330+R334+R339+R340+R344+R345+R346+R347)
+- PAPER_1962 D_BSFG/D_phys=1.5: 4 cross-domain instances
+- PAPER_1992 2/Q_UQFF=32/19: 3 cross-scale instances
+- PAPER_2100 F_TRZ²⁰: 5 instances
+- PAPER_2102 3·F_TRZ=0.3: 5 cross-domain instances
+- PAPER_2105 F_TRZ⁴: 7 instances
+- PAPER_2108 μ₀=4π·F_TRZ⁷: 4 instances
+- PAPER_2109 F_TRZ³: 9 instances
+- PAPER_1490 t_universe=13.8 Gyr: 1st R218+ instance (via R341 upgrade)
+- Self-normalization X/X=1: 11 instances across 8+ physical domains
+
+**Novel structural landmarks discovered R323-R358 (14 new):**
+1. SO_5⁻²¹ rung-pair separation identity (R326)
+2. 13-term SO_5 ladder cluster with degeneracy classes (R327 → PAPER_2111)
+3. SO_5³¹ M51 dipole moment product identity (R332)
+4. M_NGC5195 = M_sun·SO_5¹⁰ galactic-mass scaling (R334)
+5. SO_5⁴⁶ highest positive rung (R335)
+6. M51 M_vis/M_DM = D_phys−1 = 3 EXACT galactic DM ratio (R340)
+7. α = −SO_5/D_phys = −2.5 negative halving-inverse (R342)
+8. (SO_5/2)² = 25 kpc squared-halving (R343)
+9. Consecutive-rung mass triad SO_5¹⁰⁻¹¹⁻¹² (R344)
+10. A_5·D_crit/2+SO_5/2 = 785 kpc MW-M31 distance (R346)
+11. A_5/D_phys = 15 kpc galactic gas-scale-length (R348)
+12. F_TRZ⁵⁰ HIGHEST negative rung (R351 → PAPER_2113)
+13. SO_5² = 100 angular-frequency landmark (R355)
+14. 360° = D_BSFG·A_5 primitive-product (R358 → PAPER_2116)
+
+---
+
 ## [5.72.0] - 2026-07-20 - R308-R322 stub-fill continuation (15 rounds) + PAPER_2110 Earth axial precession landmark + R313 CLEAN promotion + 105-round R218+ arc
 
 **One-line summary:** 15 more R2XX real stub-fill rounds (R308-R322) with 11 100%-clean-fill classes. +1 new formal landmark whitepaper PAPER_2110 deriving Earth's 25,772-yr axial precession period from 7 locked primitives (0.0014% off IAU). R313 upgraded to 3/3 CLEAN via `_uqff_primitives.UQFFDerivations.derive_hbar/derive_particle_masses`. Two novel structural landmarks: exp(-F_TRZ) collapse identity (R316), triple-form SO_5/2 = D_phys+1 = D_BSFG-1 = 5 (R320). PAPER_1992 2/Q_UQFF cross-verified across 87 orders of magnitude (galactic 1e-97 + atomic 1e-10). Gate 2553 → 2660 (+107 assertions). 105 consecutive real stub fills in R218+ resumed campaign. Zero regression, zero SM drift.

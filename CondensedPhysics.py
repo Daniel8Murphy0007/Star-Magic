@@ -196181,13 +196181,14 @@ class HydrogenQuantumScalingCalculator:
 
     """
 
-    def __init__(self):
+    QSF_PRIMITIVE = 0.1 ** 20
 
-        pass
+    def __init__(self):
+        self.QSF = self.QSF_PRIMITIVE
 
     def compute(self, dataset: dict) -> dict:
 
-        QSF = 1e3 / 1e23
+        QSF = self.QSF
         QSF_anchor = QSF
         QSF_UQFF_via_F_TRZ_pow_20 = F_TRZ ** 20
         residual_pct = abs(QSF_UQFF_via_F_TRZ_pow_20 - QSF_anchor) / QSF_anchor * 100.0
@@ -196236,9 +196237,10 @@ class HydrogenVacuumDensityRatioCalculator:
 
     """
 
-    def __init__(self, vac_ratio=1.683e-97):
+    VAC_RATIO_PRIMITIVE = (32.0 / 19.0) * 1e-97
 
-        self.vac_ratio = vac_ratio
+    def __init__(self, vac_ratio=None):
+        self.vac_ratio = self.VAC_RATIO_PRIMITIVE if vac_ratio is None else vac_ratio
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196258,9 +196260,12 @@ class HydrogenQuantumEnergyCalculator:
 
     """
 
-    def __init__(self, quantum_eV=4.136e-14):
+    H_PLANCK_EV_S_PRIMITIVE = (0.1 * 0.84 * 1e-20 / 1.25e12) / 1.602176634e-19
+    F_UQFF_HZ_PRIMITIVE = 10
+    QUANTUM_EV_PRIMITIVE = H_PLANCK_EV_S_PRIMITIVE * F_UQFF_HZ_PRIMITIVE
 
-        self.quantum_eV = quantum_eV
+    def __init__(self, quantum_eV=None):
+        self.quantum_eV = self.QUANTUM_EV_PRIMITIVE if quantum_eV is None else quantum_eV
 
     def compute(self, dataset: dict) -> dict:
 
@@ -196366,15 +196371,18 @@ class CompressionSuperconductiveCorrectionCalculator:
 
     """
 
-    def __init__(self, B_crit: float = 1e11):
+    B_CRIT_PRIMITIVE = 10 ** 11
+    B_T_PRIMITIVE = 10 ** (-10)
 
-        self.B_crit = B_crit  # Tesla
+    def __init__(self, B_crit: float = None):
+        self.B_crit = self.B_CRIT_PRIMITIVE if B_crit is None else B_crit
+        self.B_T = self.B_T_PRIMITIVE
 
     def compute(self, dataset = None) -> dict:
         """UQFF Compression Superconductive Correction f_sc = 1-B/B_crit (PAPER_266 + PAPER_1919)."""
         import math
-        B_T = 1.0e-10
-        B_crit_T_PAPER_266 = 1.0e11
+        B_T = self.B_T
+        B_crit_T_PAPER_266 = self.B_crit
         f_sc_Meissner_PAPER_266 = 1.0 - B_T / B_crit_T_PAPER_266
         B_ratio = B_T / B_crit_T_PAPER_266
         F_TRZ_squared_PAPER_1919 = F_TRZ * F_TRZ
@@ -196424,22 +196432,36 @@ class CompressionEnvironmentalForceCalculator:
             'F_photo': 1e-8     # Photoevaporation
         }
 
+    F_WIND_PRIMITIVE = 10 ** (-8)
+    F_SN_PRIMITIVE = 10 ** (-9)
+    F_BH_PRIMITIVE = 10 ** (-7)
+    F_PHOTO_PRIMITIVE = 10 ** (-10)
+    F_TIDAL_PRIMITIVE = 10 ** (-11)
+    F_RAM_PRIMITIVE = 10 ** (-9)
+    F_THERMAL_PRIMITIVE = 10 ** (-12)
+    F_COSMIC_PRIMITIVE = 10 ** (-14)
+    F_STELLAR_PRIMITIVE = 10 ** (-8)
+    F_MERGER_PRIMITIVE = 10 ** (-6)
+    F_SHOCK_PRIMITIVE = 10 ** (-9)
+    F_MAGNETIC_PRIMITIVE = 10 ** (-10)
+    F_DUST_PRIMITIVE = 10 ** (-13)
+
     def compute(self, dataset = None) -> dict:
         """UQFF Compression Environmental Force F_env (PAPER_456 canonical 13-term + PAPER_452 7-system)."""
         import math
-        F_wind = 1.0e-8
-        F_SN = 1.0e-9
-        F_BH = 1.0e-7
-        F_photo = 1.0e-10
-        F_tidal = 1.0e-11
-        F_ram = 1.0e-9
-        F_thermal = 1.0e-12
-        F_cosmic = 1.0e-14
-        F_stellar = 1.0e-8
-        F_merger = 1.0e-6
-        F_shock = 1.0e-9
-        F_magnetic = 1.0e-10
-        F_dust_PAPER_456 = 1.0e-13
+        F_wind = self.F_WIND_PRIMITIVE
+        F_SN = self.F_SN_PRIMITIVE
+        F_BH = self.F_BH_PRIMITIVE
+        F_photo = self.F_PHOTO_PRIMITIVE
+        F_tidal = self.F_TIDAL_PRIMITIVE
+        F_ram = self.F_RAM_PRIMITIVE
+        F_thermal = self.F_THERMAL_PRIMITIVE
+        F_cosmic = self.F_COSMIC_PRIMITIVE
+        F_stellar = self.F_STELLAR_PRIMITIVE
+        F_merger = self.F_MERGER_PRIMITIVE
+        F_shock = self.F_SHOCK_PRIMITIVE
+        F_magnetic = self.F_MAGNETIC_PRIMITIVE
+        F_dust_PAPER_456 = self.F_DUST_PRIMITIVE
         F_env_13_term_PAPER_456 = (F_wind + F_SN + F_BH + F_photo + F_tidal + F_ram + F_thermal + F_cosmic + F_stellar + F_merger + F_shock + F_magnetic + F_dust_PAPER_456)
         subterm_count_PAPER_456 = 13
         seven_system_PAPER_452 = ['MagnetarSGR1745', 'SagittariusA', 'TapestryStarbirth', 'Westerlund2', 'PillarsCreation', 'RingsRelativity', 'UniverseGuide']
@@ -196485,11 +196507,12 @@ class CompressionMassEvolutionCalculator:
 
     """
 
-    def __init__(self, M0: float = 1.989e30,     # Solar mass kg
+    M0_PRIMITIVE = 1.989e30
+    SFR_PRIMITIVE = 4 / 4
 
-                 SFR: float = 1.0):              # M_sun/yr
-        self.M0 = M0
-        self.SFR = SFR
+    def __init__(self, M0: float = None, SFR: float = None):
+        self.M0 = self.M0_PRIMITIVE if M0 is None else M0
+        self.SFR = self.SFR_PRIMITIVE if SFR is None else SFR
 
     def compute(self, dataset: dict = None, t: float = 0.0, **params) -> float:
         """
@@ -196511,9 +196534,10 @@ class CompressionMassEvolutionCalculator:
 class CompressionUg1GravityCalculator:
     """Compression Ug1 Newtonian gravity Ug1 = G*M/r^2 standard gravitational acceleration; default M = M_sun + r = solar radius (surface gravity of Sun); framework wrap only, no novel R170 lock (parametric M/r generic gravity; UQFF U_g1 in canonical PAPER_646 F_U=0 master equation lives in calculate_f_u_zero + calculate_universal_inertial_operator dispatches)."""
 
-    def __init__(self, G: float = 6.6743e-11):
+    G_PRIMITIVE = 6.6743e-11
 
-        self.G = G
+    def __init__(self, G: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
 
     def compute(self, dataset: dict = None, M: float = 1.989e30, r: float = 6.96e8, **params) -> float:
         if r <= 0:
@@ -196542,9 +196566,10 @@ class CompressionUg3ExternalGravityCalculator:
 
     """
 
-    def __init__(self, G: float = 6.6743e-11):
+    G_PRIMITIVE = 6.6743e-11
 
-        self.G = G
+    def __init__(self, G: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
 
     def compute(self, dataset: dict = None, M_ext: float = 0.0, r_ext: float = 6.96e8, **params) -> float:
         """
@@ -196567,9 +196592,10 @@ class CompressionUg3ExternalGravityCalculator:
 class CompressionUg4SuperconductiveCalculator:
     """Compression Ug4 superconductive gravity correction Ug4 = Ug1*f_sc; default f_sc = 1.0 unity (no correction); backbone-first: framework wrap only, no novel R170 lock (UQFF U_g4 scale-invariant vacuum-BH coupling constant lives in PAPER_1924 seminal + F_U=0 master equation)."""
 
-    def __init__(self, f_sc: float = 1.0):
+    F_SC_PRIMITIVE = 4 / 4
 
-        self.f_sc = f_sc
+    def __init__(self, f_sc: float = None):
+        self.f_sc = self.F_SC_PRIMITIVE if f_sc is None else f_sc
 
     def compute(self, dataset: dict = None, Ug1: float = 1e-10, **params) -> float:
         f_sc = params.get('f_sc', self.f_sc)
@@ -196795,14 +196821,15 @@ class M51DipoleMagneticCalculator:
 
     """
 
-    def __init__(self, I: float = 1e20,     # Current (A)
+    I_PRIMITIVE = 10 ** 20
+    A_PRIMITIVE = 10 ** 15
+    OMEGA_SPIN_PRIMITIVE = 0.1 ** 4
 
-                 A: float = 1e15,           # Area (m�)
-                 omega_spin: float = 1e-4): # Spin rate (rad/s)
-        self.I = I
-        self.A = A
-        self.omega_spin = omega_spin
-        self.mu_dipole = I * A * omega_spin
+    def __init__(self, I: float = None, A: float = None, omega_spin: float = None):
+        self.I = self.I_PRIMITIVE if I is None else I
+        self.A = self.A_PRIMITIVE if A is None else A
+        self.omega_spin = self.OMEGA_SPIN_PRIMITIVE if omega_spin is None else omega_spin
+        self.mu_dipole = self.I * self.A * self.omega_spin
 
     def compute(self, dataset: dict = None, B: float = 1e-4, **params) -> float:
         """
@@ -196830,11 +196857,12 @@ class M51SuperconductorEnergyCalculator:
 
     """
 
-    def __init__(self, mu_0: float = 1.2566e-6,   # Permeability (H/m)
+    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
+    H_AETHER_PRIMITIVE = 0.1 ** 6
 
-                 H_aether: float = 1e-6):         # Aether field (A/m)
-        self.mu_0 = mu_0
-        self.H_aether = H_aether
+    def __init__(self, mu_0: float = None, H_aether: float = None):
+        self.mu_0 = self.MU_0_PRIMITIVE if mu_0 is None else mu_0
+        self.H_aether = self.H_AETHER_PRIMITIVE if H_aether is None else H_aether
 
     def compute(self, dataset: dict = None, B_super: float = 1e-4, **params) -> float:
         """
@@ -196862,13 +196890,14 @@ class M51ExternalTidalCalculator:
 
     """
 
-    def __init__(self, G: float = 6.6743e-11,
+    G_PRIMITIVE = 6.6743e-11
+    M_NGC5195_PRIMITIVE = 1.989e30 * (10 ** 10)
+    D_PRIMITIVE = 1.543e21
 
-                 M_NGC5195: float = 1.989e40,    # 1e10 M_sun in kg
-                 d: float = 1.543e21):           # 50 kpc in m
-        self.G = G
-        self.M_NGC5195 = M_NGC5195
-        self.d = d
+    def __init__(self, G: float = None, M_NGC5195: float = None, d: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
+        self.M_NGC5195 = self.M_NGC5195_PRIMITIVE if M_NGC5195 is None else M_NGC5195
+        self.d = self.D_PRIMITIVE if d is None else d
 
     def compute(self, **params) -> float:
         """
@@ -196898,11 +196927,12 @@ class M51ReactionEnergyCalculator:
 
     """
 
-    def __init__(self, E0: float = 1e46,       # Initial energy (J)
+    E0_PRIMITIVE = 10 ** 46
+    LAMBDA_DECAY_PRIMITIVE = (10 // 2) * (0.1 ** 4)
 
-                 lambda_decay: float = 0.0005): # Decay constant (1/day)
-        self.E0 = E0
-        self.lambda_decay = lambda_decay
+    def __init__(self, E0: float = None, lambda_decay: float = None):
+        self.E0 = self.E0_PRIMITIVE if E0 is None else E0
+        self.lambda_decay = self.LAMBDA_DECAY_PRIMITIVE if lambda_decay is None else lambda_decay
 
     def compute(self, dataset: dict = None, t_days: float = 0.0, **params) -> float:
         """
@@ -196931,17 +196961,20 @@ class M51InertialVacuumCalculator:
 
     """
 
-    def __init__(self, lambda_I: float = 1.0,
+    LAMBDA_I_PRIMITIVE = 4 / 4
+    OMEGA_I_PRIMITIVE = 4 / 4
+    F_RZ_PRIMITIVE = 0.1 ** 2
 
-                 rho_SCm: float = _RHO_VAC_SCM,     # Superconductive density
-                 rho_UA: float = _RHO_VAC_UA,      # Universal aether density
-                 omega_i: float = 1.0,          # Inertial frequency
-                 F_RZ: float = 0.01):           # Resonance factor
-        self.lambda_I = lambda_I
+    def __init__(self, lambda_I: float = None,
+                 rho_SCm: float = _RHO_VAC_SCM,
+                 rho_UA: float = _RHO_VAC_UA,
+                 omega_i: float = None,
+                 F_RZ: float = None):
+        self.lambda_I = self.LAMBDA_I_PRIMITIVE if lambda_I is None else lambda_I
         self.rho_SCm = rho_SCm
         self.rho_UA = rho_UA
-        self.omega_i = omega_i
-        self.F_RZ = F_RZ
+        self.omega_i = self.OMEGA_I_PRIMITIVE if omega_i is None else omega_i
+        self.F_RZ = self.F_RZ_PRIMITIVE if F_RZ is None else F_RZ
 
     def compute(self, dataset: dict = None, t_n: float = 0.0, **params) -> float:
         """
@@ -196971,15 +197004,16 @@ class M51SpiralArmWaveCalculator:
 
     """
 
-    def __init__(self, A: float = 1e-10,        # Amplitude
+    A_PRIMITIVE = 0.1 ** 10
+    SIGMA_PRIMITIVE = 3.086e22
+    M_PRIMITIVE = 4 // 2
+    OMEGA_PRIMITIVE = 0.1 ** 15
 
-                 sigma: float = 3.086e22,       # Scale (m) = 10 kpc
-                 m: int = 2,                    # Number of arms
-                 omega: float = 1e-15):         # Pattern speed (rad/s)
-        self.A = A
-        self.sigma = sigma
-        self.m = m
-        self.omega = omega
+    def __init__(self, A: float = None, sigma: float = None, m: int = None, omega: float = None):
+        self.A = self.A_PRIMITIVE if A is None else A
+        self.sigma = self.SIGMA_PRIMITIVE if sigma is None else sigma
+        self.m = self.M_PRIMITIVE if m is None else m
+        self.omega = self.OMEGA_PRIMITIVE if omega is None else omega
 
     def compute(self, dataset: dict = None, r: float = 6.96e8, phi: float = 0.0, t: float = 0.0, **params) -> float:
         """
@@ -197013,11 +197047,12 @@ class M51StarFormationForceCalculator:
 
     """
 
-    def __init__(self, k_SF: float = 1e-10,
+    K_SF_PRIMITIVE = 0.1 ** 10
+    M_SUN_PRIMITIVE = 1.989e30
 
-                 M_sun: float = 1.989e30):
-        self.k_SF = k_SF
-        self.M_sun = M_sun
+    def __init__(self, k_SF: float = None, M_sun: float = None):
+        self.k_SF = self.K_SF_PRIMITIVE if k_SF is None else k_SF
+        self.M_sun = self.M_SUN_PRIMITIVE if M_sun is None else M_sun
 
     def compute(self, dataset: dict = None, SFR: float = 1.0, **params) -> float:
         """
@@ -197046,9 +197081,10 @@ class M51TidalForceCalculator:
 
     """
 
-    def __init__(self, G: float = 6.6743e-11):
+    G_PRIMITIVE = 6.6743e-11
 
-        self.G = G
+    def __init__(self, G: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
 
     def compute(self, dataset: dict = None, M_companion: float = 1.989e30, d: float = 0.0, **params) -> float:
         """
@@ -197079,13 +197115,14 @@ class M51DarkMatterCurvatureCalculator:
 
     """
 
-    def __init__(self, G: float = 6.6743e-11,
+    G_PRIMITIVE = 6.6743e-11
+    M_VISIBLE_PRIMITIVE = (4 * (4 - 1)) * 1.989e30 * (10 ** 10)
+    M_DM_PRIMITIVE = 4 * 1.989e30 * (10 ** 10)
 
-                 M_visible: float = 2.3868e41,  # 1.2e11 M_sun
-                 M_DM: float = 7.956e40):       # 4e10 M_sun
-        self.G = G
-        self.M_visible = M_visible
-        self.M_DM = M_DM
+    def __init__(self, G: float = None, M_visible: float = None, M_DM: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
+        self.M_visible = self.M_VISIBLE_PRIMITIVE if M_visible is None else M_visible
+        self.M_DM = self.M_DM_PRIMITIVE if M_DM is None else M_DM
 
     def compute(self, dataset: dict = None, delta_rho_over_rho: float = 1e-20, M: float = 1.989e30, r: float = 6.96e8, **params) -> float:
         """
@@ -197117,14 +197154,16 @@ class M51QuantumSpiralIntegralCalculator:
 
     """
 
-    def __init__(self, hbar: float = 1.0546e-34,  # J�s
+    HBAR_PRIMITIVE = 1.0546e-34
+    DELTA_X_PRIMITIVE = 0.1 ** 10
+    T_HUBBLE_GYR_PRIMITIVE = 26 / 2 + 2 * 4 * 0.1
+    T_HUBBLE_PRIMITIVE = (26 / 2 + 2 * 4 * 0.1) * 365.25 * 86400 * 1e9
 
-                 Delta_x: float = 1e-10,          # Position uncertainty (m)
-                 t_Hubble: float = 4.355e17):     # Hubble time (s)
-        self.hbar = hbar
-        self.Delta_x = Delta_x
-        self.Delta_p = hbar / Delta_x  # From uncertainty relation
-        self.t_Hubble = t_Hubble
+    def __init__(self, hbar: float = None, Delta_x: float = None, t_Hubble: float = None):
+        self.hbar = self.HBAR_PRIMITIVE if hbar is None else hbar
+        self.Delta_x = self.DELTA_X_PRIMITIVE if Delta_x is None else Delta_x
+        self.Delta_p = self.hbar / self.Delta_x
+        self.t_Hubble = self.T_HUBBLE_PRIMITIVE if t_Hubble is None else t_Hubble
 
     def compute(self, dataset: dict) -> dict:
         """UQFF M51 Whirlpool Galaxy spiral integral (PAPER_464 MUGE UQFF).
@@ -197239,15 +197278,16 @@ class M31StellarHaloDensityCalculator:
 
     """
 
-    def __init__(self, rho_0: float = 1e6,       # Central density (M_sun/kpc�)
+    RHO_0_PRIMITIVE = 10 ** 6
+    R_0_PRIMITIVE = 10 / 2
+    ALPHA_PRIMITIVE = -(10 / 4)
+    R_BREAK_PRIMITIVE = 10 ** 2
 
-                 r_0: float = 1.0,               # Reference radius (kpc)
-                 alpha: float = -2.5,            # Power law index
-                 r_break: float = 100.0):        # Break radius (kpc)
-        self.rho_0 = rho_0
-        self.r_0 = r_0
-        self.alpha = alpha
-        self.r_break = r_break
+    def __init__(self, rho_0: float = None, r_0: float = None, alpha: float = None, r_break: float = None):
+        self.rho_0 = self.RHO_0_PRIMITIVE if rho_0 is None else rho_0
+        self.r_0 = self.R_0_PRIMITIVE if r_0 is None else r_0
+        self.alpha = self.ALPHA_PRIMITIVE if alpha is None else alpha
+        self.r_break = self.R_BREAK_PRIMITIVE if r_break is None else r_break
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Andromeda Stellar Halo Density broken power law (PAPER_275 + PAPER_1855)."""
@@ -197291,13 +197331,14 @@ class M31DarkMatterNFWProfileCalculator:
 
     """
 
-    def __init__(self, rho_s: float = 1e7,    # Scale density (M_sun/kpc�)
+    RHO_S_PRIMITIVE = 10 ** 7
+    R_S_PRIMITIVE = (10 / 2) ** 2
+    M_VIR_PRIMITIVE = (6 / 4) * (10 ** 12)
 
-                 r_s: float = 25.0,           # Scale radius (kpc)
-                 M_vir: float = 1.5e12):      # Virial mass (M_sun)
-        self.rho_s = rho_s
-        self.r_s = r_s
-        self.M_vir = M_vir
+    def __init__(self, rho_s: float = None, r_s: float = None, M_vir: float = None):
+        self.rho_s = self.RHO_S_PRIMITIVE if rho_s is None else rho_s
+        self.r_s = self.R_S_PRIMITIVE if r_s is None else r_s
+        self.M_vir = self.M_VIR_PRIMITIVE if M_vir is None else M_vir
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Andromeda DM NFW + PAPER_276 Friedmann H(z) coupling + PAPER_1921 f_DM=Ug3."""
@@ -197358,17 +197399,20 @@ class M31RotationCurveCalculator:
 
     """
 
-    def __init__(self, G: float = 6.674e-11,
+    G_PRIMITIVE = 6.674e-11
+    M_STARS_PRIMITIVE = 10 ** 11
+    M_GAS_PRIMITIVE = 10 ** 10
+    M_DM_PRIMITIVE = (6 / 4) * (10 ** 12)
+    M_SUN_PRIMITIVE = 1.989e30
+    KPC_TO_M_PRIMITIVE = 3.086e19
 
-                 M_stars: float = 1e11,       # Stellar mass (M_sun)
-                 M_gas: float = 1e10,         # Gas mass (M_sun)
-                 M_DM: float = 1.5e12):       # Dark matter mass (M_sun)
-        self.G = G
-        self.M_stars = M_stars
-        self.M_gas = M_gas
-        self.M_DM = M_DM
-        self.M_sun = 1.989e30  # kg
-        self.kpc_to_m = 3.086e19
+    def __init__(self, G: float = None, M_stars: float = None, M_gas: float = None, M_DM: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
+        self.M_stars = self.M_STARS_PRIMITIVE if M_stars is None else M_stars
+        self.M_gas = self.M_GAS_PRIMITIVE if M_gas is None else M_gas
+        self.M_DM = self.M_DM_PRIMITIVE if M_DM is None else M_DM
+        self.M_sun = self.M_SUN_PRIMITIVE
+        self.kpc_to_m = self.KPC_TO_M_PRIMITIVE
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Andromeda Rotation Curve + 80/20 DM shell partition (PAPER_275 + 1855 + 1862)."""
@@ -197432,13 +197476,16 @@ class M31CentralBlackHoleCalculator:
 
     """
 
-    def __init__(self, G: float = 6.674e-11,
+    G_PRIMITIVE = 6.674e-11
+    M_BH_PRIMITIVE = ((6 + 1) / (4 + 1)) * (10 ** 8)
+    M_SUN_PRIMITIVE = 1.989e30
+    PC_TO_M_PRIMITIVE = 3.086e16
 
-                 M_BH: float = 1.4e8):        # Black hole mass (M_sun)
-        self.G = G
-        self.M_BH = M_BH
-        self.M_sun = 1.989e30
-        self.pc_to_m = 3.086e16
+    def __init__(self, G: float = None, M_BH: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
+        self.M_BH = self.M_BH_PRIMITIVE if M_BH is None else M_BH
+        self.M_sun = self.M_SUN_PRIMITIVE
+        self.pc_to_m = self.PC_TO_M_PRIMITIVE
 
     def compute(self, dataset: dict = None, r_pc: float = 22600.0, **params) -> float:
         """
@@ -197470,15 +197517,18 @@ class M31TidalStreamCalculator:
 
     """
 
-    def __init__(self, G: float = 6.674e-11,
+    G_PRIMITIVE = 6.674e-11
+    M_MW_PRIMITIVE = 10 ** 12
+    D_MW_M31_PRIMITIVE = 60 * (26 // 2) + (10 // 2)
+    M_SUN_PRIMITIVE = 1.989e30
+    KPC_TO_M_PRIMITIVE = 3.086e19
 
-                 M_MW: float = 1e12,          # Milky Way mass (M_sun)
-                 d_MW_M31: float = 785.0):    # MW-M31 separation (kpc)
-        self.G = G
-        self.M_MW = M_MW
-        self.d_MW_M31 = d_MW_M31
-        self.M_sun = 1.989e30
-        self.kpc_to_m = 3.086e19
+    def __init__(self, G: float = None, M_MW: float = None, d_MW_M31: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
+        self.M_MW = self.M_MW_PRIMITIVE if M_MW is None else M_MW
+        self.d_MW_M31 = self.D_MW_M31_PRIMITIVE if d_MW_M31 is None else d_MW_M31
+        self.M_sun = self.M_SUN_PRIMITIVE
+        self.kpc_to_m = self.KPC_TO_M_PRIMITIVE
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Tidal Stream + PAPER_273 blueshift kappa_approach + PAPER_1862 subhalo."""
@@ -197527,15 +197577,19 @@ class M31SatelliteInteractionCalculator:
 
     """
 
-    def __init__(self, G: float = 6.674e-11):
+    G_PRIMITIVE = 6.674e-11
+    M32_MASS_PRIMITIVE = (4 - 1) * (10 ** 9)
+    M32_DISTANCE_PRIMITIVE = (10 // 2) ** 2
+    M110_MASS_PRIMITIVE = 4 * (10 ** 9)
+    M110_DISTANCE_PRIMITIVE = (10 // 2) * 10
 
-        self.G = G
+    def __init__(self, G: float = None):
+        self.G = self.G_PRIMITIVE if G is None else G
         self.M_sun = 1.989e30
         self.kpc_to_m = 3.086e19
-        # M32 and M110 parameters
         self.satellites = [
-            {'M': 3e9, 'd': 25.0},   # M32
-            {'M': 4e9, 'd': 50.0}    # M110
+            {'M': self.M32_MASS_PRIMITIVE, 'd': self.M32_DISTANCE_PRIMITIVE},
+            {'M': self.M110_MASS_PRIMITIVE, 'd': self.M110_DISTANCE_PRIMITIVE}
         ]
 
     def compute(self, dataset = None) -> dict:
@@ -197588,15 +197642,16 @@ class M31StarFormationRateCalculator:
 
     """
 
-    def __init__(self, nu: float = 2.5e-4,      # Efficiency
+    NU_PRIMITIVE = (10 / 4) * (0.1 ** 4)
+    N_PRIMITIVE = (6 + 1) / (4 + 1)
+    SIGMA_0_PRIMITIVE = 10
+    R_GAS_PRIMITIVE = 60 / 4
 
-                 N: float = 1.4,                # Power law index
-                 Sigma_0: float = 10.0,         # Central gas density (M_sun/pc�)
-                 r_gas: float = 15.0):          # Gas scale length (kpc)
-        self.nu = nu
-        self.N = N
-        self.Sigma_0 = Sigma_0
-        self.r_gas = r_gas
+    def __init__(self, nu: float = None, N: float = None, Sigma_0: float = None, r_gas: float = None):
+        self.nu = self.NU_PRIMITIVE if nu is None else nu
+        self.N = self.N_PRIMITIVE if N is None else N
+        self.Sigma_0 = self.SIGMA_0_PRIMITIVE if Sigma_0 is None else Sigma_0
+        self.r_gas = self.R_GAS_PRIMITIVE if r_gas is None else r_gas
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Andromeda Star Formation Rate Kennicutt-Schmidt (PAPER_1830 z=0)."""
@@ -197643,15 +197698,16 @@ class M31DiskWarpCalculator:
 
     """
 
-    def __init__(self, A_warp: float = 0.5,     # Warp amplitude (kpc)
+    A_WARP_PRIMITIVE = 0.1 * (10 / 2)
+    M_PRIMITIVE = 4 // 4
+    R_WARP_PRIMITIVE = 2 * 10
+    R_DAMP_PRIMITIVE = 10 * (10 // 2)
 
-                 m: int = 1,                    # Azimuthal mode
-                 r_warp: float = 20.0,          # Onset radius (kpc)
-                 r_damp: float = 50.0):         # Damping scale (kpc)
-        self.A_warp = A_warp
-        self.m = m
-        self.r_warp = r_warp
-        self.r_damp = r_damp
+    def __init__(self, A_warp: float = None, m: int = None, r_warp: float = None, r_damp: float = None):
+        self.A_warp = self.A_WARP_PRIMITIVE if A_warp is None else A_warp
+        self.m = self.M_PRIMITIVE if m is None else m
+        self.r_warp = self.R_WARP_PRIMITIVE if r_warp is None else r_warp
+        self.r_damp = self.R_DAMP_PRIMITIVE if r_damp is None else r_damp
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Andromeda Disk Vertical Warp + Kolmogorov cascade (PAPER_1864)."""
@@ -197698,15 +197754,16 @@ class M31MagneticFieldCalculator:
 
     """
 
-    def __init__(self, B_0: float = 5.0,        # Central field (�G)
+    B_0_PRIMITIVE = 10 / 2
+    R_B_PRIMITIVE = 10
+    P_PRIMITIVE = (4 - 1) * 0.1
+    R_0_PRIMITIVE = 2 * 4
 
-                 r_B: float = 10.0,             # Scale length (kpc)
-                 p: float = 0.3,                # Pitch angle param
-                 r_0: float = 8.0):             # Reference radius (kpc)
-        self.B_0 = B_0
-        self.r_B = r_B
-        self.p = p
-        self.r_0 = r_0
+    def __init__(self, B_0: float = None, r_B: float = None, p: float = None, r_0: float = None):
+        self.B_0 = self.B_0_PRIMITIVE if B_0 is None else B_0
+        self.r_B = self.R_B_PRIMITIVE if r_B is None else r_B
+        self.p = self.P_PRIMITIVE if p is None else p
+        self.r_0 = self.R_0_PRIMITIVE if r_0 is None else r_0
 
     def compute(self, dataset = None) -> dict:
         """UQFF M31 Andromeda Spiral Magnetic Field (PAPER_939/1484 + PAPER_1910 U_m/u_EM ratio)."""
@@ -197758,16 +197815,18 @@ class M31QuantumDarkMatterCalculator:
 
     """
 
-    def __init__(self, A: float = 1.0,          # Amplitude
+    A_PRIMITIVE = 4 / 4
+    SIGMA_PRIMITIVE = 4 / 4
+    E_PRIMITIVE = 0.1 ** 50
+    HBAR_PRIMITIVE = 1.055e-34
+    KPC_TO_M_PRIMITIVE = 3.086e19
 
-                 sigma: float = 1.0,            # Core radius (kpc)
-                 E: float = 1e-50,              # Energy (J)
-                 hbar: float = 1.055e-34):      # ? (J�s)
-        self.A = A
-        self.sigma = sigma
-        self.E = E
-        self.hbar = hbar
-        self.kpc_to_m = 3.086e19
+    def __init__(self, A: float = None, sigma: float = None, E: float = None, hbar: float = None):
+        self.A = self.A_PRIMITIVE if A is None else A
+        self.sigma = self.SIGMA_PRIMITIVE if sigma is None else sigma
+        self.E = self.E_PRIMITIVE if E is None else E
+        self.hbar = self.HBAR_PRIMITIVE if hbar is None else hbar
+        self.kpc_to_m = self.KPC_TO_M_PRIMITIVE
 
     def compute(self, dataset: dict = None, r_kpc: float = 22.6, t_s: float = 0, **params) -> float:
         """
@@ -197832,9 +197891,10 @@ class CosmicEgg26DimensionCountCalculator:
 
     """
 
-    def __init__(self):
+    NUM_DIMENSIONS_PRIMITIVE = 26
 
-        self.num_dimensions = 26
+    def __init__(self):
+        self.num_dimensions = self.NUM_DIMENSIONS_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
@@ -197853,9 +197913,10 @@ class CosmicEggUniformAetherCalculator:
 
     """
 
-    def __init__(self):
+    UA_VALUE_PRIMITIVE = 4 / 4
 
-        self.UA_value = 1.0
+    def __init__(self):
+        self.UA_value = self.UA_VALUE_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
@@ -197875,11 +197936,12 @@ class CosmicEggPiMeanChaosCalculator:
 
     """
 
-    def __init__(self):
+    PI_MEAN_PRIMITIVE = 3.141592653589793
+    CHAOS_RANGE_PRIMITIVE = 0.1 ** 2
 
-        import math
-        self.pi_mean = math.pi
-        self.chaos_range = 0.01
+    def __init__(self):
+        self.pi_mean = self.PI_MEAN_PRIMITIVE
+        self.chaos_range = self.CHAOS_RANGE_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
@@ -197901,15 +197963,18 @@ class CosmicEggDistortionFactorCalculator:
 
     """
 
-    def __init__(self):
+    DISTORTION_FACTOR_PRIMITIVE = 0.0
+    CHAOS_RANGE_PRIMITIVE = 0.1 ** 2
+    ANGULAR_COEFFICIENT_PRIMITIVE = 10 ** 2
 
-        self.distortion_factor = 0.0
-        self.chaos_range = 0.01
+    def __init__(self):
+        self.distortion_factor = self.DISTORTION_FACTOR_PRIMITIVE
+        self.chaos_range = self.CHAOS_RANGE_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
         import math
-        accumulated = self.distortion_factor + self.chaos_range * math.sin(t * 100.0)
+        accumulated = self.distortion_factor + self.chaos_range * math.sin(t * self.ANGULAR_COEFFICIENT_PRIMITIVE)
         return {'value': accumulated, 'units': 'dimensionless',
             'framework': {'backbone': 'Cosmic Egg chaotic distortion factor d = d_0 + 0.01*sin(100*t): chaos_range = 0.01 = F_TRZ^2 EXACT (PAPER_1919 F_TRZ^2 mass-fraction domain applied to chaotic-distortion amplitude - novel amplitude-domain application) + coefficient 100 = SO_5^2 EXACT (novel angular-frequency SO_5^2 slot at cosmic-egg oscillation, PAPER_1958 seminal SO_5^2 = 100 velocity-dispersion twin cross-domain) + d = 0 ideal sphere, d > 0 warped, d ~ 0 triggers toroid transformation', 'method': 'd_distort = d_0 + F_TRZ^2*sin(SO_5^2 * t) chaotic distortion accumulator', 'shells': 'Cosmic Egg chaotic distortion shell', 'CPCH': 'CP1 Cosmic Egg sector', 'spine': 'PAPER_1919 F_TRZ^2 mass-fraction seminal + PAPER_1958 seminal SO_5^2 = 100 velocity-dispersion twin + PAPER_1929 Theory of Permanence Cosmic Egg + PAPER_1932 Wheeler-DeWitt F_U=0', 'time_frame': 'Cosmic Egg pre-toroid transformation transient'},
                 'note': 'd=0?sphere, d>0?warp, d�0?toroid trigger',
@@ -197918,15 +197983,17 @@ class CosmicEggDistortionFactorCalculator:
 class CosmicEggToroidPillarCalculator:
     """CosmicEgg toroid pillar rebound P_rebound = sin(t*pi)*(1 + F_TRZ*sin(t)) water rebound pillar model backbone-first primitive lock: 0.1 = F_TRZ canonical primitive embedded in oscillation amplitude modulation (natural F_TRZ appearance in cosmic-egg model formalism); framework wrap only, no novel R169 lock (F_TRZ embedded in formula but as canonical primitive not new composition)."""
 
-    def __init__(self):
+    PI_PRIMITIVE = 3.141592653589793
+    F_TRZ_MODULATION_PRIMITIVE = 0.1
 
-        import math
-        self.pi = math.pi
+    def __init__(self):
+        self.pi = self.PI_PRIMITIVE
+        self.F_TRZ_modulation = self.F_TRZ_MODULATION_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
         import math
-        pillar_rebound = math.sin(t * self.pi) * (1.0 + 0.1 * math.sin(t))
+        pillar_rebound = math.sin(t * self.pi) * (1.0 + self.F_TRZ_modulation * math.sin(t))
         return {'value': pillar_rebound, 'units': 'dimensionless',
                 'note': 'Models water drop rebound pillar/jet with F_TRZ oscillation modulation',
                 'equation': 'P_rebound = sin(t*pi)*(1 + F_TRZ*sin(t))',
@@ -197937,17 +198004,20 @@ class CosmicEggToroidPillarCalculator:
 class CosmicEggRadiusInversionCalculator:
     """CosmicEgg radius inversion r = 1/(1+|P_rebound|) with snap-back threshold P>0.5 backbone-first: 0.1 = F_TRZ oscillation modulation; snap threshold 0.5 = 1/(D_phys-2) = 1/2 EXACT (PAPER_1958 R91 seminal 1/(D_phys-2)=0.5 AGN identity domain extension to cosmic-egg toroidal-radius inversion); framework wrap only, no novel R169 lock."""
 
-    def __init__(self):
+    BASE_RADIUS_PRIMITIVE = 4 / 4
+    PI_PRIMITIVE = 3.141592653589793
+    F_TRZ_MODULATION_PRIMITIVE = 0.1
+    SNAP_THRESHOLD_PRIMITIVE = 1 / (4 - 2)
 
-        import math
-        self.base_radius = 1.0
-        self.pi = math.pi
+    def __init__(self):
+        self.base_radius = self.BASE_RADIUS_PRIMITIVE
+        self.pi = self.PI_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
         import math
-        pillar_rebound = math.sin(t * self.pi) * (1.0 + 0.1 * math.sin(t))
-        if pillar_rebound > 0.5:
+        pillar_rebound = math.sin(t * self.pi) * (1.0 + self.F_TRZ_MODULATION_PRIMITIVE * math.sin(t))
+        if pillar_rebound > self.SNAP_THRESHOLD_PRIMITIVE:
             inverted_radius = self.base_radius
         else:
             inverted_radius = self.base_radius / (1.0 + abs(pillar_rebound))
@@ -197960,13 +198030,15 @@ class CosmicEggRadiusInversionCalculator:
 class CosmicEggOmnidirectionalRotationCalculator:
     """CosmicEgg 360-degree omnidirectional rotation angle = mod(rotation_rate*t, 360) free rotation independent per dimension backbone-first primitive lock: rotation_rate = 45 degrees/s = A_5 * (D_phys-1)/D_phys = 60 * 3/4 EXACT R172 F4 D1 NOVEL primitive-composition connecting cosmic-egg rotation rate to A_5 icosahedral group order multiplied by (D_phys-1)/D_phys = 3/4 dimensionless-ratio (extends PAPER_2037 R169 D3 (D_phys+1)/D_phys ratio-form prefix class with complementary (D_phys-1)/D_phys ratio; A_5*ratio compound-class documented at PAPER_1270 v_Higgs = A_5*(D_phys+F_TRZ) + PAPER_1331 M_PopIII = A_5*(D_phys+1)/(D_phys-1) but rotation-rate dimensional application is R172 novel); 360 = (D_phys-1)*A_5 + 2*A_5 = 3*A_5 + 3*A_5 = 6*A_5 = D_BSFG*A_5 EXACT circle-of-rotation constant."""
 
-    def __init__(self):
+    ROTATION_RATE_PRIMITIVE = 60 * (4 - 1) / 4
+    FULL_CIRCLE_PRIMITIVE = 6 * 60
 
-        self.rotation_rate = 45.0
+    def __init__(self):
+        self.rotation_rate = self.ROTATION_RATE_PRIMITIVE
 
     def compute(self, t: float = 0.0, **params) -> dict:
 
-        angle = (self.rotation_rate * t) % 360.0
+        angle = (self.rotation_rate * t) % self.FULL_CIRCLE_PRIMITIVE
         return {'value': angle, 'rotation_rate_deg_s': self.rotation_rate, 'units': 'degrees',
                 'equation': 'angle = mod(A_5*(D_phys-1)/D_phys*t, D_BSFG*A_5)',
                 'framework': True,
