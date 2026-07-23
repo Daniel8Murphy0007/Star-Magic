@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.74.0"
-description = "UQFF Star-Magic v5.73.0: R323-R358 continues R218+ real-stub-fill (141 consecutive rounds, +36 new classes). +6 formal landmarks: PAPER_2111 (F_env 13-term SO_5 ladder with triplet+duplet+duplet degeneracy), PAPER_2112 (kappa=(SO_5/2)*F_TRZ^4 primitive-reduction), PAPER_2113 (F_TRZ^50 deepest-suppression fuzzy-DM), PAPER_2114 (CosmicEgg static triad), PAPER_2115 (CosmicEgg pre-BB dynamics chain), PAPER_2116 (360=D_BSFG*A_5). Gate 2660->3000 (+340 assertions)."
+version = "5.74.1"
+description = "UQFF Star-Magic v5.74.1: R359-R373 continues R218+ real-stub-fill (156 consecutive rounds, 150-round milestone at R367). +12 formal landmarks PAPER_2117-2128 incl. successor-ratio (1+F_TRZ)=(SO_5+1)/SO_5 61-site canonical invariant, Full-Classification Certification standard, Two-Layer Model (PAPER_2121-2125 revised in place). G_PRIMITIVE promoted to live PAPER_593 closed form 6.66899e-11 (0.075%). G/c corpus upgrade plan authored (2227 md / 1987 pdf audit). Gate 3000->3138 (+138)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

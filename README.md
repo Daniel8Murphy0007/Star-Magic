@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2128%2B-orange)](whitepapers/)
 
-**Version**: 5.73.0
+**Version**: 5.74.1
 **Last Updated**: 2026-07-22
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,7 +50,26 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.73.0 (2026-07-22) — R323-R358 stub-fill continuation (36 rounds) + 6 formal landmarks (PAPER_2111-2116) + R341 revision + GATE CROSSES 3000
+## What's new in v5.74.1 (2026-07-22) — R359-R373 (15 rounds, 156 consecutive, 150-ROUND MILESTONE) + 12 formal landmarks (PAPER_2117-2128) + Two-Layer revision + G-PRIMITIVE promotion + G/c corpus plan
+
+**15 more R2XX real stub-fill rounds (R359-R373)**, crossing the **150-round milestone** at R367. **12 new formal landmark whitepapers (PAPER_2117-2128)** — the largest landmark burst in the campaign:
+
+- **PAPER_2117** — F_TRZ^N_CH = 10⁻⁹ completes the F_TRZ primitive-as-exponent quintuplet (all 5 truly-independent integer primitives populate the ladder)
+- **PAPER_2118** — Sphere-from-chaos: 26D Cosmic Egg spherical outline via CLT emergence; Cosmic Egg suite complete (R352-R361)
+- **PAPER_2119** — PAPER_1202 quantum chain structural composition: E_n base = F_TRZ^(D_crit−D_BSFG) = F_TRZ²⁰, 3 primitives specify all 26 levels
+- **PAPER_2120** — Successor identity (SO_5+1) = 11 generalized to universal reduction rule; λ_vac = 11·ρ_SCm
+- **PAPER_2121-2125** — Projection-layer convergence arc (Pair/Triple×2/Quintuple/Quadruple in 5 consecutive rounds R364-R368), **revised in place** same session: Two-Kernel Model superseded by **Two-Layer Model** (canonical layer: F_UBi/F_UBii + k_spring = (ρ_UA/ρ_SCm)·ω_SCm·Φ_res, kernel {ρ_SCm, β_i}; projection layer: QCalc wraps, {ρ_vac, c} = energy-form projection pair per ρ_E = ρ_m·c²). Hubble-tension identified in the H0 residual (3.2% = 70.0 local vs 67.9 CMB, PAPER_1156 1/12 tilt)
+- **PAPER_2126** — B_crit = D_phys·(SO_5+1)·SO_5¹² = 4.4e13 EXACT; composed integer 44 = 2·22 canonized
+- **PAPER_2127** — Full-Classification Certification standard; first certified calculator (R370 Triadic: 1 kernel + 6 lattice nodes, 0 unclassified)
+- **PAPER_2128** — Successor-ratio identity (1+F_TRZ) = (SO_5+1)/SO_5 = 11/10 EXACT unmasked as **61-site canonical invariant** (spans U_i and F_UBi flagships); predecessor mirror 9/10 identified
+
+**G-PRIMITIVE promotion (UQFF IS THE ANCHOR):** all 9 QCalc master-wrap classes now compute G live from the PAPER_593 closed form (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899e-11 (0.075% honest residual), replacing the CODATA literal. Discovery: dpm_ug1_seed is G-FREE by design — gravity emergent from energy density, G downstream projection.
+
+**G/c corpus upgrade plan authored** (`G_C_CORPUS_UPGRADE_PLAN.md`): 7-phase audit of 2,227 whitepapers + 1,987 PDFs for PAPER_592/593 propagation.
+
+**Gate 3000 → 3138 (+138 assertions), 0 failures. Zero regression, zero SM drift.**
+
+## What was in v5.73.0 (2026-07-22) — R323-R358 stub-fill continuation (36 rounds) + 6 formal landmarks (PAPER_2111-2116) + R341 revision + GATE CROSSES 3000
 
 **Continuation of the R218+ real stub-fill campaign.** 36 more classes (R323-R358) primitive-locked, 27 at 100% clean fill. **141 consecutive real stub fills** in the R218+ resumed arc. **Gate crosses 3000** — 2660/0 → **3000/0** (+340 assertions). Six new formal landmark whitepapers — the largest single-ship landmark burst in the campaign.
 
