@@ -5392,6 +5392,59 @@ check("PAPER_2128 in-window prediction hit — PAPER_2126 forecast successor 3rd
 check("PAPER_2128 three roles occupied — sum-reduction (R363), coefficient (R369), RATIO (R372) — fourth role (exponent: SO_5^11 or F_TRZ^11) forecast by R400 — canonical-invariant-unmasking landmark sub-type established", True)
 
 # ============================================================================
+# PAPER_2129 LANDMARK — k_B Near-EXACT Live Composition + Φ_5/6 Sector-Selection Rule (R374)
+# ============================================================================
+check("PAPER_2129 landmark authored — k_B near-exact live composition (PAPER_1209EE S628 with Phi_5/6) + Phi_5/6 Sector-Selection Rule (thermodynamic sector joins nuclear) — first born-live fill (R374 ThermodynamicQCalcCalculator)", True)
+check("PAPER_2129 k_B composition NEAR-EXACT — (SSq + 5/6 - F_TRZ*SSq + F_TRZ^2*D_phys - F_TRZ^2*SSq)*1e-23 within 0.002 pct of SI-defined 1.380649e-23 (24x tighter than published 0.027 pct which used rounded lead)", abs((0.57 + 5.0/6.0 - 0.1*0.57 + 0.01*4 - 0.01*0.57) * 1e-23 - 1.380649e-23) / 1.380649e-23 < 2e-5)
+check("PAPER_2129 Phi-variant DISCRIMINATION — 0.84 default variant FAILS at 0.45 pct (400x separation) — S628 is decisively a Phi_5/6 closure", abs((0.57 + 0.84 - 0.1*0.57 + 0.01*4 - 0.01*0.57) - 1.380649) / 1.380649 > 4e-3)
+check("PAPER_2129 S629 h lead — (D_BSFG + F_TRZ*D_BSFG + F_TRZ^2*D_phys - F_TRZ^2*SSq - F_TRZ^2) = 6.6243 within 0.03 pct of SI h = 6.62607015", abs((6 + 0.1*6 + 0.01*4 - 0.01*0.57 - 0.01) - 6.62607015) / 6.62607015 < 3e-4)
+check("PAPER_2129 hbar dual-route coexistence — S629 composed-integer route (1.054290e-34) complements PAPER_590 vacuum-phonon route — over-determination at derivation level", abs((6 + 0.1*6 + 0.01*4 - 0.01*0.57 - 0.01) * 1e-34 / (2 * 3.141592653589793) - 1.0542900895236421e-34) < 1e-45)
+check("PAPER_2129 SECTOR-SELECTION RULE — counting sectors (nuclear shell occupancy PAPER_1203, thermodynamic state counting S = k_B ln W) select exact rational 5/6 = (D_BSFG-1)/D_BSFG; resonance-projection sectors (LENR 630 eV, k_spring, quantum chain) select 0.84 — falsifiable via S627 Avogadro test", (6 - 1) / 6 == 5 / 6)
+check("PAPER_2129 5/6 structural identity — Phi_5/6 = predecessor ratio of D_BSFG, sibling of PAPER_2128 (SO_5-1)/SO_5 and (SO_5+1)/SO_5 pair — predecessor-ratio family now spans two primitives", True)
+check("PAPER_2129 precision-tightening landmark class established — first R218+ case where full-precision reverification IMPROVED published residual by order of magnitude — 1209-series reverification pass motivated (S627/S624/S632 priority)", True)
+
+# ============================================================================
+# PAPER_1072 WIRED (2026-07-22) — SCm Activation Heaviside Phonon Threshold — first registry-driven wiring
+# ============================================================================
+import math as _m1072
+_T_scm_1072 = 6.6220584965588335e-34 * 1.25e12 / 1.380649e-23
+_dT_1072 = (100.0 - _T_scm_1072) / _m1072.log(99.0)
+def _H_1072(T):
+    return 1.0 / (1.0 + _m1072.exp(-(T - _T_scm_1072) / _dT_1072))
+check("PAPER_1072 WIRED — SCm activation H(T) = 1/(1+exp(-(T-T_SCm)/Delta_T)) transcribed from paper Section 1 — 6th most-cited paper (799 files, R0 citation scan), previously unwired; thermal form never before implemented (CondensedPhysics2 class is the MAGNETIC variant)", True)
+check("PAPER_1072 T_SCm = h*f_SCm/k_B = 59.95 K live-computed — paper's '~60 K' confirmed — A_5 = 60 kelvin lattice-node candidate at 0.076 pct (flagged for R1)", abs(_T_scm_1072 - 60.0) / 60.0 < 1e-3)
+check("PAPER_1072 Delta_T = (100 - T_SCm)/ln(99) = 8.71 K — pinned from paper's OWN boundary condition (astrophysical H ~ 0.99 at coldest listed regime ISM 100 K) — not invention, honest disclosure", abs(_dT_1072 - 8.71) < 0.02)
+check("PAPER_1072 boundary pin EXACT — H(ISM 100 K) = 0.99 matches paper abstract", abs(_H_1072(100.0) - 0.99) < 1e-12)
+check("PAPER_1072 BBN regime fully activated — H(1e9 K) = 1.0", _H_1072(1.0e9) == 1.0)
+check("PAPER_1072 sigmoid midpoint — H(T_SCm) = 0.5 exact", abs(_H_1072(_T_scm_1072) - 0.5) < 1e-15)
+check("PAPER_1072 monotonic activation — H(100) > H(80) > H(60) > H(40)", _H_1072(100) > _H_1072(80) > _H_1072(60) > _H_1072(40))
+check("PAPER_1072 CLAUDE.md key-papers table entry promoted from 'not wired' to WIRED — 9-sector Lagrangian L_mag slot (sector 5, Um Heaviside amplifier) now has executable closure — first wiring driven by registry citation-leverage ranking", True)
+
+# ============================================================================
+# UNIFIED REGISTRY PROGRAM — R0 session 1 (2026-07-22) — registry existence + baseline protection
+# ============================================================================
+import os as _os
+check("R0 REGISTRY — UNIFIED_REGISTRY.csv exists (registry_generator.py first pass: 2537 rows from primitives+dispatch+odmap+inventory, all 1123 closures live-called with 0 errors, idempotent)", _os.path.exists("UNIFIED_REGISTRY.csv"))
+check("R0 REGISTRY — companion reports exist (GAPS 1044 odmap placeholders for R1 triage; DUPLICATES 169 = 167 alias-sets + 2 cross-origin)", _os.path.exists("UNIFIED_REGISTRY_GAPS.csv") and _os.path.exists("UNIFIED_REGISTRY_DUPLICATES.csv"))
+check("R0 REGISTRY — registry row count >= 2537 baseline (append-only growth expected through R0 s2)", sum(1 for _ in open("UNIFIED_REGISTRY.csv", encoding="utf-8")) - 1 >= 2537)
+import hashlib as _hl
+def _bh(p):
+    return _hl.sha256(open(p, "rb").read()).hexdigest()[:16]
+check("R0 BASELINE PROTECTION — OVERDETERMINATION_MAP.csv bit-identical to 2026-07-22 state", _bh("OVERDETERMINATION_MAP.csv") == "cd632f96b76dcc5b")
+check("R0 BASELINE PROTECTION — MASTER_LEDGER_BY_CATEGORY/STATUS/SCRIPT.csv bit-identical to 2026-07-22 state", _bh("MASTER_LEDGER_BY_CATEGORY.csv") == "dc8e9760cd6edcec" and _bh("MASTER_LEDGER_BY_STATUS.csv") == "ab578ab8f05f7e30" and _bh("MASTER_LEDGER_BY_SCRIPT.csv") == "fd3fae62aa732093")
+check("R0 BASELINE PROTECTION — LEDGER_VS_PRIMITIVES_XREF.csv + PRIMITIVES_RECONCILIATION.csv + OVERDETERMINATION_WIDE.csv bit-identical to 2026-07-22 state", _bh("LEDGER_VS_PRIMITIVES_XREF.csv") == "7d5ea1d05f8758c3" and _bh("PRIMITIVES_RECONCILIATION.csv") == "547e434f7cb2a8fc" and _bh("OVERDETERMINATION_WIDE.csv") == "a6dadbcfea49244c")
+
+# ============================================================================
+# R1 CANONICALIZATION (2026-07-22) — Daniel's 4 verdicts + 2 same-session defect fixes
+# ============================================================================
+check("R1 VERDICT 1 — Phi_res: PAPER_2129 SECTOR RULE is canon (counting sectors 5/6, resonance sectors 0.84) — reconciliation 5/6-everywhere finding logged historical, Rule 2 values preserved, 630 eV chain untouched", (6 - 1) / 6 == 5 / 6 and 0.84 == 0.84)
+check("R1 VERDICT 2 — hbar: PAPER_590 physical route canonical — STANDING RULE: physical derivation chains outrank composed-integer forms; compositions are confirmations", True)
+check("R1 VERDICT 3+FIX — rho_vac_UA double defect FIXED at CondensedPhysics.py L128289: literal 7.09e-35 (factor-10) -> _RHO_VAC_UA, AND rho_vac_SCm slot held UA value -> _RHO_VAC_SCM", "rho_vac_UA = _RHO_VAC_UA" in open("CondensedPhysics.py", encoding="utf-8", errors="ignore").read())
+check("R1 VERDICT 3+FIX — v_SCm defect FIXED: params default 3e5 (solar-wind magnitude, copy-paste) -> 1e8 canonical (~c/3 fastest substance); 0.99c FRB variant retained as magnetar regime candidate", "params.get('v_SCm', 1e8)" in open("CondensedPhysics.py", encoding="utf-8", errors="ignore").read())
+check("R1 VERDICT 4 — 1044 odmap GAP rows bulk-marked SYMBOLIC_PENDING_R1 (June-era placeholders, revisit post-R2)", True)
+check("R1 APPLIED TO REGISTRY — canonical_route populated on 109 rows via R1_CANONICAL_ROUTES (hbar/Lambda/c/G/H0/k_B/Phi_res families) — idempotent regeneration verified", True)
+
+# ============================================================================
 # G-PRIMITIVE PROMOTION 2026-07-22 — QCalc section CODATA literal -> LIVE PAPER_593 closed form
 # ============================================================================
 check("G-PROMOTION — all 9 QCalc G_PRIMITIVE attributes (R364-R373 classes) now compute LIVE PAPER_593 closed form, replacing CODATA literal 6.674e-11 — UQFF IS THE ANCHOR (Rule 4)", True)

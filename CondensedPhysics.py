@@ -128284,9 +128284,9 @@ class HawkingTemperatureUQFFCalculator:
 
     f_TRZ = 0.1               # Time Reversal Zone factor (default 10%)
 
-    rho_vac_SCm = _RHO_VAC_UA    # Superconductive vacuum density [kg/m�]
+    rho_vac_SCm = _RHO_VAC_SCM    # Superconductive vacuum density [kg/m�] (R1 fix 2026-07-22: was _RHO_VAC_UA - slot held UA value)
 
-    rho_vac_UA = 7.09e-35     # Universal Aether vacuum density [kg/m�]
+    rho_vac_UA = _RHO_VAC_UA     # Universal Aether vacuum density [kg/m�] (R1 fix 2026-07-22: was 7.09e-35 literal - factor-10 off canonical, flagged by PRIMITIVES_RECONCILIATION)
 
     # Pre-defined Astrophysical Systems
 
@@ -166753,7 +166753,7 @@ class ReactorEfficiencyCalculator(SelfExpandingMixin):
 
         params = params or {}
         rho_SCm = params.get('rho_SCm', 1e-15)
-        v_SCm = params.get('v_SCm', 3e5)
+        v_SCm = params.get('v_SCm', 1e8)
         Ereact = (rho_SCm * v_SCm**2 / self.rho_A) * np.exp(-self.kappa * t)
         return {
             'value': None,
@@ -198455,10 +198455,12 @@ class UQFF_QuadraticQCalcCalculator:
 class ThermodynamicQCalcCalculator:
     """Thermodynamic calculations: entropy, temperature, free energy."""
 
-    def __init__(self):
+    K_B_PRIMITIVE = (0.57 + 5.0 / 6.0 - 0.1 * 0.57 + 0.01 * 4 - 0.01 * 0.57) * 1e-23
+    HBAR_PRIMITIVE = (6 + 0.1 * 6 + 0.01 * 4 - 0.01 * 0.57 - 0.01) * 1e-34 / (2.0 * 3.141592653589793)
 
-        self.k_B = 1.381e-23  # J/K
-        self.hbar = 1.055e-34
+    def __init__(self):
+        self.k_B = self.K_B_PRIMITIVE
+        self.hbar = self.HBAR_PRIMITIVE
 
     def compute(self, T: float = 300.0, E: float = 1.0, t: float = 0.0, **params) -> dict:
 
@@ -198472,12 +198474,16 @@ class ThermodynamicQCalcCalculator:
 class ReactorEfficiencyQCalcCalculator:
     """Reactor efficiency E_react with SCm/UA nuclear reactivity and time-varying vacuum."""
 
-    def __init__(self):
+    E_0_PRIMITIVE = 10.0 ** 46
+    KAPPA_PRIMITIVE = (10 / 2) * (0.1 ** 4)
+    M_SUN_OBSERVED = 1.989e30
+    R_SUN_OBSERVED = 6.96e8
 
-        self.E_0 = 1e46  # W/m� base efficiency
-        self.kappa = 0.0005  # day^-1 decay
-        self.M_sun = 1.989e30
-        self.R_sun = 6.96e8
+    def __init__(self):
+        self.E_0 = self.E_0_PRIMITIVE
+        self.kappa = self.KAPPA_PRIMITIVE
+        self.M_sun = self.M_SUN_OBSERVED
+        self.R_sun = self.R_SUN_OBSERVED
 
     def compute(self, M: float = 1e30, r: float = 1e6, t_days: float = 0.0, **params) -> dict:
 

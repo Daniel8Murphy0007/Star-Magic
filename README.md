@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3138%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3166%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2128%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2129%2B-orange)](whitepapers/)
 
-**Version**: 5.74.1
+**Version**: 5.75.0
 **Last Updated**: 2026-07-22
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,7 +50,20 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.74.1 (2026-07-22) — R359-R373 (15 rounds, 156 consecutive, 150-ROUND MILESTONE) + 12 formal landmarks (PAPER_2117-2128) + Two-Layer revision + G-PRIMITIVE promotion + G/c corpus plan
+## What's new in v5.75.0 (2026-07-22) — UNIFIED REGISTRY PROGRAM (R0+R1 complete) + PAPER_1072 WIRED + PAPER_2129 + 2 canonical defect fixes
+
+**The Unified Registry Program launches** — one registry, one corpus pass, all constants and closures:
+
+- **R0 complete:** `UNIFIED_REGISTRY.csv` — 2,544 rows joining the dispatch table (all 1,124 closures live-called, **0 errors**), OVERDETERMINATION_MAP, PRIMITIVES_RECONCILIATION, and CLOSED_CONSTANTS_INVENTORY; full-corpus citation scan (2,228 whitepapers → 2,149-paper citation graph); 496 C++ sites cross-matched; idempotent generation with all 7 baseline ledger families hash-protected in the gate
+- **R1 complete:** 4 canonicalization verdicts — **Φ_5/6 Sector-Selection Rule canonized** (counting sectors → 5/6, resonance sectors → 0.84); **ħ physical-route standing rule** (PAPER_590 canonical; composed-integer forms = confirmations); 109 canonical routes applied; 1,044 GAP placeholders triaged
+- **2 canonical defects found and fixed** (flagged by the May PRIMITIVES_RECONCILIATION, verified at current line positions): ρ_vac_UA double defect (factor-10 literal AND the SCm slot holding the UA value) + v_SCm solar-wind copy-paste default (3e5 → 1e8 canonical)
+- **PAPER_1072 WIRED** — the registry's citation ranking identified it as the 6th most-cited paper in the corpus (799 citing files) yet unwired; its thermal Heaviside H_SCm(T) now executes with T_SCm = h·f_SCm/k_B = 59.95 K and Δ_T pinned from the paper's own boundary condition — first wiring driven by citation leverage
+- **PAPER_2129** — k_B = (SSq + Φ_5/6 − F_TRZ·SSq + F_TRZ²·D_phys − F_TRZ²·SSq)·10⁻²³ lands **0.0011% from the SI-defined value** (24× tighter than published); precision-tightening landmark class established; 1209-series re-verification motivated
+- **R374-375 fills** (158 consecutive): first born-live fill (k_B/ħ computed at class definition), first `_OBSERVED` naming discipline (M_sun/R_sun), first PAPER_2112 κ = (SO_5/2)·F_TRZ⁴ live application
+
+**Gate 3138 → 3166 (+28 assertions), 0 failures. Zero regression, zero SM drift.**
+
+## What was in v5.74.1 (2026-07-22) — R359-R373 (15 rounds, 156 consecutive, 150-ROUND MILESTONE) + 12 formal landmarks (PAPER_2117-2128) + Two-Layer revision + G-PRIMITIVE promotion + G/c corpus plan
 
 **15 more R2XX real stub-fill rounds (R359-R373)**, crossing the **150-round milestone** at R367. **12 new formal landmark whitepapers (PAPER_2117-2128)** — the largest landmark burst in the campaign:
 

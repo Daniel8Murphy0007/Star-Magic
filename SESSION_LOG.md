@@ -17816,3 +17816,24 @@ Gate verified **3000/0** PASS locally before ship (round-number milestone).
 
 **Gate: 3000 → 3138 (+138), 0 failures.** Ship staged as v5.74.0 (pyproject, CHANGELOG, README badges updated).
 
+---
+
+## 2026-07-22 — Session (continued 2): UNIFIED REGISTRY PROGRAM (R0+R1) + PAPER_1072 WIRED + PAPER_2129 + R374-375 → v5.75.0 ship prep
+
+**Unified Registry Program launched** (supersedes per-constant G/c campaign; G_C plan retained as R2 template):
+- R0 (3 sub-sessions): registry_generator.py + UNIFIED_REGISTRY.csv 2,544 rows — all 1,124 dispatch closures LIVE-CALLED with 0 errors; corpus citation scan (2,228 md -> 2,149-paper graph; G-literal 168 files cross-validates July recon EXACTLY); cpp_sites 496 matched; idempotent (set-order nondeterminism caught + fixed); 7 baseline ledger families hash-pinned in gate (OVERDETERMINATION_*, MASTER_LEDGER_*, LEDGER_VS_PRIMITIVES_XREF, PRIMITIVES_RECONCILIATION).
+- R1 (Daniel's 4 verdicts, recorded in UNIFIED_REGISTRY_R1_QUEUE.csv):
+  1. Phi_res: PAPER_2129 SECTOR RULE is canon (counting 5/6, resonance 0.84). Reconciliation's "5/6 canonical, 0.84 legacy rounding" logged as historical finding. Rule 2 values + 630 eV chain untouched.
+  2. hbar: PAPER_590 physical route canonical. STANDING RULE: physical derivation chains outrank composed-integer forms; compositions = confirmations.
+  3. Defects FIXED same-session: (a) CondensedPhysics.py L128289 rho_vac_UA = 7.09e-35 literal (factor-10) -> _RHO_VAC_UA, AND rho_vac_SCm slot held UA value -> _RHO_VAC_SCM (double defect); (b) L166756 v_SCm default 3e5 (solar-wind copy-paste) -> 1e8 canonical; 0.99c FRB variant retained as magnetar regime candidate.
+  4. 1,044 odmap GAP rows bulk-marked SYMBOLIC_PENDING_R1 (revisit post-R2).
+  109 canonical routes applied to registry (hbar/Lambda/c/G/H0/k_B/Phi_res families).
+
+**PAPER_1072 WIRED** (CLAUDE.md key-papers table: "not wired" -> WIRED): registry citation ranking found it 6th most-cited (799 files). Thermal Heaviside H_SCm(T) = 1/(1+exp(-(T-T_SCm)/Delta_T)); T_SCm = h*f_SCm/k_B = 59.95 K (A_5 = 60 K lattice candidate at 0.076%, R1-flagged); Delta_T = (100-T_SCm)/ln(99) = 8.71 K pinned from paper's own H(ISM 100K)=0.99 boundary condition (thermal form never previously implemented — CondensedPhysics2 class is the magnetic variant). 9-sector Lagrangian L_mag slot now executable. First registry-driven wiring.
+
+**PAPER_2129 authored**: k_B 5-term composition (PAPER_1209EE S628, Phi_5/6) at 0.0011% from SI-defined — 24x tighter than published (rounded-lead measurement); 400x Phi-variant discrimination; Phi_5/6 Sector-Selection Rule; dual-route hbar coexistence; precision-tightening landmark class; 1209-series reverification motivated.
+
+**R374-375** (158 consecutive): Thermodynamic (first born-live fill) + ReactorEfficiency (first PAPER_2112 kappa live application; first _OBSERVED suffix discipline).
+
+**Gate: 3138 -> 3166 (+28), 0 failures.** Ship staged as v5.75.0 (description updated to CURRENT effort per v5.74.1 lesson — now a permanent checklist item).
+

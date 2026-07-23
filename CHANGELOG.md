@@ -1,3 +1,18 @@
+## [5.75.0] - 2026-07-22 - UNIFIED REGISTRY PROGRAM launched (R0+R1 complete) + PAPER_1072 WIRED + PAPER_2129 + R374-375 + 2 canonical defect fixes
+
+**One-line summary:** The **Unified Registry Program** supersedes per-constant campaigns: `UNIFIED_REGISTRY_PROGRAM_PLAN.md` + `registry_generator.py` + **2,544-row master registry** (R0: all 1,124 dispatch closures live-called with 0 errors; full-corpus citation scan of 2,228 whitepapers → 2,149-paper citation graph; 496 C++ sites matched; idempotent, baseline-hash-protected). **R1 canonicalization complete**: 4 Daniel verdicts — Φ_5/6 sector rule canonized (counting sectors 5/6, resonance 0.84), ħ physical-route standing rule (PAPER_590 canonical, compositions = confirmations), 1,044 GAP rows bulk-triaged, **2 canonical defects found by the May reconciliation and fixed** (ρ_vac_UA double defect at L128289: factor-10 literal + SCm slot holding UA value; v_SCm default 3e5 → 1e8). **PAPER_1072 WIRED** — the 6th most-cited paper in the corpus (799 citing files, identified by the registry's citation ranking) gets its thermal Heaviside H_SCm(T) closure: T_SCm = h·f_SCm/k_B = 59.95 K, Δ_T pinned from the paper's own H(ISM)=0.99 boundary condition. **PAPER_2129**: k_B five-term composition at **0.0011% from SI-defined** (24× tighter than published) + Φ_5/6 Sector-Selection Rule. R374-375 fills (158 consecutive; first born-live fill; first `_OBSERVED` naming discipline; first PAPER_2112 κ live application). Gate 3138 → **3166** (+28). Zero regression, zero SM drift.
+
+### Registry Program artifacts (new, reserved names)
+
+- `UNIFIED_REGISTRY_PROGRAM_PLAN.md` — R0-R5 program superseding G_C_CORPUS_UPGRADE_PLAN (retained as R2 template); protected-baseline collision rules for 7 existing ledger families
+- `UNIFIED_REGISTRY.csv` — 2,544 rows: primitives(16) + dispatch(1,124) + odmap(1,392) + inventory(12); canonical_route on 109 rows; SHA-256 pinned, idempotent
+- `UNIFIED_REGISTRY_SCHEMA.md`, `_CORPUS_CITATIONS.csv` (2,149 papers), `_GAPS.csv` (1,044 → SYMBOLIC_PENDING_R1), `_DUPLICATES.csv` (170), `_R1_QUEUE.csv` (24 verdicts recorded)
+- `registry_generator.py` — idempotent build script; live-calls every closure; baseline hashes gate-pinned
+
+### Gate
+
+- `uqff_fidelity_tests.py`: +28 assertions (PAPER_2129 block, PAPER_1072 block, R0 registry + baseline protection, R1 verdicts + defect-fix pins) — 3166/0
+
 ## [5.74.1] - 2026-07-22 - METADATA PATCH: PyPI project description updated to current ship effort
 
 **One-line summary:** The v5.74.0 PyPI page displayed the stale v5.73.0 description because `pyproject.toml` description was not bumped during staging. PyPI release metadata is immutable per release, so this patch ships the corrected description — the public page now reports the actual v5.74.x work effort: R359-R373 (156 consecutive rounds, 150-round milestone), 12 landmarks PAPER_2117-2128, Two-Layer revision, G-PRIMITIVE promotion, G/c corpus plan, gate 3138/0. README Version line corrected 5.73.0 → 5.74.1. No code changes; gate unchanged at 3138/0.
