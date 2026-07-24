@@ -476,3 +476,28 @@ The repository was previously distributed under MIT (archived as `LICENSE-MIT-PR
 - `LICENSE-AGPL-3.0.txt` — full canonical AGPL-3.0 text
 - `LICENSE-MIT-PREVIOUS.txt` — archived original MIT license
 
+
+---
+
+## APPENDED 2026-07-24 — UNIFIED REGISTRY PROGRAM COMPLETE (R0-R5, PAPER_2130) + PAPER_1072 wired
+
+The Unified Registry Program (UNIFIED_REGISTRY_PROGRAM_PLAN.md, executed 2026-07-22 -> 2026-07-24, v5.75.0 -> v5.77.0) is COMPLETE. Future sessions should know:
+
+- **Single source of truth for constants:** `uqff_registry_primitives.py`. QCalc `*_PRIMITIVE` attributes import from it (24 rewired R3). Do NOT reintroduce per-class literals. c is DUAL-EXPOSURE per Daniel's §6.2 ruling: C_PRIMITIVE=3e8 consumers unchanged; C_UQFF_DERIVED available. Per-class c-migration only on Daniel's explicit instruction.
+- **The registry:** `UNIFIED_REGISTRY.csv` (2,544 rows) + reserved-name artifact family UNIFIED_REGISTRY_*. Canonical routes adjudicated R1 (109 explicit + 2,435 SOLE_ROUTE; Φ_5/6 sector rule; ħ physical-route standing rule — physical derivation chains outrank composed-integer forms). Protected baselines (7 ledger families) are hash-pinned LF-normalized in the gate — never overwrite.
+- **Regeneration chain (all idempotent, read-only inputs):** `registry_generator.py` -> `uqff_registry_primitives.py` -> `uqff_registry_graph.py` (656-edge falsifiability graph) -> `uqff_registry_status.py` (live status report + preprint results table). Results table: 9 independent primitives -> 14 derived constants, 7 EXACT; worst residual H0 3.08% IS the Hubble tension (PAPER_2125) — do not "fix" it.
+- **PAPER_1072 is now WIRED** (thermal Heaviside H_SCm(T), T_SCm = h·f_SCm/k_B = 59.95 K) — update to the Key Papers table above.
+- **Program landmark:** PAPER_2130. Gate at 3,195 assertions as of v5.77.0.
+- **Permanent ship checklist (learned v5.74.x/5.75.x the hard way):** (a) pyproject description must describe the CURRENT ship effort and contain the version string; (b) every artifact the description mentions MUST be in [tool.setuptools.data-files]; (c) all gate file-hash pins LF-normalized; (d) verify PyPI via gh run, not the cached project page.
+
+---
+
+## APPENDED 2026-07-24 (2) — XGEO CROSS-GEOMETRY CAMPAIGN COMPLETE (ships in v5.77.0; gate correction 3,195 -> 3,207)
+
+R1's 1,044 bulk-triaged GAP rows are fully drained. Future sessions should know:
+
+- **What they were:** the OVERDETERMINATION_MAP grid's non-owner cells — 116 assimilation_dispatch observables x 3 non-owner geometries x 3 numeric modes (modes synthetic in qcalcgeom_solver._solve_via_dispatch). Real unit: 348 (observable x geometry) tasks. ALL 348 routed, status `XGEO_ROUTED_IDENTITY` (structural re-expression via published EXACT bridges — DISCLOSED as distinct from independent physical derivation).
+- **The keystone paper: PAPER_1160** — F_TRZ = 1/|SO(5)| = 1/10 EXACT + the published 26->10->6->4 dimensional flow (CondensedPhysics2.py L28609, 26D_DOWNWARD_PROJECTION.md). It supplies the d26 generator chain (D_crit -> SO_5 -> D_BSFG -> D_phys) and the qcalcgeom SO_5 bridge. Check PAPER_1160 FIRST before declaring any integer-primitive bridge missing.
+- **Artifacts (regenerate, never hand-edit):** `uqff_registry_xgeo.py` -> UNIFIED_REGISTRY_XGEO_QUEUE.csv (348 tasks); UNIFIED_REGISTRY_XGEO_ROUTES.csv is APPEND-ONLY (rulings ledger; merged on regeneration); UNIFIED_REGISTRY_XGEO_EXTRACTED.csv (40 opaque formulas recovered from _sessionNNN_*.py scripts, all value-verified by execution — session_script pointers in assimilation_dispatch lack the descriptive filename suffix; resolve via glob `_sessionNNN_*.py`).
+- **Method rules (gate-pinned):** value-coincidence matching and name-token matching are REJECTED as numerology. Fills require published identity chains or script-verified extraction. Opaque dispatch formulas: the closed form lives in the session script (`val=` line).
+- **Registry census after XGEO:** 1,044 XGEO_ROUTED_IDENTITY, zero pending of any kind. Gate at **3,207** as of v5.77.0 (supersedes the 3,195 figure in the previous append).

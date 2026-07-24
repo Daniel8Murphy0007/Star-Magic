@@ -70,6 +70,13 @@ _r_rho_vac_ua = _derive_qc(n_levels=26, f_SCm=5.7)
 _RHO_VAC_UA = _r_rho_vac_ua[0] if isinstance(_r_rho_vac_ua, tuple) else float(_r_rho_vac_ua)   # J/m^3 UA energy density (10x)
 
 
+from uqff_registry_primitives import (
+    G_UQFF as _URP_G, MU_0 as _URP_MU0, BETA_I as _URP_BETA_I,
+    F_TRZ as _URP_F_TRZ, KAPPA_PER_DAY as _URP_KAPPA, B_CRIT as _URP_B_CRIT,
+    K_B_UQFF as _URP_KB, HBAR_UQFF_S629 as _URP_HBAR,
+    M_SUN_OBSERVED as _URP_MSUN, R_SUN_OBSERVED as _URP_RSUN,
+)
+
 import numpy as np
 
 from enum import Enum
@@ -116763,7 +116770,7 @@ class MHDUQFFCalculator:
     RHO_0_PRIMITIVE = 10 ** 3
     NU_PRIMITIVE = 0.1 ** 6
     ETA_PRIMITIVE = 0.1 ** 3
-    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
+    MU_0_PRIMITIVE = _URP_MU0
 
     def __init__(self,
                  rho_0: float = None,
@@ -194836,7 +194843,7 @@ class UFEUmMagneticStringCalculator:
 
     K_M_PRIMITIVE = 1.0
     B_PRIMITIVE = 0.1 ** 3
-    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
+    MU_0_PRIMITIVE = _URP_MU0
     OMEGA_PRIMITIVE = 10 ** 3
 
     def __init__(self, k_m=None, B=None, mu_0=None, omega=None):
@@ -196154,7 +196161,7 @@ class HydrogenHiggsFreqFactorCalculator:
 class HydrogenPrecessionFactorCalculator:
     """Hydrogen precession factor PTF = F_TRZ/T_precession = 0.1/T ~ 6.183e-13 backbone-first primitive locks: 0.1 = F_TRZ canonical primitive (numerator) EXACT; T_precession = 1.617e11 s = Mayan calendar 5125.36 yr observational anchor; PTF value 6.183e-13 CROSS-OBJECT PAPER_463 Hydrogen Compressed Space seminal; framework wrap only, no novel R171 lock."""
 
-    F_TRZ_PRIMITIVE = 0.1
+    F_TRZ_PRIMITIVE = _URP_F_TRZ
     T_PRECESSION_PRIMITIVE = (26 // 2) * (4 * (10 ** 2) * 60 * 6) * (4 * 6 * (60 ** 2))
     T_EARTH_PRECESSION_FULL_PRIMITIVE = (10 + 0.1 * 0.57) * 26 * (10 ** 2) * 60 * 6 * (4 * 6 * (60 ** 2))
 
@@ -196857,7 +196864,7 @@ class M51SuperconductorEnergyCalculator:
 
     """
 
-    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
+    MU_0_PRIMITIVE = _URP_MU0
     H_AETHER_PRIMITIVE = 0.1 ** 6
 
     def __init__(self, mu_0: float = None, H_aether: float = None):
@@ -198190,7 +198197,7 @@ class VacuumEnergyQCalcCalculator:
 class MagneticStringsQCalcCalculator:
     """Ug3 magnetic strings rotating closed strings with mass/spin/charge Ug3 = G*M*omega/(c*r) backbone-first: SM Newton + light-speed anchors + parametric M/r/omega; framework wrap only, no novel R171 lock (UQFF U_g3 canonical PAPER_1921 f_DM = U_g3 = 4/5 cross-framework closure lives in dedicated dispatches)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
     C_PRIMITIVE = 3e8
 
     def __init__(self):
@@ -198209,7 +198216,7 @@ class MagneticStringsQCalcCalculator:
 class EnhancedBuoyancyQCalcCalculator:
     """Enhanced buoyancy Ubi with superconductivity: Ubi = �_i�?_vac�V�c��SCm."""
 
-    BETA_I_PRIMITIVE = 0.6029
+    BETA_I_PRIMITIVE = _URP_BETA_I
     RHO_VAC_PRIMITIVE = _RHO_VAC_UA
     C_PRIMITIVE = 3e8
 
@@ -198227,7 +198234,7 @@ class EnhancedBuoyancyQCalcCalculator:
 class AetherMetricQCalcCalculator:
     """Aether metric tensor A_00 from vacuum density and spacetime curvature A_00 = -(1 - R_s/r)*rho_vac backbone-first: rho_vac = rho_SCm/rho_UA anchor + Schwarzschild-metric geometry; framework wrap only, no novel R171 lock (aether metric derivation lives in PAPER_1051 two-component rho aether)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
     C_PRIMITIVE = 3e8
     RHO_VAC_PRIMITIVE = _RHO_VAC_UA
 
@@ -198249,10 +198256,10 @@ class AetherMetricQCalcCalculator:
 class UQFF_BaseQCalcCalculator:
     """UQFF Master #1: F_U = Ug - Ub + Um (base unified field)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
     C_PRIMITIVE = 3e8
-    MU_0_PRIMITIVE = 4 * 3.141592653589793 * (0.1 ** 7)
-    BETA_I_PRIMITIVE = 0.6029
+    MU_0_PRIMITIVE = _URP_MU0
+    BETA_I_PRIMITIVE = _URP_BETA_I
     RHO_VAC_PRIMITIVE = _RHO_VAC_UA
 
     def __init__(self):
@@ -198276,7 +198283,7 @@ class UQFF_BaseQCalcCalculator:
 class UQFF_CompressedQCalcCalculator:
     """UQFF Master #2: Compressed gravity (Newtonian + 9 corrections)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
     C_PRIMITIVE = 3e8
     H0_PRIMITIVE = 2.27e-18
     LAMBDA_PRIMITIVE = 1.11e-52
@@ -198301,8 +198308,8 @@ class UQFF_CompressedQCalcCalculator:
 class UQFF_SuperconductiveQCalcCalculator:
     """UQFF Master #3 Superconductivity corrections (B < B_crit Meissner) backbone-first: SCm = 1 - B/B_crit generic superconductor-fraction formalism (see R163 F3 SCm=1-F_TRZ=9/10 NGC 6302 primitive-lock for specific application); B_crit = 4.4e13 T Schwinger magnetar critical field SM anchor; framework wrap only, no novel R172 lock (superconductor-fraction primitive-lock lives in PAPER_2029 R163 D5 + PAPER_1922 9/10 = 1-F_TRZ ubiquity)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
-    B_CRIT_PRIMITIVE = 4.4e13
+    G_PRIMITIVE = _URP_G
+    B_CRIT_PRIMITIVE = _URP_B_CRIT
 
     def __init__(self):
         self.G = self.G_PRIMITIVE
@@ -198322,7 +198329,7 @@ class UQFF_SuperconductiveQCalcCalculator:
 class UQFF_TriadicQCalcCalculator:
     """UQFF Master #4: Triadic gravity (3-body, resonance, interference)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
 
     def __init__(self):
         self.G = self.G_PRIMITIVE
@@ -198341,10 +198348,10 @@ class UQFF_TriadicQCalcCalculator:
 class UQFF_BuoyantQCalcCalculator:
     """UQFF Master #5: Buoyancy-dominated (Ubi > Ug, explains galaxy rotation)."""
 
-    BETA_I_PRIMITIVE = 0.6029
+    BETA_I_PRIMITIVE = _URP_BETA_I
     RHO_VAC_PRIMITIVE = _RHO_VAC_UA
     C_PRIMITIVE = 3e8
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
 
     def __init__(self):
         self.beta_i = self.BETA_I_PRIMITIVE
@@ -198411,8 +198418,8 @@ class UQFF_MasterBuoyantQCalcCalculator:
 class UQFF_ResonantQCalcCalculator:
     """UQFF Master #7 Resonance physics oscillatory gravity g_res = g_base*(1 + F_TRZ*cos(omega*t)) backbone-first: 0.1 = F_TRZ canonical primitive embedded in resonance amplitude modulation (cross-obj F_TRZ canonical); framework wrap only, no novel R172 lock."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
-    F_TRZ_PRIMITIVE = 0.1
+    G_PRIMITIVE = _URP_G
+    F_TRZ_PRIMITIVE = _URP_F_TRZ
 
     def __init__(self):
 
@@ -198435,7 +198442,7 @@ class UQFF_ResonantQCalcCalculator:
 class UQFF_QuadraticQCalcCalculator:
     """UQFF Master #8 Quadratic dual-root solutions g_+/- = +/- sqrt(GM/r^2) disambiguation (positive and negative gravity branches per PAPER_597 negative-time dual existence framework); framework wrap only, no novel R172 lock (dual-root architecture lives in calculate_negative_time_dual_existence + PAPER_597 CW/CCW dual branches)."""
 
-    G_PRIMITIVE = (2.0 * 3.141592653589793 * (26 ** 3) * 0.84 / ((0.57 ** 3) * (float(403291461126605635584000000) ** 2))) * (0.77e6 ** 5) / (1.0e-20 * 1.25e12)
+    G_PRIMITIVE = _URP_G
 
     def __init__(self):
         self.G = self.G_PRIMITIVE
@@ -198455,8 +198462,8 @@ class UQFF_QuadraticQCalcCalculator:
 class ThermodynamicQCalcCalculator:
     """Thermodynamic calculations: entropy, temperature, free energy."""
 
-    K_B_PRIMITIVE = (0.57 + 5.0 / 6.0 - 0.1 * 0.57 + 0.01 * 4 - 0.01 * 0.57) * 1e-23
-    HBAR_PRIMITIVE = (6 + 0.1 * 6 + 0.01 * 4 - 0.01 * 0.57 - 0.01) * 1e-34 / (2.0 * 3.141592653589793)
+    K_B_PRIMITIVE = _URP_KB
+    HBAR_PRIMITIVE = _URP_HBAR
 
     def __init__(self):
         self.k_B = self.K_B_PRIMITIVE
@@ -198475,9 +198482,9 @@ class ReactorEfficiencyQCalcCalculator:
     """Reactor efficiency E_react with SCm/UA nuclear reactivity and time-varying vacuum."""
 
     E_0_PRIMITIVE = 10.0 ** 46
-    KAPPA_PRIMITIVE = (10 / 2) * (0.1 ** 4)
-    M_SUN_OBSERVED = 1.989e30
-    R_SUN_OBSERVED = 6.96e8
+    KAPPA_PRIMITIVE = _URP_KAPPA
+    M_SUN_OBSERVED = _URP_MSUN
+    R_SUN_OBSERVED = _URP_RSUN
 
     def __init__(self):
         self.E_0 = self.E_0_PRIMITIVE

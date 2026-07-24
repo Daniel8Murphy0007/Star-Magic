@@ -4,12 +4,12 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3176%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3207%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2129%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2130%2B-orange)](whitepapers/)
 
-**Version**: 5.76.0
-**Last Updated**: 2026-07-22
+**Version**: 5.77.0
+**Last Updated**: 2026-07-24
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -50,7 +50,25 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.76.0 (2026-07-22) - R2 CORPUS PASS COMPLETE
+## What's new in v5.77.0 (2026-07-24) - UNIFIED REGISTRY PROGRAM COMPLETE (R3 + R4 + R5, PAPER_2130) + XGEO CAMPAIGN COMPLETE (348/348)
+
+**The Unified Registry Program closes** — all six phases (R0-R5) done, filed as landmark **PAPER_2130** — **and the XGEO Cross-Geometry Derivation Campaign completes in the same release**, fully draining R1's 1,044 pending GAP rows:
+
+- **XGEO diagnosis:** the 1,044 rows are the over-determination grid's non-owner cells — 116 observables × 3 non-owner geometries × 3 synthetic numeric modes = **348 real derivation tasks**
+- **All 348 routed** across three batches, every route citing published bridge identities (route class `XGEO_ROUTED_IDENTITY`, disclosed as structural re-expression distinct from independent physical derivation)
+- **Keystone: PAPER_1160** — F_TRZ = 1/|SO(5)| = 1/10 EXACT with the published **26 → 10 → 6 → 4 dimensional flow**, closing both the d26 generator chain (D_crit → SO_5 → D_BSFG → D_phys) and the qcalcgeom grounding (F_U-native constant set per PAPER_1203/2124 + SO_5 = 1/F_TRZ)
+- **40 opaque formulas recovered** from `_sessionNNN_*.py` scripts, all value-verified bit-level (`UNIFIED_REGISTRY_XGEO_EXTRACTED.csv`); e.g. Mercury perihelion = SO5·D_phys + K_Mex + F_TRZ·N_ch − F_TRZ² + F_TRZ²·K_Mex = 43.0 as/cy
+- **Artifacts:** `UNIFIED_REGISTRY_XGEO_QUEUE.csv` (348 tasks) + `UNIFIED_REGISTRY_XGEO_ROUTES.csv` (append-only rulings ledger) + `UNIFIED_REGISTRY_XGEO_EXTRACTED.csv` — all in the wheel; registry census: **zero pending rows of any kind**
+
+Registry Program deliverables:
+
+- **R3 — code single-source-of-truth:** `uqff_registry_primitives.py` is now the sole definition site for locked primitives and live-composed constants; 24 QCalc `*_PRIMITIVE` attributes rewired bit-identically (c untouched per the §6.2 dual-exposure ruling); **three-language agreement pins: Python = C++ = Lean 4**
+- **R4 — falsifiability graph:** `UNIFIED_REGISTRY_GRAPH.csv` (656 edges) + `UNIFIED_REGISTRY_FALSIFIABILITY.md` — the computed answer to *"if primitive X were revised, what breaks"*: SO_5 touches 212 registry rows + the 61-site (SO_5+1)/SO_5 invariant; F_TRZ 111 + 61; D_phys 97; D_crit 43; D_BSFG 41; A_5 23
+- **R5 — production convergence:** `uqff_registry_status.py::calculate_status_report()` computes program statistics live from the registry; `UNIFIED_REGISTRY_RESULTS_TABLE.csv/.md` is the preprint results table built from code at generation time — **9 independent primitives → 14 derived constants, 7 EXACT**; honest residuals G 0.075% / c 0.10% / k_B 0.0011% / ħ 0.027%; worst residual (H0 3.08%) **is the Hubble tension** (PAPER_2125)
+- **Reproducibility chain:** `registry_generator.py` → `uqff_registry_primitives.py` → `uqff_registry_graph.py` → `uqff_registry_status.py` — four idempotent scripts over hash-protected baselines; identical SHA-256 across runs
+- pdf2 now 2,227 PDFs (PAPER_2130 included). Gate 3176 → **3195/0**.
+
+## What was in v5.76.0 (2026-07-22) - R2 CORPUS PASS COMPLETE
 
 **All 199 G/c-affected whitepapers annotated** with registry-keyed derivation notes (canonical routes PAPER_593 G at 0.08% + PAPER_592 c at 0.13%; append-only golden rule; honest residuals). **pdf2 at FULL corpus parity: 1,988 -> 2,226 PDFs** - every whitepaper has a PDF. Registry program R0+R1+R2 done. Gate 3176/0.
 

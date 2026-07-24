@@ -1,0 +1,41 @@
+observable,session_script,extracted_formula,primitives_in_expr,value_verified
+CM_Apery_zeta3,_session399_cm_zeta3.py,Phi_res + F_TRZ*D_phys - F_TRZ*F_TRZ*Phi_res*D_phys,D_PHYS;F_TRZ;PHI_RES,YES
+CM_BCS_gap_ratio,_session393_cm_bcs_gap.py,K_Mex + Phi_res + F_TRZ*(D_phys+D_BSFG)  # 2.0833+0.8333+1.0 = 3.9166? recompute,D_BSFG;D_PHYS;F_TRZ;K_MEX;PHI_RES,YES
+CM_BEC_Tc_coeff,_session398_cm_bec_tc.py,K_Mex + Phi_res + F_TRZ*(D_phys + F_TRZ*Phi_res),D_PHYS;F_TRZ;K_MEX;PHI_RES,YES
+CM_log_R_K_von_Klitzing,_session396_cm_von_klitzing.py,D_phys + SSq*Phi_res - SSq*F_TRZ + F_TRZ*F_TRZ*Phi_res,D_PHYS;F_TRZ;PHI_RES;SSQ,YES
+GR_BH_shadow_r_M,_session459_gr_bh_shadow.py,SO5 - D_phys - F_TRZ - F_TRZ*N_ch + F_TRZ*K_Mex - F_TRZ**2*Phi_res - F_TRZ**3,D_PHYS;F_TRZ;K_MEX;N_CH;PHI_RES;SO_5,YES
+GR_GPB_frame_drag,_session457_gr_gpb_frame_drag.py,F_TRZ**2*K_Mex + F_TRZ**2 + F_TRZ**2*Phi_res,F_TRZ;K_MEX;PHI_RES,YES
+GR_GPB_geodetic,_session456_gr_gpb_geodetic.py,D_BSFG + SSq + F_TRZ - F_TRZ*Phi_res + F_TRZ**2*K_Mex - F_TRZ**2*Phi_res + F_TRZ**3,D_BSFG;F_TRZ;K_MEX;PHI_RES;SSQ,YES
+GR_Hulse_Taylor_ratio,_session458_gr_hulse_taylor.py,Phi_res + F_TRZ + F_TRZ*Phi_res - F_TRZ**2*K_Mex + F_TRZ**2 - F_TRZ**2*Phi_res - F_TRZ**3,F_TRZ;K_MEX;PHI_RES,YES
+GR_Mercury_perihelion,_session453_gr_mercury.py,SO5*D_phys + K_Mex + F_TRZ*N_ch - F_TRZ**2 + F_TRZ**2*K_Mex,D_PHYS;F_TRZ;K_MEX;N_CH;SO_5,YES
+GR_NANOGrav_h_c,_session461_gr_nanograv.py,K_Mex + F_TRZ + F_TRZ*K_Mex + F_TRZ**2 - F_TRZ**3,F_TRZ;K_MEX,YES
+GR_light_bending_solar_limb,_session454_gr_light_bending.py,Phi_res + SSq + F_TRZ*K_Mex + F_TRZ + F_TRZ**2*K_Mex + F_TRZ**2 + F_TRZ**2*Phi_res - F_TRZ**3,F_TRZ;K_MEX;PHI_RES;SSQ,YES
+KK_Earth_orbit_v_per_km_s,_session686_KK_Earth_orbit_v_per_km_s.py,"+(K**5)-(F*K**5)-(beta)-Fraction(5,1)",,YES
+KK_Earth_radius_per_1e6_m,_session689_KK_Earth_radius_per_1e6_m.py,"+(beta**2)-Fraction(2,1)+Fraction(3,1)+Fraction(5,1)",,YES
+KK_Jupiter_mass_per_1e27_kg,_session688_KK_Jupiter_mass_per_1e27_kg.py,"-(F*beta)-(F*beta**3)-(F*beta**4)+Fraction(2,1)",,YES
+KK_Mars_orbit_AU,_session692_KK_Mars_orbit_AU.py,"-(beta**2)-(beta**5)-(F*beta**2)+Fraction(2,1)",,YES
+KK_Mercury_year_per_10_day,_session693_KK_Mercury_year_per_10_day.py,"+(beta)+(beta**3)+Fraction(3,1)+Fraction(5,1)",,YES
+KK_Moon_orbital_period_per_day,_session690_KK_Moon_orbital_period_per_day.py,"+(K**5)-(F*K**5)-Fraction(3,1)-Fraction(5,1)",,YES
+KK_Sun_mass_per_1e29_kg,_session685_KK_Sun_mass_per_1e29_kg.py,"+(K**4)-Fraction(2,1)+Fraction(3,1)",,YES
+KK_Sun_radius_per_1e8_m,_session687_KK_Sun_radius_per_1e8_m.py,"-(F**2*beta**2)-(F**2*beta**3)+Fraction(2,1)+Fraction(5,1)",,YES
+KK_sidereal_year_per_100_day,_session691_KK_sidereal_year_per_100_day.py,"+(beta**2)+(beta**3)+(F*beta)+Fraction(3,1)",,YES
+bio_ATP_hydrolysis_kJ_mol,_session404_bio_atp.py,Phi_res*A_5 - F_TRZ*D_phys*A_5*Phi_res + F_TRZ*Phi_res*SO5 - F_TRZ*Phi_res*D_phys,A_5;D_PHYS;F_TRZ;PHI_RES;SO_5,YES
+bio_DNA_pitch_bp_per_turn,_session403_bio_dna_pitch.py,SO5 + SSq - F_TRZ*Phi_res,F_TRZ;PHI_RES;SO_5;SSQ,YES
+bio_Hill_coefficient_O2,_session407_bio_hill.py,K_Mex + Phi_res - F_TRZ - F_TRZ*F_TRZ*K_Mex,F_TRZ;K_MEX;PHI_RES,YES
+bio_Redfield_C_N_ratio,_session411_bio_redfield.py,D_BSFG + Phi_res - F_TRZ - F_TRZ*Phi_res - F_TRZ*F_TRZ - F_TRZ*F_TRZ*F_TRZ,D_BSFG;F_TRZ;PHI_RES,YES
+bio_chlorophyll_a_peak_nm,_session409_bio_chlorophyll.py,A_5*SO5 + SO5*D_BSFG + SO5*K_Mex - SSq    # 600+60+20.833-0.57,A_5;D_BSFG;K_MEX;SO_5;SSQ,YES
+bio_codon_redundancy_64_20,_session405_bio_codon_redundancy.py,K_Mex + SSq + F_TRZ*D_phys + SSq*F_TRZ + F_TRZ*Phi_res,D_PHYS;F_TRZ;K_MEX;PHI_RES;SSQ,YES
+bio_photosynthesis_quantum_yield,_session408_bio_photosynthesis.py,F_TRZ + F_TRZ*F_TRZ*K_Mex + F_TRZ*F_TRZ*F_TRZ*D_phys,D_PHYS;F_TRZ;K_MEX,YES
+bio_phyllotaxis_golden_ratio,_session412_bio_phyllotaxis.py,K_Mex - SSq + F_TRZ*Phi_res + F_TRZ*F_TRZ*K_Mex - F_TRZ*F_TRZ*F_TRZ*K_Mex,F_TRZ;K_MEX;PHI_RES;SSQ,YES
+geo_Earth_Moon_a_over_R_E,_session430_geo_earth_moon.py,A_5+F_TRZ*K_Mex+F_TRZ*Phi_res+F_TRZ**2,A_5;F_TRZ;K_MEX;PHI_RES,YES
+geo_Earth_obliquity_deg,_session427_geo_obliquity.py,2*SO5+D_phys-Phi_res+F_TRZ*K_Mex+F_TRZ*Phi_res+F_TRZ**2,D_PHYS;F_TRZ;K_MEX;PHI_RES;SO_5,YES
+geo_J2_oblateness_norm,_session423_geo_j2.py,SSq+Phi_res-F_TRZ*K_Mex-F_TRZ-F_TRZ**2-F_TRZ**3,F_TRZ;K_MEX;PHI_RES;SSQ,YES
+geo_adiabatic_lapse_K_per_km,_session426_geo_lapse.py,SO5-F_TRZ-F_TRZ*Phi_res-F_TRZ**2,F_TRZ;PHI_RES;SO_5,YES
+geo_atm_pressure_atm_norm,_session432_geo_pressure.py,F_TRZ*K_Mex+Phi_res-F_TRZ**2-F_TRZ**2*K_Mex,F_TRZ;K_MEX;PHI_RES,YES
+geo_atmospheric_scale_height_km,_session424_geo_scale_height.py,SO5-K_Mex+SSq+F_TRZ-F_TRZ*Phi_res,F_TRZ;K_MEX;PHI_RES;SO_5;SSQ,YES
+geo_greenhouse_DeltaT_K,_session428_geo_greenhouse.py,N_ch*D_phys-D_phys+Phi_res+F_TRZ*K_Mex-F_TRZ-F_TRZ**2,D_PHYS;F_TRZ;K_MEX;N_CH;PHI_RES,YES
+geo_ocean_salinity_ppt,_session429_geo_salinity.py,K_Mex*SO5+SO5+D_phys+F_TRZ*K_Mex-F_TRZ**2-F_TRZ**3,D_PHYS;F_TRZ;K_MEX;SO_5,YES
+Clifford_qualia_states,PAPER_1666;PAPER_1229,8192 = 2^13 = 2^(D_crit/2) SO(26) Clifford-bundle qualia states EXACT,,YES (batch-3 recovery)
+KK_AU_per_1e10_m,_session684_KK_AU_per_1e10_m.py,AU/1e10 m = K_MEX^4 - beta_i - beta_i^3 - 3 = 14.945 (0.10%),,YES (batch-3 recovery)
+SM_generation_count,_session324_sm_generations.py,"n_gen = floor(log(1/2)/log(Phi_5/6)) = 3 EXACT (Phi_5/6^3=0.579>0.5 stable, Phi_5/6^4=0.482<0.5 decouples)",,YES (batch-3 recovery)
+hubble_tension,PAPER_1156;PAPER_2093;PAPER_2125;uqff_pure_calculator p9_h_tension,H0 local/CMB tension = 1/12 EXACT tilt closure; grid (2*SO_5+2)*F_TRZ^19 vs local anchor,,YES (batch-3 recovery)

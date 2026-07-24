@@ -27,6 +27,12 @@ COLUMNS = [
     "corpus_citations", "status",
 ]
 
+try:
+    from uqff_registry_xgeo import cell_status_map as _xgeo_cell_status_map
+    _XGEO_STATUS = _xgeo_cell_status_map()
+except Exception:
+    _XGEO_STATUS = {}
+
 
 def norm(name):
     return re.sub(r"[^a-z0-9]+", "_", str(name).lower()).strip("_")
@@ -245,7 +251,8 @@ def apply_r1_verdicts(rows):
             r["canonical_route"] = "SOLE_ROUTE (auto R1-completion 2026-07-22)"
             sole_marks += 1
         if r["origin"] == "odmap" and str(r["status"]).upper() == "GAP":
-            r["status"] = "SYMBOLIC_PENDING_R1"
+            r["status"] = _XGEO_STATUS.get((r["quantity"], r["formula"]),
+                                           "CROSS_GEOMETRY_PENDING")
             gap_marks += 1
         if not r["phi_variant"]:
             hay = qn + "_" + norm(r.get("sector", ""))
@@ -319,7 +326,7 @@ def main():
     route_hits, gap_marks, sole_marks, phi_marks = apply_r1_verdicts(rows)
     merged_groups, merged_rows = write_merged_view(rows)
     print(f"cross_language: cpp_hits={cpp_hits} lean_hits={lean_hits} | residuals_computed={resid_hits}")
-    print(f"R1 verdicts applied: canonical_routes={route_hits} gap_rows_marked_SYMBOLIC_PENDING_R1={gap_marks}")
+    print(f"R1 verdicts applied: canonical_routes={route_hits} gap_rows_xgeo_mapped={gap_marks} (CROSS_GEOMETRY_PENDING unless routed in UNIFIED_REGISTRY_XGEO_ROUTES.csv)")
     print(f"R1-completion: sole_routes={sole_marks} phi_variants_assigned={phi_marks} | merged_view: {merged_groups} groups covering {merged_rows} rows")
     rows.sort(key=lambda r: (r["origin"], norm(r["quantity"])))
 

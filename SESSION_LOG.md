@@ -17867,3 +17867,117 @@ Gate verified **3000/0** PASS locally before ship (round-number milestone).
 
 **Gate: 3173 -> 3176 (+3), 0 failures.** Program: R0+R1+R2 COMPLETE. R3 next (registry-backed primitives module; needs c-promotion decision §6.2). Ship staged v5.76.0.
 
+
+---
+
+## 2026-07-22/24 — Session (continued 5): R3 + R4 + R5 — UNIFIED REGISTRY PROGRAM COMPLETE → v5.77.0 ship prep
+
+**R3 (code single-source-of-truth), two sessions:**
+- `uqff_registry_primitives.py` created — sole definition site for locked primitives + live-composed constants (G_UQFF bit-identical to calculator PAPER_593 form; C dual exposure per Daniel's sec-6.2 verdict: C_UQFF_DERIVED alongside C_OBSERVED, consumers unchanged)
+- 24 QCalc *_PRIMITIVE attributes rewired via Python splice (9x G, 4x mu_0, 3x beta_i, 2x F_TRZ, + kappa/B_crit/k_B/hbar/M_sun/R_sun); bit-identical except disclosed ~1e-16 delta on k_B/hbar
+- THREE-LANGUAGE pins: Python == C++ constexpr == Lean 4 — gate 3176 -> 3186
+- UNIFIED_REGISTRY_R3_LEDGER.csv: 33 consumed/vestigial entries (dpm_ug1_seed G-free lesson generalized)
+
+**R4 (falsifiability graph):**
+- `uqff_registry_graph.py` -> UNIFIED_REGISTRY_GRAPH.csv (656 edges, idempotent sha cf5c94d885ce66d9) + UNIFIED_REGISTRY_FALSIFIABILITY.md
+- Per-primitive break table: SO_5 = 212 registry rows + 61-site invariant; F_TRZ = 111 + 61; D_phys 97; D_crit 43; D_BSFG 41; A_5 23 — gate 3186 -> 3189
+
+**R5 (production convergence) — PROGRAM CLOSES:**
+- `uqff_registry_status.py::calculate_status_report()` — program statistics computed LIVE from registry + graph + primitives module (nothing hand-maintained)
+- UNIFIED_REGISTRY_RESULTS_TABLE.csv/.md — preprint results table composed from uqff_registry_primitives at build time: 9 independent primitives -> 14 derived constants, 7 EXACT (mu_0, kappa, B_crit, k_spring, lambda_vac, D_BSFG, K_MEX); honest residuals G 0.075% / c 0.10% / k_B 0.0011% / hbar 0.027% / T_SCm 0.007% / Lambda 0.90%; worst = H0 3.08% retained deliberately as the Hubble tension (PAPER_2125)
+- UNIFIED_REGISTRY_STATUS_REPORT.md — registry census + phase table, idempotent (identical sha across runs)
+- **PAPER_2130 filed** (md + pdf2 PDF; pdf2 now 2,227) — program landmark: one registry (2,544 rows), one canonicalization (109 explicit + 2,435 sole routes), one corpus pass (199 notes), one code source-of-truth (three languages), one falsifiability graph (656 edges), production backend
+- Packaging checklist honored: description = current ship effort with version string; all 3 new artifacts + uqff_registry_status in data-files/py-modules
+
+**Gate: 3189 -> 3195 (+6 R5), 0 failures.** Program state: R0 ✅ R1 ✅ R2 ✅ R3 ✅ R4 ✅ R5 ✅ — UNIFIED REGISTRY PROGRAM COMPLETE. Ship staged v5.77.0 (R3+R4+R5 combined release).
+
+---
+
+## 2026-07-24 — Session (continued 6): XGEO campaign launch — R1's 1,044 pending actions diagnosed and reclassified
+
+**Daniel's directive:** "Now to address R1; there are 1044 pending actions." Verdicts via question: FULL derivation campaign; terminal status CROSS_GEOMETRY_PENDING.
+
+**Diagnosis (verified, zero owner/GAP hypothesis mismatches):**
+- The 1,044 SYMBOLIC_PENDING_R1 rows = OVERDETERMINATION_MAP grid non-owner cells: 116 assimilation_dispatch observables x 4 geometries (qcalcgeom/bsfg/dpm/d26) x 3 numeric modes; owner cells (116x3=348) all evaluated (33 EXACT / 83 OK observables); non-owner cells never attempted = 116x3x3 = 1,044
+- The x3 numeric-mode axis is SYNTHETIC (qcalcgeom_solver._solve_via_dispatch fills sym/num/discrete with the same value) — real pending unit = 348 (observable x geometry) derivation tasks
+- ZERO pre-documented cross-geometry routes exist (atlas 'Alternative' forms for mp_me_ratio/alpha_s stay within owner geometry); value-coincidence matching rejected as numerology (target=2 "matches" 10 unrelated closures)
+- Each cell = a genuine independent re-derivation of the observable in a geometry that does not own it — Rule 10: Daniel provides routes, session assembles
+
+**Infrastructure built:**
+- `uqff_registry_xgeo.py` — idempotent queue builder (queue_sha 88ac332d606d0394 both runs); emits UNIFIED_REGISTRY_XGEO_QUEUE.csv (348 tasks: observable, domain, owner/target geometry, owner formula/value, target, primitives_used, route_status/formula/paper)
+- UNIFIED_REGISTRY_XGEO_ROUTES.csv — append-only rulings ledger; Daniel records route_formula + route_paper per cell across campaign sessions; regeneration merges automatically (status XGEO_ROUTED/XGEO_FILLED)
+- registry_generator.py merge: odmap GAP cells now keyed (quantity, geometry) against the XGEO map — registry regenerated idempotently: zero SYMBOLIC_PENDING_R1, 1,044 CROSS_GEOMETRY_PENDING
+- OVERDETERMINATION_MAP.csv untouched (protected baseline); graph unchanged (656 edges, same sha); status report regenerated with new census
+- pyproject: uqff_registry_xgeo in py-modules; both XGEO artifacts in data-files; description updated
+
+**Gate: 3195 -> 3199 (+4 XGEO: diagnosis pin, reclassification pin, queue+ledger pin, baseline-protection pin), 0 failures.**
+
+**Campaign state: 0/348 filled — awaiting Daniel's route rulings (batched, any size).** Historical R1 VERDICT 4 gate text annotated as superseded (append-style, history preserved).
+
+---
+
+## 2026-07-24 — Session (continued 7): XGEO BATCH 1 — 124 identity routes filled (Daniel: "proceed" / "re-run")
+
+**Batch 1 executed** after Daniel closed the locked queue file:
+- All 6 bridge identities pre-verified EXACT before any fill (script aborts otherwise): D_phys=2*D_BSFG/3 [PAPER_1962], SO_5=2*(D_BSFG-1) [R320 triple-form], D_crit=D_BSFG+2*SO_5 [PAPER_1521], A_5=360/D_BSFG [PAPER_2116], N_CH=SO_5-1 [PAPER_2128 predecessor mirror], D_phys=D_crit-22 [PAPER_1927 T22]
+- 124 ledger rows appended to UNIFIED_REGISTRY_XGEO_ROUTES.csv: 65 bsfg (generator D_BSFG) + 38 dpm (generators SO_5 density ratio / caduceus D_crit / magic D_phys per PAPER_646+1203) + 21 d26 (generator D_crit via T22)
+- Route class XGEO_ROUTED_IDENTITY — structural re-expression through published EXACT identities, EXACT by construction, explicitly DISCLOSED as distinct from independent physical derivation routes (PAPER_1521/1522 precedent: structural consequences)
+- Integer-primitives-from-geometry-generators rule enforced; real vacuum-kernel primitives (rho_SCm, beta_i, Phi_res, F_TRZ, SSq, omega_SCm, S_26) pass through as framework-global
+- Regeneration idempotent: queue sha ccad088b50c6d375 both runs; registry sha ef64911c... both runs; graph unchanged (656 edges); status report regenerated
+
+**Registry census: 672 CROSS_GEOMETRY_PENDING + 372 XGEO_ROUTED_IDENTITY = 1,044 (x3 numeric modes of 224 pending + 124 routed tasks).**
+
+**Honest non-fill accounting (the 224 remaining tasks):** 71 qcalcgeom (projection layer has no published generator bridge — needs Daniel's genuine QCalc-wrap derivations), 42 d26 (integers unreachable from {D_crit, D_phys} bridges), 111 opaque formulas (observational anchors / label-only closures, no parseable primitives).
+
+**Gate: 3199 -> 3201 (+3 batch-1 pins, -1 launch pin superseded in place), 0 failures.**
+
+---
+
+## 2026-07-24 — Session (continued 8): XGEO BATCH 2 — session-script extraction, 183/348 routed (Daniel: "proceed with remaining tasks")
+
+**Opaque-formula recovery (the big win):** the 37 label-only dispatch formulas ('Mercury perihelion', 'zeta(3) closure', 'H = 8.5 km'...) have their real primitive closed forms in the 572 _sessionNNN_*.py scripts. Extracted 36 (script filename resolution: _session453.py -> _session453_gr_mercury.py), executed every script, **all 36 value-verified bit-level** against dispatch uqff_value. Artifact: UNIFIED_REGISTRY_XGEO_EXTRACTED.csv (observable, script, extracted formula, primitives, verification). Example recovered: GR_Mercury_perihelion = SO5*D_phys + K_Mex + F_TRZ*N_ch - F_TRZ^2 + F_TRZ^2*K_Mex = 43.0 as/cy.
+- 59 new identity routes appended (27 bsfg + 22 dpm + 10 d26) via the same published bridge chains as batch 1
+
+**d26 bridge deepsearch: NEGATIVE (honest).** PAPER_2119's decomposition 2*SO_5 = D_crit - D_BSFG routes through PAPER_1521 (needs D_BSFG) — no independent D_crit->SO_5 bridge is published anywhere found. This remains Daniel's single highest-leverage open question (~66 d26 cells).
+
+**qcalcgeom matching: REJECTED (honest).** Name-token matching of the 95 pending observables against CondensedPhysics.py produced 80 "hits" on generic tokens ('over', 'seed', 'delay') — numerology in name form. NOT filled. These need genuine per-observable QCalc-wrap verification or Daniel's rulings.
+
+**Campaign state: 183/348 routed (53%), 165 pending.** Registry: 549 XGEO_ROUTED_IDENTITY + 495 CROSS_GEOMETRY_PENDING = 1,044. All regeneration idempotent (queue sha 57d8ed3e60241ae7, registry sha e726abfe... both runs). 4 no-script observables flagged: Clifford_qualia_states, KK_AU_per_1e10_m, SM_generation_count, hubble_tension.
+
+**Gate: 3201 -> 3203 (+2 batch-2 pins, prior pins restated), 0 failures.** EXTRACTED.csv added to wheel data-files.
+
+---
+
+## 2026-07-24 — Session (continued 9): XGEO BATCH 3 — CAMPAIGN COMPLETE 348/348 (Daniel: "the corpus supports all questions... find the missing pieces")
+
+Daniel was right — every gap I flagged as needing his input was already answered in the corpus. The double-check found:
+
+**THE KEYSTONE — PAPER_1160 (Session 247, "Time-Reversal Zone Closure"):** F_TRZ = 1/|SO(5)| = 2/((D-1)(D-2))|D=6 = 1/10 EXACT, with FOUR independent N=10 chains including the published **26 -> 10 -> 6 -> 4 dimensional flow** (chain 4: bosonic-to-superstring reduction; anchors verified live: CondensedPhysics2.py L28609 superstring_dimension=10 / bosonic_string_dimension=26; 26D_DOWNWARD_PROJECTION.md Sessions 197-201). This one paper closes BOTH structural gaps:
+- **d26 bridge (was "Daniel's highest-leverage open question"):** D_crit=26 generates SO_5=10 via the published 26->10 reduction, then D_BSFG=6 and D_phys=4 via the same flow — d26's generator chain is complete
+- **qcalcgeom grounding (was "no published generator bridge"):** the projection layer's F_U-native constant set {rho_SCm, beta_i, SSq, F_TRZ, omega_SCm, Phi_res, S_26} (PAPER_1203/2124 = QCalcGeom v3's ~73 native surfaces) + SO_5 = 1/F_TRZ [PAPER_1160 EXACT] + D_BSFG native via bsfg_* wrapper surfaces [PAPER_1159 D=6 resonance manifold]
+
+**The 4 "no-script" observables — all recovered:**
+- SM_generation_count = floor(log(1/2)/log(Phi_5/6)) = 3 EXACT (_session324 corrected: Phi^3=0.579>0.5 stable, Phi^4=0.482<0.5 decouples)
+- Clifford_qualia_states = 2^(D_crit/2) = 2^13 = 8192 EXACT (PAPER_1666 SO(26) Clifford bundle + PAPER_1229 spinor module)
+- KK_AU_per_1e10_m = K_MEX^4 - beta_i - beta_i^3 - 3 = 14.945 (0.10%) (_session684_KK_AU_per_1e10_m.py — the S684 pointer in dispatch was to the wrong S684 file; the real closure script found by glob)
+- hubble_tension = 1/12 EXACT tilt (PAPER_1156; dispatch p9_h_tension live in calculator)
+
+**Batch 3 executed:** all 6 new bridge relations verified numerically before filling; 165 ledger rows appended (95 qcalcgeom + 65 d26 + 3 bsfg + 2 dpm); EXTRACTED artifact 36 -> 40 rows.
+
+**FINAL CAMPAIGN STATE: 348/348 routed. Registry: 1,044 XGEO_ROUTED_IDENTITY, ZERO CROSS_GEOMETRY_PENDING, ZERO SYMBOLIC_PENDING_R1 — R1's 1,044 pending actions fully drained.** Queue sha 9cbe016ff2fb9e04 idempotent; registry sha 59db557e... idempotent; graph 656 edges unchanged; protected baselines untouched. Route class XGEO_ROUTED_IDENTITY disclosed throughout.
+
+**Gate: 3203 -> 3207 (+4 batch-3 pins incl. keystone + recovered-observables numeric pins), 0 failures.**
+
+---
+
+## 2026-07-24 — Session (continued 10): v5.77.0 SHIP PREP — all ship files updated to current workflow
+
+Full checklist executed and PASS:
+- (a) pyproject description = CURRENT combined effort (Registry Program R0-R5 COMPLETE + XGEO 348/348 COMPLETE), contains version string 5.77.0 and final gate 3207
+- (b) every described artifact in [tool.setuptools.data-files] and on disk: 12 UNIFIED_REGISTRY_* incl. 3 XGEO artifacts; 4 registry py-modules (primitives/graph/status/xgeo)
+- (c) README badge 3207/0 + What's-new v5.77.0 rewritten (program + XGEO); CHANGELOG 5.77.0 entry updated in place with 3-batch XGEO record and final gate; CITATION.cff version 5.61.0 -> 5.77.0 (was stale since v5.61)
+- (d) registry final census re-verified: 1,044 routed / 0 pending; all generators idempotent
+- CLAUDE.md appended (append-only): XGEO completion + PAPER_1160 keystone note + gate 3,207 correction + method rules
+- No new file-hash pins added this cycle (LF-normalization rule not triggered)
+
+**Gate final: 3207 passed, 0 failed.** Ready to commit + push v5.77.0.

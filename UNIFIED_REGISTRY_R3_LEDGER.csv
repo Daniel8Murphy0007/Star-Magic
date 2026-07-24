@@ -1,0 +1,34 @@
+class,constant,status,closure_role
+MagneticStringsQCalcCalculator,G,CONSUMED,Ug3 = G*M*omega/(c*r)
+MagneticStringsQCalcCalculator,c,CONSUMED,Ug3 denominator
+EnhancedBuoyancyQCalcCalculator,beta_i,CONSUMED,Ubi factor
+EnhancedBuoyancyQCalcCalculator,rho_vac,CONSUMED,Ubi factor
+EnhancedBuoyancyQCalcCalculator,c,CONSUMED,c^2 energy conversion
+AetherMetricQCalcCalculator,G,CONSUMED,R_s = 2GM/c^2
+AetherMetricQCalcCalculator,c,CONSUMED,R_s denominator
+AetherMetricQCalcCalculator,rho_vac,CONSUMED,A_00 scale
+UQFF_BaseQCalcCalculator,G,VESTIGIAL,Ug via dpm_ug1_seed (G-free)
+UQFF_BaseQCalcCalculator,c,CONSUMED,Ub c^2
+UQFF_BaseQCalcCalculator,mu_0,CONSUMED,Um = B^2/(2mu_0)
+UQFF_BaseQCalcCalculator,beta_i,CONSUMED,Ub factor
+UQFF_BaseQCalcCalculator,rho_vac,CONSUMED,Ub factor
+UQFF_CompressedQCalcCalculator,G,VESTIGIAL,g_base via dpm_ug1_seed
+UQFF_CompressedQCalcCalculator,c,CONSUMED,g_cosm = Lambda*c^2*r/3
+UQFF_CompressedQCalcCalculator,H0,CONSUMED,expansion term
+UQFF_CompressedQCalcCalculator,Lambda,CONSUMED,g_cosm
+UQFF_SuperconductiveQCalcCalculator,G,VESTIGIAL,g_base via dpm_ug1_seed
+UQFF_SuperconductiveQCalcCalculator,B_crit,CONSUMED,SCm = 1 - B/B_crit
+UQFF_TriadicQCalcCalculator,G,VESTIGIAL,dpm_ug1_seed 3-body
+UQFF_BuoyantQCalcCalculator,beta_i,CONSUMED,Ubi factor
+UQFF_BuoyantQCalcCalculator,rho_vac,CONSUMED,Ubi factor
+UQFF_BuoyantQCalcCalculator,c,CONSUMED,c^2
+UQFF_BuoyantQCalcCalculator,G,VESTIGIAL,Ug via dpm_ug1_seed
+UQFF_ResonantQCalcCalculator,G,VESTIGIAL,g_base via dpm_ug1_seed
+UQFF_ResonantQCalcCalculator,F_TRZ,CONSUMED,resonance amplitude
+UQFF_QuadraticQCalcCalculator,G,VESTIGIAL,dpm_ug1_seed dual-root
+ThermodynamicQCalcCalculator,k_B,CONSUMED,S = k_B ln(...)
+ThermodynamicQCalcCalculator,hbar,VESTIGIAL,"assigned, unused in compute"
+ReactorEfficiencyQCalcCalculator,E_0,CONSUMED,base efficiency
+ReactorEfficiencyQCalcCalculator,kappa,CONSUMED,exp decay
+ReactorEfficiencyQCalcCalculator,M_sun,CONSUMED,mass factor (OBSERVED)
+ReactorEfficiencyQCalcCalculator,R_sun,CONSUMED,radius factor (OBSERVED)
