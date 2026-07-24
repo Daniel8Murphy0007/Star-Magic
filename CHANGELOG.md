@@ -1,3 +1,7 @@
+## [5.75.2] - 2026-07-22 - PACKAGING FIX: registry program artifacts now bundled in the wheel
+
+**One-line summary:** The v5.75.1 wheel advertised the Unified Registry Program in its description but did NOT contain the registry artifacts - the packaging data-files list was never extended. Fixed: UNIFIED_REGISTRY.csv (2,544 rows), _SCHEMA.md, _PROGRAM_PLAN.md, _CORPUS_CITATIONS.csv (2,149-paper graph), _GAPS.csv, _DUPLICATES.csv, _R1_QUEUE.csv (Daniel's 4 verdicts), registry_generator.py, and G_C_CORPUS_UPGRADE_PLAN.md now ship in share/uqff/. Every pip install now carries the full documented work product. No code changes; gate 3166/0.
+
 ## [5.75.1] - 2026-07-22 - CI FIX: baseline hash pins made line-ending-agnostic
 
 **One-line summary:** v5.75.0 CI + Release both failed at the fidelity gate on fresh Linux checkouts: the R0 baseline-protection hash pins were computed on Windows working-tree bytes (CRLF), while CI checkouts produce LF. Five of seven baselines differed (MASTER_LEDGER x3, LEDGER_VS_PRIMITIVES_XREF, PRIMITIVES_RECONCILIATION); OVERDETERMINATION_MAP/WIDE were script-written LF and unaffected. Fix: `_bh()` now hashes LF-normalized content — valid on Windows CRLF working trees AND Linux/macOS CI. No physics changes; gate 3166/0 locally.
