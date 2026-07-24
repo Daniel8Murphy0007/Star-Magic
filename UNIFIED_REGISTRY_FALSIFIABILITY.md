@@ -8,10 +8,10 @@
 | D_BSFG | 1 (HBAR_UQFF_S629) | 41 | 0 | canonical-value pins |
 | D_crit | 3 (D_BSFG, G_UQFF, C_UQFF_DERIVED) | 43 | 0 | magic-number EXACT pins |
 | D_phys | 4 (K_MEX, K_B_UQFF, HBAR_UQFF_S629, B_CRIT) | 97 | 0 | magic-number EXACT pins |
-| F_TRZ | 6 (KAPPA, MU_0, K_B_UQFF, HBAR_UQFF_S629, H0_GRID, LAMBDA_SIMPLE) | 111 | 61 | U_i=2.75e-7 pin + 61-site (1+F_TRZ) family |
+| F_TRZ | 6 (KAPPA, MU_0, K_B_UQFF, HBAR_UQFF_S629, H0_GRID, LAMBDA_SIMPLE) | 112 | 61 | U_i=2.75e-7 pin + 61-site (1+F_TRZ) family |
 | K_MEX | 0 (-) | 6 | 0 | canonical-value pins |
 | N_CH | 0 (-) | 16 | 0 | magic-number EXACT pins |
-| Phi_res | 5 (K_MEX, K_SPRING, G_UQFF, C_UQFF_DERIVED, K_B_UQFF) | 6 | 0 | canonical-value pins |
+| Phi_res | 5 (K_MEX, K_SPRING, G_UQFF, C_UQFF_DERIVED, K_B_UQFF) | 7 | 0 | canonical-value pins |
 | SO_5 | 9 (D_BSFG, F_TRZ, K_MEX, KAPPA, RHO_UA, LAMBDA_VAC, K_SPRING, LAMBDA_SIMPLE, B_CRIT) | 212 | 61 | U_i=2.75e-7 pin + 61-site (1+F_TRZ) family |
 | SSq | 3 (G_UQFF, K_B_UQFF, HBAR_UQFF_S629) | 16 | 0 | canonical-value pins |
 | S_26 | 0 (-) | 2 | 0 | canonical-value pins |
@@ -41,7 +41,7 @@
 
 ## Headline
 
-Total graph edges: 656. Every primitive participates in multiply-pinned
+Total graph edges: 658. Every primitive participates in multiply-pinned
 identities; a single-primitive revision propagates through the derived constants,
 the registry rows above, the (1+F_TRZ) 61-site invariant family, and the
 3,186-assertion fidelity gate simultaneously. Over-determination is the

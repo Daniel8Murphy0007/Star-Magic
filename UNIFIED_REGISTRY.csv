@@ -39,7 +39,9 @@ aging_clock,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,
 aharonov_bohm,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,6.283185307179586,,,,,,2,_l96_uqff_axiom_aharonov_bohm_closure,aharonov_bohm_phase,,,derived
 aharonov_casher,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,,1,_l96_uqff_axiom_aharonov_casher_closure,aharonov_casher_phase,,,derived
 alders_olbers,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,14.492665125585372,,,,,,2,_l96_uqff_axiom_olbers_paradox_closure,,,,derived
+alpha_inverse_125_plus_12_equals_137_paper_2133,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.08333333333333333,,,,,PAPER_2133,2,_l96_uqff_paper_2133_tilt_factor_family_landmark_closure,alpha_inverse,,,derived
 alpha_inverse_137_036,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1209DD,0,_l96_uqff_axiom_paper_1209dd_s614_alpha_inverse_137_036_closure,alpha_inverse,,13,derived
+alpha_s_m_z_0_014_pct_41x_paper_2131,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.11791666666666667,,,,,PAPER_2131,2,_l96_uqff_paper_2131_alpha_s_precision_tightening_shared_kernel_landmark_closure,,,,derived
 alpha_ua_74_so_5_neg_45_gw_absorption,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,7.4e-44,,,,,PAPER_2018,0,_l96_uqff_paper_2018_alpha_ua_74_so_5_neg_45_gw_absorption_closure,,,4,derived
 aluminum_density_2700,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1209Y,0,_l96_uqff_axiom_paper_1209y_s569_aluminum_density_2700_closure,aluminum_density_2700,,10,derived
 amino_acids_20_paired,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1359,0,_l96_uqff_axiom_paper_1359_amino_acids_20_paired_closure,amino_acids_20_paired,,3,derived
@@ -276,6 +278,7 @@ dpm_26_layer_amp_a26,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22)
 dpm_atomic_creation,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,,2,_l96_uqff_axiom_proto_nucleus_atomic_creation_closure,,,,derived
 dpm_decade_ratio_cross_scale,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,10,,,,,PAPER_1941,0,_l96_uqff_paper_1941_dpm_decade_ratio_cross_scale_closure,,,15,derived
 dpm_layer_weight_i6_decomp,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,,0,_l96_uqff_axiom_DPM_layer_weight_i_pow_6_decomposition_closure,,,,derived
+dpm_pair_count_estimator_open_target_paper_2134,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.84,,,,,PAPER_2134,2,_l96_uqff_paper_2134_phi_084_quadratic_grounding_landmark_closure,,,,derived
 dpm_pair_k_minus_2_1_over_12,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1287,0,_l96_uqff_axiom_paper_1287_dpm_pair_k_minus_2_1_over_12_closure,dpm_pair_k_minus_2,,2,derived
 dpm_proportion_pair,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_877,0,_l96_uqff_axiom_PAPER_877_DPM_proportion_pair_closure,,,1100,derived
 dpm_resonance_40hz,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,"0.84 (resonance sector, PAPER_2129 rule)",,1,_l96_uqff_axiom_dpm_resonance_40Hz_closure,dpm_resonance,,,derived
@@ -498,7 +501,7 @@ hubble_bubble,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,
 hubble_bubble_30_pct,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1457,0,_l96_uqff_axiom_paper_1457_hubble_bubble_30_pct_closure,hubble_bubble,,2,derived
 hubble_h0_sh0es_70,dispatch,closure,PAPER_2093 grid (2.27e-18 = observed local anchor; residual = Hubble tension per PAPER_2125),,'',,,,,PAPER_1209Z,0,_l96_uqff_axiom_paper_1209z_s576_hubble_h0_sh0es_70_closure,hubble_h0_sh0es_70,,10,derived
 hubble_oscillation_per_gyr,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,,0,_l96_uqff_axiom_hubble_oscillation_per_Gyr_closure,,,,derived
-hubble_tension,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,67.4,,,,,,0,_l96_uqff_hubble_tension_canonical_report,hubble_tension,,,derived
+hubble_tension,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,67.4,,,,,,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,_l96_uqff_hubble_tension_canonical_report,hubble_tension,,,derived
 hubble_tension_5_6_km_s_mpc,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1456,0,_l96_uqff_axiom_paper_1456_hubble_tension_5_6_km_s_mpc_closure,hubble_tension,,2,derived
 hubble_tension_dual_endpoint_d_phys_minus_1_resolution,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,6.0,,,,,PAPER_2005,0,_l96_uqff_paper_2005_hubble_tension_dual_endpoint_d_phys_minus_1_resolution_closure,hubble_tension,,15,derived
 hudf_i_0,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.05,,,,,PAPER_1976,0,_l96_uqff_paper_1976_hudf_i_0_closure,,,13,derived
@@ -1023,6 +1026,7 @@ three_generations_why,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22
 three_method_simultaneous_hub,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,3,,,,,PAPER_1933,0,_l96_uqff_paper_1933_three_method_simultaneous_hub_closure,,,4,derived
 three_path_convergence_22,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,22,,,,,PAPER_1939,0,_l96_uqff_paper_1939_three_path_convergence_22_closure,,,4,derived
 three_times_f_trz_composed_prefix_cross_domain_landmark_paper_2102,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.3,,,,,PAPER_2102,0,_l96_uqff_paper_2102_three_times_f_trz_composed_prefix_cross_domain_landmark_closure,,,6,derived
+tilt_factorization_1_12_f_trz_phi_5_6_paper_2132,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.11875,,,,,PAPER_2132,2,_l96_uqff_paper_2132_vacuum_coupling_kernel_landmark_closure,,,,derived
 time_absolute_f_u_1,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,PAPER_1275,0,_l96_uqff_axiom_paper_1275_time_absolute_f_u_1_closure,time_absolute_f_u_1,,2,derived
 timestamp_range_upper_2_d_crit_minus_1_times_f_trz_2_0_51_new_composed_integer_51_timestamp_second,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,0.51,,,,,PAPER_2090,0,_l96_uqff_paper_2090_timestamp_range_upper_2_d_crit_minus_1_times_f_trz_2_0_51_new_composed_integer_51_timestamp_second_closure,,,5,derived
 too_big_to_fail,dispatch,closure,SOLE_ROUTE (auto R1-completion 2026-07-22),,'',,,,,,1,_l96_uqff_axiom_too_big_to_fail_closure,,,,derived
@@ -1147,18 +1151,18 @@ alpha_inverse,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1
 alpha_inverse,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,137.0,137.035999084,0.026270,SI,,PAPER_1167,,d26,alpha_inverse,,133,OK
 alpha_inverse,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,137.0,137.035999084,0.026270,SI,,PAPER_1167,,d26,alpha_inverse,,133,OK
 alpha_inverse,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,137.0,137.035999084,0.026270,SI,,PAPER_1167,,d26,alpha_inverse,,133,OK
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.11857707509881422,0.1179,0.574279,SM,,PAPER_1167,,dpm,,,133,OK
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.11857707509881422,0.1179,0.574279,SM,,PAPER_1167,,dpm,,,133,OK
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.11857707509881422,0.1179,0.574279,SM,,PAPER_1167,,dpm,,,133,OK
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.1179,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_INDEPENDENT
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_INDEPENDENT
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_INDEPENDENT
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_ROUTED_IDENTITY
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_ROUTED_IDENTITY
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_ROUTED_IDENTITY
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.11857707509881422,0.1179,0.574279,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,OK
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.11857707509881422,0.1179,0.574279,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,OK
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.11857707509881422,0.1179,0.574279,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,OK
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_ROUTED_IDENTITY
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_ROUTED_IDENTITY
+alpha_s_M_Z,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.1179,,SM,,PAPER_1167,2 independent routes (S348;S378) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,133,XGEO_ROUTED_IDENTITY
 astro_BH_entropy_coeff,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,0.24833333333333338,0.25,0.666667,astro,"5/6 (counting sector, PAPER_2129 rule)",PAPER_594,,qcalcgeom,,,9,OK
 astro_BH_entropy_coeff,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,0.24833333333333338,0.25,0.666667,astro,"5/6 (counting sector, PAPER_2129 rule)",PAPER_594,,qcalcgeom,,,9,OK
 astro_BH_entropy_coeff,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,0.24833333333333338,0.25,0.666667,astro,"5/6 (counting sector, PAPER_2129 rule)",PAPER_594,,qcalcgeom,,,9,OK
@@ -1831,18 +1835,18 @@ higgs_vev,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,245.99
 higgs_vev,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,246.0,,SM,,PAPER_1636,,dpm,higgs_vev_246_gev,,31,XGEO_ROUTED_IDENTITY
 higgs_vev,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,246.0,,SM,,PAPER_1636,,dpm,higgs_vev_246_gev,,31,XGEO_ROUTED_IDENTITY
 higgs_vev,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,246.0,,SM,,PAPER_1636,,dpm,higgs_vev_246_gev,,31,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,5.6,,LCDM,,PAPER_1676,,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,5.599999999999994,5.6,0.000000,LCDM,,PAPER_1676,,d26,hubble_tension,,25,EXACT
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,5.599999999999994,5.6,0.000000,LCDM,,PAPER_1676,,d26,hubble_tension,,25,EXACT
-hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,5.599999999999994,5.6,0.000000,LCDM,,PAPER_1676,,d26,hubble_tension,,25,EXACT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_INDEPENDENT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_INDEPENDENT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_INDEPENDENT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_ROUTED_IDENTITY
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_INDEPENDENT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_INDEPENDENT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,5.6,,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,XGEO_INDEPENDENT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,5.599999999999994,5.6,0.000000,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,EXACT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,5.599999999999994,5.6,0.000000,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,EXACT
+hubble_tension,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,5.599999999999994,5.6,0.000000,LCDM,,PAPER_1676,2 independent routes (PAPER_2093;PAPER_1156;PAPER_2125) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,d26,hubble_tension,,25,EXACT
 ITER_R_over_a,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,3.1,,SI,,PAPER_1706,,bsfg,,,21,XGEO_ROUTED_IDENTITY
 ITER_R_over_a,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,3.1,,SI,,PAPER_1706,,bsfg,,,21,XGEO_ROUTED_IDENTITY
 ITER_R_over_a,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,3.1,,SI,,PAPER_1706,,bsfg,,,21,XGEO_ROUTED_IDENTITY
@@ -2191,18 +2195,18 @@ m_W_alt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,80.0,80.
 m_W_alt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,80.0,,SM,,PAPER_1686,,dpm,m_w_alt_a5,,21,XGEO_ROUTED_IDENTITY
 m_W_alt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,80.0,,SM,,PAPER_1686,,dpm,m_w_alt_a5,,21,XGEO_ROUTED_IDENTITY
 m_W_alt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,80.0,,SM,,PAPER_1686,,dpm,m_w_alt_a5,,21,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,1836.1181087116884,1836.15267343,0.001882,SI,,PAPER_1167,,bsfg,,,133,OK
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,1836.1181087116884,1836.15267343,0.001882,SI,,PAPER_1167,,bsfg,,,133,OK
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,1836.1181087116884,1836.15267343,0.001882,SI,,PAPER_1167,,bsfg,,,133,OK
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
-mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,1836.15267343,,SI,,PAPER_1167,,bsfg,,,133,XGEO_ROUTED_IDENTITY
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_ROUTED_IDENTITY
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_ROUTED_IDENTITY
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_ROUTED_IDENTITY
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,1836.1181087116884,1836.15267343,0.001882,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,OK
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,1836.1181087116884,1836.15267343,0.001882,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,OK
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,1836.1181087116884,1836.15267343,0.001882,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,OK
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_INDEPENDENT
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_INDEPENDENT
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_INDEPENDENT
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_ROUTED_IDENTITY
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_ROUTED_IDENTITY
+mp_me_ratio,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,1836.15267343,,SI,,PAPER_1167,2 independent routes (S266;atlas-note) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,bsfg,,,133,XGEO_ROUTED_IDENTITY
 n_s_scalar_tilt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.96468,,LCDM,,PAPER_1736,,d26,n_s_scalar_tilt,,11,XGEO_ROUTED_IDENTITY
 n_s_scalar_tilt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.96468,,LCDM,,PAPER_1736,,d26,n_s_scalar_tilt,,11,XGEO_ROUTED_IDENTITY
 n_s_scalar_tilt,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.96468,,LCDM,,PAPER_1736,,d26,n_s_scalar_tilt,,11,XGEO_ROUTED_IDENTITY
@@ -2359,21 +2363,21 @@ SM_generation_count,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),
 SM_generation_count,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,3,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
 SM_generation_count,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,3,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
 SM_generation_count,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,3,,SM,,PAPER_1167,,dpm,,,133,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),dpm,0.1294375,0.1293,0.106342,SM,,PAPER_1209HH,,dpm,,,18,OK
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),dpm,0.1294375,0.1293,0.106342,SM,,PAPER_1209HH,,dpm,,,18,OK
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),dpm,0.1294375,0.1293,0.106342,SM,,PAPER_1209HH,,dpm,,,18,OK
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),d26,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),d26,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),d26,,0.1293,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_INDEPENDENT
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_INDEPENDENT
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_INDEPENDENT
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),dpm,0.1294375,0.1293,0.106342,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,OK
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),dpm,0.1294375,0.1293,0.106342,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,OK
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),dpm,0.1294375,0.1293,0.106342,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,OK
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),d26,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),d26,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S377,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),d26,,0.1293,,SM,,PAPER_1209HH,2 independent routes (S377;S441) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_INDEPENDENT
+SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_INDEPENDENT
+SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),qcalcgeom,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_INDEPENDENT
 SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
 SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
 SM_higgs_lambda_S441,odmap,observable,PAPER_1156 (R228 precedent; PAPER_2094 = companion form),bsfg,,0.13,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
@@ -2455,21 +2459,21 @@ SM_theta_23_atm,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,
 SM_theta_23_atm,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.55,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
 SM_theta_23_atm,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.55,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
 SM_theta_23_atm,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.55,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.99,0.9936,0.362319,SM,,PAPER_1209HH,,dpm,,,18,OK
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.99,0.9936,0.362319,SM,,PAPER_1209HH,,dpm,,,18,OK
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.99,0.9936,0.362319,SM,,PAPER_1209HH,,dpm,,,18,OK
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.9936,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
-SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_INDEPENDENT
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_INDEPENDENT
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_INDEPENDENT
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.99,0.9936,0.362319,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,OK
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.99,0.9936,0.362319,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,OK
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),dpm,0.99,0.9936,0.362319,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,OK
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S376,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),d26,,0.9936,,SM,,PAPER_1209HH,2 independent routes (S376;S440) — see UNIFIED_REGISTRY_XGEO_CONFIRMATIONS.csv,dpm,,,18,XGEO_ROUTED_IDENTITY
+SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_INDEPENDENT
+SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_INDEPENDENT
+SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),qcalcgeom,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_INDEPENDENT
 SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
 SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY
 SM_top_yukawa_S440,odmap,observable,SOLE_ROUTE (auto R1-completion 2026-07-22),bsfg,,0.94,,SM,,PAPER_1209HH,,dpm,,,18,XGEO_ROUTED_IDENTITY

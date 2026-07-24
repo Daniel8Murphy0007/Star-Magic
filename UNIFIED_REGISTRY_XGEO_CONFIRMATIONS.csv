@@ -1,0 +1,6 @@
+observable,route_1_formula,route_1_value,route_2_formula,route_2_value,target,route_1_residual_pct,route_2_residual_pct,classification,sources
+mp_me_ratio,m_p/m_e = D_BSFG*pi^5,1836.1181087116884,A_5^2/2 + D_BSFG^2 = 1836 EXACT-integer,1836.0,1836.15267343,0.0019,0.0083,SAME_GEOMETRY_CONFIRMATION,S266;atlas-note
+alpha_s_M_Z,1/(K_MEX*D_phys + F_TRZ),0.11857707509881422,F_TRZ*K_MEX*SSQ - F_TRZ^3*Phi_res,0.11791666666666667,0.1179,0.5743,0.0141,SAME_GEOMETRY_CONFIRMATION,S348;S378
+SM_higgs_lambda_S377,F_TRZ*K_MEX*SSQ + F_TRZ^3*K_MEX*N_CH*SSQ,0.1294375,F_TRZ + F_TRZ^2*K_MEX + F_TRZ^2 - F_TRZ^3 (S441 variant),0.12983333333333336,0.1293,0.1063,0.4125,SAME_GEOMETRY_CONFIRMATION,S377;S441
+SM_top_yukawa_S376,1 - F_TRZ^2 (at m_t scale),0.99,"Phi_res + F_TRZ + F_TRZ^2 - F_TRZ^3*K_MEX (S440 variant; vs its OWN target 0.94 the residual is 0.13 pct — the 5.27 pct column value is vs S376's 0.9936 target, different scale)",0.94125,0.9936,0.3623,5.2687,SAME_GEOMETRY_CONFIRMATION,S376;S440
+hubble_tension,H0 grid (2*SO_5+2)*F_TRZ^19 vs local anchor (PAPER_2093/2125),2.200000000000002e-18,1/12 EXACT tilt closure (PAPER_1156; dispatch p9_h_tension),0.08333333333333333,,,,SAME_GEOMETRY_CONFIRMATION,PAPER_2093;PAPER_1156;PAPER_2125

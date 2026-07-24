@@ -32,6 +32,11 @@ try:
     _XGEO_STATUS = _xgeo_cell_status_map()
 except Exception:
     _XGEO_STATUS = {}
+try:
+    from uqff_registry_xgeo import confirmations_map as _xgeo_confirmations_map
+    _XGEO_CONFIRMATIONS = _xgeo_confirmations_map()
+except Exception:
+    _XGEO_CONFIRMATIONS = {}
 
 
 def norm(name):
@@ -254,6 +259,8 @@ def apply_r1_verdicts(rows):
             r["status"] = _XGEO_STATUS.get((r["quantity"], r["formula"]),
                                            "CROSS_GEOMETRY_PENDING")
             gap_marks += 1
+        if not r["confirmations"] and r["quantity"] in _XGEO_CONFIRMATIONS:
+            r["confirmations"] = _XGEO_CONFIRMATIONS[r["quantity"]]
         if not r["phi_variant"]:
             hay = qn + "_" + norm(r.get("sector", ""))
             if any(t in hay for t in PHI_COUNTING_TOKENS):

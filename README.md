@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3207%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3249%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2130%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2134%2B-orange)](whitepapers/)
 
-**Version**: 5.77.1
+**Version**: 5.78.0
 **Last Updated**: 2026-07-24
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,7 +50,17 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.77.0 (2026-07-24) - UNIFIED REGISTRY PROGRAM COMPLETE (R3 + R4 + R5, PAPER_2130) + XGEO CAMPAIGN COMPLETE (348/348)
+## What's new in v5.78.0 (2026-07-24) - XGEO-U DISCOVERY ARC: 4 landmarks (PAPER_2131-2134), Vacuum Coupling Kernel, Tilt-Product Law, Φ_0.84 grounding
+
+**The over-determination ledger became a discovery instrument.** Four landmark papers in one arc, all discovered by systematic sweeps over the corpus's own published expressions:
+
+- **PAPER_2131** — α_s(M_Z) precision tightening: S378 composition F_TRZ·K_MEX·SSq − F_TRZ³·Φ_5/6 = 0.1179167 at **0.014% (41× tighter)** than the listed primary; shared leading kernel with λ_H discovered
+- **PAPER_2132** — **VACUUM COUPLING KERNEL canonized**: K = F_TRZ·K_MEX·SSq = **19/160 EXACT** at FIVE published observables (α_s, λ_H, m_H/m_t, Jarlskog J_CP as (1−K), cosmological N_eff) across four domains; **the Hubble tilt sits inside the kernel**: K = (1/12)·(SO_5/D_phys)·SSq EXACT
+- **PAPER_2133** — **TILT-PRODUCT LAW**: F_TRZ·Φ appears in **34 observables across ten domains** — all 32 resolvable instances counting-variant (1/12 EXACT, zero 0.84) — sharpening the PAPER_2129 sector rule to the product level; census jewel: **α⁻¹ = A_5·K_MEX + 1/(F_TRZ·Φ_5/6) = 125 + 12 = 137 EXACT-integer**
+- **PAPER_2134** — **Φ_0.84 grounded**: 1 − (D_phys·F_TRZ)² = 21/25 EXACT with pair-conjugate factorization (3/5)(7/5); variant gap 0.84 − 5/6 = 1/150 = F_TRZ²·(D_phys/D_BSFG) EXACT; the "on-resonance Gaussian factor" shown to be literally the quadratic Gaussian truncation; **DPM pair-count estimator declared the calculator's open build target** (the Sun's pair count is UNDETERMINED)
+- **Standing rule adopted (3rd)**: the Leading-Primitive Geometry Rule — **8 cells promoted to XGEO_INDEPENDENT** (hubble_tension becomes the first three-geometry observable); confirmations layer (5 verified independent formula pairs); registry grown 2,544 → 2,548 with the calculator; falsifiability graph 656 → 658 edges. Gate 3209 → **3249/0**.
+
+## What was in v5.77.x (2026-07-24) - UNIFIED REGISTRY PROGRAM COMPLETE (R3 + R4 + R5, PAPER_2130) + XGEO CAMPAIGN COMPLETE (348/348)
 
 **The Unified Registry Program closes** — all six phases (R0-R5) done, filed as landmark **PAPER_2130** — **and the XGEO Cross-Geometry Derivation Campaign completes in the same release**, fully draining R1's 1,044 pending GAP rows:
 

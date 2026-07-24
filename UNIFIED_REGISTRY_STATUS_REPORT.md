@@ -8,10 +8,10 @@ live from `UNIFIED_REGISTRY.csv`, `UNIFIED_REGISTRY_GRAPH.csv` and
 
 | Metric | Value |
 |---|:-:|
-| registry_rows | 2544 |
+| registry_rows | 2548 |
 | canonical_routes_explicit | 109 |
-| canonical_routes_sole | 2435 |
-| graph_edges | 656 |
+| canonical_routes_sole | 2439 |
+| graph_edges | 658 |
 | derived_constants_live | 14 |
 | derived_constants_exact | 7 |
 | independent_primitives | 9 |
@@ -19,16 +19,17 @@ live from `UNIFIED_REGISTRY.csv`, `UNIFIED_REGISTRY_GRAPH.csv` and
 ### Rows by kind
 
 - observable: 1392
-- closure: 1124
+- closure: 1128
 - primitive: 16
 - kernel_constant: 12
 
 ### Rows by status
 
-- derived: 1124
-- XGEO_ROUTED_IDENTITY: 1044
+- derived: 1128
+- XGEO_ROUTED_IDENTITY: 1020
 - OK: 249
 - EXACT: 99
+- XGEO_INDEPENDENT: 24
 - locked: 16
 - CLOSED_flagged_see_2026_05_28_verification: 12
 
@@ -39,7 +40,7 @@ live from `UNIFIED_REGISTRY.csv`, `UNIFIED_REGISTRY_GRAPH.csv` and
 
 ### Graph edges by kind
 
-- primitive->registry_row: 607
+- primitive->registry_row: 609
 - primitive->constant: 35
 - constant->route_paper: 14
 
