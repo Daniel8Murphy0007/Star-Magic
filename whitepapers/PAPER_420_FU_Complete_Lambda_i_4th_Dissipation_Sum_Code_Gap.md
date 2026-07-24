@@ -509,3 +509,21 @@ This paper is an **upstream source** for the v5.78 paper-update campaign: it doc
 **Falsifier hook:** P11 LIGO O5 ringdown spectral offset $R_{21}/R_{22}=0.144$ (PAPER_1175) constrains the cluster-feedback dissipation efficiency claimed here when projected onto compact-object channels.
 
 *Note:* The $\xi=13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** directly modify cluster X-ray feedback dissipation. The closure listed above is the complete v5.78 impact on this whitepaper.
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

@@ -436,3 +436,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
 6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
 7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

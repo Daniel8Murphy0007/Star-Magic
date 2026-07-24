@@ -505,3 +505,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 6. Clowe, D. et al. (2006). *A Direct Empirical Proof of the Existence of Dark Matter.* ApJL **648**, L109 — arXiv:astro-ph/0608407 — doi:10.1086/508162
 7. Mayor, M. & Queloz, D. (1995). *A Jupiter-mass companion to a solar-type star.* Nature **378**, 355 — doi:10.1038/378355a0
 8. Borucki, W.J. et al. (2010). *Kepler Planet-Detection Mission: Introduction and First Results.* Science **327**, 977 — arXiv:1006.0336 — doi:10.1126/science.1185402
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

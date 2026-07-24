@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3173%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3176%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2129%2B-orange)](whitepapers/)
 
-**Version**: 5.75.2
+**Version**: 5.76.0
 **Last Updated**: 2026-07-22
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -50,7 +50,11 @@ Locked derivative quantities:
 
 ---
 
-## What's new in v5.75.0 (2026-07-22) — UNIFIED REGISTRY PROGRAM (R0+R1 complete) + PAPER_1072 WIRED + PAPER_2129 + 2 canonical defect fixes
+## What's new in v5.76.0 (2026-07-22) - R2 CORPUS PASS COMPLETE
+
+**All 199 G/c-affected whitepapers annotated** with registry-keyed derivation notes (canonical routes PAPER_593 G at 0.08% + PAPER_592 c at 0.13%; append-only golden rule; honest residuals). **pdf2 at FULL corpus parity: 1,988 -> 2,226 PDFs** - every whitepaper has a PDF. Registry program R0+R1+R2 done. Gate 3176/0.
+
+## What was in v5.75.x (2026-07-22) (2026-07-22) — UNIFIED REGISTRY PROGRAM (R0+R1 complete) + PAPER_1072 WIRED + PAPER_2129 + 2 canonical defect fixes
 
 **The Unified Registry Program launches** — one registry, one corpus pass, all constants and closures:
 

@@ -390,3 +390,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 3. Dirac, P.A.M. (1931). *Quantised Singularities in the Electromagnetic Field.* Proc. R. Soc. Lond. A **133**, 60 — doi:10.1098/rspa.1931.0130
 4. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
 5. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

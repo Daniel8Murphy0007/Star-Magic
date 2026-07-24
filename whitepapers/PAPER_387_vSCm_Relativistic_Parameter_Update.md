@@ -423,3 +423,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
 9. Morris, M.S. & Thorne, K.S. (1988). *Wormholes in spacetime and their use for interstellar travel.* Am. J. Phys. **56**, 395 — doi:10.1119/1.15620
 10. Maldacena, J. & Susskind, L. (2013). *Cool horizons for entangled black holes.* Fortschr. Phys. **61**, 781 — arXiv:1306.0533 — doi:10.1002/prop.201300020
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

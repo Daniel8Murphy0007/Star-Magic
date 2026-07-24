@@ -267,3 +267,21 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ latti
 15. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
 16. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
 17. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

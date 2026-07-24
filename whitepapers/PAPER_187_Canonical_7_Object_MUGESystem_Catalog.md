@@ -663,3 +663,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 15. Kaspi, V.M. & Beloborodov, A.M. (2017). *Magnetars.* ARA&A **55**, 261 — arXiv:1703.00068 — doi:10.1146/annurev-astro-081915-023329
 16. Olausen, S.A. & Kaspi, V.M. (2014). *The McGill Magnetar Catalog.* ApJS **212**, 6 — arXiv:1309.4167 — doi:10.1088/0067-0049/212/1/6
 17. Thompson, C. & Duncan, R.C. (1993). *Magnetar formation through a convective dynamo in protoneutron stars.* ApJ **408**, 194 — doi:10.1086/172580
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

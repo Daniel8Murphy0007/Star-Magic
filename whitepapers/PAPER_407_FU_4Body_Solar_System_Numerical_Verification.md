@@ -409,3 +409,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
 3. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
 4. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

@@ -471,3 +471,21 @@ R133 CP1 stub-drainage `PillarsErosionCalculator` (July 13, 2026) applies PAPER_
 **Prediction:** additional Multi-Rung Same-Object F_TRZ families should surface at other well-studied astrophysical targets (Crab Nebula candidate — R133 CrabPulsarWind added F_TRZ^12 + F_TRZ^21 at same Crab object; SGR 1745-2900 candidate — has F_TRZ^12 burst scale + 2·F_TRZ Meissner B/B_crit at same magnetar). If confirmed, the Multi-Rung Same-Object pattern is universal across astrophysical targets, not specific to AGN or PDR regimes.
 
 **PAPER_1983 M16 dual-rung addendum status: CLOSED** (2026-07-13)
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

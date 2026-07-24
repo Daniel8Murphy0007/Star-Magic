@@ -401,3 +401,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
 11. ATLAS Collaboration (2012). *Observation of a new boson at a mass of 125 GeV with the ATLAS detector at the LHC.* Phys. Lett. B **716**, 1 — arXiv:1207.7214 — doi:10.1016/j.physletb.2012.08.020
 12. CMS Collaboration (2012). *Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC.* Phys. Lett. B **716**, 30 — arXiv:1207.7235 — doi:10.1016/j.physletb.2012.08.021
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

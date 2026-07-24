@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.75.2"
-description = "UQFF Star-Magic v5.75.2: UNIFIED REGISTRY PROGRAM R0+R1 COMPLETE and bundled in wheel: 2,544-row master registry (1,124 closures live-called, 0 errors), 2,149-paper citation graph, ALL routes canonicalized (109 adjudicated + 2,435 sole-route), 14-group cross-origin merged view, Phi_5/6 sector rule + hbar physical-route standing rule canonized, 4 defect verdicts incl. FRB 0.99c mislabel verified vs PAPER_096. PAPER_1072 WIRED. PAPER_2129 k_B 0.0011%. Gate 3138->3173."
+version = "5.76.0"
+description = "UQFF Star-Magic v5.76.0: R2 CORPUS PASS COMPLETE - all 199 G/c-affected whitepapers carry registry-keyed derivation notes (PAPER_592 c 0.13% + PAPER_593 G 0.08% canonical routes, append-only golden rule); pdf2 grown 1,988 -> 2,226 PDFs (FULL corpus parity - every whitepaper has a PDF). Registry program R0+R1+R2 done: 2,544 rows, all routes canonicalized, merged view, 4 explicit R1 rulings, FRB mislabel verified vs PAPER_096. Gate 3138->3176."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
@@ -253,6 +253,7 @@ exclude = [
     "UNIFIED_REGISTRY_DUPLICATES.csv",
     "UNIFIED_REGISTRY_R1_QUEUE.csv",
     "UNIFIED_REGISTRY_MERGED.csv",
+    "UNIFIED_REGISTRY_R2_MAPPING.csv",
     "registry_generator.py",
     "G_C_CORPUS_UPGRADE_PLAN.md",
 ]

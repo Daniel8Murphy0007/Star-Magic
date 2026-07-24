@@ -642,3 +642,23 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 10. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
 11. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
 12. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) and c = 3e8-family literal as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+- **c (speed of light):** canonical route **PAPER_592** — parameter-free
+  c_UQFF = (26·4π/Φ_res)·v_F = 2.995×10⁸ m/s (0.13% vs observed; v_F Fermi anchor, c-independent).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

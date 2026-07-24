@@ -521,3 +521,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 11. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
 12. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
 13. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

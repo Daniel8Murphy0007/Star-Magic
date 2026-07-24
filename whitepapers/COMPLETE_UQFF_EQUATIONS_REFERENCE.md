@@ -125,3 +125,20 @@ Gravity (Universal) is the derived component from the same vacuum/26D geometry t
 **Fidelity Note:** All content derived exclusively from UQFF axioms / dpm v3.0 / 26D downward rule / Ubi differential / closure graph. No external seeds. Mathematical rigor for proving Universal Buoyancy exactly balancing Universal Gravity via simultaneous solving is preserved and expanded (references the 4 pure-math PAPER_1200-1203 + prior #13 gap-fill as protected core). "Keep all additions/changes made to all files since the start of this TUI thread" enforced (prior artifacts including 4 pure-math papers, gap analysis, workspace_25May2026.md, build_debug/, verification/contract/orchestrator/pip docs untouched).
 
 This document + the closure system + whitepapers/ now constitute the complete archival record.
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

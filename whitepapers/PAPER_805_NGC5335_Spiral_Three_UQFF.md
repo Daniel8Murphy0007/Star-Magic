@@ -437,3 +437,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 10. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
 11. GRAVITY Collaboration (2022). *Mass distribution in the Galactic Center based on interferometric astrometry of multiple stellar orbits.* A&A **657**, A82 — arXiv:2112.07478 — doi:10.1051/0004-6361/202142465
 12. Ghez, A.M. et al. (2008). *Measuring Distance and Properties of the Milky Way's Central Supermassive Black Hole with Stellar Orbits.* ApJ **689**, 1044 — arXiv:0808.2870 — doi:10.1086/592738
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

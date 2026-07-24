@@ -385,3 +385,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 7. Riess, A.G. et al. (2022). *A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km/s/Mpc Uncertainty from the Hubble Space Telescope.* ApJL **934**, L7 — arXiv:2112.04510 — doi:10.3847/2041-8213/ac5c5b
 8. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
 9. Verde, L., Treu, T. & Riess, A.G. (2019). *Tensions between the Early and Late Universe.* Nature Astron. **3**, 891 — arXiv:1907.10625 — doi:10.1038/s41550-019-0902-0
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---

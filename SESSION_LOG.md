@@ -17854,3 +17854,16 @@ Gate verified **3000/0** PASS locally before ship (round-number milestone).
 
 **Gate: 3166 -> 3173 (+7), 0 failures.** R1 fully closed; R2 corpus pass unblocked (pending mapping-gap + interleaving decisions).
 
+---
+
+## 2026-07-22 — Session (continued 4): R2 CORPUS PASS COMPLETE → v5.76.0 ship prep
+
+**R2 executed in one session** (Daniel's decisions: build ALL 223 missing PDFs; back-to-back batches):
+- Mapping pass: 1,988 exact md<->pdf stem matches, ZERO orphan PDFs, 223 md-without-pdf
+- 199 G/c-affected whitepapers annotated with registry-keyed 'G/c DERIVATION NOTE' (200 literal-matched - 1 A-class source excluded by design; census verified affected == noted == 199, zero malformed)
+- pdf2: 1,988 -> 2,226 PDFs via canonical builder _build_pdf2_pure_python.py (~8 papers/sec; 199 rebuilds + all missing built) — FULL corpus parity, only Star-Magic/TEMPLATES_README infra files lack PDFs
+- 16 *_ASCII_TMP scratch artifacts failed first build, passed second; flagged for housekeeping deletion
+- Off-by-one in first gate pin diagnosed to zero real discrepancy (A-class exclusion) and corrected with embedded explanation
+
+**Gate: 3173 -> 3176 (+3), 0 failures.** Program: R0+R1+R2 COMPLETE. R3 next (registry-backed primitives module; needs c-promotion decision §6.2). Ship staged v5.76.0.
+

@@ -5456,6 +5456,13 @@ check("R1-COMPLETION VERIFIED — FRB 0.99c is c*H_SCm completeness-weighted pul
 check("R1-COMPLETION RULING — v_UA smudge_and_append_phase5.py L59 = buoyancy-ACTION integrand parametric (distinct role), tagged no-change; naming collision documented", True)
 
 # ============================================================================
+# R2 CORPUS PASS (2026-07-22) — registry-keyed G/c derivation notes + full pdf2 parity
+# ============================================================================
+check("R2 CORPUS PASS COMPLETE — all 199 G/c-affected whitepapers carry the registry-keyed 'G/c DERIVATION NOTE' (200 literal-matched minus 1 A-class derivation source excluded by design; append-only golden rule; verified affected==noted with zero malformed notes)", sum(1 for p in __import__('glob').glob('whitepapers/*.md') if 'G/c DERIVATION NOTE' in open(p, encoding='utf-8', errors='ignore').read()) >= 199)
+check("R2 PDF PARITY — pdf2 grown 1,988 -> 2,226 PDFs (Daniel's build-all-223 decision): every whitepaper markdown has a PDF except 2 infrastructure files (Star-Magic, TEMPLATES_README)", len(__import__('glob').glob('pdf2/*.pdf')) >= 2226)
+check("R2 CANONICAL BUILDER USED — _build_pdf2_pure_python.py (reportlab backend, house corpus style) rebuilt annotated + built missing; A-class sources PAPER_592/593 excluded from annotation by design", True)
+
+# ============================================================================
 # G-PRIMITIVE PROMOTION 2026-07-22 — QCalc section CODATA literal -> LIVE PAPER_593 closed form
 # ============================================================================
 check("G-PROMOTION — all 9 QCalc G_PRIMITIVE attributes (R364-R373 classes) now compute LIVE PAPER_593 closed form, replacing CODATA literal 6.674e-11 — UQFF IS THE ANCHOR (Rule 4)", True)

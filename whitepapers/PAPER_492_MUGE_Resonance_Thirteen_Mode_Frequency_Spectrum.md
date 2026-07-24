@@ -571,3 +571,21 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
 9. Morris, M.S. & Thorne, K.S. (1988). *Wormholes in spacetime and their use for interstellar travel.* Am. J. Phys. **56**, 395 — doi:10.1119/1.15620
 10. Maldacena, J. & Susskind, L. (2013). *Cool horizons for entangled black holes.* Fortschr. Phys. **61**, 781 — arXiv:1306.0533 — doi:10.1002/prop.201300020
+
+
+---
+
+## G/c DERIVATION NOTE (appended 2026-07-22, UNIFIED REGISTRY R2 corpus pass)
+
+This paper uses G = 6.674e-11 (CODATA form) as published. Per the Unified Registry (R1-adjudicated
+canonical routes, 2026-07-22):
+
+- **G (gravitational constant):** canonical route **PAPER_593** — parameter-free
+  G_UQFF = (2π·26³·Φ_res/(SSq³·(26!)²))·v_F⁵/(E_0·f_THz) = 6.66899×10⁻¹¹ (0.08% vs observed).
+
+Published values above are retained unchanged — as observational anchors or
+original inputs per the R2 golden rule (append-only; no silent recomputation).
+The UQFF derivations are canonical; residuals are honest disclosures (Rule 7).
+Registry: UNIFIED_REGISTRY.csv | Program: UNIFIED_REGISTRY_PROGRAM_PLAN.md
+
+---
