@@ -5429,10 +5429,10 @@ check("R0 REGISTRY — companion reports exist (GAPS 1044 odmap placeholders for
 check("R0 REGISTRY — registry row count >= 2537 baseline (append-only growth expected through R0 s2)", sum(1 for _ in open("UNIFIED_REGISTRY.csv", encoding="utf-8")) - 1 >= 2537)
 import hashlib as _hl
 def _bh(p):
-    return _hl.sha256(open(p, "rb").read()).hexdigest()[:16]
-check("R0 BASELINE PROTECTION — OVERDETERMINATION_MAP.csv bit-identical to 2026-07-22 state", _bh("OVERDETERMINATION_MAP.csv") == "cd632f96b76dcc5b")
-check("R0 BASELINE PROTECTION — MASTER_LEDGER_BY_CATEGORY/STATUS/SCRIPT.csv bit-identical to 2026-07-22 state", _bh("MASTER_LEDGER_BY_CATEGORY.csv") == "dc8e9760cd6edcec" and _bh("MASTER_LEDGER_BY_STATUS.csv") == "ab578ab8f05f7e30" and _bh("MASTER_LEDGER_BY_SCRIPT.csv") == "fd3fae62aa732093")
-check("R0 BASELINE PROTECTION — LEDGER_VS_PRIMITIVES_XREF.csv + PRIMITIVES_RECONCILIATION.csv + OVERDETERMINATION_WIDE.csv bit-identical to 2026-07-22 state", _bh("LEDGER_VS_PRIMITIVES_XREF.csv") == "7d5ea1d05f8758c3" and _bh("PRIMITIVES_RECONCILIATION.csv") == "547e434f7cb2a8fc" and _bh("OVERDETERMINATION_WIDE.csv") == "a6dadbcfea49244c")
+    return _hl.sha256(open(p, "rb").read().replace(b"\r\n", b"\n")).hexdigest()[:16]
+check("R0 BASELINE PROTECTION — OVERDETERMINATION_MAP.csv content-identical to 2026-07-22 state (LF-normalized hash: valid on Windows CRLF working trees AND Linux/macOS CI checkouts — v5.75.1 fix for CI red)", _bh("OVERDETERMINATION_MAP.csv") == "cd632f96b76dcc5b")
+check("R0 BASELINE PROTECTION — MASTER_LEDGER_BY_CATEGORY/STATUS/SCRIPT.csv content-identical to 2026-07-22 state (LF-normalized)", _bh("MASTER_LEDGER_BY_CATEGORY.csv") == "f0ad9e46598bc963" and _bh("MASTER_LEDGER_BY_STATUS.csv") == "6031556398c86008" and _bh("MASTER_LEDGER_BY_SCRIPT.csv") == "977faff59607b150")
+check("R0 BASELINE PROTECTION — LEDGER_VS_PRIMITIVES_XREF.csv + PRIMITIVES_RECONCILIATION.csv + OVERDETERMINATION_WIDE.csv content-identical to 2026-07-22 state (LF-normalized)", _bh("LEDGER_VS_PRIMITIVES_XREF.csv") == "4bb360757b93c220" and _bh("PRIMITIVES_RECONCILIATION.csv") == "3f859fc6d6a1acf1" and _bh("OVERDETERMINATION_WIDE.csv") == "a6dadbcfea49244c")
 
 # ============================================================================
 # R1 CANONICALIZATION (2026-07-22) — Daniel's 4 verdicts + 2 same-session defect fixes

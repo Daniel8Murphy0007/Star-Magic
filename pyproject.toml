@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.75.0"
-description = "UQFF Star-Magic v5.75.0: UNIFIED REGISTRY PROGRAM launched — R0+R1 complete: 2,544-row master registry (all 1,124 closures live-called, 0 errors), full-corpus citation scan (2,149 papers), 109 canonical routes adjudicated, Phi_5/6 sector rule canonized. PAPER_1072 WIRED (6th most-cited, 799 files). PAPER_2129 k_B composition 0.0011% near-EXACT. R374-375 fills (158 consecutive). 2 canonical defect fixes (rho_vac_UA factor-10, v_SCm). Gate 3138->3166."
+version = "5.75.1"
+description = "UQFF Star-Magic v5.75.1: UNIFIED REGISTRY PROGRAM launched — R0+R1 complete: 2,544-row master registry (all 1,124 closures live-called, 0 errors), full-corpus citation scan (2,149 papers), 109 canonical routes adjudicated, Phi_5/6 sector rule canonized. PAPER_1072 WIRED (6th most-cited, 799 files). PAPER_2129 k_B composition 0.0011% near-EXACT. R374-375 fills (158 consecutive). 2 canonical defect fixes (rho_vac_UA factor-10, v_SCm). Gate 3138->3166."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
