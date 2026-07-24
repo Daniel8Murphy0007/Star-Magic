@@ -4,7 +4,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3166%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3173%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2129%2B-orange)](whitepapers/)
 
@@ -61,7 +61,7 @@ Locked derivative quantities:
 - **PAPER_2129** — k_B = (SSq + Φ_5/6 − F_TRZ·SSq + F_TRZ²·D_phys − F_TRZ²·SSq)·10⁻²³ lands **0.0011% from the SI-defined value** (24× tighter than published); precision-tightening landmark class established; 1209-series re-verification motivated
 - **R374-375 fills** (158 consecutive): first born-live fill (k_B/ħ computed at class definition), first `_OBSERVED` naming discipline (M_sun/R_sun), first PAPER_2112 κ = (SO_5/2)·F_TRZ⁴ live application
 
-**Gate 3138 → 3166 (+28 assertions), 0 failures. Zero regression, zero SM drift.**
+**Gate 3138 → 3173 (+35 assertions), 0 failures. Zero regression, zero SM drift.**
 
 ## What was in v5.74.1 (2026-07-22) — R359-R373 (15 rounds, 156 consecutive, 150-ROUND MILESTONE) + 12 formal landmarks (PAPER_2117-2128) + Two-Layer revision + G-PRIMITIVE promotion + G/c corpus plan
 

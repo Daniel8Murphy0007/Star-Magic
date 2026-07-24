@@ -1,6 +1,7 @@
-## [5.75.2] - 2026-07-22 - PACKAGING FIX: registry program artifacts now bundled in the wheel
+## [5.75.2] - 2026-07-22 - PACKAGING FIX (registry artifacts bundled) + R1-COMPLETION (all routes canonicalized, merged view, 4 explicit rulings)
 
-**One-line summary:** The v5.75.1 wheel advertised the Unified Registry Program in its description but did NOT contain the registry artifacts - the packaging data-files list was never extended. Fixed: UNIFIED_REGISTRY.csv (2,544 rows), _SCHEMA.md, _PROGRAM_PLAN.md, _CORPUS_CITATIONS.csv (2,149-paper graph), _GAPS.csv, _DUPLICATES.csv, _R1_QUEUE.csv (Daniel's 4 verdicts), registry_generator.py, and G_C_CORPUS_UPGRADE_PLAN.md now ship in share/uqff/. Every pip install now carries the full documented work product. No code changes; gate 3166/0.
+**One-line summary:** Two-part release. (1) PACKAGING: the v5.75.1 wheel advertised the Unified Registry Program but did not contain the artifacts — UNIFIED_REGISTRY.csv (2,544 rows), _SCHEMA.md, _PROGRAM_PLAN.md, _CORPUS_CITATIONS.csv, _GAPS.csv, _DUPLICATES.csv, _R1_QUEUE.csv, _MERGED.csv, registry_generator.py, and G_C_CORPUS_UPGRADE_PLAN.md now ship in share/uqff/. (2) R1-COMPLETION: singles auto-canonicalized (2,435 SOLE_ROUTE rows — zero blank canonical_route remains), 116 Phi-variant sector tags, 14-group cross-origin merged view (283 rows, F_TRZ largest at 102), and 4 explicit rulings: H_SCm 3-regime split accepted; T_SCm physical 59.95 K canonical with A_5 = 60 K flagged candidate; FRB 0.99c VERIFIED vs PAPER_096 as c*H_SCm completeness-weighted denominator (mislabel fixed comment-only, numerics always correct); v_UA action-integrand tagged distinct-role no-change. Gate 3166 -> **3173** (+7).
+
 
 ## [5.75.1] - 2026-07-22 - CI FIX: baseline hash pins made line-ending-agnostic
 

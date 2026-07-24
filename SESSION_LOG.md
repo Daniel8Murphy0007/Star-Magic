@@ -17837,3 +17837,20 @@ Gate verified **3000/0** PASS locally before ship (round-number milestone).
 
 **Gate: 3138 -> 3166 (+28), 0 failures.** Ship staged as v5.75.0 (description updated to CURRENT effort per v5.74.1 lesson — now a permanent checklist item).
 
+---
+
+## 2026-07-22 — Session (continued 3): v5.75.1 shipped + v5.75.2 packaging fix + R1-COMPLETION → v5.75.2 ship prep (combined)
+
+**v5.75.1 SHIPPED to PyPI** (CI + Release green after LF-normalization fix — v5.75.0 gate correctly blocked publish on hash-pin CRLF/LF mismatch; baseline protection worked as designed on first CI exposure).
+
+**v5.75.2 packaging fix**: v5.75.1 wheel advertised the registry but did not contain it. All 10 registry artifacts (incl. UNIFIED_REGISTRY_MERGED.csv) now in share/uqff/ data-files. PERMANENT CHECKLIST: described artifacts MUST appear in data-files.
+
+**R1-COMPLETION (folded into v5.75.2)**:
+- Singles auto-canonicalized: 2,435 SOLE_ROUTE rows — zero blank canonical_route remains
+- Phi-variant population: 116 rows tagged per PAPER_2129 sector rule
+- Cross-origin merged view: UNIFIED_REGISTRY_MERGED.csv, 14 groups / 283 rows (F_TRZ largest, 102)
+- 4 explicit Daniel rulings: H_SCm 3-regime split ACCEPTED; T_SCm physical 59.95 K canonical (A_5 = 60 K candidate flagged); FRB 0.99c VERIFIED vs PAPER_096 — it is c*H_SCm completeness-weighted pulse-width denominator (Dt = r_TRZ/(c*[SCm])), NOT a velocity; mislabel fixed comment-only, numerics always correct; v_UA smudge L59 = action-integrand parametric, distinct role, tagged no-change
+- Verification pipeline vindicated: the flagged v_SCm "conflict" was a phantom — label lied, physics agreed
+
+**Gate: 3166 -> 3173 (+7), 0 failures.** R1 fully closed; R2 corpus pass unblocked (pending mapping-gap + interleaving decisions).
+

@@ -39119,7 +39119,7 @@ class FastRadioBurstModel(SelfSimulatingExpandingMixin):
         """Initialize Fast Radio Burst Model."""
         # Physical constants
         self.c = CONSTANTS.get('c_light', 2.998e8)  # m/s
-        self.v_SCm = 0.99 * self.c  # [SCm] propagation speed
+        self.v_SCm = 0.99 * self.c  # c*H_SCm completeness-weighted light speed, PAPER_096 pulse-width denominator Dt = r_TRZ/(c*[SCm]) - NOT the bulk v_SCm = 1e8 (R1-completion verification 2026-07-22: label was wrong, numerics correct per paper)
         # Magnetar parameters
         self.B_magnetar = CONSTANTS.get('B_s_magnetar', 1e11)  # T (surface field)
         self.P_SCm_magnetar = CONSTANTS.get('P_SCm_magnetar', 10.0)  # Enhanced penetration

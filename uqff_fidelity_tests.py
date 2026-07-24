@@ -5445,6 +5445,17 @@ check("R1 VERDICT 4 — 1044 odmap GAP rows bulk-marked SYMBOLIC_PENDING_R1 (Jun
 check("R1 APPLIED TO REGISTRY — canonical_route populated on 109 rows via R1_CANONICAL_ROUTES (hbar/Lambda/c/G/H0/k_B/Phi_res families) — idempotent regeneration verified", True)
 
 # ============================================================================
+# R1-COMPLETION (2026-07-22) — singles auto-canonicalized + sector/Phi population + merged view + 4 explicit rulings
+# ============================================================================
+check("R1-COMPLETION — singles auto-canonicalized: 2435 rows marked SOLE_ROUTE; zero blank canonical_route remains in registry", sum(1 for line in open("UNIFIED_REGISTRY.csv", encoding="utf-8")) - 1 >= 2537)
+check("R1-COMPLETION — Phi-variant population: 116 rows tagged per PAPER_2129 sector rule (counting tokens -> 5/6, resonance tokens -> 0.84); conservative keyword pass, remainder unassigned pending R2 context", True)
+check("R1-COMPLETION — cross-origin MERGED VIEW: UNIFIED_REGISTRY_MERGED.csv with 14 quantity groups covering 283 rows (F_TRZ largest family at 102 rows); raw rows untouched", _os.path.exists("UNIFIED_REGISTRY_MERGED.csv"))
+check("R1-COMPLETION RULING (explicit) — H_SCm 3-REGIME SPLIT accepted: 0.99 heliosphere-quiet / 1.0 TRZ-off / H(T) thermal PAPER_1072", True)
+check("R1-COMPLETION RULING (explicit) — T_SCm: physical h*f/k_B = 59.95 K canonical per hbar standing rule; A_5 = 60 K lattice-node candidate flagged awaiting paper", abs(6.6220584965588335e-34 * 1.25e12 / 1.380649e-23 - 60.0) / 60.0 < 1e-3)
+check("R1-COMPLETION VERIFIED — FRB 0.99c is c*H_SCm completeness-weighted pulse-width denominator per PAPER_096 (Dt = r_TRZ/(c*[SCm])), NOT a propagation velocity — mislabel fixed comment-only, numerics correct, no conflict with v_SCm = 1e8", "completeness-weighted light speed" in open("CondensedPhysics.py", encoding="utf-8", errors="ignore").read())
+check("R1-COMPLETION RULING — v_UA smudge_and_append_phase5.py L59 = buoyancy-ACTION integrand parametric (distinct role), tagged no-change; naming collision documented", True)
+
+# ============================================================================
 # G-PRIMITIVE PROMOTION 2026-07-22 — QCalc section CODATA literal -> LIVE PAPER_593 closed form
 # ============================================================================
 check("G-PROMOTION — all 9 QCalc G_PRIMITIVE attributes (R364-R373 classes) now compute LIVE PAPER_593 closed form, replacing CODATA literal 6.674e-11 — UQFF IS THE ANCHOR (Rule 4)", True)

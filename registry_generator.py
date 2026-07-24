@@ -224,19 +224,85 @@ R1_CANONICAL_ROUTES = {
 }
 
 
+PHI_COUNTING_TOKENS = ("magic", "shell", "nuclear", "binding", "thermo", "entropy",
+                       "boltzmann", "k_b", "avogadro", "faraday", "occupancy")
+PHI_RESONANCE_TOKENS = ("lenr", "holmlid", "630", "phonon", "k_spring", "quantum_chain",
+                        "ker", "rossi", "parkhomov", "mizuno", "resonan", "s26", "s_26")
+
+
 def apply_r1_verdicts(rows):
-    route_hits = gap_marks = 0
+    route_hits = gap_marks = sole_marks = phi_marks = 0
     for r in rows:
         qn = norm(r["quantity"])
+        matched = False
         for key, verdict in R1_CANONICAL_ROUTES.items():
             if key == qn or key in qn:
                 r["canonical_route"] = verdict
                 route_hits += 1
+                matched = True
                 break
+        if not matched and not r["canonical_route"]:
+            r["canonical_route"] = "SOLE_ROUTE (auto R1-completion 2026-07-22)"
+            sole_marks += 1
         if r["origin"] == "odmap" and str(r["status"]).upper() == "GAP":
             r["status"] = "SYMBOLIC_PENDING_R1"
             gap_marks += 1
-    return route_hits, gap_marks
+        if not r["phi_variant"]:
+            hay = qn + "_" + norm(r.get("sector", ""))
+            if any(t in hay for t in PHI_COUNTING_TOKENS):
+                r["phi_variant"] = "5/6 (counting sector, PAPER_2129 rule)"
+                phi_marks += 1
+            elif any(t in hay for t in PHI_RESONANCE_TOKENS):
+                r["phi_variant"] = "0.84 (resonance sector, PAPER_2129 rule)"
+                phi_marks += 1
+    return route_hits, gap_marks, sole_marks, phi_marks
+
+
+MERGE_KEYS = {
+    "G_newton": ("g_newton", "gravitational_constant", "newton_g"),
+    "c_light": ("c_light", "speed_of_light", "lightspeed"),
+    "hbar": ("hbar", "planck_reduced", "h_bar"),
+    "planck_h": ("planck_h", "planck_constant"),
+    "k_B": ("k_b", "boltzmann"),
+    "Lambda": ("lambda", "cosmological_constant"),
+    "H0": ("h0", "hubble"),
+    "mu_0": ("mu_0", "permeability"),
+    "beta_i": ("beta_i",),
+    "rho_SCm": ("rho_scm", "rho_vac_scm"),
+    "rho_UA": ("rho_ua", "rho_vac_ua", "rho_vac"),
+    "kappa": ("kappa",),
+    "Phi_res": ("phi_res", "phi_resonance"),
+    "F_TRZ": ("f_trz", "trz"),
+    "SSq": ("ssq",),
+    "omega_SCm": ("omega_scm", "1p25_thz", "1_25_thz"),
+}
+
+
+def write_merged_view(rows):
+    groups = {}
+    for r in rows:
+        qn = norm(r["quantity"])
+        for canon, tokens in MERGE_KEYS.items():
+            if any(t in qn for t in tokens):
+                groups.setdefault(canon, []).append(r)
+                break
+    out = []
+    for canon in sorted(groups):
+        g = groups[canon]
+        origins = sorted(set(r["origin"] for r in g))
+        routes = sorted(set(r["canonical_route"] for r in g if r["canonical_route"] and "SOLE_ROUTE" not in r["canonical_route"]))
+        out.append({
+            "quantity_key": canon,
+            "n_rows": len(g),
+            "origins": ";".join(origins),
+            "canonical_route": routes[0] if routes else "SOLE_ROUTE_family",
+            "row_names_sample": ";".join(sorted(r["quantity"] for r in g)[:5]),
+        })
+    with open("UNIFIED_REGISTRY_MERGED.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["quantity_key", "n_rows", "origins", "canonical_route", "row_names_sample"])
+        w.writeheader()
+        w.writerows(out)
+    return len(out), sum(g["n_rows"] for g in out)
 
 
 def main():
@@ -250,9 +316,11 @@ def main():
     cite_hits = apply_citations(rows, load_citations())
     cpp_hits, lean_hits = apply_cross_language(rows, *load_cross_language_tokens())
     resid_hits = compute_residuals(rows)
-    route_hits, gap_marks = apply_r1_verdicts(rows)
+    route_hits, gap_marks, sole_marks, phi_marks = apply_r1_verdicts(rows)
+    merged_groups, merged_rows = write_merged_view(rows)
     print(f"cross_language: cpp_hits={cpp_hits} lean_hits={lean_hits} | residuals_computed={resid_hits}")
     print(f"R1 verdicts applied: canonical_routes={route_hits} gap_rows_marked_SYMBOLIC_PENDING_R1={gap_marks}")
+    print(f"R1-completion: sole_routes={sole_marks} phi_variants_assigned={phi_marks} | merged_view: {merged_groups} groups covering {merged_rows} rows")
     rows.sort(key=lambda r: (r["origin"], norm(r["quantity"])))
 
     with open(REGISTRY_CSV, "w", encoding="utf-8", newline="") as f:
