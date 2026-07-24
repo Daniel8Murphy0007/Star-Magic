@@ -501,3 +501,9 @@ R1's 1,044 bulk-triaged GAP rows are fully drained. Future sessions should know:
 - **Artifacts (regenerate, never hand-edit):** `uqff_registry_xgeo.py` -> UNIFIED_REGISTRY_XGEO_QUEUE.csv (348 tasks); UNIFIED_REGISTRY_XGEO_ROUTES.csv is APPEND-ONLY (rulings ledger; merged on regeneration); UNIFIED_REGISTRY_XGEO_EXTRACTED.csv (40 opaque formulas recovered from _sessionNNN_*.py scripts, all value-verified by execution — session_script pointers in assimilation_dispatch lack the descriptive filename suffix; resolve via glob `_sessionNNN_*.py`).
 - **Method rules (gate-pinned):** value-coincidence matching and name-token matching are REJECTED as numerology. Fills require published identity chains or script-verified extraction. Opaque dispatch formulas: the closed form lives in the session script (`val=` line).
 - **Registry census after XGEO:** 1,044 XGEO_ROUTED_IDENTITY, zero pending of any kind. Gate at **3,207** as of v5.77.0 (supersedes the 3,195 figure in the previous append).
+
+---
+
+## APPENDED 2026-07-24 (3) — Ship checklist rule (e): PyPI summary <= 512 characters
+
+v5.77.0's upload was rejected by PyPI with HTTP 400 ("'summary' field must be 512 characters or less") AFTER the gate, the build, and twine's metadata check all passed — twine does not enforce the server-side Summary limit. The pyproject `description` IS the PyPI Summary. Rule (e): keep it <= 512 chars (full ship record belongs in README What's-new + CHANGELOG, not the description). Enforced permanently by two SHIP GUARD assertions in the gate (length <= 512; version string present). Shipped as v5.77.1; gate 3,209.

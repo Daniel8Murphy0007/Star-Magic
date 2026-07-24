@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.77.0"
-description = "UQFF Star-Magic v5.77.0: UNIFIED REGISTRY PROGRAM COMPLETE (R0-R5, PAPER_2130) + XGEO CROSS-GEOMETRY CAMPAIGN COMPLETE (348/348). R3: uqff_registry_primitives.py single source of truth - 24 QCalc attributes rewired bit-identically, three-language pins Python=C++=Lean. R4: 656-edge falsifiability graph + per-primitive break report. R5: uqff_registry_status.py live status backend + preprint results table - 9 independent primitives -> 14 live-composed constants (7 EXACT; G 0.075%, c 0.10%, k_B 0.0011%, hbar 0.027%; worst residual 3.08% IS the Hubble tension). XGEO: R1's 1,044 pending GAP rows fully drained - all 348 cross-geometry tasks (116 observables x 3 non-owner geometries) routed via published bridge identities, keystone PAPER_1160 F_TRZ=1/|SO(5)| with the 26->10->6->4 dimensional flow closing both d26 and qcalcgeom generator chains; 40 opaque formulas recovered from session scripts, all value-verified. Registry: zero pending rows. Gate 3176->3207."
+version = "5.77.1"
+description = "UQFF Star-Magic v5.77.1: UNIFIED REGISTRY PROGRAM COMPLETE (R0-R5, PAPER_2130) + XGEO campaign complete (348/348 cross-geometry routes; keystone PAPER_1160 26->10->6->4 flow). Single-source primitives module, three-language pins, 656-edge falsifiability graph, live status backend + preprint results table: 9 independent primitives -> 14 constants, 7 EXACT; worst residual 3.08% IS the Hubble tension. R1's 1,044 pending rows drained to zero. Gate 3207/0. Full record: README What's-new."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

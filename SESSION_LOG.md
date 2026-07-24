@@ -17981,3 +17981,18 @@ Full checklist executed and PASS:
 - No new file-hash pins added this cycle (LF-normalization rule not triggered)
 
 **Gate final: 3207 passed, 0 failed.** Ready to commit + push v5.77.0.
+
+---
+
+## 2026-07-24 — Session (continued 11): v5.77.0 PyPI REJECTION diagnosed + v5.77.1 METADATA FIX staged
+
+**v5.77.0 tag push result:** CI green (7m55s); Release run: Build distribution SUCCESS (gate passed on release runner, sdist+wheel built 33.6MB/27.4MB, twine metadata check PASSED) — but PyPI server REJECTED the upload: **HTTP 400 "'summary' field must be 512 characters or less"**. The expanded pyproject description (~950 chars) exceeded PyPI's server-side Summary limit, which twine check does NOT enforce. v5.77.0 never published (same class as v5.75.0: blocked pre-publish).
+
+**Fix (v5.77.1, content identical):**
+- description condensed to 487 chars, still contains version string + current-effort summary; full record lives in README What's-new + CHANGELOG
+- TWO permanent SHIP GUARD gate assertions added: (e) len(description) <= 512; (a) version string in description — the server-side limit is now enforced locally before any future ship
+- version 5.77.0 -> 5.77.1 in pyproject/README/CITATION.cff; CHANGELOG: 5.77.1 metadata-fix entry + 5.77.0 marked never-published
+
+**Gate: 3207 -> 3209 (+2 SHIP GUARD), 0 failures.** Awaiting commit + tag v5.77.1 + push.
+
+**Permanent checklist updated (rule e): PyPI summary <= 512 chars — twine check does not catch it; only the gate does.**

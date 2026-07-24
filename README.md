@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2130%2B-orange)](whitepapers/)
 
-**Version**: 5.77.0
+**Version**: 5.77.1
 **Last Updated**: 2026-07-24
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
