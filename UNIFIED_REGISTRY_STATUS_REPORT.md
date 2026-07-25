@@ -8,9 +8,9 @@ live from `UNIFIED_REGISTRY.csv`, `UNIFIED_REGISTRY_GRAPH.csv` and
 
 | Metric | Value |
 |---|:-:|
-| registry_rows | 2548 |
+| registry_rows | 2549 |
 | canonical_routes_explicit | 109 |
-| canonical_routes_sole | 2439 |
+| canonical_routes_sole | 2440 |
 | graph_edges | 658 |
 | derived_constants_live | 14 |
 | derived_constants_exact | 7 |
@@ -19,13 +19,13 @@ live from `UNIFIED_REGISTRY.csv`, `UNIFIED_REGISTRY_GRAPH.csv` and
 ### Rows by kind
 
 - observable: 1392
-- closure: 1128
+- closure: 1129
 - primitive: 16
 - kernel_constant: 12
 
 ### Rows by status
 
-- derived: 1128
+- derived: 1129
 - XGEO_ROUTED_IDENTITY: 1020
 - OK: 249
 - EXACT: 99

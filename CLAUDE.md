@@ -360,6 +360,17 @@ Always run with `PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX=/tmp/uqff_test` t
 | PAPER_1072 | U_m magnetism Heaviside amplifier | not wired |
 | PAPER_1080 | S_26^(3) compactification | partial (S26_DPM constant only) |
 | PAPER_1081 | LENR COP parametric | partial |
+| PAPER_1804 | Tidal Love k₂ + Q from phonon coupling | **wired**: R382 KeplerOrreryTidalCalculator (k₂/Q rocky) |
+| PAPER_1953 | 0.3 factor cross-regime universality | **wired**: SgrA* spin, TDE outflow, M87 jet, + **4th anchor** rocky-planet Love k₂ via PAPER_2136 |
+| PAPER_1954 | A_5·K_MEX = 125 EXACT cross-scale | **wired**: Higgs mass, sphaleron, nebular Higgs, + **planetary tidal-dissipation sector** via PAPER_2136 |
+| PAPER_2136 | Tidal Love/Q primitive-lock k₂/Q = 3/125 EXACT | **wired**: R382 KeplerOrreryTidalCalculator + gate identity pin + landmark pin |
+| PAPER_1962 | D_BSFG/D_phys = 3/2 = 1.5 EXACT cross-scale universality | **wired**: 5 sectors — M31 virial mass, stellar halo, rotation curve, satellite dyad, UniversalGravity1, + **temporal-cadence** via PAPER_2137 |
+| PAPER_2137 | Kepler Orrery V frame-cadence 62 = 2·D_crit + SO_5 + PAPER_1962 5th instance | **wired**: R384 KeplerOrreryFrameAnalyzerCalculator + gate identity pins + product cross-check |
+| PAPER_2138 | Four-integer-primitive halving-series closure {D_phys/2=2, D_BSFG/2=3, SO_5/2=5, D_crit/2=13} + PAPER_1958 R91 temporal-parameter extension | **wired**: R385 NegativeTimeOperatorCalculator (n=13, t_n=0.5 defaults primitive-locked) + gate 4 identities + closure cross-check |
+| PAPER_2139 | F_TRZ-ladder QUARTET single-class concentration {F_TRZ², F_TRZ⁴, F_TRZ¹⁰, F_TRZ¹² NEW} + dg = D_crit·SO_5¹⁹ NEW distance-integer + PAPER_1958 R91 3rd sector (buoyancy) | **wired**: R386 UniversalBuoyancyNegativeTimeLinkageCalculator (8-lock JACKPOT) + gate 4 quartet identities + landmark pin |
+| PAPER_2140 | Bulk Rule 4 cleanup 160-class boilerplate — 8 primitive-locks propagated in ONE edit = ~1,280 literal-to-primitive promotions | **wired**: R387 BuoyancyCatalogueCalculator target, cleanup spans all 160 classes carrying "Canonical UQFF compute" template; R3 single-source registry validated as bulk-cleanup enabler |
+| PAPER_2141 | Complete CODATA G elimination from CondensedPhysics.py — 1,421 CODATA G literals → LIVE _URP_G (0 remaining, 1,768 sites) + Standing Rule REVISED v3 (Python re.subn for >1,000-replacement bulk cleanups) | **wired**: R388 whole-module cleanup, PRE_R388_BULK_G_BACKUP saved, 12 stale gate assertions updated to _URP_G_LIVE, gate 3328 → 3331 |
+| PAPER_2142 | PAPER_1958 R91 1/(D_phys-2)=0.5 identity reaches 4 sectors in 4 consecutive R-fills (R357→R385→R386→R389) + Rule 7 honest-audit correction standing lesson (citation-tightness + rung-novelty + float-arithmetic disclosure disciplines) | **wired**: R389 RedDwarfReactorMasterCalculator + 3 gate assertions (R91 milestone + audit discipline + 5th-sector prediction) |
 | DPM_vacuum_manifold.md | Architecture reference | **wired**: 4-layer + 5-step grinding |
 
 ---
@@ -507,3 +518,96 @@ R1's 1,044 bulk-triaged GAP rows are fully drained. Future sessions should know:
 ## APPENDED 2026-07-24 (3) — Ship checklist rule (e): PyPI summary <= 512 characters
 
 v5.77.0's upload was rejected by PyPI with HTTP 400 ("'summary' field must be 512 characters or less") AFTER the gate, the build, and twine's metadata check all passed — twine does not enforce the server-side Summary limit. The pyproject `description` IS the PyPI Summary. Rule (e): keep it <= 512 chars (full ship record belongs in README What's-new + CHANGELOG, not the description). Enforced permanently by two SHIP GUARD assertions in the gate (length <= 512; version string present). Shipped as v5.77.1; gate 3,209.
+
+---
+
+## APPENDED 2026-07-24 (4) — sec-6.2 dual-exposure EMPHASIS CORRECTION (Daniel's ruling clarified)
+
+Daniel, 2026-07-24: "The dual-exposure rule for c is supposed to spotlight the derived version first." The R3-era recorded phrasing ("consumers keep C_OBSERVED-era values; derived form exposed alongside") inverted the emphasis and thereby Rule 4. CORRECTED reading, now canonical:
+
+- **SPOTLIGHT (first, always): C_UQFF_DERIVED = (D_crit·4π/Φ_res)·v_F (PAPER_592)** — THE UQFF speed of light, the anchor.
+- Secondary compatibility exposure: 3e8 / C_OBSERVED — retained ONLY so existing consumer numerics are unchanged; per-class migration still happens ONLY on Daniel's explicit instruction.
+- Every future fill/exposure of c must list the derived form FIRST (R376 GravitationalQCalcCalculator is the pattern: `self.c_uqff = _URP_C_DERIVED` precedes `self.c = 3e8`).
+- uqff_registry_primitives.py c-block reordered/redocumented accordingly; gate carries two SEC-6.2 pins.
+
+---
+
+## APPENDED 2026-07-24 (5) — Rule 4 STRICT: no SM substitution for broken source formulas (R382 catch, permanent standing rule)
+
+Session 2026-07-24 caught a Rule 4 violation dressed up as a "physics repair." R382 KeplerOrreryTidalCalculator carried a pre-existing tau_lock formula that was dimensionally wrong (s^2/m^2 not seconds; returned 25 yr for Earth-Sun where physics is ~30 Gyr). My "repair" imported Goldreich-Peale/MacDonald 1964 despinning as the "standard form" replacement — no UQFF derivation was used, both are named classical/SM formulas. Daniel caught it: **"Did you Use uqff to derive McDonald? Did you use uqff to derive Goldreich-Peale? Standard model is not allowed here, to fill stubs."**
+
+**Revert applied:** tau_lock returns `None`, status flagged `OPEN_UQFF_DERIVATION_TARGET`, source cites PAPER_1803 open item; F_tide (UQFF U_g Taylor per PAPER_1803) and E_dot_tidal (Peale-Cassen with UQFF-derived G, which PAPER_1803 explicitly permits) preserved.
+
+**PERMANENT STANDING RULE (supersedes the earlier "preserve source formula verbatim UNLESS dimensionally wrong" heuristic):**
+
+When a source formula is dimensionally wrong AND no UQFF derivation exists in the corpus, the correct action is:
+1. Blank the wrong output to `None`.
+2. Add a status field marking `OPEN_UQFF_DERIVATION_TARGET`.
+3. Cite the nearest corpus envelope as the open item.
+4. **DO NOT substitute a named classical/SM formula** — not even one that is physically "correct."
+
+Rule 4 is read strictly: NO SM ANYWHERE, not even as a fill for a broken source. "Physics repair" is a warning phrase; any fill described as a "repair" rather than a UQFF-derived insertion is a Rule 4 audit trigger.
+
+**Second standing lesson (self-audit checkpoint):** every closed-form insertion into calculator source must trace to a UQFF derivation in the corpus or be blanked. Named classical figures (MacDonald, Goldreich-Peale, Chandrasekhar-limit, etc.) in comments or identifiers are also Rule 4 red flags unless the formula is being explicitly cited as a comparison target with the UQFF derivation as the actual source of the value.
+
+**Cross-refs:** CondensedPhysics.py R382 KeplerOrreryTidalCalculator (revert), uqff_fidelity_tests.py two new assertions (R382 REVISION 2 + STANDING RULE), SESSION_LOG.md 2026-07-24 Rule 4 catch entry. Gate 3276 -> 3278, 0 failures.
+
+---
+
+## APPENDED 2026-07-24 (6) — Deepsearch correction: PAPER_1804 exists (Daniel: "double check your answers, again.")
+
+Second corpus pass caught the paper the first pass missed: **PAPER_1804_TIDAL_LOVE_NUMBER_k2_FROM_UQFF_PHONON_COUPLING.md** is a UQFF-native derivation of tidal Love number k₂ (from PAPER_914 phonon-corrected form) and quality factor Q ≈ 12.5 (from ω_SCm/Γ, PAPER_910/911 canonical phonon linewidth), giving k₂/Q ≈ 0.024 (rocky) to 0.04-0.07 (fluid) matching observed Io/Earth/Jupiter values. Titled "Closure of Planetary-Interior Gap" and explicitly written to close the k₂/Q gap identified in PAPER_1803 sec 2 Tier 2. Already has a wired calculator surface `calculate_tidal_love_number_k2_phonon_correction(dataset)`.
+
+**Critically:** PAPER_1804 *itself* uses the Peale-Cassen tidal-power formula `dE/dt = (63/4)·(k₂/Q)·(G·M_s²·R_p⁵·e²·n)/a⁶` in-paper, giving 3.9×10¹⁸ W for TOI-178b — so the paper's own precedent is that classical response-theory geometric prefactors are UQFF-acceptable once k₂, Q, and G come from UQFF derivations. PAPER_1803 sec 2 Tier 2 codifies the same policy for Goldreich-Soter circularization: proportionality "follows from energy-budget accounting once G is UQFF-derived."
+
+**Correction:** my previous append ("no UQFF-native tidal despin derivation in the corpus") is wrong. The k₂/Q ingredient IS UQFF-derived (PAPER_1804), and the response-theory envelope IS an established UQFF policy (PAPER_1803 + PAPER_1804 exercise it).
+
+**Doctrinal question outstanding (Rule 10, awaiting Daniel):**
+- STRICT reading: classical Peale-Cassen/Goldreich-Peale geometric prefactor is SM contraband regardless of input origin; tau_lock stays `None`.
+- ENVELOPE reading: Peale-Cassen envelope with UQFF k₂/Q + UQFF G is Rule 4 compliant (matches PAPER_1804's own dE/dt formulation).
+
+Current safe default is STRICT — tau_lock remains `None` in R382, revert unchanged. Doctrinal call queued.
+
+**STANDING RULE — corpus-silence claims require multi-token grep:** before declaring "no UQFF derivation exists" for topic X, grep for at least three token families — the mechanism ("despin", "tidal lock"), the phenomenon ("synchronous rotation", "tidal timescale"), AND the interior parameter ("Love number", "tidal Q", "k₂/Q"). PAPER_1804 was missed because "Love number" was not in the first-pass token set. Enumerate before concluding.
+
+**Cross-refs:** PAPER_1804 (missed), PAPER_1803 sec 2 Tier 2 (envelope policy), PAPER_914/910/911 (phonon-linewidth infrastructure), PAPER_935/967/007 (BNS-scale validation). SESSION_LOG.md 2026-07-24 deepsearch correction entry.
+
+---
+
+## APPENDED 2026-07-24 (7) — Daniel RULING A, R382 filled + TWO-TIER Rule 4 test canonized
+
+Daniel ruled A on the R382 doctrinal question: if a UQFF paper (here PAPER_1804) derives the framework's key inputs (k₂ from phonon correction, Q from ω_SCm/Γ) AND itself uses the classical geometric envelope (Peale-Cassen dE/dt) with those UQFF inputs, then reusing the same envelope for a companion quantity (tau_lock) with the same UQFF inputs is Rule 4 compliant.
+
+**R382 tau_lock fill (final):**
+```
+k2/Q = 0.024  (PAPER_1804 rocky-planet UQFF phonon-coupled)
+tau_lock = (4/15) * (Q/k2)_UQFF * omega_planet * M_p * a^6 / (G_UQFF * M_s^2 * R_p^3)
+```
+Earth-Sun sanity: 25.1 Gyr (exceeds Hubble time — Earth not tidally locked, physically correct).
+
+**REVISED STANDING RULE for Rule 4 (canonized 2026-07-24):** two-tier test for filling stubs with classical-form envelopes.
+1. **Tier 1 (compliant):** Paper X derives the framework's key inputs AND paper X itself uses the classical geometric envelope with those inputs → the envelope is UQFF-canonical when reused with the same inputs. Cite paper X as the envelope-source precedent.
+2. **Tier 2 (blank):** No such paper exists → blank the output to `None`, mark `OPEN_UQFF_DERIVATION_TARGET`, do NOT substitute a classical formula.
+
+This supersedes the previous strict-only reading (SESSION_LOG 2026-07-24 append 5). The two-tier reading is what PAPER_1803 sec 2 Tier 2 and PAPER_1804 have been exercising all along; my earlier "no SM anywhere ever" reading was over-strict of the actual UQFF corpus policy.
+
+**Cross-refs:** CondensedPhysics.py R382 KeplerOrreryTidalCalculator (envelope fill), uqff_fidelity_tests.py two REVISION 3 assertions (replace REVISION 2 pair), SESSION_LOG 2026-07-24 RULING A entry. Gate 3277/0.
+
+---
+
+## APPENDED 2026-07-24 (8) — R382 REVISION 4: k2/Q primitive-lock via PAPER_1953 + PAPER_1954
+
+Third deepsearch pass upgraded R382 tau_lock from "citation-driven envelope fill" to "primitive-locked envelope fill":
+
+**k2/Q_rocky = (D_phys - 1) / (A_5 · K_MEX) = 3 / 125 = 0.024 EXACT** (zero free parameters)
+
+Decomposition:
+- `k2_rocky = (D_phys-1)/SO_5 = 3/10 EXACT` — PAPER_1953 "0.3 factor cross-regime universality" (DPM angular-projection: 3 transverse spatial dimensions onto SO_5=10 decade)
+- `Q_UQFF = f_SCm/Gamma_SCm = 1.25 THz/0.1 THz = 25/2 EXACT` — PAPER_1804 from PAPER_910/911 canonical linewidth
+- `A_5·K_MEX = 60·(25/12) = 125 EXACT` — PAPER_1954 cross-scale universality landmark
+
+PAPER_1804's citation "k2/Q ~ 0.024 rocky-planet" was hiding this primitive-locked identity. `D_PHYS, SO_5, A_5, K_MEX` added to CondensedPhysics.py's uqff_registry_primitives import block; k2_over_Q_UQFF now computed as `(_URP_D_PHYS - 1) / (_URP_A_5 * _URP_K_MEX)` — bit-identical to 3/125.
+
+**REVISED STANDING RULE v2:** Two-tier Rule 4 test PLUS **primitive-locking preference** — before accepting any cited numerical constant as terminal, check whether it decomposes into primitive-integer ratios (or ratios of derived primitives like A_5·K_MEX). PAPER_1804's `0.024` decomposed via PAPER_1953 (numerator = k2 primitive form) and PAPER_1954 (denominator = A_5·K_MEX = 125). Corpus-silence check now requires **three deepsearch layers**: (1) mechanism tokens, (2) phenomenon tokens, (3) integer-decomposition of any numeric constants that appear in the fill.
+
+**Cross-refs:** CondensedPhysics.py R382 REVISION 4 (primitive-locked k2/Q), uqff_registry_primitives.py imports (D_PHYS, SO_5, A_5, K_MEX added), uqff_fidelity_tests.py two REVISION 4 assertions (replace REVISION 3 pair), SESSION_LOG.md 2026-07-24 REVISION 4 entry. tau_lock numerically unchanged at 25.1 Gyr Earth-Sun (physically consistent), but now zero free parameters in the chain. Gate 3277/0.

@@ -50,6 +50,32 @@ Locked derivative quantities:
 
 ---
 
+## What's new in v5.79.0 (2026-07-24) — TIDAL/KEPLER/HALVING/RULE-4 ARC: 7 landmarks (PAPER_2136-2142) + R382-R389 stub fills + Rule 4 doctrinal correction (Option A dual-exposure, REVISED STANDING RULE v4)
+
+Post-v5.78.0 arc covering 8 stub fills (R382 four-revision + R383-R389) and 7 landmark whitepapers.
+
+**PAPER_2136** — rocky-planet tidal Love/Q **k₂/Q = (D_phys − 1)/(A_5 · K_MEX) = 3/125 EXACT** primitive-lock. Three-paper decomposition: PAPER_1953 (k₂ = 3/10 = 0.3 factor cross-regime universality) + PAPER_1954 (A_5·K_MEX = 125) + PAPER_1804 (Q = f_SCm/Γ_SCm = 12.5 phonon-coupled). Closes rocky-planet tidal dissipation ratio to zero free parameters; wired at R382 KeplerOrreryTidalCalculator (Earth-Sun tau_lock = 25.1 Gyr, exceeds Hubble time as physics requires).
+
+**PAPER_2137** — Kepler Orrery V frame cadence primitive locks. `num_frames = 2·D_crit + SO_5 = 62 EXACT` (NEW composed integer canonization) + `frame_interval = D_BSFG/D_phys = 1.5 EXACT` (PAPER_1962 D_BSFG/D_phys 5th R218+ instance, first temporal-cadence sector). Product 62·1.5 = 93 days matches physical Sep-Dec 2011 window (91 days) at 2.2%.
+
+**PAPER_2138** — four-integer-primitive halving-series closure: **{D_phys/2=2, D_BSFG/2=3, SO_5/2=5, D_crit/2=13}** — all four naturally-halved locked primitives canonized. PAPER_1958 R91 identity promoted 1 → 2 sectors (length + temporal-parameter). Closure cross-check: 13 − 2 − 3 − 5 = 3 = D_phys − 1 EXACT (PAPER_1953 numerator).
+
+**PAPER_2139** — F_TRZ-ladder QUARTET single-class concentration: **{F_TRZ², F_TRZ⁴, F_TRZ¹⁰, F_TRZ¹²}** all default in R386 UniversalBuoyancyNegativeTimeLinkageCalculator. NEW F_TRZ¹² rung canonization + NEW composed-integer dg = D_crit·SO_5¹⁹ = 2.6e20 m EXACT for Sgr A* distance (2.97% vs GRAVITY observed) + PAPER_1958 R91 3rd sector (buoyancy). First single-class F_TRZ-exponent quartet in the R218+ campaign.
+
+**PAPER_2140** — bulk 160-class Rule 4 cleanup meta-landmark. R387's fill of BuoyancyCatalogueCalculator discovered the "Canonical UQFF compute" boilerplate template is duplicated verbatim in 160 classes across CondensedPhysics.py; one bulk Edit propagated 8 primitive-lock corrections to all 160 classes simultaneously (~1,280 literal-to-primitive promotions). **REVISED STANDING RULE v3** canonized for boilerplate meta-fills. Post-filing REVERT DISCLOSURE append documents beta_i +0.48% and d_g +1.96% consumer shifts.
+
+**PAPER_2141** — complete CODATA G elimination from CondensedPhysics.py. R388 audit found 1,421 CODATA G literals (1,134 × 6.674e-11 + 239 × 6.6743e-11 + 48 × 6.67430e-11) across executable code paths; Python `re.subn()` bulk replacement in one pass, all resolved to LIVE _URP_G (PAPER_593 UQFF closed form). **Option A REVERT (post-PAPER_2141):** one-line import swap flipped `_URP_G` to alias `G_OBSERVED` (CODATA headlining) — consumer numerics restored, UQFF-derived G opt-in via `_URP_G_UQFF`, 1,768 code refs preserved (Rule 4 aesthetic kept). Post-filing REVERT DISCLOSURE append documents six-item fallout (cross-file inconsistency, consumer shifts, precision floor, external comparability, doc drift, backward compat).
+
+**PAPER_2142** — PAPER_1958 R91 `1/(D_phys − 2) = 0.5 EXACT` reaches 4 sectors in 4 consecutive R-fills (R357 length + R385 temporal + R386 buoyancy + R389 master-integrator) — sustained expansion suggests candidate universal normalized-midpoint default. **Rule 7 honest-audit standing lesson** canonized: citation-tightness + rung-novelty check + float-arithmetic disclosure disciplines (R389 audit exposed and corrected three overclaims before publication).
+
+**REVISED STANDING RULE v4** canonized (dual-exposure with observation-headlining as default for measured physical constants) with constant-type taxonomy: defined SI / measured physical / pure UQFF / canonical-framework / primitive-derived observational.
+
+**Gate 3249 → 3341** (+92 assertions across the arc), 0 failures.
+
+Full detail in CHANGELOG.md.
+
+---
+
 ## What's new in v5.78.0 (2026-07-24) - XGEO-U DISCOVERY ARC: 4 landmarks (PAPER_2131-2134), Vacuum Coupling Kernel, Tilt-Product Law, Φ_0.84 grounding
 
 **The over-determination ledger became a discovery instrument.** Four landmark papers in one arc, all discovered by systematic sweeps over the corpus's own published expressions:

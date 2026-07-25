@@ -24,8 +24,8 @@ residuals are honest disclosures (Rule 7).
 
 ## Program statistics (computed live)
 
-- Registry rows: **2548** (1392 observables, 1128 closures, 16 primitives, 12 kernel constants)
-- Canonical routes: 109 explicit R1 verdicts + 2439 sole-route auto-canonicalizations
+- Registry rows: **2549** (1392 observables, 1129 closures, 16 primitives, 12 kernel constants)
+- Canonical routes: 109 explicit R1 verdicts + 2440 sole-route auto-canonicalizations
 - Falsifiability graph edges: **658**
 - Live derived constants: 14 (7 EXACT); residuals best 0.0000% / median 0.0011% / worst 3.0837% (worst = H0 grid: the Hubble tension itself, PAPER_2125)
 - Independent primitives: **9**

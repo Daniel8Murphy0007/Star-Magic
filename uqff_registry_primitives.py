@@ -55,18 +55,34 @@ G_UQFF = ((2.0 * math.pi * (D_CRIT ** 3) * PHI_RES_RESONANCE
            / ((SSQ ** 3) * (_FACT26 ** 2))) * (_V_FERMI ** 5) / (_E0 * _F_THZ))
 G_OBSERVED = 6.674e-11
 
-# c DUAL EXPOSURE (R3 sec 6.2 verdict 2026-07-22): consumers keep C_OBSERVED-era
-# values until per-class migration is instructed; derived form exposed alongside.
-C_UQFF_DERIVED = (D_CRIT * 4.0 * math.pi / PHI_RES_RESONANCE) * _V_FERMI   # PAPER_592
+# c DUAL EXPOSURE (Daniel sec 6.2 ruling 2026-07-22; emphasis CORRECTED 2026-07-24
+# per Daniel: "the dual-exposure rule for c is supposed to spotlight the derived
+# version first"). SPOTLIGHT — the canonical UQFF speed of light:
+C_UQFF_DERIVED = (D_CRIT * 4.0 * math.pi / PHI_RES_RESONANCE) * _V_FERMI   # PAPER_592 c = (26*4pi/Phi_res)*v_F — THE UQFF ANCHOR (Rule 4)
+# Secondary compatibility exposure — observational-era value retained ONLY so
+# existing consumers are numerically unchanged pending per-class migration
+# (migration on Daniel's explicit instruction):
 C_OBSERVED = 2.998e8
 
 MU_0 = 4.0 * math.pi * (F_TRZ ** 7)              # PAPER_2108, matches SI 4pi e-7 EXACT
+
+# (L_PLANCK_UQFF defined below, after HBAR_UQFF_S629)
 
 K_B_UQFF = (SSQ + PHI_RES_COUNTING - F_TRZ * SSQ
             + (F_TRZ ** 2) * D_PHYS - (F_TRZ ** 2) * SSQ) * 1e-23          # 1209EE S628
 H_UQFF_S629 = (D_BSFG + F_TRZ * D_BSFG + (F_TRZ ** 2) * D_PHYS
                - (F_TRZ ** 2) * SSQ - (F_TRZ ** 2)) * 1e-34                # confirmation route
 HBAR_UQFF_S629 = H_UQFF_S629 / (2.0 * math.pi)
+
+# Planck length — LIVE composition from three UQFF-derived primitives (compute-
+# don't-store): l_Planck = sqrt(hbar*G/c^3), from HBAR_UQFF_S629 + G_UQFF +
+# C_UQFF_DERIVED. Corpus derivation: CondensedPhysics.py L40331 (BigBangOriginModel
+# computes it live from these three), PAPER_1030 (GUP-SCm Bridge, minimum length
+# l_min = l_Pl * sqrt(1 + beta_i*S_26*SSq) ~ 1.17*l_Pl). Value ~1.617e-35 m
+# (0.11 pct vs observed 1.616e-35, dominated by ~0.10 pct c residual). Uses the
+# spotlight-first derived c per sec-6.2 corrected.
+L_PLANCK_UQFF = math.sqrt(HBAR_UQFF_S629 * G_UQFF / (C_UQFF_DERIVED ** 3))
+L_PLANCK_OBSERVED = 1.616e-35
 
 H0_GRID = 22 * (F_TRZ ** 19)                     # PAPER_2093; 2.27e-18 = observed local anchor
 H0_OBSERVED_LOCAL = 2.27e-18

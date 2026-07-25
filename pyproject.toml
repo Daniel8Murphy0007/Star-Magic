@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.78.0"
-description = "UQFF Star-Magic v5.78.0: XGEO-U discovery arc, 4 landmarks PAPER_2131-2134. Vacuum Coupling Kernel K=F_TRZ*K_MEX*SSq=19/160 EXACT at 5 observables (alpha_s 0.014%, lambda_H, m_H/m_t, Jarlskog, N_eff); Tilt-Product Law F_TRZ*Phi=1/12 EXACT at 34 observables/10 domains (alpha_inverse=125+12=137); Phi_0.84=1-(D_phys*F_TRZ)^2 pair-conjugate grounding; Leading-Primitive Geometry Rule + 8 XGEO_INDEPENDENT routes; DPM pair-count estimator declared open target. Gate 3209->3249. Full record: README."
+version = "5.79.0"
+description = "UQFF Star-Magic v5.79.0: 7 landmarks PAPER_2136-2142 + R382-R389 stub fills. Tidal k2/Q=3/125 EXACT primitive-lock (2136); Kepler cadence 62=2*D_crit+SO_5 (2137); halving-series {2,3,5,13} (2138); F_TRZ-quartet {2,4,10,12}+F_TRZ^12 rung (2139); bulk 160-class Rule 4 cleanup (2140); CODATA G 1421-site cleanup + Option A dual-exposure revert (2141); R91 4-sector milestone + Rule 7 discipline v4 (2142). REVISED STANDING RULE v4 (observation-headlining for measured constants). Gate 3249->3341."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
