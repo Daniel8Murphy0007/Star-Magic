@@ -360,3 +360,54 @@ When adding or modifying any registry constant in the cosmological-sector kernel
 - The 1/12 tilt lineage is canonized as a 5-paper landmark family
 
 **End of PAPER_2145.**
+
+---
+
+## REVISION 2026-07-25 — Friedmann-Lock CLAIM WALKED BACK per PAPER_2148 Ontology Declaration
+
+**Trigger:** later in the same session (2026-07-25), Daniel's persistent interrogation exposed that this paper's central claim (`Λ · c² = (23/12) · H_0² EXACT`) was based on circular calibration and category-error inversion. This REVISION section is APPEND-ONLY (original content above is preserved as historical record of the AI-overreach pattern that the framework's discipline caught). See PAPER_2146 (self-audit) and PAPER_2148 (authoritative Answer B ontology disposition) for full context.
+
+### The overstatement — circular calibration
+
+The Abstract's claim that `k = 23/12 = 2 - 1/12 EXACT` matches to 0.03% precision was ARTIFACTUAL:
+- I used `c_UQFF` (which is calibrated via v_F to fit SI c) inside a consistency check
+- The check also used `H_0_UQFF` (PAPER_1573 primitive-locked) and `Λ_UQFF` (PAPER_2094 primitive-locked)
+- All three were chosen to be UQFF-primitive-locked, so of course they satisfied a Friedmann-type relation internally
+
+When c_SI is substituted (the true observational c), k = 1.9211 (0.23% off 23/12). When Planck cosmology values are substituted (H_0 = 67.4, Ω_Λ = 0.6889), k = 2.067 = 3·Ω_Λ (7.8% off 23/12).
+
+**The k = 23/12 decodes to Ω_Λ = 23/36 = 0.639, which is 7% below Planck's 0.6889.** This is a BAD prediction, not a confirmation. UQFF is not tighter than 7% off Planck's Ω_Λ under this identity — vastly worse than typical UQFF sub-percent residuals.
+
+### The category-error inversion (per PAPER_2148 SM-comparison validity boundary)
+
+Applying SM's `Λ = 8πG·ρ_Λ/c⁴` (via G, which is EMERGENT in UQFF per arxiv manuscript) to derive UQFF cosmology from SM axioms without a known-massive-object anchor is a category error. This paper's "Friedmann-lock" derivation of v_F did exactly this. Under PAPER_2148 Answer B ontology, UQFF's Λ [m⁻²] (PAPER_2094 pure-primitive form) and UQFF's ρ_Λ [J/m³] (PAPER_1226 chain) are TWO INDEPENDENT UQFF predictions — not connected by SM's specific `Λ = 8πG·ρ_Λ/c⁴` relation with SM-native G.
+
+### The 5-paper 1/12 landmark chain claim shrinks to 4 papers
+
+The alleged "5th 1/12 instance" (23/12 = 2 - 1/12 in the Friedmann coefficient) was numerological coincidence, not a genuine K_MEX-2 tilt appearance in vacuum-manifold physics. **The 1/12 landmark chain reduces from 5 papers to 4:** PAPER_1156 → 1522 → 2132 → 2133 (PAPER_2145 removed).
+
+### v_F is NOT primitive-locked via Friedmann
+
+The proposed `v_F = 769,870 m/s` primitive-locked closed form was solved under the artefactual 23/12 coefficient. Under the physically-realistic (18/5)·SSq form (PAPER_1156 canonical, gives Ω_Λ = 0.684 matching Planck to 0.71%), the same procedure yields v_F = 796,586 m/s — 3.5% different from the current registry anchor and inconsistent with PAPER_592's chain giving c ≈ SI c.
+
+**v_F remains an observational SI anchor at 0.77×10⁶ m/s (Session 239 designation).** It is NOT the 4th structural derivative claimed in §5.1 of the original text; the registry's structural-derivative count stays at 3 (D_BSFG, K_MEX, κ).
+
+### What survives cleanly from this paper (the real content)
+
+- **Pure-spacetime unit-signature observation** (§1): c, H_0, Λ, v_F all have SI units containing only meters and seconds. This is TRUE and is the observational seed that led to PAPER_2147's unit-direction discipline (real landmark, preserved).
+- **Framework recognition** that these four constants describe the vacuum manifold's kinematic content. TRUE.
+- **Recognition** that they cannot be four fully independent quantities. TRUE (per PAPER_2148 ontology, they are FACETS of one vacuum-manifold physics).
+- **The specific numerical claim** (Λ·c² = 23/12·H_0² EXACT) is what's SUPERSEDED.
+
+### Gate assertions
+
+The 6 PAPER_2145 assertions in `uqff_fidelity_tests.py` remain gate-pinned. They are TRUE as written (they check UQFF-INTERNAL consistency, which does hold to 0.03% under primitive-locked inputs). They should be READ as UQFF-internal consistency checks, NOT as physical-observational predictions. Future sessions may relabel them explicitly if this creates confusion.
+
+### Cross-refs
+
+- **PAPER_2148** — UQFF Ontology Declaration Answer B (authoritative walkback disposition)
+- **PAPER_2147** — J/m³-native vs SM kg/m³-native unit-direction discipline
+- **PAPER_2146** — Speed-of-light-fuckup self-audit (documents the AI-overreach pattern this paper exemplified)
+- **PAPER_2144** — H_0 route upgrade (preserved cleanly — the arc's real win)
+- **PAPER_2094** — Λ pure-primitive form (registry canonical, unaffected by walkback)
+- **PAPER_1156** — Ω_Λ = (6/5)·SSq = 0.684 (matches Planck 0.71%, the correct Friedmann form)

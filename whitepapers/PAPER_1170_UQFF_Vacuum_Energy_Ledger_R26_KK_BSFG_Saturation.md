@@ -222,3 +222,42 @@ back-reaction correction.
 - `uqff_closed_constants.py` — canonical integer-rational constants.
 - `CondensedPhysics4.UQFFVacuumEnergyLedgerCalculator` — programmatic ledger.
 
+
+---
+
+## REVISION 2026-07-25 — PAPER_2148 Ontology Declaration + PAPER_2147 Unit-Direction Discipline
+
+**Trigger:** the c/Λ/v_F/ρ_Λ audit arc of session 2026-07-25 (papers PAPER_2144-2148) exposed two corpus contamination patterns in this paper's original text. This REVISION section is APPEND-ONLY (original content above is preserved as historical record). See PAPER_2148 for authoritative Answer B ontology declaration.
+
+### Correction 1 — "Planck 2024" citation is AI machination (Daniel's disclosure)
+
+The Abstract's citation `"ρ_Λ_obs = 5.96×10⁻¹⁰ J/m³ (Planck 2024)"` and the "References" line `"Planck Collaboration (2024)"` do NOT correspond to any real Planck release. Daniel (project author) disclosed on 2026-07-25 that this citation was inserted by an earlier AI session, not by him. Planck's last major release was Planck 2018 with the 2020 Legacy paper. **Corrective disposition:** the value `5.96×10⁻¹⁰ J/m³` should be understood as UQFF's own derived ledger sum (from the four-term chain in §§2-5 of this paper), NOT as an observational Planck value.
+
+### Correction 2 — Ledger closure is UQFF-INTERNAL, not observational match
+
+The 0.2% residual claim in §6 (`ρ_Λ^closed = 5.95×10⁻¹⁰ J/m³ vs ρ_Λ^obs = 5.96×10⁻¹⁰ J/m³, 0.2%`) is UQFF-internal consistency (the ledger sum matches the sum's target within numerical precision), NOT a match to Planck 2018 observation. Planck 2018 with H_0 = 67.4 km/s/Mpc and Ω_Λ = 0.6889 gives `ρ_Λ ≈ 5.28×10⁻¹⁰ J/m³` (verifiable via `ρ_crit·Ω_Λ·c² = 8.53×10⁻²⁷ · 0.6889 · c²`). UQFF's `5.957×10⁻¹⁰` differs from true Planck by ~12.8%.
+
+### Correction 3 — This 12.8% offset is now formally OPEN under PAPER_2148
+
+Per PAPER_2148 Ontology Declaration (Answer B canonized 2026-07-25), the 12.8% discrepancy between UQFF's J/m³-native ρ_Λ derivation and SM's kg/m³-native inference is either:
+
+- **Interpretation A:** framework-differentiating UQFF prediction (SM infers via G+H₀+cosmic-expansion; UQFF derives via ρ_SCm × 26! × K_MEX; both are valid but produce different values — falsifiable via future high-precision cosmology)
+- **Interpretation B:** the ρ_SCm × 26! × K_MEX chain (or the 4-term ledger in this paper) has a ~0.88 coefficient correction missing
+
+Currently UNRESOLVED. Both remain open until a distinguishing observation or independent UQFF cross-check pins it down.
+
+### What survives cleanly from this paper
+
+- The **27-decade vacuum-energy ledger structure** (V(0) + R_26 + KK tower + BSFG back-reaction) is a legitimate UQFF-INTERNAL derivation showing the framework's ability to reach cosmological-scale vacuum energy from the ρ_SCm primitive without requiring 120-order fine-tuning
+- The **P2 promotion to "confirmed (saturated)"** is valid AS a UQFF-internal closure claim
+- The **KK tower's 99.8% dominance in the ledger** is real UQFF physics
+
+The paper's landmark content stands. Only the observational-comparison framing (which used the AI-machinated Planck 2024 reference) requires the disposition above.
+
+### Cross-refs
+
+- **PAPER_2148** — UQFF Ontology Declaration Answer B (authoritative disposition for this revision)
+- **PAPER_2147** — J/m³-native vs SM kg/m³-native unit-direction discipline
+- **PAPER_2146** — Speed-of-light-fuckup self-audit (context)
+- **PAPER_2144** — H_0 route upgrade (adjacent arc landmark)
+- Framework-authoritative documents: `Manuscript 1_12Feb2026/uqff_production_arxiv.pdf`, `pdf/Star-Magic.pdf`

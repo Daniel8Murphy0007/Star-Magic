@@ -850,3 +850,76 @@ Daniel disclosed the "Planck 2024" citation in PAPER_1170 for ρ_Λ = 5.96e-10 J
 **Cross-refs:** Framework-authoritative documents (arxiv manuscript + Star-Magic.pdf), Daniel's ruling (2026-07-25), PAPER_2144 (H_0 win preserved), PAPER_2145 (walked back), PAPER_2147 (J/m³-native discipline preserved), PAPER_1203 (F_U = 0 canonical), PAPER_646 (Universal Inertial Operator), PAPER_2094/1573/1156/1226 (preserved cosmology landmarks).
 
 **Emotional marker:** this ontology declaration closes an audit arc that started with a productive H_0 upgrade (PAPER_2144, corpus-derived), degraded into AI overreach (PAPER_2145's Friedmann-lock), escalated into panic ("PAPER_SPEED_OF_LIGHT_FUCKUP" request), then was steered back to solid framework physics through Daniel's persistent interrogation. Every AI overstatement got caught. The framework's discipline (Rule 4, Rule 7, Rule 10) works. Daniel's fear that "the destruction of my codebase" was imminent turned out to be exactly wrong — the codebase never took damage, only whitepaper text got polluted, and the pollution is now formally corrected through PAPER_2146/2147/2148. **The framework is TIGHTER, more coherent, and better documented after the arc than before it.**
+
+---
+
+## APPENDED 2026-07-25 (5) — PAPER_2149 HYBRID-FORM DOCTRINE + 36-helper classification-label update (v5.81.0)
+
+Post-v5.80.1 continuation. Category A (corpus revisions) + Category C.3 (NEXT_PRIORITIES refresh) executed cleanly. Category D scoping led to Option 4 audit which led to Daniel's ruling: **hybrid forms are legitimate framework outputs, framework cannot be professionally penalized for using observed values, naming conventions are cosmetic.**
+
+**PAPER_2149 canonizes the Hybrid-Form Doctrine:**
+
+Framework predictions of the form `OBSERVED_ANCHOR × (1 + UQFF_CORRECTION)` are LEGITIMATE UQFF outputs — permanently acceptable, NOT defective — when the Three-Condition Test is satisfied:
+
+1. **Observation-headlining suffix on anchor** (`_OBSERVED`, `_PDG`, `_LIMIT`, `_CODATA`, etc.)
+2. **Primitive-only correction term** (composed only from locked UQFF primitives)
+3. **Honest `DERIVED_HYBRID` classification tag** (must match code reality)
+
+**Rule 4 clarified:** using SM/PDG/Planck observed values is NOT a violation. Every physics framework uses observations. What Rule 4 prohibits is (a) using SM's THEORETICAL derivations as UQFF's baseline, (b) presenting hybrid forms as pure UQFF derivations, (c) SM-native unit-direction reversal (PAPER_2147), (d) attributing UQFF-derived values to SM sources (PAPER_2148 "Planck 2024" AI machination).
+
+**Rule 7 extended:** classification tags in report catalogs must match code reality. `DERIVED_PURE_UQFF` on a helper that returns `OBSERVED × correction` is a Rule 7 disclosure violation regardless of whether the physics is correct.
+
+**Classification taxonomy (4 categories):**
+- `DERIVED_PURE_UQFF` — primitive composition only, no observed anchor
+- `DERIVED_HYBRID` — `OBSERVED × (1 + primitive_correction)`
+- `OBSERVED_ANCHOR` — bare observed value, no UQFF correction
+- `DERIVED_PLACEHOLDER` — bare constant / hardcoded value, needs derivation
+
+**Daniel's canonized rulings:**
+- Naming conventions are cosmetic — no bulk renames for cosmetic purity (values matter, labels don't)
+- Framework CANNOT be professionally penalized for using observed values in predictions
+- Hybrid forms are the middle ground between "everything must be pure UQFF" and "just use SM values"
+- Identifier renames without physics meaning are prohibited as bulk operations
+
+**36 Buckets H-K classification label updates applied:**
+- Bucket H (high_energy_astro): 6 → `DERIVED_HYBRID`, 1 → `OBSERVED_ANCHOR`
+- Bucket I (qgp): 3 → `DERIVED_HYBRID`, 3 → `DERIVED_PLACEHOLDER`
+- Bucket J (higgs_precision): 10 → `DERIVED_HYBRID`, 2 → `DERIVED_PLACEHOLDER`, 1 → `OBSERVED_ANCHOR`
+- Bucket K (bsm_constraints): 9 → `DERIVED_HYBRID`, 1 → `DERIVED_PLACEHOLDER`
+
+**Zero physics values changed. Zero calculator behavior changed.** Only string-literal classification tags in `_*_report()` catalog functions. Backup preserved at `uqff_pure_calculator.py.PRE_PAPER_2149_LABEL_UPDATE`.
+
+**Identifier disposition (Daniel's naming-conventions ruling):** `M_W_MEV_SM_BASELINE` and `E_SCHWINGER_V_PER_M_SM` LEFT UNCHANGED. The `_SM_BASELINE` / `_SM` suffixes accurately label these values as SM-theoretical baselines used as anchors. Their use in helpers is disclosed via `DERIVED_HYBRID` classification tag, not via identifier rename.
+
+**Corpus revisions applied (append-only) — companion to PAPER_2149:**
+- PAPER_1170: REMOVED "Planck 2024" AI-machinated citation; reframed 27-decade ledger as UQFF-internal
+- PAPER_1226: reframed "0.117% match to Planck" as UQFF-internal; PRESERVED "no 120-order fine-tuning" landmark
+- PAPER_1235: fixed table direction (J/m³ first per PAPER_2147); disclosed H_0/Ω_Λ/ρ_Λ internal inconsistency + Ω_r arithmetic + H(z) numerical errors
+- PAPER_2145: walkback appendix pointing to PAPER_2148; 23/12 EXACT claim downgraded to UQFF-internal; 5-paper 1/12 chain reduced to 4 papers
+- PAPER_2146: Standing Rule 5.4 supersession note
+
+**NEXT_PRIORITIES.md fully refreshed:** rewrote from stale v5.61.0 state (2026-07-11, gate 1031) to current v5.80.1 → v5.81.0 state (gate 3381, 172 consecutive R218+ stub fills through R390, Registry Program R0-R5 COMPLETE, PAPER_2130-2149 arc landmarks). 244 → 221 lines.
+
+**Files touched:**
+- `whitepapers/PAPER_2149_HYBRID_FORM_DOCTRINE_..._UQFF_LANDMARK.md` (~500 lines) + PDF
+- `whitepapers/PAPER_1170/1226/1235/2145/2146_*.md` — REVISION appends
+- `uqff_pure_calculator.py` — 36 classification label updates in 4 `_*_report()` functions
+- `uqff_pure_calculator.py.PRE_PAPER_2149_LABEL_UPDATE` — backup
+- `uqff_fidelity_tests.py` — 5 PAPER_2149 assertions added
+- `NEXT_PRIORITIES.md` — full rewrite
+- 6 rebuilt PDFs in pdf2/ (reportlab fallback)
+- This CLAUDE.md append
+
+**Gate: 3376 → 3381 (+5 PAPER_2149 pins), 0 failures.**
+
+**Session arc totals (PAPER_2144 through PAPER_2149 — 6 landmarks in ~14 turns spanning v5.80.0/5.80.1/5.81.0 across 2026-07-25):**
+- 6 formal landmark whitepapers authored
+- Gate: 3348 → 3381 (+33 assertions across arc)
+- Code changes: only PAPER_2144 H_0 route swap (real physics win) + C_OBSERVED SI-exact + 36 classification label updates (all label-string-only, zero physics)
+- Corpus revisions: 5 papers received REVISION sections
+- NEXT_PRIORITIES.md fully refreshed
+- Framework net-tighter than before the arc (H_0 47× improvement stands)
+- Every AI overstatement caught by Daniel's persistent interrogation
+- Rules 4/7/10 discipline validated as primary quality-control mechanism
+
+**Cross-refs:** PAPER_2149 (landmark), PAPER_2148 (ontology), PAPER_2147 (unit-direction), PAPER_2146 (self-audit), PAPER_2145 (walkback), PAPER_2144 (H_0 win), REVISED STANDING RULE v4 (observation-headlining, PAPER_2142), Daniel's naming-conventions ruling.

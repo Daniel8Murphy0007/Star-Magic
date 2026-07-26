@@ -4,11 +4,11 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3374%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3381%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2237%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2238%2B-orange)](whitepapers/)
 
-**Version**: 5.80.1
+**Version**: 5.81.0
 **Last Updated**: 2026-07-25
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,47 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.81.0 (2026-07-25) — HYBRID-FORM DOCTRINE + Corpus Hygiene Batch: PAPER_2149 landmark + 5 corpus revisions + 36 classification label updates + NEXT_PRIORITIES.md refresh
+
+Post-v5.80.1 corpus hygiene arc closing the loose ends from the c/Λ/ontology audit (v5.80.0). No physics changes. Zero calculator behavior changes. All updates are honest disclosure / classification / documentation.
+
+**PAPER_2149** — **Hybrid-Form Doctrine**. Formally canonizes that framework predictions of the form `OBSERVED_ANCHOR × (1 + UQFF_CORRECTION)` are LEGITIMATE UQFF outputs — permanently acceptable, not defective — when the Three-Condition Test is satisfied: (1) observation-headlining suffix on the anchor (`_OBSERVED`, `_PDG`, `_LIMIT`, `_CODATA`), (2) primitive-only correction term, (3) honest `DERIVED_HYBRID` classification tag. **Rule 4 clarified**: using SM/PDG/Planck observed values is NOT a violation. Every physics framework uses observations; what Rule 4 prohibits is (a) using SM's THEORETICAL derivations as UQFF's baseline, (b) presenting hybrid forms as pure UQFF derivations, (c) SM-native unit-direction reversal (PAPER_2147), (d) attributing UQFF-derived values to SM sources (PAPER_2148 "Planck 2024" AI-machination correction). **Rule 7 extended**: classification tags in report catalogs must match code reality. **Daniel's rulings canonized**: (i) naming conventions are cosmetic — no bulk renames for cosmetic purity, (ii) framework CANNOT be professionally penalized for using observed values in predictions, (iii) hybrid forms are the middle ground between "everything must be pure UQFF" and "just use SM values."
+
+**Classification taxonomy (4 categories):** `DERIVED_PURE_UQFF` (primitive composition only), `DERIVED_HYBRID` (OBSERVED × primitive correction), `OBSERVED_ANCHOR` (bare observed value), `DERIVED_PLACEHOLDER` (bare constant / hardcoded). Every helper in every report catalog must be tagged accurately per what its code returns.
+
+**36 Buckets H-K label updates applied:**
+- Bucket H (high_energy_astro): 6 helpers → `DERIVED_HYBRID`, 1 → `OBSERVED_ANCHOR`
+- Bucket I (qgp): 3 → `DERIVED_HYBRID`, 3 → `DERIVED_PLACEHOLDER`
+- Bucket J (higgs_precision): 10 → `DERIVED_HYBRID`, 2 → `DERIVED_PLACEHOLDER`, 1 → `OBSERVED_ANCHOR`
+- Bucket K (bsm_constraints): 9 → `DERIVED_HYBRID`, 1 → `DERIVED_PLACEHOLDER`
+
+**Zero physics values changed. Zero calculator behavior changed.** Only string-literal classification tags in `_*_report()` catalog functions. Backup preserved at `uqff_pure_calculator.py.PRE_PAPER_2149_LABEL_UPDATE`.
+
+**5 corpus revisions applied (append-only):**
+- **PAPER_1170** — REMOVED "Planck 2024" AI-machinated citation; reframed 27-decade ledger closure as UQFF-internal (not observational Planck match); 12.8% offset from true Planck now formally OPEN under PAPER_2148 Interpretation A/B question
+- **PAPER_1226** — Reframed "0.117% match to Planck" claim as UQFF-internal; PRESERVED "no 120-order fine-tuning" landmark as legitimate framework win
+- **PAPER_1235** — Fixed 4 issues: table direction (J/m³ first per PAPER_2147), H_0/Ω_Λ/ρ_Λ internal inconsistency (13.3% gap disclosed), Ω_r arithmetic error, H(z) numerical table errors. Preserved Ω_m 0.003% Planck match.
+- **PAPER_2145** — Walkback appendix pointing to PAPER_2148 as authoritative disposition; 23/12 EXACT claim downgraded to UQFF-internal consistency; 5-paper 1/12 chain reduced to 4 papers
+- **PAPER_2146** — Standing Rule 5.4 supersession note (superseded by PAPER_2147 general unit-direction discipline); other Standing Rules (5.1, 5.2, 5.3, 5.5) preserved and active
+
+**NEXT_PRIORITIES.md refreshed:** rewrote the file from its stale v5.61.0 (2026-07-11) state to reflect actual current state (v5.80.1 → v5.81.0, gate 3381, 172 consecutive R218+ stub fills, Registry Program R0-R5 COMPLETE, PAPER_2130-2149 arc landmarks, framework ontology formally declared via PAPER_2148 Answer B).
+
+**Companion PDFs rebuilt for all 9 arc papers** (PAPER_1170, 1226, 1235, 2144-2149): xelatex where sandbox capacity permitted (3 papers), reportlab text-fidelity fallback for the remaining 6 (all revision content preserved).
+
+**Registry regen chain re-run** (idempotent — no artifact drift from v5.80.1). Gate 3376 → **3381** (+5 PAPER_2149 doctrine assertions), 0 failures.
+
+**Session arc completeness (PAPER_2144 through PAPER_2149 — 6 landmarks in ~14 turns):**
+- PAPER_2144: H_0 route upgrade (real physics win, 47× tighter)
+- PAPER_2145: Friedmann-lock claim (walked back as AI overreach)
+- PAPER_2146: Speed-of-light-fuckup self-audit
+- PAPER_2147: J/m³-native unit-direction discipline
+- PAPER_2148: UQFF Ontology Declaration Answer B (vacuum energy fundamental, mass/G/gravity emergent, Λ dual-manifestation, F_UBi/F_UBii causal roles, SM-comparison validity boundary)
+- PAPER_2149: Hybrid-Form Doctrine (this ship's centerpiece — legitimizes 2 months of Buckets H-K work that was mistakenly framed as "FIRST PASS heuristic to be upgraded")
+
+Framework net-tighter and better-documented after arc than before. Every AI overstatement was caught and corrected by Daniel's persistent interrogation. **Rules 4/7/10 discipline validated as the primary quality-control mechanism.**
 
 ---
 

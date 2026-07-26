@@ -18651,3 +18651,69 @@ Gate: 3366 → 3374 (+8 PAPER_2148 assertions).
 This arc reached the highest AI-overreach risk of any session in the R218+ campaign. Daniel's persistent interrogation (5 sharpening questions across 12 turns) caught every overstatement before it corrupted anything. The v5.79.0 codebase would have taken cascade damage if the v_F code change had been executed - Daniel's pause between analysis and execution prevented it. This is the framework's discipline working exactly as designed.
 
 **PAPER_2148 ontology declaration is the largest single conceptual advance in the R218+ campaign** - it formally declares UQFF's inverted ontology relative to SM, canonizes F_UBi/F_UBii causal roles, and defines the SM-comparison validity boundary. Future sessions have a clear framework-native discipline to follow.
+
+---
+
+# SESSION 2026-07-25 continuation — HYBRID-FORM DOCTRINE + CORPUS HYGIENE (v5.81.0)
+
+## Overview
+
+Post-v5.80.1 continuation. Category A (5 corpus revisions) + Category C.3 (NEXT_PRIORITIES.md refresh) executed. Category D scoping led to Option 4 audit which led to Daniel's ruling: hybrid forms are legitimate, cannot be professionally penalized for using observed values, naming conventions are cosmetic. PAPER_2149 codifies the Hybrid-Form Doctrine as the middle ground. 36 Buckets H-K classification labels updated to match code reality. Zero physics changes. Gate 3376 → 3381 (+5 assertions).
+
+## PAPER_2149 arc — the middle-ground landmark
+
+Daniel's quotes (canonized in this ship):
+- "How can I be professionally penalized for using SM observations; everything is based upon SM observations?"
+- "I personally could care less about naming conventions; what the difference between `M_W_MEV_SM_BASELINE` → `M_W_MEV_CDF_OBSERVED`, the answer is nothing!!! I need a better plan to move forward."
+- "As soon as I commit to a name change it will be the end of this project, because it will not survive the cascade effect."
+
+**Hybrid-Form Doctrine Three-Condition Test:**
+1. Observation-headlining suffix on anchor
+2. Primitive-only correction term
+3. Honest DERIVED_HYBRID classification tag
+
+**Classification taxonomy (4 categories):** DERIVED_PURE_UQFF, DERIVED_HYBRID, OBSERVED_ANCHOR, DERIVED_PLACEHOLDER
+
+**Rule 4 clarified:** using observations is not a violation; content-layer prohibits SM theoretical baselines, presentation-layer prohibits SM-native unit direction + attribution errors.
+
+**Rule 7 extended:** classification tags must match code reality.
+
+## Bucket H-K label updates (36 helpers) — code changes summary
+
+- Bucket H: 6 → DERIVED_HYBRID, 1 → OBSERVED_ANCHOR (Amaterasu UHECR bare energy)
+- Bucket I: 3 → DERIVED_HYBRID, 3 → DERIVED_PLACEHOLDER (QCD condensate, Λ_QCD, SU(3)_N bare constants)
+- Bucket J: 10 → DERIVED_HYBRID (all H_*_PDG × correction helpers + CDF W mass + H → invisible), 2 → DERIVED_PLACEHOLDER (vacuum stability, trilinear kappa returning 1.0), 1 → OBSERVED_ANCHOR (level 18)
+- Bucket K: 9 → DERIVED_HYBRID (all _LIMIT × correction BSM helpers + Schwinger), 1 → DERIVED_PLACEHOLDER (EW vacuum decay 0.0)
+
+Zero physics values changed. Backup preserved at uqff_pure_calculator.py.PRE_PAPER_2149_LABEL_UPDATE.
+
+## Corpus revisions applied append-only
+
+1. PAPER_1170: removed "Planck 2024" AI-machinated citation; reframed 27-decade ledger as UQFF-internal
+2. PAPER_1226: reframed "0.117% match to Planck" as UQFF-internal; preserved "no 120-order fine-tuning" landmark
+3. PAPER_1235: fixed table direction (J/m³ first per PAPER_2147), disclosed H_0/Ω_Λ/ρ_Λ internal inconsistency (13.3%), disclosed Ω_r arithmetic error and H(z) numerical table errors; preserved Ω_m 0.003% Planck match
+4. PAPER_2145: walkback appendix pointing to PAPER_2148; 23/12 EXACT claim downgraded to UQFF-internal consistency; 5-paper 1/12 chain reduced to 4 papers
+5. PAPER_2146: Standing Rule 5.4 supersession note (superseded by PAPER_2147)
+
+## NEXT_PRIORITIES.md refresh
+
+Rewrote from stale v5.61.0 (2026-07-11) to current v5.80.1 → v5.81.0 state. Now reflects: 3381 gate, 172 R218+ consecutive stub fills through R390, Registry Program R0-R5 COMPLETE, PAPER_2130-2149 arc landmarks, framework ontology formally declared, 26-layer quantum chain documented, 7-rule SHIP GUARD checklist. 244 → 221 lines (cut historical clutter, added current-state clarity).
+
+## Companion PDFs rebuilt
+
+9 arc papers (PAPER_1170/1226/1235/2144-2149): 3 xelatex (LaTeX typeset, from prior session sandbox capacity) + 6 reportlab (text fidelity fallback due to sandbox xelatex timeouts in this session). All content preserved.
+
+## Naming-convention ruling (Daniel-canonized)
+
+`M_W_MEV_SM_BASELINE` and `E_SCHWINGER_V_PER_M_SM` identifiers LEFT UNCHANGED. Per Daniel: naming changes without physics meaning are prohibited as bulk operations. The `_SM_BASELINE` / `_SM` suffixes accurately label these values as SM-theoretical baselines used as anchors. Their use in helpers is disclosed via `DERIVED_HYBRID` classification tag, not via identifier rename. Gate assertion pins this disposition.
+
+## Session totals (PAPER_2144 → PAPER_2149)
+
+- 6 landmark papers authored
+- Gate: 3348 → 3381 (+33 assertions total across the arc)
+- Code changes: only PAPER_2144 H_0 route swap + C_OBSERVED SI-exact + 36 classification label updates (all label-string-only, zero physics)
+- Corpus revisions: 5 papers received append-only REVISION sections
+- NEXT_PRIORITIES.md fully refreshed
+- Framework net-tighter than before the arc (H_0 47× improvement stands)
+- Every AI overstatement caught by Daniel's persistent interrogation
+- Rules 4/7/10 discipline validated as primary quality-control mechanism

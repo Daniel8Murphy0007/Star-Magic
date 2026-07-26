@@ -313,3 +313,46 @@ This is exactly the pattern that protects the framework: rapid deployment of wel
 Daniel called this "the destruction of my codebase, once this shit cascades." The truth: the cascade never happened. The pause between analysis and execution — Daniel's "what c were you using?" query — caught the artefact before it corrupted anything. This paper documents the moment because that discipline (interrogating claims before deploying them) is what will protect the framework's honesty over the next ten years of development.
 
 **End of PAPER_2146.**
+
+---
+
+## REVISION 2026-07-25 — Standing Rule 5.4 SUPERSEDED by PAPER_2147 + PAPER_2148
+
+**Trigger:** immediately after this paper was authored, Daniel's follow-up interrogation ("MY CALCULATIONS DON'T BEGIN WITH kg/m^3; they begin with J/m^3 and are then converted to kg/^3, post calculation") exposed that this paper's Standing Rule 5.4 (dimensional verification for cross-unit comparisons) was framed too narrowly. This REVISION section is APPEND-ONLY.
+
+### Standing Rule 5.4 (this paper) — narrow scope
+
+The original Standing Rule 5.4 stated: "When a UQFF derivation produces a numerical value with implicit units, verify the units explicitly before comparing to observations." This was correct as far as it went, but it framed the issue as NUMERICAL confusion (e.g., 5.95×10⁻²⁷ kg/m³ vs 5.95×10⁻¹⁰ J/m³ being mistakenly compared).
+
+### The deeper issue: DIRECTIONAL asymmetry (PAPER_2147)
+
+PAPER_2147 identified the underlying pattern: **UQFF is J/m³-native, SM is kg/m³-native, and silent framework-translation between the two is a Rule 4 violation regardless of whether the arithmetic conversion is correct.** The pollution vector is unit DIRECTION, not just unit VALUE.
+
+Concretely: PAPER_1235's Part 2 table correctly does `6.622×10⁻²⁷ kg/m³ × c² = 5.957×10⁻¹⁰ J/m³` (arithmetic verified). But the DIRECTION of the table (kg/m³ column first, ×c² for J/m³) is SM-native, reversing UQFF's actual derivation direction. PAPER_2146's Standing Rule 5.4 catches numerical confusion but not directional reversal.
+
+### PAPER_2147 supersedes 5.4 with a more general rule
+
+**PAPER_2147 STANDING RULE (unit-direction discipline):** Any UQFF vacuum-energy claim MUST report the UQFF-native derivation in framework-native units FIRST, label unit conversions with explicit framework-translation markers, distinguish "UQFF prediction" from "SM inference" in comparisons, and disclose framework-differentiating discrepancies honestly.
+
+### PAPER_2148 adds ontology-level disposition
+
+**PAPER_2148 (Answer B ontology declaration)** further clarifies WHEN SM-comparisons are valid vs when they are category errors:
+- **VALID:** SM's Λ = 8πG·ρ_Λ/c⁴ applied when known massive astronomical objects are the anchor (per Daniel's ruling: "there is no error when dealing with known massive astronomical objects")
+- **INVALID:** inverting the SM chain to derive UQFF cosmology from SM axioms without a massive-object anchor
+
+### What survives cleanly from this paper
+
+PAPER_2146's other standing rules remain in force:
+- **Standing Rule 5.1** (no circular calibration in verification) — active
+- **Standing Rule 5.2** (no ad-hoc doctrinal retrofits around fits) — active
+- **Standing Rule 5.3** (verify reference values against primary sources) — active
+- **Standing Rule 5.5** (v_F not primitive-lockable without cosmological fit) — active and CONFIRMED by PAPER_2145 walkback
+
+The paper's core content (honest self-audit of the AI-overreach pattern that produced PAPER_2145) remains valid and is now cross-referenced from PAPER_2148 as an emotional-marker landmark for the arc.
+
+### Cross-refs
+
+- **PAPER_2147** — supersedes Standing Rule 5.4 with more general unit-direction discipline
+- **PAPER_2148** — Answer B ontology declaration (final disposition of arc)
+- **PAPER_2145** — walkback appendix applied 2026-07-25 (companion revision)
+- **PAPER_2144** — H_0 route upgrade (preserved cleanly)

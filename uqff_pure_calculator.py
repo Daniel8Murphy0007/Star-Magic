@@ -47248,15 +47248,15 @@ def _frb_dm_buoyancy_correction():
 
 def _high_energy_astro_report():
     obs = [
-        ('TXS 0506+056 spectral index gamma',  _txs0506_spectral_index_uqff(),       TXS0506_SPECTRAL_INDEX,       'PAPER_515',          'DERIVED_PURE_UQFF'),
-        ('IceCube nu_e fraction (1:1:1 sky)',  _icecube_nu_e_fraction_uqff(),        ICECUBE_NUE_FRACTION,         'PAPER_108',                    'DERIVED_PURE_UQFF'),
-        ('Auger dipole amplitude (>8 EeV)',    _auger_dipole_amplitude_uqff(),       AUGER_DIPOLE_AMPLITUDE,       'PAPER_020',                     'DERIVED_PURE_UQFF'),
-        ('CR knee energy (PeV)',               _cr_knee_uqff_pev(),                  CR_KNEE_ENERGY_PEV,           'PAPER_215',               'DERIVED_PURE_UQFF'),
+        ('TXS 0506+056 spectral index gamma',  _txs0506_spectral_index_uqff(),       TXS0506_SPECTRAL_INDEX,       'PAPER_515',          'DERIVED_HYBRID'),
+        ('IceCube nu_e fraction (1:1:1 sky)',  _icecube_nu_e_fraction_uqff(),        ICECUBE_NUE_FRACTION,         'PAPER_108',                    'DERIVED_HYBRID'),
+        ('Auger dipole amplitude (>8 EeV)',    _auger_dipole_amplitude_uqff(),       AUGER_DIPOLE_AMPLITUDE,       'PAPER_020',                     'DERIVED_HYBRID'),
+        ('CR knee energy (PeV)',               _cr_knee_uqff_pev(),                  CR_KNEE_ENERGY_PEV,           'PAPER_215',               'DERIVED_HYBRID'),
         ('FRB DM buoyancy correction (frac)',  _frb_dm_buoyancy_correction(),        1.0,                          'PAPER_1034',                            'DERIVED_PURE_UQFF'),
         ('CR phonon-acceleration factor',      1.0 + BETA_I * (S_26 ** 3) * TRZ,     1.0,                          'PAPER_1020',             'DERIVED_PURE_UQFF'),
-        ('Amaterasu UHECR energy (EeV)',       AMATERASU_ENERGY_EEV,                 AMATERASU_ENERGY_EEV,         'PAPER_020', 'DERIVED_PURE_UQFF'),
-        ('Crab pulsar TeV cutoff (TeV)',       _crab_tev_cutoff_uqff_tev(),         CRAB_TEV_CUTOFF_OBS_HESS,     'PAPER_292',          'DERIVED_PURE_UQFF'),
-        ('CR ankle energy (eV)',               _cr_ankle_uqff_ev(),                 CR_ANKLE_OBS_AUGER_EV,        'PAPER_020',          'DERIVED_PURE_UQFF'),
+        ('Amaterasu UHECR energy (EeV)',       AMATERASU_ENERGY_EEV,                 AMATERASU_ENERGY_EEV,         'PAPER_020', 'OBSERVED_ANCHOR'),
+        ('Crab pulsar TeV cutoff (TeV)',       _crab_tev_cutoff_uqff_tev(),         CRAB_TEV_CUTOFF_OBS_HESS,     'PAPER_292',          'DERIVED_HYBRID'),
+        ('CR ankle energy (eV)',               _cr_ankle_uqff_ev(),                 CR_ANKLE_OBS_AUGER_EV,        'PAPER_020',          'DERIVED_HYBRID'),
         ('Monopole inflation dilution',        _bucket_monopole_dilution_uqff(),    1.0e26,                       'PAPER_597',          'DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(obs,
@@ -47299,15 +47299,15 @@ def _alice_dnch_deta_uqff():
 
 def _qgp_heavy_ion_report():
     obs = [
-        ('QGP critical temperature T_c (MeV)', _qgp_T_c_uqff_mev(),           QGP_T_C_MEV,                  'PAPER_1004',     'DERIVED_PURE_UQFF'),
-        ('eta/s viscosity (units of k_B/hbar)', _qgp_eta_over_s_uqff(),       QGP_ETA_OVER_S_KSS,           'PAPER_1004',   'DERIVED_PURE_UQFF'),
+        ('QGP critical temperature T_c (MeV)', _qgp_T_c_uqff_mev(),           QGP_T_C_MEV,                  'PAPER_1004',     'DERIVED_HYBRID'),
+        ('eta/s viscosity (units of k_B/hbar)', _qgp_eta_over_s_uqff(),       QGP_ETA_OVER_S_KSS,           'PAPER_1004',   'DERIVED_HYBRID'),
         ('ALICE PbPb dN_ch/d_eta (central)',   _alice_dnch_deta_uqff(),       ALICE_PBPB_DNCH_DETA_CENTRAL, 'PAPER_1013',                  'FALSIFIABLE_UQFF_PREDICTION'),
         ('alpha-BEC heavy-ion phonon factor',  1.0 + TRZ * SSQ,               1.0,                          'PAPER_059',                        'DERIVED_PURE_UQFF'),
         ('QGP jet quenching R_AA (PbPb)',     _qgp_jet_quenching_R_AA_uqff(),R_AA_PBPB_LHC_OBS,            'PAPER_1004',                       'DERIVED_PURE_UQFF'),
-        ('CFL color SC gap (MeV)',            _qgp_cfl_gap_uqff_mev(),       0.5*(CFL_GAP_OBS_RANGE_LOW_MEV+CFL_GAP_OBS_RANGE_HIGH_MEV),'PAPER_1005',                       'DERIVED_PURE_UQFF'),
-        ('QCD chiral condensate (MeV^3)',     _b_qcd_chiral_condensate_uqff_mev3(), 11390625.0,         'PAPER_1004',                       'DERIVED_PURE_UQFF'),
-        ('Non-perturbative QCD Lambda (GeV)', _b_non_perturbative_qcd_lambda_uqff_gev(), 0.218,         'PAPER_1004',                       'DERIVED_PURE_UQFF'),
-        ('SU(3) color N',                     _b_su3_color_n_uqff(),         3.0,                          'PAPER_1198',                       'DERIVED_PURE_UQFF'),
+        ('CFL color SC gap (MeV)',            _qgp_cfl_gap_uqff_mev(),       0.5*(CFL_GAP_OBS_RANGE_LOW_MEV+CFL_GAP_OBS_RANGE_HIGH_MEV),'PAPER_1005',                       'DERIVED_HYBRID'),
+        ('QCD chiral condensate (MeV^3)',     _b_qcd_chiral_condensate_uqff_mev3(), 11390625.0,         'PAPER_1004',                       'DERIVED_PLACEHOLDER'),
+        ('Non-perturbative QCD Lambda (GeV)', _b_non_perturbative_qcd_lambda_uqff_gev(), 0.218,         'PAPER_1004',                       'DERIVED_PLACEHOLDER'),
+        ('SU(3) color N',                     _b_su3_color_n_uqff(),         3.0,                          'PAPER_1198',                       'DERIVED_PLACEHOLDER'),
     ]
     return _build_observable_report(obs, 'PAPER_059/PAPER_1004/PAPER_1007/PAPER_1008/PAPER_1013')
 
@@ -47354,18 +47354,18 @@ def _h_cp_phase_uqff():
 
 def _higgs_precision_report():
     obs = [
-        ('H -> gamma-gamma branching ratio',  _h_gg_br_uqff(),     H_GG_BR_PDG,    'PAPER_1120',     'DERIVED_PURE_UQFF'),
-        ('H -> ZZ branching ratio',           _h_zz_br_uqff(),     H_ZZ_BR_PDG,    'PAPER_1114',                   'DERIVED_PURE_UQFF'),
-        ('H -> WW branching ratio',           _h_ww_br_uqff(),     H_WW_BR_PDG,    'PAPER_1120',                                   'DERIVED_PURE_UQFF'),
-        ('H -> bb branching ratio',           _h_bb_br_uqff(),     H_BB_BR_PDG,    'PAPER_1120',                                   'DERIVED_PURE_UQFF'),
-        ('H -> tau-tau branching ratio',      _h_tautau_br_uqff(), H_TAUTAU_BR_PDG,'PAPER_1120',                             'DERIVED_PURE_UQFF'),
-        ('kappa_t (top Yukawa coupling)',     _h_kappa_t_uqff(),   H_KAPPA_T_PDG,  'PAPER_034', 'DERIVED_PURE_UQFF'),
-        ('Higgs CP phase (rad)',              _h_cp_phase_uqff(),  H_CP_PHASE_PDG, 'PAPER_035',                         'DERIVED_PURE_UQFF'),
-        ('Higgs emergent stratum (level 18)', float(18),           18.0,           'PAPER_396',     'DERIVED_PURE_UQFF'),
-        ('CDF W mass shift Delta m_W (MeV)',  _h_w_mass_cdf_uqff_mev(),                          M_W_DELTA_CDF_OBS_MEV, 'PAPER_034',                                 'DERIVED_PURE_UQFF'),
-        ('H -> invisible branching ratio',    _h_invisible_decay_br_uqff(),                      BR_H_INV_ATLAS_BOUND,  'PAPER_034',                                 'DERIVED_PURE_UQFF'),
-        ('Higgs vacuum stability F_U=1',      _b_higgs_vacuum_stability_uqff(),                  1.0,             'PAPER_034', 'DERIVED_PURE_UQFF'),
-        ('Higgs trilinear kappa_lambda',      _b_higgs_trilinear_kappa_uqff(),                   1.0,             'PAPER_034', 'DERIVED_PURE_UQFF'),
+        ('H -> gamma-gamma branching ratio',  _h_gg_br_uqff(),     H_GG_BR_PDG,    'PAPER_1120',     'DERIVED_HYBRID'),
+        ('H -> ZZ branching ratio',           _h_zz_br_uqff(),     H_ZZ_BR_PDG,    'PAPER_1114',                   'DERIVED_HYBRID'),
+        ('H -> WW branching ratio',           _h_ww_br_uqff(),     H_WW_BR_PDG,    'PAPER_1120',                                   'DERIVED_HYBRID'),
+        ('H -> bb branching ratio',           _h_bb_br_uqff(),     H_BB_BR_PDG,    'PAPER_1120',                                   'DERIVED_HYBRID'),
+        ('H -> tau-tau branching ratio',      _h_tautau_br_uqff(), H_TAUTAU_BR_PDG,'PAPER_1120',                             'DERIVED_HYBRID'),
+        ('kappa_t (top Yukawa coupling)',     _h_kappa_t_uqff(),   H_KAPPA_T_PDG,  'PAPER_034', 'DERIVED_HYBRID'),
+        ('Higgs CP phase (rad)',              _h_cp_phase_uqff(),  H_CP_PHASE_PDG, 'PAPER_035',                         'DERIVED_HYBRID'),
+        ('Higgs emergent stratum (level 18)', float(18),           18.0,           'PAPER_396',     'OBSERVED_ANCHOR'),
+        ('CDF W mass shift Delta m_W (MeV)',  _h_w_mass_cdf_uqff_mev(),                          M_W_DELTA_CDF_OBS_MEV, 'PAPER_034',                                 'DERIVED_HYBRID'),
+        ('H -> invisible branching ratio',    _h_invisible_decay_br_uqff(),                      BR_H_INV_ATLAS_BOUND,  'PAPER_034',                                 'DERIVED_HYBRID'),
+        ('Higgs vacuum stability F_U=1',      _b_higgs_vacuum_stability_uqff(),                  1.0,             'PAPER_034', 'DERIVED_PLACEHOLDER'),
+        ('Higgs trilinear kappa_lambda',      _b_higgs_trilinear_kappa_uqff(),                   1.0,             'PAPER_034', 'DERIVED_PLACEHOLDER'),
         ('Higgs vev origin v (GeV)',          _b_higgs_vev_origin_uqff_gev(),                    246.22,          'PAPER_1198','DERIVED_PURE_UQFF'),
     ]
     return _build_observable_report(obs, 'PAPER_034/PAPER_035/PAPER_137/PAPER_396/PAPER_856/PAPER_1113/PAPER_1114/PAPER_1120')
@@ -47414,16 +47414,16 @@ def _t_violation_bsm_uqff():
 
 def _bsm_constraints_report():
     obs = [
-        ('Electron EDM (e*cm, upper bound)',         _electron_edm_uqff_e_cm(),         D_E_EDM_E_CM_LIMIT,        'PAPER_340',                              'DERIVED_PURE_UQFF'),
-        ('Neutron EDM (e*cm, upper bound)',          _neutron_edm_uqff_e_cm(),          D_N_EDM_E_CM_LIMIT,        'PAPER_340',      'DERIVED_PURE_UQFF'),
-        ('Proton decay lifetime (yr, lower bound)',  _proton_decay_uqff_yr(),           TAU_PROTON_DECAY_YR,       'PAPER_029',              'DERIVED_PURE_UQFF'),
-        ('mu -> e gamma branching ratio (upper)',    _mu_e_gamma_uqff(),                MU_E_GAMMA_BR_LIMIT,       'PAPER_494',                                     'DERIVED_PURE_UQFF'),
-        ('tau -> mu gamma branching ratio (upper)',  _tau_mu_gamma_uqff(),              TAU_MU_GAMMA_BR_LIMIT,     'PAPER_494',                                     'DERIVED_PURE_UQFF'),
-        ('Axion mass (eV, ADMX bound)',              _axion_mass_uqff_ev(),             AXION_MASS_EV_LIMIT,       'PAPER_1116',                 'DERIVED_PURE_UQFF'),
-        ('Dark photon kinetic mixing (upper)',       _dark_photon_kin_mix_uqff(),       DARK_PHOTON_KIN_MIX_LIMIT, 'PAPER_046',         'DERIVED_PURE_UQFF'),
-        ('VLQ mass (GeV, lower bound)',              _vlq_mass_uqff_gev(),              M_VLQ_GEV_LIMIT,           'PAPER_494',                                     'DERIVED_PURE_UQFF'),
+        ('Electron EDM (e*cm, upper bound)',         _electron_edm_uqff_e_cm(),         D_E_EDM_E_CM_LIMIT,        'PAPER_340',                              'DERIVED_HYBRID'),
+        ('Neutron EDM (e*cm, upper bound)',          _neutron_edm_uqff_e_cm(),          D_N_EDM_E_CM_LIMIT,        'PAPER_340',      'DERIVED_HYBRID'),
+        ('Proton decay lifetime (yr, lower bound)',  _proton_decay_uqff_yr(),           TAU_PROTON_DECAY_YR,       'PAPER_029',              'DERIVED_HYBRID'),
+        ('mu -> e gamma branching ratio (upper)',    _mu_e_gamma_uqff(),                MU_E_GAMMA_BR_LIMIT,       'PAPER_494',                                     'DERIVED_HYBRID'),
+        ('tau -> mu gamma branching ratio (upper)',  _tau_mu_gamma_uqff(),              TAU_MU_GAMMA_BR_LIMIT,     'PAPER_494',                                     'DERIVED_HYBRID'),
+        ('Axion mass (eV, ADMX bound)',              _axion_mass_uqff_ev(),             AXION_MASS_EV_LIMIT,       'PAPER_1116',                 'DERIVED_HYBRID'),
+        ('Dark photon kinetic mixing (upper)',       _dark_photon_kin_mix_uqff(),       DARK_PHOTON_KIN_MIX_LIMIT, 'PAPER_046',         'DERIVED_HYBRID'),
+        ('VLQ mass (GeV, lower bound)',              _vlq_mass_uqff_gev(),              M_VLQ_GEV_LIMIT,           'PAPER_494',                                     'DERIVED_HYBRID'),
         ('TeV new-physics scale (GeV)',              1.736,                            1.736,                    'PAPER_029','DERIVED_PURE_UQFF'),
-        ('Schwinger limit E_s (V/m)',                _schwinger_limit_uqff_v_per_m(),    E_SCHWINGER_V_PER_M_SM,    'PAPER_1373', 'DERIVED_PURE_UQFF'),
+        ('Schwinger limit E_s (V/m)',                _schwinger_limit_uqff_v_per_m(),    E_SCHWINGER_V_PER_M_SM,    'PAPER_1373', 'DERIVED_HYBRID'),
         ('T-violation BSM asymmetry',                _t_violation_bsm_uqff(),            0.0603,                    'PAPER_597',  'DERIVED_PURE_UQFF'),
         ('Heaviside amplifier 10^13',                _b_heaviside_amp_factor_uqff(),     1.0e13,                    'PAPER_1484', 'DERIVED_PURE_UQFF'),
         ('Spooky-action distance (m)',               _b_distance_spooky_m_uqff(),        7.5e11,                    'PAPER_1487', 'DERIVED_PURE_UQFF'),
@@ -47431,8 +47431,8 @@ def _bsm_constraints_report():
         ('Vacuum birefringence threshold (V/m)',     _bucket_vacuum_birefringence_threshold_uqff(), 7.03e13,         'PAPER_1373', 'DERIVED_PURE_UQFF'),
         ('Antimatter production max efficiency',     _bucket_antimatter_efficiency_uqff(), 1.0e-10,                  'PAPER_1370', 'DERIVED_PURE_UQFF'),
         ('DM direct detection sigma floor (cm^2)',   _bucket_dm_direct_sigma_floor_uqff_cm2(), 1.0e-48,              'PAPER_1371', 'DERIVED_PURE_UQFF'),
-        ('EW vacuum decay rate',                     _b_ew_vacuum_decay_rate_uqff(),     0.0,                       'PAPER_029',  'DERIVED_PURE_UQFF'),
-        ('Quantum supremacy qubits A_5',             _b_quantum_supremacy_qubits_uqff(), 53.0,                      'PAPER_1198', 'DERIVED_PURE_UQFF'),
+        ('EW vacuum decay rate',                     _b_ew_vacuum_decay_rate_uqff(),     0.0,                       'PAPER_029',  'DERIVED_PLACEHOLDER'),
+        ('Quantum supremacy qubits A_5',             _b_quantum_supremacy_qubits_uqff(), 53.0,                      'PAPER_1198', 'DERIVED_PLACEHOLDER'),
     ]
     return _build_observable_report(obs, 'PAPER_029/PAPER_033/PAPER_046/PAPER_333/PAPER_340/PAPER_494/PAPER_1116/PAPER_1119/PAPER_1183')
 

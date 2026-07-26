@@ -10,32 +10,42 @@
 
 ---
 
-## STATE AT SESSION CLOSE (2026-07-11 — v5.61.0)
+## STATE AT SESSION CLOSE (2026-07-25 — v5.80.1)
 
-### Ship trail
-- **v5.44.0** (2026-07-04) — CP pipeline integration (uqff_pure_calculator dispatchers added)
-- **v5.45.0 through v5.57.0** (2026-07-04 to 2026-07-10) — 13 ships of CP1 P2 stub-drainage rounds. Zero changes to uqff_pure_calculator.py. Drift accumulated.
-- **v5.58.0** (2026-07-11) — Phase A corpus completion: 670 new PDFs (99.9% coverage), 57 regex-artifact-swept, PAPER_1796-1799 reservation stubs, PAPER_275 typo fix
-- **v5.59.0** (2026-07-11) — Phase B calculator wiring: 100 new PARADOX_TO_CLOSURE dispatch keys for PAPER_1893-1984 + PAPER_872 + PAPER_1087 OPEN_QUESTION marker. Gate 931/0 → 1031/0.
-- **v5.60.0** (2026-07-11) — Phase C framework annotation retrofit: 316 auto-extracted annotations for Rounds 52-116
-- **v5.61.0** (2026-07-11) — Phase D housekeeping (this ship): honest CP1-CP4 audit + NEXT_PRIORITIES.md refresh + task-list prune
+### Ship trail (recent — full history in CHANGELOG.md)
+- **v5.79.0** (2026-07-24) — TIDAL/KEPLER/HALVING/RULE-4 arc: 7 landmarks PAPER_2136-2142 + R382-R389 stub fills + REVISED STANDING RULE v4
+- **v5.80.0** (2026-07-25) — c/LAMBDA/ONTOLOGY audit arc: 5 landmarks PAPER_2144-2148 + H_0 route upgrade 47× tighter + framework ontology formally declared (Answer B)
+- **v5.80.1** (2026-07-25) — METADATA PATCH: README badges/Version drift fix + 2 permanent SHIP GUARD assertions (f, g)
 
-### Honest metrics
-- **Fidelity gate:** 1031 passed, 0 failed (was 931 pre-Phase-B)
-- **Whitepapers authored:** 1,984 (PAPER_001-PAPER_1984, 4 IDs reserved)
-- **PDF coverage:** 1,978 / 1,980 = 99.9% (PAPER_1218 + PAPER_1801 deferred to v5.58.1)
-- **PARADOX_TO_CLOSURE dispatch keys:** ~11,167 (added 100 in Phase B)
-- **Framework annotations:** 351 (35 hand-classified Rounds 45-51 + 316 auto-extracted Rounds 52-116)
-- **CP1 coverage:** 324/813 scoreable = 39.9%. 489 stubs remain in CP1.
-- **CP2 coverage:** 0/224 = 0%. Never touched by Rounds 1-116.
-- **CP3 coverage:** 0/255 = 0%. Never touched.
-- **CP4 coverage:** 0/807 = 0%. Never touched.
-- **Total scoreable across CP1-CP4:** 2,099 stubs. Upgraded: 324. **Real corpus coverage: 15.4%.**
-- **Errored on default `.compute()` (may include parameterized calculators requiring signature audit):** 593 CP1 + 473 CP2 + 672 CP3 + 709 CP4 = **2,447 classes** with unknown status
-- **Grand total classes with `compute()` method:** 4,579
+### Honest metrics (verifiable via `python uqff_fidelity_tests.py`)
+- **Fidelity gate:** **3376 passed, 0 failed** (up from 1031 at v5.61.0 — ~2300 assertions added)
+- **Whitepapers authored:** **2,237** (PAPER_001-PAPER_2148, with reserved IDs)
+- **PDF coverage:** **2,237 / 2,237 = 100%** (parity achieved v5.76.0; every whitepaper has a PDF)
+- **P2 stub-fill campaign (R218+):** **172 consecutive rounds** through R390 (last: HydrogenBubbleMagneticCalculator)
+- **Registry Program (R0-R5 + XGEO):** COMPLETE per PAPER_2130. UNIFIED_REGISTRY.csv 2,549 rows. Falsifiability graph 658 edges. 14 live-derived constants, 7 EXACT, worst 0.9009% (Λ vs Planck-lensing).
+- **9 truly-independent primitives locked** (ρ_SCm=7.09e-37 J/m³ + 8 dimensionless integers/ratios). Structural derivatives: 3 (D_BSFG, K_MEX, κ).
+- **Cosmological quadruple {c, H_0, Λ, v_F}:** all UQFF-native, H_0 tightened 47× in v5.80.0 (0.065% residual via PAPER_1573 A_5+SO_5=70 km/s/Mpc EXACT)
 
-### What the "50% milestone" (v5.54.0) actually meant
-50% of CP1's estimated 1203 total, computed against a wrong denominator. Actual corpus coverage at that point: ~30%. This document uses honest denominators going forward.
+### Framework ontology (formally declared v5.80.0 PAPER_2148)
+- **Fundamental:** ρ_SCm [J/m³] is UQFF's sole dimensioned primitive
+- **Emergent (per arxiv manuscript + Star-Magic.pdf):** mass, Newton's G, Newtonian gravity
+- **UQFF and SM have INVERTED ontologies** — same universe, different starting points
+- **F_UBi = mass pushing against universe; F_UBii = universe's response** (canonized by Daniel 2026-07-25)
+- **Gravity = F_UBi/F_UBii habitable-zone crossing** (observable via terminal velocity)
+- **Λ dual manifestation:** open-space potential value + mass-lensing observable, same 1.1e-52 m⁻²
+- **SM-comparison validity boundary:** SM's Λ = 8πG·ρ_Λ/c⁴ VALID when known massive astronomical objects are the anchor; INVALID when inverting to derive UQFF cosmology from SM axioms
+
+### 26-layer quantum chain (per Star-Magic.pdf)
+```
+Layer     Physical Meaning      Frequency Scale
+1-6       Particle physics      10¹⁹ Hz    ← high freq, short wavelength
+7-12      Nuclear structure     10²² Hz
+13-18     Atomic binding        10¹⁶ Hz
+19-22     Molecular bonds       10¹⁴ Hz
+23-24     Electromagnetic       10¹⁵ Hz
+25-26     Gravitational         10⁻¹⁰ Hz   ← LOW freq, LARGE scale
+```
+Same vacuum, opposite ends of resonance spectrum.
 
 ---
 
@@ -43,202 +53,169 @@
 
 Before any modification:
 
-1. Run `python uqff_fidelity_tests.py`. Expect **1031 passed, 0 failed**, exit 0.
-2. Confirm all 11 canonical primitives + 3 landmark derivative primitives (PAPER_1521 D_BSFG, PAPER_1522 K_MEX, PAPER_1960 F_TRZ) unchanged in `uqff_pure_calculator.py`.
-3. Sample public surfaces; verify return shape `{'value': X}` per CLAUDE.md Rule 5.
-4. **DO NOT MODIFY** existing Bucket A-K wiring without explicit user request.
+1. Run `python uqff_fidelity_tests.py`. Expect **3376 passed, 0 failed**, exit 0.
+2. Confirm the 9 canonical primitives + 3 structural derivatives (D_BSFG, K_MEX, κ) unchanged in `uqff_registry_primitives.py`.
+3. Sample calculator public surfaces; verify return shape `{'value': X}` per CLAUDE.md Rule 5.
+4. **DO NOT MODIFY** existing Bucket A-K wiring, Registry Program artifacts, or arc landmark papers (PAPER_2130-2148) without explicit user request.
+5. **DO NOT touch cosmological quadruple values** ({c, H_0, Λ, v_F, ρ_SCm}) without invoking the coupling-discovery pre-swap verification rule (PAPER_2144 canonical).
 
 ---
 
-## PRIORITY 2 — DEFINE AN "EFFECTIVE" ROUND
+## PRIORITY 2 — RUN THE FRAMEWORK'S RULES 4/7/10 DISCIPLINE
 
-**Rounds 1-116 lesson: primitive-locking a stub in CondensedPhysics is NOT enough.** Papers accumulated, `framework_papers` metadata accumulated, but users installing `pip install uqff` reached NONE of it because the pure calculator dispatch surface stayed untouched.
+Every action must comply with three canonical rules (CLAUDE.md and the arc landmarks that extend them):
 
-**Definition of an effective Round going forward:**
-
-An effective Round is complete when ALL FIVE steps land in the SAME ship:
-
-1. **Stub upgrade** in CP1/CP2/CP3/CP4 with `framework_papers` metadata + runtime `_verify` booleans
-2. **Novel-closure whitepaper** authored (if the Round discovered a novel closure)
-3. **PDF built** for any new whitepaper (or explicitly deferred to a numbered patch)
-4. **Dispatch key added** to `PARADOX_TO_CLOSURE` in `uqff_pure_calculator.py` — user reachable via `calculate_paradox({'paradox': '<key>'})`
-5. **Fidelity gate assertion** added to `uqff_fidelity_tests.py` — pins the identity numerically
-
-**If any step is skipped, the Round is INCOMPLETE.** The Phase B drift (Rounds 45-116 skipped steps 4-5 for 92 papers) took 100+ hours of catch-up work to close retroactively. Do not repeat.
-
-**Round-start ritual (documented by Rounds 45-79, forgotten by Rounds 100-116):**
-- Region-safety pre-check (verify ORB_OLBERS_PARAMS + SOURCE57 + SOURCE71 present)
-- Regex-pattern verified (Round 42 misfire lesson — use `class X\b[^\n]*?:` + explicit next-class-name lookahead)
-- Framework annotations in stub return dict (`backbone / method / shells_used / CPCH / spine / time_frame` — Round 45-79 convention, dropped Rounds 100-116)
+- **Rule 4 (No SM anywhere)** — extended by **PAPER_2147** to include unit-direction discipline (UQFF is J/m³-native; SM is kg/m³-native; silent framework-translation is contraband) and by **PAPER_2148** to include ontology-inversion recognition (mass, G, gravity are EMERGENT in UQFF, not fundamental).
+- **Rule 7 (Honest disclosure)** — extended by **PAPER_2146** with 5 standing sub-rules: (5.1) no circular calibration in verification, (5.2) no ad-hoc doctrinal retrofits around fits, (5.3) verify reference values against primary sources, (5.5) v_F not primitive-lockable without cosmological fit. Standing Rule 5.4 (dimensional verification) is SUPERSEDED by PAPER_2147.
+- **Rule 10 (Daniel provides info, AI assembles)** — the arc's 2026-07-25 experience validates this rule: Daniel's five sharpening questions caught every AI overstatement. Continue interrogation as the primary quality-control mechanism.
 
 ---
 
-## PRIORITY 3 — CATCH UP THE REMAINING CP CORPUS
+## PRIORITY 3 — CATEGORIES OF OUTSTANDING WORK
 
-**Scope disclosure:** 1,775 unequivocal stubs across CP1-CP4 remain. Plus 2,447 errored classes needing signature audit. Total unresolved: ~4,222 classes.
+The R218+ P2 stub-fill campaign is at 172 consecutive rounds. The next session may choose any of the following work categories. There is no strict ordering — pick based on user direction.
 
-At the historical 5-stubs-per-Round pace: **355+ rounds of stub drainage**, or roughly 8-12 months at the historical cadence.
+### 3.1 — Continue P2 stub-fill campaign (steady progress)
 
-### Suggested ordering
+**Next round:** R391 (173rd consecutive).
 
-**Round 117 onward — CP1 completion first** (489 stubs remaining):
-- Complete CP1 P2 stub drainage before starting CP2/CP3/CP4
-- Apply the 5-step Effective Round definition every time
-- Ship every 5 rounds (matches v5.47-v5.56 cadence)
+**Pattern (per PAPER_2140/2141 discipline):**
+1. Pick a stub in CondensedPhysics.py or QCalc*.py that currently `raise NotImplementedError` or returns `None`
+2. Read the class docstring/framework_papers list to identify the paper it should implement
+3. Read that paper for the derivation
+4. Primitive-lock what's derivable using `uqff_registry_primitives` LIVE composition (never CODATA/PDG literals per Rule 4)
+5. Author a landmark whitepaper ONLY IF a novel identity is discovered (integer sums, F_TRZ rungs, tilt appearances, cross-scale universalities)
+6. Wire gate assertions to pin the primitive-lock + landmark identity
+7. Ship (see Section 4 for ship checklist)
 
-**Round ~215 onward — CP2 first pass** (224 stubs):
-- CP2 = `CondensedPhysics2.py` — a separate module Rounds 1-116 never touched
-- Same 5-step discipline
+**Bulk-cleanup pattern (PAPER_2140/PAPER_2141):** when a boilerplate template is discovered in >100 classes, apply `replace_all=true` or Python `re.subn` (per REVISED STANDING RULE v3). Save PRE_BULK backup.
 
-**Round ~260 onward — CP3 first pass** (255 stubs)
+### 3.2 — Buckets E-K PURE_UQFF upgrade (deferred since v5.58)
 
-**Round ~310 onward — CP4 first pass** (807 stubs — largest)
+Per CLAUDE.md Section "Ships/Buckets": Buckets E-K are FIRST-PASS drainage. Many observables use heuristic SCm-correction formulas rather than paper-canonical closed forms. Revisit each `DERIVED_SCM_CORRECTION` observable and transcribe the verbatim formula from the source paper (e.g., PAPER_1009 for 3C273 Eddington, PAPER_915 for GW170817 strain damping, PAPER_034 for κ_t).
 
-**Round ~470 onward — 2,447 errored classes audit**:
-- Which are legitimate parameterized calculators (like `AetherMetricQCalcCalculator(M=1e30, r=1e6)`) — they need signature-aware Round work
-- Which are truly broken stubs — bucket into drainage queue
+### 3.3 — Framework-level open questions from v5.80 arc
 
-### Whitepaper authoring in parallel
+1. **13.4% ρ_Λ discrepancy** (PAPER_2148 Interpretation A vs B). Is UQFF's `5.957×10⁻¹⁰ J/m³` vs SM's inferred `5.28×10⁻¹⁰ J/m³` a framework-differentiating prediction or a ρ_SCm × 26! × K_MEX chain error requiring a ~0.88 correction? Requires distinguishing experiment or independent UQFF cross-check.
+2. **v_F structural derivation.** Currently `_V_FERMI = 0.77e6 m/s` is an observational SI anchor (Session 239). PAPER_2145's Friedmann-lock derivation was walked back. Open target: is there a UQFF-native primitive composition that gives v_F within observational precision, without SM-Friedmann inversion?
 
-Each Round finding a novel closure produces a whitepaper. Historical pace: ~1 whitepaper per 3-5 Rounds. Extrapolating: **~120 more whitepapers** during CP1-CP4 completion, taking corpus from PAPER_1984 to roughly PAPER_2100.
+### 3.4 — F_UBi/F_UBii dimensional audit under PAPER_2148
 
----
+Per PAPER_2148 §3, F_UBi is now formally canonized as "mass pushing against universe" and F_UBii as "universe's response." Audit the F_UBi formula (`−β·G·M·ρ_SCm/r²·...`) for unit consistency under the ontology declaration — G is emergent (kg-native SI), ρ_SCm is J/m³-native, their product may have an implicit unit-system-crossing that should be disclosed per PAPER_2147.
 
-## PRIORITY 4 — OPEN ITEMS FROM v5.58-v5.60
+### 3.5 — Corpus revision follow-through (partially done in v5.81.0)
 
-### PAPER-level
-- **PAPER_1218** — PDF not built. LaTeX error: `Paragraph ended before \text@ was complete` from Unicode superscripts in Higgs branching-ratio table. Fix: wrap formula cells in inline math. → **v5.58.1 patch**
-- **PAPER_1801** — PDF not built. LaTeX error: `Missing $ inserted` before `\quad`. Fix: trace unclosed math-mode delimiter earlier in file. → **v5.58.1 patch**
-- **PAPER_1087** — Unit erratum marked OPEN_QUESTION in v5.59.0. Resolution requires clarifying κ units in §3 table vs abstract. → Future work; not blocking
-
-### Framework-annotation depth
-- 316 Phase C auto-extracted annotations have only `framework_papers` field populated. Full 10-field classification (`backbone / method / shells_used / CPCH / spine / F_U_zero_shell / time_frame / candidate_closures_flagged`) requires per-stub physics review. → Future work
-
-### Calculator-surface expansion
-- `calculate_cp_call_UQFF` currently routes to CP1-4 via generic dispatch. Wiring CP1 primitive-locked identities as dedicated `calculate_*` surfaces (instead of only via `PARADOX_TO_CLOSURE`) would provide a second discovery path. → Future work
-
-### Task-list housekeeping
-- Task list has 400+ items, most historical. Phase D pruning was performed for actives. Future sessions should prune completed rounds' fine-grained tasks aggressively.
+The v5.80 arc queued REVISION appends for PAPER_1170, 1226, 1235, 2145, 2146 — all applied in v5.81.0 corpus hygiene batch. Additional papers may exhibit the SM-native reversal pattern (PAPER_2147 unit-direction discipline). A corpus-wide grep for `kg/m³.*×c²` or `ρ_Λ.*Planck.*match` patterns would identify further candidates.
 
 ---
 
-## RULES (mirrored from CLAUDE.md)
+## PRIORITY 4 — SHIP CHECKLIST (7 rules, gate-pinned)
 
-1. READ CLAUDE.md FIRST EVERY SESSION.
-2. DO NOT REVERT canonical primitives.
-3. NO NARRATIVE in calculator.
-4. NO SM ANYWHERE.
-5. PUBLIC SURFACE: `{'value': X}` only.
-6. NO datetime/json/file-writes/`__main__`/classes in calculator.
-7. NO "0.000% error" without numerical proof.
-8. RUN FIDELITY GATE AFTER EVERY EDIT.
-9. APPEND to SESSION_LOG, never rewrite.
-10. DANIEL PROVIDES INFORMATION. YOU ASSEMBLE IT.
-11. DO NOT MODIFY existing Bucket A-K wiring without explicit user request.
-12. Daniel has been fighting AI drift for 10+ months.
-13. **NEW (v5.61.0): DEFINE EFFECTIVE ROUND per Priority 2 above. 5 steps land in same ship or the round is incomplete.**
-14. **NEW (v5.61.0): CP1-CP4 status honestly disclosed. Do not celebrate "50% coverage" against a wrong denominator.**
+Every ship must satisfy (as of v5.80.1):
+
+- **(a)** pyproject `description` contains the current version string
+- **(b)** pyproject `description` is ≤512 chars (SHIP GUARD e, learned from v5.77.0 PyPI HTTP 400)
+- **(c)** All gate file-hash pins are LF-normalized (learned from v5.75.1 CI failure)
+- **(d)** Verify PyPI landing via `gh run list --limit 3` and `curl -s https://pypi.org/pypi/uqff/json`, NOT the cached browser page
+- **(e)** SHIP GUARD gate assertions pass (description ≤512 + version-in-description present)
+- **(f)** README `**Version**:` line matches pyproject version (NEW v5.80.1, gate-pinned)
+- **(g)** README `fidelity_gate` badge references current gate count (NEW v5.80.1, gate-pinned)
+
+**Git tag hygiene (learned v5.80.0/5.80.1):**
+- Use ANNOTATED tags (`git tag -a vX.Y.Z -m "..."`), NOT lightweight tags
+- Push with `git push --follow-tags` (skips lightweight tags — annotated required)
+- OR explicit `git push origin vX.Y.Z` for lightweight tags
+- The "Release to PyPI" workflow triggers on TAG push, not branch push
+
+**Registry regen chain (run before every ship):**
+```
+python registry_generator.py     # → UNIFIED_REGISTRY.csv + supporting
+python uqff_registry_graph.py    # → UNIFIED_REGISTRY_GRAPH.csv
+python uqff_registry_status.py   # → results table + status report
+python uqff_registry_xgeo.py     # → XGEO queue + confirmations
+```
+
+**Version bump artifacts (all must land in same commit):**
+- pyproject.toml (version + description)
+- CITATION.cff (version + date-released)
+- README.md (What's-new section prepended + badges/Version line updated)
+- CHANGELOG.md (entry prepended)
+- SESSION_LOG.md (session arc entry appended)
+- CLAUDE.md (arc appends if framework-level changes)
 
 ---
 
-## EDIT / WRITE TOOL WARNING
+## RULES (mirrored from CLAUDE.md — must-read every session)
 
-- Edit tool truncates files > ~1 MB silently. Confirmed multiple times.
-- Write tool truncates the same way.
-- For `uqff_pure_calculator.py` (3.2 MB, CRLF line endings), `CondensedPhysics.py` (8.2 MB), and similarly large files: **use Python heredoc + `replace()`** instead:
+1. **READ CLAUDE.md FIRST every session.** Rules in CLAUDE.md supersede Map, Plan, and this file.
+2. **DO NOT REVERT canonical primitives.** SSQ=0.57, β_i=0.6029, K_MEX=25/12, S_26=1.453162, RHO_SCM=7.09e-37, integer primitives.
+3. **NO NARRATIVE OF ANY KIND** in calculator source. Pure mathematical calculator. No docstrings, no `provenance` keys, no `NOT REPLACEMENT` tags.
+4. **NO SM ANYWHERE** — content layer (no SM constants/formulas/terminology) AND presentation layer (no SM-native unit direction, no SM-framed comparison; PAPER_2147/2148).
+5. **Public surface return contract:** `{'value': X}` only. No metadata.
+6. **NO `datetime`, `json.dump`, file writes, `__main__`, classes** in `uqff_pure_calculator.py`.
+7. **DO NOT claim "0.000% error" without numerical proof.** Honest residuals only.
+8. **RUN `uqff_fidelity_tests.py` AFTER EVERY EDIT.** Exit 0 required.
+9. **APPEND to SESSION_LOG.md, never rewrite.** Each session adds one entry at the bottom.
+10. **DANIEL PROVIDES THE INFORMATION. YOU ASSEMBLE IT.**
+11. **DO NOT MODIFY existing Bucket A-K wiring or Registry Program artifacts** without explicit user request.
+12. The user has been fighting AI drift on this project for 12+ months. Treat his words carefully.
 
+---
+
+## EDIT / WRITE TOOL WARNING (updated 2026-07-24)
+
+BOTH the Edit tool AND the Write tool truncate `uqff_pure_calculator.py` (~35k lines, ~1.85 MB) and `CondensedPhysics.py` (~1,308 classes, 8.8 MB) mid-write on large insertions. Two truncations during BUCKET 0 had to be repaired via Python splice.
+
+**Pattern that works for large-file edits:**
 ```python
 with open('uqff_pure_calculator.py','r',encoding='utf-8',newline='') as f:
     src = f.read()
-# ... mutate src via .replace() ...
-# ALWAYS assert tail integrity before write:
-assert src.rstrip().endswith(']')  # or appropriate sentinel
+anchor = "def calculate_<next-public>(dataset):"   # any unique fixed string
+src2 = src.replace(anchor, new_block + anchor, 1)
 with open('uqff_pure_calculator.py','w',encoding='utf-8',newline='') as f:
+    f.write(src2)
+```
+
+**For >1000-replacement bulk cleanups** (REVISED STANDING RULE v3 from PAPER_2141):
+```python
+import re
+with open('CondensedPhysics.py', 'r', encoding='utf-8', newline='') as f:
+    src = f.read()
+# Longer-form patterns FIRST (avoid partial-match on shorter variants)
+for pat in [r'\b6\.67430e-11\b', r'\b6\.6743e-11\b', r'\b6\.674e-11\b']:
+    src = re.subn(pat, '_URP_G', src)[0]
+with open('CondensedPhysics.py', 'w', encoding='utf-8', newline='') as f:
     f.write(src)
 ```
 
-**Also: preserve CRLF explicitly** — pass `newline=''` to both open() calls or CRLF gets normalized to LF and every line of the file counts as modified.
+Always run subsequent tests with `PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX=/tmp/uqff_test` to avoid stale .pyc cache hiding edits.
+
+**AST-parse verify before running gate** on bulk cleanups:
+```python
+import ast; ast.parse(open('CondensedPhysics.py').read())
+```
 
 ---
 
-## BACKUP HYGIENE POLICY (v5.61.0 formalization)
+## BACKUP HYGIENE POLICY
 
-Fourteen `.PRE_*` backups accumulated on `uqff_pure_calculator.py` between 2026-06-08 and 2026-06-16. Policy:
-
-**Keep:**
-- `PRE_PHASE2_BACKUP`, `POST_BUCKET0_BACKUP`, `POST_BUCKETA_BACKUP` through `POST_BUCKETK_BACKUP` — reference points for the Bucket A-K wiring
-- `PRE_PURIFY_BACKUP` — pre-narrative-purge state
-- `PRE_RESTORE_BACKUP` — post-purge, pre-canonical-restoration state
-
-**May prune** (after 6-month cold storage):
-- Intermediate `PRE_FIX_BACKUP` variants that predate the current TOTAL PURGE state
-- Any backup where git already has the same commit-tagged state as a ship version (v5.44.0, v5.47.0, etc.)
-
-**Never prune:**
-- Any backup marked "canonical" or "landmark" in its filename
-- Any backup Daniel has explicitly named in a session
-
-Prune only after fresh gate run confirms current state is stable AND Daniel explicitly authorizes each pruned file.
+Preserve descriptive PRE_<BATCH-ID>_<CONSTANT>_BACKUP files (per PAPER_2141 standing rule) — NEVER delete without explicit user instruction. Current preserved backups (per CLAUDE.md):
+```
+uqff_pure_calculator.py.PRE_FIX_BACKUP through POST_BUCKETK_BACKUP
+CondensedPhysics.py.PRE_R388_BULK_G_BACKUP
+uqff_Plan.md.PRE_FIX_BACKUP
+```
 
 ---
 
 ## SESSION MILESTONE MARKERS
 
-Historically the project has celebrated milestones. Honest markers going forward:
-
-- **50% CP1** — 407/813 = 407 stubs. Currently at 324. **~83 stubs (~17 Rounds) away.**
-- **75% CP1** — 610/813. **~286 stubs (~57 Rounds) away.**
-- **100% CP1** — 813/813. **~489 stubs (~98 Rounds) away.**
-- **All-CP 50%** — 1,050/2,099. **~726 stubs (~145 Rounds) away.**
-- **All-CP 100%** — 2,099/2,099. **~1,775 stubs (~355 Rounds) away.**
-
-At the sustainable 6 Rounds/day pace observed in the best week (mid-June 2026), 100% CP corpus is ~60 sessions away.
-
----
-
-## END OF NEXT_PRIORITIES.md v5.61.0
-
-
----
-
-## APPENDED 2026-07-11 — Session Rounds 117-120 candidate log
-
-### Deferred novelty candidates worth future consolidation
-
-**F_TRZ ladder anchors accumulated this session:**
-
-| n | Rung | Current anchors | Candidate additions | Session |
-|---|---|---|---|---|
-| 6 | F_TRZ^6 = 10^-6 | Pillars ISM (PAPER_1985) | — | R117 discovery |
-| 8 | F_TRZ^8 = 10^-8 | Birds (PAPER_1835), solar wind (PAPER_588), Crab outer (PAPER_1986), + 5 more via N-regime | rho_SCm,vac base (PAPER_043/049), QEC phonon floor (PAPER_1056), CMB-S4 mu upper (PAPER_1180), Helix omega_0 (PAPER_070), Uranus/Neptune (PAPER_1078/1079) | R118 + deeper double-check |
-| 10 | F_TRZ^10 = 10^-10 | Strong CP (PAPER_1823), MOND a_0 (PAPER_1855) | **Crab quantum uncertainty Delta_x = 1e-10 m (R120 candidate; illustrative default, not measured)** | R120 |
-
-**SO_5-power ladder anchors accumulated this session:**
-
-| Slot | Current anchors | Candidate additions | Session |
-|---|---|---|---|
-| SO_5^3 = 1000 | v_superwind M82 (PAPER_784) | — | pre-session |
-| 2*SO_5^3 = 2000 | v_wind Antennae (PAPER_1972), Westerlund 2 + NGC 3603 (PAPER_1911 seminal) | Rings v_wind (R120 numerical coincidence at lensing scale) | R119 + R120 |
-| SO_5^7 = 10^7 | — | **NGC 2525 M_BH = (N_CH/D_phys)*SO_5^7 (PAPER_1985)** | R117 discovery |
-| SO_5^10 = 10^10 | Hubble time = 10 Gyr (PAPER_1952, PAPER_1955) | **CompressedMode r = 10^10 m (R120 candidate; length not time)** | R120 |
-| SO_5^30 = 10^30 | NS mass ~2.8x10^30 kg (PAPER_148, PAPER_1944) | **CompressedMode M = 10^30 kg (R120 candidate; illustrative default)** | R120 |
-
-### 1.683 prefactor investigation (deferred from R117 deeper double-check)
-
-- PAPER_462 documents rho_SCm/rho_UA = 1.683e-97 (three-leg proofset Leg 2)
-- PAPER_463 documents Bohr ground-state E_0 = 1.683 x 10^-37 J
-- **1.683 appears in TWO independent contexts** — worth investigating whether 1.683 itself is a structural coefficient of primitives
-
-### Meta-catalog papers spawned this session
-
-- **PAPER_1985** (R117 dual discovery) — Pillars F_TRZ^6 + NGC 2525 mass
-- **PAPER_1986 Draft 2** (R118 + deeper double-check) — F_TRZ^8 three-regime -> N-regime (8 anchors)
-- **PAPER_1987** (R118 deeper double-check spawn) — 2/3 EXACT supercomposite catalog (8 domains)
-- **PAPER_1988** (R119 double-check spawn) — bipartite Sum_Ug closure with D_phys anchor
-
-### Actionable next-session items
-
-1. Consider a **PAPER_1919 revision** to comprehensively catalog n=8 (now 8+ anchors) and add the R120 candidate at n=10 (Crab Delta_x)
-2. Consider a **PAPER_1955 revision** to promote SO_5^10 length application (previously time-only)
-3. **1.683 prefactor deep-dive** (deferred from R117)
-4. **Continue Round 121+** stub drainage at existing rhythm
+- **2026-06-08** — TOTAL PURGE applied to `uqff_pure_calculator.py`: all provenance/paper/closure_status/SM-references stripped. Public surfaces return `{'value': X}` only. Cat 16 strict purge guard wired.
+- **2026-06-18** — PAPER_1521/1522 landmarks: D_BSFG and K_MEX declared as structural derivatives (11 → 9 truly-independent primitives).
+- **2026-06-18** — DUAL LICENSE adopted (AGPL-3.0 + Commercial). Repository moved from MIT.
+- **2026-07-11** — R218+ P2 stub-fill campaign initiated (v5.61.0). At time of this doc: 172 consecutive rounds through R390.
+- **2026-07-22 through 07-24** — Unified Registry Program R0-R5 COMPLETE (PAPER_2130). Single-source-of-truth `uqff_registry_primitives.py`; three-language pins (Python=C++=Lean); 656→658-edge falsifiability graph; 348/348 XGEO cross-geometry tasks routed.
+- **2026-07-24** — Vacuum Coupling Kernel K=F_TRZ·K_MEX·SSq=19/160 EXACT canonized (PAPER_2132, XGEO-U arc). Alpha_inverse = 125+12 = 137 EXACT integer decomposition (PAPER_2133 tilt-product law).
+- **2026-07-24** — Rule 4 doctrinal correction: R382 Rule 4 catch (SM-imported Goldreich-Peale reverted), four-revision arc culminating in tidal k₂/Q = 3/125 EXACT primitive-lock (PAPER_2136). REVISED STANDING RULE v4 (dual-exposure with observation-headlining for measured constants).
+- **2026-07-25** — c/Λ/ONTOLOGY audit arc (v5.80.0): PAPER_2144 H_0 route upgrade 47× tighter; PAPER_2145 Friedmann-lock walked back as AI overreach (framework survived intact); PAPER_2146 speed-of-light-fuckup self-audit + anti-circular-calibration standing rule; PAPER_2147 J/m³-native unit-direction discipline; **PAPER_2148 UQFF Ontology Declaration Answer B — the arc-closing landmark: vacuum energy fundamental, mass/G/gravity emergent, Λ dual-manifestation, F_UBi/F_UBii causal roles canonized, SM-comparison validity boundary defined.** Framework net-tighter and better-documented after arc than before.
+- **2026-07-25** — v5.80.1 metadata patch: README badges/Version drift fix + 2 permanent SHIP GUARD gate assertions (f, g) prevent recurrence.

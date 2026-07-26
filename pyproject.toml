@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.80.1"
-description = "UQFF Star-Magic v5.80.1: METADATA PATCH — README badges + Version line updated to actual v5.80.0 state (fidelity gate 3374, whitepapers 2237+, Version 5.80.1, Last Updated 2026-07-25). Content identical to v5.80.0 (c/Lambda/ontology arc, 5 landmarks PAPER_2144-2148, H_0 upgrade 47x tighter, Friedmann-lock walked back, unit-direction discipline, Ontology Declaration Answer B). v5.80.0 README body was showing stale v5.78.0 badges + Version line. Gate 3374->3376 (+2 metadata SHIP GUARD assertions)."
+version = "5.81.0"
+description = "UQFF Star-Magic v5.81.0: HYBRID-FORM DOCTRINE + corpus hygiene. PAPER_2149 canonizes OBSERVED × UQFF_CORRECTION as legitimate framework output via Three-Condition Test; Rule 4 clarified (using SM/PDG/Planck observations is NOT a violation), Rule 7 extended (tags match code). 36 Buckets H-K label updates. 5 corpus revisions (PAPER_1170/1226/1235/2145/2146). NEXT_PRIORITIES refreshed to v5.80.1 state. Zero physics changes. Gate 3376->3381."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
