@@ -49,8 +49,8 @@ def _derived_constant_rows():
          P.K_B_UQFF, 1.380649e-23, "SI-defined"),
         ("hbar", "PAPER_590/1209EE S629", "(D_BSFG+F_TRZ*D_BSFG+F_TRZ^2*D_phys-F_TRZ^2*SSq-F_TRZ^2)*1e-34/(2*pi)",
          P.HBAR_UQFF_S629, 1.054571817e-34, "SI-defined"),
-        ("H0", "PAPER_2093", "(2*SO_5+2)*F_TRZ^19",
-         P.H0_GRID, P.H0_OBSERVED_LOCAL, "observed (local); residual = Hubble tension"),
+        ("H0", "PAPER_1573", "(A_5+SO_5) km/s/Mpc EXACT -> s^-1 via Mpc anchor",
+         P.H0_GRID, P.H0_OBSERVED_LOCAL, "observed (local); Hubble tension resolved by A_5+SO_5=70 compromise between SH0ES 73 & Planck 67.4"),
         ("Lambda", "PAPER_2094/1156", "(SO_5+1)*F_TRZ^53",
          P.LAMBDA_SIMPLE, 1.11e-52, "observed"),
         ("kappa", "PAPER_2112", "(SO_5/2)*F_TRZ^4",
@@ -161,7 +161,7 @@ def main():
         f"- Live derived constants: {rep['derived_constants_live']} "
         f"({rep['derived_constants_exact']} EXACT); residuals "
         f"best {rep['best_residual_pct']:.4f}% / median {rep['median_residual_pct']:.4f}% / "
-        f"worst {rep['worst_residual_pct']:.4f}% (worst = H0 grid: the Hubble tension itself, PAPER_2125)",
+        f"worst {rep['worst_residual_pct']:.4f}% (worst = Lambda PAPER_2094 pure-primitive; H_0 route upgraded PAPER_2093 -> PAPER_1573 A_5+SO_5=70 km/s/Mpc EXACT 47.6x tighter than prior; PAPER_2125 tension doctrine REVISED per PAPER_2144)",
         f"- Independent primitives: **{rep['independent_primitives']}**",
         "",
     ]

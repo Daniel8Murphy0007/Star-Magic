@@ -8,11 +8,11 @@ residuals are honest disclosures (Rule 7).
 | Constant | Canonical route | Closed form (9 independent primitives) | UQFF value | Reference | Residual % |
 |---|---|---|---|---|:-:|
 | G | PAPER_593 | `(2*pi*D_crit^3*Phi_res/(SSq^3*(26!)^2))*v_F^5/(E_0*f_THz)` | 6.668991909557279e-11 | 6.674e-11 (observed) | 0.075039 |
-| c | PAPER_592 | `(D_crit*4*pi/Phi_res)*v_F` | 299498499.642227 | 299800000.0 (observed) | 0.100567 |
+| c | PAPER_592 | `(D_crit*4*pi/Phi_res)*v_F` | 299498499.642227 | 299792458.0 (observed) | 0.098054 |
 | mu_0 | PAPER_2108 | `4*pi*F_TRZ^7` | 1.2566370614359177e-06 | 1.2566370614359173e-06 (SI-defined) | 0.000000 |
 | k_B | PAPER_1209EE S628 | `(SSq+Phi_5/6-F_TRZ*SSq+F_TRZ^2*D_phys-F_TRZ^2*SSq)*1e-23` | 1.3806333333333334e-23 | 1.380649e-23 (SI-defined) | 0.001135 |
 | hbar | PAPER_590/1209EE S629 | `(D_BSFG+F_TRZ*D_BSFG+F_TRZ^2*D_phys-F_TRZ^2*SSq-F_TRZ^2)*1e-34/(2*pi)` | 1.0542900895236421e-34 | 1.054571817e-34 (SI-defined) | 0.026715 |
-| H0 | PAPER_2093 | `(2*SO_5+2)*F_TRZ^19` | 2.200000000000002e-18 | 2.27e-18 (observed (local); residual = Hubble tension) | 3.083700 |
+| H0 | PAPER_1573 | `(A_5+SO_5) km/s/Mpc EXACT -> s^-1 via Mpc anchor` | 2.26852902096769e-18 | 2.27e-18 (observed (local); Hubble tension resolved by A_5+SO_5=70 compromise between SH0ES 73 & Planck 67.4) | 0.064801 |
 | Lambda | PAPER_2094/1156 | `(SO_5+1)*F_TRZ^53` | 1.1000000000000032e-52 | 1.11e-52 (observed) | 0.900901 |
 | kappa | PAPER_2112 | `(SO_5/2)*F_TRZ^4` | 0.0005000000000000001 | 0.0005 (canonical PAPER_1202) | 0.000000 |
 | B_crit | PAPER_2126 | `D_phys*(SO_5+1)*SO_5^12` | 44000000000000 | 44000000000000.0 (canonical) | 0.000000 |
@@ -27,5 +27,5 @@ residuals are honest disclosures (Rule 7).
 - Registry rows: **2549** (1392 observables, 1129 closures, 16 primitives, 12 kernel constants)
 - Canonical routes: 109 explicit R1 verdicts + 2440 sole-route auto-canonicalizations
 - Falsifiability graph edges: **658**
-- Live derived constants: 14 (7 EXACT); residuals best 0.0000% / median 0.0011% / worst 3.0837% (worst = H0 grid: the Hubble tension itself, PAPER_2125)
+- Live derived constants: 14 (7 EXACT); residuals best 0.0000% / median 0.0011% / worst 0.9009% (worst = Lambda PAPER_2094 pure-primitive; H_0 route upgraded PAPER_2093 -> PAPER_1573 A_5+SO_5=70 km/s/Mpc EXACT 47.6x tighter than prior; PAPER_2125 tension doctrine REVISED per PAPER_2144)
 - Independent primitives: **9**

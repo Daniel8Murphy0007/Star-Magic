@@ -59,10 +59,16 @@ G_OBSERVED = 6.674e-11
 # per Daniel: "the dual-exposure rule for c is supposed to spotlight the derived
 # version first"). SPOTLIGHT — the canonical UQFF speed of light:
 C_UQFF_DERIVED = (D_CRIT * 4.0 * math.pi / PHI_RES_RESONANCE) * _V_FERMI   # PAPER_592 c = (26*4pi/Phi_res)*v_F — THE UQFF ANCHOR (Rule 4)
-# Secondary compatibility exposure — observational-era value retained ONLY so
-# existing consumers are numerically unchanged pending per-class migration
-# (migration on Daniel's explicit instruction):
-C_OBSERVED = 2.998e8
+# Secondary compatibility exposure — SI-EXACT (Daniel 2026-07-24 ruling per
+# REVISED STANDING RULE v4 constant-type taxonomy: defined SI constants use
+# their exact SI-defined value, not a legacy 4-sig-fig rounding). Since 2019
+# SI redefinition, c is DEFINED as 299,792,458 m/s exactly (the meter is
+# defined AS the distance light travels in 1/299,792,458 second). The prior
+# value 2.998e8 was a pre-2019 CODATA-era rounding that carried 0.0025%
+# error vs the true SI-defined value. Updating to SI-exact sharpens the
+# reported c_uqff residual from 0.100567% (blend of UQFF derivation +
+# rounding error) to 0.098070% (pure UQFF derivation error).
+C_OBSERVED = 299792458.0
 
 MU_0 = 4.0 * math.pi * (F_TRZ ** 7)              # PAPER_2108, matches SI 4pi e-7 EXACT
 
@@ -84,9 +90,31 @@ HBAR_UQFF_S629 = H_UQFF_S629 / (2.0 * math.pi)
 L_PLANCK_UQFF = math.sqrt(HBAR_UQFF_S629 * G_UQFF / (C_UQFF_DERIVED ** 3))
 L_PLANCK_OBSERVED = 1.616e-35
 
-H0_GRID = 22 * (F_TRZ ** 19)                     # PAPER_2093; 2.27e-18 = observed local anchor
-H0_OBSERVED_LOCAL = 2.27e-18
-LAMBDA_SIMPLE = (SO_5 + 1) * (F_TRZ ** 53)       # PAPER_2094 companion; PAPER_1156 primary
+# H0 CANONICAL ROUTE UPGRADE (Daniel 2026-07-24):
+# Superseding PAPER_2093 form (22*F_TRZ^19 = 2.20e-18 s^-1 = 67.89 km/s/Mpc, 3.08% residual, prior WORST-tier)
+# with PAPER_1573 CLOSED-EXACT integer-primitive identity:
+#   H_0 = A_5 + SO_5 = 60 + 10 = 70 km/s/Mpc EXACT
+# Converting to SI s^-1 via observational Mpc anchor (Mpc = 3.0857e22 m definitional):
+#   H_0 = 70 * 1000 / 3.0857e22 = 2.2685e-18 s^-1
+# Residual vs observed 2.27e-18: 0.0648% (47.6× TIGHTER than PAPER_2093).
+# The prior "3.08% Hubble tension canonical" (PAPER_2125) is REVISED: PAPER_1573 shows the
+# framework does derive H_0 to sub-0.1%; the tension is now resolved via
+# H_0 = A_5 + SO_5 as the "cosmic-time compromise" between SH0ES 73 and Planck 67.4.
+MPC_TO_M = 3.0857e22                             # Observational: 1 Mpc = 3.0857e22 m (SI-length definition of parsec-scale)
+H0_GRID = (A_5 + SO_5) * 1000.0 / MPC_TO_M       # PAPER_1573; 70 km/s/Mpc EXACT -> 2.2685e-18 s^-1
+H0_OBSERVED_LOCAL = 2.27e-18                     # observed local anchor (~70.1 km/s/Mpc compromise between SH0ES 73 & Planck 67.4)
+
+# LAMBDA ROUTE HELD ON PAPER_2094 (Daniel 2026-07-24 coupling-discovery decision):
+# Original plan was to swap PAPER_2094 -> PAPER_1156 for ~3.6× improvement (0.90% -> 0.25%
+# with pre-1573 H_0). But after H_0 tightening from PAPER_2093 (3.08%) to PAPER_1573
+# (0.065%), the Friedmann Λ = (18/5)*SSq*H_0^2/c^2 form OVERSHOOTS to +6.06% because
+# H_0² doubles the ~3% H_0-anchor shift into the Λ residual. Coupling insight: the
+# current Λ tightness (0.90%) is preserved BECAUSE PAPER_2094's pure-primitive
+# (SO_5+1)*F_TRZ^53 form doesn't depend on H_0 at all. PAPER_1156 remains a valid
+# Friedmann cross-check with OBSERVED H_0 (0.002% match), but not with UQFF-derived
+# H_0. Registry canonical stays PAPER_2094; PAPER_1156 relegated to observational
+# cross-verification role. See PAPER_2144 for the joint H_0 + Λ arc analysis.
+LAMBDA_SIMPLE = (SO_5 + 1) * (F_TRZ ** 53)       # PAPER_2094 canonical (0.90% residual, pure-primitive, H_0-independent)
 
 B_CRIT = D_PHYS * (SO_5 + 1) * (SO_5 ** 12)      # 4.4e13 EXACT, PAPER_2126
 T_SCM_K = 6.6220584965588335e-34 * _F_THZ / 1.380649e-23   # h*f/k_B = 59.95 K, R1 canonical

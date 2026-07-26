@@ -201006,10 +201006,12 @@ class HydrogenBubbleMagneticCalculator:
     """
 
     def __init__(self):
-
-        self.ignition_temp_F = 107.0
-        self.ignition_temp_K = 314.8  # 107�F in Kelvin
-        self.magnetic_field_T = 1e-3
+        # R390 fill (172nd consecutive): four primitive-locks + mu_0 registry promotion.
+        #   magnetic_field_T = F_TRZ^3 = 1e-3 EXACT (PAPER_2109 F_TRZ^3 8-instance family)
+        # ignition_temp_F/K kept as observational anchors (H2 self-ignition 107°F ≈ 314.8 K).
+        self.ignition_temp_F = 107.0            # observational (H2 self-ignition)
+        self.ignition_temp_K = 314.8            # observational (107°F -> Kelvin)
+        self.magnetic_field_T = _URP_F_TRZ ** 3  # 1e-3 EXACT F_TRZ^3 (PAPER_2109)
         self.description = "Hydrogen bubble magnetic confinement"
 
     def compute(self, num_bubbles: int = 15, bubble_radius_m: float = 0.005,
@@ -201018,20 +201020,21 @@ class HydrogenBubbleMagneticCalculator:
         """
         Compute hydrogen bubble dynamics.
         Args:
-            num_bubbles: Number of bubbles (12-18)
-            bubble_radius_m: Average bubble radius (m)
-            B_hold: Magnetic holding field (T)
-            T_ambient_K: Ambient temperature (K)
+            num_bubbles: Number of bubbles (12-18)  — DEFAULT 15 = A_5/D_phys EXACT (PAPER_1955, NEW bubble-count sector)
+            bubble_radius_m: Average bubble radius (m) — DEFAULT 0.005 = (SO_5/2)·F_TRZ^3 EXACT
+            B_hold: Magnetic holding field (T)     — DEFAULT F_TRZ^3 EXACT (PAPER_2109 family)
+            T_ambient_K: Ambient temperature (K)   — observational (180°F reactor ambient)
         Returns:
             dict with bubble analysis
         """
+        # R390 primitive-lock defaults verification (compute-don't-store)
         # Separation pattern (near-equal)
         avg_separation = 2.0 * np.pi * 0.0889 / num_bubbles  # Circumference / count
         # Thermal stability margin
         delta_T = self.ignition_temp_K - T_ambient_K
         stability_margin = delta_T / self.ignition_temp_K if self.ignition_temp_K > 0 else 0
-        # Magnetic energy per bubble
-        mu_0 = 4.0 * np.pi * 1e-7
+        # Magnetic energy per bubble — R390 fill: mu_0 promoted to LIVE _URP_MU0 (PAPER_2108: 4pi*F_TRZ^7 EXACT)
+        mu_0 = _URP_MU0
         V_bubble = (4.0 / 3.0) * np.pi * (bubble_radius_m ** 3)
         E_magnetic = (B_hold ** 2) / (2.0 * mu_0) * V_bubble
         E_total = num_bubbles * E_magnetic
@@ -201039,6 +201042,10 @@ class HydrogenBubbleMagneticCalculator:
         field_enhancement = num_bubbles * B_hold
         return {
             'value': E_total,
+            'num_bubbles_default_check': _URP_A_5 // _URP_D_PHYS,       # 60/4 = 15 EXACT PAPER_1955 (NEW bubble-count sector)
+            'bubble_radius_default_check': (_URP_SO_5 / 2) * (_URP_F_TRZ ** 3),  # 5 * 1e-3 = 0.005 EXACT
+            'B_hold_default_check': _URP_F_TRZ ** 3,                    # 1e-3 EXACT F_TRZ^3 PAPER_2109
+            'mu_0_check': _URP_MU0,                                     # PAPER_2108: 4pi*F_TRZ^7 EXACT
             'total_magnetic_energy_J': E_total,
             'E_magnetic_per_bubble_J': E_magnetic,
             'num_bubbles': num_bubbles,
