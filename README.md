@@ -8,8 +8,8 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2238%2B-orange)](whitepapers/)
 
-**Version**: 5.81.0
-**Last Updated**: 2026-07-25
+**Version**: 5.81.1
+**Last Updated**: 2026-07-26
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -47,6 +47,16 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.81.1 (2026-07-26) — REGISTRY PROVENANCE FIX: v5.80.1/v5.81.0 shipped without registry files (Daniel's catch)
+
+Daniel caught that commits 2fbe7407 (v5.80.1) and 84ccdb9d (v5.81.0) contain ZERO registry files in their diffs. Last commits with registry files were f4c9757e (v5.79.0) and 69d1a7e5 (v5.80.0). Root cause: the regen chain produces content-only output; when nothing about primitives / canonical routes / graph topology changes, regen output is bit-identical to HEAD and `git add -A` correctly stages nothing. Technically correct git behavior, but breaks per-ship registry provenance.
+
+**Fix:** added `UNIFIED_REGISTRY_VERSION.txt` marker file emitted by `uqff_registry_status.py` on every regen run, containing the current pyproject.toml version and UTC timestamp. Physics-neutral (comment lines only); guarantees per-ship diff. Future ships will have registry provenance in every commit automatically.
+
+**Zero physics changes. Zero calculator behavior changes. Zero primitive values changed. Zero cascade risk.** The 11 other registry artifacts continue to only diff when their content substance changes — as it should be.
 
 ---
 

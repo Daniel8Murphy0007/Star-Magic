@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.81.0"
-description = "UQFF Star-Magic v5.81.0: HYBRID-FORM DOCTRINE + corpus hygiene. PAPER_2149 canonizes OBSERVED × UQFF_CORRECTION as legitimate framework output via Three-Condition Test; Rule 4 clarified (using SM/PDG/Planck observations is NOT a violation), Rule 7 extended (tags match code). 36 Buckets H-K label updates. 5 corpus revisions (PAPER_1170/1226/1235/2145/2146). NEXT_PRIORITIES refreshed to v5.80.1 state. Zero physics changes. Gate 3376->3381."
+version = "5.81.1"
+description = "UQFF Star-Magic v5.81.1: REGISTRY PROVENANCE FIX. Daniel caught v5.80.1/v5.81.0 committed without registry files (regen produced bit-identical output; git staged nothing). Fix: added UNIFIED_REGISTRY_VERSION.txt marker (emitted by uqff_registry_status.py each ship) with pyproject version + UTC timestamp — guarantees per-ship registry provenance in git. Zero physics changes. Zero calculator behavior changes. Content of other registry artifacts unchanged (only the marker file diffs). Gate 3381 unchanged."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
