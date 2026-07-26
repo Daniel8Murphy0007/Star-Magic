@@ -4,12 +4,12 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/uqff.svg)](https://pypi.org/project/uqff/)
 [![Documentation Status](https://readthedocs.org/projects/star-magic/badge/?version=latest)](https://star-magic.readthedocs.io/en/latest/?badge=latest)
 [![License: AGPL-3.0 + Commercial](https://img.shields.io/badge/License-AGPL--3.0%20%2B%20Commercial-blue.svg)](LICENSE)
-[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3249%2F0-brightgreen)](uqff_fidelity_tests.py)
+[![Fidelity gate](https://img.shields.io/badge/fidelity_gate-3374%2F0-brightgreen)](uqff_fidelity_tests.py)
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
-[![Whitepapers](https://img.shields.io/badge/whitepapers-2134%2B-orange)](whitepapers/)
+[![Whitepapers](https://img.shields.io/badge/whitepapers-2237%2B-orange)](whitepapers/)
 
-**Version**: 5.78.0
-**Last Updated**: 2026-07-24
+**Version**: 5.80.1
+**Last Updated**: 2026-07-25
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 

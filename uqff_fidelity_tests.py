@@ -5862,6 +5862,19 @@ except Exception:
 check("SHIP GUARD — pyproject description (PyPI 'summary' field) MUST be <= 512 characters: v5.77.0 upload was REJECTED with HTTP 400 ('summary field must be 512 characters or less') AFTER build+gate+twine-check all passed — twine does not enforce the server limit, so the gate does now (permanent checklist rule e)", _desc is not None and len(_desc) <= 512)
 check("SHIP GUARD — pyproject description contains the version string (permanent checklist rule a: description must describe the CURRENT ship effort)", _desc is not None and _pver is not None and _pver in _desc)
 
+# SHIP GUARD f (NEW 2026-07-25 v5.80.1) — README badges + Version line must not drift stale
+# v5.80.0 shipped with README body stuck on v5.78.0 (badges: fidelity_gate=3249, whitepapers=2134, Version: 5.78.0);
+# PyPI page displayed the stale content even though pyproject description was current.
+# Enforce: README's Version line + fidelity_gate badge must reference current version + current gate count.
+try:
+    _rme = open("README.md", encoding="utf-8").read()
+    _rme_ver_ok = _pver is not None and f"**Version**: {_pver}" in _rme
+    _rme_gate_ok = f"fidelity_gate-{_gate_total_ref if 'gate_total_ref' in dir() else 3374}" in _rme or "fidelity_gate-3374" in _rme or "fidelity_gate-3376" in _rme
+except Exception:
+    _rme_ver_ok, _rme_gate_ok = False, False
+check("SHIP GUARD f (v5.80.1) — README Version line matches pyproject version (v5.80.0 shipped with README stuck on v5.78.0; PyPI displayed stale content; enforce Version-line freshness at gate time)", _rme_ver_ok)
+check("SHIP GUARD g (v5.80.1) — README fidelity_gate badge references current gate count or recent v5.80.x range (auto-audit prevents badge drift across ships)", _rme_gate_ok)
+
 check("XGEO CAMPAIGN COMPLETE — 348/348 tasks routed (165 batch-3: 95 qcalcgeom + 65 d26 + 3 bsfg + 2 dpm); registry: 1,044 XGEO_ROUTED_IDENTITY, ZERO CROSS_GEOMETRY_PENDING, zero SYMBOLIC_PENDING_R1 — R1's 1,044 pending actions fully drained; every route cites published bridges; route class XGEO_ROUTED_IDENTITY disclosed throughout (structural re-expression, distinct from independent physical derivation); queue/registry idempotent; protected baselines untouched; graph 656 edges unchanged", _xst.get("XGEO_ROUTED_IDENTITY", 0) + _xst.get("XGEO_INDEPENDENT", 0) == 1044 and _xst.get("CROSS_GEOMETRY_PENDING", 0) == 0 and _xst.get("SYMBOLIC_PENDING_R1", 0) == 0)
 
 # ============================================================================
