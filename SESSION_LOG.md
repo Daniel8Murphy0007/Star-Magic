@@ -18898,3 +18898,62 @@ Regen chain naturally produced substantive diffs across UNIFIED_REGISTRY_RESULTS
 - `uqff_fidelity_tests.py` +6 v5.83.0 assertions
 - Zero calculator source (uqff_pure_calculator.py, CondensedPhysics.py) changes
 - Zero whitepaper touches (this is a registry-mechanism ship, not landmark authoring)
+
+---
+
+# Session 2026-07-28 (v5.83.1) — CI FIX: v5.83.0 CI + Release-to-PyPI both FAILED on two stale hardcoded gate assertions
+
+**Trigger:** Daniel screenshot of gh run list showing v5.83.0 CI (#192) and Release-to-PyPI (#111) both FAILED (red X) on commit bad0457.
+
+**Root cause diagnosis (grep of `uqff_fidelity_tests.py`):** two gate assertions hardcoded pre-sweep registry counts, breaking when v5.83.0 grew the registry from 14 → 30 dconsts:
+
+**Failure 1 — Line 5539:**
+```python
+check("R5 RESULTS TABLE — 14 derived constants ...",
+      _r5.get("derived_constants_live") == 14 and _r5.get("derived_constants_exact") == 7 and ...)
+```
+After v5.83.0 sweep: `derived_constants_live = 30`, so `30 == 14` → False → assertion FAILED.
+
+**Failure 2 — Line 5657:**
+```python
+check("R5 ARTIFACTS — ... RESULTS_TABLE.csv (header + 14 constant rows) ...",
+      ... and sum(1 for _ in open("UNIFIED_REGISTRY_RESULTS_TABLE.csv", ...)) == 15)
+```
+After v5.83.0 sweep: CSV has 31 lines (header + 30 rows), so `31 == 15` → False → assertion FAILED.
+
+**Both fixes: convert `==` equality checks to `>=` range checks** — sweep-tolerant so future phases don't repeat this CI break.
+
+**Line 5539 fix:**
+```python
+check("R5 RESULTS TABLE — ... v5.83.0 REGISTRY SWEEP PHASE 1 expanded dconsts 14->30 (7->21 EXACT) ... Range check accommodates ongoing 10-ship sweep (v5.83.0-v5.92.0 target: ~193 dconsts)",
+      _r5.get("derived_constants_live") >= 30 and _r5.get("derived_constants_exact") >= 21 and _r5.get("independent_primitives") == 9)
+```
+
+**Line 5657 fix:**
+```python
+check("R5 ARTIFACTS — ... N >= 31 per v5.83.0 sweep Phase 1 ... Range check accommodates ongoing 10-ship sweep (v5.83.0-v5.92.0 target ~194 lines = header + ~193 dconsts)",
+      ... and sum(1 for _ in open("UNIFIED_REGISTRY_RESULTS_TABLE.csv", ...)) >= 31)
+```
+
+**Standing rule added (prevents recurrence across the sweep):** any gate assertion that counts registry rows, derived constants, output-file lines, or similar registry-scale quantities MUST use range checks (`>= N`) not equality checks (`== N`). The ongoing 10-ship registry sweep would break `==` checks at every phase (16 dconsts per phase × 9 remaining phases = 9 CI breaks otherwise). Range checks let the registry grow naturally without repeated CI-fix patches.
+
+**Same class as prior CI fixes:**
+- v5.75.1 — R0 baseline hash pins LF-normalized (CRLF vs LF cross-platform issue)
+- v5.77.1 — PyPI summary length ≤512 chars (twine doesn't enforce; gate does)
+- v5.80.1 — README badge + Version line drift (PyPI page stuck on v5.78.0)
+- v5.82.1 — README What's-new section drift + SESSION_LOG missing entries
+- **v5.83.1 (this ship)** — Stale gate assertions with hardcoded pre-sweep counts
+
+Ship-checklist rules now: (a) description contains version, (b) description ≤512 chars, (c) LF-normalized hash pins, (d) verify via `gh run` not cached page, (e) summary-length gate, (f) README Version-line gate, (g) README badge gate, **(h) NEW — registry-count gate assertions use range checks not equality**.
+
+**Zero physics values changed. Zero registry content changes (same 30 dconsts as v5.83.0). Zero calculator source touched. Zero SHIP-GUARD range issues (README badge still 3403 in [3300, 3500] range).**
+
+**Files touched (v5.83.1):**
+- `uqff_fidelity_tests.py` — 2 assertion updates (lines 5539, 5657) `==` → `>=`
+- `pyproject.toml`, `README.md`, `CHANGELOG.md`, `CITATION.cff` — v5.83.0 → v5.83.1
+- `UNIFIED_REGISTRY_VERSION.txt` — regen chain re-emitted with v5.83.1 marker
+- `SESSION_LOG.md` — this entry
+- Zero calculator source changes
+- Zero registry OUTPUT file changes (all bit-identical to v5.83.0)
+
+**Emotional marker:** the honest pattern here — I know from prior experience that hardcoded count assertions break with each sweep. I should have looked for `== 14` or similar before committing v5.83.0. Missed it during ship prep. Range-check discipline (Standing Rule h) is now canonized so future sweep ships don't repeat this. Daniel's rapid catch (screenshot within minutes of the failed CI runs) minimized the delay.

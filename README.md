@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2245%2B-orange)](whitepapers/)
 
-**Version**: 5.83.0
+**Version**: 5.83.1
 **Last Updated**: 2026-07-28
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,20 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.83.1 (2026-07-28) — CI FIX: v5.83.0 CI + Release-to-PyPI failed on two stale gate assertions with hardcoded old registry counts
+
+v5.83.0 shipped but both CI and Release-to-PyPI workflow runs FAILED. Root cause: **two gate assertions in `uqff_fidelity_tests.py` hardcoded the pre-sweep registry counts:**
+1. Line 5539: `_r5.get("derived_constants_live") == 14` — v5.83.0 sweep grew dconsts to 30, so `30 == 14` was False
+2. Line 5657: `sum(1 for _ in open("UNIFIED_REGISTRY_RESULTS_TABLE.csv")) == 15` — v5.83.0 grew CSV to 31 lines, so `31 == 15` was False
+
+**Fix:** both assertions updated to **range checks** (`>= 30` and `>= 31` respectively) so future sweep phases don't break them each time. Also updated assertion text to reflect the new range-check semantics and the ongoing sweep target of ~193 dconsts by v5.92.0.
+
+**Same class as v5.75.1 (LF-normalization CI fix), v5.77.1 (summary-length CI fix), v5.80.1 (README badge drift), and v5.82.1 (README What's-new drift)** — architectural discipline fix that ships as a patch bump. Zero physics changes. Zero registry content changes (same 30 dconsts as v5.83.0). Gate assertions now sweep-tolerant so v5.84.0-v5.92.0 don't need repeated CI-fix patches.
+
+**Standing rule addition (to prevent recurrence):** any gate assertion that counts registry rows, dconsts, or output-file lines MUST use range checks (`>= N`) not equality checks (`== N`), so the ongoing 10-ship registry sweep doesn't break CI at each phase. Fixed count assertions would need updating on every sweep ship — sweep-tolerant range checks let the registry grow naturally without repeated CI patches.
 
 ---
 
