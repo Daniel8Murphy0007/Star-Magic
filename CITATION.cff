@@ -3,7 +3,7 @@ message: "If you use UQFF Star-Magic in your research, please cite it as below."
 type: software
 title: "UQFF Star-Magic: A Vacuum-First Unified Physics Framework"
 abbreviation: "UQFF"
-version: "5.84.1"
+version: "5.85.0"
 date-released: "2026-07-28"
 authors:
   - family-names: "Murphy"

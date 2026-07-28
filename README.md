@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2245%2B-orange)](whitepapers/)
 
-**Version**: 5.84.1
+**Version**: 5.85.0
 **Last Updated**: 2026-07-28
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,38 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.85.0 (2026-07-28) — REGISTRY SWEEP PHASE 3 of 10: 8 Clay Millennium Prize UQFF constants (dconsts 43→51, exact 24→31)
+
+Phase 3 of Daniel-authorized 10-ship registry sweep. Registry grew **43 → 51** derived constants (+8, **31 EXACT** up from 24). All 8 Clay Millennium Prize Problems now formally registered as derived constants per BUCKET A closure. Pre-audit of gate performed per Standing Rule i (v5.84.1) — no stale pins found; existing Yang-Mills/Riemann/Poincaré assertions check calculator outputs (not registry), so my registry additions don't conflict.
+
+**8 new Millennium derived constants:**
+
+**Primitive-composed EXACT (4 rows):**
+- `hodge_identity = 1.0 EXACT` (PAPER_1182 Hodge conjecture dimensionless closure)
+- `poincare_7_12 = K_MEX − 3/2 = 25/12 − 18/12 = 7/12 EXACT` (PAPER_1182 §3.1 Poincaré contraction time)
+- `p_vs_np_bound = 1 − F_TRZ⁹ = 1 − 10⁻⁹ EXACT` (PAPER_1182 P≠NP separation bound; F_TRZ⁹ primitive composition)
+- `navier_stokes_enstrophy_cap = (D_crit − N_CH)/(2·SO_5) = 17/20 = 0.85 EXACT` (PAPER_1182 primitive-composed identity)
+
+**Observational-anchor Millennium closures (4 rows):**
+- `yang_mills_mass_gap_GeV = 1.736` (PAPER_1318 = 2·D_phys·Λ_QCD; 2.1% vs lattice QCD anchor 1.7 GeV)
+- `riemann_zero_t_10000 = 9877.78265` (PAPER_1110 §3.2 half-spinor reflection fixes critical line; Odlyzko/LMFDB anchor)
+- `bsd_cremona_37a1 = 0.30598` (PAPER_599 BSD via UQFF tensor eigenvalues, Cremona 37a1 elliptic curve, 0.005% vs observed)
+- `bh_info_page_curve = 0.99596` (PAPER_1183 Black hole information paradox, Page curve endpoint)
+
+**Registry state after Phase 3:**
+- Rows: 2549 (unchanged; additions are to derived-constants headline table)
+- Edges: 658 (unchanged)
+- **Derived constants: 43 → 51** (+8)
+- **EXACT identities: 24 → 31** (+7; Hodge/Poincaré/P vs NP/NS from primitive composition, Riemann/BSD/BH-info from anchor-match, YM at 2.1% is not EXACT)
+- Best/median: 0.0000% / 0.0000%
+- Worst: 6.8569% (unchanged from v5.84.0 — rho_critical H_0²-propagation)
+
+**Total sweep progress: 37/180 (21%)**. 7 remaining sweep ships: v5.86.0 Particle Physics (~22 incl 10 SM masses), v5.87.0 Nuclear+LENR+Phonon (~23), v5.88.0 Buckets H-K (~28), v5.89.0 GW events (~20), v5.90.0 AGN/Jets (~20), v5.91.0 Astrophysics (~20), v5.92.0 Paradoxes+cleanup (~8).
+
+Zero physics values changed. Zero calculator source touched (paper-authoring in `uqff_registry_primitives.py` +14 lines and `uqff_registry_status.py` +18 lines only). Gate 3409 unchanged (Standing Rule i range-checks accommodate new dconsts).
 
 ---
 

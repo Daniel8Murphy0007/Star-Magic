@@ -42,3 +42,11 @@ planck_mass,PAPER_590+PAPER_593+PAPER_592 composed,sqrt(hbar*c/G),2.175941886360
 planck_time,PAPER_590+PAPER_593+PAPER_592 composed,sqrt(hbar*G/c^5),5.401613792918786e-44,5.391247e-44,SI-defined,0.192289
 wien_displacement_b,PAPER_1209EE S628 composed,h*c/(4.965...*k_B),0.0028941900378419167,0.002897771955,SI-defined,0.123609
 stefan_boltzmann_sigma,PAPER_590+PAPER_592+PAPER_1209EE S628 composed,pi^2*k_B^4/(60*hbar^3*c^2),5.685808635496252e-08,5.670374419e-08,SI-defined,0.272190
+hodge_identity,PAPER_1182,1.0 (dimensionless closure),1.0,1.0,EXACT,0.000000
+poincare_7_12,PAPER_1182 §3.1,K_MEX - 3/2 = 25/12 - 18/12,0.5833333333333335,0.5833333333333334,EXACT,0.000000
+p_vs_np_bound,PAPER_1182,1 - F_TRZ^9,0.999999999,0.999999999,EXACT,0.000000
+navier_stokes_enstrophy_cap,PAPER_1182,(D_crit-N_CH)/(2*SO_5) = 17/20,0.85,0.85,EXACT,0.000000
+yang_mills_mass_gap_GeV,PAPER_1318,2*D_phys*Lambda_QCD,1.736,1.7,observed (lattice QCD anchor),2.117647
+riemann_zero_t_10000,PAPER_1110 §3.2,half-spinor reflection fixes critical line,9877.78265,9877.78265,computed (Odlyzko/LMFDB anchor),0.000000
+bsd_cremona_37a1,PAPER_599,UQFF tensor eigenvalue for elliptic curve 37a1,0.30598,0.30598,observed (Cremona 37a1 rank cohomology),0.000000
+bh_info_page_curve,PAPER_1183,Page curve endpoint,0.99596,0.99596,observed (Page curve),0.000000

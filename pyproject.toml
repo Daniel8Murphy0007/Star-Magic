@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.84.1"
-description = "UQFF Star-Magic v5.84.1: CI FIX for v5.84.0 - stale worst-residual gate assertion pinned 0.85 < worst < 0.95 pct (expected Lambda 0.90 pct). v5.84.0 added rho_critical inheriting UQFF H_0=70 vs Planck 67.4 propagation via H_0^2 -> 6.86 pct residual (honest Rule 7 disclosure). Fix: range 0 < worst < 10 pct accommodates propagation while catching catastrophic regression. Same class as v5.83.1. Zero physics changes. Zero registry content changes (same 43 dconsts as v5.84.0)."
+version = "5.85.0"
+description = "UQFF Star-Magic v5.85.0: REGISTRY SWEEP PHASE 3 of 10 - 8 Clay Millennium Prize UQFF constants (dconsts 43->51, exact 24->31). Hodge=1.0 EXACT. Poincare = K_MEX-3/2 = 7/12 EXACT. P vs NP = 1-F_TRZ^9 EXACT. Navier-Stokes = (D_crit-N_CH)/20 = 17/20 EXACT. Yang-Mills 1.736 GeV (PAPER_1318). Riemann t_10000 = 9877.78265 (PAPER_1110). BSD 37a1 = 0.30598 (PAPER_599). BH info = 0.99596 (PAPER_1183). Sweep 37/180. Zero physics changes."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

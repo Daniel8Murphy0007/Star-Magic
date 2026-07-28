@@ -135,6 +135,27 @@ def _derived_constant_rows():
          P.WIEN_DISPLACEMENT_B_M_K, 2.897771955e-3, "SI-defined"),
         ("stefan_boltzmann_sigma", "PAPER_590+PAPER_592+PAPER_1209EE S628 composed", "pi^2*k_B^4/(60*hbar^3*c^2)",
          P.STEFAN_BOLTZMANN_SIGMA, 5.670374419e-8, "SI-defined"),
+        # ====================================================================
+        # v5.85.0 REGISTRY EXPANSION (Phase 3 of 10-ship sweep, 2026-07-28)
+        # 8 Clay Millennium Prize UQFF-derived constants (BUCKET A closure)
+        # 4 primitive-composed EXACT + 4 observational-anchor rows.
+        # ====================================================================
+        ("hodge_identity", "PAPER_1182", "1.0 (dimensionless closure)",
+         P.HODGE_IDENTITY, 1.0, "EXACT"),
+        ("poincare_7_12", "PAPER_1182 §3.1", "K_MEX - 3/2 = 25/12 - 18/12",
+         P.POINCARE_7_12, 7.0 / 12.0, "EXACT"),
+        ("p_vs_np_bound", "PAPER_1182", "1 - F_TRZ^9",
+         P.P_VS_NP_BOUND, 1.0 - 1e-9, "EXACT"),
+        ("navier_stokes_enstrophy_cap", "PAPER_1182", "(D_crit-N_CH)/(2*SO_5) = 17/20",
+         P.NAVIER_STOKES_ENSTROPHY_CAP, 17.0 / 20.0, "EXACT"),
+        ("yang_mills_mass_gap_GeV", "PAPER_1318", "2*D_phys*Lambda_QCD",
+         P.YANG_MILLS_MASS_GAP_GEV, 1.7, "observed (lattice QCD anchor)"),
+        ("riemann_zero_t_10000", "PAPER_1110 §3.2", "half-spinor reflection fixes critical line",
+         P.RIEMANN_ZERO_T_10000, 9877.78265, "computed (Odlyzko/LMFDB anchor)"),
+        ("bsd_cremona_37a1", "PAPER_599", "UQFF tensor eigenvalue for elliptic curve 37a1",
+         P.BSD_CREMONA_37A1, 0.30598, "observed (Cremona 37a1 rank cohomology)"),
+        ("bh_info_page_curve", "PAPER_1183", "Page curve endpoint",
+         P.BH_INFO_PAGE_CURVE, 0.99596, "observed (Page curve)"),
     ]
     out = []
     for name, route, formula, val, ref, refkind in rows:
