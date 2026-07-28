@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.85.0"
-description = "UQFF Star-Magic v5.85.0: REGISTRY SWEEP PHASE 3 of 10 - 8 Clay Millennium Prize UQFF constants (dconsts 43->51, exact 24->31). Hodge=1.0 EXACT. Poincare = K_MEX-3/2 = 7/12 EXACT. P vs NP = 1-F_TRZ^9 EXACT. Navier-Stokes = (D_crit-N_CH)/20 = 17/20 EXACT. Yang-Mills 1.736 GeV (PAPER_1318). Riemann t_10000 = 9877.78265 (PAPER_1110). BSD 37a1 = 0.30598 (PAPER_599). BH info = 0.99596 (PAPER_1183). Sweep 37/180. Zero physics changes."
+version = "5.86.0"
+description = "UQFF Star-Magic v5.86.0: REGISTRY SWEEP PHASE 4 of 10 - 22 Particle Physics UQFF constants (dconsts 51->73, exact 31->50). PAPER_2131 primitive-composed: alpha_s(M_Z) = F_TRZ*K_MEX*SSq-F_TRZ^3*Phi_5/6 (0.014 pct), Jarlskog CP = F_TRZ^5*D_BSFG*SSq*(1-VCK), N_eff = D_phys-Phi_5/6-VCK (0.06 pct). 10 SM masses (m_W/Z/t/H/b/c/tau/mu/s/e per PAPER_1209HH). 4 CKM Wolfenstein. 4 lepton/neutrino observational anchors. Sweep 59/180 (33 pct). Zero physics changes."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

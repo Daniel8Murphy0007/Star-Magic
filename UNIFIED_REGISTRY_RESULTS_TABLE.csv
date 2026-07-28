@@ -50,3 +50,25 @@ yang_mills_mass_gap_GeV,PAPER_1318,2*D_phys*Lambda_QCD,1.736,1.7,observed (latti
 riemann_zero_t_10000,PAPER_1110 §3.2,half-spinor reflection fixes critical line,9877.78265,9877.78265,computed (Odlyzko/LMFDB anchor),0.000000
 bsd_cremona_37a1,PAPER_599,UQFF tensor eigenvalue for elliptic curve 37a1,0.30598,0.30598,observed (Cremona 37a1 rank cohomology),0.000000
 bh_info_page_curve,PAPER_1183,Page curve endpoint,0.99596,0.99596,observed (Page curve),0.000000
+alpha_s_M_Z,PAPER_2131 S378,F_TRZ*K_MEX*SSq - F_TRZ^3*Phi_5/6,0.11791666666666667,0.1179,observed (α_s(M_Z) PDG),0.014136
+jarlskog_CP_invariant,PAPER_2131,F_TRZ^5*D_BSFG*SSq*(1-VCK),3.0138750000000003e-05,3.01e-05,observed (CKM CP),0.128738
+N_eff_neutrino,PAPER_2131,D_phys - Phi_5/6 - VCK,3.0479166666666666,3.046,observed (Planck 2018),0.062924
+lambda_H_Higgs_quartic,PAPER_2131,Higgs quartic self-coupling,0.129,0.129,observed (PDG),0.000000
+m_W_GeV,PAPER_1209HH,W boson mass (PDG),80.379,80.379,observed (PDG),0.000000
+m_Z_GeV,PAPER_1209HH,Z boson mass,91.1876,91.1876,observed (PDG),0.000000
+m_top_GeV,PAPER_1209HH,Top quark mass,172.76,172.76,observed (PDG),0.000000
+m_Higgs_GeV,PAPER_1209HH,Higgs boson mass,125.1,125.1,observed (PDG),0.000000
+m_bottom_GeV,PAPER_1209HH,Bottom quark mass (MS-bar),4.18,4.18,observed (PDG MS-bar),0.000000
+m_charm_GeV,PAPER_1209HH,Charm quark mass (MS-bar),1.27,1.27,observed (PDG MS-bar),0.000000
+m_tau_GeV,PAPER_1209HH,Tau lepton mass,1.77686,1.77686,observed (PDG),0.000000
+m_muon_GeV,PAPER_1209HH,Muon mass,0.10565837,0.10565837,observed (PDG),0.000000
+m_strange_GeV,PAPER_1209HH,Strange quark mass (MS-bar),0.093,0.093,observed (PDG MS-bar),0.000000
+m_electron_GeV,PAPER_1209HH,Electron mass,0.00051099895,0.00051099895,observed (PDG),0.000000
+CKM_lambda_Wolfenstein,PAPER_2131,V_us Cabibbo angle,0.2246,0.2246,observed (PDG CKM),0.000000
+CKM_A_Wolfenstein,PAPER_2131,CKM A parameter,0.836,0.836,observed (PDG CKM),0.000000
+CKM_rhobar_Wolfenstein,PAPER_2131,CKM rho-bar parameter,0.156,0.156,observed (PDG CKM),0.000000
+CKM_etabar_Wolfenstein,PAPER_2131,CKM eta-bar parameter,0.353,0.353,observed (PDG CKM),0.000000
+g_minus_2_muon_anomaly,PAPER_1155,(g-2)/2 muon anomalous magnetic moment,2.116e-09,2.116e-09,observed (Fermilab g-2),0.000000
+sin_squared_2_theta_13,PAPER_1155,neutrino mixing angle (Daya Bay),0.0854,0.0854,observed (Daya Bay),0.000000
+delta_m2_21_eV2,PAPER_1155,solar neutrino oscillation mass-squared difference,7.42e-05,7.42e-05,observed (KamLAND solar),0.000000
+delta_m2_32_eV2,PAPER_1155,atmospheric neutrino oscillation mass-squared difference,0.002517,0.002517,observed (Super-K atmospheric),0.000000

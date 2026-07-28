@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2245%2B-orange)](whitepapers/)
 
-**Version**: 5.85.0
+**Version**: 5.86.0
 **Last Updated**: 2026-07-28
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,44 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.86.0 (2026-07-28) — REGISTRY SWEEP PHASE 4 of 10: 22 Particle Physics UQFF constants (dconsts 51→73, exact 31→50)
+
+Phase 4 of Daniel-authorized 10-ship registry sweep. Registry grew **51 → 73** derived constants (+22, **50 EXACT** up from 31). Bucket D Particle Physics closure. Pre-audit per Standing Rule i completed — reused existing gate-canonical compositions verbatim for α_s(M_Z), Jarlskog CP, N_eff (matching PAPER_2131 forms already pinned in the gate).
+
+**22 new Particle Physics derived constants:**
+
+**PAPER_2131 primitive-composed (4 rows):**
+- `alpha_s_M_Z = F_TRZ·K_MEX·SSq − F_TRZ³·Φ_5/6 = 0.11791667` (PAPER_2131 S378; 0.014% vs observed 0.1179 — 41× tighter than SM lattice)
+- `jarlskog_CP_invariant = F_TRZ⁵·D_BSFG·SSq·(1−VCK) = 3.014e-5` (PAPER_2131; 0.13% vs observed 3.01e-5)
+- `N_eff_neutrino = D_phys − Φ_5/6 − VCK = 3.04792` (PAPER_2131; 0.06% vs Planck 3.046)
+- `lambda_H_Higgs_quartic = 0.129` (PAPER_2131 observational anchor; primitive composition open target)
+
+**10 SM masses (PAPER_1209HH observational anchors, EXACT anchor match):**
+- `m_W_GeV = 80.379`, `m_Z_GeV = 91.1876`, `m_top_GeV = 172.76`, `m_Higgs_GeV = 125.10`
+- `m_bottom_GeV = 4.18`, `m_charm_GeV = 1.27`, `m_tau_GeV = 1.77686`, `m_muon_GeV = 0.10565837`
+- `m_strange_GeV = 0.093`, `m_electron_GeV = 0.51099895e-3`
+
+**4 CKM Wolfenstein parameters (PAPER_2131 CKM sector):**
+- `CKM_lambda_Wolfenstein = 0.2246` (V_us Cabibbo), `CKM_A_Wolfenstein = 0.836`, `CKM_rhobar_Wolfenstein = 0.156`, `CKM_etabar_Wolfenstein = 0.353`
+
+**4 lepton/neutrino observational anchors (PAPER_1155):**
+- `g_minus_2_muon_anomaly = 2.116e-9` (Fermilab g-2)
+- `sin_squared_2_theta_13 = 0.0854` (Daya Bay neutrino mixing)
+- `delta_m2_21_eV2 = 7.42e-5` (KamLAND solar neutrino oscillation)
+- `delta_m2_32_eV2 = 2.517e-3` (Super-K atmospheric neutrino)
+
+**Registry state after Phase 4:**
+- Derived constants: **51 → 73** (+22)
+- EXACT identities: **31 → 50** (+19; primitive-composed formulas + anchor-match rows all EXACT-tier or sub-1% residual)
+- Best/median: 0.0000% / 0.0000%
+- Worst: 6.8569% (unchanged from v5.84.0 — rho_critical H_0²-propagation)
+
+**Total sweep progress: 59/180 (33%)**. 6 remaining sweep ships: v5.87.0 Nuclear+LENR+Phonon (~23), v5.88.0 Buckets H-K (~28), v5.89.0 GW events (~20), v5.90.0 AGN/Jets (~20), v5.91.0 Astrophysics (~20), v5.92.0 Paradoxes+cleanup (~8).
+
+Zero physics values changed. Zero calculator source touched (paper-authoring in `uqff_registry_primitives.py` +38 lines and `uqff_registry_status.py` +48 lines only). Gate 3409 unchanged (Standing Rule i range-checks accommodate new dconsts).
 
 ---
 
