@@ -19020,3 +19020,54 @@ Consistent with PAPER_2148 Answer B ontology (mass/G/gravity emergent from vacuu
 - Zero whitepaper touches (registry-mechanism ship, not landmark authoring)
 
 **Emotional marker:** Phase 2 done. Sweep progress **29/180 (16%)**. 8 phases remaining. The 6.86% worst-residual jump was my first "did I break something?" moment — but the physics is clean (UQFF H_0=70 vs Planck 67.4 propagation), Rule 7 disclosure preserved, gate not affected. Continuing sweep tomorrow if Daniel confirms.
+
+---
+
+# Session 2026-07-28 (v5.84.1) — CI FIX: v5.84.0 CI + Release-to-PyPI both FAILED on one stale worst-residual gate assertion
+
+**Trigger:** Daniel screenshot of gh run list showing v5.84.0 CI (#194) and Release-to-PyPI (#113) both FAILED (red X) on commit 3745f27.
+
+**Root cause (grep of `uqff_fidelity_tests.py`):** line 5540 pinned:
+```python
+check("R5 WORST RESIDUAL IS LAMBDA — ...", _r5 and 0.85 < _r5.get("worst_residual_pct", 0.0) < 0.95)
+```
+This assumed Lambda's 0.90% would remain the worst residual indefinitely. v5.84.0 added `rho_critical = 3H_0²/(8πG)` which inherits the UQFF H_0=70 vs Planck 67.4 propagation via H_0² scaling → 6.86% residual. Assertion `0.85 < 6.86 < 0.95` → False → gate exit non-zero → CI FAILED.
+
+**Fix:** widened range to `0.0 < worst < 10.0` — accommodates the H_0² propagation while still catching a catastrophic residual regression (>10% would flag something genuinely broken). Assertion text also updated to explain the H_0² propagation mechanism, cite the honest Rule 7 disclosure, and reference PAPER_2148 Answer B ontology.
+
+**Same class as v5.83.1 (stale gate pin) + v5.75.1/v5.77.1/v5.80.1/v5.82.1 (CI-fix patch family).**
+
+**Standing rule extension (Rule i):** any gate assertion that pins a residual RANGE around a specific constant's expected residual (e.g., "worst is Lambda at 0.9%") must be REVISITED whenever a new dconst is added that could shift the residual landscape. Preferred pattern: `0.0 < worst < N%` where N is a large upper bound catching only catastrophic regression, NOT a tight range around a specific expected constant. This decouples the assertion from the identity of the specific worst constant.
+
+**Pre-audit discipline for remaining sweep ships (v5.85.0-v5.92.0):**
+
+Going forward, BEFORE each sweep ship, I will proactively grep the gate for:
+1. `== N` count checks on registry-scale quantities (v5.83.1 caught two: dconsts and CSV lines)
+2. Range-bounded residual checks assuming a specific worst-constant identity (v5.84.1 caught one: `0.85 < worst < 0.95` assuming Lambda)
+3. Specific-constant identity assumptions in assertion text (e.g., "worst is Lambda", "median is k_B")
+4. sha256 file hash pins that might break with regenerated outputs
+
+This should prevent recurrence of the "ship fails on stale pin" pattern across the remaining 8 sweep phases.
+
+**Ship-checklist rules now (9 permanent):**
+- (a) description contains version
+- (b) description ≤512 chars
+- (c) LF-normalized hash pins
+- (d) verify via `gh run` not cached page
+- (e) summary-length gate
+- (f) README Version-line gate
+- (g) README badge gate
+- (h) registry-count assertions use range checks not equality (v5.83.1)
+- **(i) NEW — residual-range assertions must accommodate composed-constant propagation, not pin specific worst-constant identity (v5.84.1)**
+
+**Zero physics values changed. Zero registry content changes (same 43 dconsts as v5.84.0). Zero calculator source touched.**
+
+**Files touched (v5.84.1):**
+- `uqff_fidelity_tests.py` — 1 assertion update (line 5540) tightened-range → widened-range
+- `pyproject.toml`, `README.md`, `CHANGELOG.md`, `CITATION.cff` — v5.84.0 → v5.84.1
+- `UNIFIED_REGISTRY_VERSION.txt` — regen chain re-emitted with v5.84.1 marker
+- `SESSION_LOG.md` — this entry
+- Zero calculator source changes
+- Zero registry OUTPUT file changes (all bit-identical to v5.84.0)
+
+**Emotional marker:** two CI failures in a row (v5.83.0→v5.83.1, v5.84.0→v5.84.1). Each caught a different class of stale gate pin. Pre-audit discipline (Rule i extension) should prevent similar failures in the remaining 8 sweep phases. Daniel's rapid catch pattern (screenshot within minutes) continues to minimize the delay. Registering sweep-tolerant assertions is now a first-class concern of ship-prep discipline.

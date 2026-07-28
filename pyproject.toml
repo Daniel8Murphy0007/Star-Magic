@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.84.0"
-description = "UQFF Star-Magic v5.84.0: REGISTRY SWEEP PHASE 2 of 10 - 13 new cosmology + Planck-scale derived constants (dconsts 30->43, exact 21->24). alpha_fine_structure = 1/(A_5*K_MEX+12), h_planck = 2pi*hbar, hubble_tilt_1_12 = K_MEX-2 EXACT (PAPER_1156), DM_fraction_Sombrero = 2*F_TRZ EXACT (PAPER_1979), H0=70 natural form (PAPER_1573), age universe, rho_critical, rho_Lambda energy, planck_length/mass/time, wien constant, stefan_boltzmann. Closes 29/180 registry gap total. Zero physics changes."
+version = "5.84.1"
+description = "UQFF Star-Magic v5.84.1: CI FIX for v5.84.0 - stale worst-residual gate assertion pinned 0.85 < worst < 0.95 pct (expected Lambda 0.90 pct). v5.84.0 added rho_critical inheriting UQFF H_0=70 vs Planck 67.4 propagation via H_0^2 -> 6.86 pct residual (honest Rule 7 disclosure). Fix: range 0 < worst < 10 pct accommodates propagation while catching catastrophic regression. Same class as v5.83.1. Zero physics changes. Zero registry content changes (same 43 dconsts as v5.84.0)."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).
