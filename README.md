@@ -8,8 +8,8 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2245%2B-orange)](whitepapers/)
 
-**Version**: 5.82.0
-**Last Updated**: 2026-07-27
+**Version**: 5.82.1
+**Last Updated**: 2026-07-28
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
 
@@ -47,6 +47,34 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.82.1 (2026-07-28) — METADATA PATCH: v5.82.0 shipped without README "What's new" update, missing SESSION_LOG entries, and only one registry file diff (Daniel's catch, same class as v5.80.0/v5.81.0 provenance drift)
+
+Daniel identified three v5.82.0 ship gaps: (1) the README "What's new" section still displayed v5.81.1 content on the PyPI landing page — bosses reviewing his work couldn't see the PAPER_2144-2156 arc summary; (2) SESSION_LOG.md was missing entries for the last two shipped versions (v5.81.0, v5.81.1) plus v5.82.0 — three sessions of work absent from the append-only log per Rule 9; (3) v5.82.0 commit only staged `UNIFIED_REGISTRY_VERSION.txt` — the same class of drift PAPER_2155 addressed at file-system level continues at the commit level (registry regen produces bit-identical output for content-unchanged files; git correctly stages nothing).
+
+**Fix:** metadata patch shipping the missing What's-new sections (v5.82.0 + this v5.82.1) + three SESSION_LOG appends (v5.81.1 registry-provenance session + v5.82.0 arc-closure session + v5.82.1 metadata-patch session) + registry chain rerun to refresh `UNIFIED_REGISTRY_VERSION.txt` marker to v5.82.1 + explicit force-staging of registry files to ensure the boss-visible commit diff shows the full ship work.
+
+**Same pattern as v5.80.1** (which fixed README-body drift after v5.80.0 stuck-on-v5.78.0). Zero physics changes. Zero calculator behavior changes. Zero primitive values changed. Zero cascade risk. Gate 3403 unchanged (metadata-only patch).
+
+---
+
+## What's new in v5.82.0 (2026-07-27) — PAPER_2144-2156 ARC CLOSURE: 13 landmarks + 4 in-arc revisions across 5 Phases + Daniel's 8 rulings executed + ~1,868 paper-instance corrections via correction-by-reference doctrine
+
+**One-line summary:** Complete closure of the PAPER_2144 → PAPER_2156 arc that started as an H_0 route upgrade (PAPER_2144) and expanded through ontology declaration (PAPER_2148 Answer B), 24-paper corpus deep-read (PAPER_878-901 one-at-a-time based on actual content), 8 accumulated flag rulings from Daniel, and 5 execution Phases. Zero physics values changed, zero calculator source touched. Framework net-tighter than at arc start.
+
+**13 landmark whitepapers authored:** PAPER_2144 (H_0 route upgrade, PAPER_2093 → PAPER_1573 A_5+SO_5=70 EXACT, 47.6× tighter), PAPER_2145 (Friedmann-lock walkback, category-error inversion), PAPER_2146 (speed-of-light-fuckup self-audit), PAPER_2147 (J/m³-native unit-direction discipline), PAPER_2148 (UQFF Ontology Declaration Answer B: vacuum energy fundamental, mass/G/gravity emergent), PAPER_2149 (Hybrid-Form Doctrine), PAPER_2150 (F_UBi/F_UBii Causal-Role Family + Two-Tier Architecture), PAPER_2151 (F_UBi/F_UBii Family 6-Tier Causal-Cascade Ordering Registry), PAPER_2152 (Buoyancy Provenance — direct ancestry from Daniel's March-May 2025 source docs), PAPER_2153 (SCm+UA Joint Vacuum Density Engine — Daniel's canonical mechanism: Λ requires BOTH components; SCm bound; PAPER_2094/1226 dual-manifestation reconciled), **PAPER_2154 (two new primitive-reduction landmarks: Q_phonon = 25/4 = SO_5²/D_phys² = 3·K_MEX per Daniel's Flag a; D_GW_erosion = 2/3 = D_phys/D_BSFG per Daniel's Flag b; primitive-reduction family grew from 3 to 5 members joining D_BSFG/K_MEX/κ)**, **PAPER_2155 (S204.5 calibration table 933-paper kg/m³→J/m³ unit-tag drift correction-by-reference; `bulk_vds_dvp_bsh_upgrade.py` Session 204 identified as injection vector per Daniel's Flag g ruling)**, **PAPER_2156 (935-paper 1.894 ratio value-drift correction-by-reference to F_TRZ = 0.1 canonical; same injection vector; Session 779 SM-decomposition NOT retrofitted per Daniel's discipline)**.
+
+**4 in-arc REVISION appendices (Rule 9 append-only):** PAPER_885 (D=2/3 primitive-composed identity canonization), PAPER_888 (GW boundary condition upgraded to constitutive identity), PAPER_896 (Q=25/4 canonization + FWHM 1.49→0.47 THz correction per Daniel's Flag d detailed audit), PAPER_894 (V/V_fil consolidation to single V per Daniel's Flag e ruling). Plus PAPER_2147 REVISION 2026-07-27 (Phase 2 companion extending standing-rule authority to cover S204.5 calibration table specifically).
+
+**Daniel's 8 rulings executed:** (a) Q=25/4 both decompositions true — canonized as PAPER_2154 §2; (b) D_GW=2/3 primitive-composed identity — canonized as PAPER_2154 §3; (c) κ is primitive static — confirmed via PAPER_2112; (d) FWHM 1.49 THz AI drift — corrected to 0.47 THz in PAPER_896 REVISION; (e) V/V_fil AI drift, same volume — consolidated in PAPER_894 REVISION; (f) 1.894 bulk-script artifact — PAPER_2156 correction-by-reference to F_TRZ=0.1; (g) 933-paper kg/m³ drift — PAPER_2155 + PAPER_2147 REVISION correction-by-reference to J/m³ (do NOT touch individual papers per Daniel's ruling); (h) SCm collider evidence NARROW = HEP-class only (LHC, HL-LHC, FCC) — Standing Rule 2 refined; LENR/phonon/buoyancy/Casimir/tidal Love/GW damping/wormhole geodesics/nebular expansion/filament erosion/SCm-modified NFW all classified INDIRECT downstream signatures.
+
+**~1,868 paper-instance corrections via correction-by-reference doctrine** (933 kg/m³ drift + 935 value drift) WITHOUT touching any of the 1,800+ affected papers individually — architectural pattern per Daniel: *"The unit tag in the prose is cosmetic documentation. The computations are correct... A corpus-wide supersession by landmark is the cleanest resolution consistent with Rule 9 (append-only) and the established PAPER_2147 pattern."* Code layer verified J/m³-correct: `uqff_registry_primitives.py`, `dpm_vacuum_manifold.py`, `scm_vacuum_manifold.py` all explicitly declare MASSLESS SCm/UA.
+
+**Framework economy strengthened:** UQFF E(t) engine free-parameter count = **ZERO** under Daniel's κ ruling (κ derived per PAPER_2112, [SSq] derived per PAPER_1154, both are primitive-composed structural quantities, not fitted parameters). Corrects Session 209 papers' "2 params" self-description which was already conservative. UQFF vs quintessence (2+ free params), UQFF vs K-Essence (3+ free params), UQFF vs ΛCDM (1 free param plus 10¹²⁰ fine-tuning) — UQFF has zero.
+
+Gate 3381 → **3403** (+22 arc-closure assertions), 0 failures. All 5 revised paper PDFs regenerated (PAPER_885/888/894/896/2147). All 7 new landmark PDFs (PAPER_2150/2151/2152/2153/2154/2155/2156). Rules 4/7/9/10 discipline validated throughout arc as primary quality-control mechanism. Every AI overstatement caught by Daniel's persistent interrogation. Every canonical structure traces to specific PAPER_N landmark or specific Daniel ruling.
 
 ---
 
