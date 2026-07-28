@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2245%2B-orange)](whitepapers/)
 
-**Version**: 5.82.1
+**Version**: 5.83.0
 **Last Updated**: 2026-07-28
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,45 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.83.0 (2026-07-28) — REGISTRY SWEEP PHASE 1 of 10: 16 new derived constants registered (dconsts 14→30, exact 7→21)
+
+Per Daniel's audit: the registry had only 14 derived constants tracked out of ~193 landmark quantities across the corpus — a ~180-delta gap. Daniel authorized the full 10-ship sweep to close it. **v5.83.0 is Phase 1** — the primitive-reduction landmarks + structural identities from CLAUDE.md landmark list. Registry grew **14 → 30** derived constants (**21 EXACT identities**, up from 7). Substantive registry-file diff on this commit (per caa0d105 full-range pattern).
+
+**16 new derived constants** landed in `uqff_registry_primitives.py` + `uqff_registry_status.py::_derived_constant_rows()`:
+
+**Primitive-reduction landmarks (2 new, family grew 3→5):**
+- `Q_phonon = SO_5² / D_phys² = 25/4 = 6.25 EXACT` (PAPER_2154 §2, dual decomposition = 3·K_MEX)
+- `D_GW_erosion = D_phys / D_BSFG = 2/3 EXACT` (PAPER_2154 §3, GW170817 66.7% damping is primitive-composed)
+
+**Structural cross-scale identities (10 new):**
+- `A_5_over_D_phys = 15 EXACT` (PAPER_2143)
+- `k2_over_Q_rocky = (D_phys-1)/(A_5·K_MEX) = 3/125 EXACT` (PAPER_2136 tidal Love/Q rocky-planet primitive lock)
+- `frame_cadence_62 = 2·D_crit + SO_5 = 62 EXACT` (PAPER_2137 Kepler cadence composed integer)
+- `composed_integer_44 = D_phys·(SO_5+1) = 44 EXACT` (PAPER_2126 parent of B_crit)
+- `aether_coupling_11 = SO_5+1 = 11 EXACT` (PAPER_1978 Aether coupling at Sombrero)
+- `dg_composed_integer = D_crit·SO_5¹⁹ = 2.6×10²⁰ EXACT` (PAPER_2139)
+- `VCK_kernel = F_TRZ·K_MEX·SSq = 19/160 EXACT` (PAPER_2131 Vacuum Coupling Kernel)
+- `tilt_product_1_12 = F_TRZ·Φ_5/6 = 1/12 EXACT` (PAPER_2132 Tilt-Product Law)
+- `alpha_inverse_UQFF = A_5·K_MEX+12 = 137 EXACT` (PAPER_2134 fine-structure α⁻¹ structural identity, 0.026% vs observed 137.036)
+- `Omega_Lambda_UQFF = (6/5)·SSq = 0.684` (PAPER_1156, 0.71% vs Planck 0.6889)
+
+**PAPER_2138 halving-series primitive identities (4 new):**
+- `halving_D_phys = 2 EXACT`, `halving_D_BSFG = 3 EXACT`, `halving_SO_5 = 5 EXACT`, `halving_D_crit = 13 EXACT`
+
+**Registry state after Phase 1:**
+- Rows: 2549 (unchanged; adds are to derived-constants headline table, not row inventory)
+- Edges: 658 (unchanged)
+- **Derived constants: 14 → 30** (+16)
+- **EXACT identities: 7 → 21** (+14; 2 have observational anchors with sub-1% residuals)
+- Worst residual still 0.9009% (Λ per PAPER_2094, unchanged)
+- Best/median: 0.0000% / 0.0000% (many more EXACT identities registered)
+
+**9 remaining sweep ships (v5.84.0 → v5.92.0)** — Cosmology (~18), Millennium (~8), Particle Physics (~22 including 10 SM masses), Nuclear+LENR+Phonon (~23), Buckets H-K (~28), GW events (~20), AGN/Jets (~20), Astrophysics (~20), Paradoxes+cleanup (~8). Target: ~180 total new registry rows.
+
+Zero physics values changed. Zero calculator source touched (paper-authoring in code files only: `uqff_registry_primitives.py` added 16 constant declarations, `uqff_registry_status.py` added 16 rows). Gate 3403 unchanged (this phase is registry-only; no gate assertions added — the derived-constants table verifies via regen chain, sha256 pins).
 
 ---
 

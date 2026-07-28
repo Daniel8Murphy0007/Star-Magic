@@ -122,3 +122,49 @@ T_SCM_K = 6.6220584965588335e-34 * _F_THZ / 1.380649e-23   # h*f/k_B = 59.95 K, 
 # --- observed anchors (observations, not SM) ---
 M_SUN_OBSERVED = 1.989e30
 R_SUN_OBSERVED = 6.96e8
+
+# ============================================================================
+# v5.83.0 REGISTRY EXPANSION (Phase 1 of 10-ship sweep, 2026-07-28)
+# 16 new derived constants — primitive-reduction landmarks + structural identities
+# Per Daniel's authorization to close the ~180-delta registry gap.
+# ============================================================================
+
+# --- PAPER_2154 arc-closing primitive-reduction landmarks (4th + 5th in family) ---
+Q_PHONON = (SO_5 * SO_5) / (D_PHYS * D_PHYS)     # PAPER_2154 §2: SO_5^2/D_phys^2 = 100/16 = 25/4 = 6.25 EXACT (dual decomposition = 3*K_MEX)
+D_GW_EROSION = D_PHYS / D_BSFG                    # PAPER_2154 §3: D_phys/D_BSFG = 4/6 = 2/3 EXACT (GW170817 66.7% damping is primitive-composed)
+
+# --- PAPER_2143 cross-scale universality (A_5/D_phys = 15 EXACT, 4th primitive identity) ---
+A5_OVER_DPHYS = A_5 / D_PHYS                      # PAPER_2143: 60/4 = 15 EXACT
+
+# --- PAPER_2136 tidal Love/Q rocky-planet primitive lock ---
+K2_OVER_Q_ROCKY = (D_PHYS - 1) / (A_5 * K_MEX)   # PAPER_2136: (D_phys-1)/(A_5*K_MEX) = 3/125 EXACT
+
+# --- PAPER_2137 Kepler frame-cadence composed integer ---
+FRAME_CADENCE_62 = 2 * D_CRIT + SO_5              # PAPER_2137: 2*D_crit+SO_5 = 52+10 = 62 EXACT
+
+# --- PAPER_2126 composed integer 44 (parent of B_crit) ---
+COMPOSED_INTEGER_44 = D_PHYS * (SO_5 + 1)         # PAPER_2126: D_phys*(SO_5+1) = 4*11 = 44 EXACT
+
+# --- PAPER_1978 SO_5+1=11 Aether coupling (Sombrero landmark) ---
+AETHER_COUPLING_11 = SO_5 + 1                     # PAPER_1978: SO_5+1 = 11 EXACT (Aether coupling at Sombrero)
+
+# --- PAPER_2139 dg composed integer + F_TRZ quartet (partial: dg only for cleanliness) ---
+DG_COMPOSED_INTEGER = D_CRIT * (SO_5 ** 19)       # PAPER_2139: D_crit*SO_5^19 = 26*1e19 = 2.6e20 EXACT
+
+# --- PAPER_2131 Vacuum Coupling Kernel (VCK) ---
+VCK_KERNEL = F_TRZ * K_MEX * SSQ                  # PAPER_2131: F_TRZ*K_MEX*SSq = 0.1*(25/12)*0.57 = 19/160 = 0.11875 EXACT
+
+# --- PAPER_2132 Tilt-Product Law (canonical 1/12 tilt landmark) ---
+TILT_PRODUCT_1_12 = F_TRZ * PHI_RES_COUNTING      # PAPER_2132: F_TRZ*Phi_5/6 = 0.1*(5/6) = 1/12 EXACT
+
+# --- PAPER_2134 alpha_inverse composed structural identity ---
+ALPHA_INVERSE_UQFF = A_5 * K_MEX + 12             # PAPER_2134: A_5*K_MEX + 12 = 125+12 = 137 EXACT
+
+# --- PAPER_1156 Omega_Lambda derived constant ---
+OMEGA_LAMBDA_UQFF = (6.0 / 5.0) * SSQ             # PAPER_1156: (6/5)*SSq = 1.2*0.57 = 0.684
+
+# --- PAPER_2138 halving-series primitive identities (4 rows) ---
+HALVING_D_PHYS = D_PHYS / 2                       # PAPER_2138: D_phys/2 = 2 EXACT
+HALVING_D_BSFG = D_BSFG / 2                       # PAPER_2138: D_BSFG/2 = 3 EXACT
+HALVING_SO_5 = SO_5 / 2                           # PAPER_2138: SO_5/2 = 5 EXACT
+HALVING_D_CRIT = D_CRIT / 2                       # PAPER_2138: D_crit/2 = 13 EXACT

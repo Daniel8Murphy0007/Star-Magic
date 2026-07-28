@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.82.1"
-description = "UQFF Star-Magic v5.82.1: METADATA PATCH — v5.82.0 shipped without README What's-new update, missing SESSION_LOG entries, and only one registry file diff (bosses can't see the arc work). Same class as v5.80.0/v5.81.0 provenance drift. Fix: What's-new sections for v5.82.0 (PAPER_2144-2156 arc: 13 landmarks + 4 revisions + ~1868 paper-instance corrections + Daniel's 8 rulings) and v5.82.1 (this metadata patch), 3 SESSION_LOG appends, registry chain rerun. Zero physics changes. Gate 3403 unchanged."
+version = "5.83.0"
+description = "UQFF Star-Magic v5.83.0: REGISTRY SWEEP PHASE 1 of 10 — 16 new derived constants registered (dconsts 14->30, exact 7->21). PAPER_2154 Q_phonon=25/4 + D_GW=2/3. PAPER_2143 A_5/D_phys=15. PAPER_2136 k2/Q=3/125. PAPER_2137 62. PAPER_2126 44. PAPER_1978 11. PAPER_2139 dg=D_crit*SO_5^19. PAPER_2131 VCK=19/160. PAPER_2132 tilt=1/12. PAPER_2134 alpha^-1=137. PAPER_1156 Omega_Lambda=0.684. PAPER_2138 halving series {2,3,5,13}. Closes ~16/180 registry gap. Zero physics changes."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

@@ -67,6 +67,43 @@ def _derived_constant_rows():
          float(P.D_BSFG), 6.0, "EXACT"),
         ("K_MEX", "PAPER_1522", "Phi_5/6*SO_5/D_phys",
          P.K_MEX, 25.0 / 12.0, "EXACT"),
+        # ====================================================================
+        # v5.83.0 REGISTRY EXPANSION (Phase 1 of 10-ship sweep, 2026-07-28)
+        # 16 new derived constants — primitive-reduction landmarks + structural
+        # identities. Per Daniel's authorization to close the ~180-delta gap.
+        # ====================================================================
+        ("Q_phonon", "PAPER_2154", "SO_5^2/D_phys^2 = 3*K_MEX",
+         P.Q_PHONON, 25.0 / 4.0, "EXACT"),
+        ("D_GW_erosion", "PAPER_2154", "D_phys/D_BSFG",
+         P.D_GW_EROSION, 2.0 / 3.0, "EXACT"),
+        ("A_5_over_D_phys", "PAPER_2143", "A_5/D_phys",
+         P.A5_OVER_DPHYS, 15.0, "EXACT"),
+        ("k2_over_Q_rocky", "PAPER_2136", "(D_phys-1)/(A_5*K_MEX)",
+         P.K2_OVER_Q_ROCKY, 3.0 / 125.0, "EXACT"),
+        ("frame_cadence_62", "PAPER_2137", "2*D_crit+SO_5",
+         float(P.FRAME_CADENCE_62), 62.0, "EXACT"),
+        ("composed_integer_44", "PAPER_2126", "D_phys*(SO_5+1)",
+         float(P.COMPOSED_INTEGER_44), 44.0, "EXACT"),
+        ("aether_coupling_11", "PAPER_1978", "SO_5+1",
+         float(P.AETHER_COUPLING_11), 11.0, "EXACT"),
+        ("dg_composed_integer", "PAPER_2139", "D_crit*SO_5^19",
+         float(P.DG_COMPOSED_INTEGER), 2.6e20, "EXACT"),
+        ("VCK_kernel", "PAPER_2131", "F_TRZ*K_MEX*SSq",
+         P.VCK_KERNEL, 19.0 / 160.0, "EXACT"),
+        ("tilt_product_1_12", "PAPER_2132", "F_TRZ*Phi_5/6",
+         P.TILT_PRODUCT_1_12, 1.0 / 12.0, "EXACT"),
+        ("alpha_inverse_UQFF", "PAPER_2134", "A_5*K_MEX+12",
+         P.ALPHA_INVERSE_UQFF, 137.036, "observed (fine-structure alpha^-1)"),
+        ("Omega_Lambda_UQFF", "PAPER_1156", "(6/5)*SSq",
+         P.OMEGA_LAMBDA_UQFF, 0.6889, "observed (Planck 2018)"),
+        ("halving_D_phys", "PAPER_2138", "D_phys/2",
+         P.HALVING_D_PHYS, 2.0, "EXACT"),
+        ("halving_D_BSFG", "PAPER_2138", "D_BSFG/2",
+         P.HALVING_D_BSFG, 3.0, "EXACT"),
+        ("halving_SO_5", "PAPER_2138", "SO_5/2",
+         P.HALVING_SO_5, 5.0, "EXACT"),
+        ("halving_D_crit", "PAPER_2138", "D_crit/2",
+         P.HALVING_D_CRIT, 13.0, "EXACT"),
     ]
     out = []
     for name, route, formula, val, ref, refkind in rows:
