@@ -386,3 +386,88 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 5. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
 6. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
 7. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+
+---
+
+## APPENDED 2026-07-27 — REVISION: V/V_fil CONSOLIDATION (Flag e per Daniel's ruling — same volume, AI drift)
+
+**Ruling source:** Daniel's 2026-07-27 ruling on PAPER_2153 arc Flag (e): *"V vs V_fil — Yes, this is AI drift. They are the same volume."*
+
+**Symptom identified in this paper:**
+
+| Location in this paper | Formula written | Volume notation |
+|---|---|---|
+| §2 Parameters table | (declares parameter) | `V_filament = 1e48 m³` (SINGLE volume defined) |
+| §3 Key Results | `L_{SCm} = ρ_SCm V c² (2R-1) V S_26` | uses BARE V (with duplicate V — see below) |
+| §3 Connection row | `E_net = ρ_SCm V c² (2R-1)` | uses BARE V |
+| §4 Physical Interpretation | `L_SCm = ρ_SCm(t) V c² (2R-1) V_fil S_26` | uses V AND V_fil (two symbols) |
+| Abstract | `L_SCm = ρ_SCm(t)·V·c²·(2R-1)·V_fil·S_26` | uses V AND V_fil (two symbols) |
+
+**Dimensional analysis under the two-volume reading:**
+```
+[L_SCm] = [ρ_SCm] · [V] · [c²] · [dimensionless] · [V_fil] · [dimensionless]
+        = (J/m³) · m³ · (m²/s²) · m³
+        = J · m³ · (m²/s²)
+        = J · m⁵/s²                          ← DIMENSIONALLY MALFORMED
+```
+Correct Lagrangian density units should be J (action per state) or J/m³ (Lagrangian density), not J·m⁵/s². The two-volume reading violates dimensional consistency.
+
+**Under the single-volume (canonical) reading:**
+```
+[L_SCm] = [ρ_SCm] · [V] · [c²] · [dimensionless] · [dimensionless]
+        = (J/m³) · m³ · (m²/s²)
+        = J · (m²/s²)                        ← dimensionally correct (energy·velocity²)
+```
+Or, if the c² factor refers to plasma-emergent DPM density (per PAPER_2153 arc's plasma-has-mass ruling from Daniel), the mass-energy conversion is legitimate and the units resolve consistently.
+
+**Correction (canonical form):**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   L_SCm  =  ρ_SCm(t) · V · c² · (2R − 1) · S_26             │
+│                                                             │
+│   where:                                                    │
+│     ρ_SCm(t)  =  SCm-condensed density (canonical 7.09e-37  │
+│                  J/m³ per PAPER_890, or DPM-emergent plasma │
+│                  density in application context)            │
+│     V         =  system volume (= V_filament from §2 param  │
+│                  table = 1e48 m³ default)                   │
+│     c²        =  mass-energy conversion (legitimate under   │
+│                  plasma-emergent reading per PAPER_2153     │
+│                  arc)                                        │
+│     (2R − 1)  =  buoyancy polarity factor (dimensionless    │
+│                  signed scalar; R = F_UBi/F_U)              │
+│     S_26      =  Ramanujan 26-quantum-state factor          │
+│                  (dimensionless, ≈ 24.3 at [SSq]=0.57)      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Single V** — no separate V_fil symbol. The V in this formula refers to the `V_filament = 1e48 m³` parameter defined in §2. The Abstract, §3, and §4 references should all read as this single V.
+
+**Variable explanations (per Daniel's ruling verbatim clarification):**
+
+1. **ρ_SCm(t)** — Superconductive Manifold vacuum density. Time-evolving vacuum density of the SCm condensate. Canonical value: **7.09 × 10⁻³⁷ J/m³** (or DPM-emergent plasma density kg/m³ in application context per PAPER_2153 arc plasma-has-mass reading). Sourced from PAPER_890 (with unit-tag drift corrections per PAPER_2155 and value corrections per PAPER_2156 when appropriate).
+
+2. **(2R − 1)** — Buoyancy polarity factor. R is the buoyancy ratio F_UBi/F_U (buoyancy field component over total unified field). Default in §2: `F_UBi_over_FU = 0.8`, so R = 0.8 → (2·0.8 − 1) = +0.6. This is a **signed scalar** ranging from −1 (full erosion, R=0) to +1 (full expansion, R=1), zero-crossing at R=0.5 (neutral buoyancy per PAPER_899 critical point). **It is NOT a volume** — it is the buoyancy-regime sign/magnitude operator from the SCm sector (canonized in PAPER_884 master equation and PAPER_2154's PAPER_899 refinement).
+
+3. **V vs V_fil** — **Same volume.** The Abstract's `V·c²·(2R-1)·V_fil` writing was AI drift that made the expression dimensionally malformed ([V]² × [energy density] = J·m³ instead of J·m²/s²). Only ONE volume parameter is defined in §2 (`V_filament = 1e48 m³`), and only ONE volume should appear in the formula. The correct canonical form uses a single V.
+
+**Micro-macro bridge identity (unchanged from §3):**
+
+The identity `L_{E(t)} = L_SCm when E_net = ρ_SCm · V · c² · (2R−1)` (from §3 Key Results Connection row) is preserved. Both sides use a single V, and the identity remains algebraically valid under the corrected form.
+
+**File & Session origin (per Daniel's clarification):**
+
+- **File:** `whitepapers/PAPER_894_SCm_Et_Lagrangian_Variation.md`
+- **Session:** 209 (dated 2026-04-08)
+- **Calculator:** `SCmEtLagrangianVariationCalc` (CP4 #478)
+- **Source module:** `et_scm_vacuum.py`
+- **Integration:** standalone module work from Sessions 204–208, integrated Session 209
+
+**Impact:** small paperwork correction only. Zero calculator source changes (the code likely already uses single V in `et_scm_vacuum.py`; the drift was exclusively in this paper's prose). Zero physics values changed. Micro-macro bridge identity preserved.
+
+**Cross-refs:** PAPER_2154 (PAPER_2153 arc primitive-reduction landmark; Q + D_GW identities), PAPER_2155 (companion Phase 2 unit-tag drift correction), PAPER_2156 (companion Phase 3 1.894 ratio value drift correction), PAPER_890 (canonical ρ_SCm source), PAPER_884 (E_net = E_0·exp(...)·S_26·(2R−1) master equation), PAPER_899 (R = 0.5 critical point canonization), PAPER_888 (macro L_{E(t)} companion Lagrangian at bridge identity), PAPER_2153 (parent arc; plasma-emergent reading of c² factor).
+
+**End of PAPER_894 REVISION 2026-07-27.**

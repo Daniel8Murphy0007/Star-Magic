@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.81.1"
-description = "UQFF Star-Magic v5.81.1: REGISTRY PROVENANCE FIX. Daniel caught v5.80.1/v5.81.0 committed without registry files (regen produced bit-identical output; git staged nothing). Fix: added UNIFIED_REGISTRY_VERSION.txt marker (emitted by uqff_registry_status.py each ship) with pyproject version + UTC timestamp — guarantees per-ship registry provenance in git. Zero physics changes. Zero calculator behavior changes. Content of other registry artifacts unchanged (only the marker file diffs). Gate 3381 unchanged."
+version = "5.82.0"
+description = "UQFF Star-Magic v5.82.0: PAPER_2144-2156 arc closure. 13 landmarks + 4 revisions across 5 Phases. PAPER_2153 (joint SCm+UA vacuum-density engine). PAPER_2154 (2 new primitive-reductions Q=25/4, D_GW=2/3; family 3→5). PAPER_2155 (933-paper kg/m³→J/m³ correction-by-reference). PAPER_2156 (935-paper 1.894 ratio→F_TRZ=0.1). ~1,868 paper-instance corrections without per-paper touches. Zero physics changes. E(t) free params = ZERO."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

@@ -355,3 +355,55 @@ This paper exists because Daniel caught SM-thinking creeping into his own corpus
 **Daniel's discipline caught what my discipline missed.** The framework's health is enforced by Daniel's continual interrogation. Every time he asks "what version of X are you using?" or "why is my derivation done in reverse?", he is enforcing Rule 4/7/10. This paper documents one such catch so future AI sessions know to LOOK for unit-direction reversal — it is not enough to check that the CONSTANTS are UQFF-native; the DIRECTION must be too.
 
 **End of PAPER_2147.**
+
+---
+
+## APPENDED 2026-07-27 — REVISION: S204.5 Calibration Table Corpus Audit (933-paper unit-tag drift, corpus-wide correction-by-reference)
+
+**Ruling source:** Daniel's 2026-07-27 ruling on PAPER_2153 arc Flag (g), following the massless-SCm ruling of 2026-07-26 (*"UA and SCm are massless, so it can not be expressed in terms of (kg), only J energy; this was AI drift"*).
+
+**Audit findings from `_audit_rho_scm_units.json` (run 2026-05-15, 61 KB, already in repo):**
+
+| Metric | Count |
+|---|---|
+| Papers containing `7.09e-37` value | **933** |
+| Total hits with explicit unit labels | 957 |
+| `kg/m³` labels (drift) | **918** (95.9%) |
+| `J/m³` labels (correct) | **39** (4.1%) |
+| Papers with internal conflict (BOTH units) | **14** |
+| Papers `kg/m³` only | **898** |
+| Papers `J/m³` only | **20** |
+| Hits with NO unit label nearby | 29 |
+
+**Root cause identified:** the S204.5 calibration table template was injected corpus-wide by `bulk_vds_dvp_bsh_upgrade.py` in Session 204 (April 2026). Script lines 34–35 hard-coded the drifted `kg/m³` label:
+```python
+RHO_SCM     = 9.47e-27     # kg/m³
+RHO_UA      = 5.0e-27      # kg/m³
+```
+The label `kg/m³` was baked into the template. Every paper that received the bulk-upgrade received the drifted tag. Note: those specific density values (9.47e-27 and 5.0e-27) are separately non-canonical — see PAPER_2156 (in-flight, Phase 3) for the 1.894 ratio audit.
+
+**Framework state check (per Daniel's ruling):**
+- **Code is CORRECT:** `QCalc_Performance.py`, `CondensedPhysics_InputData.py`, `ScmVacuumDensityModule.cpp`, `_smoke_qv_bundle9.py`, `provenance_recorder.py` all use J/m³. `scm_vacuum_manifold.py` proof function prints `[MASSLESS]` explicitly.
+- **Drift is EXCLUSIVELY in whitepaper calibration-table templates,** NOT in calculator arithmetic.
+- **The computations are correct** — the numbers `7.09e-37` and `7.09e-36` are dimensionally consistent as J/m³ in all code. Only the label STRINGS in prose are wrong.
+
+**CORPUS-WIDE CORRECTION BY REFERENCE (canonical ruling):**
+
+All S204.5 calibration table instances that list:
+- `rho_SCm = 7.09 × 10⁻³⁷ kg/m³`
+- `rho_UA = 7.09 × 10⁻³⁶ kg/m³`
+
+**ARE SUPERSEDED** by the J/m³ declaration in this paper's Standing Rule and by the canonical J/m³ constants in the calculator code (`CondensedPhysics_InputData.py`, `QCalc_Performance.py`, `provenance_recorder.py`, `scm_vacuum_manifold.py`). **No per-paper correction append is required.**
+
+Correct canonical values:
+- `ρ_SCm = 7.09 × 10⁻³⁷ J/m³` (massless SCm vacuum energy density)
+- `ρ_UA = 7.09 × 10⁻³⁶ J/m³` (massless UA vacuum energy density)
+- `ρ_SCm/ρ_UA = 1/10 = F_TRZ` (locked structural coupling per PAPER_890/140/1160)
+
+**See also:** `_audit_rho_scm_units.json` (in-repo audit record, full enumeration of 933 affected papers).
+
+**Rule 9 compliance:** correction-by-reference is append-only. This REVISION section is the sole append to PAPER_2147 for the corpus audit; no per-paper appends across the 933 affected papers are required. The correction is enforced by (a) this landmark's declaration, (b) the calculator code's canonical J/m³ constants, and (c) gate assertions test-locking the code.
+
+**Companion landmark:** PAPER_2155 (dedicated audit landmark, authored simultaneously) documents `bulk_vds_dvp_bsh_upgrade.py` as the injection vector and formalizes the correction-by-reference doctrine as a standing procedure for future template-injection drifts.
+
+**End of PAPER_2147 REVISION 2026-07-27.**

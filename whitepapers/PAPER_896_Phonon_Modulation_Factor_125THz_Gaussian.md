@@ -398,3 +398,65 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
 9. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
 10. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+
+---
+
+## APPENDED 2026-07-27 — REVISION: Q = 25/4 PRIMITIVE IDENTITY + FWHM 1.49 THz → 0.47 THz CORRECTION (per PAPER_2154 canonization + Daniel's Flag (d) audit)
+
+**Two corrections applied simultaneously via this REVISION.**
+
+### PART 1 — Q = 6.25 upgraded to PRIMITIVE-COMPOSED IDENTITY
+
+**Ruling source:** Daniel's 2026-07-27 ruling on PAPER_2153 arc Flag (a): *"yes, they are all true"* — both dual decompositions of Q = 25/4 canonized.
+
+**Correction to §1/§3 framing:** the Q = ω_SCm/Γ = 6.25 stated in §3 Key Results is NOT an empirical ratio of two independently measured resonance parameters. It is a **primitive-composed structural identity** per PAPER_2154 §2 with DUAL DECOMPOSITION (both true):
+
+**Decomposition A — space-time integer primitives:**
+```
+Q_phonon  =  SO_5² / D_phys²  =  100 / 16  =  25/4  =  6.25  EXACT
+```
+
+**Decomposition B — via K_MEX Mexican-hat coefficient:**
+```
+Q_phonon  =  3 · K_MEX  =  3 · (25/12)  =  25/4  =  6.25  EXACT
+```
+
+Both routes converge to 25/4 = 6.25 through algebraic identity (K_MEX = Φ_5/6·SO_5/D_phys = 25/12 per PAPER_1522, so `3·K_MEX = (5/2)·(SO_5/D_phys) = SO_5²/D_phys²` with the 5/2 factor absorbing K_MEX's Φ_5/6·SO_5/D_phys structure).
+
+**Upgraded status:** Q_phonon is now the 4th primitive-reduction landmark of the framework (joining D_BSFG, K_MEX, κ canonized in PAPER_1521, 1522, 2112 respectively; see PAPER_2154 §2).
+
+**Falsifiable prediction sharpened:** any UQFF-consistent measurement of the SCm phonon resonance quality factor must return Q = 25/4 = 6.2500 EXACT. Deviations would falsify the primitive-reduction identity.
+
+### PART 2 — FWHM 1.49 THz was AI drift; corrected to ≈ 0.47 THz
+
+**Ruling source:** Daniel's 2026-07-27 detailed numerical audit of Flag (d).
+
+**§3 Key Results table entry `FWHM = 1.49e12 Hz` is INCORRECT.** The stated formula `FWHM = 2Γ·√(2 ln 2)` with the stated `Γ = 2π × 0.2 THz` yields:
+
+```
+FWHM = 2 · (2π · 0.2 × 10¹²) · √(2 ln 2)
+     = 2 · 1.2566 × 10¹² · 1.1774
+     = 2.959 × 10¹² rad/s
+     = 0.471 THz     (converting rad/s → Hz by ÷ 2π)
+```
+
+**The correct FWHM value is ≈ 0.47 THz, not 1.49 THz.** The 1.49 THz figure has no valid derivation from the stated Γ = 2π × 0.2 THz — it is AI drift. Working backwards, 1.49 THz FWHM would require Γ = 2π × 0.633 THz, which is inconsistent with the paper's own Q = 6.25 = ω_SCm/Γ = 1.25/0.2 self-consistency check.
+
+**Corrected §3 Key Results table entry (append-only note):**
+
+| Property | Original Value | CORRECTED Value | Units |
+|---|---|---|---|
+| FWHM | ~~1.49e12~~ | **4.71e11** | Hz |
+| FWHM (in THz) | ~~1.49~~ | **0.47** | THz |
+
+**Q and Γ values remain unchanged** (Q = 6.25 and Γ = 2π × 0.2 THz are mutually self-consistent). Only FWHM was drifted.
+
+**Root cause diagnosis (per Daniel's ruling):** the 1.49 THz figure appears to have been generated via unit-conversion confusion between the angular-frequency Γ = 2π × 0.2 THz form and a bare Γ = 0.633 THz frequency form, with an intermediate result mislabeled during authoring.
+
+### Combined effect
+
+Q = 25/4 EXACT is a NEW structural identity (framework economy strengthened); FWHM correction fixes a paperwork drift (no physics impact).
+
+**Cross-refs:** PAPER_2154 §2 (Q primitive-reduction landmark), PAPER_1522 (K_MEX derivative source), PAPER_2112 (κ derivative precedent for dual decomposition), Daniel's 2026-07-27 Flag (a) ruling (Q canonization), Daniel's 2026-07-27 Flag (d) audit (FWHM correction).
+
+**End of PAPER_896 REVISION.**

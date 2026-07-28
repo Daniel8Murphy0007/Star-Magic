@@ -357,3 +357,30 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 5. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
 6. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
 7. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2
+
+---
+
+## APPENDED 2026-07-27 — REVISION: D_erosion = 2/3 = D_phys/D_BSFG PRIMITIVE-COMPOSED IDENTITY (per PAPER_2154 canonization)
+
+**Ruling source:** Daniel's 2026-07-27 ruling on PAPER_2153 arc Flag (b): *"yes primitive-composed structural identity"*.
+
+**Correction to paper's framing:** the D_erosion = 66.7% value stated in §1 and §3 is NOT an empirical constraint fit to GW170817 data (as PAPER_008b framing suggested). It is a **primitive-composed structural identity** per PAPER_2154 §3:
+
+```
+D_erosion  =  D_phys / D_BSFG
+           =  4 / 6
+           =  2 / 3
+           =  0.6667  EXACT
+```
+
+where D_BSFG/D_phys = 3/2 is PAPER_1962's canonized cross-scale universality identity. The 0.667 rounding used in the original paper is consistent with 2/3 exact.
+
+**Upgraded status:** D_erosion is now the 5th primitive-reduction landmark of the framework (joining D_BSFG, K_MEX, κ, Q_phonon canonized in PAPER_1521, 1522, 2112, 2154 §2 respectively).
+
+**Falsifiable prediction sharpened:** any future GW observation of a binary NS merger in the buoyancy-erosion regime (R < 0.5 per PAPER_884) must return strain damping D = 2/3 = 0.6667 EXACT (before instrumental corrections). GW170817's 0.667 measurement is consistent within observational precision.
+
+**Numerical values unchanged:** h_damped/h_GR = 1 − 2/3 = 1/3; Δφ = D · f_GW/f_orbit = (2/3) · (100/50) = 4/3 = 1.333 cycles (paper stated 1.334 = 2/3 · 2 = 4/3 exact, rounding artifact).
+
+**Cross-refs:** PAPER_2154 §3 (canonical primitive-reduction landmark), PAPER_1962 (D_BSFG/D_phys = 3/2 source), PAPER_2138 (halving series pattern D = (D_phys/2)/(D_BSFG/2) = 2/3 family membership).
+
+**End of PAPER_885 REVISION.**

@@ -429,3 +429,31 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 7. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
 8. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
 9. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+
+---
+
+## APPENDED 2026-07-27 — REVISION: GW damping D = 2/3 UPGRADED from "boundary condition" to CONSTITUTIVE STRUCTURAL IDENTITY (per PAPER_2154 canonization)
+
+**Ruling source:** Daniel's 2026-07-27 ruling on PAPER_2153 arc Flag (b): *"yes primitive-composed structural identity"*.
+
+**Correction to §3 Key Results table:** the entry `GW constraint | D = 0.667 | Boundary condition` is UPGRADED. Per PAPER_2154 §3:
+
+```
+D_GW_erosion  =  D_phys / D_BSFG  =  4/6  =  2/3  EXACT
+```
+
+is a **primitive-composed structural identity**, NOT merely a boundary condition on the erosion sector. It is a locked structural output of the framework's integer-primitive lattice.
+
+**Corrected §3 Key Results entry (append-only note):**
+
+| Quantity | Expression | Physical Role (post-2026-07-27) |
+|---|---|---|
+| GW constraint | D = D_phys/D_BSFG = 2/3 EXACT | **Constitutive structural identity** (primitive-reduction landmark #5 per PAPER_2154) |
+
+**Effect on §4 physical interpretation:** the phrase "The GW constraint (D = 0.667) enters as a boundary condition on the erosion sector" should be read as: the GW constraint D = 2/3 = D_phys/D_BSFG enters as a CONSTITUTIVE STRUCTURAL IDENTITY forced by the framework's integer-primitive lattice — not a fitted boundary imposed on the theory but an intrinsic output of the framework's primitive arithmetic.
+
+**Framework economy sharpened:** PAPER_888's total variational structure now has one fewer free/empirical constant. The E(t) Lagrangian is more parsimonious than the original paper claimed.
+
+**Cross-refs:** PAPER_2154 §3 (primitive-reduction landmark #5), PAPER_885 REVISION 2026-07-27 (companion GW170817 identity canonization), PAPER_1962 (D_BSFG/D_phys = 3/2 source).
+
+**End of PAPER_888 REVISION.**
