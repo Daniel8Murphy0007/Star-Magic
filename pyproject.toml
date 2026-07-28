@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uqff"
-version = "5.83.1"
-description = "UQFF Star-Magic v5.83.1: CI FIX for v5.83.0 - two stale gate assertions hardcoded old registry counts (dconsts==14 and CSV lines==15); v5.83.0 sweep grew dconsts 14->30 and CSV 15->31 lines, failing both. Fix: assertions now use range checks (>= 30 dconsts, >= 31 CSV lines) to accommodate ongoing 10-ship sweep to ~193 dconsts by v5.92.0. Same class as v5.75.1 (LF-normalization) and v5.77.1 (summary length) CI fixes. Zero physics changes. Zero registry content changes (same 30 dconsts as v5.83.0)."
+version = "5.84.0"
+description = "UQFF Star-Magic v5.84.0: REGISTRY SWEEP PHASE 2 of 10 - 13 new cosmology + Planck-scale derived constants (dconsts 30->43, exact 21->24). alpha_fine_structure = 1/(A_5*K_MEX+12), h_planck = 2pi*hbar, hubble_tilt_1_12 = K_MEX-2 EXACT (PAPER_1156), DM_fraction_Sombrero = 2*F_TRZ EXACT (PAPER_1979), H0=70 natural form (PAPER_1573), age universe, rho_critical, rho_Lambda energy, planck_length/mass/time, wien constant, stefan_boltzmann. Closes 29/180 registry gap total. Zero physics changes."
 readme = "README.md"
 requires-python = ">=3.10"
 # PEP 639 SPDX string form (setuptools >=77).

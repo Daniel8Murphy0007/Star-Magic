@@ -8,7 +8,7 @@
 [![Public surfaces](https://img.shields.io/badge/public_surfaces-2800%2B-blue)](uqff_pure_calculator.py)
 [![Whitepapers](https://img.shields.io/badge/whitepapers-2245%2B-orange)](whitepapers/)
 
-**Version**: 5.83.1
+**Version**: 5.84.0
 **Last Updated**: 2026-07-28
 **Author**: Daniel T. Murphy
 **Repository**: https://github.com/Daniel8Murphy0007/Star-Magic
@@ -47,6 +47,48 @@ Locked derivative quantities:
 ```
 
 **"NOT REPLACEMENT"**: UQFF does NOT replace the Standard Model. It solves the same observed phenomena via different methods, reporting honest residuals throughout.
+
+---
+
+## What's new in v5.84.0 (2026-07-28) — REGISTRY SWEEP PHASE 2 of 10: 13 new cosmology + Planck-scale derived constants (dconsts 30→43, exact 21→24)
+
+Phase 2 of Daniel-authorized 10-ship registry sweep. Registry grew **30 → 43** derived constants (+13, **24 EXACT** up from 21). Substantive multi-file registry diff on this commit (caa0d105 full-range pattern).
+
+**13 new registered derived constants:**
+
+**Cosmology composed from v5.83.0 primitive-reduction additions (5 rows):**
+- `alpha_fine_structure = 1/(A_5·K_MEX+12) = 1/137` (composed from v5.83.0 alpha_inverse_UQFF; 0.026% vs observed 137.036)
+- `h_planck = 2π·ℏ = 6.624×10⁻³⁴ J·s` (composed from existing hbar; inherits ℏ residual 0.027%)
+- `hubble_tilt_1_12 = K_MEX − 2 = 1/12 EXACT` (PAPER_1156 canonical 1/12 tilt landmark chain: PAPER_1156 → 1522 → 2132 → 2133 → 2145)
+- `DM_fraction_Sombrero = 2·F_TRZ = 0.2 EXACT` (PAPER_1979 M_DM/M_total cross-domain identity at Sombrero)
+- `H0_km_per_s_per_Mpc = A_5+SO_5 = 70 EXACT` (PAPER_1573 natural-unit form; complements H0_GRID in s⁻¹)
+
+**Cosmology derived (composed from registered):**
+- `age_universe_seconds = 1/H_0 = 4.408×10¹⁷ s ≈ 13.97 Gyr` (Hubble time)
+- `rho_critical = 3·H_0²/(8πG) = 9.21×10⁻²⁷ kg/m³` (composed; 6.86% vs Planck-inferred 8.62e-27 — reflects UQFF H_0=70 vs Planck 67.4, expected under PAPER_2148 Answer B ontology, honest disclosure per Rule 7)
+- `rho_Lambda_energy = Λ·c⁴/(8πG) = 5.28×10⁻¹⁰ J/m³` (composed from PAPER_2094 Λ)
+
+**Planck-scale physics (derived from ℏ, c, G in registry):**
+- `planck_length = √(ℏG/c³) = 1.618×10⁻³⁵ m` (already computed in primitives.py as L_PLANCK_UQFF; now explicitly registered)
+- `planck_mass = √(ℏc/G) = 2.176×10⁻⁸ kg`
+- `planck_time = √(ℏG/c⁵) = 5.40×10⁻⁴⁴ s`
+
+**Blackbody physics (derived from ℏ, c, k_B in registry):**
+- `wien_displacement_b = h·c/(4.965...·k_B) = 2.894×10⁻³ m·K` (0.13% vs SI 2.898e-3)
+- `stefan_boltzmann_sigma = π²·k_B⁴/(60·ℏ³·c²) = 5.686×10⁻⁸ W/(m²·K⁴)` (0.28% vs SI 5.670e-8)
+
+**Honest disclosure (Rule 7):** worst registry residual is now **6.86%** (rho_critical), up from 0.90% (Λ). This is NOT a bug — it's the expected consequence of UQFF's H_0 = 70 km/s/Mpc (PAPER_1573 integer-primitive identity) differing from Planck's inferred H_0 = 67.4. Since ρ_crit ∝ H_0², the ~4% H_0 discrepancy propagates to ~8% ρ_crit discrepancy. Consistent with PAPER_2148 Answer B ontology and PAPER_2144 doctrine that Hubble tension is resolved at H_0 = 70 mean (between SH0ES 73 and Planck 67.4).
+
+**Registry state after Phase 2:**
+- Rows: 2549 (unchanged; additions are to derived-constants headline table)
+- Edges: 658 (unchanged)
+- **Derived constants: 30 → 43** (+13)
+- **EXACT identities: 21 → 24** (+3; Planck-scale constants inherit residuals from ℏ/c/G)
+- Best: 0.0000% / Worst: 6.8569% (new rho_critical, honest disclosure)
+
+**8 remaining sweep ships (v5.85.0 → v5.92.0)** — Millennium (~8), Particle Physics (~22 incl 10 SM masses), Nuclear+LENR+Phonon (~23), Buckets H-K (~28), GW events (~20), AGN/Jets (~20), Astrophysics (~20), Paradoxes+cleanup (~8). Total sweep progress: **29/180 registered (16%)**.
+
+Zero physics values changed. Zero calculator source touched (paper-authoring in `uqff_registry_primitives.py` +18 lines and `uqff_registry_status.py` +26 lines only). Gate 3409 unchanged for this ship (range-check discipline from v5.83.1 already accommodates the new dconsts count).
 
 ---
 

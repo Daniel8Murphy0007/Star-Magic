@@ -168,3 +168,31 @@ HALVING_D_PHYS = D_PHYS / 2                       # PAPER_2138: D_phys/2 = 2 EXA
 HALVING_D_BSFG = D_BSFG / 2                       # PAPER_2138: D_BSFG/2 = 3 EXACT
 HALVING_SO_5 = SO_5 / 2                           # PAPER_2138: SO_5/2 = 5 EXACT
 HALVING_D_CRIT = D_CRIT / 2                       # PAPER_2138: D_crit/2 = 13 EXACT
+
+# ============================================================================
+# v5.84.0 REGISTRY EXPANSION (Phase 2 of 10-ship sweep, 2026-07-28)
+# 13 new cosmology + physical-constants derived constants — composed from
+# v5.83.0 additions + structural identities + Planck-scale physics.
+# Per Daniel's authorization to close the ~180-delta registry gap.
+# ============================================================================
+
+# --- Cosmology composed from v5.83.0 primitive-reduction additions ---
+ALPHA_FINE_STRUCTURE = 1.0 / ALPHA_INVERSE_UQFF   # PAPER_2134: 1/137 fine-structure = 0.007299 (0.026% vs observed 137.036 → 0.007297352)
+H_PLANCK_UQFF = 2.0 * math.pi * HBAR_UQFF_S629    # composed: h = 2π·ℏ (inherits ℏ residual)
+HUBBLE_TILT_1_12 = K_MEX - 2.0                    # PAPER_1156 K_MEX - 2 = 25/12 - 24/12 = 1/12 EXACT
+DM_FRACTION_SOMBRERO = 2.0 * F_TRZ                # PAPER_1979 M_DM/M_total = 2·F_TRZ = 0.2 EXACT (Sombrero)
+H0_KM_PER_S_PER_MPC = A_5 + SO_5                  # PAPER_1573 natural-unit form (H0_GRID converts to s^-1)
+
+# --- Cosmology derived-from-registered (composed) ---
+AGE_UNIVERSE_SECONDS = 1.0 / H0_GRID              # composed: t_H = 1/H_0 = 4.408e17 s ≈ 13.97 Gyr
+RHO_CRITICAL_KG_PER_M3 = 3.0 * (H0_GRID ** 2) / (8.0 * math.pi * G_UQFF)  # composed: 3H_0²/(8πG)
+RHO_LAMBDA_ENERGY_J_PER_M3 = LAMBDA_SIMPLE * (C_UQFF_DERIVED ** 4) / (8.0 * math.pi * G_UQFF)  # composed: Λ·c⁴/(8πG) energy density form
+
+# --- Planck-scale physics (derived from ℏ, c, G already in registry) ---
+PLANCK_LENGTH_M = L_PLANCK_UQFF                    # already defined at line 90: sqrt(ℏG/c³) ~ 1.617e-35 m
+PLANCK_MASS_KG = math.sqrt(HBAR_UQFF_S629 * C_UQFF_DERIVED / G_UQFF)  # composed: √(ℏc/G) ~ 2.176e-8 kg
+PLANCK_TIME_S = math.sqrt(HBAR_UQFF_S629 * G_UQFF / (C_UQFF_DERIVED ** 5))  # composed: √(ℏG/c⁵) ~ 5.39e-44 s
+
+# --- Blackbody physics (derived from ℏ, c, k_B in registry) ---
+WIEN_DISPLACEMENT_B_M_K = H_PLANCK_UQFF * C_UQFF_DERIVED / (4.965114231744276 * K_B_UQFF)  # b = hc/(4.965...·k_B), 4.965... = solution of xe^x/(e^x-1) = 5
+STEFAN_BOLTZMANN_SIGMA = (math.pi ** 2) * (K_B_UQFF ** 4) / (60.0 * (HBAR_UQFF_S629 ** 3) * (C_UQFF_DERIVED ** 2))  # σ = π²k_B⁴/(60ℏ³c²)

@@ -104,6 +104,37 @@ def _derived_constant_rows():
          P.HALVING_SO_5, 5.0, "EXACT"),
         ("halving_D_crit", "PAPER_2138", "D_crit/2",
          P.HALVING_D_CRIT, 13.0, "EXACT"),
+        # ====================================================================
+        # v5.84.0 REGISTRY EXPANSION (Phase 2 of 10-ship sweep, 2026-07-28)
+        # 13 new cosmology + physical-constants derived constants. Per Daniel's
+        # authorization to close the ~180-delta registry gap.
+        # ====================================================================
+        ("alpha_fine_structure", "PAPER_2134", "1/(A_5*K_MEX+12)",
+         P.ALPHA_FINE_STRUCTURE, 1.0 / 137.035999084, "observed (CODATA 2018 α^-1 = 137.036)"),
+        ("h_planck", "PAPER_590 composed", "2*pi*hbar",
+         P.H_PLANCK_UQFF, 6.62607015e-34, "SI-defined"),
+        ("hubble_tilt_1_12", "PAPER_1156", "K_MEX-2 = 25/12-24/12",
+         P.HUBBLE_TILT_1_12, 1.0 / 12.0, "EXACT"),
+        ("DM_fraction_Sombrero", "PAPER_1979", "2*F_TRZ",
+         P.DM_FRACTION_SOMBRERO, 0.2, "EXACT (Sombrero cross-domain)"),
+        ("H0_km_per_s_per_Mpc", "PAPER_1573", "A_5+SO_5",
+         float(P.H0_KM_PER_S_PER_MPC), 70.0, "EXACT (natural-unit form of H_0 = 2.269e-18 s^-1)"),
+        ("age_universe_seconds", "PAPER_1573 composed", "1/H_0",
+         P.AGE_UNIVERSE_SECONDS, 4.354e17, "observed (~13.8 Gyr Hubble time)"),
+        ("rho_critical", "PAPER_1573+PAPER_593 composed", "3*H_0^2/(8*pi*G)",
+         P.RHO_CRITICAL_KG_PER_M3, 8.62e-27, "observed (Planck 2018)"),
+        ("rho_Lambda_energy", "PAPER_2094+PAPER_592/593 composed", "Lambda*c^4/(8*pi*G)",
+         P.RHO_LAMBDA_ENERGY_J_PER_M3, 5.36e-10, "observed (Planck 2018 ρ_Λ energy density J/m^3)"),
+        ("planck_length", "PAPER_590+PAPER_593+PAPER_592 composed", "sqrt(hbar*G/c^3)",
+         P.PLANCK_LENGTH_M, 1.616255e-35, "SI-defined"),
+        ("planck_mass", "PAPER_590+PAPER_593+PAPER_592 composed", "sqrt(hbar*c/G)",
+         P.PLANCK_MASS_KG, 2.176434e-8, "SI-defined"),
+        ("planck_time", "PAPER_590+PAPER_593+PAPER_592 composed", "sqrt(hbar*G/c^5)",
+         P.PLANCK_TIME_S, 5.391247e-44, "SI-defined"),
+        ("wien_displacement_b", "PAPER_1209EE S628 composed", "h*c/(4.965...*k_B)",
+         P.WIEN_DISPLACEMENT_B_M_K, 2.897771955e-3, "SI-defined"),
+        ("stefan_boltzmann_sigma", "PAPER_590+PAPER_592+PAPER_1209EE S628 composed", "pi^2*k_B^4/(60*hbar^3*c^2)",
+         P.STEFAN_BOLTZMANN_SIGMA, 5.670374419e-8, "SI-defined"),
     ]
     out = []
     for name, route, formula, val, ref, refkind in rows:

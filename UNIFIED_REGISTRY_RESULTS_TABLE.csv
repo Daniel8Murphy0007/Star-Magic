@@ -29,3 +29,16 @@ halving_D_phys,PAPER_2138,D_phys/2,2.0,2.0,EXACT,0.000000
 halving_D_BSFG,PAPER_2138,D_BSFG/2,3.0,3.0,EXACT,0.000000
 halving_SO_5,PAPER_2138,SO_5/2,5.0,5.0,EXACT,0.000000
 halving_D_crit,PAPER_2138,D_crit/2,13.0,13.0,EXACT,0.000000
+alpha_fine_structure,PAPER_2134,1/(A_5*K_MEX+12),0.0072992700729927005,0.0072973525692838015,observed (CODATA 2018 α^-1 = 137.036),0.026277
+h_planck,PAPER_590 composed,2*pi*hbar,6.624299999999999e-34,6.62607015e-34,SI-defined,0.026715
+hubble_tilt_1_12,PAPER_1156,K_MEX-2 = 25/12-24/12,0.08333333333333348,0.08333333333333333,EXACT,0.000000
+DM_fraction_Sombrero,PAPER_1979,2*F_TRZ,0.2,0.2,EXACT (Sombrero cross-domain),0.000000
+H0_km_per_s_per_Mpc,PAPER_1573,A_5+SO_5,70.0,70.0,EXACT (natural-unit form of H_0 = 2.269e-18 s^-1),0.000000
+age_universe_seconds,PAPER_1573 composed,1/H_0,4.408142857142857e+17,4.354e+17,observed (~13.8 Gyr Hubble time),1.243520
+rho_critical,PAPER_1573+PAPER_593 composed,3*H_0^2/(8*pi*G),9.211065773544453e-27,8.62e-27,observed (Planck 2018),6.856912
+rho_Lambda_energy,PAPER_2094+PAPER_592/593 composed,Lambda*c^4/(8*pi*G),5.280453703996504e-10,5.36e-10,observed (Planck 2018 ρ_Λ energy density J/m^3),1.484073
+planck_length,PAPER_590+PAPER_593+PAPER_592 composed,sqrt(hbar*G/c^3),1.6177752266259353e-35,1.616255e-35,SI-defined,0.094059
+planck_mass,PAPER_590+PAPER_593+PAPER_592 composed,sqrt(hbar*c/G),2.1759418863605737e-08,2.176434e-08,SI-defined,0.022611
+planck_time,PAPER_590+PAPER_593+PAPER_592 composed,sqrt(hbar*G/c^5),5.401613792918786e-44,5.391247e-44,SI-defined,0.192289
+wien_displacement_b,PAPER_1209EE S628 composed,h*c/(4.965...*k_B),0.0028941900378419167,0.002897771955,SI-defined,0.123609
+stefan_boltzmann_sigma,PAPER_590+PAPER_592+PAPER_1209EE S628 composed,pi^2*k_B^4/(60*hbar^3*c^2),5.685808635496252e-08,5.670374419e-08,SI-defined,0.272190

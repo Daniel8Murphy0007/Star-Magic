@@ -12,8 +12,8 @@ live from `UNIFIED_REGISTRY.csv`, `UNIFIED_REGISTRY_GRAPH.csv` and
 | canonical_routes_explicit | 109 |
 | canonical_routes_sole | 2440 |
 | graph_edges | 658 |
-| derived_constants_live | 30 |
-| derived_constants_exact | 21 |
+| derived_constants_live | 43 |
+| derived_constants_exact | 24 |
 | independent_primitives | 9 |
 
 ### Rows by kind
